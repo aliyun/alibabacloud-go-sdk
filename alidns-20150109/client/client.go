@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -783,21 +784,21 @@ type AddDnsGtmAddressPoolRequest struct {
 	//
 	// all_rr
 	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	// The extended information. The required parameters vary based on the value of ProtocolType.
+	// The extended information. The required parameters vary based on the health check protocol.
 	//
-	// 	- HTTP or HTTPS
+	// 	- HTTP or HTTPS:
 	//
 	//     	- port: the port that you want to check
 	//
 	//     	- host: the host settings
 	//
-	//     	- path: the URL path
+	//     	- path: the URL
 	//
-	//     	- code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value. Values: 400, 500.
+	//     	- code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value. Valid values: 400 and 500.
 	//
 	//     	- failureRate: the failure rate
 	//
-	//     	- sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
+	//     	- sni: specifies whether to enable Server Name Indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
 	//
 	//         	- true: enables SNI.
 	//
@@ -809,7 +810,7 @@ type AddDnsGtmAddressPoolRequest struct {
 	//
 	//         	- IPV6
 	//
-	// 	- PING
+	// 	- ping:
 	//
 	//     	- failureRate: the failure rate
 	//
@@ -823,7 +824,7 @@ type AddDnsGtmAddressPoolRequest struct {
 	//
 	//         	- IPV6
 	//
-	// 	- TCP
+	// 	- TCP:
 	//
 	//     	- port: the port that you want to check
 	//
@@ -1201,53 +1202,53 @@ type AddDnsGtmMonitorRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	// The extended information. The required parameters vary based on the value of ProtocolType.
 	//
-	// 	- HTTP or HTTPS:
+	// 	- HTTP or HTTPS
 	//
-	//     	- port: the port to check.
+	//     	- port: the port that you want to check
 	//
-	//     	- host: the host configuration.
+	//     	- host: the host settings
 	//
-	//     	- path: the health check URL.
+	//     	- path: the URL path
 	//
-	//     	- code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal.
+	//     	- code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value.
 	//
-	//     	- failureRate: the failure rate.
+	//     	- failureRate: the failure rate
 	//
-	//     	- sni: specifies whether to enable Server Name Indication (SNI). This parameter is only required for the HTTPS protocol. Valid values:
+	//     	- sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
 	//
 	//         	- true: enables SNI.
 	//
 	//         	- false: disables SNI.
 	//
-	//     	- nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//     	- nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
 	//
 	//         	- IPV4
 	//
 	//         	- IPV6
 	//
-	// 	- PING:
+	// 	- PING
 	//
-	//     	- failureRate: the failure rate.
+	//     	- failureRate: the failure rate
 	//
-	//     	- packetNum: the number of ping packets.
+	//     	- packetNum: the number of ping packets
 	//
-	//     	- packetLossRate: the loss rate of ping packets.
+	//     	- packetLossRate: the loss rate of ping packets
 	//
-	//     	- nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//     	- nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
 	//
 	//         	- IPV4
 	//
 	//         	- IPV6
 	//
-	// 	- TCP:
+	// 	- TCP
 	//
-	//     	- port: the port to check.
+	//     	- port: the port that you want to check
 	//
-	//     	- failureRate: the failure rate.
+	//     	- failureRate: the failure rate
 	//
-	//     	- nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//     	- nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
 	//
 	//         	- IPV4
 	//
@@ -1259,7 +1260,7 @@ type AddDnsGtmMonitorRequest struct {
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	// The protocol used for the health check. Valid values:
+	// The health check protocol. Valid values:
 	//
 	// 	- HTTP
 	//
@@ -1275,7 +1276,7 @@ type AddDnsGtmMonitorRequest struct {
 	//
 	// http
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The health check timeout period. Unit: milliseconds.
+	// The timeout period. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -1443,7 +1444,13 @@ type AddDomainRequest struct {
 	//
 	// 2223
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
@@ -1624,7 +1631,13 @@ type AddDomainBackupRequest struct {
 	//
 	// test.aliyun.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
@@ -1632,9 +1645,9 @@ type AddDomainBackupRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// 	- **DAY**: Backs up data once every day.
+	// 	- DAY: backs up data on a daily basis.
 	//
-	// 	- **HOUR**: Backs up data once every hour.
+	// 	- HOUR: backs up data on an hourly basis.
 	//
 	// This parameter is required.
 	//
@@ -1749,7 +1762,13 @@ type AddDomainGroupRequest struct {
 	//
 	// MyGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
@@ -1863,9 +1882,9 @@ type AddDomainRecordRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The DNS resolution line. Default value: **default**. For more information, see
+	// The resolution line. Default value: **default**. For more information, see
 	//
-	// [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+	// [DNS resolution lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
 	//
 	// example:
 	//
@@ -1873,7 +1892,7 @@ type AddDomainRecordRequest struct {
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	// The priority of the mail exchanger (MX) record. Valid values: `1 to 50`.
 	//
-	// This parameter must be specified if the type of the DNS record is MX. A smaller value indicates a higher priority.
+	// This parameter is required if the type of the DNS record is MX. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
@@ -1889,7 +1908,7 @@ type AddDomainRecordRequest struct {
 	//
 	// www
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The time-to-live (TTL) of the DNS record. Default value: 600. Unit: seconds. For more information, see
+	// The time to live (TTL) period of the Domain Name System (DNS) record. Default value: 600. Unit: seconds. For more information, see
 	//
 	// [TTL definition](https://www.alibabacloud.com/help/zh/doc-detail/29806.htm).
 	//
@@ -2788,7 +2807,7 @@ func (s *AddGtmMonitorResponse) SetBody(v *AddGtmMonitorResponseBody) *AddGtmMon
 }
 
 type AddGtmRecoveryPlanRequest struct {
-	// The list of IDs of faulty address pools.
+	// The IDs of faulty address pools.
 	//
 	// This parameter is required.
 	//
@@ -2796,13 +2815,13 @@ type AddGtmRecoveryPlanRequest struct {
 	//
 	// ["hra0or"]
 	FaultAddrPool *string `json:"FaultAddrPool,omitempty" xml:"FaultAddrPool,omitempty"`
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the disaster recovery plan that you want to create.
+	// The name of the disaster recovery plan.
 	//
 	// This parameter is required.
 	//
@@ -2810,7 +2829,7 @@ type AddGtmRecoveryPlanRequest struct {
 	//
 	// name-example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The remarks on the disaster recovery plan.
+	// The description of the disaster recovery plan.
 	//
 	// example:
 	//
@@ -2847,13 +2866,13 @@ func (s *AddGtmRecoveryPlanRequest) SetRemark(v string) *AddGtmRecoveryPlanReque
 }
 
 type AddGtmRecoveryPlanResponseBody struct {
-	// The ID of the disaster recovery plan created.
+	// The ID of the disaster recovery plan.
 	//
 	// example:
 	//
 	// 100
 	RecoveryPlanId *string `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3040,21 +3059,27 @@ type ChangeDomainGroupRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the destination domain name group.
+	// The ID of the target domain name group.
 	//
-	// 	- If you do not specify GroupId, the domain name is moved to the default group.
+	// 	- If you do not specify GroupId, the domain name belongs to the default group.
 	//
-	// 	- If you set GroupId to an empty string, the domain name is moved to the default group.
+	// 	- If you specify an empty string "" for GroupId, the domain name belongs to the default group.
 	//
-	// 	- If you set GroupId to defaultGroup, the domain name is moved to the default group.
+	// 	- If you set GroupId to defaultGroup, the domain name belongs to the default group.
 	//
-	// 	- If you do not set GroupId to one of the preceding values and set GroupId to an existing group ID, the domain name is moved to the existing group. If you set GroupId to a group ID that does not exist, the domain name remains in the original group.
+	// 	- If you specify GroupId to another value and the value is verified existent, the value of GroupId for the target domain name is updated. If the value is verified inexistent, the value of GroupId for the target domain name is not updated.
 	//
 	// example:
 	//
 	// 2223
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en
 	//
 	// example:
 	//
@@ -3086,7 +3111,7 @@ func (s *ChangeDomainGroupRequest) SetLang(v string) *ChangeDomainGroupRequest {
 }
 
 type ChangeDomainGroupResponseBody struct {
-	// The ID of the destination domain name group.
+	// The ID of the target domain name group.
 	//
 	// example:
 	//
@@ -3179,7 +3204,7 @@ type ChangeDomainOfDnsProductRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The domain name that you want to bind to the instance. If you do not specify this parameter, this operation unbinds the original domain name from the instance.
+	// The domain name that you want to bind to the instance. If you leave this parameter empty, the domain name that is bound to the instance is unbound from the instance.
 	//
 	// example:
 	//
@@ -3227,13 +3252,13 @@ func (s *ChangeDomainOfDnsProductRequest) SetUserClientIp(v string) *ChangeDomai
 }
 
 type ChangeDomainOfDnsProductResponseBody struct {
-	// The original domain name that was bound to the instance. If the value of this parameter is empty, the instance is bound with a domain name for the first time.
+	// The domain name that is originally bound to the instance. If no value is returned for this parameter, the instance is bound to a domain name for the first time.
 	//
 	// example:
 	//
 	// originaldomain.com
 	OriginalDomain *string `json:"OriginalDomain,omitempty" xml:"OriginalDomain,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3289,7 +3314,7 @@ func (s *ChangeDomainOfDnsProductResponse) SetBody(v *ChangeDomainOfDnsProductRe
 }
 
 type CopyGtmConfigRequest struct {
-	// The type of the object that you want to copy. Only the INSTANCE type is supported.
+	// The type of the object that is copied. Only the INSTANCE type is supported.
 	//
 	// This parameter is required.
 	//
@@ -3297,7 +3322,7 @@ type CopyGtmConfigRequest struct {
 	//
 	// INSTANCE
 	CopyType *string `json:"CopyType,omitempty" xml:"CopyType,omitempty"`
-	// The language that specific response parameters will use.
+	// The language.
 	//
 	// example:
 	//
@@ -3350,7 +3375,7 @@ func (s *CopyGtmConfigRequest) SetTargetId(v string) *CopyGtmConfigRequest {
 }
 
 type CopyGtmConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3401,54 +3426,112 @@ func (s *CopyGtmConfigResponse) SetBody(v *CopyGtmConfigResponseBody) *CopyGtmCo
 }
 
 type CreateCloudGtmAddressRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// IP address or domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 223.5.XX.XX
-	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Address ownership information.
+	//
+	// example:
+	//
+	// 当前版本不支持传入此参数，请不要传入参数。
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The failover mode that is used when address exceptions are identified. Valid values:
+	//
+	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Indicates the current enabled status of the address:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// p50_ok
-	HealthJudgement *string                                    `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
-	HealthTasks     []*CreateCloudGtmAddressRequestHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Repeated"`
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check tasks associated with the address.
+	HealthTasks []*CreateCloudGtmAddressRequestHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Repeated"`
+	// The availability state of the address. This parameter is required when AvailableMode is set to **manual**. Valid values:
+	//
+	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// Address name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Address type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3526,10 +3609,14 @@ func (s *CreateCloudGtmAddressRequest) SetType(v string) *CreateCloudGtmAddressR
 }
 
 type CreateCloudGtmAddressRequestHealthTasks struct {
+	// The service port of the address on which health check tasks are performed. If the ping protocol is used for health checks, the configuration of the service port is not supported.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the health check template associated with the address.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
@@ -3555,54 +3642,112 @@ func (s *CreateCloudGtmAddressRequestHealthTasks) SetTemplateId(v string) *Creat
 }
 
 type CreateCloudGtmAddressShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// IP address or domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 223.5.XX.XX
-	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Address ownership information.
+	//
+	// example:
+	//
+	// 当前版本不支持传入此参数，请不要传入参数。
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The failover mode that is used when address exceptions are identified. Valid values:
+	//
+	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Indicates the current enabled status of the address:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// p50_ok
-	HealthJudgement   *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check tasks associated with the address.
 	HealthTasksShrink *string `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty"`
+	// The availability state of the address. This parameter is required when AvailableMode is set to **manual**. Valid values:
+	//
+	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// Address name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Address type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3680,14 +3825,24 @@ func (s *CreateCloudGtmAddressShrinkRequest) SetType(v string) *CreateCloudGtmAd
 }
 
 type CreateCloudGtmAddressResponseBody struct {
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-8951821811436**192
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the address creation operation is successful:
+	//
+	// - true: Operation was successful
+	//
+	// - false: Operation was failed
+	//
 	// example:
 	//
 	// true
@@ -3747,30 +3902,68 @@ func (s *CreateCloudGtmAddressResponse) SetBody(v *CreateCloudGtmAddressResponse
 }
 
 type CreateCloudGtmAddressPoolRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Address pool name, helping users distinguish the purpose of address pools.
+	//
 	// example:
 	//
 	// Address pool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// The type of the address pool. Valid values:
+	//
+	// 	- IPv4: IPv4 addresses are returned for Domain Name System (DNS) resolution.
+	//
+	// 	- IPv6: IPv6 addresses are returned for DNS resolution.
+	//
+	// 	- domain: Domain names are returned for DNS resolution.
+	//
 	// example:
 	//
 	// IPv4
 	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The enabling state of the address pool. Valid values:
+	//
+	// 	- enable: The address pool is enabled, and the addresses in the address pool are returned for DNS resolution when the health check results are normal.
+	//
+	// 	- disable: The address pool is disabled, and the addresses in the address pool are not returned for DNS resolution regardless of whether the health check results are normal or not.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address pool. Valid values:
+	//
+	// 	- any_ok: At least one address in the address pool is available.
+	//
+	// 	- p30_ok: At least 30% of the addresses in the address pool are available.
+	//
+	// 	- p50_ok: At least 50% of the addresses in the address pool are available.
+	//
+	// 	- p70_ok: At least 70% of the addresses in the address pool are available.
+	//
+	// 	- all_ok: All addresses in the address pool are available.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// Remarks for the address pool, helping users distinguish the usage scenarios of different address pools.
+	//
 	// example:
 	//
 	// app
@@ -3821,14 +4014,24 @@ func (s *CreateCloudGtmAddressPoolRequest) SetRemark(v string) *CreateCloudGtmAd
 }
 
 type CreateCloudGtmAddressPoolResponseBody struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the address pool creation operation was successful:
+	//
+	// - true: Operation was successful
+	//
+	// - false: Operation was failed
+	//
 	// example:
 	//
 	// true
@@ -3888,42 +4091,80 @@ func (s *CreateCloudGtmAddressPoolResponse) SetBody(v *CreateCloudGtmAddressPool
 }
 
 type CreateCloudGtmInstanceConfigRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The enabling state of the access domain name. Valid values:
+	//
+	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+	//
+	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance is unavailable.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) 3.0 instance. This ID uniquely identifies a GTM 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-jmp3qnw**03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The description of the access domain name.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The hostname of the access domain name.
+	//
 	// example:
 	//
 	// www
 	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// The type of the Domain Name System (DNS) record configured for the access domain name. Valid values:
+	//
+	// 	- A: IPv4 address
+	//
+	// 	- AAAA: IPv6 address
+	//
+	// 	- CNAME: domain name
+	//
 	// example:
 	//
 	// A
 	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// The configuration mode of the access domain name. Valid values:
+	//
+	// 	- sys_assign: system allocation. This mode is not supported.
+	//
+	// 	- custom: custom allocation. You must select a zone within the account to which the instance belongs and enter a hostname to generate an access domain name.
+	//
 	// example:
 	//
 	// custom
 	ScheduleZoneMode *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
+	// The name of the parent zone for the access domain name configured in GTM. In most cases, the value of this parameter is the name of a zone hosted by Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs. You can specify the name of a zone or subzone.
+	//
 	// example:
 	//
 	// example.com
 	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// The global time to live (TTL) period. Unit: seconds. The global TTL period affects how long the DNS records that map the access domain name to the addresses in the address pools are cached in the local DNS servers of Internet service providers (ISPs). You can specify a custom value.
+	//
 	// example:
 	//
 	// 30
@@ -3989,14 +4230,24 @@ func (s *CreateCloudGtmInstanceConfigRequest) SetTtl(v int32) *CreateCloudGtmIns
 }
 
 type CreateCloudGtmInstanceConfigResponseBody struct {
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// config-000**1
 	ConfigId *bool `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -4056,10 +4307,18 @@ func (s *CreateCloudGtmInstanceConfigResponse) SetBody(v *CreateCloudGtmInstance
 }
 
 type CreateCloudGtmMonitorTemplateRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -4070,6 +4329,38 @@ type CreateCloudGtmMonitorTemplateRequest struct {
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+	//
+	// 	- HTTP or HTTPS:
+	//
+	//     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//
+	//     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+	//
+	//     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//
+	//     	- 400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+	//
+	//     	- 500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+	//
+	//     **sni**: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//
+	//     	- true: enables SNI.
+	//
+	//     	- false: disables SNI.
+	//
+	//     **followRedirect**: specifies whether to follow 3XX redirects. Valid values:
+	//
+	//     	- true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+	//
+	//     	- false: does not follow 3XX redirects.
+	//
+	// 	- ping:
+	//
+	//     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//
+	//     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
@@ -4086,14 +4377,24 @@ type CreateCloudGtmMonitorTemplateRequest struct {
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The IP address type of health check nodes. Valid values:
+	//
+	// 	- IPv4: You can set IpVersion to IPv4 to perform health checks on IPv4 addresses.
+	//
+	// 	- IPv6: You can set IpVersion to IPv6 to perform health checks on IPv6 addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
+	//
 	// This parameter is required.
 	IspCityNodes []*CreateCloudGtmMonitorTemplateRequestIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Repeated"`
+	// The name of the health check template. We recommend that you use a name that distinguishes the type of health check protocol used.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4178,10 +4479,14 @@ func (s *CreateCloudGtmMonitorTemplateRequest) SetTimeout(v int32) *CreateCloudG
 }
 
 type CreateCloudGtmMonitorTemplateRequestIspCityNodes struct {
+	// The city code of the health check node.
+	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The Internet service provider (ISP) code of the health check node.
+	//
 	// example:
 	//
 	// 465
@@ -4207,10 +4512,18 @@ func (s *CreateCloudGtmMonitorTemplateRequestIspCityNodes) SetIspCode(v string) 
 }
 
 type CreateCloudGtmMonitorTemplateShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -4221,6 +4534,38 @@ type CreateCloudGtmMonitorTemplateShrinkRequest struct {
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+	//
+	// 	- HTTP or HTTPS:
+	//
+	//     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//
+	//     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+	//
+	//     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//
+	//     	- 400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+	//
+	//     	- 500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+	//
+	//     **sni**: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//
+	//     	- true: enables SNI.
+	//
+	//     	- false: disables SNI.
+	//
+	//     **followRedirect**: specifies whether to follow 3XX redirects. Valid values:
+	//
+	//     	- true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+	//
+	//     	- false: does not follow 3XX redirects.
+	//
+	// 	- ping:
+	//
+	//     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//
+	//     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
@@ -4237,14 +4582,24 @@ type CreateCloudGtmMonitorTemplateShrinkRequest struct {
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The IP address type of health check nodes. Valid values:
+	//
+	// 	- IPv4: You can set IpVersion to IPv4 to perform health checks on IPv4 addresses.
+	//
+	// 	- IPv6: You can set IpVersion to IPv6 to perform health checks on IPv6 addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
+	//
 	// This parameter is required.
 	IspCityNodesShrink *string `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty"`
+	// The name of the health check template. We recommend that you use a name that distinguishes the type of health check protocol used.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4337,6 +4692,8 @@ type CreateCloudGtmMonitorTemplateResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the health check template. This ID uniquely identifies the health check template.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
@@ -4396,7 +4753,8 @@ func (s *CreateCloudGtmMonitorTemplateResponse) SetBody(v *CreateCloudGtmMonitor
 }
 
 type CreatePdnsAppKeyRequest struct {
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s CreatePdnsAppKeyRequest) String() string {
@@ -4409,6 +4767,11 @@ func (s CreatePdnsAppKeyRequest) GoString() string {
 
 func (s *CreatePdnsAppKeyRequest) SetLang(v string) *CreatePdnsAppKeyRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *CreatePdnsAppKeyRequest) SetRemark(v string) *CreatePdnsAppKeyRequest {
+	s.Remark = &v
 	return s
 }
 
@@ -4546,16 +4909,26 @@ func (s *CreatePdnsUdpIpSegmentResponse) SetBody(v *CreatePdnsUdpIpSegmentRespon
 }
 
 type DeleteCloudGtmAddressRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// addr-895182181143688192
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -4586,10 +4959,18 @@ func (s *DeleteCloudGtmAddressRequest) SetClientToken(v string) *DeleteCloudGtmA
 }
 
 type DeleteCloudGtmAddressResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the address deletion operation was successful:
+	//
+	// - true: Operation successful
+	//
+	// - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -4644,14 +5025,24 @@ func (s *DeleteCloudGtmAddressResponse) SetBody(v *DeleteCloudGtmAddressResponse
 }
 
 type DeleteCloudGtmAddressPoolRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -4682,6 +5073,8 @@ func (s *DeleteCloudGtmAddressPoolRequest) SetClientToken(v string) *DeleteCloud
 }
 
 type DeleteCloudGtmAddressPoolResponseBody struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
@@ -4749,18 +5142,30 @@ func (s *DeleteCloudGtmAddressPoolResponse) SetBody(v *DeleteCloudGtmAddressPool
 }
 
 type DeleteCloudGtmInstanceConfigRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration. You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
+	//
 	// example:
 	//
 	// config-000**1
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The access domain name that is configured for the desired GTM 3.0 instance. You can delete only one access domain name.
+	//
 	// example:
 	//
 	// gtm-cn-jmp3qnw**03
@@ -4796,10 +5201,16 @@ func (s *DeleteCloudGtmInstanceConfigRequest) SetInstanceId(v string) *DeleteClo
 }
 
 type DeleteCloudGtmInstanceConfigResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation to delete domain instance configurations was successful:
+	//
+	// - true: Operation successful - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -4854,14 +5265,24 @@ func (s *DeleteCloudGtmInstanceConfigResponse) SetBody(v *DeleteCloudGtmInstance
 }
 
 type DeleteCloudGtmMonitorTemplateRequest struct {
+	// The language in which the returned results are displayed. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the health check template. This ID uniquely identifies a health check template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4894,10 +5315,18 @@ func (s *DeleteCloudGtmMonitorTemplateRequest) SetTemplateId(v string) *DeleteCl
 }
 
 type DeleteCloudGtmMonitorTemplateResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation to delete the health check template was successful:
+	//
+	// - true: Operation successful
+	//
+	// - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -5304,7 +5733,13 @@ type DeleteDomainRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
@@ -5401,7 +5836,13 @@ type DeleteDomainGroupRequest struct {
 	//
 	// 2223
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language type.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
@@ -6009,7 +6450,7 @@ type DescribeBatchResultCountRequest struct {
 	//
 	// 	- **DOMAIN_DEL**: deletes domain names in batches.
 	//
-	// 	- **RR_ADD**: adds DNS records in batches.
+	// 	- **RR_ADD**: adds Domain Name System (DNS) records in batches.
 	//
 	// 	- **RR_DEL**: deletes DNS records in batches.
 	//
@@ -6017,13 +6458,13 @@ type DescribeBatchResultCountRequest struct {
 	//
 	// DOMAIN_ADD
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The language type.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// If you specify TaskId, the execution result of the specified task is returned. If you do not specify TaskId, the execution result of the last task is returned.
 	//
@@ -6075,19 +6516,19 @@ type DescribeBatchResultCountResponseBody struct {
 	//
 	// failed_reason
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the task. Valid values:
+	// The state of the task. Valid values:
 	//
 	// 	- **-1**: No task for importing domain names or DNS records is submitted.
 	//
 	// 	- **0**: The task is being processed.
 	//
-	// 	- **1**: The task is completed.
+	// 	- **1**: The task is complete.
 	//
 	// 	- **2**: The task failed.
 	//
@@ -6095,7 +6536,7 @@ type DescribeBatchResultCountResponseBody struct {
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of successfully processed domain names or DNS records.
+	// The total number of domain names or DNS records that were processed.
 	//
 	// example:
 	//
@@ -6573,16 +7014,26 @@ func (s *DescribeBatchResultDetailResponse) SetBody(v *DescribeBatchResultDetail
 }
 
 type DescribeCloudGtmAddressRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// addr-89518218114368**92
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -6613,68 +7064,146 @@ func (s *DescribeCloudGtmAddressRequest) SetClientToken(v string) *DescribeCloud
 }
 
 type DescribeCloudGtmAddressResponseBody struct {
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-89518218114368**92
-	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Address ownership information.
+	//
+	// example:
+	//
+	// The current version does not support passing this parameter, please do not input the parameter.
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The failover method that is used if the address fails health checks. Valid values:
+	//
+	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// Address availability status:
+	//
+	// - available: Available
+	//
+	// - unavailable: Unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address creation time.
+	//
 	// example:
 	//
 	// 2024-03-23T13:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Indicates the current enabled status of the address:
+	//
+	// enabled: enabled state
+	//
+	// disabled: disabled state
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// p50_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check state of the address. Valid values:
+	//
+	// 	- ok: The address passes all health checks of the referenced health check templates.
+	//
+	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+	//
+	// 	- ok_no_monitor: The address does not reference a health check template.
+	//
+	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus *string                                         `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	HealthTasks  *DescribeCloudGtmAddressResponseBodyHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The health check tasks referenced by the address.
+	HealthTasks *DescribeCloudGtmAddressResponseBodyHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	//
+	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// Address name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test1
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Address type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last modification time of the address configuration.
+	//
 	// example:
 	//
 	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Modified time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
@@ -6797,18 +7326,32 @@ func (s *DescribeCloudGtmAddressResponseBodyHealthTasks) SetHealthTask(v []*Desc
 }
 
 type DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask struct {
+	// The state of the health check task. Valid values:
+	//
+	// 	- ok: The task is normal.
+	//
+	// 	- alert: An alert is triggered.
+	//
+	// 	- no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
+	//
 	// example:
 	//
 	// ok
 	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the health check template associated with the address.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the health check template.
+	//
 	// example:
 	//
 	// Ping-IPv4
@@ -6873,14 +7416,24 @@ func (s *DescribeCloudGtmAddressResponse) SetBody(v *DescribeCloudGtmAddressResp
 }
 
 type DescribeCloudGtmAddressPoolRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89564674533755**96
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -6911,63 +7464,136 @@ func (s *DescribeCloudGtmAddressPoolRequest) SetClientToken(v string) *DescribeC
 }
 
 type DescribeCloudGtmAddressPoolResponseBody struct {
+	// Load balancing policy among addresses in the address pool:
+	//
+	// - round_robin: Round-robin, where for any source of DNS resolution requests, all addresses are returned, with a rotation of the order for every request.
+	//
+	// - sequence: Sequential, where for any source of DNS resolution requests, the address with the lower sequence number (indicating a higher priority, the smaller the number, the higher the priority) is returned. If the address with the lower sequence number is unavailable, the next address with a lower sequence number is returned.
+	//
+	// - weight: Weighted, supporting the setting of different weight values for each address to realize returning addresses according to the weight ratio of query resolutions.
+	//
+	// - source_nearest: Source-nearest, also known as intelligent resolution, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby servers.
+	//
 	// example:
 	//
 	// round_robin
 	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89564674533755**96
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Address pool name.
+	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// Address pool type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
-	AddressPoolType *string                                           `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
-	Addresses       *DescribeCloudGtmAddressPoolResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// The addresses.
+	Addresses *DescribeCloudGtmAddressPoolResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// Address pool availability status:
+	//
+	// - available: Available
+	//
+	// - unavailable: Unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address pool creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Address pool creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Address pool status:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address pool. Valid values:
+	//
+	// 	- any_ok: At least one address in the address pool is available.
+	//
+	// 	- p30_ok: At least 30% of the addresses in the address pool are available.
+	//
+	// 	- p50_ok: At least 50% of the addresses in the address pool are available.
+	//
+	// 	- p70_ok: At least 70% of the addresses in the address pool are available.
+	//
+	// 	- all_ok: All addresses in the address pool are available.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health state of the address pool. Valid values:
+	//
+	// 	- ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+	//
+	// 	- ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for Domain Name System (DNS) requests.
+	//
+	// 	- exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// Remarks for the address.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The mode used if the address with the smallest sequence number is recovered. This parameter is returned only when the policy for load balancing between addresses is sequence. Valid values:
+	//
+	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+	//
+	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// The last modification time of the address pool.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Last modification time of the address pool (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
@@ -7080,77 +7706,160 @@ func (s *DescribeCloudGtmAddressPoolResponseBodyAddresses) SetAddress(v []*Descr
 }
 
 type DescribeCloudGtmAddressPoolResponseBodyAddressesAddress struct {
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-89518218114368**92
-	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Address ownership information, not supported in the current version.
+	//
+	// example:
+	//
+	// Not supported in the current version.
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The failover method that is used if the address fails health checks. Valid values:
+	//
+	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// Address availability status:
+	//
+	// - available: Address available
+	//
+	// - unavailable: Address unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Address creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Address enable status, indicating whether the address is currently available:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check state of the address. Valid values:
+	//
+	// 	- ok: The address passes all health checks of the referenced health check templates.
+	//
+	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+	//
+	// 	- ok_no_monitor: The address does not reference a health check template and is normal.
+	//
+	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus *string                                                             `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	HealthTasks  *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// Health check task list.
+	HealthTasks *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	//
+	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// Address name.
+	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Remarks for the address.
+	//
 	// example:
 	//
 	// test
-	Remark        *string                                                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The request source list.
 	RequestSource *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	// Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios: - true: yes - false: no
+	//
 	// example:
 	//
 	// false
 	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
+	//
 	// example:
 	//
 	// 1
 	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The address type. Valid values:
+	//
+	// 	- IPv4: IPv4 address
+	//
+	// 	- IPv6: IPv6 address
+	//
+	// 	- domain: domain name
+	//
 	// example:
 	//
 	// IPv4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last time the address was modified.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The last modification time of the address (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address, enabling resolution queries to return addresses according to the weighted ratio.
+	//
 	// example:
 	//
 	// 1
@@ -7288,14 +7997,20 @@ func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks) Set
 }
 
 type DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask struct {
+	// The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// ID of the health check template associated with the address.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Health check template name.
+	//
 	// example:
 	//
 	// IPv4-Ping
@@ -7372,14 +8087,24 @@ func (s *DescribeCloudGtmAddressPoolResponse) SetBody(v *DescribeCloudGtmAddress
 }
 
 type DescribeCloudGtmAddressPoolReferenceRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -7410,15 +8135,22 @@ func (s *DescribeCloudGtmAddressPoolReferenceRequest) SetClientToken(v string) *
 }
 
 type DescribeCloudGtmAddressPoolReferenceResponseBody struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Address pool name.
+	//
 	// example:
 	//
 	// app
-	AddressPoolName *string                                                          `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// The access domain names that reference the address pool.
 	InstanceConfigs *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 853805EA-3D47-47D5-9A1A-A45C24313ABD
@@ -7471,62 +8203,128 @@ func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs) SetIns
 }
 
 type DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig struct {
+	// The policy for load balancing between address pools. Valid values:
+	//
+	// 	- round_robin: All address pools are returned for Domain Name System (DNS) requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+	//
+	// 	- sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+	//
+	// 	- weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+	//
+	// 	- source_nearest: Different address pools are returned based on the sources of DNS requests. This way, users can access nearby address pools.
+	//
 	// example:
 	//
 	// round_robin
 	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	// The availability state of the access domain name. Valid values:
+	//
+	// 	- available: If the access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+	//
+	// 	- unavailable: If the access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// config-000**1
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The enabling state of the access domain name. Valid values:
+	//
+	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+	//
+	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health state of the access domain name. Valid values:
+	//
+	// 	- ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+	//
+	// 	- ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for DNS requests.
+	//
+	// 	- exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-jmp3qnw**03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
+	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// Host record of the domain accessed by GTM.
+	//
 	// example:
 	//
 	// www
 	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// DNS record types for scheduling domains:
+	//
+	// - A: IPv4 address
+	//
+	// - AAAA: IPv6 address
+	//
+	// - CNAME: Domain name
+	//
 	// example:
 	//
 	// A
 	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
+	//
 	// example:
 	//
 	// example.com
 	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// The mode used if the address pool with the smallest sequence number is recovered. This parameter is returned when AddressPoolLbStrategy is set to sequence. Valid values:
+	//
+	// 	- preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+	//
+	// 	- non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// Global TTL, the TTL value for resolving the accessed domain name to addresses in the address pool, which affects the caching time of DNS records in the operator\\"s LocalDNS. Supports custom TTL values.
+	//
 	// example:
 	//
 	// 30
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// Global Traffic Management version 3.0 instance types:
+	//
+	// - standard: Standard Edition
+	//
+	// - ultimate: Ultimate Edition
+	//
 	// example:
 	//
 	// ultimate
@@ -7646,14 +8444,24 @@ func (s *DescribeCloudGtmAddressPoolReferenceResponse) SetBody(v *DescribeCloudG
 }
 
 type DescribeCloudGtmAddressReferenceRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-89518218114368**92
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -7684,19 +8492,28 @@ func (s *DescribeCloudGtmAddressReferenceRequest) SetClientToken(v string) *Desc
 }
 
 type DescribeCloudGtmAddressReferenceResponseBody struct {
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-89564584963974**40
-	AddressId    *string                                                   `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The address pools.
 	AddressPools *DescribeCloudGtmAddressReferenceResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// Address name.
+	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
@@ -7754,43 +8571,106 @@ func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPools) SetAddressPoo
 }
 
 type DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool struct {
+	// Load balancing policy among addresses in the address pool:
+	//
+	// - round_robin: Round-robin, for any source of DNS resolution requests, all addresses are returned, with a rotation sort applied to all addresses each time.
+	//
+	// - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of address return, with smaller numbers having higher priority). If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
+	//
+	// - weight: Weighted, supports setting different weight values for each address, realizing the return of addresses according to the ratio of weight for DNS query resolutions.
+	//
+	// - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
+	//
 	// example:
 	//
 	// round_robin
 	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// The ID of the address pool.
+	//
 	// example:
 	//
 	// pool-895280232254422016
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Address pool name.
+	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// Address pool type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
 	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// Address pool availability status:
+	//
+	// - available
+	//
+	// - unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address pool status:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address pool. Valid values:
+	//
+	// 	- any_ok: At least one address in the address pool is available.
+	//
+	// 	- p30_ok: At least 30% of the addresses in the address pool are available.
+	//
+	// 	- p50_ok: At least 50% of the addresses in the address pool are available.
+	//
+	// 	- p70_ok: At least 70% of the addresses in the address pool are available.
+	//
+	// 	- all_ok: All addresses in the address pool are available.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health state of the address pool. Valid values:
+	//
+	// 	- ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+	//
+	// 	- ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
+	//
+	// 	- exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus    *string                                                                             `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The instances that reference the address pool.
 	InstanceConfigs *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
+	// Remarks for the address pool.
+	//
 	// example:
 	//
 	// pool-1
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Load balancing policy between addresses in sequential mode during the recovery of preceding resources service mode:
+	//
+	// - preemptive: Preemption mode, where upon recovery of preceding resources, priority is given to using addresses with smaller sequence numbers;
+	//
+	// - non_preemptive: Non-preemption mode, where upon recovery of preceding resources, the current address continues to be used;
+	//
 	// example:
 	//
 	// preemptive
@@ -7878,62 +8758,128 @@ func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInst
 }
 
 type DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig struct {
+	// The policy for load balancing between address pools. Valid values:
+	//
+	// 	- round_robin: All address pools are returned for Domain Name System (DNS) requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+	//
+	// 	- sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+	//
+	// 	- weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+	//
+	// 	- source_nearest: Different address pools are returned based on the sources of DNS requests. This way, users can access nearby address pools.
+	//
 	// example:
 	//
 	// round_robin
 	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	// The availability state of the access domain name. Valid values:
+	//
+	// 	- available: If the access domain name is **enabled*	- and the health state is normal, the access domain name is deemed **available**.
+	//
+	// 	- unavailable: If the access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// config-00**01
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The enabling state of the access domain name. Valid values:
+	//
+	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+	//
+	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health state of the access domain name. Valid values:
+	//
+	// 	- ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+	//
+	// 	- ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for DNS requests.
+	//
+	// 	- exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The ID of the GTM 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-zz11t58**0k
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
+	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// Host record of the domain accessed by GTM.
+	//
 	// example:
 	//
 	// www
 	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// DNS record types for the scheduling domain:
+	//
+	// - A: IPv4 address
+	//
+	// - AAAA: IPv6 address
+	//
+	// - CNAME: Domain name
+	//
 	// example:
 	//
 	// A
 	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
+	//
 	// example:
 	//
 	// example.com
 	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// The mode used if the address pool with the smallest sequence number is recovered. This parameter is returned when AddressPoolLbStrategy is set to sequence. Valid values:
+	//
+	// 	- preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+	//
+	// 	- non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// Global TTL (in seconds), the TTL value for domain name resolution to addresses in the address pool, which affects the caching time of DNS records in the ISP\\"s LocalDNS. Custom TTL values are supported.
+	//
 	// example:
 	//
 	// 30
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// Global Traffic Management version 3.0 instance types:
+	//
+	// - standard: Standard Edition
+	//
+	// - ultimate: Ultimate Edition
+	//
 	// example:
 	//
 	// ultimate
@@ -8053,10 +8999,18 @@ func (s *DescribeCloudGtmAddressReferenceResponse) SetBody(v *DescribeCloudGtmAd
 }
 
 type DescribeCloudGtmGlobalAlertRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -8082,8 +9036,12 @@ func (s *DescribeCloudGtmGlobalAlertRequest) SetClientToken(v string) *DescribeC
 }
 
 type DescribeCloudGtmGlobalAlertResponseBody struct {
+	// The alert configurations.
 	AlertConfig *DescribeCloudGtmGlobalAlertResponseBodyAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	AlertGroup  *DescribeCloudGtmGlobalAlertResponseBodyAlertGroup  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
+	// The alert contact groups.
+	AlertGroup *DescribeCloudGtmGlobalAlertResponseBodyAlertGroup `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
@@ -8131,18 +9089,48 @@ func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfig) SetAlertConfig(v []
 }
 
 type DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig struct {
+	// Indicates whether DingTalk notifications are configured. Valid values:
+	//
+	// 	- true: DingTalk notifications are configured. DingTalk notifications are sent when alerts are triggered.
+	//
+	// 	- false: DingTalk notifications are not configured.
+	//
 	// example:
 	//
 	// false
 	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// Indicates whether email notifications are configured. Valid values:
+	//
+	// 	- true: Email notifications are configured. Emails are sent when alerts are triggered.
+	//
+	// 	- false: Email notifications are not configured.
+	//
 	// example:
 	//
 	// true
 	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// The type of the alert event. Valid values:
+	//
+	// 	- addr_alert: The address is unavailable.
+	//
+	// 	- addr_resume: The address becomes available.
+	//
+	// 	- addr_pool_unavailable: The address pool is unavailable.
+	//
+	// 	- addr_pool_available: The address pool becomes available.
+	//
 	// example:
 	//
 	// addr_alert
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// Indicates whether text message notifications are configured. Valid values:
+	//
+	// 	- true: Text message notifications are configured. Text messages are sent when alerts are triggered.
+	//
+	// 	- false: Text message notifications are not configured.
+	//
+	// Only the China site (aliyun.com) supports text message notifications.
+	//
 	// example:
 	//
 	// true
@@ -8224,18 +9212,30 @@ func (s *DescribeCloudGtmGlobalAlertResponse) SetBody(v *DescribeCloudGtmGlobalA
 }
 
 type DescribeCloudGtmInstanceConfigAlertRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US**: English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
@@ -8271,20 +9271,34 @@ func (s *DescribeCloudGtmInstanceConfigAlertRequest) SetInstanceId(v string) *De
 }
 
 type DescribeCloudGtmInstanceConfigAlertResponseBody struct {
+	// The alert configurations.
 	AlertConfig *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	AlertGroup  *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
+	// The alert contact groups.
+	AlertGroup *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
+	// The alert configuration mode of the instance. Valid values:
+	//
+	// 	- global: global alert configuration
+	//
+	// 	- instance_config: custom alert configuration
+	//
 	// example:
 	//
 	// global
 	AlertMode *string `json:"AlertMode,omitempty" xml:"AlertMode,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the GTM 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0F32959D-417B-4D66-8463-68606605E3E2
@@ -8347,18 +9361,48 @@ func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig) SetAlertCon
 }
 
 type DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig struct {
+	// Indicates whether DingTalk notifications are configured. Valid values:
+	//
+	// 	- true: DingTalk notifications are configured. DingTalk notifications are sent after alerts are triggered.
+	//
+	// 	- false: DingTalk notifications are not configured.
+	//
 	// example:
 	//
 	// true
 	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// Indicates whether email notifications are configured. Valid values:
+	//
+	// 	- true: Email notifications are configured. Emails are sent after alerts are triggered.
+	//
+	// 	- false: Email notifications are not configured.
+	//
 	// example:
 	//
 	// true
 	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// The type of the alert event. Valid values:
+	//
+	// 	- addr_alert: The address is unavailable.
+	//
+	// 	- addr_resume: The address becomes available.
+	//
+	// 	- addr_pool_unavailable: The address pool is unavailable.
+	//
+	// 	- addr_pool_available: The address pool becomes available.
+	//
 	// example:
 	//
 	// addr_alert
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// Indicates whether text message notifications are configured. Valid values:
+	//
+	// 	- true: Text message notifications are configured. Text messages are sent after alerts are triggered.
+	//
+	// 	- false: Text message notifications are not configured.
+	//
+	// Only the China site (aliyun.com) supports text message notifications.
+	//
 	// example:
 	//
 	// true
@@ -9442,10 +10486,18 @@ func (s *DescribeCloudGtmInstanceConfigFullInfoResponse) SetBody(v *DescribeClou
 }
 
 type DescribeCloudGtmMonitorTemplateRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US*	- (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the health check template that you want to query. This ID uniquely identifies the health check template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9473,63 +10525,158 @@ func (s *DescribeCloudGtmMonitorTemplateRequest) SetTemplateId(v string) *Descri
 }
 
 type DescribeCloudGtmMonitorTemplateResponseBody struct {
+	// Health check template creation time.
+	//
 	// example:
 	//
 	// 2024-03-23T13:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Health check template creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Retries count. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry counts are:
+	//
+	// - 1
+	//
+	// - 2
+	//
+	// - 3
+	//
 	// example:
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+	//
+	// 	- HTTP or HTTPS:
+	//
+	//     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//
+	//     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+	//
+	//     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//
+	//     	- 400: indicates an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must specify an exact URL for path if you set code to 400.
+	//
+	//     	- 500: indicates a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+	//
+	//     **sni**: indicates whether Server Name Indication (SNI) is enabled. This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//
+	//     	- true: SNI is enabled.
+	//
+	//     	- false: SNI is disabled.
+	//
+	//     **followRedirect**: indicates whether 3XX redirects are followed. Valid values:
+	//
+	//     	- true: 3XX redirects are followed. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+	//
+	//     	- false: 3XX redirects are not followed.
+	//
+	// 	- ping:
+	//
+	//     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//
+	//     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Percentage of selected node probe failures (%), that is, the percentage of abnormal detection points among the total detection points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+	//
+	// - 20
+	//
+	// - 50
+	//
+	// - 80
+	//
+	// - 100
+	//
 	// example:
 	//
 	// 50
 	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// The time interval (in seconds) between each check, with a default interval of 1 minute. The minimum supported health check interval is 15 seconds, available for flagship edition instances.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// Detect the type of the node IP address:
+	//
+	// - IPv4: Applicable when the target address type is IPv4;
+	//
+	// - IPv6: Applicable when the target address type is IPv6.
+	//
 	// example:
 	//
 	// IPv4
-	IpVersion    *string                                                  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// Probe node list, detailed information can be obtained by calling ListCloudGtmMonitorNodes.
 	IspCityNodes *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
+	// The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
+	//
 	// example:
 	//
 	// Ping-IPv4
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Protocol types to initiate probes to the target IP address:
+	//
+	// - ping
+	//
+	// - tcp
+	//
+	// - http
+	//
+	// - https
+	//
 	// example:
 	//
 	// ping
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Remarks for the health check template.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6AEC7A64-3CB1-4C49-8B35-0B901F1E26BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the health check template. This ID uniquely identifies the health check template.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Probe timeout (in milliseconds), data packets not returned within the timeout period are deemed as health check timeouts:
+	//
+	// - 2000
+	//
+	// - 3000
+	//
+	// - 5000
+	//
+	// - 10000
+	//
 	// example:
 	//
 	// 5000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Health check template configuration modification time.
+	//
 	// example:
 	//
 	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Health check template configuration modification time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
@@ -9642,25 +10789,59 @@ func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes) SetIspCityNode
 }
 
 type DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode struct {
+	// City code
+	//
 	// example:
 	//
-	// 503
+	// 357
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// City name
+	//
 	// example:
 	//
-	// 001
+	// Shanghai
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Country Code
+	//
+	// example:
+	//
+	// 629
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// Country Name
+	//
+	// example:
+	//
+	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Probe node group type name
+	//
+	// example:
+	//
+	// BGP Nodes
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Probe node group types:
+	//
+	// - BGP: BGP nodes
+	//
+	// - OVERSEAS: International nodes
+	//
+	// - ISP: Carrier nodes
+	//
 	// example:
 	//
 	// BGP
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// Operator Code
+	//
 	// example:
 	//
 	// 465
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// Operator Name
+	//
+	// example:
+	//
+	// Alibaba
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
@@ -9852,12 +11033,20 @@ func (s *DescribeCloudGtmSummaryResponse) SetBody(v *DescribeCloudGtmSummaryResp
 }
 
 type DescribeCloudGtmSystemLinesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 389DFFA3-77A5-4A9E-BF3D-147C6F98A5BA
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SystemLines     *DescribeCloudGtmSystemLinesResponseBodySystemLines `json:"SystemLines,omitempty" xml:"SystemLines,omitempty" type:"Struct"`
-	SystemLinesTree *string                                             `json:"SystemLinesTree,omitempty" xml:"SystemLinesTree,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The system lines.
+	SystemLines *DescribeCloudGtmSystemLinesResponseBodySystemLines `json:"SystemLines,omitempty" xml:"SystemLines,omitempty" type:"Struct"`
+	// The system lines, which are in a tree structure. Only a system line is listed in this example.
+	//
+	// example:
+	//
+	// [{\\"displayName\\":\\"Default\\",\\"id\\":\\"default\\",\\"isAvailable\\":true,\\"name\\":\\"Default\\",\\"parentId\\":\\"\\"}]
+	SystemLinesTree *string `json:"SystemLinesTree,omitempty" xml:"SystemLinesTree,omitempty"`
 }
 
 func (s DescribeCloudGtmSystemLinesResponseBody) String() string {
@@ -9901,16 +11090,36 @@ func (s *DescribeCloudGtmSystemLinesResponseBodySystemLines) SetSystemLine(v []*
 }
 
 type DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine struct {
+	// The line code.
+	//
 	// example:
 	//
 	// aliyun_r_ap-south-1
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The display name of the line.
+	//
+	// example:
+	//
+	// Default
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Indicates whether the line can be selected as the source of a Domain Name System (DNS) request. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	IsAvailable *bool   `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// The name of the line.
+	//
+	// example:
+	//
+	// Default
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The code of the parent line.
+	//
 	// example:
 	//
 	// String	aliyun
@@ -10668,7 +11877,7 @@ type DescribeDnsCacheDomainsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries per page. Maximum value: **100**. Default value: **20**.
 	//
 	// example:
 	//
@@ -12557,7 +13766,7 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponse) SetBody(v *Describ
 }
 
 type DescribeDnsGtmAddrAttributeInfoRequest struct {
-	// The addresses whose source regions you want to query.
+	// The addresses.
 	//
 	// This parameter is required.
 	//
@@ -12565,17 +13774,17 @@ type DescribeDnsGtmAddrAttributeInfoRequest struct {
 	//
 	// ["1.1.1.1"]
 	Addrs *string `json:"Addrs,omitempty" xml:"Addrs,omitempty"`
-	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the addresses. Valid values:
+	// The type of addresses. Valid values:
 	//
 	// 	- IPV4: IPv4 address
 	//
-	// 	- IPV6: IPv6 address
+	// 	- IPv6: IPv6 address
 	//
 	// 	- DOMAIN: domain name
 	//
@@ -12611,9 +13820,9 @@ func (s *DescribeDnsGtmAddrAttributeInfoRequest) SetType(v string) *DescribeDnsG
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBody struct {
-	// The addresses that were queried.
+	// The address in the address pool.
 	Addr *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -12657,13 +13866,13 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr) SetAddr(v []*DescribeD
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr struct {
-	// The address that was queried.
+	// The address in the address pool.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	// The source region of the address.
+	// The information about the source region of the address.
 	AttributeInfo *DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty" type:"Struct"`
 }
 
@@ -14459,31 +15668,31 @@ func (s *DescribeDnsGtmInstanceSystemCnameResponse) SetBody(v *DescribeDnsGtmIns
 }
 
 type DescribeDnsGtmInstancesRequest struct {
-	// The keyword that you use for query. Fuzzy search by instance ID or instance name is supported.
+	// The keyword that you use for the query. Fuzzy search by instance ID or instance name is supported.
 	//
 	// example:
 	//
 	// instance1
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page. Maximum value: **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group where you want to query instances.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -14525,33 +15734,33 @@ func (s *DescribeDnsGtmInstancesRequest) SetResourceGroupId(v string) *DescribeD
 }
 
 type DescribeDnsGtmInstancesResponseBody struct {
-	// The returned instances.
+	// The Global Traffic Manager (GTM) instances.
 	GtmInstances []*DescribeDnsGtmInstancesResponseBodyGtmInstances `json:"GtmInstances,omitempty" xml:"GtmInstances,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 84314904-D047-4176-A0EC-256D7F68C7F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned on all pages.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 100
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages returned.
 	//
 	// example:
 	//
@@ -14600,51 +15809,51 @@ func (s *DescribeDnsGtmInstancesResponseBody) SetTotalPages(v int32) *DescribeDn
 type DescribeDnsGtmInstancesResponseBodyGtmInstances struct {
 	// The configurations of the instance.
 	Config *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The time when the instance was created.
+	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-10-14T06:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates when the instance was created.
+	// The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1602658709000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The time when the instance expires.
+	// The time when the instance expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-10-14T06:58Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The timestamp that indicates when the instance expires.
+	// The time when the instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1602658709000
 	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// instance1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The billing method of the instance.
+	// The billing method of the GTM instance. Valid value:
 	//
-	// 	- The value is set to Subscription.
+	// 	- Subscription.
 	//
 	// example:
 	//
 	// Subscription
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// resourceGroupid123
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The total number of SMS notifications.
+	// The total number of Short Message Service (SMS) notifications.
 	//
 	// example:
 	//
@@ -14735,17 +15944,17 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstances) SetVersionCode(v strin
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig struct {
-	// The alert notification methods.
+	// The alert notification method.
 	AlertConfig []*DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	// The alert group.
+	// The alert contact groups. The value is in the JSON format.
 	//
 	// example:
 	//
 	// testgroup
 	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The access type of the CNAME domain name.
+	// The type of the CNAME. Valid value:
 	//
-	// 	- The value was set to PUBLIC, which indicates Internet access.
+	// 	- PUBLIC
 	//
 	// example:
 	//
@@ -14757,27 +15966,29 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig struct {
 	//
 	// instanceTest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether a custom CNAME domain name or a CNAME domain name assigned by the system is used to access GTM over the Internet. Valid values:
+	// Specifies whether to use a custom CNAME or a system-assigned CNAME to access GTM over the Internet. Valid values:
 	//
-	// 	- CUSTOM: a custom CNAME domain name
+	// 	- CUSTOM: a custom CNAME
 	//
-	// 	- SYSTEM_ASSIGN: a CNAME domain name assigned by the system
+	// 	- SYSTEM_ASSIGN: a system-assigned CNAME. You cannot set PublicCnameMode to this value.
 	//
 	// example:
 	//
 	// custom
 	PublicCnameMode *string `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
+	// The hostname of the domain name that is used to access GTM over the Internet.
+	//
 	// example:
 	//
 	// test.rr
 	PublicRr *string `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
-	// The website domain name that the user uses on the Internet.
+	// The domain name that is used to access GTM over the Internet.
 	//
 	// example:
 	//
 	// example.com
 	PublicUserDomainName *string `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
-	// The domain name that is used to access GTM over the Internet.
+	// The canonical name (CNAME) that is used to access GTM over the Internet.
 	//
 	// example:
 	//
@@ -14785,9 +15996,9 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig struct {
 	PublicZoneName *string `json:"PublicZoneName,omitempty" xml:"PublicZoneName,omitempty"`
 	// The type of the access policy. Valid values:
 	//
-	// 	- LATENCY: latency-based
+	// 	- LATENCY: latency-based access policy
 	//
-	// 	- GEO: geographical location-based
+	// 	- GEO: geographical location-based access policy
 	//
 	// example:
 	//
@@ -14860,12 +16071,21 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig) SetTtl(v int32) 
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig struct {
+	// Indicates whether DingTalk alert notifications are configured. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false | null
+	//
+	// example:
+	//
+	// true
 	DingtalkNotice *string `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
-	// Indicates whether email notifications were configured. Valid values:
+	// Indicates whether email notifications are configured. Valid values:
 	//
-	// 	- true: configured
+	// 	- true
 	//
-	// 	- false | null: not configured
+	// 	- false | null
 	//
 	// example:
 	//
@@ -14875,11 +16095,11 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig struct {
 	//
 	// 	- ADDR_ALERT: The address is unavailable.
 	//
-	// 	- ADDR_RESUME: The address is restored and becomes available.
+	// 	- ADDR_RESUME: The address becomes available.
 	//
-	// 	- ADDR_POOL_GROUP_UNAVAILABLE: The address pool group is unavailable.
+	// 	- ADDR_POOL_GROUP_UNAVAILABLE: The address pool set is unavailable.
 	//
-	// 	- ADDR_POOL_GROUP_AVAILABLE: The address pool group is restored and becomes available.
+	// 	- ADDR_POOL_GROUP_AVAILABLE: The address pool set becomes available.
 	//
 	// 	- ACCESS_STRATEGY_POOL_GROUP_SWITCH: Switchover is triggered between the primary and secondary address pools.
 	//
@@ -14887,11 +16107,11 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig struct {
 	//
 	// ADDR_ALERT
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// Indicates whether SMS notifications were configured. Valid values:
+	// Indicates whether SMS notifications are configured. Valid values:
 	//
-	// 	- true: configured
+	// 	- true
 	//
-	// 	- false | null: not configured
+	// 	- false | null
 	//
 	// example:
 	//
@@ -14928,20 +16148,25 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig) SetSm
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota struct {
+	// The total number of sent DingTalk notifications.
+	//
+	// example:
+	//
+	// 100
 	DingtalkUsedCount *int32 `json:"DingtalkUsedCount,omitempty" xml:"DingtalkUsedCount,omitempty"`
-	// The total number of email notifications that were sent.
+	// The total number of sent email notifications.
 	//
 	// example:
 	//
 	// 100
 	EmailUsedCount *int32 `json:"EmailUsedCount,omitempty" xml:"EmailUsedCount,omitempty"`
-	// The total number of SMS notifications that were sent.
+	// The total number of sent SMS notifications.
 	//
 	// example:
 	//
 	// 100
 	SmsUsedCount *int32 `json:"SmsUsedCount,omitempty" xml:"SmsUsedCount,omitempty"`
-	// The number of detection tasks that were created.
+	// The number of created detection tasks.
 	//
 	// example:
 	//
@@ -15329,15 +16554,15 @@ func (s *DescribeDnsGtmMonitorAvailableConfigRequest) SetLang(v string) *Describ
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBody struct {
-	// The monitored nodes that can be used to perform health checks on address pools that contain public domain names that are resolved to IPv4 addresses.
+	// The nodes that perform health checks on domain names that use public IPv4 addresses.
 	DomainIpv4IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes `json:"DomainIpv4IspCityNodes,omitempty" xml:"DomainIpv4IspCityNodes,omitempty" type:"Struct"`
-	// The monitored nodes that can be used to perform health checks on address pools that contain public domain names that are resolved to IPv6 addresses.
+	// The nodes that perform health checks on domain names that use public IPv6 addresses.
 	DomainIpv6IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes `json:"DomainIpv6IspCityNodes,omitempty" xml:"DomainIpv6IspCityNodes,omitempty" type:"Struct"`
-	// The monitored nodes that can be used to perform health checks on address pools that contain public IPv4 addresses.
+	// The nodes that perform health checks on public IPv4 addresses.
 	Ipv4IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
-	// The monitored nodes that can be used to perform health checks on address pools that contain public IPv6 addresses.
+	// The nodes that perform health checks on public IPv6 addresses.
 	Ipv6IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -15396,50 +16621,51 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes)
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNode struct {
-	// The code of the city where the monitored node is deployed.
+	// The city code.
 	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city where the monitored node is deployed.
+	// The display name of the city.
 	//
 	// example:
 	//
 	// Zhangjiakou
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the monitored node is selected for the health check by default.
+	// Indicates whether the health check node is selected by default.
 	//
 	// example:
 	//
 	// true
 	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the group to which the monitored node belongs.
+	// The name of the node group.
 	//
 	// example:
 	//
 	// BGP Nodes
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the group to which the monitored node belongs. Valid values:
+	// The type of the node group. Valid values:
 	//
-	// 	- BGP: BGP nodes
+	// 	- BGP: BGP node
 	//
-	// 	- OVERSEAS: nodes outside the Chinese mainland
+	// 	- OVERSEAS: node outside the Chinese mainland
 	//
-	// 	- ISP: ISP nodes
+	// 	- ISP: ISP node
 	//
 	// example:
 	//
 	// BGP
-	GroupType *string                                                                                         `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips       *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The code of the ISP to which the monitored node belongs.
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The IP addresses of the health check nodes.
+	Ips *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The ISP code.
 	//
 	// example:
 	//
 	// 465
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP to which the monitored node belongs.
+	// The display name of the ISP.
 	//
 	// example:
 	//
@@ -15530,50 +16756,51 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes)
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNode struct {
-	// The code of the city where the monitored node is deployed.
+	// The city code.
 	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city where the monitored node is deployed.
+	// The display name of the city.
 	//
 	// example:
 	//
 	// Zhangjiakou
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the monitored node is selected for the health check by default.
+	// Indicates whether the health check node is selected by default.
 	//
 	// example:
 	//
 	// false
 	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the group to which the monitored node belongs.
+	// The name of the node group.
 	//
 	// example:
 	//
 	// BGP Nodes
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the group to which the monitored node belongs. Valid values:
+	// The type of the node group. Valid values:
 	//
-	// 	- BGP: BGP nodes
+	// 	- BGP: BGP node
 	//
-	// 	- OVERSEAS: nodes outside the Chinese mainland
+	// 	- OVERSEAS: node outside the Chinese mainland
 	//
-	// 	- ISP: ISP nodes
+	// 	- ISP: ISP node
 	//
 	// example:
 	//
 	// BGP
-	GroupType *string                                                                                         `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips       *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The code of the ISP to which the monitored node belongs.
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// This parameter is not returned.
+	Ips *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The ISP code.
 	//
 	// example:
 	//
 	// 465
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP to which the monitored node belongs.
+	// The display name of the ISP.
 	//
 	// example:
 	//
@@ -15664,50 +16891,51 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes) SetIp
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNode struct {
-	// The code of the city where the monitored node is deployed.
+	// The city code.
 	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city where the monitored node is deployed.
+	// The display name of the city.
 	//
 	// example:
 	//
 	// Zhangjiakou
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the monitored node is selected for the health check by default.
+	// Indicates whether the health check node is selected by default.
 	//
 	// example:
 	//
 	// true
 	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the group to which the monitored node belongs.
+	// The name of the node group.
 	//
 	// example:
 	//
 	// BGP Nodes
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the group to which the monitored node belongs. Valid values:
+	// The type of the node group. Valid values:
 	//
-	// 	- BGP: Border Gateway Protocol (BGP) nodes
+	// 	- BGP: Border Gateway Protocol (BGP) node
 	//
-	// 	- OVERSEAS: nodes outside the Chinese mainland
+	// 	- OVERSEAS: node outside the Chinese mainland
 	//
-	// 	- ISP: ISP nodes
+	// 	- ISP: ISP node
 	//
 	// example:
 	//
 	// BGP
-	GroupType *string                                                                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The code of the Internet service provider (ISP) to which the monitored node belongs.
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The IP addresses of the health check nodes.
+	Ips *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The Internet service provider (ISP) code.
 	//
 	// example:
 	//
 	// 465
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP to which the monitored node belongs.
+	// The display name of the ISP.
 	//
 	// example:
 	//
@@ -15798,50 +17026,51 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes) SetIp
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNode struct {
-	// The code of the city where the monitored node is deployed.
+	// The city code.
 	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city where the monitored node is deployed.
+	// The display name of the city.
 	//
 	// example:
 	//
 	// Zhangjiakou
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the monitored node is selected for the health check by default.
+	// Indicates whether the health check node is selected by default.
 	//
 	// example:
 	//
 	// true
 	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the group to which the monitored node belongs.
+	// The name of the node group.
 	//
 	// example:
 	//
 	// BGP Nodes
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the group to which the monitored node belongs. Valid values:
+	// The type of the node group. Valid values:
 	//
-	// 	- BGP: BGP nodes
+	// 	- BGP: BGP node
 	//
-	// 	- OVERSEAS: nodes outside the Chinese mainland
+	// 	- OVERSEAS: node outside the Chinese mainland
 	//
-	// 	- ISP: ISP nodes
+	// 	- ISP: ISP node
 	//
 	// example:
 	//
 	// BGP
-	GroupType *string                                                                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The code of the ISP to which the monitored node belongs.
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// This parameter is not returned.
+	Ips *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The ISP code.
 	//
 	// example:
 	//
 	// 465
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP to which the monitored node belongs.
+	// The display name of the ISP.
 	//
 	// example:
 	//
@@ -15979,59 +17208,59 @@ func (s *DescribeDnsGtmMonitorConfigRequest) SetMonitorConfigId(v string) *Descr
 }
 
 type DescribeDnsGtmMonitorConfigResponseBody struct {
-	// The time when the health check task was created.
+	// The time when the health check configuration was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2017-12-28T13:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates when the health check task was created.
+	// The time when the health check configuration was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The number of consecutive times of failed health check attempts.
+	// The number of consecutive failures.
 	//
 	// example:
 	//
 	// 1
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The interval at which the health check task is executed. Unit: seconds.
+	// The health check interval. Unit: seconds.
 	//
 	// example:
 	//
 	// 1
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The monitored node.
+	// The health check nodes.
 	IspCityNodes *DescribeDnsGtmMonitorConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
-	// The ID of the health check task.
+	// The ID of the health check configuration.
 	//
 	// example:
 	//
 	// MonitorConfigId1
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// The extended information. The following parameters are required for different health check protocols:
+	// The extended information. The required parameters vary based on the value of ProtocolType.
 	//
-	// 	- HTTP or HTTPS:
+	// 	- HTTP or HTTPS
 	//
-	//     	- port: the check port.
+	//     	- port: the port that you want to check
 	//
-	//     	- host: the host settings.
+	//     	- host: the host settings
 	//
-	//     	- path: the URL path.
+	//     	- path: the URL path
 	//
-	//     	- code: the return code greater than the specified value.
+	//     	- code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value.
 	//
-	//     	- failureRate: the failure rate.
+	//     	- failureRate: the failure rate
 	//
-	//     	- sni: specifies whether to enable server name indication (SNI). This parameter is used only for the HTTPS protocol. Valid values:
+	//     	- sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
 	//
-	//         	- true: enable SNI.
+	//         	- true: enables SNI.
 	//
-	//         	- false: disable SNI.
+	//         	- false: disables SNI.
 	//
-	//     	- nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+	//     	- nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
 	//
 	//         	- IPV4
 	//
@@ -16039,25 +17268,25 @@ type DescribeDnsGtmMonitorConfigResponseBody struct {
 	//
 	// 	- PING:
 	//
-	//     	- failureRate: the failure rate.
+	//     	- failureRate: the failure rate
 	//
-	//     	- packetNum: the number of ping packets.
+	//     	- packetNum: the number of ping packets
 	//
-	//     	- packetLossRate: the loss rate of ping packets.
+	//     	- packetLossRate: the loss rate of ping packets
 	//
-	//     	- nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+	//     	- nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
 	//
 	//         	- IPV4
 	//
 	//         	- IPV6
 	//
-	// 	- TCP:
+	// 	- TCP
 	//
-	//     	- port: the check port.
+	//     	- port: the port that you want to check
 	//
-	//     	- failureRate: the failure rate.
+	//     	- failureRate: the failure rate
 	//
-	//     	- nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+	//     	- nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
 	//
 	//         	- IPV4
 	//
@@ -16081,7 +17310,7 @@ type DescribeDnsGtmMonitorConfigResponseBody struct {
 	//
 	// http
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -16093,13 +17322,13 @@ type DescribeDnsGtmMonitorConfigResponseBody struct {
 	//
 	// 3000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The time when the information about the health check task was updated.
+	// The time when the health check configuration was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2018-01-03T08:57Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The timestamp that indicates when the information about the health check task was updated.
+	// The time when the health check configuration was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -16193,13 +17422,13 @@ func (s *DescribeDnsGtmMonitorConfigResponseBodyIspCityNodes) SetIspCityNode(v [
 }
 
 type DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode struct {
-	// The code of the monitored city node.
+	// The city code.
 	//
 	// example:
 	//
 	// 572
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the monitored city node.
+	// The display name of the city.
 	//
 	// example:
 	//
@@ -16217,13 +17446,13 @@ type DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode struct {
 	//
 	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// The code of the monitored Internet service provider (ISP) node.
+	// The Internet service provider (ISP) code.
 	//
 	// example:
 	//
 	// 123
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The name of the ISP.
+	// The display name of the ISP.
 	//
 	// example:
 	//
@@ -16307,7 +17536,13 @@ type DescribeDnsProductInstanceRequest struct {
 	//
 	// i-8fxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en
 	//
 	// example:
 	//
@@ -16345,11 +17580,11 @@ func (s *DescribeDnsProductInstanceRequest) SetUserClientIp(v string) *DescribeD
 }
 
 type DescribeDnsProductInstanceResponseBody struct {
-	// The auto-renewal status of the instance. Valid values:
+	// Indicates whether auto-renewal was enabled. Valid values:
 	//
-	// 	- **true**: Auto-renewal is enabled.
+	// 	- true: Auto-renewal was enabled.
 	//
-	// 	- **false**: Auto-renewal is disabled.
+	// 	- false: Auto-renewal was not enabled.
 	//
 	// example:
 	//
@@ -16397,13 +17632,13 @@ type DescribeDnsProductInstanceResponseBody struct {
 	//
 	// 15
 	DnsSLBCount *int64 `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
-	// The DNS protection level. Valid values:
+	// The level of DNS protection. Valid values:
 	//
-	// 	- **no**: DNS protection is not provided.
+	// 	- no: No DNS protection is provided.
 	//
-	// 	- **basic**: Basic DNS attack defense is provided.
+	// 	- basic: Basic DNS protection is provided.
 	//
-	// 	- **advanced**: Advanced DNS attack defense is provided.
+	// 	- advanced: Advanced DNS protection is provided.
 	//
 	// example:
 	//
@@ -16441,23 +17676,55 @@ type DescribeDnsProductInstanceResponseBody struct {
 	//
 	// 1474335170000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// Indicates whether global server load balancing (GSLB) is supported.
+	// Indicates whether global server load balancing (GSLB) is supported. Valid values:
+	//
+	// 	- true: GSLB is supported.
+	//
+	// 	- false: GSLB is not supported.
 	//
 	// example:
 	//
 	// true
 	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	// The Internet service provider (ISP) lines for DNS resolution.
+	// The ISP resolution lines. Valid values:
+	//
+	// 	- China Telecom
+	//
+	// 	- China Mobile
+	//
+	// 	- China Unicom
+	//
+	// 	- China Education and Research Network (CERNET)
+	//
+	// 	- China Broadcasting Network (CBN)
+	//
+	// 	- Dr Peng Telecom & Media Group
 	ISPLines *string `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
-	// The regional ISP lines for DNS resolution.
+	// The regional ISP resolution lines. Valid values:
+	//
+	// 	- China Telecom (province)
+	//
+	// 	- China Mobile (province)
+	//
+	// 	- China Unicom (province)
+	//
+	// 	- CERNET (province)
 	ISPRegionLines *string `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
-	// Indicates whether the Domain Name System (DNS) servers stopped responding to all requests sent to the domain names.
+	// Indicates whether the Domain Name System (DNS) servers stopped responding to all DNS requests. Valid values:
+	//
+	// 	- true: The DNS servers stopped responding to all DNS requests.
+	//
+	// 	- false: The DNS servers did not stop responding to all DNS requests.
 	//
 	// example:
 	//
 	// false
 	InBlackHole *bool `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
 	// Indicates whether the DNS servers stopped responding to abnormal requests sent to the domain names.
+	//
+	// 	- true: The DNS servers stopped responding to abnormal requests sent to the domain names.
+	//
+	// 	- false: The DNS servers did not stop responding to abnormal requests sent to the domain names.
 	//
 	// example:
 	//
@@ -16501,7 +17768,11 @@ type DescribeDnsProductInstanceResponseBody struct {
 	//
 	// Subscription
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Indicates whether regional lines are supported.
+	// Indicates whether the DNS request lines are regional lines. Valid values:
+	//
+	// 	- true: The DNS request lines are regional lines.
+	//
+	// 	- false: The DNS request lines are not regional lines.
 	//
 	// example:
 	//
@@ -16513,7 +17784,15 @@ type DescribeDnsProductInstanceResponseBody struct {
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The search engine lines for DNS resolution.
+	// The search engine resolution lines. Valid values:
+	//
+	// 	- Google
+	//
+	// 	- Baidu
+	//
+	// 	- Bing
+	//
+	// 	- Youdao
 	SearchEngineLines *string `json:"SearchEngineLines,omitempty" xml:"SearchEngineLines,omitempty"`
 	// The time when the instance was purchased. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
@@ -16790,11 +18069,11 @@ func (s *DescribeDnsProductInstanceResponse) SetBody(v *DescribeDnsProductInstan
 }
 
 type DescribeDnsProductInstancesRequest struct {
-	// The Sorting direction. Values:
+	// The order in which you want to sort returned entries. Valid values:
 	//
-	// 	- **DESC**: Descending (if not specified, the default is descending order)
+	// 	- DESC: Returned entries are sorted in descending order. If this parameter is left empty, returned entries are sorted in descending order by default.
 	//
-	// 	- **ASC**: Ascending
+	// 	- ASC: Returned entries are sorted in ascending order.
 	//
 	// example:
 	//
@@ -16810,21 +18089,23 @@ type DescribeDnsProductInstancesRequest struct {
 	//
 	// PUBLIC
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- : Chinese
+	// 	- zh: Chinese
 	//
-	// 	- **en*	- (default) : English
+	// 	- en: English
+	//
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Sorting parameter. Values:
+	// The method that is used to sort returned entries. Valid values:
 	//
-	// 	- createDate: Sort by creation time (if not specified, the default is to sort by creation time)
+	// 	- createDate: sorts returned entries by creation time. If this parameter is left empty, returned entries are sorted by creation time by default.
 	//
-	// 	- expireDate: Sort by expiration time
+	// 	- expireDate: sorts returned entries by expiration time.
 	//
 	// example:
 	//
@@ -16905,7 +18186,7 @@ func (s *DescribeDnsProductInstancesRequest) SetVersionCode(v string) *DescribeD
 }
 
 type DescribeDnsProductInstancesResponseBody struct {
-	// The list of Alibaba Cloud DNS instances obtained by this operation.
+	// The paid Alibaba Cloud DNS instances.
 	DnsProducts *DescribeDnsProductInstancesResponseBodyDnsProducts `json:"DnsProducts,omitempty" xml:"DnsProducts,omitempty" type:"Struct"`
 	// The type of the domain name. Valid values:
 	//
@@ -16929,7 +18210,7 @@ type DescribeDnsProductInstancesResponseBody struct {
 	//
 	// 2
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -16999,13 +18280,11 @@ func (s *DescribeDnsProductInstancesResponseBodyDnsProducts) SetDnsProduct(v []*
 }
 
 type DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct struct {
-	// Indicates whether auto-renewal is enabled for the extra internal bandwidth that you purchased. Valid values:
+	// Indicates whether auto-renewal was enabled. Valid values:
 	//
-	// 	- **true**: Auto-renewal is enabled.
+	// 	- true: Auto-renewal was enabled.
 	//
-	// 	- **false**: Auto-renewal is disabled.
-	//
-	// > If no extra internal bandwidth is purchased, this parameter is not returned.
+	// 	- false: Auto-renewal was not enabled.
 	//
 	// example:
 	//
@@ -17053,13 +18332,13 @@ type DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct struct {
 	//
 	// 15
 	DnsSLBCount *int64 `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
-	// The DNS security policy. Valid values:
+	// The level of DNS protection. Valid values:
 	//
-	// 	- **no**: not required.
+	// 	- no: No DNS protection is provided.
 	//
-	// 	- **basic**: anti-DDoS basic.
+	// 	- basic: Basic DNS protection is provided.
 	//
-	// 	- **advanced**: anti-DDoS advanced.
+	// 	- advanced: Advanced DNS protection is provided.
 	//
 	// example:
 	//
@@ -17083,25 +18362,53 @@ type DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct struct {
 	//
 	// 1474335170000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// Indicates whether global server load balancing (GSLB) was allowed.
+	// Indicates whether global server load balancing (GSLB) is supported.
+	//
+	// 	- true: GSLB is supported.
+	//
+	// 	- false: GSLB is not supported.
 	//
 	// example:
 	//
 	// true
 	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	// The list of ISP lines.
+	// The ISP resolution lines.
+	//
+	// 	- China Telecom
+	//
+	// 	- China Mobile
+	//
+	// 	- China Unicom
+	//
+	// 	- CERNET
+	//
+	// 	- China Broadcasting Network (CBN)
+	//
+	// 	- Dr Peng Telecom & Media Group
 	//
 	// example:
 	//
 	// China Mobile,China Unicom,China Telecom,China Edu
 	ISPLines *string `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
-	// The list of ISP line subdivisions.
+	// The regional ISP resolution lines. Valid values:
+	//
+	// 	- China Telecom (province)
+	//
+	// 	- China Mobile (province)
+	//
+	// 	- China Unicom (province)
+	//
+	// 	- China Education and Research Network (CERNET) (province)
 	//
 	// example:
 	//
 	// Telecom (Province), Mobile (Province), Unicom (Province), Education Network (Province)
 	ISPRegionLines *string `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
-	// Indicates whether the request for domain name resolution was in the black hole.
+	// Indicates whether the Domain Name System (DNS) servers stopped responding to all requests. Valid values:
+	//
+	// 	- true: The DNS servers stopped responding to all requests.
+	//
+	// 	- false: The DNS servers did not stop responding to all requests.
 	//
 	// example:
 	//
@@ -17149,21 +18456,31 @@ type DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct struct {
 	//
 	// Countries
 	OverseaLine *string `json:"OverseaLine,omitempty" xml:"OverseaLine,omitempty"`
-	// The billing method. Valid value:
-	//
-	// 	- Subscription: You can pay in advance for the use of resources.
+	// The billing method.
 	//
 	// example:
 	//
 	// Subscription
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Indicates whether regional lines were allowed.
+	// Indicates whether the DNS request lines are regional lines.
+	//
+	// 	- true: The DNS request lines are regional lines.
+	//
+	// 	- false: The DNS request lines are not regional lines.
 	//
 	// example:
 	//
 	// true
 	RegionLines *bool `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
-	// The list of search engine lines.
+	// The search engine resolution lines. Valid values:
+	//
+	// 	- Google
+	//
+	// 	- Baidu
+	//
+	// 	- Bing
+	//
+	// 	- Youdao
 	//
 	// example:
 	//
@@ -19189,7 +20506,8 @@ type DescribeDomainInfoResponseBody struct {
 	// example:
 	//
 	// 00efd71a-770e-4255-b54e-6fe5659baffe
-	DomainId                  *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// Indicates whether the DNS traffic analysis feature is enabled. Valid values:
 	DomainLoggingSwitchStatus *string `json:"DomainLoggingSwitchStatus,omitempty" xml:"DomainLoggingSwitchStatus,omitempty"`
 	// The domain name.
 	//
@@ -21270,7 +22588,7 @@ type DescribeDomainStatisticsSummaryRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **100**. Minimum value: **1**. Default value: **20**.
+	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
 	//
 	// example:
 	//
@@ -21717,13 +23035,13 @@ func (s *DescribeDomainsResponseBodyDomains) SetDomain(v []*DescribeDomainsRespo
 }
 
 type DescribeDomainsResponseBodyDomainsDomain struct {
-	// Indicates whether the domain name was registered in Alibaba Cloud.
+	// Indicates whether the domain name was registered with Alibaba Cloud.
 	//
 	// example:
 	//
 	// true
 	AliDomain *bool `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
-	// The time when the domain name was added.
+	// The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -21735,14 +23053,23 @@ type DescribeDomainsResponseBodyDomainsDomain struct {
 	//
 	// 1660546144000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The names of the DNS servers configured for the domain name.
+	// The names of the DNS servers configured for the domain name assigned by Alibaba Cloud DNS.
 	DnsServers *DescribeDomainsResponseBodyDomainsDomainDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
 	// The ID of the domain name.
 	//
 	// example:
 	//
 	// 00efd71a-770e-4255-b54e-6fe5659baffe
-	DomainId                  *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// Indicates whether the DNS traffic analysis feature is enabled for the domain name. Valid values:
+	//
+	// 	- OPEN
+	//
+	// 	- CLOSE
+	//
+	// example:
+	//
+	// OPEN
 	DomainLoggingSwitchStatus *string `json:"DomainLoggingSwitchStatus,omitempty" xml:"DomainLoggingSwitchStatus,omitempty"`
 	// The domain name.
 	//
@@ -21762,7 +23089,7 @@ type DescribeDomainsResponseBodyDomainsDomain struct {
 	//
 	// mygroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the Alibaba Cloud DNS instance expires.
+	// The time when the Alibaba Cloud DNS instance expires. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -21976,9 +23303,9 @@ func (s *DescribeDomainsResponseBodyDomainsDomainTags) SetTag(v []*DescribeDomai
 }
 
 type DescribeDomainsResponseBodyDomainsDomainTagsTag struct {
-	// The key of the tag added to the resource.
+	// The key of tag N added to the resource.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag added to the resource.
+	// The value of tag N added to the resource.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -24094,7 +25421,7 @@ func (s *DescribeGtmInstanceAddressPoolsResponse) SetBody(v *DescribeGtmInstance
 }
 
 type DescribeGtmInstanceStatusRequest struct {
-	// The ID of the instance to query.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24102,7 +25429,7 @@ type DescribeGtmInstanceStatusRequest struct {
 	//
 	// instance1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	// The language.
 	//
 	// example:
 	//
@@ -24141,25 +25468,25 @@ type DescribeGtmInstanceStatusResponseBody struct {
 	//
 	// 10
 	AddrPoolNotAvailableNum *int32 `json:"AddrPoolNotAvailableNum,omitempty" xml:"AddrPoolNotAvailableNum,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 389DFFA3-77A5-4A9E-BF3D-147C6F98A5BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the instance. Valid values:
+	// The state of the instance. Valid values:
 	//
-	// 	- ALLOW: Operations on the instance are allowed.
+	// 	- ALLOW: The operation on the instance is allowed.
 	//
-	// 	- DENY: Operations on the instance are not allowed.
+	// 	- DENY: The operation on the instance is not allowed.
 	//
 	// example:
 	//
 	// ALLOW
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// List of reasons for an instance status. Valid values:
+	// The reasons why the instance is in the current state. Valid values:
 	//
-	// 	- INSTANCE_OPERATE_BLACK_LIST: The instance is in the blacklist.
+	// 	- INSTANCE_OPERATE_BLACK_LIST: The operation on the instance is not allowed.
 	//
 	// 	- BETA_INSTANCE: The instance is in public preview.
 	//
@@ -24167,13 +25494,13 @@ type DescribeGtmInstanceStatusResponseBody struct {
 	//
 	// ["BETA_INSTANCE"]
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	// The number of access policies that are unavailable in the active address pool.
+	// The number of unavailable access policies.
 	//
 	// example:
 	//
 	// 10
 	StrategyNotAvailableNum *int32 `json:"StrategyNotAvailableNum,omitempty" xml:"StrategyNotAvailableNum,omitempty"`
-	// The number of access policies that fail over to the secondary address pool.
+	// The number of access policies switched to the secondary address pool.
 	//
 	// example:
 	//
@@ -25586,13 +26913,19 @@ func (s *DescribeGtmMonitorConfigResponse) SetBody(v *DescribeGtmMonitorConfigRe
 }
 
 type DescribeGtmRecoveryPlanRequest struct {
-	// The language used by the user.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the disaster recovery plan that you want to query.
+	// The ID of the disaster recovery plan.
 	//
 	// This parameter is required.
 	//
@@ -25621,12 +26954,14 @@ func (s *DescribeGtmRecoveryPlanRequest) SetRecoveryPlanId(v int64) *DescribeGtm
 }
 
 type DescribeGtmRecoveryPlanResponseBody struct {
-	// The time when the disaster recovery plan was created.
+	// The time when the disaster recovery plan was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2019-08-11T05:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the disaster recovery plan was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1565499867000
@@ -25637,69 +26972,69 @@ type DescribeGtmRecoveryPlanResponseBody struct {
 	//
 	// 2
 	FaultAddrPoolNum *int32 `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
-	// The list of faulty address pools.
+	// The faulty address pools.
 	FaultAddrPools *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools `json:"FaultAddrPools,omitempty" xml:"FaultAddrPools,omitempty" type:"Struct"`
-	// The last time when the recovery plan was executed.
+	// The time when the disaster recovery plan was last executed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2019-08-11T05:04Z
 	LastExecuteTime *string `json:"LastExecuteTime,omitempty" xml:"LastExecuteTime,omitempty"`
-	// A timestamp that indicates the last time when the recovery plan was executed.
+	// The time when the disaster recovery plan was last executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1565505898000
 	LastExecuteTimestamp *int64 `json:"LastExecuteTimestamp,omitempty" xml:"LastExecuteTimestamp,omitempty"`
-	// The last time when the disaster recovery plan was rolled back.
+	// The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 2019-08-11T06:45Z
 	LastRollbackTime *string `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
-	// A timestamp that indicates the last time when the disaster recovery plan was rolled back.
+	// The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1565505919000
 	LastRollbackTimestamp *int64 `json:"LastRollbackTimestamp,omitempty" xml:"LastRollbackTimestamp,omitempty"`
-	// The name of the disaster recovery plan queried.
+	// The name of the disaster recovery plan.
 	//
 	// example:
 	//
 	// name-example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the disaster recovery plan queried.
+	// The ID of the disaster recovery plan.
 	//
 	// example:
 	//
 	// 55
 	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	// The remarks on the disaster recovery plan.
+	// The description of the disaster recovery plan.
 	//
 	// example:
 	//
 	// remark-example
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0A5F4315-D6E8-435E-82DF-24F4C97D6999
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the disaster recovery plan queried.
+	// The status of the disaster recovery plan.
 	//
 	// example:
 	//
 	// UNEXECUTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last time when the disaster recovery plan was updated.
+	// The time when the disaster recovery plan was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2019-08-11T06:45Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// A timestamp that indicates the last time when the disaster recovery plan was updated.
+	// The time when the disaster recovery plan was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -25808,17 +27143,16 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools) SetFaultAddrPool(v [
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool struct {
-	// The ID of the address pool.
+	// The address pool ID.
 	//
 	// example:
 	//
 	// hra0oq
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The name of the address pool.
-	AddrPoolName *string `json:"AddrPoolName,omitempty" xml:"AddrPoolName,omitempty"`
-	// The list of addresses in the address pool.
-	Addrs *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
-	// The ID of the GTM instance.
+	// The address pool name.
+	AddrPoolName *string                                                              `json:"AddrPoolName,omitempty" xml:"AddrPoolName,omitempty"`
+	Addrs        *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
+	// The instance ID.
 	//
 	// example:
 	//
@@ -25872,19 +27206,19 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs) Se
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrsAddr struct {
-	// The ID of the address.
+	// The address ID.
 	//
 	// example:
 	//
 	// 739
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The address work mode. It is the mode that was set for the IP address to work.
+	// The address mode.
 	//
 	// example:
 	//
 	// OFFLINE
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The address value.
+	// The address.
 	//
 	// example:
 	//
@@ -25945,7 +27279,13 @@ func (s *DescribeGtmRecoveryPlanResponse) SetBody(v *DescribeGtmRecoveryPlanResp
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigRequest struct {
-	// The language used by the user.
+	// The language in which the returned results are displayed. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
@@ -25967,9 +27307,9 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigRequest) SetLang(v string) *Descr
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBody struct {
-	// The list of GTM instances involved in the disaster recovery plan.
+	// The instances.
 	Instances *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -26013,15 +27353,15 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances) SetInstanc
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance struct {
-	// The list of address pools for the GTM instance.
+	// The address pools.
 	AddrPools *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	// The ID of the GTM instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// instance-example
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the GTM instance.
+	// The instance name.
 	//
 	// example:
 	//
@@ -26070,7 +27410,7 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddr
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoolsAddrPool struct {
-	// The ID of the address pool.
+	// The address pool ID.
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
 	// The name of the address pool.
 	//
@@ -26665,7 +28005,14 @@ func (s *DescribeInstanceDomainsResponse) SetBody(v *DescribeInstanceDomainsResp
 }
 
 type DescribeInternetDnsLogsRequest struct {
+	// The account ID displayed on the Recursive Resolution (Public DNS) page after you activate Alibaba Cloud Public DNS.
+	//
+	// example:
+	//
+	// 51**4
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
@@ -26761,8 +28108,9 @@ type DescribeInternetDnsLogsResponseBody struct {
 	// example:
 	//
 	// 1
-	CurPage *int32                                   `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
-	Logs    *DescribeInternetDnsLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
+	CurPage *int32 `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
+	// The logs.
+	Logs *DescribeInternetDnsLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
 	// example:
 	//
 	// 10
@@ -26851,6 +28199,8 @@ type DescribeInternetDnsLogsResponseBodyLogsLog struct {
 	// 1709196249000
 	LogTime  *int64  `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The domain name for which you want to query Domain Name System (DNS) records.
+	//
 	// example:
 	//
 	// example.com
@@ -26880,7 +28230,12 @@ type DescribeInternetDnsLogsResponseBodyLogsLog struct {
 	// 170.33.XX.XX
 	SubnetIp *string                                          `json:"SubnetIp,omitempty" xml:"SubnetIp,omitempty"`
 	Value    *DescribeInternetDnsLogsResponseBodyLogsLogValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-	ZoneName *string                                          `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// The zone name.
+	//
+	// example:
+	//
+	// example.com
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeInternetDnsLogsResponseBodyLogsLog) String() string {
@@ -27885,6 +29240,7 @@ type DescribePdnsAppKeyResponseBodyAppKey struct {
 	AppKeySecret    *string `json:"AppKeySecret,omitempty" xml:"AppKeySecret,omitempty"`
 	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	State           *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -27913,6 +29269,11 @@ func (s *DescribePdnsAppKeyResponseBodyAppKey) SetCreateDate(v string) *Describe
 
 func (s *DescribePdnsAppKeyResponseBodyAppKey) SetCreateTimestamp(v int64) *DescribePdnsAppKeyResponseBodyAppKey {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribePdnsAppKeyResponseBodyAppKey) SetRemark(v string) *DescribePdnsAppKeyResponseBodyAppKey {
+	s.Remark = &v
 	return s
 }
 
@@ -27994,6 +29355,7 @@ type DescribePdnsAppKeysResponseBodyAppKeys struct {
 	AppKeyId        *string `json:"AppKeyId,omitempty" xml:"AppKeyId,omitempty"`
 	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	State           *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -28017,6 +29379,11 @@ func (s *DescribePdnsAppKeysResponseBodyAppKeys) SetCreateDate(v string) *Descri
 
 func (s *DescribePdnsAppKeysResponseBodyAppKeys) SetCreateTimestamp(v int64) *DescribePdnsAppKeysResponseBodyAppKeys {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribePdnsAppKeysResponseBodyAppKeys) SetRemark(v string) *DescribePdnsAppKeysResponseBodyAppKeys {
+	s.Remark = &v
 	return s
 }
 
@@ -30082,7 +31449,7 @@ func (s *DescribeRecordResolveStatisticsSummaryResponse) SetBody(v *DescribeReco
 }
 
 type DescribeRecordStatisticsRequest struct {
-	// The domain name.
+	// The primary domain name.
 	//
 	// This parameter is required.
 	//
@@ -30114,7 +31481,7 @@ type DescribeRecordStatisticsRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The hostname. If you want to resolve the subdomain name www.dns-exmaple.top, set this parameter to www.
+	// The hostname. If you want to resolve www.dns-exmaple.top, set Rr to www.
 	//
 	// This parameter is required.
 	//
@@ -30930,20 +32297,14 @@ func (s *DescribeSubDomainRecordsResponse) SetBody(v *DescribeSubDomainRecordsRe
 }
 
 type DescribeSupportLinesRequest struct {
-	// 域名名称。
-	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// 语言。
-	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// 用户端IP。
-	//
 	// example:
 	//
 	// 1.1.*.*
@@ -30974,10 +32335,8 @@ func (s *DescribeSupportLinesRequest) SetUserClientIp(v string) *DescribeSupport
 }
 
 type DescribeSupportLinesResponseBody struct {
-	// 云解析线路列表。
+	// The Alibaba Cloud DNS lines.
 	RecordLines *DescribeSupportLinesResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
-	// 请求ID。
-	//
 	// example:
 	//
 	// CFDA0830-7D6E-4C13-8632-B57C7EDCF079
@@ -31020,29 +32379,29 @@ func (s *DescribeSupportLinesResponseBodyRecordLines) SetRecordLine(v []*Describ
 }
 
 type DescribeSupportLinesResponseBodyRecordLinesRecordLine struct {
-	// 2021-12-06T02:47:26.000+0000
+	// The code of the parent line. This parameter is not returned if the line has no parent line.
 	//
 	// example:
 	//
 	// unicom
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// 子线路Code。
+	// The code of the line.
 	//
 	// example:
 	//
 	// cn_unicom_shanxi
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// 父线路展示名称。
+	// The display name of the parent line.
 	//
 	// example:
 	//
-	// 联通
+	// China Unicom
 	LineDisplayName *string `json:"LineDisplayName,omitempty" xml:"LineDisplayName,omitempty"`
-	// 子线路展示名称。
+	// The display name of the line.
 	//
 	// example:
 	//
-	// 联通_山西
+	// China Unicom_Shanxi
 	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
@@ -31560,13 +32919,19 @@ func (s *DescribeTransferDomainsResponse) SetBody(v *DescribeTransferDomainsResp
 }
 
 type ExecuteGtmRecoveryPlanRequest struct {
-	// The language used by the user.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: English.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the disaster recovery plan that you want to executed.
+	// The ID of the disaster recovery plan.
 	//
 	// This parameter is required.
 	//
@@ -31595,7 +32960,7 @@ func (s *ExecuteGtmRecoveryPlanRequest) SetRecoveryPlanId(v int64) *ExecuteGtmRe
 }
 
 type ExecuteGtmRecoveryPlanResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -31909,34 +33274,64 @@ func (s *GetTxtRecordForVerifyResponse) SetBody(v *GetTxtRecordForVerifyResponse
 }
 
 type ListCloudGtmAddressPoolsRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Address pool name.
+	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// The type of the address pool. Valid values:
+	//
+	// 	- IPv4: indicates that the service address to be resolved is an IPv4 address.
+	//
+	// 	- IPv6: indicates that the service address to be resolved is an IPv6 address.
+	//
+	// 	- domain: indicates that the service address to be resolved is a domain name.
+	//
 	// example:
 	//
 	// IPv4
 	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The enabling state of the address pool. Valid values:
+	//
+	// 	- enable: The address pool is enabled.
+	//
+	// 	- disable: The address pool is disabled.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// Current page number, starting at **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The additional description of the address pool.
+	//
 	// example:
 	//
 	// test
@@ -31992,23 +33387,34 @@ func (s *ListCloudGtmAddressPoolsRequest) SetRemark(v string) *ListCloudGtmAddre
 }
 
 type ListCloudGtmAddressPoolsResponseBody struct {
+	// The address pools.
 	AddressPools *ListCloudGtmAddressPoolsResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// Current page number, starting at **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of entries in the address pool.
+	//
 	// example:
 	//
 	// 11
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -32071,59 +33477,130 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPools) SetAddressPool(v []*L
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool struct {
+	// Load balancing policy among addresses in the address pool:
+	//
+	// - round_robin: Round-robin, for any source of DNS resolution requests, all addresses are returned. The order of all addresses is rotated each time.
+	//
+	// - sequence: Sequential, for any source of DNS resolution requests, the address with the smaller sequence number (the sequence number indicates the priority of address returns, with smaller numbers having higher priority) is returned. If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
+	//
+	// - weight: Weighted, supports setting different weight values for each address, realizing the return of addresses according to the ratio of weights in resolution queries.
+	//
+	// - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
+	//
 	// example:
 	//
 	// round_robin
 	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Address pool name.
+	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// Address pool type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
-	AddressPoolType *string                                                               `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
-	Addresses       *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// The addresses.
+	Addresses *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// The availability state of the address pool. Valid values:
+	//
+	// 	- Available: The address pool is available.
+	//
+	// 	- unavailable: The address pool is unavailable.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address pool creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Address pool creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The enabling state of the address pool. Valid values:
+	//
+	// 	- enable: The address pool is enabled.
+	//
+	// 	- disable: The address pool is disabled.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health state of the address. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health state of the address pool. Valid values:
+	//
+	// 	- ok: The health state of the address pool is Normal and all addresses that are referenced by the address pool are available.
+	//
+	// 	- ok_alert: The health state of the address pool is Warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this state, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
+	//
+	// 	- exceptional: The health state of the address pool is Abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// Remark
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
+	//
+	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+	//
+	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// Last modification time of the address pool.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Last modification time of the address pool (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
@@ -32231,74 +33708,164 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) S
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress struct {
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-895182181143688192
-	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Address ownership information, not supported in the current version.
+	//
+	// example:
+	//
+	// The current version does not support returning this parameter.
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The failover mode that is used when address exceptions are identified. Valid values:
+	//
+	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// The availability state of the address. Valid values:
+	//
+	// 	- available: The address is available.
+	//
+	// 	- unavailable: The address is unavailable.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Address creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Address enable status:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check state of the address. Valid values:
+	//
+	// 	- ok: The address passes all health checks of the referenced health check templates.
+	//
+	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+	//
+	// 	- ok_no_monitor: The address does not reference any health check template and is normal.
+	//
+	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus *string                                                                                 `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	HealthTasks  *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The health check tasks.
+	HealthTasks *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// The availability state of the address when AvailableMode is set to manual for the address. Valid values:
+	//
+	// 	- available: The address is available. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is unavailable. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// Address name.
+	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Address remarks.
+	//
 	// example:
 	//
 	// test
-	Remark                   *string                                                                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestSource            *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
-	SeqNonPreemptiveSchedule *bool                                                                                     `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// List of request sources.
+	RequestSource *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	// Indicates whether the mode of the sequence policy for load balancing between address pools is non-preemptive. This parameter is available only for the multicloud integration scenario. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
+	//
 	// example:
 	//
 	// 1
 	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// Address type:
+	//
+	// - IPv4: IPv4 address
+	//
+	// - IPv6: IPv6 address
+	//
+	// - domain: Domain name
+	//
 	// example:
 	//
 	// IPv4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last time the address was modified.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The last modification time of the address (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// Weight value (integer between 1 and 100), supports setting different weight values for each address, enabling resolution queries to return addresses according to the weight ratio.
+	//
 	// example:
 	//
 	// 1
@@ -32436,14 +34003,20 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAdd
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask struct {
+	// The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the health check template.
+	//
 	// example:
 	//
 	// mtp-895180524251002880
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Health check template name.
+	//
 	// example:
 	//
 	// IPv4-Ping
@@ -32520,50 +34093,94 @@ func (s *ListCloudGtmAddressPoolsResponse) SetBody(v *ListCloudGtmAddressPoolsRe
 }
 
 type ListCloudGtmAddressesRequest struct {
+	// Return language value, options:
+	//
+	// - zh-CN: Chinese.
+	//
+	// - en-US: English.
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-89518218114368**92
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Indicates the current availability of the address:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health check state of the address. Valid values:
+	//
+	// 	- ok: The address passes all health checks of the referenced health check templates.
+	//
+	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+	//
+	// 	- ok_no_monitor: The address does not reference a health check template.
+	//
+	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The ID of the health check template. This ID uniquely identifies the health check template.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	MonitorTemplateId *string `json:"MonitorTemplateId,omitempty" xml:"MonitorTemplateId,omitempty"`
+	// Address name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Current page number, starting from **1**, default is **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Address type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
@@ -32634,23 +34251,34 @@ func (s *ListCloudGtmAddressesRequest) SetType(v string) *ListCloudGtmAddressesR
 }
 
 type ListCloudGtmAddressesResponseBody struct {
+	// The addresses.
 	Addresses *ListCloudGtmAddressesResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// Current page number, starting from **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Get the total number of addresses in the address list.
+	//
 	// example:
 	//
 	// 30
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -32713,64 +34341,140 @@ func (s *ListCloudGtmAddressesResponseBodyAddresses) SetAddress(v []*ListCloudGt
 }
 
 type ListCloudGtmAddressesResponseBodyAddressesAddress struct {
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-89518218114368**92
-	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Address ownership information.
+	//
+	// example:
+	//
+	// Not supported in current version, this parameter should be none.
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The failover method that is used if the address fails health checks. Valid values:
+	//
+	// auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// The availability state of the address. Valid values:
+	//
+	// 	- available: The address is available.
+	//
+	// 	- unavailable: The address is unavailable.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address creation time.
+	//
 	// example:
 	//
 	// 2024-03-23T13:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Indicates the current availability of the address:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// p50_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check state of the address. Valid values:
+	//
+	// 	- ok: The address passes all health checks of the referenced health check templates.
+	//
+	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+	//
+	// 	- ok_no_monitor: The address does not reference a health check template.
+	//
+	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus *string                                                       `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	HealthTasks  *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The health check tasks referenced by the address.
+	HealthTasks *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	//
+	// available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// Address name.
+	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// app
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Address type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Address modification time.
+	//
 	// example:
 	//
 	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Update time (timestamp).
+	//
 	// example:
 	//
 	// 1527690824357
@@ -32888,18 +34592,32 @@ func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) SetHealth
 }
 
 type ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask struct {
+	// The state of the health check task. Valid values:
+	//
+	// 	- ok: The task is normal.
+	//
+	// 	- alert: An alert is triggered.
+	//
+	// 	- no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
+	//
 	// example:
 	//
 	// ok
 	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the health check template associated with the address.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Health check template name.
+	//
 	// example:
 	//
 	// Ping-IPv4
@@ -32964,40 +34682,72 @@ func (s *ListCloudGtmAddressesResponse) SetBody(v *ListCloudGtmAddressesResponse
 }
 
 type ListCloudGtmAlertLogsRequest struct {
+	// Alert type:
+	//
+	// - ALERT
+	//
+	// - RESUME
+	//
 	// example:
 	//
 	// ALERT
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// The end time of the query (timestamp).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1711328826977
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// Alarm object types:
+	//
+	// - GTM_ADDRESS: Address
+	//
+	// - GTM_ADDRESS_POOL: Address Pool
+	//
+	// - GTM_INSTANCE: Instance
+	//
+	// - GTM_MONITOR_TEMPLATE: Health Check Template
+	//
 	// example:
 	//
 	// GTM_ADDRESS
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Search keyword, usually an address ID, address pool ID, domain information, etc.
+	//
 	// example:
 	//
 	// pool-895280232254422016
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Language type of the returned information:
+	//
+	// - zh-CN: Chinese
+	//
+	// - en-US: English
+	//
 	// example:
 	//
 	// zh-CN
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Current page number, starting from **1**, default is **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time of the query (timestamp).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33055,23 +34805,34 @@ func (s *ListCloudGtmAlertLogsRequest) SetStartTimestamp(v int64) *ListCloudGtmA
 }
 
 type ListCloudGtmAlertLogsResponseBody struct {
+	// The alert logs.
 	Logs *ListCloudGtmAlertLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
+	// Current page number, starting from 1, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of alarm log entries.
+	//
 	// example:
 	//
 	// 15
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -33134,15 +34895,38 @@ func (s *ListCloudGtmAlertLogsResponseBodyLogs) SetLog(v []*ListCloudGtmAlertLog
 }
 
 type ListCloudGtmAlertLogsResponseBodyLogsLog struct {
+	// Alert type:
+	//
+	// - ALERT
+	//
+	// - RESUME
+	//
 	// example:
 	//
 	// ALERT
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The alert content.
+	//
+	// example:
+	//
+	// The alert content.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Alarm object types:
+	//
+	// - GTM_ADDRESS: Address
+	//
+	// - GTM_ADDRESS_POOL: Address Pool
+	//
+	// - GTM_INSTANCE: Instance
+	//
+	// - GTM_MONITOR_TEMPLATE: Health Check Template
+	//
 	// example:
 	//
 	// GTM_ADDRESS
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Alert log time (timestamp).
+	//
 	// example:
 	//
 	// 1711328826977
@@ -33207,6 +34991,12 @@ func (s *ListCloudGtmAlertLogsResponse) SetBody(v *ListCloudGtmAlertLogsResponse
 }
 
 type ListCloudGtmAvailableAlertGroupsRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US**: English
+	//
 	// example:
 	//
 	// en-US
@@ -33227,7 +35017,10 @@ func (s *ListCloudGtmAvailableAlertGroupsRequest) SetAcceptLanguage(v string) *L
 }
 
 type ListCloudGtmAvailableAlertGroupsResponseBody struct {
+	// The alert contact groups.
 	AlertGroups *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups `json:"AlertGroups,omitempty" xml:"AlertGroups,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
@@ -33270,6 +35063,11 @@ func (s *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups) SetAlertGroup(
 }
 
 type ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup struct {
+	// The name of the alert contact group.
+	//
+	// example:
+	//
+	// [\\"Default\\"]
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -33316,38 +35114,64 @@ func (s *ListCloudGtmAvailableAlertGroupsResponse) SetBody(v *ListCloudGtmAvaila
 }
 
 type ListCloudGtmInstanceConfigsRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The enabling state of the access domain name. Valid values:
+	//
+	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the GTM instance takes effect.
+	//
+	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the GTM instance does not take effect.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The ID of the GTM 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Current page number, starting at **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The GTM access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
+	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// The zone (such as example.com) or subzone (such as a.example.com) of the GTM access domain name. In most cases, the zone or subzone is hosted in Authoritative DNS Resolution of the Alibaba Cloud DNS console within the account to which the GTM instance belongs.
+	//
 	// example:
 	//
 	// example.com
@@ -33408,23 +35232,34 @@ func (s *ListCloudGtmInstanceConfigsRequest) SetScheduleZoneName(v string) *List
 }
 
 type ListCloudGtmInstanceConfigsResponseBody struct {
+	// The configurations of the instance.
 	InstanceConfigs *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
+	// Current page number, starting from **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of entries for domain instance configurations.
+	//
 	// example:
 	//
 	// 10
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -33487,83 +35322,168 @@ func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs) SetInstanceConf
 }
 
 type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig struct {
+	// The policy for load balancing between address pools. Valid values:
+	//
+	// 	- round_robin: All address pools are returned for DNS requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+	//
+	// 	- sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+	//
+	// 	- weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+	//
+	// 	- source_nearest: GTM returns different address pools based on the sources of DNS requests. This way, users can access nearby addresses.
+	//
 	// example:
 	//
 	// round_robin
-	AddressPoolLbStrategy *string                                                                           `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
-	AddressPools          *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	// The address pools.
+	AddressPools *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// The availability state of the access domain name. Valid values:
+	//
+	// 	- available: If the access domain name is **enabled*	- and the health state of the access domain name is **Normal**, the access domain name is deemed **Available**.
+	//
+	// 	- unavailable: If the access domain name is **disabled*	- or the health state of the access domain name is **Abnormal**, the access domain name is deemed **Unavailable**.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// The commodity code. Valid values:
+	//
+	// 	- dns_gtm_public_cn: the commodity code on the China site (aliyun.com)
+	//
+	// 	- dns_gtm_public_intl: the commodity code on the international site (alibabacloud.com)
+	//
 	// example:
 	//
 	// dns_gtm_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Instance configuration creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Instance creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The enabling state of the access domain name. Valid values:
+	//
+	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the GTM instance takes effect.
+	//
+	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the GTM instance does not take effect.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health state of the access domain name. Valid values:
+	//
+	// 	- ok: The health state of the access domain name is Normal and all address pools that are referenced by the access domain name are available.
+	//
+	// 	- ok_alert: The health state of the access domain name is Warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
+	//
+	// 	- exceptional: The health state of the access domain name is Abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The ID of the GTM 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Remarks on the configuration of domain instance.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The GTM access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
+	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// Host record of the domain accessed by GTM.
+	//
 	// example:
 	//
 	// www
 	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// DNS record types for the scheduling domain:
+	//
+	// - A: IPv4 address
+	//
+	// - AAAA: IPv6 address
+	//
+	// - CNAME: Domain name
+	//
 	// example:
 	//
 	// A
 	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// The allocation mode of the access domain name. Valid values:
+	//
+	// 	- custom: custom allocation. You must specify a custom hostname and associate the hostname with a zone within the account to which the GTM instance belongs to generate an access domain name.
+	//
+	// 	- sys_assign: system allocation. This mode is not supported. Do not set ScheduleZoneMode to sys_assign.
+	//
 	// example:
 	//
 	// custom
 	ScheduleZoneMode *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
+	// The zone (such as example.com) or subzone (such as a.example.com) of the GTM access domain name. In most cases, the zone or subzone is hosted in Authoritative DNS Resolution of the Alibaba Cloud DNS console within the account to which the GTM instance belongs.
+	//
 	// example:
 	//
 	// example.com
 	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// The mode used if the address pool with the smallest sequence number is recovered. This parameter is required when AddressPoolLbStrategy is set to sequence. Valid values:
+	//
+	// 	- preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+	//
+	// 	- non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// Global TTL (in seconds), the TTL value for domain resolution to addresses in the address pool, affecting the caching time of DNS records in the ISP\\"s LocalDNS. Supports custom TTL values.
+	//
 	// example:
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The last modified time of the instance configuration.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The last modification time of the instance configuration (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The edition of the GTM 3.0 instance. Valid values:
+	//
+	// 	- standard: Standard Edition
+	//
+	// 	- ultimate: Ultimate Edition
+	//
 	// example:
 	//
 	// ultimate
@@ -33701,64 +35621,142 @@ func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAdd
 }
 
 type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool struct {
+	// Load balancing policy among addresses in the address pool:
+	//
+	// - round_robin: Round-robin, for any source of DNS resolution requests, returns all addresses and rotates the order of all addresses each time.
+	//
+	// - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of the address return, the smaller the higher the priority). If the address with the smaller sequence number is unavailable, return the next address with a smaller sequence number.
+	//
+	// - weight: Weighted, supports setting different weight values for each address to realize returning addresses according to the weight ratio for resolution queries.
+	//
+	// - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
+	//
 	// example:
 	//
 	// round_robin
 	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Address pool name.
+	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// Address pool type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
 	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// Address pool availability status:
+	//
+	// - available: Available
+	//
+	// - unavailable: Unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address pool creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Address pool creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Address pool status:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health state of the address pool. Valid values:
+	//
+	// 	- ok: The health state of the address pool is Normal and all addresses that are referenced by the address pool are available.
+	//
+	// 	- ok_alert: The health state of the address pool is Warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
+	//
+	// 	- exceptional: The health state of the address pool is Abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health state of the address pool. Valid values:
+	//
+	// 	- ok: The health state of the address pool is Normal and all addresses that are referenced by the address pool are available.
+	//
+	// 	- ok_alert: The health state of the address pool is Warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
+	//
+	// 	- exceptional: The health state of the address pool is Abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus             *string                                                                                                   `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	RequestSource            *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
-	SeqNonPreemptiveSchedule *bool                                                                                                     `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// Parse the request source list.
+	RequestSource *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	// Indicates whether the mode of the sequence policy for load balancing between address pools is non-preemptive. This parameter is available only for the multicloud integration scenario. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
+	//
+	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+	//
+	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// Sequence number. For any parsing request, the address pool with the smaller sequence number (indicating the priority of the address pool returned, with smaller numbers having higher priority) is returned.
+	//
 	// example:
 	//
 	// 1
 	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// Last modification time of the address pool.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Last modification time of the address pool (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// Weight value (an integer between 1 and 100, including both 1 and 100), which supports setting different weight values for each address pool, enabling the resolution query to return address pools according to the weighted ratio.
+	//
 	// example:
 	//
 	// 1
@@ -33905,26 +35903,42 @@ func (s *ListCloudGtmInstanceConfigsResponse) SetBody(v *ListCloudGtmInstanceCon
 }
 
 type ListCloudGtmInstancesRequest struct {
+	// Return language value. Options:
+	//
+	// - zh-CN: Chinese.
+	//
+	// - en-US: English.
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the GTM instance.
+	//
 	// example:
 	//
 	// gtm-cn-jmp3qnw**03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name, used to distinguish the business purpose of the instance.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Current page number, starting from **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+	//
 	// example:
 	//
 	// 20
@@ -33970,23 +35984,34 @@ func (s *ListCloudGtmInstancesRequest) SetPageSize(v int32) *ListCloudGtmInstanc
 }
 
 type ListCloudGtmInstancesResponseBody struct {
+	// The instances.
 	Instances *ListCloudGtmInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// Current page number, starting with **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of instance entries.
+	//
 	// example:
 	//
 	// 15
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -34049,66 +36074,106 @@ func (s *ListCloudGtmInstancesResponseBodyInstances) SetInstance(v []*ListCloudG
 }
 
 type ListCloudGtmInstancesResponseBodyInstancesInstance struct {
+	// The commodity code. Valid values:
+	//
+	// 	- dns_gtm_public_cn: commodity code on the China site (aliyun.com)
+	//
+	// 	- dns_gtm_public_intl: commodity code on the international site (alibabacloud.com)
+	//
 	// example:
 	//
 	// dns_gtm_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// Instance creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Instance creation time (timestamp).
+	//
 	// example:
 	//
 	// 1231298343343
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Instance expiration time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Instance expiration time (timestamp).
+	//
 	// example:
 	//
 	// 1231298343343
 	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// The ID of the GTM instance.
+	//
 	// example:
 	//
 	// gtm-cn-jmp3qnw**03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Monitor probe task quota.
+	//
 	// example:
 	//
 	// 100
 	MonitorTaskQuota *int32 `json:"MonitorTaskQuota,omitempty" xml:"MonitorTaskQuota,omitempty"`
+	// Monthly email sending volume.
+	//
 	// example:
 	//
 	// 50
 	MonthlyEmailUsed *int32 `json:"MonthlyEmailUsed,omitempty" xml:"MonthlyEmailUsed,omitempty"`
+	// SMS quota, only supported on the China site as international sites do not support SMS.
+	//
 	// example:
 	//
 	// 1000
 	MonthlySmsQuota *int32 `json:"MonthlySmsQuota,omitempty" xml:"MonthlySmsQuota,omitempty"`
+	// Monthly SMS sending volume, only supported by the China site as international sites do not support SMS.
+	//
 	// example:
 	//
 	// 100
 	MonthlySmsUsed *int32 `json:"MonthlySmsUsed,omitempty" xml:"MonthlySmsUsed,omitempty"`
+	// Monthly webhook send volume.
+	//
 	// example:
 	//
 	// 80
 	MonthlyWebhookUsed *int32 `json:"MonthlyWebhookUsed,omitempty" xml:"MonthlyWebhookUsed,omitempty"`
+	// The access domain name, which consists of a hostname and a zone or a subzone.
+	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// The last time the instance was modified.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The last modification time of the instance (timestamp).
+	//
 	// example:
 	//
 	// 1231298343343
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// GTM instance version:
+	//
+	// - standard: Standard Edition
+	//
+	// - ultimate: Ultimate Edition
+	//
 	// example:
 	//
 	// ultimate
@@ -34233,6 +36298,12 @@ func (s *ListCloudGtmInstancesResponse) SetBody(v *ListCloudGtmInstancesResponse
 }
 
 type ListCloudGtmMonitorNodesRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US*	- (default): English
+	//
 	// example:
 	//
 	// en-US
@@ -34253,8 +36324,12 @@ func (s *ListCloudGtmMonitorNodesRequest) SetAcceptLanguage(v string) *ListCloud
 }
 
 type ListCloudGtmMonitorNodesResponseBody struct {
+	// Public IPv4 monitoring node list.
 	Ipv4IspCityNodes *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
+	// List of public IPv6 monitoring nodes.
 	Ipv6IspCityNodes *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
@@ -34302,31 +36377,74 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes) SetIpv4IspCityNod
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode struct {
+	// City code.
+	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// City name.
+	//
 	// example:
 	//
-	// 001
+	// Beijing
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Country code.
+	//
+	// example:
+	//
+	// 629
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// Country name.
+	//
+	// example:
+	//
+	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// Monitor node default selection:
+	//
+	// - true: Selected by default
+	//
+	// - false: Not selected by default
+	//
 	// example:
 	//
 	// true
-	DefaultSelected *bool   `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	// Monitor probe group name.
+	//
+	// example:
+	//
+	// BGP Nodes
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Monitoring node group type, currently supported:
+	//
+	// - BGP: BGP node
+	//
+	// - OVERSEAS: International node
+	//
+	// - ISP: Carrier node
+	//
 	// example:
 	//
 	// BGP
-	GroupType *string                                                                 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips       *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// List of node IP addresses.
+	Ips *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// Operator code.
+	//
 	// example:
 	//
 	// 465
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// Operator name.
+	//
+	// example:
+	//
+	// Alibaba
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// Unique identifier ID of the probe node.
+	//
 	// example:
 	//
 	// node-ewze1bysndy4gf**j8
@@ -34431,31 +36549,74 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes) SetIpv6IspCityNod
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode struct {
+	// City code.
+	//
 	// example:
 	//
-	// 503
+	// 357
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// City name.
+	//
 	// example:
 	//
-	// 001
+	// Shanghai
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Country code.
+	//
+	// example:
+	//
+	// 629
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// Country name.
+	//
+	// example:
+	//
+	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// Monitor node default selection:
+	//
+	// - true: Selected by default
+	//
+	// - false: Not selected by default
+	//
 	// example:
 	//
 	// true
-	DefaultSelected *bool   `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	// Monitoring probe group name.
+	//
 	// example:
 	//
 	// BGP
-	GroupType *string                                                                 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips       *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Monitoring node group type, currently supported:
+	//
+	// - BGP: BGP node
+	//
+	// - OVERSEAS: International node
+	//
+	// - ISP: Carrier node
+	//
+	// example:
+	//
+	// BGP
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// List of node IP addresses.
+	Ips *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// Operator code.
+	//
 	// example:
 	//
 	// 465
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// Operator name.
+	//
+	// example:
+	//
+	// Alibaba
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// Unique identifier ID of the probe node.
+	//
 	// example:
 	//
 	// node-ewze1bysndy4gf**j8
@@ -34572,30 +36733,58 @@ func (s *ListCloudGtmMonitorNodesResponse) SetBody(v *ListCloudGtmMonitorNodesRe
 }
 
 type ListCloudGtmMonitorTemplatesRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The IP address type of health check nodes. Valid values:
+	//
+	// 	- IPv4: applicable when health checks are performed on IPv4 addresses.
+	//
+	// 	- IPv6: applicable when health checks are performed on IPv6 addresses.
+	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
+	//
 	// example:
 	//
 	// IPv4-Ping
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Current page number, starting from **1**, default is **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Protocol types for initiating probes to the target IP address:
+	//
+	// - ping
+	//
+	// - tcp
+	//
+	// - http
+	//
+	// - https
+	//
 	// example:
 	//
 	// ping
@@ -34641,23 +36830,34 @@ func (s *ListCloudGtmMonitorTemplatesRequest) SetProtocol(v string) *ListCloudGt
 }
 
 type ListCloudGtmMonitorTemplatesResponseBody struct {
+	// Current page number, starting from 1, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The health check templates.
 	Templates *ListCloudGtmMonitorTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
+	// Total number of health check template entries retrieved.
+	//
 	// example:
 	//
 	// 30
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages after data pagination.
+	//
 	// example:
 	//
 	// 2
@@ -34720,59 +36920,148 @@ func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplates) SetTemplate(v []*Lis
 }
 
 type ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate struct {
+	// Health check template creation time.
+	//
 	// example:
 	//
 	// 2024-03-23T13:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Health check template creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The number of retries. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry options are:
+	//
+	// - 1 - 2 - 3
+	//
 	// example:
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+	//
+	// 	- HTTP or HTTPS:
+	//
+	//     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//
+	//     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+	//
+	//     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//
+	//     	- 400: indicates an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must specify an exact URL for path if you set code to 400.
+	//
+	//     	- 500: indicates a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+	//
+	//     **sni**: indicates whether Server Name Indication (SNI) is enabled. This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//
+	//     	- true: SNI is enabled.
+	//
+	//     	- false: SNI is disabled.
+	//
+	//     **followRedirect**: indicates whether 3XX redirects are followed. Valid values:
+	//
+	//     	- true: 3XX redirects are followed. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+	//
+	//     	- false: 3XX redirects are not followed.
+	//
+	// 	- ping:
+	//
+	//     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//
+	//     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Percentage of selected node probe failures (%), that is, the percentage of unhealthy check points among total probe points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+	//
+	// - 20
+	//
+	// - 50
+	//
+	// - 80
+	//
+	// - 100
+	//
 	// example:
 	//
 	// 50
 	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// The time interval between each check (in seconds), with a default of probing once every minute. The minimum supported health check interval is 15 seconds, available for flagship edition instances.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The IP address type of health check nodes. Valid values:
+	//
+	// 	- IPv4: applicable when health checks are performed on IPv4 addresses.
+	//
+	// 	- IPv6: applicable when health checks are performed on IPv6 addresses.
+	//
 	// example:
 	//
 	// IPv4
-	IpVersion    *string                                                                `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
 	IspCityNodes *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
+	// The name of the health check probe template, generally for the convenience of configuration personnel to distinguish and remember.
+	//
 	// example:
 	//
 	// IPv4-Ping
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Protocol types for initiating probes to the target IP address:
+	//
+	// - ping
+	//
+	// - tcp
+	//
+	// - http
+	//
+	// - https
+	//
 	// example:
 	//
 	// ping
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Remarks for the health check template.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the health check template. This ID uniquely identifies the health check template.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Probe timeout (in milliseconds), data packets not returned within the timeout period are deemed as health check timeouts:
+	//
+	// - 2000
+	//
+	// - 3000
+	//
+	// - 5000
+	//
+	// - 10000
+	//
 	// example:
 	//
 	// 5000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Last modification time of the health check template.
+	//
 	// example:
 	//
 	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Health check template configuration modification time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
@@ -34880,25 +37169,59 @@ func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) 
 }
 
 type ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode struct {
+	// City code.
+	//
 	// example:
 	//
-	// 503
+	// 738
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// City name.
+	//
 	// example:
 	//
-	// 001
+	// Beijing
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Country code.
+	//
+	// example:
+	//
+	// 629
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// Country name.
+	//
+	// example:
+	//
+	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Probe node group name.
+	//
+	// example:
+	//
+	// BGP Nodes
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Probe node group types:
+	//
+	// - BGP: BGP nodes
+	//
+	// - OVERSEAS: International nodes
+	//
+	// - ISP: Carrier nodes
+	//
 	// example:
 	//
 	// BGP
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// Operator code.
+	//
 	// example:
 	//
 	// 465
 	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// Operator name.
+	//
+	// example:
+	//
+	// Alibaba
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
@@ -35205,7 +37528,13 @@ type ModifyHichinaDomainDNSRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language type.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en
 	//
 	// example:
 	//
@@ -35243,11 +37572,11 @@ func (s *ModifyHichinaDomainDNSRequest) SetUserClientIp(v string) *ModifyHichina
 }
 
 type ModifyHichinaDomainDNSResponseBody struct {
-	// The list of DNS servers after the domain name is changed.
+	// The DNS server names after modification.
 	NewDnsServers *ModifyHichinaDomainDNSResponseBodyNewDnsServers `json:"NewDnsServers,omitempty" xml:"NewDnsServers,omitempty" type:"Struct"`
-	// The list of DNS servers before the domain name is changed.
+	// The DNS server names before modification.
 	OriginalDnsServers *ModifyHichinaDomainDNSResponseBodyOriginalDnsServers `json:"OriginalDnsServers,omitempty" xml:"OriginalDnsServers,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -35349,6 +37678,8 @@ type MoveDomainResourceGroupRequest struct {
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the new resource group.
+	//
+	// You can view the ID of the resource group in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) or call the ListResourceGroups operation.
 	//
 	// This parameter is required.
 	//
@@ -35532,7 +37863,7 @@ func (s *MoveGtmResourceGroupResponse) SetBody(v *MoveGtmResourceGroupResponseBo
 }
 
 type OperateBatchDomainRequest struct {
-	// The DNS records. You can submit up to 1000 DNS records.
+	// The Domain Name System (DNS) records. You can submit up to 1,000 DNS records.
 	//
 	// This parameter is required.
 	DomainRecordInfo []*OperateBatchDomainRequestDomainRecordInfo `json:"DomainRecordInfo,omitempty" xml:"DomainRecordInfo,omitempty" type:"Repeated"`
@@ -35594,7 +37925,7 @@ type OperateBatchDomainRequestDomainRecordInfo struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The resolution line. Default value: default.
+	// The DNS request source. Default value: default.
 	//
 	// example:
 	//
@@ -36253,15 +38584,26 @@ func (s *RemovePdnsUdpIpSegmentResponse) SetBody(v *RemovePdnsUdpIpSegmentRespon
 }
 
 type ReplaceCloudGtmAddressPoolAddressRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US (default)**: English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address pool for which you want to replace addresses. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89618921167339**24
-	AddressPoolId *string                                              `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	Addresses     []*ReplaceCloudGtmAddressPoolAddressRequestAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The addresses.
+	Addresses []*ReplaceCloudGtmAddressPoolAddressRequestAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -36297,15 +38639,26 @@ func (s *ReplaceCloudGtmAddressPoolAddressRequest) SetClientToken(v string) *Rep
 }
 
 type ReplaceCloudGtmAddressPoolAddressRequestAddresses struct {
+	// The ID of the new address. This ID uniquely identifies the address.
+	//
+	// 	- If you specify this parameter, the original addresses in the address pool will be deleted and replaced with new addresses.
+	//
+	// 	- If you do not specify this parameter, all addresses in the address pool will be deleted and the address pool will be left empty.
+	//
 	// example:
 	//
 	// addr-89636516932803**44
-	AddressId     *string   `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The DNS request sources.
 	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+	// The sequence number that specifies the priority for returning the new address. A smaller sequence number specifies a higher priority. This setting takes effect for new addresses.
+	//
 	// example:
 	//
 	// 1
 	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The weight value of the new address. You can set a different weight value for each address. This way, addresses are returned based on the weight values for Domain Name System (DNS) requests. A weight value must be an integer that ranges from 1 to 100. This setting takes effect for new addresses.
+	//
 	// example:
 	//
 	// 1
@@ -36341,15 +38694,26 @@ func (s *ReplaceCloudGtmAddressPoolAddressRequestAddresses) SetWeightValue(v int
 }
 
 type ReplaceCloudGtmAddressPoolAddressShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US (default)**: English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address pool for which you want to replace addresses. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89618921167339**24
-	AddressPoolId   *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The addresses.
 	AddressesShrink *string `json:"Addresses,omitempty" xml:"Addresses,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -36385,14 +38749,22 @@ func (s *ReplaceCloudGtmAddressPoolAddressShrinkRequest) SetClientToken(v string
 }
 
 type ReplaceCloudGtmAddressPoolAddressResponseBody struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89618921167339**24
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful:
+	//
+	// - true: Successful. - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -36452,19 +38824,34 @@ func (s *ReplaceCloudGtmAddressPoolAddressResponse) SetBody(v *ReplaceCloudGtmAd
 }
 
 type ReplaceCloudGtmInstanceConfigAddressPoolRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
-	AcceptLanguage *string                                                        `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AddressPools   []*ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Repeated"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The address pools.
+	AddressPools []*ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
+	// You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the GTM 3.0 instance for which you want to change address pools.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
@@ -36505,15 +38892,26 @@ func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequest) SetInstanceId(v string
 }
 
 type ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
+	// 	- If you specify this parameter, the address pools that are associated with the desired instance are removed and the instance is associated with new address pools.
+	//
+	// 	- If this parameter is left empty, the address pools that are associated with the desired instance are removed and no address pool is associated with the instance.
+	//
 	// example:
 	//
 	// pool-89564542105737**12
-	AddressPoolId *string   `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The DNS request sources.
 	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+	// The sequence number of the new address pool. The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number specifies the priority for returning the address pool. A smaller sequence number specifies a higher priority.
+	//
 	// example:
 	//
 	// 1
 	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The weight value of the new address pool. You can set a different weight value for each address pool. This way, address pools are returned based on the weight values for Domain Name System (DNS) requests. A weight value must be an integer that ranges from 1 to 100.
+	//
 	// example:
 	//
 	// 1
@@ -36549,19 +38947,34 @@ func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools) SetWeightV
 }
 
 type ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
-	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The address pools.
 	AddressPoolsShrink *string `json:"AddressPools,omitempty" xml:"AddressPools,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
+	// You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the GTM 3.0 instance for which you want to change address pools.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
@@ -36602,10 +39015,18 @@ func (s *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest) SetInstanceId(v 
 }
 
 type ReplaceCloudGtmInstanceConfigAddressPoolResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful, with values:
+	//
+	// - true: Success.
+	//
+	// - false: Failure.
+	//
 	// example:
 	//
 	// true
@@ -36815,13 +39236,19 @@ func (s *RetrieveDomainResponse) SetBody(v *RetrieveDomainResponseBody) *Retriev
 }
 
 type RollbackGtmRecoveryPlanRequest struct {
-	// The language used by the user.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the disaster recovery plan that you want to roll back.
+	// The ID of the disaster recovery plan.
 	//
 	// This parameter is required.
 	//
@@ -36850,7 +39277,7 @@ func (s *RollbackGtmRecoveryPlanRequest) SetRecoveryPlanId(v int64) *RollbackGtm
 }
 
 type RollbackGtmRecoveryPlanResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -36901,42 +39328,86 @@ func (s *RollbackGtmRecoveryPlanResponse) SetBody(v *RollbackGtmRecoveryPlanResp
 }
 
 type SearchCloudGtmAddressPoolsRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Address pool name, supports fuzzy search for the entered address pool name.
+	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// Address pool type, supports precise query for address pool types:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
 	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// Address pool availability status, supporting precise queries for address pool availability:
+	//
+	// - available: Available
+	//
+	// - unavailable: Unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Address pool enable status, supports precise query of address pool enable status:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health state of the address pool. You can enter a health state for exact search. Valid values:
+	//
+	// ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+	//
+	// ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for Domain Name System (DNS) requests.
+	//
+	// exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// Current page number, starting from 1, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Address pool remarks, supporting fuzzy search for the input remarks.
+	//
 	// example:
 	//
 	// test
@@ -37002,23 +39473,34 @@ func (s *SearchCloudGtmAddressPoolsRequest) SetRemark(v string) *SearchCloudGtmA
 }
 
 type SearchCloudGtmAddressPoolsResponseBody struct {
+	// The address pools.
 	AddressPools *SearchCloudGtmAddressPoolsResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// Current page number, starting from 1, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of address pools matching the query conditions.
+	//
 	// example:
 	//
 	// 11
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -37081,59 +39563,130 @@ func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPools) SetAddressPool(v []
 }
 
 type SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool struct {
+	// Load balancing policy among addresses in the address pool:
+	//
+	// - round_robin: Round-robin, for any source of DNS resolution requests, returns all addresses and rotates the order of all addresses each time.
+	//
+	// - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of the address return, the smaller the higher the priority). If the address with the smaller sequence number is unavailable, return the next address with a smaller sequence number.
+	//
+	// - weight: Weighted, supports setting different weight values for each address to realize returning addresses according to the weight ratio for resolution queries.
+	//
+	// - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
+	//
 	// example:
 	//
 	// round_robin
 	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-895280232254422016
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Address pool name.
+	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// Address pool type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
-	AddressPoolType *string                                                                 `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
-	Addresses       *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// The IP addresses or domain names.
+	Addresses *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// Address pool availability status:
+	//
+	// - available: Available
+	//
+	// - unavailable: Unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address pool creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Address pool creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Address pool status:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address pool. Valid values:
+	//
+	// 	- any_ok: At least one address in the address pool is available.
+	//
+	// 	- p30_ok: At least 30% of the addresses in the address pool are available.
+	//
+	// 	- p50_ok: At least 50% of the addresses in the address pool are available.
+	//
+	// 	- p70_ok: At least 70% of the addresses in the address pool are available.
+	//
+	// 	- all_ok: All addresses in the address pool are available.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health state of the address pool. Valid values:
+	//
+	// 	- ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+	//
+	// 	- ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
+	//
+	// 	- exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// Address remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The mode used if the address with the smallest sequence number is recovered. This parameter is returned only when the policy for load balancing between addresses is sequence. Valid values:
+	//
+	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+	//
+	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// Last modification time of the address pool.
+	//
 	// example:
 	//
 	// 024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Last modification time of the address pool (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
@@ -37241,76 +39794,154 @@ func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses)
 }
 
 type SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress struct {
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-895182181143688192
-	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Address ownership information, not supported in the current version.
+	//
+	// example:
+	//
+	// Not supported in the current version.
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The failover method that is used if the address fails health checks. Valid values:
+	//
+	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// Address availability status:
+	//
+	// - available: Address is available
+	//
+	// - unavailable: Address is unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Address creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Address enable status, indicating whether the address is currently available:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check state of the address. Valid values:
+	//
+	// 	- ok: The address passes all health checks of the referenced health check templates.
+	//
+	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+	//
+	// 	- ok_no_monitor: The address does not reference a health check template and is normal.
+	//
+	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus *string                                                                                   `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	HealthTasks  *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The health check tasks.
+	HealthTasks *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	//
+	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// Address name.
+	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Request source, referring to the source of the request. GTM schedules based on the exit IP of the LocalDNS used by the terminal. If the LocalDNS supports ECS (edns-client-subnet), intelligent scheduling can also be performed based on the IP of the visiting terminal.
+	//
 	// example:
 	//
 	// default
 	RequestSource *string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty"`
+	// Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
+	//
 	// example:
 	//
 	// 1
 	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// Address type:
+	//
+	// - IPv4: ipv4 address - IPv6: ipv6 address - domain: domain name
+	//
 	// example:
 	//
 	// IPv4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last time the address was modified.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The last modification time of the address (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// Weight value (an integer between 1 and 100), allowing different weight values to be set for each address, enabling resolution queries to return addresses according to the weighted ratio.
+	//
 	// example:
 	//
 	// 1
@@ -37443,14 +40074,20 @@ func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesA
 }
 
 type SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask struct {
+	// The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the health check template associated with the address.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Health check template name.
+	//
 	// example:
 	//
 	// IPv4-Ping
@@ -37510,56 +40147,116 @@ func (s *SearchCloudGtmAddressPoolsResponse) SetBody(v *SearchCloudGtmAddressPoo
 }
 
 type SearchCloudGtmAddressesRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Query by service address with precise conditions, supporting IP addresses or domain names.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address ID. This ID uniquely identifies the address.
+	//
 	// example:
 	//
 	// addr-89518218114368**92
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Search by address availability status with precise conditions:
+	//
+	// - available
+	//
+	// - unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Query by exact address enable status:
+	//
+	// - enable: enabled status
+	//
+	// - disable: disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health state of the addresses that you want to query. Valid values:
+	//
+	// 	- ok: The addresses pass all health checks of the referenced health check templates.
+	//
+	// 	- ok_alert: The addresses fail some health checks of the referenced health check templates, but the addresses are deemed available.
+	//
+	// 	- ok_no_monitor: The addresses do not reference any health check template.
+	//
+	// 	- exceptional: The addresses fail some or all health checks of the referenced health check templates, and the addresses are deemed unavailable.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// Health check template name.
+	//
 	// example:
 	//
 	// Ping-IPv4
 	MonitorTemplateName *string `json:"MonitorTemplateName,omitempty" xml:"MonitorTemplateName,omitempty"`
+	// The logical condition for querying addresses by name. This parameter is required if you want to query addresses by name. Valid values:
+	//
+	// 	- and: displays the results that match all search conditions.
+	//
+	// 	- or: displays the results that match some or all search conditions.
+	//
 	// example:
 	//
 	// or
-	NameSearchCondition *string   `json:"NameSearchCondition,omitempty" xml:"NameSearchCondition,omitempty"`
-	Names               []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	NameSearchCondition *string `json:"NameSearchCondition,omitempty" xml:"NameSearchCondition,omitempty"`
+	// Address name, usually for users to distinguish between different addresses.
+	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// Current page number, starting from 1, default is 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The logical condition for querying addresses by additional description. This parameter is required if you want to query addresses by additional description. Valid values:
+	//
+	// and: displays the results that match all search conditions.
+	//
+	// or: displays the results that match some or all search conditions.
+	//
 	// example:
 	//
 	// or
-	RemarkSearchCondition *string   `json:"RemarkSearchCondition,omitempty" xml:"RemarkSearchCondition,omitempty"`
-	Remarks               []*string `json:"Remarks,omitempty" xml:"Remarks,omitempty" type:"Repeated"`
+	RemarkSearchCondition *string `json:"RemarkSearchCondition,omitempty" xml:"RemarkSearchCondition,omitempty"`
+	// Remarks for the address.
+	Remarks []*string `json:"Remarks,omitempty" xml:"Remarks,omitempty" type:"Repeated"`
+	// Search precisely by address type conditions:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
@@ -37645,23 +40342,34 @@ func (s *SearchCloudGtmAddressesRequest) SetType(v string) *SearchCloudGtmAddres
 }
 
 type SearchCloudGtmAddressesResponseBody struct {
+	// The addresses.
 	Addresses *SearchCloudGtmAddressesResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// Current page number, starting from **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of **100*	- and a default of **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of address entries that meet the query conditions.
+	//
 	// example:
 	//
 	// 15
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -37724,64 +40432,136 @@ func (s *SearchCloudGtmAddressesResponseBodyAddresses) SetAddress(v []*SearchClo
 }
 
 type SearchCloudGtmAddressesResponseBodyAddressesAddress struct {
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// ID of the address, unique identifier for the address.
+	//
 	// example:
 	//
 	// addr-89518218114368**92
-	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Address ownership information, not supported in the current version.
+	//
+	// example:
+	//
+	// The parameter should be none.
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The failover method that is used if the address fails health checks. Valid values:
+	//
+	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	//
+	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Creation time of the address.
+	//
 	// example:
 	//
 	// 2024-03-23T13:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creation time of the address (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Current activation status of the address:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// p50_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check state of the address. Valid values:
+	//
+	// 	- ok: The address passes all health checks of the referenced health check templates.
+	//
+	// 	- ok_alert: The address fails some health checks of the referenced health check templates, but the address is deemed available.
+	//
+	// 	- ok_no_monitor: The address does not reference any health check template.
+	//
+	// 	- exceptional: The address fails some or all health checks of the referenced health check templates, and the address is deemed unavailable.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus *string                                                         `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	HealthTasks  *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The health check tasks.
+	HealthTasks *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	//
+	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// Address name.
+	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Address type:
+	//
+	// - IPv4: ipv4 address - IPv6: ipv6 address - domain: domain name
+	//
 	// example:
 	//
 	// IPv4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last modification time of the address.
+	//
 	// example:
 	//
 	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The last modification time of the address (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
@@ -37899,18 +40679,32 @@ func (s *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) SetHeal
 }
 
 type SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask struct {
+	// The state of the health check task. Valid values:
+	//
+	// 	- ok: The task is normal.
+	//
+	// 	- alert: The task has an alert.
+	//
+	// 	- no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
+	//
 	// example:
 	//
 	// ok
 	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the health check template associated with the address.
+	//
 	// example:
 	//
 	// mtp-895180524251002880
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Health check template name.
+	//
 	// example:
 	//
 	// IPv4-Ping
@@ -37975,46 +40769,86 @@ func (s *SearchCloudGtmAddressesResponse) SetBody(v *SearchCloudGtmAddressesResp
 }
 
 type SearchCloudGtmInstanceConfigsRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The availability state of the access domain name. Valid values:
+	//
+	// 	- available: If the access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+	//
+	// 	- unavailable: If the access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The enabling state of the access domain name. Valid values:
+	//
+	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+	//
+	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health state of the access domain name. Valid values:
+	//
+	// 	- ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+	//
+	// 	- ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for Domain Name System (DNS) requests.
+	//
+	// 	- exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Current page number, starting from 1, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Remarks for the domain instance.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
+	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
+	//
 	// example:
 	//
 	// example.com
@@ -38085,23 +40919,34 @@ func (s *SearchCloudGtmInstanceConfigsRequest) SetScheduleZoneName(v string) *Se
 }
 
 type SearchCloudGtmInstanceConfigsResponseBody struct {
+	// The instances list.
 	InstanceConfigs *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
+	// Current page number, starting from 1, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6AEC7A64-3CB1-4C49-8B35-0B901F1E26BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of instance configuration entries.
+	//
 	// example:
 	//
 	// 15
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -38164,83 +41009,168 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs) SetInstanceCo
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig struct {
+	// The policy for load balancing between address pools. Valid values:
+	//
+	// 	- round_robin: All address pools are returned for DNS requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+	//
+	// 	- sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+	//
+	// 	- weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+	//
+	// 	- source_nearest: Different address pools are returned based on the sources of DNS requests. This way, users can access nearby address pools.
+	//
 	// example:
 	//
 	// round_robin
-	AddressPoolLbStrategy *string                                                                             `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
-	AddressPools          *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	// The address pools.
+	AddressPools *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// The availability state of the access domain name. Valid values:
+	//
+	// 	- available: If the access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+	//
+	// 	- unavailable: If the access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// The commodity code. Valid values:
+	//
+	// 	- dns_gtm_public_cn: the commodity code on the China site (aliyun.com)
+	//
+	// 	- dns_gtm_public_intl: the commodity code on the international site (alibabacloud.com)
+	//
 	// example:
 	//
 	// dns_gtm_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Domain instance creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Domain instance creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The enabling state of the access domain name. Valid values:
+	//
+	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+	//
+	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The health state of the access domain name. Valid values:
+	//
+	// 	- ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+	//
+	// 	- ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for DNS requests.
+	//
+	// 	- exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
+	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The ID of the GTM 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-x0r38e0**03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Remarks for the domain instance.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
+	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// Host record of the domain accessed by GTM.
+	//
 	// example:
 	//
 	// www
 	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// DNS record types for the scheduling domain:
+	//
+	// - A: IPv4 address
+	//
+	// - AAAA: IPv6 address
+	//
+	// - CNAME: Domain name
+	//
 	// example:
 	//
 	// A
 	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// The allocation mode of the access domain name. Valid values:
+	//
+	// 	- custom: custom allocation. You must specify a custom hostname and associate the hostname with a zone that is hosted by the Public Authoritative DNS module within the account to which the GTM instance belongs to generate an access domain name.
+	//
+	// 	- sys_assign: system allocation. This mode is not supported. Do not set ScheduleZoneMode to sys_assign.
+	//
 	// example:
 	//
 	// custom
 	ScheduleZoneMode *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
+	// The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
+	//
 	// example:
 	//
 	// example.com
 	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// The mode used if the address pool with the smallest sequence number is recovered. This parameter is returned when AddressPoolLbStrategy is set to sequence. Valid values:
+	//
+	// 	- preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+	//
+	// 	- non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// Global TTL (in seconds), the TTL value for resolving the access domain name to the address pool, which affects the caching time of DNS records in the operator\\"s LocalDNS. Supports custom TTL values.
+	//
 	// example:
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The last modification time of the domain instance.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The last modification time of the domain instance (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// Global Traffic Management version 3.0 instance types:
+	//
+	// - standard: Standard Edition
+	//
+	// - ultimate: Ultimate Edition
+	//
 	// example:
 	//
 	// ultimate
@@ -38378,67 +41308,146 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigA
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool struct {
+	// Load balancing policy among addresses in the address pool:
+	//
+	// - round_robin: Round-robin, where for any source of DNS resolution requests, all addresses are returned, with a rotation of the order for every request.
+	//
+	// - sequence: Sequential, where for any source of DNS resolution requests, the address with the lower sequence number (indicating a higher priority, the smaller the number, the higher the priority) is returned. If the address with the lower sequence number is unavailable, the next address with a lower sequence number is returned.
+	//
+	// - weight: Weighted, supporting the setting of different weight values for each address to realize returning addresses according to the ratio of weights in DNS query resolutions.
+	//
+	// - source_nearest: Source-nearest, referring to the intelligent resolution feature, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing the nearest server.
+	//
 	// example:
 	//
 	// round_robin
 	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// Address pool ID, uniquely identifying the address pool.
+	//
 	// example:
 	//
 	// pool-89564504435014**60
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Address pool name.
+	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// Address pool type:
+	//
+	// - IPv4
+	//
+	// - IPv6
+	//
+	// - domain
+	//
 	// example:
 	//
 	// IPv4
 	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// Address pool availability status:
+	//
+	// - available: Available
+	//
+	// - unavailable: Unavailable
+	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// Address pool creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Address pool creation time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Address pool status:
+	//
+	// - enable: Enabled status
+	//
+	// - disable: Disabled status
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The condition for determining the health status of the address pool. Valid values:
+	//
+	// 	- any_ok: At least one address in the address pool is available.
+	//
+	// 	- p30_ok: At least 30% of the addresses in the address pool are available.
+	//
+	// 	- p50_ok: At least 50% of the addresses in the address pool are available.
+	//
+	// 	- p70_ok: At least 70% of the addresses in the address pool are available.
+	//
+	// 	- all_ok: All addresses in the address pool are available.
+	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health state of the address pool. Valid values:
+	//
+	// 	- ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+	//
+	// 	- ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
+	//
+	// 	- exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	//
 	// example:
 	//
 	// ok
-	HealthStatus  *string                                                                                                     `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// Parse the request source list.
 	RequestSource *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	// Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios:
+	//
+	// - true: yes
+	//
+	// - false: no
+	//
 	// example:
 	//
 	// false
 	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// The mode used if the address with the smallest sequence number is recovered. This parameter is required only when the policy for load balancing between addresses is sequence. Valid values:
+	//
+	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+	//
+	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// Sequence number. For any parsing request, the address pool with the smaller sequence number (indicating the priority of the address pool returned, with smaller numbers having higher priority) will be returned.
+	//
 	// example:
 	//
 	// 1
 	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// Last modification time of the address pool.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Update time (timestamp).
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address pool, implementing the return of address pools according to weight ratios in resolution queries.
+	//
 	// example:
 	//
 	// 1
@@ -38585,26 +41594,42 @@ func (s *SearchCloudGtmInstanceConfigsResponse) SetBody(v *SearchCloudGtmInstanc
 }
 
 type SearchCloudGtmInstancesRequest struct {
+	// The language of the return value. Options are:
+	//
+	// - **zh-CN**: Chinese.
+	//
+	// - **en-US**: English.
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Schedule instance name, supports fuzzy search.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Current page number, starting from 1, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+	//
 	// example:
 	//
 	// 20
@@ -38650,23 +41675,34 @@ func (s *SearchCloudGtmInstancesRequest) SetPageSize(v int32) *SearchCloudGtmIns
 }
 
 type SearchCloudGtmInstancesResponseBody struct {
+	// The instances.
 	Instances *SearchCloudGtmInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// Current page number, starting at **1**, default is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of instances found from the search.
+	//
 	// example:
 	//
 	// 10
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -38729,66 +41765,106 @@ func (s *SearchCloudGtmInstancesResponseBodyInstances) SetInstance(v []*SearchCl
 }
 
 type SearchCloudGtmInstancesResponseBodyInstancesInstance struct {
+	// The commodity code. Valid values:
+	//
+	// 	- dns_gtm_public_cn: commodity code on the China site (aliyun.com)
+	//
+	// 	- dns_gtm_public_intl: commodity code on the international site (alibabacloud.com)
+	//
 	// example:
 	//
 	// dns_gtm_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// Instance creation time.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Instance creation time (timestamp).
+	//
 	// example:
 	//
 	// 1710467214858
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Instance expiration time.
+	//
 	// example:
 	//
 	// 2024-09-05T16:00Z
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Instance expiration time (timestamp).
+	//
 	// example:
 	//
 	// 1725552000000
 	ExpireTimestamp *string `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// The ID of the GTM 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Schedule instance name.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Monitor probe task quota.
+	//
 	// example:
 	//
 	// 100
 	MonitorTaskQuota *int32 `json:"MonitorTaskQuota,omitempty" xml:"MonitorTaskQuota,omitempty"`
+	// Monthly email sending volume.
+	//
 	// example:
 	//
 	// 200
 	MonthlyEmailUsed *int32 `json:"MonthlyEmailUsed,omitempty" xml:"MonthlyEmailUsed,omitempty"`
+	// SMS quota, only supported on the China site. International site does not support SMS.
+	//
 	// example:
 	//
 	// 2000
 	MonthlySmsQuota *int32 `json:"MonthlySmsQuota,omitempty" xml:"MonthlySmsQuota,omitempty"`
+	// Monthly SMS sending volume, only supported by the China site as international sites do not support SMS.
+	//
 	// example:
 	//
 	// 200
 	MonthlySmsUsed *int32 `json:"MonthlySmsUsed,omitempty" xml:"MonthlySmsUsed,omitempty"`
+	// Monthly webhook dispatch volume.
+	//
 	// example:
 	//
 	// 100
 	MonthlyWebhookUsed *int32 `json:"MonthlyWebhookUsed,omitempty" xml:"MonthlyWebhookUsed,omitempty"`
+	// The access domain name, which consists of a hostname and a zone or a subzone.
+	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// The last modified time of the instance.
+	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The last modified time of the instance (timestamp).
+	//
 	// example:
 	//
 	// 1710467214858
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// Global Traffic Management version 3.0 instance types:
+	//
+	// - standard: Standard Edition
+	//
+	// - ultimate: Ultimate Edition
+	//
 	// example:
 	//
 	// ultimate
@@ -38913,10 +41989,22 @@ func (s *SearchCloudGtmInstancesResponse) SetBody(v *SearchCloudGtmInstancesResp
 }
 
 type SearchCloudGtmMonitorTemplatesRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The IP address type of health check nodes. An exact search is performed based on the IP address type. Valid values:
+	//
+	// 	- IPv4: applicable when the destination address of health checks is an IPv4 address
+	//
+	// 	- IPv6: applicable when the destination address of health checks is an IPv6 address
+	//
 	// example:
 	//
 	// IPv4
@@ -38993,7 +42081,8 @@ type SearchCloudGtmMonitorTemplatesResponseBody struct {
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The health check templates.
 	Templates *SearchCloudGtmMonitorTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
 	// example:
 	//
@@ -39073,6 +42162,38 @@ type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate struct {
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol. Valid values:
+	//
+	// 	- **http(s)**:
+	//
+	//     **host**: indicates the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//
+	//     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+	//
+	//     **code**: indicates the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//
+	//     	- 400: indicates an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. If Verification Content is set to "The error code is greater than 400", you must specify an exact URL for the path parameter.
+	//
+	//     	- 500: indicates a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. The error code that is greater than 500 is used as the alert threshold by default.
+	//
+	//     **sni**: indicates whether Server Name Indication (SNI) is enabled for HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//
+	//     	- true: SNI is enabled.
+	//
+	//     	- false: SNI is disabled.
+	//
+	//     **followRedirect**: indicates whether 3XX redirection is followed. Valid values:
+	//
+	//     	- true: You are redirected to the destination address if a status code 3XX, such as 301, 302, 303, 307, or 308, is returned.
+	//
+	//     	- false: You are not redirected to the destination address.
+	//
+	// 	- **ping**:
+	//
+	//     **packetNum**: The total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//
+	//     **packetLossRate**: The packet loss rate for each ping-based health check. The packet loss rate in a check can be calculated by using the following formula: Packet loss rate = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
@@ -39085,10 +42206,17 @@ type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate struct {
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The IP address type of health check nodes. Valid values:
+	//
+	// 	- IPv4: applicable when the destination address of health checks is an IPv4 address
+	//
+	// 	- IPv6: applicable when the destination address of health checks is an IPv6 address
+	//
 	// example:
 	//
 	// IPv4
-	IpVersion    *string                                                                  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The health check nodes.
 	IspCityNodes *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
 	// example:
 	//
@@ -39235,6 +42363,14 @@ type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspC
 	//
 	// BGP
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The group type of health check nodes. Valid values:
+	//
+	// 	- BGP: BGP node
+	//
+	// 	- OVERSEAS: node outside the Chinese mainland
+	//
+	// 	- ISP: Internet service provider (ISP) node
+	//
 	// example:
 	//
 	// BGP
@@ -39491,13 +42627,13 @@ func (s *SetDNSSLBStatusResponse) SetBody(v *SetDNSSLBStatusResponseBody) *SetDN
 }
 
 type SetDnsGtmAccessModeRequest struct {
-	// The primary/secondary switchover policy for address pool groups. Valid values:
+	// The switchover policy for primary and secondary address pool sets. Valid values:
 	//
-	// 	- AUTO: performs automatic switchover between the primary and secondary address pool groups upon failures.
+	// 	- AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.
 	//
-	// 	- DEFAULT: uses the primary address pool group.
+	// 	- DEFAULT: the primary address pool set
 	//
-	// 	- FAILOVER: uses the secondary address pool group.
+	// 	- FAILOVER: the secondary address pool set
 	//
 	// This parameter is required.
 	//
@@ -39505,13 +42641,13 @@ type SetDnsGtmAccessModeRequest struct {
 	//
 	// auto
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// This parameter is required.
 	//
@@ -39545,7 +42681,7 @@ func (s *SetDnsGtmAccessModeRequest) SetStrategyId(v string) *SetDnsGtmAccessMod
 }
 
 type SetDnsGtmAccessModeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -39699,7 +42835,7 @@ func (s *SetDnsGtmMonitorStatusResponse) SetBody(v *SetDnsGtmMonitorStatusRespon
 }
 
 type SetDomainDnssecStatusRequest struct {
-	// The domain name for which you want to set the DNSSEC status.
+	// The domain name for which you want to enable the DNSSEC. Only the users of the paid editions of Alibaba Cloud DNS can enable this feature.
 	//
 	// This parameter is required.
 	//
@@ -39707,7 +42843,13 @@ type SetDomainDnssecStatusRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
@@ -39938,13 +43080,13 @@ func (s *SetDomainRecordStatusResponse) SetBody(v *SetDomainRecordStatusResponse
 }
 
 type SetGtmAccessModeRequest struct {
-	// The target access policy of the GTM instance. Valid values:
+	// The desired access policy. Valid values:
 	//
-	// 	- **AUTO**: Automatic switch
+	// 	- **AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.**
 	//
-	// 	- **DEFAULT**: Default address pool
+	// 	- **DEFAULT: specifies the primary address pool set.**
 	//
-	// 	- **FAILOVER**: Failover address pool
+	// 	- **FAILOVER: specifies the secondary address pool set.
 	//
 	// This parameter is required.
 	//
@@ -39952,7 +43094,7 @@ type SetGtmAccessModeRequest struct {
 	//
 	// AUTO
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
@@ -39992,7 +43134,7 @@ func (s *SetGtmAccessModeRequest) SetStrategyId(v string) *SetGtmAccessModeReque
 }
 
 type SetGtmAccessModeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -40918,30 +44060,62 @@ func (s *UpdateAppKeyStateResponse) SetBody(v *UpdateAppKeyStateResponseBody) *U
 }
 
 type UpdateCloudGtmAddressRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The ID of the address. This ID uniquely identifies the address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// addr-89518218114368**92
-	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Address Attribution information.
+	//
+	// example:
+	//
+	// This parameter is not supported in the current version and does not need to be input.
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// p50_ok
-	HealthJudgement *string                                    `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
-	HealthTasks     []*UpdateCloudGtmAddressRequestHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Repeated"`
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check tasks.
+	HealthTasks []*UpdateCloudGtmAddressRequestHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Repeated"`
+	// Address name.
+	//
 	// example:
 	//
 	// Address-1
@@ -40997,10 +44171,14 @@ func (s *UpdateCloudGtmAddressRequest) SetName(v string) *UpdateCloudGtmAddressR
 }
 
 type UpdateCloudGtmAddressRequestHealthTasks struct {
+	// The service port of the address on which health check tasks are performed. If the ping protocol is used for health checks, the configuration of the service port is not supported.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the health check template associated with the address.
+	//
 	// example:
 	//
 	// mtp-89518052425100**80
@@ -41026,30 +44204,62 @@ func (s *UpdateCloudGtmAddressRequestHealthTasks) SetTemplateId(v string) *Updat
 }
 
 type UpdateCloudGtmAddressShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// IP address or domain name.
+	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The ID of the address. This ID uniquely identifies the address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// addr-89518218114368**92
-	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// Address Attribution information.
+	//
+	// example:
+	//
+	// This parameter is not supported in the current version and does not need to be input.
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+	//
+	// 	- any_ok: The health check results of at least one health check template are normal.
+	//
+	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	//
+	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	//
+	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	//
+	// 	- all_ok: The health check results of all health check templates are normal.
+	//
 	// example:
 	//
 	// p50_ok
-	HealthJudgement   *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// The health check tasks.
 	HealthTasksShrink *string `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty"`
+	// Address name.
+	//
 	// example:
 	//
 	// Address-1
@@ -41105,10 +44315,18 @@ func (s *UpdateCloudGtmAddressShrinkRequest) SetName(v string) *UpdateCloudGtmAd
 }
 
 type UpdateCloudGtmAddressResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Modify address base configuration operation status:
+	//
+	// - true: Operation was successful
+	//
+	// - false: Operation was failed
+	//
 	// example:
 	//
 	// true
@@ -41163,20 +44381,36 @@ func (s *UpdateCloudGtmAddressResponse) SetBody(v *UpdateCloudGtmAddressResponse
 }
 
 type UpdateCloudGtmAddressEnableStatusRequest struct {
+	// 返回结果显示的语言。取值：
+	//
+	// - zh-CN：中文
+	//
+	// - en-US：英文
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address. This ID uniquely identifies the address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// addr-89518218114368**92
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The enabling state of the address. Valid values:
+	//
+	// 	- enable: The address is enabled and the address can be used for Domain Name System (DNS) resolution if the address passes health checks.
+	//
+	// 	- disable: The address is disabled and the address cannot be used for DNS resolution regardless of whether the address passes health checks or not.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41214,10 +44448,18 @@ func (s *UpdateCloudGtmAddressEnableStatusRequest) SetEnableStatus(v string) *Up
 }
 
 type UpdateCloudGtmAddressEnableStatusResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// 	- true: The operation was successful.
+	//
+	// 	- false: The operation was failed.
+	//
 	// example:
 	//
 	// true
@@ -41272,24 +44514,46 @@ func (s *UpdateCloudGtmAddressEnableStatusResponse) SetBody(v *UpdateCloudGtmAdd
 }
 
 type UpdateCloudGtmAddressManualAvailableStatusRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address. This ID uniquely identifies the address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// addr-89518218114368**92
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The failover mode that is used when address exceptions are identified. Valid values:
+	//
+	// 	- auto: the automatic mode. The system determines whether to return an address based on health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	//
+	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
 	// example:
 	//
 	// manual
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	//
+	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	//
+	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	//
 	// example:
 	//
 	// available
@@ -41330,10 +44594,18 @@ func (s *UpdateCloudGtmAddressManualAvailableStatusRequest) SetManualAvailableSt
 }
 
 type UpdateCloudGtmAddressManualAvailableStatusResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 0F32959D-417B-4D66-8463-68606605E3E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -41388,22 +44660,46 @@ func (s *UpdateCloudGtmAddressManualAvailableStatusResponse) SetBody(v *UpdateCl
 }
 
 type UpdateCloudGtmAddressPoolBasicConfigRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Address pool name, helping users distinguish the purpose of address pools.
+	//
 	// example:
 	//
 	// app
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The condition for determining the health status of the address pool. Valid values:
+	//
+	// 	- any_ok: At least one address in the address pool is available.
+	//
+	// 	- p30_ok: At least 30% of the addresses in the address pool are available.
+	//
+	// 	- p50_ok: At least 50% of the addresses in the address pool are available.
+	//
+	// 	- p70_ok: At least 70% of the addresses in the address pool are available.
+	//
+	// 	- all_ok: All addresses in the address pool are available.
+	//
 	// example:
 	//
 	// any_ok
@@ -41444,14 +44740,24 @@ func (s *UpdateCloudGtmAddressPoolBasicConfigRequest) SetHealthJudgement(v strin
 }
 
 type UpdateCloudGtmAddressPoolBasicConfigResponseBody struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Modify the basic configuration of the address pool operation success:
+	//
+	// - true: Operation successful
+	//
+	// - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -41511,18 +44817,34 @@ func (s *UpdateCloudGtmAddressPoolBasicConfigResponse) SetBody(v *UpdateCloudGtm
 }
 
 type UpdateCloudGtmAddressPoolEnableStatusRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The enabling state of the address pool. Valid values:
+	//
+	// 	- enable: The address pool is enabled, and the addresses in the address pool are returned for DNS resolution when the health check results are normal.
+	//
+	// 	- disable: The address pool is disabled, and the addresses in the address pool are not returned for DNS resolution regardless of whether the health check results are normal or not.
+	//
 	// example:
 	//
 	// enable
@@ -41558,14 +44880,24 @@ func (s *UpdateCloudGtmAddressPoolEnableStatusRequest) SetEnableStatus(v string)
 }
 
 type UpdateCloudGtmAddressPoolEnableStatusResponseBody struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 89184F33-48A1-4401-9C0F-40E45DB091AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the modification operation was successful:
+	//
+	// - true: Operation was successful
+	//
+	// - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -41625,22 +44957,48 @@ func (s *UpdateCloudGtmAddressPoolEnableStatusResponse) SetBody(v *UpdateCloudGt
 }
 
 type UpdateCloudGtmAddressPoolLbStrategyRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Load balancing policy among addresses in the address pool:
+	//
+	// - round_robin: Round-robin, for any source of DNS resolution requests, all addresses are returned. The order of all addresses is rotated each time.
+	//
+	// - sequence: Sequential, for any source of DNS resolution requests, the address with the smaller sequence number (the sequence number indicates the priority of address returns, with smaller numbers having higher priority) is returned. If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
+	//
+	// - weight: Weighted, supports setting different weight values for each address, realizing the return of addresses according to the weight ratio for resolution queries.
+	//
+	// - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
+	//
 	// example:
 	//
 	// sequence
 	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
+	//
+	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+	//
+	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
@@ -41681,14 +45039,24 @@ func (s *UpdateCloudGtmAddressPoolLbStrategyRequest) SetSequenceLbStrategyMode(v
 }
 
 type UpdateCloudGtmAddressPoolLbStrategyResponseBody struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the modification operation was successful:
+	//
+	// - true: Operation successful
+	//
+	// - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -41748,18 +45116,30 @@ func (s *UpdateCloudGtmAddressPoolLbStrategyResponse) SetBody(v *UpdateCloudGtmA
 }
 
 type UpdateCloudGtmAddressPoolRemarkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The input parameter serves as the updated note; if an empty value is passed, the note will be deleted.
+	//
 	// example:
 	//
 	// test
@@ -41795,14 +45175,24 @@ func (s *UpdateCloudGtmAddressPoolRemarkRequest) SetRemark(v string) *UpdateClou
 }
 
 type UpdateCloudGtmAddressPoolRemarkResponseBody struct {
+	// The ID of the address pool. This ID uniquely identifies the address pool.
+	//
 	// example:
 	//
 	// pool-89528023225442**16
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the modification operation was successful:
+	//
+	// - true: Operation successful
+	//
+	// - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -41862,20 +45252,32 @@ func (s *UpdateCloudGtmAddressPoolRemarkResponse) SetBody(v *UpdateCloudGtmAddre
 }
 
 type UpdateCloudGtmAddressRemarkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the address. This ID uniquely identifies the address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// addr-89518218114368**92
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The input parameter serves as the updated note; if an empty value is passed, the note will be deleted.
+	//
 	// example:
 	//
 	// test
@@ -41911,10 +45313,18 @@ func (s *UpdateCloudGtmAddressRemarkRequest) SetRemark(v string) *UpdateCloudGtm
 }
 
 type UpdateCloudGtmAddressRemarkResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the modification operation was successful:
+	//
+	// - true: Operation was successful
+	//
+	// - false: Operation was failed
+	//
 	// example:
 	//
 	// true
@@ -41969,12 +45379,22 @@ func (s *UpdateCloudGtmAddressRemarkResponse) SetBody(v *UpdateCloudGtmAddressRe
 }
 
 type UpdateCloudGtmGlobalAlertRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// en-US
-	AcceptLanguage *string                                        `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AlertConfig    []*UpdateCloudGtmGlobalAlertRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	AlertGroup     []*string                                      `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The alert configurations.
+	AlertConfig []*UpdateCloudGtmGlobalAlertRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
+	// The alert contact groups.
+	AlertGroup []*string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -42010,18 +45430,48 @@ func (s *UpdateCloudGtmGlobalAlertRequest) SetClientToken(v string) *UpdateCloud
 }
 
 type UpdateCloudGtmGlobalAlertRequestAlertConfig struct {
+	// Specifies whether to configure DingTalk notifications. Valid values:
+	//
+	// 	- true: configures DingTalk notifications. DingTalk notifications are sent when alerts are triggered.
+	//
+	// 	- false: does not configure DingTalk notifications.
+	//
 	// example:
 	//
 	// false
 	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// Specifies whether to configure email notifications. Valid values:
+	//
+	// 	- true: configures email notifications. Emails are sent when alerts are triggered.
+	//
+	// 	- false｜null: does not configure email notifications.
+	//
 	// example:
 	//
 	// true
 	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// The type of the alert event. Valid values:
+	//
+	// 	- addr_alert: The address is unavailable.
+	//
+	// 	- addr_resume: The address becomes available.
+	//
+	// 	- addr_pool_unavailable: The address pool is unavailable.
+	//
+	// 	- addr_pool_available: The address pool becomes available.
+	//
 	// example:
 	//
 	// addr_alert
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// Specifies whether to configure text message notifications. Valid values:
+	//
+	// 	- true: configures text message notifications. Text messages are sent when alerts are triggered.
+	//
+	// 	- false｜null: does not configure text message notifications.
+	//
+	// Only the China site (aliyun.com) supports text message notifications.
+	//
 	// example:
 	//
 	// true
@@ -42057,12 +45507,22 @@ func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetSmsNotice(v bool) *Upda
 }
 
 type UpdateCloudGtmGlobalAlertShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// en-US
-	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The alert configurations.
 	AlertConfigShrink *string `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty"`
-	AlertGroupShrink  *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The alert contact groups.
+	AlertGroupShrink *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
@@ -42098,10 +45558,18 @@ func (s *UpdateCloudGtmGlobalAlertShrinkRequest) SetClientToken(v string) *Updat
 }
 
 type UpdateCloudGtmGlobalAlertResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -42246,9 +45714,9 @@ func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetInstanceId(v string) *Upda
 type UpdateCloudGtmInstanceConfigAlertRequestAlertConfig struct {
 	// Specifies whether to configure DingTalk notifications. Valid values:
 	//
-	// 	- true: DingTalk notifications are configured. DingTalk notifications are sent when alerts are triggered.
+	// 	- true: configures DingTalk notifications. DingTalk notifications are sent when alerts are triggered.
 	//
-	// 	- false: DingTalk notifications are not configured.
+	// 	- false: does not configure DingTalk notifications.
 	//
 	// example:
 	//
@@ -42256,9 +45724,9 @@ type UpdateCloudGtmInstanceConfigAlertRequestAlertConfig struct {
 	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
 	// Specifies whether to configure email notifications. Valid values:
 	//
-	// 	- true: Email notifications are configured. Emails are sent when alerts are triggered.
+	// 	- true: configures email notifications. Emails are sent when alerts are triggered.
 	//
-	// 	- false: Email notifications are not configured.
+	// 	- false: does not configure email notifications.
 	//
 	// example:
 	//
@@ -42280,9 +45748,9 @@ type UpdateCloudGtmInstanceConfigAlertRequestAlertConfig struct {
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
 	// Specifies whether to configure text message notifications. Valid values:
 	//
-	// 	- true: Text message notifications are configured. Text messages are sent when alerts are triggered.
+	// 	- true: configures text message notifications. Text messages are sent when alerts are triggered.
 	//
-	// 	- false: Text message notifications are not configured.
+	// 	- false: does not configure text message notifications.
 	//
 	// Only the China site (aliyun.com) supports text message notifications.
 	//
@@ -42475,31 +45943,54 @@ func (s *UpdateCloudGtmInstanceConfigAlertResponse) SetBody(v *UpdateCloudGtmIns
 }
 
 type UpdateCloudGtmInstanceConfigBasicRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US*	- (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
+	// You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the value of ConfigId for the access domain name.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the GTM 3.0 instance for which you want to modify the TTL configuration.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Host record of the domain accessed by GTM.
+	//
 	// example:
 	//
 	// www
 	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// The zone (such as example.com) or subzone (such as a.example.com) of the GTM access domain name. In most cases, the zone or subzone is hosted in Authoritative DNS Resolution of the Alibaba Cloud DNS console within the account to which the GTM instance belongs.
+	//
 	// example:
 	//
 	// example.com
 	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
-	Ttl              *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The global TTL value, in seconds. The global TTL value affects how long the DNS records that map the access domain name to the addresses in the address pools are cached in the local DNS servers of Internet service providers (ISPs).
+	//
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s UpdateCloudGtmInstanceConfigBasicRequest) String() string {
@@ -42546,10 +46037,18 @@ func (s *UpdateCloudGtmInstanceConfigBasicRequest) SetTtl(v int32) *UpdateCloudG
 }
 
 type UpdateCloudGtmInstanceConfigBasicResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful:
+	//
+	// - **true**: The call succeeded.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -42604,22 +46103,42 @@ func (s *UpdateCloudGtmInstanceConfigBasicResponse) SetBody(v *UpdateCloudGtmIns
 }
 
 type UpdateCloudGtmInstanceConfigEnableStatusRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US*	- (default): English
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
+	// You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The enabling state of the access domain name. Valid values:
+	//
+	// 	- enable
+	//
+	// 	- disable
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
@@ -42660,10 +46179,18 @@ func (s *UpdateCloudGtmInstanceConfigEnableStatusRequest) SetInstanceId(v string
 }
 
 type UpdateCloudGtmInstanceConfigEnableStatusResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF55925
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful:
+	//
+	// - **true**: The call succeeded.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -42718,26 +46245,56 @@ func (s *UpdateCloudGtmInstanceConfigEnableStatusResponse) SetBody(v *UpdateClou
 }
 
 type UpdateCloudGtmInstanceConfigLbStrategyRequest struct {
+	// The language in which the returned results are displayed. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US*	- (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The new policy for load balancing between address pools. Valid values:
+	//
+	// 	- round_robin: All address pools are returned for Domain Name System (DNS) requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+	//
+	// 	- sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+	//
+	// 	- weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+	//
+	// 	- source_nearest: GTM returns different address pools based on the sources of DNS requests. This way, users can access nearby address pools.
+	//
 	// example:
 	//
 	// sequence
 	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
+	// You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the desired access domain name.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the GTM 3.0 instance for which you want to modify the load balancing policy.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The mode used if the address pool with the smallest sequence number is recovered. This parameter is required when AddressPoolLbStrategy is set to sequence. Valid values:
+	//
+	// 	- preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+	//
+	// 	- non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
+	//
 	// example:
 	//
 	// preemptive
@@ -42841,18 +46398,32 @@ func (s *UpdateCloudGtmInstanceConfigLbStrategyResponse) SetBody(v *UpdateCloudG
 }
 
 type UpdateCloudGtmInstanceConfigRemarkRequest struct {
+	// The language in which the returned results are displayed. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US*	- (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	//
+	// You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the GTM 3.0 instance for which you want to modify the description.
+	//
 	// example:
 	//
 	// gtm-cn-wwo3a3hbz**
@@ -42955,18 +46526,30 @@ func (s *UpdateCloudGtmInstanceConfigRemarkResponse) SetBody(v *UpdateCloudGtmIn
 }
 
 type UpdateCloudGtmInstanceNameRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) instance.
+	//
 	// example:
 	//
 	// gtm-cn-jmp3qnw**03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance. You cannot leave this parameter empty.
+	//
 	// example:
 	//
 	// test
@@ -43002,10 +46585,18 @@ func (s *UpdateCloudGtmInstanceNameRequest) SetInstanceName(v string) *UpdateClo
 }
 
 type UpdateCloudGtmInstanceNameResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF55925
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -43060,41 +46651,116 @@ func (s *UpdateCloudGtmInstanceNameResponse) SetBody(v *UpdateCloudGtmInstanceNa
 }
 
 type UpdateCloudGtmMonitorTemplateRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The number of retries. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry options are:
+	//
+	// - 1
+	//
+	// - 2
+	//
+	// - 3
+	//
 	// example:
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+	//
+	// 	- HTTP or HTTPS:
+	//
+	//     host: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//
+	//     path: the URL for HTTP or HTTPS health checks. Default value: /.
+	//
+	//     code: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//
+	//     	- 400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+	//
+	//     	- 500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+	//
+	//     sni: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//
+	//     	- true: enables SNI.
+	//
+	//     	- false: disables SNI.
+	//
+	//     followRedirect: specifies whether to follow 3XX redirects. Valid values:
+	//
+	//     	- true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+	//
+	//     	- false: does not follow 3XX redirects.
+	//
+	// 	- ping:
+	//
+	//     packetNum: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//
+	//     packetLossRate: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Percentage of selected node probe failures (%), that is, the percentage of abnormal detection points among the total detection points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+	//
+	// - 20
+	//
+	// - 50
+	//
+	// - 80
+	//
+	// - 100
+	//
 	// example:
 	//
 	// 50
 	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// The time interval (in seconds) for each health check probe. By default, it probes every 60 seconds. The minimum supported interval for health checks is 15 seconds, available for flagship edition instances.
+	//
 	// example:
 	//
 	// 60
-	Interval     *int32                                              `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
 	IspCityNodes []*UpdateCloudGtmMonitorTemplateRequestIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Repeated"`
+	// The name of the health check probe template, which is generally recommended to be distinguishable and memorable for configuration personnel, ideally indicating the health check protocol for easier identification.
+	//
 	// example:
 	//
 	// Ping-IPv4
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the health check template that you want to modify. This ID uniquely identifies the health check template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Probe timeout (in milliseconds), data packets not returned within the timeout period are considered as health check timeouts:
+	//
+	// - 2000
+	//
+	// - 3000
+	//
+	// - 5000
+	//
+	// - 10000
+	//
 	// example:
 	//
 	// 5000
@@ -43160,10 +46826,14 @@ func (s *UpdateCloudGtmMonitorTemplateRequest) SetTimeout(v int32) *UpdateCloudG
 }
 
 type UpdateCloudGtmMonitorTemplateRequestIspCityNodes struct {
+	// The city code of the health check node.
+	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The Internet service provider (ISP) code of the health check node.
+	//
 	// example:
 	//
 	// 465
@@ -43189,41 +46859,116 @@ func (s *UpdateCloudGtmMonitorTemplateRequestIspCityNodes) SetIspCode(v string) 
 }
 
 type UpdateCloudGtmMonitorTemplateShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US (default): English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The number of retries. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry options are:
+	//
+	// - 1
+	//
+	// - 2
+	//
+	// - 3
+	//
 	// example:
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+	//
+	// 	- HTTP or HTTPS:
+	//
+	//     host: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//
+	//     path: the URL for HTTP or HTTPS health checks. Default value: /.
+	//
+	//     code: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//
+	//     	- 400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+	//
+	//     	- 500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+	//
+	//     sni: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//
+	//     	- true: enables SNI.
+	//
+	//     	- false: disables SNI.
+	//
+	//     followRedirect: specifies whether to follow 3XX redirects. Valid values:
+	//
+	//     	- true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+	//
+	//     	- false: does not follow 3XX redirects.
+	//
+	// 	- ping:
+	//
+	//     packetNum: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//
+	//     packetLossRate: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Percentage of selected node probe failures (%), that is, the percentage of abnormal detection points among the total detection points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+	//
+	// - 20
+	//
+	// - 50
+	//
+	// - 80
+	//
+	// - 100
+	//
 	// example:
 	//
 	// 50
 	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// The time interval (in seconds) for each health check probe. By default, it probes every 60 seconds. The minimum supported interval for health checks is 15 seconds, available for flagship edition instances.
+	//
 	// example:
 	//
 	// 60
-	Interval           *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
 	IspCityNodesShrink *string `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty"`
+	// The name of the health check probe template, which is generally recommended to be distinguishable and memorable for configuration personnel, ideally indicating the health check protocol for easier identification.
+	//
 	// example:
 	//
 	// Ping-IPv4
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the health check template that you want to modify. This ID uniquely identifies the health check template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mtp-89518052425100**80
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Probe timeout (in milliseconds), data packets not returned within the timeout period are considered as health check timeouts:
+	//
+	// - 2000
+	//
+	// - 3000
+	//
+	// - 5000
+	//
+	// - 10000
+	//
 	// example:
 	//
 	// 5000
@@ -43289,10 +47034,18 @@ func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetTimeout(v int32) *Update
 }
 
 type UpdateCloudGtmMonitorTemplateResponseBody struct {
+	// Unique request identification code.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Modify the health check template operation status:
+	//
+	// - true: Operation successful
+	//
+	// - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -43347,18 +47100,30 @@ func (s *UpdateCloudGtmMonitorTemplateResponse) SetBody(v *UpdateCloudGtmMonitor
 }
 
 type UpdateCloudGtmMonitorTemplateRemarkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The new description of the template. If you do not specify this parameter, the original description is deleted.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the health check template. This ID uniquely identifies a health check template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43396,10 +47161,18 @@ func (s *UpdateCloudGtmMonitorTemplateRemarkRequest) SetTemplateId(v string) *Up
 }
 
 type UpdateCloudGtmMonitorTemplateRemarkResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Modify the health check template remark operation status:
+	//
+	// - true: Operation successful
+	//
+	// - false: Operation failed
+	//
 	// example:
 	//
 	// true
@@ -44439,19 +48212,19 @@ type UpdateDnsGtmAddressPoolRequestAddr struct {
 	//
 	// 1.1.1.1
 	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	// The source region of the address, in JSON-formatted string.
+	// The information about the source region of the address. The value of the parameter is a string in the JSON format. Valid values:
 	//
-	// 	- LineCode: the line code of the source region of the address. The LineCode field is deprecated, and the lineCodes field is used as a substitute.
+	// 	- LineCode: the line code of the source region. This parameter is deprecated. Use lineCodes instead.
 	//
-	// 	- LineCodes: the line code list of the source regions of addresses.
+	// 	- lineCodes: the line codes of the source region
 	//
-	// 	- lineCodeRectifyType: the rectification type of the line codes. Default value: AUTO. Valid values:
+	// 	- lineCodeRectifyType: the rectification type of the line code. Default value: AUTO. Valid values:
 	//
-	//     	- NO_NEED: no need for rectification.
+	//     	- NO_NEED: no need for rectification
 	//
-	//     	- RECTIFIED: rectified.
+	//     	- RECTIFIED: rectified
 	//
-	//     	- AUTO: automatic rectification.
+	//     	- AUTO: automatic rectification
 	//
 	// example:
 	//
@@ -44463,13 +48236,13 @@ type UpdateDnsGtmAddressPoolRequestAddr struct {
 	//
 	// 1
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The response mode: Valid values:
+	// The return mode of the addresses. Valid values:
 	//
-	// 	- SMART: smart return.
+	// 	- SMART: smart return
 	//
-	// 	- ONLINE: always online.
+	// 	- ONLINE: always online
 	//
-	// 	- OFFLINE: always offline.
+	// 	- OFFLINE: always offline
 	//
 	// This parameter is required.
 	//
@@ -44477,7 +48250,7 @@ type UpdateDnsGtmAddressPoolRequestAddr struct {
 	//
 	// online
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The additional information about the address.
+	// The description of the address pool.
 	//
 	// example:
 	//
@@ -44924,7 +48697,7 @@ type UpdateDnsGtmMonitorRequest struct {
 	//
 	// http
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The health check timeout period. Unit: milliseconds.
+	// The timeout period. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -45065,7 +48838,7 @@ func (s *UpdateDnsGtmMonitorResponse) SetBody(v *UpdateDnsGtmMonitorResponseBody
 }
 
 type UpdateDomainGroupRequest struct {
-	// The ID of the domain name group.
+	// The ID of the domain name group whose name you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -45081,7 +48854,13 @@ type UpdateDomainGroupRequest struct {
 	//
 	// NewName
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
@@ -45192,11 +48971,11 @@ type UpdateDomainRecordRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The DNS resolution line. Default value: **default**.
+	// The resolution line. Default value: **default**.
 	//
 	// For more information, see
 	//
-	// [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+	// [DNS resolution lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
 	//
 	// example:
 	//
@@ -45204,7 +48983,7 @@ type UpdateDomainRecordRequest struct {
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	// The priority of the mail exchanger (MX) record. Valid values: `1 to 50`.
 	//
-	// This parameter must be specified if the type of the DNS record is MX.
+	// This parameter is required if the type of the DNS record is MX.
 	//
 	// example:
 	//
@@ -45228,7 +49007,7 @@ type UpdateDomainRecordRequest struct {
 	//
 	// 9999985
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The time-to-live (TTL) of the DNS record. Default value: 600. Unit: seconds.
+	// The time to live (TTL) value of the Domain Name System (DNS) record. Default value: 600. Unit: seconds.
 	//
 	// For more information, see
 	//
@@ -45492,13 +49271,21 @@ type UpdateDomainRemarkRequest struct {
 	//
 	// mydomain.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// Default value: en
 	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The description of your domain name.
+	//
+	// It can be up to 50 characters in length and can contain digits, letters, and the following special characters: _ - , .
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
@@ -46648,6 +50435,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("Alidns")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("central")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -46731,13 +50525,24 @@ func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddCustomLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddCustomLineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddCustomLineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46825,13 +50630,24 @@ func (client *Client) AddDnsCacheDomainWithOptions(request *AddDnsCacheDomainReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDnsCacheDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDnsCacheDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDnsCacheDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - AddDnsCacheDomainRequest
@@ -46945,13 +50761,24 @@ func (client *Client) AddDnsGtmAccessStrategyWithOptions(request *AddDnsGtmAcces
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDnsGtmAccessStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDnsGtmAccessStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDnsGtmAccessStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47053,13 +50880,24 @@ func (client *Client) AddDnsGtmAddressPoolWithOptions(request *AddDnsGtmAddressP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDnsGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDnsGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDnsGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47145,13 +50983,24 @@ func (client *Client) AddDnsGtmMonitorWithOptions(request *AddDnsGtmMonitorReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDnsGtmMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDnsGtmMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDnsGtmMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47227,13 +51076,24 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47301,13 +51161,24 @@ func (client *Client) AddDomainBackupWithOptions(request *AddDomainBackupRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDomainBackupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDomainBackupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDomainBackupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47365,13 +51236,24 @@ func (client *Client) AddDomainGroupWithOptions(request *AddDomainGroupRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDomainGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDomainGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDomainGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47457,13 +51339,24 @@ func (client *Client) AddDomainRecordWithOptions(request *AddDomainRecordRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDomainRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDomainRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDomainRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47533,13 +51426,24 @@ func (client *Client) AddGtmAccessStrategyWithOptions(request *AddGtmAccessStrat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddGtmAccessStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddGtmAccessStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddGtmAccessStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - AddGtmAccessStrategyRequest
@@ -47637,13 +51541,24 @@ func (client *Client) AddGtmAddressPoolWithOptions(request *AddGtmAddressPoolReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47725,13 +51640,24 @@ func (client *Client) AddGtmMonitorWithOptions(request *AddGtmMonitorRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddGtmMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddGtmMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddGtmMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47752,6 +51678,10 @@ func (client *Client) AddGtmMonitor(request *AddGtmMonitorRequest) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a disaster recovery plan.
+//
 // @param request - AddGtmRecoveryPlanRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -47793,15 +51723,30 @@ func (client *Client) AddGtmRecoveryPlanWithOptions(request *AddGtmRecoveryPlanR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddGtmRecoveryPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddGtmRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddGtmRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a disaster recovery plan.
+//
 // @param request - AddGtmRecoveryPlanRequest
 //
 // @return AddGtmRecoveryPlanResponse
@@ -47863,13 +51808,24 @@ func (client *Client) BindInstanceDomainsWithOptions(request *BindInstanceDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BindInstanceDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BindInstanceDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BindInstanceDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47941,13 +51897,24 @@ func (client *Client) ChangeDomainGroupWithOptions(request *ChangeDomainGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeDomainGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeDomainGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeDomainGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47974,11 +51941,13 @@ func (client *Client) ChangeDomainGroup(request *ChangeDomainGroupRequest) (_res
 
 // Summary:
 //
-// Changes the domain name bound to an Alibaba Cloud DNS instance.
+// Changes the domain name that is bound to an Alibaba Cloud DNS instance.
 //
 // Description:
 //
-// >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+//   **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**
+//
+// 	- **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
 //
 // @param request - ChangeDomainOfDnsProductRequest
 //
@@ -48025,22 +51994,35 @@ func (client *Client) ChangeDomainOfDnsProductWithOptions(request *ChangeDomainO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeDomainOfDnsProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeDomainOfDnsProductResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeDomainOfDnsProductResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Changes the domain name bound to an Alibaba Cloud DNS instance.
+// Changes the domain name that is bound to an Alibaba Cloud DNS instance.
 //
 // Description:
 //
-// >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+//   **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**
+//
+// 	- **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
 //
 // @param request - ChangeDomainOfDnsProductRequest
 //
@@ -48056,6 +52038,10 @@ func (client *Client) ChangeDomainOfDnsProduct(request *ChangeDomainOfDnsProduct
 	return _result, _err
 }
 
+// Summary:
+//
+// Copies the configurations of a Global Traffic Manager (GTM) instance.
+//
 // @param request - CopyGtmConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48097,15 +52083,30 @@ func (client *Client) CopyGtmConfigWithOptions(request *CopyGtmConfigRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CopyGtmConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CopyGtmConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CopyGtmConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Copies the configurations of a Global Traffic Manager (GTM) instance.
+//
 // @param request - CopyGtmConfigRequest
 //
 // @return CopyGtmConfigResponse
@@ -48120,6 +52121,10 @@ func (client *Client) CopyGtmConfig(request *CopyGtmConfigRequest) (_result *Cop
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an address.
+//
 // @param tmpReq - CreateCloudGtmAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48199,15 +52204,30 @@ func (client *Client) CreateCloudGtmAddressWithOptions(tmpReq *CreateCloudGtmAdd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCloudGtmAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCloudGtmAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCloudGtmAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an address.
+//
 // @param request - CreateCloudGtmAddressRequest
 //
 // @return CreateCloudGtmAddressResponse
@@ -48222,6 +52242,10 @@ func (client *Client) CreateCloudGtmAddress(request *CreateCloudGtmAddressReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an address pool.
+//
 // @param request - CreateCloudGtmAddressPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48275,15 +52299,30 @@ func (client *Client) CreateCloudGtmAddressPoolWithOptions(request *CreateCloudG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCloudGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCloudGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCloudGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an address pool.
+//
 // @param request - CreateCloudGtmAddressPoolRequest
 //
 // @return CreateCloudGtmAddressPoolResponse
@@ -48363,13 +52402,24 @@ func (client *Client) CreateCloudGtmInstanceConfigWithOptions(request *CreateClo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCloudGtmInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCloudGtmInstanceConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCloudGtmInstanceConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - CreateCloudGtmInstanceConfigRequest
@@ -48386,6 +52436,10 @@ func (client *Client) CreateCloudGtmInstanceConfig(request *CreateCloudGtmInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a health check template.
+//
 // @param tmpReq - CreateCloudGtmMonitorTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48461,15 +52515,30 @@ func (client *Client) CreateCloudGtmMonitorTemplateWithOptions(tmpReq *CreateClo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCloudGtmMonitorTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCloudGtmMonitorTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCloudGtmMonitorTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a health check template.
+//
 // @param request - CreateCloudGtmMonitorTemplateRequest
 //
 // @return CreateCloudGtmMonitorTemplateResponse
@@ -48503,6 +52572,10 @@ func (client *Client) CreatePdnsAppKeyWithOptions(request *CreatePdnsAppKeyReque
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -48517,13 +52590,24 @@ func (client *Client) CreatePdnsAppKeyWithOptions(request *CreatePdnsAppKeyReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePdnsAppKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePdnsAppKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePdnsAppKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48589,13 +52673,24 @@ func (client *Client) CreatePdnsUdpIpSegmentWithOptions(request *CreatePdnsUdpIp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePdnsUdpIpSegmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePdnsUdpIpSegmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePdnsUdpIpSegmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48616,6 +52711,10 @@ func (client *Client) CreatePdnsUdpIpSegment(request *CreatePdnsUdpIpSegmentRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an address.
+//
 // @param request - DeleteCloudGtmAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48653,15 +52752,30 @@ func (client *Client) DeleteCloudGtmAddressWithOptions(request *DeleteCloudGtmAd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCloudGtmAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCloudGtmAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCloudGtmAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an address.
+//
 // @param request - DeleteCloudGtmAddressRequest
 //
 // @return DeleteCloudGtmAddressResponse
@@ -48676,6 +52790,10 @@ func (client *Client) DeleteCloudGtmAddress(request *DeleteCloudGtmAddressReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an address pool.
+//
 // @param request - DeleteCloudGtmAddressPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48713,15 +52831,30 @@ func (client *Client) DeleteCloudGtmAddressPoolWithOptions(request *DeleteCloudG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCloudGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCloudGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCloudGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an address pool.
+//
 // @param request - DeleteCloudGtmAddressPoolRequest
 //
 // @return DeleteCloudGtmAddressPoolResponse
@@ -48736,6 +52869,10 @@ func (client *Client) DeleteCloudGtmAddressPool(request *DeleteCloudGtmAddressPo
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+//
 // @param request - DeleteCloudGtmInstanceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48777,15 +52914,30 @@ func (client *Client) DeleteCloudGtmInstanceConfigWithOptions(request *DeleteClo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCloudGtmInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCloudGtmInstanceConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCloudGtmInstanceConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+//
 // @param request - DeleteCloudGtmInstanceConfigRequest
 //
 // @return DeleteCloudGtmInstanceConfigResponse
@@ -48800,6 +52952,10 @@ func (client *Client) DeleteCloudGtmInstanceConfig(request *DeleteCloudGtmInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a health check template.
+//
 // @param request - DeleteCloudGtmMonitorTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48837,15 +52993,30 @@ func (client *Client) DeleteCloudGtmMonitorTemplateWithOptions(request *DeleteCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCloudGtmMonitorTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCloudGtmMonitorTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCloudGtmMonitorTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a health check template.
+//
 // @param request - DeleteCloudGtmMonitorTemplateRequest
 //
 // @return DeleteCloudGtmMonitorTemplateResponse
@@ -48897,13 +53068,24 @@ func (client *Client) DeleteCustomLinesWithOptions(request *DeleteCustomLinesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCustomLinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCustomLinesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCustomLinesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48957,13 +53139,24 @@ func (client *Client) DeleteDnsCacheDomainWithOptions(request *DeleteDnsCacheDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDnsCacheDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDnsCacheDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDnsCacheDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteDnsCacheDomainRequest
@@ -49013,13 +53206,24 @@ func (client *Client) DeleteDnsGtmAccessStrategyWithOptions(request *DeleteDnsGt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDnsGtmAccessStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDnsGtmAccessStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDnsGtmAccessStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteDnsGtmAccessStrategyRequest
@@ -49069,13 +53273,24 @@ func (client *Client) DeleteDnsGtmAddressPoolWithOptions(request *DeleteDnsGtmAd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDnsGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDnsGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDnsGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteDnsGtmAddressPoolRequest
@@ -49129,13 +53344,24 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49197,13 +53423,24 @@ func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDomainGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDomainGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDomainGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49269,13 +53506,24 @@ func (client *Client) DeleteDomainRecordWithOptions(request *DeleteDomainRecordR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDomainRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDomainRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDomainRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49329,13 +53577,24 @@ func (client *Client) DeleteGtmAccessStrategyWithOptions(request *DeleteGtmAcces
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteGtmAccessStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteGtmAccessStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteGtmAccessStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteGtmAccessStrategyRequest
@@ -49385,13 +53644,24 @@ func (client *Client) DeleteGtmAddressPoolWithOptions(request *DeleteGtmAddressP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteGtmAddressPoolRequest
@@ -49441,13 +53711,24 @@ func (client *Client) DeleteGtmRecoveryPlanWithOptions(request *DeleteGtmRecover
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteGtmRecoveryPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteGtmRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteGtmRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DeleteGtmRecoveryPlanRequest
@@ -49513,13 +53794,24 @@ func (client *Client) DeleteSubDomainRecordsWithOptions(request *DeleteSubDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSubDomainRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSubDomainRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSubDomainRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -49540,6 +53832,10 @@ func (client *Client) DeleteSubDomainRecords(request *DeleteSubDomainRecordsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the result of a batch operation task.
+//
 // @param request - DescribeBatchResultCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49577,15 +53873,30 @@ func (client *Client) DescribeBatchResultCountWithOptions(request *DescribeBatch
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBatchResultCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBatchResultCountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBatchResultCountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the result of a batch operation task.
+//
 // @param request - DescribeBatchResultCountRequest
 //
 // @return DescribeBatchResultCountResponse
@@ -49657,13 +53968,24 @@ func (client *Client) DescribeBatchResultDetailWithOptions(request *DescribeBatc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBatchResultDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBatchResultDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBatchResultDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49688,6 +54010,10 @@ func (client *Client) DescribeBatchResultDetail(request *DescribeBatchResultDeta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of an address.
+//
 // @param request - DescribeCloudGtmAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49725,15 +54051,30 @@ func (client *Client) DescribeCloudGtmAddressWithOptions(request *DescribeCloudG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the configurations of an address.
+//
 // @param request - DescribeCloudGtmAddressRequest
 //
 // @return DescribeCloudGtmAddressResponse
@@ -49748,6 +54089,10 @@ func (client *Client) DescribeCloudGtmAddress(request *DescribeCloudGtmAddressRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of an address pool.
+//
 // @param request - DescribeCloudGtmAddressPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49785,15 +54130,30 @@ func (client *Client) DescribeCloudGtmAddressPoolWithOptions(request *DescribeCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the configurations of an address pool.
+//
 // @param request - DescribeCloudGtmAddressPoolRequest
 //
 // @return DescribeCloudGtmAddressPoolResponse
@@ -49808,6 +54168,10 @@ func (client *Client) DescribeCloudGtmAddressPool(request *DescribeCloudGtmAddre
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the access domain names that reference an address pool.
+//
 // @param request - DescribeCloudGtmAddressPoolReferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49845,15 +54209,30 @@ func (client *Client) DescribeCloudGtmAddressPoolReferenceWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmAddressPoolReferenceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmAddressPoolReferenceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmAddressPoolReferenceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about the access domain names that reference an address pool.
+//
 // @param request - DescribeCloudGtmAddressPoolReferenceRequest
 //
 // @return DescribeCloudGtmAddressPoolReferenceResponse
@@ -49868,6 +54247,10 @@ func (client *Client) DescribeCloudGtmAddressPoolReference(request *DescribeClou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+//
 // @param request - DescribeCloudGtmAddressReferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49905,15 +54288,30 @@ func (client *Client) DescribeCloudGtmAddressReferenceWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmAddressReferenceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmAddressReferenceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmAddressReferenceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+//
 // @param request - DescribeCloudGtmAddressReferenceRequest
 //
 // @return DescribeCloudGtmAddressReferenceResponse
@@ -49961,13 +54359,24 @@ func (client *Client) DescribeCloudGtmGlobalAlertWithOptions(request *DescribeCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmGlobalAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmGlobalAlertResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmGlobalAlertResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeCloudGtmGlobalAlertRequest
@@ -50025,13 +54434,24 @@ func (client *Client) DescribeCloudGtmInstanceConfigAlertWithOptions(request *De
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmInstanceConfigAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmInstanceConfigAlertResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmInstanceConfigAlertResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeCloudGtmInstanceConfigAlertRequest
@@ -50093,13 +54513,24 @@ func (client *Client) DescribeCloudGtmInstanceConfigFullInfoWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmInstanceConfigFullInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmInstanceConfigFullInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmInstanceConfigFullInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50120,6 +54551,10 @@ func (client *Client) DescribeCloudGtmInstanceConfigFullInfo(request *DescribeCl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a health check template.
+//
 // @param request - DescribeCloudGtmMonitorTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50153,15 +54588,30 @@ func (client *Client) DescribeCloudGtmMonitorTemplateWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmMonitorTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmMonitorTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmMonitorTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the configurations of a health check template.
+//
 // @param request - DescribeCloudGtmMonitorTemplateRequest
 //
 // @return DescribeCloudGtmMonitorTemplateResponse
@@ -50205,13 +54655,24 @@ func (client *Client) DescribeCloudGtmSummaryWithOptions(request *DescribeCloudG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeCloudGtmSummaryRequest
@@ -50246,13 +54707,24 @@ func (client *Client) DescribeCloudGtmSystemLinesWithOptions(runtime *util.Runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudGtmSystemLinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudGtmSystemLinesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudGtmSystemLinesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @return DescribeCloudGtmSystemLinesResponse
@@ -50304,13 +54776,24 @@ func (client *Client) DescribeCustomLineWithOptions(request *DescribeCustomLineR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCustomLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCustomLineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCustomLineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50333,7 +54816,7 @@ func (client *Client) DescribeCustomLine(request *DescribeCustomLineRequest) (_r
 
 // Summary:
 //
-// Queries custom lines.
+// Queries a list of custom lines.
 //
 // @param request - DescribeCustomLinesRequest
 //
@@ -50376,18 +54859,29 @@ func (client *Client) DescribeCustomLinesWithOptions(request *DescribeCustomLine
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCustomLinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCustomLinesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCustomLinesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries custom lines.
+// Queries a list of custom lines.
 //
 // @param request - DescribeCustomLinesRequest
 //
@@ -50456,13 +54950,24 @@ func (client *Client) DescribeDNSSLBSubDomainsWithOptions(request *DescribeDNSSL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDNSSLBSubDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDNSSLBSubDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDNSSLBSubDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50524,13 +55029,24 @@ func (client *Client) DescribeDnsCacheDomainsWithOptions(request *DescribeDnsCac
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsCacheDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsCacheDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsCacheDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDnsCacheDomainsRequest
@@ -50596,13 +55112,24 @@ func (client *Client) DescribeDnsGtmAccessStrategiesWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmAccessStrategiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmAccessStrategiesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmAccessStrategiesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50660,13 +55187,24 @@ func (client *Client) DescribeDnsGtmAccessStrategyWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmAccessStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmAccessStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmAccessStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50728,13 +55266,24 @@ func (client *Client) DescribeDnsGtmAccessStrategyAvailableConfigWithOptions(req
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmAccessStrategyAvailableConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmAccessStrategyAvailableConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmAccessStrategyAvailableConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50755,6 +55304,10 @@ func (client *Client) DescribeDnsGtmAccessStrategyAvailableConfig(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the source regions of addresses.
+//
 // @param request - DescribeDnsGtmAddrAttributeInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50792,15 +55345,30 @@ func (client *Client) DescribeDnsGtmAddrAttributeInfoWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmAddrAttributeInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmAddrAttributeInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmAddrAttributeInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the source regions of addresses.
+//
 // @param request - DescribeDnsGtmAddrAttributeInfoRequest
 //
 // @return DescribeDnsGtmAddrAttributeInfoResponse
@@ -50852,13 +55420,24 @@ func (client *Client) DescribeDnsGtmAddressPoolAvailableConfigWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmAddressPoolAvailableConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmAddressPoolAvailableConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmAddressPoolAvailableConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50908,13 +55487,24 @@ func (client *Client) DescribeDnsGtmAvailableAlertGroupWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmAvailableAlertGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmAvailableAlertGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmAvailableAlertGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDnsGtmAvailableAlertGroupRequest
@@ -50968,13 +55558,24 @@ func (client *Client) DescribeDnsGtmInstanceWithOptions(request *DescribeDnsGtmI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51032,13 +55633,24 @@ func (client *Client) DescribeDnsGtmInstanceAddressPoolWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmInstanceAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmInstanceAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmInstanceAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51104,13 +55716,24 @@ func (client *Client) DescribeDnsGtmInstanceAddressPoolsWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmInstanceAddressPoolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmInstanceAddressPoolsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmInstanceAddressPoolsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51168,13 +55791,24 @@ func (client *Client) DescribeDnsGtmInstanceStatusWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmInstanceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmInstanceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmInstanceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51232,13 +55866,24 @@ func (client *Client) DescribeDnsGtmInstanceSystemCnameWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmInstanceSystemCnameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmInstanceSystemCnameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmInstanceSystemCnameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51259,6 +55904,10 @@ func (client *Client) DescribeDnsGtmInstanceSystemCname(request *DescribeDnsGtmI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of instances.
+//
 // @param request - DescribeDnsGtmInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -51304,15 +55953,30 @@ func (client *Client) DescribeDnsGtmInstancesWithOptions(request *DescribeDnsGtm
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of instances.
+//
 // @param request - DescribeDnsGtmInstancesRequest
 //
 // @return DescribeDnsGtmInstancesResponse
@@ -51384,13 +56048,24 @@ func (client *Client) DescribeDnsGtmLogsWithOptions(request *DescribeDnsGtmLogsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51413,7 +56088,7 @@ func (client *Client) DescribeDnsGtmLogs(request *DescribeDnsGtmLogsRequest) (_r
 
 // Summary:
 //
-// Queries available monitored nodes.
+// Queries the configuration items that can be set for a health check task.
 //
 // @param request - DescribeDnsGtmMonitorAvailableConfigRequest
 //
@@ -51444,18 +56119,29 @@ func (client *Client) DescribeDnsGtmMonitorAvailableConfigWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmMonitorAvailableConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmMonitorAvailableConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmMonitorAvailableConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries available monitored nodes.
+// Queries the configuration items that can be set for a health check task.
 //
 // @param request - DescribeDnsGtmMonitorAvailableConfigRequest
 //
@@ -51473,7 +56159,7 @@ func (client *Client) DescribeDnsGtmMonitorAvailableConfig(request *DescribeDnsG
 
 // Summary:
 //
-// Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+// Queries the health check configuration of an address pool.
 //
 // @param request - DescribeDnsGtmMonitorConfigRequest
 //
@@ -51508,18 +56194,29 @@ func (client *Client) DescribeDnsGtmMonitorConfigWithOptions(request *DescribeDn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsGtmMonitorConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsGtmMonitorConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsGtmMonitorConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+// Queries the health check configuration of an address pool.
 //
 // @param request - DescribeDnsGtmMonitorConfigRequest
 //
@@ -51576,13 +56273,24 @@ func (client *Client) DescribeDnsProductInstanceWithOptions(request *DescribeDns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsProductInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsProductInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsProductInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51668,13 +56376,24 @@ func (client *Client) DescribeDnsProductInstancesWithOptions(request *DescribeDn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDnsProductInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDnsProductInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDnsProductInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51736,13 +56455,24 @@ func (client *Client) DescribeDohAccountStatisticsWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDohAccountStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDohAccountStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDohAccountStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDohAccountStatisticsRequest
@@ -51800,13 +56530,24 @@ func (client *Client) DescribeDohDomainStatisticsWithOptions(request *DescribeDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDohDomainStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDohDomainStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDohDomainStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDohDomainStatisticsRequest
@@ -51872,13 +56613,24 @@ func (client *Client) DescribeDohDomainStatisticsSummaryWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDohDomainStatisticsSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDohDomainStatisticsSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDohDomainStatisticsSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDohDomainStatisticsSummaryRequest
@@ -51936,13 +56688,24 @@ func (client *Client) DescribeDohSubDomainStatisticsWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDohSubDomainStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDohSubDomainStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDohSubDomainStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDohSubDomainStatisticsRequest
@@ -52012,13 +56775,24 @@ func (client *Client) DescribeDohSubDomainStatisticsSummaryWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDohSubDomainStatisticsSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDohSubDomainStatisticsSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDohSubDomainStatisticsSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDohSubDomainStatisticsSummaryRequest
@@ -52076,13 +56850,24 @@ func (client *Client) DescribeDohUserInfoWithOptions(request *DescribeDohUserInf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDohUserInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDohUserInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDohUserInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52140,13 +56925,24 @@ func (client *Client) DescribeDomainDnssecInfoWithOptions(request *DescribeDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainDnssecInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainDnssecInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainDnssecInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52212,13 +57008,24 @@ func (client *Client) DescribeDomainGroupsWithOptions(request *DescribeDomainGro
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52284,13 +57091,24 @@ func (client *Client) DescribeDomainInfoWithOptions(request *DescribeDomainInfoR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52376,13 +57194,24 @@ func (client *Client) DescribeDomainLogsWithOptions(request *DescribeDomainLogsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52444,13 +57273,24 @@ func (client *Client) DescribeDomainNsWithOptions(request *DescribeDomainNsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainNsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainNsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainNsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52522,13 +57362,24 @@ func (client *Client) DescribeDomainRecordInfoWithOptions(request *DescribeDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainRecordInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainRecordInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainRecordInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52654,13 +57505,24 @@ func (client *Client) DescribeDomainRecordsWithOptions(request *DescribeDomainRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52756,13 +57618,24 @@ func (client *Client) DescribeDomainResolveStatisticsSummaryWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainResolveStatisticsSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainResolveStatisticsSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainResolveStatisticsSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52836,13 +57709,24 @@ func (client *Client) DescribeDomainStatisticsWithOptions(request *DescribeDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52928,13 +57812,24 @@ func (client *Client) DescribeDomainStatisticsSummaryWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainStatisticsSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainStatisticsSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainStatisticsSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53026,13 +57921,24 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53108,13 +58014,24 @@ func (client *Client) DescribeGtmAccessStrategiesWithOptions(request *DescribeGt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmAccessStrategiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmAccessStrategiesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmAccessStrategiesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53172,13 +58089,24 @@ func (client *Client) DescribeGtmAccessStrategyWithOptions(request *DescribeGtmA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmAccessStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmAccessStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmAccessStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53236,13 +58164,24 @@ func (client *Client) DescribeGtmAccessStrategyAvailableConfigWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmAccessStrategyAvailableConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmAccessStrategyAvailableConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmAccessStrategyAvailableConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53292,13 +58231,24 @@ func (client *Client) DescribeGtmAvailableAlertGroupWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmAvailableAlertGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmAvailableAlertGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmAvailableAlertGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeGtmAvailableAlertGroupRequest
@@ -53356,13 +58306,24 @@ func (client *Client) DescribeGtmInstanceWithOptions(request *DescribeGtmInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53420,13 +58381,24 @@ func (client *Client) DescribeGtmInstanceAddressPoolWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmInstanceAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmInstanceAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmInstanceAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53492,13 +58464,24 @@ func (client *Client) DescribeGtmInstanceAddressPoolsWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmInstanceAddressPoolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmInstanceAddressPoolsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmInstanceAddressPoolsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53521,7 +58504,7 @@ func (client *Client) DescribeGtmInstanceAddressPools(request *DescribeGtmInstan
 
 // Summary:
 //
-// Queries the current status of a Global Traffic Manager (GTM) instance.
+// Queries the status of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmInstanceStatusRequest
 //
@@ -53556,18 +58539,29 @@ func (client *Client) DescribeGtmInstanceStatusWithOptions(request *DescribeGtmI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmInstanceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmInstanceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmInstanceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the current status of a Global Traffic Manager (GTM) instance.
+// Queries the status of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmInstanceStatusRequest
 //
@@ -53616,13 +58610,24 @@ func (client *Client) DescribeGtmInstanceSystemCnameWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmInstanceSystemCnameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmInstanceSystemCnameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmInstanceSystemCnameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeGtmInstanceSystemCnameRequest
@@ -53692,13 +58697,24 @@ func (client *Client) DescribeGtmInstancesWithOptions(request *DescribeGtmInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53776,13 +58792,24 @@ func (client *Client) DescribeGtmLogsWithOptions(request *DescribeGtmLogsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53836,13 +58863,24 @@ func (client *Client) DescribeGtmMonitorAvailableConfigWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmMonitorAvailableConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmMonitorAvailableConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmMonitorAvailableConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53900,13 +58938,24 @@ func (client *Client) DescribeGtmMonitorConfigWithOptions(request *DescribeGtmMo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmMonitorConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmMonitorConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmMonitorConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53929,7 +58978,7 @@ func (client *Client) DescribeGtmMonitorConfig(request *DescribeGtmMonitorConfig
 
 // Summary:
 //
-// You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+// Queries the details of a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanRequest
 //
@@ -53964,18 +59013,29 @@ func (client *Client) DescribeGtmRecoveryPlanWithOptions(request *DescribeGtmRec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmRecoveryPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+// Queries the details of a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanRequest
 //
@@ -53993,7 +59053,7 @@ func (client *Client) DescribeGtmRecoveryPlan(request *DescribeGtmRecoveryPlanRe
 
 // Summary:
 //
-// You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+// Queries the configuration items that can be set for a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanAvailableConfigRequest
 //
@@ -54024,18 +59084,29 @@ func (client *Client) DescribeGtmRecoveryPlanAvailableConfigWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmRecoveryPlanAvailableConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmRecoveryPlanAvailableConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmRecoveryPlanAvailableConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+// Queries the configuration items that can be set for a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanAvailableConfigRequest
 //
@@ -54096,13 +59167,24 @@ func (client *Client) DescribeGtmRecoveryPlansWithOptions(request *DescribeGtmRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeGtmRecoveryPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGtmRecoveryPlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGtmRecoveryPlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54168,13 +59250,24 @@ func (client *Client) DescribeInstanceDomainsWithOptions(request *DescribeInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54256,13 +59349,24 @@ func (client *Client) DescribeInternetDnsLogsWithOptions(request *DescribeIntern
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInternetDnsLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInternetDnsLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInternetDnsLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeInternetDnsLogsRequest
@@ -54340,13 +59444,24 @@ func (client *Client) DescribeIspFlushCacheInstancesWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeIspFlushCacheInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeIspFlushCacheInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeIspFlushCacheInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54400,13 +59515,24 @@ func (client *Client) DescribeIspFlushCacheRemainQuotaWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeIspFlushCacheRemainQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeIspFlushCacheRemainQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeIspFlushCacheRemainQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54464,13 +59590,24 @@ func (client *Client) DescribeIspFlushCacheTaskWithOptions(request *DescribeIspF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeIspFlushCacheTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeIspFlushCacheTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeIspFlushCacheTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54552,13 +59689,24 @@ func (client *Client) DescribeIspFlushCacheTasksWithOptions(request *DescribeIsp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeIspFlushCacheTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeIspFlushCacheTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeIspFlushCacheTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54620,13 +59768,24 @@ func (client *Client) DescribePdnsAccountSummaryWithOptions(request *DescribePdn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsAccountSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsAccountSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsAccountSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54688,13 +59847,24 @@ func (client *Client) DescribePdnsAppKeyWithOptions(request *DescribePdnsAppKeyR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsAppKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsAppKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsAppKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54748,13 +59918,24 @@ func (client *Client) DescribePdnsAppKeysWithOptions(request *DescribePdnsAppKey
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsAppKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsAppKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsAppKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54832,13 +60013,24 @@ func (client *Client) DescribePdnsOperateLogsWithOptions(request *DescribePdnsOp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsOperateLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsOperateLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsOperateLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54908,13 +60100,24 @@ func (client *Client) DescribePdnsRequestStatisticWithOptions(request *DescribeP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsRequestStatisticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsRequestStatisticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsRequestStatisticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54996,13 +60199,24 @@ func (client *Client) DescribePdnsRequestStatisticsWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsRequestStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsRequestStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsRequestStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55088,13 +60302,24 @@ func (client *Client) DescribePdnsThreatLogsWithOptions(request *DescribePdnsThr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsThreatLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsThreatLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsThreatLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55160,13 +60385,24 @@ func (client *Client) DescribePdnsThreatStatisticWithOptions(request *DescribePd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsThreatStatisticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsThreatStatisticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsThreatStatisticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55268,13 +60504,24 @@ func (client *Client) DescribePdnsThreatStatisticsWithOptions(request *DescribeP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsThreatStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsThreatStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsThreatStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55336,13 +60583,24 @@ func (client *Client) DescribePdnsUdpIpSegmentsWithOptions(request *DescribePdns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsUdpIpSegmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsUdpIpSegmentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsUdpIpSegmentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55396,13 +60654,24 @@ func (client *Client) DescribePdnsUserInfoWithOptions(request *DescribePdnsUserI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePdnsUserInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePdnsUserInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePdnsUserInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55484,13 +60753,24 @@ func (client *Client) DescribeRecordLogsWithOptions(request *DescribeRecordLogsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRecordLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRecordLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRecordLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55584,13 +60864,24 @@ func (client *Client) DescribeRecordResolveStatisticsSummaryWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRecordResolveStatisticsSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRecordResolveStatisticsSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRecordResolveStatisticsSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55668,13 +60959,24 @@ func (client *Client) DescribeRecordStatisticsWithOptions(request *DescribeRecor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRecordStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRecordStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRecordStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55768,13 +61070,24 @@ func (client *Client) DescribeRecordStatisticsSummaryWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRecordStatisticsSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRecordStatisticsSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRecordStatisticsSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55856,13 +61169,24 @@ func (client *Client) DescribeSubDomainRecordsWithOptions(request *DescribeSubDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSubDomainRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSubDomainRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSubDomainRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55883,10 +61207,6 @@ func (client *Client) DescribeSubDomainRecords(request *DescribeSubDomainRecords
 	return _result, _err
 }
 
-// Summary:
-//
-// 查询云解析支持的所有线路列表。
-//
 // @param request - DescribeSupportLinesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -55924,19 +61244,26 @@ func (client *Client) DescribeSupportLinesWithOptions(request *DescribeSupportLi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSupportLinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSupportLinesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSupportLinesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-// Summary:
-//
-// 查询云解析支持的所有线路列表。
-//
 // @param request - DescribeSupportLinesRequest
 //
 // @return DescribeSupportLinesResponse
@@ -55996,13 +61323,24 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56080,13 +61418,24 @@ func (client *Client) DescribeTransferDomainsWithOptions(request *DescribeTransf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTransferDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTransferDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTransferDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56107,6 +61456,10 @@ func (client *Client) DescribeTransferDomains(request *DescribeTransferDomainsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes a disaster recovery plan.
+//
 // @param request - ExecuteGtmRecoveryPlanRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56140,15 +61493,30 @@ func (client *Client) ExecuteGtmRecoveryPlanWithOptions(request *ExecuteGtmRecov
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteGtmRecoveryPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteGtmRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteGtmRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Executes a disaster recovery plan.
+//
 // @param request - ExecuteGtmRecoveryPlanRequest
 //
 // @return ExecuteGtmRecoveryPlanResponse
@@ -56206,13 +61574,24 @@ func (client *Client) GetMainDomainNameWithOptions(request *GetMainDomainNameReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMainDomainNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMainDomainNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMainDomainNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56280,13 +61659,24 @@ func (client *Client) GetTxtRecordForVerifyWithOptions(request *GetTxtRecordForV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTxtRecordForVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTxtRecordForVerifyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTxtRecordForVerifyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56307,6 +61697,10 @@ func (client *Client) GetTxtRecordForVerify(request *GetTxtRecordForVerifyReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of address pools.
+//
 // @param request - ListCloudGtmAddressPoolsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56364,15 +61758,30 @@ func (client *Client) ListCloudGtmAddressPoolsWithOptions(request *ListCloudGtmA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCloudGtmAddressPoolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCloudGtmAddressPoolsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCloudGtmAddressPoolsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of address pools.
+//
 // @param request - ListCloudGtmAddressPoolsRequest
 //
 // @return ListCloudGtmAddressPoolsResponse
@@ -56387,6 +61796,10 @@ func (client *Client) ListCloudGtmAddressPools(request *ListCloudGtmAddressPools
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of addresses.
+//
 // @param request - ListCloudGtmAddressesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56456,15 +61869,30 @@ func (client *Client) ListCloudGtmAddressesWithOptions(request *ListCloudGtmAddr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCloudGtmAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCloudGtmAddressesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCloudGtmAddressesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of addresses.
+//
 // @param request - ListCloudGtmAddressesRequest
 //
 // @return ListCloudGtmAddressesResponse
@@ -56536,13 +61964,24 @@ func (client *Client) ListCloudGtmAlertLogsWithOptions(request *ListCloudGtmAler
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCloudGtmAlertLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCloudGtmAlertLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCloudGtmAlertLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ListCloudGtmAlertLogsRequest
@@ -56588,13 +62027,24 @@ func (client *Client) ListCloudGtmAvailableAlertGroupsWithOptions(request *ListC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCloudGtmAvailableAlertGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCloudGtmAvailableAlertGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCloudGtmAvailableAlertGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ListCloudGtmAvailableAlertGroupsRequest
@@ -56611,6 +62061,10 @@ func (client *Client) ListCloudGtmAvailableAlertGroups(request *ListCloudGtmAvai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+//
 // @param request - ListCloudGtmInstanceConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56672,15 +62126,30 @@ func (client *Client) ListCloudGtmInstanceConfigsWithOptions(request *ListCloudG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCloudGtmInstanceConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCloudGtmInstanceConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCloudGtmInstanceConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+//
 // @param request - ListCloudGtmInstanceConfigsRequest
 //
 // @return ListCloudGtmInstanceConfigsResponse
@@ -56695,6 +62164,10 @@ func (client *Client) ListCloudGtmInstanceConfigs(request *ListCloudGtmInstanceC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Global Traffic Manager (GTM) 3.0 instances.
+//
 // @param request - ListCloudGtmInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56744,15 +62217,30 @@ func (client *Client) ListCloudGtmInstancesWithOptions(request *ListCloudGtmInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCloudGtmInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCloudGtmInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCloudGtmInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of Global Traffic Manager (GTM) 3.0 instances.
+//
 // @param request - ListCloudGtmInstancesRequest
 //
 // @return ListCloudGtmInstancesResponse
@@ -56767,6 +62255,10 @@ func (client *Client) ListCloudGtmInstances(request *ListCloudGtmInstancesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of health check nodes.
+//
 // @param request - ListCloudGtmMonitorNodesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56796,15 +62288,30 @@ func (client *Client) ListCloudGtmMonitorNodesWithOptions(request *ListCloudGtmM
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCloudGtmMonitorNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCloudGtmMonitorNodesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCloudGtmMonitorNodesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of health check nodes.
+//
 // @param request - ListCloudGtmMonitorNodesRequest
 //
 // @return ListCloudGtmMonitorNodesResponse
@@ -56819,6 +62326,10 @@ func (client *Client) ListCloudGtmMonitorNodes(request *ListCloudGtmMonitorNodes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of health check templates.
+//
 // @param request - ListCloudGtmMonitorTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56868,15 +62379,30 @@ func (client *Client) ListCloudGtmMonitorTemplatesWithOptions(request *ListCloud
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCloudGtmMonitorTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCloudGtmMonitorTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCloudGtmMonitorTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of health check templates.
+//
 // @param request - ListCloudGtmMonitorTemplatesRequest
 //
 // @return ListCloudGtmMonitorTemplatesResponse
@@ -56950,13 +62476,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56989,13 +62526,13 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+// Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
 //
 // Description:
 //
-// If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
+// If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
 //
-// >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
+// >  **Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
 //
 // @param request - ModifyHichinaDomainDNSRequest
 //
@@ -57034,24 +62571,35 @@ func (client *Client) ModifyHichinaDomainDNSWithOptions(request *ModifyHichinaDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyHichinaDomainDNSResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyHichinaDomainDNSResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyHichinaDomainDNSResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+// Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
 //
 // Description:
 //
-// If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
+// If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
 //
-// >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
+// >  **Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
 //
 // @param request - ModifyHichinaDomainDNSRequest
 //
@@ -57108,13 +62656,24 @@ func (client *Client) MoveDomainResourceGroupWithOptions(request *MoveDomainReso
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveDomainResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveDomainResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveDomainResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57172,13 +62731,24 @@ func (client *Client) MoveGtmResourceGroupWithOptions(request *MoveGtmResourceGr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveGtmResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveGtmResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveGtmResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - MoveGtmResourceGroupRequest
@@ -57240,13 +62810,24 @@ func (client *Client) OperateBatchDomainWithOptions(request *OperateBatchDomainR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OperateBatchDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OperateBatchDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OperateBatchDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57308,13 +62889,24 @@ func (client *Client) PausePdnsServiceWithOptions(request *PausePdnsServiceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PausePdnsServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PausePdnsServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PausePdnsServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57380,13 +62972,24 @@ func (client *Client) PreviewGtmRecoveryPlanWithOptions(request *PreviewGtmRecov
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PreviewGtmRecoveryPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreviewGtmRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreviewGtmRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57444,13 +63047,24 @@ func (client *Client) RemovePdnsAppKeyWithOptions(request *RemovePdnsAppKeyReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemovePdnsAppKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemovePdnsAppKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemovePdnsAppKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57508,13 +63122,24 @@ func (client *Client) RemovePdnsUdpIpSegmentWithOptions(request *RemovePdnsUdpIp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemovePdnsUdpIpSegmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemovePdnsUdpIpSegmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemovePdnsUdpIpSegmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57535,6 +63160,10 @@ func (client *Client) RemovePdnsUdpIpSegment(request *RemovePdnsUdpIpSegmentRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Replaces the addresses referenced by an address pool.
+//
 // @param tmpReq - ReplaceCloudGtmAddressPoolAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -57582,15 +63211,30 @@ func (client *Client) ReplaceCloudGtmAddressPoolAddressWithOptions(tmpReq *Repla
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReplaceCloudGtmAddressPoolAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReplaceCloudGtmAddressPoolAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReplaceCloudGtmAddressPoolAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Replaces the addresses referenced by an address pool.
+//
 // @param request - ReplaceCloudGtmAddressPoolAddressRequest
 //
 // @return ReplaceCloudGtmAddressPoolAddressResponse
@@ -57605,6 +63249,10 @@ func (client *Client) ReplaceCloudGtmAddressPoolAddress(request *ReplaceCloudGtm
 	return _result, _err
 }
 
+// Summary:
+//
+// Replaces address pools that are associated with a Global Traffic Manager (GTM) 3.0 instance with new address pools.
+//
 // @param tmpReq - ReplaceCloudGtmInstanceConfigAddressPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -57656,15 +63304,30 @@ func (client *Client) ReplaceCloudGtmInstanceConfigAddressPoolWithOptions(tmpReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReplaceCloudGtmInstanceConfigAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReplaceCloudGtmInstanceConfigAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReplaceCloudGtmInstanceConfigAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Replaces address pools that are associated with a Global Traffic Manager (GTM) 3.0 instance with new address pools.
+//
 // @param request - ReplaceCloudGtmInstanceConfigAddressPoolRequest
 //
 // @return ReplaceCloudGtmInstanceConfigAddressPoolResponse
@@ -57716,13 +63379,24 @@ func (client *Client) ResumePdnsServiceWithOptions(request *ResumePdnsServiceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResumePdnsServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResumePdnsServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResumePdnsServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57749,7 +63423,7 @@ func (client *Client) ResumePdnsService(request *ResumePdnsServiceRequest) (_res
 //
 // Description:
 //
-// To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+// To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
 //
 // @param request - RetrieveDomainRequest
 //
@@ -57784,13 +63458,24 @@ func (client *Client) RetrieveDomainWithOptions(request *RetrieveDomainRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RetrieveDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RetrieveDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RetrieveDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57799,7 +63484,7 @@ func (client *Client) RetrieveDomainWithOptions(request *RetrieveDomainRequest, 
 //
 // Description:
 //
-// To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+// To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
 //
 // @param request - RetrieveDomainRequest
 //
@@ -57815,6 +63500,10 @@ func (client *Client) RetrieveDomain(request *RetrieveDomainRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// Rolls back a disaster recovery plan.
+//
 // @param request - RollbackGtmRecoveryPlanRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -57848,15 +63537,30 @@ func (client *Client) RollbackGtmRecoveryPlanWithOptions(request *RollbackGtmRec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RollbackGtmRecoveryPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RollbackGtmRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RollbackGtmRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Rolls back a disaster recovery plan.
+//
 // @param request - RollbackGtmRecoveryPlanRequest
 //
 // @return RollbackGtmRecoveryPlanResponse
@@ -57871,6 +63575,10 @@ func (client *Client) RollbackGtmRecoveryPlan(request *RollbackGtmRecoveryPlanRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of address pools.
+//
 // @param request - SearchCloudGtmAddressPoolsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -57936,15 +63644,30 @@ func (client *Client) SearchCloudGtmAddressPoolsWithOptions(request *SearchCloud
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchCloudGtmAddressPoolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchCloudGtmAddressPoolsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchCloudGtmAddressPoolsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of address pools.
+//
 // @param request - SearchCloudGtmAddressPoolsRequest
 //
 // @return SearchCloudGtmAddressPoolsResponse
@@ -57959,6 +63682,10 @@ func (client *Client) SearchCloudGtmAddressPools(request *SearchCloudGtmAddressP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+//
 // @param request - SearchCloudGtmAddressesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58040,15 +63767,30 @@ func (client *Client) SearchCloudGtmAddressesWithOptions(request *SearchCloudGtm
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchCloudGtmAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchCloudGtmAddressesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchCloudGtmAddressesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+//
 // @param request - SearchCloudGtmAddressesRequest
 //
 // @return SearchCloudGtmAddressesResponse
@@ -58063,6 +63805,10 @@ func (client *Client) SearchCloudGtmAddresses(request *SearchCloudGtmAddressesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of an access domain name.
+//
 // @param request - SearchCloudGtmInstanceConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58132,15 +63878,30 @@ func (client *Client) SearchCloudGtmInstanceConfigsWithOptions(request *SearchCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchCloudGtmInstanceConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchCloudGtmInstanceConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchCloudGtmInstanceConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the configurations of an access domain name.
+//
 // @param request - SearchCloudGtmInstanceConfigsRequest
 //
 // @return SearchCloudGtmInstanceConfigsResponse
@@ -58155,6 +63916,10 @@ func (client *Client) SearchCloudGtmInstanceConfigs(request *SearchCloudGtmInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of instances.
+//
 // @param request - SearchCloudGtmInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58204,15 +63969,30 @@ func (client *Client) SearchCloudGtmInstancesWithOptions(request *SearchCloudGtm
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchCloudGtmInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchCloudGtmInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchCloudGtmInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of instances.
+//
 // @param request - SearchCloudGtmInstancesRequest
 //
 // @return SearchCloudGtmInstancesResponse
@@ -58227,6 +64007,10 @@ func (client *Client) SearchCloudGtmInstances(request *SearchCloudGtmInstancesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of health check templates.
+//
 // @param request - SearchCloudGtmMonitorTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58276,15 +64060,30 @@ func (client *Client) SearchCloudGtmMonitorTemplatesWithOptions(request *SearchC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchCloudGtmMonitorTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchCloudGtmMonitorTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchCloudGtmMonitorTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the list of health check templates.
+//
 // @param request - SearchCloudGtmMonitorTemplatesRequest
 //
 // @return SearchCloudGtmMonitorTemplatesResponse
@@ -58356,13 +64155,24 @@ func (client *Client) SetDNSSLBStatusWithOptions(request *SetDNSSLBStatusRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDNSSLBStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDNSSLBStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDNSSLBStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58383,6 +64193,10 @@ func (client *Client) SetDNSSLBStatus(request *SetDNSSLBStatusRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an access policy.
+//
 // Description:
 //
 // ***
@@ -58424,15 +64238,30 @@ func (client *Client) SetDnsGtmAccessModeWithOptions(request *SetDnsGtmAccessMod
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDnsGtmAccessModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDnsGtmAccessModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDnsGtmAccessModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies an access policy.
+//
 // Description:
 //
 // ***
@@ -58492,13 +64321,24 @@ func (client *Client) SetDnsGtmMonitorStatusWithOptions(request *SetDnsGtmMonito
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDnsGtmMonitorStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDnsGtmMonitorStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDnsGtmMonitorStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58521,7 +64361,7 @@ func (client *Client) SetDnsGtmMonitorStatus(request *SetDnsGtmMonitorStatusRequ
 
 // Summary:
 //
-// Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+// Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
 //
 // @param request - SetDomainDnssecStatusRequest
 //
@@ -58560,18 +64400,29 @@ func (client *Client) SetDomainDnssecStatusWithOptions(request *SetDomainDnssecS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDomainDnssecStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDomainDnssecStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDomainDnssecStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+// Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
 //
 // @param request - SetDomainDnssecStatusRequest
 //
@@ -58632,13 +64483,24 @@ func (client *Client) SetDomainRecordStatusWithOptions(request *SetDomainRecordS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDomainRecordStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDomainRecordStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDomainRecordStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58659,6 +64521,10 @@ func (client *Client) SetDomainRecordStatus(request *SetDomainRecordStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a policy for switchover between address pool sets.
+//
 // @param request - SetGtmAccessModeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58696,15 +64562,30 @@ func (client *Client) SetGtmAccessModeWithOptions(request *SetGtmAccessModeReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetGtmAccessModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetGtmAccessModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetGtmAccessModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies a policy for switchover between address pool sets.
+//
 // @param request - SetGtmAccessModeRequest
 //
 // @return SetGtmAccessModeResponse
@@ -58756,13 +64637,24 @@ func (client *Client) SetGtmMonitorStatusWithOptions(request *SetGtmMonitorStatu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetGtmMonitorStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetGtmMonitorStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetGtmMonitorStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SetGtmMonitorStatusRequest
@@ -58824,13 +64716,24 @@ func (client *Client) SubmitIspFlushCacheTaskWithOptions(request *SubmitIspFlush
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitIspFlushCacheTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitIspFlushCacheTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitIspFlushCacheTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58892,13 +64795,24 @@ func (client *Client) SwitchDnsGtmInstanceStrategyModeWithOptions(request *Switc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SwitchDnsGtmInstanceStrategyModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SwitchDnsGtmInstanceStrategyModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SwitchDnsGtmInstanceStrategyModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58964,13 +64878,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59036,13 +64961,24 @@ func (client *Client) TransferDomainWithOptions(request *TransferDomainRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TransferDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TransferDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TransferDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59110,13 +65046,24 @@ func (client *Client) UnbindInstanceDomainsWithOptions(request *UnbindInstanceDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnbindInstanceDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnbindInstanceDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnbindInstanceDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59192,13 +65139,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59260,13 +65218,24 @@ func (client *Client) UpdateAppKeyStateWithOptions(request *UpdateAppKeyStateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAppKeyStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAppKeyStateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAppKeyStateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59287,6 +65256,10 @@ func (client *Client) UpdateAppKeyState(request *UpdateAppKeyStateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the condition for determining the health status of a specified address.
+//
 // @param tmpReq - UpdateCloudGtmAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59350,15 +65323,30 @@ func (client *Client) UpdateCloudGtmAddressWithOptions(tmpReq *UpdateCloudGtmAdd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the condition for determining the health status of a specified address.
+//
 // @param request - UpdateCloudGtmAddressRequest
 //
 // @return UpdateCloudGtmAddressResponse
@@ -59373,6 +65361,16 @@ func (client *Client) UpdateCloudGtmAddress(request *UpdateCloudGtmAddressReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the enabling status of an address.
+//
+// Description:
+//
+//   If an address is **enabled*	- and the health status of the address is **Normal**, the availability status of the address is **Available**.
+//
+// 	- If an address is **disabled*	- or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+//
 // @param request - UpdateCloudGtmAddressEnableStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59414,15 +65412,36 @@ func (client *Client) UpdateCloudGtmAddressEnableStatusWithOptions(request *Upda
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmAddressEnableStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmAddressEnableStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmAddressEnableStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the enabling status of an address.
+//
+// Description:
+//
+//   If an address is **enabled*	- and the health status of the address is **Normal**, the availability status of the address is **Available**.
+//
+// 	- If an address is **disabled*	- or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+//
 // @param request - UpdateCloudGtmAddressEnableStatusRequest
 //
 // @return UpdateCloudGtmAddressEnableStatusResponse
@@ -59437,6 +65456,10 @@ func (client *Client) UpdateCloudGtmAddressEnableStatus(request *UpdateCloudGtmA
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the failover mode that is used when address exceptions are identified.
+//
 // @param request - UpdateCloudGtmAddressManualAvailableStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59482,15 +65505,30 @@ func (client *Client) UpdateCloudGtmAddressManualAvailableStatusWithOptions(requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmAddressManualAvailableStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmAddressManualAvailableStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmAddressManualAvailableStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the failover mode that is used when address exceptions are identified.
+//
 // @param request - UpdateCloudGtmAddressManualAvailableStatusRequest
 //
 // @return UpdateCloudGtmAddressManualAvailableStatusResponse
@@ -59505,6 +65543,10 @@ func (client *Client) UpdateCloudGtmAddressManualAvailableStatus(request *Update
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the condition for determining the health status of an address pool.
+//
 // @param request - UpdateCloudGtmAddressPoolBasicConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59550,15 +65592,30 @@ func (client *Client) UpdateCloudGtmAddressPoolBasicConfigWithOptions(request *U
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmAddressPoolBasicConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmAddressPoolBasicConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmAddressPoolBasicConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the condition for determining the health status of an address pool.
+//
 // @param request - UpdateCloudGtmAddressPoolBasicConfigRequest
 //
 // @return UpdateCloudGtmAddressPoolBasicConfigResponse
@@ -59573,6 +65630,16 @@ func (client *Client) UpdateCloudGtmAddressPoolBasicConfig(request *UpdateCloudG
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the enabling status of an address pool.
+//
+// Description:
+//
+//   If an address pool is **enabled*	- and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+//
+// 	- If an address pool is **disabled*	- or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+//
 // @param request - UpdateCloudGtmAddressPoolEnableStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59614,15 +65681,36 @@ func (client *Client) UpdateCloudGtmAddressPoolEnableStatusWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmAddressPoolEnableStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmAddressPoolEnableStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmAddressPoolEnableStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the enabling status of an address pool.
+//
+// Description:
+//
+//   If an address pool is **enabled*	- and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+//
+// 	- If an address pool is **disabled*	- or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+//
 // @param request - UpdateCloudGtmAddressPoolEnableStatusRequest
 //
 // @return UpdateCloudGtmAddressPoolEnableStatusResponse
@@ -59637,6 +65725,10 @@ func (client *Client) UpdateCloudGtmAddressPoolEnableStatus(request *UpdateCloud
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the load balancing policy of an address pool.
+//
 // @param request - UpdateCloudGtmAddressPoolLbStrategyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59682,15 +65774,30 @@ func (client *Client) UpdateCloudGtmAddressPoolLbStrategyWithOptions(request *Up
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmAddressPoolLbStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmAddressPoolLbStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmAddressPoolLbStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the load balancing policy of an address pool.
+//
 // @param request - UpdateCloudGtmAddressPoolLbStrategyRequest
 //
 // @return UpdateCloudGtmAddressPoolLbStrategyResponse
@@ -59705,6 +65812,10 @@ func (client *Client) UpdateCloudGtmAddressPoolLbStrategy(request *UpdateCloudGt
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the remarks of an address pool.
+//
 // @param request - UpdateCloudGtmAddressPoolRemarkRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59746,15 +65857,30 @@ func (client *Client) UpdateCloudGtmAddressPoolRemarkWithOptions(request *Update
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmAddressPoolRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmAddressPoolRemarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmAddressPoolRemarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the remarks of an address pool.
+//
 // @param request - UpdateCloudGtmAddressPoolRemarkRequest
 //
 // @return UpdateCloudGtmAddressPoolRemarkResponse
@@ -59769,6 +65895,10 @@ func (client *Client) UpdateCloudGtmAddressPoolRemark(request *UpdateCloudGtmAdd
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the remarks of an address.
+//
 // @param request - UpdateCloudGtmAddressRemarkRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -59810,15 +65940,30 @@ func (client *Client) UpdateCloudGtmAddressRemarkWithOptions(request *UpdateClou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmAddressRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmAddressRemarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmAddressRemarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the remarks of an address.
+//
 // @param request - UpdateCloudGtmAddressRemarkRequest
 //
 // @return UpdateCloudGtmAddressRemarkResponse
@@ -59884,13 +66029,24 @@ func (client *Client) UpdateCloudGtmGlobalAlertWithOptions(tmpReq *UpdateCloudGt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmGlobalAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmGlobalAlertResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmGlobalAlertResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateCloudGtmGlobalAlertRequest
@@ -59970,13 +66126,24 @@ func (client *Client) UpdateCloudGtmInstanceConfigAlertWithOptions(tmpReq *Updat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmInstanceConfigAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmInstanceConfigAlertResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmInstanceConfigAlertResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateCloudGtmInstanceConfigAlertRequest
@@ -59993,6 +66160,10 @@ func (client *Client) UpdateCloudGtmInstanceConfigAlert(request *UpdateCloudGtmI
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+//
 // @param request - UpdateCloudGtmInstanceConfigBasicRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -60046,15 +66217,30 @@ func (client *Client) UpdateCloudGtmInstanceConfigBasicWithOptions(request *Upda
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmInstanceConfigBasicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmInstanceConfigBasicResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmInstanceConfigBasicResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+//
 // @param request - UpdateCloudGtmInstanceConfigBasicRequest
 //
 // @return UpdateCloudGtmInstanceConfigBasicResponse
@@ -60069,6 +66255,16 @@ func (client *Client) UpdateCloudGtmInstanceConfigBasic(request *UpdateCloudGtmI
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the enabling status of an access domain name.
+//
+// Description:
+//
+//   If an access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+//
+// 	- If an access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+//
 // @param request - UpdateCloudGtmInstanceConfigEnableStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -60114,15 +66310,36 @@ func (client *Client) UpdateCloudGtmInstanceConfigEnableStatusWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmInstanceConfigEnableStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmInstanceConfigEnableStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmInstanceConfigEnableStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the enabling status of an access domain name.
+//
+// Description:
+//
+//   If an access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+//
+// 	- If an access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+//
 // @param request - UpdateCloudGtmInstanceConfigEnableStatusRequest
 //
 // @return UpdateCloudGtmInstanceConfigEnableStatusResponse
@@ -60137,6 +66354,10 @@ func (client *Client) UpdateCloudGtmInstanceConfigEnableStatus(request *UpdateCl
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the load balancing policy of a Global Traffic Manager (GTM) 3.0 instance.
+//
 // @param request - UpdateCloudGtmInstanceConfigLbStrategyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -60186,15 +66407,30 @@ func (client *Client) UpdateCloudGtmInstanceConfigLbStrategyWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmInstanceConfigLbStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmInstanceConfigLbStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmInstanceConfigLbStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the load balancing policy of a Global Traffic Manager (GTM) 3.0 instance.
+//
 // @param request - UpdateCloudGtmInstanceConfigLbStrategyRequest
 //
 // @return UpdateCloudGtmInstanceConfigLbStrategyResponse
@@ -60209,6 +66445,10 @@ func (client *Client) UpdateCloudGtmInstanceConfigLbStrategy(request *UpdateClou
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a Global Traffic Manager (GTM) 3.0 instance.
+//
 // @param request - UpdateCloudGtmInstanceConfigRemarkRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -60254,15 +66494,30 @@ func (client *Client) UpdateCloudGtmInstanceConfigRemarkWithOptions(request *Upd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmInstanceConfigRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmInstanceConfigRemarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmInstanceConfigRemarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the description of a Global Traffic Manager (GTM) 3.0 instance.
+//
 // @param request - UpdateCloudGtmInstanceConfigRemarkRequest
 //
 // @return UpdateCloudGtmInstanceConfigRemarkResponse
@@ -60318,13 +66573,24 @@ func (client *Client) UpdateCloudGtmInstanceNameWithOptions(request *UpdateCloud
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmInstanceNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmInstanceNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmInstanceNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateCloudGtmInstanceNameRequest
@@ -60341,6 +66607,10 @@ func (client *Client) UpdateCloudGtmInstanceName(request *UpdateCloudGtmInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a health check template.
+//
 // @param tmpReq - UpdateCloudGtmMonitorTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -60412,15 +66682,30 @@ func (client *Client) UpdateCloudGtmMonitorTemplateWithOptions(tmpReq *UpdateClo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmMonitorTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmMonitorTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmMonitorTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies the information about a health check template.
+//
 // @param request - UpdateCloudGtmMonitorTemplateRequest
 //
 // @return UpdateCloudGtmMonitorTemplateResponse
@@ -60476,13 +66761,24 @@ func (client *Client) UpdateCloudGtmMonitorTemplateRemarkWithOptions(request *Up
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCloudGtmMonitorTemplateRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCloudGtmMonitorTemplateRemarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCloudGtmMonitorTemplateRemarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateCloudGtmMonitorTemplateRemarkRequest
@@ -60550,13 +66846,24 @@ func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCustomLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCustomLineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCustomLineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60628,13 +66935,24 @@ func (client *Client) UpdateDNSSLBWeightWithOptions(request *UpdateDNSSLBWeightR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDNSSLBWeightResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDNSSLBWeightResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDNSSLBWeightResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60712,13 +67030,24 @@ func (client *Client) UpdateDnsCacheDomainWithOptions(request *UpdateDnsCacheDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDnsCacheDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDnsCacheDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDnsCacheDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateDnsCacheDomainRequest
@@ -60772,13 +67101,24 @@ func (client *Client) UpdateDnsCacheDomainRemarkWithOptions(request *UpdateDnsCa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDnsCacheDomainRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDnsCacheDomainRemarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDnsCacheDomainRemarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateDnsCacheDomainRemarkRequest
@@ -60892,13 +67232,24 @@ func (client *Client) UpdateDnsGtmAccessStrategyWithOptions(request *UpdateDnsGt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDnsGtmAccessStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDnsGtmAccessStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDnsGtmAccessStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60921,7 +67272,7 @@ func (client *Client) UpdateDnsGtmAccessStrategy(request *UpdateDnsGtmAccessStra
 
 // Summary:
 //
-// Modifies the configurations of address pools for a GTM instance.
+// Modifies an address pool.
 //
 // @param request - UpdateDnsGtmAddressPoolRequest
 //
@@ -60968,18 +67319,29 @@ func (client *Client) UpdateDnsGtmAddressPoolWithOptions(request *UpdateDnsGtmAd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDnsGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDnsGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDnsGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Modifies the configurations of address pools for a GTM instance.
+// Modifies an address pool.
 //
 // @param request - UpdateDnsGtmAddressPoolRequest
 //
@@ -61072,13 +67434,24 @@ func (client *Client) UpdateDnsGtmInstanceGlobalConfigWithOptions(request *Updat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDnsGtmInstanceGlobalConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDnsGtmInstanceGlobalConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDnsGtmInstanceGlobalConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61160,13 +67533,24 @@ func (client *Client) UpdateDnsGtmMonitorWithOptions(request *UpdateDnsGtmMonito
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDnsGtmMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDnsGtmMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDnsGtmMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61190,6 +67574,10 @@ func (client *Client) UpdateDnsGtmMonitor(request *UpdateDnsGtmMonitorRequest) (
 // Summary:
 //
 // Modifies the name of a domain name group based on the specified parameters.
+//
+// Description:
+//
+// Modifies the name of an existing domain name group.
 //
 // @param request - UpdateDomainGroupRequest
 //
@@ -61228,18 +67616,33 @@ func (client *Client) UpdateDomainGroupWithOptions(request *UpdateDomainGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDomainGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDomainGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDomainGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
 // Modifies the name of a domain name group based on the specified parameters.
+//
+// Description:
+//
+// Modifies the name of an existing domain name group.
 //
 // @param request - UpdateDomainGroupRequest
 //
@@ -61320,13 +67723,24 @@ func (client *Client) UpdateDomainRecordWithOptions(request *UpdateDomainRecordR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDomainRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDomainRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDomainRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61392,13 +67806,24 @@ func (client *Client) UpdateDomainRecordRemarkWithOptions(request *UpdateDomainR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDomainRecordRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDomainRecordRemarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDomainRecordRemarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61460,13 +67885,24 @@ func (client *Client) UpdateDomainRemarkWithOptions(request *UpdateDomainRemarkR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDomainRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDomainRemarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDomainRemarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61536,13 +67972,24 @@ func (client *Client) UpdateGtmAccessStrategyWithOptions(request *UpdateGtmAcces
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateGtmAccessStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGtmAccessStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGtmAccessStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateGtmAccessStrategyRequest
@@ -61608,13 +68055,24 @@ func (client *Client) UpdateGtmAddressPoolWithOptions(request *UpdateGtmAddressP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateGtmAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGtmAddressPoolResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGtmAddressPoolResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - UpdateGtmAddressPoolRequest
@@ -61696,13 +68154,24 @@ func (client *Client) UpdateGtmInstanceGlobalConfigWithOptions(request *UpdateGt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateGtmInstanceGlobalConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGtmInstanceGlobalConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGtmInstanceGlobalConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61784,13 +68253,24 @@ func (client *Client) UpdateGtmMonitorWithOptions(request *UpdateGtmMonitorReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateGtmMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGtmMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGtmMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61813,7 +68293,7 @@ func (client *Client) UpdateGtmMonitor(request *UpdateGtmMonitorRequest) (_resul
 
 // Summary:
 //
-// Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+// Modifies a disaster recovery plan.
 //
 // @param request - UpdateGtmRecoveryPlanRequest
 //
@@ -61860,18 +68340,29 @@ func (client *Client) UpdateGtmRecoveryPlanWithOptions(request *UpdateGtmRecover
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateGtmRecoveryPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGtmRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGtmRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+// Modifies a disaster recovery plan.
 //
 // @param request - UpdateGtmRecoveryPlanRequest
 //
@@ -61928,13 +68419,24 @@ func (client *Client) UpdateIspFlushCacheInstanceConfigWithOptions(request *Upda
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateIspFlushCacheInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateIspFlushCacheInstanceConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateIspFlushCacheInstanceConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62008,13 +68510,24 @@ func (client *Client) ValidateDnsGtmCnameRrCanUseWithOptions(request *ValidateDn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ValidateDnsGtmCnameRrCanUseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ValidateDnsGtmCnameRrCanUseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ValidateDnsGtmCnameRrCanUseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62076,13 +68589,24 @@ func (client *Client) ValidatePdnsUdpIpSegmentWithOptions(request *ValidatePdnsU
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ValidatePdnsUdpIpSegmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ValidatePdnsUdpIpSegmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ValidatePdnsUdpIpSegmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
