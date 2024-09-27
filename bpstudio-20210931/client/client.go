@@ -1392,7 +1392,7 @@ type ExecuteOperationSyncResponseBody struct {
 	// example:
 	//
 	// op_xxxxxxxxxxxxxxxxxx_dds_modifyInstanceType_BYSOQGWUV6PME412_ERMEZLXNN3K9N3OL
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *ExecuteOperationSyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
 	// Access key ID cannot be null.
@@ -1416,8 +1416,8 @@ func (s *ExecuteOperationSyncResponseBody) SetCode(v int32) *ExecuteOperationSyn
 	return s
 }
 
-func (s *ExecuteOperationSyncResponseBody) SetData(v string) *ExecuteOperationSyncResponseBody {
-	s.Data = &v
+func (s *ExecuteOperationSyncResponseBody) SetData(v *ExecuteOperationSyncResponseBodyData) *ExecuteOperationSyncResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -1428,6 +1428,41 @@ func (s *ExecuteOperationSyncResponseBody) SetMessage(v string) *ExecuteOperatio
 
 func (s *ExecuteOperationSyncResponseBody) SetRequestId(v string) *ExecuteOperationSyncResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type ExecuteOperationSyncResponseBodyData struct {
+	Arguments   *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ExecuteOperationSyncResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteOperationSyncResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteOperationSyncResponseBodyData) SetArguments(v string) *ExecuteOperationSyncResponseBodyData {
+	s.Arguments = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncResponseBodyData) SetMessage(v string) *ExecuteOperationSyncResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncResponseBodyData) SetOperationId(v string) *ExecuteOperationSyncResponseBodyData {
+	s.OperationId = &v
+	return s
+}
+
+func (s *ExecuteOperationSyncResponseBodyData) SetStatus(v string) *ExecuteOperationSyncResponseBodyData {
+	s.Status = &v
 	return s
 }
 
