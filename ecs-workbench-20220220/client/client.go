@@ -401,6 +401,184 @@ func (s *ListInstanceRecordsResponse) SetBody(v *ListInstanceRecordsResponseBody
 	return s
 }
 
+type ListTerminalCommandsRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc
+	TerminalSessionToken *string `json:"TerminalSessionToken,omitempty" xml:"TerminalSessionToken,omitempty"`
+}
+
+func (s ListTerminalCommandsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTerminalCommandsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTerminalCommandsRequest) SetPageNumber(v int32) *ListTerminalCommandsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTerminalCommandsRequest) SetPageSize(v int32) *ListTerminalCommandsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTerminalCommandsRequest) SetRegionId(v string) *ListTerminalCommandsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTerminalCommandsRequest) SetTerminalSessionToken(v string) *ListTerminalCommandsRequest {
+	s.TerminalSessionToken = &v
+	return s
+}
+
+type ListTerminalCommandsResponseBody struct {
+	// example:
+	//
+	// 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TerminalCommandList []*ListTerminalCommandsResponseBodyTerminalCommandList `json:"TerminalCommandList,omitempty" xml:"TerminalCommandList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTerminalCommandsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTerminalCommandsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTerminalCommandsResponseBody) SetPageNumber(v int32) *ListTerminalCommandsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTerminalCommandsResponseBody) SetPageSize(v int32) *ListTerminalCommandsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTerminalCommandsResponseBody) SetRequestId(v string) *ListTerminalCommandsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTerminalCommandsResponseBody) SetTerminalCommandList(v []*ListTerminalCommandsResponseBodyTerminalCommandList) *ListTerminalCommandsResponseBody {
+	s.TerminalCommandList = v
+	return s
+}
+
+func (s *ListTerminalCommandsResponseBody) SetTotalCount(v int32) *ListTerminalCommandsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTerminalCommandsResponseBodyTerminalCommandList struct {
+	// example:
+	//
+	// ls
+	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
+	// example:
+	//
+	// 2024-04-16T03:53:18Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// /root
+	ExecutePath *string `json:"ExecutePath,omitempty" xml:"ExecutePath,omitempty"`
+	// example:
+	//
+	// root
+	LoginUser *string `json:"LoginUser,omitempty" xml:"LoginUser,omitempty"`
+}
+
+func (s ListTerminalCommandsResponseBodyTerminalCommandList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTerminalCommandsResponseBodyTerminalCommandList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTerminalCommandsResponseBodyTerminalCommandList) SetCommandLine(v string) *ListTerminalCommandsResponseBodyTerminalCommandList {
+	s.CommandLine = &v
+	return s
+}
+
+func (s *ListTerminalCommandsResponseBodyTerminalCommandList) SetCreateTime(v string) *ListTerminalCommandsResponseBodyTerminalCommandList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTerminalCommandsResponseBodyTerminalCommandList) SetExecutePath(v string) *ListTerminalCommandsResponseBodyTerminalCommandList {
+	s.ExecutePath = &v
+	return s
+}
+
+func (s *ListTerminalCommandsResponseBodyTerminalCommandList) SetLoginUser(v string) *ListTerminalCommandsResponseBodyTerminalCommandList {
+	s.LoginUser = &v
+	return s
+}
+
+type ListTerminalCommandsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTerminalCommandsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTerminalCommandsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTerminalCommandsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTerminalCommandsResponse) SetHeaders(v map[string]*string) *ListTerminalCommandsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTerminalCommandsResponse) SetStatusCode(v int32) *ListTerminalCommandsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTerminalCommandsResponse) SetBody(v *ListTerminalCommandsResponseBody) *ListTerminalCommandsResponse {
+	s.Body = v
+	return s
+}
+
 type LoginInstanceRequest struct {
 	InstanceLoginInfo *LoginInstanceRequestInstanceLoginInfo `json:"InstanceLoginInfo,omitempty" xml:"InstanceLoginInfo,omitempty" type:"Struct"`
 	PartnerInfo       *LoginInstanceRequestPartnerInfo       `json:"PartnerInfo,omitempty" xml:"PartnerInfo,omitempty" type:"Struct"`
@@ -1610,6 +1788,78 @@ func (client *Client) ListInstanceRecords(request *ListInstanceRecordsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceRecordsResponse{}
 	_body, _err := client.ListInstanceRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看实例Workbench登录后执行命令的历史列表。
+//
+// @param request - ListTerminalCommandsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTerminalCommandsResponse
+func (client *Client) ListTerminalCommandsWithOptions(request *ListTerminalCommandsRequest, runtime *util.RuntimeOptions) (_result *ListTerminalCommandsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminalSessionToken)) {
+		body["TerminalSessionToken"] = request.TerminalSessionToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTerminalCommands"),
+		Version:     tea.String("2022-02-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTerminalCommandsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看实例Workbench登录后执行命令的历史列表。
+//
+// @param request - ListTerminalCommandsRequest
+//
+// @return ListTerminalCommandsResponse
+func (client *Client) ListTerminalCommands(request *ListTerminalCommandsRequest) (_result *ListTerminalCommandsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTerminalCommandsResponse{}
+	_body, _err := client.ListTerminalCommandsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
