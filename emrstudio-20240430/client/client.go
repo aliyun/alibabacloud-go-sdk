@@ -1995,6 +1995,204 @@ func (s *DescribeWorkflowInstanceResponse) SetBody(v *DescribeWorkflowInstanceRe
 	return s
 }
 
+type ListAlertGroupsRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// name
+	SearchVal *string `json:"searchVal,omitempty" xml:"searchVal,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// w-lxyy60mpgpg****
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListAlertGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertGroupsRequest) SetMaxResults(v int32) *ListAlertGroupsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAlertGroupsRequest) SetNextToken(v string) *ListAlertGroupsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAlertGroupsRequest) SetSearchVal(v string) *ListAlertGroupsRequest {
+	s.SearchVal = &v
+	return s
+}
+
+func (s *ListAlertGroupsRequest) SetWorkspaceId(v string) *ListAlertGroupsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListAlertGroupsResponseBody struct {
+	Data []*ListAlertGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListAlertGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertGroupsResponseBody) SetData(v []*ListAlertGroupsResponseBodyData) *ListAlertGroupsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBody) SetMaxResults(v int32) *ListAlertGroupsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBody) SetNextToken(v string) *ListAlertGroupsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBody) SetRequestId(v string) *ListAlertGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBody) SetTotalCount(v int32) *ListAlertGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAlertGroupsResponseBodyData struct {
+	// example:
+	//
+	// ag-8mklwpevk74****
+	AlertGroupId *string `json:"alertGroupId,omitempty" xml:"alertGroupId,omitempty"`
+	// example:
+	//
+	// 50
+	AlertInstanceIds *string `json:"alertInstanceIds,omitempty" xml:"alertInstanceIds,omitempty"`
+	// example:
+	//
+	// 1726834240000
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// name
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// example:
+	//
+	// 1726834240000
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s ListAlertGroupsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertGroupsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertGroupsResponseBodyData) SetAlertGroupId(v string) *ListAlertGroupsResponseBodyData {
+	s.AlertGroupId = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBodyData) SetAlertInstanceIds(v string) *ListAlertGroupsResponseBodyData {
+	s.AlertInstanceIds = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBodyData) SetCreateTime(v int64) *ListAlertGroupsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBodyData) SetDescription(v string) *ListAlertGroupsResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBodyData) SetGroupName(v string) *ListAlertGroupsResponseBodyData {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponseBodyData) SetUpdateTime(v int64) *ListAlertGroupsResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListAlertGroupsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAlertGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAlertGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertGroupsResponse) SetHeaders(v map[string]*string) *ListAlertGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAlertGroupsResponse) SetStatusCode(v int32) *ListAlertGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAlertGroupsResponse) SetBody(v *ListAlertGroupsResponseBody) *ListAlertGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type ListManualTaskInstancesRequest struct {
 	// example:
 	//
@@ -2710,6 +2908,336 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 	return s
 }
 
+type ListResourceGroupsRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// name
+	ResourceGroupName *string `json:"resourceGroupName,omitempty" xml:"resourceGroupName,omitempty"`
+	// example:
+	//
+	// CLUSTER_RESOURCE_GROUP
+	ResourceGroupType *string `json:"resourceGroupType,omitempty" xml:"resourceGroupType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// w-lxyy60mpgpg****
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListResourceGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsRequest) SetMaxResults(v int32) *ListResourceGroupsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetNextToken(v string) *ListResourceGroupsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetResourceGroupName(v string) *ListResourceGroupsRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetResourceGroupType(v string) *ListResourceGroupsRequest {
+	s.ResourceGroupType = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetWorkspaceId(v string) *ListResourceGroupsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListResourceGroupsResponseBody struct {
+	Data []*ListResourceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10。
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 1。
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 16
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListResourceGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponseBody) SetData(v []*ListResourceGroupsResponseBodyData) *ListResourceGroupsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBody) SetMaxResults(v int32) *ListResourceGroupsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBody) SetNextToken(v string) *ListResourceGroupsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBody) SetRequestId(v string) *ListResourceGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBody) SetTotalCount(v int32) *ListResourceGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListResourceGroupsResponseBodyData struct {
+	AssociatedClusterTemplates []*ListResourceGroupsResponseBodyDataAssociatedClusterTemplates `json:"associatedClusterTemplates,omitempty" xml:"associatedClusterTemplates,omitempty" type:"Repeated"`
+	AssociatedClusters         []*ListResourceGroupsResponseBodyDataAssociatedClusters         `json:"associatedClusters,omitempty" xml:"associatedClusters,omitempty" type:"Repeated"`
+	AssociatedWorkspaces       []*ListResourceGroupsResponseBodyDataAssociatedWorkspaces       `json:"associatedWorkspaces,omitempty" xml:"associatedWorkspaces,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-09-26T02:10:04Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 2。
+	NodeMaxCount *int32 `json:"nodeMaxCount,omitempty" xml:"nodeMaxCount,omitempty"`
+	// example:
+	//
+	// 1。
+	NodeMinCount *int32 `json:"nodeMinCount,omitempty" xml:"nodeMinCount,omitempty"`
+	// example:
+	//
+	// EMR_W1_SMALL。
+	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	// example:
+	//
+	// postpaid
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// example:
+	//
+	// rg-acfm4ewqrznxxxx
+	ResourceGroupId   *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ResourceGroupName *string `json:"resourceGroupName,omitempty" xml:"resourceGroupName,omitempty"`
+	// example:
+	//
+	// CLUSTER_RESOURCE_GROUP。
+	ResourceGroupType *string `json:"resourceGroupType,omitempty" xml:"resourceGroupType,omitempty"`
+}
+
+func (s ListResourceGroupsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetAssociatedClusterTemplates(v []*ListResourceGroupsResponseBodyDataAssociatedClusterTemplates) *ListResourceGroupsResponseBodyData {
+	s.AssociatedClusterTemplates = v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetAssociatedClusters(v []*ListResourceGroupsResponseBodyDataAssociatedClusters) *ListResourceGroupsResponseBodyData {
+	s.AssociatedClusters = v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetAssociatedWorkspaces(v []*ListResourceGroupsResponseBodyDataAssociatedWorkspaces) *ListResourceGroupsResponseBodyData {
+	s.AssociatedWorkspaces = v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetCreateTime(v string) *ListResourceGroupsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetNodeMaxCount(v int32) *ListResourceGroupsResponseBodyData {
+	s.NodeMaxCount = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetNodeMinCount(v int32) *ListResourceGroupsResponseBodyData {
+	s.NodeMinCount = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetNodeType(v string) *ListResourceGroupsResponseBodyData {
+	s.NodeType = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetPaymentType(v string) *ListResourceGroupsResponseBodyData {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetResourceGroupId(v string) *ListResourceGroupsResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetResourceGroupName(v string) *ListResourceGroupsResponseBodyData {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyData) SetResourceGroupType(v string) *ListResourceGroupsResponseBodyData {
+	s.ResourceGroupType = &v
+	return s
+}
+
+type ListResourceGroupsResponseBodyDataAssociatedClusterTemplates struct {
+	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+	// example:
+	//
+	// 78723f0dc36。
+	TemplateId   *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+}
+
+func (s ListResourceGroupsResponseBodyDataAssociatedClusterTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponseBodyDataAssociatedClusterTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponseBodyDataAssociatedClusterTemplates) SetClusterType(v string) *ListResourceGroupsResponseBodyDataAssociatedClusterTemplates {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyDataAssociatedClusterTemplates) SetTemplateId(v string) *ListResourceGroupsResponseBodyDataAssociatedClusterTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyDataAssociatedClusterTemplates) SetTemplateName(v string) *ListResourceGroupsResponseBodyDataAssociatedClusterTemplates {
+	s.TemplateName = &v
+	return s
+}
+
+type ListResourceGroupsResponseBodyDataAssociatedClusters struct {
+	// example:
+	//
+	// c-3cd8ba94b36cxxxx
+	ClusterId   *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+}
+
+func (s ListResourceGroupsResponseBodyDataAssociatedClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponseBodyDataAssociatedClusters) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponseBodyDataAssociatedClusters) SetClusterId(v string) *ListResourceGroupsResponseBodyDataAssociatedClusters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyDataAssociatedClusters) SetClusterName(v string) *ListResourceGroupsResponseBodyDataAssociatedClusters {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyDataAssociatedClusters) SetClusterType(v string) *ListResourceGroupsResponseBodyDataAssociatedClusters {
+	s.ClusterType = &v
+	return s
+}
+
+type ListResourceGroupsResponseBodyDataAssociatedWorkspaces struct {
+	// example:
+	//
+	// 1200827。
+	WorkspaceId   *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
+}
+
+func (s ListResourceGroupsResponseBodyDataAssociatedWorkspaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponseBodyDataAssociatedWorkspaces) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponseBodyDataAssociatedWorkspaces) SetWorkspaceId(v string) *ListResourceGroupsResponseBodyDataAssociatedWorkspaces {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyDataAssociatedWorkspaces) SetWorkspaceName(v string) *ListResourceGroupsResponseBodyDataAssociatedWorkspaces {
+	s.WorkspaceName = &v
+	return s
+}
+
+type ListResourceGroupsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListResourceGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponse) SetHeaders(v map[string]*string) *ListResourceGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResourceGroupsResponse) SetStatusCode(v int32) *ListResourceGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponse) SetBody(v *ListResourceGroupsResponseBody) *ListResourceGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTaskInstancesRequest struct {
 	// example:
 	//
@@ -3400,6 +3928,204 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 	return s
 }
 
+type ListWorkflowDirectoriesRequest struct {
+	// example:
+	//
+	// wd-y98v7non5dx****
+	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// wd-y98v7non5d****
+	ParentDirectoryId *string `json:"parentDirectoryId,omitempty" xml:"parentDirectoryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListWorkflowDirectoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowDirectoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowDirectoriesRequest) SetDirectoryId(v string) *ListWorkflowDirectoriesRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesRequest) SetMaxResults(v int32) *ListWorkflowDirectoriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesRequest) SetNextToken(v string) *ListWorkflowDirectoriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesRequest) SetParentDirectoryId(v string) *ListWorkflowDirectoriesRequest {
+	s.ParentDirectoryId = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesRequest) SetWorkspaceId(v string) *ListWorkflowDirectoriesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListWorkflowDirectoriesResponseBody struct {
+	Data []*ListWorkflowDirectoriesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 1
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListWorkflowDirectoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowDirectoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowDirectoriesResponseBody) SetData(v []*ListWorkflowDirectoriesResponseBodyData) *ListWorkflowDirectoriesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponseBody) SetMaxResults(v string) *ListWorkflowDirectoriesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponseBody) SetNextToken(v string) *ListWorkflowDirectoriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponseBody) SetRequestId(v string) *ListWorkflowDirectoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponseBody) SetTotalCount(v int32) *ListWorkflowDirectoriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListWorkflowDirectoriesResponseBodyData struct {
+	// example:
+	//
+	// wd-y98v7non5dx****
+	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	// example:
+	//
+	// 目录名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// wd-y98v7non5dx****
+	ParentDirectoryId *string `json:"parentDirectoryId,omitempty" xml:"parentDirectoryId,omitempty"`
+	// example:
+	//
+	// p-v7n28j0m4ol****
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// example:
+	//
+	// w-lxyy60mpgpg****
+	WorkflowId *string `json:"workflowId,omitempty" xml:"workflowId,omitempty"`
+}
+
+func (s ListWorkflowDirectoriesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowDirectoriesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowDirectoriesResponseBodyData) SetDirectoryId(v string) *ListWorkflowDirectoriesResponseBodyData {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponseBodyData) SetName(v string) *ListWorkflowDirectoriesResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponseBodyData) SetParentDirectoryId(v string) *ListWorkflowDirectoriesResponseBodyData {
+	s.ParentDirectoryId = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponseBodyData) SetProjectId(v string) *ListWorkflowDirectoriesResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponseBodyData) SetWorkflowId(v string) *ListWorkflowDirectoriesResponseBodyData {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListWorkflowDirectoriesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkflowDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWorkflowDirectoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowDirectoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowDirectoriesResponse) SetHeaders(v map[string]*string) *ListWorkflowDirectoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponse) SetStatusCode(v int32) *ListWorkflowDirectoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkflowDirectoriesResponse) SetBody(v *ListWorkflowDirectoriesResponseBody) *ListWorkflowDirectoriesResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkflowInstancesRequest struct {
 	// example:
 	//
@@ -3815,6 +4541,104 @@ func (s *ListWorkflowsResponse) SetStatusCode(v int32) *ListWorkflowsResponse {
 }
 
 func (s *ListWorkflowsResponse) SetBody(v *ListWorkflowsResponseBody) *ListWorkflowsResponse {
+	s.Body = v
+	return s
+}
+
+type OperateWorkflowInstanceRequest struct {
+	// example:
+	//
+	// PAUSE
+	ExecType *string `json:"execType,omitempty" xml:"execType,omitempty"`
+	// example:
+	//
+	// wi-l9o479p8rrx****
+	WorkflowInstanceId *string `json:"workflowInstanceId,omitempty" xml:"workflowInstanceId,omitempty"`
+	// example:
+	//
+	// w-lxyy60mpgpg****
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s OperateWorkflowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateWorkflowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OperateWorkflowInstanceRequest) SetExecType(v string) *OperateWorkflowInstanceRequest {
+	s.ExecType = &v
+	return s
+}
+
+func (s *OperateWorkflowInstanceRequest) SetWorkflowInstanceId(v string) *OperateWorkflowInstanceRequest {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *OperateWorkflowInstanceRequest) SetWorkspaceId(v string) *OperateWorkflowInstanceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type OperateWorkflowInstanceResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s OperateWorkflowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateWorkflowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OperateWorkflowInstanceResponseBody) SetRequestId(v string) *OperateWorkflowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OperateWorkflowInstanceResponseBody) SetSuccess(v bool) *OperateWorkflowInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OperateWorkflowInstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OperateWorkflowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s OperateWorkflowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateWorkflowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OperateWorkflowInstanceResponse) SetHeaders(v map[string]*string) *OperateWorkflowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OperateWorkflowInstanceResponse) SetStatusCode(v int32) *OperateWorkflowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OperateWorkflowInstanceResponse) SetBody(v *OperateWorkflowInstanceResponseBody) *OperateWorkflowInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -5091,6 +5915,93 @@ func (client *Client) DescribeWorkflowInstance(projectId *string, workflowInstan
 
 // Summary:
 //
+// 查询告警组列表
+//
+// @param request - ListAlertGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertGroupsResponse
+func (client *Client) ListAlertGroupsWithOptions(projectId *string, request *ListAlertGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAlertGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchVal)) {
+		query["searchVal"] = request.SearchVal
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAlertGroups"),
+		Version:     tea.String("2024-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dolphinscheduler/v3/alert-groups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAlertGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAlertGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询告警组列表
+//
+// @param request - ListAlertGroupsRequest
+//
+// @return ListAlertGroupsResponse
+func (client *Client) ListAlertGroups(projectId *string, request *ListAlertGroupsRequest) (_result *ListAlertGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAlertGroupsResponse{}
+	_body, _err := client.ListAlertGroupsWithOptions(projectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取手动任务实例列表
 //
 // @param request - ListManualTaskInstancesRequest
@@ -5368,6 +6279,97 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
+// 查询调度资源组列表
+//
+// @param request - ListResourceGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceGroupsResponse
+func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["resourceGroupName"] = request.ResourceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupType)) {
+		query["resourceGroupType"] = request.ResourceGroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceGroups"),
+		Version:     tea.String("2024-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dolphinscheduler/v3/resourcegroups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询调度资源组列表
+//
+// @param request - ListResourceGroupsRequest
+//
+// @return ListResourceGroupsResponse
+func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_result *ListResourceGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListResourceGroupsResponse{}
+	_body, _err := client.ListResourceGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取任务实例列表
 //
 // @param request - ListTaskInstancesRequest
@@ -5566,6 +6568,97 @@ func (client *Client) ListTasks(projectId *string, request *ListTasksRequest) (_
 
 // Summary:
 //
+// 查询工作流目录列表
+//
+// @param request - ListWorkflowDirectoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkflowDirectoriesResponse
+func (client *Client) ListWorkflowDirectoriesWithOptions(projectId *string, request *ListWorkflowDirectoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkflowDirectoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["directoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentDirectoryId)) {
+		query["parentDirectoryId"] = request.ParentDirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkflowDirectories"),
+		Version:     tea.String("2024-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dolphinscheduler/v3/projects/" + tea.StringValue(openapiutil.GetEncodeParam(projectId)) + "/directories"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWorkflowDirectoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWorkflowDirectoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询工作流目录列表
+//
+// @param request - ListWorkflowDirectoriesRequest
+//
+// @return ListWorkflowDirectoriesResponse
+func (client *Client) ListWorkflowDirectories(projectId *string, request *ListWorkflowDirectoriesRequest) (_result *ListWorkflowDirectoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkflowDirectoriesResponse{}
+	_body, _err := client.ListWorkflowDirectoriesWithOptions(projectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取工作流实例列表
 //
 // @param request - ListWorkflowInstancesRequest
@@ -5743,6 +6836,91 @@ func (client *Client) ListWorkflows(projectId *string, request *ListWorkflowsReq
 	headers := make(map[string]*string)
 	_result = &ListWorkflowsResponse{}
 	_body, _err := client.ListWorkflowsWithOptions(projectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 操作工作流实例
+//
+// @param request - OperateWorkflowInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateWorkflowInstanceResponse
+func (client *Client) OperateWorkflowInstanceWithOptions(projectId *string, request *OperateWorkflowInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateWorkflowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExecType)) {
+		body["execType"] = request.ExecType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowInstanceId)) {
+		body["workflowInstanceId"] = request.WorkflowInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperateWorkflowInstance"),
+		Version:     tea.String("2024-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dolphinscheduler/v3/projects/" + tea.StringValue(openapiutil.GetEncodeParam(projectId)) + "/executors/execute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OperateWorkflowInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OperateWorkflowInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 操作工作流实例
+//
+// @param request - OperateWorkflowInstanceRequest
+//
+// @return OperateWorkflowInstanceResponse
+func (client *Client) OperateWorkflowInstance(projectId *string, request *OperateWorkflowInstanceRequest) (_result *OperateWorkflowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &OperateWorkflowInstanceResponse{}
+	_body, _err := client.OperateWorkflowInstanceWithOptions(projectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
