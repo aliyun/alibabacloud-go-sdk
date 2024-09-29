@@ -1,3 +1,7 @@
+2024-09-29 Version: v8.1.5
+- Update API GetRumAppInfo: update response param.
+
+
 2024-09-19 Version: v8.1.4
 - Update API GetRumAppInfo: update response param.
 - Update API UpdateRumApp: add param BackendServiceTraceRegion.
