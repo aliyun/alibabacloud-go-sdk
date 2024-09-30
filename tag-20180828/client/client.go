@@ -1,10 +1,8 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -16,22 +14,43 @@ type AttachPolicyRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the tag policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p-de62a0bf400e4b69****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the object.
 	//
 	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required.
+	//
+	// example:
+	//
+	// 151266687691****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required. The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// ACCOUNT
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -80,6 +99,10 @@ func (s *AttachPolicyRequest) SetTargetType(v string) *AttachPolicyRequest {
 
 type AttachPolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4A32F5B0-0B0B-5537-B4A0-7A6E1C3AA96A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -126,8 +149,13 @@ func (s *AttachPolicyResponse) SetBody(v *AttachPolicyResponseBody) *AttachPolic
 }
 
 type CheckCreatedByEnabledRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -167,8 +195,14 @@ func (s *CheckCreatedByEnabledRequest) SetResourceOwnerId(v string) *CheckCreate
 }
 
 type CheckCreatedByEnabledResponseBody struct {
-	OpenStatus *bool   `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	OpenStatus *bool `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
+	// example:
+	//
+	// 682DD9E1-F530-5D14-A839-A6787FA82B74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckCreatedByEnabledResponseBody) String() string {
@@ -219,8 +253,13 @@ func (s *CheckCreatedByEnabledResponse) SetBody(v *CheckCreatedByEnabledResponse
 }
 
 type CloseCreatedByRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -260,6 +299,9 @@ func (s *CloseCreatedByRequest) SetResourceOwnerId(v string) *CloseCreatedByRequ
 }
 
 type CloseCreatedByResponseBody struct {
+	// example:
+	//
+	// AECFE0F2-CEC3-5D16-BE4C-E2F95083D063
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -308,32 +350,62 @@ func (s *CloseCreatedByResponse) SetBody(v *CloseCreatedByResponseBody) *CloseCr
 type CreatePolicyRequest struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   false (default): performs a dry run and performs the actual request.
-	// *   true: performs only a dry run.
+	// 	- false (default): performs a dry run and performs the actual request.
+	//
+	// 	- true: performs only a dry run.
+	//
+	// example:
+	//
+	// false
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The document of the tag policy.
 	//
-	// For more information about the syntax of a tag policy, see [Syntax of a tag policy](~~417436~~).
+	// For more information about the syntax of a tag policy, see [Syntax of a tag policy](https://help.aliyun.com/document_detail/417436.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"tags":{"CostCenter":{"tag_value":{"@@assign":["Beijing","Shanghai"]},"tag_key":{"@@assign":"CostCenter"}}}}
 	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
 	// The description of the tag policy.
 	//
 	// The description must be 0 to 512 characters in length.
+	//
+	// example:
+	//
+	// This is a tag policy example.
 	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
 	// The name of the tag policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (\_).
+	// The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// *   USER: single-account mode. Set the value to USER if you use an Alibaba Cloud account or a member of a resource directory to call this API operation to create a tag policy for the Alibaba Cloud account or member.
-	// *   RD: multi-account mode. Set the value to RD if you use the management account of a resource directory to call this API operation to create a tag policy for the resource directory.
+	// 	- USER: single-account mode. Set the value to USER if you use an Alibaba Cloud account or a member of a resource directory to call this API operation to create a tag policy for the Alibaba Cloud account or member.
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode. Set the value to RD if you use the management account of a resource directory to call this API operation to create a tag policy for the resource directory.
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+	//
+	// example:
+	//
+	// RD
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -392,10 +464,22 @@ func (s *CreatePolicyRequest) SetUserType(v string) *CreatePolicyRequest {
 
 type CreatePolicyResponseBody struct {
 	// The ID of the tag policy.
+	//
+	// example:
+	//
+	// p-5732750813924f90****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The name of the tag policy.
+	//
+	// example:
+	//
+	// test
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// FDBE270D-C491-5EEC-A5CD-98245422D3F7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -457,9 +541,17 @@ type CreateTagsRequest struct {
 	// The region ID.
 	//
 	// > Only `cn-hangzhou` is supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The information about the tags.
+	//
+	// This parameter is required.
 	TagKeyValueParamList []*CreateTagsRequestTagKeyValueParamList `json:"TagKeyValueParamList,omitempty" xml:"TagKeyValueParamList,omitempty" type:"Repeated"`
 }
 
@@ -500,12 +592,22 @@ type CreateTagsRequestTagKeyValueParamList struct {
 	// The description of the key for tag N.
 	//
 	// Valid values of N: 1 to 10.
+	//
+	// example:
+	//
+	// Business environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The key of tag N.
 	//
 	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
 	//
 	// Valid values of N: 1 to 10.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Environment
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The information about the tag value.
 	TagValueParamList []*CreateTagsRequestTagKeyValueParamListTagValueParamList `json:"TagValueParamList,omitempty" xml:"TagValueParamList,omitempty" type:"Repeated"`
@@ -538,12 +640,20 @@ type CreateTagsRequestTagKeyValueParamListTagValueParamList struct {
 	// The description of the value for tag N.
 	//
 	// Valid values of N: 1 to 10.
+	//
+	// example:
+	//
+	// Test environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The value of tag N.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// Valid values of N: 1 to 10.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -567,6 +677,10 @@ func (s *CreateTagsRequestTagKeyValueParamListTagValueParamList) SetValue(v stri
 
 type CreateTagsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 94E16BB6-3FB6-1297-B5B2-ED2250F437CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -616,8 +730,18 @@ type DeletePolicyRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the tag policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p-557cb141331f41c7****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -657,6 +781,10 @@ func (s *DeletePolicyRequest) SetResourceOwnerAccount(v string) *DeletePolicyReq
 
 type DeletePolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4A32F5B0-0B0B-5537-B4A0-7A6E1C3AA96A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -706,15 +834,31 @@ type DeleteTagRequest struct {
 	// The tag key.
 	//
 	// If no tag value is associated with a tag key, you can specify the `Key` parameter without specifying the Value parameter to delete the tag key. Otherwise, you must specify both the `Key` and `Value` parameters to delete a preset tag.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Environment
 	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
 	// >  Only `cn-hangzhou` is supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -758,6 +902,10 @@ func (s *DeleteTagRequest) SetValue(v string) *DeleteTagRequest {
 
 type DeleteTagResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6E27F22C-EDA3-132E-A53F-77DE3BC2343D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -806,13 +954,23 @@ func (s *DeleteTagResponse) SetBody(v *DeleteTagResponseBody) *DeleteTagResponse
 type DescribeRegionsRequest struct {
 	// The supported natural language. Valid values:
 	//
-	// *   zh-CN: Chinese (default value)
-	// *   en-US: English
-	// *   ja: Japanese
+	// 	- zh-CN: Chinese (default value)
+	//
+	// 	- en-US: English
+	//
+	// 	- ja: Japanese
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -860,6 +1018,10 @@ type DescribeRegionsResponseBody struct {
 	// The information of the regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 632BBAE2-9C44-4212-8B51-B54742DA9713
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -900,10 +1062,22 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
 	// The name of the region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint of the Tag service in the region.
+	//
+	// example:
+	//
+	// tag.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -963,22 +1137,43 @@ type DetachPolicyRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the tag policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p-a3381efe2fe34a75****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the object.
 	//
 	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required.
+	//
+	// example:
+	//
+	// 151266687691****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required. The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// ACCOUNT
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -1027,6 +1222,10 @@ func (s *DetachPolicyRequest) SetTargetType(v string) *DetachPolicyRequest {
 
 type DetachPolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4A32F5B0-0B0B-5537-B4A0-7A6E1C3AA96A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1073,9 +1272,12 @@ func (s *DetachPolicyResponse) SetBody(v *DetachPolicyResponseBody) *DetachPolic
 }
 
 type DisablePolicyTypeRequest struct {
-	OpenType             *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OpenType     *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1127,6 +1329,10 @@ func (s *DisablePolicyTypeRequest) SetUserType(v string) *DisablePolicyTypeReque
 
 type DisablePolicyTypeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6E27F22C-EDA3-132E-A53F-77DE3BC2343D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1173,9 +1379,12 @@ func (s *DisablePolicyTypeResponse) SetBody(v *DisablePolicyTypeResponseBody) *D
 }
 
 type EnablePolicyTypeRequest struct {
-	OpenType             *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OpenType     *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1226,6 +1435,9 @@ func (s *EnablePolicyTypeRequest) SetUserType(v string) *EnablePolicyTypeRequest
 }
 
 type EnablePolicyTypeResponseBody struct {
+	// example:
+	//
+	// 6E27F22C-EDA3-132E-A53F-77DE3BC2343D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1275,27 +1487,47 @@ type GenerateConfigRuleReportRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the object.
+	//
+	// example:
+	//
+	// 154950938137****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// ACCOUNT
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//
 	// >  This parameter is required if the management account of your resource directory is used to enable the Tag Policy feature in both single-account mode and multi-account mode. The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// USER
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -1344,8 +1576,16 @@ func (s *GenerateConfigRuleReportRequest) SetUserType(v string) *GenerateConfigR
 
 type GenerateConfigRuleReportResponseBody struct {
 	// The ID of the resource non-compliance report.
+	//
+	// example:
+	//
+	// crp-ao0786618088006c****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 37B2AC06-89D8-5D95-98DF-3E68C12BDE05
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1400,27 +1640,47 @@ type GetConfigRuleReportRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the object.
+	//
+	// example:
+	//
+	// 154950938137****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// USER
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// USER
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -1471,13 +1731,26 @@ type GetConfigRuleReportResponseBody struct {
 	// The basic information of the resource non-compliance report that is last generated.
 	Data *GetConfigRuleReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A68BD5BC-5B12-5A9B-8AE9-77884886BE10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1511,21 +1784,40 @@ func (s *GetConfigRuleReportResponseBody) SetSuccess(v bool) *GetConfigRuleRepor
 
 type GetConfigRuleReportResponseBodyData struct {
 	// The time when the report was generated. This value is a UNIX timestamp.
+	//
+	// example:
+	//
+	// 1655089159000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The ID of the report.
+	//
+	// example:
+	//
+	// crp-ao0786618088006c****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	// The ID of the object.
 	//
-	// >  This parameter is returned if you set the `TargetType` and `TargetId` parameters in the current request to the same values as the parameters that are configured when you call the [GenerateConfigRuleReport](~~433313~~) operation to generate the report.
+	// >  This parameter is returned if you set the `TargetType` and `TargetId` parameters in the current request to the same values as the parameters that are configured when you call the [GenerateConfigRuleReport](https://help.aliyun.com/document_detail/433313.html) operation to generate the report.
+	//
+	// example:
+	//
+	// 154950938137****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
 	//
-	// >  This parameter is returned if you set the `TargetType` and `TargetId` parameters in the current request to the same values as the parameters that are configured when you call the [GenerateConfigRuleReport](~~433313~~) operation to generate the report.
+	// 	- ROOT: the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// >  This parameter is returned if you set the `TargetType` and `TargetId` parameters in the current request to the same values as the parameters that are configured when you call the [GenerateConfigRuleReport](https://help.aliyun.com/document_detail/433313.html) operation to generate the report.
+	//
+	// example:
+	//
+	// ACCOUNT
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -1590,20 +1882,35 @@ type GetEffectivePolicyRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the object.
 	//
 	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required.
+	//
+	// example:
+	//
+	// 154950938137****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required. The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// ACCOUNT
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -1647,8 +1954,16 @@ func (s *GetEffectivePolicyRequest) SetTargetType(v string) *GetEffectivePolicyR
 
 type GetEffectivePolicyResponseBody struct {
 	// The effective tag policy.
+	//
+	// example:
+	//
+	// {\\"tags\\":{\\"costcenter\\":{\\"tag_value\\":[\\"Beijing\\",\\"Shanghai\\"],\\"tag_key\\":\\"CostCenter\\"}}}
 	EffectivePolicy *string `json:"EffectivePolicy,omitempty" xml:"EffectivePolicy,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BB532282-94F5-5F56-877F-32D5E2A04F3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1703,8 +2018,18 @@ type GetPolicyRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the tag policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p-557cb141331f41c7****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -1746,6 +2071,10 @@ type GetPolicyResponseBody struct {
 	// The details of the tag policy.
 	Policy *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1E7A4802-AB57-570A-9860-F15B60E1586B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1769,17 +2098,34 @@ func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
 
 type GetPolicyResponseBodyPolicy struct {
 	// The document of the tag policy.
+	//
+	// example:
+	//
+	// {\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}
 	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
 	// The description of the tag policy.
+	//
+	// example:
+	//
+	// This is a tag policy example.
 	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
 	// The name of the tag policy.
+	//
+	// example:
+	//
+	// test
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+	//
+	// example:
+	//
+	// USER
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -1841,21 +2187,39 @@ func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse
 }
 
 type GetPolicyEnableStatusRequest struct {
+	// The enabling type. Valid values:
+	//
+	// 	- TAG_POLICY: the Tag Policy feature.
+	//
+	// 	- VERIFY_NO_TAG: the strong verification feature.
+	//
+	// example:
+	//
+	// TAG_POLICY
 	OpenType     *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The mode of the Tag Policy feature. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// RD
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -1904,6 +2268,10 @@ func (s *GetPolicyEnableStatusRequest) SetUserType(v string) *GetPolicyEnableSta
 
 type GetPolicyEnableStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6C8DF1B1-C65F-5D3A-9FDA-26A4683BB36B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information of the Tag Policy feature.
 	StatusModels []*GetPolicyEnableStatusResponseBodyStatusModels `json:"StatusModels,omitempty" xml:"StatusModels,omitempty" type:"Repeated"`
@@ -1930,17 +2298,29 @@ func (s *GetPolicyEnableStatusResponseBody) SetStatusModels(v []*GetPolicyEnable
 type GetPolicyEnableStatusResponseBodyStatusModels struct {
 	// The status of the Tag Policy feature. Valid values:
 	//
-	// *   PendingEnable: The feature is being enabled.
-	// *   Enabled: The feature is enabled.
-	// *   Closing: The feature is being disabled.
-	// *   Disabled: The feature is disabled.
+	// 	- PendingEnable: The feature is being enabled.
+	//
+	// 	- Enabled: The feature is enabled.
+	//
+	// 	- Closing: The feature is being disabled.
+	//
+	// 	- Disabled: The feature is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+	//
+	// example:
+	//
+	// RD
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -1995,40 +2375,77 @@ type ListConfigRulesForTargetRequest struct {
 	// The number of entries to return on each page.
 	//
 	// Default value: 50. Maximum value: 1000.
+	//
+	// example:
+	//
+	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The use scenario of the tag policy. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   tags: enables tags with specified tag values to be added to resources.
-	// *   rg_inherit: enables resources in a resource group to automatically inherit tags from the resource group.
+	// 	- tags: enables tags with specified tag values to be added to resources.
+	//
+	// 	- rg_inherit: enables resources in a resource group to automatically inherit tags from the resource group.
+	//
+	// example:
+	//
+	// tags
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The tag key. This parameter specifies a filter condition for the query.
+	//
+	// example:
+	//
+	// CostCenter
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The ID of the object. This parameter specifies a filter condition for the query.
+	//
+	// example:
+	//
+	// 134254031178****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// ACCOUNT
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The mode of the Tag Policy feature. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// USER
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -2100,10 +2517,19 @@ type ListConfigRulesForTargetResponseBody struct {
 	Data []*ListConfigRulesForTargetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether the next query is required.
 	//
-	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7126AECD-D7AD-5073-8E88-DD2BD1FC139E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2136,31 +2562,68 @@ type ListConfigRulesForTargetResponseBodyData struct {
 	// You can use the ID to query the content of the related resource non-compliance report in Cloud Config.
 	//
 	// >  This parameter is returned only if you use the Tag Policy feature in multi-account mode.
+	//
+	// example:
+	//
+	// ca-efdc33dc9b37002d****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// cr-0lb4866180880069****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	// The use scenario of the tag policy. Valid values:
 	//
-	// *   tags: enables tags with specified tag values to be added to resources.
-	// *   rg_inherit: enables resources in a resource group to automatically inherit tags from the resource group.
+	// 	- tags: enables tags with specified tag values to be added to resources.
+	//
+	// 	- rg_inherit: enables resources in a resource group to automatically inherit tags from the resource group.
+	//
+	// example:
+	//
+	// tags
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// Indicates whether automatic remediation is enabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	Remediation *bool `json:"Remediation,omitempty" xml:"Remediation,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// CostCenter
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value for automatic remediation.
+	//
+	// example:
+	//
+	// Project
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	// The ID of the object.
+	//
+	// example:
+	//
+	// 134254031178****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// example:
+	//
+	// USER
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -2245,8 +2708,16 @@ type ListPoliciesRequest struct {
 	// The number of entries to return on each page.
 	//
 	// Default value: 50. Maximum value: 1000.
+	//
+	// example:
+	//
+	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2255,16 +2726,25 @@ type ListPoliciesRequest struct {
 	// The name of a tag policy. This parameter specifies a filter condition for the query.
 	PolicyNames []*string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty" type:"Repeated"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The mode of the Tag Policy feature. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// USER
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -2324,12 +2804,21 @@ func (s *ListPoliciesRequest) SetUserType(v string) *ListPoliciesRequest {
 type ListPoliciesResponseBody struct {
 	// Indicates whether the next query is required.
 	//
-	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The tag policies.
 	PolicyList []*ListPoliciesResponseBodyPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 72477CFF-5B24-5E30-9861-3DD9C4BD46E5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2358,19 +2847,40 @@ func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseB
 
 type ListPoliciesResponseBodyPolicyList struct {
 	// The document of the tag policy.
+	//
+	// example:
+	//
+	// {\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}
 	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
 	// The description of the tag policy.
+	//
+	// example:
+	//
+	// This is a tag policy example.
 	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
 	// The ID of the tag policy.
+	//
+	// example:
+	//
+	// p-de62a0bf400e4b69****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The name of the tag policy.
+	//
+	// example:
+	//
+	// example
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+	//
+	// example:
+	//
+	// USER
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -2440,24 +2950,47 @@ type ListPoliciesForTargetRequest struct {
 	// The number of entries to return on each page.
 	//
 	// Default value: 50. Maximum value: 1000.
+	//
+	// example:
+	//
+	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the object. This parameter specifies a filter condition for the query.
+	//
+	// example:
+	//
+	// 154950938137****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// ACCOUNT
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -2514,10 +3047,19 @@ type ListPoliciesForTargetResponseBody struct {
 	Data []*ListPoliciesForTargetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether the next query is required.
 	//
-	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8C962146-AB38-516C-818C-695D4E9F2EA2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2546,19 +3088,40 @@ func (s *ListPoliciesForTargetResponseBody) SetRequestId(v string) *ListPolicies
 
 type ListPoliciesForTargetResponseBodyData struct {
 	// The document of the tag policy.
+	//
+	// example:
+	//
+	// {\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}
 	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
 	// The description of the tag policy.
+	//
+	// example:
+	//
+	// This is a tag policy example.
 	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
 	// The ID of the tag policy.
+	//
+	// example:
+	//
+	// p-de62a0bf400e4b69****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The name of the tag policy.
+	//
+	// example:
+	//
+	// example
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// *   USER: single-account mode
-	// *   RD: multi-account mode
+	// 	- USER: single-account mode
 	//
-	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+	// 	- RD: multi-account mode
+	//
+	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+	//
+	// example:
+	//
+	// USER
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -2628,31 +3191,62 @@ type ListResourcesByTagRequest struct {
 	TagFilter *ListResourcesByTagRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Struct"`
 	// The type of the query. Valid values:
 	//
-	// *   EQUAL: exact match for resources to which the specified tag is added. This is the default value.
-	// *   NOT: exact match for resources to which the specified tag is not added.
+	// 	- EQUAL: exact match for resources to which the specified tag is added. This is the default value.
+	//
+	// 	- NOT: exact match for resources to which the specified tag is not added.
+	//
+	// example:
+	//
+	// EQUAL
 	FuzzyType *string `json:"FuzzyType,omitempty" xml:"FuzzyType,omitempty"`
 	// Specifies whether to return the information of tags added to the resources. Valid values:
 	//
-	// *   False: does not return the information of tags added to the resources. This is the default value.
-	// *   True: returns the information of all tags added to the resources.
+	// 	- False: does not return the information of tags added to the resources. This is the default value.
+	//
+	// 	- True: returns the information of all tags added to the resources.
+	//
+	// example:
+	//
+	// False
 	IncludeAllTags *bool `json:"IncludeAllTags,omitempty" xml:"IncludeAllTags,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Default value: 50. Maximum value: 1000.
+	//
+	// example:
+	//
+	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// For more information about region IDs, see [Endpoints](~~2330902~~).
+	// For more information about region IDs, see [Endpoints](https://help.aliyun.com/document_detail/2330902.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The resource type. This parameter specifies a filter condition for the query.
 	//
-	// *   If you set the FuzzyType parameter to EQUAL, you can set this parameter to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
-	// *   If you set the FuzzyType parameter to NOT, you can set this parameter to a resource type provided in **Types of resources that support queries based on the NOT operator**.
+	// 	- If you set the FuzzyType parameter to EQUAL, you can set this parameter to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+	//
+	// 	- If you set the FuzzyType parameter to NOT, you can set this parameter to a resource type provided in **Types of resources that support queries based on the NOT operator**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN::VPC::VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -2718,10 +3312,20 @@ type ListResourcesByTagRequestTagFilter struct {
 	// The tag key. This parameter specifies a filter condition for the query.
 	//
 	// The tag key can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. This parameter specifies a filter condition for the query.
 	//
 	// The tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2746,10 +3350,21 @@ func (s *ListResourcesByTagRequestTagFilter) SetValue(v string) *ListResourcesBy
 type ListResourcesByTagResponseBody struct {
 	// Indicates whether the `next query` is required.
 	//
-	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the `next query` is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the `token` used to start the next query.
+	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the `next query` is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the `token` used to start the next query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7D61FF74-61C2-5768-B01F-05FC97F24F35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information of the resources.
 	Resources []*ListResourcesByTagResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -2780,6 +3395,10 @@ func (s *ListResourcesByTagResponseBody) SetResources(v []*ListResourcesByTagRes
 
 type ListResourcesByTagResponseBodyResources struct {
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// vpc-wz9pifyuw26esxd05****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The information of the tags.
 	//
@@ -2808,12 +3427,25 @@ func (s *ListResourcesByTagResponseBodyResources) SetTags(v []*ListResourcesByTa
 type ListResourcesByTagResponseBodyResourcesTags struct {
 	// The type of the tag. Valid values:
 	//
-	// *   custom
-	// *   system
+	// 	- custom
+	//
+	// 	- system
+	//
+	// example:
+	//
+	// custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2873,32 +3505,61 @@ type ListSupportResourceTypesRequest struct {
 	// The number of entries to return on each page.
 	//
 	// Maximum value: 1000. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Y3wDNwUdssyKODK****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The service code. This parameter specifies a filter condition for the query.
 	//
 	// This parameter is obtained from the response.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The region ID.
 	//
-	// For more information about region IDs, see [Endpoints](~~2330902~~).
+	// For more information about region IDs, see [Endpoints](https://help.aliyun.com/document_detail/2330902.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The resource type. This parameter specifies a filter condition for the query.
 	//
 	// This parameter is obtained from the response.
+	//
+	// example:
+	//
+	// instance
 	ResourceTye *string `json:"ResourceTye,omitempty" xml:"ResourceTye,omitempty"`
 	// Specifies whether to return tag-related capability items. Valid values:
 	//
-	// *   true: The system returns tag-related capability items.
-	// *   false (default value): The system does not return tag-related capability items.
+	// 	- true: The system returns tag-related capability items.
+	//
+	// 	- false (default value): The system does not return tag-related capability items.
+	//
+	// example:
+	//
+	// false
 	ShowItems *bool `json:"ShowItems,omitempty" xml:"ShowItems,omitempty"`
 	// The code of the tag-related capability item. This parameter specifies a filter condition for the query.
 	//
 	// For more information, see **Tag-related capability items**.
+	//
+	// example:
+	//
+	// TAG_CONSOLE_SUPPORT
 	SupportCode *string `json:"SupportCode,omitempty" xml:"SupportCode,omitempty"`
 }
 
@@ -2963,10 +3624,19 @@ func (s *ListSupportResourceTypesRequest) SetSupportCode(v string) *ListSupportR
 type ListSupportResourceTypesResponseBody struct {
 	// Indicates whether the next query is required.
 	//
-	// *   If the value of this parameter is empty, all results are returned, and the next query is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// 	- If the value of this parameter is empty, all results are returned, and the next query is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	//
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABC71772-F3A1-59CA-B811-4A5B0E0B72F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The supported resource types.
 	SupportResourceTypes []*ListSupportResourceTypesResponseBodySupportResourceTypes `json:"SupportResourceTypes,omitempty" xml:"SupportResourceTypes,omitempty" type:"Repeated"`
@@ -2996,9 +3666,18 @@ func (s *ListSupportResourceTypesResponseBody) SetSupportResourceTypes(v []*List
 }
 
 type ListSupportResourceTypesResponseBodySupportResourceTypes struct {
+	ArnTemplate *string `json:"ArnTemplate,omitempty" xml:"ArnTemplate,omitempty"`
 	// The service code.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The supported tag-related capability items.
 	//
@@ -3012,6 +3691,11 @@ func (s ListSupportResourceTypesResponseBodySupportResourceTypes) String() strin
 
 func (s ListSupportResourceTypesResponseBodySupportResourceTypes) GoString() string {
 	return s.String()
+}
+
+func (s *ListSupportResourceTypesResponseBodySupportResourceTypes) SetArnTemplate(v string) *ListSupportResourceTypesResponseBodySupportResourceTypes {
+	s.ArnTemplate = &v
+	return s
 }
 
 func (s *ListSupportResourceTypesResponseBodySupportResourceTypes) SetProductCode(v string) *ListSupportResourceTypesResponseBodySupportResourceTypes {
@@ -3032,10 +3716,19 @@ func (s *ListSupportResourceTypesResponseBodySupportResourceTypes) SetSupportIte
 type ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems struct {
 	// Indicates whether the tag-related capability item is supported. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Support *bool `json:"Support,omitempty" xml:"Support,omitempty"`
 	// The code of the tag-related capability item.
+	//
+	// example:
+	//
+	// TAG_CONSOLE_SUPPORT
 	SupportCode *string `json:"SupportCode,omitempty" xml:"SupportCode,omitempty"`
 	// The details of the support for the tag-related capability item.
 	SupportDetails []map[string]*string `json:"SupportDetails,omitempty" xml:"SupportDetails,omitempty" type:"Repeated"`
@@ -3097,45 +3790,80 @@ type ListTagKeysRequest struct {
 	TagFilter *ListTagKeysRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Struct"`
 	// The type of the resource tags. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   all (default value)
-	// *   custom
-	// *   system
+	// 	- all (default value)
+	//
+	// 	- custom
+	//
+	// 	- system
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// all
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The type of the query. Valid values:
 	//
-	// *   EQUAL: exact match. This is the default value.
-	// *   PREFIX: prefix-based fuzzy match.
+	// 	- EQUAL: exact match. This is the default value.
+	//
+	// 	- PREFIX: prefix-based fuzzy match.
 	//
 	// >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
+	//
+	// example:
+	//
+	// EQUAL
 	FuzzyType *string `json:"FuzzyType,omitempty" xml:"FuzzyType,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of tag keys to return on each page.
 	//
 	// Maximum value: 1000. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The category of the tags. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   ResourceTag: resource tags, including custom and system tags. This is the default value.
-	// *   MetaTag: preset tags.
+	// 	- ResourceTag: resource tags, including custom and system tags. This is the default value.
+	//
+	// 	- MetaTag: preset tags.
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// ResourceTag
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region ID.
 	//
-	// For more information about region IDs, see [Endpoints](~~2330902~~).
+	// For more information about region IDs, see [Endpoints](https://help.aliyun.com/document_detail/2330902.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The resource type. This parameter specifies a filter condition for the query.
 	//
 	// Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
 	//
-	// *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
-	// *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+	// 	- `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+	//
+	// 	- `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+	//
+	// example:
+	//
+	// ALIYUN::ECS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -3208,6 +3936,10 @@ type ListTagKeysRequestTagFilter struct {
 	// This parameter is used together with the `FuzzyType` parameter.
 	//
 	// >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
+	//
+	// example:
+	//
+	// team
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -3229,10 +3961,19 @@ type ListTagKeysResponseBody struct {
 	Keys *ListTagKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
 	// Indicates whether the next query is required. The value of this parameter may be empty.
 	//
-	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DC09A6AA-2713-4E10-A2E9-E6C5C43A8842
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3279,12 +4020,25 @@ func (s *ListTagKeysResponseBodyKeys) SetKey(v []*ListTagKeysResponseBodyKeysKey
 type ListTagKeysResponseBodyKeysKey struct {
 	// The type of the resource tag. Valid values:
 	//
-	// *   custom
-	// *   system
+	// 	- custom
+	//
+	// 	- system
+	//
+	// example:
+	//
+	// custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of the tag key.
+	//
+	// example:
+	//
+	// Business team
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// team
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -3343,26 +4097,51 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 type ListTagResourcesRequest struct {
 	// The type of the tag. Valid values:
 	//
-	// *   Custom
-	// *   System
-	// *   All
+	// 	- Custom
+	//
+	// 	- System
+	//
+	// 	- All
 	//
 	// Default value: All.
+	//
+	// example:
+	//
+	// Custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Maximum value: 1000. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// *   If the resources belong to a service that is centrally deployed, set the value to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
-	// *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+	// 	- If the resources belong to a service that is centrally deployed, set the value to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](https://help.aliyun.com/document_detail/2579691.html).
+	//
+	// 	- If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of a resource.
+	//
+	// example:
+	//
+	// arn:acs:ecs:cn-hangzhou:123456789****:instance/i-bp15hr53jws84akg****
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The key-value pairs of tags. You can specify 1 to 10 key-value pairs.
@@ -3371,10 +4150,17 @@ type ListTagResourcesRequest struct {
 	//
 	// Limits:
 	//
-	// *   A tag key must be 1 to 128 characters in length.
-	// *   A tag value must be 1 to 128 characters in length.
-	// *   Tag keys and tag values are case-sensitive.
-	// *   Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+	// 	- A tag key must be 1 to 128 characters in length.
+	//
+	// 	- A tag value must be 1 to 128 characters in length.
+	//
+	// 	- Tag keys and tag values are case-sensitive.
+	//
+	// 	- Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -3434,10 +4220,19 @@ func (s *ListTagResourcesRequest) SetTags(v string) *ListTagResourcesRequest {
 type ListTagResourcesResponseBody struct {
 	// Indicates whether the `next query` is required.
 	//
-	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the `next query` is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the `token` used to start the next query.
+	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the `next query` is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the `token` used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 014738E0-3C7F-47D8-8FB9-469500C6F387
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information of the tags that are added to the resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
@@ -3468,6 +4263,10 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 
 type ListTagResourcesResponseBodyTagResources struct {
 	// The ARN of the resource.
+	//
+	// example:
+	//
+	// arn:acs:ecs:cn-hangzhou:123456789****:instance/i-bp15hr53jws84akg****
 	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
 	// The information of the tags.
 	Tags []*ListTagResourcesResponseBodyTagResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -3494,12 +4293,25 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTags(v []*ListTagResources
 type ListTagResourcesResponseBodyTagResourcesTags struct {
 	// The type of the tag. Valid values:
 	//
-	// *   Custom
-	// *   System
+	// 	- Custom
+	//
+	// 	- System
+	//
+	// example:
+	//
+	// Custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3559,39 +4371,74 @@ type ListTagValuesRequest struct {
 	TagFilter *ListTagValuesRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Struct"`
 	// The type of the query. Valid values:
 	//
-	// *   EQUAL: exact match. This is the default value.
-	// *   PREFIX: prefix-based fuzzy match.
+	// 	- EQUAL: exact match. This is the default value.
+	//
+	// 	- PREFIX: prefix-based fuzzy match.
 	//
 	// >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
+	//
+	// example:
+	//
+	// EQUAL
 	FuzzyType *string `json:"FuzzyType,omitempty" xml:"FuzzyType,omitempty"`
 	// The tag key. This parameter specifies a filter condition for the query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of tag values to return on each page.
 	//
 	// Maximum value: 1000. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The category of the tags. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// *   ResourceTag: resource tags, including custom and system tags. This is the default value.
-	// *   MetaTag: preset tags.
+	// 	- ResourceTag: resource tags, including custom and system tags. This is the default value.
+	//
+	// 	- MetaTag: preset tags.
 	//
 	// >  The value of this parameter is not case-sensitive.
+	//
+	// example:
+	//
+	// ResourceTag
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region ID.
 	//
-	// For more information about region IDs, see [Endpoints](~~2330902~~).
+	// For more information about region IDs, see [Endpoints](https://help.aliyun.com/document_detail/2330902.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The resource type. This parameter specifies a filter condition for the query.
 	//
 	// Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
 	//
-	// *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
-	// *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+	// 	- `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+	//
+	// 	- `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+	//
+	// example:
+	//
+	// ALIYUN::ECS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -3664,6 +4511,10 @@ type ListTagValuesRequestTagFilter struct {
 	// This parameter is used together with the `FuzzyType` parameter.
 	//
 	// >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
+	//
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3683,10 +4534,19 @@ func (s *ListTagValuesRequestTagFilter) SetValue(v string) *ListTagValuesRequest
 type ListTagValuesResponseBody struct {
 	// Indicates whether the next query is required. The value of this parameter may be empty.
 	//
-	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8989CA7E-D2E0-4B6D-8282-311106E80150
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information of the tag values.
 	Values *ListTagValuesResponseBodyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
@@ -3765,14 +4625,32 @@ type ListTargetsForPolicyRequest struct {
 	// The number of entries to return on each page.
 	//
 	// Default value: 50. Maximum value: 1000.
+	//
+	// example:
+	//
+	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	// The token that is used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the tag policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p-de62a0bf400e4b69****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -3823,19 +4701,37 @@ func (s *ListTargetsForPolicyRequest) SetResourceOwnerAccount(v string) *ListTar
 type ListTargetsForPolicyResponseBody struct {
 	// Indicates whether the object belongs to the resource directory. Valid values:
 	//
-	// *   true: The object belongs to the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   false: The object does not belong to the resource directory. This value is available if you use the Tag Policy feature in single-account mode.
+	// 	- true: The object belongs to the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- false: The object does not belong to the resource directory. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// example:
+	//
+	// true
 	IsRd *bool `json:"IsRd,omitempty" xml:"IsRd,omitempty"`
 	// Indicates whether the next query is required.
 	//
-	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
-	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	//
+	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the resource directory.
 	//
 	// >  This parameter is returned only if you use the Tag Policy feature in multi-account mode.
+	//
+	// example:
+	//
+	// rd-3G****
 	RdId *string `json:"RdId,omitempty" xml:"RdId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2EE71C8D-6DB8-56AC-8B05-3D4C0116E6A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The objects to which the tag policy is attached.
 	Targets []*ListTargetsForPolicyResponseBodyTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
@@ -3876,13 +4772,24 @@ func (s *ListTargetsForPolicyResponseBody) SetTargets(v []*ListTargetsForPolicyR
 
 type ListTargetsForPolicyResponseBodyTargets struct {
 	// The ID of the object.
+	//
+	// example:
+	//
+	// 195320939469****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
-	// *   ROOT: the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
-	// *   ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	//
+	// 	- ROOT: the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// 	- ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	//
+	// example:
+	//
+	// ACCOUNT
 	TargetType *int32 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -3936,26 +4843,62 @@ func (s *ListTargetsForPolicyResponse) SetBody(v *ListTargetsForPolicyResponseBo
 type ModifyPolicyRequest struct {
 	// Specifies whether to perform a dry run for the request. Valid values:
 	//
-	// *   false: The system performs the related operation based on the parameter settings in the request. This is the default value.
-	// *   true: The system does not perform the related operation based on the parameter settings in the request but only verifies the parameter settings.
+	// 	- false: The system performs the related operation based on the parameter settings in the request. This is the default value.
+	//
+	// 	- true: The system does not perform the related operation based on the parameter settings in the request but only verifies the parameter settings.
+	//
+	// example:
+	//
+	// false
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The document of the tag policy.
 	//
-	// For more information about the syntax of a tag policy, see [Syntax of a tag policy](~~417436~~).
+	// For more information about the syntax of a tag policy, see [Syntax of a tag policy](https://help.aliyun.com/document_detail/417436.html).
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// {"tags":{"CostCenter":{"tag_value":{"@@assign":["Beijing","Shanghai"]},"tag_key":{"@@assign":"CostCenter"}}}}
 	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
 	// The description of the tag policy.
 	//
 	// The description must be 0 to 512 characters in length.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// This is a tag policy example.
 	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
 	// The ID of the tag policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p-5732750813924f90****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The name of the tag policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (\_).
+	// The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// test
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -4015,6 +4958,10 @@ func (s *ModifyPolicyRequest) SetResourceOwnerAccount(v string) *ModifyPolicyReq
 
 type ModifyPolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4A32F5B0-0B0B-5537-B4A0-7A6E1C3AA96A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4064,6 +5011,12 @@ type OpenCreatedByRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4104,6 +5057,10 @@ func (s *OpenCreatedByRequest) SetResourceOwnerId(v string) *OpenCreatedByReques
 
 type OpenCreatedByResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 74F03511-FDFA-54AF-96A4-71575B41E74D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4154,10 +5111,23 @@ type TagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// *   If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
-	// *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+	// 	- If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](https://help.aliyun.com/document_detail/2579691.html).
+	//
+	// 	- If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of a resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// arn:acs:vpc:cn-hangzhou:123456789****:vpc/vpc-bp19dd90tkt6tz7wu****
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The key-value pairs of tags. You can specify 1 to 10 key-value pairs.
@@ -4166,10 +5136,19 @@ type TagResourcesRequest struct {
 	//
 	// Limits:
 	//
-	// *   A tag key must be 1 to 128 characters in length.
-	// *   A tag value must be 1 to 128 characters in length.
-	// *   Tag keys and tag values are case-sensitive.
-	// *   Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+	// 	- A tag key must be 1 to 128 characters in length.
+	//
+	// 	- A tag value must be 1 to 128 characters in length.
+	//
+	// 	- Tag keys and tag values are case-sensitive.
+	//
+	// 	- Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -4216,11 +5195,15 @@ type TagResourcesResponseBody struct {
 	//
 	// >
 	//
-	// *   If tags are added to all resources, the value of `FailedResources` is empty.
+	// 	- If tags are added to all resources, the value of `FailedResources` is empty.
 	//
-	// *   If tags fail to be added to some or all resources, the value of `FailedResources` contains the detailed information about the resources.
+	// 	- If tags fail to be added to some or all resources, the value of `FailedResources` contains the detailed information about the resources.
 	FailedResources *TagResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 72086426-9F8C-4A60-852B-864048FD1199
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4261,6 +5244,10 @@ func (s *TagResourcesResponseBodyFailedResources) SetFailedResource(v []*TagReso
 
 type TagResourcesResponseBodyFailedResourcesFailedResource struct {
 	// The ARN of the resource.
+	//
+	// example:
+	//
+	// arn:acs:vpc:cn-hangzhou:123456789****:vpc/vpc-bp19dd90tkt6tz7wu****
 	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
 	// The information about the error.
 	Result *TagResourcesResponseBodyFailedResourcesFailedResourceResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
@@ -4286,8 +5273,16 @@ func (s *TagResourcesResponseBodyFailedResourcesFailedResource) SetResult(v *Tag
 
 type TagResourcesResponseBodyFailedResourcesFailedResourceResult struct {
 	// The error code.
+	//
+	// example:
+	//
+	// InvalidResourceId.NotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// The specified ResourceIds are not found in our records.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -4343,13 +5338,32 @@ type UntagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// *   If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
-	// *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+	// 	- If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](https://help.aliyun.com/document_detail/2579691.html).
+	//
+	// 	- If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of a resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// arn:acs:vpc:cn-hangzhou:123456789****:vpc/vpc-bp19dd90tkt6tz7wu****
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// A tag key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// k1
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -4396,11 +5410,15 @@ type UntagResourcesResponseBody struct {
 	//
 	// >
 	//
-	// *   If tags are removed from all resources, the value of FailedResources is empty.
+	// 	- If tags are removed from all resources, the value of FailedResources is empty.
 	//
-	// *   If tags fail to be removed from some or all resources, the value of FailedResources contains the detailed information about the resources.
+	// 	- If tags fail to be removed from some or all resources, the value of FailedResources contains the detailed information about the resources.
 	FailedResources *UntagResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 43D12436-B10F-4469-8136-FD1C5D2B2083
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4441,6 +5459,10 @@ func (s *UntagResourcesResponseBodyFailedResources) SetFailedResource(v []*Untag
 
 type UntagResourcesResponseBodyFailedResourcesFailedResource struct {
 	// The ARN of the resource.
+	//
+	// example:
+	//
+	// arn:acs:ecs:cn-hangzhou:123456789****:instance/i-xxxxxxxxxx1
 	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
 	// The information about the error.
 	Result *UntagResourcesResponseBodyFailedResourcesFailedResourceResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
@@ -4466,8 +5488,16 @@ func (s *UntagResourcesResponseBodyFailedResourcesFailedResource) SetResult(v *U
 
 type UntagResourcesResponseBodyFailedResourcesFailedResourceResult struct {
 	// The error code.
+	//
+	// example:
+	//
+	// InvalidResourceId.NotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// The specified ResourceIds are not found in our records.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -4533,6 +5563,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("Tag")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-qingdao":                  tea.String("tag.aliyuncs.com"),
@@ -4608,14 +5645,21 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can call this API operation to attach a tag policy to the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to attach a tag policy to the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to attach the tag policy with an ID of `p-de62a0bf400e4b69****` to the current logon account. In this example, the Tag Policy feature in single-account mode is used.
- *
- * @param request AttachPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachPolicyResponse
- */
+// Summary:
+//
+// 绑定策略
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can call this API operation to attach a tag policy to the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to attach a tag policy to the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to attach the tag policy with an ID of `p-de62a0bf400e4b69****` to the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+//
+// @param request - AttachPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachPolicyResponse
 func (client *Client) AttachPolicyWithOptions(request *AttachPolicyRequest, runtime *util.RuntimeOptions) (_result *AttachPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4664,22 +5708,39 @@ func (client *Client) AttachPolicyWithOptions(request *AttachPolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can call this API operation to attach a tag policy to the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to attach a tag policy to the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to attach the tag policy with an ID of `p-de62a0bf400e4b69****` to the current logon account. In this example, the Tag Policy feature in single-account mode is used.
- *
- * @param request AttachPolicyRequest
- * @return AttachPolicyResponse
- */
+// Summary:
+//
+// 绑定策略
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can call this API operation to attach a tag policy to the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to attach a tag policy to the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to attach the tag policy with an ID of `p-de62a0bf400e4b69****` to the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+//
+// @param request - AttachPolicyRequest
+//
+// @return AttachPolicyResponse
 func (client *Client) AttachPolicy(request *AttachPolicyRequest) (_result *AttachPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachPolicyResponse{}
@@ -4691,6 +5752,15 @@ func (client *Client) AttachPolicy(request *AttachPolicyRequest) (_result *Attac
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验CreatedBy开通状态
+//
+// @param request - CheckCreatedByEnabledRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckCreatedByEnabledResponse
 func (client *Client) CheckCreatedByEnabledWithOptions(request *CheckCreatedByEnabledRequest, runtime *util.RuntimeOptions) (_result *CheckCreatedByEnabledResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4731,15 +5801,33 @@ func (client *Client) CheckCreatedByEnabledWithOptions(request *CheckCreatedByEn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckCreatedByEnabledResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckCreatedByEnabledResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckCreatedByEnabledResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 校验CreatedBy开通状态
+//
+// @param request - CheckCreatedByEnabledRequest
+//
+// @return CheckCreatedByEnabledResponse
 func (client *Client) CheckCreatedByEnabled(request *CheckCreatedByEnabledRequest) (_result *CheckCreatedByEnabledResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckCreatedByEnabledResponse{}
@@ -4751,6 +5839,15 @@ func (client *Client) CheckCreatedByEnabled(request *CheckCreatedByEnabledReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭CreatedBy服务
+//
+// @param request - CloseCreatedByRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseCreatedByResponse
 func (client *Client) CloseCreatedByWithOptions(request *CloseCreatedByRequest, runtime *util.RuntimeOptions) (_result *CloseCreatedByResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4791,15 +5888,33 @@ func (client *Client) CloseCreatedByWithOptions(request *CloseCreatedByRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloseCreatedByResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloseCreatedByResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloseCreatedByResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 关闭CreatedBy服务
+//
+// @param request - CloseCreatedByRequest
+//
+// @return CloseCreatedByResponse
 func (client *Client) CloseCreatedBy(request *CloseCreatedByRequest) (_result *CloseCreatedByResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseCreatedByResponse{}
@@ -4811,14 +5926,21 @@ func (client *Client) CloseCreatedBy(request *CloseCreatedByRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * ###
- * This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
- *
- * @param request CreatePolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreatePolicyResponse
- */
+// Summary:
+//
+// Creates a tag policy.
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
+//
+// @param request - CreatePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyResponse
 func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4875,22 +5997,39 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * ###
- * This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
- *
- * @param request CreatePolicyRequest
- * @return CreatePolicyResponse
- */
+// Summary:
+//
+// Creates a tag policy.
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
+//
+// @param request - CreatePolicyRequest
+//
+// @return CreatePolicyResponse
 func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePolicyResponse{}
@@ -4902,15 +6041,23 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 	return _result, _err
 }
 
-/**
- * ###
- * A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
- * This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
- *
- * @param request CreateTagsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateTagsResponse
- */
+// Summary:
+//
+// Creates preset tags.
+//
+// Description:
+//
+// ###
+//
+// A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
+//
+// This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
+//
+// @param request - CreateTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTagsResponse
 func (client *Client) CreateTagsWithOptions(request *CreateTagsRequest, runtime *util.RuntimeOptions) (_result *CreateTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4951,23 +6098,41 @@ func (client *Client) CreateTagsWithOptions(request *CreateTagsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * ###
- * A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
- * This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
- *
- * @param request CreateTagsRequest
- * @return CreateTagsResponse
- */
+// Summary:
+//
+// Creates preset tags.
+//
+// Description:
+//
+// ###
+//
+// A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
+//
+// This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
+//
+// @param request - CreateTagsRequest
+//
+// @return CreateTagsResponse
 func (client *Client) CreateTags(request *CreateTagsRequest) (_result *CreateTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTagsResponse{}
@@ -4979,14 +6144,21 @@ func (client *Client) CreateTags(request *CreateTagsRequest) (_result *CreateTag
 	return _result, _err
 }
 
-/**
- * Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](~~429724~~).
- * This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7****`.
- *
- * @param request DeletePolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeletePolicyResponse
- */
+// Summary:
+//
+// 删除策略
+//
+// Description:
+//
+// Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](https://help.aliyun.com/document_detail/429724.html).
+//
+// This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7****`.
+//
+// @param request - DeletePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyResponse
 func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5027,22 +6199,39 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](~~429724~~).
- * This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7****`.
- *
- * @param request DeletePolicyRequest
- * @return DeletePolicyResponse
- */
+// Summary:
+//
+// 删除策略
+//
+// Description:
+//
+// Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](https://help.aliyun.com/document_detail/429724.html).
+//
+// This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7****`.
+//
+// @param request - DeletePolicyRequest
+//
+// @return DeletePolicyResponse
 func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *DeletePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePolicyResponse{}
@@ -5054,13 +6243,19 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
- *
- * @param request DeleteTagRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteTagResponse
- */
+// Summary:
+//
+// Deletes a preset tag.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
+//
+// @param request - DeleteTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagResponse
 func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *util.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5105,21 +6300,37 @@ func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
- *
- * @param request DeleteTagRequest
- * @return DeleteTagResponse
- */
+// Summary:
+//
+// Deletes a preset tag.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
+//
+// @param request - DeleteTagRequest
+//
+// @return DeleteTagResponse
 func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTagResponse{}
@@ -5131,6 +6342,15 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions where the Tag service is available.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5175,15 +6395,33 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the regions where the Tag service is available.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -5195,14 +6433,21 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75****` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
- *
- * @param request DetachPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DetachPolicyResponse
- */
+// Summary:
+//
+// 解除策略绑定
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75****` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+//
+// @param request - DetachPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachPolicyResponse
 func (client *Client) DetachPolicyWithOptions(request *DetachPolicyRequest, runtime *util.RuntimeOptions) (_result *DetachPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5251,22 +6496,39 @@ func (client *Client) DetachPolicyWithOptions(request *DetachPolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75****` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
- *
- * @param request DetachPolicyRequest
- * @return DetachPolicyResponse
- */
+// Summary:
+//
+// 解除策略绑定
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75****` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+//
+// @param request - DetachPolicyRequest
+//
+// @return DetachPolicyResponse
 func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *DetachPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachPolicyResponse{}
@@ -5278,6 +6540,15 @@ func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *Detac
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭策略
+//
+// @param request - DisablePolicyTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisablePolicyTypeResponse
 func (client *Client) DisablePolicyTypeWithOptions(request *DisablePolicyTypeRequest, runtime *util.RuntimeOptions) (_result *DisablePolicyTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5326,15 +6597,33 @@ func (client *Client) DisablePolicyTypeWithOptions(request *DisablePolicyTypeReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisablePolicyTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisablePolicyTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisablePolicyTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 关闭策略
+//
+// @param request - DisablePolicyTypeRequest
+//
+// @return DisablePolicyTypeResponse
 func (client *Client) DisablePolicyType(request *DisablePolicyTypeRequest) (_result *DisablePolicyTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisablePolicyTypeResponse{}
@@ -5346,6 +6635,15 @@ func (client *Client) DisablePolicyType(request *DisablePolicyTypeRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通策略
+//
+// @param request - EnablePolicyTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnablePolicyTypeResponse
 func (client *Client) EnablePolicyTypeWithOptions(request *EnablePolicyTypeRequest, runtime *util.RuntimeOptions) (_result *EnablePolicyTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5394,15 +6692,33 @@ func (client *Client) EnablePolicyTypeWithOptions(request *EnablePolicyTypeReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnablePolicyTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnablePolicyTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnablePolicyTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 开通策略
+//
+// @param request - EnablePolicyTypeRequest
+//
+// @return EnablePolicyTypeResponse
 func (client *Client) EnablePolicyType(request *EnablePolicyTypeRequest) (_result *EnablePolicyTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnablePolicyTypeResponse{}
@@ -5414,14 +6730,21 @@ func (client *Client) EnablePolicyType(request *EnablePolicyTypeRequest) (_resul
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can call this API operation to generate a resource non-compliance report for the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to generate a resource non-compliance report for the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call this API operation to generate a resource non-compliance report for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
- *
- * @param request GenerateConfigRuleReportRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GenerateConfigRuleReportResponse
- */
+// Summary:
+//
+// 生成规则检测报告
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can call this API operation to generate a resource non-compliance report for the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to generate a resource non-compliance report for the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call this API operation to generate a resource non-compliance report for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+//
+// @param request - GenerateConfigRuleReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateConfigRuleReportResponse
 func (client *Client) GenerateConfigRuleReportWithOptions(request *GenerateConfigRuleReportRequest, runtime *util.RuntimeOptions) (_result *GenerateConfigRuleReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5470,22 +6793,39 @@ func (client *Client) GenerateConfigRuleReportWithOptions(request *GenerateConfi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateConfigRuleReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateConfigRuleReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateConfigRuleReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can call this API operation to generate a resource non-compliance report for the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to generate a resource non-compliance report for the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call this API operation to generate a resource non-compliance report for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
- *
- * @param request GenerateConfigRuleReportRequest
- * @return GenerateConfigRuleReportResponse
- */
+// Summary:
+//
+// 生成规则检测报告
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can call this API operation to generate a resource non-compliance report for the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to generate a resource non-compliance report for the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call this API operation to generate a resource non-compliance report for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+//
+// @param request - GenerateConfigRuleReportRequest
+//
+// @return GenerateConfigRuleReportResponse
 func (client *Client) GenerateConfigRuleReport(request *GenerateConfigRuleReportRequest) (_result *GenerateConfigRuleReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateConfigRuleReportResponse{}
@@ -5497,14 +6837,21 @@ func (client *Client) GenerateConfigRuleReport(request *GenerateConfigRuleReport
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the basic information of the resource non-compliance report that is last generated for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the basic information of the resource non-compliance report that is last generated for an object in the resource directory. The object can be the Root folder, a folder other than the Root folder, or a member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call this API operation to query the basic information of the resource non-compliance report that is last generated for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that the ID of the report is `crp-ao0786618088006c****`.
- *
- * @param request GetConfigRuleReportRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetConfigRuleReportResponse
- */
+// Summary:
+//
+// Queries the basic information of the resource non-compliance report that is last generated.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the basic information of the resource non-compliance report that is last generated for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the basic information of the resource non-compliance report that is last generated for an object in the resource directory. The object can be the Root folder, a folder other than the Root folder, or a member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call this API operation to query the basic information of the resource non-compliance report that is last generated for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that the ID of the report is `crp-ao0786618088006c****`.
+//
+// @param request - GetConfigRuleReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConfigRuleReportResponse
 func (client *Client) GetConfigRuleReportWithOptions(request *GetConfigRuleReportRequest, runtime *util.RuntimeOptions) (_result *GetConfigRuleReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5553,22 +6900,39 @@ func (client *Client) GetConfigRuleReportWithOptions(request *GetConfigRuleRepor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConfigRuleReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConfigRuleReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConfigRuleReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the basic information of the resource non-compliance report that is last generated for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the basic information of the resource non-compliance report that is last generated for an object in the resource directory. The object can be the Root folder, a folder other than the Root folder, or a member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call this API operation to query the basic information of the resource non-compliance report that is last generated for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that the ID of the report is `crp-ao0786618088006c****`.
- *
- * @param request GetConfigRuleReportRequest
- * @return GetConfigRuleReportResponse
- */
+// Summary:
+//
+// Queries the basic information of the resource non-compliance report that is last generated.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the basic information of the resource non-compliance report that is last generated for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the basic information of the resource non-compliance report that is last generated for an object in the resource directory. The object can be the Root folder, a folder other than the Root folder, or a member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call this API operation to query the basic information of the resource non-compliance report that is last generated for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that the ID of the report is `crp-ao0786618088006c****`.
+//
+// @param request - GetConfigRuleReportRequest
+//
+// @return GetConfigRuleReportResponse
 func (client *Client) GetConfigRuleReport(request *GetConfigRuleReportRequest) (_result *GetConfigRuleReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConfigRuleReportResponse{}
@@ -5580,15 +6944,23 @@ func (client *Client) GetConfigRuleReport(request *GetConfigRuleReportRequest) (
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](~~417435~~).
- * This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
- *
- * @param request GetEffectivePolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetEffectivePolicyResponse
- */
+// Summary:
+//
+// 查询有效策略
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](https://help.aliyun.com/document_detail/417435.html).
+//
+// This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+//
+// @param request - GetEffectivePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEffectivePolicyResponse
 func (client *Client) GetEffectivePolicyWithOptions(request *GetEffectivePolicyRequest, runtime *util.RuntimeOptions) (_result *GetEffectivePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5633,23 +7005,41 @@ func (client *Client) GetEffectivePolicyWithOptions(request *GetEffectivePolicyR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEffectivePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEffectivePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEffectivePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](~~417435~~).
- * This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
- *
- * @param request GetEffectivePolicyRequest
- * @return GetEffectivePolicyResponse
- */
+// Summary:
+//
+// 查询有效策略
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](https://help.aliyun.com/document_detail/417435.html).
+//
+// This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+//
+// @param request - GetEffectivePolicyRequest
+//
+// @return GetEffectivePolicyResponse
 func (client *Client) GetEffectivePolicy(request *GetEffectivePolicyRequest) (_result *GetEffectivePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEffectivePolicyResponse{}
@@ -5661,13 +7051,19 @@ func (client *Client) GetEffectivePolicy(request *GetEffectivePolicyRequest) (_r
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7****`.
- *
- * @param request GetPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPolicyResponse
- */
+// Summary:
+//
+// 查询策略
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7****`.
+//
+// @param request - GetPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolicyResponse
 func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5708,21 +7104,37 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7****`.
- *
- * @param request GetPolicyRequest
- * @return GetPolicyResponse
- */
+// Summary:
+//
+// 查询策略
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7****`.
+//
+// @param request - GetPolicyRequest
+//
+// @return GetPolicyResponse
 func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPolicyResponse{}
@@ -5734,13 +7146,19 @@ func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyRe
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to call the API operation to query the status of the Tag Policy feature for the current logon account. The response shows that the Tag Policy feature in multi-account mode is enabled for the current logon account.
- *
- * @param request GetPolicyEnableStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPolicyEnableStatusResponse
- */
+// Summary:
+//
+// Queries the status of the Tag Policy feature.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to query the status of the Tag Policy feature for the current logon account. The response shows that the Tag Policy feature in multi-account mode is enabled for the current logon account.
+//
+// @param request - GetPolicyEnableStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolicyEnableStatusResponse
 func (client *Client) GetPolicyEnableStatusWithOptions(request *GetPolicyEnableStatusRequest, runtime *util.RuntimeOptions) (_result *GetPolicyEnableStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5789,21 +7207,37 @@ func (client *Client) GetPolicyEnableStatusWithOptions(request *GetPolicyEnableS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPolicyEnableStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPolicyEnableStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPolicyEnableStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * This topic provides an example on how to call the API operation to query the status of the Tag Policy feature for the current logon account. The response shows that the Tag Policy feature in multi-account mode is enabled for the current logon account.
- *
- * @param request GetPolicyEnableStatusRequest
- * @return GetPolicyEnableStatusResponse
- */
+// Summary:
+//
+// Queries the status of the Tag Policy feature.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to query the status of the Tag Policy feature for the current logon account. The response shows that the Tag Policy feature in multi-account mode is enabled for the current logon account.
+//
+// @param request - GetPolicyEnableStatusRequest
+//
+// @return GetPolicyEnableStatusResponse
 func (client *Client) GetPolicyEnableStatus(request *GetPolicyEnableStatusRequest) (_result *GetPolicyEnableStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPolicyEnableStatusResponse{}
@@ -5815,14 +7249,21 @@ func (client *Client) GetPolicyEnableStatus(request *GetPolicyEnableStatusReques
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag detection tasks for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag detection tasks for the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to query the tag detection tasks for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag detection task exists.
- *
- * @param request ListConfigRulesForTargetRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListConfigRulesForTargetResponse
- */
+// Summary:
+//
+// Queries a list of tag detection tasks for an object.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag detection tasks for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag detection tasks for the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to query the tag detection tasks for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag detection task exists.
+//
+// @param request - ListConfigRulesForTargetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConfigRulesForTargetResponse
 func (client *Client) ListConfigRulesForTargetWithOptions(request *ListConfigRulesForTargetRequest, runtime *util.RuntimeOptions) (_result *ListConfigRulesForTargetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5887,22 +7328,39 @@ func (client *Client) ListConfigRulesForTargetWithOptions(request *ListConfigRul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListConfigRulesForTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListConfigRulesForTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListConfigRulesForTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag detection tasks for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag detection tasks for the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to query the tag detection tasks for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag detection task exists.
- *
- * @param request ListConfigRulesForTargetRequest
- * @return ListConfigRulesForTargetResponse
- */
+// Summary:
+//
+// Queries a list of tag detection tasks for an object.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag detection tasks for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag detection tasks for the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to query the tag detection tasks for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag detection task exists.
+//
+// @param request - ListConfigRulesForTargetRequest
+//
+// @return ListConfigRulesForTargetResponse
 func (client *Client) ListConfigRulesForTarget(request *ListConfigRulesForTargetRequest) (_result *ListConfigRulesForTargetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConfigRulesForTargetResponse{}
@@ -5914,14 +7372,21 @@ func (client *Client) ListConfigRulesForTarget(request *ListConfigRulesForTarget
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query all tag policies that are created for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query all tag policies that are created for the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to query all tag policies that are created for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that two tag policies are created.
- *
- * @param request ListPoliciesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListPoliciesResponse
- */
+// Summary:
+//
+// Queries tag policies.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query all tag policies that are created for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query all tag policies that are created for the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to query all tag policies that are created for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that two tag policies are created.
+//
+// @param request - ListPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesResponse
 func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5978,22 +7443,39 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPoliciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPoliciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query all tag policies that are created for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query all tag policies that are created for the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to query all tag policies that are created for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that two tag policies are created.
- *
- * @param request ListPoliciesRequest
- * @return ListPoliciesResponse
- */
+// Summary:
+//
+// Queries tag policies.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query all tag policies that are created for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query all tag policies that are created for the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to query all tag policies that are created for the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that two tag policies are created.
+//
+// @param request - ListPoliciesRequest
+//
+// @return ListPoliciesResponse
 func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPoliciesResponse{}
@@ -6005,14 +7487,21 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
- *
- * @param request ListPoliciesForTargetRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListPoliciesForTargetResponse
- */
+// Summary:
+//
+// Queries the tag policies that are attached to an object.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
+//
+// @param request - ListPoliciesForTargetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesForTargetResponse
 func (client *Client) ListPoliciesForTargetWithOptions(request *ListPoliciesForTargetRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesForTargetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6065,22 +7554,39 @@ func (client *Client) ListPoliciesForTargetWithOptions(request *ListPoliciesForT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPoliciesForTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPoliciesForTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPoliciesForTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
- *
- * @param request ListPoliciesForTargetRequest
- * @return ListPoliciesForTargetResponse
- */
+// Summary:
+//
+// Queries the tag policies that are attached to an object.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
+//
+// @param request - ListPoliciesForTargetRequest
+//
+// @return ListPoliciesForTargetResponse
 func (client *Client) ListPoliciesForTarget(request *ListPoliciesForTargetRequest) (_result *ListPoliciesForTargetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPoliciesForTargetResponse{}
@@ -6092,13 +7598,19 @@ func (client *Client) ListPoliciesForTarget(request *ListPoliciesForTargetReques
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to call the API operation in the China (Shenzhen) region to query virtual private clouds (VPCs) to which the tag key `k1` is added. The response shows that the tag key is added to two VPCs.
- *
- * @param request ListResourcesByTagRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListResourcesByTagResponse
- */
+// Summary:
+//
+// Queries resources to which a specified tag is added or resources to which a specified tag is not added.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation in the China (Shenzhen) region to query virtual private clouds (VPCs) to which the tag key `k1` is added. The response shows that the tag key is added to two VPCs.
+//
+// @param request - ListResourcesByTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourcesByTagResponse
 func (client *Client) ListResourcesByTagWithOptions(request *ListResourcesByTagRequest, runtime *util.RuntimeOptions) (_result *ListResourcesByTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6163,21 +7675,37 @@ func (client *Client) ListResourcesByTagWithOptions(request *ListResourcesByTagR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourcesByTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourcesByTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourcesByTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * This topic provides an example on how to call the API operation in the China (Shenzhen) region to query virtual private clouds (VPCs) to which the tag key `k1` is added. The response shows that the tag key is added to two VPCs.
- *
- * @param request ListResourcesByTagRequest
- * @return ListResourcesByTagResponse
- */
+// Summary:
+//
+// Queries resources to which a specified tag is added or resources to which a specified tag is not added.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation in the China (Shenzhen) region to query virtual private clouds (VPCs) to which the tag key `k1` is added. The response shows that the tag key is added to two VPCs.
+//
+// @param request - ListResourcesByTagRequest
+//
+// @return ListResourcesByTagResponse
 func (client *Client) ListResourcesByTag(request *ListResourcesByTagRequest) (_result *ListResourcesByTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourcesByTagResponse{}
@@ -6189,16 +7717,25 @@ func (client *Client) ListResourcesByTag(request *ListResourcesByTagRequest) (_r
 	return _result, _err
 }
 
-/**
- * ### [](#)Call examples
- * *   Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
- * *   Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
- * *   Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
- *
- * @param request ListSupportResourceTypesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListSupportResourceTypesResponse
- */
+// Summary:
+//
+// Queries the resource types supported by tags and tag-related capability items.
+//
+// Description:
+//
+// ### [](#)Call examples
+//
+// 	- Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
+//
+// 	- Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
+//
+// 	- Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
+//
+// @param request - ListSupportResourceTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupportResourceTypesResponse
 func (client *Client) ListSupportResourceTypesWithOptions(request *ListSupportResourceTypesRequest, runtime *util.RuntimeOptions) (_result *ListSupportResourceTypesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6259,24 +7796,43 @@ func (client *Client) ListSupportResourceTypesWithOptions(request *ListSupportRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSupportResourceTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSupportResourceTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSupportResourceTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * ### [](#)Call examples
- * *   Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
- * *   Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
- * *   Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
- *
- * @param request ListSupportResourceTypesRequest
- * @return ListSupportResourceTypesResponse
- */
+// Summary:
+//
+// Queries the resource types supported by tags and tag-related capability items.
+//
+// Description:
+//
+// ### [](#)Call examples
+//
+// 	- Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
+//
+// 	- Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
+//
+// 	- Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
+//
+// @param request - ListSupportResourceTypesRequest
+//
+// @return ListSupportResourceTypesResponse
 func (client *Client) ListSupportResourceTypes(request *ListSupportResourceTypesRequest) (_result *ListSupportResourceTypesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSupportResourceTypesResponse{}
@@ -6288,13 +7844,19 @@ func (client *Client) ListSupportResourceTypes(request *ListSupportResourceTypes
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to call the API operation to query the tag keys in the `cn-hangzhou` region. The response shows that the following tag keys exist: `team`, `k1`, and `k2`.
- *
- * @param request ListTagKeysRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagKeysResponse
- */
+// Summary:
+//
+// Queries tag keys.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to query the tag keys in the `cn-hangzhou` region. The response shows that the following tag keys exist: `team`, `k1`, and `k2`.
+//
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6363,21 +7925,37 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * This topic provides an example on how to call the API operation to query the tag keys in the `cn-hangzhou` region. The response shows that the following tag keys exist: `team`, `k1`, and `k2`.
- *
- * @param request ListTagKeysRequest
- * @return ListTagKeysResponse
- */
+// Summary:
+//
+// Queries tag keys.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to query the tag keys in the `cn-hangzhou` region. The response shows that the following tag keys exist: `team`, `k1`, and `k2`.
+//
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -6389,13 +7967,19 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
-/**
- * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
- *
- * @param request ListTagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagResourcesResponse
- */
+// Summary:
+//
+// Queries the tags that are added to the resources of various Alibaba Cloud services.
+//
+// Description:
+//
+// For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](https://help.aliyun.com/document_detail/171455.html).
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6456,21 +8040,37 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
- *
- * @param request ListTagResourcesRequest
- * @return ListTagResourcesResponse
- */
+// Summary:
+//
+// Queries the tags that are added to the resources of various Alibaba Cloud services.
+//
+// Description:
+//
+// For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](https://help.aliyun.com/document_detail/171455.html).
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -6482,13 +8082,19 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to call the API operation to query the values of the tag key `k1` in the `cn-hangzhou` region. The response shows that the value of the tag key `k1` is `v1`.
- *
- * @param request ListTagValuesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagValuesResponse
- */
+// Summary:
+//
+// Queries the tag values of a tag key.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to query the values of the tag key `k1` in the `cn-hangzhou` region. The response shows that the value of the tag key `k1` is `v1`.
+//
+// @param request - ListTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *util.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6557,21 +8163,37 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * This topic provides an example on how to call the API operation to query the values of the tag key `k1` in the `cn-hangzhou` region. The response shows that the value of the tag key `k1` is `v1`.
- *
- * @param request ListTagValuesRequest
- * @return ListTagValuesResponse
- */
+// Summary:
+//
+// Queries the tag values of a tag key.
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to query the values of the tag key `k1` in the `cn-hangzhou` region. The response shows that the value of the tag key `k1` is `v1`.
+//
+// @param request - ListTagValuesRequest
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *ListTagValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
@@ -6583,14 +8205,21 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the object to which a tag policy is attached. The object is the current logon account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the objects to which a tag policy is attached. The objects include the Root folder, folders other than the Root folder, and members in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to query the objects to which the tag policy with an ID of `p-de62a0bf400e4b69****` is attached. In this example, the Tag Policy feature in multi-account mode is used. The response shows that the tag policy is attached to two members in the related resource directory.
- *
- * @param request ListTargetsForPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTargetsForPolicyResponse
- */
+// Summary:
+//
+// Queries the objects to which a tag policy is attached.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the object to which a tag policy is attached. The object is the current logon account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the objects to which a tag policy is attached. The objects include the Root folder, folders other than the Root folder, and members in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to query the objects to which the tag policy with an ID of `p-de62a0bf400e4b69****` is attached. In this example, the Tag Policy feature in multi-account mode is used. The response shows that the tag policy is attached to two members in the related resource directory.
+//
+// @param request - ListTargetsForPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTargetsForPolicyResponse
 func (client *Client) ListTargetsForPolicyWithOptions(request *ListTargetsForPolicyRequest, runtime *util.RuntimeOptions) (_result *ListTargetsForPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6639,22 +8268,39 @@ func (client *Client) ListTargetsForPolicyWithOptions(request *ListTargetsForPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTargetsForPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTargetsForPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTargetsForPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the object to which a tag policy is attached. The object is the current logon account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the objects to which a tag policy is attached. The objects include the Root folder, folders other than the Root folder, and members in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
- * This topic provides an example on how to call the API operation to query the objects to which the tag policy with an ID of `p-de62a0bf400e4b69****` is attached. In this example, the Tag Policy feature in multi-account mode is used. The response shows that the tag policy is attached to two members in the related resource directory.
- *
- * @param request ListTargetsForPolicyRequest
- * @return ListTargetsForPolicyResponse
- */
+// Summary:
+//
+// Queries the objects to which a tag policy is attached.
+//
+// Description:
+//
+// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the object to which a tag policy is attached. The object is the current logon account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the objects to which a tag policy is attached. The objects include the Root folder, folders other than the Root folder, and members in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+//
+// This topic provides an example on how to call the API operation to query the objects to which the tag policy with an ID of `p-de62a0bf400e4b69****` is attached. In this example, the Tag Policy feature in multi-account mode is used. The response shows that the tag policy is attached to two members in the related resource directory.
+//
+// @param request - ListTargetsForPolicyRequest
+//
+// @return ListTargetsForPolicyResponse
 func (client *Client) ListTargetsForPolicy(request *ListTargetsForPolicyRequest) (_result *ListTargetsForPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTargetsForPolicyResponse{}
@@ -6666,13 +8312,19 @@ func (client *Client) ListTargetsForPolicy(request *ListTargetsForPolicyRequest)
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
- *
- * @param request ModifyPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyPolicyResponse
- */
+// Summary:
+//
+// 修改策略
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+//
+// @param request - ModifyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPolicyResponse
 func (client *Client) ModifyPolicyWithOptions(request *ModifyPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6729,21 +8381,37 @@ func (client *Client) ModifyPolicyWithOptions(request *ModifyPolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
- *
- * @param request ModifyPolicyRequest
- * @return ModifyPolicyResponse
- */
+// Summary:
+//
+// 修改策略
+//
+// Description:
+//
+// This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+//
+// @param request - ModifyPolicyRequest
+//
+// @return ModifyPolicyResponse
 func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *ModifyPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPolicyResponse{}
@@ -6755,13 +8423,19 @@ func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *Modif
 	return _result, _err
 }
 
-/**
- * createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
- *
- * @param request OpenCreatedByRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return OpenCreatedByResponse
- */
+// Summary:
+//
+// Enables createdby tags.
+//
+// Description:
+//
+// createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
+//
+// @param request - OpenCreatedByRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenCreatedByResponse
 func (client *Client) OpenCreatedByWithOptions(request *OpenCreatedByRequest, runtime *util.RuntimeOptions) (_result *OpenCreatedByResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6802,21 +8476,37 @@ func (client *Client) OpenCreatedByWithOptions(request *OpenCreatedByRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OpenCreatedByResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OpenCreatedByResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OpenCreatedByResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
- *
- * @param request OpenCreatedByRequest
- * @return OpenCreatedByResponse
- */
+// Summary:
+//
+// Enables createdby tags.
+//
+// Description:
+//
+// createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
+//
+// @param request - OpenCreatedByRequest
+//
+// @return OpenCreatedByResponse
 func (client *Client) OpenCreatedBy(request *OpenCreatedByRequest) (_result *OpenCreatedByResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenCreatedByResponse{}
@@ -6828,14 +8518,21 @@ func (client *Client) OpenCreatedBy(request *OpenCreatedByRequest) (_result *Ope
 	return _result, _err
 }
 
-/**
- * Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
- * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
- *
- * @param request TagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return TagResourcesResponse
- */
+// Summary:
+//
+// Adds tags to the resources of various Alibaba Cloud services.
+//
+// Description:
+//
+// Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](https://help.aliyun.com/document_detail/156983.html).
+//
+// For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](https://help.aliyun.com/document_detail/171455.html).
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6884,22 +8581,39 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
- * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
- *
- * @param request TagResourcesRequest
- * @return TagResourcesResponse
- */
+// Summary:
+//
+// Adds tags to the resources of various Alibaba Cloud services.
+//
+// Description:
+//
+// Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](https://help.aliyun.com/document_detail/156983.html).
+//
+// For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](https://help.aliyun.com/document_detail/171455.html).
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -6911,14 +8625,21 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
-/**
- * After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
- * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
- *
- * @param request UntagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UntagResourcesResponse
- */
+// Summary:
+//
+// Removes tags from the resources of various Alibaba Cloud services.
+//
+// Description:
+//
+// After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
+//
+// For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](https://help.aliyun.com/document_detail/171455.html).
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6967,22 +8688,39 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
- * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
- *
- * @param request UntagResourcesRequest
- * @return UntagResourcesResponse
- */
+// Summary:
+//
+// Removes tags from the resources of various Alibaba Cloud services.
+//
+// Description:
+//
+// After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
+//
+// For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](https://help.aliyun.com/document_detail/171455.html).
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
