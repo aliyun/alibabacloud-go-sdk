@@ -1,3 +1,6 @@
+2024-10-03 Version: v1.0.1
+- Generated golang 2021-12-21 for wss.
+
 2024-09-25 Version: v1.0.0
 - Support API DescribePackageDeductions.
 - Delete API CreateOrder.
