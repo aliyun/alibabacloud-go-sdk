@@ -661,6 +661,163 @@ func (s *AddTerminalResponse) SetBody(v *AddTerminalResponseBody) *AddTerminalRe
 	return s
 }
 
+type AddTerminalsRequest struct {
+	AddTerminalParams []*AddTerminalsRequestAddTerminalParams `json:"AddTerminalParams,omitempty" xml:"AddTerminalParams,omitempty" type:"Repeated"`
+}
+
+func (s AddTerminalsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTerminalsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTerminalsRequest) SetAddTerminalParams(v []*AddTerminalsRequestAddTerminalParams) *AddTerminalsRequest {
+	s.AddTerminalParams = v
+	return s
+}
+
+type AddTerminalsRequestAddTerminalParams struct {
+	Alias           *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	ClientType      *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	SerialNumber    *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	TerminalGroupId *string `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s AddTerminalsRequestAddTerminalParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTerminalsRequestAddTerminalParams) GoString() string {
+	return s.String()
+}
+
+func (s *AddTerminalsRequestAddTerminalParams) SetAlias(v string) *AddTerminalsRequestAddTerminalParams {
+	s.Alias = &v
+	return s
+}
+
+func (s *AddTerminalsRequestAddTerminalParams) SetClientType(v int32) *AddTerminalsRequestAddTerminalParams {
+	s.ClientType = &v
+	return s
+}
+
+func (s *AddTerminalsRequestAddTerminalParams) SetSerialNumber(v string) *AddTerminalsRequestAddTerminalParams {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *AddTerminalsRequestAddTerminalParams) SetTerminalGroupId(v string) *AddTerminalsRequestAddTerminalParams {
+	s.TerminalGroupId = &v
+	return s
+}
+
+func (s *AddTerminalsRequestAddTerminalParams) SetUuid(v string) *AddTerminalsRequestAddTerminalParams {
+	s.Uuid = &v
+	return s
+}
+
+type AddTerminalsResponseBody struct {
+	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*AddTerminalsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddTerminalsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTerminalsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTerminalsResponseBody) SetCode(v string) *AddTerminalsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddTerminalsResponseBody) SetData(v []*AddTerminalsResponseBodyData) *AddTerminalsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddTerminalsResponseBody) SetHttpStatusCode(v int32) *AddTerminalsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddTerminalsResponseBody) SetMessage(v string) *AddTerminalsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddTerminalsResponseBody) SetRequestId(v string) *AddTerminalsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddTerminalsResponseBody) SetSuccess(v bool) *AddTerminalsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddTerminalsResponseBodyData struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+}
+
+func (s AddTerminalsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTerminalsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddTerminalsResponseBodyData) SetErrorCode(v string) *AddTerminalsResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddTerminalsResponseBodyData) SetSerialNumber(v string) *AddTerminalsResponseBodyData {
+	s.SerialNumber = &v
+	return s
+}
+
+type AddTerminalsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddTerminalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddTerminalsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTerminalsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTerminalsResponse) SetHeaders(v map[string]*string) *AddTerminalsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTerminalsResponse) SetStatusCode(v int32) *AddTerminalsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddTerminalsResponse) SetBody(v *AddTerminalsResponseBody) *AddTerminalsResponse {
+	s.Body = v
+	return s
+}
+
 type AttachEndUsersRequest struct {
 	// This parameter is required.
 	EndUserIds *string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty"`
@@ -11138,6 +11295,69 @@ func (client *Client) AddTerminal(request *AddTerminalRequest) (_result *AddTerm
 	runtime := &util.RuntimeOptions{}
 	_result = &AddTerminalResponse{}
 	_body, _err := client.AddTerminalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加终端
+//
+// @param request - AddTerminalsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddTerminalsResponse
+func (client *Client) AddTerminalsWithOptions(request *AddTerminalsRequest, runtime *util.RuntimeOptions) (_result *AddTerminalsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddTerminalParams)) {
+		bodyFlat["AddTerminalParams"] = request.AddTerminalParams
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTerminals"),
+		Version:     tea.String("2021-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddTerminalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加终端
+//
+// @param request - AddTerminalsRequest
+//
+// @return AddTerminalsResponse
+func (client *Client) AddTerminals(request *AddTerminalsRequest) (_result *AddTerminalsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddTerminalsResponse{}
+	_body, _err := client.AddTerminalsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
