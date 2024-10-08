@@ -1,3 +1,16 @@
+2024-10-08 Version: v3.3.0
+- Support API GetBuildRiskDefineRuleConfig.
+- Support API SetBuildRiskDefineRuleConfig.
+- Update API DescribeExposedInstanceDetail: update response param.
+- Update API DescribeExposedInstanceList: add param AssetType.
+- Update API DescribeExposedInstanceList: add param CspmStatus.
+- Update API DescribeExposedInstanceList: update response param.
+- Update API DescribeExposedStatistics: update response param.
+- Update API DescribeOnceTask: add param Source.
+- Update API DescribeOnceTask: update response param.
+- Update API ListSystemClientRules: update response param.
+
+
 2024-09-24 Version: v3.2.1
 - Update API DescribeWebLockBindList: add param Uuid.
 - Update API DescribeWebLockBindList: update response param.
