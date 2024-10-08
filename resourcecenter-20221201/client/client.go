@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,9 @@ import (
 )
 
 type AssociateDefaultFilterRequest struct {
+	// The name of the filter.
+	//
+	// This parameter is required.
 	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 
@@ -30,6 +30,11 @@ func (s *AssociateDefaultFilterRequest) SetFilterName(v string) *AssociateDefaul
 }
 
 type AssociateDefaultFilterResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 54673B22-2001-556A-B394-B8697AA9670B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -47,9 +52,9 @@ func (s *AssociateDefaultFilterResponseBody) SetRequestId(v string) *AssociateDe
 }
 
 type AssociateDefaultFilterResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateDefaultFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateDefaultFilterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssociateDefaultFilterResponse) String() string {
@@ -76,8 +81,40 @@ func (s *AssociateDefaultFilterResponse) SetBody(v *AssociateDefaultFilterRespon
 }
 
 type CreateFilterRequest struct {
+	// The configurations of the filter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "regions": [],
+	//
+	//   "tagFilters": [
+	//
+	//     [{ "type": "notContainTagKey", "tagKey": "xxx", "tagValue": "" }],
+	//
+	//     [{ "tagKey": "xxx", "tagValue": "xxx" }]
+	//
+	//   ],
+	//
+	//   "resourceTypes": [
+	//
+	//     "ACS::ECS::AutoSnapshotPolicy"
+	//
+	//   ]
+	//
+	// }
 	FilterConfiguration *string `json:"FilterConfiguration,omitempty" xml:"FilterConfiguration,omitempty"`
-	FilterName          *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+	// The name of the filter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS
+	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 
 func (s CreateFilterRequest) String() string {
@@ -99,6 +136,11 @@ func (s *CreateFilterRequest) SetFilterName(v string) *CreateFilterRequest {
 }
 
 type CreateFilterResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// EEF1EE1F-50F6-5494-B3DA-8F597DEB31BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -116,9 +158,9 @@ func (s *CreateFilterResponseBody) SetRequestId(v string) *CreateFilterResponseB
 }
 
 type CreateFilterResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFilterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFilterResponse) String() string {
@@ -148,14 +190,32 @@ type CreateSavedQueryRequest struct {
 	// The description of the template.
 	//
 	// The description must be 1 to 256 characters in length.
+	//
+	// example:
+	//
+	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The query statement in the template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT 	- FROM resources;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The name of the template.
 	//
-	// *   The name must be 1 to 64 characters in length.
-	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   The name must be unique.
+	// 	- The name must be 1 to 64 characters in length.
+	//
+	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- The name must be unique.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Query of All Alibaba Cloud Resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -183,9 +243,17 @@ func (s *CreateSavedQueryRequest) SetName(v string) *CreateSavedQueryRequest {
 }
 
 type CreateSavedQueryResponseBody struct {
-	// The query ID.
+	// The template ID.
+	//
+	// example:
+	//
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// EFA806B9-7F36-55AB-8B7A-D680C2C5EE57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -208,9 +276,9 @@ func (s *CreateSavedQueryResponseBody) SetRequestId(v string) *CreateSavedQueryR
 }
 
 type CreateSavedQueryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSavedQueryResponse) String() string {
@@ -237,6 +305,13 @@ func (s *CreateSavedQueryResponse) SetBody(v *CreateSavedQueryResponseBody) *Cre
 }
 
 type DeleteFilterRequest struct {
+	// The name of the filter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS
 	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 
@@ -254,6 +329,11 @@ func (s *DeleteFilterRequest) SetFilterName(v string) *DeleteFilterRequest {
 }
 
 type DeleteFilterResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// A4A63E3C-89EC-51F9-9934-C9AF1BCBAAA5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -271,9 +351,9 @@ func (s *DeleteFilterResponseBody) SetRequestId(v string) *DeleteFilterResponseB
 }
 
 type DeleteFilterResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFilterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFilterResponse) String() string {
@@ -303,6 +383,12 @@ type DeleteSavedQueryRequest struct {
 	// The ID of the template.
 	//
 	// You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -321,6 +407,10 @@ func (s *DeleteSavedQueryRequest) SetQueryId(v string) *DeleteSavedQueryRequest 
 
 type DeleteSavedQueryResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D170D58E-6256-5344-8F5E-922EC9ECB7EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -338,9 +428,9 @@ func (s *DeleteSavedQueryResponseBody) SetRequestId(v string) *DeleteSavedQueryR
 }
 
 type DeleteSavedQueryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSavedQueryResponse) String() string {
@@ -368,6 +458,10 @@ func (s *DeleteSavedQueryResponse) SetBody(v *DeleteSavedQueryResponseBody) *Del
 
 type DisableMultiAccountResourceCenterResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4951F920-48DB-5731-96AA-3A7C8AE617D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -385,9 +479,9 @@ func (s *DisableMultiAccountResourceCenterResponseBody) SetRequestId(v string) *
 }
 
 type DisableMultiAccountResourceCenterResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableMultiAccountResourceCenterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableMultiAccountResourceCenterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableMultiAccountResourceCenterResponse) String() string {
@@ -415,6 +509,10 @@ func (s *DisableMultiAccountResourceCenterResponse) SetBody(v *DisableMultiAccou
 
 type DisableResourceCenterResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D170D58E-6256-5344-8F5E-922EC9ECB7EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -432,9 +530,9 @@ func (s *DisableResourceCenterResponseBody) SetRequestId(v string) *DisableResou
 }
 
 type DisableResourceCenterResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableResourceCenterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableResourceCenterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableResourceCenterResponse) String() string {
@@ -461,6 +559,11 @@ func (s *DisableResourceCenterResponse) SetBody(v *DisableResourceCenterResponse
 }
 
 type DisassociateDefaultFilterResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// BCAB07BA-82FA-5DC0-9322-FB7ED726481D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -478,9 +581,9 @@ func (s *DisassociateDefaultFilterResponseBody) SetRequestId(v string) *Disassoc
 }
 
 type DisassociateDefaultFilterResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisassociateDefaultFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisassociateDefaultFilterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisassociateDefaultFilterResponse) String() string {
@@ -508,11 +611,20 @@ func (s *DisassociateDefaultFilterResponse) SetBody(v *DisassociateDefaultFilter
 
 type EnableMultiAccountResourceCenterResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 767038B7-2027-5508-858B-E213232D57D5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the feature. Valid values:
 	//
-	// *   Pending: The feature is being enabled.
-	// *   Enabled: The feature is enabled.
+	// 	- Pending: The feature is being enabled.
+	//
+	// 	- Enabled: The feature is enabled.
+	//
+	// example:
+	//
+	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -535,9 +647,9 @@ func (s *EnableMultiAccountResourceCenterResponseBody) SetStatus(v string) *Enab
 }
 
 type EnableMultiAccountResourceCenterResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableMultiAccountResourceCenterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableMultiAccountResourceCenterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableMultiAccountResourceCenterResponse) String() string {
@@ -565,11 +677,20 @@ func (s *EnableMultiAccountResourceCenterResponse) SetBody(v *EnableMultiAccount
 
 type EnableResourceCenterResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 45357BEF-AB50-5E4D-B05D-5A882A4BE924
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The activation status of the service. Valid values:
 	//
-	// *   Pending: The service is being activated.
-	// *   Enabled: The service is activated.
+	// 	- Pending: The service is being activated.
+	//
+	// 	- Enabled: The service is activated.
+	//
+	// example:
+	//
+	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -592,9 +713,9 @@ func (s *EnableResourceCenterResponseBody) SetStatus(v string) *EnableResourceCe
 }
 
 type EnableResourceCenterResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableResourceCenterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableResourceCenterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableResourceCenterResponse) String() string {
@@ -625,17 +746,33 @@ type ExecuteMultiAccountSQLQueryRequest struct {
 	//
 	// The number of characters in the SQL statement must be less than 2,000.
 	//
-	// For more information about the SQL syntax, see [Basic SQL syntax](~~2539395~~).
+	// For more information about the SQL syntax, see [Basic SQL syntax](https://help.aliyun.com/document_detail/2539395.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT 	- FROM resources LIMIT 100;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The search scope. The value of this parameter can be one of the following items:
 	//
-	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
-	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
-	// *   ID of a folder: Resources within all members in the folder are searched.
-	// *   ID of a member: Resources within the member are searched.
-	// *   ID of a member/ID of a Resource group: Resources within the member in the resource group are searched.
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
 	//
-	// For more information about how to obtain the ID of a resource directory, the Root folder, a folder, a member, or a resource group, see [GetResourceDirectory](~~159995~~), [ListFoldersForParent](~~159997~~), [ListFoldersForParent](~~159997~~), [ListAccounts](~~160016~~), or [ListResourceGroups](~~158855~~).
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+	//
+	// 	- ID of a folder: Resources within all members in the folder are searched.
+	//
+	// 	- ID of a member: Resources within the member are searched.
+	//
+	// 	- ID of a member/ID of a Resource group: Resources within the member in the resource group are searched.
+	//
+	// For more information about how to obtain the ID of a resource directory, the Root folder, a folder, a member, or a resource group, see [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html), [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html), [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html), [ListAccounts](https://help.aliyun.com/document_detail/160016.html), or [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rd-r4****
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
@@ -659,8 +796,14 @@ func (s *ExecuteMultiAccountSQLQueryRequest) SetScope(v string) *ExecuteMultiAcc
 
 type ExecuteMultiAccountSQLQueryResponseBody struct {
 	// The columns.
-	Columns []*ExecuteMultiAccountSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Columns    []*ExecuteMultiAccountSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	MaxResults *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 44C8A952-D6B0-5BC8-82D5-93BA02E26F2E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array of search results.
 	Rows []interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
@@ -679,6 +822,16 @@ func (s *ExecuteMultiAccountSQLQueryResponseBody) SetColumns(v []*ExecuteMultiAc
 	return s
 }
 
+func (s *ExecuteMultiAccountSQLQueryResponseBody) SetMaxResults(v int32) *ExecuteMultiAccountSQLQueryResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponseBody) SetNextToken(v string) *ExecuteMultiAccountSQLQueryResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ExecuteMultiAccountSQLQueryResponseBody) SetRequestId(v string) *ExecuteMultiAccountSQLQueryResponseBody {
 	s.RequestId = &v
 	return s
@@ -691,8 +844,16 @@ func (s *ExecuteMultiAccountSQLQueryResponseBody) SetRows(v []interface{}) *Exec
 
 type ExecuteMultiAccountSQLQueryResponseBodyColumns struct {
 	// The name of the column.
+	//
+	// example:
+	//
+	// resource_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the column.
+	//
+	// example:
+	//
+	// varchar
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -715,9 +876,9 @@ func (s *ExecuteMultiAccountSQLQueryResponseBodyColumns) SetType(v string) *Exec
 }
 
 type ExecuteMultiAccountSQLQueryResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteMultiAccountSQLQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteMultiAccountSQLQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteMultiAccountSQLQueryResponse) String() string {
@@ -748,13 +909,23 @@ type ExecuteSQLQueryRequest struct {
 	//
 	// The number of characters in the SQL statement must be less than 2,000.
 	//
-	// For more information about the SQL syntax, see [Basic SQL syntax](~~2539395~~).
+	// For more information about the SQL syntax, see [Basic SQL syntax](https://help.aliyun.com/document_detail/2539395.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT 	- FROM resources LIMIT 100;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The search scope.
 	//
 	// Set this parameter to the ID of a resource group.
 	//
-	// For information about how to obtain the ID of a resource group, see [ListResourceGroups](~~158855~~).
+	// For information about how to obtain the ID of a resource group, see [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html).
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
@@ -778,8 +949,14 @@ func (s *ExecuteSQLQueryRequest) SetScope(v string) *ExecuteSQLQueryRequest {
 
 type ExecuteSQLQueryResponseBody struct {
 	// The columns.
-	Columns []*ExecuteSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Columns    []*ExecuteSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D696E6EF-3A6D-5770-801E-4982081FE4D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array of search results.
 	Rows []interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
@@ -798,6 +975,16 @@ func (s *ExecuteSQLQueryResponseBody) SetColumns(v []*ExecuteSQLQueryResponseBod
 	return s
 }
 
+func (s *ExecuteSQLQueryResponseBody) SetMaxResults(v int32) *ExecuteSQLQueryResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ExecuteSQLQueryResponseBody) SetNextToken(v string) *ExecuteSQLQueryResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ExecuteSQLQueryResponseBody) SetRequestId(v string) *ExecuteSQLQueryResponseBody {
 	s.RequestId = &v
 	return s
@@ -810,8 +997,16 @@ func (s *ExecuteSQLQueryResponseBody) SetRows(v []interface{}) *ExecuteSQLQueryR
 
 type ExecuteSQLQueryResponseBodyColumns struct {
 	// The name of the column.
+	//
+	// example:
+	//
+	// resource_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the column.
+	//
+	// example:
+	//
+	// varchar
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -834,9 +1029,9 @@ func (s *ExecuteSQLQueryResponseBodyColumns) SetType(v string) *ExecuteSQLQueryR
 }
 
 type ExecuteSQLQueryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteSQLQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteSQLQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteSQLQueryResponse) String() string {
@@ -866,6 +1061,12 @@ type GetExampleQueryRequest struct {
 	// The ID of the template.
 	//
 	// >  You can call the [ListExampleQueries](~~ListExampleQueries~~) operation to obtain the template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sq-0PfKy****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -886,6 +1087,10 @@ type GetExampleQueryResponseBody struct {
 	// The information about the sample query template.
 	ExampleQuery *GetExampleQueryResponseBodyExampleQuery `json:"ExampleQuery,omitempty" xml:"ExampleQuery,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 36A3D9BE-B607-5993-B546-7E19EF65DC00
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -909,12 +1114,66 @@ func (s *GetExampleQueryResponseBody) SetRequestId(v string) *GetExampleQueryRes
 
 type GetExampleQueryResponseBodyExampleQuery struct {
 	// The description of the template.
+	//
+	// example:
+	//
+	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The query statement in the template.
+	//
+	// example:
+	//
+	// SELECT
+	//
+	//   resource_id,
+	//
+	//   resource_name,
+	//
+	//   region_id,
+	//
+	//   zone_id,
+	//
+	//   resource_type,
+	//
+	//   account_id,
+	//
+	//   create_time,
+	//
+	//   resource_group_id,
+	//
+	//   tags,
+	//
+	//   ip_addresses,
+	//
+	//   vpc_id,
+	//
+	//   v_switch_id
+	//
+	// FROM
+	//
+	//   resources
+	//
+	// ORDER BY
+	//
+	//   resource_type,
+	//
+	//   resource_id
+	//
+	// LIMIT
+	//
+	//   1000 OFFSET 0;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// Query of All Alibaba Cloud Resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// sq-0PfKy****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -947,9 +1206,9 @@ func (s *GetExampleQueryResponseBodyExampleQuery) SetQueryId(v string) *GetExamp
 }
 
 type GetExampleQueryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetExampleQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetExampleQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetExampleQueryResponse) String() string {
@@ -978,15 +1237,29 @@ func (s *GetExampleQueryResponse) SetBody(v *GetExampleQueryResponseBody) *GetEx
 type GetMultiAccountResourceCenterServiceStatusResponseBody struct {
 	// The initialization status of the feature. Valid values:
 	//
-	// *   Pending: The feature is being initialized.
-	// *   Finished: The feature is initialized.
+	// 	- Pending: The feature is being initialized.
+	//
+	// 	- Finished: The feature is initialized.
+	//
+	// example:
+	//
+	// Pending
 	InitialStatus *string `json:"InitialStatus,omitempty" xml:"InitialStatus,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 81671397-1425-51F1-A144-4799E01BEBFF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the feature. Valid values:
 	//
-	// *   Enabled: The feature is enabled.
-	// *   Disabled: The feature is disabled.
+	// 	- Enabled: The feature is enabled.
+	//
+	// 	- Disabled: The feature is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
@@ -1014,9 +1287,9 @@ func (s *GetMultiAccountResourceCenterServiceStatusResponseBody) SetServiceStatu
 }
 
 type GetMultiAccountResourceCenterServiceStatusResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMultiAccountResourceCenterServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiAccountResourceCenterServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMultiAccountResourceCenterServiceStatusResponse) String() string {
@@ -1044,12 +1317,36 @@ func (s *GetMultiAccountResourceCenterServiceStatusResponse) SetBody(v *GetMulti
 
 type GetMultiAccountResourceConfigurationRequest struct {
 	// The ID of the management account or member of the resource directory.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1619302****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The region ID of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The type of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::VPC::RouteTable
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -1083,12 +1380,24 @@ func (s *GetMultiAccountResourceConfigurationRequest) SetResourceType(v string) 
 
 type GetMultiAccountResourceConfigurationResponseBody struct {
 	// The ID of the management account or member of the resource directory.
+	//
+	// example:
+	//
+	// 1619302****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The configurations of the resource.
 	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2023-02-14T03:12:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The time when the resource expires.
+	//
+	// example:
+	//
+	// 2023-09-18T07:04:21Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The attributes of the IP address.
 	IpAddressAttributes []*GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
@@ -1097,20 +1406,48 @@ type GetMultiAccountResourceConfigurationResponseBody struct {
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
 	// The region ID of the resource.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B2DCC08B-C12A-5705-879C-5A1450016156
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the resource belongs.
+	//
+	// example:
+	//
+	// rg-acfmzy6d****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// test_resource
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource.
+	//
+	// example:
+	//
+	// ACS::VPC::RouteTable
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags of the resource.
 	Tags []*GetMultiAccountResourceConfigurationResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The zone ID of the resource.
+	//
+	// example:
+	//
+	// cn-shanghai-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1194,13 +1531,26 @@ func (s *GetMultiAccountResourceConfigurationResponseBody) SetZoneId(v string) *
 
 type GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes struct {
 	// The IP address.
+	//
+	// example:
+	//
+	// 172.27.199.42
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
-	// *   **Public**: the Internet
-	// *   **Private**: internal network
+	// 	- **Public**: the Internet
+	//
+	// 	- **Private**: internal network
+	//
+	// example:
+	//
+	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The version.
+	//
+	// example:
+	//
+	// Ipv4
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -1229,8 +1579,16 @@ func (s *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) Se
 
 type GetMultiAccountResourceConfigurationResponseBodyTags struct {
 	// The key of tag N.
+	//
+	// example:
+	//
+	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
+	//
+	// example:
+	//
+	// tag-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1253,9 +1611,9 @@ func (s *GetMultiAccountResourceConfigurationResponseBodyTags) SetValue(v string
 }
 
 type GetMultiAccountResourceConfigurationResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMultiAccountResourceConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiAccountResourceConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMultiAccountResourceConfigurationResponse) String() string {
@@ -1284,15 +1642,29 @@ func (s *GetMultiAccountResourceConfigurationResponse) SetBody(v *GetMultiAccoun
 type GetResourceCenterServiceStatusResponseBody struct {
 	// The initialization status of the service. Valid values:
 	//
-	// *   Pending: The service is being initialized.
-	// *   Finished: The service is initialized.
+	// 	- Pending: The service is being initialized.
+	//
+	// 	- Finished: The service is initialized.
+	//
+	// example:
+	//
+	// Pending
 	InitialStatus *string `json:"InitialStatus,omitempty" xml:"InitialStatus,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// AD5F848D-CCDC-5464-93E1-4BA50A4826DD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the service. Valid values:
 	//
-	// *   Enabled: The service is activated.
-	// *   Disabled: The service is deactivated.
+	// 	- Enabled: The service is activated.
+	//
+	// 	- Disabled: The service is deactivated.
+	//
+	// example:
+	//
+	// Enabled
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
@@ -1320,9 +1692,9 @@ func (s *GetResourceCenterServiceStatusResponseBody) SetServiceStatus(v string) 
 }
 
 type GetResourceCenterServiceStatusResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceCenterServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceCenterServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceCenterServiceStatusResponse) String() string {
@@ -1350,12 +1722,30 @@ func (s *GetResourceCenterServiceStatusResponse) SetBody(v *GetResourceCenterSer
 
 type GetResourceConfigurationRequest struct {
 	// The ID of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eip-bp1kyg72m****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The region ID of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The type of the resource.
 	//
-	// For more information about the resource types supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+	// For more information about the resource types supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::VPC::RouteTable
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -1384,12 +1774,24 @@ func (s *GetResourceConfigurationRequest) SetResourceType(v string) *GetResource
 
 type GetResourceConfigurationResponseBody struct {
 	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
+	// example:
+	//
+	// 151266687691****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The configurations of the resource.
 	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2021-06-30T09:20:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The time when the resource expires.
+	//
+	// example:
+	//
+	// 2021-07-30T09:20:08Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The attributes of the IP address.
 	IpAddressAttributes []*GetResourceConfigurationResponseBodyIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
@@ -1398,20 +1800,48 @@ type GetResourceConfigurationResponseBody struct {
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
 	// The region ID of the resource.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F1CE0D52-32DA-531A-87A4-B9A5B68D5D8E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the resource belongs.
+	//
+	// example:
+	//
+	// rg-acfmv4k****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// vtb-uf6978gdqbi****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// group1
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource.
+	//
+	// example:
+	//
+	// ACS::VPC::VSwitch
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags of the resource.
 	Tags []*GetResourceConfigurationResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The zone ID of the resource.
+	//
+	// example:
+	//
+	// cn-hangzhou-k
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1495,13 +1925,26 @@ func (s *GetResourceConfigurationResponseBody) SetZoneId(v string) *GetResourceC
 
 type GetResourceConfigurationResponseBodyIpAddressAttributes struct {
 	// The IP address.
+	//
+	// example:
+	//
+	// 192.168.1.2
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
-	// *   **Public**: the Internet
-	// *   **Private**: internal network
+	// 	- **Public**: the Internet
+	//
+	// 	- **Private**: internal network
+	//
+	// example:
+	//
+	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The version.
+	//
+	// example:
+	//
+	// Ipv4
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -1530,8 +1973,16 @@ func (s *GetResourceConfigurationResponseBodyIpAddressAttributes) SetVersion(v s
 
 type GetResourceConfigurationResponseBodyTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1554,9 +2005,9 @@ func (s *GetResourceConfigurationResponseBodyTags) SetValue(v string) *GetResour
 }
 
 type GetResourceConfigurationResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceConfigurationResponse) String() string {
@@ -1587,11 +2038,19 @@ type GetResourceCountsRequest struct {
 	Filter []*GetResourceCountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The dimension by which resources are queried. Valid values:
 	//
-	// *   ResourceType
-	// *   Region
-	// *   ResourceGroupId
-	// *   TagKey
-	// *   TagValue
+	// 	- ResourceType
+	//
+	// 	- Region
+	//
+	// 	- ResourceGroupId
+	//
+	// 	- TagKey
+	//
+	// 	- TagValue
+	//
+	// example:
+	//
+	// ResourceType
 	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
 }
 
@@ -1615,10 +2074,18 @@ func (s *GetResourceCountsRequest) SetGroupByKey(v string) *GetResourceCountsReq
 
 type GetResourceCountsRequestFilter struct {
 	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	//
+	// example:
+	//
+	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The matching mode.
 	//
 	// The value Equals indicates an equal match.
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The values of the filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
@@ -1651,8 +2118,16 @@ type GetResourceCountsResponseBody struct {
 	// The filter conditions.
 	Filters []*GetResourceCountsResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The dimension by which resources are queried.
+	//
+	// example:
+	//
+	// ResourceType
 	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6D98D9B0-318D-56A4-910C-93B5F945AF2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The numbers of resources.
 	ResourceCounts []*GetResourceCountsResponseBodyResourceCounts `json:"ResourceCounts,omitempty" xml:"ResourceCounts,omitempty" type:"Repeated"`
@@ -1688,6 +2163,10 @@ func (s *GetResourceCountsResponseBody) SetResourceCounts(v []*GetResourceCounts
 
 type GetResourceCountsResponseBodyFilters struct {
 	// The key of the filter condition.
+	//
+	// example:
+	//
+	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the filter condition.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -1713,8 +2192,16 @@ func (s *GetResourceCountsResponseBodyFilters) SetValues(v []*string) *GetResour
 
 type GetResourceCountsResponseBodyResourceCounts struct {
 	// The number of resources.
+	//
+	// example:
+	//
+	// 2
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The group name.
+	//
+	// example:
+	//
+	// ACS::ECS::NetworkInterface
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -1737,9 +2224,9 @@ func (s *GetResourceCountsResponseBodyResourceCounts) SetGroupName(v string) *Ge
 }
 
 type GetResourceCountsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceCountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceCountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceCountsResponse) String() string {
@@ -1766,9 +2253,15 @@ func (s *GetResourceCountsResponse) SetBody(v *GetResourceCountsResponseBody) *G
 }
 
 type GetSavedQueryRequest struct {
-	// The ID of the template.
+	// The template ID.
 	//
-	// >  You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the template ID.
+	// >  You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -1787,8 +2280,12 @@ func (s *GetSavedQueryRequest) SetQueryId(v string) *GetSavedQueryRequest {
 
 type GetSavedQueryResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 6D98D9B0-318D-56A4-910C-93B5F945AF2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the custom query template.
+	// The information about the template.
 	SavedQuery *GetSavedQueryResponseBodySavedQuery `json:"SavedQuery,omitempty" xml:"SavedQuery,omitempty" type:"Struct"`
 }
 
@@ -1811,17 +2308,41 @@ func (s *GetSavedQueryResponseBody) SetSavedQuery(v *GetSavedQueryResponseBodySa
 }
 
 type GetSavedQueryResponseBodySavedQuery struct {
-	// The time when the template was created.
+	// The time when the template was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-10-30T01:43:16Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the template.
+	//
+	// example:
+	//
+	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The query statement in the template.
+	//
+	// example:
+	//
+	// SELECT 	- FROM resources;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// Query of All Alibaba Cloud Resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the template.
+	// The template ID.
+	//
+	// example:
+	//
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	// The time when the template was last updated.
+	// The time when the template was updated. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-10-30T01:43:16Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -1864,9 +2385,9 @@ func (s *GetSavedQueryResponseBodySavedQuery) SetUpdateTime(v string) *GetSavedQ
 }
 
 type GetSavedQueryResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSavedQueryResponse) String() string {
@@ -1898,8 +2419,16 @@ type ListExampleQueriesRequest struct {
 	// Valid values: 1 to 50.
 	//
 	// Default value: 50.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -1925,10 +2454,22 @@ type ListExampleQueriesResponseBody struct {
 	// The information about the sample query templates.
 	ExampleQueries []*ListExampleQueriesResponseBodyExampleQueries `json:"ExampleQueries,omitempty" xml:"ExampleQueries,omitempty" type:"Repeated"`
 	// The maximum number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D696E6EF-3A6D-5770-801E-4982081FE4D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1962,10 +2503,22 @@ func (s *ListExampleQueriesResponseBody) SetRequestId(v string) *ListExampleQuer
 
 type ListExampleQueriesResponseBodyExampleQueries struct {
 	// The description of the template.
+	//
+	// example:
+	//
+	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// Query of All Alibaba Cloud Resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// sq-0PfKy****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -1993,9 +2546,9 @@ func (s *ListExampleQueriesResponseBodyExampleQueries) SetQueryId(v string) *Lis
 }
 
 type ListExampleQueriesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListExampleQueriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExampleQueriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListExampleQueriesResponse) String() string {
@@ -2022,9 +2575,16 @@ func (s *ListExampleQueriesResponse) SetBody(v *ListExampleQueriesResponseBody) 
 }
 
 type ListFiltersResponseBody struct {
-	DefaultFilterName *string                           `json:"DefaultFilterName,omitempty" xml:"DefaultFilterName,omitempty"`
-	Filters           []*ListFiltersResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	RequestId         *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the default filter.
+	DefaultFilterName *string `json:"DefaultFilterName,omitempty" xml:"DefaultFilterName,omitempty"`
+	// The configurations of the filter.
+	Filters []*ListFiltersResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AA39FB9C-CB74-5E73-8DFE-3A2B096F0759
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFiltersResponseBody) String() string {
@@ -2051,8 +2611,34 @@ func (s *ListFiltersResponseBody) SetRequestId(v string) *ListFiltersResponseBod
 }
 
 type ListFiltersResponseBodyFilters struct {
+	// The configurations of the filter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "regions": [],
+	//
+	//   "tagFilters": [
+	//
+	//     [{ "type": "notContainTagKey", "tagKey": "xxx", "tagValue": "" }],
+	//
+	//     [{ "tagKey": "xxx", "tagValue": "xxx" }]
+	//
+	//   ],
+	//
+	//   "resourceTypes": [
+	//
+	//     "ACS::ECS::AutoSnapshotPolicy"
+	//
+	//   ]
+	//
+	// }
 	FilterConfiguration *string `json:"FilterConfiguration,omitempty" xml:"FilterConfiguration,omitempty"`
-	FilterName          *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+	// The name of the filter.
+	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 
 func (s ListFiltersResponseBodyFilters) String() string {
@@ -2074,9 +2660,9 @@ func (s *ListFiltersResponseBodyFilters) SetFilterName(v string) *ListFiltersRes
 }
 
 type ListFiltersResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFiltersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFiltersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFiltersResponse) String() string {
@@ -2104,12 +2690,26 @@ func (s *ListFiltersResponse) SetBody(v *ListFiltersResponseBody) *ListFiltersRe
 
 type ListMultiAccountResourceGroupsRequest struct {
 	// The ID of the management account or member of the resource directory.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1394339739****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The maximum number of entries to return on each page.
 	//
 	// Maximum value: 100. Default value: 10.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAS2Nboi3t4xGrdlG5/Ks/Q1xPG9jzviYEuZydevXIkgF
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The IDs of resource groups.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
@@ -2145,8 +2745,16 @@ func (s *ListMultiAccountResourceGroupsRequest) SetResourceGroupIds(v []*string)
 
 type ListMultiAccountResourceGroupsResponseBody struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAU5VsT9R1adMTuz9GzginZ3Y+7Y/5JATS+6q5GK9kT75
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0FF0A66E-781F-51EE-9531-928F197558F2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the resource groups.
 	ResourceGroups []*ListMultiAccountResourceGroupsResponseBodyResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
@@ -2177,20 +2785,46 @@ func (s *ListMultiAccountResourceGroupsResponseBody) SetResourceGroups(v []*List
 
 type ListMultiAccountResourceGroupsResponseBodyResourceGroups struct {
 	// The ID of the management account or member of the resource directory.
+	//
+	// example:
+	//
+	// 1394339739****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The time when the resource group was created.
+	//
+	// example:
+	//
+	// 2021-06-30T09:20:08Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The display name of the resource group.
+	//
+	// example:
+	//
+	// group1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The unique identifier of the resource group.
+	//
+	// example:
+	//
+	// my-project
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The status of the resource group. Valid values:
 	//
-	// *   Creating: The resource group is being created.
-	// *   OK: The resource group is created.
-	// *   PendingDelete: The resource group is waiting to be deleted.
+	// 	- Creating: The resource group is being created.
+	//
+	// 	- OK: The resource group is created.
+	//
+	// 	- PendingDelete: The resource group is waiting to be deleted.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2233,9 +2867,9 @@ func (s *ListMultiAccountResourceGroupsResponseBodyResourceGroups) SetStatus(v s
 }
 
 type ListMultiAccountResourceGroupsResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMultiAccountResourceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMultiAccountResourceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMultiAccountResourceGroupsResponse) String() string {
@@ -2264,27 +2898,53 @@ func (s *ListMultiAccountResourceGroupsResponse) SetBody(v *ListMultiAccountReso
 type ListMultiAccountTagKeysRequest struct {
 	// The matching mode. Valid values:
 	//
-	// *   Equals: equal match
-	// *   Prefix: match by prefix
+	// 	- Equals: equal match
+	//
+	// 	- Prefix: match by prefix
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The maximum number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 20.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The search scope. You can set the value to one of the following items:
 	//
-	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
-	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-	// *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-	// *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
+	//
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+	//
+	// 	- ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+	//
+	// 	- ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rd-r4****
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// test_key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
@@ -2323,8 +2983,16 @@ func (s *ListMultiAccountTagKeysRequest) SetTagKey(v string) *ListMultiAccountTa
 
 type ListMultiAccountTagKeysResponseBody struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAARfZmVDe9NvRXloR5+8CK9nNJufMdRA7W1miLC1P****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FA6086F9-6363-51A5-A507-88E3201EBCCB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tag keys.
 	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
@@ -2354,9 +3022,9 @@ func (s *ListMultiAccountTagKeysResponseBody) SetTagKeys(v []*string) *ListMulti
 }
 
 type ListMultiAccountTagKeysResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMultiAccountTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMultiAccountTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMultiAccountTagKeysResponse) String() string {
@@ -2385,29 +3053,59 @@ func (s *ListMultiAccountTagKeysResponse) SetBody(v *ListMultiAccountTagKeysResp
 type ListMultiAccountTagValuesRequest struct {
 	// The matching mode. Valid values:
 	//
-	// *   Equals: equal match
-	// *   Prefix: match by prefix
+	// 	- Equals: equal match
+	//
+	// 	- Prefix: match by prefix
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The maximum number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 20.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The search scope. You can set the value to one of the following items:
 	//
-	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
-	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-	// *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-	// *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
+	//
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+	//
+	// 	- ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+	//
+	// 	- ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
+	//
+	// example:
+	//
+	// rd-r4****
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The tag key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// test_value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -2451,8 +3149,16 @@ func (s *ListMultiAccountTagValuesRequest) SetTagValue(v string) *ListMultiAccou
 
 type ListMultiAccountTagValuesResponseBody struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 36A3D9BE-B607-5993-B546-7E19EF65DC00
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tag values.
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
@@ -2482,9 +3188,9 @@ func (s *ListMultiAccountTagValuesResponseBody) SetTagValues(v []*string) *ListM
 }
 
 type ListMultiAccountTagValuesResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMultiAccountTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMultiAccountTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMultiAccountTagValuesResponse) String() string {
@@ -2513,14 +3219,23 @@ func (s *ListMultiAccountTagValuesResponse) SetBody(v *ListMultiAccountTagValues
 type ListResourceTypesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// *   zh-CN: Chinese
-	// *   en-US: English
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The query conditions.
 	Query []*string `json:"Query,omitempty" xml:"Query,omitempty" type:"Repeated"`
 	// The resource type.
 	//
-	// For more information about the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+	// For more information about the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+	//
+	// example:
+	//
+	// ACS::ACK::Cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -2549,6 +3264,10 @@ func (s *ListResourceTypesRequest) SetResourceType(v string) *ListResourceTypesR
 
 type ListResourceTypesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E5556E4C-479A-5BBB-B325-F07563E7E917
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the resource types.
 	ResourceTypes []*ListResourceTypesResponseBodyResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
@@ -2573,13 +3292,29 @@ func (s *ListResourceTypesResponseBody) SetResourceTypes(v []*ListResourceTypesR
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {
+	// if can be null:
+	// true
+	Authorized  *bool                                                  `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	CodeMapping *ListResourceTypesResponseBodyResourceTypesCodeMapping `json:"CodeMapping,omitempty" xml:"CodeMapping,omitempty" type:"Struct"`
 	// The supported filter conditions.
 	FilterKeys []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
 	// The name of the Alibaba Cloud service.
+	//
+	// example:
+	//
+	// Container Service for Kubernetes
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// ACS::ACK::Cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The name of the resource type.
+	//
+	// example:
+	//
+	// Cluster
 	ResourceTypeName *string `json:"ResourceTypeName,omitempty" xml:"ResourceTypeName,omitempty"`
 }
 
@@ -2589,6 +3324,16 @@ func (s ListResourceTypesResponseBodyResourceTypes) String() string {
 
 func (s ListResourceTypesResponseBodyResourceTypes) GoString() string {
 	return s.String()
+}
+
+func (s *ListResourceTypesResponseBodyResourceTypes) SetAuthorized(v bool) *ListResourceTypesResponseBodyResourceTypes {
+	s.Authorized = &v
+	return s
+}
+
+func (s *ListResourceTypesResponseBodyResourceTypes) SetCodeMapping(v *ListResourceTypesResponseBodyResourceTypesCodeMapping) *ListResourceTypesResponseBodyResourceTypes {
+	s.CodeMapping = v
+	return s
 }
 
 func (s *ListResourceTypesResponseBodyResourceTypes) SetFilterKeys(v []*string) *ListResourceTypesResponseBodyResourceTypes {
@@ -2611,10 +3356,33 @@ func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceTypeName(v strin
 	return s
 }
 
+type ListResourceTypesResponseBodyResourceTypesCodeMapping struct {
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListResourceTypesResponseBodyResourceTypesCodeMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceTypesResponseBodyResourceTypesCodeMapping) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceTypesResponseBodyResourceTypesCodeMapping) SetResourceGroup(v string) *ListResourceTypesResponseBodyResourceTypesCodeMapping {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *ListResourceTypesResponseBodyResourceTypesCodeMapping) SetTag(v string) *ListResourceTypesResponseBodyResourceTypesCodeMapping {
+	s.Tag = &v
+	return s
+}
+
 type ListResourceTypesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourceTypesResponse) String() string {
@@ -2646,8 +3414,16 @@ type ListSavedQueriesRequest struct {
 	// Valid values: 1 to 50.
 	//
 	// Default value: 50.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -2671,10 +3447,22 @@ func (s *ListSavedQueriesRequest) SetNextToken(v string) *ListSavedQueriesReques
 
 type ListSavedQueriesResponseBody struct {
 	// The maximum number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAARfZmVDe9NvRXloR5+8CK9nNJufMdRA7W1miLC1P****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D696E6EF-3A6D-5770-801E-4982081FE4D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the custom query templates.
 	SavedQueries []*ListSavedQueriesResponseBodySavedQueries `json:"SavedQueries,omitempty" xml:"SavedQueries,omitempty" type:"Repeated"`
@@ -2709,15 +3497,35 @@ func (s *ListSavedQueriesResponseBody) SetSavedQueries(v []*ListSavedQueriesResp
 }
 
 type ListSavedQueriesResponseBodySavedQueries struct {
-	// The time when the template was created.
+	// The time when the template was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-01-13T05:50:35Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the template.
+	//
+	// example:
+	//
+	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the template.
+	// The template name.
+	//
+	// example:
+	//
+	// Query of All Alibaba Cloud Resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the template.
+	// The template ID.
+	//
+	// example:
+	//
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	// The time when the template was last updated.
+	// The time when the template was updated. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-03-14 10:27:07
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -2755,9 +3563,9 @@ func (s *ListSavedQueriesResponseBodySavedQueries) SetUpdateTime(v string) *List
 }
 
 type ListSavedQueriesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSavedQueriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSavedQueriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSavedQueriesResponse) String() string {
@@ -2786,20 +3594,37 @@ func (s *ListSavedQueriesResponse) SetBody(v *ListSavedQueriesResponseBody) *Lis
 type ListTagKeysRequest struct {
 	// The matching mode. Valid values:
 	//
-	// *   Equals: equal match
-	// *   Prefix: match by prefix
+	// 	- Equals: equal match
+	//
+	// 	- Prefix: match by prefix
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The maximum number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 20.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	//
+	// example:
+	//
+	// AAAAAUYb00R0gHZBE8FVDeoh2ME93VeeEPUHs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// test_key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
@@ -2833,8 +3658,16 @@ func (s *ListTagKeysRequest) SetTagKey(v string) *ListTagKeysRequest {
 
 type ListTagKeysResponseBody struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAUDnubHKJbVTCdlIGYUPtsu3EoN3bfdgjDA****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 44C8A952-D6B0-5BC8-82D5-93BA02E26F2E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tag keys.
 	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
@@ -2864,9 +3697,9 @@ func (s *ListTagKeysResponseBody) SetTagKeys(v []*string) *ListTagKeysResponseBo
 }
 
 type ListTagKeysResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagKeysResponse) String() string {
@@ -2895,22 +3728,45 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 type ListTagValuesRequest struct {
 	// The matching mode. Valid values:
 	//
-	// *   Equals: equal match
-	// *   Prefix: match by prefix
+	// 	- Equals: equal match
+	//
+	// 	- Prefix: match by prefix
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The maximum number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 20.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The tag key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// test_value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -2949,8 +3805,16 @@ func (s *ListTagValuesRequest) SetTagValue(v string) *ListTagValuesRequest {
 
 type ListTagValuesResponseBody struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C1840B83-1193-5E83-AFA6-4B8D303E29F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tag values.
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
@@ -2980,9 +3844,9 @@ func (s *ListTagValuesResponseBody) SetTagValues(v []*string) *ListTagValuesResp
 }
 
 type ListTagValuesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagValuesResponse) String() string {
@@ -3016,17 +3880,34 @@ type SearchMultiAccountResourcesRequest struct {
 	// Valid values: 1 to 100.
 	//
 	// Default value: 20.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.``
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The search scope. You can set the value to one of the following items:
 	//
-	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
-	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-	// *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-	// *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
+	//
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+	//
+	// 	- ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+	//
+	// 	- ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rd-r4****
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The method that is used to sort the entries returned.
 	SortCriterion *SearchMultiAccountResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
@@ -3067,10 +3948,18 @@ func (s *SearchMultiAccountResourcesRequest) SetSortCriterion(v *SearchMultiAcco
 
 type SearchMultiAccountResourcesRequestFilter struct {
 	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	//
+	// example:
+	//
+	// ResourceGroupId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The matching mode.
 	//
 	// The value Equals indicates an equal match.
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The values of the filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
@@ -3103,11 +3992,20 @@ type SearchMultiAccountResourcesRequestSortCriterion struct {
 	// The attribute based on which the entries are sorted.
 	//
 	// The value CreateTime indicates the creation time of resources.
+	//
+	// example:
+	//
+	// CreateTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The order in which the entries are sorted. Valid values:
 	//
-	// *   ASC: The entries are sorted in ascending order. This value is the default value.
-	// *   DESC: The entries are sorted in descending order.
+	// 	- ASC: The entries are sorted in ascending order. This value is the default value.
+	//
+	// 	- DESC: The entries are sorted in descending order.
+	//
+	// example:
+	//
+	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 }
 
@@ -3133,19 +4031,38 @@ type SearchMultiAccountResourcesResponseBody struct {
 	// The filter conditions.
 	Filters []*SearchMultiAccountResourcesResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EFA806B9-7F36-55AB-8B7A-D680C2C5EE57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the resources.
 	Resources []*SearchMultiAccountResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The search scope.
 	//
-	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
-	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
-	// *   ID of a folder: Resources within all members in the folder are searched.
-	// *   ID of a member: Resources within the member are searched.
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+	//
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+	//
+	// 	- ID of a folder: Resources within all members in the folder are searched.
+	//
+	// 	- ID of a member: Resources within the member are searched.
+	//
+	// example:
+	//
+	// rd-r4****
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
@@ -3189,8 +4106,16 @@ func (s *SearchMultiAccountResourcesResponseBody) SetScope(v string) *SearchMult
 
 type SearchMultiAccountResourcesResponseBodyFilters struct {
 	// The key of the filter condition.
+	//
+	// example:
+	//
+	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The matching mode.
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The values of the filter condition.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -3221,12 +4146,24 @@ func (s *SearchMultiAccountResourcesResponseBodyFilters) SetValues(v []*string) 
 
 type SearchMultiAccountResourcesResponseBodyResources struct {
 	// The ID of the management account or member of the resource directory.
+	//
+	// example:
+	//
+	// 151266687691****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The time when the resource was created.
 	//
 	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	//
+	// example:
+	//
+	// 2021-06-30T09:20:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The time when the resource expires.
+	//
+	// example:
+	//
+	// 2023-06-14T14:35:45Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The attributes of the IP address.
 	IpAddressAttributes []*SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
@@ -3235,20 +4172,44 @@ type SearchMultiAccountResourcesResponseBodyResources struct {
 	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource ID.
+	//
+	// example:
+	//
+	// vtb-bp11lbh452fr8940s****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource name.
+	//
+	// example:
+	//
+	// group1
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// ACS::VPC::RouteTable
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
 	Tags []*SearchMultiAccountResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
 	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou-k
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3325,10 +4286,19 @@ type SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes struct 
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
-	// *   **Public**: the Internet
-	// *   **Private**: internal network
+	// 	- **Public**: the Internet
+	//
+	// 	- **Private**: internal network
+	//
+	// example:
+	//
+	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The version.
+	//
+	// example:
+	//
+	// Ipv4
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -3357,8 +4327,16 @@ func (s *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) Se
 
 type SearchMultiAccountResourcesResponseBodyResourcesTags struct {
 	// The key of tag N.
+	//
+	// example:
+	//
+	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
+	//
+	// example:
+	//
+	// test_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3381,9 +4359,9 @@ func (s *SearchMultiAccountResourcesResponseBodyResourcesTags) SetValue(v string
 }
 
 type SearchMultiAccountResourcesResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchMultiAccountResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchMultiAccountResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchMultiAccountResourcesResponse) String() string {
@@ -3417,12 +4395,24 @@ type SearchResourcesRequest struct {
 	// Valid values: 1 to 100.
 	//
 	// Default value: 20.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The method that is used to sort the entries returned.
 	SortCriterion *SearchResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
@@ -3463,10 +4453,18 @@ func (s *SearchResourcesRequest) SetSortCriterion(v *SearchResourcesRequestSortC
 
 type SearchResourcesRequestFilter struct {
 	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	//
+	// example:
+	//
+	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The matching mode.
 	//
 	// The value Equals indicates an equal match.
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The values of the filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
@@ -3499,11 +4497,20 @@ type SearchResourcesRequestSortCriterion struct {
 	// The attribute based on which the entries are sorted.
 	//
 	// The value CreateTime indicates the creation time of resources.
+	//
+	// example:
+	//
+	// CreateTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The order in which the entries are sorted. Valid values:
 	//
-	// *   ASC: The entries are sorted in ascending order. This value is the default value.
-	// *   DESC: The entries are sorted in descending order.
+	// 	- ASC: The entries are sorted in ascending order. This value is the default value.
+	//
+	// 	- DESC: The entries are sorted in descending order.
+	//
+	// example:
+	//
+	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 }
 
@@ -3529,10 +4536,22 @@ type SearchResourcesResponseBody struct {
 	// The filter conditions.
 	Filters []*SearchResourcesResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D696E6EF-3A6D-5770-801E-4982081FE4D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the resources.
 	Resources []*SearchResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -3573,8 +4592,16 @@ func (s *SearchResourcesResponseBody) SetResources(v []*SearchResourcesResponseB
 
 type SearchResourcesResponseBodyFilters struct {
 	// The key of the filter condition.
+	//
+	// example:
+	//
+	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The matching mode.
+	//
+	// example:
+	//
+	// Equals
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The values of the filter condition.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -3605,12 +4632,24 @@ func (s *SearchResourcesResponseBodyFilters) SetValues(v []*string) *SearchResou
 
 type SearchResourcesResponseBodyResources struct {
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 151266687691****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The time when the resource was created.
 	//
 	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	//
+	// example:
+	//
+	// 2021-06-30T09:20:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The time when the resource expires.
+	//
+	// example:
+	//
+	// 2021-07-30T09:20:08Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The attributes of the IP address.
 	IpAddressAttributes []*SearchResourcesResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
@@ -3619,20 +4658,44 @@ type SearchResourcesResponseBodyResources struct {
 	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource ID.
+	//
+	// example:
+	//
+	// vtb-bp11lbh452fr8940s****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource name.
+	//
+	// example:
+	//
+	// group1
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// ACS::VPC::RouteTable
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
 	Tags []*SearchResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
 	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou-k
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3709,10 +4772,19 @@ type SearchResourcesResponseBodyResourcesIpAddressAttributes struct {
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
-	// *   **Public**: the Internet
-	// *   **Private**: internal network
+	// 	- **Public**: the Internet
+	//
+	// 	- **Private**: internal network
+	//
+	// example:
+	//
+	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The version.
+	//
+	// example:
+	//
+	// Ipv4
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -3741,8 +4813,16 @@ func (s *SearchResourcesResponseBodyResourcesIpAddressAttributes) SetVersion(v s
 
 type SearchResourcesResponseBodyResourcesTags struct {
 	// The key of tag N.
+	//
+	// example:
+	//
+	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
+	//
+	// example:
+	//
+	// test_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3765,9 +4845,9 @@ func (s *SearchResourcesResponseBodyResourcesTags) SetValue(v string) *SearchRes
 }
 
 type SearchResourcesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchResourcesResponse) String() string {
@@ -3794,8 +4874,40 @@ func (s *SearchResourcesResponse) SetBody(v *SearchResourcesResponseBody) *Searc
 }
 
 type UpdateFilterRequest struct {
+	// The configurations of the filter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "regions": [],
+	//
+	//   "tagFilters": [
+	//
+	//     [{ "type": "notContainTagKey", "tagKey": "xxx", "tagValue": "" }],
+	//
+	//     [{ "tagKey": "xxx", "tagValue": "xxx" }]
+	//
+	//   ],
+	//
+	//   "resourceTypes": [
+	//
+	//     "ACS::ECS::AutoSnapshotPolicy"
+	//
+	//   ]
+	//
+	// }
 	FilterConfiguration *string `json:"FilterConfiguration,omitempty" xml:"FilterConfiguration,omitempty"`
-	FilterName          *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+	// The name of the filter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS
+	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 
 func (s UpdateFilterRequest) String() string {
@@ -3817,6 +4929,11 @@ func (s *UpdateFilterRequest) SetFilterName(v string) *UpdateFilterRequest {
 }
 
 type UpdateFilterResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 3C5CDBF6-4DB7-53E9-ADDC-5919E3FACF6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3834,9 +4951,9 @@ func (s *UpdateFilterResponseBody) SetRequestId(v string) *UpdateFilterResponseB
 }
 
 type UpdateFilterResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFilterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFilterResponse) String() string {
@@ -3866,16 +4983,36 @@ type UpdateSavedQueryRequest struct {
 	// The description of the template.
 	//
 	// The description must be 1 to 256 characters in length.
+	//
+	// example:
+	//
+	// Queries all resources on which you have permissions and sorts the resources by resource type and resource ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The query statement in the template.
+	//
+	// example:
+	//
+	// SELECT 	- FROM resources;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The name of the template.
 	//
-	// *   The name must be 1 to 64 characters in length.
-	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   The name must be unique.
+	// 	- The name must be 1 to 64 characters in length.
+	//
+	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- The name must be unique.
+	//
+	// example:
+	//
+	// Query of All Alibaba Cloud Resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the template.
+	// The template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sq-GeAck****
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -3909,6 +5046,10 @@ func (s *UpdateSavedQueryRequest) SetQueryId(v string) *UpdateSavedQueryRequest 
 
 type UpdateSavedQueryResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D696E6EF-3A6D-5770-801E-4982081FE4D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3926,9 +5067,9 @@ func (s *UpdateSavedQueryResponseBody) SetRequestId(v string) *UpdateSavedQueryR
 }
 
 type UpdateSavedQueryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSavedQueryResponse) String() string {
@@ -4001,6 +5142,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets a default filter.
+//
+// @param request - AssociateDefaultFilterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateDefaultFilterResponse
 func (client *Client) AssociateDefaultFilterWithOptions(request *AssociateDefaultFilterRequest, runtime *util.RuntimeOptions) (_result *AssociateDefaultFilterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4034,6 +5184,13 @@ func (client *Client) AssociateDefaultFilterWithOptions(request *AssociateDefaul
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets a default filter.
+//
+// @param request - AssociateDefaultFilterRequest
+//
+// @return AssociateDefaultFilterResponse
 func (client *Client) AssociateDefaultFilter(request *AssociateDefaultFilterRequest) (_result *AssociateDefaultFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateDefaultFilterResponse{}
@@ -4045,6 +5202,15 @@ func (client *Client) AssociateDefaultFilter(request *AssociateDefaultFilterRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a filter.
+//
+// @param request - CreateFilterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFilterResponse
 func (client *Client) CreateFilterWithOptions(request *CreateFilterRequest, runtime *util.RuntimeOptions) (_result *CreateFilterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4082,6 +5248,13 @@ func (client *Client) CreateFilterWithOptions(request *CreateFilterRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a filter.
+//
+// @param request - CreateFilterRequest
+//
+// @return CreateFilterResponse
 func (client *Client) CreateFilter(request *CreateFilterRequest) (_result *CreateFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFilterResponse{}
@@ -4093,6 +5266,15 @@ func (client *Client) CreateFilter(request *CreateFilterRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom query template.
+//
+// @param request - CreateSavedQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSavedQueryResponse
 func (client *Client) CreateSavedQueryWithOptions(request *CreateSavedQueryRequest, runtime *util.RuntimeOptions) (_result *CreateSavedQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4134,6 +5316,13 @@ func (client *Client) CreateSavedQueryWithOptions(request *CreateSavedQueryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom query template.
+//
+// @param request - CreateSavedQueryRequest
+//
+// @return CreateSavedQueryResponse
 func (client *Client) CreateSavedQuery(request *CreateSavedQueryRequest) (_result *CreateSavedQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSavedQueryResponse{}
@@ -4145,6 +5334,15 @@ func (client *Client) CreateSavedQuery(request *CreateSavedQueryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a filter.
+//
+// @param request - DeleteFilterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFilterResponse
 func (client *Client) DeleteFilterWithOptions(request *DeleteFilterRequest, runtime *util.RuntimeOptions) (_result *DeleteFilterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4178,6 +5376,13 @@ func (client *Client) DeleteFilterWithOptions(request *DeleteFilterRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a filter.
+//
+// @param request - DeleteFilterRequest
+//
+// @return DeleteFilterResponse
 func (client *Client) DeleteFilter(request *DeleteFilterRequest) (_result *DeleteFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFilterResponse{}
@@ -4189,6 +5394,15 @@ func (client *Client) DeleteFilter(request *DeleteFilterRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom query template.
+//
+// @param request - DeleteSavedQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSavedQueryResponse
 func (client *Client) DeleteSavedQueryWithOptions(request *DeleteSavedQueryRequest, runtime *util.RuntimeOptions) (_result *DeleteSavedQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4222,6 +5436,13 @@ func (client *Client) DeleteSavedQueryWithOptions(request *DeleteSavedQueryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom query template.
+//
+// @param request - DeleteSavedQueryRequest
+//
+// @return DeleteSavedQueryResponse
 func (client *Client) DeleteSavedQuery(request *DeleteSavedQueryRequest) (_result *DeleteSavedQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSavedQueryResponse{}
@@ -4233,6 +5454,15 @@ func (client *Client) DeleteSavedQuery(request *DeleteSavedQueryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the cross-account resource search feature by using the management account of a resource directory or a delegated administrator account of Resource Center.
+//
+// @param request - DisableMultiAccountResourceCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableMultiAccountResourceCenterResponse
 func (client *Client) DisableMultiAccountResourceCenterWithOptions(runtime *util.RuntimeOptions) (_result *DisableMultiAccountResourceCenterResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4255,6 +5485,11 @@ func (client *Client) DisableMultiAccountResourceCenterWithOptions(runtime *util
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the cross-account resource search feature by using the management account of a resource directory or a delegated administrator account of Resource Center.
+//
+// @return DisableMultiAccountResourceCenterResponse
 func (client *Client) DisableMultiAccountResourceCenter() (_result *DisableMultiAccountResourceCenterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableMultiAccountResourceCenterResponse{}
@@ -4266,6 +5501,15 @@ func (client *Client) DisableMultiAccountResourceCenter() (_result *DisableMulti
 	return _result, _err
 }
 
+// Summary:
+//
+// Deactivates the Resource Center service.
+//
+// @param request - DisableResourceCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableResourceCenterResponse
 func (client *Client) DisableResourceCenterWithOptions(runtime *util.RuntimeOptions) (_result *DisableResourceCenterResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4288,6 +5532,11 @@ func (client *Client) DisableResourceCenterWithOptions(runtime *util.RuntimeOpti
 	return _result, _err
 }
 
+// Summary:
+//
+// Deactivates the Resource Center service.
+//
+// @return DisableResourceCenterResponse
 func (client *Client) DisableResourceCenter() (_result *DisableResourceCenterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableResourceCenterResponse{}
@@ -4299,6 +5548,15 @@ func (client *Client) DisableResourceCenter() (_result *DisableResourceCenterRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels the default filter.
+//
+// @param request - DisassociateDefaultFilterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisassociateDefaultFilterResponse
 func (client *Client) DisassociateDefaultFilterWithOptions(runtime *util.RuntimeOptions) (_result *DisassociateDefaultFilterResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4321,6 +5579,11 @@ func (client *Client) DisassociateDefaultFilterWithOptions(runtime *util.Runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels the default filter.
+//
+// @return DisassociateDefaultFilterResponse
 func (client *Client) DisassociateDefaultFilter() (_result *DisassociateDefaultFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisassociateDefaultFilterResponse{}
@@ -4332,13 +5595,19 @@ func (client *Client) DisassociateDefaultFilter() (_result *DisassociateDefaultF
 	return _result, _err
 }
 
-/**
- * If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](~~200506~~).
- *
- * @param request EnableMultiAccountResourceCenterRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableMultiAccountResourceCenterResponse
- */
+// Summary:
+//
+// Enables the cross-account resource search feature by using the management account of a resource directory or a delegated administrator account of Resource Center.
+//
+// Description:
+//
+// If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](https://help.aliyun.com/document_detail/200506.html).
+//
+// @param request - EnableMultiAccountResourceCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableMultiAccountResourceCenterResponse
 func (client *Client) EnableMultiAccountResourceCenterWithOptions(runtime *util.RuntimeOptions) (_result *EnableMultiAccountResourceCenterResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4361,11 +5630,15 @@ func (client *Client) EnableMultiAccountResourceCenterWithOptions(runtime *util.
 	return _result, _err
 }
 
-/**
- * If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](~~200506~~).
- *
- * @return EnableMultiAccountResourceCenterResponse
- */
+// Summary:
+//
+// Enables the cross-account resource search feature by using the management account of a resource directory or a delegated administrator account of Resource Center.
+//
+// Description:
+//
+// If you have created a resource directory for your enterprise, you can enable the cross-account resource search feature by using the management account of the resource directory or a delegated administrator account of Resource Center to view the resources of members in the resource directory. For more information about a resource directory, see [Resource Directory overview](https://help.aliyun.com/document_detail/200506.html).
+//
+// @return EnableMultiAccountResourceCenterResponse
 func (client *Client) EnableMultiAccountResourceCenter() (_result *EnableMultiAccountResourceCenterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableMultiAccountResourceCenterResponse{}
@@ -4377,6 +5650,15 @@ func (client *Client) EnableMultiAccountResourceCenter() (_result *EnableMultiAc
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates the Resource Center service.
+//
+// @param request - EnableResourceCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableResourceCenterResponse
 func (client *Client) EnableResourceCenterWithOptions(runtime *util.RuntimeOptions) (_result *EnableResourceCenterResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4399,6 +5681,11 @@ func (client *Client) EnableResourceCenterWithOptions(runtime *util.RuntimeOptio
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates the Resource Center service.
+//
+// @return EnableResourceCenterResponse
 func (client *Client) EnableResourceCenter() (_result *EnableResourceCenterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableResourceCenterResponse{}
@@ -4410,6 +5697,15 @@ func (client *Client) EnableResourceCenter() (_result *EnableResourceCenterRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes an SQL statement to query resources across accounts.
+//
+// @param request - ExecuteMultiAccountSQLQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteMultiAccountSQLQueryResponse
 func (client *Client) ExecuteMultiAccountSQLQueryWithOptions(request *ExecuteMultiAccountSQLQueryRequest, runtime *util.RuntimeOptions) (_result *ExecuteMultiAccountSQLQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4447,6 +5743,13 @@ func (client *Client) ExecuteMultiAccountSQLQueryWithOptions(request *ExecuteMul
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes an SQL statement to query resources across accounts.
+//
+// @param request - ExecuteMultiAccountSQLQueryRequest
+//
+// @return ExecuteMultiAccountSQLQueryResponse
 func (client *Client) ExecuteMultiAccountSQLQuery(request *ExecuteMultiAccountSQLQueryRequest) (_result *ExecuteMultiAccountSQLQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteMultiAccountSQLQueryResponse{}
@@ -4458,6 +5761,15 @@ func (client *Client) ExecuteMultiAccountSQLQuery(request *ExecuteMultiAccountSQ
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes an SQL statement to query the resources that can be accessed within the current account.
+//
+// @param request - ExecuteSQLQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteSQLQueryResponse
 func (client *Client) ExecuteSQLQueryWithOptions(request *ExecuteSQLQueryRequest, runtime *util.RuntimeOptions) (_result *ExecuteSQLQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4495,6 +5807,13 @@ func (client *Client) ExecuteSQLQueryWithOptions(request *ExecuteSQLQueryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes an SQL statement to query the resources that can be accessed within the current account.
+//
+// @param request - ExecuteSQLQueryRequest
+//
+// @return ExecuteSQLQueryResponse
 func (client *Client) ExecuteSQLQuery(request *ExecuteSQLQueryRequest) (_result *ExecuteSQLQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteSQLQueryResponse{}
@@ -4506,6 +5825,15 @@ func (client *Client) ExecuteSQLQuery(request *ExecuteSQLQueryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a sample query template.
+//
+// @param request - GetExampleQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExampleQueryResponse
 func (client *Client) GetExampleQueryWithOptions(request *GetExampleQueryRequest, runtime *util.RuntimeOptions) (_result *GetExampleQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4539,6 +5867,13 @@ func (client *Client) GetExampleQueryWithOptions(request *GetExampleQueryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a sample query template.
+//
+// @param request - GetExampleQueryRequest
+//
+// @return GetExampleQueryResponse
 func (client *Client) GetExampleQuery(request *GetExampleQueryRequest) (_result *GetExampleQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetExampleQueryResponse{}
@@ -4550,6 +5885,15 @@ func (client *Client) GetExampleQuery(request *GetExampleQueryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the cross-account resource search feature by using the management account of a resource directory or a delegated administrator account of Resource Center.
+//
+// @param request - GetMultiAccountResourceCenterServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiAccountResourceCenterServiceStatusResponse
 func (client *Client) GetMultiAccountResourceCenterServiceStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetMultiAccountResourceCenterServiceStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4572,6 +5916,11 @@ func (client *Client) GetMultiAccountResourceCenterServiceStatusWithOptions(runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the cross-account resource search feature by using the management account of a resource directory or a delegated administrator account of Resource Center.
+//
+// @return GetMultiAccountResourceCenterServiceStatusResponse
 func (client *Client) GetMultiAccountResourceCenterServiceStatus() (_result *GetMultiAccountResourceCenterServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMultiAccountResourceCenterServiceStatusResponse{}
@@ -4583,6 +5932,15 @@ func (client *Client) GetMultiAccountResourceCenterServiceStatus() (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a resource within the management account or a member of a resource directory.
+//
+// @param request - GetMultiAccountResourceConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiAccountResourceConfigurationResponse
 func (client *Client) GetMultiAccountResourceConfigurationWithOptions(request *GetMultiAccountResourceConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetMultiAccountResourceConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4628,6 +5986,13 @@ func (client *Client) GetMultiAccountResourceConfigurationWithOptions(request *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a resource within the management account or a member of a resource directory.
+//
+// @param request - GetMultiAccountResourceConfigurationRequest
+//
+// @return GetMultiAccountResourceConfigurationResponse
 func (client *Client) GetMultiAccountResourceConfiguration(request *GetMultiAccountResourceConfigurationRequest) (_result *GetMultiAccountResourceConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMultiAccountResourceConfigurationResponse{}
@@ -4639,6 +6004,15 @@ func (client *Client) GetMultiAccountResourceConfiguration(request *GetMultiAcco
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the Resource Center service.
+//
+// @param request - GetResourceCenterServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceCenterServiceStatusResponse
 func (client *Client) GetResourceCenterServiceStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetResourceCenterServiceStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4661,6 +6035,11 @@ func (client *Client) GetResourceCenterServiceStatusWithOptions(runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the Resource Center service.
+//
+// @return GetResourceCenterServiceStatusResponse
 func (client *Client) GetResourceCenterServiceStatus() (_result *GetResourceCenterServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceCenterServiceStatusResponse{}
@@ -4672,6 +6051,15 @@ func (client *Client) GetResourceCenterServiceStatus() (_result *GetResourceCent
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a resource within the current account.
+//
+// @param request - GetResourceConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceConfigurationResponse
 func (client *Client) GetResourceConfigurationWithOptions(request *GetResourceConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetResourceConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4713,6 +6101,13 @@ func (client *Client) GetResourceConfigurationWithOptions(request *GetResourceCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a resource within the current account.
+//
+// @param request - GetResourceConfigurationRequest
+//
+// @return GetResourceConfigurationResponse
 func (client *Client) GetResourceConfiguration(request *GetResourceConfigurationRequest) (_result *GetResourceConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceConfigurationResponse{}
@@ -4724,6 +6119,15 @@ func (client *Client) GetResourceConfiguration(request *GetResourceConfiguration
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the numbers of resources on which the current account has access permissions.
+//
+// @param request - GetResourceCountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceCountsResponse
 func (client *Client) GetResourceCountsWithOptions(request *GetResourceCountsRequest, runtime *util.RuntimeOptions) (_result *GetResourceCountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4761,6 +6165,13 @@ func (client *Client) GetResourceCountsWithOptions(request *GetResourceCountsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the numbers of resources on which the current account has access permissions.
+//
+// @param request - GetResourceCountsRequest
+//
+// @return GetResourceCountsResponse
 func (client *Client) GetResourceCounts(request *GetResourceCountsRequest) (_result *GetResourceCountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceCountsResponse{}
@@ -4772,6 +6183,15 @@ func (client *Client) GetResourceCounts(request *GetResourceCountsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a custom query template.
+//
+// @param request - GetSavedQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSavedQueryResponse
 func (client *Client) GetSavedQueryWithOptions(request *GetSavedQueryRequest, runtime *util.RuntimeOptions) (_result *GetSavedQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4805,6 +6225,13 @@ func (client *Client) GetSavedQueryWithOptions(request *GetSavedQueryRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a custom query template.
+//
+// @param request - GetSavedQueryRequest
+//
+// @return GetSavedQueryResponse
 func (client *Client) GetSavedQuery(request *GetSavedQueryRequest) (_result *GetSavedQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSavedQueryResponse{}
@@ -4816,6 +6243,15 @@ func (client *Client) GetSavedQuery(request *GetSavedQueryRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all sample query templates.
+//
+// @param request - ListExampleQueriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExampleQueriesResponse
 func (client *Client) ListExampleQueriesWithOptions(request *ListExampleQueriesRequest, runtime *util.RuntimeOptions) (_result *ListExampleQueriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4853,6 +6289,13 @@ func (client *Client) ListExampleQueriesWithOptions(request *ListExampleQueriesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all sample query templates.
+//
+// @param request - ListExampleQueriesRequest
+//
+// @return ListExampleQueriesResponse
 func (client *Client) ListExampleQueries(request *ListExampleQueriesRequest) (_result *ListExampleQueriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExampleQueriesResponse{}
@@ -4864,6 +6307,15 @@ func (client *Client) ListExampleQueries(request *ListExampleQueriesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of filters.
+//
+// @param request - ListFiltersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFiltersResponse
 func (client *Client) ListFiltersWithOptions(runtime *util.RuntimeOptions) (_result *ListFiltersResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4886,6 +6338,11 @@ func (client *Client) ListFiltersWithOptions(runtime *util.RuntimeOptions) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of filters.
+//
+// @return ListFiltersResponse
 func (client *Client) ListFilters() (_result *ListFiltersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFiltersResponse{}
@@ -4897,6 +6354,15 @@ func (client *Client) ListFilters() (_result *ListFiltersResponse, _err error) {
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource groups within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+//
+// @param request - ListMultiAccountResourceGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultiAccountResourceGroupsResponse
 func (client *Client) ListMultiAccountResourceGroupsWithOptions(request *ListMultiAccountResourceGroupsRequest, runtime *util.RuntimeOptions) (_result *ListMultiAccountResourceGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4942,6 +6408,13 @@ func (client *Client) ListMultiAccountResourceGroupsWithOptions(request *ListMul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource groups within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+//
+// @param request - ListMultiAccountResourceGroupsRequest
+//
+// @return ListMultiAccountResourceGroupsResponse
 func (client *Client) ListMultiAccountResourceGroups(request *ListMultiAccountResourceGroupsRequest) (_result *ListMultiAccountResourceGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMultiAccountResourceGroupsResponse{}
@@ -4953,6 +6426,15 @@ func (client *Client) ListMultiAccountResourceGroups(request *ListMultiAccountRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag keys of resources within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+//
+// @param request - ListMultiAccountTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultiAccountTagKeysResponse
 func (client *Client) ListMultiAccountTagKeysWithOptions(request *ListMultiAccountTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListMultiAccountTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5002,6 +6484,13 @@ func (client *Client) ListMultiAccountTagKeysWithOptions(request *ListMultiAccou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag keys of resources within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+//
+// @param request - ListMultiAccountTagKeysRequest
+//
+// @return ListMultiAccountTagKeysResponse
 func (client *Client) ListMultiAccountTagKeys(request *ListMultiAccountTagKeysRequest) (_result *ListMultiAccountTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMultiAccountTagKeysResponse{}
@@ -5013,6 +6502,15 @@ func (client *Client) ListMultiAccountTagKeys(request *ListMultiAccountTagKeysRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag values of resources within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+//
+// @param request - ListMultiAccountTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultiAccountTagValuesResponse
 func (client *Client) ListMultiAccountTagValuesWithOptions(request *ListMultiAccountTagValuesRequest, runtime *util.RuntimeOptions) (_result *ListMultiAccountTagValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5066,6 +6564,13 @@ func (client *Client) ListMultiAccountTagValuesWithOptions(request *ListMultiAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag values of resources within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+//
+// @param request - ListMultiAccountTagValuesRequest
+//
+// @return ListMultiAccountTagValuesResponse
 func (client *Client) ListMultiAccountTagValues(request *ListMultiAccountTagValuesRequest) (_result *ListMultiAccountTagValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMultiAccountTagValuesResponse{}
@@ -5077,6 +6582,15 @@ func (client *Client) ListMultiAccountTagValues(request *ListMultiAccountTagValu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource types supported by Resource Center.
+//
+// @param request - ListResourceTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceTypesResponse
 func (client *Client) ListResourceTypesWithOptions(request *ListResourceTypesRequest, runtime *util.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5118,6 +6632,13 @@ func (client *Client) ListResourceTypesWithOptions(request *ListResourceTypesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource types supported by Resource Center.
+//
+// @param request - ListResourceTypesRequest
+//
+// @return ListResourceTypesResponse
 func (client *Client) ListResourceTypes(request *ListResourceTypesRequest) (_result *ListResourceTypesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceTypesResponse{}
@@ -5129,6 +6650,15 @@ func (client *Client) ListResourceTypes(request *ListResourceTypesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all custom query templates.
+//
+// @param request - ListSavedQueriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSavedQueriesResponse
 func (client *Client) ListSavedQueriesWithOptions(request *ListSavedQueriesRequest, runtime *util.RuntimeOptions) (_result *ListSavedQueriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5166,6 +6696,13 @@ func (client *Client) ListSavedQueriesWithOptions(request *ListSavedQueriesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all custom query templates.
+//
+// @param request - ListSavedQueriesRequest
+//
+// @return ListSavedQueriesResponse
 func (client *Client) ListSavedQueries(request *ListSavedQueriesRequest) (_result *ListSavedQueriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSavedQueriesResponse{}
@@ -5177,6 +6714,15 @@ func (client *Client) ListSavedQueries(request *ListSavedQueriesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag keys of resources within the current account.
+//
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5222,6 +6768,13 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag keys of resources within the current account.
+//
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -5233,6 +6786,15 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag values of resources within the current account.
+//
+// @param request - ListTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *util.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5282,6 +6844,13 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag values of resources within the current account.
+//
+// @param request - ListTagValuesRequest
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *ListTagValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
@@ -5293,18 +6862,29 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
-/**
- * *   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
- * *   Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](~~600556~~).
- * *   By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
- * *   If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
- * *   You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
- * *   You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
- *
- * @param request SearchMultiAccountResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SearchMultiAccountResourcesResponse
- */
+// Summary:
+//
+// Searches for resources within the management account or members of a resource directory.
+//
+// Description:
+//
+//   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+//
+// 	- Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
+//
+// 	- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//
+// 	- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//
+// 	- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+//
+// 	- You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
+//
+// @param request - SearchMultiAccountResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchMultiAccountResourcesResponse
 func (client *Client) SearchMultiAccountResourcesWithOptions(request *SearchMultiAccountResourcesRequest, runtime *util.RuntimeOptions) (_result *SearchMultiAccountResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5354,17 +6934,27 @@ func (client *Client) SearchMultiAccountResourcesWithOptions(request *SearchMult
 	return _result, _err
 }
 
-/**
- * *   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
- * *   Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](~~600556~~).
- * *   By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
- * *   If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
- * *   You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
- * *   You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
- *
- * @param request SearchMultiAccountResourcesRequest
- * @return SearchMultiAccountResourcesResponse
- */
+// Summary:
+//
+// Searches for resources within the management account or members of a resource directory.
+//
+// Description:
+//
+//   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+//
+// 	- Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
+//
+// 	- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//
+// 	- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//
+// 	- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+//
+// 	- You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
+//
+// @param request - SearchMultiAccountResourcesRequest
+//
+// @return SearchMultiAccountResourcesResponse
 func (client *Client) SearchMultiAccountResources(request *SearchMultiAccountResourcesRequest) (_result *SearchMultiAccountResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchMultiAccountResourcesResponse{}
@@ -5376,17 +6966,27 @@ func (client *Client) SearchMultiAccountResources(request *SearchMultiAccountRes
 	return _result, _err
 }
 
-/**
- * *   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
- * *   By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
- * *   If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
- * *   You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
- * *   You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
- *
- * @param request SearchResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SearchResourcesResponse
- */
+// Summary:
+//
+// Search for resources that you can access within the current account.
+//
+// Description:
+//
+//   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+//
+// 	- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//
+// 	- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//
+// 	- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+//
+// 	- You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
+//
+// @param request - SearchResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchResourcesResponse
 func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest, runtime *util.RuntimeOptions) (_result *SearchResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5436,16 +7036,25 @@ func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest
 	return _result, _err
 }
 
-/**
- * *   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
- * *   By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
- * *   If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
- * *   You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
- * *   You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
- *
- * @param request SearchResourcesRequest
- * @return SearchResourcesResponse
- */
+// Summary:
+//
+// Search for resources that you can access within the current account.
+//
+// Description:
+//
+//   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+//
+// 	- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//
+// 	- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//
+// 	- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+//
+// 	- You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
+//
+// @param request - SearchResourcesRequest
+//
+// @return SearchResourcesResponse
 func (client *Client) SearchResources(request *SearchResourcesRequest) (_result *SearchResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchResourcesResponse{}
@@ -5457,6 +7066,15 @@ func (client *Client) SearchResources(request *SearchResourcesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a filter.
+//
+// @param request - UpdateFilterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFilterResponse
 func (client *Client) UpdateFilterWithOptions(request *UpdateFilterRequest, runtime *util.RuntimeOptions) (_result *UpdateFilterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5494,6 +7112,13 @@ func (client *Client) UpdateFilterWithOptions(request *UpdateFilterRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a filter.
+//
+// @param request - UpdateFilterRequest
+//
+// @return UpdateFilterResponse
 func (client *Client) UpdateFilter(request *UpdateFilterRequest) (_result *UpdateFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFilterResponse{}
@@ -5505,6 +7130,15 @@ func (client *Client) UpdateFilter(request *UpdateFilterRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a custom query template.
+//
+// @param request - UpdateSavedQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSavedQueryResponse
 func (client *Client) UpdateSavedQueryWithOptions(request *UpdateSavedQueryRequest, runtime *util.RuntimeOptions) (_result *UpdateSavedQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5550,6 +7184,13 @@ func (client *Client) UpdateSavedQueryWithOptions(request *UpdateSavedQueryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a custom query template.
+//
+// @param request - UpdateSavedQueryRequest
+//
+// @return UpdateSavedQueryResponse
 func (client *Client) UpdateSavedQuery(request *UpdateSavedQueryRequest) (_result *UpdateSavedQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSavedQueryResponse{}
