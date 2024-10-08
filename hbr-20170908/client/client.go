@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -83,10 +80,22 @@ func (s *OtsTableRestoreDetail) SetSearchIndexNameSuffix(v string) *OtsTableRest
 }
 
 type Report struct {
-	FailedFiles  *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	// example:
+	//
+	// temp/report/r-0000dnz7p4pk31u6madf_failed.csv
+	FailedFiles *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	// example:
+	//
+	// temp/report/r-0000dnz7p4pk31u6madf_skipped.csv
 	SkippedFiles *string `json:"SkippedFiles,omitempty" xml:"SkippedFiles,omitempty"`
+	// example:
+	//
+	// temp/report/r-0000dnz7p4pk31u6madf_success.csv
 	SuccessFiles *string `json:"SuccessFiles,omitempty" xml:"SuccessFiles,omitempty"`
-	TotalFiles   *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
+	// example:
+	//
+	// temp/report/r-0000dnz7p4pk31u6madf_total.csv
+	TotalFiles *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
 }
 
 func (s Report) String() string {
@@ -178,17 +187,44 @@ func (s *Rule) SetSchedule(v string) *Rule {
 
 type AddContainerClusterRequest struct {
 	// The type of the cluster. Only Container Service for Kubernetes (ACK) clusters are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACK
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The description of the cluster.
+	//
+	// example:
+	//
+	// description ack pv backup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the cluster that you want to register.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cca8f35f0e0d84540b49d994511c2c87a
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The name of the cluster.
+	//
+	// example:
+	//
+	// ack_pv_backup_location
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the cluster. Valid values:
 	//
-	// *   **CLASSIC**: the classic network
-	// *   **VPC**: a virtual private cloud (VPC)
+	// 	- **CLASSIC**: the classic network
+	//
+	// 	- **VPC**: a virtual private cloud (VPC)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 }
 
@@ -227,19 +263,44 @@ func (s *AddContainerClusterRequest) SetNetworkType(v string) *AddContainerClust
 
 type AddContainerClusterResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// cc-00049slr9iuvvv6pp134
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The HTTP status code. The status code 200 indicates that the request is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1FCBC078-FFCB-542A-8555-566477679720
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The token that is used to register the Hybrid Backup Recovery (HBR) client in the cluster.
+	//
+	// example:
+	//
+	// eyJhY2NvdW*****VnZpgXQC5A==
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -282,9 +343,9 @@ func (s *AddContainerClusterResponseBody) SetToken(v string) *AddContainerCluste
 }
 
 type AddContainerClusterResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddContainerClusterResponse) String() string {
@@ -310,121 +371,20 @@ func (s *AddContainerClusterResponse) SetBody(v *AddContainerClusterResponseBody
 	return s
 }
 
-type AttachNasFileSystemRequest struct {
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	CrossAccountType     *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	FileSystemId         *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-}
-
-func (s AttachNasFileSystemRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AttachNasFileSystemRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AttachNasFileSystemRequest) SetCreateTime(v string) *AttachNasFileSystemRequest {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *AttachNasFileSystemRequest) SetCrossAccountRoleName(v string) *AttachNasFileSystemRequest {
-	s.CrossAccountRoleName = &v
-	return s
-}
-
-func (s *AttachNasFileSystemRequest) SetCrossAccountType(v string) *AttachNasFileSystemRequest {
-	s.CrossAccountType = &v
-	return s
-}
-
-func (s *AttachNasFileSystemRequest) SetCrossAccountUserId(v int64) *AttachNasFileSystemRequest {
-	s.CrossAccountUserId = &v
-	return s
-}
-
-func (s *AttachNasFileSystemRequest) SetFileSystemId(v string) *AttachNasFileSystemRequest {
-	s.FileSystemId = &v
-	return s
-}
-
-type AttachNasFileSystemResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s AttachNasFileSystemResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AttachNasFileSystemResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AttachNasFileSystemResponseBody) SetCode(v string) *AttachNasFileSystemResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AttachNasFileSystemResponseBody) SetMessage(v string) *AttachNasFileSystemResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AttachNasFileSystemResponseBody) SetRequestId(v string) *AttachNasFileSystemResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AttachNasFileSystemResponseBody) SetSuccess(v bool) *AttachNasFileSystemResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *AttachNasFileSystemResponseBody) SetTaskId(v string) *AttachNasFileSystemResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type AttachNasFileSystemResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachNasFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AttachNasFileSystemResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AttachNasFileSystemResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AttachNasFileSystemResponse) SetHeaders(v map[string]*string) *AttachNasFileSystemResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AttachNasFileSystemResponse) SetStatusCode(v int32) *AttachNasFileSystemResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AttachNasFileSystemResponse) SetBody(v *AttachNasFileSystemResponseBody) *AttachNasFileSystemResponse {
-	s.Body = v
-	return s
-}
-
 type CancelBackupJobRequest struct {
 	// The ID of the backup job.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j-******************************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*****************************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -448,15 +408,32 @@ func (s *CancelBackupJobRequest) SetVaultId(v string) *CancelBackupJobRequest {
 
 type CancelBackupJobResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the request is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -489,9 +466,9 @@ func (s *CancelBackupJobResponseBody) SetSuccess(v bool) *CancelBackupJobRespons
 }
 
 type CancelBackupJobResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelBackupJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelBackupJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelBackupJobResponse) String() string {
@@ -518,9 +495,21 @@ func (s *CancelBackupJobResponse) SetBody(v *CancelBackupJobResponseBody) *Cance
 }
 
 type CancelRestoreJobRequest struct {
-	// The HTTP status code. The value 200 indicates that the request is successful.
+	// The ID of the restore job.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-*********************
 	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
-	// The ID of the request.
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -543,12 +532,34 @@ func (s *CancelRestoreJobRequest) SetVaultId(v string) *CancelRestoreJobRequest 
 }
 
 type CancelRestoreJobResponseBody struct {
-	// The operation that you want to perform. Set the value to **CancelRestoreJob**.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Cancels a restore job.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelRestoreJobResponseBody) String() string {
@@ -580,9 +591,9 @@ func (s *CancelRestoreJobResponseBody) SetSuccess(v bool) *CancelRestoreJobRespo
 }
 
 type CancelRestoreJobResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelRestoreJobResponse) String() string {
@@ -609,11 +620,35 @@ func (s *CancelRestoreJobResponse) SetBody(v *CancelRestoreJobResponseBody) *Can
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the request.
-	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The ID of the new resource group. You can view the available resource groups in the Resource Management console.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The ID of the resource. The value of this parameter varies with the resource type. For example, if the ResourceType parameter is set to vault, the ResourceId parameter specifies the ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-0002vido6j5zyh5k****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- **vault**: backup vault
+	//
+	// 	- **client**: backup client
+	//
+	// 	- **hanainstance**: SAP HANA instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vault
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -641,12 +676,34 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
-	// The operation that you want to perform. Set the value to **ChangeResourceGroup**.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Changes the resource group to which a specified resource belongs.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C438054F-9088-5D1B-AED0-0EA86D9C65F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeResourceGroupResponseBody) String() string {
@@ -678,9 +735,9 @@ func (s *ChangeResourceGroupResponseBody) SetSuccess(v bool) *ChangeResourceGrou
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -707,9 +764,44 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CheckRoleRequest struct {
-	CheckRoleType        *string `json:"CheckRoleType,omitempty" xml:"CheckRoleType,omitempty"`
+	// The type of the role. Valid values:
+	//
+	// 	- EcsRole: a role with the permissions to access Elastic Compute Service (ECS) resources
+	//
+	// 	- CsgRole: a role with the permissions to perform Cloud Storage Gateway (CSG) backup
+	//
+	// 	- NasRole: a role with the permissions to perform NAS backup
+	//
+	// 	- OssRole: a role with the permissions to perform Object Storage Service (OSS) backup
+	//
+	// 	- UdmRole: a role with the permissions to perform ECS instance backup
+	//
+	// 	- VMwareLocalRole: a role with the permissions to back up on-premises VMware virtual machines (VMs)
+	//
+	// 	- VMwareCloudRole: a role with the permissions to back up VMs deployed on Alibaba Cloud VMware Service (ACVS)
+	//
+	// 	- EcsBackupRole: a role with the permissions to perform ECS backup
+	//
+	// 	- OtsRole: a role with the permissions to perform Tablestore backup
+	//
+	// 	- CrossAccountRole: a role with the permissions to perform cross-account backup
+	//
+	// example:
+	//
+	// OssRole
+	CheckRoleType *string `json:"CheckRoleType,omitempty" xml:"CheckRoleType,omitempty"`
+	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxx4625
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 }
 
 func (s CheckRoleRequest) String() string {
@@ -736,10 +828,34 @@ func (s *CheckRoleRequest) SetCrossAccountUserId(v int64) *CheckRoleRequest {
 }
 
 type CheckRoleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2F63CA9B-744E-51C0-A638-27882BB03078
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckRoleResponseBody) String() string {
@@ -771,9 +887,9 @@ func (s *CheckRoleResponseBody) SetSuccess(v bool) *CheckRoleResponseBody {
 }
 
 type CheckRoleResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckRoleResponse) String() string {
@@ -802,55 +918,161 @@ func (s *CheckRoleResponse) SetBody(v *CheckRoleResponseBody) *CheckRoleResponse
 type CreateBackupJobRequest struct {
 	// The backup type. Valid values:
 	//
-	// *   **COMPLETE**: full backup
-	// *   **INCREMENTAL**: incremental backup
+	// 	- **COMPLETE**: full backup
+	//
+	// 	- **INCREMENTAL**: incremental backup
+	//
+	// example:
+	//
+	// INCREMENTAL
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// cl-00068btz******oku
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the cluster. This parameter is required only if you set the **SourceType** parameter to **CONTAINER**.
+	// The ID of the cluster. This parameter is required only if you set the **SourceType*	- parameter to **CONTAINER**.
+	//
+	// example:
+	//
+	// cc-000xxxxxxxxxxxxxxi00
 	ContainerClusterId *string `json:"ContainerClusterId,omitempty" xml:"ContainerClusterId,omitempty"`
-	// The cluster resources. This parameter is required only if you set the **SourceType** parameter to **CONTAINER**.
+	// The cluster resources. This parameter is required only if you set the **SourceType*	- parameter to **CONTAINER**.
+	//
+	// example:
+	//
+	// [{\\"resourceType\\":\\"PV\\",\\"backupMethod\\":\\"FILE\\",\\"resourceId\\":\\"674dac6d-74cd-47e9-a675-09e2f10d2c45\\",\\"resourceInfo\\":\\"{\\\\\\"pv_name\\\\\\":\\\\\\"nas-650dac6d-74cd-47e9-a675-09e2f10d2c45\\\\\\",\\\\\\"pv_size\\\\\\":\\\\\\"8Gi\\\\\\",\\\\\\"storage_class\\\\\\":\\\\\\"alibabacloud-cnfs-nas\\\\\\",\\\\\\"pvc_name\\\\\\":\\\\\\"data-postgresql-default-0\\\\\\",\\\\\\"namespace\\\\\\":\\\\\\"database\\\\\\"}\\",\\"host\\":\\"cn-huhehaote.192.168.13.133\\",\\"hostPrefix\\":\\"6f5e758e-8d35-4584-b9ce-8333adfc7547/volumes/kubernetes.io~csi/nas-670dac6d-74cd-47e9-a675-09e2f10d2c45/mount\\",\\"pvPath\\":\\"/\\"}]
 	ContainerResources *string `json:"ContainerResources,omitempty" xml:"ContainerResources,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	// example:
+	//
+	// {
+	//
+	//     "doCopy": false,
+	//
+	//     "destinationRegionId": "",
+	//
+	//     "destinationRetention": null,
+	//
+	//     "diskIdList": [],
+	//
+	//     "snapshotGroup": false,
+	//
+	//     "appConsistent": false,
+	//
+	//     "enableWriters": true,
+	//
+	//     "preScriptPath": "",
+	//
+	//     "postScriptPath": "",
+	//
+	//     "enableFsFreeze": true,
+	//
+	//     "timeoutInSeconds": 60
+	//
+	// }
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// This parameter specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+	//
+	// example:
+	//
+	// false
 	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	// This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the ID of the ECS instance.
+	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-bp1xxxxxxxxxxxxxxysm
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the backup job.
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
 	//
-	// *   This parameter is available only for Windows ECS instances.
-	// *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-	// *   If you use VSS, you cannot back up data from multiple directories.
+	// example:
+	//
+	// k8s-backup-infra-20220131150046-hbr
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
+	//
+	// 	- This parameter is available only for Windows ECS instances.
+	//
+	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
+	//
+	// 	- If you use VSS, you cannot back up data from multiple directories.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The retention period of the backup data. Unit: days.
+	//
+	// example:
+	//
+	// 15
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: Elastic Compute Service (ECS) files
-	// *   **UDM_ECS**: ECS instances
-	// *   **CONTAINER**: containers
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
 	//
-	// *   **start**: the start hour.
-	// *   **end**: the end hour.
-	// *   **bandwidth**: the bandwidth. Unit: KB/s.
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// 	- **CONTAINER**: containers
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CONTAINER
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	//
+	// 	- **start**: the start hour.
+	//
+	// 	- **end**: the end hour.
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
+	// example:
+	//
+	// 0:24:NaN
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000xxxxxxxxxxxxxxy1v
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -894,6 +1116,11 @@ func (s *CreateBackupJobRequest) SetCrossAccountType(v string) *CreateBackupJobR
 
 func (s *CreateBackupJobRequest) SetCrossAccountUserId(v int64) *CreateBackupJobRequest {
 	s.CrossAccountUserId = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetDetail(v map[string]interface{}) *CreateBackupJobRequest {
+	s.Detail = v
 	return s
 }
 
@@ -947,19 +1174,299 @@ func (s *CreateBackupJobRequest) SetVaultId(v string) *CreateBackupJobRequest {
 	return s
 }
 
+type CreateBackupJobShrinkRequest struct {
+	// The backup type. Valid values:
+	//
+	// 	- **COMPLETE**: full backup
+	//
+	// 	- **INCREMENTAL**: incremental backup
+	//
+	// example:
+	//
+	// INCREMENTAL
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The ID of the cluster.
+	//
+	// example:
+	//
+	// cl-00068btz******oku
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the cluster. This parameter is required only if you set the **SourceType*	- parameter to **CONTAINER**.
+	//
+	// example:
+	//
+	// cc-000xxxxxxxxxxxxxxi00
+	ContainerClusterId *string `json:"ContainerClusterId,omitempty" xml:"ContainerClusterId,omitempty"`
+	// The cluster resources. This parameter is required only if you set the **SourceType*	- parameter to **CONTAINER**.
+	//
+	// example:
+	//
+	// [{\\"resourceType\\":\\"PV\\",\\"backupMethod\\":\\"FILE\\",\\"resourceId\\":\\"674dac6d-74cd-47e9-a675-09e2f10d2c45\\",\\"resourceInfo\\":\\"{\\\\\\"pv_name\\\\\\":\\\\\\"nas-650dac6d-74cd-47e9-a675-09e2f10d2c45\\\\\\",\\\\\\"pv_size\\\\\\":\\\\\\"8Gi\\\\\\",\\\\\\"storage_class\\\\\\":\\\\\\"alibabacloud-cnfs-nas\\\\\\",\\\\\\"pvc_name\\\\\\":\\\\\\"data-postgresql-default-0\\\\\\",\\\\\\"namespace\\\\\\":\\\\\\"database\\\\\\"}\\",\\"host\\":\\"cn-huhehaote.192.168.13.133\\",\\"hostPrefix\\":\\"6f5e758e-8d35-4584-b9ce-8333adfc7547/volumes/kubernetes.io~csi/nas-670dac6d-74cd-47e9-a675-09e2f10d2c45/mount\\",\\"pvPath\\":\\"/\\"}]
+	ContainerResources *string `json:"ContainerResources,omitempty" xml:"ContainerResources,omitempty"`
+	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	//
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// SELF_ACCOUNT
+	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxxx4625
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "doCopy": false,
+	//
+	//     "destinationRegionId": "",
+	//
+	//     "destinationRetention": null,
+	//
+	//     "diskIdList": [],
+	//
+	//     "snapshotGroup": false,
+	//
+	//     "appConsistent": false,
+	//
+	//     "enableWriters": true,
+	//
+	//     "preScriptPath": "",
+	//
+	//     "postScriptPath": "",
+	//
+	//     "enableFsFreeze": true,
+	//
+	//     "timeoutInSeconds": 60
+	//
+	// }
+	DetailShrink *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
+	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
+	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// This parameter specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+	//
+	// example:
+	//
+	// false
+	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-bp1xxxxxxxxxxxxxxysm
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the backup job.
+	//
+	// example:
+	//
+	// k8s-backup-infra-20220131150046-hbr
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
+	//
+	// 	- This parameter is available only for Windows ECS instances.
+	//
+	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
+	//
+	// 	- If you use VSS, you cannot back up data from multiple directories.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The retention period of the backup data. Unit: days.
+	//
+	// example:
+	//
+	// 15
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// 	- **CONTAINER**: containers
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CONTAINER
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	//
+	// 	- **start**: the start hour.
+	//
+	// 	- **end**: the end hour.
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
+	// example:
+	//
+	// 0:24:NaN
+	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000xxxxxxxxxxxxxxy1v
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s CreateBackupJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupJobShrinkRequest) SetBackupType(v string) *CreateBackupJobShrinkRequest {
+	s.BackupType = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetClusterId(v string) *CreateBackupJobShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetContainerClusterId(v string) *CreateBackupJobShrinkRequest {
+	s.ContainerClusterId = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetContainerResources(v string) *CreateBackupJobShrinkRequest {
+	s.ContainerResources = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetCrossAccountRoleName(v string) *CreateBackupJobShrinkRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetCrossAccountType(v string) *CreateBackupJobShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetCrossAccountUserId(v int64) *CreateBackupJobShrinkRequest {
+	s.CrossAccountUserId = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetDetailShrink(v string) *CreateBackupJobShrinkRequest {
+	s.DetailShrink = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetExclude(v string) *CreateBackupJobShrinkRequest {
+	s.Exclude = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetInclude(v string) *CreateBackupJobShrinkRequest {
+	s.Include = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetInitiatedByAck(v bool) *CreateBackupJobShrinkRequest {
+	s.InitiatedByAck = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetInstanceId(v string) *CreateBackupJobShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetJobName(v string) *CreateBackupJobShrinkRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetOptions(v string) *CreateBackupJobShrinkRequest {
+	s.Options = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetRetention(v int64) *CreateBackupJobShrinkRequest {
+	s.Retention = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetSourceType(v string) *CreateBackupJobShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetSpeedLimit(v string) *CreateBackupJobShrinkRequest {
+	s.SpeedLimit = &v
+	return s
+}
+
+func (s *CreateBackupJobShrinkRequest) SetVaultId(v string) *CreateBackupJobShrinkRequest {
+	s.VaultId = &v
+	return s
+}
+
 type CreateBackupJobResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the backup job.
+	//
+	// example:
+	//
+	// job-000csy09q50a2jdcbwbo
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 25F49E7B-7E39-542E-83AD-62E6E7F73786
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -997,9 +1504,9 @@ func (s *CreateBackupJobResponseBody) SetSuccess(v bool) *CreateBackupJobRespons
 }
 
 type CreateBackupJobResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateBackupJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBackupJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateBackupJobResponse) String() string {
@@ -1027,78 +1534,214 @@ func (s *CreateBackupJobResponse) SetBody(v *CreateBackupJobResponseBody) *Creat
 
 type CreateBackupPlanRequest struct {
 	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
+	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
+	//
+	// example:
+	//
+	// hbr-backup-oss
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
+	// The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
+	//
+	// example:
+	//
+	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
+	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1607436917
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 15897534xxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// example:
+	//
+	// {\\"prefix\\":\\"/\\"}
+	DestDataSourceDetail map[string]interface{} `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
+	// example:
+	//
+	// ds-*********************
+	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
+	// example:
+	//
+	// OSS
+	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
 	// The details about ECS instance backup. The value is a JSON string.
 	//
-	// *   snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
-	// *   appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
-	// *   preScriptPath: the path to the prescript file.
-	// *   postScriptPath: the path to the postscript file.
+	// 	- snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
+	//
+	// 	- appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
+	//
+	// 	- preScriptPath: the path to the prescript file.
+	//
+	// 	- postScriptPath: the path to the postscript file.
+	//
+	// example:
+	//
+	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
+	// example:
+	//
+	// true
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
+	// This parameter is required only if the **SourceType*	- parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
+	//
+	// example:
+	//
+	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value can be up to 255 characters in length.
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value can be up to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance.
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-m5e*****6q
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the Tablestore instance.
-	InstanceName        *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	KeepLatestSnapshots *int64  `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a backup path.
 	//
-	// *   This parameter is available only for Windows ECS instances.
-	// *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
-	// *   If you use VSS, you cannot back up data from multiple directories.
+	// example:
+	//
+	// instancename
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Specifies whether to enable the "Keep at least one backup version" feature. Valid values:
+	//
+	// 	- 0: The feature is disabled.
+	//
+	// 	- 1: The feature is enabled.
+	//
+	// example:
+	//
+	// 1
+	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a backup path.
+	//
+	// 	- This parameter is available only for Windows ECS instances.
+	//
+	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
+	//
+	// 	- If you use VSS, you cannot back up data from multiple directories.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetail *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// The backup paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
 	// The name of the backup schedule. The name must be 1 to 64 characters in length. The name of a backup schedule for each type of data source must be unique within a backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// planname
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	//
+	// example:
+	//
+	// oss-prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	// The retention period of backup data. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The rules of the backup schedule.
 	Rule []*CreateBackupPlanRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// *   **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-	// *   **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// 	- **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	// 	- **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: backs up Elastic Compute Service (ECS) files.
-	// *   **OSS**: backs up Object Storage Service (OSS) buckets.
-	// *   **NAS**: backs up Apsara File Storage NAS file systems.
-	// *   **OTS**: backs up Tablestore instances.
-	// *   **UDM_ECS**: backs up ECS instances.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// 	- **ECS_FILE**: backs up Elastic Compute Service (ECS) files.
 	//
-	// *   **start**: the start hour.
-	// *   **end**: the end hour.
-	// *   **bandwidth**: the bandwidth. Unit: KB/s.
+	// 	- **OSS**: backs up Object Storage Service (OSS) buckets.
+	//
+	// 	- **NAS**: backs up Apsara File Storage NAS file systems.
+	//
+	// 	- **OTS**: backs up Tablestore instances.
+	//
+	// 	- **UDM_ECS**: backs up ECS instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	//
+	// 	- **start**: the start hour.
+	//
+	// 	- **end**: the end hour.
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
+	// example:
+	//
+	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 	// The region in which the ECS instance that you want to back up resides.
+	//
+	// example:
+	//
+	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0006******q
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -1117,6 +1760,11 @@ func (s *CreateBackupPlanRequest) SetBackupType(v string) *CreateBackupPlanReque
 
 func (s *CreateBackupPlanRequest) SetBucket(v string) *CreateBackupPlanRequest {
 	s.Bucket = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetChangeListPath(v string) *CreateBackupPlanRequest {
+	s.ChangeListPath = &v
 	return s
 }
 
@@ -1140,8 +1788,28 @@ func (s *CreateBackupPlanRequest) SetCrossAccountUserId(v int64) *CreateBackupPl
 	return s
 }
 
+func (s *CreateBackupPlanRequest) SetDestDataSourceDetail(v map[string]interface{}) *CreateBackupPlanRequest {
+	s.DestDataSourceDetail = v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetDestDataSourceId(v string) *CreateBackupPlanRequest {
+	s.DestDataSourceId = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetDestSourceType(v string) *CreateBackupPlanRequest {
+	s.DestSourceType = &v
+	return s
+}
+
 func (s *CreateBackupPlanRequest) SetDetail(v map[string]interface{}) *CreateBackupPlanRequest {
 	s.Detail = v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetDisabled(v bool) *CreateBackupPlanRequest {
+	s.Disabled = &v
 	return s
 }
 
@@ -1237,22 +1905,54 @@ func (s *CreateBackupPlanRequest) SetVaultId(v string) *CreateBackupPlanRequest 
 
 type CreateBackupPlanRequestRule struct {
 	// The backup type.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The ID of the region to which data is replicated.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
 	// The retention period of the backup data in geo-redundancy mode. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
 	// Specifies whether to enable the rule.
+	//
+	// example:
+	//
+	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// Specifies whether to enable cross-region replication.
+	//
+	// example:
+	//
+	// false
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
 	// The retention period of the backup data. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// rule-test-name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The backup policy. Format: I|{startTime}|{interval}. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
 	// startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
@@ -1306,78 +2006,214 @@ func (s *CreateBackupPlanRequestRule) SetSchedule(v string) *CreateBackupPlanReq
 
 type CreateBackupPlanShrinkRequest struct {
 	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
+	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
+	//
+	// example:
+	//
+	// hbr-backup-oss
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
+	// The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
+	//
+	// example:
+	//
+	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
+	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1607436917
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 15897534xxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// example:
+	//
+	// {\\"prefix\\":\\"/\\"}
+	DestDataSourceDetailShrink *string `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
+	// example:
+	//
+	// ds-*********************
+	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
+	// example:
+	//
+	// OSS
+	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
 	// The details about ECS instance backup. The value is a JSON string.
 	//
-	// *   snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
-	// *   appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
-	// *   preScriptPath: the path to the prescript file.
-	// *   postScriptPath: the path to the postscript file.
+	// 	- snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
+	//
+	// 	- appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
+	//
+	// 	- preScriptPath: the path to the prescript file.
+	//
+	// 	- postScriptPath: the path to the postscript file.
+	//
+	// example:
+	//
+	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	DetailShrink *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
+	// example:
+	//
+	// true
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
+	// This parameter is required only if the **SourceType*	- parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
+	//
+	// example:
+	//
+	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value can be up to 255 characters in length.
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value can be up to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance.
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-m5e*****6q
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the Tablestore instance.
-	InstanceName        *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	KeepLatestSnapshots *int64  `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a backup path.
 	//
-	// *   This parameter is available only for Windows ECS instances.
-	// *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
-	// *   If you use VSS, you cannot back up data from multiple directories.
+	// example:
+	//
+	// instancename
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Specifies whether to enable the "Keep at least one backup version" feature. Valid values:
+	//
+	// 	- 0: The feature is disabled.
+	//
+	// 	- 1: The feature is enabled.
+	//
+	// example:
+	//
+	// 1
+	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a backup path.
+	//
+	// 	- This parameter is available only for Windows ECS instances.
+	//
+	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
+	//
+	// 	- If you use VSS, you cannot back up data from multiple directories.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetailShrink *string `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// The backup paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
 	// The name of the backup schedule. The name must be 1 to 64 characters in length. The name of a backup schedule for each type of data source must be unique within a backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// planname
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	//
+	// example:
+	//
+	// oss-prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	// The retention period of backup data. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The rules of the backup schedule.
 	Rule []*CreateBackupPlanShrinkRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// *   **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-	// *   **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// 	- **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	// 	- **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: backs up Elastic Compute Service (ECS) files.
-	// *   **OSS**: backs up Object Storage Service (OSS) buckets.
-	// *   **NAS**: backs up Apsara File Storage NAS file systems.
-	// *   **OTS**: backs up Tablestore instances.
-	// *   **UDM_ECS**: backs up ECS instances.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// 	- **ECS_FILE**: backs up Elastic Compute Service (ECS) files.
 	//
-	// *   **start**: the start hour.
-	// *   **end**: the end hour.
-	// *   **bandwidth**: the bandwidth. Unit: KB/s.
+	// 	- **OSS**: backs up Object Storage Service (OSS) buckets.
+	//
+	// 	- **NAS**: backs up Apsara File Storage NAS file systems.
+	//
+	// 	- **OTS**: backs up Tablestore instances.
+	//
+	// 	- **UDM_ECS**: backs up ECS instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	//
+	// 	- **start**: the start hour.
+	//
+	// 	- **end**: the end hour.
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
+	// example:
+	//
+	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 	// The region in which the ECS instance that you want to back up resides.
+	//
+	// example:
+	//
+	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0006******q
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -1396,6 +2232,11 @@ func (s *CreateBackupPlanShrinkRequest) SetBackupType(v string) *CreateBackupPla
 
 func (s *CreateBackupPlanShrinkRequest) SetBucket(v string) *CreateBackupPlanShrinkRequest {
 	s.Bucket = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetChangeListPath(v string) *CreateBackupPlanShrinkRequest {
+	s.ChangeListPath = &v
 	return s
 }
 
@@ -1419,8 +2260,28 @@ func (s *CreateBackupPlanShrinkRequest) SetCrossAccountUserId(v int64) *CreateBa
 	return s
 }
 
+func (s *CreateBackupPlanShrinkRequest) SetDestDataSourceDetailShrink(v string) *CreateBackupPlanShrinkRequest {
+	s.DestDataSourceDetailShrink = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetDestDataSourceId(v string) *CreateBackupPlanShrinkRequest {
+	s.DestDataSourceId = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetDestSourceType(v string) *CreateBackupPlanShrinkRequest {
+	s.DestSourceType = &v
+	return s
+}
+
 func (s *CreateBackupPlanShrinkRequest) SetDetailShrink(v string) *CreateBackupPlanShrinkRequest {
 	s.DetailShrink = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetDisabled(v bool) *CreateBackupPlanShrinkRequest {
+	s.Disabled = &v
 	return s
 }
 
@@ -1516,22 +2377,54 @@ func (s *CreateBackupPlanShrinkRequest) SetVaultId(v string) *CreateBackupPlanSh
 
 type CreateBackupPlanShrinkRequestRule struct {
 	// The backup type.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The ID of the region to which data is replicated.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
 	// The retention period of the backup data in geo-redundancy mode. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
 	// Specifies whether to enable the rule.
+	//
+	// example:
+	//
+	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// Specifies whether to enable cross-region replication.
+	//
+	// example:
+	//
+	// false
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
 	// The retention period of the backup data. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// rule-test-name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The backup policy. Format: I|{startTime}|{interval}. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
 	// startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
@@ -1585,17 +2478,38 @@ func (s *CreateBackupPlanShrinkRequestRule) SetSchedule(v string) *CreateBackupP
 
 type CreateBackupPlanResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the request is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the backup schedule.
+	//
+	// example:
+	//
+	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1633,9 +2547,9 @@ func (s *CreateBackupPlanResponseBody) SetSuccess(v bool) *CreateBackupPlanRespo
 }
 
 type CreateBackupPlanResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateBackupPlanResponse) String() string {
@@ -1663,17 +2577,62 @@ func (s *CreateBackupPlanResponse) SetBody(v *CreateBackupPlanResponseBody) *Cre
 
 type CreateClientsRequest struct {
 	// The alert settings. Valid value: INHERITED, which indicates that the HBR client sends alert notifications by using the same method configured for the backup vault.
+	//
+	// example:
+	//
+	// INHERITED
 	AlertSetting *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
 	// The installation information of the HBR clients.
+	//
+	// example:
+	//
+	// [  {    "instanceId": "i-bp116lr******te9q2",    "accessKeyId": "",    "accessKeySecret": "",    "clusterId": "cl-000csy09q******9rfz9",    "sourceTypes": [      "HANA"    ]  },  {    "instanceId": "i-bp116lrux******hte9q4",    "accessKeyId": "",    "accessKeySecret": "",    "clusterId": "cl-000csy09q5094vw9rfz9",    "sourceTypes": [      "HANA"    ]  }]
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// The backup type. Valid values:
+	//
+	// - **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
+	//
+	// - **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
+	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxx4625
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzvx7d3c4kpny
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to transmit data over HTTPS. Valid values:
 	//
-	// *   true: transmits data over HTTPS.
-	// *   false: transmits data over HTTP.
+	// 	- true: transmits data over HTTPS.
+	//
+	// 	- false: transmits data over HTTP.
+	//
+	// example:
+	//
+	// false
 	UseHttps *bool `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
 	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-0001ufe******kgm
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -1695,6 +2654,21 @@ func (s *CreateClientsRequest) SetClientInfo(v string) *CreateClientsRequest {
 	return s
 }
 
+func (s *CreateClientsRequest) SetCrossAccountRoleName(v string) *CreateClientsRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreateClientsRequest) SetCrossAccountType(v string) *CreateClientsRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateClientsRequest) SetCrossAccountUserId(v int64) *CreateClientsRequest {
+	s.CrossAccountUserId = &v
+	return s
+}
+
 func (s *CreateClientsRequest) SetResourceGroupId(v string) *CreateClientsRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -1712,19 +2686,40 @@ func (s *CreateClientsRequest) SetVaultId(v string) *CreateClientsRequest {
 
 type CreateClientsResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The status of the ECS instance. If you specify more than one instance IDs in the request and the status of an ECS instance does not meet the requirements to install an HBR client, an error message is returned based on the value of this parameter.
 	InstanceStatuses *CreateClientsResponseBodyInstanceStatuses `json:"InstanceStatuses,omitempty" xml:"InstanceStatuses,omitempty" type:"Struct"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4A8A9AE4-F798-5E6D-853E-10F9F5A1BD4E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	//
+	// example:
+	//
+	// t-000h9x5t02vhyksf1x7k
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1785,11 +2780,20 @@ func (s *CreateClientsResponseBodyInstanceStatuses) SetInstanceStatus(v []*Creat
 
 type CreateClientsResponseBodyInstanceStatusesInstanceStatus struct {
 	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-2zegp3cdu******uj9i
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether an HBR client can be installed on the ECS instance. Valid values:
 	//
-	// *   true: An HBR client can be installed on the ECS instance.
-	// *   false: An HBR client cannot be installed on the ECS instance.
+	// 	- true: An HBR client can be installed on the ECS instance.
+	//
+	// 	- false: An HBR client cannot be installed on the ECS instance.
+	//
+	// example:
+	//
+	// true
 	ValidInstance *bool `json:"ValidInstance,omitempty" xml:"ValidInstance,omitempty"`
 }
 
@@ -1812,9 +2816,9 @@ func (s *CreateClientsResponseBodyInstanceStatusesInstanceStatus) SetValidInstan
 }
 
 type CreateClientsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClientsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateClientsResponse) String() string {
@@ -1841,28 +2845,75 @@ func (s *CreateClientsResponse) SetBody(v *CreateClientsResponseBody) *CreateCli
 }
 
 type CreateHanaBackupPlanRequest struct {
-	// The ID of the backup vault.
-	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the database.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateHanaBackupPlan**.
-	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// The backup prefix.
 	//
-	// *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-	// *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// DIFF_DATA_BACKUP
+	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
 	// The backup type. Valid values:
 	//
-	// *   COMPLETE: full backup
-	// *   INCREMENTAL: incremental backup
-	// *   DIFFERENTIAL: differential backup
+	// 	- COMPLETE: full backup
+	//
+	// 	- INCREMENTAL: incremental backup
+	//
+	// 	- DIFFERENTIAL: differential backup
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// COMPLETE
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-00024vyjj9******v
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYSTEMDB
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The name of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// plan-20220110-113108
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmvnf22m7itha
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	//
+	// 	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	// 	- interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The backup prefix.
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-0002pcwhdn******wmi
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -1915,14 +2966,40 @@ func (s *CreateHanaBackupPlanRequest) SetVaultId(v string) *CreateHanaBackupPlan
 }
 
 type CreateHanaBackupPlanResponseBody struct {
-	// The ID of the backup plan.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PlanId  *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// Creates an SAP HANA backup plan.
+	// The ID of the backup plan.
+	//
+	// example:
+	//
+	// pl-000756jdlk2zmqig2nea
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 33AA3AAE-89E1-5D3A-A51D-0C0A80850F68
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateHanaBackupPlanResponseBody) String() string {
@@ -1959,9 +3036,9 @@ func (s *CreateHanaBackupPlanResponseBody) SetSuccess(v bool) *CreateHanaBackupP
 }
 
 type CreateHanaBackupPlanResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHanaBackupPlanResponse) String() string {
@@ -1988,31 +3065,101 @@ func (s *CreateHanaBackupPlanResponse) SetBody(v *CreateHanaBackupPlanResponseBo
 }
 
 type CreateHanaInstanceRequest struct {
-	// The alert settings. Valid value: INHERITED, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+	// The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
+	//
+	// example:
+	//
+	// INHERITED
 	AlertSetting *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
-	// The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
+	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// The backup type. Valid values:
+	//
+	// - **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
+	//
+	// - **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
+	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxx4625
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The IDs of the ECS instances that host the SAP HANA instance to be registered. Cloud Backup installs backup clients on the specified ECS instances.
+	//
+	// example:
+	//
+	// [\\"i-uf6ir9y******hvisj\\"]
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	// The name of the SAP HANA instance.
+	//
+	// example:
+	//
+	// HANA-DEV
 	HanaName *string `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
 	// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The instance number of the SAP HANA system.
+	//
+	// example:
+	//
+	// 00
 	InstanceNumber *int32 `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
 	// The password that is used to connect with the SAP HANA database.
+	//
+	// example:
+	//
+	// ************
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The security identifier (SID) of the SAP HANA database.
 	//
-	// For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?spm=a2c4g.11186623.0.0.55c34b4ftZeXNK)
+	// example:
+	//
+	// rg-acfm4ebtpkzx7zy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The security identifier (SID) of the SAP HANA database. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?spm=a2c4g.11186623.0.0.55c34b4ftZeXNK).
+	//
+	// example:
+	//
+	// HXE
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	// Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
+	//
+	// example:
+	//
+	// true
 	UseSsl *bool `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
 	// The username of the SYSTEMDB database.
+	//
+	// example:
+	//
+	// admin
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// Specifies whether to verify the SSL certificate of the SAP HANA database.
+	//
+	// example:
+	//
+	// false
 	ValidateCertificate *bool `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
 	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-0003v4a******gfv2
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -2026,6 +3173,21 @@ func (s CreateHanaInstanceRequest) GoString() string {
 
 func (s *CreateHanaInstanceRequest) SetAlertSetting(v string) *CreateHanaInstanceRequest {
 	s.AlertSetting = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetCrossAccountRoleName(v string) *CreateHanaInstanceRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetCrossAccountType(v string) *CreateHanaInstanceRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetCrossAccountUserId(v int64) *CreateHanaInstanceRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -2086,17 +3248,38 @@ func (s *CreateHanaInstanceRequest) SetVaultId(v string) *CreateHanaInstanceRequ
 
 type CreateHanaInstanceResponseBody struct {
 	// The ID of the SAP HANA instance.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// example:
+	//
+	// cl-000dp1sz******6hn
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EB526A5D-1FE2-51C1-B790-1732C1DBA969
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2134,9 +3317,9 @@ func (s *CreateHanaInstanceResponseBody) SetSuccess(v bool) *CreateHanaInstanceR
 }
 
 type CreateHanaInstanceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHanaInstanceResponse) String() string {
@@ -2164,45 +3347,128 @@ func (s *CreateHanaInstanceResponse) SetBody(v *CreateHanaInstanceResponseBody) 
 
 type CreateHanaRestoreRequest struct {
 	// The ID of the backup.
+	//
+	// example:
+	//
+	// 1645628400235
 	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup prefix.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// COMPLETE_DATA_BACKUP_2022_05_02_15_39
 	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
 	// Specifies whether to validate the differential backup and log backup. Valid values: true and false. If you set the value to true, HBR checks whether the required differential backup and log backup are available before the restore job starts. If the differential backup or log backup is unavailable, HBR does not start the restore job.
+	//
+	// example:
+	//
+	// false
 	CheckAccess *bool `json:"CheckAccess,omitempty" xml:"CheckAccess,omitempty"`
 	// Specifies whether to delete all log entries from the log area after the log entries are restored. Valid values: true and false. If you set the value to false, all log entries are deleted from the log area after the log entries are restored.
+	//
+	// example:
+	//
+	// false
 	ClearLog *bool `json:"ClearLog,omitempty" xml:"ClearLog,omitempty"`
 	// The ID of the SAP HANA instance that you want to restore.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-000fbrs5******ka9w
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the database that you want to restore.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TS2
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The log position to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_LOG_POSITION**.
+	//
+	// example:
+	//
+	// 0
 	LogPosition *int64 `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
 	// The ID of the client where the primary node of the SAP HANA resides.
+	//
+	// example:
+	//
+	// c-000ii8tzv**********
 	MasterClientId *string `json:"MasterClientId,omitempty" xml:"MasterClientId,omitempty"`
 	// The recovery mode. Valid values:
 	//
-	// *   **RECOVERY_TO_MOST_RECENT**: restores the database to the recently available state to which the database has been backed up.
-	// *   **RECOVERY_TO_POINT_IN_TIME**: restores the database to a specified point in time.
-	// *   **RECOVERY_TO_SPECIFIC_BACKUP**: restores the database to a specified backup.
-	// *   **RECOVERY_TO_LOG_POSITION**: restores the database to a specified log position.
+	// 	- **RECOVERY_TO_MOST_RECENT**: restores the database to the recently available state to which the database has been backed up.
+	//
+	// 	- **RECOVERY_TO_POINT_IN_TIME**: restores the database to a specified point in time.
+	//
+	// 	- **RECOVERY_TO_SPECIFIC_BACKUP**: restores the database to a specified backup.
+	//
+	// 	- **RECOVERY_TO_LOG_POSITION**: restores the database to a specified log position.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RECOVERY_TO_POINT_IN_TIME
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The point in time to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_POINT_IN_TIME**. HBR restores the database to a state closest to the specified point in time.
+	//
+	// example:
+	//
+	// 1635315505
 	RecoveryPointInTime *int64 `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
 	// The SID admin account that is created by SAP HANA.
+	//
+	// example:
+	//
+	// DB
 	SidAdmin *string `json:"SidAdmin,omitempty" xml:"SidAdmin,omitempty"`
 	// The name of the source system. This parameter specifies the name of the source database that you want to restore. You must set the parameter in the `<Source database name>@SID` format.
+	//
+	// example:
+	//
+	// HNP@HNP
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The ID of the source SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-000ii8tzv******xm0t
 	SourceClusterId *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
 	// Specifies whether to restore the database to a different instance.
+	//
+	// example:
+	//
+	// false
 	SystemCopy *bool `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
 	// Specifies whether to use a catalog backup to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_SPECIFIC_BACKUP**. If you do not use a catalog backup, you must specify the prefix of a backup file. Then, HBR finds the backup file based on the specified prefix and restores the backup file.
+	//
+	// example:
+	//
+	// false
 	UseCatalog *bool `json:"UseCatalog,omitempty" xml:"UseCatalog,omitempty"`
 	// Specifies whether to use a differential backup or an incremental backup to restore the database. Valid values: true and false. If you want to use a differential backup or an incremental backup to restore the database, set the value to true. If you set the value to false, HBR uses a log backup to restore the database.
+	//
+	// example:
+	//
+	// true
 	UseDelta *bool `json:"UseDelta,omitempty" xml:"UseDelta,omitempty"`
-	// The ID of the vault.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000************yqr
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 	// The ID of the volume that you want to restore. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_LOG_POSITION**.
+	//
+	// example:
+	//
+	// 0
 	VolumeId *int32 `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
 }
 
@@ -2306,17 +3572,38 @@ func (s *CreateHanaRestoreRequest) SetVolumeId(v int32) *CreateHanaRestoreReques
 
 type CreateHanaRestoreResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EEC65C22-2152-5E31-8AD6-D6CBF1BFF49F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the restore job.
+	//
+	// example:
+	//
+	// hr-000fb9bz190p1rse6jwv
 	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2354,9 +3641,9 @@ func (s *CreateHanaRestoreResponseBody) SetSuccess(v bool) *CreateHanaRestoreRes
 }
 
 type CreateHanaRestoreResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHanaRestoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHanaRestoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHanaRestoreResponse) String() string {
@@ -2386,6 +3673,10 @@ type CreatePolicyBindingsRequest struct {
 	// The data sources that you want to bind to the backup policy.
 	PolicyBindingList []*CreatePolicyBindingsRequestPolicyBindingList `json:"PolicyBindingList,omitempty" xml:"PolicyBindingList,omitempty" type:"Repeated"`
 	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000************8ep
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -2408,27 +3699,112 @@ func (s *CreatePolicyBindingsRequest) SetPolicyId(v string) *CreatePolicyBinding
 }
 
 type CreatePolicyBindingsRequestPolicyBindingList struct {
-	// Advanced options.
+	// The advanced options.
 	AdvancedOptions *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
-	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// example:
+	//
+	// hbrcrossrole
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// Specifies whether to back up and restore data within the same Alibaba Cloud account or across Alibaba Cloud accounts. Default value: SELF_ACCOUNT. Valid values:
+	//
+	// 	- **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The source Alibaba Cloud account ID when backup across Alibaba Cloud accounts.
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 144**********732
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The ID of the data source.
+	// The ID of the data source. The meaning of this parameter depends on the **SourceType*	- parameter.
+	//
+	// 	- **UDM_ECS**: the ID of the Elastic Compute Service (ECS) instance
+	//
+	// 	- **OSS**: the name of the Object Storage Service (OSS) bucket
+	//
+	// 	- **NAS**: the ID of the Apsara File Storage NAS (NAS) file system
+	//
+	// 	- **COMMON_NAS**: the ID of the on-premises NAS file system
+	//
+	// 	- **ECS_FILE**: the ID of the ECS instance
+	//
+	// 	- **File**: the ID of the Cloud Backup client
+	//
+	// example:
+	//
+	// i-bp1************dl8
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// 策略对该数据源是否暂停生效。
+	//
+	// - true：暂停
+	//
+	// - false：未暂停
+	//
+	// example:
+	//
+	// true
+	Disabled *string `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// 仅当**SourceType**取值为**ECS_FILE**或**File**时，需要配置该参数。表示不需要进行备份的文件类型，该类型的所有文件都不备份。最多支持255个字符。
+	//
+	// example:
+	//
+	// [\\"*.doc\\",\\"*.xltm\\"]
+	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// 仅当**SourceType**取值为**ECS_FILE**或**File**时，需要配置该参数。表示要进行备份的文件类型，这些类型的所有文件都备份。最多支持255个字符。
+	//
+	// example:
+	//
+	// [\\"*.doc\\",\\"*.xltm\\"]
+	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// The description of the association.
+	//
+	// example:
+	//
+	// Bind data sources to a backup policy
 	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
-	// The prefix of the path to the folder that you want to back up. By default, the entire OSS bucket is backed up.
+	// The prefix of the path to the folder that you want to back up. By default, the entire OSS bucket is backed up. This parameter is required only if you set the SourceType parameter to **OSS**.
+	//
+	// example:
+	//
+	// backup/
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **UDM_ECS**: ECS instance backup
+	// 	- **UDM_ECS**: ECS instance
+	//
+	// 	- **OSS**: OSS bucket
+	//
+	// 	- **NAS**: Apsara File Storage NAS file system
+	//
+	// 	- **COMMON_NAS**: on-premises NAS file system
+	//
+	// 	- **ECS_FILE**: ECS files
+	//
+	// 	- **File**: on-premises files
+	//
+	// example:
+	//
+	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// 仅当**SourceType**取值为**ECS_FILE**或**File**时，需要配置该参数。表示备份流量控制。格式为`{start}{end}{bandwidth}`。多个流量控制配置使用分隔，并且配置时间不允许有重叠。
+	//
+	// - **start**：起始小时。
+	//
+	// - **end**：结束小时。
+	//
+	// - **bandwidth**：限制速率，单位KB/s。
+	//
+	// example:
+	//
+	// 0:24:1024
+	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 }
 
 func (s CreatePolicyBindingsRequestPolicyBindingList) String() string {
@@ -2464,6 +3840,21 @@ func (s *CreatePolicyBindingsRequestPolicyBindingList) SetDataSourceId(v string)
 	return s
 }
 
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetDisabled(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.Disabled = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetExclude(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.Exclude = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetInclude(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.Include = &v
+	return s
+}
+
 func (s *CreatePolicyBindingsRequestPolicyBindingList) SetPolicyBindingDescription(v string) *CreatePolicyBindingsRequestPolicyBindingList {
 	s.PolicyBindingDescription = &v
 	return s
@@ -2479,10 +3870,20 @@ func (s *CreatePolicyBindingsRequestPolicyBindingList) SetSourceType(v string) *
 	return s
 }
 
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetSpeedLimit(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.SpeedLimit = &v
+	return s
+}
+
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions struct {
+	CommonFileSystemDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail `json:"CommonFileSystemDetail,omitempty" xml:"CommonFileSystemDetail,omitempty" type:"Struct"`
+	// The advanced options for on-premises NAS backup.
+	CommonNasDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail `json:"CommonNasDetail,omitempty" xml:"CommonNasDetail,omitempty" type:"Struct"`
+	// The advanced options for file backup.
+	FileDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
 	// The advanced options for OSS backup.
 	OssDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
-	// The details of ECS instance backup.
+	// The advanced options for ECS instance backup.
 	UdmDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
 }
 
@@ -2492,6 +3893,21 @@ func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) String() st
 
 func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) SetCommonFileSystemDetail(v *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions {
+	s.CommonFileSystemDetail = v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) SetCommonNasDetail(v *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions {
+	s.CommonNasDetail = v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) SetFileDetail(v *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions {
+	s.FileDetail = v
+	return s
 }
 
 func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) SetOssDetail(v *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions {
@@ -2504,15 +3920,146 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) SetUdmDeta
 	return s
 }
 
+type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail struct {
+	// example:
+	//
+	// 100000
+	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
+	// example:
+	//
+	// true
+	FullOnIncrementFail *bool `json:"FullOnIncrementFail,omitempty" xml:"FullOnIncrementFail,omitempty"`
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail) SetFetchSliceSize(v int64) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail {
+	s.FetchSliceSize = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail) SetFullOnIncrementFail(v bool) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail {
+	s.FullOnIncrementFail = &v
+	return s
+}
+
+type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail struct {
+	// The ID of the backup client group. When you perform on-premises NAS backup, Cloud Backup selects clients from the specified backup client group.
+	//
+	// example:
+	//
+	// cl-000**************ggu
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The size of backup shards (the number of files).
+	//
+	// example:
+	//
+	// 100000
+	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
+	// Specifies whether the system performs full backup if incremental backup fails. Valid values:
+	//
+	// 	- **true**: The system performs full backup if incremental backup fails.
+	//
+	// 	- **false**: The system does not perform full backup if incremental backup fails.
+	//
+	// example:
+	//
+	// true
+	FullOnIncrementFail *bool `json:"FullOnIncrementFail,omitempty" xml:"FullOnIncrementFail,omitempty"`
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail) SetClusterId(v string) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail) SetFetchSliceSize(v int64) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail {
+	s.FetchSliceSize = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail) SetFullOnIncrementFail(v bool) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail {
+	s.FullOnIncrementFail = &v
+	return s
+}
+
+type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail struct {
+	// Specifies whether to use an advanced policy. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	AdvPolicy *bool `json:"AdvPolicy,omitempty" xml:"AdvPolicy,omitempty"`
+	// Specifies whether to enable the Volume Shadow Copy Service (VSS) feature. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	UseVSS *bool `json:"UseVSS,omitempty" xml:"UseVSS,omitempty"`
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail) SetAdvPolicy(v bool) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail {
+	s.AdvPolicy = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail) SetUseVSS(v bool) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail {
+	s.UseVSS = &v
+	return s
+}
+
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail struct {
-	// Whether delete inventory file after backup.
-	// - **NO_CLEANUP**: Do not delete.
-	// - **DELETE_CURRENT**: Delete current.
-	// - **DELETE_CURRENT_AND_PREVIOUS**: Delete all.
+	// Specifies whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
+	//
+	// 	- **NO_CLEANUP**: Inventory lists are not deleted.
+	//
+	// 	- **DELETE_CURRENT**: The current inventory list is deleted.
+	//
+	// 	- **DELETE_CURRENT_AND_PREVIOUS**: All inventory lists are deleted.
+	//
+	// example:
+	//
+	// NO_CLEANUP
 	InventoryCleanupPolicy *string `json:"InventoryCleanupPolicy,omitempty" xml:"InventoryCleanupPolicy,omitempty"`
-	// OSS inventory name.
-	// - If you want to back up more than 100 million OSS objects, we recommend that you use inventories to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
-	// - OSS inventory file generation takes time. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle to execute.
+	// The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
+	//
+	// 	- If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
+	//
+	// 	- A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+	//
+	// example:
+	//
+	// oss-inventory-default
 	InventoryId *string `json:"InventoryId,omitempty" xml:"InventoryId,omitempty"`
 }
 
@@ -2536,29 +4083,62 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail) S
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail struct {
 	// Specifies whether to enable application consistency. You can enable application consistency only if all disks are ESSDs.
-	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
-	// The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
-	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
-	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
 	//
-	// *   true: creates application-consistent snapshots.
-	// *   false: creates file system-consistent snapshots.
+	// example:
+	//
+	// false
+	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
+	// The IDs of the disks that need to be protected. If all disks need to be protected, leave this parameter empty.
+	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
+	//
+	// 	- true: creates application-consistent snapshots.
+	//
+	// 	- false: creates file system-consistent snapshots.
 	//
 	// Default value: true.
+	//
+	// example:
+	//
+	// true
 	EnableWriters *bool `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
 	// The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
 	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+	//
+	// example:
+	//
+	// /tmp/postscript.sh
 	PostScriptPath *string `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+	//
+	// example:
+	//
+	// /tmp/prescript.sh
 	PreScriptPath *string `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the name of the RAM role that is required to create application-consistent snapshots.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the name of the RAM role that is required to create application-consistent snapshots.
+	//
+	// example:
+	//
+	// AliyunECSInstanceForHbrRole
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	// Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
+	//
+	// example:
+	//
+	// true
 	SnapshotGroup *bool `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+	//
+	// example:
+	//
+	// 30
 	TimeoutInSeconds *int64 `json:"TimeoutInSeconds,omitempty" xml:"TimeoutInSeconds,omitempty"`
 }
 
@@ -2624,6 +4204,10 @@ type CreatePolicyBindingsShrinkRequest struct {
 	// The data sources that you want to bind to the backup policy.
 	PolicyBindingListShrink *string `json:"PolicyBindingList,omitempty" xml:"PolicyBindingList,omitempty"`
 	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000************8ep
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -2647,15 +4231,32 @@ func (s *CreatePolicyBindingsShrinkRequest) SetPolicyId(v string) *CreatePolicyB
 
 type CreatePolicyBindingsResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 82CC5B6C-72F7-5D39-92F6-67887DF9AD46
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2688,9 +4289,9 @@ func (s *CreatePolicyBindingsResponseBody) SetSuccess(v bool) *CreatePolicyBindi
 }
 
 type CreatePolicyBindingsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePolicyBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePolicyBindingsResponse) String() string {
@@ -2718,9 +4319,18 @@ func (s *CreatePolicyBindingsResponse) SetBody(v *CreatePolicyBindingsResponseBo
 
 type CreatePolicyV2Request struct {
 	// The description of the backup policy.
+	//
+	// example:
+	//
+	// Data is backed up at 10:00:00 every day and replicated to the China (Shanghai) region for geo-redundancy.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
 	// The name of the backup policy.
+	//
+	// example:
+	//
+	// Daily Local Backup + Remote Backup
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The rules in the backup policy.
 	Rules []*CreatePolicyV2RequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
@@ -2743,35 +4353,78 @@ func (s *CreatePolicyV2Request) SetPolicyName(v string) *CreatePolicyV2Request {
 	return s
 }
 
+func (s *CreatePolicyV2Request) SetPolicyType(v string) *CreatePolicyV2Request {
+	s.PolicyType = &v
+	return s
+}
+
 func (s *CreatePolicyV2Request) SetRules(v []*CreatePolicyV2RequestRules) *CreatePolicyV2Request {
 	s.Rules = v
 	return s
 }
 
 type CreatePolicyV2RequestRules struct {
-	// This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup type. Valid value: **COMPLETE**, which indicates full backup.
-	BackupType          *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	KeepLatestSnapshots *int64  `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **REPLICATION**. This parameter specifies the ID of the destination region.
+	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
+	BackupType        *string                                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DataSourceFilters []*CreatePolicyV2RequestRulesDataSourceFilters `json:"DataSourceFilters,omitempty" xml:"DataSourceFilters,omitempty" type:"Repeated"`
+	// Specifies whether to enable the feature of keeping at least one backup version. Valid values:
+	//
+	// 	- 0: The feature is disabled.
+	//
+	// 	- 1: The feature is enabled.
+	//
+	// example:
+	//
+	// 1
+	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **REPLICATION**. This parameter specifies the ID of the destination region.
+	//
+	// example:
+	//
+	// cn-shanghai
 	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **TRANSITION** or **REPLICATION**.
+	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION*	- or **REPLICATION**.
 	//
-	// *   If the **RuleType** parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Unit: days.
-	// *   If the **RuleType** parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Unit: days.
+	// 	- If the **RuleType*	- parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Maximum value: 364635. Unit: days.
+	//
+	// 	- If the **RuleType*	- parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Maximum value: 364635. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
+	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
 	RetentionRules []*CreatePolicyV2RequestRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
-	// The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type.
+	// The type of the rule. Each backup policy must have at least one rule of the **BACKUP*	- type and only one rule of the **TRANSITION*	- type. Valid values:
 	//
-	// *   **BACKUP**: backup rule
-	// *   **TRANSITION**: lifecycle rule
-	// *   **REPLICATION**: replication rule
+	// 	- **BACKUP**: backup rule
+	//
+	// 	- **TRANSITION**: lifecycle rule
+	//
+	// 	- **REPLICATION**: replication rule
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BACKUP
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-	// *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// 	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	// 	- interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
+	//
+	// example:
+	//
+	// I|1648647166|P1D
+	Schedule   *string                                 `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	TagFilters []*CreatePolicyV2RequestRulesTagFilters `json:"TagFilters,omitempty" xml:"TagFilters,omitempty" type:"Repeated"`
+	VaultId    *string                                 `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreatePolicyV2RequestRules) String() string {
@@ -2784,6 +4437,11 @@ func (s CreatePolicyV2RequestRules) GoString() string {
 
 func (s *CreatePolicyV2RequestRules) SetBackupType(v string) *CreatePolicyV2RequestRules {
 	s.BackupType = &v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRules) SetDataSourceFilters(v []*CreatePolicyV2RequestRulesDataSourceFilters) *CreatePolicyV2RequestRules {
+	s.DataSourceFilters = v
 	return s
 }
 
@@ -2817,16 +4475,63 @@ func (s *CreatePolicyV2RequestRules) SetSchedule(v string) *CreatePolicyV2Reques
 	return s
 }
 
+func (s *CreatePolicyV2RequestRules) SetTagFilters(v []*CreatePolicyV2RequestRulesTagFilters) *CreatePolicyV2RequestRules {
+	s.TagFilters = v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRules) SetVaultId(v string) *CreatePolicyV2RequestRules {
+	s.VaultId = &v
+	return s
+}
+
+type CreatePolicyV2RequestRulesDataSourceFilters struct {
+	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	SourceType    *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s CreatePolicyV2RequestRulesDataSourceFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyV2RequestRulesDataSourceFilters) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFilters) SetDataSourceIds(v []*string) *CreatePolicyV2RequestRulesDataSourceFilters {
+	s.DataSourceIds = v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFilters) SetSourceType(v string) *CreatePolicyV2RequestRulesDataSourceFilters {
+	s.SourceType = &v
+	return s
+}
+
 type CreatePolicyV2RequestRulesRetentionRules struct {
 	// The type of the special retention rule. Valid values:
 	//
-	// *   **WEEKLY**: weekly backups
-	// *   **MONTHLY**: monthly backups
-	// *   **YEARLY**: yearly backups
+	// 	- **WEEKLY**: retains weekly backups
+	//
+	// 	- **MONTHLY**: retains monthly backups
+	//
+	// 	- **YEARLY**: retains yearly backups
+	//
+	// example:
+	//
+	// YEARLY
 	AdvancedRetentionType *string `json:"AdvancedRetentionType,omitempty" xml:"AdvancedRetentionType,omitempty"`
-	// The retention period of the backup data. Minimum value: 1. Unit: days.
+	// The special retention period of backups. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 730
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// Specifies which backup is retained based on the special retention rule. Only the first backup can be retained.
+	//
+	// example:
+	//
+	// 1
 	WhichSnapshot *int64 `json:"WhichSnapshot,omitempty" xml:"WhichSnapshot,omitempty"`
 }
 
@@ -2853,11 +4558,49 @@ func (s *CreatePolicyV2RequestRulesRetentionRules) SetWhichSnapshot(v int64) *Cr
 	return s
 }
 
+type CreatePolicyV2RequestRulesTagFilters struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePolicyV2RequestRulesTagFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyV2RequestRulesTagFilters) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyV2RequestRulesTagFilters) SetKey(v string) *CreatePolicyV2RequestRulesTagFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRulesTagFilters) SetOperator(v string) *CreatePolicyV2RequestRulesTagFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRulesTagFilters) SetValue(v string) *CreatePolicyV2RequestRulesTagFilters {
+	s.Value = &v
+	return s
+}
+
 type CreatePolicyV2ShrinkRequest struct {
 	// The description of the backup policy.
+	//
+	// example:
+	//
+	// Data is backed up at 10:00:00 every day and replicated to the China (Shanghai) region for geo-redundancy.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
 	// The name of the backup policy.
+	//
+	// example:
+	//
+	// Daily Local Backup + Remote Backup
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The rules in the backup policy.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
@@ -2880,6 +4623,11 @@ func (s *CreatePolicyV2ShrinkRequest) SetPolicyName(v string) *CreatePolicyV2Shr
 	return s
 }
 
+func (s *CreatePolicyV2ShrinkRequest) SetPolicyType(v string) *CreatePolicyV2ShrinkRequest {
+	s.PolicyType = &v
+	return s
+}
+
 func (s *CreatePolicyV2ShrinkRequest) SetRulesShrink(v string) *CreatePolicyV2ShrinkRequest {
 	s.RulesShrink = &v
 	return s
@@ -2887,17 +4635,38 @@ func (s *CreatePolicyV2ShrinkRequest) SetRulesShrink(v string) *CreatePolicyV2Sh
 
 type CreatePolicyV2ResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000000zemnuyx2li3y9y
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EEC65C22-2152-5E31-8AD6-D6CBF1BFF49F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2935,9 +4704,9 @@ func (s *CreatePolicyV2ResponseBody) SetSuccess(v bool) *CreatePolicyV2ResponseB
 }
 
 type CreatePolicyV2Response struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePolicyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePolicyV2Response) String() string {
@@ -2964,22 +4733,61 @@ func (s *CreatePolicyV2Response) SetBody(v *CreatePolicyV2ResponseBody) *CreateP
 }
 
 type CreateReplicationVaultRequest struct {
-	// The operation that you want to perform. Set the value to **CreateReplicationVault**.
+	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the region where the backup vault resides.
-	RedundancyType *string `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
-	// The ID of the region where the source vault resides.
-	ReplicationSourceRegionId *string `json:"ReplicationSourceRegionId,omitempty" xml:"ReplicationSourceRegionId,omitempty"`
-	// The message that is returned. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
-	ReplicationSourceVaultId *string `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the request was successful.
-	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	KmsKeyId    *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// The data redundancy type of the backup vault. Valid values:
 	//
-	// - LRS: Locally redundant storage (LRS) is enabled for the backup vault. HBR stores the copies of each object on multiple devices of different facilities in the same zone. This way, HBR ensures data durability and availability even if hardware failures occur.
-	// - ZRS: Zone-redundant storage (ZRS) is enabled for the backup vault. HBR uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone becomes unavailable, the data can still be accessed.
-	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
+	// 	- LRS: standard locally redundant storage (LRS). Cloud Backup stores the copies of each object on multiple devices of different facilities in the same zone. This way, Cloud Backup ensures data durability and availability even if hardware failures occur.
+	//
+	// 	- ZRS: standard zone-redundant storage (ZRS). Cloud Backup uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone fails, the data that is stored in the other two zones is still accessible.
+	//
+	// example:
+	//
+	// LRS
+	RedundancyType *string `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
+	// The ID of the region where the source vault resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ReplicationSourceRegionId *string `json:"ReplicationSourceRegionId,omitempty" xml:"ReplicationSourceRegionId,omitempty"`
 	// The ID of the source vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-*********************
+	ReplicationSourceVaultId *string `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
+	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mirrorvaultname
+	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	// The ID of the region where the backup vault resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
+	// The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+	//
+	// example:
+	//
+	// STANDARD
 	VaultStorageClass *string `json:"VaultStorageClass,omitempty" xml:"VaultStorageClass,omitempty"`
 }
 
@@ -2993,6 +4801,16 @@ func (s CreateReplicationVaultRequest) GoString() string {
 
 func (s *CreateReplicationVaultRequest) SetDescription(v string) *CreateReplicationVaultRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateReplicationVaultRequest) SetEncryptType(v string) *CreateReplicationVaultRequest {
+	s.EncryptType = &v
+	return s
+}
+
+func (s *CreateReplicationVaultRequest) SetKmsKeyId(v string) *CreateReplicationVaultRequest {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -3027,17 +4845,45 @@ func (s *CreateReplicationVaultRequest) SetVaultStorageClass(v string) *CreateRe
 }
 
 type CreateReplicationVaultResponseBody struct {
-	// Creates a backup vault.
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The storage type of the backup vault. Valid value: **STANDARD**. The value indicates standard storage.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the initialization task used to initialize the backup vault.
+	// The response code. The status code 200 indicates that the request was successful.
 	//
-	// You can call the DescribeTask operation to query the status of an initialization task.
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the job that is used to initialize the backup vault. You can call the DescribeTask operation to query the job status.
+	//
+	// example:
+	//
+	// t-*********************
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -3080,9 +4926,9 @@ func (s *CreateReplicationVaultResponseBody) SetVaultId(v string) *CreateReplica
 }
 
 type CreateReplicationVaultResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateReplicationVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateReplicationVaultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateReplicationVaultResponse) String() string {
@@ -3110,70 +4956,180 @@ func (s *CreateReplicationVaultResponse) SetBody(v *CreateReplicationVaultRespon
 
 type CreateRestoreJobRequest struct {
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The paths to the files that you do not want to restore. No files in the specified paths are restored. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude        *string                `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
 	FailbackDetail map[string]interface{} `json:"FailbackDetail,omitempty" xml:"FailbackDetail,omitempty"`
 	// The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// Specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
-	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
+	//
+	// example:
+	//
+	// false
+	InitiatedByAck *bool   `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
+	Options        *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetail *OtsTableRestoreDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// The type of the restore destination. Valid values:
 	//
-	// *   **ECS_FILE**: restores data to Elastic Compute Service (ECS) files.
-	// *   **OSS**: restores data to Object Storage Service (OSS) buckets.
-	// *   **NAS**: restores data to Apsara File Storage NAS file systems.
-	// *   **OTS_TABLE**: restores data to Tablestore instances.
-	// *   **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+	// 	- **ECS_FILE**: restores data to Elastic Compute Service (ECS) files.
+	//
+	// 	- **OSS**: restores data to Object Storage Service (OSS) buckets.
+	//
+	// 	- **NAS**: restores data to Apsara File Storage NAS file systems.
+	//
+	// 	- **OTS_TABLE**: restores data to Tablestore instances.
+	//
+	// 	- **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS_FILE
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 	// The hash value of the backup snapshot.
+	//
+	// example:
+	//
+	// f2fe...
 	SnapshotHash *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
 	// The ID of the backup snapshot.
+	//
+	// example:
+	//
+	// s-********************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: ECS files
-	// *   **OSS**: OSS buckets
-	// *   **NAS**: NAS file systems
-	// *   **OTS_TABLE**: Tablestore instances
-	// *   **UDM_ECS**: ECS instances
+	// 	- **ECS_FILE**: ECS files
+	//
+	// 	- **OSS**: OSS buckets
+	//
+	// 	- **NAS**: NAS file systems
+	//
+	// 	- **OTS_TABLE**: Tablestore instances
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
+	//
+	// example:
+	//
+	// hbr-backup-oss
 	TargetBucket *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
 	// The details about the container to which you want to restore data.
+	//
+	// example:
+	//
+	// {\\"host\\":\\"k8s-node1\\",\\"hostPrefix\\":\\"/var/lib/kubelet/pods/4acb31fe-8577-40ff-bc8c-eccabd835f73/volumes/kubernetes.io~csi/pvc-b050b00e-ef17-4792-aab1-1642355cf1f4/mount\\",\\"pvPath\\":\\"/\\"}
 	TargetContainer *string `json:"TargetContainer,omitempty" xml:"TargetContainer,omitempty"`
 	// The ID of the container cluster to which you want to restore data.
+	//
+	// example:
+	//
+	// cc-000amjsc7o1h9506oob7
 	TargetContainerClusterId *string `json:"TargetContainerClusterId,omitempty" xml:"TargetContainerClusterId,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **NAS**. This parameter specifies the time when the file system is created.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **NAS**. This parameter specifies the time when the file system is created.
+	//
+	// example:
+	//
+	// 1554347313
 	TargetCreateTime *int64 `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **NAS**. This parameter specifies the ID of the file system to which you want to restore data.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **NAS**. This parameter specifies the ID of the file system to which you want to restore data.
+	//
+	// example:
+	//
+	// 005494
 	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance to which you want to restore data.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance to which you want to restore data.
+	//
+	// example:
+	//
+	// i-*********************
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 	// The name of the Tablestore instance to which you want to restore data.
+	//
+	// example:
+	//
+	// instancename
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **ECS_FILE**. This parameter specifies the destination file path.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **ECS_FILE**. This parameter specifies the destination file path.
+	//
+	// example:
+	//
+	// C:\\
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to restore.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to restore.
+	//
+	// example:
+	//
+	// hbr
 	TargetPrefix *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
 	// The name of the table that stores the restored data.
+	//
+	// example:
+	//
+	// tablename
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 	// The time when data is restored to the Tablestore instance. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496881
 	TargetTime *int64 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
 	// The details of ECS instance backup.
+	//
+	// example:
+	//
+	// {\\"sourceInstanceId\\":\\"i-uf62te6pm3iwsyxyz66q\\",\\"bootAfterRestore\\":false}
 	UdmDetail map[string]interface{} `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	// This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the region to which you want to restore data.
+	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the region to which you want to restore data.
+	//
+	// example:
+	//
+	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
 	// The ID of the backup vault to which the backup snapshot belongs.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -3217,6 +5173,11 @@ func (s *CreateRestoreJobRequest) SetInclude(v string) *CreateRestoreJobRequest 
 
 func (s *CreateRestoreJobRequest) SetInitiatedByAck(v bool) *CreateRestoreJobRequest {
 	s.InitiatedByAck = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetOptions(v string) *CreateRestoreJobRequest {
+	s.Options = &v
 	return s
 }
 
@@ -3317,70 +5278,180 @@ func (s *CreateRestoreJobRequest) SetVaultId(v string) *CreateRestoreJobRequest 
 
 type CreateRestoreJobShrinkRequest struct {
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The paths to the files that you do not want to restore. No files in the specified paths are restored. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude              *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
 	FailbackDetailShrink *string `json:"FailbackDetail,omitempty" xml:"FailbackDetail,omitempty"`
 	// The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// Specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
-	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
+	//
+	// example:
+	//
+	// false
+	InitiatedByAck *bool   `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
+	Options        *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetailShrink *string `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// The type of the restore destination. Valid values:
 	//
-	// *   **ECS_FILE**: restores data to Elastic Compute Service (ECS) files.
-	// *   **OSS**: restores data to Object Storage Service (OSS) buckets.
-	// *   **NAS**: restores data to Apsara File Storage NAS file systems.
-	// *   **OTS_TABLE**: restores data to Tablestore instances.
-	// *   **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+	// 	- **ECS_FILE**: restores data to Elastic Compute Service (ECS) files.
+	//
+	// 	- **OSS**: restores data to Object Storage Service (OSS) buckets.
+	//
+	// 	- **NAS**: restores data to Apsara File Storage NAS file systems.
+	//
+	// 	- **OTS_TABLE**: restores data to Tablestore instances.
+	//
+	// 	- **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS_FILE
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 	// The hash value of the backup snapshot.
+	//
+	// example:
+	//
+	// f2fe...
 	SnapshotHash *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
 	// The ID of the backup snapshot.
+	//
+	// example:
+	//
+	// s-********************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: ECS files
-	// *   **OSS**: OSS buckets
-	// *   **NAS**: NAS file systems
-	// *   **OTS_TABLE**: Tablestore instances
-	// *   **UDM_ECS**: ECS instances
+	// 	- **ECS_FILE**: ECS files
+	//
+	// 	- **OSS**: OSS buckets
+	//
+	// 	- **NAS**: NAS file systems
+	//
+	// 	- **OTS_TABLE**: Tablestore instances
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
+	//
+	// example:
+	//
+	// hbr-backup-oss
 	TargetBucket *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
 	// The details about the container to which you want to restore data.
+	//
+	// example:
+	//
+	// {\\"host\\":\\"k8s-node1\\",\\"hostPrefix\\":\\"/var/lib/kubelet/pods/4acb31fe-8577-40ff-bc8c-eccabd835f73/volumes/kubernetes.io~csi/pvc-b050b00e-ef17-4792-aab1-1642355cf1f4/mount\\",\\"pvPath\\":\\"/\\"}
 	TargetContainer *string `json:"TargetContainer,omitempty" xml:"TargetContainer,omitempty"`
 	// The ID of the container cluster to which you want to restore data.
+	//
+	// example:
+	//
+	// cc-000amjsc7o1h9506oob7
 	TargetContainerClusterId *string `json:"TargetContainerClusterId,omitempty" xml:"TargetContainerClusterId,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **NAS**. This parameter specifies the time when the file system is created.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **NAS**. This parameter specifies the time when the file system is created.
+	//
+	// example:
+	//
+	// 1554347313
 	TargetCreateTime *int64 `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **NAS**. This parameter specifies the ID of the file system to which you want to restore data.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **NAS**. This parameter specifies the ID of the file system to which you want to restore data.
+	//
+	// example:
+	//
+	// 005494
 	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance to which you want to restore data.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance to which you want to restore data.
+	//
+	// example:
+	//
+	// i-*********************
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 	// The name of the Tablestore instance to which you want to restore data.
+	//
+	// example:
+	//
+	// instancename
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **ECS_FILE**. This parameter specifies the destination file path.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **ECS_FILE**. This parameter specifies the destination file path.
+	//
+	// example:
+	//
+	// C:\\
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to restore.
+	// This parameter is required only if the **RestoreType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to restore.
+	//
+	// example:
+	//
+	// hbr
 	TargetPrefix *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
 	// The name of the table that stores the restored data.
+	//
+	// example:
+	//
+	// tablename
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 	// The time when data is restored to the Tablestore instance. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496881
 	TargetTime *int64 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
 	// The details of ECS instance backup.
+	//
+	// example:
+	//
+	// {\\"sourceInstanceId\\":\\"i-uf62te6pm3iwsyxyz66q\\",\\"bootAfterRestore\\":false}
 	UdmDetailShrink *string `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	// This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the region to which you want to restore data.
+	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the region to which you want to restore data.
+	//
+	// example:
+	//
+	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
 	// The ID of the backup vault to which the backup snapshot belongs.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -3424,6 +5495,11 @@ func (s *CreateRestoreJobShrinkRequest) SetInclude(v string) *CreateRestoreJobSh
 
 func (s *CreateRestoreJobShrinkRequest) SetInitiatedByAck(v bool) *CreateRestoreJobShrinkRequest {
 	s.InitiatedByAck = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetOptions(v string) *CreateRestoreJobShrinkRequest {
+	s.Options = &v
 	return s
 }
 
@@ -3524,17 +5600,38 @@ func (s *CreateRestoreJobShrinkRequest) SetVaultId(v string) *CreateRestoreJobSh
 
 type CreateRestoreJobResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the restore job.
+	//
+	// example:
+	//
+	// r-*********************
 	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3572,9 +5669,9 @@ func (s *CreateRestoreJobResponseBody) SetSuccess(v bool) *CreateRestoreJobRespo
 }
 
 type CreateRestoreJobResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRestoreJobResponse) String() string {
@@ -3602,6 +5699,12 @@ func (s *CreateRestoreJobResponse) SetBody(v *CreateRestoreJobResponseBody) *Cre
 
 type CreateTempFileUploadUrlRequest struct {
 	// The name of the file to be uploaded.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// file-list.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 }
 
@@ -3620,29 +5723,74 @@ func (s *CreateTempFileUploadUrlRequest) SetFileName(v string) *CreateTempFileUp
 
 type CreateTempFileUploadUrlResponseBody struct {
 	// The name of the OSS bucket to which the file is uploaded.
+	//
+	// example:
+	//
+	// hbr-temp-bucket
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The endpoint that is used to upload the file to OSS.
+	//
+	// example:
+	//
+	// oss-cn-shenzhen.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The expiration time of the signature that is used to upload the file to OSS. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1654326678
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The AccessKey ID that is used to upload the file to OSS.
+	//
+	// example:
+	//
+	// LTAI****Up
 	OssAccessKeyId *string `json:"OssAccessKeyId,omitempty" xml:"OssAccessKeyId,omitempty"`
 	// The policy that is used to upload the file to OSS.
+	//
+	// example:
+	//
+	// eyJleH****V19
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F4EEB401-DD21-588D-AE3B-1E835C7655E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The signature that is used to upload the file to OSS.
+	//
+	// example:
+	//
+	// RmhI****0A=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The key that is used to upload the file to OSS.
+	//
+	// example:
+	//
+	// temp/1440155109798732/upload/2022-07-29/49bed34c-b430-4e7e-89b1-4be2b734f95c/iaclone.diff
 	TempFileKey *string `json:"TempFileKey,omitempty" xml:"TempFileKey,omitempty"`
 }
 
@@ -3710,9 +5858,9 @@ func (s *CreateTempFileUploadUrlResponseBody) SetTempFileKey(v string) *CreateTe
 }
 
 type CreateTempFileUploadUrlResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTempFileUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTempFileUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTempFileUploadUrlResponse) String() string {
@@ -3740,29 +5888,58 @@ func (s *CreateTempFileUploadUrlResponse) SetBody(v *CreateTempFileUploadUrlResp
 
 type CreateVaultRequest struct {
 	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The method that is used to encrypt the source data. This parameter is valid only if you set the VaultType parameter to STANDARD or OTS_BACKUP. Valid values:
 	//
-	// *   **HBR_PRIVATE**: The source data is encrypted by using the built-in encryption method of Hybrid Backup Recovery (HBR).
-	// *   **KMS**: The source data is encrypted by using Key Management Service (KMS).
+	// 	- **HBR_PRIVATE**: The source data is encrypted by using the built-in encryption method of Hybrid Backup Recovery (HBR).
+	//
+	// 	- **KMS**: The source data is encrypted by using Key Management Service (KMS).
+	//
+	// example:
+	//
+	// KMS
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	// The customer master key (CMK) created in KMS or the alias of the key. This parameter is required only if you set the EncryptType parameter to KMS.
-	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The data redundancy type of the backup vault. Valid values:
 	//
-	// *   LRS: Locally redundant storage (LRS) is enabled for the backup vault. HBR stores the copies of each object on multiple devices of different facilities in the same zone. This way, HBR ensures data durability and availability even if hardware failures occur.
-	// *   ZRS: Zone-redundant storage (ZRS) is enabled for the backup vault. HBR uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone fails, the data that is stored in the other two zones is still accessible.
-	RedundancyType *string `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
+	// example:
+	//
+	// alias/yzs-hhht
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// backupvaultname
 	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
 	// The ID of the region where the backup vault resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
 	// The storage type of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+	//
+	// example:
+	//
+	// STANDARD
 	VaultStorageClass *string `json:"VaultStorageClass,omitempty" xml:"VaultStorageClass,omitempty"`
 	// The type of the backup vault. Valid value
 	//
-	// *   **STANDARD**: standard backup vault
-	// *   **OTS_BACKUP**: backup vault for Tablestore
+	// 	- **STANDARD**: standard backup vault
+	//
+	// 	- **OTS_BACKUP**: backup vault for Tablestore
+	//
+	// example:
+	//
+	// STANDARD
 	VaultType *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
 }
 
@@ -3789,11 +5966,6 @@ func (s *CreateVaultRequest) SetKmsKeyId(v string) *CreateVaultRequest {
 	return s
 }
 
-func (s *CreateVaultRequest) SetRedundancyType(v string) *CreateVaultRequest {
-	s.RedundancyType = &v
-	return s
-}
-
 func (s *CreateVaultRequest) SetVaultName(v string) *CreateVaultRequest {
 	s.VaultName = &v
 	return s
@@ -3816,19 +5988,44 @@ func (s *CreateVaultRequest) SetVaultType(v string) *CreateVaultRequest {
 
 type CreateVaultResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the initialization task used to initialize the backup vault. You can call the DescribeTask operation to query the status of an initialization task.
+	//
+	// example:
+	//
+	// t-*********************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -3871,9 +6068,9 @@ func (s *CreateVaultResponseBody) SetVaultId(v string) *CreateVaultResponseBody 
 }
 
 type CreateVaultResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVaultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVaultResponse) String() string {
@@ -3900,7 +6097,13 @@ func (s *CreateVaultResponse) SetBody(v *CreateVaultResponseBody) *CreateVaultRe
 }
 
 type DeleteBackupClientRequest struct {
-	// The ID of the request.
+	// The ID of the Cloud Backup client.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-*********************
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 }
 
@@ -3918,12 +6121,34 @@ func (s *DeleteBackupClientRequest) SetClientId(v string) *DeleteBackupClientReq
 }
 
 type DeleteBackupClientResponseBody struct {
-	// The operation that you want to perform. Set the value to **DeleteBackupClient**.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Deletes a backup client.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteBackupClientResponseBody) String() string {
@@ -3955,9 +6180,9 @@ func (s *DeleteBackupClientResponseBody) SetSuccess(v bool) *DeleteBackupClientR
 }
 
 type DeleteBackupClientResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteBackupClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupClientResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteBackupClientResponse) String() string {
@@ -3984,7 +6209,13 @@ func (s *DeleteBackupClientResponse) SetBody(v *DeleteBackupClientResponseBody) 
 }
 
 type DeleteBackupClientResourceRequest struct {
-	// The IDs of HBR clients. You can specify a maximum of 100 client IDs.
+	// The IDs of HBR clients. The value can be a JSON array that consists of up to 100 client IDs. Separate the IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["c-0007kyu045r0********", "c-000b6818umvo********"]
 	ClientIds map[string]interface{} `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 }
 
@@ -4002,7 +6233,13 @@ func (s *DeleteBackupClientResourceRequest) SetClientIds(v map[string]interface{
 }
 
 type DeleteBackupClientResourceShrinkRequest struct {
-	// The IDs of HBR clients. You can specify a maximum of 100 client IDs.
+	// The IDs of HBR clients. The value can be a JSON array that consists of up to 100 client IDs. Separate the IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["c-0007kyu045r0********", "c-000b6818umvo********"]
 	ClientIdsShrink *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 }
 
@@ -4021,15 +6258,32 @@ func (s *DeleteBackupClientResourceShrinkRequest) SetClientIdsShrink(v string) *
 
 type DeleteBackupClientResourceResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4062,9 +6316,9 @@ func (s *DeleteBackupClientResourceResponseBody) SetSuccess(v bool) *DeleteBacku
 }
 
 type DeleteBackupClientResourceResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteBackupClientResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupClientResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteBackupClientResourceResponse) String() string {
@@ -4092,16 +6346,40 @@ func (s *DeleteBackupClientResourceResponse) SetBody(v *DeleteBackupClientResour
 
 type DeleteBackupPlanRequest struct {
 	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// Specifies whether no running jobs are required.
+	//
+	// example:
+	//
+	// false
+	RequireNoRunningJobs *bool `json:"RequireNoRunningJobs,omitempty" xml:"RequireNoRunningJobs,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: Elastic Compute Service (ECS) files
-	// *   **OSS**: Object Storage Service (OSS) buckets
-	// *   **NAS**: Apsara File Storage NAS file systems
-	// *   **UDM_ECS**: ECS instances
-	// *   **OTS**: Tablestore instances
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS file systems
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// 	- **OTS**: Tablestore instances
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -4118,6 +6396,11 @@ func (s *DeleteBackupPlanRequest) SetPlanId(v string) *DeleteBackupPlanRequest {
 	return s
 }
 
+func (s *DeleteBackupPlanRequest) SetRequireNoRunningJobs(v bool) *DeleteBackupPlanRequest {
+	s.RequireNoRunningJobs = &v
+	return s
+}
+
 func (s *DeleteBackupPlanRequest) SetSourceType(v string) *DeleteBackupPlanRequest {
 	s.SourceType = &v
 	return s
@@ -4130,15 +6413,32 @@ func (s *DeleteBackupPlanRequest) SetVaultId(v string) *DeleteBackupPlanRequest 
 
 type DeleteBackupPlanResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4171,9 +6471,9 @@ func (s *DeleteBackupPlanResponseBody) SetSuccess(v bool) *DeleteBackupPlanRespo
 }
 
 type DeleteBackupPlanResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteBackupPlanResponse) String() string {
@@ -4200,9 +6500,18 @@ func (s *DeleteBackupPlanResponse) SetBody(v *DeleteBackupPlanResponseBody) *Del
 }
 
 type DeleteClientRequest struct {
-	ClientId        *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// c-000************f3h
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// rg-acf************kwy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// example:
+	//
+	// v-000************gs3
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DeleteClientRequest) String() string {
@@ -4229,10 +6538,22 @@ func (s *DeleteClientRequest) SetVaultId(v string) *DeleteClientRequest {
 }
 
 type DeleteClientResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C51A9094-64B7-5DC0-B9FE-5FC1AC7E081D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteClientResponseBody) String() string {
@@ -4264,9 +6585,9 @@ func (s *DeleteClientResponseBody) SetSuccess(v bool) *DeleteClientResponseBody 
 }
 
 type DeleteClientResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteClientResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteClientResponse) String() string {
@@ -4293,13 +6614,35 @@ func (s *DeleteClientResponse) SetBody(v *DeleteClientResponseBody) *DeleteClien
 }
 
 type DeleteHanaBackupPlanRequest struct {
-	// The ID of the resource group.
+	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-000br3******0ooy2
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The ID of the request.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pl-00035lc8pwp1azdf3qku
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm4ebtpkzx7zy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-0007o******1ssno
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -4332,12 +6675,34 @@ func (s *DeleteHanaBackupPlanRequest) SetVaultId(v string) *DeleteHanaBackupPlan
 }
 
 type DeleteHanaBackupPlanResponseBody struct {
-	// The operation that you want to perform. Set the value to **DeleteHanaBackupPlan**.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Deletes an SAP HANA backup plan.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 071E4789-6256-526B-B22E-2A9CDDB9EB21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteHanaBackupPlanResponseBody) String() string {
@@ -4369,9 +6734,9 @@ func (s *DeleteHanaBackupPlanResponseBody) SetSuccess(v bool) *DeleteHanaBackupP
 }
 
 type DeleteHanaBackupPlanResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteHanaBackupPlanResponse) String() string {
@@ -4399,12 +6764,34 @@ func (s *DeleteHanaBackupPlanResponse) SetBody(v *DeleteHanaBackupPlanResponseBo
 
 type DeleteHanaInstanceRequest struct {
 	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-000g4z09******9cfc
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmwutpyat2kwy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The SID of the SAP HANA database. You must specify a valid SID. The SID must be three characters in length and start with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+	// The security identifier (SID) of the SAP HANA database. You must specify a valid SID. The SID must be three characters in length and start with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HXE
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-0008n2******ax3
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -4437,16 +6824,33 @@ func (s *DeleteHanaInstanceRequest) SetVaultId(v string) *DeleteHanaInstanceRequ
 }
 
 type DeleteHanaInstanceResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// The response code. The status code 200 indicates that the request was successful.
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 28EAF89A-E0D8-5C04-9A1D-B373B29BCFB9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4479,9 +6883,9 @@ func (s *DeleteHanaInstanceResponseBody) SetSuccess(v bool) *DeleteHanaInstanceR
 }
 
 type DeleteHanaInstanceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteHanaInstanceResponse) String() string {
@@ -4511,10 +6915,20 @@ type DeletePolicyBindingRequest struct {
 	// The IDs of the data sources that you want to disassociate from the backup policy.
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
 	// The ID of the backup policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// po-000************hgp
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **UDM_ECS**: ECS instance backup
+	// 	- **UDM_ECS**: ECS instance backup
+	//
+	// example:
+	//
+	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -4545,10 +6959,20 @@ type DeletePolicyBindingShrinkRequest struct {
 	// The IDs of the data sources that you want to disassociate from the backup policy.
 	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
 	// The ID of the backup policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// po-000************hgp
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **UDM_ECS**: ECS instance backup
+	// 	- **UDM_ECS**: ECS instance backup
+	//
+	// example:
+	//
+	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -4577,15 +7001,32 @@ func (s *DeletePolicyBindingShrinkRequest) SetSourceType(v string) *DeletePolicy
 
 type DeletePolicyBindingResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3E961A5E-C5C6-566D-BFC3-0362A6A52EBA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4618,9 +7059,9 @@ func (s *DeletePolicyBindingResponseBody) SetSuccess(v bool) *DeletePolicyBindin
 }
 
 type DeletePolicyBindingResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePolicyBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyBindingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePolicyBindingResponse) String() string {
@@ -4647,6 +7088,11 @@ func (s *DeletePolicyBindingResponse) SetBody(v *DeletePolicyBindingResponseBody
 }
 
 type DeletePolicyV2Request struct {
+	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000************2l6
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -4664,10 +7110,34 @@ func (s *DeletePolicyV2Request) SetPolicyId(v string) *DeletePolicyV2Request {
 }
 
 type DeletePolicyV2ResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 33AA3AAE-89E1-5D3A-A51D-0C0A80850F68
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeletePolicyV2ResponseBody) String() string {
@@ -4699,9 +7169,9 @@ func (s *DeletePolicyV2ResponseBody) SetSuccess(v bool) *DeletePolicyV2ResponseB
 }
 
 type DeletePolicyV2Response struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePolicyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePolicyV2Response) String() string {
@@ -4728,26 +7198,59 @@ func (s *DeletePolicyV2Response) SetBody(v *DeletePolicyV2ResponseBody) *DeleteP
 }
 
 type DeleteSnapshotRequest struct {
-	// The ID of the backup file.
+	// The ID of the Cloud Backup client. If you delete a backup snapshot for Elastic Compute Service (ECS) instances, you must specify one of the ClientId and **InstanceId*	- parameters.
+	//
+	// example:
+	//
+	// c-*********************
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// Specifies whether to forcibly delete the most recent backup snapshot. Valid values:
+	//
+	// 	- true: The system forcibly deletes the most recent backup snapshot.
+	//
+	// 	- false (default): The system does not forcibly delete the most recent backup snapshot.
+	//
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The ID of the ECS instance. If you delete a backup snapshot for ECS instances, you must specify one of the InstanceId and **ClientId*	- parameters.
+	//
+	// example:
+	//
+	// i-*********************
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the backup snapshot.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// s-*********************
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The type of the backup source. Valid values:
 	//
-	// *   **ECS_FILE**: indicates backup files for ECS instances.
-	// *   **OSS**: indicates backup files for Object Storage Service (OSS) buckets.
-	// *   **NAS**: indicates the backup files for Apsara File Storage NAS file systems.
-	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The operation that you want to perform. Set the value to **DeleteSnapshot**.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the request is successful.
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The ID of the request.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The ID of the backup client. If you delete a backup file for Elastic Compute Service (ECS) instances, you must set one of the **InstanceId** and ClientId parameters.
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// Specifies whether to forcibly delete the most recent backup file. Valid values:
+	// 	- **ECS_FILE**: backup snapshots for ECS files
 	//
-	// *   true: The system forcibly deletes the last backup file.
-	// *   false: The system does not forcibly delete the last backup file. Default value: false.
+	// 	- **OSS**: backup snapshots for Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: backup snapshots for Apsara File Storage NAS (NAS) file systems
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The token that you want to delete.
+	//
+	// example:
+	//
+	// 02WJDOE7
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -4795,11 +7298,34 @@ func (s *DeleteSnapshotRequest) SetVaultId(v string) *DeleteSnapshotRequest {
 }
 
 type DeleteSnapshotResponseBody struct {
-	// Deletes a backup file.
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSnapshotResponseBody) String() string {
@@ -4831,9 +7357,9 @@ func (s *DeleteSnapshotResponseBody) SetSuccess(v bool) *DeleteSnapshotResponseB
 }
 
 type DeleteSnapshotResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSnapshotResponse) String() string {
@@ -4859,12 +7385,234 @@ func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteS
 	return s
 }
 
+type DeleteUdmDiskRequest struct {
+	// example:
+	//
+	// d-bp15************xy70
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+}
+
+func (s DeleteUdmDiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmDiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmDiskRequest) SetDiskId(v string) *DeleteUdmDiskRequest {
+	s.DiskId = &v
+	return s
+}
+
+type DeleteUdmDiskResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteUdmDiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmDiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmDiskResponseBody) SetCode(v string) *DeleteUdmDiskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteUdmDiskResponseBody) SetMessage(v string) *DeleteUdmDiskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteUdmDiskResponseBody) SetRequestId(v string) *DeleteUdmDiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteUdmDiskResponseBody) SetSuccess(v bool) *DeleteUdmDiskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteUdmDiskResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUdmDiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteUdmDiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmDiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmDiskResponse) SetHeaders(v map[string]*string) *DeleteUdmDiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUdmDiskResponse) SetStatusCode(v int32) *DeleteUdmDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUdmDiskResponse) SetBody(v *DeleteUdmDiskResponseBody) *DeleteUdmDiskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteUdmEcsInstanceRequest struct {
+	// The ID of the ECS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-2zed************tlrm
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteUdmEcsInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmEcsInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmEcsInstanceRequest) SetInstanceId(v string) *DeleteUdmEcsInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteUdmEcsInstanceResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0497C0D3-82B5-56B2-8D64-D62E61B90E95
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteUdmEcsInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmEcsInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmEcsInstanceResponseBody) SetCode(v string) *DeleteUdmEcsInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceResponseBody) SetMessage(v string) *DeleteUdmEcsInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceResponseBody) SetRequestId(v string) *DeleteUdmEcsInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceResponseBody) SetSuccess(v bool) *DeleteUdmEcsInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteUdmEcsInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUdmEcsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteUdmEcsInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmEcsInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmEcsInstanceResponse) SetHeaders(v map[string]*string) *DeleteUdmEcsInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceResponse) SetStatusCode(v int32) *DeleteUdmEcsInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceResponse) SetBody(v *DeleteUdmEcsInstanceResponseBody) *DeleteUdmEcsInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVaultRequest struct {
-	// The ID of the request.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmoiyerpacj4q
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The token.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a*
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the request is successful.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -4892,12 +7640,34 @@ func (s *DeleteVaultRequest) SetVaultId(v string) *DeleteVaultRequest {
 }
 
 type DeleteVaultResponseBody struct {
-	// The operation that you want to perform. Set the value to **DeleteVault**.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Deletes a backup vault.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteVaultResponseBody) String() string {
@@ -4929,9 +7699,9 @@ func (s *DeleteVaultResponseBody) SetSuccess(v bool) *DeleteVaultResponseBody {
 }
 
 type DeleteVaultResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVaultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVaultResponse) String() string {
@@ -4959,30 +7729,74 @@ func (s *DeleteVaultResponse) SetBody(v *DeleteVaultResponseBody) *DeleteVaultRe
 
 type DescribeBackupClientsRequest struct {
 	// The IDs of HBR clients.
+	//
+	// example:
+	//
+	// ["c-*********************"]
 	ClientIds []*string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty" type:"Repeated"`
 	// The type of the HBR client. Valid values:
 	//
-	// *   **ECS_CLIENT**: HBR client for Elastic Compute Service (ECS) file backup
-	// *   **CONTAINER_CLIENT**: HBR client for container backup
+	// 	- **ECS_CLIENT**: HBR client for Elastic Compute Service (ECS) file backup
+	//
+	// 	- **CONTAINER_CLIENT**: HBR client for container backup
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS_CLIENT
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The ID of the cluster for the backup.
+	//
+	// example:
+	//
+	// cl-000ge4wa61b4d337xblq
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 129374672382xxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The IDs of ECS instances.
+	//
+	// example:
+	//
+	// ["i-*********************"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// 33738719#
 	Tag []*DescribeBackupClientsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -5047,15 +7861,27 @@ func (s *DescribeBackupClientsRequest) SetTag(v []*DescribeBackupClientsRequestT
 type DescribeBackupClientsRequestTag struct {
 	// The tag key of the backup vault. Valid values of N: 1 to 20.
 	//
-	// *   The tag key cannot start with `aliyun` or `acs:`.
-	// *   The tag key cannot contain `http://` or `https://`.
-	// *   The tag key cannot be an empty string.
+	// 	- The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// 	- The tag key cannot contain `http://` or `https://`.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the backup vault. Valid values of N: 1 to 20.
 	//
-	// *   The tag value cannot start with `aliyun` or `acs:`.
-	// *   The tag value cannot contain `http://` or `https://`.
-	// *   The tag value cannot be an empty string.
+	// 	- The tag value cannot start with `aliyun` or `acs:`.
+	//
+	// 	- The tag value cannot contain `http://` or `https://`.
+	//
+	// 	- The tag value cannot be an empty string.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5079,30 +7905,74 @@ func (s *DescribeBackupClientsRequestTag) SetValue(v string) *DescribeBackupClie
 
 type DescribeBackupClientsShrinkRequest struct {
 	// The IDs of HBR clients.
+	//
+	// example:
+	//
+	// ["c-*********************"]
 	ClientIdsShrink *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 	// The type of the HBR client. Valid values:
 	//
-	// *   **ECS_CLIENT**: HBR client for Elastic Compute Service (ECS) file backup
-	// *   **CONTAINER_CLIENT**: HBR client for container backup
+	// 	- **ECS_CLIENT**: HBR client for Elastic Compute Service (ECS) file backup
+	//
+	// 	- **CONTAINER_CLIENT**: HBR client for container backup
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS_CLIENT
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The ID of the cluster for the backup.
+	//
+	// example:
+	//
+	// cl-000ge4wa61b4d337xblq
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 129374672382xxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The IDs of ECS instances.
+	//
+	// example:
+	//
+	// ["i-*********************"]
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// 33738719#
 	Tag []*DescribeBackupClientsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -5167,15 +8037,27 @@ func (s *DescribeBackupClientsShrinkRequest) SetTag(v []*DescribeBackupClientsSh
 type DescribeBackupClientsShrinkRequestTag struct {
 	// The tag key of the backup vault. Valid values of N: 1 to 20.
 	//
-	// *   The tag key cannot start with `aliyun` or `acs:`.
-	// *   The tag key cannot contain `http://` or `https://`.
-	// *   The tag key cannot be an empty string.
+	// 	- The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// 	- The tag key cannot contain `http://` or `https://`.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the backup vault. Valid values of N: 1 to 20.
 	//
-	// *   The tag value cannot start with `aliyun` or `acs:`.
-	// *   The tag value cannot contain `http://` or `https://`.
-	// *   The tag value cannot be an empty string.
+	// 	- The tag value cannot start with `aliyun` or `acs:`.
+	//
+	// 	- The tag value cannot contain `http://` or `https://`.
+	//
+	// 	- The tag value cannot be an empty string.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5198,24 +8080,57 @@ func (s *DescribeBackupClientsShrinkRequestTag) SetValue(v string) *DescribeBack
 }
 
 type DescribeBackupClientsResponseBody struct {
-	// The HBR clients.
+	// The queried backup clients.
+	//
+	// example:
+	//
+	// {\\"Client\\": []}
 	Clients []*DescribeBackupClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of returned HBR clients that meet the specified conditions.
+	//
+	// example:
+	//
+	// 8
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5268,71 +8183,155 @@ func (s *DescribeBackupClientsResponseBody) SetTotalCount(v int64) *DescribeBack
 }
 
 type DescribeBackupClientsResponseBodyClients struct {
-	// Indicates whether the HBR client is installed on an all-in-one PC that integrates hardware and monitoring program. Valid values:
+	// Indicates whether the client is installed on an all-in-one PC that integrates hardware and monitoring program. Valid values:
 	//
-	// *   true: The HBR client is installed on an all-in-one PC that integrates hardware and monitoring program.
-	// *   false: The HBR client is not installed on an all-in-one PC that integrates hardware and monitoring program.
+	// 	- true: The client is installed on an all-in-one PC that integrates hardware and monitoring program.
+	//
+	// 	- false: The client is not installed on an all-in-one PC that integrates hardware and monitoring program.
+	//
+	// example:
+	//
+	// false
 	Appliance *bool `json:"Appliance,omitempty" xml:"Appliance,omitempty"`
-	// This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the system architecture where the HBR client resides. Valid values:
+	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the system architecture where the backup client resides. Valid values:
 	//
-	// *   **amd64**
-	// *   **386**
+	// 	- **amd64**
+	//
+	// 	- **386**
+	//
+	// example:
+	//
+	// amd64
 	ArchType *string `json:"ArchType,omitempty" xml:"ArchType,omitempty"`
-	// The protection status of the HBR client. Valid values:
+	// The protection status of the backup client. Valid values:
 	//
-	// *   **UNPROTECTED**: The HBR client is not protected.
-	// *   **PROTECTED**: The HBR client is protected.
+	// 	- **UNPROTECTED**: The backup client is not protected.
+	//
+	// 	- **PROTECTED**: The backup client is protected.
+	//
+	// example:
+	//
+	// PROTECTED
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The ID of the HBR client.
+	// The ID of the backup client.
+	//
+	// example:
+	//
+	// c-*********************
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The type of the HBR client. Valid value: **ECS_CLIENT**, which indicates an HBR client for ECS file backup.
+	// The type of the backup client. Valid value: **ECS_CLIENT**, which indicates a client for ECS file backup.
+	//
+	// example:
+	//
+	// ECS_CLIENT
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The version number of the HBR client.
+	// The version number of the backup client.
+	//
+	// example:
+	//
+	// 2.4.5
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The time when the HBR client was created. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup client was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The hostname of the HBR client.
+	// The hostname of the backup client.
+	//
+	// example:
+	//
+	// hostname
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// *   If the HBR client is used to back up ECS files, this parameter indicates the ID of an ECS instance.
-	// *   If the HBR client is used to back up on-premises files, this parameter indicates the hardware fingerprint that is generated based on the system information.
+	// 	- If the client is used to back up ECS files, this parameter indicates the ID of an ECS instance.
+	//
+	// 	- If the client is used to back up on-premises files, this parameter indicates the hardware fingerprint that is generated based on the system information.
+	//
+	// example:
+	//
+	// i-*********************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the name of the ECS instance.
+	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the name of the ECS instance.
+	//
+	// example:
+	//
+	// instancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The last heartbeat time of the HBR client. The value is a UNIX timestamp. Unit: seconds.
+	// The last heartbeat time of the backup client. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	LastHeartBeatTime *int64 `json:"LastHeartBeatTime,omitempty" xml:"LastHeartBeatTime,omitempty"`
-	// The latest version number of the HBR client.
+	// The latest version number of the backup client.
+	//
+	// example:
+	//
+	// 2.4.5
 	MaxClientVersion *string `json:"MaxClientVersion,omitempty" xml:"MaxClientVersion,omitempty"`
-	// This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the operating system type of the HBR client. Valid values:
+	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the operating system type of the backup client. Valid values:
 	//
-	// *   **windows**
-	// *   **linux**
+	// 	- **windows**
+	//
+	// 	- **linux**
+	//
+	// example:
+	//
+	// linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the internal IP address of the ECS instance.
-	PrivateIpV4 *string `json:"PrivateIpV4,omitempty" xml:"PrivateIpV4,omitempty"`
-	// The configuration information of the HBR client.
-	Settings *DescribeBackupClientsResponseBodyClientsSettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
-	// The status of the HBR client. Valid values:
+	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the internal IP address of the ECS instance.
 	//
-	// *   **REGISTERED**: The HBR client is registered.
-	// *   **ACTIVATED**: The HBR client is enabled.
-	// *   **DEACTIVATED**: The HBR client fails to be enabled.
-	// *   **INSTALLING**: The HBR client is being installed.
-	// *   **INSTALL_FAILED**: The HBR client fails to be installed.
-	// *   **NOT_INSTALLED**: The HBR client is not installed.
-	// *   **UPGRADING**: The HBR client is being upgraded.
-	// *   **UPGRADE_FAILED**: The HBR client fails to be upgraded.
-	// *   **UNINSTALLING**: The HBR client is being uninstalled.
-	// *   **UNINSTALL_FAILED**: The HBR client fails to be uninstalled.
-	// *   **STOPPED**: The HBR client is out of service.
-	// *   **UNKNOWN**: The HBR client is disconnected.
+	// example:
+	//
+	// 192.168.1.1
+	PrivateIpV4 *string `json:"PrivateIpV4,omitempty" xml:"PrivateIpV4,omitempty"`
+	// The configuration information of the backup client.
+	Settings *DescribeBackupClientsResponseBodyClientsSettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
+	// The status of the backup client. Valid values:
+	//
+	// 	- **REGISTERED**: The backup client is registered.
+	//
+	// 	- **ACTIVATED**: The backup client is activated.
+	//
+	// 	- **DEACTIVATED**: The backup client fails to be activated.
+	//
+	// 	- **INSTALLING**: The backup client is being installed.
+	//
+	// 	- **INSTALL_FAILED**: The backup client fails to be installed.
+	//
+	// 	- **NOT_INSTALLED**: The backup client is not installed.
+	//
+	// 	- **UPGRADING**: The backup client is being upgraded.
+	//
+	// 	- **UPGRADE_FAILED**: The backup client fails to be upgraded.
+	//
+	// 	- **UNINSTALLING**: The backup client is being uninstalled.
+	//
+	// 	- **UNINSTALL_FAILED**: The backup client fails to be uninstalled.
+	//
+	// 	- **STOPPED**: The backup client is out of service.
+	//
+	// 	- **UNKNOWN**: The backup client is disconnected.
+	//
+	// example:
+	//
+	// ACTIVATED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag information.
 	Tags []*DescribeBackupClientsResponseBodyClientsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The time when the HBR client was updated. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup client was updated. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the zone of the HBR client.
+	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the zone of the backup client.
+	//
+	// example:
+	//
+	// cn-hangzhou-f
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5440,34 +8439,87 @@ func (s *DescribeBackupClientsResponseBodyClients) SetZoneId(v string) *Describe
 }
 
 type DescribeBackupClientsResponseBodyClientsSettings struct {
+	// Indicates whether alerts are generated for partially completed jobs. This parameter is valid only for on-premises file backup and ECS file backup.
+	//
+	// example:
+	//
+	// false
+	AlertOnPartialComplete *bool `json:"AlertOnPartialComplete,omitempty" xml:"AlertOnPartialComplete,omitempty"`
 	// The type of the endpoint on the data plane. Valid values:
 	//
-	// *   **PUBLIC**: Internet
-	// *   **VPC**: virtual private cloud (VPC)
-	// *   **CLASSIC**: classic network
+	// 	- **PUBLIC**: Internet
+	//
+	// 	- **VPC**: virtual private cloud (VPC)
+	//
+	// 	- **CLASSIC**: classic network
+	//
+	// example:
+	//
+	// VPC
 	DataNetworkType *string `json:"DataNetworkType,omitempty" xml:"DataNetworkType,omitempty"`
 	// The proxy configuration on the data plane. Valid values:
 	//
-	// *   **DISABLE**: The proxy is not used.
-	// *   \*\*USE_CONTROL_PROXY \*\* (default value): The configuration is the same as that on the control plane.
-	// *   **CUSTOM**: The configuration is customized (HTTP).
+	// 	- **DISABLE**: The proxy is not used.
+	//
+	// 	- **USE_CONTROL_PROXY*	- (default): The configuration is the same as that on the control plane.
+	//
+	// 	- **CUSTOM**: The configuration is customized (HTTP).
+	//
+	// example:
+	//
+	// USE_CONTROL_PROXY
 	DataProxySetting *string `json:"DataProxySetting,omitempty" xml:"DataProxySetting,omitempty"`
 	// The number of CPU cores used by a single backup job. The value 0 indicates that the number is unlimited.
+	//
+	// example:
+	//
+	// 1
 	MaxCpuCore *string `json:"MaxCpuCore,omitempty" xml:"MaxCpuCore,omitempty"`
+	// The maximum memory that can be used by the client. Unit: bytes. Only V2.13.0 and later are supported.
+	//
+	// example:
+	//
+	// 0
+	MaxMemory *int64 `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
 	// The number of concurrent backup jobs. The value 0 indicates that the number is unlimited.
+	//
+	// example:
+	//
+	// 1
 	MaxWorker *string `json:"MaxWorker,omitempty" xml:"MaxWorker,omitempty"`
 	// The custom host IP address of the proxy server on the data plane.
+	//
+	// example:
+	//
+	// 192.168.11.100
 	ProxyHost *string `json:"ProxyHost,omitempty" xml:"ProxyHost,omitempty"`
 	// The custom password of the proxy server on the data plane.
+	//
+	// example:
+	//
+	// ******
 	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
 	// The custom host port of the proxy server on the data plane.
+	//
+	// example:
+	//
+	// 3128
 	ProxyPort *int32 `json:"ProxyPort,omitempty" xml:"ProxyPort,omitempty"`
 	// The custom username of the proxy server on the data plane.
+	//
+	// example:
+	//
+	// user
 	ProxyUser *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
 	// Indicates whether data on the data plane is transmitted over HTTPS. Valid values:
 	//
-	// *   true: Data is transmitted over HTTPS.
-	// *   false: Data is transmitted over HTTP.
+	// 	- true: Data is transmitted over HTTPS.
+	//
+	// 	- false: Data is transmitted over HTTP.
+	//
+	// example:
+	//
+	// false
 	UseHttps *string `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
 }
 
@@ -5477,6 +8529,11 @@ func (s DescribeBackupClientsResponseBodyClientsSettings) String() string {
 
 func (s DescribeBackupClientsResponseBodyClientsSettings) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBackupClientsResponseBodyClientsSettings) SetAlertOnPartialComplete(v bool) *DescribeBackupClientsResponseBodyClientsSettings {
+	s.AlertOnPartialComplete = &v
+	return s
 }
 
 func (s *DescribeBackupClientsResponseBodyClientsSettings) SetDataNetworkType(v string) *DescribeBackupClientsResponseBodyClientsSettings {
@@ -5491,6 +8548,11 @@ func (s *DescribeBackupClientsResponseBodyClientsSettings) SetDataProxySetting(v
 
 func (s *DescribeBackupClientsResponseBodyClientsSettings) SetMaxCpuCore(v string) *DescribeBackupClientsResponseBodyClientsSettings {
 	s.MaxCpuCore = &v
+	return s
+}
+
+func (s *DescribeBackupClientsResponseBodyClientsSettings) SetMaxMemory(v int64) *DescribeBackupClientsResponseBodyClientsSettings {
+	s.MaxMemory = &v
 	return s
 }
 
@@ -5525,17 +8587,29 @@ func (s *DescribeBackupClientsResponseBodyClientsSettings) SetUseHttps(v string)
 }
 
 type DescribeBackupClientsResponseBodyClientsTags struct {
-	// The tag key of the backup vault. Valid values of N: 1 to 20.
+	// The tag key of the backup vault. Valid values of N: 1 to 20
 	//
-	// *   The tag key cannot start with `aliyun` or `acs:`.
-	// *   The tag key cannot contain `http://` or `https://`.
-	// *   The tag key cannot be an empty string.
+	// 	- The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// 	- The tag key cannot contain `http://` or `https://`.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the backup vault. Valid values of N: 1 to 20.
+	// The tag value of the backup vault. Valid values of N: 1 to 20
 	//
-	// *   The tag value cannot start with `aliyun` or `acs:`.
-	// *   The tag value cannot contain `http://` or `https://`.
-	// *   The tag value cannot be an empty string.
+	// 	- The tag value cannot start with `aliyun` or `acs:`.
+	//
+	// 	- The tag value cannot contain `http://` or `https://`.
+	//
+	// 	- The tag value cannot be an empty string.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5558,9 +8632,9 @@ func (s *DescribeBackupClientsResponseBodyClientsTags) SetValue(v string) *Descr
 }
 
 type DescribeBackupClientsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBackupClientsResponse) String() string {
@@ -5590,22 +8664,44 @@ type DescribeBackupJobs2Request struct {
 	// The keys in the filter.
 	Filters []*DescribeBackupJobs2RequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
-	// *   **ASCEND**: sorts the results in ascending order
-	// *   **DESCEND** (default value): sorts the results in descending order
+	// 	- **ASCEND**: sorts the results in ascending order
+	//
+	// 	- **DESCEND*	- (default value): sorts the results in descending order
+	//
+	// example:
+	//
+	// DESCEND
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: Elastic Compute Service (ECS) files
-	// *   **OSS**: Object Storage Service (OSS) buckets
-	// *   **NAS**: Apsara File Storage NAS file systems
-	// *   **OTS**: Tablestore instances
-	// *   **UDM_ECS**: ECS instances
-	// *   **UDM_ECS_DISK**: ECS disks
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS file systems
+	//
+	// 	- **OTS**: Tablestore instances
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// 	- **UDM_ECS_DISK**: ECS disks
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -5645,30 +8741,55 @@ func (s *DescribeBackupJobs2Request) SetSourceType(v string) *DescribeBackupJobs
 type DescribeBackupJobs2RequestFilters struct {
 	// The key in the filter. Valid values:
 	//
-	// *   **RegionId**: the ID of a region
-	// *   **PlanId**: the ID of a backup plan
-	// *   **JobId**: the ID of a backup job
-	// *   **VaultId**: the ID of a backup vault
-	// *   **InstanceId**: the ID of an ECS instance
-	// *   **Bucket**: the name of an OSS bucket
-	// *   **FileSystemId**: the ID of a file system
-	// *   **Status**: the status of a backup job
-	// *   **CreatedTime**: the start time of a backup job
-	// *   **CompleteTime**: the end time of a backup job
-	// *   **InstanceName**: the name of a Tablestore instance
+	// 	- **RegionId**: the ID of a region
+	//
+	// 	- **PlanId**: the ID of a backup plan
+	//
+	// 	- **JobId**: the ID of a backup job
+	//
+	// 	- **VaultId**: the ID of a backup vault
+	//
+	// 	- **InstanceId**: the ID of an ECS instance
+	//
+	// 	- **Bucket**: the name of an OSS bucket
+	//
+	// 	- **FileSystemId**: the ID of a file system
+	//
+	// 	- **Status**: the status of a backup job
+	//
+	// 	- **CreatedTime**: the start time of a backup job
+	//
+	// 	- **CompleteTime**: the end time of a backup job
+	//
+	// 	- **InstanceName**: the name of a Tablestore instance
+	//
+	// example:
+	//
+	// VaultId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The matching method. Default value: IN. This parameter specifies the operator that you want to use to match a key and a value in the filter. Valid values:
 	//
-	// *   **EQUAL**: equal to
-	// *   **NOT_EQUAL**: not equal to
-	// *   **GREATER_THAN**: greater than
-	// *   **GREATER_THAN_OR_EQUAL**: greater than or equal to
-	// *   **LESS_THAN**: less than
-	// *   **LESS_THAN_OR_EQUAL**: less than or equal to
-	// *   **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
-	// *   **IN**: specifies an array as a collection. The results must fall within the collection.
+	// 	- **EQUAL**: equal to
 	//
-	// > If you specify the **CompleteTime** parameter as a key to query backup jobs, you cannot use the IN operator to perform a match.
+	// 	- **NOT_EQUAL**: not equal to
+	//
+	// 	- **GREATER_THAN**: greater than
+	//
+	// 	- **GREATER_THAN_OR_EQUAL**: greater than or equal to
+	//
+	// 	- **LESS_THAN**: less than
+	//
+	// 	- **LESS_THAN_OR_EQUAL**: less than or equal to
+	//
+	// 	- **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
+	//
+	// 	- **IN**: specifies an array as a collection. The results must fall within the collection.
+	//
+	// > If you specify the **CompleteTime*	- parameter as a key to query backup jobs, you cannot use the IN operator to perform a match.
+	//
+	// example:
+	//
+	// IN
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The variable values of the filter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -5698,24 +8819,53 @@ func (s *DescribeBackupJobs2RequestFilters) SetValues(v []*string) *DescribeBack
 }
 
 type DescribeBackupJobs2ResponseBody struct {
-	// The returned backup jobs that meet the specified conditions.
+	// The backup jobs that meet the specified conditions.
 	BackupJobs *DescribeBackupJobs2ResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Struct"`
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of returned backup jobs that meet the specified conditions.
+	//
+	// example:
+	//
+	// 8
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5785,102 +8935,293 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobs) SetBackupJob(v []*DescribeBa
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
-	// The actual amount of data that is backed up after duplicates are removed. Unit: bytes.
+	// The actual amount of data that is backed up after the system removes duplicate files. Unit: bytes.
+	//
+	// example:
+	//
+	// 600
 	ActualBytes *int64 `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the actual number of objects that are backed up by the backup job.
+	// The number of files that are actually processed.
+	//
+	// example:
+	//
+	// 8
+	ActualFiles *int64 `json:"ActualFiles,omitempty" xml:"ActualFiles,omitempty"`
+	// The actual number of objects that are backed up by the backup job. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	//
+	// example:
+	//
+	// 6
 	ActualItems *int64 `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
-	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	// The backup type. Only **COMPLETE*	- may be returned, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the name of the OSS bucket that is backed up.
+	// The name of the OSS bucket that is backed up. This parameter is returned only if the value of **SourceType*	- is **OSS**.
+	//
+	// example:
+	//
+	// hbr-backup-oss
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	// The actual amount of data that is generated by incremental backups. Unit: bytes.
+	//
+	// example:
+	//
+	// 800
 	BytesDone *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
 	// The total amount of data that is backed up from the data source. Unit: bytes.
-	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the ID of the HBR client.
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The time when the backup job was completed. The value is a UNIX timestamp. Unit: seconds.
-	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the time when the file system was created. The value is a UNIX timestamp. Unit: seconds.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the backup job was created. The value is a UNIX timestamp. Unit: seconds.
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
-	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// example:
+	//
+	// 1000
+	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	// The configurations of the incremental file synchronization. This parameter is returned only for data synchronization.
+	//
+	// example:
+	//
+	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
+	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
+	// The ID of the backup client. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	//
+	// example:
+	//
+	// c-*********************
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The time when the backup job was complete. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1554347313
+	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the file system was created. This parameter is returned only if the value of **SourceType*	- is **NAS**. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1607436917
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the backup job was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1554347313
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// The backup type. Valid values:
+	//
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The data source details at the destination. This parameter is returned only for data synchronization.
+	//
+	// example:
+	//
+	// {\\"prefix\\":\\"/\\"}
+	DestDataSourceDetail *string `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
+	// The data source ID at the destination. This parameter is returned only for data synchronization.
+	//
+	// example:
+	//
+	// ds-000cov4ufudxklj24zdk
+	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
+	// The data source type at the destination. This parameter is returned only for data synchronization.
+	//
+	// example:
+	//
+	// OSS
+	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
 	// The details of the ECS instance backup job.
 	Detail *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
 	// The error message that is returned for the backup job.
+	//
+	// example:
+	//
+	// PARTIAL_COMPLETE
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	// The paths to the files that are excluded from the backup job. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**. The value can be up to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the ID of the NAS file system.
+	// The ID of the NAS file system. This parameter is returned only if the value of **SourceType*	- is **NAS**.
+	//
+	// example:
+	//
+	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// 仅SourceType=CONTAINER时返回，表示容器备份任务备份的集群标识。当集群类型为阿里云容器服务Kubernetes集群时，该值为Kubernetes集群ID。
+	// The number of files that have been processed.
+	//
+	// example:
+	//
+	// 9
+	FilesDone *int64 `json:"FilesDone,omitempty" xml:"FilesDone,omitempty"`
+	// The total number of files to be processed.
+	//
+	// example:
+	//
+	// 10
+	FilesTotal *int64 `json:"FilesTotal,omitempty" xml:"FilesTotal,omitempty"`
+	// The identifier of the cluster that is backed up in the container backup job. This parameter is returned only if the value of SourceType is CONTAINER. If the cluster is a Container Service for Kubernetes (ACK) cluster, the value of this parameter is the ACK cluster ID.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The paths to the files that are included in the backup job.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the ID of the ECS instance.
+	// The ID of the ECS instance. This parameter is returned only if the value of **SourceType*	- is **NAS**.
+	//
+	// example:
+	//
+	// i-*********************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the Tablestore instance.
+	//
+	// example:
+	//
+	// instancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the number of objects that are backed up.
+	// The number of objects that are backed up. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	//
+	// example:
+	//
+	// 8
 	ItemsDone *int64 `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the total number of objects in the data source.
+	// The total number of objects in the data source. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	//
+	// example:
+	//
+	// 10
 	ItemsTotal *int64 `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
 	// The ID of the backup job.
+	//
+	// example:
+	//
+	// job-000g********w7
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The name of the backup job.
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
 	//
-	// *   This parameter is available only for Windows ECS instances.
-	// *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-	// *   If you use VSS, you cannot back up data from multiple directories.
+	// example:
+	//
+	// jobname
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// Indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**.
+	//
+	// 	- This parameter is available only for Windows ECS instances.
+	//
+	// 	- A value of `["UseVSS":true]` indicates that the consistency between the source data and backup data is ensured while data changes occur in the source data.
+	//
+	// 	- If VSS is used, multiple directories cannot be backed up at a time.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details of the Tablestore instance.
 	OtsDetail *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
 	// The source paths.
 	Paths *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
 	// The ID of the backup plan.
+	//
+	// example:
+	//
+	// plan-20********35
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the prefix of objects that are backed up.
+	// The prefix of objects that are backed up. This parameter is returned only if the value of **SourceType*	- is **OSS**.
+	//
+	// example:
+	//
+	// example/
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The backup progress. For example, 10000 indicates that the progress is 100%.
+	// The backup progress. Valid values: 0 to 10000. For example, a value of 10000 indicates that the progress is 100%.
+	//
+	// example:
+	//
+	// 10000
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: ECS files
-	// *   **OSS**: OSS buckets
-	// *   **NAS**: NAS file systems
+	// 	- **ECS_FILE**: ECS file.
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **NAS**: NAS file system.
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The average speed at which data is backed up. Unit: KB/s.
+	//
+	// example:
+	//
+	// 500
 	Speed *int64 `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (`|`). A specified time range cannot overlap with another one.
+	// The throttling rules. This parameter is returned only if the value of **SourceType*	- is **ECS_FILE**. Format: `{start}:{end}:{bandwidth}`. Multiple throttling rules are separated by vertical bars (`|`). The time ranges of the throttling rules cannot overlap.
 	//
-	// *   **start**: the start hour.
-	// *   **end**: the end hour.
-	// *   **bandwidth**: the bandwidth. Unit: KB/s.
+	// 	- **start**: the start hour.
+	//
+	// 	- **end**: the end hour
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
+	// example:
+	//
+	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// The time when the backup job started. The value is a UNIX timestamp. Unit: seconds.
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the backup job. Valid values:
+	// The time when the backup job started. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// *   **COMPLETE**: The backup job is completed.
-	// *   **PARTIAL_COMPLETE**: The backup job is partially completed.
-	// *   **FAILED**: The backup job has failed.
+	// example:
+	//
+	// 1554347313
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The state of the backup job. Valid values:
+	//
+	// 	- **COMPLETE**
+	//
+	// 	- **PARTIAL_COMPLETE**
+	//
+	// 	- **FAILED**
+	//
+	// example:
+	//
+	// COMPLETE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of a table in the Tablestore instance.
+	// The name of the table in the Tablestore instance.
+	//
+	// example:
+	//
+	// table1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The time when the backup job was updated. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup job was last updated. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1554347313
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0006******q
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -5894,6 +9235,11 @@ func (s DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) GoString() string {
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetActualBytes(v int64) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
 	s.ActualBytes = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetActualFiles(v int64) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.ActualFiles = &v
 	return s
 }
 
@@ -5919,6 +9265,11 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetBytesDone(v int6
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetBytesTotal(v int64) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
 	s.BytesTotal = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetChangeListPath(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.ChangeListPath = &v
 	return s
 }
 
@@ -5957,6 +9308,21 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetCrossAccountUser
 	return s
 }
 
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetDestDataSourceDetail(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.DestDataSourceDetail = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetDestDataSourceId(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.DestDataSourceId = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetDestSourceType(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.DestSourceType = &v
+	return s
+}
+
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetDetail(v *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
 	s.Detail = v
 	return s
@@ -5974,6 +9340,16 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetExclude(v string
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetFileSystemId(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetFilesDone(v int64) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.FilesDone = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetFilesTotal(v int64) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.FilesTotal = &v
 	return s
 }
 
@@ -6089,22 +9465,55 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetVaultId(v string
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail struct {
 	// The information about the remote replication failure.
+	//
+	// example:
+	//
+	// ECS.CreatingSnapshot
 	DestinationNativeSnapshotErrorMessage *string `json:"DestinationNativeSnapshotErrorMessage,omitempty" xml:"DestinationNativeSnapshotErrorMessage,omitempty"`
 	// The ID of the remote replication snapshot.
+	//
+	// example:
+	//
+	// s-******************
 	DestinationNativeSnapshotId *string `json:"DestinationNativeSnapshotId,omitempty" xml:"DestinationNativeSnapshotId,omitempty"`
 	// The progress of the remote replication.
+	//
+	// example:
+	//
+	// 85
 	DestinationNativeSnapshotProgress *int32 `json:"DestinationNativeSnapshotProgress,omitempty" xml:"DestinationNativeSnapshotProgress,omitempty"`
-	// The status of the remote replication.
+	// The state of the remote replication.
+	//
+	// example:
+	//
+	// COMPLETE
 	DestinationNativeSnapshotStatus *string `json:"DestinationNativeSnapshotStatus,omitempty" xml:"DestinationNativeSnapshotStatus,omitempty"`
 	// The retention period of the remote replication backup.
+	//
+	// example:
+	//
+	// 30
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
 	// The ID of the remote replication backup.
+	//
+	// example:
+	//
+	// s-******************
 	DestinationSnapshotId *string `json:"DestinationSnapshotId,omitempty" xml:"DestinationSnapshotId,omitempty"`
 	// The mapping between snapshots and disks.
 	DiskNativeSnapshotIdList *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetailDiskNativeSnapshotIdList `json:"DiskNativeSnapshotIdList,omitempty" xml:"DiskNativeSnapshotIdList,omitempty" type:"Struct"`
 	// Indicates whether remote replication is enabled.
-	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	//
+	// example:
+	//
+	// true
+	DoCopy        *bool                  `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	InstanceInfos map[string]interface{} `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty"`
 	// The ID of the backup snapshot.
+	//
+	// example:
+	//
+	// s-******************
 	NativeSnapshotId *string `json:"NativeSnapshotId,omitempty" xml:"NativeSnapshotId,omitempty"`
 }
 
@@ -6153,6 +9562,11 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail) SetDiskNative
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail) SetDoCopy(v bool) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail {
 	s.DoCopy = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail) SetInstanceInfos(v map[string]interface{}) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail {
+	s.InstanceInfos = v
 	return s
 }
 
@@ -6231,9 +9645,9 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths) SetPath(v []*s
 }
 
 type DescribeBackupJobs2Response struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBackupJobs2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupJobs2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBackupJobs2Response) String() string {
@@ -6262,17 +9676,33 @@ func (s *DescribeBackupJobs2Response) SetBody(v *DescribeBackupJobs2ResponseBody
 type DescribeBackupPlansRequest struct {
 	// The filter.
 	Filters []*DescribeBackupPlansRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: Elastic Compute Service (ECS) files
-	// *   **OSS**: Object Storage Service (OSS) buckets
-	// *   **NAS**: Apsara File Storage NAS file systems
-	// *   **OTS**: Tablestore instances
-	// *   **UDM_ECS**: ECS instances
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS file systems
+	//
+	// 	- **OTS**: Tablestore instances
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -6307,15 +9737,29 @@ func (s *DescribeBackupPlansRequest) SetSourceType(v string) *DescribeBackupPlan
 type DescribeBackupPlansRequestFilters struct {
 	// The keys in the filter. Valid values:
 	//
-	// *   **regionId**: the ID of a region
-	// *   **planId**: the ID of a backup plan
-	// *   **sourceType**: the type of a data source
-	// *   **vaultId**: the ID of a backup vault
-	// *   **instanceName**: the name of an instance
-	// *   **instanceId**: the ID of an instance
-	// *   **planName**: the name of a backup plan
+	// 	- **regionId**: the ID of a region
+	//
+	// 	- **planId**: the ID of a backup plan
+	//
+	// 	- **sourceType**: the type of a data source
+	//
+	// 	- **vaultId**: the ID of a backup vault
+	//
+	// 	- **instanceName**: the name of an instance
+	//
+	// 	- **instanceId**: the ID of an instance
+	//
+	// 	- **planName**: the name of a backup plan
+	//
+	// example:
+	//
+	// vaultId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values that you want to match in the filter.
+	//
+	// example:
+	//
+	// ["v-*********************"]
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -6338,24 +9782,53 @@ func (s *DescribeBackupPlansRequestFilters) SetValues(v []*string) *DescribeBack
 }
 
 type DescribeBackupPlansResponseBody struct {
-	// The returned backup plans that meet the specified conditions.
+	// The queried backup plans.
 	BackupPlans *DescribeBackupPlansResponseBodyBackupPlans `json:"BackupPlans,omitempty" xml:"BackupPlans,omitempty" type:"Struct"`
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of returned backup plans that meet the specified conditions.
+	//
+	// example:
+	//
+	// 8
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6425,97 +9898,257 @@ func (s *DescribeBackupPlansResponseBodyBackupPlans) SetBackupPlan(v []*Describe
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
-	// The ID of the data source group for backup.
+	// The ID of the data source group.
+	//
+	// example:
+	//
+	// System-Database
 	BackupSourceGroupId *string `json:"BackupSourceGroupId,omitempty" xml:"BackupSourceGroupId,omitempty"`
 	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the name of the OSS bucket.
+	// This parameter is valid only when **SourceType*	- is set to **OSS**. This parameter indicates the name of the OSS bucket.
+	//
+	// example:
+	//
+	// hbr-backup-oss
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The ID of the client.
+	// The configurations of the incremental file synchronization. This parameter is returned only for data synchronization.
+	//
+	// example:
+	//
+	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
+	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
+	// The ID of the backup client.
+	//
+	// example:
+	//
+	// c-000ge4w*****1qb
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The ID of the client group.
+	//
+	// example:
+	//
+	// cl-000ht6o9******h
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the time when the file system was created. The value is a UNIX timestamp. Unit: seconds.
+	// This parameter is valid only when **SourceType*	- is set to **NAS**. This parameter indicates the time when the file system was created. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the backup plan was created. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup plan was created. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT
-	// *   CROSS_ACCOUNT
+	// 	- SELF_ACCOUNT
+	//
+	// 	- CROSS_ACCOUNT
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 1841642xxxxx9795
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The ID of the data source.
+	//
+	// example:
+	//
+	// ds-000ht6o9*****w61
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source details at the destination. This parameter is returned only for data synchronization.
+	//
+	// example:
+	//
+	// {\\"prefix\\":\\"/\\"}
+	DestDataSourceDetail *string `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
+	// The data source ID at the destination. This parameter is returned only for data synchronization.
+	//
+	// example:
+	//
+	// ds-*********************
+	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
+	// The data source type at the destination. This parameter is returned only for data synchronization.
+	//
+	// example:
+	//
+	// OSS
+	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
 	// The details about ECS instance backup.
+	//
+	// example:
+	//
+	// {\\"doCopy\\":true,\\"doBackup\\":false,\\"instanceName\\":\\"instance example\\",\\"appConsistent\\":false,\\"destinationRegionId\\":\\"cn-shanghai\\",\\"enableFsFreeze\\":true,\\"osNameEn\\":\\"Windows Server  2019 Data Center Edition 64bit Chinese Edition\\",\\"osName\\":\\"Windows Server  2019 Data Center Edition 64bit Chinese Edition\\",\\"diskIdList\\":[],\\"backupVaultId\\":\\"\\",\\"snapshotGroup\\":true,\\"destinationRetention\\":35,\\"platform\\":\\"Windows Server 2012\\",\\"timeoutInSeconds\\":60,\\"backupRetention\\":1,\\"osType\\":\\"windows\\",\\"preScriptPath\\":\\"\\",\\"postScriptPath\\":\\"\\",\\"enableWriters\\":true,\\"ecsDeleted\\":false}
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// Indicates whether the backup plan is disabled. Valid values:
 	//
-	// *   true: The backup plan is disabled.
-	// *   false: The backup plan is enabled.
+	// 	- true: The backup plan is disabled.
+	//
+	// 	- false: The backup plan is enabled.
+	//
+	// example:
+	//
+	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the backup job.
+	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the backup job.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the ID of the NAS file system.
+	// This parameter is valid only when **SourceType*	- is set to **NAS**. This parameter indicates the ID of the NAS file system.
+	//
+	// example:
+	//
+	// 00594
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are backed up.
+	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the paths to the files that are backed up.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// The ID of the group to which the instance belongs.
+	// The ID of the instance group.
+	//
+	// example:
+	//
+	// i-**
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the ID of the ECS instance.
+	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-*********************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the Tablestore instance.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether to enable the feature of keeping at least one backup version. Valid values:
 	//
-	// *   0: The feature is disabled.
-	// *   1: The feature is enabled.
+	// example:
+	//
+	// instancename
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Indicates whether the feature of keeping at least one backup version is enabled. Valid values:
+	//
+	// 	- 0: The feature is disabled.
+	//
+	// 	- 1: The feature is enabled.
+	//
+	// example:
+	//
+	// 0
 	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
+	// The latest execution job id of plan.
+	//
+	// example:
+	//
+	// job-12345678
+	LatestExecuteJobId *string `json:"LatestExecuteJobId,omitempty" xml:"LatestExecuteJobId,omitempty"`
+	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetail *DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
-	// The source paths. This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**.
+	// The source paths. This parameter is valid only when **SourceType*	- is set to **ECS_FILE**.
 	Paths *DescribeBackupPlansResponseBodyBackupPlansBackupPlanPaths `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
 	// The ID of the backup plan.
+	//
+	// example:
+	//
+	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The name of the backup plan.
+	//
+	// example:
+	//
+	// planname
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the prefix of objects that are backed up.
+	// This parameter is valid only when **SourceType*	- is set to **OSS**. This parameter indicates the prefix of the objects that are backed up.
+	//
+	// example:
+	//
+	// oss-prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The list of backup resources. This parameter is returned only for disk backup.
+	// The backup resources. This parameter is valid only for disk backup.
 	Resources *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// The retention period of the backup data. Unit: days.
-	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The list of backup policies. This parameter is returned only for disk backup.
-	Rules *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// *   **startTime**: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
-	// *   **interval**: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of one hour. P1D indicates an interval of one day.
+	// example:
+	//
+	// 7
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The backup policies. This parameter is valid only for disk backup.
+	Rules *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified by `{startTime}` and the subsequent backup jobs at an interval that is specified by `{interval}`. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	//
+	// 	- **startTime**: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+	//
+	// 	- **interval**: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: ECS files
-	// *   **OSS**: OSS buckets
-	// *   **NAS**: NAS file systems
-	// *   **OTS**: Tablestore instances
-	// *   **UDM_ECS**: ECS instances
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the throttling rules. Format: `{start}|{end}|{bandwidth}`. Multiple throttling rules are separated with vertical bars (`|`). A specified time range cannot overlap with another one.
+	// 	- **ECS_FILE**: ECS files
 	//
-	// *   start: the start hour.
-	// *   end: the end hour.
-	// *   bandwidth: the bandwidth. Unit: KB/s.
+	// 	- **OSS**: OSS buckets
+	//
+	// 	- **NAS**: NAS file systems
+	//
+	// 	- **OTS**: Tablestore instances
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the throttling rules. Format: `{start}|{end}|{bandwidth}`. Multiple throttling rules are separated with vertical bars (`|`). A time range cannot overlap with another one.
+	//
+	// 	- start: the start hour.
+	//
+	// 	- end: the end hour.
+	//
+	// 	- bandwidth: the bandwidth. Unit: KB.
+	//
+	// example:
+	//
+	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 	// The free trial information.
 	TrialInfo *DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
-	// The time when the backup plan was updated. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup plan was updated. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -6539,6 +10172,11 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetBackupType(v s
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetBucket(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.Bucket = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetChangeListPath(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.ChangeListPath = &v
 	return s
 }
 
@@ -6579,6 +10217,21 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCrossAccountUs
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetDataSourceId(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.DataSourceId = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetDestDataSourceDetail(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.DestDataSourceDetail = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetDestDataSourceId(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.DestDataSourceId = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetDestSourceType(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.DestSourceType = &v
 	return s
 }
 
@@ -6624,6 +10277,11 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetInstanceName(v
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetKeepLatestSnapshots(v int64) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.KeepLatestSnapshots = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetLatestExecuteJobId(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.LatestExecuteJobId = &v
 	return s
 }
 
@@ -6773,10 +10431,22 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources) SetResou
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanResourcesResource struct {
 	// Additional information about the data source.
+	//
+	// example:
+	//
+	// {\\"doBackup\\":false,\\"diskName\\":\\"data_disk\\",\\"size\\":100,\\"type\\":\\"data\\",\\"category\\":\\"cloud_essd\\",\\"imageId\\":\\"\\",\\"device\\":\\"/dev/xvdb\\",\\"encrypted\\":false}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The ID of the data source.
+	//
+	// example:
+	//
+	// d-j6cgioir6m******lu4
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the data source. Valid value: **UDM_DISK**.
+	//
+	// example:
+	//
+	// UDMDISK
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -6822,25 +10492,62 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules) SetRule(v []
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule struct {
 	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The ID of the region where the remote backup vault resides.
+	// The ID of the region in which the remote backup vault resides.
+	//
+	// example:
+	//
+	// cn-shanghai
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// The retention period of the backup data. Unit: days.
+	// The retention period of the backup data in remote backup mode. Unit: days.
+	//
+	// example:
+	//
+	// 90
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
 	// Indicates whether the policy is disabled.
+	//
+	// example:
+	//
+	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// Indicates whether the snapshot data is backed up to the backup vault.
+	//
+	// example:
+	//
+	// false
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
 	// The retention period of the backup data. Unit: days.
-	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The ID of the policy.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the policy.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// *   `startTime`: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
-	// *   `interval`: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of one hour. P1D indicates an interval of one day.
+	// example:
+	//
+	// 90
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The policy ID.
+	//
+	// example:
+	//
+	// rule-0008i52rf0ulpni6kn6m
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The policy name.
+	//
+	// example:
+	//
+	// Disk Golden Rule
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified by `{startTime}` and the subsequent backup jobs at an interval that is specified by `{interval}`. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	//
+	// 	- `startTime`: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+	//
+	// 	- `interval`: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+	//
+	// example:
+	//
+	// I|1631685600|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
@@ -6899,12 +10606,28 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule) SetSched
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo struct {
 	// Indicates whether you are billed based on the pay-as-you-go method after the free trial ends.
+	//
+	// example:
+	//
+	// true
 	KeepAfterTrialExpiration *bool `json:"KeepAfterTrialExpiration,omitempty" xml:"KeepAfterTrialExpiration,omitempty"`
 	// The expiration time of the free trial.
+	//
+	// example:
+	//
+	// 1584597600
 	TrialExpireTime *int64 `json:"TrialExpireTime,omitempty" xml:"TrialExpireTime,omitempty"`
 	// The start time of the free trial.
+	//
+	// example:
+	//
+	// 1579413159
 	TrialStartTime *int64 `json:"TrialStartTime,omitempty" xml:"TrialStartTime,omitempty"`
 	// The time when the free-trial backup vault is released.
+	//
+	// example:
+	//
+	// 1594965600
 	TrialVaultReleaseTime *int64 `json:"TrialVaultReleaseTime,omitempty" xml:"TrialVaultReleaseTime,omitempty"`
 }
 
@@ -6937,9 +10660,9 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo) SetTrial
 }
 
 type DescribeBackupPlansResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBackupPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupPlansResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBackupPlansResponse) String() string {
@@ -6966,21 +10689,53 @@ func (s *DescribeBackupPlansResponse) SetBody(v *DescribeBackupPlansResponseBody
 }
 
 type DescribeClientsRequest struct {
-	// The time when the backup client was created.
+	// The ID of the Cloud Backup client.
+	//
+	// example:
+	//
+	// c-000ed600******6b0
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The alert settings. Valid value: INHERITED, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+	// The type of the Cloud Backup client. Valid value: **ECS_AGENT**, which indicates an SAP HANA backup client.
+	//
+	// example:
+	//
+	// ECS_AGENT
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The ID of the SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-0005ni1******2l87
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeClients**.
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the data source. Valid value:**HANA**, which indicates SAP HANA backup.
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmw6bxl7o5qyq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the backup client. Valid value:**ECS_AGENT**, which indicates an SAP HANA backup client.
+	// The type of the data source. Valid value:**HANA**, which indicates SAP HANA backup.
+	//
+	// example:
+	//
+	// HANA
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The ID of the instance.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0001vk0z******xdyr
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -7033,37 +10788,53 @@ func (s *DescribeClientsRequest) SetVaultId(v string) *DescribeClientsRequest {
 }
 
 type DescribeClientsResponseBody struct {
-	// The maximum version number of the backup client.
+	// The Cloud Backup clients.
 	Clients *DescribeClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Struct"`
-	// The type of the backup client. Valid value:**ECS_AGENT**, which indicates an SAP HANA backup client.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the backup vault.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the backup client.
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the ECS instance.
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the backup vault.
+	// The request ID.
+	//
+	// example:
+	//
+	// 17189276-465D-5EF3-8FFD-0FF51B5A41A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The network type. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **CLASSIC**: classic network
-	// *   **VPC**: virtual private cloud (VPC)
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The status of the backup client. Valid values:
+	// The total number of entries returned.
 	//
-	// *   **REGISTERED**: The backup client is registered.
-	// *   **ACTIVATED**: The backup client is enabled.
-	// *   **DEACTIVATED**: The backup client fails to be enabled.
-	// *   **INSTALLING**: The backup client is being installed.
-	// *   **INSTALL_FAILED**: The backup client fails to be installed.
-	// *   **NOT_INSTALLED**: The backup client is not installed.
-	// *   **UPGRADING**: The backup client is being upgraded.
-	// *   **UPGRADE_FAILED**: The backup client fails to be upgraded.
-	// *   **UNINSTALLING**: The backup client is being uninstalled.
-	// *   **UNINSTALL_FAILED**: The backup client fails to be uninstalled.
-	// *   **STOPPED**: The backup client is out of service.
-	// *   **UNKNOWN**: The backup client is disconnected.
+	// example:
+	//
+	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7133,34 +10904,133 @@ func (s *DescribeClientsResponseBodyClients) SetClient(v []*DescribeClientsRespo
 }
 
 type DescribeClientsResponseBodyClientsClient struct {
-	// The time when the backup client was updated. This value is a UNIX timestamp. Unit: seconds.
+	// The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
+	//
+	// example:
+	//
+	// INHERITED
 	AlertSetting *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
-	// The backup clients.
+	// The ID of the Cloud Backup client.
+	//
+	// example:
+	//
+	// c-00062uu******2fgj
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The ID of the SAP HANA instance.
+	// The client name.
+	//
+	// example:
+	//
+	// client-20211224-101226
 	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	// The ID of the request.
-	ClientType    *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The type of the Cloud Backup client. Valid value: **ECS_AGENT**, which indicates an SAP HANA backup client.
+	//
+	// example:
+	//
+	// ECS_AGENT
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The version number of the Cloud Backup client.
+	//
+	// example:
+	//
+	// 1.11.16
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The version number of the backup client.
+	// The ID of the SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-0008c48frr******ncpk
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The time when the Cloud Backup client was created.
+	//
+	// example:
+	//
+	// 1554347313
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Queries the information about one or more backup clients that meet the specified conditions.
+	// The instance ID.
+	//
+	// example:
+	//
+	// i-wz9b6wya******n8yo
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	// The name of the ECS instance.
+	//
+	// example:
+	//
+	// swh-hbr
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	// The maximum version number of the Cloud Backup client.
+	//
+	// example:
+	//
+	// 1.11.23
 	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The network type. Valid values:
+	//
+	// 	- **CLASSIC**: the classic network
+	//
+	// 	- **VPC**: the virtual private cloud (VPC)
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The ID of the backup client.
+	// The status of the Cloud Backup client. Valid values:
+	//
+	// 	- **REGISTERED**: The backup client is registered.
+	//
+	// 	- **ACTIVATED**: The backup client is activated.
+	//
+	// 	- **DEACTIVATED**: The backup client fails to be activated.
+	//
+	// 	- **INSTALLING**: The backup client is being installed.
+	//
+	// 	- **INSTALL_FAILED**: The backup client fails to be installed.
+	//
+	// 	- **NOT_INSTALLED**: The backup client is not installed.
+	//
+	// 	- **UPGRADING**: The backup client is being upgraded.
+	//
+	// 	- **UPGRADE_FAILED**: The backup client fails to be upgraded.
+	//
+	// 	- **UNINSTALLING**: The backup client is being uninstalled.
+	//
+	// 	- **UNINSTALL_FAILED**: The backup client fails to be uninstalled.
+	//
+	// 	- **STOPPED**: The backup client is out of service.
+	//
+	// 	- **UNKNOWN**: The backup client is disconnected.
+	//
+	// example:
+	//
+	// ACTIVATED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of entries returned per page. Valid values: 1 to 99. Default value: 10.
-	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
-	UpdatedTime   *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// The name of the backup client.
-	UseHttps *bool `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
 	// The status information.
+	//
+	// example:
+	//
+	// HANA_NOT_SUPPORT
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// The time when the Cloud Backup client was updated. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// Indicates whether data is transmitted over HTTPS. Valid values:
+	//
+	// 	- true: Data is transmitted over HTTPS.
+	//
+	// 	- false: Data is transmitted over HTTP.
+	//
+	// example:
+	//
+	// false
+	UseHttps *bool `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-00029mx6o******n85lg
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -7253,9 +11123,9 @@ func (s *DescribeClientsResponseBodyClientsClient) SetVaultId(v string) *Describ
 }
 
 type DescribeClientsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeClientsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeClientsResponse) String() string {
@@ -7282,13 +11152,29 @@ func (s *DescribeClientsResponse) SetBody(v *DescribeClientsResponseBody) *Descr
 }
 
 type DescribeContainerClusterRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
+	//
+	// example:
+	//
+	// cc-000*************hg9
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The identifier of container cluster.
+	// The identifier of the container cluster. For a Container Service for Kubernetes (ACK) cluster, specify the cluster ID.
+	//
+	// example:
+	//
+	// cca*******************************87a
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -7324,21 +11210,50 @@ type DescribeContainerClusterResponseBody struct {
 	// The information of clusters.
 	Clusters []*DescribeContainerClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CC94B755-C3C2-5B9D-BD77-E0FE819A4DB2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 8
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7393,26 +11308,61 @@ func (s *DescribeContainerClusterResponseBody) SetTotalCount(v int64) *DescribeC
 type DescribeContainerClusterResponseBodyClusters struct {
 	// The status of the client. Valid values:
 	//
-	// *   **MISS**: The client is disconnected.
-	// *   **UNKNOWN**: The client is in an unknown state.
-	// *   **READY**: The client is ready.
+	// 	- **MISS**: The client is disconnected.
+	//
+	// 	- **UNKNOWN**: The client is in an unknown state.
+	//
+	// 	- **READY**: The client is ready.
+	//
+	// example:
+	//
+	// READY
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// cl-0006gwppd0jtttpmb0ri
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The type of the cluster. Valid value: ACK, which indicates ACK clusters.
+	//
+	// example:
+	//
+	// ACK
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// description ack pv backup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The identifier of the cluster.
+	//
+	// example:
+	//
+	// c5bbd0931a30947f4ab85efd19380a72d
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// ack_pv_backup_location
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the cluster. Valid values:
 	//
-	// *   **CLASSIC**: the classic network
-	// *   **VPC**: virtual private cloud (VPC)
+	// 	- **CLASSIC**: the classic network
+	//
+	// 	- **VPC**: virtual private cloud (VPC)
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The token that is used to register the Hybrid Backup Recovery (HBR) client in the cluster.
+	//
+	// example:
+	//
+	// eyJhY2Nvd******A/VnZpgXQC5A==
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -7465,9 +11415,9 @@ func (s *DescribeContainerClusterResponseBodyClusters) SetToken(v string) *Descr
 }
 
 type DescribeContainerClusterResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeContainerClusterResponse) String() string {
@@ -7494,8 +11444,18 @@ func (s *DescribeContainerClusterResponse) SetBody(v *DescribeContainerClusterRe
 }
 
 type DescribeCrossAccountsRequest struct {
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeCrossAccountsRequest) String() string {
@@ -7517,14 +11477,54 @@ func (s *DescribeCrossAccountsRequest) SetPageSize(v int32) *DescribeCrossAccoun
 }
 
 type DescribeCrossAccountsResponseBody struct {
-	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the accounts used in cross-account backup.
 	CrossAccounts *DescribeCrossAccountsResponseBodyCrossAccounts `json:"CrossAccounts,omitempty" xml:"CrossAccounts,omitempty" type:"Struct"`
-	Message       *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount    *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 22
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCrossAccountsResponseBody) String() string {
@@ -7593,13 +11593,48 @@ func (s *DescribeCrossAccountsResponseBodyCrossAccounts) SetCrossAccount(v []*De
 }
 
 type DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount struct {
-	Alias                *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	CreatedTime          *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The account alias. The value can be up to 32 bits in length.
+	//
+	// example:
+	//
+	// content
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The time when the account was created. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1654570439
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	UpdatedTime          *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 15897534xxxxx625
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The ID of the backup type.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the current account.
+	//
+	// example:
+	//
+	// 184164xxxxx49795
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The time when the account information was updated. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1640157098
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) String() string {
@@ -7646,9 +11681,9 @@ func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetUpdatedT
 }
 
 type DescribeCrossAccountsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCrossAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCrossAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCrossAccountsResponse) String() string {
@@ -7675,21 +11710,43 @@ func (s *DescribeCrossAccountsResponse) SetBody(v *DescribeCrossAccountsResponse
 }
 
 type DescribeHanaBackupPlansRequest struct {
-	// The backup prefix.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the backup plan.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The backup type. Valid values:
-	//
-	// *   COMPLETE: full backup
-	// *   INCREMENTAL: incremental backup
-	// *   DIFFERENTIAL: differential backup
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-000chxz******lz7bk
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// SYSTEMDB
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmvywqfey5njq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000i4lg4kz******ahl
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -7732,21 +11789,53 @@ func (s *DescribeHanaBackupPlansRequest) SetVaultId(v string) *DescribeHanaBacku
 }
 
 type DescribeHanaBackupPlansResponseBody struct {
-	// The name of the database.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the database.
-	HanaBackupPlans *DescribeHanaBackupPlansResponseBodyHanaBackupPlans `json:"HanaBackupPlans,omitempty" xml:"HanaBackupPlans,omitempty" type:"Struct"`
-	// The ID of the backup plan.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the resource group.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHanaBackupPlans**.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the backup plan.
+	HanaBackupPlans *DescribeHanaBackupPlansResponseBodyHanaBackupPlans `json:"HanaBackupPlans,omitempty" xml:"HanaBackupPlans,omitempty" type:"Struct"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F029C1C7-26B6-5ADD-A73E-D85CCD7C73A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the backup vault.
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 6
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7816,23 +11905,73 @@ func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlans) SetHanaBackupPlan(v
 }
 
 type DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan struct {
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	// The backup prefix.
+	//
+	// example:
+	//
+	// COMPLETE_DATA_BACKUP
 	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
-	// The ID of the request.
+	// The backup type. Valid values:
+	//
+	// 	- COMPLETE: full backup
+	//
+	// 	- INCREMENTAL: incremental backup
+	//
+	// 	- DIFFERENTIAL: differential backup
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+	// The ID of the SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-0002scknka*****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// SYSTEMDB
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// Queries one or more SAP HANA backup plans that meet the specified conditions.
-	Disabled *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	PlanId   *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// Indicates whether the backup plan is disabled. Valid values:
 	//
-	// *   true: The backup plan is disabled.
-	// *   false: The backup plan is enabled.
+	// 	- true: The backup plan is disabled.
+	//
+	// 	- false: The backup plan is enabled.
+	//
+	// example:
+	//
+	// false
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The ID of the backup plan.
+	//
+	// example:
+	//
+	// pl-0000tnyndg3ne5m4ubeu
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The name of the backup plan.
+	//
+	// example:
+	//
+	// plan-20220118-141153
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	//
+	// 	- startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+	//
+	// 	- interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000csihw82pqkd7hcjws
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -7890,9 +12029,9 @@ func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetVa
 }
 
 type DescribeHanaBackupPlansResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHanaBackupPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHanaBackupPlansResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHanaBackupPlansResponse) String() string {
@@ -7920,10 +12059,24 @@ func (s *DescribeHanaBackupPlansResponse) SetBody(v *DescribeHanaBackupPlansResp
 
 type DescribeHanaBackupSettingRequest struct {
 	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-00068btz******oku
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// SYSTEMDB
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000css******za5uyqr
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -7952,17 +12105,34 @@ func (s *DescribeHanaBackupSettingRequest) SetVaultId(v string) *DescribeHanaBac
 
 type DescribeHanaBackupSettingResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The backup settings.
 	HanaBackupSetting *DescribeHanaBackupSettingResponseBodyHanaBackupSetting `json:"HanaBackupSetting,omitempty" xml:"HanaBackupSetting,omitempty" type:"Struct"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9D0DB5BC-5071-5ADF-BCD1-14EBB0C17C54
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8001,29 +12171,64 @@ func (s *DescribeHanaBackupSettingResponseBody) SetSuccess(v bool) *DescribeHana
 
 type DescribeHanaBackupSettingResponseBodyHanaBackupSetting struct {
 	// The configuration file for catalog backup.
+	//
+	// example:
+	//
+	// /usr/sap/SID/SYS/global/hdb/opt/hdbconfig/param
 	CatalogBackupParameterFile *string `json:"CatalogBackupParameterFile,omitempty" xml:"CatalogBackupParameterFile,omitempty"`
 	// Indicates whether Backint is used to back up catalogs. Valid values:
 	//
-	// *   true: Backint is used to back up catalogs.
-	// *   false: Backint is not used to back up catalogs.
+	// 	- true: Backint is used to back up catalogs.
+	//
+	// 	- false: Backint is not used to back up catalogs.
+	//
+	// example:
+	//
+	// false
 	CatalogBackupUsingBackint *bool `json:"CatalogBackupUsingBackint,omitempty" xml:"CatalogBackupUsingBackint,omitempty"`
 	// The configuration file for data backup.
+	//
+	// example:
+	//
+	// /usr/sap/SID/SYS/global/hdb/opt/hdbconfig/param
 	DataBackupParameterFile *string `json:"DataBackupParameterFile,omitempty" xml:"DataBackupParameterFile,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// SYSTEMDB
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// Indicates whether automatic log backup is enabled. Valid values:
 	//
-	// *   **true**: Automatic log backup is enabled.
-	// *   **false**: Automatic log backup is disabled.
+	// 	- **true**: Automatic log backup is enabled.
+	//
+	// 	- **false**: Automatic log backup is disabled.
+	//
+	// example:
+	//
+	// true
 	EnableAutoLogBackup *bool `json:"EnableAutoLogBackup,omitempty" xml:"EnableAutoLogBackup,omitempty"`
 	// The configuration file for log backup.
+	//
+	// example:
+	//
+	// /usr/sap/SID/SYS/global/hdb/opt/hdbconfig/param
 	LogBackupParameterFile *string `json:"LogBackupParameterFile,omitempty" xml:"LogBackupParameterFile,omitempty"`
 	// The interval at which logs are backed up. Unit: seconds.
+	//
+	// example:
+	//
+	// 900
 	LogBackupTimeout *int64 `json:"LogBackupTimeout,omitempty" xml:"LogBackupTimeout,omitempty"`
 	// Indicates whether Backint is used to back up logs. Valid values:
 	//
-	// *   true: Backint is used to back up logs.
-	// *   false: Backint is not used to back up logs.
+	// 	- true: Backint is used to back up logs.
+	//
+	// 	- false: Backint is not used to back up logs.
+	//
+	// example:
+	//
+	// true
 	LogBackupUsingBackint *bool `json:"LogBackupUsingBackint,omitempty" xml:"LogBackupUsingBackint,omitempty"`
 }
 
@@ -8076,9 +12281,9 @@ func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetLogBackupUsi
 }
 
 type DescribeHanaBackupSettingResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHanaBackupSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHanaBackupSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHanaBackupSettingResponse) String() string {
@@ -8106,52 +12311,136 @@ func (s *DescribeHanaBackupSettingResponse) SetBody(v *DescribeHanaBackupSetting
 
 type DescribeHanaBackupsAsyncRequest struct {
 	// The ID of the SAP HANA instance.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The point in time to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_POINT_IN_TIME**. HBR restores the database to a state closest to the specified point in time.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The ID of the backup vault.
-	IncludeDifferential *bool `json:"IncludeDifferential,omitempty" xml:"IncludeDifferential,omitempty"`
-	// Specifies whether Backint is used. Valid values:
 	//
-	// *   true: Backint is used.
-	// *   false: Backint is not used.
-	IncludeIncremental *bool `json:"IncludeIncremental,omitempty" xml:"IncludeIncremental,omitempty"`
-	// The ID of the resource group.
-	IncludeLog *bool `json:"IncludeLog,omitempty" xml:"IncludeLog,omitempty"`
-	// The name of the database.
-	LogPosition *int64 `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-00098******yuqvu
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// BPD
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// Specifies whether to include differential backups in the query results. Valid values:
 	//
-	// *   true: includes differential backups.
-	// *   false: excludes differential backups.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHanaBackupsAsync**.
-	RecoveryPointInTime *int64 `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
+	// 	- true: includes differential backups.
+	//
+	// 	- false: excludes differential backups.
+	//
+	// example:
+	//
+	// false
+	IncludeDifferential *bool `json:"IncludeDifferential,omitempty" xml:"IncludeDifferential,omitempty"`
 	// Specifies whether to include incremental backups in the query results. Valid values:
 	//
-	// *   true: includes incremental backups.
-	// *   false: excludes incremental backups.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// 	- true: includes incremental backups.
+	//
+	// 	- false: excludes incremental backups.
+	//
+	// example:
+	//
+	// true
+	IncludeIncremental *bool `json:"IncludeIncremental,omitempty" xml:"IncludeIncremental,omitempty"`
+	// Specifies whether to include log backups in the query results. Valid values:
+	//
+	// 	- true: includes log backups.
+	//
+	// 	- false: excludes log backups.
+	//
+	// example:
+	//
+	// true
+	IncludeLog *bool `json:"IncludeLog,omitempty" xml:"IncludeLog,omitempty"`
+	// The log position to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_LOG_POSITION**.
+	//
+	// example:
+	//
+	// 0
+	LogPosition *int64 `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
 	// The recovery mode. Valid values:
 	//
-	// *   **RECOVERY_TO_MOST_RECENT**: restores the database to the recently available state to which the database has been backed up.
-	// *   **RECOVERY_TO_POINT_IN_TIME**: restores the database to a specified point in time.
-	// *   **RECOVERY_TO_SPECIFIC_BACKUP**: restores the database to a specified backup.
-	// *   **RECOVERY_TO_LOG_POSITION**: restores the database to a specified log position.
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the volume that you want to restore. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_LOG_POSITION**.
-	SourceClusterId *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
-	SystemCopy *bool `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
-	UseBackint *bool `json:"UseBackint,omitempty" xml:"UseBackint,omitempty"`
-	// The log position to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_LOG_POSITION**.
-	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// 	- **RECOVERY_TO_MOST_RECENT**: restores the database to the recently available state to which the database has been backed up.
+	//
+	// 	- **RECOVERY_TO_POINT_IN_TIME**: restores the database to a specified point in time.
+	//
+	// 	- **RECOVERY_TO_SPECIFIC_BACKUP**: restores the database to a specified backup.
+	//
+	// 	- **RECOVERY_TO_LOG_POSITION**: restores the database to a specified log position.
+	//
+	// example:
+	//
+	// RECOVERY_TO_SPECIFIC_BACKUP
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The point in time to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_POINT_IN_TIME**. Cloud Backup restores the database to a state closest to the specified point in time.
+	//
+	// example:
+	//
+	// 1649851200
+	RecoveryPointInTime *int64 `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmz7mced2ldhy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the source system. This parameter specifies the name of the source database that you want to restore. You must set the parameter in the `<Source database name>@SID` format.
+	//
+	// example:
+	//
+	// P01@HP1
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the source SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-0000g3m******5cj
+	SourceClusterId *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
+	// Specifies whether to restore the database to a different instance.
+	//
+	// 	- true: restores the database to a different instance.
+	//
+	// 	- false: restores the database within the same instance.
+	//
+	// example:
+	//
+	// true
+	SystemCopy *bool `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
+	// Specifies whether Backint is used. Valid values:
+	//
+	// 	- true: Backint is used.
+	//
+	// 	- false: Backint is not used.
+	//
+	// example:
+	//
+	// false
+	UseBackint *bool `json:"UseBackint,omitempty" xml:"UseBackint,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000270c******pi81
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// The ID of the volume that you want to restore. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_LOG_POSITION**.
+	//
+	// example:
+	//
+	// 0
 	VolumeId *int32 `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
 }
 
@@ -8249,14 +12538,40 @@ func (s *DescribeHanaBackupsAsyncRequest) SetVolumeId(v int32) *DescribeHanaBack
 }
 
 type DescribeHanaBackupsAsyncResponseBody struct {
-	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Queries one or more SAP HANA backups that meet the specified conditions.
+	// The request ID.
+	//
+	// example:
+	//
+	// 31F97233-8563-563D-8880-914B00EEA928
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	//
+	// example:
+	//
+	// t-0006xmbplrqebt9dhkth
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeHanaBackupsAsyncResponseBody) String() string {
@@ -8293,9 +12608,9 @@ func (s *DescribeHanaBackupsAsyncResponseBody) SetTaskId(v string) *DescribeHana
 }
 
 type DescribeHanaBackupsAsyncResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHanaBackupsAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHanaBackupsAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHanaBackupsAsyncResponse) String() string {
@@ -8322,15 +12637,37 @@ func (s *DescribeHanaBackupsAsyncResponse) SetBody(v *DescribeHanaBackupsAsyncRe
 }
 
 type DescribeHanaDatabasesRequest struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the service.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHanaDatabases**.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-000hpc******uv14x
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmw2azsegupmi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-00063fq******8xjr
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -8368,24 +12705,53 @@ func (s *DescribeHanaDatabasesRequest) SetVaultId(v string) *DescribeHanaDatabas
 }
 
 type DescribeHanaDatabasesResponseBody struct {
-	// The ID of the backup vault.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
-	HanaDatabases *DescribeHanaDatabasesResponseBodyHanaDatabases `json:"HanaDatabases,omitempty" xml:"HanaDatabases,omitempty" type:"Struct"`
-	// Indicates whether the database is started. Valid values:
+	// The response code. The status code 200 indicates that the request was successful.
 	//
-	// *   **YES**: The database is started.
-	// *   **NO**: The database is not started.
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about SAP HANA databases.
+	HanaDatabases *DescribeHanaDatabasesResponseBodyHanaDatabases `json:"HanaDatabases,omitempty" xml:"HanaDatabases,omitempty" type:"Struct"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The detailed information.
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.
+	// The request ID.
+	//
+	// example:
+	//
+	// DAAB6A29-34EB-5F56-962F-D5BDBFE8A5C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8455,14 +12821,45 @@ func (s *DescribeHanaDatabasesResponseBodyHanaDatabases) SetHanaDatabase(v []*De
 }
 
 type DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase struct {
+	// Indicates whether the database is started. Valid values:
+	//
+	// 	- **YES**: The database is started.
+	//
+	// 	- **NO**: The database is not started.
+	//
+	// example:
+	//
+	// YES
 	ActiveStatus *string `json:"ActiveStatus,omitempty" xml:"ActiveStatus,omitempty"`
-	// Queries the information about SAP HANA databases.
+	// The database name.
+	//
+	// example:
+	//
+	// SYSTEMDB
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	Detail       *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The ID of the request.
-	Host        *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The detailed information.
+	//
+	// example:
+	//
+	// master
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The hostname.
+	//
+	// example:
+	//
+	// izbp1jbf3zy******antqmz
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// indexserver
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The information about SAP HANA databases.
+	// The port number.
+	//
+	// example:
+	//
+	// 30013
 	SqlPort *int32 `json:"SqlPort,omitempty" xml:"SqlPort,omitempty"`
 }
 
@@ -8505,9 +12902,9 @@ func (s *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) SetSqlPort(
 }
 
 type DescribeHanaDatabasesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHanaDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHanaDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHanaDatabasesResponse) String() string {
@@ -8534,20 +12931,37 @@ func (s *DescribeHanaDatabasesResponse) SetBody(v *DescribeHanaDatabasesResponse
 }
 
 type DescribeHanaInstancesRequest struct {
-	// The tag value.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHanaInstances**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL). Valid values:
+	// The ID of the SAP HANA instance.
 	//
-	// *   true: The SAP HANA instance is connected over SSL.
-	// *   false: The SAP HANA instance is not connected over SSL.
+	// example:
+	//
+	// cl-0001zfc******50pr3
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekz24ikcjyqjkq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The tags of the SAP HANA instance.
 	Tag []*DescribeHanaInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The tag key.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000b0ov******6zs
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -8590,9 +13004,17 @@ func (s *DescribeHanaInstancesRequest) SetVaultId(v string) *DescribeHanaInstanc
 }
 
 type DescribeHanaInstancesRequestTag struct {
-	// The ID of the backup vault.
+	// The tag key.
+	//
+	// example:
+	//
+	// ace:rm:rgld
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// rg-acfmwutpyat2kwy
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8615,26 +13037,53 @@ func (s *DescribeHanaInstancesRequestTag) SetValue(v string) *DescribeHanaInstan
 }
 
 type DescribeHanaInstancesResponseBody struct {
-	// The status information.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	Hanas *DescribeHanaInstancesResponseBodyHanas `json:"Hanas,omitempty" xml:"Hanas,omitempty" type:"Struct"`
-	// The tags of the SAP HANA instance.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The status of the SAP HANA instance. Valid values:
+	// The response code. The status code 200 indicates that the request was successful.
 	//
-	// *   INITIALIZING: The instance is being initialized.
-	// *   INITIALIZED: The instance is registered.
-	// *   INVALID_HANA_NODE: The instance is invalid.
-	// *   INITIALIZE_FAILED: The client fails to be installed on the instance.
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the SAP HANA instances.
+	Hanas *DescribeHanaInstancesResponseBodyHanas `json:"Hanas,omitempty" xml:"Hanas,omitempty" type:"Struct"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the SAP HANA instance.
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The alert settings. Valid value: INHERITED, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+	// The request ID.
+	//
+	// example:
+	//
+	// 4003DD68-3C3C-5071-B4FC-631A6C1BAC1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The username of the SYSTEMDB database.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the backup vault.
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 21
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8704,27 +13153,113 @@ func (s *DescribeHanaInstancesResponseBodyHanas) SetHana(v []*DescribeHanaInstan
 }
 
 type DescribeHanaInstancesResponseBodyHanasHana struct {
-	// The ID of the request.
+	// The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
+	//
+	// example:
+	//
+	// INHERITED
 	AlertSetting *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
-	HanaName *string `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
 	// The ID of the SAP HANA instance.
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
-	InstanceNumber  *int32  `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the SSL certificate of the SAP HANA instance is verified.
-	Status        *int64                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusMessage *string                                         `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
-	Tags          *DescribeHanaInstancesResponseBodyHanasHanaTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
-	UseSsl *bool `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
-	// Queries one or more SAP HANA instances that meet the specified conditions.
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The tag key.
-	ValidateCertificate *bool `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
+	//
+	// example:
+	//
+	// cl-0004cf6g6******0yd7y
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// The backup type. Valid values:
+	//
+	// - **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
+	//
+	// - **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
+	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxx4625
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The name of the SAP HANA instance.
+	//
+	// example:
+	//
+	// HANA-DEV
+	HanaName *string `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
+	// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The instance number of the SAP HANA system.
+	//
+	// example:
+	//
+	// 00
+	InstanceNumber *int32 `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmvnf22m7itha
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the SAP HANA instance. Valid values:
+	//
+	// 	- INITIALIZING: The instance is being initialized.
+	//
+	// 	- INITIALIZED: The instance is registered.
+	//
+	// 	- INVALID_HANA_NODE: The instance is invalid.
+	//
+	// 	- INITIALIZE_FAILED: The client fails to be installed on the instance.
+	//
+	// example:
+	//
+	// INITIALIZED
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status information.
+	//
+	// example:
+	//
+	// INSTALL_CLIENT_FAILED
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// The tags of the SAP HANA instance.
+	Tags *DescribeHanaInstancesResponseBodyHanasHanaTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL). Valid values:
+	//
+	// 	- true: The SAP HANA instance is connected over SSL.
+	//
+	// 	- false: The SAP HANA instance is not connected over SSL.
+	//
+	// example:
+	//
+	// true
+	UseSsl *bool `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
+	// The username of the SYSTEMDB database.
+	//
+	// example:
+	//
+	// admin
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Indicates whether the SSL certificate of the SAP HANA instance is verified.
+	//
+	// example:
+	//
+	// false
+	ValidateCertificate *bool `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0000s974******1hl
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -8743,6 +13278,21 @@ func (s *DescribeHanaInstancesResponseBodyHanasHana) SetAlertSetting(v string) *
 
 func (s *DescribeHanaInstancesResponseBodyHanasHana) SetClusterId(v string) *DescribeHanaInstancesResponseBodyHanasHana {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetCrossAccountRoleName(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetCrossAccountType(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetCrossAccountUserId(v int64) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -8819,7 +13369,17 @@ func (s *DescribeHanaInstancesResponseBodyHanasHanaTags) SetTag(v []*DescribeHan
 }
 
 type DescribeHanaInstancesResponseBodyHanasHanaTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// ace:rm:rgld
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// rg-acfmwutpyat2kwy
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8842,9 +13402,9 @@ func (s *DescribeHanaInstancesResponseBodyHanasHanaTagsTag) SetValue(v string) *
 }
 
 type DescribeHanaInstancesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHanaInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHanaInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHanaInstancesResponse) String() string {
@@ -8871,33 +13431,73 @@ func (s *DescribeHanaInstancesResponse) SetBody(v *DescribeHanaInstancesResponse
 }
 
 type DescribeHanaRestoresRequest struct {
-	// Indicates whether the database is restored to a different instance. Valid values:
+	// The backup ID.
 	//
-	// *   true: The database is restored to a different instance.
-	// *   false: The database is restored within the same instance.
+	// example:
+	//
+	// 1632754800158
 	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-000b******soejg
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// SYSTEMDB
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm4ebtpkzx7zy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the restore job.
+	//
+	// example:
+	//
+	// r-0007o3vqfukfe92hvf13
+	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
 	// The status of the restore job. Valid values:
 	//
-	// *   **RUNNING**: The restore job is running.
-	// *   **COMPLETE**: The restore job is completed.
-	// *   **PARTIAL_COMPLETE**: The restore job is partially completed.
-	// *   **FAILED**: The restore job has failed.
-	// *   **CANCELED**: The restore job is canceled.
-	// *   **EXPIRED**: The restore job has timed out.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the database.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The information about restore jobs.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the source system. This parameter indicates the name of the source database that is restored. Format: `<Source database name>@SID`.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHanaRestores**.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the source SAP HANA instance.
-	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// 	- **RUNNING**: The job is running.
+	//
+	// 	- **COMPLETE**: The job is completed.
+	//
+	// 	- **PARTIAL_COMPLETE**: The job is partially completed.
+	//
+	// 	- **FAILED**: The job failed.
+	//
+	// 	- **CANCELED**: The job is canceled.
+	//
+	// 	- **EXPIRED**: The job timed out.
+	//
+	// example:
+	//
+	// COMPLETE
 	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The total number of returned entries.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000au6bq******mpu
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -8955,21 +13555,53 @@ func (s *DescribeHanaRestoresRequest) SetVaultId(v string) *DescribeHanaRestores
 }
 
 type DescribeHanaRestoresResponseBody struct {
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the backup vault.
+	// The information about restore jobs.
 	HanaRestore *DescribeHanaRestoresResponseBodyHanaRestore `json:"HanaRestore,omitempty" xml:"HanaRestore,omitempty" type:"Struct"`
-	// The ID of the backup.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The current recovery phase. This value is obtained from SAP HANA.
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the database.
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The log position to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_LOG_POSITION**.
+	// The request ID.
+	//
+	// example:
+	//
+	// 7DEFC897-8F05-5C05-912C-C9A9510FBFF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the restore job.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the backup vault.
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 19
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9039,76 +13671,207 @@ func (s *DescribeHanaRestoresResponseBodyHanaRestore) SetHanaRestores(v []*Descr
 }
 
 type DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	BackupID *int64 `json:"BackupID,omitempty" xml:"BackupID,omitempty"`
-	// Indicates whether a catalog backup is used to restore the database. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_SPECIFIC_BACKUP**. If the return value is false, HBR finds the backup file based on the specified prefix and then restores the backup file.
-	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
-	// The status of the restore job. Valid values:
+	// The backup ID.
 	//
-	// *   **RUNNING**: The restore job is running.
-	// *   **COMPLETE**: The restore job is completed.
-	// *   **PARTIAL_COMPLETE**: The restore job is partially completed.
-	// *   **FAILED**: The restore job has failed.
-	// *   **CANCELED**: The restore job is canceled.
-	// *   **EXPIRED**: The restore job has timed out.
-	CheckAccess *bool `json:"CheckAccess,omitempty" xml:"CheckAccess,omitempty"`
-	// The point in time to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_POINT_IN_TIME**. HBR restores the database to a state closest to the specified point in time.
-	ClearLog *bool `json:"ClearLog,omitempty" xml:"ClearLog,omitempty"`
-	// The ID of the database recovery.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Indicates whether all log entries are deleted from the log area after the log entries are restored. Valid values: true and false. If the return value is false, all log entries are deleted from the log area after the log entries are restored.
-	CurrentPhase *int32 `json:"CurrentPhase,omitempty" xml:"CurrentPhase,omitempty"`
+	// example:
+	//
+	// 1635315505
+	BackupID *int64 `json:"BackupID,omitempty" xml:"BackupID,omitempty"`
+	// The backup prefix.
+	//
+	// example:
+	//
+	// INC_DATA_BACKUP
+	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
 	// Indicates whether the differential backup and log backup are validated. Valid values:
 	//
-	// *   true: HBR checks whether the required differential backup and log backup are available before the restore job starts. If the differential backup or log backup is unavailable, HBR does not start the restore job.
-	// *   false: HBR does not check whether the required differential backup and log backup are available before the restore job starts.
-	CurrentProgress *int64 `json:"CurrentProgress,omitempty" xml:"CurrentProgress,omitempty"`
-	// The maximum progress. This value is obtained from SAP HANA.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The ID of the resource group.
-	DatabaseRestoreId *int64 `json:"DatabaseRestoreId,omitempty" xml:"DatabaseRestoreId,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	LogPosition *int64 `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
-	// The time when the restore job ends. This value is a UNIX timestamp. Unit: seconds.
-	MaxPhase    *int32 `json:"MaxPhase,omitempty" xml:"MaxPhase,omitempty"`
-	MaxProgress *int64 `json:"MaxProgress,omitempty" xml:"MaxProgress,omitempty"`
+	// 	- true: Cloud Backup checks whether the required differential backup and log backup are available before the restore job starts. If the differential backup or log backup is unavailable, Cloud Backup does not start the restore job.
+	//
+	// 	- false: Cloud Backup does not check whether the required differential backup and log backup are available before the restore job starts.
+	//
+	// example:
+	//
+	// true
+	CheckAccess *bool `json:"CheckAccess,omitempty" xml:"CheckAccess,omitempty"`
+	// Indicates whether all log entries are deleted from the log area after the log entries are restored. Valid values: true and false. If the return value is false, all log entries are deleted from the log area after the log entries are restored.
+	//
+	// example:
+	//
+	// true
+	ClearLog *bool `json:"ClearLog,omitempty" xml:"ClearLog,omitempty"`
 	// The ID of the SAP HANA instance that is restored.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The maximum recovery phase. This value is obtained from SAP HANA.
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The recovery status. This value is obtained from SAP HANA.
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Indicates whether a differential backup or an incremental backup is used to restore the database. Valid values: true and false. If the return value is true, HBR uses a differential backup or an incremental backup to restore the database. If the return value is false, HBR uses a log backup to restore the database.
-	ReachedTime *int64 `json:"ReachedTime,omitempty" xml:"ReachedTime,omitempty"`
-	// Queries one or more SAP HANA restore jobs that meet the specified conditions.
-	RecoveryPointInTime *int64 `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
-	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
-	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	//
+	// example:
+	//
+	// cl-000923yu******p00j4
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The current recovery phase. This value is obtained from SAP HANA.
+	//
+	// example:
+	//
+	// 2
+	CurrentPhase *int32 `json:"CurrentPhase,omitempty" xml:"CurrentPhase,omitempty"`
 	// The current progress. This value is obtained from SAP HANA.
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the backup.
-	SourceClusterId *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	CurrentProgress *int64 `json:"CurrentProgress,omitempty" xml:"CurrentProgress,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// BWD
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The ID of the database recovery.
+	//
+	// example:
+	//
+	// 1644038961030
+	DatabaseRestoreId *int64 `json:"DatabaseRestoreId,omitempty" xml:"DatabaseRestoreId,omitempty"`
+	// The time when the restore job ends. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1634356382
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The log position to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_LOG_POSITION**.
+	//
+	// example:
+	//
+	// 0
+	LogPosition *int64 `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
+	// The maximum recovery phase. This value is obtained from SAP HANA.
+	//
+	// example:
+	//
+	// 4
+	MaxPhase *int32 `json:"MaxPhase,omitempty" xml:"MaxPhase,omitempty"`
+	// The maximum progress. This value is obtained from SAP HANA.
+	//
+	// example:
+	//
+	// 1
+	MaxProgress *int64 `json:"MaxProgress,omitempty" xml:"MaxProgress,omitempty"`
 	// The details of the recovery phase.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the restore job.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the SAP HANA instance.
-	SystemCopy *bool `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
-	UseCatalog *bool `json:"UseCatalog,omitempty" xml:"UseCatalog,omitempty"`
-	// The time when the restore job starts. This value is a UNIX timestamp. Unit: seconds.
-	UseDelta *bool `json:"UseDelta,omitempty" xml:"UseDelta,omitempty"`
+	//
+	// example:
+	//
+	// SQL Error 448 - recovery could not be completed:
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The recovery mode. Valid values:
 	//
-	// *   **RECOVERY_TO_MOST_RECENT**: The database is restored to the recently available state to which the database has been backed up.
-	// *   **RECOVERY_TO_POINT_IN_TIME**: The database is restored to a specified point in time.
-	// *   **RECOVERY_TO_SPECIFIC_BACKUP**: The database is restored to a specified backup.
-	// *   **RECOVERY_TO_LOG_POSITION**: The database is restored to a specified log position.
-	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// 	- **RECOVERY_TO_MOST_RECENT**: The database is restored to the recently available state to which the database has been backed up.
+	//
+	// 	- **RECOVERY_TO_POINT_IN_TIME**: The database is restored to a specified point in time.
+	//
+	// 	- **RECOVERY_TO_SPECIFIC_BACKUP**: The database is restored to a specified backup.
+	//
+	// 	- **RECOVERY_TO_LOG_POSITION**: The database is restored to a specified log position.
+	//
+	// example:
+	//
+	// RECOVERY_TO_SPECIFIC_BACKUP
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The recovery phase.
+	//
+	// example:
+	//
+	// restart
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	// The point in time at which the database is restored.
+	//
+	// example:
+	//
+	// 1635315505
+	ReachedTime *int64 `json:"ReachedTime,omitempty" xml:"ReachedTime,omitempty"`
+	// The point in time to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_POINT_IN_TIME**. Cloud Backup restores the database to a state closest to the specified point in time.
+	//
+	// example:
+	//
+	// 1649851200
+	RecoveryPointInTime *int64 `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
+	// The ID of the restore job.
+	//
+	// example:
+	//
+	// r-000c1en183ayn9sesgqh
+	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	// The name of the source system. This parameter indicates the name of the source database that is restored. Format: `<Source database name>@SID`.
+	//
+	// example:
+	//
+	// PRD@H4P
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the source SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-0000g3mvy******5cj
+	SourceClusterId *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
+	// The time when the restore job starts. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1636970413
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The recovery status. This value is obtained from SAP HANA.
+	//
+	// example:
+	//
+	// successful
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the restore job. Valid values:
+	//
+	// 	- **RUNNING**: The job is running.
+	//
+	// 	- **COMPLETE**: The job is completed.
+	//
+	// 	- **PARTIAL_COMPLETE**: The job is partially completed.
+	//
+	// 	- **FAILED**: The job failed.
+	//
+	// 	- **CANCELED**: The job is canceled.
+	//
+	// 	- **EXPIRED**: The job timed out.
+	//
+	// example:
+	//
+	// COMPLETE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the database is restored to a different instance. Valid values:
+	//
+	// 	- true: The database is restored to a different instance.
+	//
+	// 	- false: The database is restored within the same instance.
+	//
+	// example:
+	//
+	// true
+	SystemCopy *bool `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
+	// Indicates whether a catalog backup is used to restore the database. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_SPECIFIC_BACKUP**. If the return value is false, Cloud Backup finds the backup file based on the specified prefix and then restores the backup file.
+	//
+	// example:
+	//
+	// false
+	UseCatalog *bool `json:"UseCatalog,omitempty" xml:"UseCatalog,omitempty"`
+	// Indicates whether a differential backup or an incremental backup is used to restore the database. Valid values: true and false. If the return value is true, Cloud Backup uses a differential backup or an incremental backup to restore the database. If the return value is false, Cloud Backup uses a log backup to restore the database.
+	//
+	// example:
+	//
+	// true
+	UseDelta *bool `json:"UseDelta,omitempty" xml:"UseDelta,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000g9acf******gta
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// The ID of the volume that is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_LOG_POSITION**.
+	//
+	// example:
+	//
+	// 0
 	VolumeId *int32 `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
 }
 
@@ -9266,9 +14029,9 @@ func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetVolumeId(v 
 }
 
 type DescribeHanaRestoresResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHanaRestoresResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHanaRestoresResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHanaRestoresResponse) String() string {
@@ -9295,14 +14058,27 @@ func (s *DescribeHanaRestoresResponse) SetBody(v *DescribeHanaRestoresResponseBo
 }
 
 type DescribeHanaRetentionSettingRequest struct {
-	// Indicates whether the backup is permanently retained. Valid values:
+	// The ID of the SAP HANA instance.
 	//
-	// *   true: The backup is permanently retained.
-	// *   false: The backup is retained for the specified number of days.
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-0002ys1i******wwtf
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The database name.
+	//
+	// example:
+	//
+	// C4P
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The name of the database.
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-000ii8t******ntrt2
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -9330,26 +14106,77 @@ func (s *DescribeHanaRetentionSettingRequest) SetVaultId(v string) *DescribeHana
 }
 
 type DescribeHanaRetentionSettingResponseBody struct {
+	// The ID of the SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-0003jyv******fsku5m
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the request.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of days for which the backup is retained. If the value of the Disabled parameter is false, the backup is retained for the number of days specified by this parameter.
+	// The database name.
+	//
+	// example:
+	//
+	// Q01
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The name of the database.
-	Disabled *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHanaRetentionSetting**.
+	// Indicates whether the backup is permanently retained. Valid values:
+	//
+	// 	- true: The backup is permanently retained.
+	//
+	// 	- false: The backup is retained for the specified number of days.
+	//
+	// example:
+	//
+	// false
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 280DD872-EE25-52E8-9CB4-491067173DD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Queries the backup retention period of an SAP HANA database.
+	// The number of days for which the backup is retained. If the value of the Disabled parameter is false, the backup is retained for the number of days specified by this parameter.
+	//
+	// example:
+	//
+	// 3650
 	RetentionDays *int64 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	// The ID of the backup vault.
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// The policy to update the retention period. Format: `I|{startTime}|{interval}`, which indicates that the retention period is updated at an interval of {interval} starting from {startTime}.
 	//
-	// *   startTime: the time at which the system starts to update the retention period. The time follows the UNIX time format. Unit: seconds.
-	// *   interval: the interval at which the system updates the retention period. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+	// 	- startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+	//
+	// 	- interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+	//
+	// example:
+	//
+	// I|0|P1D
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0006wkn7******zkn
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -9412,9 +14239,9 @@ func (s *DescribeHanaRetentionSettingResponseBody) SetVaultId(v string) *Describ
 }
 
 type DescribeHanaRetentionSettingResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHanaRetentionSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHanaRetentionSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHanaRetentionSettingResponse) String() string {
@@ -9441,23 +14268,55 @@ func (s *DescribeHanaRetentionSettingResponse) SetBody(v *DescribeHanaRetentionS
 }
 
 type DescribeOtsTableSnapshotsRequest struct {
-	// 用于跨账号备份的原账号RAM中创建的角色名。
+	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// 跨账号备份类型。支持：
-	// - SELF_ACCOUNT：本账号备份
-	// - CROSS_ACCOUNT：跨账号备份
+	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	//
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// 用于跨账号备份的原账号Uid。
+	// The UID of the source account used for cross-account backup.
+	//
+	// example:
+	//
+	// 144015xxxxx98732
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The list of snapshot IDs.
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Limit     *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The end time of the backup. The value must be a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652068250881
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of rows that you want the current query to return.
+	//
+	// example:
+	//
+	// 100
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The token that is required to obtain the next page of backup snapshots.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The Tablestore instances that are backed up.
 	OtsInstances []*DescribeOtsTableSnapshotsRequestOtsInstances `json:"OtsInstances,omitempty" xml:"OtsInstances,omitempty" type:"Repeated"`
-	// The number of backup snapshots that are displayed on the current page.
+	// The snapshot IDs.
 	SnapshotIds []*string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty" type:"Repeated"`
-	// The end time of the backup. This value must be a UNIX timestamp. Unit: seconds.
+	// The start time of the backup. The value must be a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1611109271630
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9515,8 +14374,14 @@ func (s *DescribeOtsTableSnapshotsRequest) SetStartTime(v int64) *DescribeOtsTab
 }
 
 type DescribeOtsTableSnapshotsRequestOtsInstances struct {
-	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	TableNames   []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+	// The name of the Tablestore instance.
+	//
+	// example:
+	//
+	// instancename
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The names of the tables in the Tablestore instance.
+	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOtsTableSnapshotsRequestOtsInstances) String() string {
@@ -9538,13 +14403,48 @@ func (s *DescribeOtsTableSnapshotsRequestOtsInstances) SetTableNames(v []*string
 }
 
 type DescribeOtsTableSnapshotsResponseBody struct {
-	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Limit     *int32                                            `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of backup snapshots that are displayed on the current page.
+	//
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token that is required to obtain the next page of backup snapshots.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 09376812-6290-5E36-B504-E8010D72D1F0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The backup snapshots.
 	Snapshots []*DescribeOtsTableSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeOtsTableSnapshotsResponseBody) String() string {
@@ -9591,26 +14491,140 @@ func (s *DescribeOtsTableSnapshotsResponseBody) SetSuccess(v bool) *DescribeOtsT
 }
 
 type DescribeOtsTableSnapshotsResponseBodySnapshots struct {
-	ActualBytes        *string `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	BackupType         *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	BytesTotal         *int64  `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	CompleteTime       *int64  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedTime        *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	JobId              *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The actual data amount of backup snapshots after duplicates are removed. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
+	ActualBytes *string `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The total amount of data. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
+	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	// The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496679
+	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the Tablestore instance was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1607436917
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the backup snapshot was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496679
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The name of the Tablestore instance.
+	//
+	// example:
+	//
+	// instancename
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the backup job.
+	//
+	// example:
+	//
+	// job-00030j3chkt******2
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The hash value of the parent backup snapshot.
+	//
+	// example:
+	//
+	// f2fe..
 	ParentSnapshotHash *string `json:"ParentSnapshotHash,omitempty" xml:"ParentSnapshotHash,omitempty"`
-	RangeEnd           *int64  `json:"RangeEnd,omitempty" xml:"RangeEnd,omitempty"`
-	RangeStart         *int64  `json:"RangeStart,omitempty" xml:"RangeStart,omitempty"`
-	Retention          *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SnapshotHash       *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
-	SnapshotId         *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SourceType         *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime          *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TableName          *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	UpdatedTime        *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	VaultId            *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// The time when the backup job ended. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1642521709966
+	RangeEnd *int64 `json:"RangeEnd,omitempty" xml:"RangeEnd,omitempty"`
+	// The time when the backup job started. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1642492553038
+	RangeStart *int64 `json:"RangeStart,omitempty" xml:"RangeStart,omitempty"`
+	// The retention period of the backup snapshot. Unit: days.
+	//
+	// example:
+	//
+	// 730
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The hash value of the backup snapshot.
+	//
+	// example:
+	//
+	// f2fe...
+	SnapshotHash *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	// The ID of the backup snapshot.
+	//
+	// example:
+	//
+	// s-00047mxg17p26*****b
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// 	- **ECS_FILE**: backup snapshots for Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: backup snapshots for Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: backup snapshots for Apsara File Storage NAS file systems
+	//
+	// 	- **OTS_TABLE**: backup snapshots for Tablestore instances
+	//
+	// example:
+	//
+	// OTS_TABLE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The time when the backup snapshot started. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496543
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the backup job. Valid values:
+	//
+	// 	- **COMPLETE**: The backup job is completed.
+	//
+	// 	- **PARTIAL_COMPLETE**: The backup job is partially completed.
+	//
+	// 	- **FAILED**: The backup job has failed.
+	//
+	// example:
+	//
+	// COMPLETE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the table in the Tablestore instance.
+	//
+	// example:
+	//
+	// table2
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The time when the backup snapshot was updated. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496679
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The ID of the backup vault that stores the backup snapshot.
+	//
+	// example:
+	//
+	// v-00030j*******sn
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeOtsTableSnapshotsResponseBodySnapshots) String() string {
@@ -9722,9 +14736,9 @@ func (s *DescribeOtsTableSnapshotsResponseBodySnapshots) SetVaultId(v string) *D
 }
 
 type DescribeOtsTableSnapshotsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOtsTableSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOtsTableSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOtsTableSnapshotsResponse) String() string {
@@ -9751,9 +14765,26 @@ func (s *DescribeOtsTableSnapshotsResponse) SetBody(v *DescribeOtsTableSnapshots
 }
 
 type DescribePoliciesV2Request struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The number of results for each query.
+	//
+	// Valid values: 10 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to obtain the next page of backup policies.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000************2l6
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
 func (s DescribePoliciesV2Request) String() string {
@@ -9780,14 +14811,56 @@ func (s *DescribePoliciesV2Request) SetPolicyId(v string) *DescribePoliciesV2Req
 }
 
 type DescribePoliciesV2ResponseBody struct {
-	Code       *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Policies   []*DescribePoliciesV2ResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of results for each query.
+	//
+	// Valid values: 10 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token that is used to obtain the next page of backup policies.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The backup policies.
+	Policies []*DescribePoliciesV2ResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 12
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePoliciesV2ResponseBody) String() string {
@@ -9839,13 +14912,45 @@ func (s *DescribePoliciesV2ResponseBody) SetTotalCount(v int64) *DescribePolicie
 }
 
 type DescribePoliciesV2ResponseBodyPolicies struct {
-	CreatedTime        *int64                                         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	PolicyBindingCount *int64                                         `json:"PolicyBindingCount,omitempty" xml:"PolicyBindingCount,omitempty"`
-	PolicyDescription  *string                                        `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	PolicyId           *string                                        `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName         *string                                        `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	Rules              []*DescribePoliciesV2ResponseBodyPoliciesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	UpdatedTime        *int64                                         `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1650248136
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The number of data sources that are bound to the backup policy.
+	//
+	// example:
+	//
+	// 5
+	PolicyBindingCount *int64 `json:"PolicyBindingCount,omitempty" xml:"PolicyBindingCount,omitempty"`
+	// The description of the backup policy.
+	//
+	// example:
+	//
+	// Data is backed up at 10:00:00 every day and replicated to the China (Shanghai) region for geo-redundancy.
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000************bkz
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The name of the backup policy.
+	//
+	// example:
+	//
+	// Daily Local Backup + Remote Backup
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The rules in the backup policy.
+	Rules []*DescribePoliciesV2ResponseBodyPoliciesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The time when the backup policy was updated. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1662080404
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s DescribePoliciesV2ResponseBodyPolicies) String() string {
@@ -9881,6 +14986,11 @@ func (s *DescribePoliciesV2ResponseBodyPolicies) SetPolicyName(v string) *Descri
 	return s
 }
 
+func (s *DescribePoliciesV2ResponseBodyPolicies) SetPolicyType(v string) *DescribePoliciesV2ResponseBodyPolicies {
+	s.PolicyType = &v
+	return s
+}
+
 func (s *DescribePoliciesV2ResponseBodyPolicies) SetRules(v []*DescribePoliciesV2ResponseBodyPoliciesRules) *DescribePoliciesV2ResponseBodyPolicies {
 	s.Rules = v
 	return s
@@ -9892,14 +15002,82 @@ func (s *DescribePoliciesV2ResponseBodyPolicies) SetUpdatedTime(v int64) *Descri
 }
 
 type DescribePoliciesV2ResponseBodyPoliciesRules struct {
-	BackupType          *string                                                      `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	KeepLatestSnapshots *int64                                                       `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	ReplicationRegionId *string                                                      `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
-	Retention           *int64                                                       `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	RetentionRules      []*DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
-	RuleId              *string                                                      `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleType            *string                                                      `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Schedule            *string                                                      `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// This parameter is returned only if the value of the **RuleType*	- parameter is **TRANSITION**. This parameter indicates the time when data is dumped from a backup vault to an archive vault. Unit: days.
+	//
+	// example:
+	//
+	// 30
+	ArchiveDays *int64 `json:"ArchiveDays,omitempty" xml:"ArchiveDays,omitempty"`
+	// This parameter is returned only if the value of the **RuleType*	- parameter is **BACKUP**. This parameter indicates the backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
+	BackupType        *string                                                         `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DataSourceFilters []*DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters `json:"DataSourceFilters,omitempty" xml:"DataSourceFilters,omitempty" type:"Repeated"`
+	// Indicates whether the feature of keeping at least one backup version is enabled. Valid values:
+	//
+	// 	- **0**: The feature is disabled.
+	//
+	// 	- **1**: The feature is enabled.
+	//
+	// example:
+	//
+	// 1
+	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
+	// This parameter is returned only if the value of the **RuleType*	- parameter is **REPLICATION**. This parameter indicates the ID of the destination region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
+	// This parameter is returned only if the value of the **RuleType*	- parameter is **TRANSITION*	- or **REPLICATION**.
+	//
+	// 	- If the value of the **RuleType*	- parameter is **TRANSITION**, this parameter indicates the retention period of the backup data. Minimum value: 1. Unit: days.
+	//
+	// 	- If the value of the **RuleType*	- parameter is **REPLICATION**, this parameter indicates the retention period of remote backups. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 7
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// This parameter is returned only if the value of the **RuleType*	- parameter is **TRANSITION**. This parameter indicates the special retention rules.
+	RetentionRules []*DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// rule-000************f1e
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The type of the rule. Each backup policy must have at least one rule of the **BACKUP*	- type and only one rule of the **TRANSITION*	- type. Valid values:
+	//
+	// 	- **BACKUP**: backup rule
+	//
+	// 	- **TRANSITION**: lifecycle rule
+	//
+	// 	- **REPLICATION**: replication rule
+	//
+	// example:
+	//
+	// BACKUP
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// This parameter is returned only if the value of the **RuleType*	- parameter is **BACKUP**. This parameter indicates the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	//
+	// 	- startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+	//
+	// 	- interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+	//
+	// example:
+	//
+	// I|1648647166|P1D
+	Schedule   *string                                                  `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	TagFilters []*DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters `json:"TagFilters,omitempty" xml:"TagFilters,omitempty" type:"Repeated"`
+	// This parameter is returned only if the value of the RuleType parameter is BACKUP. The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000**************kgm
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribePoliciesV2ResponseBodyPoliciesRules) String() string {
@@ -9910,8 +15088,18 @@ func (s DescribePoliciesV2ResponseBodyPoliciesRules) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePoliciesV2ResponseBodyPoliciesRules) SetArchiveDays(v int64) *DescribePoliciesV2ResponseBodyPoliciesRules {
+	s.ArchiveDays = &v
+	return s
+}
+
 func (s *DescribePoliciesV2ResponseBodyPoliciesRules) SetBackupType(v string) *DescribePoliciesV2ResponseBodyPoliciesRules {
 	s.BackupType = &v
+	return s
+}
+
+func (s *DescribePoliciesV2ResponseBodyPoliciesRules) SetDataSourceFilters(v []*DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters) *DescribePoliciesV2ResponseBodyPoliciesRules {
+	s.DataSourceFilters = v
 	return s
 }
 
@@ -9950,10 +15138,64 @@ func (s *DescribePoliciesV2ResponseBodyPoliciesRules) SetSchedule(v string) *Des
 	return s
 }
 
+func (s *DescribePoliciesV2ResponseBodyPoliciesRules) SetTagFilters(v []*DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters) *DescribePoliciesV2ResponseBodyPoliciesRules {
+	s.TagFilters = v
+	return s
+}
+
+func (s *DescribePoliciesV2ResponseBodyPoliciesRules) SetVaultId(v string) *DescribePoliciesV2ResponseBodyPoliciesRules {
+	s.VaultId = &v
+	return s
+}
+
+type DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters struct {
+	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	SourceType    *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters) SetDataSourceIds(v []*string) *DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters {
+	s.DataSourceIds = v
+	return s
+}
+
+func (s *DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters) SetSourceType(v string) *DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters {
+	s.SourceType = &v
+	return s
+}
+
 type DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules struct {
+	// The type of the special retention rule. Valid values:
+	//
+	// 	- **WEEKLY**: weekly backups
+	//
+	// 	- **MONTHLY**: monthly backups
+	//
+	// 	- **YEARLY**: yearly backups
+	//
+	// example:
+	//
+	// YEARLY
 	AdvancedRetentionType *string `json:"AdvancedRetentionType,omitempty" xml:"AdvancedRetentionType,omitempty"`
-	Retention             *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	WhichSnapshot         *int64  `json:"WhichSnapshot,omitempty" xml:"WhichSnapshot,omitempty"`
+	// The special retention period of backups. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 730
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// Indicates which backup is retained based on the special retention rule. Only the first backup can be retained.
+	//
+	// example:
+	//
+	// 1
+	WhichSnapshot *int64 `json:"WhichSnapshot,omitempty" xml:"WhichSnapshot,omitempty"`
 }
 
 func (s DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules) String() string {
@@ -9979,10 +15221,39 @@ func (s *DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules) SetWhichSnap
 	return s
 }
 
+type DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters) SetKey(v string) *DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters) SetOperator(v string) *DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters) SetValue(v string) *DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters {
+	s.Value = &v
+	return s
+}
+
 type DescribePoliciesV2Response struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePoliciesV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePoliciesV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePoliciesV2Response) String() string {
@@ -10009,11 +15280,24 @@ func (s *DescribePoliciesV2Response) SetBody(v *DescribePoliciesV2ResponseBody) 
 }
 
 type DescribePolicyBindingsRequest struct {
-	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
-	MaxResults    *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PolicyId      *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	SourceType    *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	DataSourceIds []*string                               `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	Filters       []*DescribePolicyBindingsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// po-000************hky
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// UDM_ECS
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s DescribePolicyBindingsRequest) String() string {
@@ -10026,6 +15310,11 @@ func (s DescribePolicyBindingsRequest) GoString() string {
 
 func (s *DescribePolicyBindingsRequest) SetDataSourceIds(v []*string) *DescribePolicyBindingsRequest {
 	s.DataSourceIds = v
+	return s
+}
+
+func (s *DescribePolicyBindingsRequest) SetFilters(v []*DescribePolicyBindingsRequestFilters) *DescribePolicyBindingsRequest {
+	s.Filters = v
 	return s
 }
 
@@ -10049,12 +15338,60 @@ func (s *DescribePolicyBindingsRequest) SetSourceType(v string) *DescribePolicyB
 	return s
 }
 
+type DescribePolicyBindingsRequestFilters struct {
+	// example:
+	//
+	// DataSourceType
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// IN
+	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Values   []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribePolicyBindingsRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsRequestFilters) SetKey(v string) *DescribePolicyBindingsRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsRequestFilters) SetOperator(v string) *DescribePolicyBindingsRequestFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsRequestFilters) SetValues(v []*string) *DescribePolicyBindingsRequestFilters {
+	s.Values = v
+	return s
+}
+
 type DescribePolicyBindingsShrinkRequest struct {
-	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
-	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PolicyId            *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	DataSourceIdsShrink *string                                       `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
+	Filters             []*DescribePolicyBindingsShrinkRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// po-000************hky
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// UDM_ECS
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s DescribePolicyBindingsShrinkRequest) String() string {
@@ -10067,6 +15404,11 @@ func (s DescribePolicyBindingsShrinkRequest) GoString() string {
 
 func (s *DescribePolicyBindingsShrinkRequest) SetDataSourceIdsShrink(v string) *DescribePolicyBindingsShrinkRequest {
 	s.DataSourceIdsShrink = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsShrinkRequest) SetFilters(v []*DescribePolicyBindingsShrinkRequestFilters) *DescribePolicyBindingsShrinkRequest {
+	s.Filters = v
 	return s
 }
 
@@ -10090,15 +15432,72 @@ func (s *DescribePolicyBindingsShrinkRequest) SetSourceType(v string) *DescribeP
 	return s
 }
 
+type DescribePolicyBindingsShrinkRequestFilters struct {
+	// example:
+	//
+	// DataSourceType
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// IN
+	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Values   []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribePolicyBindingsShrinkRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsShrinkRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsShrinkRequestFilters) SetKey(v string) *DescribePolicyBindingsShrinkRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsShrinkRequestFilters) SetOperator(v string) *DescribePolicyBindingsShrinkRequestFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsShrinkRequestFilters) SetValues(v []*string) *DescribePolicyBindingsShrinkRequestFilters {
+	s.Values = v
+	return s
+}
+
 type DescribePolicyBindingsResponseBody struct {
-	Code           *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	MaxResults     *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message        *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken      *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The association between the backup policy and data sources.
 	PolicyBindings []*DescribePolicyBindingsResponseBodyPolicyBindings `json:"PolicyBindings,omitempty" xml:"PolicyBindings,omitempty" type:"Repeated"`
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 5225929A-4EBD-55EE-9FE1-4A130E582A76
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 38
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePolicyBindingsResponseBody) String() string {
@@ -10150,18 +15549,102 @@ func (s *DescribePolicyBindingsResponseBody) SetTotalCount(v int64) *DescribePol
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindings struct {
-	AdvancedOptions          *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
-	CreatedTime              *int64                                                           `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CrossAccountRoleName     *string                                                          `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	CrossAccountType         *string                                                          `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	CrossAccountUserId       *int64                                                           `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	DataSourceId             *string                                                          `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	Disabled                 *bool                                                            `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	PolicyBindingDescription *string                                                          `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
-	PolicyBindingId          *string                                                          `json:"PolicyBindingId,omitempty" xml:"PolicyBindingId,omitempty"`
-	PolicyId                 *string                                                          `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	SourceType               *string                                                          `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	UpdatedTime              *int64                                                           `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The advanced options.
+	AdvancedOptions *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
+	CreatedByTag    *bool                                                            `json:"CreatedByTag,omitempty" xml:"CreatedByTag,omitempty"`
+	// The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1661399570
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	//
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
+	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 1480************
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The ID of the data source.
+	//
+	// example:
+	//
+	// i-8vb************5ly
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Indicates whether the backup policy is enabled for the data source. Valid values:
+	//
+	// 	- true: The backup policy is disabled.
+	//
+	// 	- false: The backup policy is enabled.
+	//
+	// example:
+	//
+	// true
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// example:
+	//
+	// [\\"*.doc\\",\\"*.xltm\\"]
+	Exclude *string                                                    `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	HitTags []*DescribePolicyBindingsResponseBodyPolicyBindingsHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// [\\"*.doc\\",\\"*.xltm\\"]
+	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// The description of the association.
+	//
+	// example:
+	//
+	// po-000************eslc-i-uf6************y5g
+	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
+	// The ID of the association.
+	//
+	// example:
+	//
+	// pd-000************slc
+	PolicyBindingId *string `json:"PolicyBindingId,omitempty" xml:"PolicyBindingId,omitempty"`
+	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000************56y
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// backup/
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// example:
+	//
+	// UDM_ECS
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 0:24:10240
+	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	// The time when the backup policy was updated. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1653611573
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s DescribePolicyBindingsResponseBodyPolicyBindings) String() string {
@@ -10174,6 +15657,11 @@ func (s DescribePolicyBindingsResponseBodyPolicyBindings) GoString() string {
 
 func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetAdvancedOptions(v *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) *DescribePolicyBindingsResponseBodyPolicyBindings {
 	s.AdvancedOptions = v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetCreatedByTag(v bool) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.CreatedByTag = &v
 	return s
 }
 
@@ -10207,6 +15695,21 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetDisabled(v bool) *
 	return s
 }
 
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetExclude(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.Exclude = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetHitTags(v []*DescribePolicyBindingsResponseBodyPolicyBindingsHitTags) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.HitTags = v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetInclude(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.Include = &v
+	return s
+}
+
 func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetPolicyBindingDescription(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
 	s.PolicyBindingDescription = &v
 	return s
@@ -10222,8 +15725,18 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetPolicyId(v string)
 	return s
 }
 
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetSource(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.Source = &v
+	return s
+}
+
 func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetSourceType(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
 	s.SourceType = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetSpeedLimit(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.SpeedLimit = &v
 	return s
 }
 
@@ -10233,10 +15746,15 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetUpdatedTime(v int6
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions struct {
+	CommonFileSystemDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail `json:"CommonFileSystemDetail,omitempty" xml:"CommonFileSystemDetail,omitempty" type:"Struct"`
+	// The advanced options for on-premises NAS backup.
 	CommonNasDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail `json:"CommonNasDetail,omitempty" xml:"CommonNasDetail,omitempty" type:"Struct"`
-	FileDetail      *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail      `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
-	OssDetail       *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail       `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
-	UdmDetail       *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail       `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
+	// The advanced options for file backup.
+	FileDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
+	// The advanced options for OSS backup.
+	OssDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
+	// The advanced options for ECS instance backup.
+	UdmDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
 }
 
 func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) String() string {
@@ -10245,6 +15763,11 @@ func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) String(
 
 func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) SetCommonFileSystemDetail(v *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions {
+	s.CommonFileSystemDetail = v
+	return s
 }
 
 func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) SetCommonNasDetail(v *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions {
@@ -10267,10 +15790,62 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) SetUdm
 	return s
 }
 
+type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail struct {
+	// example:
+	//
+	// 100000
+	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
+	// example:
+	//
+	// true
+	FullOnIncrementFail *bool `json:"FullOnIncrementFail,omitempty" xml:"FullOnIncrementFail,omitempty"`
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail) SetFetchSliceSize(v int64) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail {
+	s.FetchSliceSize = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail) SetFullOnIncrementFail(v bool) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail {
+	s.FullOnIncrementFail = &v
+	return s
+}
+
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail struct {
-	ClientId            *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	FetchSliceSize      *int64  `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
-	FullOnIncrementFail *bool   `json:"FullOnIncrementFail,omitempty" xml:"FullOnIncrementFail,omitempty"`
+	// The ID of the Cloud Backup client.
+	//
+	// example:
+	//
+	// c-0001eg6mcvjs93f46s2d
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// cl-000gkcofngi04j6k680a
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The size of backup shards (the number of files).
+	//
+	// example:
+	//
+	// 100000
+	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
+	// Indicates whether the system performs full backup if incremental backup fails. Valid values:
+	//
+	// 	- **true**: The system performs full backup if incremental backup fails.
+	//
+	// 	- **false**: The system does not perform full backup if incremental backup fails.
+	//
+	// example:
+	//
+	// true
+	FullOnIncrementFail *bool `json:"FullOnIncrementFail,omitempty" xml:"FullOnIncrementFail,omitempty"`
 }
 
 func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail) String() string {
@@ -10286,6 +15861,11 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNa
 	return s
 }
 
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail) SetClusterId(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail {
+	s.ClusterId = &v
+	return s
+}
+
 func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail) SetFetchSliceSize(v int64) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail {
 	s.FetchSliceSize = &v
 	return s
@@ -10297,8 +15877,26 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNa
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail struct {
+	// Indicates whether an advanced policy is used. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	AdvPolicy *bool `json:"AdvPolicy,omitempty" xml:"AdvPolicy,omitempty"`
-	UseVSS    *bool `json:"UseVSS,omitempty" xml:"UseVSS,omitempty"`
+	// Indicates whether the Volume Shadow Copy Service (VSS) feature is enabled. Valid values:
+	//
+	// 	- **true**: The feature is enabled.
+	//
+	// 	- **false**: The feature is disabled.
+	//
+	// example:
+	//
+	// false
+	UseVSS *bool `json:"UseVSS,omitempty" xml:"UseVSS,omitempty"`
 }
 
 func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail) String() string {
@@ -10320,8 +15918,28 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDeta
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail struct {
+	// Indicates whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
+	//
+	// 	- **NO_CLEANUP**: Inventory lists are not deleted.
+	//
+	// 	- **DELETE_CURRENT**: The current inventory list is deleted.
+	//
+	// 	- **DELETE_CURRENT_AND_PREVIOUS**: All inventory lists are deleted.
+	//
+	// example:
+	//
+	// DELETE_CURRENT_AND_PREVIOUS
 	InventoryCleanupPolicy *string `json:"InventoryCleanupPolicy,omitempty" xml:"InventoryCleanupPolicy,omitempty"`
-	InventoryId            *string `json:"InventoryId,omitempty" xml:"InventoryId,omitempty"`
+	// The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
+	//
+	// 	- If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
+	//
+	// 	- A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+	//
+	// example:
+	//
+	// inventory_test
+	InventoryId *string `json:"InventoryId,omitempty" xml:"InventoryId,omitempty"`
 }
 
 func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail) String() string {
@@ -10343,16 +15961,70 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetai
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail struct {
-	AppConsistent     *bool     `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
-	DiskIdList        []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
-	EnableFsFreeze    *bool     `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
-	EnableWriters     *bool     `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
+	// Indicates whether application consistency is enabled. You can enable application consistency only if all disks are ESSDs.
+	//
+	// example:
+	//
+	// false
+	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
+	// The ID of the custom KMS key in the destination region. If this parameter is not empty and geo-replication is enabled, the key is used for encrypted geo-replication.
+	//
+	// example:
+	//
+	// 4ed37b1e-da51-4187-aceb-9db4f9b7148b
+	DestinationKmsKeyId *string `json:"DestinationKmsKeyId,omitempty" xml:"DestinationKmsKeyId,omitempty"`
+	// The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
+	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates whether application-consistent snapshots are created. Valid values:
+	//
+	// 	- true: Application-consistent snapshots are created.
+	//
+	// 	- false: File system-consistent snapshots are created.
+	//
+	// Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableWriters *bool `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
+	// The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
 	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
-	PostScriptPath    *string   `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
-	PreScriptPath     *string   `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
-	RamRoleName       *string   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	SnapshotGroup     *bool     `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
-	TimeoutInSeconds  *int64    `json:"TimeoutInSeconds,omitempty" xml:"TimeoutInSeconds,omitempty"`
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+	//
+	// example:
+	//
+	// /tmp/postscript.sh
+	PostScriptPath *string `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+	//
+	// example:
+	//
+	// /tmp/prescript.sh
+	PreScriptPath *string `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates the name of the RAM role that is required to create application-consistent snapshots.
+	//
+	// example:
+	//
+	// AliyunECSInstanceForHbrRole
+	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	// Indicates whether a snapshot-consistent group is created. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
+	//
+	// example:
+	//
+	// true
+	SnapshotGroup *bool `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates the I/O freeze timeout period. Default value: 30. Unit: seconds.
+	//
+	// example:
+	//
+	// 30
+	TimeoutInSeconds *int64 `json:"TimeoutInSeconds,omitempty" xml:"TimeoutInSeconds,omitempty"`
 }
 
 func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) String() string {
@@ -10365,6 +16037,11 @@ func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail
 
 func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetAppConsistent(v bool) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
 	s.AppConsistent = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetDestinationKmsKeyId(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.DestinationKmsKeyId = &v
 	return s
 }
 
@@ -10413,10 +16090,39 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetai
 	return s
 }
 
+type DescribePolicyBindingsResponseBodyPolicyBindingsHitTags struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindingsHitTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindingsHitTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsHitTags) SetKey(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsHitTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsHitTags) SetOperator(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsHitTags {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsHitTags) SetValue(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsHitTags {
+	s.Value = &v
+	return s
+}
+
 type DescribePolicyBindingsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePolicyBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePolicyBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePolicyBindingsResponse) String() string {
@@ -10443,13 +16149,27 @@ func (s *DescribePolicyBindingsResponse) SetBody(v *DescribePolicyBindingsRespon
 }
 
 type DescribeRecoverableOtsInstancesRequest struct {
-	// 用于跨账号备份的原账号RAM中创建的角色名。
+	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// 跨账号备份类型。支持：
-	// - SELF_ACCOUNT：本账号备份
-	// - CROSS_ACCOUNT：跨账号备份
+	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	//
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// 用于跨账号的原账号的阿里云Uid。
+	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 1440155109798732
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 }
 
@@ -10477,11 +16197,36 @@ func (s *DescribeRecoverableOtsInstancesRequest) SetCrossAccountUserId(v int64) 
 }
 
 type DescribeRecoverableOtsInstancesResponseBody struct {
-	Code         *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of Tablestore instances that can be restored and the tables in the instances.
 	OtsInstances []*DescribeRecoverableOtsInstancesResponseBodyOtsInstances `json:"OtsInstances,omitempty" xml:"OtsInstances,omitempty" type:"Repeated"`
-	RequestId    *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 14DC089E-5DD3-5028-AEDB-93D78E11DB2A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRecoverableOtsInstancesResponseBody) String() string {
@@ -10518,8 +16263,14 @@ func (s *DescribeRecoverableOtsInstancesResponseBody) SetSuccess(v bool) *Descri
 }
 
 type DescribeRecoverableOtsInstancesResponseBodyOtsInstances struct {
-	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	TableNames   []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+	// The name of the Tablestore instance that can be restored.
+	//
+	// example:
+	//
+	// instancename
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The names of the tables in the Tablestore instance.
+	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRecoverableOtsInstancesResponseBodyOtsInstances) String() string {
@@ -10541,9 +16292,9 @@ func (s *DescribeRecoverableOtsInstancesResponseBodyOtsInstances) SetTableNames(
 }
 
 type DescribeRecoverableOtsInstancesResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRecoverableOtsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRecoverableOtsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRecoverableOtsInstancesResponse) String() string {
@@ -10569,34 +16320,36 @@ func (s *DescribeRecoverableOtsInstancesResponse) SetBody(v *DescribeRecoverable
 	return s
 }
 
-type DescribeRegionsRequest struct {
-	// The list of regions.
-	NeedVaultCount *bool `json:"NeedVaultCount,omitempty" xml:"NeedVaultCount,omitempty"`
-}
-
-func (s DescribeRegionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsRequest) SetNeedVaultCount(v bool) *DescribeRegionsRequest {
-	s.NeedVaultCount = &v
-	return s
-}
-
 type DescribeRegionsResponseBody struct {
-	// The ID of the region.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Queries available regions.
+	// The regions returned.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// B3395EC6-7A4A-5282-A9AB-7A442F2CFC90
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeRegions**.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10651,9 +16404,18 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName  *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VaultCount *int32  `json:"VaultCount,omitempty" xml:"VaultCount,omitempty"`
+	// The region name.
+	//
+	// example:
+	//
+	// China (Hangzhou)
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -10674,15 +16436,10 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetVaultCount(v int32) *DescribeRegionsResponseBodyRegionsRegion {
-	s.VaultCount = &v
-	return s
-}
-
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -10712,16 +16469,32 @@ type DescribeRestoreJobs2Request struct {
 	// The keys in the filter.
 	Filters []*DescribeRestoreJobs2RequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: Elastic Compute Service (ECS) files
-	// *   **OSS**: Object Storage Service (OSS) buckets
-	// *   **NAS**: Apsara File Storage NAS file systems
-	// *   **OTS_TABLE**: Tablestore instances
-	// *   **UDM_ECS_ROLLBACK**: ECS instances
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS file systems
+	//
+	// 	- **OTS_TABLE**: Tablestore instances
+	//
+	// 	- **UDM_ECS_ROLLBACK**: ECS instances
+	//
+	// example:
+	//
+	// ECS_FILE
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 }
 
@@ -10756,28 +16529,51 @@ func (s *DescribeRestoreJobs2Request) SetRestoreType(v string) *DescribeRestoreJ
 type DescribeRestoreJobs2RequestFilters struct {
 	// The key in the filter. Valid values:
 	//
-	// *   **RegionId**: the region ID
-	// *   **PlanId**: the ID of a backup plan
-	// *   **JobId**: the ID of a backup job
-	// *   **VaultId**: the ID of a backup vault
-	// *   **InstanceId**: the ID of an ECS instance
-	// *   **Bucket**: the name of an OSS bucket
-	// *   **FileSystemId**: the ID of a file system
-	// *   **Status**: the status of a backup job
-	// *   **CompleteTime**: the end time of a backup job
+	// 	- **RegionId**: the region ID
+	//
+	// 	- **PlanId**: the ID of a backup plan
+	//
+	// 	- **JobId**: the ID of a backup job
+	//
+	// 	- **VaultId**: the ID of a backup vault
+	//
+	// 	- **InstanceId**: the ID of an ECS instance
+	//
+	// 	- **Bucket**: the name of an OSS bucket
+	//
+	// 	- **FileSystemId**: the ID of a file system
+	//
+	// 	- **Status**: the status of a backup job
+	//
+	// 	- **CompleteTime**: the end time of a backup job
+	//
+	// example:
+	//
+	// VaultId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The matching method. Default value: IN. This parameter specifies the operator that you want to use to match a key and a value in the filter. Valid values:
 	//
-	// *   **EQUAL**: equal to
-	// *   **NOT_EQUAL**: not equal to
-	// *   **GREATER_THAN**: greater than
-	// *   **GREATER_THAN_OR_EQUAL**: greater than or equal to
-	// *   **LESS_THAN**: less than
-	// *   **LESS_THAN_OR_EQUAL**: less than or equal to
-	// *   **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
-	// *   **IN**: specifies an array as a collection. The results must fall within the collection.
+	// 	- **EQUAL**: equal to
 	//
-	// > If you specify the **CompleteTime** parameter as a key to query backup jobs, you cannot use the IN operator to perform a match.
+	// 	- **NOT_EQUAL**: not equal to
+	//
+	// 	- **GREATER_THAN**: greater than
+	//
+	// 	- **GREATER_THAN_OR_EQUAL**: greater than or equal to
+	//
+	// 	- **LESS_THAN**: less than
+	//
+	// 	- **LESS_THAN_OR_EQUAL**: less than or equal to
+	//
+	// 	- **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
+	//
+	// 	- **IN**: specifies an array as a collection. The results must fall within the collection.
+	//
+	// > If you specify the **CompleteTime*	- parameter as a key to query backup jobs, you cannot use the IN operator to perform a match.
+	//
+	// example:
+	//
+	// IN
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The values that you want to match in the filter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -10808,23 +16604,56 @@ func (s *DescribeRestoreJobs2RequestFilters) SetValues(v []*string) *DescribeRes
 
 type DescribeRestoreJobs2ResponseBody struct {
 	// The response status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the restore jobs.
+	// The queried restore jobs.
+	//
+	// example:
+	//
+	// {\\"RestoreJob\\": []}
 	RestoreJobs *DescribeRestoreJobs2ResponseBodyRestoreJobs `json:"RestoreJobs,omitempty" xml:"RestoreJobs,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10895,112 +16724,314 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobs) SetRestoreJob(v []*Describ
 
 type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob struct {
 	// The actual amount of data that is restored after duplicates are removed. Unit: bytes.
+	//
+	// example:
+	//
+	// 600
 	ActualBytes *int64 `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	// This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the actual number of objects that are restored by the restore job.
+	// This parameter is valid only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the actual number of objects that are restored by the restore job.
+	//
+	// example:
+	//
+	// 6
 	ActualItems *int64 `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
 	// The amount of data that was restored. Unit: bytes.
+	//
+	// example:
+	//
+	// 800
 	BytesDone *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
-	// The total amount of data that is backed up from the data source. Unit: bytes.
+	// The total amount of data that was backed up from the data source. Unit: bytes.
+	//
+	// example:
+	//
+	// 1000
 	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
 	// The ID of the client group used for restoration.
+	//
+	// example:
+	//
+	// cl-000******hp6
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The time when the restore job was completed. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the restore job was completed. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the restore job was created. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the restore job was created. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The list of the files that failed to be restored.
+	// The files that failed to be restored.
+	//
+	// example:
+	//
+	// "test.csv"
 	ErrorFile *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
 	// The error message that is returned for the restore job.
+	//
+	// example:
+	//
+	// PARTIAL_COMPLETE
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the restore job. The value can be 1 to 255 characters in length.
+	// This parameter is valid only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the restore job. The value can be up to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
 	// The time when the restore job expires.
-	ExpireTime     *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	//
+	// example:
+	//
+	// 1634714531
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The details about the VMware failback task.
+	//
+	// example:
+	//
+	// {"cpu":4,"extra":"{\\"restoreVMNamePrefix\\":\\"627-\\",\\"dataCenterName\\":\\"SDDC-Datacenter\\",\\"dataStoreId\\":\\"datastore-50\\",\\"folderId\\":\\"group-v49\\",\\"resourcePoolId\\":\\"resgroup-46\\",\\"locationName\\":\\"vcenter.pc-uf600arcwi9td3eyj641.acvs.aliyuncs.com/SDDC-Datacenter/Workloads\\",\\"computeResourceName\\":\\"SDDC-Datacenter/Default_c-uf600arcwi9td3eyj640\\",\\"dataStoreName\\":\\"Default_c-uf600arcwi9td3eyj640/WorkloadDatastore\\",\\"networkMoReference\\":\\"DistributedVirtualPortgroup:dvportgroup-1001\\",\\"useHotAdd\\":false}","instanceId":"i-2vc357i2eannmmotcagz","memoryInMB":8192,"serverId":"0fdc0c86-eb92-4e05-91ab-eeaf9fb6ad01","uefiBoot":false}
 	FailbackDetail *string `json:"FailbackDetail,omitempty" xml:"FailbackDetail,omitempty"`
 	// The paths to the files that are included in the restore job.
-	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the number of restored objects.
-	ItemsDone *int64 `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
-	// This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the total number of objects in the data source.
-	ItemsTotal         *int64 `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
-	MeteringBytesDone  *int64 `json:"MeteringBytesDone,omitempty" xml:"MeteringBytesDone,omitempty"`
-	MeteringBytesTotal *int64 `json:"MeteringBytesTotal,omitempty" xml:"MeteringBytesTotal,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a restoration path.
 	//
-	// *   This parameter is available only for Windows ECS instances.
-	// *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-	// *   If you use VSS, you cannot restore data from multiple directories.
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
+	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// This parameter is valid only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the number of restored objects.
+	//
+	// example:
+	//
+	// 8
+	ItemsDone *int64 `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
+	// This parameter is valid only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the total number of objects in the data source.
+	//
+	// example:
+	//
+	// 10
+	ItemsTotal *int64 `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
+	// The amount of data that was restored. Unit: bytes. This parameter is valid only if the StorageClass parameter is set to ARCHIVE. The minimum billable size of the data stored at the Archive tier is 1 MB.
+	//
+	// example:
+	//
+	// 1048576
+	MeteringBytesDone *int64 `json:"MeteringBytesDone,omitempty" xml:"MeteringBytesDone,omitempty"`
+	// The total amount of data that was backed up from the data source. Unit: bytes. This parameter is valid only if the StorageClass parameter is set to ARCHIVE. The minimum billable size of the data stored at the Archive tier is 1 MB.
+	//
+	// example:
+	//
+	// 1048576
+	MeteringBytesTotal *int64 `json:"MeteringBytesTotal,omitempty" xml:"MeteringBytesTotal,omitempty"`
+	// This parameter is valid only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a restoration path.
+	//
+	// 	- This parameter is available only for Windows ECS instances.
+	//
+	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
+	//
+	// 	- If you use VSS, you cannot restore data from multiple directories.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetail *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
 	// The ID of the parent job.
+	//
+	// example:
+	//
+	// r-0003hd2an3x4dyv0l18b
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The progress of the restore job. For example, 10000 indicates that the progress is 100%.
-	Progress *int32                                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Report   *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport `json:"Report,omitempty" xml:"Report,omitempty" type:"Struct"`
+	// The progress of the restore job. Valid values: [0,10000]. For example, 10000 indicates that the progress is 100%.
+	//
+	// example:
+	//
+	// 10000
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The report of the restore job.
+	Report *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport `json:"Report,omitempty" xml:"Report,omitempty" type:"Struct"`
 	// The ID of the restore job.
+	//
+	// example:
+	//
+	// r-0003*****8a
 	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
 	// The type of the restore job.
+	//
+	// example:
+	//
+	// ECS_FILE
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 	// The hash value of the backup snapshot.
+	//
+	// example:
+	//
+	// f2fe...
 	SnapshotHash *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
 	// The ID of the snapshot used for restoration.
+	//
+	// example:
+	//
+	// s-0002******ga88
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: ECS files
-	// *   **OSS**: OSS buckets
-	// *   **NAS**: NAS file systems
-	// *   **OTS_TABLE**: Tablestore instances
-	// *   **UDM_ECS**: ECS instances
+	// 	- **ECS_FILE**: ECS files
+	//
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS (NAS) file systems
+	//
+	// 	- **OTS_TABLE**: Tablestore instances
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The average speed at which data is backed up. Unit: KB/s.
+	//
+	// example:
+	//
+	// 500
 	Speed *int64 `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// The time when the restore job starts. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the restore job started. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the restore job. Valid values:
 	//
-	// *   **COMPLETE**: The restore job is completed.
-	// *   **PARTIAL_COMPLETE**: The restore job is partially completed.
-	// *   **FAILED**: The restore job has failed.
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 	- **COMPLETE**: The job is completed.
+	//
+	// 	- **PARTIAL_COMPLETE**: The job is partially completed.
+	//
+	// 	- **FAILED**: The job failed.
+	//
+	// example:
+	//
+	// COMPLETE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage class of the backup data. Valid values:
+	//
+	// 	- **STANDARD**
+	//
+	// 	- **ARCHIVE**
+	//
+	// example:
+	//
+	// STANDARD
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The name of the destination OSS bucket. This parameter is returned only for OSS buckets.
+	//
+	// example:
+	//
+	// target-bucket
 	TargetBucket *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
 	// The ID of the destination client.
+	//
+	// example:
+	//
+	// c-000e*****397
 	TargetClientId *string `json:"TargetClientId,omitempty" xml:"TargetClientId,omitempty"`
-	// This parameter is returned only for NAS file systems. This parameter indicates the time when the file system was created.
+	// The time when the file system was created. This parameter is returned only for NAS file systems.
+	//
+	// example:
+	//
+	// 1634714531
 	TargetCreateTime *int64 `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
 	// The ID of the destination data source.
+	//
+	// example:
+	//
+	// ds-000*****997
 	TargetDataSourceId *string `json:"TargetDataSourceId,omitempty" xml:"TargetDataSourceId,omitempty"`
 	// The ID of the destination NAS file system. This parameter is returned only for NAS file systems.
+	//
+	// example:
+	//
+	// 0be9****9c9
 	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
 	// The ID of the destination instance for the restore job.
+	//
+	// example:
+	//
+	// i-2ze3m7ktcgw******cs
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 	// The name of the destination Tablestore instance.
+	//
+	// example:
+	//
+	// instancename
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
 	// The destination file path of the restore job.
+	//
+	// example:
+	//
+	// "D:\\\\rebk"
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The prefix of the objects that are restored. This parameter is returned only for OSS buckets.
+	//
+	// example:
+	//
+	// "/target"
 	TargetPrefix *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
 	// The name of the destination table in the Tablestore instance.
+	//
+	// example:
+	//
+	// tablename
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	// The time when the Tablestore instance was backed up. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the Tablestore instance was backed up. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642560261
 	TargetTime *int64 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	// The details about ECS instance backup.
+	// The details about Elastic Compute Service (ECS) instance backup.
+	//
+	// example:
+	//
+	// {\\"doCopy\\":true,\\"doBackup\\":false,\\"instanceName\\":\\"instance example\\",\\"appConsistent\\":false,\\"destinationRegionId\\":\\"cn-shanghai\\",\\"enableFsFreeze\\":true,\\"osNameEn\\":\\"Windows Server  2019 Data Center Edition 64bit Chinese Edition\\",\\"osName\\":\\"Windows Server  2019 Data Center Edition 64bit Chinese Edition\\",\\"diskIdList\\":[],\\"backupVaultId\\":\\"\\",\\"snapshotGroup\\":true,\\"destinationRetention\\":35,\\"platform\\":\\"Windows Server 2012\\",\\"timeoutInSeconds\\":60,\\"backupRetention\\":1,\\"osType\\":\\"windows\\",\\"preScriptPath\\":\\"\\",\\"postScriptPath\\":\\"\\",\\"enableWriters\\":true,\\"ecsDeleted\\":false}
 	UdmDetail *string `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	// The time when the restore job was updated. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the restore job was updated. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0006******q
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -11254,8 +17285,16 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetVaultId(v str
 
 type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail struct {
 	// The number of channels processed by each Tablestore restore job.
+	//
+	// example:
+	//
+	// 2
 	BatchChannelCount *int32 `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
 	// Indicates whether the existing Tablestore restore job was overwritten.
+	//
+	// example:
+	//
+	// false
 	OverwriteExisting *bool `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
 }
 
@@ -11278,11 +17317,36 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) SetOver
 }
 
 type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport struct {
-	FailedFiles      *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	// The files that failed to be executed.
+	//
+	// example:
+	//
+	// /temp/report/158975xxxxxx4625/r-0001hfxxxxxymsspjjtl/job-0001hfxxxxxymsspjjtl_failed.zip
+	FailedFiles *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	// The status of the report generation.
+	//
+	// example:
+	//
+	// COMPLETE
 	ReportTaskStatus *string `json:"ReportTaskStatus,omitempty" xml:"ReportTaskStatus,omitempty"`
-	SkippedFiles     *string `json:"SkippedFiles,omitempty" xml:"SkippedFiles,omitempty"`
-	SuccessFiles     *string `json:"SuccessFiles,omitempty" xml:"SuccessFiles,omitempty"`
-	TotalFiles       *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
+	// The skipped files.
+	//
+	// example:
+	//
+	// /temp/report/158975xxxxxx4625/r-0001hfxxxxxymsspjjtl/job-0001hfxxxxxymsspjjtl_skipped.zip
+	SkippedFiles *string `json:"SkippedFiles,omitempty" xml:"SkippedFiles,omitempty"`
+	// The files that are successfully executed.
+	//
+	// example:
+	//
+	// /temp/report/158975xxxxxx4625/r-0001hfxxxxxymsspjjtl/job-0001hfxxxxxymsspjjtl_success.zip
+	SuccessFiles *string `json:"SuccessFiles,omitempty" xml:"SuccessFiles,omitempty"`
+	// The full files that are restored based on the file list.
+	//
+	// example:
+	//
+	// /temp/report/158975xxxxxx4625/job-0001hfxxxxxymsspjjtl/job-0001hfxxxxxymsspjjtl_total.csv
+	TotalFiles *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
 }
 
 func (s DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport) String() string {
@@ -11319,9 +17383,9 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport) SetTotalFi
 }
 
 type DescribeRestoreJobs2Response struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRestoreJobs2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRestoreJobs2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRestoreJobs2Response) String() string {
@@ -11349,10 +17413,22 @@ func (s *DescribeRestoreJobs2Response) SetBody(v *DescribeRestoreJobs2ResponseBo
 
 type DescribeTaskRequest struct {
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmvywqfey5njq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the job.
+	//
+	// example:
+	//
+	// t-*********************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the job.
+	// The access token.
+	//
+	// example:
+	//
+	// 01W3ZZOQ
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -11380,30 +17456,83 @@ func (s *DescribeTaskRequest) SetToken(v string) *DescribeTaskRequest {
 }
 
 type DescribeTaskResponseBody struct {
-	// The ID of the request.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeTask**.
-	CompletedTime *int64 `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
-	CreatedTime   *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The access token.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Queries an asynchronous job.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// HttpCode
-	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the task was complete. The time is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1615607706
+	CompletedTime *int64 `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
 	// The time when the job was created. This value is a UNIX timestamp. Unit: seconds.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The time when the job was completed. This value is a UNIX timestamp. Unit: seconds.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	//
+	// example:
+	//
+	// 1615607706
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The status of the job. Valid values:
 	//
-	// *   **created**: The job is created.
-	// *   **expired**: The job expires.
-	// *   **completed**: The job is completed.
-	// *   **cancelled**: The job is canceled.
+	// 	- **created**: The job is created.
+	//
+	// 	- **expired**: The job expires.
+	//
+	// 	- **completed**: The job is completed.
+	//
+	// 	- **cancelled**: The job is canceled.
+	//
+	// example:
+	//
+	// completed
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the job.
+	//
+	// example:
+	//
+	// InstallBackupClientsTask
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The progress of the job. Valid values: 0 to 100. Unit: percentage (%). If the job fails, the value -1 is returned.
+	//
+	// example:
+	//
+	// 100
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the job.
+	//
+	// example:
+	//
+	// {}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the call is successful.
+	//
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The time when the job was updated. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1615607706
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -11471,9 +17600,9 @@ func (s *DescribeTaskResponseBody) SetUpdatedTime(v int64) *DescribeTaskResponse
 }
 
 type DescribeTaskResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTaskResponse) String() string {
@@ -11500,21 +17629,67 @@ func (s *DescribeTaskResponse) SetBody(v *DescribeTaskResponseBody) *DescribeTas
 }
 
 type DescribeUdmSnapshotsRequest struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The ID of the disk.
+	//
+	// example:
+	//
+	// d-bp1560750pclffpzxy70
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The end of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1643092168
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of backup snapshots.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
-	SnapshotIds map[string]interface{} `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
-	// The ID of the region where the ECS instance resides.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The ID of the ECS instance.
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	//
+	// example:
+	//
+	// i-bp18x2k7sw925ir7ofh8
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the backup job.
+	//
+	// example:
+	//
+	// job-*********************
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The list of backup snapshots.
+	//
+	// example:
+	//
+	// [\\"s-000e3vhhu62xsm6v92r0\\"]
+	SnapshotIds map[string]interface{} `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// 	- **UDM_ECS**: ECS instance backup
+	//
+	// 	- **UDM_ECS_DISK**: disk backup subtask of ECS instance backup
+	//
+	// 	- **UDM_DISK**: disk backup
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UDM_ECS
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The beginning of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642057551
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the region where the ECS instance resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
 }
 
@@ -11567,21 +17742,67 @@ func (s *DescribeUdmSnapshotsRequest) SetUdmRegionId(v string) *DescribeUdmSnaps
 }
 
 type DescribeUdmSnapshotsShrinkRequest struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The ID of the disk.
+	//
+	// example:
+	//
+	// d-bp1560750pclffpzxy70
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The end of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1643092168
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of backup snapshots.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
-	SnapshotIdsShrink *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
-	// The ID of the region where the ECS instance resides.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The ID of the ECS instance.
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	//
+	// example:
+	//
+	// i-bp18x2k7sw925ir7ofh8
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the backup job.
+	//
+	// example:
+	//
+	// job-*********************
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The list of backup snapshots.
+	//
+	// example:
+	//
+	// [\\"s-000e3vhhu62xsm6v92r0\\"]
+	SnapshotIdsShrink *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// 	- **UDM_ECS**: ECS instance backup
+	//
+	// 	- **UDM_ECS_DISK**: disk backup subtask of ECS instance backup
+	//
+	// 	- **UDM_DISK**: disk backup
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UDM_ECS
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The beginning of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642057551
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the region where the ECS instance resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
 }
 
@@ -11634,24 +17855,41 @@ func (s *DescribeUdmSnapshotsShrinkRequest) SetUdmRegionId(v string) *DescribeUd
 }
 
 type DescribeUdmSnapshotsResponseBody struct {
-	// The total number of backup snapshots.
+	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the call is successful.
+	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details about backup snapshots.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The hash value of the backup snapshot.
-	Snapshots []*DescribeUdmSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The status of the backup job. Valid values:
+	// The ID of the request.
 	//
-	// - **COMPLETE**: The backup job is completed.
-	// - **PARTIAL_COMPLETE**: The backup job is partially completed.
-	// - **FAILED**: The backup job has failed.
+	// example:
+	//
+	// 51CDEECB-7001-51CC-94AC-2A0F2A4B71D2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about snapshots.
+	Snapshots []*DescribeUdmSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details about backup snapshots.
+	// The total number of backup snapshots.
+	//
+	// example:
+	//
+	// 3
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11694,59 +17932,215 @@ func (s *DescribeUdmSnapshotsResponseBody) SetTotalCount(v int64) *DescribeUdmSn
 }
 
 type DescribeUdmSnapshotsResponseBodySnapshots struct {
-	// The ID of the cloud disk or local disk.
+	// The size of the backup snapshot. Unit: bytes.
+	//
+	// example:
+	//
+	// 600
 	ActualBytes *string `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	// The end of the time range to query. This value must be a UNIX timestamp. Unit: seconds.
+	// The special retention type, which is valid only for special backups. Valid values:
+	//
+	// 	- **WEEKLY**: weekly backups
+	//
+	// 	- **MONTHLY**: monthly backups
+	//
+	// 	- **YEARLY**: yearly backups
+	//
+	// example:
+	//
+	// WEEKLY
 	AdvancedRetentionType *string `json:"AdvancedRetentionType,omitempty" xml:"AdvancedRetentionType,omitempty"`
+	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The total amount of data. Unit: bytes.
+	//
+	// example:
+	//
+	// 1000
+	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	// The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1646895666
+	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the backup snapshot was created.
+	//
+	// example:
+	//
+	// 1607436917
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the backup snapshot was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496679
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The snapshot details.
+	Detail *DescribeUdmSnapshotsResponseBodySnapshotsDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	// The ID of the cloud disk or local disk.
+	//
+	// example:
+	//
+	// d-2ze86h5fga5rfwxxa8ef
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The expiration time of the backup.
+	//
+	// example:
+	//
+	// 1640334062
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-bp1f0pe78dxizrsdcgxd
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the backup job.
+	//
+	// example:
+	//
+	// job-00030j3chkt******2
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the backup snapshot.
+	//
+	// example:
+	//
+	// s-00047mg17p26x*****b
+	NativeSnapshotId *string `json:"NativeSnapshotId,omitempty" xml:"NativeSnapshotId,omitempty"`
+	// The snapshot information.
+	//
+	// example:
+	//
+	// {
+	//
+	// 					"sourceDiskId":"d-bp17misjuy636t82v7b0",
+	//
+	// 					"lastModifiedTime":"2022-03-09T11:35:12Z",
+	//
+	// 					"snapshotSN":"64588-429372675-857161235",
+	//
+	// 					"snapshotId":"s-bp1fbtwv3e6xr6wpe9e0",
+	//
+	// 					"creationTime":"2022-03-09T11:31:12Z",
+	//
+	// 					"snapshotType":"user",
+	//
+	// 					"usage":"none",
+	//
+	// 					"description":"",
+	//
+	// 					"sourceStorageType":"disk",
+	//
+	// 					"tags":[
+	//
+	// 						{
+	//
+	// 							"tagValue":"job-0007e0wqjl0imbrtkmnm",
+	//
+	// 							"tagKey":"HBR JobId"
+	//
+	// 						}
+	//
+	// 					],
+	//
+	// 					"productCode":"",
+	//
+	// 					"encrypted":false,
+	//
+	// 					"sourceDiskType":"system",
+	//
+	// 					"retentionDays":30,
+	//
+	// 					"snapshotName":"Created-from-HBR-job:job-0007e0wqjl0imbrtkmnm",
+	//
+	// 					"kMSKeyId":"",
+	//
+	// 					"progress":"100%",
+	//
+	// 					"category":"standard",
+	//
+	// 					"sourceDiskSize":"20",
+	//
+	// 					"status":"accomplished"
+	//
+	// 				}
+	NativeSnapshotInfo *string `json:"NativeSnapshotInfo,omitempty" xml:"NativeSnapshotInfo,omitempty"`
+	// The hash value of the parent backup snapshot.
+	//
+	// example:
+	//
+	// f2fe..
+	ParentSnapshotHash *string `json:"ParentSnapshotHash,omitempty" xml:"ParentSnapshotHash,omitempty"`
+	// The prefix of the backup snapshot.
+	//
+	// example:
+	//
+	// example/
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The timestamp of the backup snapshot. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496679
+	RealSnapshotTime *int64 `json:"RealSnapshotTime,omitempty" xml:"RealSnapshotTime,omitempty"`
+	// The retention period of the backup snapshot. Unit: days.
+	//
+	// example:
+	//
+	// 7
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The hash value of the backup snapshot.
+	//
+	// example:
+	//
+	// f2fe...
+	SnapshotHash *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	// The ID of the backup snapshot.
+	//
+	// example:
+	//
+	// s-00047mxg17p26*****b
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// - **ECS_FILE**: ECS file
-	// - **OSS**: OSS bucket
-	// - **NAS**: NAS file system
-	// - **OTS_TABLE**: Tablestore instance
-	// - **UDM_DISK**: ECS instance
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
-	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	// The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
-	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The prefix of the backup snapshot.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The hash value of the parent backup snapshot.
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the disk.
-	Detail *DescribeUdmSnapshotsResponseBodySnapshotsDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	// The snapshot information.
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the region where the ECS instance resides.
-	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the snapshot.
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The snapshot details.
-	NativeSnapshotId *string `json:"NativeSnapshotId,omitempty" xml:"NativeSnapshotId,omitempty"`
-	// The retention period of the backup snapshot. Unit: days.
-	NativeSnapshotInfo *string `json:"NativeSnapshotInfo,omitempty" xml:"NativeSnapshotInfo,omitempty"`
-	// i-bp1f0pe78dxi******gxd
-	ParentSnapshotHash *string `json:"ParentSnapshotHash,omitempty" xml:"ParentSnapshotHash,omitempty"`
-	// The total amount of data. Unit: bytes.
-	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The ID of the ECS instance.
-	RealSnapshotTime *int64 `json:"RealSnapshotTime,omitempty" xml:"RealSnapshotTime,omitempty"`
-	// The timestamp of the backup snapshot. Unit: milliseconds.
-	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The size of the backup snapshot. Unit: bytes.
-	SnapshotHash *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
-	// The ID of the backup job.
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// d-2ze86h5fga5r******a8ef
+	// 	- **UDM_ECS**: ECS instance backup
+	//
+	// 	- **UDM_ECS_DISK**: disk backup subtask of ECS instance backup
+	//
+	// 	- **UDM_DISK**: disk backup
+	//
+	// example:
+	//
+	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup snapshot was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when the backup snapshot was created.
+	// The status of the backup job. Valid values:
+	//
+	// 	- **COMPLETE**: The backup job is completed.
+	//
+	// 	- **PARTIAL_COMPLETE**: The backup job is partially completed.
+	//
+	// 	- **FAILED**: The backup job has failed.
+	//
+	// example:
+	//
+	// COMPLETE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the backup snapshot.
+	// The time when the backup snapshot was updated. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1642496679
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -11880,56 +18274,140 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetUpdatedTime(v int64) *Des
 
 type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
 	// The consistency level.
+	//
+	// example:
+	//
+	// CRASH
 	ConsistentLevel *string `json:"ConsistentLevel,omitempty" xml:"ConsistentLevel,omitempty"`
 	// Indicates whether the system disk is included.
+	//
+	// example:
+	//
+	// true
 	ContainOsDisk *bool `json:"ContainOsDisk,omitempty" xml:"ContainOsDisk,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeUdmSnapshots**.
+	// The type of the source disk.
+	//
+	// example:
+	//
+	// cloud_essd
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The reason for the downgrade.
+	// The name of the disk.
+	//
+	// example:
+	//
+	// /dev/xvdb
 	DiskDevName *string `json:"DiskDevName,omitempty" xml:"DiskDevName,omitempty"`
 	// The mapping between the device and the recovery point ID.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "/dev/xvdb":"s-0000u7y6wm3v1e7hxh5a",
+	//
+	//     "/dev/xvda":"s-0004bl6yr5pt89jjsv5a"
+	//
+	// }
 	DiskHbrSnapshotIdWithDeviceMap map[string]interface{} `json:"DiskHbrSnapshotIdWithDeviceMap,omitempty" xml:"DiskHbrSnapshotIdWithDeviceMap,omitempty"`
-	// The ID of the disk that is backed up at the recovery point.
+	// The IDs of the disks that are backed up at the recovery point.
 	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
-	// The ID of the system disk.
+	// The reason for the downgrade.
+	//
+	// example:
+	//
+	// HBR.NoRamRoleBound
 	DowngradeReason *string `json:"DowngradeReason,omitempty" xml:"DowngradeReason,omitempty"`
-	// Indicates whether the disk is a system disk.
+	// The hostname.
+	//
+	// example:
+	//
+	// iZbpxxxxxxxxxxxxxxxxe2Z
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The mapping between the instance ID and the disk ID.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "i-bp1dlp0keohh7ids4uo6":"d-bp1e6427vhd320hifvs",
+	//
+	//     "i-bp1dlp0keohh7ids4uo6":"d-bp1e6427vhd320hifvd"
+	//
+	// }
 	InstanceIdWithDiskIdListMap map[string]interface{} `json:"InstanceIdWithDiskIdListMap,omitempty" xml:"InstanceIdWithDiskIdListMap,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// swh-hbr
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The specifications of the source instance.
+	//
+	// example:
+	//
+	// ecs.c6.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The beginning of the time range to query. This value must be a UNIX timestamp. Unit: seconds.
+	// Indicates whether the backup is created by the instant clone feature.
+	//
+	// example:
+	//
+	// false
 	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	// The ID of the snapshot.
+	// The list of snapshot IDs, corresponding to DiskIdList.
 	NativeSnapshotIdList []*string `json:"NativeSnapshotIdList,omitempty" xml:"NativeSnapshotIdList,omitempty" type:"Repeated"`
-	// The name of the operating system.
+	// The ID of the system disk.
+	//
+	// example:
+	//
+	// d-bp1e6427vhd320hifvc
 	OsDiskId *string `json:"OsDiskId,omitempty" xml:"OsDiskId,omitempty"`
+	// The name of the operating system.
+	//
+	// example:
+	//
 	// Debian 10.10 64-bit (UEFI)
 	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
 	// The English name of the operating system.
+	//
+	// example:
+	//
+	// Debian  11.1 64 bit
 	OsNameEn *string `json:"OsNameEn,omitempty" xml:"OsNameEn,omitempty"`
 	// The type of the operating system. Valid values: linux and windows.
-	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: ECS file
-	// *   **OSS**: Object Storage Service (OSS) bucket
-	// *   **NAS**: Apsara File Storage NAS file system
-	// *   **UDM_DISK**: ECS instance
+	// example:
+	//
+	// windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The performance level of the source disk.
+	//
+	// example:
+	//
+	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The system platform.
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// Indicates whether the call is successful.
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// example:
+	//
+	// CentOS
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the snapshot group.
+	//
+	// example:
+	//
+	// ssg-uf6856txcaq31uj***
 	SnapshotGroupId *string `json:"SnapshotGroupId,omitempty" xml:"SnapshotGroupId,omitempty"`
-	// The ID of the disk that is backed up at the recovery point.
+	// Indicates whether the disk is a system disk.
+	//
+	// example:
+	//
+	// true
 	SystemDisk *bool `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// BNSHSVR42 IPGUARD
 	VmName *string `json:"VmName,omitempty" xml:"VmName,omitempty"`
 }
 
@@ -12052,9 +18530,9 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetVmName(v string) *D
 }
 
 type DescribeUdmSnapshotsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUdmSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUdmSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUdmSnapshotsResponse) String() string {
@@ -12081,9 +18559,19 @@ func (s *DescribeUdmSnapshotsResponse) SetBody(v *DescribeUdmSnapshotsResponseBo
 }
 
 type DescribeVaultReplicationRegionsRequest struct {
-	// The regions that support cross-region replication.
+	// The access token.
+	//
+	// example:
+	//
+	// 01W3ZZOQ
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// Deprecated
+	//
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-00030j3c******sn
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -12106,14 +18594,36 @@ func (s *DescribeVaultReplicationRegionsRequest) SetVaultId(v string) *DescribeV
 }
 
 type DescribeVaultReplicationRegionsResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeVaultReplicationRegions**.
-	Message *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The regions that support cross-region replication.
 	Regions *DescribeVaultReplicationRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// Queries the regions that support cross-region replication.
+	// The ID of the request.
+	//
+	// example:
+	//
+	// F4EEB401-DD21-588D-AE3B-1E835C7655E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful.
+	//
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeVaultReplicationRegionsResponseBody) String() string {
@@ -12167,9 +18677,9 @@ func (s *DescribeVaultReplicationRegionsResponseBodyRegions) SetRegionId(v []*st
 }
 
 type DescribeVaultReplicationRegionsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVaultReplicationRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVaultReplicationRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVaultReplicationRegionsResponse) String() string {
@@ -12196,14 +18706,52 @@ func (s *DescribeVaultReplicationRegionsResponse) SetBody(v *DescribeVaultReplic
 }
 
 type DescribeVaultsRequest struct {
-	PageNumber      *int32                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceGroupId *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag             []*DescribeVaultsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VaultId         *string                     `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
-	VaultRegionId   *string                     `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	VaultType       *string                     `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rg-*********************
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the backup vault. Valid values:
+	//
+	// 	- **UNKNOWN**: The backup vault is in an unknown state.
+	//
+	// 	- **INITIALIZING**: The backup vault is being initialized.
+	//
+	// 	- **CREATED**: The backup vault is created.
+	//
+	// 	- **ERROR**: An error occurs on the backup vault.
+	//
+	// example:
+	//
+	// CREATED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 6a745bceffb042959b3b5206d6f12ad1
+	Tag []*DescribeVaultsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// v-*********************
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
+	// example:
+	//
+	// STANDARD
+	VaultType *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
 }
 
 func (s DescribeVaultsRequest) String() string {
@@ -12255,7 +18803,13 @@ func (s *DescribeVaultsRequest) SetVaultType(v string) *DescribeVaultsRequest {
 }
 
 type DescribeVaultsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12278,14 +18832,40 @@ func (s *DescribeVaultsRequestTag) SetValue(v string) *DescribeVaultsRequestTag 
 }
 
 type DescribeVaultsResponseBody struct {
-	Code       *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Vaults     *DescribeVaultsResponseBodyVaults `json:"Vaults,omitempty" xml:"Vaults,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 8
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The backup vaults.
+	//
+	// example:
+	//
+	// {\\"Vault\\": []}
+	Vaults *DescribeVaultsResponseBodyVaults `json:"Vaults,omitempty" xml:"Vaults,omitempty" type:"Struct"`
 }
 
 func (s DescribeVaultsResponseBody) String() string {
@@ -12354,44 +18934,270 @@ func (s *DescribeVaultsResponseBodyVaults) SetVault(v []*DescribeVaultsResponseB
 }
 
 type DescribeVaultsResponseBodyVaultsVault struct {
-	ArchiveStorageSize        *int64                                                     `json:"ArchiveStorageSize,omitempty" xml:"ArchiveStorageSize,omitempty"`
-	BackupPlanStatistics      *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics `json:"BackupPlanStatistics,omitempty" xml:"BackupPlanStatistics,omitempty" type:"Struct"`
-	BucketName                *string                                                    `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	BytesDone                 *int64                                                     `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
-	ChargeType                *string                                                    `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ChargedStorageSize        *int64                                                     `json:"ChargedStorageSize,omitempty" xml:"ChargedStorageSize,omitempty"`
-	CompressionAlgorithm      *string                                                    `json:"CompressionAlgorithm,omitempty" xml:"CompressionAlgorithm,omitempty"`
-	CreatedTime               *int64                                                     `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Dedup                     *bool                                                      `json:"Dedup,omitempty" xml:"Dedup,omitempty"`
-	Description               *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	EncryptType               *string                                                    `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	IndexAvailable            *bool                                                      `json:"IndexAvailable,omitempty" xml:"IndexAvailable,omitempty"`
-	IndexLevel                *string                                                    `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
-	IndexUpdateTime           *int64                                                     `json:"IndexUpdateTime,omitempty" xml:"IndexUpdateTime,omitempty"`
-	KmsKeyId                  *string                                                    `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	LatestReplicationTime     *int64                                                     `json:"LatestReplicationTime,omitempty" xml:"LatestReplicationTime,omitempty"`
-	RedundancyType            *string                                                    `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
-	Replication               *bool                                                      `json:"Replication,omitempty" xml:"Replication,omitempty"`
-	ReplicationProgress       *DescribeVaultsResponseBodyVaultsVaultReplicationProgress  `json:"ReplicationProgress,omitempty" xml:"ReplicationProgress,omitempty" type:"Struct"`
-	ReplicationSourceRegionId *string                                                    `json:"ReplicationSourceRegionId,omitempty" xml:"ReplicationSourceRegionId,omitempty"`
-	ReplicationSourceVaultId  *string                                                    `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
-	ResourceGroupId           *string                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Retention                 *int64                                                     `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SearchEnabled             *bool                                                      `json:"SearchEnabled,omitempty" xml:"SearchEnabled,omitempty"`
-	SnapshotCount             *int64                                                     `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	SourceTypes               *DescribeVaultsResponseBodyVaultsVaultSourceTypes          `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty" type:"Struct"`
-	Status                    *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageSize               *int64                                                     `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	Tags                      *DescribeVaultsResponseBodyVaultsVaultTags                 `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	TrialInfo                 *DescribeVaultsResponseBodyVaultsVaultTrialInfo            `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
-	UpdatedTime               *int64                                                     `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	VaultId                   *string                                                    `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
-	VaultName                 *string                                                    `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
-	VaultRegionId             *string                                                    `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	VaultStatusMessage        *string                                                    `json:"VaultStatusMessage,omitempty" xml:"VaultStatusMessage,omitempty"`
-	VaultStorageClass         *string                                                    `json:"VaultStorageClass,omitempty" xml:"VaultStorageClass,omitempty"`
-	VaultType                 *string                                                    `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
-	WormEnabled               *bool                                                      `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
+	// example:
+	//
+	// 1024000
+	ArchiveBytesDone *int64 `json:"ArchiveBytesDone,omitempty" xml:"ArchiveBytesDone,omitempty"`
+	// The billable storage usage of the Archive tier. Unit: bytes.
+	//
+	// example:
+	//
+	// 1024000
+	ArchiveStorageSize *int64 `json:"ArchiveStorageSize,omitempty" xml:"ArchiveStorageSize,omitempty"`
+	// The statistics of backup plans that use the backup vault.
+	BackupPlanStatistics *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics `json:"BackupPlanStatistics,omitempty" xml:"BackupPlanStatistics,omitempty" type:"Struct"`
+	// The name of the OSS bucket used by the backup vault.
+	//
+	// example:
+	//
+	// hbr-0005i51******t58
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The amount of data that is backed up. Unit: bytes.
+	//
+	// example:
+	//
+	// 20
+	BytesDone *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	// The billing method of the backup vault.
+	//
+	// example:
+	//
+	// FREE
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The billable storage usage of the archive vault. Unit: bytes.
+	//
+	// example:
+	//
+	// 1024000
+	ChargedStorageSize *int64 `json:"ChargedStorageSize,omitempty" xml:"ChargedStorageSize,omitempty"`
+	// The encryption algorithm used to compress the backup vault. Valid values:
+	//
+	// 	- DISABLED: The backup vault is not compressed.
+	//
+	// 	- SNAPPY: The backup vault is compressed by using the SNAPPY encryption algorithm.
+	//
+	// 	- ZSTD: The backup vault is compressed by using Zstandard, a fast lossless compression algorithm.
+	//
+	// example:
+	//
+	// ZSTD
+	CompressionAlgorithm *string `json:"CompressionAlgorithm,omitempty" xml:"CompressionAlgorithm,omitempty"`
+	// The time when the backup vault was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Indicates whether the deduplication feature is enabled.
+	//
+	// example:
+	//
+	// true
+	Dedup *bool `json:"Dedup,omitempty" xml:"Dedup,omitempty"`
+	// The description of the backup vault.
+	//
+	// example:
+	//
+	// vault description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The encryption type of the backup vault. Valid values:
+	//
+	// 	- NONE: The backup vault is not encrypted.
+	//
+	// 	- HBR_PRIVATE (default): The backup vault is encrypted by using a key provided by Cloud Backup.
+	//
+	// 	- KMS: The backup vault is encrypted by using a custom master key (CMK) created in Key Management Service (KMS).
+	//
+	// example:
+	//
+	// HBR_PRIVATE
+	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// Indicates whether indexes are available. Indexes are available when they are not being updated.
+	//
+	// example:
+	//
+	// true
+	IndexAvailable *bool `json:"IndexAvailable,omitempty" xml:"IndexAvailable,omitempty"`
+	// The index level.
+	//
+	// 	- OFF: No indexes are created.
+	//
+	// 	- META: Metadata indexes are created.
+	//
+	// 	- ALL: Full-text indexes are created.
+	//
+	// example:
+	//
+	// OFF
+	IndexLevel *string `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
+	// The time when the index was updated.
+	//
+	// example:
+	//
+	// 1639645628
+	IndexUpdateTime *int64 `json:"IndexUpdateTime,omitempty" xml:"IndexUpdateTime,omitempty"`
+	// The ID or alias of the CMK created in KMS. This parameter is returned only when EncryptType is set to KMS.
+	//
+	// example:
+	//
+	// alias/acs/acm
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The time when the last remote backup was synchronized. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
+	LatestReplicationTime *int64 `json:"LatestReplicationTime,omitempty" xml:"LatestReplicationTime,omitempty"`
+	// The data redundancy type of the backup vault. Valid values:
+	//
+	// 	- LRS: Locally redundant storage (LRS) is enabled for the backup vault. Cloud Backup stores the copies of each object on multiple devices of different facilities in the same zone. This way, Cloud Backup ensures data durability and availability even if hardware failures occur.
+	//
+	// 	- ZRS: Zone-redundant storage (ZRS) is enabled for the backup vault. Cloud Backup uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone fails, the data that is stored in the other two zones is still accessible.
+	//
+	// example:
+	//
+	// LRS
+	RedundancyType *string `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
+	// Indicates whether the backup vault is a remote backup vault. Valid values:
+	//
+	// 	- true: The backup vault is a remote backup vault.
+	//
+	// 	- false: The backup vault is a local backup vault.
+	//
+	// example:
+	//
+	// false
+	Replication *bool `json:"Replication,omitempty" xml:"Replication,omitempty"`
+	// The progress of data synchronization from the backup vault to the mirror vault.
+	ReplicationProgress *DescribeVaultsResponseBodyVaultsVaultReplicationProgress `json:"ReplicationProgress,omitempty" xml:"ReplicationProgress,omitempty" type:"Struct"`
+	// The ID of the region in which the source vault resides. This parameter is valid only for remote backup vaults.
+	//
+	// example:
+	//
+	// v-*********************
+	ReplicationSourceRegionId *string `json:"ReplicationSourceRegionId,omitempty" xml:"ReplicationSourceRegionId,omitempty"`
+	// Indicate whether the backup vault is the source vault that corresponds to the remote backup vault. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	ReplicationSourceVault *bool `json:"ReplicationSourceVault,omitempty" xml:"ReplicationSourceVault,omitempty"`
+	// The ID of the source vault that corresponds to the remote backup vault.
+	//
+	// example:
+	//
+	// v-*********************
+	ReplicationSourceVaultId *string `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	ReplicationTargetRegionId *string `json:"ReplicationTargetRegionId,omitempty" xml:"ReplicationTargetRegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-*********************
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The retention period of the backup vault. Unit: days.
+	//
+	// example:
+	//
+	// 2
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// Indicates whether the backup search feature is enabled.
+	//
+	// example:
+	//
+	// true
+	SearchEnabled *bool `json:"SearchEnabled,omitempty" xml:"SearchEnabled,omitempty"`
+	// The number of snapshots in the backup vault.
+	//
+	// example:
+	//
+	// 0
+	SnapshotCount *int64 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	// The data source types of the backup vault.
+	SourceTypes *DescribeVaultsResponseBodyVaultsVaultSourceTypes `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty" type:"Struct"`
+	// The status of the backup vault. Valid values:
+	//
+	// 	- **UNKNOWN**: The backup vault is in an unknown state.
+	//
+	// 	- **INITIALIZING**: The backup vault is being initialized.
+	//
+	// 	- **CREATED**: The backup vault is created.
+	//
+	// 	- **ERROR**: An error occurs on the backup vault.
+	//
+	// example:
+	//
+	// CREATED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The usage of the backup vault. Unit: bytes.
+	//
+	// example:
+	//
+	// 10
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The tags of the backup vault.
+	Tags *DescribeVaultsResponseBodyVaultsVaultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The free trial information.
+	TrialInfo *DescribeVaultsResponseBodyVaultsVaultTrialInfo `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
+	// The time when the backup vault was updated. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// The name of the backup vault.
+	//
+	// example:
+	//
+	// vaultname
+	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	// The ID of the region in which the backup vault resides.
+	//
+	// example:
+	//
+	// cn-shanghai
+	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
+	// The status message that is returned when the backup vault is in the ERROR state. This parameter is valid only for remote backup vaults. Valid values:
+	//
+	// 	- **UNKNOWN_ERROR**: An unknown error occurs.
+	//
+	// 	- **SOURCE_VAULT_ALREADY_HAS_REPLICATION**: A mirror vault is configured for the source vault.
+	//
+	// example:
+	//
+	// SOURCE_VAULT_ALREADY_HAS_REPLICATION
+	VaultStatusMessage *string `json:"VaultStatusMessage,omitempty" xml:"VaultStatusMessage,omitempty"`
+	// The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+	//
+	// example:
+	//
+	// STANDARD
+	VaultStorageClass *string `json:"VaultStorageClass,omitempty" xml:"VaultStorageClass,omitempty"`
+	// The type of the backup vault. Valid value: **STANDARD**, which indicates a standard backup vault.
+	//
+	// example:
+	//
+	// STANDARD
+	VaultType *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
+	// Indicates whether the immutable backup feature is enabled.
+	//
+	// example:
+	//
+	// true
+	WormEnabled *bool `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
 }
 
 func (s DescribeVaultsResponseBodyVaultsVault) String() string {
@@ -12400,6 +19206,11 @@ func (s DescribeVaultsResponseBodyVaultsVault) String() string {
 
 func (s DescribeVaultsResponseBodyVaultsVault) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) SetArchiveBytesDone(v int64) *DescribeVaultsResponseBodyVaultsVault {
+	s.ArchiveBytesDone = &v
+	return s
 }
 
 func (s *DescribeVaultsResponseBodyVaultsVault) SetArchiveStorageSize(v int64) *DescribeVaultsResponseBodyVaultsVault {
@@ -12502,8 +19313,18 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationSourceRegionId(v s
 	return s
 }
 
+func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationSourceVault(v bool) *DescribeVaultsResponseBodyVaultsVault {
+	s.ReplicationSourceVault = &v
+	return s
+}
+
 func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationSourceVaultId(v string) *DescribeVaultsResponseBodyVaultsVault {
 	s.ReplicationSourceVaultId = &v
+	return s
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) SetReplicationTargetRegionId(v string) *DescribeVaultsResponseBodyVaultsVault {
+	s.ReplicationTargetRegionId = &v
 	return s
 }
 
@@ -12593,18 +19414,89 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetWormEnabled(v bool) *Describe
 }
 
 type DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics struct {
+	// The number of archive plans.
+	//
+	// example:
+	//
+	// 1
+	Archive *int32 `json:"Archive,omitempty" xml:"Archive,omitempty"`
+	// The number of backup plans for General-purpose NAS file systems.
+	//
+	// example:
+	//
+	// 1
 	CommonNas *int32 `json:"CommonNas,omitempty" xml:"CommonNas,omitempty"`
-	Csg       *int32 `json:"Csg,omitempty" xml:"Csg,omitempty"`
-	EcsFile   *int32 `json:"EcsFile,omitempty" xml:"EcsFile,omitempty"`
-	EcsHana   *int32 `json:"EcsHana,omitempty" xml:"EcsHana,omitempty"`
-	Isilon    *int32 `json:"Isilon,omitempty" xml:"Isilon,omitempty"`
+	// The number of backup plans for Cloud Storage Gateway (CSG) gateways.
+	//
+	// example:
+	//
+	// 1
+	Csg *int32 `json:"Csg,omitempty" xml:"Csg,omitempty"`
+	// The number of backup plans for ECS files.
+	//
+	// example:
+	//
+	// 1
+	EcsFile *int32 `json:"EcsFile,omitempty" xml:"EcsFile,omitempty"`
+	// The number of backup plans for SAP HANA instances.
+	//
+	// example:
+	//
+	// 1
+	EcsHana *int32 `json:"EcsHana,omitempty" xml:"EcsHana,omitempty"`
+	// The number of backup plans for Isilon storage systems.
+	//
+	// example:
+	//
+	// 1
+	Isilon *int32 `json:"Isilon,omitempty" xml:"Isilon,omitempty"`
+	// The number of backup plans for on-premises servers.
+	//
+	// example:
+	//
+	// 1
 	LocalFile *int32 `json:"LocalFile,omitempty" xml:"LocalFile,omitempty"`
-	LocalVm   *int32 `json:"LocalVm,omitempty" xml:"LocalVm,omitempty"`
-	MySql     *int32 `json:"MySql,omitempty" xml:"MySql,omitempty"`
-	Nas       *int32 `json:"Nas,omitempty" xml:"Nas,omitempty"`
-	Oracle    *int32 `json:"Oracle,omitempty" xml:"Oracle,omitempty"`
-	Oss       *int32 `json:"Oss,omitempty" xml:"Oss,omitempty"`
-	Ots       *int32 `json:"Ots,omitempty" xml:"Ots,omitempty"`
+	// The number of backup plans for on-premises virtual machines (VMs).
+	//
+	// example:
+	//
+	// 1
+	LocalVm *int32 `json:"LocalVm,omitempty" xml:"LocalVm,omitempty"`
+	// The number of backup plans for MySQL databases.
+	//
+	// example:
+	//
+	// 1
+	MySql *int32 `json:"MySql,omitempty" xml:"MySql,omitempty"`
+	// The number of backup plans for NAS file systems.
+	//
+	// example:
+	//
+	// 1
+	Nas *int32 `json:"Nas,omitempty" xml:"Nas,omitempty"`
+	// The number of backup plans for Oracle databases.
+	//
+	// example:
+	//
+	// 1
+	Oracle *int32 `json:"Oracle,omitempty" xml:"Oracle,omitempty"`
+	// The number of backup plans for OSS buckets.
+	//
+	// example:
+	//
+	// 1
+	Oss *int32 `json:"Oss,omitempty" xml:"Oss,omitempty"`
+	// The number of backup plans for Tablestore instances.
+	//
+	// example:
+	//
+	// 1
+	Ots *int32 `json:"Ots,omitempty" xml:"Ots,omitempty"`
+	// The number of backup plans for SQL Server databases.
+	//
+	// example:
+	//
+	// 1
 	SqlServer *int32 `json:"SqlServer,omitempty" xml:"SqlServer,omitempty"`
 }
 
@@ -12614,6 +19506,11 @@ func (s DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) String() stri
 
 func (s DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) SetArchive(v int32) *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics {
+	s.Archive = &v
+	return s
 }
 
 func (s *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) SetCommonNas(v int32) *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics {
@@ -12682,8 +19579,18 @@ func (s *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) SetSqlServer
 }
 
 type DescribeVaultsResponseBodyVaultsVaultReplicationProgress struct {
+	// The progress of historical data synchronization from the backup vault to the mirror vault. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 100
 	HistoricalReplicationProgress *int32 `json:"HistoricalReplicationProgress,omitempty" xml:"HistoricalReplicationProgress,omitempty"`
-	NewReplicationProgress        *int64 `json:"NewReplicationProgress,omitempty" xml:"NewReplicationProgress,omitempty"`
+	// The latest synchronization time of incremental data in the mirror vault.
+	//
+	// example:
+	//
+	// 1579413159
+	NewReplicationProgress *int64 `json:"NewReplicationProgress,omitempty" xml:"NewReplicationProgress,omitempty"`
 }
 
 func (s DescribeVaultsResponseBodyVaultsVaultReplicationProgress) String() string {
@@ -12739,7 +19646,29 @@ func (s *DescribeVaultsResponseBodyVaultsVaultTags) SetTag(v []*DescribeVaultsRe
 }
 
 type DescribeVaultsResponseBodyVaultsVaultTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the backup vault. Valid values of N: 1 to 20.
+	//
+	// 	- The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// 	- The tag key cannot contain `http://` or `https://`.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// aaa
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the backup vault. Valid values of N: 1 to 20.
+	//
+	// 	- The tag value cannot start with `aliyun` or `acs:`.
+	//
+	// 	- The tag value cannot contain `http://` or `https://`.
+	//
+	// 	- The tag value cannot be an empty string.
+	//
+	// example:
+	//
+	// a1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12762,10 +19691,30 @@ func (s *DescribeVaultsResponseBodyVaultsVaultTagsTag) SetValue(v string) *Descr
 }
 
 type DescribeVaultsResponseBodyVaultsVaultTrialInfo struct {
-	KeepAfterTrialExpiration *bool  `json:"KeepAfterTrialExpiration,omitempty" xml:"KeepAfterTrialExpiration,omitempty"`
-	TrialExpireTime          *int64 `json:"TrialExpireTime,omitempty" xml:"TrialExpireTime,omitempty"`
-	TrialStartTime           *int64 `json:"TrialStartTime,omitempty" xml:"TrialStartTime,omitempty"`
-	TrialVaultReleaseTime    *int64 `json:"TrialVaultReleaseTime,omitempty" xml:"TrialVaultReleaseTime,omitempty"`
+	// Indicates whether you are billed based on the pay-as-you-go method after the free trial ends.
+	//
+	// example:
+	//
+	// true
+	KeepAfterTrialExpiration *bool `json:"KeepAfterTrialExpiration,omitempty" xml:"KeepAfterTrialExpiration,omitempty"`
+	// The expiration time of the free trial.
+	//
+	// example:
+	//
+	// 1584597600
+	TrialExpireTime *int64 `json:"TrialExpireTime,omitempty" xml:"TrialExpireTime,omitempty"`
+	// The start time of the free trial.
+	//
+	// example:
+	//
+	// 1579413159
+	TrialStartTime *int64 `json:"TrialStartTime,omitempty" xml:"TrialStartTime,omitempty"`
+	// The time when the free-trial backup vault is released.
+	//
+	// example:
+	//
+	// 1594965600
+	TrialVaultReleaseTime *int64 `json:"TrialVaultReleaseTime,omitempty" xml:"TrialVaultReleaseTime,omitempty"`
 }
 
 func (s DescribeVaultsResponseBodyVaultsVaultTrialInfo) String() string {
@@ -12797,9 +19746,9 @@ func (s *DescribeVaultsResponseBodyVaultsVaultTrialInfo) SetTrialVaultReleaseTim
 }
 
 type DescribeVaultsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVaultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVaultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVaultsResponse) String() string {
@@ -12827,17 +19776,42 @@ func (s *DescribeVaultsResponse) SetBody(v *DescribeVaultsResponseBody) *Describ
 
 type DetachNasFileSystemRequest struct {
 	// The time when the file system was created. The value must be a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1607436917
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 158975xxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The ID of the file system.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 }
 
@@ -12876,17 +19850,38 @@ func (s *DetachNasFileSystemRequest) SetFileSystemId(v string) *DetachNasFileSys
 
 type DetachNasFileSystemResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the request is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
+	//
+	// example:
+	//
+	// t-*********************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -12924,9 +19919,9 @@ func (s *DetachNasFileSystemResponseBody) SetTaskId(v string) *DetachNasFileSyst
 }
 
 type DetachNasFileSystemResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachNasFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachNasFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachNasFileSystemResponse) String() string {
@@ -12953,15 +19948,31 @@ func (s *DetachNasFileSystemResponse) SetBody(v *DetachNasFileSystemResponseBody
 }
 
 type DisableBackupPlanRequest struct {
-	// The ID of the backup vault.
+	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the request is successful.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: The system backs up data from Elastic Compute Service (ECS) instances.
-	// *   **OSS**: The system backs up data from Object Storage Service (OSS) buckets.
-	// *   **NAS**: The system backs up data from Apsara File Storage NAS file systems.
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS (NAS) file systems
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -12989,13 +20000,34 @@ func (s *DisableBackupPlanRequest) SetVaultId(v string) *DisableBackupPlanReques
 }
 
 type DisableBackupPlanResponseBody struct {
-	// The ID of the request.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **DisableBackupPlan**.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Disables a backup plan.
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableBackupPlanResponseBody) String() string {
@@ -13027,9 +20059,9 @@ func (s *DisableBackupPlanResponseBody) SetSuccess(v bool) *DisableBackupPlanRes
 }
 
 type DisableBackupPlanResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableBackupPlanResponse) String() string {
@@ -13056,13 +20088,35 @@ func (s *DisableBackupPlanResponse) SetBody(v *DisableBackupPlanResponseBody) *D
 }
 
 type DisableHanaBackupPlanRequest struct {
-	// The ID of the resource group.
+	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-0003tu******y5oc
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The ID of the request.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pl-0006o11ectqr650ceoct
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm3erpwweavki
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-000f9z******vilrr
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -13095,12 +20149,34 @@ func (s *DisableHanaBackupPlanRequest) SetVaultId(v string) *DisableHanaBackupPl
 }
 
 type DisableHanaBackupPlanResponseBody struct {
-	// The operation that you want to perform. Set the value to **DisableHanaBackupPlan**.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Disables an SAP HANA backup plan.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// FFC87EC8-8126-5967-9C4D-82715F8DFC97
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableHanaBackupPlanResponseBody) String() string {
@@ -13132,9 +20208,9 @@ func (s *DisableHanaBackupPlanResponseBody) SetSuccess(v bool) *DisableHanaBacku
 }
 
 type DisableHanaBackupPlanResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableHanaBackupPlanResponse) String() string {
@@ -13161,15 +20237,31 @@ func (s *DisableHanaBackupPlanResponse) SetBody(v *DisableHanaBackupPlanResponse
 }
 
 type EnableBackupPlanRequest struct {
-	// The ID of the backup vault.
+	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the request is successful.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: The system backs up data from Elastic Compute Service (ECS) instances.
-	// *   **OSS**: The system backs up data from Object Storage Service (OSS) buckets.
-	// *   **NAS**: The system backs up data from Apsara File Storage NAS file systems.
+	// 	- **ECS_FILE**: ECS files
+	//
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS (NAS) file systems
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -13197,13 +20289,34 @@ func (s *EnableBackupPlanRequest) SetVaultId(v string) *EnableBackupPlanRequest 
 }
 
 type EnableBackupPlanResponseBody struct {
-	// The ID of the request.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **EnableBackupPlan**.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Enables a backup plan.
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableBackupPlanResponseBody) String() string {
@@ -13235,9 +20348,9 @@ func (s *EnableBackupPlanResponseBody) SetSuccess(v bool) *EnableBackupPlanRespo
 }
 
 type EnableBackupPlanResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableBackupPlanResponse) String() string {
@@ -13264,13 +20377,35 @@ func (s *EnableBackupPlanResponse) SetBody(v *EnableBackupPlanResponseBody) *Ena
 }
 
 type EnableHanaBackupPlanRequest struct {
-	// The ID of the resource group.
+	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-0001zfcn******0pr3
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The ID of the request.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// plan-*********************
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm4ebtpkzx7zy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-00030j3c******sn
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -13303,12 +20438,34 @@ func (s *EnableHanaBackupPlanRequest) SetVaultId(v string) *EnableHanaBackupPlan
 }
 
 type EnableHanaBackupPlanResponseBody struct {
-	// The operation that you want to perform. Set the value to **EnableHanaBackupPlan**.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Enables an SAP HANA backup plan.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableHanaBackupPlanResponseBody) String() string {
@@ -13340,9 +20497,9 @@ func (s *EnableHanaBackupPlanResponseBody) SetSuccess(v bool) *EnableHanaBackupP
 }
 
 type EnableHanaBackupPlanResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableHanaBackupPlanResponse) String() string {
@@ -13369,17 +20526,37 @@ func (s *EnableHanaBackupPlanResponse) SetBody(v *EnableHanaBackupPlanResponseBo
 }
 
 type ExecuteBackupPlanRequest struct {
-	// The ID of the backup vault.
+	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the backup rule.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	//
+	// example:
+	//
+	// rule-0002*****ux8
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: Elastic Compute Service (ECS) files
-	// *   **OSS**: Object Storage Service (OSS) buckets
-	// *   **NAS**: Apsara File Storage NAS file systems
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS (NAS) file systems
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -13412,14 +20589,40 @@ func (s *ExecuteBackupPlanRequest) SetVaultId(v string) *ExecuteBackupPlanReques
 }
 
 type ExecuteBackupPlanResponseBody struct {
-	// The ID of the request.
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the backup job.
+	//
+	// example:
+	//
+	// job-*********************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The operation that you want to perform. Set the value to **ExecuteBackupPlan**.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Executes a backup plan.
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecuteBackupPlanResponseBody) String() string {
@@ -13456,9 +20659,9 @@ func (s *ExecuteBackupPlanResponseBody) SetSuccess(v bool) *ExecuteBackupPlanRes
 }
 
 type ExecuteBackupPlanResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteBackupPlanResponse) String() string {
@@ -13485,10 +20688,26 @@ func (s *ExecuteBackupPlanResponse) SetBody(v *ExecuteBackupPlanResponseBody) *E
 }
 
 type ExecutePolicyV2Request struct {
+	// example:
+	//
+	// i-bp1************dtv
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	PolicyId     *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	SourceType   *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// po-000************hky
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule-0002*****ux8
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// UDM_ECS
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s ExecutePolicyV2Request) String() string {
@@ -13520,11 +20739,26 @@ func (s *ExecutePolicyV2Request) SetSourceType(v string) *ExecutePolicyV2Request
 }
 
 type ExecutePolicyV2ResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// job-*********************
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F4EEB401-DD21-588D-AE3B-1E835C7655E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecutePolicyV2ResponseBody) String() string {
@@ -13561,9 +20795,9 @@ func (s *ExecutePolicyV2ResponseBody) SetSuccess(v bool) *ExecutePolicyV2Respons
 }
 
 type ExecutePolicyV2Response struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecutePolicyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecutePolicyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecutePolicyV2Response) String() string {
@@ -13590,13 +20824,41 @@ func (s *ExecutePolicyV2Response) SetBody(v *ExecutePolicyV2ResponseBody) *Execu
 }
 
 type GenerateRamPolicyRequest struct {
-	// The ID of the backup vault.
+	// The type of the policy that you want to generate. Valid values:
+	//
+	// 	- custom: custom policy
+	//
+	// 	- system: system policy
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// system
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The content of the policy.
+	// Specifies whether to generate the policy based on an existing instance-specific rule. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	RequireBasePolicy *bool `json:"RequireBasePolicy,omitempty" xml:"RequireBasePolicy,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-*********************
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-0007al3m******7ao
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -13629,14 +20891,40 @@ func (s *GenerateRamPolicyRequest) SetVaultId(v string) *GenerateRamPolicyReques
 }
 
 type GenerateRamPolicyResponseBody struct {
-	// The ID of the request.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **GenerateRamPolicy**.
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The content of the policy.
+	//
+	// example:
+	//
+	// {     "Version": "1",     "Statement": [         {             "Effect": "Deny",             "Action": [                 "hbr:CreateRestore",                 "hbr:CreateRestoreJob",                 "hbr:CreateHanaRestore",                 "hbr:CreateUniRestorePlan",                 "hbr:CreateSqlServerRestore"             ],             "Resource": [                 "acs:hbr:*:1178******531:vault/v-000******blx06",                 "acs:hbr:*:1178******531:vault/v-000******blx06/client/*"             ]         }     ] }
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// Generates a RAM policy.
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GenerateRamPolicyResponseBody) String() string {
@@ -13673,9 +20961,9 @@ func (s *GenerateRamPolicyResponseBody) SetSuccess(v bool) *GenerateRamPolicyRes
 }
 
 type GenerateRamPolicyResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateRamPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateRamPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateRamPolicyResponse) String() string {
@@ -13703,6 +20991,12 @@ func (s *GenerateRamPolicyResponse) SetBody(v *GenerateRamPolicyResponseBody) *G
 
 type GetTempFileDownloadLinkRequest struct {
 	// The key that is used to download a file.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// temp/1797733170015112/report/r-000jdzknbp39cnf9hs99/r-000jdzknbp39cnf9hs99-total.csv
 	TempFileKey *string `json:"TempFileKey,omitempty" xml:"TempFileKey,omitempty"`
 }
 
@@ -13721,17 +21015,38 @@ func (s *GetTempFileDownloadLinkRequest) SetTempFileKey(v string) *GetTempFileDo
 
 type GetTempFileDownloadLinkResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the request is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The download URL of the file.
+	//
+	// example:
+	//
+	// https://a-hbr-temp-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/job-0007yg2i0m6705wdhgb6_0.csv?Expires=1649406469&OSSAccessKeyId=LTAIjGotF8wX****&Signature=26%2BgjegCrRmMDCpS5jzyG4ivKU8%3D
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -13769,9 +21084,9 @@ func (s *GetTempFileDownloadLinkResponseBody) SetUrl(v string) *GetTempFileDownl
 }
 
 type GetTempFileDownloadLinkResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTempFileDownloadLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTempFileDownloadLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTempFileDownloadLinkResponse) String() string {
@@ -13799,15 +21114,34 @@ func (s *GetTempFileDownloadLinkResponse) SetBody(v *GetTempFileDownloadLinkResp
 
 type InstallBackupClientsRequest struct {
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 16392782xxxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The IDs of the ECS instances. You can specify up to 20 IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["i-0xi5wj5*****v3j3bh2gj5"]
 	InstanceIds map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -13841,15 +21175,34 @@ func (s *InstallBackupClientsRequest) SetInstanceIds(v map[string]interface{}) *
 
 type InstallBackupClientsShrinkRequest struct {
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 16392782xxxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	// The IDs of the ECS instances. You can specify up to 20 IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["i-0xi5wj5*****v3j3bh2gj5"]
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -13883,19 +21236,40 @@ func (s *InstallBackupClientsShrinkRequest) SetInstanceIdsShrink(v string) *Inst
 
 type InstallBackupClientsResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The status of the ECS instance.
 	InstanceStatuses []*InstallBackupClientsResponseBodyInstanceStatuses `json:"InstanceStatuses,omitempty" xml:"InstanceStatuses,omitempty" type:"Repeated"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	//
+	// example:
+	//
+	// t-*********************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -13940,17 +21314,33 @@ func (s *InstallBackupClientsResponseBody) SetTaskId(v string) *InstallBackupCli
 type InstallBackupClientsResponseBodyInstanceStatuses struct {
 	// The error code that is returned. Valid values:
 	//
-	// *   If the value is empty, the call is successful.
-	// *   **InstanceNotExists**: The ECS instance does not exist.
-	// *   **InstanceNotRunning**: The ECS instance is not running.
-	// *   **CloudAssistNotRunningOnInstance**: Cloud Assistant is unavailable.
+	// 	- If the value is empty, the call is successful.
+	//
+	// 	- **InstanceNotExists**: The ECS instance does not exist.
+	//
+	// 	- **InstanceNotRunning**: The ECS instance is not running.
+	//
+	// 	- **CloudAssistNotRunningOnInstance**: Cloud Assistant is unavailable.
+	//
+	// example:
+	//
+	// InstanceNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-0xi5w***v3j3bh2gj5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether an HBR client can be installed on the ECS instance. Valid values:
 	//
-	// *   true: An HBR client can be installed on the ECS instance.
-	// *   false: An HBR client cannot be installed on the ECS instance.
+	// 	- true: An HBR client can be installed on the ECS instance.
+	//
+	// 	- false: An HBR client cannot be installed on the ECS instance.
+	//
+	// example:
+	//
+	// true
 	ValidInstance *bool `json:"ValidInstance,omitempty" xml:"ValidInstance,omitempty"`
 }
 
@@ -13978,9 +21368,9 @@ func (s *InstallBackupClientsResponseBodyInstanceStatuses) SetValidInstance(v bo
 }
 
 type InstallBackupClientsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InstallBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InstallBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InstallBackupClientsResponse) String() string {
@@ -14007,9 +21397,17 @@ func (s *InstallBackupClientsResponse) SetBody(v *InstallBackupClientsResponseBo
 }
 
 type OpenHbrServiceResponseBody struct {
-	// The ID of the request.
+	// The ID of the order.
+	//
+	// example:
+	//
+	// 215463686160696
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// auditing
+	// The ID of the request.
+	//
+	// example:
+	//
+	// F4A1D5F4-5055-549A-8B25-6DD23311E299
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14032,9 +21430,9 @@ func (s *OpenHbrServiceResponseBody) SetRequestId(v string) *OpenHbrServiceRespo
 }
 
 type OpenHbrServiceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OpenHbrServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenHbrServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s OpenHbrServiceResponse) String() string {
@@ -14062,60 +21460,128 @@ func (s *OpenHbrServiceResponse) SetBody(v *OpenHbrServiceResponseBody) *OpenHbr
 
 type SearchHistoricalSnapshotsRequest struct {
 	// The maximum number of rows that you want the current query to return. To query only the number of matched rows without the need to return specific data, you can set the Limit parameter to `0`. Then, the operation returns only the number of matched rows.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The token that is required to obtain the next page of backup snapshots.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ordering mode. Valid values:
+	//
+	// 	- ASC (default): ascending order
+	//
+	// 	- DESC: descending order
+	//
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The query conditions. Example:
 	//
 	//     [
+	//
 	//       {
+	//
 	//         "field": "VaultId",
+	//
 	//         "value": "v-0003rf9m*****qx5",
+	//
 	//         "operation": "MATCH_TERM"
+	//
 	//       },
+	//
 	//       {
+	//
 	//         "field": "InstanceId",
+	//
 	//         "value": "i-bp1i20zq2*****e9368m",
+	//
 	//         "operation": "MATCH_TERM"
+	//
 	//       },
+	//
 	//       {
+	//
 	//         "field": "PlanId",
+	//
 	//         "value": "plan-0005vk*****gkd1iu4f",
+	//
 	//         "operation": "MATCH_TERM"
+	//
 	//       },
+	//
 	//       {
+	//
 	//         "field": "CompleteTime",
+	//
 	//         "value": 1626769913,
+	//
 	//         "operation": "GREATER_THAN_OR_EQUAL"
+	//
 	//       }
+	//
 	//     ]
 	//
-	// *   The following fields are supported:
+	// 	- The following fields are supported:
 	//
-	//     *   VaultId: specifies the ID of the backup vault. This field is required.
-	//     *   InstanceId: specifies the ID of the ECS instance. If the SourceType parameter is set to ECS_FILE, this field is required.
-	//     *   Bucket: specifies the ID of the OSS bucket. If the SourceType parameter is set to OSS, this field is required.
-	//     *   FileSystemId: specifies the ID of the NAS file system. If the SourceType parameter is set to NAS, this field is required.
-	//     *   CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
-	//     *   CompleteTime: specifies the time when the backup snapshot was completed.
-	//     *   PlanId: the ID of a backup plan.
+	//     	- VaultId: specifies the ID of the backup vault. This field is required.
 	//
-	// *   The following operations are supported:
+	//     	- InstanceId: specifies the ID of the ECS instance. If the SourceType parameter is set to ECS_FILE, this field is required.
 	//
-	//     *   MATCH_TERM: exact match.
-	//     *   GREATER_THAN: greater than.
-	//     *   GREATER_THAN_OR_EQUAL: greater than or equal to.
-	//     *   LESS_THAN: less than.
-	//     *   LESS_THAN_OR_EQUAL: less than or equal to.
-	//     *   BETWEEN: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
-	//     *   IN: specifies an array as a collection. The results must fall within the collection.
-	//     *   NOT_IN: specifies an array as a collection. The results cannot fall within the collection.
+	//     	- Bucket: specifies the ID of the OSS bucket. If the SourceType parameter is set to OSS, this field is required.
+	//
+	//     	- FileSystemId: specifies the ID of the NAS file system. If the SourceType parameter is set to NAS, this field is required.
+	//
+	//     	- CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
+	//
+	//     	- CompleteTime: specifies the time when the backup snapshot was completed.
+	//
+	//     	- PlanId: the ID of a backup plan.
+	//
+	// 	- The following operations are supported:
+	//
+	//     	- MATCH_TERM: exact match.
+	//
+	//     	- GREATER_THAN: greater than.
+	//
+	//     	- GREATER_THAN_OR_EQUAL: greater than or equal to.
+	//
+	//     	- LESS_THAN: less than.
+	//
+	//     	- LESS_THAN_OR_EQUAL: less than or equal to.
+	//
+	//     	- BETWEEN: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
+	//
+	//     	- IN: specifies an array as a collection. The results must fall within the collection.
+	//
+	//     	- NOT_IN: specifies an array as a collection. The results cannot fall within the collection.
+	//
+	// example:
+	//
+	// [   {     "field": "VaultId",     "value": "v-0003rf9m17pap3ltpqx5",     "operation": "MATCH_TERM"   },   {     "field": "InstanceId",     "value": "i-bp1i20zq2wuzdie9368m",     "operation": "MATCH_TERM"   },   {     "field": "PlanId",     "value": "plan-0005vkqhpesqgkd1iu4f",     "operation": "MATCH_TERM"   },   {     "field": "CompleteTime",     "value": 1626769913,     "operation": "GREATER_THAN_OR_EQUAL"   } ]
 	Query []interface{} `json:"Query,omitempty" xml:"Query,omitempty" type:"Repeated"`
+	// The field that is used to sort data.
+	//
+	// example:
+	//
+	// CreatedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: backup snapshots for Elastic Compute Service (ECS) files
-	// *   **OSS**: backup snapshots for Object Storage Service (OSS) buckets
-	// *   **NAS**: backup snapshots for Apsara File Storage NAS file systems
+	// 	- **ECS_FILE**: backup snapshots for Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: backup snapshots for Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: backup snapshots for Apsara File Storage NAS file systems
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -14137,8 +21603,18 @@ func (s *SearchHistoricalSnapshotsRequest) SetNextToken(v string) *SearchHistori
 	return s
 }
 
+func (s *SearchHistoricalSnapshotsRequest) SetOrder(v string) *SearchHistoricalSnapshotsRequest {
+	s.Order = &v
+	return s
+}
+
 func (s *SearchHistoricalSnapshotsRequest) SetQuery(v []interface{}) *SearchHistoricalSnapshotsRequest {
 	s.Query = v
+	return s
+}
+
+func (s *SearchHistoricalSnapshotsRequest) SetSortBy(v string) *SearchHistoricalSnapshotsRequest {
+	s.SortBy = &v
 	return s
 }
 
@@ -14149,60 +21625,128 @@ func (s *SearchHistoricalSnapshotsRequest) SetSourceType(v string) *SearchHistor
 
 type SearchHistoricalSnapshotsShrinkRequest struct {
 	// The maximum number of rows that you want the current query to return. To query only the number of matched rows without the need to return specific data, you can set the Limit parameter to `0`. Then, the operation returns only the number of matched rows.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The token that is required to obtain the next page of backup snapshots.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ordering mode. Valid values:
+	//
+	// 	- ASC (default): ascending order
+	//
+	// 	- DESC: descending order
+	//
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The query conditions. Example:
 	//
 	//     [
+	//
 	//       {
+	//
 	//         "field": "VaultId",
+	//
 	//         "value": "v-0003rf9m*****qx5",
+	//
 	//         "operation": "MATCH_TERM"
+	//
 	//       },
+	//
 	//       {
+	//
 	//         "field": "InstanceId",
+	//
 	//         "value": "i-bp1i20zq2*****e9368m",
+	//
 	//         "operation": "MATCH_TERM"
+	//
 	//       },
+	//
 	//       {
+	//
 	//         "field": "PlanId",
+	//
 	//         "value": "plan-0005vk*****gkd1iu4f",
+	//
 	//         "operation": "MATCH_TERM"
+	//
 	//       },
+	//
 	//       {
+	//
 	//         "field": "CompleteTime",
+	//
 	//         "value": 1626769913,
+	//
 	//         "operation": "GREATER_THAN_OR_EQUAL"
+	//
 	//       }
+	//
 	//     ]
 	//
-	// *   The following fields are supported:
+	// 	- The following fields are supported:
 	//
-	//     *   VaultId: specifies the ID of the backup vault. This field is required.
-	//     *   InstanceId: specifies the ID of the ECS instance. If the SourceType parameter is set to ECS_FILE, this field is required.
-	//     *   Bucket: specifies the ID of the OSS bucket. If the SourceType parameter is set to OSS, this field is required.
-	//     *   FileSystemId: specifies the ID of the NAS file system. If the SourceType parameter is set to NAS, this field is required.
-	//     *   CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
-	//     *   CompleteTime: specifies the time when the backup snapshot was completed.
-	//     *   PlanId: the ID of a backup plan.
+	//     	- VaultId: specifies the ID of the backup vault. This field is required.
 	//
-	// *   The following operations are supported:
+	//     	- InstanceId: specifies the ID of the ECS instance. If the SourceType parameter is set to ECS_FILE, this field is required.
 	//
-	//     *   MATCH_TERM: exact match.
-	//     *   GREATER_THAN: greater than.
-	//     *   GREATER_THAN_OR_EQUAL: greater than or equal to.
-	//     *   LESS_THAN: less than.
-	//     *   LESS_THAN_OR_EQUAL: less than or equal to.
-	//     *   BETWEEN: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
-	//     *   IN: specifies an array as a collection. The results must fall within the collection.
-	//     *   NOT_IN: specifies an array as a collection. The results cannot fall within the collection.
+	//     	- Bucket: specifies the ID of the OSS bucket. If the SourceType parameter is set to OSS, this field is required.
+	//
+	//     	- FileSystemId: specifies the ID of the NAS file system. If the SourceType parameter is set to NAS, this field is required.
+	//
+	//     	- CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
+	//
+	//     	- CompleteTime: specifies the time when the backup snapshot was completed.
+	//
+	//     	- PlanId: the ID of a backup plan.
+	//
+	// 	- The following operations are supported:
+	//
+	//     	- MATCH_TERM: exact match.
+	//
+	//     	- GREATER_THAN: greater than.
+	//
+	//     	- GREATER_THAN_OR_EQUAL: greater than or equal to.
+	//
+	//     	- LESS_THAN: less than.
+	//
+	//     	- LESS_THAN_OR_EQUAL: less than or equal to.
+	//
+	//     	- BETWEEN: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
+	//
+	//     	- IN: specifies an array as a collection. The results must fall within the collection.
+	//
+	//     	- NOT_IN: specifies an array as a collection. The results cannot fall within the collection.
+	//
+	// example:
+	//
+	// [   {     "field": "VaultId",     "value": "v-0003rf9m17pap3ltpqx5",     "operation": "MATCH_TERM"   },   {     "field": "InstanceId",     "value": "i-bp1i20zq2wuzdie9368m",     "operation": "MATCH_TERM"   },   {     "field": "PlanId",     "value": "plan-0005vkqhpesqgkd1iu4f",     "operation": "MATCH_TERM"   },   {     "field": "CompleteTime",     "value": 1626769913,     "operation": "GREATER_THAN_OR_EQUAL"   } ]
 	QueryShrink *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The field that is used to sort data.
+	//
+	// example:
+	//
+	// CreatedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: backup snapshots for Elastic Compute Service (ECS) files
-	// *   **OSS**: backup snapshots for Object Storage Service (OSS) buckets
-	// *   **NAS**: backup snapshots for Apsara File Storage NAS file systems
+	// 	- **ECS_FILE**: backup snapshots for Elastic Compute Service (ECS) files
+	//
+	// 	- **OSS**: backup snapshots for Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: backup snapshots for Apsara File Storage NAS file systems
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -14224,8 +21768,18 @@ func (s *SearchHistoricalSnapshotsShrinkRequest) SetNextToken(v string) *SearchH
 	return s
 }
 
+func (s *SearchHistoricalSnapshotsShrinkRequest) SetOrder(v string) *SearchHistoricalSnapshotsShrinkRequest {
+	s.Order = &v
+	return s
+}
+
 func (s *SearchHistoricalSnapshotsShrinkRequest) SetQueryShrink(v string) *SearchHistoricalSnapshotsShrinkRequest {
 	s.QueryShrink = &v
+	return s
+}
+
+func (s *SearchHistoricalSnapshotsShrinkRequest) SetSortBy(v string) *SearchHistoricalSnapshotsShrinkRequest {
+	s.SortBy = &v
 	return s
 }
 
@@ -14236,23 +21790,52 @@ func (s *SearchHistoricalSnapshotsShrinkRequest) SetSourceType(v string) *Search
 
 type SearchHistoricalSnapshotsResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The number of historical backup snapshots that are displayed on the current page.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The token that is required to obtain the next page of backup snapshots.
+	//
+	// example:
+	//
+	// BE
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The historical backup snapshots.
 	Snapshots *SearchHistoricalSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of returned backup snapshots that meet the specified conditions.
+	//
+	// example:
+	//
+	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -14323,91 +21906,248 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshots) SetSnapshot(v []*Search
 
 type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	// The actual data amount of backup snapshots after duplicates are removed. Unit: bytes.
+	//
+	// example:
+	//
+	// 600
 	ActualBytes *int64 `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
 	// The actual number of backup snapshots.
 	//
 	// >  This parameter is available only for file backup.
+	//
+	// example:
+	//
+	// 6
 	ActualItems *int64 `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
+	// example:
+	//
+	// 1640334062
 	ArchiveTime *int64 `json:"ArchiveTime,omitempty" xml:"ArchiveTime,omitempty"`
 	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the name of the OSS bucket.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **OSS**. This parameter indicates the name of the OSS bucket.
+	//
+	// example:
+	//
+	// hbr-backup-oss
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	// The actual amount of data that is generated by incremental backups. Unit: bytes.
+	//
+	// example:
+	//
+	// 800
 	BytesDone *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
 	// The total amount of data. Unit: bytes.
+	//
+	// example:
+	//
+	// 1000
 	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the ID of the HBR client.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the ID of the HBR client.
+	//
+	// example:
+	//
+	// c-*********************
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the time when the file system was created. The value is a UNIX timestamp. Unit: seconds.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **NAS**. This parameter indicates the time when the file system was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1607436917
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The time when the backup snapshot was created. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The files that record the information about backup failures, including the information about partially completed backups.
+	//
+	// example:
+	//
+	// Item	Error Message C:\\Program Files (x86)\\Symantec\\Symantec Endpoint Protection\\14.3.558.0000.105\\Bin\\service.dat	Open: open \\\\?\\C:\\Program Files (x86)\\Symantec\\Symantec Endpoint Protection\\14.3.558.0000.105\\Bin\\service.dat: The process cannot access the file because it is being used by another process. C:\\ProgramData\\McAfee\\Agent\\data\\InstallerFiles\\172e8a3b04b7ab0fd0215f4fb7707e3744b37d83b6743b3eacb94447c74dc9af_contrib.ini	Open: open \\\\?\\C:\\ProgramData\\McAfee\\Agent\\data\\InstallerFiles\\172e8a3b04b7ab0fd0215f4fb7707e3744b37d83b6743b3eacb94447c74dc9af_contrib.ini: Access is denied.
 	ErrorFile *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
-	Exclude   *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// example:
+	//
+	// [\\"/test/example_cn-hangzhou_7.txt\\", \\"/test/example_cn-hangzhou_1.txt\\", \\"/test/example_cn-hangzhou_3.txt\\", \\"/test/example_cn-hangzhou_9.txt\\", \\"/test/example_cn-hangzhou_6.txt\\"]
+	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
 	// The time when the snapshot expired. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1640334062
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the ID of the NAS file system.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **NAS**. This parameter indicates the ID of the NAS file system.
+	//
+	// example:
+	//
+	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Include      *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the ID of the ECS instance.
+	// example:
+	//
+	// [\\"/test/example_cn-huhehaote_3.txt\\", \\"/test/example_cn-huhehaote_9.txt\\", \\"/test/example_cn-huhehaote_5.txt\\", \\"/test/example_cn-huhehaote_1.txt\\", \\"/test/example_cn-huhehaote_7.txt\\"]
+	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// This parameter is valid only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-*********************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the Tablestore instance.
+	//
+	// example:
+	//
+	// instancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The number of objects that are backed up.
 	//
 	// >  This parameter is available only for file backup.
+	//
+	// example:
+	//
+	// 8
 	ItemsDone *int64 `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
 	// The total number of objects in the data source.
 	//
 	// >  This parameter is available only for file backup.
+	//
+	// example:
+	//
+	// 10
 	ItemsTotal *int64 `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
 	// The ID of the backup job.
+	//
+	// example:
+	//
+	// v-*********************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The hash value of the parent backup snapshot.
+	//
+	// example:
+	//
+	// f2fe..
 	ParentSnapshotHash *string `json:"ParentSnapshotHash,omitempty" xml:"ParentSnapshotHash,omitempty"`
-	// This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the path to the files that are backed up.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter indicates the path to the files that are backed up.
+	//
+	// example:
+	//
+	// ["/home"]
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The source paths.
+	//
+	// example:
+	//
+	// "/home"
 	Paths *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
-	// This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the prefix of objects that are backed up.
+	// This parameter is returned only if the **SourceType*	- parameter is set to **OSS**. This parameter indicates the prefix of objects that are backed up.
+	//
+	// example:
+	//
+	// example/
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	// The time when the backup job ended. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1642521709966
 	RangeEnd *int64 `json:"RangeEnd,omitempty" xml:"RangeEnd,omitempty"`
 	// The time when the backup job started. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1642492553038
 	RangeStart *int64 `json:"RangeStart,omitempty" xml:"RangeStart,omitempty"`
 	// The retention period of the backup snapshot. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The hash value of the backup snapshot.
+	//
+	// example:
+	//
+	// f2fe...
 	SnapshotHash *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
 	// The ID of the backup snapshot.
-	SnapshotId               *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	//
+	// example:
+	//
+	// s-*********************
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// qwer***
 	SourceParentSnapshotHash *string `json:"SourceParentSnapshotHash,omitempty" xml:"SourceParentSnapshotHash,omitempty"`
-	SourceSnapshotHash       *string `json:"SourceSnapshotHash,omitempty" xml:"SourceSnapshotHash,omitempty"`
+	// example:
+	//
+	// qwer***
+	SourceSnapshotHash *string `json:"SourceSnapshotHash,omitempty" xml:"SourceSnapshotHash,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: backup snapshots for ECS files
-	// *   **OSS**: backup snapshots for OSS buckets
-	// *   **NAS**: backup snapshots for NAS file systems
+	// 	- **ECS_FILE**: backup snapshots for ECS files
+	//
+	// 	- **OSS**: backup snapshots for OSS buckets
+	//
+	// 	- **NAS**: backup snapshots for NAS file systems
+	//
+	// example:
+	//
+	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The time when the backup snapshot started. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the backup job. Valid values:
 	//
-	// *   **COMPLETE**: The backup job is completed.
-	// *   **PARTIAL_COMPLETE**: The backup job is partially completed.
-	// *   **FAILED**: The backup job has failed.
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 	- **COMPLETE**: The backup job is completed.
+	//
+	// 	- **PARTIAL_COMPLETE**: The backup job is partially completed.
+	//
+	// 	- **FAILED**: The backup job has failed.
+	//
+	// example:
+	//
+	// COMPLETE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// STANDARD
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The name of a table in the Tablestore instance.
+	//
+	// example:
+	//
+	// table2
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The time when the backup snapshot was updated. The value is a UNIX timestamp. Unit: seconds.
-	UpdatedTime  *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	UseCommonNas *bool  `json:"UseCommonNas,omitempty" xml:"UseCommonNas,omitempty"`
+	//
+	// example:
+	//
+	// 1554347313
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// example:
+	//
+	// false
+	UseCommonNas *bool `json:"UseCommonNas,omitempty" xml:"UseCommonNas,omitempty"`
 	// The ID of the backup vault that stores the backup snapshot.
+	//
+	// example:
+	//
+	// v-0003rf9m17pap3ltpqx5
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -14637,9 +22377,9 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths) SetPath(v 
 }
 
 type SearchHistoricalSnapshotsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchHistoricalSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchHistoricalSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchHistoricalSnapshotsResponse) String() string {
@@ -14666,11 +22406,25 @@ func (s *SearchHistoricalSnapshotsResponse) SetBody(v *SearchHistoricalSnapshots
 }
 
 type StartHanaDatabaseAsyncRequest struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The ID of the SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-000a9ipe******sme
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the job that is used to initialize the backup vault. You can call the DescribeTask operation to query the status of the job.
+	// The database name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HXE
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The name of the database.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0000hrh******vhr3i
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -14698,14 +22452,40 @@ func (s *StartHanaDatabaseAsyncRequest) SetVaultId(v string) *StartHanaDatabaseA
 }
 
 type StartHanaDatabaseAsyncResponseBody struct {
-	// The ID of the request.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **StartHanaDatabaseAsync**.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Starts an SAP HANA database.
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the job that is used to initialize the backup vault. You can call the DescribeTask operation to query the job status.
+	//
+	// example:
+	//
+	// t-000bjt479yefheij1o0x
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StartHanaDatabaseAsyncResponseBody) String() string {
@@ -14742,9 +22522,9 @@ func (s *StartHanaDatabaseAsyncResponseBody) SetTaskId(v string) *StartHanaDatab
 }
 
 type StartHanaDatabaseAsyncResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartHanaDatabaseAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartHanaDatabaseAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartHanaDatabaseAsyncResponse) String() string {
@@ -14771,11 +22551,25 @@ func (s *StartHanaDatabaseAsyncResponse) SetBody(v *StartHanaDatabaseAsyncRespon
 }
 
 type StopHanaDatabaseAsyncRequest struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The ID of the SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-000dw******45ijer
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
+	// The database name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BWP
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The name of the database.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0006wkn******gzkn
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -14803,14 +22597,40 @@ func (s *StopHanaDatabaseAsyncRequest) SetVaultId(v string) *StopHanaDatabaseAsy
 }
 
 type StopHanaDatabaseAsyncResponseBody struct {
-	// The ID of the request.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **StopHanaDatabaseAsync**.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Stops an SAP HANA database.
+	// The request ID.
+	//
+	// example:
+	//
+	// CD8B903B-DE8F-5969-9414-B2C634D504D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	//
+	// example:
+	//
+	// t-0007o3vqfukgd3y5bxxr
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopHanaDatabaseAsyncResponseBody) String() string {
@@ -14847,9 +22667,9 @@ func (s *StopHanaDatabaseAsyncResponseBody) SetTaskId(v string) *StopHanaDatabas
 }
 
 type StopHanaDatabaseAsyncResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopHanaDatabaseAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopHanaDatabaseAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopHanaDatabaseAsyncResponse) String() string {
@@ -14876,18 +22696,39 @@ func (s *StopHanaDatabaseAsyncResponse) SetBody(v *StopHanaDatabaseAsyncResponse
 }
 
 type UninstallBackupClientsRequest struct {
-	// The ID of the backup client. The sum of the number of backup client IDs and the number of ECS instance IDs cannot exceed 20. Otherwise, an error occurs.
+	// The IDs of Cloud Backup clients. The sum of the number of Cloud Backup client IDs and the number of ECS instance IDs cannot exceed 20. Otherwise, an error occurs.
+	//
+	// example:
+	//
+	// ["c-*********************"]
 	ClientIds map[string]interface{} `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 129349237xxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The ID of the ECS instance. You can specify up to 20 IDs.
+	// The IDs of ECS instances. You can specify a maximum of 20 ECS instances.
+	//
+	// example:
+	//
+	// ["i-0xi5wj5*****v3j3bh2gj5"]
 	InstanceIds map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -14925,18 +22766,39 @@ func (s *UninstallBackupClientsRequest) SetInstanceIds(v map[string]interface{})
 }
 
 type UninstallBackupClientsShrinkRequest struct {
-	// The ID of the backup client. The sum of the number of backup client IDs and the number of ECS instance IDs cannot exceed 20. Otherwise, an error occurs.
+	// The IDs of Cloud Backup clients. The sum of the number of Cloud Backup client IDs and the number of ECS instance IDs cannot exceed 20. Otherwise, an error occurs.
+	//
+	// example:
+	//
+	// ["c-*********************"]
 	ClientIdsShrink *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 129349237xxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The ID of the ECS instance. You can specify up to 20 IDs.
+	// The IDs of ECS instances. You can specify a maximum of 20 ECS instances.
+	//
+	// example:
+	//
+	// ["i-0xi5wj5*****v3j3bh2gj5"]
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -14975,19 +22837,40 @@ func (s *UninstallBackupClientsShrinkRequest) SetInstanceIdsShrink(v string) *Un
 
 type UninstallBackupClientsResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the request is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The status of the ECS instance.
 	InstanceStatuses []*UninstallBackupClientsResponseBodyInstanceStatuses `json:"InstanceStatuses,omitempty" xml:"InstanceStatuses,omitempty" type:"Repeated"`
 	// The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
+	//
+	// example:
+	//
+	// t-*********************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -15032,17 +22915,33 @@ func (s *UninstallBackupClientsResponseBody) SetTaskId(v string) *UninstallBacku
 type UninstallBackupClientsResponseBodyInstanceStatuses struct {
 	// The error code. Valid values:
 	//
-	// *   If the value is empty, the request is successful.
-	// *   **InstanceNotExists**: The ECS instance does not exist.
-	// *   **InstanceNotRunning**: The ECS instance is not running.
-	// *   **CloudAssistNotRunningOnInstance**: Cloud Assistant is unavailable.
+	// 	- If the value is empty, the request is successful.
+	//
+	// 	- **InstanceNotExists**: The ECS instance does not exist.
+	//
+	// 	- **InstanceNotRunning**: The ECS instance is not running.
+	//
+	// 	- **CloudAssistNotRunningOnInstance**: Cloud Assistant is unavailable.
+	//
+	// example:
+	//
+	// InstanceNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-0xi5w***v3j3bh2gj5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether a backup client can be installed on the ECS instance.
 	//
-	// *   true: A backup client can be installed on the ECS instance.
-	// *   false: A backup client cannot be installed on the ECS instance.
+	// 	- true: A backup client can be installed on the ECS instance.
+	//
+	// 	- false: A backup client cannot be installed on the ECS instance.
+	//
+	// example:
+	//
+	// true
 	ValidInstance *bool `json:"ValidInstance,omitempty" xml:"ValidInstance,omitempty"`
 }
 
@@ -15070,9 +22969,9 @@ func (s *UninstallBackupClientsResponseBodyInstanceStatuses) SetValidInstance(v 
 }
 
 type UninstallBackupClientsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UninstallBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UninstallBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UninstallBackupClientsResponse) String() string {
@@ -15100,10 +22999,24 @@ func (s *UninstallBackupClientsResponse) SetBody(v *UninstallBackupClientsRespon
 
 type UninstallClientRequest struct {
 	// The ID of the HBR client.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-000iuqo******zi3rn
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm3erpwweavki
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0008n2q******ax3
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -15132,17 +23045,38 @@ func (s *UninstallClientRequest) SetVaultId(v string) *UninstallClientRequest {
 
 type UninstallClientResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 048A2164-3732-5DF5-88B5-F97FA56DAEB1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	//
+	// example:
+	//
+	// t-0009qs5qcnvuvqrl2mxl
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -15180,9 +23114,9 @@ func (s *UninstallClientResponseBody) SetTaskId(v string) *UninstallClientRespon
 }
 
 type UninstallClientResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UninstallClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UninstallClientResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UninstallClientResponse) String() string {
@@ -15209,67 +23143,145 @@ func (s *UninstallClientResponse) SetBody(v *UninstallClientResponseBody) *Unins
 }
 
 type UpdateBackupPlanRequest struct {
+	// The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
+	//
+	// example:
+	//
+	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
+	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
 	// The details about ECS instance backup. The value is a JSON string.
 	//
-	// *   snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
-	// *   appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
-	// *   preScriptPath: the path to the pre-freeze scripts.
-	// *   postScriptPath: the path to the post-thaw scripts.
+	// 	- snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
+	//
+	// 	- appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
+	//
+	// 	- preScriptPath: the path to the pre-freeze scripts.
+	//
+	// 	- postScriptPath: the path to the post-thaw scripts.
+	//
+	// example:
+	//
+	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// Specifies whether to enable the feature of keeping at least one backup version. Valid values:
 	//
-	// *   0: The feature is disabled.
-	// *   1: The feature is enabled.
-	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
+	// 	- 0: The feature is disabled.
 	//
-	// *   This parameter is available only for Windows ECS instances.
-	// *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-	// *   If you use VSS, you cannot back up data from multiple directories.
+	// 	- 1: The feature is enabled.
+	//
+	// example:
+	//
+	// 1
+	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
+	//
+	// 	- This parameter is available only for Windows ECS instances.
+	//
+	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
+	//
+	// 	- If you use VSS, you cannot back up data from multiple directories.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetail *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// The source paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
 	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// plan-20211***735
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The name of the backup plan.
+	//
+	// example:
+	//
+	// planname
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	//
+	// example:
+	//
+	// oss-prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	// The retention period of the backup data. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The rule of the backup plan.
 	Rule []*UpdateBackupPlanRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// *   **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-	// *   **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// 	- **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	// 	- **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: Elastic Compute Service (ECS) files
-	// *   **OSS**: Object Storage Service (OSS) buckets
-	// *   **NAS**: Apsara File Storage NAS file systems
-	// *   **OTS**: Tablestore instances
-	// *   **UDM_ECS**: ECS instances
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. To ensure business continuity, you can limit the bandwidth that is used for file backup during peak hours. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
 	//
-	// *   **start**: the start hour
-	// *   **end**: the end hour.
-	// *   **bandwidth**: the bandwidth. Unit: KB/s.
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS file systems
+	//
+	// 	- **OTS**: Tablestore instances
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. To ensure business continuity, you can limit the bandwidth that is used for file backup during peak hours. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	//
+	// 	- **start**: the start hour
+	//
+	// 	- **end**: the end hour.
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
+	// example:
+	//
+	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 	// Specifies whether to update the source path if the backup source is empty. Valid values:
 	//
-	// *   true: The system replaces the original source path with the specified source path.
-	// *   false: The system does not update the original source path. The system backs up data based on the source path that you specified when you created the backup plan.
+	// 	- true: The system replaces the original source path with the specified source path.
+	//
+	// 	- false: The system does not update the original source path. The system backs up data based on the source path that you specified when you created the backup plan.
+	//
+	// example:
+	//
+	// false
 	UpdatePaths *bool `json:"UpdatePaths,omitempty" xml:"UpdatePaths,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0006******q
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -15279,6 +23291,11 @@ func (s UpdateBackupPlanRequest) String() string {
 
 func (s UpdateBackupPlanRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateBackupPlanRequest) SetChangeListPath(v string) *UpdateBackupPlanRequest {
+	s.ChangeListPath = &v
+	return s
 }
 
 func (s *UpdateBackupPlanRequest) SetDetail(v map[string]interface{}) *UpdateBackupPlanRequest {
@@ -15368,22 +23385,54 @@ func (s *UpdateBackupPlanRequest) SetVaultId(v string) *UpdateBackupPlanRequest 
 
 type UpdateBackupPlanRequestRule struct {
 	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The ID of the region where the remote backup vault resides.
+	//
+	// example:
+	//
+	// cn-shanghai
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
 	// The retention period of the backup data. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
 	// Specifies whether to disable the policy.
+	//
+	// example:
+	//
+	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// Specifies whether to enable remote replication.
+	//
+	// example:
+	//
+	// false
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
 	// The retention period of the backup data. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The name of the backup policy.
+	//
+	// example:
+	//
+	// rule-test-name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The backup policy. Format: I|{startTime}|{interval}. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
 	// startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// example:
+	//
+	// I|1631685600|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
@@ -15436,67 +23485,145 @@ func (s *UpdateBackupPlanRequestRule) SetSchedule(v string) *UpdateBackupPlanReq
 }
 
 type UpdateBackupPlanShrinkRequest struct {
+	// The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
+	//
+	// example:
+	//
+	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
+	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
 	// The details about ECS instance backup. The value is a JSON string.
 	//
-	// *   snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
-	// *   appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
-	// *   preScriptPath: the path to the pre-freeze scripts.
-	// *   postScriptPath: the path to the post-thaw scripts.
+	// 	- snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
+	//
+	// 	- appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
+	//
+	// 	- preScriptPath: the path to the pre-freeze scripts.
+	//
+	// 	- postScriptPath: the path to the post-thaw scripts.
+	//
+	// example:
+	//
+	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	DetailShrink *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	//
+	// example:
+	//
+	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// Specifies whether to enable the feature of keeping at least one backup version. Valid values:
 	//
-	// *   0: The feature is disabled.
-	// *   1: The feature is enabled.
-	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
+	// 	- 0: The feature is disabled.
 	//
-	// *   This parameter is available only for Windows ECS instances.
-	// *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-	// *   If you use VSS, you cannot back up data from multiple directories.
+	// 	- 1: The feature is enabled.
+	//
+	// example:
+	//
+	// 1
+	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
+	//
+	// 	- This parameter is available only for Windows ECS instances.
+	//
+	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
+	//
+	// 	- If you use VSS, you cannot back up data from multiple directories.
+	//
+	// example:
+	//
+	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetailShrink *string `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// The source paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
 	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// plan-20211***735
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The name of the backup plan.
+	//
+	// example:
+	//
+	// planname
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	//
+	// example:
+	//
+	// oss-prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	// The retention period of the backup data. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The rule of the backup plan.
 	Rule []*UpdateBackupPlanShrinkRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// *   **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-	// *   **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// 	- **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	// 	- **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **ECS_FILE**: Elastic Compute Service (ECS) files
-	// *   **OSS**: Object Storage Service (OSS) buckets
-	// *   **NAS**: Apsara File Storage NAS file systems
-	// *   **OTS**: Tablestore instances
-	// *   **UDM_ECS**: ECS instances
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. To ensure business continuity, you can limit the bandwidth that is used for file backup during peak hours. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
 	//
-	// *   **start**: the start hour
-	// *   **end**: the end hour.
-	// *   **bandwidth**: the bandwidth. Unit: KB/s.
+	// 	- **OSS**: Object Storage Service (OSS) buckets
+	//
+	// 	- **NAS**: Apsara File Storage NAS file systems
+	//
+	// 	- **OTS**: Tablestore instances
+	//
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// example:
+	//
+	// ECS_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. To ensure business continuity, you can limit the bandwidth that is used for file backup during peak hours. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	//
+	// 	- **start**: the start hour
+	//
+	// 	- **end**: the end hour.
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
+	// example:
+	//
+	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 	// Specifies whether to update the source path if the backup source is empty. Valid values:
 	//
-	// *   true: The system replaces the original source path with the specified source path.
-	// *   false: The system does not update the original source path. The system backs up data based on the source path that you specified when you created the backup plan.
+	// 	- true: The system replaces the original source path with the specified source path.
+	//
+	// 	- false: The system does not update the original source path. The system backs up data based on the source path that you specified when you created the backup plan.
+	//
+	// example:
+	//
+	// false
 	UpdatePaths *bool `json:"UpdatePaths,omitempty" xml:"UpdatePaths,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0006******q
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -15506,6 +23633,11 @@ func (s UpdateBackupPlanShrinkRequest) String() string {
 
 func (s UpdateBackupPlanShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateBackupPlanShrinkRequest) SetChangeListPath(v string) *UpdateBackupPlanShrinkRequest {
+	s.ChangeListPath = &v
+	return s
 }
 
 func (s *UpdateBackupPlanShrinkRequest) SetDetailShrink(v string) *UpdateBackupPlanShrinkRequest {
@@ -15595,22 +23727,54 @@ func (s *UpdateBackupPlanShrinkRequest) SetVaultId(v string) *UpdateBackupPlanSh
 
 type UpdateBackupPlanShrinkRequestRule struct {
 	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The ID of the region where the remote backup vault resides.
+	//
+	// example:
+	//
+	// cn-shanghai
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
 	// The retention period of the backup data. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
 	// Specifies whether to disable the policy.
+	//
+	// example:
+	//
+	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// Specifies whether to enable remote replication.
+	//
+	// example:
+	//
+	// false
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
 	// The retention period of the backup data. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The name of the backup policy.
+	//
+	// example:
+	//
+	// rule-test-name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The backup policy. Format: I|{startTime}|{interval}. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
 	// startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	//
+	// example:
+	//
+	// I|1631685600|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
@@ -15664,15 +23828,32 @@ func (s *UpdateBackupPlanShrinkRequestRule) SetSchedule(v string) *UpdateBackupP
 
 type UpdateBackupPlanResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15705,9 +23886,9 @@ func (s *UpdateBackupPlanResponseBody) SetSuccess(v bool) *UpdateBackupPlanRespo
 }
 
 type UpdateBackupPlanResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateBackupPlanResponse) String() string {
@@ -15734,35 +23915,107 @@ func (s *UpdateBackupPlanResponse) SetBody(v *UpdateBackupPlanResponseBody) *Upd
 }
 
 type UpdateClientSettingsRequest struct {
-	// The number of CPU cores that can be used by a single backup job. A value of 0 indicates no limits.
+	// Specifies whether to generate alert for partially completed jobs. This parameter is valid only for on-premises file backup and ECS file backup.
+	//
+	// example:
+	//
+	// false
+	AlertOnPartialComplete *bool `json:"AlertOnPartialComplete,omitempty" xml:"AlertOnPartialComplete,omitempty"`
+	// The ID of the HBR client.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-*********************
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The custom password of the proxy server.
+	// The type of the endpoint on the data plane. Valid values:
+	//
+	// 	- **PUBLIC**: Internet
+	//
+	// 	- **VPC**: virtual private cloud (VPC)
+	//
+	// 	- **CLASSIC**: classic network
+	//
+	// example:
+	//
+	// VPC
 	DataNetworkType *string `json:"DataNetworkType,omitempty" xml:"DataNetworkType,omitempty"`
-	// The custom port number of the proxy server.
+	// The proxy configuration on the data plane. Valid values:
+	//
+	// 	- **DISABLE**: No proxy is used.
+	//
+	// 	- **USE_CONTROL_PROXY*	- (default): The configuration is the same as that on the control plane.
+	//
+	// 	- **CUSTOM**: The configuration is customized (HTTP).
+	//
+	// example:
+	//
+	// USE_CONTROL_PROXY
 	DataProxySetting *string `json:"DataProxySetting,omitempty" xml:"DataProxySetting,omitempty"`
-	// The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+	// The number of CPU cores used by a single backup job. The value 0 indicates that the number is unlimited.
+	//
+	// example:
+	//
+	// 1
 	MaxCpuCore *int32 `json:"MaxCpuCore,omitempty" xml:"MaxCpuCore,omitempty"`
-	// The number of concurrent tasks that can be included in a backup job. A value of 0 indicates no limits.
+	// The maximum memory that can be used by the client. Unit: bytes. Only V2.13.0 and later are supported.
+	//
+	// example:
+	//
+	// 4096
+	MaxMemory *int64 `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
+	// The number of concurrent backup jobs. The value 0 indicates that the number is unlimited.
+	//
+	// example:
+	//
+	// 1
 	MaxWorker *int32 `json:"MaxWorker,omitempty" xml:"MaxWorker,omitempty"`
-	// Specifies whether to transmit data over HTTPS.
+	// The custom host IP address of the proxy server on the data plane.
 	//
-	// *   true: The system transmits data over HTTPS.
-	// *   false: The system transmits data over HTTP.
+	// example:
+	//
+	// 192.168.11.100
 	ProxyHost *string `json:"ProxyHost,omitempty" xml:"ProxyHost,omitempty"`
-	// Updates the settings of a backup client.
-	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	// The network type of the backup client. Valid values:
+	// The custom password of the proxy server on the data plane.
 	//
-	// *   **PUBLIC**: public network
-	// *   **VPC**: VPC.
-	// *   **CLASSIC**: classic network
+	// example:
+	//
+	// ******
+	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
+	// The custom host port of the proxy server on the data plane.
+	//
+	// example:
+	//
+	// 3128
 	ProxyPort *int32 `json:"ProxyPort,omitempty" xml:"ProxyPort,omitempty"`
-	// The ID of the request.
-	ProxyUser       *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
+	// The custom username of the proxy server on the data plane.
+	//
+	// example:
+	//
+	// user
+	ProxyUser *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-*********************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the request is successful.
+	// Specifies whether to transmit the data on the data plane over HTTPS. Valid values:
+	//
+	// 	- true: Data is transmitted over HTTPS.
+	//
+	// 	- false: Data is transmitted over HTTP.
+	//
+	// example:
+	//
+	// false
 	UseHttps *bool `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
-	// The operation that you want to perform. Set the value to **UpdateClientSettings**.
+	// The ID of the backup vault. This parameter is required for the old HBR client.
+	//
+	// example:
+	//
+	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -15772,6 +24025,11 @@ func (s UpdateClientSettingsRequest) String() string {
 
 func (s UpdateClientSettingsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateClientSettingsRequest) SetAlertOnPartialComplete(v bool) *UpdateClientSettingsRequest {
+	s.AlertOnPartialComplete = &v
+	return s
 }
 
 func (s *UpdateClientSettingsRequest) SetClientId(v string) *UpdateClientSettingsRequest {
@@ -15791,6 +24049,11 @@ func (s *UpdateClientSettingsRequest) SetDataProxySetting(v string) *UpdateClien
 
 func (s *UpdateClientSettingsRequest) SetMaxCpuCore(v int32) *UpdateClientSettingsRequest {
 	s.MaxCpuCore = &v
+	return s
+}
+
+func (s *UpdateClientSettingsRequest) SetMaxMemory(v int64) *UpdateClientSettingsRequest {
+	s.MaxMemory = &v
 	return s
 }
 
@@ -15835,10 +24098,34 @@ func (s *UpdateClientSettingsRequest) SetVaultId(v string) *UpdateClientSettings
 }
 
 type UpdateClientSettingsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateClientSettingsResponseBody) String() string {
@@ -15870,9 +24157,9 @@ func (s *UpdateClientSettingsResponseBody) SetSuccess(v bool) *UpdateClientSetti
 }
 
 type UpdateClientSettingsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateClientSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateClientSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateClientSettingsResponse) String() string {
@@ -15899,11 +24186,28 @@ func (s *UpdateClientSettingsResponse) SetBody(v *UpdateClientSettingsResponseBo
 }
 
 type UpdateContainerClusterRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-000**************134
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// description ack pv backup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ack_pv_backup_location
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	RenewToken  *bool   `json:"RenewToken,omitempty" xml:"RenewToken,omitempty"`
+	// example:
+	//
+	// false
+	RenewToken *bool `json:"RenewToken,omitempty" xml:"RenewToken,omitempty"`
 }
 
 func (s UpdateContainerClusterRequest) String() string {
@@ -15940,12 +24244,30 @@ func (s *UpdateContainerClusterRequest) SetRenewToken(v bool) *UpdateContainerCl
 }
 
 type UpdateContainerClusterResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	TokenUpdated *bool   `json:"TokenUpdated,omitempty" xml:"TokenUpdated,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// eyJhY2NvdW*****VnZpgXQC5A==
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// false
+	TokenUpdated *bool `json:"TokenUpdated,omitempty" xml:"TokenUpdated,omitempty"`
 }
 
 func (s UpdateContainerClusterResponseBody) String() string {
@@ -15987,9 +24309,9 @@ func (s *UpdateContainerClusterResponseBody) SetTokenUpdated(v bool) *UpdateCont
 }
 
 type UpdateContainerClusterResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateContainerClusterResponse) String() string {
@@ -16016,19 +24338,57 @@ func (s *UpdateContainerClusterResponse) SetBody(v *UpdateContainerClusterRespon
 }
 
 type UpdateHanaBackupPlanRequest struct {
-	// The ID of the request.
+	// The backup prefix.
+	//
+	// example:
+	//
+	// COMPLETE_DATA_BACKUP
 	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
-	// The ID of the backup plan.
+	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-0005dhe******f38
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the backup plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pl-000br3cm4dqvmtph7cul
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The name of the backup plan.
+	//
+	// example:
+	//
+	// plan-20211109-162411
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The operation that you want to perform. Set the value to **UpdateHanaBackupPlan**.
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmze36euddwjq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	//
+	// 	- startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+	//
+	// 	- interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+	//
+	// example:
+	//
+	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The ID of the SAP HANA instance.
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-0000rcw******5c6
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -16076,15 +24436,34 @@ func (s *UpdateHanaBackupPlanRequest) SetVaultId(v string) *UpdateHanaBackupPlan
 }
 
 type UpdateHanaBackupPlanResponseBody struct {
-	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// The response code. The status code 200 indicates that the request was successful.
 	//
-	// *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-	// *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Updates the settings of an SAP HANA backup plan.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F23BCC67-09B4-582C-AE70-C813C8548DCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateHanaBackupPlanResponseBody) String() string {
@@ -16116,9 +24495,9 @@ func (s *UpdateHanaBackupPlanResponseBody) SetSuccess(v bool) *UpdateHanaBackupP
 }
 
 type UpdateHanaBackupPlanResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateHanaBackupPlanResponse) String() string {
@@ -16146,33 +24525,86 @@ func (s *UpdateHanaBackupPlanResponse) SetBody(v *UpdateHanaBackupPlanResponseBo
 
 type UpdateHanaBackupSettingRequest struct {
 	// The configuration file for catalog backup.
+	//
+	// example:
+	//
+	// /usr/sap/SID/SYS/global/hdb/opt/hdbconfig/param
 	CatalogBackupParameterFile *string `json:"CatalogBackupParameterFile,omitempty" xml:"CatalogBackupParameterFile,omitempty"`
 	// Specifies whether to use Backint to back up catalogs. Valid values:
 	//
-	// *   true: Backint is used to back up catalogs.
-	// *   false: Backint is not used to back up catalogs.
+	// 	- true: Backint is used to back up catalogs.
+	//
+	// 	- false: Backint is not used to back up catalogs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	CatalogBackupUsingBackint *bool `json:"CatalogBackupUsingBackint,omitempty" xml:"CatalogBackupUsingBackint,omitempty"`
 	// The ID of the SAP HANA instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cl-000ezvg******8znz
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The configuration file for data backup.
+	//
+	// example:
+	//
+	// /usr/sap/SID/SYS/global/hdb/opt/hdbconfig/param
 	DataBackupParameterFile *string `json:"DataBackupParameterFile,omitempty" xml:"DataBackupParameterFile,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYSTEMDB
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// Specifies whether to enable automatic log backup. Valid values:
 	//
-	// *   **true**: enables automatic log backup.
-	// *   **false**: disables automatic log backup.
+	// 	- **true**: enables automatic log backup.
+	//
+	// 	- **false**: disables automatic log backup.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	EnableAutoLogBackup *bool `json:"EnableAutoLogBackup,omitempty" xml:"EnableAutoLogBackup,omitempty"`
 	// The configuration file for log backup.
+	//
+	// example:
+	//
+	// /usr/sap/SID/SYS/global/hdb/opt/hdbconfig/param
 	LogBackupParameterFile *string `json:"LogBackupParameterFile,omitempty" xml:"LogBackupParameterFile,omitempty"`
 	// The interval at which logs are backed up. Unit: seconds.
+	//
+	// example:
+	//
+	// 900
 	LogBackupTimeout *int64 `json:"LogBackupTimeout,omitempty" xml:"LogBackupTimeout,omitempty"`
 	// Specifies whether to use Backint to back up logs. Valid values:
 	//
-	// *   true: Backint is used to back up logs.
-	// *   false: Backint is not used to back up logs.
+	// 	- true: Backint is used to back up logs.
+	//
+	// 	- false: Backint is not used to back up logs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	LogBackupUsingBackint *bool `json:"LogBackupUsingBackint,omitempty" xml:"LogBackupUsingBackint,omitempty"`
 	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0005n******rluw5
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -16236,15 +24668,32 @@ func (s *UpdateHanaBackupSettingRequest) SetVaultId(v string) *UpdateHanaBackupS
 
 type UpdateHanaBackupSettingResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4892D474-9A4A-5298-BCD3-E46112A1EFD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16277,9 +24726,9 @@ func (s *UpdateHanaBackupSettingResponseBody) SetSuccess(v bool) *UpdateHanaBack
 }
 
 type UpdateHanaBackupSettingResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateHanaBackupSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHanaBackupSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateHanaBackupSettingResponse) String() string {
@@ -16306,30 +24755,85 @@ func (s *UpdateHanaBackupSettingResponse) SetBody(v *UpdateHanaBackupSettingResp
 }
 
 type UpdateHanaInstanceRequest struct {
-	// The ID of the backup vault.
+	// The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
+	//
+	// example:
+	//
+	// INHERITED
 	AlertSetting *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
-	// The password that is used to connect with the SAP HANA database.
+	// The ID of the SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-000axjt******c6j8
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call was successful.
+	// The name of the SAP HANA instance.
+	//
+	// example:
+	//
+	// SAP-HANA-DEV
 	HanaName *string `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
-	// The operation that you want to perform. Set the value to **UpdateHanaInstance**.
+	// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The instance number of the SAP HANA system.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 00
 	InstanceNumber *int32 `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The password that is used to connect with the SAP HANA database.
+	//
+	// example:
+	//
+	// **********
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The username of the SYSTEMDB database.
-	UseSsl *bool `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzvx7d3c4kpny
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL). Valid values:
+	//
+	// 	- true: The SAP HANA database is connected over SSL.
+	//
+	// 	- false: The SAP HANA database is not connected over SSL.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	UseSsl *bool `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
+	// The username of the SYSTEMDB database.
+	//
+	// example:
+	//
+	// admin
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// Specifies whether to verify the SSL certificate of the SAP HANA database. Valid values:
 	//
-	// *   true: The SSL certificate of the SAP HANA instance is verified.
-	// *   false: The SSL certificate of the SAP HANA instance is not verified.
+	// 	- true: The SSL certificate of the SAP HANA database is verified.
+	//
+	// 	- false: The SSL certificate of the SAP HANA database is not verified.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
 	ValidateCertificate *bool `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
-	// The name of the SAP HANA instance.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0003v4ah******9xp
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -16397,12 +24901,34 @@ func (s *UpdateHanaInstanceRequest) SetVaultId(v string) *UpdateHanaInstanceRequ
 }
 
 type UpdateHanaInstanceResponseBody struct {
-	// The ID of the request.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Updates an SAP HANA instance.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A6AB6D5A-9D21-5529-9335-A894FB045ED6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateHanaInstanceResponseBody) String() string {
@@ -16434,9 +24960,9 @@ func (s *UpdateHanaInstanceResponseBody) SetSuccess(v bool) *UpdateHanaInstanceR
 }
 
 type UpdateHanaInstanceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateHanaInstanceResponse) String() string {
@@ -16463,20 +24989,57 @@ func (s *UpdateHanaInstanceResponse) SetBody(v *UpdateHanaInstanceResponseBody) 
 }
 
 type UpdateHanaRetentionSettingRequest struct {
+	// The ID of the SAP HANA instance.
+	//
+	// example:
+	//
+	// cl-00024vyjj******srrq
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The database name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYSTEMDB
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// Specifies whether to permanently retain the backup. Valid values:
+	//
+	// 	- true: The backup is permanently retained.
+	//
+	// 	- false: The backup is retained for the specified number of days.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The retention period of the backup data. Unit: days. If you set the Disabled parameter to false, the backup is retained for the number of days specified by this parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 90
+	RetentionDays *int64 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 	// The policy to update the retention period. Format: `I|{startTime}|{interval}`. The retention period is updated at an interval of {interval} starting from {startTime}.
 	//
-	// *   startTime: the time at which the system starts to update the retention period. The time must follow the UNIX time format. Unit: seconds.
-	// *   interval: the interval at which the system updates the retention period. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour and P1D specifies an interval of one day.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The operation that you want to perform. Set the value to **UpdateHanaRetentionSetting**.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The ID of the request.
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
-	RetentionDays *int64 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	// The number of days for which the backup is retained. If you set the Disabled parameter to false, the backup is retained for the number of days specified by this parameter.
+	// 	- startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+	//
+	// 	- interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour, and P1D indicates an interval of one day.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I|0|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The ID of the SAP HANA instance.
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000fb0v2ly******k6
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -16519,15 +25082,34 @@ func (s *UpdateHanaRetentionSettingRequest) SetVaultId(v string) *UpdateHanaRete
 }
 
 type UpdateHanaRetentionSettingResponseBody struct {
-	// Specifies whether to permanently retain the backup. Valid values:
+	// The response code. The status code 200 indicates that the request was successful.
 	//
-	// *   true: The backup is permanently retained.
-	// *   false: The backup is retained for the specified number of days.
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Updates the backup retention period of an SAP HANA database.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7BEE26EB-8EE3-57A0-A9DE-5FD700165DE5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateHanaRetentionSettingResponseBody) String() string {
@@ -16559,9 +25141,9 @@ func (s *UpdateHanaRetentionSettingResponseBody) SetSuccess(v bool) *UpdateHanaR
 }
 
 type UpdateHanaRetentionSettingResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateHanaRetentionSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHanaRetentionSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateHanaRetentionSettingResponse) String() string {
@@ -16588,23 +25170,66 @@ func (s *UpdateHanaRetentionSettingResponse) SetBody(v *UpdateHanaRetentionSetti
 }
 
 type UpdatePolicyBindingRequest struct {
-	// Advanced options.
+	// The advanced options.
 	AdvancedOptions *UpdatePolicyBindingRequestAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
 	// The ID of the data source.
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Specifies whether to disable the backup policy for the data source.
 	//
-	// *   true: disables the backup policy for the data source
-	// *   false: enables the backup policy for the data source
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1************dtv
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Specifies whether to disable the backup policy for the data source. Valid values:
+	//
+	// 	- true: disables the backup policy for the data source
+	//
+	// 	- false: enables the backup policy for the data source
+	//
+	// example:
+	//
+	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// example:
+	//
+	// [\\"*.doc\\",\\"*.xltm\\"]
+	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// example:
+	//
+	// [\\"*.doc\\",\\"*.xltm\\"]
+	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// The description of the association.
+	//
+	// example:
+	//
+	// po-000************5xx-i-2ze************nw4
 	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
 	// The ID of the backup policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// po-000************ky9
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// backup/
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **UDM_ECS**: ECS instance backup
+	// 	- **UDM_ECS**: ECS instance backup
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 0:24:5120
+	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 }
 
 func (s UpdatePolicyBindingRequest) String() string {
@@ -16630,6 +25255,16 @@ func (s *UpdatePolicyBindingRequest) SetDisabled(v bool) *UpdatePolicyBindingReq
 	return s
 }
 
+func (s *UpdatePolicyBindingRequest) SetExclude(v string) *UpdatePolicyBindingRequest {
+	s.Exclude = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetInclude(v string) *UpdatePolicyBindingRequest {
+	s.Include = &v
+	return s
+}
+
 func (s *UpdatePolicyBindingRequest) SetPolicyBindingDescription(v string) *UpdatePolicyBindingRequest {
 	s.PolicyBindingDescription = &v
 	return s
@@ -16640,16 +25275,26 @@ func (s *UpdatePolicyBindingRequest) SetPolicyId(v string) *UpdatePolicyBindingR
 	return s
 }
 
+func (s *UpdatePolicyBindingRequest) SetSource(v string) *UpdatePolicyBindingRequest {
+	s.Source = &v
+	return s
+}
+
 func (s *UpdatePolicyBindingRequest) SetSourceType(v string) *UpdatePolicyBindingRequest {
 	s.SourceType = &v
 	return s
 }
 
+func (s *UpdatePolicyBindingRequest) SetSpeedLimit(v string) *UpdatePolicyBindingRequest {
+	s.SpeedLimit = &v
+	return s
+}
+
 type UpdatePolicyBindingRequestAdvancedOptions struct {
-	CommonNasDetail *UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail `json:"CommonNasDetail,omitempty" xml:"CommonNasDetail,omitempty" type:"Struct"`
-	FileDetail      *UpdatePolicyBindingRequestAdvancedOptionsFileDetail      `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
-	OssDetail       *UpdatePolicyBindingRequestAdvancedOptionsOssDetail       `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
-	// The details of ECS instance backup.
+	CommonFileSystemDetail *UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail `json:"CommonFileSystemDetail,omitempty" xml:"CommonFileSystemDetail,omitempty" type:"Struct"`
+	// The details of the Object Storage Service (OSS) backup.
+	OssDetail *UpdatePolicyBindingRequestAdvancedOptionsOssDetail `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
+	// The backup details of the Elastic Compute Service (ECS) instance.
 	UdmDetail *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
 }
 
@@ -16661,13 +25306,8 @@ func (s UpdatePolicyBindingRequestAdvancedOptions) GoString() string {
 	return s.String()
 }
 
-func (s *UpdatePolicyBindingRequestAdvancedOptions) SetCommonNasDetail(v *UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail) *UpdatePolicyBindingRequestAdvancedOptions {
-	s.CommonNasDetail = v
-	return s
-}
-
-func (s *UpdatePolicyBindingRequestAdvancedOptions) SetFileDetail(v *UpdatePolicyBindingRequestAdvancedOptionsFileDetail) *UpdatePolicyBindingRequestAdvancedOptions {
-	s.FileDetail = v
+func (s *UpdatePolicyBindingRequestAdvancedOptions) SetCommonFileSystemDetail(v *UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail) *UpdatePolicyBindingRequestAdvancedOptions {
+	s.CommonFileSystemDetail = v
 	return s
 }
 
@@ -16681,61 +25321,58 @@ func (s *UpdatePolicyBindingRequestAdvancedOptions) SetUdmDetail(v *UpdatePolicy
 	return s
 }
 
-type UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail struct {
-	ClientId            *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	FetchSliceSize      *int64  `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
-	FullOnIncrementFail *bool   `json:"FullOnIncrementFail,omitempty" xml:"FullOnIncrementFail,omitempty"`
+type UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail struct {
+	// example:
+	//
+	// 100000
+	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
+	// example:
+	//
+	// true
+	FullOnIncrementFail *bool `json:"FullOnIncrementFail,omitempty" xml:"FullOnIncrementFail,omitempty"`
 }
 
-func (s UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail) String() string {
+func (s UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail) GoString() string {
+func (s UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail) GoString() string {
 	return s.String()
 }
 
-func (s *UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail) SetClientId(v string) *UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail {
-	s.ClientId = &v
-	return s
-}
-
-func (s *UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail) SetFetchSliceSize(v int64) *UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail {
+func (s *UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail) SetFetchSliceSize(v int64) *UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail {
 	s.FetchSliceSize = &v
 	return s
 }
 
-func (s *UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail) SetFullOnIncrementFail(v bool) *UpdatePolicyBindingRequestAdvancedOptionsCommonNasDetail {
+func (s *UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail) SetFullOnIncrementFail(v bool) *UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail {
 	s.FullOnIncrementFail = &v
 	return s
 }
 
-type UpdatePolicyBindingRequestAdvancedOptionsFileDetail struct {
-	AdvPolicy *bool `json:"AdvPolicy,omitempty" xml:"AdvPolicy,omitempty"`
-	UseVSS    *bool `json:"UseVSS,omitempty" xml:"UseVSS,omitempty"`
-}
-
-func (s UpdatePolicyBindingRequestAdvancedOptionsFileDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePolicyBindingRequestAdvancedOptionsFileDetail) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePolicyBindingRequestAdvancedOptionsFileDetail) SetAdvPolicy(v bool) *UpdatePolicyBindingRequestAdvancedOptionsFileDetail {
-	s.AdvPolicy = &v
-	return s
-}
-
-func (s *UpdatePolicyBindingRequestAdvancedOptionsFileDetail) SetUseVSS(v bool) *UpdatePolicyBindingRequestAdvancedOptionsFileDetail {
-	s.UseVSS = &v
-	return s
-}
-
 type UpdatePolicyBindingRequestAdvancedOptionsOssDetail struct {
+	// Specifies whether the system deletes the inventory lists after a backup is complete. This parameter is available only when OSS inventory lists are used. Valid values:
+	//
+	// 	- **NO_CLEANUP**: Does not delete inventory lists.
+	//
+	// 	- **DELETE_CURRENT**: Deletes the current inventory list.
+	//
+	// 	- **DELETE_CURRENT_AND_PREVIOUS**: Deletes all inventory lists.
+	//
+	// example:
+	//
+	// NO_CLEANUP
 	InventoryCleanupPolicy *string `json:"InventoryCleanupPolicy,omitempty" xml:"InventoryCleanupPolicy,omitempty"`
-	InventoryId            *string `json:"InventoryId,omitempty" xml:"InventoryId,omitempty"`
+	// The name of the OSS inventory list. The OSS inventory list specified for this parameter is used for performance optimization.
+	//
+	// 	- If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included in your OSS bills.
+	//
+	// 	- An extended period of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+	//
+	// example:
+	//
+	// 30663060
+	InventoryId *string `json:"InventoryId,omitempty" xml:"InventoryId,omitempty"`
 }
 
 func (s UpdatePolicyBindingRequestAdvancedOptionsOssDetail) String() string {
@@ -16758,29 +25395,62 @@ func (s *UpdatePolicyBindingRequestAdvancedOptionsOssDetail) SetInventoryId(v st
 
 type UpdatePolicyBindingRequestAdvancedOptionsUdmDetail struct {
 	// Specifies whether to enable application consistency. You can enable application consistency only if all disks are ESSDs.
-	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
-	// The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
-	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
-	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
 	//
-	// *   true: creates application-consistent snapshots.
-	// *   false: creates file system-consistent snapshots.
+	// example:
+	//
+	// false
+	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
+	// The IDs of the disks that require protection. This parameter is not required if all disks require protection.
+	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
+	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
+	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
+	//
+	// 	- true: creates application-consistent snapshots.
+	//
+	// 	- false: creates file system-consistent snapshots.
 	//
 	// Default value: true.
+	//
+	// example:
+	//
+	// true
 	EnableWriters *bool `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
-	// The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
+	// The IDs of the disks that require no protection. This parameter is not required if the DiskIdList parameter is specified.
 	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+	//
+	// example:
+	//
+	// /tmp/postscript.sh
 	PostScriptPath *string `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+	//
+	// example:
+	//
+	// /tmp/prescript.sh
 	PreScriptPath *string `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the name of the RAM role that is required to create application-consistent snapshots.
+	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies the name of the Resource Access Management (RAM) role that is required to create application-consistent snapshots.
+	//
+	// example:
+	//
+	// AliyunECSInstanceForHbrRole
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are ESSDs.
+	// Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
+	//
+	// example:
+	//
+	// true
 	SnapshotGroup *bool `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
-	// This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+	//
+	// example:
+	//
+	// 30
 	TimeoutInSeconds *int64 `json:"TimeoutInSeconds,omitempty" xml:"TimeoutInSeconds,omitempty"`
 }
 
@@ -16843,23 +25513,66 @@ func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetTimeoutInSeconds
 }
 
 type UpdatePolicyBindingShrinkRequest struct {
-	// Advanced options.
+	// The advanced options.
 	AdvancedOptionsShrink *string `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty"`
 	// The ID of the data source.
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Specifies whether to disable the backup policy for the data source.
 	//
-	// *   true: disables the backup policy for the data source
-	// *   false: enables the backup policy for the data source
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1************dtv
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Specifies whether to disable the backup policy for the data source. Valid values:
+	//
+	// 	- true: disables the backup policy for the data source
+	//
+	// 	- false: enables the backup policy for the data source
+	//
+	// example:
+	//
+	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// example:
+	//
+	// [\\"*.doc\\",\\"*.xltm\\"]
+	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// example:
+	//
+	// [\\"*.doc\\",\\"*.xltm\\"]
+	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	// The description of the association.
+	//
+	// example:
+	//
+	// po-000************5xx-i-2ze************nw4
 	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
 	// The ID of the backup policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// po-000************ky9
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// backup/
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   **UDM_ECS**: ECS instance backup
+	// 	- **UDM_ECS**: ECS instance backup
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 0:24:5120
+	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 }
 
 func (s UpdatePolicyBindingShrinkRequest) String() string {
@@ -16885,6 +25598,16 @@ func (s *UpdatePolicyBindingShrinkRequest) SetDisabled(v bool) *UpdatePolicyBind
 	return s
 }
 
+func (s *UpdatePolicyBindingShrinkRequest) SetExclude(v string) *UpdatePolicyBindingShrinkRequest {
+	s.Exclude = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetInclude(v string) *UpdatePolicyBindingShrinkRequest {
+	s.Include = &v
+	return s
+}
+
 func (s *UpdatePolicyBindingShrinkRequest) SetPolicyBindingDescription(v string) *UpdatePolicyBindingShrinkRequest {
 	s.PolicyBindingDescription = &v
 	return s
@@ -16895,22 +25618,49 @@ func (s *UpdatePolicyBindingShrinkRequest) SetPolicyId(v string) *UpdatePolicyBi
 	return s
 }
 
+func (s *UpdatePolicyBindingShrinkRequest) SetSource(v string) *UpdatePolicyBindingShrinkRequest {
+	s.Source = &v
+	return s
+}
+
 func (s *UpdatePolicyBindingShrinkRequest) SetSourceType(v string) *UpdatePolicyBindingShrinkRequest {
 	s.SourceType = &v
 	return s
 }
 
+func (s *UpdatePolicyBindingShrinkRequest) SetSpeedLimit(v string) *UpdatePolicyBindingShrinkRequest {
+	s.SpeedLimit = &v
+	return s
+}
+
 type UpdatePolicyBindingResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6F24C46-54B9-519B-9AB8-A8988D705E67
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16943,9 +25693,9 @@ func (s *UpdatePolicyBindingResponseBody) SetSuccess(v bool) *UpdatePolicyBindin
 }
 
 type UpdatePolicyBindingResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePolicyBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePolicyBindingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePolicyBindingResponse) String() string {
@@ -16973,10 +25723,22 @@ func (s *UpdatePolicyBindingResponse) SetBody(v *UpdatePolicyBindingResponseBody
 
 type UpdatePolicyV2Request struct {
 	// The description of the backup policy.
+	//
+	// example:
+	//
+	// Data is backed up at 10:00:00 every day and replicated to the China (Shanghai) region for geo-redundancy.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
 	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000************viy
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The name of the backup policy.
+	//
+	// example:
+	//
+	// Daily Local Backup + Remote Backup
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The rules in the backup policy.
 	Rules []*UpdatePolicyV2RequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
@@ -17011,35 +25773,82 @@ func (s *UpdatePolicyV2Request) SetRules(v []*UpdatePolicyV2RequestRules) *Updat
 }
 
 type UpdatePolicyV2RequestRules struct {
-	// This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the time when data is dumped from a backup vault to an archive vault. Unit: days.
-	ArchiveDays *int64 `json:"ArchiveDays,omitempty" xml:"ArchiveDays,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup type. Valid value: **COMPLETE**, which indicates full backup.
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the time when data is dumped from a backup vault to a cold archive vault. Unit: days.
-	ColdArchiveDays     *int64 `json:"ColdArchiveDays,omitempty" xml:"ColdArchiveDays,omitempty"`
-	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **REPLICATION**. This parameter specifies the ID of the destination region.
-	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **TRANSITION** or **REPLICATION**.
+	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION**. This parameter specifies the time when data is dumped from a backup vault to an archive vault. Unit: days.
 	//
-	// *   If the **RuleType** parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Unit: days.
-	// *   If the **RuleType** parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Unit: days.
+	// example:
+	//
+	// 90
+	ArchiveDays *int64 `json:"ArchiveDays,omitempty" xml:"ArchiveDays,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup type. Valid value: **COMPLETE**, which indicates full backup.
+	//
+	// example:
+	//
+	// COMPLETE
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION**. This parameter specifies the time when data is dumped from a backup vault to a cold archive vault. Unit: days.
+	//
+	// example:
+	//
+	// 365
+	ColdArchiveDays   *int64                                         `json:"ColdArchiveDays,omitempty" xml:"ColdArchiveDays,omitempty"`
+	DataSourceFilters []*UpdatePolicyV2RequestRulesDataSourceFilters `json:"DataSourceFilters,omitempty" xml:"DataSourceFilters,omitempty" type:"Repeated"`
+	// Specifies whether to enable the feature of keeping at least one backup version. Valid values:
+	//
+	// 	- 0: The feature is disabled.
+	//
+	// 	- 1: The feature is enabled.
+	//
+	// example:
+	//
+	// 1
+	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **REPLICATION**. This parameter specifies the ID of the destination region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION*	- or **REPLICATION**.
+	//
+	// 	- If the **RuleType*	- parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Unit: days.
+	//
+	// 	- If the **RuleType*	- parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
+	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
 	RetentionRules []*UpdatePolicyV2RequestRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
 	// The rule ID.
+	//
+	// example:
+	//
+	// rule-000************rof
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type.
+	// The type of the rule. Each backup policy must have at least one rule of the **BACKUP*	- type and only one rule of the **TRANSITION*	- type. Valid values:
 	//
-	// *   **BACKUP**: backup rule
-	// *   **TRANSITION**: lifecycle rule
-	// *   **REPLICATION**: replication rule
+	// 	- **BACKUP**: backup rule
+	//
+	// 	- **TRANSITION**: lifecycle rule
+	//
+	// 	- **REPLICATION**: replication rule
+	//
+	// example:
+	//
+	// BACKUP
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-	// *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// 	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	// 	- interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
+	//
+	// example:
+	//
+	// I|1648647166|P1D
+	Schedule   *string                                 `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	TagFilters []*UpdatePolicyV2RequestRulesTagFilters `json:"TagFilters,omitempty" xml:"TagFilters,omitempty" type:"Repeated"`
 }
 
 func (s UpdatePolicyV2RequestRules) String() string {
@@ -17062,6 +25871,11 @@ func (s *UpdatePolicyV2RequestRules) SetBackupType(v string) *UpdatePolicyV2Requ
 
 func (s *UpdatePolicyV2RequestRules) SetColdArchiveDays(v int64) *UpdatePolicyV2RequestRules {
 	s.ColdArchiveDays = &v
+	return s
+}
+
+func (s *UpdatePolicyV2RequestRules) SetDataSourceFilters(v []*UpdatePolicyV2RequestRulesDataSourceFilters) *UpdatePolicyV2RequestRules {
+	s.DataSourceFilters = v
 	return s
 }
 
@@ -17100,16 +25914,58 @@ func (s *UpdatePolicyV2RequestRules) SetSchedule(v string) *UpdatePolicyV2Reques
 	return s
 }
 
+func (s *UpdatePolicyV2RequestRules) SetTagFilters(v []*UpdatePolicyV2RequestRulesTagFilters) *UpdatePolicyV2RequestRules {
+	s.TagFilters = v
+	return s
+}
+
+type UpdatePolicyV2RequestRulesDataSourceFilters struct {
+	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	SourceType    *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s UpdatePolicyV2RequestRulesDataSourceFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyV2RequestRulesDataSourceFilters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyV2RequestRulesDataSourceFilters) SetDataSourceIds(v []*string) *UpdatePolicyV2RequestRulesDataSourceFilters {
+	s.DataSourceIds = v
+	return s
+}
+
+func (s *UpdatePolicyV2RequestRulesDataSourceFilters) SetSourceType(v string) *UpdatePolicyV2RequestRulesDataSourceFilters {
+	s.SourceType = &v
+	return s
+}
+
 type UpdatePolicyV2RequestRulesRetentionRules struct {
 	// The type of the special retention rule. Valid values:
 	//
-	// *   **WEEKLY**: weekly backups
-	// *   **MONTHLY**: monthly backups
-	// *   **YEARLY**: yearly backups
+	// 	- **WEEKLY**: retains weekly backups
+	//
+	// 	- **MONTHLY**: retains monthly backups
+	//
+	// 	- **YEARLY**: retains yearly backups
+	//
+	// example:
+	//
+	// YEARLY
 	AdvancedRetentionType *string `json:"AdvancedRetentionType,omitempty" xml:"AdvancedRetentionType,omitempty"`
-	// The retention period of the backup data. Minimum value: 1. Unit: days.
+	// The special retention period of backups. Minimum value: 1. Unit: days.
+	//
+	// example:
+	//
+	// 365
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// Specifies which backup is retained based on the special retention rule. Only the first backup can be retained.
+	//
+	// example:
+	//
+	// 1
 	WhichSnapshot *int64 `json:"WhichSnapshot,omitempty" xml:"WhichSnapshot,omitempty"`
 }
 
@@ -17136,12 +25992,53 @@ func (s *UpdatePolicyV2RequestRulesRetentionRules) SetWhichSnapshot(v int64) *Up
 	return s
 }
 
+type UpdatePolicyV2RequestRulesTagFilters struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdatePolicyV2RequestRulesTagFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyV2RequestRulesTagFilters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyV2RequestRulesTagFilters) SetKey(v string) *UpdatePolicyV2RequestRulesTagFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdatePolicyV2RequestRulesTagFilters) SetOperator(v string) *UpdatePolicyV2RequestRulesTagFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdatePolicyV2RequestRulesTagFilters) SetValue(v string) *UpdatePolicyV2RequestRulesTagFilters {
+	s.Value = &v
+	return s
+}
+
 type UpdatePolicyV2ShrinkRequest struct {
 	// The description of the backup policy.
+	//
+	// example:
+	//
+	// Data is backed up at 10:00:00 every day and replicated to the China (Shanghai) region for geo-redundancy.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
 	// The ID of the backup policy.
+	//
+	// example:
+	//
+	// po-000************viy
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The name of the backup policy.
+	//
+	// example:
+	//
+	// Daily Local Backup + Remote Backup
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The rules in the backup policy.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
@@ -17177,15 +26074,32 @@ func (s *UpdatePolicyV2ShrinkRequest) SetRulesShrink(v string) *UpdatePolicyV2Sh
 
 type UpdatePolicyV2ResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17218,9 +26132,9 @@ func (s *UpdatePolicyV2ResponseBody) SetSuccess(v bool) *UpdatePolicyV2ResponseB
 }
 
 type UpdatePolicyV2Response struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePolicyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePolicyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePolicyV2Response) String() string {
@@ -17247,10 +26161,32 @@ func (s *UpdatePolicyV2Response) SetBody(v *UpdatePolicyV2ResponseBody) *UpdateP
 }
 
 type UpdateVaultRequest struct {
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	//
+	// example:
+	//
+	// vault description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm2fa2xeiebyy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
-	VaultName       *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	// The ID of the backup vault.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v-*********************
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	//
+	// example:
+	//
+	// vaultname
+	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
 }
 
 func (s UpdateVaultRequest) String() string {
@@ -17282,10 +26218,34 @@ func (s *UpdateVaultRequest) SetVaultName(v string) *UpdateVaultRequest {
 }
 
 type UpdateVaultResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateVaultResponseBody) String() string {
@@ -17317,9 +26277,9 @@ func (s *UpdateVaultResponseBody) SetSuccess(v bool) *UpdateVaultResponseBody {
 }
 
 type UpdateVaultResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVaultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateVaultResponse) String() string {
@@ -17346,18 +26306,39 @@ func (s *UpdateVaultResponse) SetBody(v *UpdateVaultResponseBody) *UpdateVaultRe
 }
 
 type UpgradeBackupClientsRequest struct {
-	// The ID of the HBR client. The sum of the number of HBR client IDs and the number of ECS instance IDs cannot exceed 100.
+	// The IDs of Cloud Backup clients. The total number of Cloud Backup client IDs and ECS instance IDs cannot exceed 100.
+	//
+	// example:
+	//
+	// ["i-0xi5wj******3j3bh2gj5"]
 	ClientIds map[string]interface{} `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 1283948272xxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The IDs of the ECS instances. The sum of the number of HBR client IDs and the number of ECS instance IDs cannot exceed 100.
+	// The IDs of Elastic Compute Service (ECS) instances. The total number of ECS instance IDs and Cloud Backup client IDs cannot exceed 100.
+	//
+	// example:
+	//
+	// ["c-*********************"]
 	InstanceIds map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -17395,18 +26376,39 @@ func (s *UpgradeBackupClientsRequest) SetInstanceIds(v map[string]interface{}) *
 }
 
 type UpgradeBackupClientsShrinkRequest struct {
-	// The ID of the HBR client. The sum of the number of HBR client IDs and the number of ECS instance IDs cannot exceed 100.
+	// The IDs of Cloud Backup clients. The total number of Cloud Backup client IDs and ECS instance IDs cannot exceed 100.
+	//
+	// example:
+	//
+	// ["i-0xi5wj******3j3bh2gj5"]
 	ClientIdsShrink *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-	// *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	//
+	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
 	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// 1283948272xxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The IDs of the ECS instances. The sum of the number of HBR client IDs and the number of ECS instance IDs cannot exceed 100.
+	// The IDs of Elastic Compute Service (ECS) instances. The total number of ECS instance IDs and Cloud Backup client IDs cannot exceed 100.
+	//
+	// example:
+	//
+	// ["c-*********************"]
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -17445,19 +26447,40 @@ func (s *UpgradeBackupClientsShrinkRequest) SetInstanceIdsShrink(v string) *Upgr
 
 type UpgradeBackupClientsResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The status of the ECS instance. If the status of an ECS instance cannot meet the requirements to install an HBR client and the value of the InstanceIds parameter is greater than 1, an error message is returned based on the value of this parameter.
 	InstanceStatuses []*UpgradeBackupClientsResponseBodyInstanceStatuses `json:"InstanceStatuses,omitempty" xml:"InstanceStatuses,omitempty" type:"Repeated"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	//
+	// example:
+	//
+	// t-*********************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -17502,17 +26525,33 @@ func (s *UpgradeBackupClientsResponseBody) SetTaskId(v string) *UpgradeBackupCli
 type UpgradeBackupClientsResponseBodyInstanceStatuses struct {
 	// The error code that is returned. Valid values:
 	//
-	// *   If the value is empty, the call is successful.
-	// *   **InstanceNotExists**: The ECS instance does not exist.
-	// *   **InstanceNotRunning**: The ECS instance is not running.
-	// *   **CloudAssistNotRunningOnInstance**: Cloud Assistant is unavailable.
+	// 	- If the value is empty, the call is successful.
+	//
+	// 	- **InstanceNotExists**: The ECS instance does not exist.
+	//
+	// 	- **InstanceNotRunning**: The ECS instance is not running.
+	//
+	// 	- **CloudAssistNotRunningOnInstance**: Cloud Assistant is unavailable.
+	//
+	// example:
+	//
+	// InstanceNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-0xi5w***v3j3bh2gj5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether an HBR client can be installed on the ECS instance. Valid values:
 	//
-	// *   true: An HBR client can be installed on the ECS instance.
-	// *   false: An HBR client cannot be installed on the ECS instance.
+	// 	- true: An HBR client can be installed on the ECS instance.
+	//
+	// 	- false: An HBR client cannot be installed on the ECS instance.
+	//
+	// example:
+	//
+	// true
 	ValidInstance *bool `json:"ValidInstance,omitempty" xml:"ValidInstance,omitempty"`
 }
 
@@ -17540,9 +26579,9 @@ func (s *UpgradeBackupClientsResponseBodyInstanceStatuses) SetValidInstance(v bo
 }
 
 type UpgradeBackupClientsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpgradeBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpgradeBackupClientsResponse) String() string {
@@ -17569,11 +26608,23 @@ func (s *UpgradeBackupClientsResponse) SetBody(v *UpgradeBackupClientsResponseBo
 }
 
 type UpgradeClientRequest struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The ID of the Cloud Backup client.
+	//
+	// example:
+	//
+	// c-000boklw******63a9
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmy6uja5wyc2i
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-000djw8ci******3ic
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -17601,14 +26652,40 @@ func (s *UpgradeClientRequest) SetVaultId(v string) *UpgradeClientRequest {
 }
 
 type UpgradeClientResponseBody struct {
-	// The ID of the request.
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **UpgradeClient**.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Upgrades an HBR backup client.
+	// The request ID.
+	//
+	// example:
+	//
+	// 22D97921-16BD-547C-B175-1DC25B1DCD73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	//
+	// example:
+	//
+	// t-000i97jujk0z58a2ignf
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeClientResponseBody) String() string {
@@ -17645,9 +26722,9 @@ func (s *UpgradeClientResponseBody) SetTaskId(v string) *UpgradeClientResponseBo
 }
 
 type UpgradeClientResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpgradeClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeClientResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpgradeClientResponse) String() string {
@@ -17688,6 +26765,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          tea.String("hbr.aliyuncs.com"),
@@ -17755,6 +26833,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Registers a Container Service for Kubernetes (ACK) cluster.
+//
+// @param request - AddContainerClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddContainerClusterResponse
 func (client *Client) AddContainerClusterWithOptions(request *AddContainerClusterRequest, runtime *util.RuntimeOptions) (_result *AddContainerClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17804,6 +26891,13 @@ func (client *Client) AddContainerClusterWithOptions(request *AddContainerCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// Registers a Container Service for Kubernetes (ACK) cluster.
+//
+// @param request - AddContainerClusterRequest
+//
+// @return AddContainerClusterResponse
 func (client *Client) AddContainerCluster(request *AddContainerClusterRequest) (_result *AddContainerClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddContainerClusterResponse{}
@@ -17815,66 +26909,15 @@ func (client *Client) AddContainerCluster(request *AddContainerClusterRequest) (
 	return _result, _err
 }
 
-func (client *Client) AttachNasFileSystemWithOptions(request *AttachNasFileSystemRequest, runtime *util.RuntimeOptions) (_result *AttachNasFileSystemResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CreateTime)) {
-		query["CreateTime"] = request.CreateTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
-		query["CrossAccountRoleName"] = request.CrossAccountRoleName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
-		query["CrossAccountType"] = request.CrossAccountType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
-		query["CrossAccountUserId"] = request.CrossAccountUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
-		query["FileSystemId"] = request.FileSystemId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AttachNasFileSystem"),
-		Version:     tea.String("2017-09-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AttachNasFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AttachNasFileSystem(request *AttachNasFileSystemRequest) (_result *AttachNasFileSystemResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AttachNasFileSystemResponse{}
-	_body, _err := client.AttachNasFileSystemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// Cancels a backup job.
+//
+// @param request - CancelBackupJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelBackupJobResponse
 func (client *Client) CancelBackupJobWithOptions(request *CancelBackupJobRequest, runtime *util.RuntimeOptions) (_result *CancelBackupJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17912,6 +26955,13 @@ func (client *Client) CancelBackupJobWithOptions(request *CancelBackupJobRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels a backup job.
+//
+// @param request - CancelBackupJobRequest
+//
+// @return CancelBackupJobResponse
 func (client *Client) CancelBackupJob(request *CancelBackupJobRequest) (_result *CancelBackupJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelBackupJobResponse{}
@@ -17923,6 +26973,15 @@ func (client *Client) CancelBackupJob(request *CancelBackupJobRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels a restore job.
+//
+// @param request - CancelRestoreJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelRestoreJobResponse
 func (client *Client) CancelRestoreJobWithOptions(request *CancelRestoreJobRequest, runtime *util.RuntimeOptions) (_result *CancelRestoreJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17960,6 +27019,13 @@ func (client *Client) CancelRestoreJobWithOptions(request *CancelRestoreJobReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels a restore job.
+//
+// @param request - CancelRestoreJobRequest
+//
+// @return CancelRestoreJobResponse
 func (client *Client) CancelRestoreJob(request *CancelRestoreJobRequest) (_result *CancelRestoreJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelRestoreJobResponse{}
@@ -17971,16 +27037,23 @@ func (client *Client) CancelRestoreJob(request *CancelRestoreJobRequest) (_resul
 	return _result, _err
 }
 
-/**
- * The type of the resource. Valid values:
- * *   **vault**: backup vault
- * *   **client**: backup client
- * *   **hanainstance**: SAP HANA instance
- *
- * @param request ChangeResourceGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ChangeResourceGroupResponse
- */
+// Summary:
+//
+// Changes the resource group to which an instance belongs.
+//
+// Description:
+//
+//   In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+//
+// 	- A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
+//
+// 	- You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18022,15 +27095,21 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
-/**
- * The type of the resource. Valid values:
- * *   **vault**: backup vault
- * *   **client**: backup client
- * *   **hanainstance**: SAP HANA instance
- *
- * @param request ChangeResourceGroupRequest
- * @return ChangeResourceGroupResponse
- */
+// Summary:
+//
+// Changes the resource group to which an instance belongs.
+//
+// Description:
+//
+//   In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+//
+// 	- A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
+//
+// 	- You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -18042,6 +27121,15 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the user has permissions to access the current resource or page.
+//
+// @param request - CheckRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckRoleResponse
 func (client *Client) CheckRoleWithOptions(request *CheckRoleRequest, runtime *util.RuntimeOptions) (_result *CheckRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18083,6 +27171,13 @@ func (client *Client) CheckRoleWithOptions(request *CheckRoleRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the user has permissions to access the current resource or page.
+//
+// @param request - CheckRoleRequest
+//
+// @return CheckRoleResponse
 func (client *Client) CheckRole(request *CheckRoleRequest) (_result *CheckRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckRoleResponse{}
@@ -18094,11 +27189,26 @@ func (client *Client) CheckRole(request *CheckRoleRequest) (_result *CheckRoleRe
 	return _result, _err
 }
 
-func (client *Client) CreateBackupJobWithOptions(request *CreateBackupJobRequest, runtime *util.RuntimeOptions) (_result *CreateBackupJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+// Summary:
+//
+// Creates a backup job.
+//
+// @param tmpReq - CreateBackupJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupJobResponse
+func (client *Client) CreateBackupJobWithOptions(tmpReq *CreateBackupJobRequest, runtime *util.RuntimeOptions) (_result *CreateBackupJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateBackupJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Detail)) {
+		request.DetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Detail, tea.String("Detail"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BackupType)) {
 		query["BackupType"] = request.BackupType
@@ -18126,6 +27236,10 @@ func (client *Client) CreateBackupJobWithOptions(request *CreateBackupJobRequest
 
 	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
 		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetailShrink)) {
+		query["Detail"] = request.DetailShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Exclude)) {
@@ -18191,6 +27305,13 @@ func (client *Client) CreateBackupJobWithOptions(request *CreateBackupJobRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a backup job.
+//
+// @param request - CreateBackupJobRequest
+//
+// @return CreateBackupJobResponse
 func (client *Client) CreateBackupJob(request *CreateBackupJobRequest) (_result *CreateBackupJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackupJobResponse{}
@@ -18202,16 +27323,25 @@ func (client *Client) CreateBackupJob(request *CreateBackupJobRequest) (_result 
 	return _result, _err
 }
 
-/**
- * *   A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
- * *   You can specify only one type of data source in a backup schedule.
- * *   You can specify only one interval as a backup cycle in a backup schedule.
- * *   Each backup schedule allows you to back up data to only one backup vault.
- *
- * @param tmpReq CreateBackupPlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateBackupPlanResponse
- */
+// Summary:
+//
+// Creates a backup plan.
+//
+// Description:
+//
+//   A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//
+// 	- You can specify only one type of data source in a backup schedule.
+//
+// 	- You can specify only one interval as a backup cycle in a backup schedule.
+//
+// 	- Each backup schedule allows you to back up data to only one backup vault.
+//
+// @param tmpReq - CreateBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupPlanResponse
 func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanRequest, runtime *util.RuntimeOptions) (_result *CreateBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18219,6 +27349,10 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 	}
 	request := &CreateBackupPlanShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestDataSourceDetail)) {
+		request.DestDataSourceDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestDataSourceDetail, tea.String("DestDataSourceDetail"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Detail)) {
 		request.DetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Detail, tea.String("Detail"), tea.String("json"))
 	}
@@ -18234,6 +27368,10 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 
 	if !tea.BoolValue(util.IsUnset(request.Bucket)) {
 		query["Bucket"] = request.Bucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeListPath)) {
+		query["ChangeListPath"] = request.ChangeListPath
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CreateTime)) {
@@ -18252,8 +27390,24 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestDataSourceDetailShrink)) {
+		query["DestDataSourceDetail"] = request.DestDataSourceDetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestDataSourceId)) {
+		query["DestDataSourceId"] = request.DestDataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestSourceType)) {
+		query["DestSourceType"] = request.DestSourceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DetailShrink)) {
 		query["Detail"] = request.DetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Disabled)) {
+		query["Disabled"] = request.Disabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
@@ -18353,15 +27507,23 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 	return _result, _err
 }
 
-/**
- * *   A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
- * *   You can specify only one type of data source in a backup schedule.
- * *   You can specify only one interval as a backup cycle in a backup schedule.
- * *   Each backup schedule allows you to back up data to only one backup vault.
- *
- * @param request CreateBackupPlanRequest
- * @return CreateBackupPlanResponse
- */
+// Summary:
+//
+// Creates a backup plan.
+//
+// Description:
+//
+//   A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//
+// 	- You can specify only one type of data source in a backup schedule.
+//
+// 	- You can specify only one interval as a backup cycle in a backup schedule.
+//
+// 	- Each backup schedule allows you to back up data to only one backup vault.
+//
+// @param request - CreateBackupPlanRequest
+//
+// @return CreateBackupPlanResponse
 func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_result *CreateBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackupPlanResponse{}
@@ -18373,13 +27535,19 @@ func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](~~89062~~).
- *
- * @param request CreateClientsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateClientsResponse
- */
+// Summary:
+//
+// Installs one or more HBR clients on specified instances.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
+//
+// @param request - CreateClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClientsResponse
 func (client *Client) CreateClientsWithOptions(request *CreateClientsRequest, runtime *util.RuntimeOptions) (_result *CreateClientsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18392,6 +27560,18 @@ func (client *Client) CreateClientsWithOptions(request *CreateClientsRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
 		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -18429,12 +27609,17 @@ func (client *Client) CreateClientsWithOptions(request *CreateClientsRequest, ru
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](~~89062~~).
- *
- * @param request CreateClientsRequest
- * @return CreateClientsResponse
- */
+// Summary:
+//
+// Installs one or more HBR clients on specified instances.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
+//
+// @param request - CreateClientsRequest
+//
+// @return CreateClientsResponse
 func (client *Client) CreateClients(request *CreateClientsRequest) (_result *CreateClientsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateClientsResponse{}
@@ -18446,13 +27631,25 @@ func (client *Client) CreateClients(request *CreateClientsRequest) (_result *Cre
 	return _result, _err
 }
 
-/**
- * The ID of the SAP HANA instance.
- *
- * @param request CreateHanaBackupPlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateHanaBackupPlanResponse
- */
+// Summary:
+//
+// Creates a backup plan for an SAP HANA instance.
+//
+// Description:
+//
+//   A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//
+// 	- You can specify only one type of data source in a backup plan.
+//
+// 	- You can specify only one interval as a backup cycle in a backup plan.
+//
+// 	- Each backup plan allows you to back up data to only one backup vault.
+//
+// @param request - CreateHanaBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHanaBackupPlanResponse
 func (client *Client) CreateHanaBackupPlanWithOptions(request *CreateHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *CreateHanaBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18514,12 +27711,23 @@ func (client *Client) CreateHanaBackupPlanWithOptions(request *CreateHanaBackupP
 	return _result, _err
 }
 
-/**
- * The ID of the SAP HANA instance.
- *
- * @param request CreateHanaBackupPlanRequest
- * @return CreateHanaBackupPlanResponse
- */
+// Summary:
+//
+// Creates a backup plan for an SAP HANA instance.
+//
+// Description:
+//
+//   A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//
+// 	- You can specify only one type of data source in a backup plan.
+//
+// 	- You can specify only one interval as a backup cycle in a backup plan.
+//
+// 	- Each backup plan allows you to back up data to only one backup vault.
+//
+// @param request - CreateHanaBackupPlanRequest
+//
+// @return CreateHanaBackupPlanResponse
 func (client *Client) CreateHanaBackupPlan(request *CreateHanaBackupPlanRequest) (_result *CreateHanaBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHanaBackupPlanResponse{}
@@ -18531,13 +27739,19 @@ func (client *Client) CreateHanaBackupPlan(request *CreateHanaBackupPlanRequest)
 	return _result, _err
 }
 
-/**
- * To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, HBR installs an HBR client on the ECS instance that hosts the SAP HANA instance.
- *
- * @param request CreateHanaInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateHanaInstanceResponse
- */
+// Summary:
+//
+// Registers an SAP HANA instance.
+//
+// Description:
+//
+// To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
+//
+// @param request - CreateHanaInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHanaInstanceResponse
 func (client *Client) CreateHanaInstanceWithOptions(request *CreateHanaInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateHanaInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18546,6 +27760,18 @@ func (client *Client) CreateHanaInstanceWithOptions(request *CreateHanaInstanceR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlertSetting)) {
 		query["AlertSetting"] = request.AlertSetting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EcsInstanceId)) {
@@ -18615,12 +27841,17 @@ func (client *Client) CreateHanaInstanceWithOptions(request *CreateHanaInstanceR
 	return _result, _err
 }
 
-/**
- * To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, HBR installs an HBR client on the ECS instance that hosts the SAP HANA instance.
- *
- * @param request CreateHanaInstanceRequest
- * @return CreateHanaInstanceResponse
- */
+// Summary:
+//
+// Registers an SAP HANA instance.
+//
+// Description:
+//
+// To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
+//
+// @param request - CreateHanaInstanceRequest
+//
+// @return CreateHanaInstanceResponse
 func (client *Client) CreateHanaInstance(request *CreateHanaInstanceRequest) (_result *CreateHanaInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHanaInstanceResponse{}
@@ -18632,13 +27863,19 @@ func (client *Client) CreateHanaInstance(request *CreateHanaInstanceRequest) (_r
 	return _result, _err
 }
 
-/**
- * If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](~~101178~~).
- *
- * @param request CreateHanaRestoreRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateHanaRestoreResponse
- */
+// Summary:
+//
+// Creates a restore job for an SAP HANA database.
+//
+// Description:
+//
+// If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](https://help.aliyun.com/document_detail/101178.html).
+//
+// @param request - CreateHanaRestoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHanaRestoreResponse
 func (client *Client) CreateHanaRestoreWithOptions(request *CreateHanaRestoreRequest, runtime *util.RuntimeOptions) (_result *CreateHanaRestoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18740,12 +27977,17 @@ func (client *Client) CreateHanaRestoreWithOptions(request *CreateHanaRestoreReq
 	return _result, _err
 }
 
-/**
- * If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](~~101178~~).
- *
- * @param request CreateHanaRestoreRequest
- * @return CreateHanaRestoreResponse
- */
+// Summary:
+//
+// Creates a restore job for an SAP HANA database.
+//
+// Description:
+//
+// If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](https://help.aliyun.com/document_detail/101178.html).
+//
+// @param request - CreateHanaRestoreRequest
+//
+// @return CreateHanaRestoreResponse
 func (client *Client) CreateHanaRestore(request *CreateHanaRestoreRequest) (_result *CreateHanaRestoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHanaRestoreResponse{}
@@ -18757,14 +27999,21 @@ func (client *Client) CreateHanaRestore(request *CreateHanaRestoreRequest) (_res
 	return _result, _err
 }
 
-/**
- * *   You can bind data sources to only one policy in each request.
- * *   Elastic Compute Service (ECS) instances can be bound to only one policy.
- *
- * @param tmpReq CreatePolicyBindingsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreatePolicyBindingsResponse
- */
+// Summary:
+//
+// Binds one or more data sources to a backup policy.
+//
+// Description:
+//
+//   You can bind data sources to only one policy in each request.
+//
+// 	- Elastic Compute Service (ECS) instances can be bound to only one policy.
+//
+// @param tmpReq - CreatePolicyBindingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyBindingsResponse
 func (client *Client) CreatePolicyBindingsWithOptions(tmpReq *CreatePolicyBindingsRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyBindingsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18810,13 +28059,19 @@ func (client *Client) CreatePolicyBindingsWithOptions(tmpReq *CreatePolicyBindin
 	return _result, _err
 }
 
-/**
- * *   You can bind data sources to only one policy in each request.
- * *   Elastic Compute Service (ECS) instances can be bound to only one policy.
- *
- * @param request CreatePolicyBindingsRequest
- * @return CreatePolicyBindingsResponse
- */
+// Summary:
+//
+// Binds one or more data sources to a backup policy.
+//
+// Description:
+//
+//   You can bind data sources to only one policy in each request.
+//
+// 	- Elastic Compute Service (ECS) instances can be bound to only one policy.
+//
+// @param request - CreatePolicyBindingsRequest
+//
+// @return CreatePolicyBindingsResponse
 func (client *Client) CreatePolicyBindings(request *CreatePolicyBindingsRequest) (_result *CreatePolicyBindingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePolicyBindingsResponse{}
@@ -18828,16 +28083,25 @@ func (client *Client) CreatePolicyBindings(request *CreatePolicyBindingsRequest)
 	return _result, _err
 }
 
-/**
- * A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
- * *   A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
- * *   You can specify only one interval as a backup cycle in a backup policy.
- * *   Each backup policy allows you to back up data to only one backup vault.
- *
- * @param tmpReq CreatePolicyV2Request
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreatePolicyV2Response
- */
+// Summary:
+//
+// Creates a backup policy.
+//
+// Description:
+//
+// A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//
+// 	- A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+//
+// 	- You can specify only one interval as a backup cycle in a backup policy.
+//
+// 	- Each backup policy allows you to back up data to only one backup vault.
+//
+// @param tmpReq - CreatePolicyV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyV2Response
 func (client *Client) CreatePolicyV2WithOptions(tmpReq *CreatePolicyV2Request, runtime *util.RuntimeOptions) (_result *CreatePolicyV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18856,6 +28120,10 @@ func (client *Client) CreatePolicyV2WithOptions(tmpReq *CreatePolicyV2Request, r
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
 		body["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		body["PolicyType"] = request.PolicyType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
@@ -18885,15 +28153,23 @@ func (client *Client) CreatePolicyV2WithOptions(tmpReq *CreatePolicyV2Request, r
 	return _result, _err
 }
 
-/**
- * A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
- * *   A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
- * *   You can specify only one interval as a backup cycle in a backup policy.
- * *   Each backup policy allows you to back up data to only one backup vault.
- *
- * @param request CreatePolicyV2Request
- * @return CreatePolicyV2Response
- */
+// Summary:
+//
+// Creates a backup policy.
+//
+// Description:
+//
+// A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//
+// 	- A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+//
+// 	- You can specify only one interval as a backup cycle in a backup policy.
+//
+// 	- Each backup policy allows you to back up data to only one backup vault.
+//
+// @param request - CreatePolicyV2Request
+//
+// @return CreatePolicyV2Response
 func (client *Client) CreatePolicyV2(request *CreatePolicyV2Request) (_result *CreatePolicyV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePolicyV2Response{}
@@ -18905,13 +28181,19 @@ func (client *Client) CreatePolicyV2(request *CreatePolicyV2Request) (_result *C
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request CreateReplicationVaultRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateReplicationVaultResponse
- */
+// Summary:
+//
+// Creates a mirror vault.
+//
+// Description:
+//
+// After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
+//
+// @param request - CreateReplicationVaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReplicationVaultResponse
 func (client *Client) CreateReplicationVaultWithOptions(request *CreateReplicationVaultRequest, runtime *util.RuntimeOptions) (_result *CreateReplicationVaultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18920,6 +28202,14 @@ func (client *Client) CreateReplicationVaultWithOptions(request *CreateReplicati
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptType)) {
+		query["EncryptType"] = request.EncryptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsKeyId)) {
+		query["KmsKeyId"] = request.KmsKeyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RedundancyType)) {
@@ -18969,12 +28259,17 @@ func (client *Client) CreateReplicationVaultWithOptions(request *CreateReplicati
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request CreateReplicationVaultRequest
- * @return CreateReplicationVaultResponse
- */
+// Summary:
+//
+// Creates a mirror vault.
+//
+// Description:
+//
+// After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
+//
+// @param request - CreateReplicationVaultRequest
+//
+// @return CreateReplicationVaultResponse
 func (client *Client) CreateReplicationVault(request *CreateReplicationVaultRequest) (_result *CreateReplicationVaultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateReplicationVaultResponse{}
@@ -18986,14 +28281,21 @@ func (client *Client) CreateReplicationVault(request *CreateReplicationVaultRequ
 	return _result, _err
 }
 
-/**
- * *   You must create a restore job based on the specified backup snapshot and restore destination.
- * *   The type of the data source from which you restore data must be the same as the type of the restore destination.
- *
- * @param tmpReq CreateRestoreJobRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateRestoreJobResponse
- */
+// Summary:
+//
+// Creates a restore job.
+//
+// Description:
+//
+//   You must create a restore job based on the specified backup snapshot and restore destination.
+//
+// 	- The type of the data source from which you restore data must be the same as the type of the restore destination.
+//
+// @param tmpReq - CreateRestoreJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRestoreJobResponse
 func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobRequest, runtime *util.RuntimeOptions) (_result *CreateRestoreJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19032,6 +28334,10 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 
 	if !tea.BoolValue(util.IsUnset(request.InitiatedByAck)) {
 		query["InitiatedByAck"] = request.InitiatedByAck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		query["Options"] = request.Options
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RestoreType)) {
@@ -19143,13 +28449,19 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 	return _result, _err
 }
 
-/**
- * *   You must create a restore job based on the specified backup snapshot and restore destination.
- * *   The type of the data source from which you restore data must be the same as the type of the restore destination.
- *
- * @param request CreateRestoreJobRequest
- * @return CreateRestoreJobResponse
- */
+// Summary:
+//
+// Creates a restore job.
+//
+// Description:
+//
+//   You must create a restore job based on the specified backup snapshot and restore destination.
+//
+// 	- The type of the data source from which you restore data must be the same as the type of the restore destination.
+//
+// @param request - CreateRestoreJobRequest
+//
+// @return CreateRestoreJobResponse
 func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_result *CreateRestoreJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRestoreJobResponse{}
@@ -19161,15 +28473,23 @@ func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_resul
 	return _result, _err
 }
 
-/**
- * 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
- * 2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
- * 3.  The system periodically deletes files that are uploaded to OSS.
- *
- * @param request CreateTempFileUploadUrlRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateTempFileUploadUrlResponse
- */
+// Summary:
+//
+// Generates the parameters and signature required for a file upload URL.
+//
+// Description:
+//
+// 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
+//
+// 2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
+//
+// 3.  The system periodically deletes files that are uploaded to OSS.
+//
+// @param request - CreateTempFileUploadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTempFileUploadUrlResponse
 func (client *Client) CreateTempFileUploadUrlWithOptions(request *CreateTempFileUploadUrlRequest, runtime *util.RuntimeOptions) (_result *CreateTempFileUploadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19203,14 +28523,21 @@ func (client *Client) CreateTempFileUploadUrlWithOptions(request *CreateTempFile
 	return _result, _err
 }
 
-/**
- * 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
- * 2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
- * 3.  The system periodically deletes files that are uploaded to OSS.
- *
- * @param request CreateTempFileUploadUrlRequest
- * @return CreateTempFileUploadUrlResponse
- */
+// Summary:
+//
+// Generates the parameters and signature required for a file upload URL.
+//
+// Description:
+//
+// 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
+//
+// 2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
+//
+// 3.  The system periodically deletes files that are uploaded to OSS.
+//
+// @param request - CreateTempFileUploadUrlRequest
+//
+// @return CreateTempFileUploadUrlResponse
 func (client *Client) CreateTempFileUploadUrl(request *CreateTempFileUploadUrlRequest) (_result *CreateTempFileUploadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTempFileUploadUrlResponse{}
@@ -19222,14 +28549,25 @@ func (client *Client) CreateTempFileUploadUrl(request *CreateTempFileUploadUrlRe
 	return _result, _err
 }
 
-/**
- * *   Each Alibaba Cloud account can create up to 100 backup vaults.
- * *   After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
- *
- * @param request CreateVaultRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateVaultResponse
- */
+// Summary:
+//
+// Creates a backup vault.
+//
+// Description:
+//
+//   Each Alibaba Cloud account can create up to 100 backup vaults.
+//
+// 	- After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+//
+//     **
+//
+//     **Note*	- Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
+//
+// @param request - CreateVaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVaultResponse
 func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtime *util.RuntimeOptions) (_result *CreateVaultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19246,10 +28584,6 @@ func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.KmsKeyId)) {
 		query["KmsKeyId"] = request.KmsKeyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RedundancyType)) {
-		query["RedundancyType"] = request.RedundancyType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VaultName)) {
@@ -19291,13 +28625,23 @@ func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtim
 	return _result, _err
 }
 
-/**
- * *   Each Alibaba Cloud account can create up to 100 backup vaults.
- * *   After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
- *
- * @param request CreateVaultRequest
- * @return CreateVaultResponse
- */
+// Summary:
+//
+// Creates a backup vault.
+//
+// Description:
+//
+//   Each Alibaba Cloud account can create up to 100 backup vaults.
+//
+// 	- After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+//
+//     **
+//
+//     **Note*	- Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
+//
+// @param request - CreateVaultRequest
+//
+// @return CreateVaultResponse
 func (client *Client) CreateVault(request *CreateVaultRequest) (_result *CreateVaultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVaultResponse{}
@@ -19309,13 +28653,27 @@ func (client *Client) CreateVault(request *CreateVaultRequest) (_result *CreateV
 	return _result, _err
 }
 
-/**
- * The ID of the backup client.
- *
- * @param request DeleteBackupClientRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteBackupClientResponse
- */
+// Summary:
+//
+// Deletes a Cloud Backup client.
+//
+// Description:
+//
+//   You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+//
+// 	- When you perform this operation, resources that are associated with the client are also deleted, including:
+//
+//     	- Backup plans
+//
+//     	- Backup jobs
+//
+//     	- Snapshots
+//
+// @param request - DeleteBackupClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupClientResponse
 func (client *Client) DeleteBackupClientWithOptions(request *DeleteBackupClientRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupClientResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19349,12 +28707,25 @@ func (client *Client) DeleteBackupClientWithOptions(request *DeleteBackupClientR
 	return _result, _err
 }
 
-/**
- * The ID of the backup client.
- *
- * @param request DeleteBackupClientRequest
- * @return DeleteBackupClientResponse
- */
+// Summary:
+//
+// Deletes a Cloud Backup client.
+//
+// Description:
+//
+//   You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+//
+// 	- When you perform this operation, resources that are associated with the client are also deleted, including:
+//
+//     	- Backup plans
+//
+//     	- Backup jobs
+//
+//     	- Snapshots
+//
+// @param request - DeleteBackupClientRequest
+//
+// @return DeleteBackupClientResponse
 func (client *Client) DeleteBackupClient(request *DeleteBackupClientRequest) (_result *DeleteBackupClientResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBackupClientResponse{}
@@ -19366,13 +28737,19 @@ func (client *Client) DeleteBackupClient(request *DeleteBackupClientRequest) (_r
 	return _result, _err
 }
 
-/**
- * This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
- *
- * @param tmpReq DeleteBackupClientResourceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteBackupClientResourceResponse
- */
+// Summary:
+//
+// Deletes the resources that are related to one or more HBR clients.
+//
+// Description:
+//
+// This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
+//
+// @param tmpReq - DeleteBackupClientResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupClientResourceResponse
 func (client *Client) DeleteBackupClientResourceWithOptions(tmpReq *DeleteBackupClientResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupClientResourceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19412,12 +28789,17 @@ func (client *Client) DeleteBackupClientResourceWithOptions(tmpReq *DeleteBackup
 	return _result, _err
 }
 
-/**
- * This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
- *
- * @param request DeleteBackupClientResourceRequest
- * @return DeleteBackupClientResourceResponse
- */
+// Summary:
+//
+// Deletes the resources that are related to one or more HBR clients.
+//
+// Description:
+//
+// This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
+//
+// @param request - DeleteBackupClientResourceRequest
+//
+// @return DeleteBackupClientResourceResponse
 func (client *Client) DeleteBackupClientResource(request *DeleteBackupClientResourceRequest) (_result *DeleteBackupClientResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBackupClientResourceResponse{}
@@ -19429,14 +28811,21 @@ func (client *Client) DeleteBackupClientResource(request *DeleteBackupClientReso
 	return _result, _err
 }
 
-/**
- * *   If you delete a backup plan, the backup jobs are also deleted.
- * *   If you delete a backup plan, the created snapshot files are not deleted.
- *
- * @param request DeleteBackupPlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteBackupPlanResponse
- */
+// Summary:
+//
+// Deletes a backup plan.
+//
+// Description:
+//
+//   If you delete a backup plan, the backup jobs are also deleted.
+//
+// 	- If you delete a backup plan, the created snapshot files are not deleted.
+//
+// @param request - DeleteBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupPlanResponse
 func (client *Client) DeleteBackupPlanWithOptions(request *DeleteBackupPlanRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19445,6 +28834,10 @@ func (client *Client) DeleteBackupPlanWithOptions(request *DeleteBackupPlanReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
 		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireNoRunningJobs)) {
+		query["RequireNoRunningJobs"] = request.RequireNoRunningJobs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
@@ -19478,13 +28871,19 @@ func (client *Client) DeleteBackupPlanWithOptions(request *DeleteBackupPlanReque
 	return _result, _err
 }
 
-/**
- * *   If you delete a backup plan, the backup jobs are also deleted.
- * *   If you delete a backup plan, the created snapshot files are not deleted.
- *
- * @param request DeleteBackupPlanRequest
- * @return DeleteBackupPlanResponse
- */
+// Summary:
+//
+// Deletes a backup plan.
+//
+// Description:
+//
+//   If you delete a backup plan, the backup jobs are also deleted.
+//
+// 	- If you delete a backup plan, the created snapshot files are not deleted.
+//
+// @param request - DeleteBackupPlanRequest
+//
+// @return DeleteBackupPlanResponse
 func (client *Client) DeleteBackupPlan(request *DeleteBackupPlanRequest) (_result *DeleteBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBackupPlanResponse{}
@@ -19496,6 +28895,11 @@ func (client *Client) DeleteBackupPlan(request *DeleteBackupPlanRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DeleteClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClientResponse
 func (client *Client) DeleteClientWithOptions(request *DeleteClientRequest, runtime *util.RuntimeOptions) (_result *DeleteClientResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19537,6 +28941,9 @@ func (client *Client) DeleteClientWithOptions(request *DeleteClientRequest, runt
 	return _result, _err
 }
 
+// @param request - DeleteClientRequest
+//
+// @return DeleteClientResponse
 func (client *Client) DeleteClient(request *DeleteClientRequest) (_result *DeleteClientResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClientResponse{}
@@ -19548,6 +28955,15 @@ func (client *Client) DeleteClient(request *DeleteClientRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an SAP HANA backup plan.
+//
+// @param request - DeleteHanaBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHanaBackupPlanResponse
 func (client *Client) DeleteHanaBackupPlanWithOptions(request *DeleteHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *DeleteHanaBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19593,6 +29009,13 @@ func (client *Client) DeleteHanaBackupPlanWithOptions(request *DeleteHanaBackupP
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an SAP HANA backup plan.
+//
+// @param request - DeleteHanaBackupPlanRequest
+//
+// @return DeleteHanaBackupPlanResponse
 func (client *Client) DeleteHanaBackupPlan(request *DeleteHanaBackupPlanRequest) (_result *DeleteHanaBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHanaBackupPlanResponse{}
@@ -19604,13 +29027,19 @@ func (client *Client) DeleteHanaBackupPlan(request *DeleteHanaBackupPlanRequest)
 	return _result, _err
 }
 
-/**
- * If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the data in the HBR client of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
- *
- * @param request DeleteHanaInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteHanaInstanceResponse
- */
+// Summary:
+//
+// Deletes an SAP HANA instance.
+//
+// Description:
+//
+// If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the backup data of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+//
+// @param request - DeleteHanaInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHanaInstanceResponse
 func (client *Client) DeleteHanaInstanceWithOptions(request *DeleteHanaInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteHanaInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19656,12 +29085,17 @@ func (client *Client) DeleteHanaInstanceWithOptions(request *DeleteHanaInstanceR
 	return _result, _err
 }
 
-/**
- * If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the data in the HBR client of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
- *
- * @param request DeleteHanaInstanceRequest
- * @return DeleteHanaInstanceResponse
- */
+// Summary:
+//
+// Deletes an SAP HANA instance.
+//
+// Description:
+//
+// If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the backup data of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+//
+// @param request - DeleteHanaInstanceRequest
+//
+// @return DeleteHanaInstanceResponse
 func (client *Client) DeleteHanaInstance(request *DeleteHanaInstanceRequest) (_result *DeleteHanaInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHanaInstanceResponse{}
@@ -19673,6 +29107,15 @@ func (client *Client) DeleteHanaInstance(request *DeleteHanaInstanceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Disassociates one or more data sources from a backup policy. After you disassociate the data sources from the backup policy, the backup policy no longer protects the data sources. Proceed with caution.
+//
+// @param tmpReq - DeletePolicyBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyBindingResponse
 func (client *Client) DeletePolicyBindingWithOptions(tmpReq *DeletePolicyBindingRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyBindingResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19722,6 +29165,13 @@ func (client *Client) DeletePolicyBindingWithOptions(tmpReq *DeletePolicyBinding
 	return _result, _err
 }
 
+// Summary:
+//
+// Disassociates one or more data sources from a backup policy. After you disassociate the data sources from the backup policy, the backup policy no longer protects the data sources. Proceed with caution.
+//
+// @param request - DeletePolicyBindingRequest
+//
+// @return DeletePolicyBindingResponse
 func (client *Client) DeletePolicyBinding(request *DeletePolicyBindingRequest) (_result *DeletePolicyBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePolicyBindingResponse{}
@@ -19733,6 +29183,19 @@ func (client *Client) DeletePolicyBinding(request *DeletePolicyBindingRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a backup policy.
+//
+// Description:
+//
+// If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
+//
+// @param request - DeletePolicyV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyV2Response
 func (client *Client) DeletePolicyV2WithOptions(request *DeletePolicyV2Request, runtime *util.RuntimeOptions) (_result *DeletePolicyV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19766,6 +29229,17 @@ func (client *Client) DeletePolicyV2WithOptions(request *DeletePolicyV2Request, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a backup policy.
+//
+// Description:
+//
+// If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
+//
+// @param request - DeletePolicyV2Request
+//
+// @return DeletePolicyV2Response
 func (client *Client) DeletePolicyV2(request *DeletePolicyV2Request) (_result *DeletePolicyV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePolicyV2Response{}
@@ -19777,13 +29251,19 @@ func (client *Client) DeletePolicyV2(request *DeletePolicyV2Request) (_result *D
 	return _result, _err
 }
 
-/**
- * The ID of the ECS instance. If you delete a backup file for Elastic Compute Service (ECS) instances, you must set one of the **ClientId** and InstanceId parameters.
- *
- * @param request DeleteSnapshotRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteSnapshotResponse
- */
+// Summary:
+//
+// Deletes a backup snapshot.
+//
+// Description:
+//
+// If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
+//
+// @param request - DeleteSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSnapshotResponse
 func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19841,12 +29321,17 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 	return _result, _err
 }
 
-/**
- * The ID of the ECS instance. If you delete a backup file for Elastic Compute Service (ECS) instances, you must set one of the **ClientId** and InstanceId parameters.
- *
- * @param request DeleteSnapshotRequest
- * @return DeleteSnapshotResponse
- */
+// Summary:
+//
+// Deletes a backup snapshot.
+//
+// Description:
+//
+// If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
+//
+// @param request - DeleteSnapshotRequest
+//
+// @return DeleteSnapshotResponse
 func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *DeleteSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSnapshotResponse{}
@@ -19858,13 +29343,141 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 	return _result, _err
 }
 
-/**
- * The token.
- *
- * @param request DeleteVaultRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteVaultResponse
- */
+// Summary:
+//
+// 取消保护云盘
+//
+// @param request - DeleteUdmDiskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUdmDiskResponse
+func (client *Client) DeleteUdmDiskWithOptions(request *DeleteUdmDiskRequest, runtime *util.RuntimeOptions) (_result *DeleteUdmDiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUdmDisk"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUdmDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消保护云盘
+//
+// @param request - DeleteUdmDiskRequest
+//
+// @return DeleteUdmDiskResponse
+func (client *Client) DeleteUdmDisk(request *DeleteUdmDiskRequest) (_result *DeleteUdmDiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUdmDiskResponse{}
+	_body, _err := client.DeleteUdmDiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops protection for Elastic Compute Service (ECS) instance backup.
+//
+// @param request - DeleteUdmEcsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUdmEcsInstanceResponse
+func (client *Client) DeleteUdmEcsInstanceWithOptions(request *DeleteUdmEcsInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteUdmEcsInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUdmEcsInstance"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUdmEcsInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops protection for Elastic Compute Service (ECS) instance backup.
+//
+// @param request - DeleteUdmEcsInstanceRequest
+//
+// @return DeleteUdmEcsInstanceResponse
+func (client *Client) DeleteUdmEcsInstance(request *DeleteUdmEcsInstanceRequest) (_result *DeleteUdmEcsInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUdmEcsInstanceResponse{}
+	_body, _err := client.DeleteUdmEcsInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a backup vault.
+//
+// Description:
+//
+//   You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
+//
+// 	- After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
+//
+// @param request - DeleteVaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVaultResponse
 func (client *Client) DeleteVaultWithOptions(request *DeleteVaultRequest, runtime *util.RuntimeOptions) (_result *DeleteVaultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19906,12 +29519,19 @@ func (client *Client) DeleteVaultWithOptions(request *DeleteVaultRequest, runtim
 	return _result, _err
 }
 
-/**
- * The token.
- *
- * @param request DeleteVaultRequest
- * @return DeleteVaultResponse
- */
+// Summary:
+//
+// Deletes a backup vault.
+//
+// Description:
+//
+//   You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
+//
+// 	- After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
+//
+// @param request - DeleteVaultRequest
+//
+// @return DeleteVaultResponse
 func (client *Client) DeleteVault(request *DeleteVaultRequest) (_result *DeleteVaultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVaultResponse{}
@@ -19923,6 +29543,15 @@ func (client *Client) DeleteVault(request *DeleteVaultRequest) (_result *DeleteV
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more HBR clients that meet the specified conditions.
+//
+// @param tmpReq - DescribeBackupClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupClientsResponse
 func (client *Client) DescribeBackupClientsWithOptions(tmpReq *DescribeBackupClientsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupClientsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20004,6 +29633,13 @@ func (client *Client) DescribeBackupClientsWithOptions(tmpReq *DescribeBackupCli
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more HBR clients that meet the specified conditions.
+//
+// @param request - DescribeBackupClientsRequest
+//
+// @return DescribeBackupClientsResponse
 func (client *Client) DescribeBackupClients(request *DescribeBackupClientsRequest) (_result *DescribeBackupClientsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupClientsResponse{}
@@ -20015,6 +29651,15 @@ func (client *Client) DescribeBackupClients(request *DescribeBackupClientsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more backup jobs that meet the specified conditions.
+//
+// @param request - DescribeBackupJobs2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupJobs2Response
 func (client *Client) DescribeBackupJobs2WithOptions(request *DescribeBackupJobs2Request, runtime *util.RuntimeOptions) (_result *DescribeBackupJobs2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20064,6 +29709,13 @@ func (client *Client) DescribeBackupJobs2WithOptions(request *DescribeBackupJobs
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more backup jobs that meet the specified conditions.
+//
+// @param request - DescribeBackupJobs2Request
+//
+// @return DescribeBackupJobs2Response
 func (client *Client) DescribeBackupJobs2(request *DescribeBackupJobs2Request) (_result *DescribeBackupJobs2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupJobs2Response{}
@@ -20075,6 +29727,15 @@ func (client *Client) DescribeBackupJobs2(request *DescribeBackupJobs2Request) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more backup plans that meet the specified conditions.
+//
+// @param request - DescribeBackupPlansRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPlansResponse
 func (client *Client) DescribeBackupPlansWithOptions(request *DescribeBackupPlansRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPlansResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20120,6 +29781,13 @@ func (client *Client) DescribeBackupPlansWithOptions(request *DescribeBackupPlan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more backup plans that meet the specified conditions.
+//
+// @param request - DescribeBackupPlansRequest
+//
+// @return DescribeBackupPlansResponse
 func (client *Client) DescribeBackupPlans(request *DescribeBackupPlansRequest) (_result *DescribeBackupPlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPlansResponse{}
@@ -20131,13 +29799,19 @@ func (client *Client) DescribeBackupPlans(request *DescribeBackupPlansRequest) (
 	return _result, _err
 }
 
-/**
- * The total number of returned entries.
- *
- * @param request DescribeClientsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeClientsResponse
- */
+// Summary:
+//
+// Queries one or more Cloud Backup clients that meet the specified conditions.
+//
+// Description:
+//
+// This operation is applicable only to SAP HANA backup. For Cloud Backup clients of other data sources, call the DescribeBackupClients operation.
+//
+// @param request - DescribeClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClientsResponse
 func (client *Client) DescribeClientsWithOptions(request *DescribeClientsRequest, runtime *util.RuntimeOptions) (_result *DescribeClientsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20199,12 +29873,17 @@ func (client *Client) DescribeClientsWithOptions(request *DescribeClientsRequest
 	return _result, _err
 }
 
-/**
- * The total number of returned entries.
- *
- * @param request DescribeClientsRequest
- * @return DescribeClientsResponse
- */
+// Summary:
+//
+// Queries one or more Cloud Backup clients that meet the specified conditions.
+//
+// Description:
+//
+// This operation is applicable only to SAP HANA backup. For Cloud Backup clients of other data sources, call the DescribeBackupClients operation.
+//
+// @param request - DescribeClientsRequest
+//
+// @return DescribeClientsResponse
 func (client *Client) DescribeClients(request *DescribeClientsRequest) (_result *DescribeClientsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClientsResponse{}
@@ -20216,13 +29895,19 @@ func (client *Client) DescribeClients(request *DescribeClientsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
- *
- * @param request DescribeContainerClusterRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeContainerClusterResponse
- */
+// Summary:
+//
+// Queries one or more container clusters that meet the specified conditions.
+//
+// Description:
+//
+// You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
+//
+// @param request - DescribeContainerClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContainerClusterResponse
 func (client *Client) DescribeContainerClusterWithOptions(request *DescribeContainerClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20268,12 +29953,17 @@ func (client *Client) DescribeContainerClusterWithOptions(request *DescribeConta
 	return _result, _err
 }
 
-/**
- * You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
- *
- * @param request DescribeContainerClusterRequest
- * @return DescribeContainerClusterResponse
- */
+// Summary:
+//
+// Queries one or more container clusters that meet the specified conditions.
+//
+// Description:
+//
+// You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
+//
+// @param request - DescribeContainerClusterRequest
+//
+// @return DescribeContainerClusterResponse
 func (client *Client) DescribeContainerCluster(request *DescribeContainerClusterRequest) (_result *DescribeContainerClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeContainerClusterResponse{}
@@ -20285,6 +29975,15 @@ func (client *Client) DescribeContainerCluster(request *DescribeContainerCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the accounts used in cross-account backup.
+//
+// @param request - DescribeCrossAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCrossAccountsResponse
 func (client *Client) DescribeCrossAccountsWithOptions(request *DescribeCrossAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeCrossAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20322,6 +30021,13 @@ func (client *Client) DescribeCrossAccountsWithOptions(request *DescribeCrossAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the accounts used in cross-account backup.
+//
+// @param request - DescribeCrossAccountsRequest
+//
+// @return DescribeCrossAccountsResponse
 func (client *Client) DescribeCrossAccounts(request *DescribeCrossAccountsRequest) (_result *DescribeCrossAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCrossAccountsResponse{}
@@ -20333,6 +30039,15 @@ func (client *Client) DescribeCrossAccounts(request *DescribeCrossAccountsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more SAP HANA backup plans that meet the specified conditions.
+//
+// @param request - DescribeHanaBackupPlansRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHanaBackupPlansResponse
 func (client *Client) DescribeHanaBackupPlansWithOptions(request *DescribeHanaBackupPlansRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaBackupPlansResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20386,6 +30101,13 @@ func (client *Client) DescribeHanaBackupPlansWithOptions(request *DescribeHanaBa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more SAP HANA backup plans that meet the specified conditions.
+//
+// @param request - DescribeHanaBackupPlansRequest
+//
+// @return DescribeHanaBackupPlansResponse
 func (client *Client) DescribeHanaBackupPlans(request *DescribeHanaBackupPlansRequest) (_result *DescribeHanaBackupPlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHanaBackupPlansResponse{}
@@ -20397,13 +30119,19 @@ func (client *Client) DescribeHanaBackupPlans(request *DescribeHanaBackupPlansRe
 	return _result, _err
 }
 
-/**
- * If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
- *
- * @param request DescribeHanaBackupSettingRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeHanaBackupSettingResponse
- */
+// Summary:
+//
+// Queries the backup parameters of an SAP HANA database.
+//
+// Description:
+//
+// If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
+//
+// @param request - DescribeHanaBackupSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHanaBackupSettingResponse
 func (client *Client) DescribeHanaBackupSettingWithOptions(request *DescribeHanaBackupSettingRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaBackupSettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20445,12 +30173,17 @@ func (client *Client) DescribeHanaBackupSettingWithOptions(request *DescribeHana
 	return _result, _err
 }
 
-/**
- * If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
- *
- * @param request DescribeHanaBackupSettingRequest
- * @return DescribeHanaBackupSettingResponse
- */
+// Summary:
+//
+// Queries the backup parameters of an SAP HANA database.
+//
+// Description:
+//
+// If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
+//
+// @param request - DescribeHanaBackupSettingRequest
+//
+// @return DescribeHanaBackupSettingResponse
 func (client *Client) DescribeHanaBackupSetting(request *DescribeHanaBackupSettingRequest) (_result *DescribeHanaBackupSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHanaBackupSettingResponse{}
@@ -20462,15 +30195,19 @@ func (client *Client) DescribeHanaBackupSetting(request *DescribeHanaBackupSetti
 	return _result, _err
 }
 
-/**
- * Specifies whether to restore the database to a different instance. Valid values:
- * *   true: restores the database to a different instance.
- * *   false: restores the database within the same instance.
- *
- * @param request DescribeHanaBackupsAsyncRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeHanaBackupsAsyncResponse
- */
+// Summary:
+//
+// Queries one or more SAP HANA backups that meet the specified conditions.
+//
+// Description:
+//
+// After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the final result.
+//
+// @param request - DescribeHanaBackupsAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHanaBackupsAsyncResponse
 func (client *Client) DescribeHanaBackupsAsyncWithOptions(request *DescribeHanaBackupsAsyncRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaBackupsAsyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20568,14 +30305,17 @@ func (client *Client) DescribeHanaBackupsAsyncWithOptions(request *DescribeHanaB
 	return _result, _err
 }
 
-/**
- * Specifies whether to restore the database to a different instance. Valid values:
- * *   true: restores the database to a different instance.
- * *   false: restores the database within the same instance.
- *
- * @param request DescribeHanaBackupsAsyncRequest
- * @return DescribeHanaBackupsAsyncResponse
- */
+// Summary:
+//
+// Queries one or more SAP HANA backups that meet the specified conditions.
+//
+// Description:
+//
+// After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the final result.
+//
+// @param request - DescribeHanaBackupsAsyncRequest
+//
+// @return DescribeHanaBackupsAsyncResponse
 func (client *Client) DescribeHanaBackupsAsync(request *DescribeHanaBackupsAsyncRequest) (_result *DescribeHanaBackupsAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHanaBackupsAsyncResponse{}
@@ -20587,13 +30327,19 @@ func (client *Client) DescribeHanaBackupsAsync(request *DescribeHanaBackupsAsync
 	return _result, _err
 }
 
-/**
- * The name of the database.
- *
- * @param request DescribeHanaDatabasesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeHanaDatabasesResponse
- */
+// Summary:
+//
+// Queries the information about SAP HANA databases.
+//
+// Description:
+//
+// After you register an SAP HANA instance and install a Cloud Backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
+//
+// @param request - DescribeHanaDatabasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHanaDatabasesResponse
 func (client *Client) DescribeHanaDatabasesWithOptions(request *DescribeHanaDatabasesRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaDatabasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20643,12 +30389,17 @@ func (client *Client) DescribeHanaDatabasesWithOptions(request *DescribeHanaData
 	return _result, _err
 }
 
-/**
- * The name of the database.
- *
- * @param request DescribeHanaDatabasesRequest
- * @return DescribeHanaDatabasesResponse
- */
+// Summary:
+//
+// Queries the information about SAP HANA databases.
+//
+// Description:
+//
+// After you register an SAP HANA instance and install a Cloud Backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
+//
+// @param request - DescribeHanaDatabasesRequest
+//
+// @return DescribeHanaDatabasesResponse
 func (client *Client) DescribeHanaDatabases(request *DescribeHanaDatabasesRequest) (_result *DescribeHanaDatabasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHanaDatabasesResponse{}
@@ -20660,6 +30411,15 @@ func (client *Client) DescribeHanaDatabases(request *DescribeHanaDatabasesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more SAP HANA instances that meet the specified conditions.
+//
+// @param request - DescribeHanaInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHanaInstancesResponse
 func (client *Client) DescribeHanaInstancesWithOptions(request *DescribeHanaInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20715,6 +30475,13 @@ func (client *Client) DescribeHanaInstancesWithOptions(request *DescribeHanaInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more SAP HANA instances that meet the specified conditions.
+//
+// @param request - DescribeHanaInstancesRequest
+//
+// @return DescribeHanaInstancesResponse
 func (client *Client) DescribeHanaInstances(request *DescribeHanaInstancesRequest) (_result *DescribeHanaInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHanaInstancesResponse{}
@@ -20726,6 +30493,15 @@ func (client *Client) DescribeHanaInstances(request *DescribeHanaInstancesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more SAP HANA restore jobs that meet the specified conditions.
+//
+// @param request - DescribeHanaRestoresRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHanaRestoresResponse
 func (client *Client) DescribeHanaRestoresWithOptions(request *DescribeHanaRestoresRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaRestoresResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20791,6 +30567,13 @@ func (client *Client) DescribeHanaRestoresWithOptions(request *DescribeHanaResto
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more SAP HANA restore jobs that meet the specified conditions.
+//
+// @param request - DescribeHanaRestoresRequest
+//
+// @return DescribeHanaRestoresResponse
 func (client *Client) DescribeHanaRestores(request *DescribeHanaRestoresRequest) (_result *DescribeHanaRestoresResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHanaRestoresResponse{}
@@ -20802,13 +30585,21 @@ func (client *Client) DescribeHanaRestores(request *DescribeHanaRestoresRequest)
 	return _result, _err
 }
 
-/**
- * The ID of the SAP HANA instance.
- *
- * @param request DescribeHanaRetentionSettingRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeHanaRetentionSettingResponse
- */
+// Summary:
+//
+// Queries the backup retention period of an SAP HANA database.
+//
+// Description:
+//
+//   If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
+//
+// 	- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+//
+// @param request - DescribeHanaRetentionSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHanaRetentionSettingResponse
 func (client *Client) DescribeHanaRetentionSettingWithOptions(request *DescribeHanaRetentionSettingRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaRetentionSettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20850,12 +30641,19 @@ func (client *Client) DescribeHanaRetentionSettingWithOptions(request *DescribeH
 	return _result, _err
 }
 
-/**
- * The ID of the SAP HANA instance.
- *
- * @param request DescribeHanaRetentionSettingRequest
- * @return DescribeHanaRetentionSettingResponse
- */
+// Summary:
+//
+// Queries the backup retention period of an SAP HANA database.
+//
+// Description:
+//
+//   If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
+//
+// 	- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+//
+// @param request - DescribeHanaRetentionSettingRequest
+//
+// @return DescribeHanaRetentionSettingResponse
 func (client *Client) DescribeHanaRetentionSetting(request *DescribeHanaRetentionSettingRequest) (_result *DescribeHanaRetentionSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHanaRetentionSettingResponse{}
@@ -20867,6 +30665,15 @@ func (client *Client) DescribeHanaRetentionSetting(request *DescribeHanaRetentio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about Tablestore instances that are backed up.
+//
+// @param request - DescribeOtsTableSnapshotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOtsTableSnapshotsResponse
 func (client *Client) DescribeOtsTableSnapshotsWithOptions(request *DescribeOtsTableSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DescribeOtsTableSnapshotsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20937,6 +30744,13 @@ func (client *Client) DescribeOtsTableSnapshotsWithOptions(request *DescribeOtsT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about Tablestore instances that are backed up.
+//
+// @param request - DescribeOtsTableSnapshotsRequest
+//
+// @return DescribeOtsTableSnapshotsResponse
 func (client *Client) DescribeOtsTableSnapshots(request *DescribeOtsTableSnapshotsRequest) (_result *DescribeOtsTableSnapshotsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOtsTableSnapshotsResponse{}
@@ -20948,6 +30762,15 @@ func (client *Client) DescribeOtsTableSnapshots(request *DescribeOtsTableSnapsho
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more backup policies.
+//
+// @param request - DescribePoliciesV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePoliciesV2Response
 func (client *Client) DescribePoliciesV2WithOptions(request *DescribePoliciesV2Request, runtime *util.RuntimeOptions) (_result *DescribePoliciesV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20989,6 +30812,13 @@ func (client *Client) DescribePoliciesV2WithOptions(request *DescribePoliciesV2R
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more backup policies.
+//
+// @param request - DescribePoliciesV2Request
+//
+// @return DescribePoliciesV2Response
 func (client *Client) DescribePoliciesV2(request *DescribePoliciesV2Request) (_result *DescribePoliciesV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePoliciesV2Response{}
@@ -21000,6 +30830,15 @@ func (client *Client) DescribePoliciesV2(request *DescribePoliciesV2Request) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+//
+// @param tmpReq - DescribePolicyBindingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolicyBindingsResponse
 func (client *Client) DescribePolicyBindingsWithOptions(tmpReq *DescribePolicyBindingsRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyBindingsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21012,6 +30851,10 @@ func (client *Client) DescribePolicyBindingsWithOptions(tmpReq *DescribePolicyBi
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
 	}
@@ -21057,6 +30900,13 @@ func (client *Client) DescribePolicyBindingsWithOptions(tmpReq *DescribePolicyBi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+//
+// @param request - DescribePolicyBindingsRequest
+//
+// @return DescribePolicyBindingsResponse
 func (client *Client) DescribePolicyBindings(request *DescribePolicyBindingsRequest) (_result *DescribePolicyBindingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePolicyBindingsResponse{}
@@ -21068,6 +30918,15 @@ func (client *Client) DescribePolicyBindings(request *DescribePolicyBindingsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tables of a restorable Tablestore instance.
+//
+// @param request - DescribeRecoverableOtsInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecoverableOtsInstancesResponse
 func (client *Client) DescribeRecoverableOtsInstancesWithOptions(request *DescribeRecoverableOtsInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21109,6 +30968,13 @@ func (client *Client) DescribeRecoverableOtsInstancesWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tables of a restorable Tablestore instance.
+//
+// @param request - DescribeRecoverableOtsInstancesRequest
+//
+// @return DescribeRecoverableOtsInstancesResponse
 func (client *Client) DescribeRecoverableOtsInstances(request *DescribeRecoverableOtsInstancesRequest) (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecoverableOtsInstancesResponse{}
@@ -21120,19 +30986,17 @@ func (client *Client) DescribeRecoverableOtsInstances(request *DescribeRecoverab
 	return _result, _err
 }
 
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.NeedVaultCount)) {
-		query["NeedVaultCount"] = request.NeedVaultCount
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+// Summary:
+//
+// Queries available regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
 		Version:     tea.String("2017-09-08"),
@@ -21153,10 +31017,15 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+// Summary:
+//
+// Queries available regions.
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	_body, _err := client.DescribeRegionsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21164,6 +31033,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more restore jobs that meet the specified conditions.
+//
+// @param request - DescribeRestoreJobs2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRestoreJobs2Response
 func (client *Client) DescribeRestoreJobs2WithOptions(request *DescribeRestoreJobs2Request, runtime *util.RuntimeOptions) (_result *DescribeRestoreJobs2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21209,6 +31087,13 @@ func (client *Client) DescribeRestoreJobs2WithOptions(request *DescribeRestoreJo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more restore jobs that meet the specified conditions.
+//
+// @param request - DescribeRestoreJobs2Request
+//
+// @return DescribeRestoreJobs2Response
 func (client *Client) DescribeRestoreJobs2(request *DescribeRestoreJobs2Request) (_result *DescribeRestoreJobs2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRestoreJobs2Response{}
@@ -21220,6 +31105,15 @@ func (client *Client) DescribeRestoreJobs2(request *DescribeRestoreJobs2Request)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an asynchronous job.
+//
+// @param request - DescribeTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTaskResponse
 func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21261,6 +31155,13 @@ func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an asynchronous job.
+//
+// @param request - DescribeTaskRequest
+//
+// @return DescribeTaskResponse
 func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *DescribeTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTaskResponse{}
@@ -21272,6 +31173,15 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup snapshots of an Elastic Compute Service (ECS) instance.
+//
+// @param tmpReq - DescribeUdmSnapshotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUdmSnapshotsResponse
 func (client *Client) DescribeUdmSnapshotsWithOptions(tmpReq *DescribeUdmSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DescribeUdmSnapshotsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21341,6 +31251,13 @@ func (client *Client) DescribeUdmSnapshotsWithOptions(tmpReq *DescribeUdmSnapsho
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup snapshots of an Elastic Compute Service (ECS) instance.
+//
+// @param request - DescribeUdmSnapshotsRequest
+//
+// @return DescribeUdmSnapshotsResponse
 func (client *Client) DescribeUdmSnapshots(request *DescribeUdmSnapshotsRequest) (_result *DescribeUdmSnapshotsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUdmSnapshotsResponse{}
@@ -21352,6 +31269,15 @@ func (client *Client) DescribeUdmSnapshots(request *DescribeUdmSnapshotsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions that support cross-region replication.
+//
+// @param request - DescribeVaultReplicationRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVaultReplicationRegionsResponse
 func (client *Client) DescribeVaultReplicationRegionsWithOptions(request *DescribeVaultReplicationRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeVaultReplicationRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21389,6 +31315,13 @@ func (client *Client) DescribeVaultReplicationRegionsWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions that support cross-region replication.
+//
+// @param request - DescribeVaultReplicationRegionsRequest
+//
+// @return DescribeVaultReplicationRegionsResponse
 func (client *Client) DescribeVaultReplicationRegions(request *DescribeVaultReplicationRegionsRequest) (_result *DescribeVaultReplicationRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVaultReplicationRegionsResponse{}
@@ -21400,6 +31333,15 @@ func (client *Client) DescribeVaultReplicationRegions(request *DescribeVaultRepl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more backup vaults that meet the specified conditions.
+//
+// @param request - DescribeVaultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVaultsResponse
 func (client *Client) DescribeVaultsWithOptions(request *DescribeVaultsRequest, runtime *util.RuntimeOptions) (_result *DescribeVaultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21463,6 +31405,13 @@ func (client *Client) DescribeVaultsWithOptions(request *DescribeVaultsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more backup vaults that meet the specified conditions.
+//
+// @param request - DescribeVaultsRequest
+//
+// @return DescribeVaultsResponse
 func (client *Client) DescribeVaults(request *DescribeVaultsRequest) (_result *DescribeVaultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVaultsResponse{}
@@ -21474,14 +31423,21 @@ func (client *Client) DescribeVaults(request *DescribeVaultsRequest) (_result *D
 	return _result, _err
 }
 
-/**
- * *   If the request is successful, the mount target is deleted.
- * *   After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
- *
- * @param request DetachNasFileSystemRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DetachNasFileSystemResponse
- */
+// Summary:
+//
+// Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+//
+// Description:
+//
+//   If the request is successful, the mount target is deleted.
+//
+// 	- After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+//
+// @param request - DetachNasFileSystemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachNasFileSystemResponse
 func (client *Client) DetachNasFileSystemWithOptions(request *DetachNasFileSystemRequest, runtime *util.RuntimeOptions) (_result *DetachNasFileSystemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21531,13 +31487,19 @@ func (client *Client) DetachNasFileSystemWithOptions(request *DetachNasFileSyste
 	return _result, _err
 }
 
-/**
- * *   If the request is successful, the mount target is deleted.
- * *   After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
- *
- * @param request DetachNasFileSystemRequest
- * @return DetachNasFileSystemResponse
- */
+// Summary:
+//
+// Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+//
+// Description:
+//
+//   If the request is successful, the mount target is deleted.
+//
+// 	- After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+//
+// @param request - DetachNasFileSystemRequest
+//
+// @return DetachNasFileSystemResponse
 func (client *Client) DetachNasFileSystem(request *DetachNasFileSystemRequest) (_result *DetachNasFileSystemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachNasFileSystemResponse{}
@@ -21549,15 +31511,19 @@ func (client *Client) DetachNasFileSystem(request *DetachNasFileSystemRequest) (
 	return _result, _err
 }
 
-/**
- * Indicates whether the request is successful. Valid values:
- * *   true: indicates that the request is successful.
- * *   false: indicates that the request fails.
- *
- * @param request DisableBackupPlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableBackupPlanResponse
- */
+// Summary:
+//
+// Disables a backup plan.
+//
+// Description:
+//
+// After you call this operation, the backup plan is suspended. In the DescribeBackupPlans operation, the Disabled parameter is set to true.
+//
+// @param request - DisableBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableBackupPlanResponse
 func (client *Client) DisableBackupPlanWithOptions(request *DisableBackupPlanRequest, runtime *util.RuntimeOptions) (_result *DisableBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21599,14 +31565,17 @@ func (client *Client) DisableBackupPlanWithOptions(request *DisableBackupPlanReq
 	return _result, _err
 }
 
-/**
- * Indicates whether the request is successful. Valid values:
- * *   true: indicates that the request is successful.
- * *   false: indicates that the request fails.
- *
- * @param request DisableBackupPlanRequest
- * @return DisableBackupPlanResponse
- */
+// Summary:
+//
+// Disables a backup plan.
+//
+// Description:
+//
+// After you call this operation, the backup plan is suspended. In the DescribeBackupPlans operation, the Disabled parameter is set to true.
+//
+// @param request - DisableBackupPlanRequest
+//
+// @return DisableBackupPlanResponse
 func (client *Client) DisableBackupPlan(request *DisableBackupPlanRequest) (_result *DisableBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableBackupPlanResponse{}
@@ -21618,13 +31587,19 @@ func (client *Client) DisableBackupPlan(request *DisableBackupPlanRequest) (_res
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request DisableHanaBackupPlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableHanaBackupPlanResponse
- */
+// Summary:
+//
+// Disables an SAP HANA backup plan.
+//
+// Description:
+//
+// To enable the backup plan again, call the EnableHanaBackupPlan operation.
+//
+// @param request - DisableHanaBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableHanaBackupPlanResponse
 func (client *Client) DisableHanaBackupPlanWithOptions(request *DisableHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *DisableHanaBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21670,12 +31645,17 @@ func (client *Client) DisableHanaBackupPlanWithOptions(request *DisableHanaBacku
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request DisableHanaBackupPlanRequest
- * @return DisableHanaBackupPlanResponse
- */
+// Summary:
+//
+// Disables an SAP HANA backup plan.
+//
+// Description:
+//
+// To enable the backup plan again, call the EnableHanaBackupPlan operation.
+//
+// @param request - DisableHanaBackupPlanRequest
+//
+// @return DisableHanaBackupPlanResponse
 func (client *Client) DisableHanaBackupPlan(request *DisableHanaBackupPlanRequest) (_result *DisableHanaBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableHanaBackupPlanResponse{}
@@ -21687,15 +31667,19 @@ func (client *Client) DisableHanaBackupPlan(request *DisableHanaBackupPlanReques
 	return _result, _err
 }
 
-/**
- * Indicates whether the request is successful. Valid values:
- * *   true: indicates that the request is successful.
- * *   false: indicates that the request fails.
- *
- * @param request EnableBackupPlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableBackupPlanResponse
- */
+// Summary:
+//
+// Enables a backup plan.
+//
+// Description:
+//
+// After you call this operation, the backup plan is restarted (Disabled is set to false in the DescribeBackupPlans operation). Cloud Backup continues to perform backups based on the policy specified in the backup plan.
+//
+// @param request - EnableBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableBackupPlanResponse
 func (client *Client) EnableBackupPlanWithOptions(request *EnableBackupPlanRequest, runtime *util.RuntimeOptions) (_result *EnableBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21737,14 +31721,17 @@ func (client *Client) EnableBackupPlanWithOptions(request *EnableBackupPlanReque
 	return _result, _err
 }
 
-/**
- * Indicates whether the request is successful. Valid values:
- * *   true: indicates that the request is successful.
- * *   false: indicates that the request fails.
- *
- * @param request EnableBackupPlanRequest
- * @return EnableBackupPlanResponse
- */
+// Summary:
+//
+// Enables a backup plan.
+//
+// Description:
+//
+// After you call this operation, the backup plan is restarted (Disabled is set to false in the DescribeBackupPlans operation). Cloud Backup continues to perform backups based on the policy specified in the backup plan.
+//
+// @param request - EnableBackupPlanRequest
+//
+// @return EnableBackupPlanResponse
 func (client *Client) EnableBackupPlan(request *EnableBackupPlanRequest) (_result *EnableBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableBackupPlanResponse{}
@@ -21756,13 +31743,19 @@ func (client *Client) EnableBackupPlan(request *EnableBackupPlanRequest) (_resul
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request EnableHanaBackupPlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableHanaBackupPlanResponse
- */
+// Summary:
+//
+// Enables an SAP HANA backup plan.
+//
+// Description:
+//
+// To disable the backup plan again, call the DisableHanaBackupPlan operation.
+//
+// @param request - EnableHanaBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableHanaBackupPlanResponse
 func (client *Client) EnableHanaBackupPlanWithOptions(request *EnableHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *EnableHanaBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21808,12 +31801,17 @@ func (client *Client) EnableHanaBackupPlanWithOptions(request *EnableHanaBackupP
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request EnableHanaBackupPlanRequest
- * @return EnableHanaBackupPlanResponse
- */
+// Summary:
+//
+// Enables an SAP HANA backup plan.
+//
+// Description:
+//
+// To disable the backup plan again, call the DisableHanaBackupPlan operation.
+//
+// @param request - EnableHanaBackupPlanRequest
+//
+// @return EnableHanaBackupPlanResponse
 func (client *Client) EnableHanaBackupPlan(request *EnableHanaBackupPlanRequest) (_result *EnableHanaBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableHanaBackupPlanResponse{}
@@ -21825,6 +31823,15 @@ func (client *Client) EnableHanaBackupPlan(request *EnableHanaBackupPlanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes a backup plan.
+//
+// @param request - ExecuteBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteBackupPlanResponse
 func (client *Client) ExecuteBackupPlanWithOptions(request *ExecuteBackupPlanRequest, runtime *util.RuntimeOptions) (_result *ExecuteBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21870,6 +31877,13 @@ func (client *Client) ExecuteBackupPlanWithOptions(request *ExecuteBackupPlanReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Executes a backup plan.
+//
+// @param request - ExecuteBackupPlanRequest
+//
+// @return ExecuteBackupPlanResponse
 func (client *Client) ExecuteBackupPlan(request *ExecuteBackupPlanRequest) (_result *ExecuteBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteBackupPlanResponse{}
@@ -21881,6 +31895,11 @@ func (client *Client) ExecuteBackupPlan(request *ExecuteBackupPlanRequest) (_res
 	return _result, _err
 }
 
+// @param request - ExecutePolicyV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecutePolicyV2Response
 func (client *Client) ExecutePolicyV2WithOptions(request *ExecutePolicyV2Request, runtime *util.RuntimeOptions) (_result *ExecutePolicyV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21928,6 +31947,9 @@ func (client *Client) ExecutePolicyV2WithOptions(request *ExecutePolicyV2Request
 	return _result, _err
 }
 
+// @param request - ExecutePolicyV2Request
+//
+// @return ExecutePolicyV2Response
 func (client *Client) ExecutePolicyV2(request *ExecutePolicyV2Request) (_result *ExecutePolicyV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecutePolicyV2Response{}
@@ -21939,6 +31961,15 @@ func (client *Client) ExecutePolicyV2(request *ExecutePolicyV2Request) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates a Resource Access Management (RAM) policy.
+//
+// @param request - GenerateRamPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateRamPolicyResponse
 func (client *Client) GenerateRamPolicyWithOptions(request *GenerateRamPolicyRequest, runtime *util.RuntimeOptions) (_result *GenerateRamPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21984,6 +32015,13 @@ func (client *Client) GenerateRamPolicyWithOptions(request *GenerateRamPolicyReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates a Resource Access Management (RAM) policy.
+//
+// @param request - GenerateRamPolicyRequest
+//
+// @return GenerateRamPolicyResponse
 func (client *Client) GenerateRamPolicy(request *GenerateRamPolicyRequest) (_result *GenerateRamPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateRamPolicyResponse{}
@@ -21995,6 +32033,15 @@ func (client *Client) GenerateRamPolicy(request *GenerateRamPolicyRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains download links of files such as job reports.
+//
+// @param request - GetTempFileDownloadLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTempFileDownloadLinkResponse
 func (client *Client) GetTempFileDownloadLinkWithOptions(request *GetTempFileDownloadLinkRequest, runtime *util.RuntimeOptions) (_result *GetTempFileDownloadLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22028,6 +32075,13 @@ func (client *Client) GetTempFileDownloadLinkWithOptions(request *GetTempFileDow
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains download links of files such as job reports.
+//
+// @param request - GetTempFileDownloadLinkRequest
+//
+// @return GetTempFileDownloadLinkResponse
 func (client *Client) GetTempFileDownloadLink(request *GetTempFileDownloadLinkRequest) (_result *GetTempFileDownloadLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTempFileDownloadLinkResponse{}
@@ -22039,15 +32093,23 @@ func (client *Client) GetTempFileDownloadLink(request *GetTempFileDownloadLinkRe
 	return _result, _err
 }
 
-/**
- * *   This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
- * *   You can call the [DescribeTask](~~431265~~) operation to query the execution result of an asynchronous job.
- * *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
- *
- * @param tmpReq InstallBackupClientsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return InstallBackupClientsResponse
- */
+// Summary:
+//
+// Installs an HBR client on one or more Elastic Compute Service (ECS) instances.
+//
+// Description:
+//
+//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+//
+// 	- You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+//
+// 	- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+//
+// @param tmpReq - InstallBackupClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallBackupClientsResponse
 func (client *Client) InstallBackupClientsWithOptions(tmpReq *InstallBackupClientsRequest, runtime *util.RuntimeOptions) (_result *InstallBackupClientsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22099,14 +32161,21 @@ func (client *Client) InstallBackupClientsWithOptions(tmpReq *InstallBackupClien
 	return _result, _err
 }
 
-/**
- * *   This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
- * *   You can call the [DescribeTask](~~431265~~) operation to query the execution result of an asynchronous job.
- * *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
- *
- * @param request InstallBackupClientsRequest
- * @return InstallBackupClientsResponse
- */
+// Summary:
+//
+// Installs an HBR client on one or more Elastic Compute Service (ECS) instances.
+//
+// Description:
+//
+//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+//
+// 	- You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+//
+// 	- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+//
+// @param request - InstallBackupClientsRequest
+//
+// @return InstallBackupClientsResponse
 func (client *Client) InstallBackupClients(request *InstallBackupClientsRequest) (_result *InstallBackupClientsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallBackupClientsResponse{}
@@ -22118,6 +32187,15 @@ func (client *Client) InstallBackupClients(request *InstallBackupClientsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates Hybrid Backup Recovery (HBR).
+//
+// @param request - OpenHbrServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenHbrServiceResponse
 func (client *Client) OpenHbrServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenHbrServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -22140,6 +32218,11 @@ func (client *Client) OpenHbrServiceWithOptions(runtime *util.RuntimeOptions) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates Hybrid Backup Recovery (HBR).
+//
+// @return OpenHbrServiceResponse
 func (client *Client) OpenHbrService() (_result *OpenHbrServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenHbrServiceResponse{}
@@ -22151,6 +32234,15 @@ func (client *Client) OpenHbrService() (_result *OpenHbrServiceResponse, _err er
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more backup snapshots that meet the specified conditions.
+//
+// @param tmpReq - SearchHistoricalSnapshotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchHistoricalSnapshotsResponse
 func (client *Client) SearchHistoricalSnapshotsWithOptions(tmpReq *SearchHistoricalSnapshotsRequest, runtime *util.RuntimeOptions) (_result *SearchHistoricalSnapshotsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22171,8 +32263,16 @@ func (client *Client) SearchHistoricalSnapshotsWithOptions(tmpReq *SearchHistori
 		query["NextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.QueryShrink)) {
 		query["Query"] = request.QueryShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
@@ -22202,6 +32302,13 @@ func (client *Client) SearchHistoricalSnapshotsWithOptions(tmpReq *SearchHistori
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more backup snapshots that meet the specified conditions.
+//
+// @param request - SearchHistoricalSnapshotsRequest
+//
+// @return SearchHistoricalSnapshotsResponse
 func (client *Client) SearchHistoricalSnapshots(request *SearchHistoricalSnapshotsRequest) (_result *SearchHistoricalSnapshotsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchHistoricalSnapshotsResponse{}
@@ -22213,13 +32320,19 @@ func (client *Client) SearchHistoricalSnapshots(request *SearchHistoricalSnapsho
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request StartHanaDatabaseAsyncRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StartHanaDatabaseAsyncResponse
- */
+// Summary:
+//
+// Starts an SAP HANA database.
+//
+// Description:
+//
+// To stop the database again, call the StopHanaDatabaseAsync operation.
+//
+// @param request - StartHanaDatabaseAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartHanaDatabaseAsyncResponse
 func (client *Client) StartHanaDatabaseAsyncWithOptions(request *StartHanaDatabaseAsyncRequest, runtime *util.RuntimeOptions) (_result *StartHanaDatabaseAsyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22261,12 +32374,17 @@ func (client *Client) StartHanaDatabaseAsyncWithOptions(request *StartHanaDataba
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request StartHanaDatabaseAsyncRequest
- * @return StartHanaDatabaseAsyncResponse
- */
+// Summary:
+//
+// Starts an SAP HANA database.
+//
+// Description:
+//
+// To stop the database again, call the StopHanaDatabaseAsync operation.
+//
+// @param request - StartHanaDatabaseAsyncRequest
+//
+// @return StartHanaDatabaseAsyncResponse
 func (client *Client) StartHanaDatabaseAsync(request *StartHanaDatabaseAsyncRequest) (_result *StartHanaDatabaseAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartHanaDatabaseAsyncResponse{}
@@ -22278,13 +32396,19 @@ func (client *Client) StartHanaDatabaseAsync(request *StartHanaDatabaseAsyncRequ
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request StopHanaDatabaseAsyncRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StopHanaDatabaseAsyncResponse
- */
+// Summary:
+//
+// Stops an SAP HANA database.
+//
+// Description:
+//
+// To start the database again, call the StartHanaDatabaseAsync operation.
+//
+// @param request - StopHanaDatabaseAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopHanaDatabaseAsyncResponse
 func (client *Client) StopHanaDatabaseAsyncWithOptions(request *StopHanaDatabaseAsyncRequest, runtime *util.RuntimeOptions) (_result *StopHanaDatabaseAsyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22326,12 +32450,17 @@ func (client *Client) StopHanaDatabaseAsyncWithOptions(request *StopHanaDatabase
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request StopHanaDatabaseAsyncRequest
- * @return StopHanaDatabaseAsyncResponse
- */
+// Summary:
+//
+// Stops an SAP HANA database.
+//
+// Description:
+//
+// To start the database again, call the StartHanaDatabaseAsync operation.
+//
+// @param request - StopHanaDatabaseAsyncRequest
+//
+// @return StopHanaDatabaseAsyncResponse
 func (client *Client) StopHanaDatabaseAsync(request *StopHanaDatabaseAsyncRequest) (_result *StopHanaDatabaseAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopHanaDatabaseAsyncResponse{}
@@ -22343,15 +32472,23 @@ func (client *Client) StopHanaDatabaseAsync(request *StopHanaDatabaseAsyncReques
 	return _result, _err
 }
 
-/**
- * *   This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
- * *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
- * *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
- *
- * @param tmpReq UninstallBackupClientsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UninstallBackupClientsResponse
- */
+// Summary:
+//
+// Uninstalls a Cloud Backup client from one or more Elastic Compute Service (ECS) instance.
+//
+// Description:
+//
+//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
+//
+// 	- You can call the DescribeTask operation to query the execution result of an asynchronous job.
+//
+// 	- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
+//
+// @param tmpReq - UninstallBackupClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallBackupClientsResponse
 func (client *Client) UninstallBackupClientsWithOptions(tmpReq *UninstallBackupClientsRequest, runtime *util.RuntimeOptions) (_result *UninstallBackupClientsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22411,14 +32548,21 @@ func (client *Client) UninstallBackupClientsWithOptions(tmpReq *UninstallBackupC
 	return _result, _err
 }
 
-/**
- * *   This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
- * *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
- * *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
- *
- * @param request UninstallBackupClientsRequest
- * @return UninstallBackupClientsResponse
- */
+// Summary:
+//
+// Uninstalls a Cloud Backup client from one or more Elastic Compute Service (ECS) instance.
+//
+// Description:
+//
+//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
+//
+// 	- You can call the DescribeTask operation to query the execution result of an asynchronous job.
+//
+// 	- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
+//
+// @param request - UninstallBackupClientsRequest
+//
+// @return UninstallBackupClientsResponse
 func (client *Client) UninstallBackupClients(request *UninstallBackupClientsRequest) (_result *UninstallBackupClientsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UninstallBackupClientsResponse{}
@@ -22430,13 +32574,19 @@ func (client *Client) UninstallBackupClients(request *UninstallBackupClientsRequ
 	return _result, _err
 }
 
-/**
- * If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
- *
- * @param request UninstallClientRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UninstallClientResponse
- */
+// Summary:
+//
+// Uninstalls an HBR client.
+//
+// Description:
+//
+// If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
+//
+// @param request - UninstallClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallClientResponse
 func (client *Client) UninstallClientWithOptions(request *UninstallClientRequest, runtime *util.RuntimeOptions) (_result *UninstallClientResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22478,12 +32628,17 @@ func (client *Client) UninstallClientWithOptions(request *UninstallClientRequest
 	return _result, _err
 }
 
-/**
- * If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
- *
- * @param request UninstallClientRequest
- * @return UninstallClientResponse
- */
+// Summary:
+//
+// Uninstalls an HBR client.
+//
+// Description:
+//
+// If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
+//
+// @param request - UninstallClientRequest
+//
+// @return UninstallClientResponse
 func (client *Client) UninstallClient(request *UninstallClientRequest) (_result *UninstallClientResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UninstallClientResponse{}
@@ -22495,6 +32650,15 @@ func (client *Client) UninstallClient(request *UninstallClientRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a backup plan.
+//
+// @param tmpReq - UpdateBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBackupPlanResponse
 func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanRequest, runtime *util.RuntimeOptions) (_result *UpdateBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22511,6 +32675,10 @@ func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanReques
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChangeListPath)) {
+		query["ChangeListPath"] = request.ChangeListPath
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DetailShrink)) {
 		query["Detail"] = request.DetailShrink
 	}
@@ -22604,6 +32772,13 @@ func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a backup plan.
+//
+// @param request - UpdateBackupPlanRequest
+//
+// @return UpdateBackupPlanResponse
 func (client *Client) UpdateBackupPlan(request *UpdateBackupPlanRequest) (_result *UpdateBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateBackupPlanResponse{}
@@ -22615,19 +32790,29 @@ func (client *Client) UpdateBackupPlan(request *UpdateBackupPlanRequest) (_resul
 	return _result, _err
 }
 
-/**
- * The ID of the backup client.
- *
- * @param request UpdateClientSettingsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateClientSettingsResponse
- */
+// Summary:
+//
+// Updates the configurations of an HBR client.
+//
+// Description:
+//
+// You can call this operation to update the configurations of both the old and new HBR clients.
+//
+// @param request - UpdateClientSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateClientSettingsResponse
 func (client *Client) UpdateClientSettingsWithOptions(request *UpdateClientSettingsRequest, runtime *util.RuntimeOptions) (_result *UpdateClientSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertOnPartialComplete)) {
+		query["AlertOnPartialComplete"] = request.AlertOnPartialComplete
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
 		query["ClientId"] = request.ClientId
 	}
@@ -22642,6 +32827,10 @@ func (client *Client) UpdateClientSettingsWithOptions(request *UpdateClientSetti
 
 	if !tea.BoolValue(util.IsUnset(request.MaxCpuCore)) {
 		query["MaxCpuCore"] = request.MaxCpuCore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxMemory)) {
+		query["MaxMemory"] = request.MaxMemory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxWorker)) {
@@ -22699,12 +32888,17 @@ func (client *Client) UpdateClientSettingsWithOptions(request *UpdateClientSetti
 	return _result, _err
 }
 
-/**
- * The ID of the backup client.
- *
- * @param request UpdateClientSettingsRequest
- * @return UpdateClientSettingsResponse
- */
+// Summary:
+//
+// Updates the configurations of an HBR client.
+//
+// Description:
+//
+// You can call this operation to update the configurations of both the old and new HBR clients.
+//
+// @param request - UpdateClientSettingsRequest
+//
+// @return UpdateClientSettingsResponse
 func (client *Client) UpdateClientSettings(request *UpdateClientSettingsRequest) (_result *UpdateClientSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateClientSettingsResponse{}
@@ -22716,6 +32910,15 @@ func (client *Client) UpdateClientSettings(request *UpdateClientSettingsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+//
+// @param request - UpdateContainerClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContainerClusterResponse
 func (client *Client) UpdateContainerClusterWithOptions(request *UpdateContainerClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateContainerClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22765,6 +32968,13 @@ func (client *Client) UpdateContainerClusterWithOptions(request *UpdateContainer
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+//
+// @param request - UpdateContainerClusterRequest
+//
+// @return UpdateContainerClusterResponse
 func (client *Client) UpdateContainerCluster(request *UpdateContainerClusterRequest) (_result *UpdateContainerClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateContainerClusterResponse{}
@@ -22776,13 +32986,25 @@ func (client *Client) UpdateContainerCluster(request *UpdateContainerClusterRequ
 	return _result, _err
 }
 
-/**
- * The backup prefix.
- *
- * @param request UpdateHanaBackupPlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateHanaBackupPlanResponse
- */
+// Summary:
+//
+// Updates an SAP HANA backup plan.
+//
+// Description:
+//
+//   A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//
+// 	- You can specify only one type of data source in a backup plan.
+//
+// 	- You can specify only one interval as a backup cycle in a backup plan.
+//
+// 	- Each backup plan allows you to back up data to only one backup vault.
+//
+// @param request - UpdateHanaBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHanaBackupPlanResponse
 func (client *Client) UpdateHanaBackupPlanWithOptions(request *UpdateHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *UpdateHanaBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22840,12 +33062,23 @@ func (client *Client) UpdateHanaBackupPlanWithOptions(request *UpdateHanaBackupP
 	return _result, _err
 }
 
-/**
- * The backup prefix.
- *
- * @param request UpdateHanaBackupPlanRequest
- * @return UpdateHanaBackupPlanResponse
- */
+// Summary:
+//
+// Updates an SAP HANA backup plan.
+//
+// Description:
+//
+//   A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//
+// 	- You can specify only one type of data source in a backup plan.
+//
+// 	- You can specify only one interval as a backup cycle in a backup plan.
+//
+// 	- Each backup plan allows you to back up data to only one backup vault.
+//
+// @param request - UpdateHanaBackupPlanRequest
+//
+// @return UpdateHanaBackupPlanResponse
 func (client *Client) UpdateHanaBackupPlan(request *UpdateHanaBackupPlanRequest) (_result *UpdateHanaBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateHanaBackupPlanResponse{}
@@ -22857,13 +33090,19 @@ func (client *Client) UpdateHanaBackupPlan(request *UpdateHanaBackupPlanRequest)
 	return _result, _err
 }
 
-/**
- * You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
- *
- * @param request UpdateHanaBackupSettingRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateHanaBackupSettingResponse
- */
+// Summary:
+//
+// Updates the backup parameters of an SAP HANA database.
+//
+// Description:
+//
+// You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
+//
+// @param request - UpdateHanaBackupSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHanaBackupSettingResponse
 func (client *Client) UpdateHanaBackupSettingWithOptions(request *UpdateHanaBackupSettingRequest, runtime *util.RuntimeOptions) (_result *UpdateHanaBackupSettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22933,12 +33172,17 @@ func (client *Client) UpdateHanaBackupSettingWithOptions(request *UpdateHanaBack
 	return _result, _err
 }
 
-/**
- * You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
- *
- * @param request UpdateHanaBackupSettingRequest
- * @return UpdateHanaBackupSettingResponse
- */
+// Summary:
+//
+// Updates the backup parameters of an SAP HANA database.
+//
+// Description:
+//
+// You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
+//
+// @param request - UpdateHanaBackupSettingRequest
+//
+// @return UpdateHanaBackupSettingResponse
 func (client *Client) UpdateHanaBackupSetting(request *UpdateHanaBackupSettingRequest) (_result *UpdateHanaBackupSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateHanaBackupSettingResponse{}
@@ -22950,6 +33194,15 @@ func (client *Client) UpdateHanaBackupSetting(request *UpdateHanaBackupSettingRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an SAP HANA instance.
+//
+// @param request - UpdateHanaInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHanaInstanceResponse
 func (client *Client) UpdateHanaInstanceWithOptions(request *UpdateHanaInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdateHanaInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23023,6 +33276,13 @@ func (client *Client) UpdateHanaInstanceWithOptions(request *UpdateHanaInstanceR
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an SAP HANA instance.
+//
+// @param request - UpdateHanaInstanceRequest
+//
+// @return UpdateHanaInstanceResponse
 func (client *Client) UpdateHanaInstance(request *UpdateHanaInstanceRequest) (_result *UpdateHanaInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateHanaInstanceResponse{}
@@ -23034,13 +33294,21 @@ func (client *Client) UpdateHanaInstance(request *UpdateHanaInstanceRequest) (_r
 	return _result, _err
 }
 
-/**
- * The name of the database.
- *
- * @param request UpdateHanaRetentionSettingRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateHanaRetentionSettingResponse
- */
+// Summary:
+//
+// Updates the backup retention period of an SAP HANA database.
+//
+// Description:
+//
+//   If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
+//
+// 	- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+//
+// @param request - UpdateHanaRetentionSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHanaRetentionSettingResponse
 func (client *Client) UpdateHanaRetentionSettingWithOptions(request *UpdateHanaRetentionSettingRequest, runtime *util.RuntimeOptions) (_result *UpdateHanaRetentionSettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23094,12 +33362,19 @@ func (client *Client) UpdateHanaRetentionSettingWithOptions(request *UpdateHanaR
 	return _result, _err
 }
 
-/**
- * The name of the database.
- *
- * @param request UpdateHanaRetentionSettingRequest
- * @return UpdateHanaRetentionSettingResponse
- */
+// Summary:
+//
+// Updates the backup retention period of an SAP HANA database.
+//
+// Description:
+//
+//   If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
+//
+// 	- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+//
+// @param request - UpdateHanaRetentionSettingRequest
+//
+// @return UpdateHanaRetentionSettingResponse
 func (client *Client) UpdateHanaRetentionSetting(request *UpdateHanaRetentionSettingRequest) (_result *UpdateHanaRetentionSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateHanaRetentionSettingResponse{}
@@ -23111,6 +33386,15 @@ func (client *Client) UpdateHanaRetentionSetting(request *UpdateHanaRetentionSet
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the association between a backup policy and a data source.
+//
+// @param tmpReq - UpdatePolicyBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolicyBindingResponse
 func (client *Client) UpdatePolicyBindingWithOptions(tmpReq *UpdatePolicyBindingRequest, runtime *util.RuntimeOptions) (_result *UpdatePolicyBindingResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23131,12 +33415,28 @@ func (client *Client) UpdatePolicyBindingWithOptions(tmpReq *UpdatePolicyBinding
 		query["Disabled"] = request.Disabled
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Exclude)) {
+		query["Exclude"] = request.Exclude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Include)) {
+		query["Include"] = request.Include
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PolicyBindingDescription)) {
 		query["PolicyBindingDescription"] = request.PolicyBindingDescription
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeedLimit)) {
+		query["SpeedLimit"] = request.SpeedLimit
 	}
 
 	body := map[string]interface{}{}
@@ -23172,6 +33472,13 @@ func (client *Client) UpdatePolicyBindingWithOptions(tmpReq *UpdatePolicyBinding
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the association between a backup policy and a data source.
+//
+// @param request - UpdatePolicyBindingRequest
+//
+// @return UpdatePolicyBindingResponse
 func (client *Client) UpdatePolicyBinding(request *UpdatePolicyBindingRequest) (_result *UpdatePolicyBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePolicyBindingResponse{}
@@ -23183,13 +33490,19 @@ func (client *Client) UpdatePolicyBinding(request *UpdatePolicyBindingRequest) (
 	return _result, _err
 }
 
-/**
- * If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
- *
- * @param tmpReq UpdatePolicyV2Request
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdatePolicyV2Response
- */
+// Summary:
+//
+// Modifies a backup policy.
+//
+// Description:
+//
+// If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
+//
+// @param tmpReq - UpdatePolicyV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolicyV2Response
 func (client *Client) UpdatePolicyV2WithOptions(tmpReq *UpdatePolicyV2Request, runtime *util.RuntimeOptions) (_result *UpdatePolicyV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23241,12 +33554,17 @@ func (client *Client) UpdatePolicyV2WithOptions(tmpReq *UpdatePolicyV2Request, r
 	return _result, _err
 }
 
-/**
- * If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
- *
- * @param request UpdatePolicyV2Request
- * @return UpdatePolicyV2Response
- */
+// Summary:
+//
+// Modifies a backup policy.
+//
+// Description:
+//
+// If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
+//
+// @param request - UpdatePolicyV2Request
+//
+// @return UpdatePolicyV2Response
 func (client *Client) UpdatePolicyV2(request *UpdatePolicyV2Request) (_result *UpdatePolicyV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePolicyV2Response{}
@@ -23258,6 +33576,15 @@ func (client *Client) UpdatePolicyV2(request *UpdatePolicyV2Request) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configuration information about the backup vault.
+//
+// @param request - UpdateVaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVaultResponse
 func (client *Client) UpdateVaultWithOptions(request *UpdateVaultRequest, runtime *util.RuntimeOptions) (_result *UpdateVaultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23303,6 +33630,13 @@ func (client *Client) UpdateVaultWithOptions(request *UpdateVaultRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configuration information about the backup vault.
+//
+// @param request - UpdateVaultRequest
+//
+// @return UpdateVaultResponse
 func (client *Client) UpdateVault(request *UpdateVaultRequest) (_result *UpdateVaultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVaultResponse{}
@@ -23314,15 +33648,23 @@ func (client *Client) UpdateVault(request *UpdateVaultRequest) (_result *UpdateV
 	return _result, _err
 }
 
-/**
- * *   This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
- * *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
- * *   The timeout period of an asynchronous job is 15 minutes.
- *
- * @param tmpReq UpgradeBackupClientsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpgradeBackupClientsResponse
- */
+// Summary:
+//
+// Upgrades an HBR client on one or more Elastic Compute Service (ECS) instances.
+//
+// Description:
+//
+//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
+//
+// 	- You can call the DescribeTask operation to query the execution result of an asynchronous job.
+//
+// 	- The timeout period of an asynchronous job is 15 minutes.
+//
+// @param tmpReq - UpgradeBackupClientsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeBackupClientsResponse
 func (client *Client) UpgradeBackupClientsWithOptions(tmpReq *UpgradeBackupClientsRequest, runtime *util.RuntimeOptions) (_result *UpgradeBackupClientsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23382,14 +33724,21 @@ func (client *Client) UpgradeBackupClientsWithOptions(tmpReq *UpgradeBackupClien
 	return _result, _err
 }
 
-/**
- * *   This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
- * *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
- * *   The timeout period of an asynchronous job is 15 minutes.
- *
- * @param request UpgradeBackupClientsRequest
- * @return UpgradeBackupClientsResponse
- */
+// Summary:
+//
+// Upgrades an HBR client on one or more Elastic Compute Service (ECS) instances.
+//
+// Description:
+//
+//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
+//
+// 	- You can call the DescribeTask operation to query the execution result of an asynchronous job.
+//
+// 	- The timeout period of an asynchronous job is 15 minutes.
+//
+// @param request - UpgradeBackupClientsRequest
+//
+// @return UpgradeBackupClientsResponse
 func (client *Client) UpgradeBackupClients(request *UpgradeBackupClientsRequest) (_result *UpgradeBackupClientsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeBackupClientsResponse{}
@@ -23401,13 +33750,19 @@ func (client *Client) UpgradeBackupClients(request *UpgradeBackupClientsRequest)
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request UpgradeClientRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpgradeClientResponse
- */
+// Summary:
+//
+// Upgrades the Cloud Backup client.
+//
+// Description:
+//
+// You can call this operation to upgrade a Cloud Backup client to the latest version. After the Cloud Backup client is upgraded, the version of the client cannot be rolled back.
+//
+// @param request - UpgradeClientRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeClientResponse
 func (client *Client) UpgradeClientWithOptions(request *UpgradeClientRequest, runtime *util.RuntimeOptions) (_result *UpgradeClientResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23449,12 +33804,17 @@ func (client *Client) UpgradeClientWithOptions(request *UpgradeClientRequest, ru
 	return _result, _err
 }
 
-/**
- * The ID of the backup vault.
- *
- * @param request UpgradeClientRequest
- * @return UpgradeClientResponse
- */
+// Summary:
+//
+// Upgrades the Cloud Backup client.
+//
+// Description:
+//
+// You can call this operation to upgrade a Cloud Backup client to the latest version. After the Cloud Backup client is upgraded, the version of the client cannot be rolled back.
+//
+// @param request - UpgradeClientRequest
+//
+// @return UpgradeClientResponse
 func (client *Client) UpgradeClient(request *UpgradeClientRequest) (_result *UpgradeClientResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeClientResponse{}
