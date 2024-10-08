@@ -752,6 +752,177 @@ func (s *CreateLibraryResponse) SetBody(v *CreateLibraryResponseBody) *CreateLib
 	return s
 }
 
+type CreatePdfTranslateTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 873648346573245
+	DocId     *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	Knowledge *string `json:"knowledge,omitempty" xml:"knowledge,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cjshcxxxx
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-plus
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 中文
+	TranslateTo *string `json:"translateTo,omitempty" xml:"translateTo,omitempty"`
+}
+
+func (s CreatePdfTranslateTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePdfTranslateTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePdfTranslateTaskRequest) SetDocId(v string) *CreatePdfTranslateTaskRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskRequest) SetKnowledge(v string) *CreatePdfTranslateTaskRequest {
+	s.Knowledge = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskRequest) SetLibraryId(v string) *CreatePdfTranslateTaskRequest {
+	s.LibraryId = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskRequest) SetModelId(v string) *CreatePdfTranslateTaskRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskRequest) SetTranslateTo(v string) *CreatePdfTranslateTaskRequest {
+	s.TranslateTo = &v
+	return s
+}
+
+type CreatePdfTranslateTaskResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// example:
+	//
+	// 3284627354
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 5E3FBAF1-17AF-53B7-AF0A-CDCEEB6DE658
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s CreatePdfTranslateTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePdfTranslateTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePdfTranslateTaskResponseBody) SetCost(v int64) *CreatePdfTranslateTaskResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponseBody) SetData(v string) *CreatePdfTranslateTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponseBody) SetDataType(v string) *CreatePdfTranslateTaskResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponseBody) SetErrCode(v string) *CreatePdfTranslateTaskResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponseBody) SetMessage(v string) *CreatePdfTranslateTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponseBody) SetRequestId(v string) *CreatePdfTranslateTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponseBody) SetSuccess(v bool) *CreatePdfTranslateTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponseBody) SetTime(v string) *CreatePdfTranslateTaskResponseBody {
+	s.Time = &v
+	return s
+}
+
+type CreatePdfTranslateTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePdfTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePdfTranslateTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePdfTranslateTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePdfTranslateTaskResponse) SetHeaders(v map[string]*string) *CreatePdfTranslateTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponse) SetStatusCode(v int32) *CreatePdfTranslateTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePdfTranslateTaskResponse) SetBody(v *CreatePdfTranslateTaskResponseBody) *CreatePdfTranslateTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePredefinedDocumentRequest struct {
 	Chunks []*CreatePredefinedDocumentRequestChunks `json:"chunks,omitempty" xml:"chunks,omitempty" type:"Repeated"`
 	// example:
@@ -4838,6 +5009,144 @@ func (s *GetSummaryTaskResultResponse) SetBody(v *GetSummaryTaskResultResponseBo
 	return s
 }
 
+type GetTaskResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17071319
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetTaskResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultRequest) SetTaskId(v string) *GetTaskResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTaskResultResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "file_url": "https://finllmworks.oss-cn-zhangjiakou.aliyuncs.com/render_pdf/5336180997111160501.pdf"
+	//
+	// }
+	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 9D5D6BB5-BEAE-53C8-A70A-7275CC1F856C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s GetTaskResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultResponseBody) SetCost(v int64) *GetTaskResultResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBody) SetData(v map[string]interface{}) *GetTaskResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTaskResultResponseBody) SetDataType(v string) *GetTaskResultResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBody) SetErrCode(v string) *GetTaskResultResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBody) SetMessage(v string) *GetTaskResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBody) SetRequestId(v string) *GetTaskResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBody) SetSuccess(v bool) *GetTaskResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBody) SetTime(v string) *GetTaskResultResponseBody {
+	s.Time = &v
+	return s
+}
+
+type GetTaskResultResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTaskResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultResponse) SetHeaders(v map[string]*string) *GetTaskResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskResultResponse) SetStatusCode(v int32) *GetTaskResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskResultResponse) SetBody(v *GetTaskResultResponseBody) *GetTaskResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetTaskStatusRequest struct {
 	// This parameter is required.
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
@@ -8814,6 +9123,86 @@ func (client *Client) CreateLibrary(workspaceId *string, request *CreateLibraryR
 
 // Summary:
 //
+// 创建PDF翻译任务
+//
+// @param request - CreatePdfTranslateTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePdfTranslateTaskResponse
+func (client *Client) CreatePdfTranslateTaskWithOptions(workspaceId *string, request *CreatePdfTranslateTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePdfTranslateTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["docId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Knowledge)) {
+		body["knowledge"] = request.Knowledge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryId)) {
+		body["libraryId"] = request.LibraryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranslateTo)) {
+		body["translateTo"] = request.TranslateTo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePdfTranslateTask"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/pdfTranslate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePdfTranslateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PDF翻译任务
+//
+// @param request - CreatePdfTranslateTaskRequest
+//
+// @return CreatePdfTranslateTaskResponse
+func (client *Client) CreatePdfTranslateTask(workspaceId *string, request *CreatePdfTranslateTaskRequest) (_result *CreatePdfTranslateTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePdfTranslateTaskResponse{}
+	_body, _err := client.CreatePdfTranslateTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建预定义文档
 //
 // @param request - CreatePredefinedDocumentRequest
@@ -9800,6 +10189,70 @@ func (client *Client) GetSummaryTaskResult(workspaceId *string, request *GetSumm
 
 // Summary:
 //
+// 获取异步任务结果
+//
+// @param request - GetTaskResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResultResponse
+func (client *Client) GetTaskResultWithOptions(workspaceId *string, request *GetTaskResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskResult"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/result"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取异步任务结果
+//
+// @param request - GetTaskResultRequest
+//
+// @return GetTaskResultResponse
+func (client *Client) GetTaskResult(workspaceId *string, request *GetTaskResultRequest) (_result *GetTaskResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTaskResultResponse{}
+	_body, _err := client.GetTaskResultWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取财报总结任务结果
 //
 // @param request - GetTaskStatusRequest
@@ -10060,7 +10513,7 @@ func (client *Client) ReIndex(workspaceId *string, request *ReIndexRequest) (_re
 
 // Summary:
 //
-// 文档召回
+// 文档召回。
 //
 // @param request - RecallDocumentRequest
 //
@@ -10117,7 +10570,7 @@ func (client *Client) RecallDocumentWithOptions(workspaceId *string, request *Re
 
 // Summary:
 //
-// 文档召回
+// 文档召回。
 //
 // @param request - RecallDocumentRequest
 //
