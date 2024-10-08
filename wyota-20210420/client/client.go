@@ -1129,8 +1129,9 @@ type CheckUuidValidRequest struct {
 	// This parameter is required.
 	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
 	// This parameter is required.
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Wlan *string `json:"Wlan,omitempty" xml:"Wlan,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Wlan          *string `json:"Wlan,omitempty" xml:"Wlan,omitempty"`
+	WosAppVersion *string `json:"WosAppVersion,omitempty" xml:"WosAppVersion,omitempty"`
 }
 
 func (s CheckUuidValidRequest) String() string {
@@ -1186,10 +1187,16 @@ func (s *CheckUuidValidRequest) SetWlan(v string) *CheckUuidValidRequest {
 	return s
 }
 
+func (s *CheckUuidValidRequest) SetWosAppVersion(v string) *CheckUuidValidRequest {
+	s.WosAppVersion = &v
+	return s
+}
+
 type CheckUuidValidResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CheckUuidValidResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckUuidValidResponseBody) String() string {
@@ -1205,6 +1212,11 @@ func (s *CheckUuidValidResponseBody) SetCode(v string) *CheckUuidValidResponseBo
 	return s
 }
 
+func (s *CheckUuidValidResponseBody) SetData(v *CheckUuidValidResponseBodyData) *CheckUuidValidResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *CheckUuidValidResponseBody) SetMessage(v string) *CheckUuidValidResponseBody {
 	s.Message = &v
 	return s
@@ -1212,6 +1224,23 @@ func (s *CheckUuidValidResponseBody) SetMessage(v string) *CheckUuidValidRespons
 
 func (s *CheckUuidValidResponseBody) SetRequestId(v string) *CheckUuidValidResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type CheckUuidValidResponseBodyData struct {
+	NewUpgrade *bool `json:"NewUpgrade,omitempty" xml:"NewUpgrade,omitempty"`
+}
+
+func (s CheckUuidValidResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckUuidValidResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CheckUuidValidResponseBodyData) SetNewUpgrade(v bool) *CheckUuidValidResponseBodyData {
+	s.NewUpgrade = &v
 	return s
 }
 
@@ -7037,6 +7066,7 @@ func (s *ListTerminalResponse) SetBody(v *ListTerminalResponseBody) *ListTermina
 }
 
 type ListTerminalsRequest struct {
+	InManage *bool `json:"InManage,omitempty" xml:"InManage,omitempty"`
 	// example:
 	//
 	// 200
@@ -7044,7 +7074,8 @@ type ListTerminalsRequest struct {
 	// example:
 	//
 	// AAAAAdEdsXbwG2ZlbWCzN4wTTg6wQvfp7u1BJl4bxCAby41POSaYAlCvfULQpkAnb0ff****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken             *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PasswordFreeLoginUser *string `json:"PasswordFreeLoginUser,omitempty" xml:"PasswordFreeLoginUser,omitempty"`
 	// example:
 	//
 	// DemoDevice
@@ -7055,6 +7086,7 @@ type ListTerminalsRequest struct {
 	// tg-default
 	TerminalGroupId *string   `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
 	Uuids           []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
+	WithBindUser    *bool     `json:"WithBindUser,omitempty" xml:"WithBindUser,omitempty"`
 }
 
 func (s ListTerminalsRequest) String() string {
@@ -7065,6 +7097,11 @@ func (s ListTerminalsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTerminalsRequest) SetInManage(v bool) *ListTerminalsRequest {
+	s.InManage = &v
+	return s
+}
+
 func (s *ListTerminalsRequest) SetMaxResults(v int32) *ListTerminalsRequest {
 	s.MaxResults = &v
 	return s
@@ -7072,6 +7109,11 @@ func (s *ListTerminalsRequest) SetMaxResults(v int32) *ListTerminalsRequest {
 
 func (s *ListTerminalsRequest) SetNextToken(v string) *ListTerminalsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListTerminalsRequest) SetPasswordFreeLoginUser(v string) *ListTerminalsRequest {
+	s.PasswordFreeLoginUser = &v
 	return s
 }
 
@@ -7092,6 +7134,11 @@ func (s *ListTerminalsRequest) SetTerminalGroupId(v string) *ListTerminalsReques
 
 func (s *ListTerminalsRequest) SetUuids(v []*string) *ListTerminalsRequest {
 	s.Uuids = v
+	return s
+}
+
+func (s *ListTerminalsRequest) SetWithBindUser(v bool) *ListTerminalsRequest {
+	s.WithBindUser = &v
 	return s
 }
 
@@ -7179,7 +7226,8 @@ type ListTerminalsResponseBodyData struct {
 	// example:
 	//
 	// DemoDevice
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Alias         *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	BindUserCount *int32  `json:"BindUserCount,omitempty" xml:"BindUserCount,omitempty"`
 	// example:
 	//
 	// 7.0.2-RS-20240805.044924
@@ -7199,9 +7247,10 @@ type ListTerminalsResponseBodyData struct {
 	// example:
 	//
 	// 192.168.XX.XX
-	Ipv4         *string `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
-	LocationInfo *string `json:"LocationInfo,omitempty" xml:"LocationInfo,omitempty"`
-	ManageTime   *string `json:"ManageTime,omitempty" xml:"ManageTime,omitempty"`
+	Ipv4          *string `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
+	LastLoginUser *string `json:"LastLoginUser,omitempty" xml:"LastLoginUser,omitempty"`
+	LocationInfo  *string `json:"LocationInfo,omitempty" xml:"LocationInfo,omitempty"`
+	ManageTime    *string `json:"ManageTime,omitempty" xml:"ManageTime,omitempty"`
 	// example:
 	//
 	// US01
@@ -7214,6 +7263,7 @@ type ListTerminalsResponseBodyData struct {
 	//
 	// alice
 	PasswordFreeLoginUser *string `json:"PasswordFreeLoginUser,omitempty" xml:"PasswordFreeLoginUser,omitempty"`
+	PublicIpv4            *string `json:"PublicIpv4,omitempty" xml:"PublicIpv4,omitempty"`
 	// example:
 	//
 	// ODN49YQCPQYC****
@@ -7242,6 +7292,11 @@ func (s *ListTerminalsResponseBodyData) SetAlias(v string) *ListTerminalsRespons
 	return s
 }
 
+func (s *ListTerminalsResponseBodyData) SetBindUserCount(v int32) *ListTerminalsResponseBodyData {
+	s.BindUserCount = &v
+	return s
+}
+
 func (s *ListTerminalsResponseBodyData) SetBuildId(v string) *ListTerminalsResponseBodyData {
 	s.BuildId = &v
 	return s
@@ -7267,6 +7322,11 @@ func (s *ListTerminalsResponseBodyData) SetIpv4(v string) *ListTerminalsResponse
 	return s
 }
 
+func (s *ListTerminalsResponseBodyData) SetLastLoginUser(v string) *ListTerminalsResponseBodyData {
+	s.LastLoginUser = &v
+	return s
+}
+
 func (s *ListTerminalsResponseBodyData) SetLocationInfo(v string) *ListTerminalsResponseBodyData {
 	s.LocationInfo = &v
 	return s
@@ -7289,6 +7349,11 @@ func (s *ListTerminalsResponseBodyData) SetOnline(v bool) *ListTerminalsResponse
 
 func (s *ListTerminalsResponseBodyData) SetPasswordFreeLoginUser(v string) *ListTerminalsResponseBodyData {
 	s.PasswordFreeLoginUser = &v
+	return s
+}
+
+func (s *ListTerminalsResponseBodyData) SetPublicIpv4(v string) *ListTerminalsResponseBodyData {
+	s.PublicIpv4 = &v
 	return s
 }
 
@@ -11467,6 +11532,10 @@ func (client *Client) CheckUuidValidWithOptions(request *CheckUuidValidRequest, 
 		body["Wlan"] = request.Wlan
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WosAppVersion)) {
+		body["WosAppVersion"] = request.WosAppVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -14013,16 +14082,11 @@ func (client *Client) ListTerminalsWithOptions(request *ListTerminalsRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SerialNumbers)) {
-		query["SerialNumbers"] = request.SerialNumbers
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
-		query["Uuids"] = request.Uuids
-	}
-
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InManage)) {
+		body["InManage"] = request.InManage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		body["MaxResults"] = request.MaxResults
 	}
@@ -14031,17 +14095,35 @@ func (client *Client) ListTerminalsWithOptions(request *ListTerminalsRequest, ru
 		body["NextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PasswordFreeLoginUser)) {
+		body["PasswordFreeLoginUser"] = request.PasswordFreeLoginUser
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SearchKeyword)) {
 		body["SearchKeyword"] = request.SearchKeyword
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SerialNumbers)) {
+		bodyFlat["SerialNumbers"] = request.SerialNumbers
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TerminalGroupId)) {
 		body["TerminalGroupId"] = request.TerminalGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		bodyFlat["Uuids"] = request.Uuids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithBindUser)) {
+		body["WithBindUser"] = request.WithBindUser
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTerminals"),
