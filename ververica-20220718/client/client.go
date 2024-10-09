@@ -11592,7 +11592,8 @@ type ListDeploymentsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SortName *string `json:"sortName,omitempty" xml:"sortName,omitempty"`
 	// The latest status of the deployment.
 	//
 	// Valid values:
@@ -11658,6 +11659,11 @@ func (s *ListDeploymentsRequest) SetPageIndex(v int32) *ListDeploymentsRequest {
 
 func (s *ListDeploymentsRequest) SetPageSize(v int32) *ListDeploymentsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeploymentsRequest) SetSortName(v string) *ListDeploymentsRequest {
+	s.SortName = &v
 	return s
 }
 
@@ -19352,6 +19358,10 @@ func (client *Client) ListDeploymentsWithOptions(namespace *string, request *Lis
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortName)) {
+		query["sortName"] = request.SortName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
