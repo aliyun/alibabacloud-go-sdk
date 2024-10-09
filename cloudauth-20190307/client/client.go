@@ -1863,8 +1863,8 @@ func (s *CredentialVerifyResponseBodyResultObject) SetVlResult(v *CredentialVeri
 }
 
 type CredentialVerifyResponseBodyResultObjectVlResult struct {
-	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	VlContent map[string]interface{} `json:"VlContent,omitempty" xml:"VlContent,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	VlContent *string `json:"VlContent,omitempty" xml:"VlContent,omitempty"`
 }
 
 func (s CredentialVerifyResponseBodyResultObjectVlResult) String() string {
@@ -1880,8 +1880,8 @@ func (s *CredentialVerifyResponseBodyResultObjectVlResult) SetSuccess(v bool) *C
 	return s
 }
 
-func (s *CredentialVerifyResponseBodyResultObjectVlResult) SetVlContent(v map[string]interface{}) *CredentialVerifyResponseBodyResultObjectVlResult {
-	s.VlContent = v
+func (s *CredentialVerifyResponseBodyResultObjectVlResult) SetVlContent(v string) *CredentialVerifyResponseBodyResultObjectVlResult {
+	s.VlContent = &v
 	return s
 }
 

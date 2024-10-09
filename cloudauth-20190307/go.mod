@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/cloudauth-20190307/v3
+module github.com/alibabacloud-go/cloudauth-20190307/v4
 
 go 1.14
 
