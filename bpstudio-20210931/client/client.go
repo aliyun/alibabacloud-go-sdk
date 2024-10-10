@@ -2940,6 +2940,7 @@ type GetResource4ModifyRecordResponseBodyData struct {
 	//
 	// {\\"InstanceId\\": \\"\\", \\"AttributeName\\": \\"drmCommand\\", \\"Id\\": 16800, \\"Desc\\": \\"test\\"}
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	Error     *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// example:
 	//
 	// 1726645341000
@@ -2968,6 +2969,11 @@ func (s GetResource4ModifyRecordResponseBodyData) GoString() string {
 
 func (s *GetResource4ModifyRecordResponseBodyData) SetAttribute(v string) *GetResource4ModifyRecordResponseBodyData {
 	s.Attribute = &v
+	return s
+}
+
+func (s *GetResource4ModifyRecordResponseBodyData) SetError(v string) *GetResource4ModifyRecordResponseBodyData {
+	s.Error = &v
 	return s
 }
 
