@@ -1370,8 +1370,12 @@ type MassPushRequestPushTask struct {
 	ExpireTime                  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	HarmonyAction               *string `json:"HarmonyAction,omitempty" xml:"HarmonyAction,omitempty"`
 	HarmonyActionType           *string `json:"HarmonyActionType,omitempty" xml:"HarmonyActionType,omitempty"`
+	HarmonyBadgeAddNum          *int32  `json:"HarmonyBadgeAddNum,omitempty" xml:"HarmonyBadgeAddNum,omitempty"`
+	HarmonyBadgeSetNum          *int32  `json:"HarmonyBadgeSetNum,omitempty" xml:"HarmonyBadgeSetNum,omitempty"`
 	HarmonyCategory             *string `json:"HarmonyCategory,omitempty" xml:"HarmonyCategory,omitempty"`
 	HarmonyExtParameters        *string `json:"HarmonyExtParameters,omitempty" xml:"HarmonyExtParameters,omitempty"`
+	HarmonyExtensionExtraData   *string `json:"HarmonyExtensionExtraData,omitempty" xml:"HarmonyExtensionExtraData,omitempty"`
+	HarmonyExtensionPush        *bool   `json:"HarmonyExtensionPush,omitempty" xml:"HarmonyExtensionPush,omitempty"`
 	HarmonyImageUrl             *string `json:"HarmonyImageUrl,omitempty" xml:"HarmonyImageUrl,omitempty"`
 	HarmonyInboxContent         *string `json:"HarmonyInboxContent,omitempty" xml:"HarmonyInboxContent,omitempty"`
 	HarmonyNotificationSlotType *string `json:"HarmonyNotificationSlotType,omitempty" xml:"HarmonyNotificationSlotType,omitempty"`
@@ -1733,6 +1737,16 @@ func (s *MassPushRequestPushTask) SetHarmonyActionType(v string) *MassPushReques
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetHarmonyBadgeAddNum(v int32) *MassPushRequestPushTask {
+	s.HarmonyBadgeAddNum = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyBadgeSetNum(v int32) *MassPushRequestPushTask {
+	s.HarmonyBadgeSetNum = &v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetHarmonyCategory(v string) *MassPushRequestPushTask {
 	s.HarmonyCategory = &v
 	return s
@@ -1740,6 +1754,16 @@ func (s *MassPushRequestPushTask) SetHarmonyCategory(v string) *MassPushRequestP
 
 func (s *MassPushRequestPushTask) SetHarmonyExtParameters(v string) *MassPushRequestPushTask {
 	s.HarmonyExtParameters = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyExtensionExtraData(v string) *MassPushRequestPushTask {
+	s.HarmonyExtensionExtraData = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyExtensionPush(v bool) *MassPushRequestPushTask {
+	s.HarmonyExtensionPush = &v
 	return s
 }
 
@@ -2152,8 +2176,12 @@ type PushRequest struct {
 	ExpireTime                  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	HarmonyAction               *string `json:"HarmonyAction,omitempty" xml:"HarmonyAction,omitempty"`
 	HarmonyActionType           *string `json:"HarmonyActionType,omitempty" xml:"HarmonyActionType,omitempty"`
+	HarmonyBadgeAddNum          *int32  `json:"HarmonyBadgeAddNum,omitempty" xml:"HarmonyBadgeAddNum,omitempty"`
+	HarmonyBadgeSetNum          *int32  `json:"HarmonyBadgeSetNum,omitempty" xml:"HarmonyBadgeSetNum,omitempty"`
 	HarmonyCategory             *string `json:"HarmonyCategory,omitempty" xml:"HarmonyCategory,omitempty"`
 	HarmonyExtParameters        *string `json:"HarmonyExtParameters,omitempty" xml:"HarmonyExtParameters,omitempty"`
+	HarmonyExtensionExtraData   *string `json:"HarmonyExtensionExtraData,omitempty" xml:"HarmonyExtensionExtraData,omitempty"`
+	HarmonyExtensionPush        *bool   `json:"HarmonyExtensionPush,omitempty" xml:"HarmonyExtensionPush,omitempty"`
 	HarmonyImageUrl             *string `json:"HarmonyImageUrl,omitempty" xml:"HarmonyImageUrl,omitempty"`
 	HarmonyInboxContent         *string `json:"HarmonyInboxContent,omitempty" xml:"HarmonyInboxContent,omitempty"`
 	HarmonyNotificationSlotType *string `json:"HarmonyNotificationSlotType,omitempty" xml:"HarmonyNotificationSlotType,omitempty"`
@@ -2534,6 +2562,16 @@ func (s *PushRequest) SetHarmonyActionType(v string) *PushRequest {
 	return s
 }
 
+func (s *PushRequest) SetHarmonyBadgeAddNum(v int32) *PushRequest {
+	s.HarmonyBadgeAddNum = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyBadgeSetNum(v int32) *PushRequest {
+	s.HarmonyBadgeSetNum = &v
+	return s
+}
+
 func (s *PushRequest) SetHarmonyCategory(v string) *PushRequest {
 	s.HarmonyCategory = &v
 	return s
@@ -2541,6 +2579,16 @@ func (s *PushRequest) SetHarmonyCategory(v string) *PushRequest {
 
 func (s *PushRequest) SetHarmonyExtParameters(v string) *PushRequest {
 	s.HarmonyExtParameters = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyExtensionExtraData(v string) *PushRequest {
+	s.HarmonyExtensionExtraData = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyExtensionPush(v bool) *PushRequest {
+	s.HarmonyExtensionPush = &v
 	return s
 }
 
@@ -6510,12 +6558,28 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 		query["HarmonyActionType"] = request.HarmonyActionType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HarmonyBadgeAddNum)) {
+		query["HarmonyBadgeAddNum"] = request.HarmonyBadgeAddNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyBadgeSetNum)) {
+		query["HarmonyBadgeSetNum"] = request.HarmonyBadgeSetNum
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HarmonyCategory)) {
 		query["HarmonyCategory"] = request.HarmonyCategory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HarmonyExtParameters)) {
 		query["HarmonyExtParameters"] = request.HarmonyExtParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyExtensionExtraData)) {
+		query["HarmonyExtensionExtraData"] = request.HarmonyExtensionExtraData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyExtensionPush)) {
+		query["HarmonyExtensionPush"] = request.HarmonyExtensionPush
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HarmonyImageUrl)) {
