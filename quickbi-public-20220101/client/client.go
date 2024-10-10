@@ -3952,6 +3952,148 @@ func (s *DeleteUserTagMetaResponse) SetBody(v *DeleteUserTagMetaResponseBody) *D
 	return s
 }
 
+type GetMailTaskStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d5a59a898b634d75be5584f8dc159c62
+	MailId *string `json:"MailId,omitempty" xml:"MailId,omitempty"`
+	// example:
+	//
+	// 7218865303929605212
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetMailTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMailTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMailTaskStatusRequest) SetMailId(v string) *GetMailTaskStatusRequest {
+	s.MailId = &v
+	return s
+}
+
+func (s *GetMailTaskStatusRequest) SetTaskId(v int64) *GetMailTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetMailTaskStatusResponseBody struct {
+	// example:
+	//
+	// 38C0FEC8-1510-415C-A9F1-9AE9422BDB65
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*GetMailTaskStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMailTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMailTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMailTaskStatusResponseBody) SetRequestId(v string) *GetMailTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMailTaskStatusResponseBody) SetResult(v []*GetMailTaskStatusResponseBodyResult) *GetMailTaskStatusResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetMailTaskStatusResponseBody) SetSuccess(v bool) *GetMailTaskStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMailTaskStatusResponseBodyResult struct {
+	// example:
+	//
+	// 2024-10-09 17:34:11
+	ExecTime *string `json:"execTime,omitempty" xml:"execTime,omitempty"`
+	// example:
+	//
+	// c38f73f4c5xxxxxc808c41b3f4d23b7852
+	MailId *string `json:"mailId,omitempty" xml:"mailId,omitempty"`
+	// example:
+	//
+	// SENT
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1282xxx610816
+	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetMailTaskStatusResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMailTaskStatusResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetMailTaskStatusResponseBodyResult) SetExecTime(v string) *GetMailTaskStatusResponseBodyResult {
+	s.ExecTime = &v
+	return s
+}
+
+func (s *GetMailTaskStatusResponseBodyResult) SetMailId(v string) *GetMailTaskStatusResponseBodyResult {
+	s.MailId = &v
+	return s
+}
+
+func (s *GetMailTaskStatusResponseBodyResult) SetStatus(v string) *GetMailTaskStatusResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetMailTaskStatusResponseBodyResult) SetTaskId(v int64) *GetMailTaskStatusResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+type GetMailTaskStatusResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMailTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMailTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMailTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMailTaskStatusResponse) SetHeaders(v map[string]*string) *GetMailTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMailTaskStatusResponse) SetStatusCode(v int32) *GetMailTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMailTaskStatusResponse) SetBody(v *GetMailTaskStatusResponseBody) *GetMailTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserGroupInfoRequest struct {
 	// The ID of the user group.
 	//
@@ -4119,6 +4261,229 @@ func (s *GetUserGroupInfoResponse) SetStatusCode(v int32) *GetUserGroupInfoRespo
 }
 
 func (s *GetUserGroupInfoResponse) SetBody(v *GetUserGroupInfoResponseBody) *GetUserGroupInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetWorksEmbedListRequest struct {
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// page
+	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
+	// example:
+	//
+	// 919818-***-*****-wdasd
+	WsId *string `json:"WsId,omitempty" xml:"WsId,omitempty"`
+}
+
+func (s GetWorksEmbedListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorksEmbedListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorksEmbedListRequest) SetKeyword(v string) *GetWorksEmbedListRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetWorksEmbedListRequest) SetPageNo(v int32) *GetWorksEmbedListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetWorksEmbedListRequest) SetPageSize(v int32) *GetWorksEmbedListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetWorksEmbedListRequest) SetWorksType(v string) *GetWorksEmbedListRequest {
+	s.WorksType = &v
+	return s
+}
+
+func (s *GetWorksEmbedListRequest) SetWsId(v string) *GetWorksEmbedListRequest {
+	s.WsId = &v
+	return s
+}
+
+type GetWorksEmbedListResponseBody struct {
+	// example:
+	//
+	// 38C0F*****0-415****9F1-*****422BDB65
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetWorksEmbedListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetWorksEmbedListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorksEmbedListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorksEmbedListResponseBody) SetRequestId(v string) *GetWorksEmbedListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBody) SetResult(v *GetWorksEmbedListResponseBodyResult) *GetWorksEmbedListResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBody) SetSuccess(v bool) *GetWorksEmbedListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetWorksEmbedListResponseBodyResult struct {
+	Data []*GetWorksEmbedListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 18
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s GetWorksEmbedListResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorksEmbedListResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorksEmbedListResponseBodyResult) SetData(v []*GetWorksEmbedListResponseBodyResultData) *GetWorksEmbedListResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBodyResult) SetPageNo(v int64) *GetWorksEmbedListResponseBodyResult {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBodyResult) SetPageSize(v int64) *GetWorksEmbedListResponseBodyResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBodyResult) SetTotalNum(v int64) *GetWorksEmbedListResponseBodyResult {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBodyResult) SetTotalPages(v int64) *GetWorksEmbedListResponseBodyResult {
+	s.TotalPages = &v
+	return s
+}
+
+type GetWorksEmbedListResponseBodyResultData struct {
+	// example:
+	//
+	// YYYY-mm-DD hh:MM:ss
+	EmbedTime *string `json:"EmbedTime,omitempty" xml:"EmbedTime,omitempty"`
+	// example:
+	//
+	// 897ce25e-****-****-af84-d13c5610****
+	WorksId   *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	WorksName *string `json:"WorksName,omitempty" xml:"WorksName,omitempty"`
+	// example:
+	//
+	// page
+	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
+	// example:
+	//
+	// 87c6b145-****-43e1-9426-8f93be23****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetWorksEmbedListResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorksEmbedListResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorksEmbedListResponseBodyResultData) SetEmbedTime(v string) *GetWorksEmbedListResponseBodyResultData {
+	s.EmbedTime = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBodyResultData) SetWorksId(v string) *GetWorksEmbedListResponseBodyResultData {
+	s.WorksId = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBodyResultData) SetWorksName(v string) *GetWorksEmbedListResponseBodyResultData {
+	s.WorksName = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBodyResultData) SetWorksType(v string) *GetWorksEmbedListResponseBodyResultData {
+	s.WorksType = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponseBodyResultData) SetWorkspaceId(v string) *GetWorksEmbedListResponseBodyResultData {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetWorksEmbedListResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWorksEmbedListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWorksEmbedListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorksEmbedListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorksEmbedListResponse) SetHeaders(v map[string]*string) *GetWorksEmbedListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorksEmbedListResponse) SetStatusCode(v int32) *GetWorksEmbedListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWorksEmbedListResponse) SetBody(v *GetWorksEmbedListResponseBody) *GetWorksEmbedListResponse {
 	s.Body = v
 	return s
 }
@@ -7105,6 +7470,95 @@ func (s *ListWorkspaceRolesResponse) SetStatusCode(v int32) *ListWorkspaceRolesR
 }
 
 func (s *ListWorkspaceRolesResponse) SetBody(v *ListWorkspaceRolesResponseBody) *ListWorkspaceRolesResponse {
+	s.Body = v
+	return s
+}
+
+type ManualRunMailTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3423423sdfa****sdadw
+	MailId *string `json:"MailId,omitempty" xml:"MailId,omitempty"`
+}
+
+func (s ManualRunMailTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualRunMailTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ManualRunMailTaskRequest) SetMailId(v string) *ManualRunMailTaskRequest {
+	s.MailId = &v
+	return s
+}
+
+type ManualRunMailTaskResponseBody struct {
+	// example:
+	//
+	// a4d1a221d-41za1-****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ManualRunMailTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualRunMailTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ManualRunMailTaskResponseBody) SetRequestId(v string) *ManualRunMailTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ManualRunMailTaskResponseBody) SetResult(v bool) *ManualRunMailTaskResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ManualRunMailTaskResponseBody) SetSuccess(v bool) *ManualRunMailTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ManualRunMailTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ManualRunMailTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ManualRunMailTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManualRunMailTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ManualRunMailTaskResponse) SetHeaders(v map[string]*string) *ManualRunMailTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ManualRunMailTaskResponse) SetStatusCode(v int32) *ManualRunMailTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ManualRunMailTaskResponse) SetBody(v *ManualRunMailTaskResponseBody) *ManualRunMailTaskResponse {
 	s.Body = v
 	return s
 }
@@ -21076,6 +21530,70 @@ func (client *Client) DeleteUserTagMeta(request *DeleteUserTagMetaRequest) (_res
 
 // Summary:
 //
+// 组织内查看邮件任务运行状态
+//
+// @param request - GetMailTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMailTaskStatusResponse
+func (client *Client) GetMailTaskStatusWithOptions(request *GetMailTaskStatusRequest, runtime *util.RuntimeOptions) (_result *GetMailTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MailId)) {
+		query["MailId"] = request.MailId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMailTaskStatus"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMailTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 组织内查看邮件任务运行状态
+//
+// @param request - GetMailTaskStatusRequest
+//
+// @return GetMailTaskStatusResponse
+func (client *Client) GetMailTaskStatus(request *GetMailTaskStatusRequest) (_result *GetMailTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMailTaskStatusResponse{}
+	_body, _err := client.GetMailTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Test description
 //
 // @param request - GetUserGroupInfoRequest
@@ -21127,6 +21645,82 @@ func (client *Client) GetUserGroupInfo(request *GetUserGroupInfoRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserGroupInfoResponse{}
 	_body, _err := client.GetUserGroupInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询已嵌入报表列表
+//
+// @param request - GetWorksEmbedListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorksEmbedListResponse
+func (client *Client) GetWorksEmbedListWithOptions(request *GetWorksEmbedListRequest, runtime *util.RuntimeOptions) (_result *GetWorksEmbedListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorksType)) {
+		query["WorksType"] = request.WorksType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WsId)) {
+		query["WsId"] = request.WsId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorksEmbedList"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWorksEmbedListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询已嵌入报表列表
+//
+// @param request - GetWorksEmbedListRequest
+//
+// @return GetWorksEmbedListResponse
+func (client *Client) GetWorksEmbedList(request *GetWorksEmbedListRequest) (_result *GetWorksEmbedListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWorksEmbedListResponse{}
+	_body, _err := client.GetWorksEmbedListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22118,6 +22712,66 @@ func (client *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWorkspaceRolesResponse{}
 	_body, _err := client.ListWorkspaceRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动执行邮件任务
+//
+// @param request - ManualRunMailTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManualRunMailTaskResponse
+func (client *Client) ManualRunMailTaskWithOptions(request *ManualRunMailTaskRequest, runtime *util.RuntimeOptions) (_result *ManualRunMailTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MailId)) {
+		query["MailId"] = request.MailId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ManualRunMailTask"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ManualRunMailTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动执行邮件任务
+//
+// @param request - ManualRunMailTaskRequest
+//
+// @return ManualRunMailTaskResponse
+func (client *Client) ManualRunMailTask(request *ManualRunMailTaskRequest) (_result *ManualRunMailTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ManualRunMailTaskResponse{}
+	_body, _err := client.ManualRunMailTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
