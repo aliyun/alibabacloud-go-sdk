@@ -5434,7 +5434,8 @@ type CreateScalingConfigurationRequest struct {
 	// The IDs of the security groups with which you want to associate the ECS instances that are created by using the scaling configuration. For more information, see the "Security group limits" section of the "[Limits](https://help.aliyun.com/document_detail/25412.html)" topic.
 	//
 	// > If you specify SecurityGroupId, you cannot specify SecurityGroupIds.
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityGroupIds []*string                                         `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityOptions  *CreateScalingConfigurationRequestSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
 	//
 	// 	- The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
@@ -5760,6 +5761,11 @@ func (s *CreateScalingConfigurationRequest) SetSecurityGroupId(v string) *Create
 
 func (s *CreateScalingConfigurationRequest) SetSecurityGroupIds(v []*string) *CreateScalingConfigurationRequest {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequest) SetSecurityOptions(v *CreateScalingConfigurationRequestSecurityOptions) *CreateScalingConfigurationRequest {
+	s.SecurityOptions = v
 	return s
 }
 
@@ -6768,6 +6774,23 @@ func (s *CreateScalingConfigurationRequestNetworkInterfaces) SetSecurityGroupIds
 	return s
 }
 
+type CreateScalingConfigurationRequestSecurityOptions struct {
+	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
+}
+
+func (s CreateScalingConfigurationRequestSecurityOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingConfigurationRequestSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationRequestSecurityOptions) SetConfidentialComputingMode(v string) *CreateScalingConfigurationRequestSecurityOptions {
+	s.ConfidentialComputingMode = &v
+	return s
+}
+
 type CreateScalingConfigurationRequestSpotPriceLimits struct {
 	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	//
@@ -7096,7 +7119,8 @@ type CreateScalingConfigurationShrinkRequest struct {
 	// The IDs of the security groups with which you want to associate the ECS instances that are created by using the scaling configuration. For more information, see the "Security group limits" section of the "[Limits](https://help.aliyun.com/document_detail/25412.html)" topic.
 	//
 	// > If you specify SecurityGroupId, you cannot specify SecurityGroupIds.
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityGroupIds []*string                                               `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityOptions  *CreateScalingConfigurationShrinkRequestSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
 	//
 	// 	- The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
@@ -7422,6 +7446,11 @@ func (s *CreateScalingConfigurationShrinkRequest) SetSecurityGroupId(v string) *
 
 func (s *CreateScalingConfigurationShrinkRequest) SetSecurityGroupIds(v []*string) *CreateScalingConfigurationShrinkRequest {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequest) SetSecurityOptions(v *CreateScalingConfigurationShrinkRequestSecurityOptions) *CreateScalingConfigurationShrinkRequest {
+	s.SecurityOptions = v
 	return s
 }
 
@@ -8427,6 +8456,23 @@ func (s *CreateScalingConfigurationShrinkRequestNetworkInterfaces) SetNetworkInt
 
 func (s *CreateScalingConfigurationShrinkRequestNetworkInterfaces) SetSecurityGroupIds(v []*string) *CreateScalingConfigurationShrinkRequestNetworkInterfaces {
 	s.SecurityGroupIds = v
+	return s
+}
+
+type CreateScalingConfigurationShrinkRequestSecurityOptions struct {
+	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
+}
+
+func (s CreateScalingConfigurationShrinkRequestSecurityOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingConfigurationShrinkRequestSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationShrinkRequestSecurityOptions) SetConfidentialComputingMode(v string) *CreateScalingConfigurationShrinkRequestSecurityOptions {
+	s.ConfidentialComputingMode = &v
 	return s
 }
 
@@ -20253,7 +20299,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// sg-bp18kz60mefs****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityGroupIds []*string                                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityOptions  *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the preemptible instances. Unit: hours.
 	//
 	// example:
@@ -20661,6 +20708,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetSecu
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetSecurityGroupIds(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetSecurityOptions(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.SecurityOptions = v
 	return s
 }
 
@@ -21403,6 +21455,23 @@ func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsSchedulerO
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSchedulerOptions) SetManagedPrivateSpaceId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSchedulerOptions {
 	s.ManagedPrivateSpaceId = &v
+	return s
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions struct {
+	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions) SetConfidentialComputingMode(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions {
+	s.ConfidentialComputingMode = &v
 	return s
 }
 
@@ -32212,7 +32281,8 @@ type ModifyScalingConfigurationRequest struct {
 	// sg-F876F****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of the security groups.
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityGroupIds []*string                                         `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityOptions  *ModifyScalingConfigurationRequestSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of preemptible instances. Unit: hours. Valid values:
 	//
 	// 	- 1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, Alibaba Cloud compares the bidding price with the market price and checks the resource inventory to determine whether to release the instance.
@@ -32521,6 +32591,11 @@ func (s *ModifyScalingConfigurationRequest) SetSecurityGroupId(v string) *Modify
 
 func (s *ModifyScalingConfigurationRequest) SetSecurityGroupIds(v []*string) *ModifyScalingConfigurationRequest {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequest) SetSecurityOptions(v *ModifyScalingConfigurationRequestSecurityOptions) *ModifyScalingConfigurationRequest {
+	s.SecurityOptions = v
 	return s
 }
 
@@ -33540,6 +33615,23 @@ func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetSecurityGroupIds
 	return s
 }
 
+type ModifyScalingConfigurationRequestSecurityOptions struct {
+	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
+}
+
+func (s ModifyScalingConfigurationRequestSecurityOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationRequestSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationRequestSecurityOptions) SetConfidentialComputingMode(v string) *ModifyScalingConfigurationRequestSecurityOptions {
+	s.ConfidentialComputingMode = &v
+	return s
+}
+
 type ModifyScalingConfigurationRequestSpotPriceLimits struct {
 	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	//
@@ -33845,7 +33937,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	// sg-F876F****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of the security groups.
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityGroupIds []*string                                               `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityOptions  *ModifyScalingConfigurationShrinkRequestSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of preemptible instances. Unit: hours. Valid values:
 	//
 	// 	- 1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, Alibaba Cloud compares the bidding price with the market price and checks the resource inventory to determine whether to release the instance.
@@ -34154,6 +34247,11 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetSecurityGroupId(v string) *
 
 func (s *ModifyScalingConfigurationShrinkRequest) SetSecurityGroupIds(v []*string) *ModifyScalingConfigurationShrinkRequest {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequest) SetSecurityOptions(v *ModifyScalingConfigurationShrinkRequestSecurityOptions) *ModifyScalingConfigurationShrinkRequest {
+	s.SecurityOptions = v
 	return s
 }
 
@@ -35170,6 +35268,23 @@ func (s *ModifyScalingConfigurationShrinkRequestNetworkInterfaces) SetNetworkInt
 
 func (s *ModifyScalingConfigurationShrinkRequestNetworkInterfaces) SetSecurityGroupIds(v []*string) *ModifyScalingConfigurationShrinkRequestNetworkInterfaces {
 	s.SecurityGroupIds = v
+	return s
+}
+
+type ModifyScalingConfigurationShrinkRequestSecurityOptions struct {
+	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
+}
+
+func (s ModifyScalingConfigurationShrinkRequestSecurityOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationShrinkRequestSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestSecurityOptions) SetConfidentialComputingMode(v string) *ModifyScalingConfigurationShrinkRequestSecurityOptions {
+	s.ConfidentialComputingMode = &v
 	return s
 }
 
@@ -41366,6 +41481,10 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 		query["SecurityGroupIds"] = request.SecurityGroupIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityOptions)) {
+		query["SecurityOptions"] = request.SecurityOptions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SpotDuration)) {
 		query["SpotDuration"] = request.SpotDuration
 	}
@@ -47320,6 +47439,10 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
 		query["SecurityGroupIds"] = request.SecurityGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityOptions)) {
+		query["SecurityOptions"] = request.SecurityOptions
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpotDuration)) {
