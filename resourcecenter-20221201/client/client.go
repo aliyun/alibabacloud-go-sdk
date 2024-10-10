@@ -754,6 +754,8 @@ type ExecuteMultiAccountSQLQueryRequest struct {
 	//
 	// SELECT 	- FROM resources LIMIT 100;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The search scope. The value of this parameter can be one of the following items:
 	//
 	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
@@ -786,6 +788,16 @@ func (s ExecuteMultiAccountSQLQueryRequest) GoString() string {
 
 func (s *ExecuteMultiAccountSQLQueryRequest) SetExpression(v string) *ExecuteMultiAccountSQLQueryRequest {
 	s.Expression = &v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryRequest) SetMaxResults(v int32) *ExecuteMultiAccountSQLQueryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryRequest) SetNextToken(v string) *ExecuteMultiAccountSQLQueryRequest {
+	s.NextToken = &v
 	return s
 }
 
@@ -917,6 +929,8 @@ type ExecuteSQLQueryRequest struct {
 	//
 	// SELECT 	- FROM resources LIMIT 100;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The search scope.
 	//
 	// Set this parameter to the ID of a resource group.
@@ -939,6 +953,16 @@ func (s ExecuteSQLQueryRequest) GoString() string {
 
 func (s *ExecuteSQLQueryRequest) SetExpression(v string) *ExecuteSQLQueryRequest {
 	s.Expression = &v
+	return s
+}
+
+func (s *ExecuteSQLQueryRequest) SetMaxResults(v int32) *ExecuteSQLQueryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ExecuteSQLQueryRequest) SetNextToken(v string) *ExecuteSQLQueryRequest {
+	s.NextToken = &v
 	return s
 }
 
@@ -5716,6 +5740,14 @@ func (client *Client) ExecuteMultiAccountSQLQueryWithOptions(request *ExecuteMul
 		query["Expression"] = request.Expression
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Scope)) {
 		query["Scope"] = request.Scope
 	}
@@ -5778,6 +5810,14 @@ func (client *Client) ExecuteSQLQueryWithOptions(request *ExecuteSQLQueryRequest
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Expression)) {
 		query["Expression"] = request.Expression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Scope)) {
