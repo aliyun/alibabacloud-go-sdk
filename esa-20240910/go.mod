@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/esa-20240910
+module github.com/alibabacloud-go/esa-20240910/v2
 
 go 1.14
 

@@ -1390,349 +1390,6 @@ func (s *ActivateClientCertificateResponse) SetBody(v *ActivateClientCertificate
 	return s
 }
 
-type AddUserBusinessFormRequest struct {
-	// This parameter is required.
-	Company *string `json:"Company,omitempty" xml:"Company,omitempty"`
-	// This parameter is required.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// 记录名称
-	//
-	// This parameter is required.
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// 记录类型
-	//
-	// This parameter is required.
-	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// AddUserBusinessForm
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// 业务场景
-	Website *string `json:"Website,omitempty" xml:"Website,omitempty"`
-}
-
-func (s AddUserBusinessFormRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUserBusinessFormRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddUserBusinessFormRequest) SetCompany(v string) *AddUserBusinessFormRequest {
-	s.Company = &v
-	return s
-}
-
-func (s *AddUserBusinessFormRequest) SetEmail(v string) *AddUserBusinessFormRequest {
-	s.Email = &v
-	return s
-}
-
-func (s *AddUserBusinessFormRequest) SetPhoneNumber(v string) *AddUserBusinessFormRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *AddUserBusinessFormRequest) SetPosition(v string) *AddUserBusinessFormRequest {
-	s.Position = &v
-	return s
-}
-
-func (s *AddUserBusinessFormRequest) SetRemark(v string) *AddUserBusinessFormRequest {
-	s.Remark = &v
-	return s
-}
-
-func (s *AddUserBusinessFormRequest) SetUserName(v string) *AddUserBusinessFormRequest {
-	s.UserName = &v
-	return s
-}
-
-func (s *AddUserBusinessFormRequest) SetWebsite(v string) *AddUserBusinessFormRequest {
-	s.Website = &v
-	return s
-}
-
-type AddUserBusinessFormResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddUserBusinessFormResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUserBusinessFormResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddUserBusinessFormResponseBody) SetRequestId(v string) *AddUserBusinessFormResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddUserBusinessFormResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *AddUserBusinessFormResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s AddUserBusinessFormResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUserBusinessFormResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddUserBusinessFormResponse) SetHeaders(v map[string]*string) *AddUserBusinessFormResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddUserBusinessFormResponse) SetStatusCode(v int32) *AddUserBusinessFormResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddUserBusinessFormResponse) SetBody(v *AddUserBusinessFormResponseBody) *AddUserBusinessFormResponse {
-	s.Body = v
-	return s
-}
-
-type AdvancePurgeObjectCacheRequest struct {
-	Area    *string                                `json:"Area,omitempty" xml:"Area,omitempty"`
-	Content *AdvancePurgeObjectCacheRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	Force   *bool                                  `json:"Force,omitempty" xml:"Force,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
-	SiteId         *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	Stations       *string `json:"Stations,omitempty" xml:"Stations,omitempty"`
-	TimeRangeBegin *int32  `json:"TimeRangeBegin,omitempty" xml:"TimeRangeBegin,omitempty"`
-	TimeRangeEnd   *int32  `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
-	// This parameter is required.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s AdvancePurgeObjectCacheRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdvancePurgeObjectCacheRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AdvancePurgeObjectCacheRequest) SetArea(v string) *AdvancePurgeObjectCacheRequest {
-	s.Area = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequest) SetContent(v *AdvancePurgeObjectCacheRequestContent) *AdvancePurgeObjectCacheRequest {
-	s.Content = v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequest) SetForce(v bool) *AdvancePurgeObjectCacheRequest {
-	s.Force = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequest) SetSiteId(v int64) *AdvancePurgeObjectCacheRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequest) SetStations(v string) *AdvancePurgeObjectCacheRequest {
-	s.Stations = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequest) SetTimeRangeBegin(v int32) *AdvancePurgeObjectCacheRequest {
-	s.TimeRangeBegin = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequest) SetTimeRangeEnd(v int32) *AdvancePurgeObjectCacheRequest {
-	s.TimeRangeEnd = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequest) SetType(v string) *AdvancePurgeObjectCacheRequest {
-	s.Type = &v
-	return s
-}
-
-type AdvancePurgeObjectCacheRequestContent struct {
-	CacheTags    []*string     `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
-	Directories  []*string     `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	Files        []interface{} `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	Hostnames    []*string     `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	IgnoreParams []*string     `json:"IgnoreParams,omitempty" xml:"IgnoreParams,omitempty" type:"Repeated"`
-	PurgeAll     *bool         `json:"PurgeAll,omitempty" xml:"PurgeAll,omitempty"`
-}
-
-func (s AdvancePurgeObjectCacheRequestContent) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdvancePurgeObjectCacheRequestContent) GoString() string {
-	return s.String()
-}
-
-func (s *AdvancePurgeObjectCacheRequestContent) SetCacheTags(v []*string) *AdvancePurgeObjectCacheRequestContent {
-	s.CacheTags = v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequestContent) SetDirectories(v []*string) *AdvancePurgeObjectCacheRequestContent {
-	s.Directories = v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequestContent) SetFiles(v []interface{}) *AdvancePurgeObjectCacheRequestContent {
-	s.Files = v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequestContent) SetHostnames(v []*string) *AdvancePurgeObjectCacheRequestContent {
-	s.Hostnames = v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequestContent) SetIgnoreParams(v []*string) *AdvancePurgeObjectCacheRequestContent {
-	s.IgnoreParams = v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheRequestContent) SetPurgeAll(v bool) *AdvancePurgeObjectCacheRequestContent {
-	s.PurgeAll = &v
-	return s
-}
-
-type AdvancePurgeObjectCacheShrinkRequest struct {
-	Area          *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Force         *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456****
-	SiteId         *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	Stations       *string `json:"Stations,omitempty" xml:"Stations,omitempty"`
-	TimeRangeBegin *int32  `json:"TimeRangeBegin,omitempty" xml:"TimeRangeBegin,omitempty"`
-	TimeRangeEnd   *int32  `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
-	// This parameter is required.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s AdvancePurgeObjectCacheShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdvancePurgeObjectCacheShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AdvancePurgeObjectCacheShrinkRequest) SetArea(v string) *AdvancePurgeObjectCacheShrinkRequest {
-	s.Area = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheShrinkRequest) SetContentShrink(v string) *AdvancePurgeObjectCacheShrinkRequest {
-	s.ContentShrink = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheShrinkRequest) SetForce(v bool) *AdvancePurgeObjectCacheShrinkRequest {
-	s.Force = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheShrinkRequest) SetSiteId(v int64) *AdvancePurgeObjectCacheShrinkRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheShrinkRequest) SetStations(v string) *AdvancePurgeObjectCacheShrinkRequest {
-	s.Stations = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheShrinkRequest) SetTimeRangeBegin(v int32) *AdvancePurgeObjectCacheShrinkRequest {
-	s.TimeRangeBegin = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheShrinkRequest) SetTimeRangeEnd(v int32) *AdvancePurgeObjectCacheShrinkRequest {
-	s.TimeRangeEnd = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheShrinkRequest) SetType(v string) *AdvancePurgeObjectCacheShrinkRequest {
-	s.Type = &v
-	return s
-}
-
-type AdvancePurgeObjectCacheResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s AdvancePurgeObjectCacheResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdvancePurgeObjectCacheResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AdvancePurgeObjectCacheResponseBody) SetRequestId(v string) *AdvancePurgeObjectCacheResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheResponseBody) SetTaskId(v string) *AdvancePurgeObjectCacheResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type AdvancePurgeObjectCacheResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *AdvancePurgeObjectCacheResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s AdvancePurgeObjectCacheResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdvancePurgeObjectCacheResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AdvancePurgeObjectCacheResponse) SetHeaders(v map[string]*string) *AdvancePurgeObjectCacheResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheResponse) SetStatusCode(v int32) *AdvancePurgeObjectCacheResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AdvancePurgeObjectCacheResponse) SetBody(v *AdvancePurgeObjectCacheResponseBody) *AdvancePurgeObjectCacheResponse {
-	s.Body = v
-	return s
-}
-
 type BatchCreateRecordsRequest struct {
 	// This parameter is required.
 	RecordList []*BatchCreateRecordsRequestRecordList `json:"RecordList,omitempty" xml:"RecordList,omitempty" type:"Repeated"`
@@ -10858,6 +10515,65 @@ func (s *ExportRecordsResponse) SetBody(v *ExportRecordsResponseBody) *ExportRec
 	return s
 }
 
+type GetCacheReserveSpecificationResponseBody struct {
+	CacheReserveCapacity []*string `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty" type:"Repeated"`
+	CacheReserveRegion   []*string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetCacheReserveSpecificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCacheReserveSpecificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheReserveSpecificationResponseBody) SetCacheReserveCapacity(v []*string) *GetCacheReserveSpecificationResponseBody {
+	s.CacheReserveCapacity = v
+	return s
+}
+
+func (s *GetCacheReserveSpecificationResponseBody) SetCacheReserveRegion(v []*string) *GetCacheReserveSpecificationResponseBody {
+	s.CacheReserveRegion = v
+	return s
+}
+
+func (s *GetCacheReserveSpecificationResponseBody) SetRequestId(v string) *GetCacheReserveSpecificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCacheReserveSpecificationResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCacheReserveSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCacheReserveSpecificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCacheReserveSpecificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheReserveSpecificationResponse) SetHeaders(v map[string]*string) *GetCacheReserveSpecificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCacheReserveSpecificationResponse) SetStatusCode(v int32) *GetCacheReserveSpecificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecificationResponseBody) *GetCacheReserveSpecificationResponse {
+	s.Body = v
+	return s
+}
+
 type GetKvNamespaceRequest struct {
 	// This parameter is required.
 	//
@@ -14170,6 +13886,189 @@ func (s *GetWafRulesetResponse) SetBody(v *GetWafRulesetResponseBody) *GetWafRul
 	return s
 }
 
+type ListCacheReserveInstancesRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortOrder  *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// ListCacheReserveInstances
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCacheReserveInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCacheReserveInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCacheReserveInstancesRequest) SetInstanceId(v string) *ListCacheReserveInstancesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesRequest) SetPageNumber(v int32) *ListCacheReserveInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesRequest) SetPageSize(v int32) *ListCacheReserveInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesRequest) SetSortBy(v string) *ListCacheReserveInstancesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesRequest) SetSortOrder(v string) *ListCacheReserveInstancesRequest {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesRequest) SetStatus(v string) *ListCacheReserveInstancesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListCacheReserveInstancesResponseBody struct {
+	InstanceInfo []*ListCacheReserveInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
+	PageNumber   *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32  `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListCacheReserveInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCacheReserveInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCacheReserveInstancesResponseBody) SetInstanceInfo(v []*ListCacheReserveInstancesResponseBodyInstanceInfo) *ListCacheReserveInstancesResponseBody {
+	s.InstanceInfo = v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBody) SetPageNumber(v int32) *ListCacheReserveInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBody) SetPageSize(v int32) *ListCacheReserveInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBody) SetRequestId(v string) *ListCacheReserveInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBody) SetTotalCount(v int32) *ListCacheReserveInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBody) SetTotalPage(v int32) *ListCacheReserveInstancesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
+	CacheReserveCapacity *string `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
+	CacheReserveRegion   *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCacheReserveInstancesResponseBodyInstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCacheReserveInstancesResponseBodyInstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetCacheReserveCapacity(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+	s.CacheReserveCapacity = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetCacheReserveRegion(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+	s.CacheReserveRegion = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetCreateTime(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetDuration(v int32) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetExpireTime(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetInstanceId(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponseBodyInstanceInfo) SetStatus(v string) *ListCacheReserveInstancesResponseBodyInstanceInfo {
+	s.Status = &v
+	return s
+}
+
+type ListCacheReserveInstancesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCacheReserveInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCacheReserveInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCacheReserveInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCacheReserveInstancesResponse) SetHeaders(v map[string]*string) *ListCacheReserveInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponse) SetStatusCode(v int32) *ListCacheReserveInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCacheReserveInstancesResponse) SetBody(v *ListCacheReserveInstancesResponseBody) *ListCacheReserveInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListEdgeContainerAppRecordsRequest struct {
 	// This parameter is required.
 	//
@@ -14411,6 +14310,385 @@ func (s *ListEdgeContainerAppRecordsResponse) SetBody(v *ListEdgeContainerAppRec
 	return s
 }
 
+type ListEdgeContainerAppsRequest struct {
+	// example:
+	//
+	// CreateTime
+	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// example:
+	//
+	// Asc
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ver-1005682639679266816
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// Appid
+	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+}
+
+func (s ListEdgeContainerAppsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppsRequest) SetOrderKey(v string) *ListEdgeContainerAppsRequest {
+	s.OrderKey = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsRequest) SetOrderType(v string) *ListEdgeContainerAppsRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsRequest) SetPageNumber(v int32) *ListEdgeContainerAppsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsRequest) SetPageSize(v int32) *ListEdgeContainerAppsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsRequest) SetSearchKey(v string) *ListEdgeContainerAppsRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsRequest) SetSearchType(v string) *ListEdgeContainerAppsRequest {
+	s.SearchType = &v
+	return s
+}
+
+type ListEdgeContainerAppsResponseBody struct {
+	Apps []*ListEdgeContainerAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2430E05E-1340-5773-B5E1-B743929F46F2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListEdgeContainerAppsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppsResponseBody) SetApps(v []*ListEdgeContainerAppsResponseBodyApps) *ListEdgeContainerAppsResponseBody {
+	s.Apps = v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBody) SetPageNumber(v int32) *ListEdgeContainerAppsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBody) SetPageSize(v int32) *ListEdgeContainerAppsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBody) SetRequestId(v string) *ListEdgeContainerAppsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBody) SetTotalCount(v int32) *ListEdgeContainerAppsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListEdgeContainerAppsResponseBodyApps struct {
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 2022-12-01T16:16:27.418298794+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// l7
+	GatewayType *string                                           `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	HealthCheck *ListEdgeContainerAppsResponseBodyAppsHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
+	// example:
+	//
+	// app-test
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Percentage *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// example:
+	//
+	// false
+	QuicCid *string `json:"QuicCid,omitempty" xml:"QuicCid,omitempty"`
+	// example:
+	//
+	// test app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// example:
+	//
+	// 80
+	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// example:
+	//
+	// created
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 80
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// example:
+	//
+	// 2023-11-15T12:11:02Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 10
+	VersionCount *int32 `json:"VersionCount,omitempty" xml:"VersionCount,omitempty"`
+}
+
+func (s ListEdgeContainerAppsResponseBodyApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppsResponseBodyApps) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetAppId(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetCreateTime(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetDomainName(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.DomainName = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetGatewayType(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.GatewayType = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetHealthCheck(v *ListEdgeContainerAppsResponseBodyAppsHealthCheck) *ListEdgeContainerAppsResponseBodyApps {
+	s.HealthCheck = v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetName(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetPercentage(v int32) *ListEdgeContainerAppsResponseBodyApps {
+	s.Percentage = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetQuicCid(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.QuicCid = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetRemarks(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.Remarks = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetServicePort(v int32) *ListEdgeContainerAppsResponseBodyApps {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetStatus(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetTargetPort(v int32) *ListEdgeContainerAppsResponseBodyApps {
+	s.TargetPort = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetUpdateTime(v string) *ListEdgeContainerAppsResponseBodyApps {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyApps) SetVersionCount(v int32) *ListEdgeContainerAppsResponseBodyApps {
+	s.VersionCount = &v
+	return s
+}
+
+type ListEdgeContainerAppsResponseBodyAppsHealthCheck struct {
+	// example:
+	//
+	// 5
+	FailTimes *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// example:
+	//
+	// test.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// http_2XX
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// example:
+	//
+	// 5
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// GET
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 1
+	SuccTimes *int32 `json:"SuccTimes,omitempty" xml:"SuccTimes,omitempty"`
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// l7
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// /health_check
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s ListEdgeContainerAppsResponseBodyAppsHealthCheck) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppsResponseBodyAppsHealthCheck) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetFailTimes(v int32) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.FailTimes = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetHost(v string) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.Host = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetHttpCode(v string) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetInterval(v int32) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.Interval = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetMethod(v string) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.Method = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetPort(v int32) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.Port = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetSuccTimes(v int32) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.SuccTimes = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetTimeout(v int32) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetType(v string) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponseBodyAppsHealthCheck) SetUri(v string) *ListEdgeContainerAppsResponseBodyAppsHealthCheck {
+	s.Uri = &v
+	return s
+}
+
+type ListEdgeContainerAppsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEdgeContainerAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEdgeContainerAppsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppsResponse) SetHeaders(v map[string]*string) *ListEdgeContainerAppsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponse) SetStatusCode(v int32) *ListEdgeContainerAppsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppsResponse) SetBody(v *ListEdgeContainerAppsResponseBody) *ListEdgeContainerAppsResponse {
+	s.Body = v
+	return s
+}
+
 type ListEdgeContainerRecordsRequest struct {
 	// example:
 	//
@@ -14618,6 +14896,164 @@ func (s *ListEdgeContainerRecordsResponse) SetBody(v *ListEdgeContainerRecordsRe
 	return s
 }
 
+type ListEdgeRoutinePlansResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PlanInfo []*ListEdgeRoutinePlansResponseBodyPlanInfo `json:"PlanInfo,omitempty" xml:"PlanInfo,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 12
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListEdgeRoutinePlansResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeRoutinePlansResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeRoutinePlansResponseBody) SetPageNumber(v int32) *ListEdgeRoutinePlansResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBody) SetPageSize(v int32) *ListEdgeRoutinePlansResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBody) SetPlanInfo(v []*ListEdgeRoutinePlansResponseBodyPlanInfo) *ListEdgeRoutinePlansResponseBody {
+	s.PlanInfo = v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBody) SetRequestId(v string) *ListEdgeRoutinePlansResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBody) SetTotalCount(v int32) *ListEdgeRoutinePlansResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBody) SetTotalPage(v int32) *ListEdgeRoutinePlansResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListEdgeRoutinePlansResponseBodyPlanInfo struct {
+	// example:
+	//
+	// POSTPAY
+	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	// example:
+	//
+	// 20
+	ErRoutineCodeVersionQuota *string `json:"ErRoutineCodeVersionQuota,omitempty" xml:"ErRoutineCodeVersionQuota,omitempty"`
+	// example:
+	//
+	// 100
+	ErRoutineQuota *string `json:"ErRoutineQuota,omitempty" xml:"ErRoutineQuota,omitempty"`
+	// example:
+	//
+	// 100
+	ErRoutineRouteSiteCountQuota *string `json:"ErRoutineRouteSiteCountQuota,omitempty" xml:"ErRoutineRouteSiteCountQuota,omitempty"`
+	// example:
+	//
+	// er_free
+	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
+	// example:
+	//
+	// test_plan
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+}
+
+func (s ListEdgeRoutinePlansResponseBodyPlanInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeRoutinePlansResponseBodyPlanInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeRoutinePlansResponseBodyPlanInfo) SetBillingMode(v string) *ListEdgeRoutinePlansResponseBodyPlanInfo {
+	s.BillingMode = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBodyPlanInfo) SetErRoutineCodeVersionQuota(v string) *ListEdgeRoutinePlansResponseBodyPlanInfo {
+	s.ErRoutineCodeVersionQuota = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBodyPlanInfo) SetErRoutineQuota(v string) *ListEdgeRoutinePlansResponseBodyPlanInfo {
+	s.ErRoutineQuota = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBodyPlanInfo) SetErRoutineRouteSiteCountQuota(v string) *ListEdgeRoutinePlansResponseBodyPlanInfo {
+	s.ErRoutineRouteSiteCountQuota = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBodyPlanInfo) SetPaymentMethod(v string) *ListEdgeRoutinePlansResponseBodyPlanInfo {
+	s.PaymentMethod = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponseBodyPlanInfo) SetPlanName(v string) *ListEdgeRoutinePlansResponseBodyPlanInfo {
+	s.PlanName = &v
+	return s
+}
+
+type ListEdgeRoutinePlansResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEdgeRoutinePlansResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEdgeRoutinePlansResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeRoutinePlansResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeRoutinePlansResponse) SetHeaders(v map[string]*string) *ListEdgeRoutinePlansResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponse) SetStatusCode(v int32) *ListEdgeRoutinePlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEdgeRoutinePlansResponse) SetBody(v *ListEdgeRoutinePlansResponseBody) *ListEdgeRoutinePlansResponse {
+	s.Body = v
+	return s
+}
+
 type ListEdgeRoutineRecordsRequest struct {
 	// example:
 	//
@@ -14821,6 +15257,362 @@ func (s *ListEdgeRoutineRecordsResponse) SetStatusCode(v int32) *ListEdgeRoutine
 }
 
 func (s *ListEdgeRoutineRecordsResponse) SetBody(v *ListEdgeRoutineRecordsResponseBody) *ListEdgeRoutineRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstanceQuotasRequest struct {
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// preload, free_cert
+	QuotaNames *string `json:"QuotaNames,omitempty" xml:"QuotaNames,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 2882900****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListInstanceQuotasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasRequest) SetInstanceId(v string) *ListInstanceQuotasRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceQuotasRequest) SetQuotaNames(v string) *ListInstanceQuotasRequest {
+	s.QuotaNames = &v
+	return s
+}
+
+func (s *ListInstanceQuotasRequest) SetSiteId(v int64) *ListInstanceQuotasRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListInstanceQuotasResponseBody struct {
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId *string                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Quotas     []*ListInstanceQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247B78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstanceQuotasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasResponseBody) SetInstanceId(v string) *ListInstanceQuotasResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceQuotasResponseBody) SetQuotas(v []*ListInstanceQuotasResponseBodyQuotas) *ListInstanceQuotasResponseBody {
+	s.Quotas = v
+	return s
+}
+
+func (s *ListInstanceQuotasResponseBody) SetRequestId(v string) *ListInstanceQuotasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceQuotasResponseBody) SetStatus(v string) *ListInstanceQuotasResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListInstanceQuotasResponseBodyQuotas struct {
+	// example:
+	//
+	// customHttpCert
+	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	// example:
+	//
+	// 10
+	QuotaValue *string `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
+	// example:
+	//
+	// bool
+	QuotaValueType *string `json:"QuotaValueType,omitempty" xml:"QuotaValueType,omitempty"`
+}
+
+func (s ListInstanceQuotasResponseBodyQuotas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasResponseBodyQuotas) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasResponseBodyQuotas) SetQuotaName(v string) *ListInstanceQuotasResponseBodyQuotas {
+	s.QuotaName = &v
+	return s
+}
+
+func (s *ListInstanceQuotasResponseBodyQuotas) SetQuotaValue(v string) *ListInstanceQuotasResponseBodyQuotas {
+	s.QuotaValue = &v
+	return s
+}
+
+func (s *ListInstanceQuotasResponseBodyQuotas) SetQuotaValueType(v string) *ListInstanceQuotasResponseBodyQuotas {
+	s.QuotaValueType = &v
+	return s
+}
+
+type ListInstanceQuotasResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceQuotasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstanceQuotasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasResponse) SetHeaders(v map[string]*string) *ListInstanceQuotasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceQuotasResponse) SetStatusCode(v int32) *ListInstanceQuotasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceQuotasResponse) SetBody(v *ListInstanceQuotasResponseBody) *ListInstanceQuotasResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstanceQuotasWithUsageRequest struct {
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// customHttpCert
+	QuotaNames *string `json:"QuotaNames,omitempty" xml:"QuotaNames,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 1232223****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListInstanceQuotasWithUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasWithUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasWithUsageRequest) SetInstanceId(v string) *ListInstanceQuotasWithUsageRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageRequest) SetQuotaNames(v string) *ListInstanceQuotasWithUsageRequest {
+	s.QuotaNames = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageRequest) SetSiteId(v int64) *ListInstanceQuotasWithUsageRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListInstanceQuotasWithUsageResponseBody struct {
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Quotas     []*ListInstanceQuotasWithUsageResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 85H66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstanceQuotasWithUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasWithUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBody) SetInstanceId(v string) *ListInstanceQuotasWithUsageResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBody) SetQuotas(v []*ListInstanceQuotasWithUsageResponseBodyQuotas) *ListInstanceQuotasWithUsageResponseBody {
+	s.Quotas = v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBody) SetRequestId(v string) *ListInstanceQuotasWithUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBody) SetStatus(v string) *ListInstanceQuotasWithUsageResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListInstanceQuotasWithUsageResponseBodyQuotas struct {
+	// example:
+	//
+	// redirect_rules|rule_quota
+	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	// example:
+	//
+	// 10
+	QuotaValue *string                                                   `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
+	SiteUsage  []*ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s ListInstanceQuotasWithUsageResponseBodyQuotas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasWithUsageResponseBodyQuotas) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBodyQuotas) SetQuotaName(v string) *ListInstanceQuotasWithUsageResponseBodyQuotas {
+	s.QuotaName = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBodyQuotas) SetQuotaValue(v string) *ListInstanceQuotasWithUsageResponseBodyQuotas {
+	s.QuotaValue = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBodyQuotas) SetSiteUsage(v []*ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage) *ListInstanceQuotasWithUsageResponseBodyQuotas {
+	s.SiteUsage = v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBodyQuotas) SetUsage(v string) *ListInstanceQuotasWithUsageResponseBodyQuotas {
+	s.Usage = &v
+	return s
+}
+
+type ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage struct {
+	// example:
+	//
+	// 34818329392****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// test.top
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 1
+	SiteUsage *string `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+}
+
+func (s ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage) SetSiteId(v int64) *ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage) SetSiteName(v string) *ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage) SetSiteUsage(v string) *ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage {
+	s.SiteUsage = &v
+	return s
+}
+
+type ListInstanceQuotasWithUsageResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceQuotasWithUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstanceQuotasWithUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceQuotasWithUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceQuotasWithUsageResponse) SetHeaders(v map[string]*string) *ListInstanceQuotasWithUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponse) SetStatusCode(v int32) *ListInstanceQuotasWithUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceQuotasWithUsageResponse) SetBody(v *ListInstanceQuotasWithUsageResponseBody) *ListInstanceQuotasWithUsageResponse {
 	s.Body = v
 	return s
 }
@@ -17938,6 +18730,663 @@ func (s *ListUserDeliveryTasksResponse) SetBody(v *ListUserDeliveryTasksResponse
 	return s
 }
 
+type ListUserRatePlanInstancesRequest struct {
+	// example:
+	//
+	// true
+	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 500
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// asc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListUserRatePlanInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRatePlanInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetCheckRemainingSiteQuota(v string) *ListUserRatePlanInstancesRequest {
+	s.CheckRemainingSiteQuota = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetInstanceId(v string) *ListUserRatePlanInstancesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetPageNumber(v int32) *ListUserRatePlanInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetPageSize(v int32) *ListUserRatePlanInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetSortBy(v string) *ListUserRatePlanInstancesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetSortOrder(v string) *ListUserRatePlanInstancesRequest {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetStatus(v string) *ListUserRatePlanInstancesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListUserRatePlanInstancesResponseBody struct {
+	InstanceInfo []*ListUserRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 68
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListUserRatePlanInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRatePlanInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRatePlanInstancesResponseBody) SetInstanceInfo(v []*ListUserRatePlanInstancesResponseBodyInstanceInfo) *ListUserRatePlanInstancesResponseBody {
+	s.InstanceInfo = v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBody) SetPageNumber(v int32) *ListUserRatePlanInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBody) SetPageSize(v int32) *ListUserRatePlanInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBody) SetRequestId(v string) *ListUserRatePlanInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBody) SetTotalCount(v int32) *ListUserRatePlanInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBody) SetTotalPage(v int32) *ListUserRatePlanInstancesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
+	// example:
+	//
+	// PREPAY
+	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	// example:
+	//
+	// domestic,overseas
+	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
+	// example:
+	//
+	// YYYY-MM-DDThh:mm:ssZ
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 3
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// YYYY-MM-DDThh:mm:ssZ
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// basic
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// example:
+	//
+	// normal
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// example:
+	//
+	// 1
+	SiteQuota *string                                                   `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
+	Sites     []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListUserRatePlanInstancesResponseBodyInstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRatePlanInstancesResponseBodyInstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetBillingMode(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.BillingMode = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetCoverages(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.Coverages = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetCreateTime(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetDuration(v int32) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetExpireTime(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetInstanceId(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetPlanName(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.PlanName = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetPlanType(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.PlanType = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetSiteQuota(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.SiteQuota = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetSites(v []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.Sites = v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetStatus(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.Status = &v
+	return s
+}
+
+type ListUserRatePlanInstancesResponseBodyInstanceInfoSites struct {
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// pending
+	SiteStatus *string `json:"SiteStatus,omitempty" xml:"SiteStatus,omitempty"`
+}
+
+func (s ListUserRatePlanInstancesResponseBodyInstanceInfoSites) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRatePlanInstancesResponseBodyInstanceInfoSites) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfoSites) SetSiteId(v int64) *ListUserRatePlanInstancesResponseBodyInstanceInfoSites {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfoSites) SetSiteName(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfoSites {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfoSites) SetSiteStatus(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfoSites {
+	s.SiteStatus = &v
+	return s
+}
+
+type ListUserRatePlanInstancesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserRatePlanInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserRatePlanInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRatePlanInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRatePlanInstancesResponse) SetHeaders(v map[string]*string) *ListUserRatePlanInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponse) SetStatusCode(v int32) *ListUserRatePlanInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponse) SetBody(v *ListUserRatePlanInstancesResponseBody) *ListUserRatePlanInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListWafManagedRulesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11
+	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize  *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryArgs *ListWafManagedRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListWafManagedRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafManagedRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafManagedRulesRequest) SetAttackType(v int32) *ListWafManagedRulesRequest {
+	s.AttackType = &v
+	return s
+}
+
+func (s *ListWafManagedRulesRequest) SetId(v int64) *ListWafManagedRulesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWafManagedRulesRequest) SetLanguage(v string) *ListWafManagedRulesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListWafManagedRulesRequest) SetPageNumber(v int32) *ListWafManagedRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafManagedRulesRequest) SetPageSize(v int32) *ListWafManagedRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafManagedRulesRequest) SetQueryArgs(v *ListWafManagedRulesRequestQueryArgs) *ListWafManagedRulesRequest {
+	s.QueryArgs = v
+	return s
+}
+
+func (s *ListWafManagedRulesRequest) SetSiteId(v int64) *ListWafManagedRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListWafManagedRulesRequestQueryArgs struct {
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// example
+	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
+	// example:
+	//
+	// 1
+	ProtectionLevel  *int32   `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	ProtectionLevels []*int32 `json:"ProtectionLevels,omitempty" xml:"ProtectionLevels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListWafManagedRulesRequestQueryArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafManagedRulesRequestQueryArgs) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafManagedRulesRequestQueryArgs) SetAction(v string) *ListWafManagedRulesRequestQueryArgs {
+	s.Action = &v
+	return s
+}
+
+func (s *ListWafManagedRulesRequestQueryArgs) SetIdNameLike(v string) *ListWafManagedRulesRequestQueryArgs {
+	s.IdNameLike = &v
+	return s
+}
+
+func (s *ListWafManagedRulesRequestQueryArgs) SetProtectionLevel(v int32) *ListWafManagedRulesRequestQueryArgs {
+	s.ProtectionLevel = &v
+	return s
+}
+
+func (s *ListWafManagedRulesRequestQueryArgs) SetProtectionLevels(v []*int32) *ListWafManagedRulesRequestQueryArgs {
+	s.ProtectionLevels = v
+	return s
+}
+
+func (s *ListWafManagedRulesRequestQueryArgs) SetStatus(v string) *ListWafManagedRulesRequestQueryArgs {
+	s.Status = &v
+	return s
+}
+
+type ListWafManagedRulesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11
+	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListWafManagedRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafManagedRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetAttackType(v int32) *ListWafManagedRulesShrinkRequest {
+	s.AttackType = &v
+	return s
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetId(v int64) *ListWafManagedRulesShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetLanguage(v string) *ListWafManagedRulesShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetPageNumber(v int32) *ListWafManagedRulesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetPageSize(v int32) *ListWafManagedRulesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetQueryArgsShrink(v string) *ListWafManagedRulesShrinkRequest {
+	s.QueryArgsShrink = &v
+	return s
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetSiteId(v int64) *ListWafManagedRulesShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListWafManagedRulesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     []*ListWafManagedRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListWafManagedRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafManagedRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafManagedRulesResponseBody) SetPageNumber(v int32) *ListWafManagedRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafManagedRulesResponseBody) SetPageSize(v int32) *ListWafManagedRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafManagedRulesResponseBody) SetRequestId(v string) *ListWafManagedRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWafManagedRulesResponseBody) SetRules(v []*ListWafManagedRulesResponseBodyRules) *ListWafManagedRulesResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *ListWafManagedRulesResponseBody) SetTotalCount(v int64) *ListWafManagedRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListWafManagedRulesResponseBodyRules struct {
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// 100001
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListWafManagedRulesResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafManagedRulesResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafManagedRulesResponseBodyRules) SetAction(v string) *ListWafManagedRulesResponseBodyRules {
+	s.Action = &v
+	return s
+}
+
+func (s *ListWafManagedRulesResponseBodyRules) SetId(v int64) *ListWafManagedRulesResponseBodyRules {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWafManagedRulesResponseBodyRules) SetName(v string) *ListWafManagedRulesResponseBodyRules {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWafManagedRulesResponseBodyRules) SetProtectionLevel(v int32) *ListWafManagedRulesResponseBodyRules {
+	s.ProtectionLevel = &v
+	return s
+}
+
+func (s *ListWafManagedRulesResponseBodyRules) SetStatus(v string) *ListWafManagedRulesResponseBodyRules {
+	s.Status = &v
+	return s
+}
+
+type ListWafManagedRulesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWafManagedRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWafManagedRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafManagedRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafManagedRulesResponse) SetHeaders(v map[string]*string) *ListWafManagedRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWafManagedRulesResponse) SetStatusCode(v int32) *ListWafManagedRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWafManagedRulesResponse) SetBody(v *ListWafManagedRulesResponseBody) *ListWafManagedRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListWafPhasesRequest struct {
 	// This parameter is required.
 	//
@@ -20376,166 +21825,6 @@ func (s *PutKvResponse) SetStatusCode(v int32) *PutKvResponse {
 }
 
 func (s *PutKvResponse) SetBody(v *PutKvResponseBody) *PutKvResponse {
-	s.Body = v
-	return s
-}
-
-type PutKvAccountRequest struct {
-	// example:
-	//
-	// prod
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s PutKvAccountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutKvAccountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PutKvAccountRequest) SetAccountType(v string) *PutKvAccountRequest {
-	s.AccountType = &v
-	return s
-}
-
-func (s *PutKvAccountRequest) SetStatus(v string) *PutKvAccountRequest {
-	s.Status = &v
-	return s
-}
-
-type PutKvAccountResponseBody struct {
-	NamespaceList []*PutKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 10
-	NamespaceQuota *int32 `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
-	// example:
-	//
-	// 1
-	NamespaceUsed *int32 `json:"NamespaceUsed,omitempty" xml:"NamespaceUsed,omitempty"`
-	// example:
-	//
-	// 15C66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s PutKvAccountResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutKvAccountResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PutKvAccountResponseBody) SetNamespaceList(v []*PutKvAccountResponseBodyNamespaceList) *PutKvAccountResponseBody {
-	s.NamespaceList = v
-	return s
-}
-
-func (s *PutKvAccountResponseBody) SetNamespaceQuota(v int32) *PutKvAccountResponseBody {
-	s.NamespaceQuota = &v
-	return s
-}
-
-func (s *PutKvAccountResponseBody) SetNamespaceUsed(v int32) *PutKvAccountResponseBody {
-	s.NamespaceUsed = &v
-	return s
-}
-
-func (s *PutKvAccountResponseBody) SetRequestId(v string) *PutKvAccountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PutKvAccountResponseBody) SetStatus(v string) *PutKvAccountResponseBody {
-	s.Status = &v
-	return s
-}
-
-type PutKvAccountResponseBodyNamespaceList struct {
-	// example:
-	//
-	// the first namespace
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// test_namespace
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// example:
-	//
-	// 643355322374688768
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s PutKvAccountResponseBodyNamespaceList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutKvAccountResponseBodyNamespaceList) GoString() string {
-	return s.String()
-}
-
-func (s *PutKvAccountResponseBodyNamespaceList) SetDescription(v string) *PutKvAccountResponseBodyNamespaceList {
-	s.Description = &v
-	return s
-}
-
-func (s *PutKvAccountResponseBodyNamespaceList) SetNamespace(v string) *PutKvAccountResponseBodyNamespaceList {
-	s.Namespace = &v
-	return s
-}
-
-func (s *PutKvAccountResponseBodyNamespaceList) SetNamespaceId(v string) *PutKvAccountResponseBodyNamespaceList {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *PutKvAccountResponseBodyNamespaceList) SetStatus(v string) *PutKvAccountResponseBodyNamespaceList {
-	s.Status = &v
-	return s
-}
-
-type PutKvAccountResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *PutKvAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s PutKvAccountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutKvAccountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PutKvAccountResponse) SetHeaders(v map[string]*string) *PutKvAccountResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PutKvAccountResponse) SetStatusCode(v int32) *PutKvAccountResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *PutKvAccountResponse) SetBody(v *PutKvAccountResponseBody) *PutKvAccountResponse {
 	s.Body = v
 	return s
 }
@@ -25048,184 +26337,6 @@ func (client *Client) ActivateClientCertificate(request *ActivateClientCertifica
 
 // Summary:
 //
-// 新增用户商机单
-//
-// @param request - AddUserBusinessFormRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AddUserBusinessFormResponse
-func (client *Client) AddUserBusinessFormWithOptions(request *AddUserBusinessFormRequest, runtime *util.RuntimeOptions) (_result *AddUserBusinessFormResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Company)) {
-		query["Company"] = request.Company
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Email)) {
-		query["Email"] = request.Email
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
-		query["PhoneNumber"] = request.PhoneNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Position)) {
-		query["Position"] = request.Position
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Remark)) {
-		query["Remark"] = request.Remark
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserName)) {
-		query["UserName"] = request.UserName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Website)) {
-		query["Website"] = request.Website
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddUserBusinessForm"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddUserBusinessFormResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 新增用户商机单
-//
-// @param request - AddUserBusinessFormRequest
-//
-// @return AddUserBusinessFormResponse
-func (client *Client) AddUserBusinessForm(request *AddUserBusinessFormRequest) (_result *AddUserBusinessFormResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddUserBusinessFormResponse{}
-	_body, _err := client.AddUserBusinessFormWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 缓存对象缓存
-//
-// @param tmpReq - AdvancePurgeObjectCacheRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AdvancePurgeObjectCacheResponse
-func (client *Client) AdvancePurgeObjectCacheWithOptions(tmpReq *AdvancePurgeObjectCacheRequest, runtime *util.RuntimeOptions) (_result *AdvancePurgeObjectCacheResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &AdvancePurgeObjectCacheShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Content)) {
-		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Area)) {
-		query["Area"] = request.Area
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ContentShrink)) {
-		query["Content"] = request.ContentShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Force)) {
-		query["Force"] = request.Force
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Stations)) {
-		query["Stations"] = request.Stations
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimeRangeBegin)) {
-		query["TimeRangeBegin"] = request.TimeRangeBegin
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimeRangeEnd)) {
-		query["TimeRangeEnd"] = request.TimeRangeEnd
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AdvancePurgeObjectCache"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AdvancePurgeObjectCacheResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 缓存对象缓存
-//
-// @param request - AdvancePurgeObjectCacheRequest
-//
-// @return AdvancePurgeObjectCacheResponse
-func (client *Client) AdvancePurgeObjectCache(request *AdvancePurgeObjectCacheRequest) (_result *AdvancePurgeObjectCacheResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AdvancePurgeObjectCacheResponse{}
-	_body, _err := client.AdvancePurgeObjectCacheWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 创建记录
 //
 // @param tmpReq - BatchCreateRecordsRequest
@@ -29315,6 +30426,53 @@ func (client *Client) ExportRecords(request *ExportRecordsRequest) (_result *Exp
 
 // Summary:
 //
+// 查询缓存保持实例规格
+//
+// @param request - GetCacheReserveSpecificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCacheReserveSpecificationResponse
+func (client *Client) GetCacheReserveSpecificationWithOptions(runtime *util.RuntimeOptions) (_result *GetCacheReserveSpecificationResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetCacheReserveSpecification"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCacheReserveSpecificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询缓存保持实例规格
+//
+// @return GetCacheReserveSpecificationResponse
+func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSpecificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCacheReserveSpecificationResponse{}
+	_body, _err := client.GetCacheReserveSpecificationWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询Namespace信息
 //
 // @param request - GetKvNamespaceRequest
@@ -30530,6 +31688,62 @@ func (client *Client) GetWafRuleset(request *GetWafRulesetRequest) (_result *Get
 
 // Summary:
 //
+// 查询缓存保持实例列表
+//
+// @param request - ListCacheReserveInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCacheReserveInstancesResponse
+func (client *Client) ListCacheReserveInstancesWithOptions(request *ListCacheReserveInstancesRequest, runtime *util.RuntimeOptions) (_result *ListCacheReserveInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCacheReserveInstances"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCacheReserveInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询缓存保持实例列表
+//
+// @param request - ListCacheReserveInstancesRequest
+//
+// @return ListCacheReserveInstancesResponse
+func (client *Client) ListCacheReserveInstances(request *ListCacheReserveInstancesRequest) (_result *ListCacheReserveInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCacheReserveInstancesResponse{}
+	_body, _err := client.ListCacheReserveInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取一个边缘容器应用的全部域名记录
 //
 // @param request - ListEdgeContainerAppRecordsRequest
@@ -30577,6 +31791,86 @@ func (client *Client) ListEdgeContainerAppRecords(request *ListEdgeContainerAppR
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEdgeContainerAppRecordsResponse{}
 	_body, _err := client.ListEdgeContainerAppRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户全部边缘容器应用
+//
+// @param request - ListEdgeContainerAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEdgeContainerAppsResponse
+func (client *Client) ListEdgeContainerAppsWithOptions(request *ListEdgeContainerAppsRequest, runtime *util.RuntimeOptions) (_result *ListEdgeContainerAppsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderKey)) {
+		query["OrderKey"] = request.OrderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchType)) {
+		query["SearchType"] = request.SearchType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEdgeContainerApps"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEdgeContainerAppsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户全部边缘容器应用
+//
+// @param request - ListEdgeContainerAppsRequest
+//
+// @return ListEdgeContainerAppsResponse
+func (client *Client) ListEdgeContainerApps(request *ListEdgeContainerAppsRequest) (_result *ListEdgeContainerAppsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEdgeContainerAppsResponse{}
+	_body, _err := client.ListEdgeContainerAppsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30642,6 +31936,53 @@ func (client *Client) ListEdgeContainerRecords(request *ListEdgeContainerRecords
 
 // Summary:
 //
+// 查询用户可购买的边缘函数的套餐
+//
+// @param request - ListEdgeRoutinePlansRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEdgeRoutinePlansResponse
+func (client *Client) ListEdgeRoutinePlansWithOptions(runtime *util.RuntimeOptions) (_result *ListEdgeRoutinePlansResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListEdgeRoutinePlans"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEdgeRoutinePlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户可购买的边缘函数的套餐
+//
+// @return ListEdgeRoutinePlansResponse
+func (client *Client) ListEdgeRoutinePlans() (_result *ListEdgeRoutinePlansResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEdgeRoutinePlansResponse{}
+	_body, _err := client.ListEdgeRoutinePlansWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询站点的边缘路由记录
 //
 // @param request - ListEdgeRoutineRecordsRequest
@@ -30689,6 +32030,118 @@ func (client *Client) ListEdgeRoutineRecords(request *ListEdgeRoutineRecordsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEdgeRoutineRecordsResponse{}
 	_body, _err := client.ListEdgeRoutineRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例或者站点的quota值
+//
+// @param request - ListInstanceQuotasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceQuotasResponse
+func (client *Client) ListInstanceQuotasWithOptions(request *ListInstanceQuotasRequest, runtime *util.RuntimeOptions) (_result *ListInstanceQuotasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceQuotas"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceQuotasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例或者站点的quota值
+//
+// @param request - ListInstanceQuotasRequest
+//
+// @return ListInstanceQuotasResponse
+func (client *Client) ListInstanceQuotas(request *ListInstanceQuotasRequest) (_result *ListInstanceQuotasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstanceQuotasResponse{}
+	_body, _err := client.ListInstanceQuotasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询功能quota和用量
+//
+// @param request - ListInstanceQuotasWithUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceQuotasWithUsageResponse
+func (client *Client) ListInstanceQuotasWithUsageWithOptions(request *ListInstanceQuotasWithUsageRequest, runtime *util.RuntimeOptions) (_result *ListInstanceQuotasWithUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceQuotasWithUsage"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceQuotasWithUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询功能quota和用量
+//
+// @param request - ListInstanceQuotasWithUsageRequest
+//
+// @return ListInstanceQuotasWithUsageResponse
+func (client *Client) ListInstanceQuotasWithUsage(request *ListInstanceQuotasWithUsageRequest) (_result *ListInstanceQuotasWithUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstanceQuotasWithUsageResponse{}
+	_body, _err := client.ListInstanceQuotasWithUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31498,6 +32951,152 @@ func (client *Client) ListUserDeliveryTasks(request *ListUserDeliveryTasksReques
 
 // Summary:
 //
+// 查询该用户下可用的已购套餐实例
+//
+// @param request - ListUserRatePlanInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserRatePlanInstancesResponse
+func (client *Client) ListUserRatePlanInstancesWithOptions(request *ListUserRatePlanInstancesRequest, runtime *util.RuntimeOptions) (_result *ListUserRatePlanInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserRatePlanInstances"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserRatePlanInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询该用户下可用的已购套餐实例
+//
+// @param request - ListUserRatePlanInstancesRequest
+//
+// @return ListUserRatePlanInstancesResponse
+func (client *Client) ListUserRatePlanInstances(request *ListUserRatePlanInstancesRequest) (_result *ListUserRatePlanInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserRatePlanInstancesResponse{}
+	_body, _err := client.ListUserRatePlanInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举WAF托管规则
+//
+// @param tmpReq - ListWafManagedRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWafManagedRulesResponse
+func (client *Client) ListWafManagedRulesWithOptions(tmpReq *ListWafManagedRulesRequest, runtime *util.RuntimeOptions) (_result *ListWafManagedRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListWafManagedRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryArgs)) {
+		request.QueryArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryArgs, tea.String("QueryArgs"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttackType)) {
+		query["AttackType"] = request.AttackType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryArgsShrink)) {
+		query["QueryArgs"] = request.QueryArgsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWafManagedRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWafManagedRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举WAF托管规则
+//
+// @param request - ListWafManagedRulesRequest
+//
+// @return ListWafManagedRulesResponse
+func (client *Client) ListWafManagedRules(request *ListWafManagedRulesRequest) (_result *ListWafManagedRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWafManagedRulesResponse{}
+	_body, _err := client.ListWafManagedRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列举WAF阶段
 //
 // @param request - ListWafPhasesRequest
@@ -32269,70 +33868,6 @@ func (client *Client) PutKv(request *PutKvRequest) (_result *PutKvResponse, _err
 	runtime := &util.RuntimeOptions{}
 	_result = &PutKvResponse{}
 	_body, _err := client.PutKvWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 设置账户
-//
-// @param request - PutKvAccountRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return PutKvAccountResponse
-func (client *Client) PutKvAccountWithOptions(request *PutKvAccountRequest, runtime *util.RuntimeOptions) (_result *PutKvAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AccountType)) {
-		body["AccountType"] = request.AccountType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		body["Status"] = request.Status
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PutKvAccount"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PutKvAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 设置账户
-//
-// @param request - PutKvAccountRequest
-//
-// @return PutKvAccountResponse
-func (client *Client) PutKvAccount(request *PutKvAccountRequest) (_result *PutKvAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PutKvAccountResponse{}
-	_body, _err := client.PutKvAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
