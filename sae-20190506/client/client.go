@@ -8160,7 +8160,7 @@ type BatchStopApplicationsRequest struct {
 	//
 	// example:
 	//
-	// ebf491f0-c1a5-45e2-b2c4-710dbe2a****，ebf491f0-c1a5-45e2-b2c4-71025e2a****
+	// ebf491f0-c1a5-45e2-b2c4-710dbe2a****
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
 	// ebf491f0-c1a5-45e2-b2c4-710dbe2a\\*\\*\\*\\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\\*\\*\\*\\*
 	//
@@ -26883,7 +26883,7 @@ type DescribePipelineResponseBodyDataStageListTaskList struct {
 	//
 	// example:
 	//
-	// EDAS-10022 \\<a target=\\"_blank\\" href=\\"https://help.aliyun.com/knowledge_detail/106573.html#EDAS-10022\\">READINESS check failed during the application startup.\\</a>
+	// EDAS-10022
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The returned message indicating the task execution result.
 	//
@@ -28043,6 +28043,142 @@ func (s *DisableApplicationScalingRuleResponse) SetBody(v *DisableApplicationSca
 	return s
 }
 
+type DowngradeApplicationApmServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DowngradeApplicationApmServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DowngradeApplicationApmServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DowngradeApplicationApmServiceRequest) SetAppId(v string) *DowngradeApplicationApmServiceRequest {
+	s.AppId = &v
+	return s
+}
+
+type DowngradeApplicationApmServiceResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DowngradeApplicationApmServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DowngradeApplicationApmServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DowngradeApplicationApmServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DowngradeApplicationApmServiceResponseBody) SetCode(v string) *DowngradeApplicationApmServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DowngradeApplicationApmServiceResponseBody) SetData(v *DowngradeApplicationApmServiceResponseBodyData) *DowngradeApplicationApmServiceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DowngradeApplicationApmServiceResponseBody) SetErrorCode(v string) *DowngradeApplicationApmServiceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DowngradeApplicationApmServiceResponseBody) SetMessage(v string) *DowngradeApplicationApmServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DowngradeApplicationApmServiceResponseBody) SetRequestId(v string) *DowngradeApplicationApmServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DowngradeApplicationApmServiceResponseBody) SetSuccess(v bool) *DowngradeApplicationApmServiceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DowngradeApplicationApmServiceResponseBody) SetTraceId(v string) *DowngradeApplicationApmServiceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DowngradeApplicationApmServiceResponseBodyData struct {
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DowngradeApplicationApmServiceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DowngradeApplicationApmServiceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DowngradeApplicationApmServiceResponseBodyData) SetStatus(v bool) *DowngradeApplicationApmServiceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DowngradeApplicationApmServiceResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DowngradeApplicationApmServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DowngradeApplicationApmServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DowngradeApplicationApmServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DowngradeApplicationApmServiceResponse) SetHeaders(v map[string]*string) *DowngradeApplicationApmServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DowngradeApplicationApmServiceResponse) SetStatusCode(v int32) *DowngradeApplicationApmServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DowngradeApplicationApmServiceResponse) SetBody(v *DowngradeApplicationApmServiceResponseBody) *DowngradeApplicationApmServiceResponse {
+	s.Body = v
+	return s
+}
+
 type EnableApplicationScalingRuleRequest struct {
 	// The application ID.
 	//
@@ -28443,6 +28579,251 @@ func (s *ExecJobResponse) SetStatusCode(v int32) *ExecJobResponse {
 }
 
 func (s *ExecJobResponse) SetBody(v *ExecJobResponseBody) *ExecJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetApplicationRequest struct {
+	// example:
+	//
+	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// test
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s GetApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationRequest) SetAppId(v string) *GetApplicationRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationRequest) SetAppName(v string) *GetApplicationRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationRequest) SetNamespaceId(v string) *GetApplicationRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type GetApplicationResponseBody struct {
+	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ac1a0b2215622920113732501e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s GetApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBody) SetApplication(v *GetApplicationResponseBodyApplication) *GetApplicationResponseBody {
+	s.Application = v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetMessage(v string) *GetApplicationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetTraceId(v string) *GetApplicationResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type GetApplicationResponseBodyApplication struct {
+	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	// example:
+	//
+	// 443d638a-ef76-47c4-b707-61197d******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// test
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// ee99cce6-1c8e-4bfa-96c3-3e2fa9******
+	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
+	// example:
+	//
+	// 2000
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// i-8ps2o182102o1jv05bys
+	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// example:
+	//
+	// 4096
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// example:
+	//
+	// true
+	MseEnabled *bool `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
+	// example:
+	//
+	// test
+	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// java
+	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	// example:
+	//
+	// 1
+	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
+	// example:
+	//
+	// true
+	ScaleRuleEnabled *string `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	// example:
+	//
+	// timing
+	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+}
+
+func (s GetApplicationResponseBodyApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyApplication) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyApplication) SetAppDescription(v string) *GetApplicationResponseBodyApplication {
+	s.AppDescription = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetAppId(v string) *GetApplicationResponseBodyApplication {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetAppName(v string) *GetApplicationResponseBodyApplication {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetBaseAppId(v string) *GetApplicationResponseBodyApplication {
+	s.BaseAppId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetCpu(v int32) *GetApplicationResponseBodyApplication {
+	s.Cpu = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetInstances(v int32) *GetApplicationResponseBodyApplication {
+	s.Instances = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetMem(v int32) *GetApplicationResponseBodyApplication {
+	s.Mem = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetMseEnabled(v bool) *GetApplicationResponseBodyApplication {
+	s.MseEnabled = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetMseNamespaceId(v string) *GetApplicationResponseBodyApplication {
+	s.MseNamespaceId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetNamespaceId(v string) *GetApplicationResponseBodyApplication {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetProgrammingLanguage(v string) *GetApplicationResponseBodyApplication {
+	s.ProgrammingLanguage = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetRunningInstances(v int32) *GetApplicationResponseBodyApplication {
+	s.RunningInstances = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetScaleRuleEnabled(v string) *GetApplicationResponseBodyApplication {
+	s.ScaleRuleEnabled = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetScaleRuleType(v string) *GetApplicationResponseBodyApplication {
+	s.ScaleRuleType = &v
+	return s
+}
+
+type GetApplicationResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponse) SetHeaders(v map[string]*string) *GetApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApplicationResponse) SetStatusCode(v int32) *GetApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetApplicationResponse {
 	s.Body = v
 	return s
 }
@@ -42265,6 +42646,145 @@ func (s *UpdateWebCustomDomainResponse) SetBody(v *WebCustomDomainBody) *UpdateW
 	return s
 }
 
+type UpgradeApplicationApmServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s UpgradeApplicationApmServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeApplicationApmServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeApplicationApmServiceRequest) SetAppId(v string) *UpgradeApplicationApmServiceRequest {
+	s.AppId = &v
+	return s
+}
+
+type UpgradeApplicationApmServiceResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpgradeApplicationApmServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s UpgradeApplicationApmServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeApplicationApmServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeApplicationApmServiceResponseBody) SetCode(v string) *UpgradeApplicationApmServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpgradeApplicationApmServiceResponseBody) SetData(v *UpgradeApplicationApmServiceResponseBodyData) *UpgradeApplicationApmServiceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpgradeApplicationApmServiceResponseBody) SetErrorCode(v string) *UpgradeApplicationApmServiceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpgradeApplicationApmServiceResponseBody) SetMessage(v string) *UpgradeApplicationApmServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpgradeApplicationApmServiceResponseBody) SetRequestId(v string) *UpgradeApplicationApmServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeApplicationApmServiceResponseBody) SetSuccess(v bool) *UpgradeApplicationApmServiceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpgradeApplicationApmServiceResponseBody) SetTraceId(v string) *UpgradeApplicationApmServiceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpgradeApplicationApmServiceResponseBodyData struct {
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpgradeApplicationApmServiceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeApplicationApmServiceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeApplicationApmServiceResponseBodyData) SetStatus(v bool) *UpgradeApplicationApmServiceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type UpgradeApplicationApmServiceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeApplicationApmServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpgradeApplicationApmServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeApplicationApmServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeApplicationApmServiceResponse) SetHeaders(v map[string]*string) *UpgradeApplicationApmServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeApplicationApmServiceResponse) SetStatusCode(v int32) *UpgradeApplicationApmServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeApplicationApmServiceResponse) SetBody(v *UpgradeApplicationApmServiceResponseBody) *UpgradeApplicationApmServiceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -47352,6 +47872,62 @@ func (client *Client) DisableApplicationScalingRule(request *DisableApplicationS
 	return _result, _err
 }
 
+// @param request - DowngradeApplicationApmServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DowngradeApplicationApmServiceResponse
+func (client *Client) DowngradeApplicationApmServiceWithOptions(request *DowngradeApplicationApmServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DowngradeApplicationApmServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DowngradeApplicationApmService"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/app/applicationApmService"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DowngradeApplicationApmServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DowngradeApplicationApmServiceRequest
+//
+// @return DowngradeApplicationApmServiceResponse
+func (client *Client) DowngradeApplicationApmService(request *DowngradeApplicationApmServiceRequest) (_result *DowngradeApplicationApmServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DowngradeApplicationApmServiceResponse{}
+	_body, _err := client.DowngradeApplicationApmServiceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Enables an auto scaling policy for an application.
@@ -47505,6 +48081,78 @@ func (client *Client) ExecJob(request *ExecJobRequest) (_result *ExecJobResponse
 	headers := make(map[string]*string)
 	_result = &ExecJobResponse{}
 	_body, _err := client.ExecJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用基本信息
+//
+// @param request - GetApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationResponse
+func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplication"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/app/getApplication"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用基本信息
+//
+// @param request - GetApplicationRequest
+//
+// @return GetApplicationResponse
+func (client *Client) GetApplication(request *GetApplicationRequest) (_result *GetApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetApplicationResponse{}
+	_body, _err := client.GetApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51878,6 +52526,62 @@ func (client *Client) UpdateWebCustomDomain(DomainName *string, request *UpdateW
 	headers := make(map[string]*string)
 	_result = &UpdateWebCustomDomainResponse{}
 	_body, _err := client.UpdateWebCustomDomainWithOptions(DomainName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpgradeApplicationApmServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeApplicationApmServiceResponse
+func (client *Client) UpgradeApplicationApmServiceWithOptions(request *UpgradeApplicationApmServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpgradeApplicationApmServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeApplicationApmService"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/app/applicationApmService"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeApplicationApmServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpgradeApplicationApmServiceRequest
+//
+// @return UpgradeApplicationApmServiceResponse
+func (client *Client) UpgradeApplicationApmService(request *UpgradeApplicationApmServiceRequest) (_result *UpgradeApplicationApmServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpgradeApplicationApmServiceResponse{}
+	_body, _err := client.UpgradeApplicationApmServiceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

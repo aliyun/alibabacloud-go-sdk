@@ -1,3 +1,9 @@
+2024-10-10 Version: v1.24.0
+- Support API DowngradeApplicationApmService.
+- Support API GetApplication.
+- Support API UpgradeApplicationApmService.
+
+
 2024-09-24 Version: v1.23.9
 - Update API ListApplications: update response param.
 - Update API RescaleApplicationVertically: add param autoEnableApplicationScalingRule.
