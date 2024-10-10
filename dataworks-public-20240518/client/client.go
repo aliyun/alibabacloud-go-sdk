@@ -100,6 +100,1137 @@ func (s *AbolishDeploymentResponse) SetBody(v *AbolishDeploymentResponseBody) *A
 	return s
 }
 
+type CloneDataSourceRequest struct {
+	// example:
+	//
+	// demo_holo_datasource
+	CloneDataSourceName *string `json:"CloneDataSourceName,omitempty" xml:"CloneDataSourceName,omitempty"`
+	// example:
+	//
+	// 16036
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CloneDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneDataSourceRequest) SetCloneDataSourceName(v string) *CloneDataSourceRequest {
+	s.CloneDataSourceName = &v
+	return s
+}
+
+func (s *CloneDataSourceRequest) SetId(v int64) *CloneDataSourceRequest {
+	s.Id = &v
+	return s
+}
+
+type CloneDataSourceResponseBody struct {
+	// example:
+	//
+	// 19715
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// FCD583B9-346B-5E75-82C1-4A7C192C48DB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CloneDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloneDataSourceResponseBody) SetId(v int64) *CloneDataSourceResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CloneDataSourceResponseBody) SetRequestId(v string) *CloneDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CloneDataSourceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloneDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloneDataSourceResponse) SetHeaders(v map[string]*string) *CloneDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloneDataSourceResponse) SetStatusCode(v int32) *CloneDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloneDataSourceResponse) SetBody(v *CloneDataSourceResponseBody) *CloneDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDIJobRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	DestinationDataSourceSettings []*CreateDIJobRequestDestinationDataSourceSettings `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hologres
+	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysql_to_holo_sync_8772
+	JobName     *string                        `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobSettings *CreateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FullAndRealtimeIncremental
+	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	ResourceSettings *CreateDIJobRequestResourceSettings `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
+	// This parameter is required.
+	SourceDataSourceSettings []*CreateDIJobRequestSourceDataSourceSettings `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
+	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+	// This parameter is required.
+	TableMappings       []*CreateDIJobRequestTableMappings       `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	TransformationRules []*CreateDIJobRequestTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+}
+
+func (s CreateDIJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequest) SetDescription(v string) *CreateDIJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetDestinationDataSourceSettings(v []*CreateDIJobRequestDestinationDataSourceSettings) *CreateDIJobRequest {
+	s.DestinationDataSourceSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetDestinationDataSourceType(v string) *CreateDIJobRequest {
+	s.DestinationDataSourceType = &v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetJobName(v string) *CreateDIJobRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetJobSettings(v *CreateDIJobRequestJobSettings) *CreateDIJobRequest {
+	s.JobSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetMigrationType(v string) *CreateDIJobRequest {
+	s.MigrationType = &v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetProjectId(v int64) *CreateDIJobRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetResourceSettings(v *CreateDIJobRequestResourceSettings) *CreateDIJobRequest {
+	s.ResourceSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetSourceDataSourceSettings(v []*CreateDIJobRequestSourceDataSourceSettings) *CreateDIJobRequest {
+	s.SourceDataSourceSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetSourceDataSourceType(v string) *CreateDIJobRequest {
+	s.SourceDataSourceType = &v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetTableMappings(v []*CreateDIJobRequestTableMappings) *CreateDIJobRequest {
+	s.TableMappings = v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetTransformationRules(v []*CreateDIJobRequestTransformationRules) *CreateDIJobRequest {
+	s.TransformationRules = v
+	return s
+}
+
+type CreateDIJobRequestDestinationDataSourceSettings struct {
+	// example:
+	//
+	// holo_datasource_1
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+}
+
+func (s CreateDIJobRequestDestinationDataSourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestDestinationDataSourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestDestinationDataSourceSettings) SetDataSourceName(v string) *CreateDIJobRequestDestinationDataSourceSettings {
+	s.DataSourceName = &v
+	return s
+}
+
+type CreateDIJobRequestJobSettings struct {
+	// example:
+	//
+	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+	ChannelSettings        *string                                                `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	ColumnDataTypeSettings []*CreateDIJobRequestJobSettingsColumnDataTypeSettings `json:"ColumnDataTypeSettings,omitempty" xml:"ColumnDataTypeSettings,omitempty" type:"Repeated"`
+	CycleScheduleSettings  *CreateDIJobRequestJobSettingsCycleScheduleSettings    `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
+	DdlHandlingSettings    []*CreateDIJobRequestJobSettingsDdlHandlingSettings    `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
+	RuntimeSettings        []*CreateDIJobRequestJobSettingsRuntimeSettings        `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
+}
+
+func (s CreateDIJobRequestJobSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestJobSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestJobSettings) SetChannelSettings(v string) *CreateDIJobRequestJobSettings {
+	s.ChannelSettings = &v
+	return s
+}
+
+func (s *CreateDIJobRequestJobSettings) SetColumnDataTypeSettings(v []*CreateDIJobRequestJobSettingsColumnDataTypeSettings) *CreateDIJobRequestJobSettings {
+	s.ColumnDataTypeSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequestJobSettings) SetCycleScheduleSettings(v *CreateDIJobRequestJobSettingsCycleScheduleSettings) *CreateDIJobRequestJobSettings {
+	s.CycleScheduleSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequestJobSettings) SetDdlHandlingSettings(v []*CreateDIJobRequestJobSettingsDdlHandlingSettings) *CreateDIJobRequestJobSettings {
+	s.DdlHandlingSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequestJobSettings) SetRuntimeSettings(v []*CreateDIJobRequestJobSettingsRuntimeSettings) *CreateDIJobRequestJobSettings {
+	s.RuntimeSettings = v
+	return s
+}
+
+type CreateDIJobRequestJobSettingsColumnDataTypeSettings struct {
+	// example:
+	//
+	// text
+	DestinationDataType *string `json:"DestinationDataType,omitempty" xml:"DestinationDataType,omitempty"`
+	// example:
+	//
+	// bigint
+	SourceDataType *string `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
+}
+
+func (s CreateDIJobRequestJobSettingsColumnDataTypeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestJobSettingsColumnDataTypeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestJobSettingsColumnDataTypeSettings) SetDestinationDataType(v string) *CreateDIJobRequestJobSettingsColumnDataTypeSettings {
+	s.DestinationDataType = &v
+	return s
+}
+
+func (s *CreateDIJobRequestJobSettingsColumnDataTypeSettings) SetSourceDataType(v string) *CreateDIJobRequestJobSettingsColumnDataTypeSettings {
+	s.SourceDataType = &v
+	return s
+}
+
+type CreateDIJobRequestJobSettingsCycleScheduleSettings struct {
+	// example:
+	//
+	// Full
+	CycleMigrationType *string `json:"CycleMigrationType,omitempty" xml:"CycleMigrationType,omitempty"`
+	// example:
+	//
+	// bizdate=$bizdate
+	ScheduleParameters *string `json:"ScheduleParameters,omitempty" xml:"ScheduleParameters,omitempty"`
+}
+
+func (s CreateDIJobRequestJobSettingsCycleScheduleSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestJobSettingsCycleScheduleSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestJobSettingsCycleScheduleSettings) SetCycleMigrationType(v string) *CreateDIJobRequestJobSettingsCycleScheduleSettings {
+	s.CycleMigrationType = &v
+	return s
+}
+
+func (s *CreateDIJobRequestJobSettingsCycleScheduleSettings) SetScheduleParameters(v string) *CreateDIJobRequestJobSettingsCycleScheduleSettings {
+	s.ScheduleParameters = &v
+	return s
+}
+
+type CreateDIJobRequestJobSettingsDdlHandlingSettings struct {
+	// example:
+	//
+	// Critical
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// AddColumn
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDIJobRequestJobSettingsDdlHandlingSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestJobSettingsDdlHandlingSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestJobSettingsDdlHandlingSettings) SetAction(v string) *CreateDIJobRequestJobSettingsDdlHandlingSettings {
+	s.Action = &v
+	return s
+}
+
+func (s *CreateDIJobRequestJobSettingsDdlHandlingSettings) SetType(v string) *CreateDIJobRequestJobSettingsDdlHandlingSettings {
+	s.Type = &v
+	return s
+}
+
+type CreateDIJobRequestJobSettingsRuntimeSettings struct {
+	// example:
+	//
+	// runtime.offline.concurrent
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDIJobRequestJobSettingsRuntimeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestJobSettingsRuntimeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestJobSettingsRuntimeSettings) SetName(v string) *CreateDIJobRequestJobSettingsRuntimeSettings {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDIJobRequestJobSettingsRuntimeSettings) SetValue(v string) *CreateDIJobRequestJobSettingsRuntimeSettings {
+	s.Value = &v
+	return s
+}
+
+type CreateDIJobRequestResourceSettings struct {
+	OfflineResourceSettings  *CreateDIJobRequestResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	RealtimeResourceSettings *CreateDIJobRequestResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	ScheduleResourceSettings *CreateDIJobRequestResourceSettingsScheduleResourceSettings `json:"ScheduleResourceSettings,omitempty" xml:"ScheduleResourceSettings,omitempty" type:"Struct"`
+}
+
+func (s CreateDIJobRequestResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestResourceSettings) SetOfflineResourceSettings(v *CreateDIJobRequestResourceSettingsOfflineResourceSettings) *CreateDIJobRequestResourceSettings {
+	s.OfflineResourceSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequestResourceSettings) SetRealtimeResourceSettings(v *CreateDIJobRequestResourceSettingsRealtimeResourceSettings) *CreateDIJobRequestResourceSettings {
+	s.RealtimeResourceSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequestResourceSettings) SetScheduleResourceSettings(v *CreateDIJobRequestResourceSettingsScheduleResourceSettings) *CreateDIJobRequestResourceSettings {
+	s.ScheduleResourceSettings = v
+	return s
+}
+
+type CreateDIJobRequestResourceSettingsOfflineResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_111_222
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s CreateDIJobRequestResourceSettingsOfflineResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestResourceSettingsOfflineResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestResourceSettingsOfflineResourceSettings) SetRequestedCu(v float64) *CreateDIJobRequestResourceSettingsOfflineResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *CreateDIJobRequestResourceSettingsOfflineResourceSettings) SetResourceGroupIdentifier(v string) *CreateDIJobRequestResourceSettingsOfflineResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type CreateDIJobRequestResourceSettingsRealtimeResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_111_222
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s CreateDIJobRequestResourceSettingsRealtimeResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestResourceSettingsRealtimeResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestResourceSettingsRealtimeResourceSettings) SetRequestedCu(v float64) *CreateDIJobRequestResourceSettingsRealtimeResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *CreateDIJobRequestResourceSettingsRealtimeResourceSettings) SetResourceGroupIdentifier(v string) *CreateDIJobRequestResourceSettingsRealtimeResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type CreateDIJobRequestResourceSettingsScheduleResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_235454102432001_1579085295030
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s CreateDIJobRequestResourceSettingsScheduleResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestResourceSettingsScheduleResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestResourceSettingsScheduleResourceSettings) SetRequestedCu(v float64) *CreateDIJobRequestResourceSettingsScheduleResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *CreateDIJobRequestResourceSettingsScheduleResourceSettings) SetResourceGroupIdentifier(v string) *CreateDIJobRequestResourceSettingsScheduleResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type CreateDIJobRequestSourceDataSourceSettings struct {
+	// example:
+	//
+	// mysql_datasource_1
+	DataSourceName       *string                                                         `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceProperties *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties `json:"DataSourceProperties,omitempty" xml:"DataSourceProperties,omitempty" type:"Struct"`
+}
+
+func (s CreateDIJobRequestSourceDataSourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestSourceDataSourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestSourceDataSourceSettings) SetDataSourceName(v string) *CreateDIJobRequestSourceDataSourceSettings {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *CreateDIJobRequestSourceDataSourceSettings) SetDataSourceProperties(v *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) *CreateDIJobRequestSourceDataSourceSettings {
+	s.DataSourceProperties = v
+	return s
+}
+
+type CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties struct {
+	// example:
+	//
+	// UTF-8
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// example:
+	//
+	// GMT+8
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+}
+
+func (s CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) SetEncoding(v string) *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties {
+	s.Encoding = &v
+	return s
+}
+
+func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) SetTimezone(v string) *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties {
+	s.Timezone = &v
+	return s
+}
+
+type CreateDIJobRequestTableMappings struct {
+	SourceObjectSelectionRules []*CreateDIJobRequestTableMappingsSourceObjectSelectionRules `json:"SourceObjectSelectionRules,omitempty" xml:"SourceObjectSelectionRules,omitempty" type:"Repeated"`
+	TransformationRules        []*CreateDIJobRequestTableMappingsTransformationRules        `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+}
+
+func (s CreateDIJobRequestTableMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestTableMappings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestTableMappings) SetSourceObjectSelectionRules(v []*CreateDIJobRequestTableMappingsSourceObjectSelectionRules) *CreateDIJobRequestTableMappings {
+	s.SourceObjectSelectionRules = v
+	return s
+}
+
+func (s *CreateDIJobRequestTableMappings) SetTransformationRules(v []*CreateDIJobRequestTableMappingsTransformationRules) *CreateDIJobRequestTableMappings {
+	s.TransformationRules = v
+	return s
+}
+
+type CreateDIJobRequestTableMappingsSourceObjectSelectionRules struct {
+	// example:
+	//
+	// Include
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// mysql_table_1
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
+	// Exact
+	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// example:
+	//
+	// Table
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+}
+
+func (s CreateDIJobRequestTableMappingsSourceObjectSelectionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestTableMappingsSourceObjectSelectionRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestTableMappingsSourceObjectSelectionRules) SetAction(v string) *CreateDIJobRequestTableMappingsSourceObjectSelectionRules {
+	s.Action = &v
+	return s
+}
+
+func (s *CreateDIJobRequestTableMappingsSourceObjectSelectionRules) SetExpression(v string) *CreateDIJobRequestTableMappingsSourceObjectSelectionRules {
+	s.Expression = &v
+	return s
+}
+
+func (s *CreateDIJobRequestTableMappingsSourceObjectSelectionRules) SetExpressionType(v string) *CreateDIJobRequestTableMappingsSourceObjectSelectionRules {
+	s.ExpressionType = &v
+	return s
+}
+
+func (s *CreateDIJobRequestTableMappingsSourceObjectSelectionRules) SetObjectType(v string) *CreateDIJobRequestTableMappingsSourceObjectSelectionRules {
+	s.ObjectType = &v
+	return s
+}
+
+type CreateDIJobRequestTableMappingsTransformationRules struct {
+	// example:
+	//
+	// Rename
+	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// example:
+	//
+	// rename_rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// Table
+	RuleTargetType *string `json:"RuleTargetType,omitempty" xml:"RuleTargetType,omitempty"`
+}
+
+func (s CreateDIJobRequestTableMappingsTransformationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestTableMappingsTransformationRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestTableMappingsTransformationRules) SetRuleActionType(v string) *CreateDIJobRequestTableMappingsTransformationRules {
+	s.RuleActionType = &v
+	return s
+}
+
+func (s *CreateDIJobRequestTableMappingsTransformationRules) SetRuleName(v string) *CreateDIJobRequestTableMappingsTransformationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateDIJobRequestTableMappingsTransformationRules) SetRuleTargetType(v string) *CreateDIJobRequestTableMappingsTransformationRules {
+	s.RuleTargetType = &v
+	return s
+}
+
+type CreateDIJobRequestTransformationRules struct {
+	// example:
+	//
+	// Rename
+	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// example:
+	//
+	// {"expression":"${srcDatasoureName}_${srcDatabaseName}"}
+	RuleExpression *string `json:"RuleExpression,omitempty" xml:"RuleExpression,omitempty"`
+	// example:
+	//
+	// rename_rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// Table
+	RuleTargetType *string `json:"RuleTargetType,omitempty" xml:"RuleTargetType,omitempty"`
+}
+
+func (s CreateDIJobRequestTransformationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobRequestTransformationRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestTransformationRules) SetRuleActionType(v string) *CreateDIJobRequestTransformationRules {
+	s.RuleActionType = &v
+	return s
+}
+
+func (s *CreateDIJobRequestTransformationRules) SetRuleExpression(v string) *CreateDIJobRequestTransformationRules {
+	s.RuleExpression = &v
+	return s
+}
+
+func (s *CreateDIJobRequestTransformationRules) SetRuleName(v string) *CreateDIJobRequestTransformationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateDIJobRequestTransformationRules) SetRuleTargetType(v string) *CreateDIJobRequestTransformationRules {
+	s.RuleTargetType = &v
+	return s
+}
+
+type CreateDIJobShrinkRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	DestinationDataSourceSettingsShrink *string `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hologres
+	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysql_to_holo_sync_8772
+	JobName           *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FullAndRealtimeIncremental
+	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	ResourceSettingsShrink *string `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty"`
+	// This parameter is required.
+	SourceDataSourceSettingsShrink *string `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
+	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+	// This parameter is required.
+	TableMappingsShrink       *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
+	TransformationRulesShrink *string `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty"`
+}
+
+func (s CreateDIJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobShrinkRequest) SetDescription(v string) *CreateDIJobShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetDestinationDataSourceSettingsShrink(v string) *CreateDIJobShrinkRequest {
+	s.DestinationDataSourceSettingsShrink = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetDestinationDataSourceType(v string) *CreateDIJobShrinkRequest {
+	s.DestinationDataSourceType = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetJobName(v string) *CreateDIJobShrinkRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetJobSettingsShrink(v string) *CreateDIJobShrinkRequest {
+	s.JobSettingsShrink = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetMigrationType(v string) *CreateDIJobShrinkRequest {
+	s.MigrationType = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetProjectId(v int64) *CreateDIJobShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetResourceSettingsShrink(v string) *CreateDIJobShrinkRequest {
+	s.ResourceSettingsShrink = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetSourceDataSourceSettingsShrink(v string) *CreateDIJobShrinkRequest {
+	s.SourceDataSourceSettingsShrink = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetSourceDataSourceType(v string) *CreateDIJobShrinkRequest {
+	s.SourceDataSourceType = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetTableMappingsShrink(v string) *CreateDIJobShrinkRequest {
+	s.TableMappingsShrink = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetTransformationRulesShrink(v string) *CreateDIJobShrinkRequest {
+	s.TransformationRulesShrink = &v
+	return s
+}
+
+type CreateDIJobResponseBody struct {
+	// example:
+	//
+	// 11792
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// example:
+	//
+	// 4F6AB6B3-41FB-5EBB-AFB2-0C98D49DA2BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDIJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobResponseBody) SetDIJobId(v int64) *CreateDIJobResponseBody {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *CreateDIJobResponseBody) SetRequestId(v string) *CreateDIJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDIJobResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDIJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDIJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDIJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobResponse) SetHeaders(v map[string]*string) *CreateDIJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDIJobResponse) SetStatusCode(v int32) *CreateDIJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDIJobResponse) SetBody(v *CreateDIJobResponseBody) *CreateDIJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"envType": "Prod",
+	//
+	// 	"regionId": "cn-beijing",
+	//
+	//     "instanceId": "hgprecn-cn-x0r3oun4k001",
+	//
+	//     "database": "testdb",
+	//
+	//     "securityProtocol": "authTypeNone",
+	//
+	//     "authType": "Executor",
+	//
+	//     "authIdentity": "1107550004253538"
+	//
+	// }
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UrlMode
+	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// example:
+	//
+	// this is a holo datasource
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demo_holo_datasource
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceRequest) SetConnectionProperties(v string) *CreateDataSourceRequest {
+	s.ConnectionProperties = &v
+	return s
+}
+
+func (s *CreateDataSourceRequest) SetConnectionPropertiesMode(v string) *CreateDataSourceRequest {
+	s.ConnectionPropertiesMode = &v
+	return s
+}
+
+func (s *CreateDataSourceRequest) SetDescription(v string) *CreateDataSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataSourceRequest) SetName(v string) *CreateDataSourceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataSourceRequest) SetProjectId(v int64) *CreateDataSourceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataSourceRequest) SetType(v string) *CreateDataSourceRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateDataSourceResponseBody struct {
+	// example:
+	//
+	// 22130
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// B62EC203-B39E-5DC1-B5B8-EB3C61707009
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceResponseBody) SetId(v int64) *CreateDataSourceResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDataSourceResponseBody) SetRequestId(v string) *CreateDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDataSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceResponse) SetHeaders(v map[string]*string) *CreateDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataSourceResponse) SetStatusCode(v int32) *CreateDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *CreateDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataSourceSharedRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 144544
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dev
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1107550004253538
+	SharedUser *string `json:"SharedUser,omitempty" xml:"SharedUser,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 106560
+	TargetProjectId *int64 `json:"TargetProjectId,omitempty" xml:"TargetProjectId,omitempty"`
+}
+
+func (s CreateDataSourceSharedRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceSharedRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceSharedRuleRequest) SetDataSourceId(v int64) *CreateDataSourceSharedRuleRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateDataSourceSharedRuleRequest) SetEnvType(v string) *CreateDataSourceSharedRuleRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *CreateDataSourceSharedRuleRequest) SetSharedUser(v string) *CreateDataSourceSharedRuleRequest {
+	s.SharedUser = &v
+	return s
+}
+
+func (s *CreateDataSourceSharedRuleRequest) SetTargetProjectId(v int64) *CreateDataSourceSharedRuleRequest {
+	s.TargetProjectId = &v
+	return s
+}
+
+type CreateDataSourceSharedRuleResponseBody struct {
+	// example:
+	//
+	// 105412
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 46F594E6-84AB-5FA5-8144-6F3D149961E1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDataSourceSharedRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceSharedRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceSharedRuleResponseBody) SetId(v int64) *CreateDataSourceSharedRuleResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDataSourceSharedRuleResponseBody) SetRequestId(v string) *CreateDataSourceSharedRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDataSourceSharedRuleResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataSourceSharedRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataSourceSharedRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceSharedRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceSharedRuleResponse) SetHeaders(v map[string]*string) *CreateDataSourceSharedRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataSourceSharedRuleResponse) SetStatusCode(v int32) *CreateDataSourceSharedRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataSourceSharedRuleResponse) SetBody(v *CreateDataSourceSharedRuleResponseBody) *CreateDataSourceSharedRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDeploymentRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
@@ -448,6 +1579,249 @@ func (s *CreateNodeResponse) SetBody(v *CreateNodeResponseBody) *CreateNodeRespo
 	return s
 }
 
+type CreateProjectRequest struct {
+	// example:
+	//
+	// rg-acfmzbn7pti3zff
+	AliyunResourceGroupId *string                                   `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTags    []*CreateProjectRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// example:
+	//
+	// true
+	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// This parameter is required.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sora_finance
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// true
+	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+}
+
+func (s CreateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequest) SetAliyunResourceGroupId(v string) *CreateProjectRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetAliyunResourceTags(v []*CreateProjectRequestAliyunResourceTags) *CreateProjectRequest {
+	s.AliyunResourceTags = v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDescription(v string) *CreateProjectRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDevEnvironmentEnabled(v bool) *CreateProjectRequest {
+	s.DevEnvironmentEnabled = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDevRoleDisabled(v bool) *CreateProjectRequest {
+	s.DevRoleDisabled = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDisplayName(v string) *CreateProjectRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetName(v string) *CreateProjectRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetPaiTaskEnabled(v bool) *CreateProjectRequest {
+	s.PaiTaskEnabled = &v
+	return s
+}
+
+type CreateProjectRequestAliyunResourceTags struct {
+	// example:
+	//
+	// batch
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// blue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateProjectRequestAliyunResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestAliyunResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestAliyunResourceTags) SetKey(v string) *CreateProjectRequestAliyunResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateProjectRequestAliyunResourceTags) SetValue(v string) *CreateProjectRequestAliyunResourceTags {
+	s.Value = &v
+	return s
+}
+
+type CreateProjectShrinkRequest struct {
+	// example:
+	//
+	// rg-acfmzbn7pti3zff
+	AliyunResourceGroupId    *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
+	// This parameter is required.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// example:
+	//
+	// true
+	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// This parameter is required.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sora_finance
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// true
+	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+}
+
+func (s CreateProjectShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectShrinkRequest) SetAliyunResourceGroupId(v string) *CreateProjectShrinkRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetAliyunResourceTagsShrink(v string) *CreateProjectShrinkRequest {
+	s.AliyunResourceTagsShrink = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDescription(v string) *CreateProjectShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDevEnvironmentEnabled(v bool) *CreateProjectShrinkRequest {
+	s.DevEnvironmentEnabled = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDevRoleDisabled(v bool) *CreateProjectShrinkRequest {
+	s.DevRoleDisabled = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDisplayName(v string) *CreateProjectShrinkRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetName(v string) *CreateProjectShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetPaiTaskEnabled(v bool) *CreateProjectShrinkRequest {
+	s.PaiTaskEnabled = &v
+	return s
+}
+
+type CreateProjectResponseBody struct {
+	// example:
+	//
+	// 123456
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// AFBB799F-8578-51C5-A766-E922EDB8XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBody) SetProjectId(v int64) *CreateProjectResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
 type CreateResourceRequest struct {
 	// 资源文件的项目id
 	//
@@ -620,6 +1994,244 @@ func (s *CreateWorkflowDefinitionResponse) SetStatusCode(v int32) *CreateWorkflo
 }
 
 func (s *CreateWorkflowDefinitionResponse) SetBody(v *CreateWorkflowDefinitionResponseBody) *CreateWorkflowDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDIJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11126
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+}
+
+func (s DeleteDIJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDIJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDIJobRequest) SetDIJobId(v int64) *DeleteDIJobRequest {
+	s.DIJobId = &v
+	return s
+}
+
+type DeleteDIJobResponseBody struct {
+	// example:
+	//
+	// D33D4A51-5845-579A-B4BA-FAADD0F83D53
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDIJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDIJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDIJobResponseBody) SetRequestId(v string) *DeleteDIJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDIJobResponseBody) SetSuccess(v bool) *DeleteDIJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDIJobResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDIJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDIJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDIJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDIJobResponse) SetHeaders(v map[string]*string) *DeleteDIJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDIJobResponse) SetStatusCode(v int32) *DeleteDIJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDIJobResponse) SetBody(v *DeleteDIJobResponseBody) *DeleteDIJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataSourceRequest struct {
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceRequest) SetId(v int64) *DeleteDataSourceRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteDataSourceResponseBody struct {
+	// example:
+	//
+	// B56432E0-2112-5C97-88D0-AA0AE5C75C74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceResponseBody) SetRequestId(v string) *DeleteDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetSuccess(v bool) *DeleteDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDataSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceResponse) SetHeaders(v map[string]*string) *DeleteDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataSourceResponse) SetStatusCode(v int32) *DeleteDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *DeleteDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataSourceSharedRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 22127
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteDataSourceSharedRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceSharedRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceSharedRuleRequest) SetId(v int64) *DeleteDataSourceSharedRuleRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteDataSourceSharedRuleResponseBody struct {
+	// example:
+	//
+	// 64B-587A-8CED-969E1973887FXXX-TT
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDataSourceSharedRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceSharedRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceSharedRuleResponseBody) SetRequestId(v string) *DeleteDataSourceSharedRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataSourceSharedRuleResponseBody) SetSuccess(v bool) *DeleteDataSourceSharedRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDataSourceSharedRuleResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDataSourceSharedRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDataSourceSharedRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceSharedRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceSharedRuleResponse) SetHeaders(v map[string]*string) *DeleteDataSourceSharedRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataSourceSharedRuleResponse) SetStatusCode(v int32) *DeleteDataSourceSharedRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataSourceSharedRuleResponse) SetBody(v *DeleteDataSourceSharedRuleResponseBody) *DeleteDataSourceSharedRuleResponse {
 	s.Body = v
 	return s
 }
@@ -802,6 +2414,77 @@ func (s *DeleteNodeResponse) SetStatusCode(v int32) *DeleteNodeResponse {
 }
 
 func (s *DeleteNodeResponse) SetBody(v *DeleteNodeResponseBody) *DeleteNodeResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectRequest) SetId(v int64) *DeleteProjectRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteProjectResponseBody struct {
+	// example:
+	//
+	// AFBB799F-8578-51C5-A766-E922EDB8XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
 	s.Body = v
 	return s
 }
@@ -1086,6 +2769,1022 @@ func (s *ExecDeploymentStageResponse) SetStatusCode(v int32) *ExecDeploymentStag
 }
 
 func (s *ExecDeploymentStageResponse) SetBody(v *ExecDeploymentStageResponseBody) *ExecDeploymentStageResponse {
+	s.Body = v
+	return s
+}
+
+type GetDIJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11588
+	DIJobId *string `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// example:
+	//
+	// true
+	WithDetails *bool `json:"WithDetails,omitempty" xml:"WithDetails,omitempty"`
+}
+
+func (s GetDIJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobRequest) SetDIJobId(v string) *GetDIJobRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *GetDIJobRequest) SetWithDetails(v bool) *GetDIJobRequest {
+	s.WithDetails = &v
+	return s
+}
+
+type GetDIJobResponseBody struct {
+	PagingInfo *GetDIJobResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// 代表创建时间的资源属性字段
+	//
+	// example:
+	//
+	// C99E2BE6-9DEA-5C2E-8F51-1DDCFEADE490
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDIJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBody) SetPagingInfo(v *GetDIJobResponseBodyPagingInfo) *GetDIJobResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *GetDIJobResponseBody) SetRequestId(v string) *GetDIJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 32601
+	DIJobId *string `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// example:
+	//
+	// description
+	Description                   *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationDataSourceSettings []*GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Hologres
+	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// example:
+	//
+	// imp_ods_dms_det_dealer_info_df
+	JobName     *string                                    `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobSettings *GetDIJobResponseBodyPagingInfoJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
+	// example:
+	//
+	// FullAndRealtimeIncremental
+	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// example:
+	//
+	// 98330
+	ProjectId                *int64                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ResourceSettings         *GetDIJobResponseBodyPagingInfoResourceSettings           `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
+	SourceDataSourceSettings []*GetDIJobResponseBodyPagingInfoSourceDataSourceSettings `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Mysql
+	SourceDataSourceType *string                                              `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+	TableMappings        []*GetDIJobResponseBodyPagingInfoTableMappings       `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	TransformationRules  []*GetDIJobResponseBodyPagingInfoTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+}
+
+func (s GetDIJobResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetDIJobId(v string) *GetDIJobResponseBodyPagingInfo {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetDescription(v string) *GetDIJobResponseBodyPagingInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetDestinationDataSourceSettings(v []*GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings) *GetDIJobResponseBodyPagingInfo {
+	s.DestinationDataSourceSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetDestinationDataSourceType(v string) *GetDIJobResponseBodyPagingInfo {
+	s.DestinationDataSourceType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetJobName(v string) *GetDIJobResponseBodyPagingInfo {
+	s.JobName = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetJobSettings(v *GetDIJobResponseBodyPagingInfoJobSettings) *GetDIJobResponseBodyPagingInfo {
+	s.JobSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetMigrationType(v string) *GetDIJobResponseBodyPagingInfo {
+	s.MigrationType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetProjectId(v int64) *GetDIJobResponseBodyPagingInfo {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetResourceSettings(v *GetDIJobResponseBodyPagingInfoResourceSettings) *GetDIJobResponseBodyPagingInfo {
+	s.ResourceSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetSourceDataSourceSettings(v []*GetDIJobResponseBodyPagingInfoSourceDataSourceSettings) *GetDIJobResponseBodyPagingInfo {
+	s.SourceDataSourceSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetSourceDataSourceType(v string) *GetDIJobResponseBodyPagingInfo {
+	s.SourceDataSourceType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetTableMappings(v []*GetDIJobResponseBodyPagingInfoTableMappings) *GetDIJobResponseBodyPagingInfo {
+	s.TableMappings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetTransformationRules(v []*GetDIJobResponseBodyPagingInfoTransformationRules) *GetDIJobResponseBodyPagingInfo {
+	s.TransformationRules = v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings struct {
+	// example:
+	//
+	// dw_mysql
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings) SetDataSourceName(v string) *GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings {
+	s.DataSourceName = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoJobSettings struct {
+	// example:
+	//
+	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+	ChannelSettings        *string                                                            `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	ColumnDataTypeSettings []*GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings `json:"ColumnDataTypeSettings,omitempty" xml:"ColumnDataTypeSettings,omitempty" type:"Repeated"`
+	CycleScheduleSettings  *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings    `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
+	DdlHandlingSettings    []*GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings    `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
+	RuntimeSettings        []*GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings        `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettings) SetChannelSettings(v string) *GetDIJobResponseBodyPagingInfoJobSettings {
+	s.ChannelSettings = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettings) SetColumnDataTypeSettings(v []*GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings) *GetDIJobResponseBodyPagingInfoJobSettings {
+	s.ColumnDataTypeSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettings) SetCycleScheduleSettings(v *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings) *GetDIJobResponseBodyPagingInfoJobSettings {
+	s.CycleScheduleSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettings) SetDdlHandlingSettings(v []*GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings) *GetDIJobResponseBodyPagingInfoJobSettings {
+	s.DdlHandlingSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettings) SetRuntimeSettings(v []*GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings) *GetDIJobResponseBodyPagingInfoJobSettings {
+	s.RuntimeSettings = v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings struct {
+	// example:
+	//
+	// text
+	DestinationDataType *string `json:"DestinationDataType,omitempty" xml:"DestinationDataType,omitempty"`
+	// example:
+	//
+	// bigint
+	SourceDataType *string `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings) SetDestinationDataType(v string) *GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings {
+	s.DestinationDataType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings) SetSourceDataType(v string) *GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings {
+	s.SourceDataType = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings struct {
+	// example:
+	//
+	// Full
+	CycleMigrationType *string `json:"CycleMigrationType,omitempty" xml:"CycleMigrationType,omitempty"`
+	// example:
+	//
+	// bizdate=$bizdate
+	ScheduleParameters *string `json:"ScheduleParameters,omitempty" xml:"ScheduleParameters,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings) SetCycleMigrationType(v string) *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings {
+	s.CycleMigrationType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings) SetScheduleParameters(v string) *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings {
+	s.ScheduleParameters = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings struct {
+	// example:
+	//
+	// Ignore
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// CreateTable
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings) SetAction(v string) *GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings {
+	s.Action = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings) SetType(v string) *GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings {
+	s.Type = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings struct {
+	// example:
+	//
+	// runtime.offline.concurrent
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings) SetName(v string) *GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings) SetValue(v string) *GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings {
+	s.Value = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoResourceSettings struct {
+	OfflineResourceSettings  *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	RealtimeResourceSettings *GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	ScheduleResourceSettings *GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings `json:"ScheduleResourceSettings,omitempty" xml:"ScheduleResourceSettings,omitempty" type:"Struct"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettings) SetOfflineResourceSettings(v *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings) *GetDIJobResponseBodyPagingInfoResourceSettings {
+	s.OfflineResourceSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettings) SetRealtimeResourceSettings(v *GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings) *GetDIJobResponseBodyPagingInfoResourceSettings {
+	s.RealtimeResourceSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettings) SetScheduleResourceSettings(v *GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings) *GetDIJobResponseBodyPagingInfoResourceSettings {
+	s.ScheduleResourceSettings = v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_7708_1667792816832
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings) SetRequestedCu(v float64) *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings) SetResourceGroupIdentifier(v string) *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_235454102432001_1579085295030
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings) SetRequestedCu(v float64) *GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings) SetResourceGroupIdentifier(v string) *GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_235454102432001_1718359176885
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings) SetRequestedCu(v float64) *GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings) SetResourceGroupIdentifier(v string) *GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoSourceDataSourceSettings struct {
+	// example:
+	//
+	// dw_mysql
+	DataSourceName       *string                                                                     `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceProperties *GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties `json:"DataSourceProperties,omitempty" xml:"DataSourceProperties,omitempty" type:"Struct"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoSourceDataSourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoSourceDataSourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoSourceDataSourceSettings) SetDataSourceName(v string) *GetDIJobResponseBodyPagingInfoSourceDataSourceSettings {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoSourceDataSourceSettings) SetDataSourceProperties(v *GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties) *GetDIJobResponseBodyPagingInfoSourceDataSourceSettings {
+	s.DataSourceProperties = v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties struct {
+	// example:
+	//
+	// UTF-8
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// example:
+	//
+	// GMT+8
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties) SetEncoding(v string) *GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties {
+	s.Encoding = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties) SetTimezone(v string) *GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties {
+	s.Timezone = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoTableMappings struct {
+	SourceObjectSelectionRules []*GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules `json:"SourceObjectSelectionRules,omitempty" xml:"SourceObjectSelectionRules,omitempty" type:"Repeated"`
+	TransformationRules        []*GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules        `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoTableMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoTableMappings) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappings) SetSourceObjectSelectionRules(v []*GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules) *GetDIJobResponseBodyPagingInfoTableMappings {
+	s.SourceObjectSelectionRules = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappings) SetTransformationRules(v []*GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules) *GetDIJobResponseBodyPagingInfoTableMappings {
+	s.TransformationRules = v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules struct {
+	// example:
+	//
+	// Include
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// mysql_table_1
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
+	// Exact
+	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// example:
+	//
+	// Table
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules) SetAction(v string) *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules {
+	s.Action = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules) SetExpression(v string) *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules) SetExpressionType(v string) *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules {
+	s.ExpressionType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules) SetObjectType(v string) *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules {
+	s.ObjectType = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules struct {
+	// example:
+	//
+	// AddColumn
+	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// example:
+	//
+	// rename_rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// Table
+	RuleTargetType *string `json:"RuleTargetType,omitempty" xml:"RuleTargetType,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules) SetRuleActionType(v string) *GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules {
+	s.RuleActionType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules) SetRuleName(v string) *GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules) SetRuleTargetType(v string) *GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules {
+	s.RuleTargetType = &v
+	return s
+}
+
+type GetDIJobResponseBodyPagingInfoTransformationRules struct {
+	// example:
+	//
+	// Rename
+	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// example:
+	//
+	// {"expression":"${srcDatasoureName}_${srcDatabaseName}"}
+	RuleExpression *string `json:"RuleExpression,omitempty" xml:"RuleExpression,omitempty"`
+	// example:
+	//
+	// rename_rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// Table
+	RuleTargetType *string `json:"RuleTargetType,omitempty" xml:"RuleTargetType,omitempty"`
+}
+
+func (s GetDIJobResponseBodyPagingInfoTransformationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponseBodyPagingInfoTransformationRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTransformationRules) SetRuleActionType(v string) *GetDIJobResponseBodyPagingInfoTransformationRules {
+	s.RuleActionType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTransformationRules) SetRuleExpression(v string) *GetDIJobResponseBodyPagingInfoTransformationRules {
+	s.RuleExpression = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTransformationRules) SetRuleName(v string) *GetDIJobResponseBodyPagingInfoTransformationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfoTransformationRules) SetRuleTargetType(v string) *GetDIJobResponseBodyPagingInfoTransformationRules {
+	s.RuleTargetType = &v
+	return s
+}
+
+type GetDIJobResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDIJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDIJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobResponse) SetHeaders(v map[string]*string) *GetDIJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDIJobResponse) SetStatusCode(v int32) *GetDIJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDIJobResponse) SetBody(v *GetDIJobResponseBody) *GetDIJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetDIJobLogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// example:
+	//
+	// 10
+	FailoverId *int64 `json:"FailoverId,omitempty" xml:"FailoverId,omitempty"`
+	// example:
+	//
+	// 6153616438
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetDIJobLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobLogRequest) SetDIJobId(v int64) *GetDIJobLogRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *GetDIJobLogRequest) SetFailoverId(v int64) *GetDIJobLogRequest {
+	s.FailoverId = &v
+	return s
+}
+
+func (s *GetDIJobLogRequest) SetInstanceId(v int64) *GetDIJobLogRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetDIJobLogResponseBody struct {
+	// 代表资源一级ID的资源属性字段
+	//
+	// example:
+	//
+	// >>>>>>>> stdout:n++++++++++++++++++executing sql: create database if not exists jindo_test location \\"oss://pangbei-hdfs/tmp/hive\\" n++n
+	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
+	// example:
+	//
+	// 1AFAE64E-D1BE-432B-A9****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDIJobLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobLogResponseBody) SetLog(v string) *GetDIJobLogResponseBody {
+	s.Log = &v
+	return s
+}
+
+func (s *GetDIJobLogResponseBody) SetRequestId(v string) *GetDIJobLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDIJobLogResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDIJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDIJobLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDIJobLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDIJobLogResponse) SetHeaders(v map[string]*string) *GetDIJobLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDIJobLogResponse) SetStatusCode(v int32) *GetDIJobLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDIJobLogResponse) SetBody(v *GetDIJobLogResponseBody) *GetDIJobLogResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 16035
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceRequest) SetId(v int64) *GetDataSourceRequest {
+	s.Id = &v
+	return s
+}
+
+type GetDataSourceResponseBody struct {
+	DataSource *GetDataSourceResponseBodyDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9252F32F-D855-549E-8898-61CF5A733050
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceResponseBody) SetDataSource(v *GetDataSourceResponseBodyDataSource) *GetDataSourceResponseBody {
+	s.DataSource = v
+	return s
+}
+
+func (s *GetDataSourceResponseBody) SetRequestId(v string) *GetDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataSourceResponseBodyDataSource struct {
+	// example:
+	//
+	// {
+	//
+	// 	"envType": "Prod",
+	//
+	// 	"regionId": "cn-beijing",
+	//
+	//     "instanceId": "hgprecn-cn-x0r3oun4k001",
+	//
+	//     "database": "testdb",
+	//
+	//     "securityProtocol": "authTypeNone",
+	//
+	//     "authType": "Executor",
+	//
+	//     "authIdentity": "1107550004253538"
+	//
+	// }
+	ConnectionProperties interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// example:
+	//
+	// UrlMode
+	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// example:
+	//
+	// 1698286929333
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1107550004253538
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 16738
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1698286929333
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1107550004253538
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 52660
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 1107550004253538:cn-beijing:holo:hgprecn-cn-x0r3oun4k001:testdb
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// example:
+	//
+	// hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataSourceResponseBodyDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceResponseBodyDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetConnectionProperties(v interface{}) *GetDataSourceResponseBodyDataSource {
+	s.ConnectionProperties = v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetConnectionPropertiesMode(v string) *GetDataSourceResponseBodyDataSource {
+	s.ConnectionPropertiesMode = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetCreateTime(v int64) *GetDataSourceResponseBodyDataSource {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetCreateUser(v string) *GetDataSourceResponseBodyDataSource {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetDescription(v string) *GetDataSourceResponseBodyDataSource {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetId(v int64) *GetDataSourceResponseBodyDataSource {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetModifyTime(v int64) *GetDataSourceResponseBodyDataSource {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetModifyUser(v string) *GetDataSourceResponseBodyDataSource {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetName(v string) *GetDataSourceResponseBodyDataSource {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetProjectId(v int64) *GetDataSourceResponseBodyDataSource {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetQualifiedName(v string) *GetDataSourceResponseBodyDataSource {
+	s.QualifiedName = &v
+	return s
+}
+
+func (s *GetDataSourceResponseBodyDataSource) SetType(v string) *GetDataSourceResponseBodyDataSource {
+	s.Type = &v
+	return s
+}
+
+type GetDataSourceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceResponse) SetHeaders(v map[string]*string) *GetDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataSourceResponse) SetStatusCode(v int32) *GetDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataSourceResponse) SetBody(v *GetDataSourceResponseBody) *GetDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -1656,6 +4355,213 @@ func (s *GetNodeResponse) SetBody(v *GetNodeResponseBody) *GetNodeResponse {
 	return s
 }
 
+type GetProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectRequest) SetId(v int64) *GetProjectRequest {
+	s.Id = &v
+	return s
+}
+
+type GetProjectResponseBody struct {
+	Project *GetProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBody) SetProject(v *GetProjectResponseBodyProject) *GetProjectResponseBody {
+	s.Project = v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetProjectResponseBodyProject struct {
+	// example:
+	//
+	// rg-acfmzbn7pti3zfa
+	AliyunResourceGroupId *string                                            `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTags    []*GetProjectResponseBodyProjectAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	Description           *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// example:
+	//
+	// false
+	DevRoleDisabled *bool   `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 28477242
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// sora_finance
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 207947397706614299
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// true
+	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetProjectResponseBodyProject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyProject) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyProject) SetAliyunResourceGroupId(v string) *GetProjectResponseBodyProject {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetAliyunResourceTags(v []*GetProjectResponseBodyProjectAliyunResourceTags) *GetProjectResponseBodyProject {
+	s.AliyunResourceTags = v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetDescription(v string) *GetProjectResponseBodyProject {
+	s.Description = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetDevEnvironmentEnabled(v bool) *GetProjectResponseBodyProject {
+	s.DevEnvironmentEnabled = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetDevRoleDisabled(v bool) *GetProjectResponseBodyProject {
+	s.DevRoleDisabled = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetDisplayName(v string) *GetProjectResponseBodyProject {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetId(v int64) *GetProjectResponseBodyProject {
+	s.Id = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetName(v string) *GetProjectResponseBodyProject {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetOwner(v string) *GetProjectResponseBodyProject {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetPaiTaskEnabled(v bool) *GetProjectResponseBodyProject {
+	s.PaiTaskEnabled = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProject) SetStatus(v string) *GetProjectResponseBodyProject {
+	s.Status = &v
+	return s
+}
+
+type GetProjectResponseBodyProjectAliyunResourceTags struct {
+	// example:
+	//
+	// batch
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// blue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetProjectResponseBodyProjectAliyunResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyProjectAliyunResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyProjectAliyunResourceTags) SetKey(v string) *GetProjectResponseBodyProjectAliyunResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyProjectAliyunResourceTags) SetValue(v string) *GetProjectResponseBodyProjectAliyunResourceTags {
+	s.Value = &v
+	return s
+}
+
+type GetProjectResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponse) SetHeaders(v map[string]*string) *GetProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProjectResponse) SetStatusCode(v int32) *GetProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourceRequest struct {
 	// This parameter is required.
 	//
@@ -1960,6 +4866,1391 @@ func (s *GetWorkflowDefinitionResponse) SetStatusCode(v int32) *GetWorkflowDefin
 }
 
 func (s *GetWorkflowDefinitionResponse) SetBody(v *GetWorkflowDefinitionResponseBody) *GetWorkflowDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type ListDIJobEventsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11588
+	DIJobId *string `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1717971005
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Alarm
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1716971005
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListDIJobEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobEventsRequest) SetDIJobId(v string) *ListDIJobEventsRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *ListDIJobEventsRequest) SetEndTime(v int64) *ListDIJobEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDIJobEventsRequest) SetEventType(v string) *ListDIJobEventsRequest {
+	s.EventType = &v
+	return s
+}
+
+func (s *ListDIJobEventsRequest) SetPageNumber(v int64) *ListDIJobEventsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDIJobEventsRequest) SetPageSize(v int64) *ListDIJobEventsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDIJobEventsRequest) SetStartTime(v int64) *ListDIJobEventsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListDIJobEventsResponseBody struct {
+	PagingInfo *ListDIJobEventsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 645F6D68-9C29-5961-80B1-BDD4B794C22D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDIJobEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobEventsResponseBody) SetPagingInfo(v *ListDIJobEventsResponseBodyPagingInfo) *ListDIJobEventsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBody) SetRequestId(v string) *ListDIJobEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDIJobEventsResponseBodyPagingInfo struct {
+	DIJobEvent []*ListDIJobEventsResponseBodyPagingInfoDIJobEvent `json:"DIJobEvent,omitempty" xml:"DIJobEvent,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2524
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDIJobEventsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobEventsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfo) SetDIJobEvent(v []*ListDIJobEventsResponseBodyPagingInfoDIJobEvent) *ListDIJobEventsResponseBodyPagingInfo {
+	s.DIJobEvent = v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfo) SetPageNumber(v int64) *ListDIJobEventsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfo) SetPageSize(v int64) *ListDIJobEventsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfo) SetTotalCount(v int64) *ListDIJobEventsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDIJobEventsResponseBodyPagingInfoDIJobEvent struct {
+	// example:
+	//
+	// Ignore
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// Phone
+	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// example:
+	//
+	// 1663573162
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Detail     *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// alter table table2 ***
+	DstSql *string `json:"DstSql,omitempty" xml:"DstSql,omitempty"`
+	// example:
+	//
+	// table2
+	DstTable *string `json:"DstTable,omitempty" xml:"DstTable,omitempty"`
+	// example:
+	//
+	// 2024-05-29 15:11:31,377 [main] INFO com.*.**.di.core.metrics.:21 []  {****}
+	//
+	// 2024-05-29 15:11:31,384 [main] INFO *.aliyun.*.di.*.*.metrics.*:27 [] - Open MarioDiReporter
+	//
+	// 2024-05-29 15:11:33,248 [flink-akka.*.*-dispatcher-17] INFO
+	FailoverMessage *string `json:"FailoverMessage,omitempty" xml:"FailoverMessage,omitempty"`
+	// example:
+	//
+	// 1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Warning
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// alter table table1 ***
+	SrcSql *string `json:"SrcSql,omitempty" xml:"SrcSql,omitempty"`
+	// example:
+	//
+	// table1
+	SrcTable *string `json:"SrcTable,omitempty" xml:"SrcTable,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Delay
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDIJobEventsResponseBodyPagingInfoDIJobEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobEventsResponseBodyPagingInfoDIJobEvent) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetAction(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.Action = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetChannels(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.Channels = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetCreateTime(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetDetail(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.Detail = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetDstSql(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.DstSql = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetDstTable(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.DstTable = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetFailoverMessage(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.FailoverMessage = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetId(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetSeverity(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.Severity = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetSrcSql(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.SrcSql = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetSrcTable(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.SrcTable = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetStatus(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponseBodyPagingInfoDIJobEvent) SetType(v string) *ListDIJobEventsResponseBodyPagingInfoDIJobEvent {
+	s.Type = &v
+	return s
+}
+
+type ListDIJobEventsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDIJobEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDIJobEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobEventsResponse) SetHeaders(v map[string]*string) *ListDIJobEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDIJobEventsResponse) SetStatusCode(v int32) *ListDIJobEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDIJobEventsResponse) SetBody(v *ListDIJobEventsResponseBody) *ListDIJobEventsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDIJobMetricsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11265
+	DIJobId *string `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1712205941
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	MetricName []*string `json:"MetricName,omitempty" xml:"MetricName,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1586509407
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListDIJobMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobMetricsRequest) SetDIJobId(v string) *ListDIJobMetricsRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *ListDIJobMetricsRequest) SetEndTime(v int64) *ListDIJobMetricsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDIJobMetricsRequest) SetMetricName(v []*string) *ListDIJobMetricsRequest {
+	s.MetricName = v
+	return s
+}
+
+func (s *ListDIJobMetricsRequest) SetStartTime(v int64) *ListDIJobMetricsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListDIJobMetricsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11265
+	DIJobId *string `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1712205941
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	MetricNameShrink *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1586509407
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListDIJobMetricsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobMetricsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobMetricsShrinkRequest) SetDIJobId(v string) *ListDIJobMetricsShrinkRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *ListDIJobMetricsShrinkRequest) SetEndTime(v int64) *ListDIJobMetricsShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDIJobMetricsShrinkRequest) SetMetricNameShrink(v string) *ListDIJobMetricsShrinkRequest {
+	s.MetricNameShrink = &v
+	return s
+}
+
+func (s *ListDIJobMetricsShrinkRequest) SetStartTime(v int64) *ListDIJobMetricsShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListDIJobMetricsResponseBody struct {
+	PagingInfo *ListDIJobMetricsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDIJobMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobMetricsResponseBody) SetPagingInfo(v *ListDIJobMetricsResponseBodyPagingInfo) *ListDIJobMetricsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDIJobMetricsResponseBody) SetRequestId(v string) *ListDIJobMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDIJobMetricsResponseBodyPagingInfo struct {
+	JobMetrics []*ListDIJobMetricsResponseBodyPagingInfoJobMetrics `json:"JobMetrics,omitempty" xml:"JobMetrics,omitempty" type:"Repeated"`
+}
+
+func (s ListDIJobMetricsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobMetricsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobMetricsResponseBodyPagingInfo) SetJobMetrics(v []*ListDIJobMetricsResponseBodyPagingInfoJobMetrics) *ListDIJobMetricsResponseBodyPagingInfo {
+	s.JobMetrics = v
+	return s
+}
+
+type ListDIJobMetricsResponseBodyPagingInfoJobMetrics struct {
+	// example:
+	//
+	// JobDelay
+	Name       *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	SeriesList []*ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList `json:"SeriesList,omitempty" xml:"SeriesList,omitempty" type:"Repeated"`
+}
+
+func (s ListDIJobMetricsResponseBodyPagingInfoJobMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobMetricsResponseBodyPagingInfoJobMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobMetricsResponseBodyPagingInfoJobMetrics) SetName(v string) *ListDIJobMetricsResponseBodyPagingInfoJobMetrics {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDIJobMetricsResponseBodyPagingInfoJobMetrics) SetSeriesList(v []*ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList) *ListDIJobMetricsResponseBodyPagingInfoJobMetrics {
+	s.SeriesList = v
+	return s
+}
+
+type ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList struct {
+	// example:
+	//
+	// 1716881141
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 10
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList) SetTime(v int64) *ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList {
+	s.Time = &v
+	return s
+}
+
+func (s *ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList) SetValue(v float64) *ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList {
+	s.Value = &v
+	return s
+}
+
+type ListDIJobMetricsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDIJobMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDIJobMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobMetricsResponse) SetHeaders(v map[string]*string) *ListDIJobMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDIJobMetricsResponse) SetStatusCode(v int32) *ListDIJobMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDIJobMetricsResponse) SetBody(v *ListDIJobMetricsResponseBody) *ListDIJobMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDIJobsRequest struct {
+	// example:
+	//
+	// Hologres
+	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// example:
+	//
+	// FullAndRealtimeIncremental
+	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// example:
+	//
+	// test_export_01
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1967
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// MySQL
+	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+}
+
+func (s ListDIJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobsRequest) SetDestinationDataSourceType(v string) *ListDIJobsRequest {
+	s.DestinationDataSourceType = &v
+	return s
+}
+
+func (s *ListDIJobsRequest) SetMigrationType(v string) *ListDIJobsRequest {
+	s.MigrationType = &v
+	return s
+}
+
+func (s *ListDIJobsRequest) SetName(v string) *ListDIJobsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDIJobsRequest) SetPageNumber(v int64) *ListDIJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDIJobsRequest) SetPageSize(v int64) *ListDIJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDIJobsRequest) SetProjectId(v int64) *ListDIJobsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDIJobsRequest) SetSourceDataSourceType(v string) *ListDIJobsRequest {
+	s.SourceDataSourceType = &v
+	return s
+}
+
+type ListDIJobsResponseBody struct {
+	PagingInfo *ListDIJobsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 7263E4AC-9D2E-5B29-B8AF-7C5012E92A41
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDIJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobsResponseBody) SetPagingInfo(v *ListDIJobsResponseBodyPagingInfo) *ListDIJobsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDIJobsResponseBody) SetRequestId(v string) *ListDIJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDIJobsResponseBodyPagingInfo struct {
+	DIJobs []*ListDIJobsResponseBodyPagingInfoDIJobs `json:"DIJobs,omitempty" xml:"DIJobs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 12
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDIJobsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobsResponseBodyPagingInfo) SetDIJobs(v []*ListDIJobsResponseBodyPagingInfoDIJobs) *ListDIJobsResponseBodyPagingInfo {
+	s.DIJobs = v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfo) SetPageNumber(v int64) *ListDIJobsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfo) SetPageSize(v int64) *ListDIJobsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfo) SetTotalCount(v int64) *ListDIJobsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDIJobsResponseBodyPagingInfoDIJobs struct {
+	// example:
+	//
+	// 32599
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// example:
+	//
+	// Hologres
+	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// example:
+	//
+	// mysql_to_holo_sync_35197
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// Running
+	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// example:
+	//
+	// FullAndRealtimeIncremental
+	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// example:
+	//
+	// 26442
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Mysql
+	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+}
+
+func (s ListDIJobsResponseBodyPagingInfoDIJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobsResponseBodyPagingInfoDIJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetDIJobId(v int64) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetDestinationDataSourceType(v string) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.DestinationDataSourceType = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetJobName(v string) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetJobStatus(v string) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetMigrationType(v string) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.MigrationType = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetProjectId(v int64) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetSourceDataSourceType(v string) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.SourceDataSourceType = &v
+	return s
+}
+
+type ListDIJobsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDIJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDIJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIJobsResponse) SetHeaders(v map[string]*string) *ListDIJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDIJobsResponse) SetStatusCode(v int32) *ListDIJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDIJobsResponse) SetBody(v *ListDIJobsResponseBody) *ListDIJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataSourceSharedRulesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// 1
+	TargetProjectId *int64 `json:"TargetProjectId,omitempty" xml:"TargetProjectId,omitempty"`
+}
+
+func (s ListDataSourceSharedRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceSharedRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceSharedRulesRequest) SetDataSourceId(v int64) *ListDataSourceSharedRulesRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesRequest) SetTargetProjectId(v int64) *ListDataSourceSharedRulesRequest {
+	s.TargetProjectId = &v
+	return s
+}
+
+type ListDataSourceSharedRulesResponseBody struct {
+	DataSourceSharedRules []*ListDataSourceSharedRulesResponseBodyDataSourceSharedRules `json:"DataSourceSharedRules,omitempty" xml:"DataSourceSharedRules,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataSourceSharedRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceSharedRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceSharedRulesResponseBody) SetDataSourceSharedRules(v []*ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) *ListDataSourceSharedRulesResponseBody {
+	s.DataSourceSharedRules = v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBody) SetRequestId(v string) *ListDataSourceSharedRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataSourceSharedRulesResponseBodyDataSourceSharedRules struct {
+	// example:
+	//
+	// 1724379762000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 1
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// Dev
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// targetProject.datasource
+	SharedDataSourceName *string `json:"SharedDataSourceName,omitempty" xml:"SharedDataSourceName,omitempty"`
+	// example:
+	//
+	// 1
+	SharedUser *string `json:"SharedUser,omitempty" xml:"SharedUser,omitempty"`
+	// example:
+	//
+	// 1
+	SourceProjectId *int64 `json:"SourceProjectId,omitempty" xml:"SourceProjectId,omitempty"`
+	// example:
+	//
+	// 1
+	TargetProjectId *int64 `json:"TargetProjectId,omitempty" xml:"TargetProjectId,omitempty"`
+}
+
+func (s ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetCreateTime(v int64) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetCreateUser(v string) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetDataSourceId(v int64) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetEnvType(v string) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetId(v int64) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetSharedDataSourceName(v string) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.SharedDataSourceName = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetSharedUser(v string) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.SharedUser = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetSourceProjectId(v int64) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.SourceProjectId = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules) SetTargetProjectId(v int64) *ListDataSourceSharedRulesResponseBodyDataSourceSharedRules {
+	s.TargetProjectId = &v
+	return s
+}
+
+type ListDataSourceSharedRulesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourceSharedRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataSourceSharedRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceSharedRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceSharedRulesResponse) SetHeaders(v map[string]*string) *ListDataSourceSharedRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponse) SetStatusCode(v int32) *ListDataSourceSharedRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataSourceSharedRulesResponse) SetBody(v *ListDataSourceSharedRulesResponseBody) *ListDataSourceSharedRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataSourcesRequest struct {
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17820
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Id
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// ["tag1", "tag2", "tag3"]
+	Tags  *string   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+}
+
+func (s ListDataSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourcesRequest) SetEnvType(v string) *ListDataSourcesRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListDataSourcesRequest) SetName(v string) *ListDataSourcesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataSourcesRequest) SetOrder(v string) *ListDataSourcesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDataSourcesRequest) SetPageNumber(v int32) *ListDataSourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataSourcesRequest) SetPageSize(v int32) *ListDataSourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataSourcesRequest) SetProjectId(v int64) *ListDataSourcesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataSourcesRequest) SetSortBy(v string) *ListDataSourcesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListDataSourcesRequest) SetTags(v string) *ListDataSourcesRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListDataSourcesRequest) SetTypes(v []*string) *ListDataSourcesRequest {
+	s.Types = v
+	return s
+}
+
+type ListDataSourcesShrinkRequest struct {
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17820
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Id
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// ["tag1", "tag2", "tag3"]
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
+}
+
+func (s ListDataSourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourcesShrinkRequest) SetEnvType(v string) *ListDataSourcesShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListDataSourcesShrinkRequest) SetName(v string) *ListDataSourcesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataSourcesShrinkRequest) SetOrder(v string) *ListDataSourcesShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDataSourcesShrinkRequest) SetPageNumber(v int32) *ListDataSourcesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataSourcesShrinkRequest) SetPageSize(v int32) *ListDataSourcesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataSourcesShrinkRequest) SetProjectId(v int64) *ListDataSourcesShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataSourcesShrinkRequest) SetSortBy(v string) *ListDataSourcesShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListDataSourcesShrinkRequest) SetTags(v string) *ListDataSourcesShrinkRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListDataSourcesShrinkRequest) SetTypesShrink(v string) *ListDataSourcesShrinkRequest {
+	s.TypesShrink = &v
+	return s
+}
+
+type ListDataSourcesResponseBody struct {
+	PagingInfo *ListDataSourcesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7BE1433F-6D55-5D86-9344-CA6F7DD19B13
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourcesResponseBody) SetPagingInfo(v *ListDataSourcesResponseBodyPagingInfo) *ListDataSourcesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDataSourcesResponseBody) SetRequestId(v string) *ListDataSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataSourcesResponseBodyPagingInfo struct {
+	DataSources []*ListDataSourcesResponseBodyPagingInfoDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 131
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataSourcesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourcesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfo) SetDataSources(v []*ListDataSourcesResponseBodyPagingInfoDataSources) *ListDataSourcesResponseBodyPagingInfo {
+	s.DataSources = v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfo) SetPageNumber(v int64) *ListDataSourcesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfo) SetPageSize(v int64) *ListDataSourcesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfo) SetTotalCount(v int64) *ListDataSourcesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataSourcesResponseBodyPagingInfoDataSources struct {
+	DataSource []*ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// mysql
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataSourcesResponseBodyPagingInfoDataSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourcesResponseBodyPagingInfoDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSources) SetDataSource(v []*ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) *ListDataSourcesResponseBodyPagingInfoDataSources {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSources) SetName(v string) *ListDataSourcesResponseBodyPagingInfoDataSources {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSources) SetType(v string) *ListDataSourcesResponseBodyPagingInfoDataSources {
+	s.Type = &v
+	return s
+}
+
+type ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource struct {
+	// example:
+	//
+	// {
+	//
+	// 	"envType": "Prod",
+	//
+	// 	"regionId": "cn-beijing",
+	//
+	//     "instanceId": "hgprecn-cn-x0r3oun4k001",
+	//
+	//     "database": "testdb",
+	//
+	//     "securityProtocol": "authTypeNone",
+	//
+	//     "authType": "Executor",
+	//
+	//     "authIdentity": "1107550004253538"
+	//
+	// }
+	ConnectionProperties interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// example:
+	//
+	// UrlMode
+	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// example:
+	//
+	// 1648711113000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1624387842781448
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 16035
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1648711113000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1624387842781448
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 1648711121000:cn-beijing:odps:yongxunQA_beijing_standard
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+}
+
+func (s ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetConnectionProperties(v interface{}) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.ConnectionProperties = v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetConnectionPropertiesMode(v string) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.ConnectionPropertiesMode = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetCreateTime(v int64) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetCreateUser(v string) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetDescription(v string) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetId(v int64) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetModifyTime(v int64) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetModifyUser(v string) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource) SetQualifiedName(v string) *ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource {
+	s.QualifiedName = &v
+	return s
+}
+
+type ListDataSourcesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourcesResponse) SetHeaders(v map[string]*string) *ListDataSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataSourcesResponse) SetStatusCode(v int32) *ListDataSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataSourcesResponse) SetBody(v *ListDataSourcesResponseBody) *ListDataSourcesResponse {
 	s.Body = v
 	return s
 }
@@ -4732,6 +9023,448 @@ func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse
 	return s
 }
 
+type ListProjectsRequest struct {
+	// example:
+	//
+	// rg-acfmzbn7pti3zff
+	AliyunResourceGroupId *string                                  `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTags    []*ListProjectsRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// example:
+	//
+	// false
+	DevRoleDisabled *bool     `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	Ids             []*int64  `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	Names           []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// true
+	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsRequest) SetAliyunResourceGroupId(v string) *ListProjectsRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetAliyunResourceTags(v []*ListProjectsRequestAliyunResourceTags) *ListProjectsRequest {
+	s.AliyunResourceTags = v
+	return s
+}
+
+func (s *ListProjectsRequest) SetDevEnvironmentEnabled(v bool) *ListProjectsRequest {
+	s.DevEnvironmentEnabled = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetDevRoleDisabled(v bool) *ListProjectsRequest {
+	s.DevRoleDisabled = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetIds(v []*int64) *ListProjectsRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *ListProjectsRequest) SetNames(v []*string) *ListProjectsRequest {
+	s.Names = v
+	return s
+}
+
+func (s *ListProjectsRequest) SetPageNumber(v int32) *ListProjectsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetPageSize(v int32) *ListProjectsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetPaiTaskEnabled(v bool) *ListProjectsRequest {
+	s.PaiTaskEnabled = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetStatus(v string) *ListProjectsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListProjectsRequestAliyunResourceTags struct {
+	// example:
+	//
+	// batch
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// blue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListProjectsRequestAliyunResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsRequestAliyunResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsRequestAliyunResourceTags) SetKey(v string) *ListProjectsRequestAliyunResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListProjectsRequestAliyunResourceTags) SetValue(v string) *ListProjectsRequestAliyunResourceTags {
+	s.Value = &v
+	return s
+}
+
+type ListProjectsShrinkRequest struct {
+	// example:
+	//
+	// rg-acfmzbn7pti3zff
+	AliyunResourceGroupId    *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
+	// example:
+	//
+	// true
+	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// example:
+	//
+	// false
+	DevRoleDisabled *bool   `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	IdsShrink       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	NamesShrink     *string `json:"Names,omitempty" xml:"Names,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// true
+	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListProjectsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsShrinkRequest) SetAliyunResourceGroupId(v string) *ListProjectsShrinkRequest {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetAliyunResourceTagsShrink(v string) *ListProjectsShrinkRequest {
+	s.AliyunResourceTagsShrink = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetDevEnvironmentEnabled(v bool) *ListProjectsShrinkRequest {
+	s.DevEnvironmentEnabled = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetDevRoleDisabled(v bool) *ListProjectsShrinkRequest {
+	s.DevRoleDisabled = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetIdsShrink(v string) *ListProjectsShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetNamesShrink(v string) *ListProjectsShrinkRequest {
+	s.NamesShrink = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetPageNumber(v int32) *ListProjectsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetPageSize(v int32) *ListProjectsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetPaiTaskEnabled(v bool) *ListProjectsShrinkRequest {
+	s.PaiTaskEnabled = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetStatus(v string) *ListProjectsShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type ListProjectsResponseBody struct {
+	PagingInfo *ListProjectsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6D24AD9A-652F-59E2-AC1F-05029300F8A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBody) SetPagingInfo(v *ListProjectsResponseBodyPagingInfo) *ListProjectsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListProjectsResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Projects []*ListProjectsResponseBodyPagingInfoProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProjectsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyPagingInfo) SetPageNumber(v int32) *ListProjectsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfo) SetPageSize(v int32) *ListProjectsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfo) SetProjects(v []*ListProjectsResponseBodyPagingInfoProjects) *ListProjectsResponseBodyPagingInfo {
+	s.Projects = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfo) SetTotalCount(v int32) *ListProjectsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProjectsResponseBodyPagingInfoProjects struct {
+	// example:
+	//
+	// rg-acfmzbn7pti3zfa
+	AliyunResourceGroupId *string                                                         `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceTags    []*ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	Description           *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// example:
+	//
+	// false
+	DevRoleDisabled *bool   `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 123456
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// sora_finance
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123532153125
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// true
+	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListProjectsResponseBodyPagingInfoProjects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyPagingInfoProjects) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetAliyunResourceGroupId(v string) *ListProjectsResponseBodyPagingInfoProjects {
+	s.AliyunResourceGroupId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetAliyunResourceTags(v []*ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags) *ListProjectsResponseBodyPagingInfoProjects {
+	s.AliyunResourceTags = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetDescription(v string) *ListProjectsResponseBodyPagingInfoProjects {
+	s.Description = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetDevEnvironmentEnabled(v bool) *ListProjectsResponseBodyPagingInfoProjects {
+	s.DevEnvironmentEnabled = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetDevRoleDisabled(v bool) *ListProjectsResponseBodyPagingInfoProjects {
+	s.DevRoleDisabled = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetDisplayName(v string) *ListProjectsResponseBodyPagingInfoProjects {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetId(v int64) *ListProjectsResponseBodyPagingInfoProjects {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetName(v string) *ListProjectsResponseBodyPagingInfoProjects {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetOwner(v string) *ListProjectsResponseBodyPagingInfoProjects {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetPaiTaskEnabled(v bool) *ListProjectsResponseBodyPagingInfoProjects {
+	s.PaiTaskEnabled = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjects) SetStatus(v string) *ListProjectsResponseBodyPagingInfoProjects {
+	s.Status = &v
+	return s
+}
+
+type ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags struct {
+	// example:
+	//
+	// batch
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// blue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags) SetKey(v string) *ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags) SetValue(v string) *ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags {
+	s.Value = &v
+	return s
+}
+
+type ListProjectsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectsResponse) SetStatusCode(v int32) *ListProjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
+	s.Body = v
+	return s
+}
+
 type ListResourcesRequest struct {
 	// example:
 	//
@@ -6243,6 +10976,913 @@ func (s *RenameWorkflowDefinitionResponse) SetBody(v *RenameWorkflowDefinitionRe
 	return s
 }
 
+type StartDIJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	DIJobId *string `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// example:
+	//
+	// false
+	ForceToRerun          *bool                                   `json:"ForceToRerun,omitempty" xml:"ForceToRerun,omitempty"`
+	RealtimeStartSettings *StartDIJobRequestRealtimeStartSettings `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty" type:"Struct"`
+}
+
+func (s StartDIJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDIJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartDIJobRequest) SetDIJobId(v string) *StartDIJobRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *StartDIJobRequest) SetForceToRerun(v bool) *StartDIJobRequest {
+	s.ForceToRerun = &v
+	return s
+}
+
+func (s *StartDIJobRequest) SetRealtimeStartSettings(v *StartDIJobRequestRealtimeStartSettings) *StartDIJobRequest {
+	s.RealtimeStartSettings = v
+	return s
+}
+
+type StartDIJobRequestRealtimeStartSettings struct {
+	FailoverSettings *StartDIJobRequestRealtimeStartSettingsFailoverSettings `json:"FailoverSettings,omitempty" xml:"FailoverSettings,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1671516776
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s StartDIJobRequestRealtimeStartSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDIJobRequestRealtimeStartSettings) GoString() string {
+	return s.String()
+}
+
+func (s *StartDIJobRequestRealtimeStartSettings) SetFailoverSettings(v *StartDIJobRequestRealtimeStartSettingsFailoverSettings) *StartDIJobRequestRealtimeStartSettings {
+	s.FailoverSettings = v
+	return s
+}
+
+func (s *StartDIJobRequestRealtimeStartSettings) SetStartTime(v int64) *StartDIJobRequestRealtimeStartSettings {
+	s.StartTime = &v
+	return s
+}
+
+type StartDIJobRequestRealtimeStartSettingsFailoverSettings struct {
+	// example:
+	//
+	// 10
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 30
+	UpperLimit *int64 `json:"UpperLimit,omitempty" xml:"UpperLimit,omitempty"`
+}
+
+func (s StartDIJobRequestRealtimeStartSettingsFailoverSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDIJobRequestRealtimeStartSettingsFailoverSettings) GoString() string {
+	return s.String()
+}
+
+func (s *StartDIJobRequestRealtimeStartSettingsFailoverSettings) SetInterval(v int64) *StartDIJobRequestRealtimeStartSettingsFailoverSettings {
+	s.Interval = &v
+	return s
+}
+
+func (s *StartDIJobRequestRealtimeStartSettingsFailoverSettings) SetUpperLimit(v int64) *StartDIJobRequestRealtimeStartSettingsFailoverSettings {
+	s.UpperLimit = &v
+	return s
+}
+
+type StartDIJobShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	DIJobId *string `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// example:
+	//
+	// false
+	ForceToRerun                *bool   `json:"ForceToRerun,omitempty" xml:"ForceToRerun,omitempty"`
+	RealtimeStartSettingsShrink *string `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty"`
+}
+
+func (s StartDIJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDIJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartDIJobShrinkRequest) SetDIJobId(v string) *StartDIJobShrinkRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *StartDIJobShrinkRequest) SetForceToRerun(v bool) *StartDIJobShrinkRequest {
+	s.ForceToRerun = &v
+	return s
+}
+
+func (s *StartDIJobShrinkRequest) SetRealtimeStartSettingsShrink(v string) *StartDIJobShrinkRequest {
+	s.RealtimeStartSettingsShrink = &v
+	return s
+}
+
+type StartDIJobResponseBody struct {
+	// example:
+	//
+	// 999431B2-6013-577F-B684-36F7433C753B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StartDIJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDIJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartDIJobResponseBody) SetRequestId(v string) *StartDIJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartDIJobResponseBody) SetSuccess(v bool) *StartDIJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartDIJobResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartDIJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartDIJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDIJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartDIJobResponse) SetHeaders(v map[string]*string) *StartDIJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartDIJobResponse) SetStatusCode(v int32) *StartDIJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartDIJobResponse) SetBody(v *StartDIJobResponseBody) *StartDIJobResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDIJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11588
+	DIJobId             *int64                                   `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	Description         *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	JobSettings         *UpdateDIJobRequestJobSettings           `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
+	ResourceSettings    *UpdateDIJobRequestResourceSettings      `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
+	TableMappings       []*UpdateDIJobRequestTableMappings       `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	TransformationRules []*UpdateDIJobRequestTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDIJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequest) SetDIJobId(v int64) *UpdateDIJobRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *UpdateDIJobRequest) SetDescription(v string) *UpdateDIJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDIJobRequest) SetJobSettings(v *UpdateDIJobRequestJobSettings) *UpdateDIJobRequest {
+	s.JobSettings = v
+	return s
+}
+
+func (s *UpdateDIJobRequest) SetResourceSettings(v *UpdateDIJobRequestResourceSettings) *UpdateDIJobRequest {
+	s.ResourceSettings = v
+	return s
+}
+
+func (s *UpdateDIJobRequest) SetTableMappings(v []*UpdateDIJobRequestTableMappings) *UpdateDIJobRequest {
+	s.TableMappings = v
+	return s
+}
+
+func (s *UpdateDIJobRequest) SetTransformationRules(v []*UpdateDIJobRequestTransformationRules) *UpdateDIJobRequest {
+	s.TransformationRules = v
+	return s
+}
+
+type UpdateDIJobRequestJobSettings struct {
+	// example:
+	//
+	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+	ChannelSettings        *string                                                `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	ColumnDataTypeSettings []*UpdateDIJobRequestJobSettingsColumnDataTypeSettings `json:"ColumnDataTypeSettings,omitempty" xml:"ColumnDataTypeSettings,omitempty" type:"Repeated"`
+	CycleScheduleSettings  *UpdateDIJobRequestJobSettingsCycleScheduleSettings    `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
+	DdlHandlingSettings    []*UpdateDIJobRequestJobSettingsDdlHandlingSettings    `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
+	RuntimeSettings        []*UpdateDIJobRequestJobSettingsRuntimeSettings        `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDIJobRequestJobSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestJobSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestJobSettings) SetChannelSettings(v string) *UpdateDIJobRequestJobSettings {
+	s.ChannelSettings = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestJobSettings) SetColumnDataTypeSettings(v []*UpdateDIJobRequestJobSettingsColumnDataTypeSettings) *UpdateDIJobRequestJobSettings {
+	s.ColumnDataTypeSettings = v
+	return s
+}
+
+func (s *UpdateDIJobRequestJobSettings) SetCycleScheduleSettings(v *UpdateDIJobRequestJobSettingsCycleScheduleSettings) *UpdateDIJobRequestJobSettings {
+	s.CycleScheduleSettings = v
+	return s
+}
+
+func (s *UpdateDIJobRequestJobSettings) SetDdlHandlingSettings(v []*UpdateDIJobRequestJobSettingsDdlHandlingSettings) *UpdateDIJobRequestJobSettings {
+	s.DdlHandlingSettings = v
+	return s
+}
+
+func (s *UpdateDIJobRequestJobSettings) SetRuntimeSettings(v []*UpdateDIJobRequestJobSettingsRuntimeSettings) *UpdateDIJobRequestJobSettings {
+	s.RuntimeSettings = v
+	return s
+}
+
+type UpdateDIJobRequestJobSettingsColumnDataTypeSettings struct {
+	// example:
+	//
+	// text
+	DestinationDataType *string `json:"DestinationDataType,omitempty" xml:"DestinationDataType,omitempty"`
+	// example:
+	//
+	// bigint
+	SourceDataType *string `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
+}
+
+func (s UpdateDIJobRequestJobSettingsColumnDataTypeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestJobSettingsColumnDataTypeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestJobSettingsColumnDataTypeSettings) SetDestinationDataType(v string) *UpdateDIJobRequestJobSettingsColumnDataTypeSettings {
+	s.DestinationDataType = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestJobSettingsColumnDataTypeSettings) SetSourceDataType(v string) *UpdateDIJobRequestJobSettingsColumnDataTypeSettings {
+	s.SourceDataType = &v
+	return s
+}
+
+type UpdateDIJobRequestJobSettingsCycleScheduleSettings struct {
+	// example:
+	//
+	// bizdate=$bizdate
+	ScheduleParameters *string `json:"ScheduleParameters,omitempty" xml:"ScheduleParameters,omitempty"`
+}
+
+func (s UpdateDIJobRequestJobSettingsCycleScheduleSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestJobSettingsCycleScheduleSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestJobSettingsCycleScheduleSettings) SetScheduleParameters(v string) *UpdateDIJobRequestJobSettingsCycleScheduleSettings {
+	s.ScheduleParameters = &v
+	return s
+}
+
+type UpdateDIJobRequestJobSettingsDdlHandlingSettings struct {
+	// example:
+	//
+	// Critical
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// AddColumn
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDIJobRequestJobSettingsDdlHandlingSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestJobSettingsDdlHandlingSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestJobSettingsDdlHandlingSettings) SetAction(v string) *UpdateDIJobRequestJobSettingsDdlHandlingSettings {
+	s.Action = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestJobSettingsDdlHandlingSettings) SetType(v string) *UpdateDIJobRequestJobSettingsDdlHandlingSettings {
+	s.Type = &v
+	return s
+}
+
+type UpdateDIJobRequestJobSettingsRuntimeSettings struct {
+	// example:
+	//
+	// runtime.offline.concurrent
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateDIJobRequestJobSettingsRuntimeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestJobSettingsRuntimeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestJobSettingsRuntimeSettings) SetName(v string) *UpdateDIJobRequestJobSettingsRuntimeSettings {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestJobSettingsRuntimeSettings) SetValue(v string) *UpdateDIJobRequestJobSettingsRuntimeSettings {
+	s.Value = &v
+	return s
+}
+
+type UpdateDIJobRequestResourceSettings struct {
+	OfflineResourceSettings  *UpdateDIJobRequestResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	RealtimeResourceSettings *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	ScheduleResourceSettings *UpdateDIJobRequestResourceSettingsScheduleResourceSettings `json:"ScheduleResourceSettings,omitempty" xml:"ScheduleResourceSettings,omitempty" type:"Struct"`
+}
+
+func (s UpdateDIJobRequestResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestResourceSettings) SetOfflineResourceSettings(v *UpdateDIJobRequestResourceSettingsOfflineResourceSettings) *UpdateDIJobRequestResourceSettings {
+	s.OfflineResourceSettings = v
+	return s
+}
+
+func (s *UpdateDIJobRequestResourceSettings) SetRealtimeResourceSettings(v *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) *UpdateDIJobRequestResourceSettings {
+	s.RealtimeResourceSettings = v
+	return s
+}
+
+func (s *UpdateDIJobRequestResourceSettings) SetScheduleResourceSettings(v *UpdateDIJobRequestResourceSettingsScheduleResourceSettings) *UpdateDIJobRequestResourceSettings {
+	s.ScheduleResourceSettings = v
+	return s
+}
+
+type UpdateDIJobRequestResourceSettingsOfflineResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_111_222
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s UpdateDIJobRequestResourceSettingsOfflineResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestResourceSettingsOfflineResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestResourceSettingsOfflineResourceSettings) SetRequestedCu(v int64) *UpdateDIJobRequestResourceSettingsOfflineResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestResourceSettingsOfflineResourceSettings) SetResourceGroupIdentifier(v string) *UpdateDIJobRequestResourceSettingsOfflineResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type UpdateDIJobRequestResourceSettingsRealtimeResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_111_222
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) SetRequestedCu(v int64) *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) SetResourceGroupIdentifier(v string) *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type UpdateDIJobRequestResourceSettingsScheduleResourceSettings struct {
+	// example:
+	//
+	// 2.0
+	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// example:
+	//
+	// S_res_group_235454102432001_1721021993437
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s UpdateDIJobRequestResourceSettingsScheduleResourceSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestResourceSettingsScheduleResourceSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestResourceSettingsScheduleResourceSettings) SetRequestedCu(v int64) *UpdateDIJobRequestResourceSettingsScheduleResourceSettings {
+	s.RequestedCu = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestResourceSettingsScheduleResourceSettings) SetResourceGroupIdentifier(v string) *UpdateDIJobRequestResourceSettingsScheduleResourceSettings {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type UpdateDIJobRequestTableMappings struct {
+	SourceObjectSelectionRules []*UpdateDIJobRequestTableMappingsSourceObjectSelectionRules `json:"SourceObjectSelectionRules,omitempty" xml:"SourceObjectSelectionRules,omitempty" type:"Repeated"`
+	TransformationRules        []*UpdateDIJobRequestTableMappingsTransformationRules        `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDIJobRequestTableMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestTableMappings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestTableMappings) SetSourceObjectSelectionRules(v []*UpdateDIJobRequestTableMappingsSourceObjectSelectionRules) *UpdateDIJobRequestTableMappings {
+	s.SourceObjectSelectionRules = v
+	return s
+}
+
+func (s *UpdateDIJobRequestTableMappings) SetTransformationRules(v []*UpdateDIJobRequestTableMappingsTransformationRules) *UpdateDIJobRequestTableMappings {
+	s.TransformationRules = v
+	return s
+}
+
+type UpdateDIJobRequestTableMappingsSourceObjectSelectionRules struct {
+	// example:
+	//
+	// Include
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// mysql_table_1
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
+	// Exact
+	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// example:
+	//
+	// Table
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+}
+
+func (s UpdateDIJobRequestTableMappingsSourceObjectSelectionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestTableMappingsSourceObjectSelectionRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules) SetAction(v string) *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules {
+	s.Action = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules) SetExpression(v string) *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules {
+	s.Expression = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules) SetExpressionType(v string) *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules {
+	s.ExpressionType = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules) SetObjectType(v string) *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules {
+	s.ObjectType = &v
+	return s
+}
+
+type UpdateDIJobRequestTableMappingsTransformationRules struct {
+	// example:
+	//
+	// Rename
+	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// example:
+	//
+	// rename_rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// Table
+	RuleTargetType *string `json:"RuleTargetType,omitempty" xml:"RuleTargetType,omitempty"`
+}
+
+func (s UpdateDIJobRequestTableMappingsTransformationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestTableMappingsTransformationRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestTableMappingsTransformationRules) SetRuleActionType(v string) *UpdateDIJobRequestTableMappingsTransformationRules {
+	s.RuleActionType = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestTableMappingsTransformationRules) SetRuleName(v string) *UpdateDIJobRequestTableMappingsTransformationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestTableMappingsTransformationRules) SetRuleTargetType(v string) *UpdateDIJobRequestTableMappingsTransformationRules {
+	s.RuleTargetType = &v
+	return s
+}
+
+type UpdateDIJobRequestTransformationRules struct {
+	// example:
+	//
+	// Rename
+	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// example:
+	//
+	// {"expression":"${srcDatasoureName}_${srcDatabaseName}"}
+	RuleExpression *string `json:"RuleExpression,omitempty" xml:"RuleExpression,omitempty"`
+	// example:
+	//
+	// rename_rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// Table
+	RuleTargetType *string `json:"RuleTargetType,omitempty" xml:"RuleTargetType,omitempty"`
+}
+
+func (s UpdateDIJobRequestTransformationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobRequestTransformationRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobRequestTransformationRules) SetRuleActionType(v string) *UpdateDIJobRequestTransformationRules {
+	s.RuleActionType = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestTransformationRules) SetRuleExpression(v string) *UpdateDIJobRequestTransformationRules {
+	s.RuleExpression = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestTransformationRules) SetRuleName(v string) *UpdateDIJobRequestTransformationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateDIJobRequestTransformationRules) SetRuleTargetType(v string) *UpdateDIJobRequestTransformationRules {
+	s.RuleTargetType = &v
+	return s
+}
+
+type UpdateDIJobShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11588
+	DIJobId                   *int64  `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	JobSettingsShrink         *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
+	ResourceSettingsShrink    *string `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty"`
+	TableMappingsShrink       *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
+	TransformationRulesShrink *string `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty"`
+}
+
+func (s UpdateDIJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobShrinkRequest) SetDIJobId(v int64) *UpdateDIJobShrinkRequest {
+	s.DIJobId = &v
+	return s
+}
+
+func (s *UpdateDIJobShrinkRequest) SetDescription(v string) *UpdateDIJobShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDIJobShrinkRequest) SetJobSettingsShrink(v string) *UpdateDIJobShrinkRequest {
+	s.JobSettingsShrink = &v
+	return s
+}
+
+func (s *UpdateDIJobShrinkRequest) SetResourceSettingsShrink(v string) *UpdateDIJobShrinkRequest {
+	s.ResourceSettingsShrink = &v
+	return s
+}
+
+func (s *UpdateDIJobShrinkRequest) SetTableMappingsShrink(v string) *UpdateDIJobShrinkRequest {
+	s.TableMappingsShrink = &v
+	return s
+}
+
+func (s *UpdateDIJobShrinkRequest) SetTransformationRulesShrink(v string) *UpdateDIJobShrinkRequest {
+	s.TransformationRulesShrink = &v
+	return s
+}
+
+type UpdateDIJobResponseBody struct {
+	// example:
+	//
+	// AAC30B35-820D-5F3E-A42C-E96BB6379325
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDIJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobResponseBody) SetRequestId(v string) *UpdateDIJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDIJobResponseBody) SetSuccess(v bool) *UpdateDIJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDIJobResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDIJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDIJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIJobResponse) SetHeaders(v map[string]*string) *UpdateDIJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDIJobResponse) SetStatusCode(v int32) *UpdateDIJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDIJobResponse) SetBody(v *UpdateDIJobResponseBody) *UpdateDIJobResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"envType": "Prod",
+	//
+	// 	"regionId": "cn-beijing",
+	//
+	//     "instanceId": "hgprecn-cn-x0r3oun4k001",
+	//
+	//     "database": "testdb",
+	//
+	//     "securityProtocol": "authTypeNone",
+	//
+	//     "authType": "Executor",
+	//
+	//     "authIdentity": "1107550004253538"
+	//
+	// }
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// example:
+	//
+	// UrlMode
+	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 16033
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5678
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s UpdateDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataSourceRequest) SetConnectionProperties(v string) *UpdateDataSourceRequest {
+	s.ConnectionProperties = &v
+	return s
+}
+
+func (s *UpdateDataSourceRequest) SetConnectionPropertiesMode(v string) *UpdateDataSourceRequest {
+	s.ConnectionPropertiesMode = &v
+	return s
+}
+
+func (s *UpdateDataSourceRequest) SetDescription(v string) *UpdateDataSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataSourceRequest) SetId(v int64) *UpdateDataSourceRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateDataSourceRequest) SetProjectId(v int64) *UpdateDataSourceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type UpdateDataSourceResponseBody struct {
+	// example:
+	//
+	// 102E8E24-0387-531D-8A75-1C0AE7DD03E5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataSourceResponseBody) SetRequestId(v string) *UpdateDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDataSourceResponseBody) SetSuccess(v bool) *UpdateDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDataSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataSourceResponse) SetHeaders(v map[string]*string) *UpdateDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDataSourceResponse) SetStatusCode(v int32) *UpdateDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDataSourceResponse) SetBody(v *UpdateDataSourceResponseBody) *UpdateDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFunctionRequest struct {
 	// This parameter is required.
 	//
@@ -6435,6 +12075,125 @@ func (s *UpdateNodeResponse) SetStatusCode(v int32) *UpdateNodeResponse {
 }
 
 func (s *UpdateNodeResponse) SetBody(v *UpdateNodeResponseBody) *UpdateNodeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateProjectRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// example:
+	//
+	// true
+	DevRoleDisabled *bool   `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// true
+	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// example:
+	//
+	// Forbidden
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectRequest) SetDescription(v string) *UpdateProjectRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProjectRequest) SetDevEnvironmentEnabled(v bool) *UpdateProjectRequest {
+	s.DevEnvironmentEnabled = &v
+	return s
+}
+
+func (s *UpdateProjectRequest) SetDevRoleDisabled(v bool) *UpdateProjectRequest {
+	s.DevRoleDisabled = &v
+	return s
+}
+
+func (s *UpdateProjectRequest) SetDisplayName(v string) *UpdateProjectRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateProjectRequest) SetId(v int64) *UpdateProjectRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateProjectRequest) SetPaiTaskEnabled(v bool) *UpdateProjectRequest {
+	s.PaiTaskEnabled = &v
+	return s
+}
+
+func (s *UpdateProjectRequest) SetStatus(v string) *UpdateProjectRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateProjectResponseBody struct {
+	// example:
+	//
+	// AFBB799F-8578-51C5-A766-E922EDB8XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectResponseBody) SetRequestId(v string) *UpdateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProjectResponse) SetStatusCode(v int32) *UpdateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdateProjectResponse {
 	s.Body = v
 	return s
 }
@@ -6774,6 +12533,304 @@ func (client *Client) AbolishDeployment(request *AbolishDeploymentRequest) (_res
 
 // Summary:
 //
+// 验证用
+//
+// @param request - CloneDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneDataSourceResponse
+func (client *Client) CloneDataSourceWithOptions(request *CloneDataSourceRequest, runtime *util.RuntimeOptions) (_result *CloneDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloneDataSourceName)) {
+		query["CloneDataSourceName"] = request.CloneDataSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloneDataSource"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloneDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - CloneDataSourceRequest
+//
+// @return CloneDataSourceResponse
+func (client *Client) CloneDataSource(request *CloneDataSourceRequest) (_result *CloneDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloneDataSourceResponse{}
+	_body, _err := client.CloneDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集成任务
+//
+// @param tmpReq - CreateDIJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDIJobResponse
+func (client *Client) CreateDIJobWithOptions(tmpReq *CreateDIJobRequest, runtime *util.RuntimeOptions) (_result *CreateDIJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDIJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestinationDataSourceSettings)) {
+		request.DestinationDataSourceSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestinationDataSourceSettings, tea.String("DestinationDataSourceSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.JobSettings)) {
+		request.JobSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobSettings, tea.String("JobSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceSettings)) {
+		request.ResourceSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceSettings, tea.String("ResourceSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceDataSourceSettings)) {
+		request.SourceDataSourceSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceDataSourceSettings, tea.String("SourceDataSourceSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TableMappings)) {
+		request.TableMappingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableMappings, tea.String("TableMappings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransformationRules)) {
+		request.TransformationRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransformationRules, tea.String("TransformationRules"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDIJob"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDIJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集成任务
+//
+// @param request - CreateDIJobRequest
+//
+// @return CreateDIJobResponse
+func (client *Client) CreateDIJob(request *CreateDIJobRequest) (_result *CreateDIJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDIJobResponse{}
+	_body, _err := client.CreateDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - CreateDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataSourceResponse
+func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectionProperties)) {
+		query["ConnectionProperties"] = request.ConnectionProperties
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPropertiesMode)) {
+		query["ConnectionPropertiesMode"] = request.ConnectionPropertiesMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataSource"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - CreateDataSourceRequest
+//
+// @return CreateDataSourceResponse
+func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_result *CreateDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataSourceResponse{}
+	_body, _err := client.CreateDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - CreateDataSourceSharedRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataSourceSharedRuleResponse
+func (client *Client) CreateDataSourceSharedRuleWithOptions(request *CreateDataSourceSharedRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDataSourceSharedRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharedUser)) {
+		query["SharedUser"] = request.SharedUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetProjectId)) {
+		query["TargetProjectId"] = request.TargetProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataSourceSharedRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataSourceSharedRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - CreateDataSourceSharedRuleRequest
+//
+// @return CreateDataSourceSharedRuleResponse
+func (client *Client) CreateDataSourceSharedRule(request *CreateDataSourceSharedRuleRequest) (_result *CreateDataSourceSharedRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataSourceSharedRuleResponse{}
+	_body, _err := client.CreateDataSourceSharedRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建发布流程
 //
 // @param tmpReq - CreateDeploymentRequest
@@ -6988,6 +13045,100 @@ func (client *Client) CreateNode(request *CreateNodeRequest) (_result *CreateNod
 
 // Summary:
 //
+// 创建工作空间
+//
+// @param tmpReq - CreateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AliyunResourceTags)) {
+		request.AliyunResourceTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AliyunResourceTags, tea.String("AliyunResourceTags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunResourceGroupId)) {
+		body["AliyunResourceGroupId"] = request.AliyunResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunResourceTagsShrink)) {
+		body["AliyunResourceTags"] = request.AliyunResourceTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEnvironmentEnabled)) {
+		body["DevEnvironmentEnabled"] = request.DevEnvironmentEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevRoleDisabled)) {
+		body["DevRoleDisabled"] = request.DevRoleDisabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaiTaskEnabled)) {
+		body["PaiTaskEnabled"] = request.PaiTaskEnabled
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProject"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工作空间
+//
+// @param request - CreateProjectRequest
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建资源文件
 //
 // @param request - CreateResourceRequest
@@ -7116,6 +13267,178 @@ func (client *Client) CreateWorkflowDefinition(request *CreateWorkflowDefinition
 
 // Summary:
 //
+// 删除数据集成任务
+//
+// @param request - DeleteDIJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDIJobResponse
+func (client *Client) DeleteDIJobWithOptions(request *DeleteDIJobRequest, runtime *util.RuntimeOptions) (_result *DeleteDIJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDIJob"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDIJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集成任务
+//
+// @param request - DeleteDIJobRequest
+//
+// @return DeleteDIJobResponse
+func (client *Client) DeleteDIJob(request *DeleteDIJobRequest) (_result *DeleteDIJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDIJobResponse{}
+	_body, _err := client.DeleteDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - DeleteDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataSourceResponse
+func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataSource"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - DeleteDataSourceRequest
+//
+// @return DeleteDataSourceResponse
+func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_result *DeleteDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataSourceResponse{}
+	_body, _err := client.DeleteDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - DeleteDataSourceSharedRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataSourceSharedRuleResponse
+func (client *Client) DeleteDataSourceSharedRuleWithOptions(request *DeleteDataSourceSharedRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSourceSharedRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataSourceSharedRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataSourceSharedRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - DeleteDataSourceSharedRuleRequest
+//
+// @return DeleteDataSourceSharedRuleResponse
+func (client *Client) DeleteDataSourceSharedRule(request *DeleteDataSourceSharedRuleRequest) (_result *DeleteDataSourceSharedRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataSourceSharedRuleResponse{}
+	_body, _err := client.DeleteDataSourceSharedRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除udf函数
 //
 // @param request - DeleteFunctionRequest
@@ -7235,6 +13558,66 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNodeResponse{}
 	_body, _err := client.DeleteNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 销毁工作空间
+//
+// @param request - DeleteProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectResponse
+func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProject"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 销毁工作空间
+//
+// @param request - DeleteProjectRequest
+//
+// @return DeleteProjectResponse
+func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DeleteProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7442,6 +13825,174 @@ func (client *Client) ExecDeploymentStage(request *ExecDeploymentStageRequest) (
 
 // Summary:
 //
+// 查看数据集成任务
+//
+// @param request - GetDIJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDIJobResponse
+func (client *Client) GetDIJobWithOptions(request *GetDIJobRequest, runtime *util.RuntimeOptions) (_result *GetDIJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDIJob"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDIJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看数据集成任务
+//
+// @param request - GetDIJobRequest
+//
+// @return GetDIJobResponse
+func (client *Client) GetDIJob(request *GetDIJobRequest) (_result *GetDIJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDIJobResponse{}
+	_body, _err := client.GetDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集成任务日志
+//
+// @param request - GetDIJobLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDIJobLogResponse
+func (client *Client) GetDIJobLogWithOptions(request *GetDIJobLogRequest, runtime *util.RuntimeOptions) (_result *GetDIJobLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDIJobLog"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDIJobLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集成任务日志
+//
+// @param request - GetDIJobLogRequest
+//
+// @return GetDIJobLogResponse
+func (client *Client) GetDIJobLog(request *GetDIJobLogRequest) (_result *GetDIJobLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDIJobLogResponse{}
+	_body, _err := client.GetDIJobLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - GetDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataSourceResponse
+func (client *Client) GetDataSourceWithOptions(request *GetDataSourceRequest, runtime *util.RuntimeOptions) (_result *GetDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataSource"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - GetDataSourceRequest
+//
+// @return GetDataSourceResponse
+func (client *Client) GetDataSource(request *GetDataSourceRequest) (_result *GetDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataSourceResponse{}
+	_body, _err := client.GetDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取发布流程详情
 //
 // @param request - GetDeploymentRequest
@@ -7602,6 +14153,62 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 
 // Summary:
 //
+// 查询工作空间详情
+//
+// @param request - GetProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectResponse
+func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProject"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工作空间详情
+//
+// @param request - GetProjectRequest
+//
+// @return GetProjectResponse
+func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProjectResponse{}
+	_body, _err := client.GetProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取资源文件
 //
 // @param request - GetResourceRequest
@@ -7705,6 +14312,298 @@ func (client *Client) GetWorkflowDefinition(request *GetWorkflowDefinitionReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWorkflowDefinitionResponse{}
 	_body, _err := client.GetWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集成任务事件
+//
+// @param request - ListDIJobEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDIJobEventsResponse
+func (client *Client) ListDIJobEventsWithOptions(request *ListDIJobEventsRequest, runtime *util.RuntimeOptions) (_result *ListDIJobEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDIJobEvents"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDIJobEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集成任务事件
+//
+// @param request - ListDIJobEventsRequest
+//
+// @return ListDIJobEventsResponse
+func (client *Client) ListDIJobEvents(request *ListDIJobEventsRequest) (_result *ListDIJobEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDIJobEventsResponse{}
+	_body, _err := client.ListDIJobEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集成任务指标
+//
+// @param tmpReq - ListDIJobMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDIJobMetricsResponse
+func (client *Client) ListDIJobMetricsWithOptions(tmpReq *ListDIJobMetricsRequest, runtime *util.RuntimeOptions) (_result *ListDIJobMetricsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDIJobMetricsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MetricName)) {
+		request.MetricNameShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricName, tea.String("MetricName"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDIJobMetrics"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDIJobMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集成任务指标
+//
+// @param request - ListDIJobMetricsRequest
+//
+// @return ListDIJobMetricsResponse
+func (client *Client) ListDIJobMetrics(request *ListDIJobMetricsRequest) (_result *ListDIJobMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDIJobMetricsResponse{}
+	_body, _err := client.ListDIJobMetricsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集成任务
+//
+// @param request - ListDIJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDIJobsResponse
+func (client *Client) ListDIJobsWithOptions(request *ListDIJobsRequest, runtime *util.RuntimeOptions) (_result *ListDIJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDIJobs"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDIJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集成任务
+//
+// @param request - ListDIJobsRequest
+//
+// @return ListDIJobsResponse
+func (client *Client) ListDIJobs(request *ListDIJobsRequest) (_result *ListDIJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDIJobsResponse{}
+	_body, _err := client.ListDIJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - ListDataSourceSharedRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataSourceSharedRulesResponse
+func (client *Client) ListDataSourceSharedRulesWithOptions(request *ListDataSourceSharedRulesRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceSharedRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSourceSharedRules"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataSourceSharedRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - ListDataSourceSharedRulesRequest
+//
+// @return ListDataSourceSharedRulesResponse
+func (client *Client) ListDataSourceSharedRules(request *ListDataSourceSharedRulesRequest) (_result *ListDataSourceSharedRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataSourceSharedRulesResponse{}
+	_body, _err := client.ListDataSourceSharedRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param tmpReq - ListDataSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataSourcesResponse
+func (client *Client) ListDataSourcesWithOptions(tmpReq *ListDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDataSourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Types)) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, tea.String("Types"), tea.String("simple"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSources"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - ListDataSourcesRequest
+//
+// @return ListDataSourcesResponse
+func (client *Client) ListDataSources(request *ListDataSourcesRequest) (_result *ListDataSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataSourcesResponse{}
+	_body, _err := client.ListDataSourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7929,6 +14828,116 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNodesResponse{}
 	_body, _err := client.ListNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询工作空间详情
+//
+// @param tmpReq - ListProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsResponse
+func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListProjectsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AliyunResourceTags)) {
+		request.AliyunResourceTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AliyunResourceTags, tea.String("AliyunResourceTags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Names)) {
+		request.NamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Names, tea.String("Names"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunResourceGroupId)) {
+		body["AliyunResourceGroupId"] = request.AliyunResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunResourceTagsShrink)) {
+		body["AliyunResourceTags"] = request.AliyunResourceTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEnvironmentEnabled)) {
+		body["DevEnvironmentEnabled"] = request.DevEnvironmentEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevRoleDisabled)) {
+		body["DevRoleDisabled"] = request.DevRoleDisabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamesShrink)) {
+		body["Names"] = request.NamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaiTaskEnabled)) {
+		body["PaiTaskEnabled"] = request.PaiTaskEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjects"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询工作空间详情
+//
+// @param request - ListProjectsRequest
+//
+// @return ListProjectsResponse
+func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.ListProjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8594,6 +15603,218 @@ func (client *Client) RenameWorkflowDefinition(request *RenameWorkflowDefinition
 
 // Summary:
 //
+// 启动数据集成任务
+//
+// @param tmpReq - StartDIJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartDIJobResponse
+func (client *Client) StartDIJobWithOptions(tmpReq *StartDIJobRequest, runtime *util.RuntimeOptions) (_result *StartDIJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartDIJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RealtimeStartSettings)) {
+		request.RealtimeStartSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RealtimeStartSettings, tea.String("RealtimeStartSettings"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartDIJob"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartDIJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动数据集成任务
+//
+// @param request - StartDIJobRequest
+//
+// @return StartDIJobResponse
+func (client *Client) StartDIJob(request *StartDIJobRequest) (_result *StartDIJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartDIJobResponse{}
+	_body, _err := client.StartDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据集成任务
+//
+// @param tmpReq - UpdateDIJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDIJobResponse
+func (client *Client) UpdateDIJobWithOptions(tmpReq *UpdateDIJobRequest, runtime *util.RuntimeOptions) (_result *UpdateDIJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDIJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.JobSettings)) {
+		request.JobSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobSettings, tea.String("JobSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceSettings)) {
+		request.ResourceSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceSettings, tea.String("ResourceSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TableMappings)) {
+		request.TableMappingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableMappings, tea.String("TableMappings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransformationRules)) {
+		request.TransformationRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransformationRules, tea.String("TransformationRules"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDIJob"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDIJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据集成任务
+//
+// @param request - UpdateDIJobRequest
+//
+// @return UpdateDIJobResponse
+func (client *Client) UpdateDIJob(request *UpdateDIJobRequest) (_result *UpdateDIJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDIJobResponse{}
+	_body, _err := client.UpdateDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - UpdateDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataSourceResponse
+func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceRequest, runtime *util.RuntimeOptions) (_result *UpdateDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectionProperties)) {
+		query["ConnectionProperties"] = request.ConnectionProperties
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPropertiesMode)) {
+		query["ConnectionPropertiesMode"] = request.ConnectionPropertiesMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDataSource"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - UpdateDataSourceRequest
+//
+// @return UpdateDataSourceResponse
+func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_result *UpdateDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDataSourceResponse{}
+	_body, _err := client.UpdateDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新udf函数
 //
 // @param request - UpdateFunctionRequest
@@ -8721,6 +15942,90 @@ func (client *Client) UpdateNode(request *UpdateNodeRequest) (_result *UpdateNod
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateNodeResponse{}
 	_body, _err := client.UpdateNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作空间
+//
+// @param request - UpdateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProjectResponse
+func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEnvironmentEnabled)) {
+		body["DevEnvironmentEnabled"] = request.DevEnvironmentEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevRoleDisabled)) {
+		body["DevRoleDisabled"] = request.DevRoleDisabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaiTaskEnabled)) {
+		body["PaiTaskEnabled"] = request.PaiTaskEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProject"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作空间
+//
+// @param request - UpdateProjectRequest
+//
+// @return UpdateProjectResponse
+func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateProjectResponse{}
+	_body, _err := client.UpdateProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
