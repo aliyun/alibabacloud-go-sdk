@@ -201,8 +201,9 @@ type GetConnectionTicketResponseBody struct {
 	// example:
 	//
 	// ai-gc1gemx6vpa6vlync
-	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	AppInstanceId           *string                                       `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstancePersistentId *string                                       `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	BindQueueInfo           *GetConnectionTicketResponseBodyBindQueueInfo `json:"BindQueueInfo,omitempty" xml:"BindQueueInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// InternalError.TicketGenInternalError
@@ -272,6 +273,11 @@ func (s *GetConnectionTicketResponseBody) SetAppInstancePersistentId(v string) *
 	return s
 }
 
+func (s *GetConnectionTicketResponseBody) SetBindQueueInfo(v *GetConnectionTicketResponseBodyBindQueueInfo) *GetConnectionTicketResponseBody {
+	s.BindQueueInfo = v
+	return s
+}
+
 func (s *GetConnectionTicketResponseBody) SetCode(v string) *GetConnectionTicketResponseBody {
 	s.Code = &v
 	return s
@@ -329,6 +335,53 @@ func (s *GetConnectionTicketResponseBody) SetTenantId(v int64) *GetConnectionTic
 
 func (s *GetConnectionTicketResponseBody) SetTicket(v string) *GetConnectionTicketResponseBody {
 	s.Ticket = &v
+	return s
+}
+
+type GetConnectionTicketResponseBodyBindQueueInfo struct {
+	Length           *int32  `json:"Length,omitempty" xml:"Length,omitempty"`
+	Rank             *int32  `json:"Rank,omitempty" xml:"Rank,omitempty"`
+	RemainingTimeMin *int32  `json:"RemainingTimeMin,omitempty" xml:"RemainingTimeMin,omitempty"`
+	RequestKey       *string `json:"RequestKey,omitempty" xml:"RequestKey,omitempty"`
+	TargetId         *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	WaitTimeMin      *int32  `json:"WaitTimeMin,omitempty" xml:"WaitTimeMin,omitempty"`
+}
+
+func (s GetConnectionTicketResponseBodyBindQueueInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionTicketResponseBodyBindQueueInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetLength(v int32) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.Length = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetRank(v int32) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.Rank = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetRemainingTimeMin(v int32) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.RemainingTimeMin = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetRequestKey(v string) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.RequestKey = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetTargetId(v string) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.TargetId = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetWaitTimeMin(v int32) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.WaitTimeMin = &v
 	return s
 }
 
