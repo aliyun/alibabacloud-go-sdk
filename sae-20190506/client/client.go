@@ -8855,6 +8855,7 @@ type CreateApplicationRequest struct {
 	//
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableCpuBurst       *bool   `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
 	EnableEbpf           *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
 	EnableNewArms        *bool   `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
 	// [{"name":"envtmp","value":"0"}]
@@ -9185,6 +9186,11 @@ func (s *CreateApplicationRequest) SetDotnet(v string) *CreateApplicationRequest
 
 func (s *CreateApplicationRequest) SetEdasContainerVersion(v string) *CreateApplicationRequest {
 	s.EdasContainerVersion = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetEnableCpuBurst(v bool) *CreateApplicationRequest {
+	s.EnableCpuBurst = &v
 	return s
 }
 
@@ -14036,7 +14042,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// false
-	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableAhas     *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableCpuBurst *bool   `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
 	// Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Take note of the following rules:
 	//
 	// 	- **true**: The canary release rules are enabled.
@@ -14535,6 +14542,11 @@ func (s *DeployApplicationRequest) SetEdasContainerVersion(v string) *DeployAppl
 
 func (s *DeployApplicationRequest) SetEnableAhas(v string) *DeployApplicationRequest {
 	s.EnableAhas = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetEnableCpuBurst(v bool) *DeployApplicationRequest {
+	s.EnableCpuBurst = &v
 	return s
 }
 
@@ -15693,7 +15705,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// true
-	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableAhas     *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableCpuBurst *string `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
 	// Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Valid values:
 	//
 	// 	- **true**: The canary release rules are enabled.
@@ -16249,6 +16262,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetEdasContainerVersion(v st
 
 func (s *DescribeApplicationConfigResponseBodyData) SetEnableAhas(v string) *DescribeApplicationConfigResponseBodyData {
 	s.EnableAhas = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetEnableCpuBurst(v string) *DescribeApplicationConfigResponseBodyData {
+	s.EnableCpuBurst = &v
 	return s
 }
 
@@ -19572,7 +19590,7 @@ type DescribeApplicationSlbsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 59.74.\*\*.**
+	// ``59.74.**.**``
 	InternetIp            *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	InternetSlbChargeType *string `json:"InternetSlbChargeType,omitempty" xml:"InternetSlbChargeType,omitempty"`
 	InternetSlbExpired    *bool   `json:"InternetSlbExpired,omitempty" xml:"InternetSlbExpired,omitempty"`
@@ -43297,6 +43315,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["EdasContainerVersion"] = request.EdasContainerVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableCpuBurst)) {
+		query["EnableCpuBurst"] = request.EnableCpuBurst
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableEbpf)) {
 		query["EnableEbpf"] = request.EnableEbpf
 	}
@@ -45335,6 +45357,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.EnableAhas)) {
 		query["EnableAhas"] = request.EnableAhas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableCpuBurst)) {
+		query["EnableCpuBurst"] = request.EnableCpuBurst
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableGreyTagRoute)) {
