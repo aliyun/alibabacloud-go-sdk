@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,10 +10,28 @@ import (
 )
 
 type AddTagsBatchRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DbfsList    *string `json:"DbfsList,omitempty" xml:"DbfsList,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["dbfs-nUy1tb********BQ4X8Gpw","dbfs-v0WvA********tVEVcgJLg"]
+	DbfsList *string `json:"DbfsList,omitempty" xml:"DbfsList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"TagKey":"k1","TagValue":"v1"},{"TagKey":"k2","TagValue":"v2"}]
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s AddTagsBatchRequest) String() string {
@@ -48,6 +63,9 @@ func (s *AddTagsBatchRequest) SetTags(v string) *AddTagsBatchRequest {
 }
 
 type AddTagsBatchResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -65,9 +83,9 @@ func (s *AddTagsBatchResponseBody) SetRequestId(v string) *AddTagsBatchResponseB
 }
 
 type AddTagsBatchResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddTagsBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddTagsBatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddTagsBatchResponse) String() string {
@@ -94,9 +112,20 @@ func (s *AddTagsBatchResponse) SetBody(v *AddTagsBatchResponseBody) *AddTagsBatc
 }
 
 type ApplyAutoSnapshotPolicyRequest struct {
-	DbfsIds  []*string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty" type:"Repeated"`
-	PolicyId *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	DbfsIds []*string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ApplyAutoSnapshotPolicyRequest) String() string {
@@ -123,9 +152,20 @@ func (s *ApplyAutoSnapshotPolicyRequest) SetRegionId(v string) *ApplyAutoSnapsho
 }
 
 type ApplyAutoSnapshotPolicyShrinkRequest struct {
+	// This parameter is required.
 	DbfsIdsShrink *string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty"`
-	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ApplyAutoSnapshotPolicyShrinkRequest) String() string {
@@ -152,6 +192,9 @@ func (s *ApplyAutoSnapshotPolicyShrinkRequest) SetRegionId(v string) *ApplyAutoS
 }
 
 type ApplyAutoSnapshotPolicyResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -169,9 +212,9 @@ func (s *ApplyAutoSnapshotPolicyResponseBody) SetRequestId(v string) *ApplyAutoS
 }
 
 type ApplyAutoSnapshotPolicyResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyAutoSnapshotPolicyResponse) String() string {
@@ -198,12 +241,36 @@ func (s *ApplyAutoSnapshotPolicyResponse) SetBody(v *ApplyAutoSnapshotPolicyResp
 }
 
 type AttachDbfsRequest struct {
-	AttachMode    *string `json:"AttachMode,omitempty" xml:"AttachMode,omitempty"`
-	AttachPoint   *string `json:"AttachPoint,omitempty" xml:"AttachPoint,omitempty"`
+	// example:
+	//
+	// create_new_mount_point
+	AttachMode *string `json:"AttachMode,omitempty" xml:"AttachMode,omitempty"`
+	// example:
+	//
+	// /mnt/dbfs/dbfs-001
+	AttachPoint *string `json:"AttachPoint,omitempty" xml:"AttachPoint,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1ecr********5go2go
 	ECSInstanceId *string `json:"ECSInstanceId,omitempty" xml:"ECSInstanceId,omitempty"`
-	FsId          *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServerUrl     *string `json:"ServerUrl,omitempty" xml:"ServerUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbfs-v0WvA********tVEVcgJLg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// dbfs-pkg-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com
+	ServerUrl *string `json:"ServerUrl,omitempty" xml:"ServerUrl,omitempty"`
 }
 
 func (s AttachDbfsRequest) String() string {
@@ -245,6 +312,9 @@ func (s *AttachDbfsRequest) SetServerUrl(v string) *AttachDbfsRequest {
 }
 
 type AttachDbfsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -262,9 +332,9 @@ func (s *AttachDbfsResponseBody) SetRequestId(v string) *AttachDbfsResponseBody 
 }
 
 type AttachDbfsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachDbfsResponse) String() string {
@@ -291,9 +361,20 @@ func (s *AttachDbfsResponse) SetBody(v *AttachDbfsResponseBody) *AttachDbfsRespo
 }
 
 type CancelAutoSnapshotPolicyRequest struct {
-	DbfsIds  []*string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty" type:"Repeated"`
-	PolicyId *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	DbfsIds []*string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CancelAutoSnapshotPolicyRequest) String() string {
@@ -320,9 +401,20 @@ func (s *CancelAutoSnapshotPolicyRequest) SetRegionId(v string) *CancelAutoSnaps
 }
 
 type CancelAutoSnapshotPolicyShrinkRequest struct {
+	// This parameter is required.
 	DbfsIdsShrink *string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty"`
-	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CancelAutoSnapshotPolicyShrinkRequest) String() string {
@@ -349,6 +441,9 @@ func (s *CancelAutoSnapshotPolicyShrinkRequest) SetRegionId(v string) *CancelAut
 }
 
 type CancelAutoSnapshotPolicyResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -366,9 +461,9 @@ func (s *CancelAutoSnapshotPolicyResponseBody) SetRequestId(v string) *CancelAut
 }
 
 type CancelAutoSnapshotPolicyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelAutoSnapshotPolicyResponse) String() string {
@@ -395,11 +490,28 @@ func (s *CancelAutoSnapshotPolicyResponse) SetBody(v *CancelAutoSnapshotPolicyRe
 }
 
 type CreateAutoSnapshotPolicyRequest struct {
-	PolicyName     *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// policyTest
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	RepeatWeekdays []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
-	RetentionDays  *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	TimePoints     []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	// This parameter is required.
+	TimePoints []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 
 func (s CreateAutoSnapshotPolicyRequest) String() string {
@@ -436,11 +548,28 @@ func (s *CreateAutoSnapshotPolicyRequest) SetTimePoints(v []*string) *CreateAuto
 }
 
 type CreateAutoSnapshotPolicyShrinkRequest struct {
-	PolicyName           *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// policyTest
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	RepeatWeekdaysShrink *string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty"`
-	RetentionDays        *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	TimePointsShrink     *string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	// This parameter is required.
+	TimePointsShrink *string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty"`
 }
 
 func (s CreateAutoSnapshotPolicyShrinkRequest) String() string {
@@ -477,7 +606,13 @@ func (s *CreateAutoSnapshotPolicyShrinkRequest) SetTimePointsShrink(v string) *C
 }
 
 type CreateAutoSnapshotPolicyResponseBody struct {
-	PolicyId  *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -500,9 +635,9 @@ func (s *CreateAutoSnapshotPolicyResponseBody) SetRequestId(v string) *CreateAut
 }
 
 type CreateAutoSnapshotPolicyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAutoSnapshotPolicyResponse) String() string {
@@ -529,22 +664,77 @@ func (s *CreateAutoSnapshotPolicyResponse) SetBody(v *CreateAutoSnapshotPolicyRe
 }
 
 type CreateDbfsRequest struct {
-	AdvancedFeatures     *string `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeleteSnapshot       *bool   `json:"DeleteSnapshot,omitempty" xml:"DeleteSnapshot,omitempty"`
-	EnableRaid           *bool   `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
-	Encryption           *bool   `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	FsName               *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KMSKeyId             *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	// example:
+	//
+	// {"cpuCoreCount":0.5,"memorySize":512,"pageCacheSize":128}
+	AdvancedFeatures *string `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// standard
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DeleteSnapshot *bool `json:"DeleteSnapshot,omitempty" xml:"DeleteSnapshot,omitempty"`
+	// example:
+	//
+	// false
+	EnableRaid *bool `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
+	// example:
+	//
+	// false
+	Encryption *bool `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdbfs-001
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// example:
+	//
+	// dbfs.small
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 0e478b7a-4262-4802-b8cb-00d3fb40826X
+	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	// example:
+	//
+	// PL1
 	PerformanceLevel     *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	RaidStripeUnitNumber *int32  `json:"RaidStripeUnitNumber,omitempty" xml:"RaidStripeUnitNumber,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SizeG                *int32  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	SnapshotId           *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	UsedScene            *string `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	SizeG *int32 `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	// example:
+	//
+	// s-y2vZ3********vvMilZ2hQ
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// PostgreSQL
+	UsedScene *string `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDbfsRequest) String() string {
@@ -636,7 +826,13 @@ func (s *CreateDbfsRequest) SetZoneId(v string) *CreateDbfsRequest {
 }
 
 type CreateDbfsResponseBody struct {
-	FsId      *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// dbfs-GOrr********Yd0VLOyBpg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -659,9 +855,9 @@ func (s *CreateDbfsResponseBody) SetRequestId(v string) *CreateDbfsResponseBody 
 }
 
 type CreateDbfsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDbfsResponse) String() string {
@@ -688,8 +884,16 @@ func (s *CreateDbfsResponse) SetBody(v *CreateDbfsResponseBody) *CreateDbfsRespo
 }
 
 type CreateServiceLinkedRoleRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateServiceLinkedRoleRequest) String() string {
@@ -711,6 +915,9 @@ func (s *CreateServiceLinkedRoleRequest) SetRegionId(v string) *CreateServiceLin
 }
 
 type CreateServiceLinkedRoleResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -728,9 +935,9 @@ func (s *CreateServiceLinkedRoleResponseBody) SetRequestId(v string) *CreateServ
 }
 
 type CreateServiceLinkedRoleResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateServiceLinkedRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceLinkedRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceLinkedRoleResponse) String() string {
@@ -757,12 +964,34 @@ func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResp
 }
 
 type CreateSnapshotRequest struct {
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FsId          *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RetentionDays *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	SnapshotName  *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d-bp131n0q38u3a4zi*****
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 30
+	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	// example:
+	//
+	// testSnapshotName
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 }
 
 func (s CreateSnapshotRequest) String() string {
@@ -804,7 +1033,13 @@ func (s *CreateSnapshotRequest) SetSnapshotName(v string) *CreateSnapshotRequest
 }
 
 type CreateSnapshotResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// s-Q2greuDZTvWeS8bfKZ****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -827,9 +1062,9 @@ func (s *CreateSnapshotResponseBody) SetSnapshotId(v string) *CreateSnapshotResp
 }
 
 type CreateSnapshotResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSnapshotResponse) String() string {
@@ -856,7 +1091,17 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type DeleteAutoSnapshotPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -879,6 +1124,9 @@ func (s *DeleteAutoSnapshotPolicyRequest) SetRegionId(v string) *DeleteAutoSnaps
 }
 
 type DeleteAutoSnapshotPolicyResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -896,9 +1144,9 @@ func (s *DeleteAutoSnapshotPolicyResponseBody) SetRequestId(v string) *DeleteAut
 }
 
 type DeleteAutoSnapshotPolicyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAutoSnapshotPolicyResponse) String() string {
@@ -925,8 +1173,25 @@ func (s *DeleteAutoSnapshotPolicyResponse) SetBody(v *DeleteAutoSnapshotPolicyRe
 }
 
 type DeleteDbfsRequest struct {
-	Force    *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// 是否强制删除数据库文件系统。
+	//
+	// 默认值：false。
+	//
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d-bp131n0q38u3a4zi*****
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -954,6 +1219,9 @@ func (s *DeleteDbfsRequest) SetRegionId(v string) *DeleteDbfsRequest {
 }
 
 type DeleteDbfsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -971,9 +1239,9 @@ func (s *DeleteDbfsResponseBody) SetRequestId(v string) *DeleteDbfsResponseBody 
 }
 
 type DeleteDbfsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDbfsResponse) String() string {
@@ -1000,8 +1268,17 @@ func (s *DeleteDbfsResponse) SetBody(v *DeleteDbfsResponseBody) *DeleteDbfsRespo
 }
 
 type DeleteSnapshotRequest struct {
-	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -1029,6 +1306,9 @@ func (s *DeleteSnapshotRequest) SetSnapshotId(v string) *DeleteSnapshotRequest {
 }
 
 type DeleteSnapshotResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1046,9 +1326,9 @@ func (s *DeleteSnapshotResponseBody) SetRequestId(v string) *DeleteSnapshotRespo
 }
 
 type DeleteSnapshotResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSnapshotResponse) String() string {
@@ -1075,9 +1355,24 @@ func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteS
 }
 
 type DeleteTagsBatchRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["dbfs-nUy1tb********BQ4X8Gpw","dbfs-v0WvA********tVEVcgJLg"]
 	DbfsList *string `json:"DbfsList,omitempty" xml:"DbfsList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tags     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"TagKey":"k1","TagValue":"v1"},{"TagKey":"k2","TagValue":"v2"}]
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DeleteTagsBatchRequest) String() string {
@@ -1104,6 +1399,9 @@ func (s *DeleteTagsBatchRequest) SetTags(v string) *DeleteTagsBatchRequest {
 }
 
 type DeleteTagsBatchResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1121,9 +1419,9 @@ func (s *DeleteTagsBatchResponseBody) SetRequestId(v string) *DeleteTagsBatchRes
 }
 
 type DeleteTagsBatchResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTagsBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTagsBatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTagsBatchResponse) String() string {
@@ -1150,9 +1448,24 @@ func (s *DeleteTagsBatchResponse) SetBody(v *DeleteTagsBatchResponseBody) *Delet
 }
 
 type DescribeDbfsSpecificationsRequest struct {
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enterprise
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs.g7se
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDbfsSpecificationsRequest) String() string {
@@ -1179,9 +1492,15 @@ func (s *DescribeDbfsSpecificationsRequest) SetRegionId(v string) *DescribeDbfsS
 }
 
 type DescribeDbfsSpecificationsResponseBody struct {
-	MaxDbfsNumberPerEcs            map[string]interface{} `json:"MaxDbfsNumberPerEcs,omitempty" xml:"MaxDbfsNumberPerEcs,omitempty"`
-	RequestId                      *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SupportedEcsInstanceTypeFamily []*string              `json:"SupportedEcsInstanceTypeFamily,omitempty" xml:"SupportedEcsInstanceTypeFamily,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4
+	MaxDbfsNumberPerEcs map[string]interface{} `json:"MaxDbfsNumberPerEcs,omitempty" xml:"MaxDbfsNumberPerEcs,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId                      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SupportedEcsInstanceTypeFamily []*string `json:"SupportedEcsInstanceTypeFamily,omitempty" xml:"SupportedEcsInstanceTypeFamily,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDbfsSpecificationsResponseBody) String() string {
@@ -1208,9 +1527,9 @@ func (s *DescribeDbfsSpecificationsResponseBody) SetSupportedEcsInstanceTypeFami
 }
 
 type DescribeDbfsSpecificationsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDbfsSpecificationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDbfsSpecificationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDbfsSpecificationsResponse) String() string {
@@ -1237,6 +1556,11 @@ func (s *DescribeDbfsSpecificationsResponse) SetBody(v *DescribeDbfsSpecificatio
 }
 
 type DescribeInstanceTypesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1255,7 +1579,10 @@ func (s *DescribeInstanceTypesRequest) SetRegionId(v string) *DescribeInstanceTy
 
 type DescribeInstanceTypesResponseBody struct {
 	InstanceTypes []*DescribeInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceTypesResponseBody) String() string {
@@ -1277,10 +1604,22 @@ func (s *DescribeInstanceTypesResponseBody) SetRequestId(v string) *DescribeInst
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypes struct {
-	CpuCoreCount            *float32 `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
-	InstanceTypeDescription *string  `json:"InstanceTypeDescription,omitempty" xml:"InstanceTypeDescription,omitempty"`
-	InstanceTypeId          *string  `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
-	MemorySize              *float32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// example:
+	//
+	// 0.25
+	CpuCoreCount *float32 `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
+	// example:
+	//
+	// dbfs.small
+	InstanceTypeDescription *string `json:"InstanceTypeDescription,omitempty" xml:"InstanceTypeDescription,omitempty"`
+	// example:
+	//
+	// dbfs.small
+	InstanceTypeId *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
+	// example:
+	//
+	// 0.5
+	MemorySize *float32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 }
 
 func (s DescribeInstanceTypesResponseBodyInstanceTypes) String() string {
@@ -1312,9 +1651,9 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypes) SetMemorySize(v float32
 }
 
 type DescribeInstanceTypesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceTypesResponse) String() string {
@@ -1341,9 +1680,24 @@ func (s *DescribeInstanceTypesResponse) SetBody(v *DescribeInstanceTypesResponse
 }
 
 type DetachDbfsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp67acfmxazb4ph***
 	ECSInstanceId *string `json:"ECSInstanceId,omitempty" xml:"ECSInstanceId,omitempty"`
-	FsId          *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d-bp131n0q38u3a4zi*****
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DetachDbfsRequest) String() string {
@@ -1370,6 +1724,9 @@ func (s *DetachDbfsRequest) SetRegionId(v string) *DetachDbfsRequest {
 }
 
 type DetachDbfsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1387,9 +1744,9 @@ func (s *DetachDbfsResponseBody) SetRequestId(v string) *DetachDbfsResponseBody 
 }
 
 type DetachDbfsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachDbfsResponse) String() string {
@@ -1416,7 +1773,17 @@ func (s *DetachDbfsResponse) SetBody(v *DetachDbfsResponseBody) *DetachDbfsRespo
 }
 
 type GetAutoSnapshotPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1439,8 +1806,11 @@ func (s *GetAutoSnapshotPolicyRequest) SetRegionId(v string) *GetAutoSnapshotPol
 }
 
 type GetAutoSnapshotPolicyResponseBody struct {
-	Data      *GetAutoSnapshotPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetAutoSnapshotPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAutoSnapshotPolicyResponseBody) String() string {
@@ -1462,18 +1832,48 @@ func (s *GetAutoSnapshotPolicyResponseBody) SetRequestId(v string) *GetAutoSnaps
 }
 
 type GetAutoSnapshotPolicyResponseBodyData struct {
-	AccountId         *string   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AppliedDbfsNumber *int32    `json:"AppliedDbfsNumber,omitempty" xml:"AppliedDbfsNumber,omitempty"`
-	CreatedTime       *string   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	LastModified      *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	PolicyId          *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName        *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepeatWeekdays    []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
-	RetentionDays     *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDetail      *string   `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	TimePoints        []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 13523459********
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 1
+	AppliedDbfsNumber *int32 `json:"AppliedDbfsNumber,omitempty" xml:"AppliedDbfsNumber,omitempty"`
+	// example:
+	//
+	// 1670998784000
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 1670998784000
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// PolicyTest
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatWeekdays []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30
+	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// -
+	StatusDetail *string   `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	TimePoints   []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 
 func (s GetAutoSnapshotPolicyResponseBodyData) String() string {
@@ -1545,9 +1945,9 @@ func (s *GetAutoSnapshotPolicyResponseBodyData) SetTimePoints(v []*string) *GetA
 }
 
 type GetAutoSnapshotPolicyResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAutoSnapshotPolicyResponse) String() string {
@@ -1574,7 +1974,17 @@ func (s *GetAutoSnapshotPolicyResponse) SetBody(v *GetAutoSnapshotPolicyResponse
 }
 
 type GetDbfsRequest struct {
-	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbfs-GOrr********Yd0VLOyBpg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1597,8 +2007,11 @@ func (s *GetDbfsRequest) SetRegionId(v string) *GetDbfsRequest {
 }
 
 type GetDbfsResponseBody struct {
-	DBFSInfo  *GetDbfsResponseBodyDBFSInfo `json:"DBFSInfo,omitempty" xml:"DBFSInfo,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBFSInfo *GetDbfsResponseBodyDBFSInfo `json:"DBFSInfo,omitempty" xml:"DBFSInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDbfsResponseBody) String() string {
@@ -1620,32 +2033,100 @@ func (s *GetDbfsResponseBody) SetRequestId(v string) *GetDbfsResponseBody {
 }
 
 type GetDbfsResponseBodyDBFSInfo struct {
-	AttachNodeNumber *int32                                   `json:"AttachNodeNumber,omitempty" xml:"AttachNodeNumber,omitempty"`
-	Category         *string                                  `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreatedTime      *string                                  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DBFSClusterId    *string                                  `json:"DBFSClusterId,omitempty" xml:"DBFSClusterId,omitempty"`
-	Description      *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	EbsList          []*GetDbfsResponseBodyDBFSInfoEbsList    `json:"EbsList,omitempty" xml:"EbsList,omitempty" type:"Repeated"`
-	EcsList          []*GetDbfsResponseBodyDBFSInfoEcsList    `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
-	EnableRaid       *bool                                    `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
-	Encryption       *bool                                    `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	FsId             *string                                  `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName           *string                                  `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	InstanceType     *string                                  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KMSKeyId         *string                                  `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	LastFailed       *string                                  `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
-	LastMountTime    *string                                  `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
-	LastUmountTime   *string                                  `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
-	PayType          *string                                  `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PerformanceLevel *string                                  `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	RaidStrip        *int32                                   `json:"RaidStrip,omitempty" xml:"RaidStrip,omitempty"`
-	RegionId         *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SizeG            *int32                                   `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	SnapshotInfo     *GetDbfsResponseBodyDBFSInfoSnapshotInfo `json:"SnapshotInfo,omitempty" xml:"SnapshotInfo,omitempty" type:"Struct"`
-	Status           *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags             []*GetDbfsResponseBodyDBFSInfoTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UsedScene        *string                                  `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
-	ZoneId           *string                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AdvancedFeatures *string `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
+	// example:
+	//
+	// 1
+	AttachNodeNumber *int32 `json:"AttachNodeNumber,omitempty" xml:"AttachNodeNumber,omitempty"`
+	// example:
+	//
+	// standard
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1609330367000
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// c39EcDBf-2Ecb-C3C6-6526-018d4Dcf63eD
+	DBFSClusterId *string `json:"DBFSClusterId,omitempty" xml:"DBFSClusterId,omitempty"`
+	// example:
+	//
+	// desc
+	Description *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	EbsList     []*GetDbfsResponseBodyDBFSInfoEbsList `json:"EbsList,omitempty" xml:"EbsList,omitempty" type:"Repeated"`
+	EcsList     []*GetDbfsResponseBodyDBFSInfoEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	EnableRaid *bool `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
+	// example:
+	//
+	// false
+	Encryption *bool `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	// example:
+	//
+	// dbfs-GOrr********Yd0VLOyBpg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// dbfs-test-01
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// example:
+	//
+	// dbfs.small
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// c39EcDBf-2Ecb-C3C6-6526-018d4D******
+	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	// example:
+	//
+	// TargetIsBusy.DBFS
+	LastFailed *string `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
+	// example:
+	//
+	// 1644915400000
+	LastMountTime *string `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
+	// example:
+	//
+	// 1644915319000
+	LastUmountTime *string `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
+	// example:
+	//
+	// postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// PL1
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// example:
+	//
+	// 2
+	RaidStrip *int32 `json:"RaidStrip,omitempty" xml:"RaidStrip,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 20
+	SizeG        *int32                                   `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	SnapshotId   *string                                  `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotInfo *GetDbfsResponseBodyDBFSInfoSnapshotInfo `json:"SnapshotInfo,omitempty" xml:"SnapshotInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// attached
+	Status *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*GetDbfsResponseBodyDBFSInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// MySQL 5.7
+	UsedScene *string `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetDbfsResponseBodyDBFSInfo) String() string {
@@ -1654,6 +2135,11 @@ func (s GetDbfsResponseBodyDBFSInfo) String() string {
 
 func (s GetDbfsResponseBodyDBFSInfo) GoString() string {
 	return s.String()
+}
+
+func (s *GetDbfsResponseBodyDBFSInfo) SetAdvancedFeatures(v string) *GetDbfsResponseBodyDBFSInfo {
+	s.AdvancedFeatures = &v
+	return s
 }
 
 func (s *GetDbfsResponseBodyDBFSInfo) SetAttachNodeNumber(v int32) *GetDbfsResponseBodyDBFSInfo {
@@ -1761,6 +2247,11 @@ func (s *GetDbfsResponseBodyDBFSInfo) SetSizeG(v int32) *GetDbfsResponseBodyDBFS
 	return s
 }
 
+func (s *GetDbfsResponseBodyDBFSInfo) SetSnapshotId(v string) *GetDbfsResponseBodyDBFSInfo {
+	s.SnapshotId = &v
+	return s
+}
+
 func (s *GetDbfsResponseBodyDBFSInfo) SetSnapshotInfo(v *GetDbfsResponseBodyDBFSInfoSnapshotInfo) *GetDbfsResponseBodyDBFSInfo {
 	s.SnapshotInfo = v
 	return s
@@ -1787,8 +2278,14 @@ func (s *GetDbfsResponseBodyDBFSInfo) SetZoneId(v string) *GetDbfsResponseBodyDB
 }
 
 type GetDbfsResponseBodyDBFSInfoEbsList struct {
+	// example:
+	//
+	// d-bp1hq4******qi7gy1th
 	EbsId *string `json:"EbsId,omitempty" xml:"EbsId,omitempty"`
-	SizeG *int32  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	// example:
+	//
+	// 20
+	SizeG *int32 `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
 }
 
 func (s GetDbfsResponseBodyDBFSInfoEbsList) String() string {
@@ -1810,6 +2307,9 @@ func (s *GetDbfsResponseBodyDBFSInfoEbsList) SetSizeG(v int32) *GetDbfsResponseB
 }
 
 type GetDbfsResponseBodyDBFSInfoEcsList struct {
+	// example:
+	//
+	// i-y2vZ3********vvMilZ2hQ
 	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
 }
 
@@ -1827,10 +2327,22 @@ func (s *GetDbfsResponseBodyDBFSInfoEcsList) SetEcsId(v string) *GetDbfsResponse
 }
 
 type GetDbfsResponseBodyDBFSInfoSnapshotInfo struct {
-	LinkId        *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// sl-9zskwvgoqqqvzxa*******
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// example:
+	//
+	// sp-ehuhzlfetb2jiwz*******
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	SnapshotCount *int32 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	// example:
+	//
+	// 50331648
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s GetDbfsResponseBodyDBFSInfoSnapshotInfo) String() string {
@@ -1862,8 +2374,17 @@ func (s *GetDbfsResponseBodyDBFSInfoSnapshotInfo) SetTotalSize(v int64) *GetDbfs
 }
 
 type GetDbfsResponseBodyDBFSInfoTags struct {
-	Id       *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// TestTagKey1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// TestTagValue1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -1891,9 +2412,9 @@ func (s *GetDbfsResponseBodyDBFSInfoTags) SetTagValue(v string) *GetDbfsResponse
 }
 
 type GetDbfsResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDbfsResponse) String() string {
@@ -1920,6 +2441,11 @@ func (s *GetDbfsResponse) SetBody(v *GetDbfsResponseBody) *GetDbfsResponse {
 }
 
 type GetServiceLinkedRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1937,10 +2463,22 @@ func (s *GetServiceLinkedRoleRequest) SetRegionId(v string) *GetServiceLinkedRol
 }
 
 type GetServiceLinkedRoleResponseBody struct {
-	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	DbfsLinkedRole *bool   `json:"DbfsLinkedRole,omitempty" xml:"DbfsLinkedRole,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1352345930******
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// true
+	DbfsLinkedRole *bool `json:"DbfsLinkedRole,omitempty" xml:"DbfsLinkedRole,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetServiceLinkedRoleResponseBody) String() string {
@@ -1972,9 +2510,9 @@ func (s *GetServiceLinkedRoleResponseBody) SetRequestId(v string) *GetServiceLin
 }
 
 type GetServiceLinkedRoleResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceLinkedRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceLinkedRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceLinkedRoleResponse) String() string {
@@ -2001,7 +2539,15 @@ func (s *GetServiceLinkedRoleResponse) SetBody(v *GetServiceLinkedRoleResponseBo
 }
 
 type GetSnapshotLinkRequest struct {
-	LinkId   *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// example:
+	//
+	// sl-b3zlgraysgcs9jy********
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2024,8 +2570,11 @@ func (s *GetSnapshotLinkRequest) SetRegionId(v string) *GetSnapshotLinkRequest {
 }
 
 type GetSnapshotLinkResponseBody struct {
-	Data      *GetSnapshotLinkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetSnapshotLinkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSnapshotLinkResponseBody) String() string {
@@ -2047,15 +2596,39 @@ func (s *GetSnapshotLinkResponseBody) SetRequestId(v string) *GetSnapshotLinkRes
 }
 
 type GetSnapshotLinkResponseBodyData struct {
-	Category      *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
-	EcsList       []*GetSnapshotLinkResponseBodyDataEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
-	FsId          *string                                   `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName        *string                                   `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	LinkId        *string                                   `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	SnapshotCount *int32                                    `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	SourceSize    *int32                                    `json:"SourceSize,omitempty" xml:"SourceSize,omitempty"`
-	Status        *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalSize     *int64                                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// standard
+	Category *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
+	EcsList  []*GetSnapshotLinkResponseBodyDataEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dbfs-194j6u20sp2gisx*******
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// test
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// example:
+	//
+	// sl-b3zlgraysgcs9jy*******
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// example:
+	//
+	// 1
+	SnapshotCount *int32 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	// example:
+	//
+	// 20
+	SourceSize *int32 `json:"SourceSize,omitempty" xml:"SourceSize,omitempty"`
+	// example:
+	//
+	// attached
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 50331648
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s GetSnapshotLinkResponseBodyData) String() string {
@@ -2112,6 +2685,9 @@ func (s *GetSnapshotLinkResponseBodyData) SetTotalSize(v int64) *GetSnapshotLink
 }
 
 type GetSnapshotLinkResponseBodyDataEcsList struct {
+	// example:
+	//
+	// i-bp19mogqud1w1*******
 	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
 }
 
@@ -2129,9 +2705,9 @@ func (s *GetSnapshotLinkResponseBodyDataEcsList) SetEcsId(v string) *GetSnapshot
 }
 
 type GetSnapshotLinkResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSnapshotLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSnapshotLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSnapshotLinkResponse) String() string {
@@ -2158,11 +2734,28 @@ func (s *GetSnapshotLinkResponse) SetBody(v *GetSnapshotLinkResponseBody) *GetSn
 }
 
 type ListAutoSnapshotPoliciesRequest struct {
-	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// PolicyName
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// policyTest
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAutoSnapshotPoliciesRequest) String() string {
@@ -2199,11 +2792,23 @@ func (s *ListAutoSnapshotPoliciesRequest) SetRegionId(v string) *ListAutoSnapsho
 }
 
 type ListAutoSnapshotPoliciesResponseBody struct {
-	PageNumber       *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotPolicies []*ListAutoSnapshotPoliciesResponseBodySnapshotPolicies `json:"SnapshotPolicies,omitempty" xml:"SnapshotPolicies,omitempty" type:"Repeated"`
-	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAutoSnapshotPoliciesResponseBody) String() string {
@@ -2240,18 +2845,45 @@ func (s *ListAutoSnapshotPoliciesResponseBody) SetTotalCount(v int32) *ListAutoS
 }
 
 type ListAutoSnapshotPoliciesResponseBodySnapshotPolicies struct {
-	AccountId         *string   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AppliedDbfsNumber *int32    `json:"AppliedDbfsNumber,omitempty" xml:"AppliedDbfsNumber,omitempty"`
-	CreatedTime       *string   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	LastModified      *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	PolicyId          *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName        *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepeatWeekdays    []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
-	RetentionDays     *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDetail      *string   `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	TimePoints        []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 13523459********
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 1
+	AppliedDbfsNumber *int32 `json:"AppliedDbfsNumber,omitempty" xml:"AppliedDbfsNumber,omitempty"`
+	// example:
+	//
+	// 1670998784000
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 1670998784000
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// policyTest
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatWeekdays []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30
+	RetentionDays *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// -
+	StatusDetail *string   `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	TimePoints   []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 
 func (s ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) String() string {
@@ -2323,9 +2955,9 @@ func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetTimePoints(v [
 }
 
 type ListAutoSnapshotPoliciesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAutoSnapshotPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAutoSnapshotPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAutoSnapshotPoliciesResponse) String() string {
@@ -2352,12 +2984,34 @@ func (s *ListAutoSnapshotPoliciesResponse) SetBody(v *ListAutoSnapshotPoliciesRe
 }
 
 type ListAutoSnapshotPolicyAppliedDbfsRequest struct {
-	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// FsName
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// DBFS1
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyAppliedDbfsRequest) String() string {
@@ -2399,11 +3053,23 @@ func (s *ListAutoSnapshotPolicyAppliedDbfsRequest) SetRegionId(v string) *ListAu
 }
 
 type ListAutoSnapshotPolicyAppliedDbfsResponseBody struct {
-	DbfsList   []*ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList `json:"DbfsList,omitempty" xml:"DbfsList,omitempty" type:"Repeated"`
-	PageNumber *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DbfsList []*ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList `json:"DbfsList,omitempty" xml:"DbfsList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyAppliedDbfsResponseBody) String() string {
@@ -2440,13 +3106,34 @@ func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBody) SetTotalCount(v int32) *
 }
 
 type ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList struct {
-	FsId          *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName        *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SizeG         *int64  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// dbfs-ejdvesb0qvuywvg*******
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// test
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 20
+	SizeG *int64 `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	// example:
+	//
+	// 1
+	SnapshotCount *int32 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	// example:
+	//
+	// attached
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 50331648
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) String() string {
@@ -2493,9 +3180,9 @@ func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetTotalSize(v i
 }
 
 type ListAutoSnapshotPolicyAppliedDbfsResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAutoSnapshotPolicyAppliedDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAutoSnapshotPolicyAppliedDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyAppliedDbfsResponse) String() string {
@@ -2522,11 +3209,28 @@ func (s *ListAutoSnapshotPolicyAppliedDbfsResponse) SetBody(v *ListAutoSnapshotP
 }
 
 type ListAutoSnapshotPolicyUnappliedDbfsRequest struct {
-	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// FsName
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// DBFS1
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyUnappliedDbfsRequest) String() string {
@@ -2563,11 +3267,23 @@ func (s *ListAutoSnapshotPolicyUnappliedDbfsRequest) SetRegionId(v string) *List
 }
 
 type ListAutoSnapshotPolicyUnappliedDbfsResponseBody struct {
-	DbfsList   []*ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList `json:"DbfsList,omitempty" xml:"DbfsList,omitempty" type:"Repeated"`
-	PageNumber *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DbfsList []*ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList `json:"DbfsList,omitempty" xml:"DbfsList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyUnappliedDbfsResponseBody) String() string {
@@ -2604,13 +3320,34 @@ func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBody) SetTotalCount(v int32)
 }
 
 type ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList struct {
-	FsId          *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName        *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SizeG         *int64  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// dbfs-ejdvesb0qvuywvg*******
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// test
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 20
+	SizeG *int64 `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	// example:
+	//
+	// 1
+	SnapshotCount *int32 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	// example:
+	//
+	// attached
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 50331648
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) String() string {
@@ -2657,9 +3394,9 @@ func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetTotalSize(v
 }
 
 type ListAutoSnapshotPolicyUnappliedDbfsResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAutoSnapshotPolicyUnappliedDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAutoSnapshotPolicyUnappliedDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyUnappliedDbfsResponse) String() string {
@@ -2686,14 +3423,40 @@ func (s *ListAutoSnapshotPolicyUnappliedDbfsResponse) SetBody(v *ListAutoSnapsho
 }
 
 type ListDbfsRequest struct {
-	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// FsName
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// dbfs-test-01
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SortKey     *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	SortType    *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// SizeG
+	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// example:
+	//
+	// desc
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// example:
+	//
+	// [{"TagKey":"k1","TagValue":"v1"},{"TagKey":"k2","TagValue":"v2"}]
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListDbfsRequest) String() string {
@@ -2745,11 +3508,23 @@ func (s *ListDbfsRequest) SetTags(v string) *ListDbfsRequest {
 }
 
 type ListDbfsResponseBody struct {
-	DBFSInfo   []*ListDbfsResponseBodyDBFSInfo `json:"DBFSInfo,omitempty" xml:"DBFSInfo,omitempty" type:"Repeated"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DBFSInfo []*ListDbfsResponseBodyDBFSInfo `json:"DBFSInfo,omitempty" xml:"DBFSInfo,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 32
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDbfsResponseBody) String() string {
@@ -2786,31 +3561,94 @@ func (s *ListDbfsResponseBody) SetTotalCount(v int32) *ListDbfsResponseBody {
 }
 
 type ListDbfsResponseBodyDBFSInfo struct {
-	AttachNodeNumber *int32                                    `json:"AttachNodeNumber,omitempty" xml:"AttachNodeNumber,omitempty"`
-	Category         *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreatedTime      *string                                   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DBFSClusterId    *string                                   `json:"DBFSClusterId,omitempty" xml:"DBFSClusterId,omitempty"`
-	EbsList          []*ListDbfsResponseBodyDBFSInfoEbsList    `json:"EbsList,omitempty" xml:"EbsList,omitempty" type:"Repeated"`
-	EcsList          []*ListDbfsResponseBodyDBFSInfoEcsList    `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
-	EnableRaid       *bool                                     `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
-	Encryption       *bool                                     `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	FsId             *string                                   `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName           *string                                   `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	InstanceType     *string                                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KMSKeyId         *string                                   `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	LastFailed       *string                                   `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
-	LastMountTime    *string                                   `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
-	LastUmountTime   *string                                   `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
-	PayType          *string                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PerformanceLevel *string                                   `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	RaidStrip        *int32                                    `json:"RaidStrip,omitempty" xml:"RaidStrip,omitempty"`
-	RegionId         *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SizeG            *int32                                    `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	SnapshotInfo     *ListDbfsResponseBodyDBFSInfoSnapshotInfo `json:"SnapshotInfo,omitempty" xml:"SnapshotInfo,omitempty" type:"Struct"`
-	Status           *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags             []*ListDbfsResponseBodyDBFSInfoTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UsedScene        *string                                   `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
-	ZoneId           *string                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 1
+	AttachNodeNumber *int32 `json:"AttachNodeNumber,omitempty" xml:"AttachNodeNumber,omitempty"`
+	// example:
+	//
+	// standard
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1609330367000
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// c39EcDBf-2Ecb-C3C6-6526-018d4Dcf63eD
+	DBFSClusterId *string                                `json:"DBFSClusterId,omitempty" xml:"DBFSClusterId,omitempty"`
+	EbsList       []*ListDbfsResponseBodyDBFSInfoEbsList `json:"EbsList,omitempty" xml:"EbsList,omitempty" type:"Repeated"`
+	EcsList       []*ListDbfsResponseBodyDBFSInfoEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	EnableRaid *bool `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
+	// example:
+	//
+	// false
+	Encryption *bool `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	// example:
+	//
+	// dbfs-GOrr********Yd0VLOyBpg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// dbfs-test-01
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// example:
+	//
+	// dbfs.small
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 0e478b7a-4262-4802-b8cb-00d3fb408***
+	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	// example:
+	//
+	// TargetIsBusy.DBFS
+	LastFailed *string `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
+	// example:
+	//
+	// 1644915400000
+	LastMountTime *string `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
+	// example:
+	//
+	// 1644915319000
+	LastUmountTime *string `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
+	// example:
+	//
+	// postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// PL1
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// example:
+	//
+	// 2
+	RaidStrip *int32 `json:"RaidStrip,omitempty" xml:"RaidStrip,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 20
+	SizeG        *int32                                    `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	SnapshotInfo *ListDbfsResponseBodyDBFSInfoSnapshotInfo `json:"SnapshotInfo,omitempty" xml:"SnapshotInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// attached
+	Status *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListDbfsResponseBodyDBFSInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// MySQL 5.7
+	UsedScene *string `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListDbfsResponseBodyDBFSInfo) String() string {
@@ -2947,8 +3785,14 @@ func (s *ListDbfsResponseBodyDBFSInfo) SetZoneId(v string) *ListDbfsResponseBody
 }
 
 type ListDbfsResponseBodyDBFSInfoEbsList struct {
+	// example:
+	//
+	// d-bp1383******3uir001r
 	EbsId *string `json:"EbsId,omitempty" xml:"EbsId,omitempty"`
-	SizeG *int32  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	// example:
+	//
+	// 20
+	SizeG *int32 `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
 }
 
 func (s ListDbfsResponseBodyDBFSInfoEbsList) String() string {
@@ -2970,6 +3814,9 @@ func (s *ListDbfsResponseBodyDBFSInfoEbsList) SetSizeG(v int32) *ListDbfsRespons
 }
 
 type ListDbfsResponseBodyDBFSInfoEcsList struct {
+	// example:
+	//
+	// i-y2vZ3********vvMilZ2hQ
 	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
 }
 
@@ -2987,10 +3834,22 @@ func (s *ListDbfsResponseBodyDBFSInfoEcsList) SetEcsId(v string) *ListDbfsRespon
 }
 
 type ListDbfsResponseBodyDBFSInfoSnapshotInfo struct {
-	LinkId        *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// sl-b3zlgraysgcs9jy*******
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// example:
+	//
+	// sp-ehuhzlfetb2jiwz*******
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	SnapshotCount *int32 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	// example:
+	//
+	// 50331648
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListDbfsResponseBodyDBFSInfoSnapshotInfo) String() string {
@@ -3022,8 +3881,17 @@ func (s *ListDbfsResponseBodyDBFSInfoSnapshotInfo) SetTotalSize(v int64) *ListDb
 }
 
 type ListDbfsResponseBodyDBFSInfoTags struct {
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// TestTagKey1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// TestTagValue1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -3051,9 +3919,9 @@ func (s *ListDbfsResponseBodyDBFSInfoTags) SetTagValue(v string) *ListDbfsRespon
 }
 
 type ListDbfsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDbfsResponse) String() string {
@@ -3080,11 +3948,28 @@ func (s *ListDbfsResponse) SetBody(v *ListDbfsResponseBody) *ListDbfsResponse {
 }
 
 type ListDbfsAttachableEcsInstancesRequest struct {
-	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// InstanceName
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// autotest1
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListDbfsAttachableEcsInstancesRequest) String() string {
@@ -3122,8 +4007,14 @@ func (s *ListDbfsAttachableEcsInstancesRequest) SetRegionId(v string) *ListDbfsA
 
 type ListDbfsAttachableEcsInstancesResponseBody struct {
 	EcsLabelInfo []*ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo `json:"EcsLabelInfo,omitempty" xml:"EcsLabelInfo,omitempty" type:"Repeated"`
-	RequestId    *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 3724CFEF-02DA-578B-AED6-67EE80671B4A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 32
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDbfsAttachableEcsInstancesResponseBody) String() string {
@@ -3150,13 +4041,34 @@ func (s *ListDbfsAttachableEcsInstancesResponseBody) SetTotalCount(v int32) *Lis
 }
 
 type ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo struct {
-	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// m-bp67acfmxazb4p****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// ecs.g7se
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	OSName             *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	Label              *string `json:"label,omitempty" xml:"label,omitempty"`
-	Value              *string `json:"value,omitempty" xml:"value,omitempty"`
+	// example:
+	//
+	// Alibaba Cloud Linux 2.1903 LTS 64 bit
+	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// dbfs-test-01
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// example:
+	//
+	// i-bp10jb8mqajkmrejgo00
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) String() string {
@@ -3203,9 +4115,9 @@ func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetValue(v stri
 }
 
 type ListDbfsAttachableEcsInstancesResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDbfsAttachableEcsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDbfsAttachableEcsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDbfsAttachableEcsInstancesResponse) String() string {
@@ -3232,7 +4144,17 @@ func (s *ListDbfsAttachableEcsInstancesResponse) SetBody(v *ListDbfsAttachableEc
 }
 
 type ListDbfsAttachedEcsInstancesRequest struct {
-	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbfs-nUy1tb********BQ4X8Gpw
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3256,7 +4178,10 @@ func (s *ListDbfsAttachedEcsInstancesRequest) SetRegionId(v string) *ListDbfsAtt
 
 type ListDbfsAttachedEcsInstancesResponseBody struct {
 	EcsLabelInfo []*ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo `json:"EcsLabelInfo,omitempty" xml:"EcsLabelInfo,omitempty" type:"Repeated"`
-	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDbfsAttachedEcsInstancesResponseBody) String() string {
@@ -3278,12 +4203,30 @@ func (s *ListDbfsAttachedEcsInstancesResponseBody) SetRequestId(v string) *ListD
 }
 
 type ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo struct {
+	// example:
+	//
+	// ecs.g7se
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	MountPoint         *string `json:"MountPoint,omitempty" xml:"MountPoint,omitempty"`
-	MountedTime        *string `json:"MountedTime,omitempty" xml:"MountedTime,omitempty"`
-	OSName             *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	Label              *string `json:"label,omitempty" xml:"label,omitempty"`
-	Value              *string `json:"value,omitempty" xml:"value,omitempty"`
+	// example:
+	//
+	// /mnt/dbfs/dbfs-nUy1tb********BQ4X8Gpw
+	MountPoint *string `json:"MountPoint,omitempty" xml:"MountPoint,omitempty"`
+	// example:
+	//
+	// 1606290930000
+	MountedTime *string `json:"MountedTime,omitempty" xml:"MountedTime,omitempty"`
+	// example:
+	//
+	// Alibaba Cloud Linux 2.1903 LTS 64 bit
+	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// example:
+	//
+	// dbfs-test-01
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// example:
+	//
+	// i-bp10jb8mqajkmrejgo00
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) String() string {
@@ -3325,9 +4268,9 @@ func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetValue(v string
 }
 
 type ListDbfsAttachedEcsInstancesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDbfsAttachedEcsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDbfsAttachedEcsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDbfsAttachedEcsInstancesResponse) String() string {
@@ -3354,18 +4297,56 @@ func (s *ListDbfsAttachedEcsInstancesResponse) SetBody(v *ListDbfsAttachedEcsIns
 }
 
 type ListSnapshotRequest struct {
-	FilterKey    *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
-	FilterValue  *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	FsId         *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SnapshotIds  *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	// example:
+	//
+	// SnapshotId
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// s-bp67acfmxazb4p****
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	// example:
+	//
+	// dbfs-GOrr********Yd0VLOyBpg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ["s-bp67acfmxazb4p****", "s-bp67acfmxazb5p****", … "s-bp67acfmxazb6p****"]
+	SnapshotIds *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	// example:
+	//
+	// testSnapshotName
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// example:
+	//
+	// user
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	SortKey      *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	SortType     *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// SnapshotSize
+	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// example:
+	//
+	// desc
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// example:
+	//
+	// accomplished
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSnapshotRequest) String() string {
@@ -3437,11 +4418,23 @@ func (s *ListSnapshotRequest) SetStatus(v string) *ListSnapshotRequest {
 }
 
 type ListSnapshotResponseBody struct {
-	PageNumber *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Snapshots  []*ListSnapshotResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Snapshots []*ListSnapshotResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 32
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSnapshotResponseBody) String() string {
@@ -3478,20 +4471,62 @@ func (s *ListSnapshotResponseBody) SetTotalCount(v int32) *ListSnapshotResponseB
 }
 
 type ListSnapshotResponseBodySnapshots struct {
-	Category            *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreationTime        *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LastModifiedTime    *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Progress            *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RemainTime          *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	RetentionDays       *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	SnapshotId          *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName        *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	SnapshotType        *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	SourceFsId          *string `json:"SourceFsId,omitempty" xml:"SourceFsId,omitempty"`
-	SourceFsSize        *int32  `json:"SourceFsSize,omitempty" xml:"SourceFsSize,omitempty"`
-	SourceFsStripeWidth *int32  `json:"SourceFsStripeWidth,omitempty" xml:"SourceFsStripeWidth,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// standard
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1609330367000
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1609330367000
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// example:
+	//
+	// 100%
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 38
+	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	// example:
+	//
+	// 30
+	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	// example:
+	//
+	// s-bp67acfmxazb4p****
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// testSnapshotName
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// example:
+	//
+	// user
+	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	// example:
+	//
+	// dbfs-bp67acfmxazb4p****
+	SourceFsId *string `json:"SourceFsId,omitempty" xml:"SourceFsId,omitempty"`
+	// example:
+	//
+	// 20
+	SourceFsSize *int32 `json:"SourceFsSize,omitempty" xml:"SourceFsSize,omitempty"`
+	// example:
+	//
+	// 1
+	SourceFsStripeWidth *int32 `json:"SourceFsStripeWidth,omitempty" xml:"SourceFsStripeWidth,omitempty"`
+	// example:
+	//
+	// accomplished
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSnapshotResponseBodySnapshots) String() string {
@@ -3573,9 +4608,9 @@ func (s *ListSnapshotResponseBodySnapshots) SetStatus(v string) *ListSnapshotRes
 }
 
 type ListSnapshotResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSnapshotResponse) String() string {
@@ -3602,13 +4637,36 @@ func (s *ListSnapshotResponse) SetBody(v *ListSnapshotResponseBody) *ListSnapsho
 }
 
 type ListSnapshotLinksRequest struct {
-	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// FsId
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// dbfs-kwziq4dpsle********
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	FsIds       *string `json:"FsIds,omitempty" xml:"FsIds,omitempty"`
-	LinkIds     *string `json:"LinkIds,omitempty" xml:"LinkIds,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ["dbfs-kwziq4dpsle********","dbfs-vuaqvfcjqsg********"]
+	FsIds *string `json:"FsIds,omitempty" xml:"FsIds,omitempty"`
+	// example:
+	//
+	// ["sl-bp1grgphbcc9brb5****","sl-bp1c4izumvq0i5bs****","sl-bp1akk7isz866dds****"]
+	LinkIds *string `json:"LinkIds,omitempty" xml:"LinkIds,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListSnapshotLinksRequest) String() string {
@@ -3655,11 +4713,23 @@ func (s *ListSnapshotLinksRequest) SetRegionId(v string) *ListSnapshotLinksReque
 }
 
 type ListSnapshotLinksResponseBody struct {
-	PageNumber    *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotLinks []*ListSnapshotLinksResponseBodySnapshotLinks `json:"SnapshotLinks,omitempty" xml:"SnapshotLinks,omitempty" type:"Repeated"`
-	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSnapshotLinksResponseBody) String() string {
@@ -3696,14 +4766,35 @@ func (s *ListSnapshotLinksResponseBody) SetTotalCount(v int32) *ListSnapshotLink
 }
 
 type ListSnapshotLinksResponseBodySnapshotLinks struct {
-	EcsList       []*ListSnapshotLinksResponseBodySnapshotLinksEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
-	FsId          *string                                              `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName        *string                                              `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	LinkId        *string                                              `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	SnapshotCount *int32                                               `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	SourceSize    *int32                                               `json:"SourceSize,omitempty" xml:"SourceSize,omitempty"`
-	Status        *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalSize     *int64                                               `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	EcsList []*ListSnapshotLinksResponseBodySnapshotLinksEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dbfs-q7qsgyqptjk******
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// test
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// example:
+	//
+	// sl-b3zlgraysgcs9jy*******
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// example:
+	//
+	// 1
+	SnapshotCount *int32 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	// example:
+	//
+	// 20
+	SourceSize *int32 `json:"SourceSize,omitempty" xml:"SourceSize,omitempty"`
+	// example:
+	//
+	// attached
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 50331648
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListSnapshotLinksResponseBodySnapshotLinks) String() string {
@@ -3755,6 +4846,9 @@ func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetTotalSize(v int64) *List
 }
 
 type ListSnapshotLinksResponseBodySnapshotLinksEcsList struct {
+	// example:
+	//
+	// i-bp1f4eo2biro*******
 	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
 }
 
@@ -3772,9 +4866,9 @@ func (s *ListSnapshotLinksResponseBodySnapshotLinksEcsList) SetEcsId(v string) *
 }
 
 type ListSnapshotLinksResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSnapshotLinksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSnapshotLinksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSnapshotLinksResponse) String() string {
@@ -3801,6 +4895,11 @@ func (s *ListSnapshotLinksResponse) SetBody(v *ListSnapshotLinksResponseBody) *L
 }
 
 type ListTagKeysRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3818,6 +4917,9 @@ func (s *ListTagKeysRequest) SetRegionId(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagKeys   []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
@@ -3841,9 +4943,9 @@ func (s *ListTagKeysResponseBody) SetTagKeys(v []*string) *ListTagKeysResponseBo
 }
 
 type ListTagKeysResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagKeysResponse) String() string {
@@ -3870,8 +4972,18 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagValuesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tagKey1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -3893,6 +5005,9 @@ func (s *ListTagValuesRequest) SetTagKey(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
@@ -3916,9 +5031,9 @@ func (s *ListTagValuesResponseBody) SetTagValues(v []*string) *ListTagValuesResp
 }
 
 type ListTagValuesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagValuesResponse) String() string {
@@ -3945,12 +5060,28 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 }
 
 type ModifyAutoSnapshotPolicyRequest struct {
-	PolicyId       *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName     *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// policyTest
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepeatWeekdays []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
-	RetentionDays  *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	TimePoints     []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30
+	RetentionDays *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	TimePoints    []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 
 func (s ModifyAutoSnapshotPolicyRequest) String() string {
@@ -3992,12 +5123,28 @@ func (s *ModifyAutoSnapshotPolicyRequest) SetTimePoints(v []*string) *ModifyAuto
 }
 
 type ModifyAutoSnapshotPolicyShrinkRequest struct {
-	PolicyId             *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName           *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sp-z5siir3iq3m**********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// policyTest
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepeatWeekdaysShrink *string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty"`
-	RetentionDays        *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	TimePointsShrink     *string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty"`
+	// example:
+	//
+	// 30
+	RetentionDays    *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	TimePointsShrink *string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty"`
 }
 
 func (s ModifyAutoSnapshotPolicyShrinkRequest) String() string {
@@ -4039,6 +5186,9 @@ func (s *ModifyAutoSnapshotPolicyShrinkRequest) SetTimePointsShrink(v string) *M
 }
 
 type ModifyAutoSnapshotPolicyResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4056,9 +5206,9 @@ func (s *ModifyAutoSnapshotPolicyResponseBody) SetRequestId(v string) *ModifyAut
 }
 
 type ModifyAutoSnapshotPolicyResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAutoSnapshotPolicyResponse) String() string {
@@ -4085,9 +5235,25 @@ func (s *ModifyAutoSnapshotPolicyResponse) SetBody(v *ModifyAutoSnapshotPolicyRe
 }
 
 type ModifySnapshotAttributeRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SnapshotId   *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// s-y2vZ3********vvMilZ2hQ
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// testSnapshotName
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 }
 
@@ -4120,6 +5286,9 @@ func (s *ModifySnapshotAttributeRequest) SetSnapshotName(v string) *ModifySnapsh
 }
 
 type ModifySnapshotAttributeResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4137,9 +5306,9 @@ func (s *ModifySnapshotAttributeResponseBody) SetRequestId(v string) *ModifySnap
 }
 
 type ModifySnapshotAttributeResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifySnapshotAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySnapshotAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifySnapshotAttributeResponse) String() string {
@@ -4166,8 +5335,23 @@ func (s *ModifySnapshotAttributeResponse) SetBody(v *ModifySnapshotAttributeResp
 }
 
 type RenameDbfsRequest struct {
-	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName   *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbfs-GOrr********Yd0VLOyBpg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// NewDbfsName
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4195,6 +5379,9 @@ func (s *RenameDbfsRequest) SetRegionId(v string) *RenameDbfsRequest {
 }
 
 type RenameDbfsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4212,9 +5399,9 @@ func (s *RenameDbfsResponseBody) SetRequestId(v string) *RenameDbfsResponseBody 
 }
 
 type RenameDbfsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenameDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenameDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenameDbfsResponse) String() string {
@@ -4241,8 +5428,23 @@ func (s *RenameDbfsResponse) SetBody(v *RenameDbfsResponseBody) *RenameDbfsRespo
 }
 
 type ResizeDbfsRequest struct {
-	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	NewSizeG *int32  `json:"NewSizeG,omitempty" xml:"NewSizeG,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbfs-GOrr********Yd0VLOyBpg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40
+	NewSizeG *int32 `json:"NewSizeG,omitempty" xml:"NewSizeG,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4270,6 +5472,9 @@ func (s *ResizeDbfsRequest) SetRegionId(v string) *ResizeDbfsRequest {
 }
 
 type ResizeDbfsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4287,9 +5492,9 @@ func (s *ResizeDbfsResponseBody) SetRequestId(v string) *ResizeDbfsResponseBody 
 }
 
 type ResizeDbfsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResizeDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResizeDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResizeDbfsResponse) String() string {
@@ -4316,9 +5521,24 @@ func (s *ResizeDbfsResponse) SetBody(v *ResizeDbfsResponseBody) *ResizeDbfsRespo
 }
 
 type TagDbfsRequest struct {
-	DbfsId   *string `json:"DbfsId,omitempty" xml:"DbfsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbfs-nUy1tb********BQ4X8Gpw
+	DbfsId *string `json:"DbfsId,omitempty" xml:"DbfsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tags     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"TagKey":"k1","TagValue":"v1"},{"TagKey":"k2","TagValue":"v2"}]
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s TagDbfsRequest) String() string {
@@ -4345,6 +5565,9 @@ func (s *TagDbfsRequest) SetTags(v string) *TagDbfsRequest {
 }
 
 type TagDbfsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4362,9 +5585,9 @@ func (s *TagDbfsResponseBody) SetRequestId(v string) *TagDbfsResponseBody {
 }
 
 type TagDbfsResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagDbfsResponse) String() string {
@@ -4391,11 +5614,30 @@ func (s *TagDbfsResponse) SetBody(v *TagDbfsResponseBody) *TagDbfsResponse {
 }
 
 type UpdateDbfsRequest struct {
+	// example:
+	//
+	// {"cpuCoreCount":0.5,"memorySize":512,"pageCacheSize":128}
 	AdvancedFeatures *string `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
-	FsId             *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UsedScene        *string `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbfs-GOrr********Yd0VLOyBpg
+	FsId *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	// example:
+	//
+	// dbfs.medium
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// MySQL 5.7
+	UsedScene *string `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
 }
 
 func (s UpdateDbfsRequest) String() string {
@@ -4432,6 +5674,9 @@ func (s *UpdateDbfsRequest) SetUsedScene(v string) *UpdateDbfsRequest {
 }
 
 type UpdateDbfsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4449,9 +5694,9 @@ func (s *UpdateDbfsResponseBody) SetRequestId(v string) *UpdateDbfsResponseBody 
 }
 
 type UpdateDbfsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDbfsResponse) String() string {
@@ -4563,6 +5808,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddTagsBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddTagsBatchResponse
 func (client *Client) AddTagsBatchWithOptions(request *AddTagsBatchRequest, runtime *util.RuntimeOptions) (_result *AddTagsBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4608,6 +5858,9 @@ func (client *Client) AddTagsBatchWithOptions(request *AddTagsBatchRequest, runt
 	return _result, _err
 }
 
+// @param request - AddTagsBatchRequest
+//
+// @return AddTagsBatchResponse
 func (client *Client) AddTagsBatch(request *AddTagsBatchRequest) (_result *AddTagsBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddTagsBatchResponse{}
@@ -4619,6 +5872,15 @@ func (client *Client) AddTagsBatch(request *AddTagsBatchRequest) (_result *AddTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置自动快照策略
+//
+// @param tmpReq - ApplyAutoSnapshotPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyAutoSnapshotPolicyResponse
 func (client *Client) ApplyAutoSnapshotPolicyWithOptions(tmpReq *ApplyAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *ApplyAutoSnapshotPolicyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4666,6 +5928,13 @@ func (client *Client) ApplyAutoSnapshotPolicyWithOptions(tmpReq *ApplyAutoSnapsh
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置自动快照策略
+//
+// @param request - ApplyAutoSnapshotPolicyRequest
+//
+// @return ApplyAutoSnapshotPolicyResponse
 func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRequest) (_result *ApplyAutoSnapshotPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyAutoSnapshotPolicyResponse{}
@@ -4677,6 +5946,11 @@ func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRe
 	return _result, _err
 }
 
+// @param request - AttachDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachDbfsResponse
 func (client *Client) AttachDbfsWithOptions(request *AttachDbfsRequest, runtime *util.RuntimeOptions) (_result *AttachDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4730,6 +6004,9 @@ func (client *Client) AttachDbfsWithOptions(request *AttachDbfsRequest, runtime 
 	return _result, _err
 }
 
+// @param request - AttachDbfsRequest
+//
+// @return AttachDbfsResponse
 func (client *Client) AttachDbfs(request *AttachDbfsRequest) (_result *AttachDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachDbfsResponse{}
@@ -4741,6 +6018,15 @@ func (client *Client) AttachDbfs(request *AttachDbfsRequest) (_result *AttachDbf
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消自动快照策略
+//
+// @param tmpReq - CancelAutoSnapshotPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAutoSnapshotPolicyResponse
 func (client *Client) CancelAutoSnapshotPolicyWithOptions(tmpReq *CancelAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *CancelAutoSnapshotPolicyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4788,6 +6074,13 @@ func (client *Client) CancelAutoSnapshotPolicyWithOptions(tmpReq *CancelAutoSnap
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消自动快照策略
+//
+// @param request - CancelAutoSnapshotPolicyRequest
+//
+// @return CancelAutoSnapshotPolicyResponse
 func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicyRequest) (_result *CancelAutoSnapshotPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelAutoSnapshotPolicyResponse{}
@@ -4799,6 +6092,15 @@ func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自动快照策略
+//
+// @param tmpReq - CreateAutoSnapshotPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAutoSnapshotPolicyResponse
 func (client *Client) CreateAutoSnapshotPolicyWithOptions(tmpReq *CreateAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateAutoSnapshotPolicyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4858,6 +6160,13 @@ func (client *Client) CreateAutoSnapshotPolicyWithOptions(tmpReq *CreateAutoSnap
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自动快照策略
+//
+// @param request - CreateAutoSnapshotPolicyRequest
+//
+// @return CreateAutoSnapshotPolicyResponse
 func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicyRequest) (_result *CreateAutoSnapshotPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAutoSnapshotPolicyResponse{}
@@ -4869,6 +6178,11 @@ func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicy
 	return _result, _err
 }
 
+// @param request - CreateDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDbfsResponse
 func (client *Client) CreateDbfsWithOptions(request *CreateDbfsRequest, runtime *util.RuntimeOptions) (_result *CreateDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4962,6 +6276,9 @@ func (client *Client) CreateDbfsWithOptions(request *CreateDbfsRequest, runtime 
 	return _result, _err
 }
 
+// @param request - CreateDbfsRequest
+//
+// @return CreateDbfsResponse
 func (client *Client) CreateDbfs(request *CreateDbfsRequest) (_result *CreateDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDbfsResponse{}
@@ -4973,6 +6290,11 @@ func (client *Client) CreateDbfs(request *CreateDbfsRequest) (_result *CreateDbf
 	return _result, _err
 }
 
+// @param request - CreateServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceLinkedRoleResponse
 func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5010,6 +6332,9 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 	return _result, _err
 }
 
+// @param request - CreateServiceLinkedRoleRequest
+//
+// @return CreateServiceLinkedRoleResponse
 func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceLinkedRoleResponse{}
@@ -5021,6 +6346,11 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 	return _result, _err
 }
 
+// @param request - CreateSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSnapshotResponse
 func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, runtime *util.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5074,6 +6404,9 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 	return _result, _err
 }
 
+// @param request - CreateSnapshotRequest
+//
+// @return CreateSnapshotResponse
 func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSnapshotResponse{}
@@ -5085,6 +6418,15 @@ func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自动快照策略
+//
+// @param request - DeleteAutoSnapshotPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAutoSnapshotPolicyResponse
 func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoSnapshotPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5122,6 +6464,13 @@ func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSna
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自动快照策略
+//
+// @param request - DeleteAutoSnapshotPolicyRequest
+//
+// @return DeleteAutoSnapshotPolicyResponse
 func (client *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicyRequest) (_result *DeleteAutoSnapshotPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAutoSnapshotPolicyResponse{}
@@ -5133,6 +6482,11 @@ func (client *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicy
 	return _result, _err
 }
 
+// @param request - DeleteDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDbfsResponse
 func (client *Client) DeleteDbfsWithOptions(request *DeleteDbfsRequest, runtime *util.RuntimeOptions) (_result *DeleteDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5174,6 +6528,9 @@ func (client *Client) DeleteDbfsWithOptions(request *DeleteDbfsRequest, runtime 
 	return _result, _err
 }
 
+// @param request - DeleteDbfsRequest
+//
+// @return DeleteDbfsResponse
 func (client *Client) DeleteDbfs(request *DeleteDbfsRequest) (_result *DeleteDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDbfsResponse{}
@@ -5185,6 +6542,11 @@ func (client *Client) DeleteDbfs(request *DeleteDbfsRequest) (_result *DeleteDbf
 	return _result, _err
 }
 
+// @param request - DeleteSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSnapshotResponse
 func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5226,6 +6588,9 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteSnapshotRequest
+//
+// @return DeleteSnapshotResponse
 func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *DeleteSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSnapshotResponse{}
@@ -5237,6 +6602,11 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DeleteTagsBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagsBatchResponse
 func (client *Client) DeleteTagsBatchWithOptions(request *DeleteTagsBatchRequest, runtime *util.RuntimeOptions) (_result *DeleteTagsBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5278,6 +6648,9 @@ func (client *Client) DeleteTagsBatchWithOptions(request *DeleteTagsBatchRequest
 	return _result, _err
 }
 
+// @param request - DeleteTagsBatchRequest
+//
+// @return DeleteTagsBatchResponse
 func (client *Client) DeleteTagsBatch(request *DeleteTagsBatchRequest) (_result *DeleteTagsBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTagsBatchResponse{}
@@ -5289,6 +6662,15 @@ func (client *Client) DeleteTagsBatch(request *DeleteTagsBatchRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询DBFS支持的ECS实例类型，根据ECS实例规格返回ECS可挂载的最大DBFS数量
+//
+// @param request - DescribeDbfsSpecificationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDbfsSpecificationsResponse
 func (client *Client) DescribeDbfsSpecificationsWithOptions(request *DescribeDbfsSpecificationsRequest, runtime *util.RuntimeOptions) (_result *DescribeDbfsSpecificationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5330,6 +6712,13 @@ func (client *Client) DescribeDbfsSpecificationsWithOptions(request *DescribeDbf
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询DBFS支持的ECS实例类型，根据ECS实例规格返回ECS可挂载的最大DBFS数量
+//
+// @param request - DescribeDbfsSpecificationsRequest
+//
+// @return DescribeDbfsSpecificationsResponse
 func (client *Client) DescribeDbfsSpecifications(request *DescribeDbfsSpecificationsRequest) (_result *DescribeDbfsSpecificationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDbfsSpecificationsResponse{}
@@ -5341,6 +6730,15 @@ func (client *Client) DescribeDbfsSpecifications(request *DescribeDbfsSpecificat
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询DBFS实例规格
+//
+// @param request - DescribeInstanceTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceTypesResponse
 func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstanceTypesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceTypesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5374,6 +6772,13 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询DBFS实例规格
+//
+// @param request - DescribeInstanceTypesRequest
+//
+// @return DescribeInstanceTypesResponse
 func (client *Client) DescribeInstanceTypes(request *DescribeInstanceTypesRequest) (_result *DescribeInstanceTypesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceTypesResponse{}
@@ -5385,6 +6790,11 @@ func (client *Client) DescribeInstanceTypes(request *DescribeInstanceTypesReques
 	return _result, _err
 }
 
+// @param request - DetachDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachDbfsResponse
 func (client *Client) DetachDbfsWithOptions(request *DetachDbfsRequest, runtime *util.RuntimeOptions) (_result *DetachDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5426,6 +6836,9 @@ func (client *Client) DetachDbfsWithOptions(request *DetachDbfsRequest, runtime 
 	return _result, _err
 }
 
+// @param request - DetachDbfsRequest
+//
+// @return DetachDbfsResponse
 func (client *Client) DetachDbfs(request *DetachDbfsRequest) (_result *DetachDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachDbfsResponse{}
@@ -5437,6 +6850,15 @@ func (client *Client) DetachDbfs(request *DetachDbfsRequest) (_result *DetachDbf
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询某条自动快照策略
+//
+// @param request - GetAutoSnapshotPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutoSnapshotPolicyResponse
 func (client *Client) GetAutoSnapshotPolicyWithOptions(request *GetAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *GetAutoSnapshotPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5474,6 +6896,13 @@ func (client *Client) GetAutoSnapshotPolicyWithOptions(request *GetAutoSnapshotP
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询某条自动快照策略
+//
+// @param request - GetAutoSnapshotPolicyRequest
+//
+// @return GetAutoSnapshotPolicyResponse
 func (client *Client) GetAutoSnapshotPolicy(request *GetAutoSnapshotPolicyRequest) (_result *GetAutoSnapshotPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutoSnapshotPolicyResponse{}
@@ -5485,6 +6914,11 @@ func (client *Client) GetAutoSnapshotPolicy(request *GetAutoSnapshotPolicyReques
 	return _result, _err
 }
 
+// @param request - GetDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDbfsResponse
 func (client *Client) GetDbfsWithOptions(request *GetDbfsRequest, runtime *util.RuntimeOptions) (_result *GetDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5522,6 +6956,9 @@ func (client *Client) GetDbfsWithOptions(request *GetDbfsRequest, runtime *util.
 	return _result, _err
 }
 
+// @param request - GetDbfsRequest
+//
+// @return GetDbfsResponse
 func (client *Client) GetDbfs(request *GetDbfsRequest) (_result *GetDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDbfsResponse{}
@@ -5533,6 +6970,11 @@ func (client *Client) GetDbfs(request *GetDbfsRequest) (_result *GetDbfsResponse
 	return _result, _err
 }
 
+// @param request - GetServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceLinkedRoleResponse
 func (client *Client) GetServiceLinkedRoleWithOptions(request *GetServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *GetServiceLinkedRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5566,6 +7008,9 @@ func (client *Client) GetServiceLinkedRoleWithOptions(request *GetServiceLinkedR
 	return _result, _err
 }
 
+// @param request - GetServiceLinkedRoleRequest
+//
+// @return GetServiceLinkedRoleResponse
 func (client *Client) GetServiceLinkedRole(request *GetServiceLinkedRoleRequest) (_result *GetServiceLinkedRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceLinkedRoleResponse{}
@@ -5577,6 +7022,15 @@ func (client *Client) GetServiceLinkedRole(request *GetServiceLinkedRoleRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取快照链
+//
+// @param request - GetSnapshotLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSnapshotLinkResponse
 func (client *Client) GetSnapshotLinkWithOptions(request *GetSnapshotLinkRequest, runtime *util.RuntimeOptions) (_result *GetSnapshotLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5606,6 +7060,13 @@ func (client *Client) GetSnapshotLinkWithOptions(request *GetSnapshotLinkRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取快照链
+//
+// @param request - GetSnapshotLinkRequest
+//
+// @return GetSnapshotLinkResponse
 func (client *Client) GetSnapshotLink(request *GetSnapshotLinkRequest) (_result *GetSnapshotLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSnapshotLinkResponse{}
@@ -5617,6 +7078,15 @@ func (client *Client) GetSnapshotLink(request *GetSnapshotLinkRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出自动快照策略
+//
+// @param request - ListAutoSnapshotPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutoSnapshotPoliciesResponse
 func (client *Client) ListAutoSnapshotPoliciesWithOptions(request *ListAutoSnapshotPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListAutoSnapshotPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5666,6 +7136,13 @@ func (client *Client) ListAutoSnapshotPoliciesWithOptions(request *ListAutoSnaps
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出自动快照策略
+//
+// @param request - ListAutoSnapshotPoliciesRequest
+//
+// @return ListAutoSnapshotPoliciesResponse
 func (client *Client) ListAutoSnapshotPolicies(request *ListAutoSnapshotPoliciesRequest) (_result *ListAutoSnapshotPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAutoSnapshotPoliciesResponse{}
@@ -5677,6 +7154,15 @@ func (client *Client) ListAutoSnapshotPolicies(request *ListAutoSnapshotPolicies
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出已设置自动快照策略的DBFS
+//
+// @param request - ListAutoSnapshotPolicyAppliedDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutoSnapshotPolicyAppliedDbfsResponse
 func (client *Client) ListAutoSnapshotPolicyAppliedDbfsWithOptions(request *ListAutoSnapshotPolicyAppliedDbfsRequest, runtime *util.RuntimeOptions) (_result *ListAutoSnapshotPolicyAppliedDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5730,6 +7216,13 @@ func (client *Client) ListAutoSnapshotPolicyAppliedDbfsWithOptions(request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出已设置自动快照策略的DBFS
+//
+// @param request - ListAutoSnapshotPolicyAppliedDbfsRequest
+//
+// @return ListAutoSnapshotPolicyAppliedDbfsResponse
 func (client *Client) ListAutoSnapshotPolicyAppliedDbfs(request *ListAutoSnapshotPolicyAppliedDbfsRequest) (_result *ListAutoSnapshotPolicyAppliedDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAutoSnapshotPolicyAppliedDbfsResponse{}
@@ -5741,6 +7234,15 @@ func (client *Client) ListAutoSnapshotPolicyAppliedDbfs(request *ListAutoSnapsho
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出未设置自动快照策略的DBFS
+//
+// @param request - ListAutoSnapshotPolicyUnappliedDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutoSnapshotPolicyUnappliedDbfsResponse
 func (client *Client) ListAutoSnapshotPolicyUnappliedDbfsWithOptions(request *ListAutoSnapshotPolicyUnappliedDbfsRequest, runtime *util.RuntimeOptions) (_result *ListAutoSnapshotPolicyUnappliedDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5790,6 +7292,13 @@ func (client *Client) ListAutoSnapshotPolicyUnappliedDbfsWithOptions(request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出未设置自动快照策略的DBFS
+//
+// @param request - ListAutoSnapshotPolicyUnappliedDbfsRequest
+//
+// @return ListAutoSnapshotPolicyUnappliedDbfsResponse
 func (client *Client) ListAutoSnapshotPolicyUnappliedDbfs(request *ListAutoSnapshotPolicyUnappliedDbfsRequest) (_result *ListAutoSnapshotPolicyUnappliedDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAutoSnapshotPolicyUnappliedDbfsResponse{}
@@ -5801,6 +7310,11 @@ func (client *Client) ListAutoSnapshotPolicyUnappliedDbfs(request *ListAutoSnaps
 	return _result, _err
 }
 
+// @param request - ListDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDbfsResponse
 func (client *Client) ListDbfsWithOptions(request *ListDbfsRequest, runtime *util.RuntimeOptions) (_result *ListDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5862,6 +7376,9 @@ func (client *Client) ListDbfsWithOptions(request *ListDbfsRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - ListDbfsRequest
+//
+// @return ListDbfsResponse
 func (client *Client) ListDbfs(request *ListDbfsRequest) (_result *ListDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDbfsResponse{}
@@ -5873,6 +7390,11 @@ func (client *Client) ListDbfs(request *ListDbfsRequest) (_result *ListDbfsRespo
 	return _result, _err
 }
 
+// @param request - ListDbfsAttachableEcsInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDbfsAttachableEcsInstancesResponse
 func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbfsAttachableEcsInstancesRequest, runtime *util.RuntimeOptions) (_result *ListDbfsAttachableEcsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5922,6 +7444,9 @@ func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbf
 	return _result, _err
 }
 
+// @param request - ListDbfsAttachableEcsInstancesRequest
+//
+// @return ListDbfsAttachableEcsInstancesResponse
 func (client *Client) ListDbfsAttachableEcsInstances(request *ListDbfsAttachableEcsInstancesRequest) (_result *ListDbfsAttachableEcsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDbfsAttachableEcsInstancesResponse{}
@@ -5933,6 +7458,15 @@ func (client *Client) ListDbfsAttachableEcsInstances(request *ListDbfsAttachable
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据库文件系统被挂载的ECS实例列表
+//
+// @param request - ListDbfsAttachedEcsInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDbfsAttachedEcsInstancesResponse
 func (client *Client) ListDbfsAttachedEcsInstancesWithOptions(request *ListDbfsAttachedEcsInstancesRequest, runtime *util.RuntimeOptions) (_result *ListDbfsAttachedEcsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5970,6 +7504,13 @@ func (client *Client) ListDbfsAttachedEcsInstancesWithOptions(request *ListDbfsA
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据库文件系统被挂载的ECS实例列表
+//
+// @param request - ListDbfsAttachedEcsInstancesRequest
+//
+// @return ListDbfsAttachedEcsInstancesResponse
 func (client *Client) ListDbfsAttachedEcsInstances(request *ListDbfsAttachedEcsInstancesRequest) (_result *ListDbfsAttachedEcsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDbfsAttachedEcsInstancesResponse{}
@@ -5981,6 +7522,11 @@ func (client *Client) ListDbfsAttachedEcsInstances(request *ListDbfsAttachedEcsI
 	return _result, _err
 }
 
+// @param request - ListSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSnapshotResponse
 func (client *Client) ListSnapshotWithOptions(request *ListSnapshotRequest, runtime *util.RuntimeOptions) (_result *ListSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6058,6 +7604,9 @@ func (client *Client) ListSnapshotWithOptions(request *ListSnapshotRequest, runt
 	return _result, _err
 }
 
+// @param request - ListSnapshotRequest
+//
+// @return ListSnapshotResponse
 func (client *Client) ListSnapshot(request *ListSnapshotRequest) (_result *ListSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSnapshotResponse{}
@@ -6069,6 +7618,15 @@ func (client *Client) ListSnapshot(request *ListSnapshotRequest) (_result *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出快照链
+//
+// @param request - ListSnapshotLinksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSnapshotLinksResponse
 func (client *Client) ListSnapshotLinksWithOptions(request *ListSnapshotLinksRequest, runtime *util.RuntimeOptions) (_result *ListSnapshotLinksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6126,6 +7684,13 @@ func (client *Client) ListSnapshotLinksWithOptions(request *ListSnapshotLinksReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出快照链
+//
+// @param request - ListSnapshotLinksRequest
+//
+// @return ListSnapshotLinksResponse
 func (client *Client) ListSnapshotLinks(request *ListSnapshotLinksRequest) (_result *ListSnapshotLinksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSnapshotLinksResponse{}
@@ -6137,6 +7702,11 @@ func (client *Client) ListSnapshotLinks(request *ListSnapshotLinksRequest) (_res
 	return _result, _err
 }
 
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6170,6 +7740,9 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	return _result, _err
 }
 
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -6181,6 +7754,11 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
+// @param request - ListTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *util.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6218,6 +7796,9 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	return _result, _err
 }
 
+// @param request - ListTagValuesRequest
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *ListTagValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
@@ -6229,6 +7810,15 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自动快照策略
+//
+// @param tmpReq - ModifyAutoSnapshotPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAutoSnapshotPolicyResponse
 func (client *Client) ModifyAutoSnapshotPolicyWithOptions(tmpReq *ModifyAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyAutoSnapshotPolicyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6292,6 +7882,13 @@ func (client *Client) ModifyAutoSnapshotPolicyWithOptions(tmpReq *ModifyAutoSnap
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自动快照策略
+//
+// @param request - ModifyAutoSnapshotPolicyRequest
+//
+// @return ModifyAutoSnapshotPolicyResponse
 func (client *Client) ModifyAutoSnapshotPolicy(request *ModifyAutoSnapshotPolicyRequest) (_result *ModifyAutoSnapshotPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAutoSnapshotPolicyResponse{}
@@ -6303,6 +7900,15 @@ func (client *Client) ModifyAutoSnapshotPolicy(request *ModifyAutoSnapshotPolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改快照属性
+//
+// @param request - ModifySnapshotAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySnapshotAttributeResponse
 func (client *Client) ModifySnapshotAttributeWithOptions(request *ModifySnapshotAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifySnapshotAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6348,6 +7954,13 @@ func (client *Client) ModifySnapshotAttributeWithOptions(request *ModifySnapshot
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改快照属性
+//
+// @param request - ModifySnapshotAttributeRequest
+//
+// @return ModifySnapshotAttributeResponse
 func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest) (_result *ModifySnapshotAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySnapshotAttributeResponse{}
@@ -6359,6 +7972,11 @@ func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRe
 	return _result, _err
 }
 
+// @param request - RenameDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenameDbfsResponse
 func (client *Client) RenameDbfsWithOptions(request *RenameDbfsRequest, runtime *util.RuntimeOptions) (_result *RenameDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6400,6 +8018,9 @@ func (client *Client) RenameDbfsWithOptions(request *RenameDbfsRequest, runtime 
 	return _result, _err
 }
 
+// @param request - RenameDbfsRequest
+//
+// @return RenameDbfsResponse
 func (client *Client) RenameDbfs(request *RenameDbfsRequest) (_result *RenameDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenameDbfsResponse{}
@@ -6411,6 +8032,11 @@ func (client *Client) RenameDbfs(request *RenameDbfsRequest) (_result *RenameDbf
 	return _result, _err
 }
 
+// @param request - ResizeDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResizeDbfsResponse
 func (client *Client) ResizeDbfsWithOptions(request *ResizeDbfsRequest, runtime *util.RuntimeOptions) (_result *ResizeDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6452,6 +8078,9 @@ func (client *Client) ResizeDbfsWithOptions(request *ResizeDbfsRequest, runtime 
 	return _result, _err
 }
 
+// @param request - ResizeDbfsRequest
+//
+// @return ResizeDbfsResponse
 func (client *Client) ResizeDbfs(request *ResizeDbfsRequest) (_result *ResizeDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResizeDbfsResponse{}
@@ -6463,6 +8092,11 @@ func (client *Client) ResizeDbfs(request *ResizeDbfsRequest) (_result *ResizeDbf
 	return _result, _err
 }
 
+// @param request - TagDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagDbfsResponse
 func (client *Client) TagDbfsWithOptions(request *TagDbfsRequest, runtime *util.RuntimeOptions) (_result *TagDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6504,6 +8138,9 @@ func (client *Client) TagDbfsWithOptions(request *TagDbfsRequest, runtime *util.
 	return _result, _err
 }
 
+// @param request - TagDbfsRequest
+//
+// @return TagDbfsResponse
 func (client *Client) TagDbfs(request *TagDbfsRequest) (_result *TagDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagDbfsResponse{}
@@ -6515,6 +8152,15 @@ func (client *Client) TagDbfs(request *TagDbfsRequest) (_result *TagDbfsResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改DBFS实例，包括使用场景、实例规格等。
+//
+// @param request - UpdateDbfsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDbfsResponse
 func (client *Client) UpdateDbfsWithOptions(request *UpdateDbfsRequest, runtime *util.RuntimeOptions) (_result *UpdateDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6564,6 +8210,13 @@ func (client *Client) UpdateDbfsWithOptions(request *UpdateDbfsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改DBFS实例，包括使用场景、实例规格等。
+//
+// @param request - UpdateDbfsRequest
+//
+// @return UpdateDbfsResponse
 func (client *Client) UpdateDbfs(request *UpdateDbfsRequest) (_result *UpdateDbfsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDbfsResponse{}
