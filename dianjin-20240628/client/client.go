@@ -14,6 +14,213 @@ import (
 	"io"
 )
 
+type CreateDocsSummaryTaskRequest struct {
+	// This parameter is required.
+	DocInfos []*CreateDocsSummaryTaskRequestDocInfos `json:"docInfos,omitempty" xml:"docInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	EnableTable *bool   `json:"enableTable,omitempty" xml:"enableTable,omitempty"`
+	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-plus
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+}
+
+func (s CreateDocsSummaryTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocsSummaryTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocsSummaryTaskRequest) SetDocInfos(v []*CreateDocsSummaryTaskRequestDocInfos) *CreateDocsSummaryTaskRequest {
+	s.DocInfos = v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskRequest) SetEnableTable(v bool) *CreateDocsSummaryTaskRequest {
+	s.EnableTable = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskRequest) SetInstruction(v string) *CreateDocsSummaryTaskRequest {
+	s.Instruction = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskRequest) SetModelId(v string) *CreateDocsSummaryTaskRequest {
+	s.ModelId = &v
+	return s
+}
+
+type CreateDocsSummaryTaskRequestDocInfos struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 198386463432
+	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// example:
+	//
+	// 2
+	EndPage *int32 `json:"endPage,omitempty" xml:"endPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rdxrmo6amk
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// example:
+	//
+	// 1
+	StartPage *int32 `json:"startPage,omitempty" xml:"startPage,omitempty"`
+}
+
+func (s CreateDocsSummaryTaskRequestDocInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocsSummaryTaskRequestDocInfos) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocsSummaryTaskRequestDocInfos) SetDocId(v string) *CreateDocsSummaryTaskRequestDocInfos {
+	s.DocId = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskRequestDocInfos) SetEndPage(v int32) *CreateDocsSummaryTaskRequestDocInfos {
+	s.EndPage = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskRequestDocInfos) SetLibraryId(v string) *CreateDocsSummaryTaskRequestDocInfos {
+	s.LibraryId = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskRequestDocInfos) SetStartPage(v int32) *CreateDocsSummaryTaskRequestDocInfos {
+	s.StartPage = &v
+	return s
+}
+
+type CreateDocsSummaryTaskResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// example:
+	//
+	// 765675376
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 32FFC91D-0A9F-585A-B84F-8A54C5187035
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s CreateDocsSummaryTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocsSummaryTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocsSummaryTaskResponseBody) SetCost(v int64) *CreateDocsSummaryTaskResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponseBody) SetData(v string) *CreateDocsSummaryTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponseBody) SetDataType(v string) *CreateDocsSummaryTaskResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponseBody) SetErrCode(v string) *CreateDocsSummaryTaskResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponseBody) SetMessage(v string) *CreateDocsSummaryTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponseBody) SetRequestId(v string) *CreateDocsSummaryTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponseBody) SetSuccess(v bool) *CreateDocsSummaryTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponseBody) SetTime(v string) *CreateDocsSummaryTaskResponseBody {
+	s.Time = &v
+	return s
+}
+
+type CreateDocsSummaryTaskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDocsSummaryTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDocsSummaryTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocsSummaryTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocsSummaryTaskResponse) SetHeaders(v map[string]*string) *CreateDocsSummaryTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponse) SetStatusCode(v int32) *CreateDocsSummaryTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDocsSummaryTaskResponse) SetBody(v *CreateDocsSummaryTaskResponseBody) *CreateDocsSummaryTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFinReportSummaryTaskRequest struct {
 	// This parameter is required.
 	//
@@ -1122,6 +1329,360 @@ func (s *CreatePredefinedDocumentResponse) SetStatusCode(v int32) *CreatePredefi
 }
 
 func (s *CreatePredefinedDocumentResponse) SetBody(v *CreatePredefinedDocumentResponseBody) *CreatePredefinedDocumentResponse {
+	s.Body = v
+	return s
+}
+
+type CreateQualityCheckTaskRequest struct {
+	// This parameter is required.
+	ConversationList *CreateQualityCheckTaskRequestConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	GmtService   *string            `json:"gmtService,omitempty" xml:"gmtService,omitempty"`
+	MetaData     map[string]*string `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	QualityGroup []*string          `json:"qualityGroup,omitempty" xml:"qualityGroup,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateQualityCheckTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQualityCheckTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQualityCheckTaskRequest) SetConversationList(v *CreateQualityCheckTaskRequestConversationList) *CreateQualityCheckTaskRequest {
+	s.ConversationList = v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequest) SetGmtService(v string) *CreateQualityCheckTaskRequest {
+	s.GmtService = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequest) SetMetaData(v map[string]*string) *CreateQualityCheckTaskRequest {
+	s.MetaData = v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequest) SetQualityGroup(v []*string) *CreateQualityCheckTaskRequest {
+	s.QualityGroup = v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequest) SetRequestId(v string) *CreateQualityCheckTaskRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequest) SetType(v string) *CreateQualityCheckTaskRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateQualityCheckTaskRequestConversationList struct {
+	// example:
+	//
+	// 1
+	CallType *string `json:"callType,omitempty" xml:"callType,omitempty"`
+	// example:
+	//
+	// 1
+	CustomerId   *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	CustomerName *string `json:"customerName,omitempty" xml:"customerName,omitempty"`
+	// example:
+	//
+	// xxx
+	CustomerServiceId   *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	CustomerServiceName *string `json:"customerServiceName,omitempty" xml:"customerServiceName,omitempty"`
+	// This parameter is required.
+	DialogueList []*CreateQualityCheckTaskRequestConversationListDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	GmtService *string `json:"gmtService,omitempty" xml:"gmtService,omitempty"`
+}
+
+func (s CreateQualityCheckTaskRequestConversationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQualityCheckTaskRequestConversationList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQualityCheckTaskRequestConversationList) SetCallType(v string) *CreateQualityCheckTaskRequestConversationList {
+	s.CallType = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationList) SetCustomerId(v string) *CreateQualityCheckTaskRequestConversationList {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationList) SetCustomerName(v string) *CreateQualityCheckTaskRequestConversationList {
+	s.CustomerName = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationList) SetCustomerServiceId(v string) *CreateQualityCheckTaskRequestConversationList {
+	s.CustomerServiceId = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationList) SetCustomerServiceName(v string) *CreateQualityCheckTaskRequestConversationList {
+	s.CustomerServiceName = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationList) SetDialogueList(v []*CreateQualityCheckTaskRequestConversationListDialogueList) *CreateQualityCheckTaskRequestConversationList {
+	s.DialogueList = v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationList) SetGmtService(v string) *CreateQualityCheckTaskRequestConversationList {
+	s.GmtService = &v
+	return s
+}
+
+type CreateQualityCheckTaskRequestConversationListDialogueList struct {
+	// example:
+	//
+	// 0
+	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// example:
+	//
+	// 2024-05-23 14:57:50
+	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 2348234
+	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// example:
+	//
+	// 23874627346
+	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// example:
+	//
+	// 0
+	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// example:
+	//
+	// 0
+	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TEXT
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateQualityCheckTaskRequestConversationListDialogueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQualityCheckTaskRequestConversationListDialogueList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetBegin(v int32) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.Begin = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetBeginTime(v string) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetContent(v string) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetCustomerId(v string) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetCustomerServiceId(v string) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.CustomerServiceId = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetCustomerServiceType(v string) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.CustomerServiceType = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetEnd(v int32) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.End = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetRole(v string) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.Role = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskRequestConversationListDialogueList) SetType(v string) *CreateQualityCheckTaskRequestConversationListDialogueList {
+	s.Type = &v
+	return s
+}
+
+type CreateQualityCheckTaskResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                                  `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *CreateQualityCheckTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// EF4B5C9B-3BC8-5171-A47B-4C5CF3DC3258
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s CreateQualityCheckTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQualityCheckTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQualityCheckTaskResponseBody) SetCost(v int64) *CreateQualityCheckTaskResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponseBody) SetData(v *CreateQualityCheckTaskResponseBodyData) *CreateQualityCheckTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponseBody) SetDataType(v string) *CreateQualityCheckTaskResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponseBody) SetErrCode(v string) *CreateQualityCheckTaskResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponseBody) SetMessage(v string) *CreateQualityCheckTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponseBody) SetRequestId(v string) *CreateQualityCheckTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponseBody) SetSuccess(v bool) *CreateQualityCheckTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponseBody) SetTime(v string) *CreateQualityCheckTaskResponseBody {
+	s.Time = &v
+	return s
+}
+
+type CreateQualityCheckTaskResponseBodyData struct {
+	// taskId
+	//
+	// example:
+	//
+	// 172373500521
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s CreateQualityCheckTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQualityCheckTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQualityCheckTaskResponseBodyData) SetTaskId(v string) *CreateQualityCheckTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CreateQualityCheckTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateQualityCheckTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateQualityCheckTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQualityCheckTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQualityCheckTaskResponse) SetHeaders(v map[string]*string) *CreateQualityCheckTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponse) SetStatusCode(v int32) *CreateQualityCheckTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateQualityCheckTaskResponse) SetBody(v *CreateQualityCheckTaskResponseBody) *CreateQualityCheckTaskResponse {
 	s.Body = v
 	return s
 }
@@ -4674,6 +5235,561 @@ func (s *GetParseResultResponse) SetStatusCode(v int32) *GetParseResultResponse 
 }
 
 func (s *GetParseResultResponse) SetBody(v *GetParseResultResponseBody) *GetParseResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetQualityCheckTaskResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17071319
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetQualityCheckTaskResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualityCheckTaskResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultRequest) SetTaskId(v string) *GetQualityCheckTaskResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetQualityCheckTaskResultResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                                     `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *GetQualityCheckTaskResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 67C7021A-D268-553D-8C15-A087B9604028
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s GetQualityCheckTaskResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualityCheckTaskResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultResponseBody) SetCost(v int64) *GetQualityCheckTaskResultResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBody) SetData(v *GetQualityCheckTaskResultResponseBodyData) *GetQualityCheckTaskResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBody) SetDataType(v string) *GetQualityCheckTaskResultResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBody) SetErrCode(v string) *GetQualityCheckTaskResultResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBody) SetMessage(v string) *GetQualityCheckTaskResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBody) SetRequestId(v string) *GetQualityCheckTaskResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBody) SetSuccess(v bool) *GetQualityCheckTaskResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBody) SetTime(v string) *GetQualityCheckTaskResultResponseBody {
+	s.Time = &v
+	return s
+}
+
+type GetQualityCheckTaskResultResponseBodyData struct {
+	ConversationList *GetQualityCheckTaskResultResponseBodyDataConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	GmtEnd *string `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	GmtStart         *string                                                      `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
+	QualityCheckList []*GetQualityCheckTaskResultResponseBodyDataQualityCheckList `json:"qualityCheckList,omitempty" xml:"qualityCheckList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// INIT
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1703557101831
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetQualityCheckTaskResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualityCheckTaskResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyData) SetConversationList(v *GetQualityCheckTaskResultResponseBodyDataConversationList) *GetQualityCheckTaskResultResponseBodyData {
+	s.ConversationList = v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyData) SetGmtCreate(v string) *GetQualityCheckTaskResultResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyData) SetGmtEnd(v string) *GetQualityCheckTaskResultResponseBodyData {
+	s.GmtEnd = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyData) SetGmtStart(v string) *GetQualityCheckTaskResultResponseBodyData {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyData) SetQualityCheckList(v []*GetQualityCheckTaskResultResponseBodyDataQualityCheckList) *GetQualityCheckTaskResultResponseBodyData {
+	s.QualityCheckList = v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyData) SetStatus(v string) *GetQualityCheckTaskResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyData) SetTaskId(v string) *GetQualityCheckTaskResultResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type GetQualityCheckTaskResultResponseBodyDataConversationList struct {
+	// example:
+	//
+	// 1
+	CallType *string `json:"callType,omitempty" xml:"callType,omitempty"`
+	// example:
+	//
+	// 234234
+	CustomerId   *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	CustomerName *string `json:"customerName,omitempty" xml:"customerName,omitempty"`
+	// example:
+	//
+	// 23984763826
+	CustomerServiceId   *string                                                                  `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	CustomerServiceName *string                                                                  `json:"customerServiceName,omitempty" xml:"customerServiceName,omitempty"`
+	DialogueList        []*GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	GmtService *string `json:"gmtService,omitempty" xml:"gmtService,omitempty"`
+}
+
+func (s GetQualityCheckTaskResultResponseBodyDataConversationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualityCheckTaskResultResponseBodyDataConversationList) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) SetCallType(v string) *GetQualityCheckTaskResultResponseBodyDataConversationList {
+	s.CallType = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) SetCustomerId(v string) *GetQualityCheckTaskResultResponseBodyDataConversationList {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) SetCustomerName(v string) *GetQualityCheckTaskResultResponseBodyDataConversationList {
+	s.CustomerName = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) SetCustomerServiceId(v string) *GetQualityCheckTaskResultResponseBodyDataConversationList {
+	s.CustomerServiceId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) SetCustomerServiceName(v string) *GetQualityCheckTaskResultResponseBodyDataConversationList {
+	s.CustomerServiceName = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) SetDialogueList(v []*GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) *GetQualityCheckTaskResultResponseBodyDataConversationList {
+	s.DialogueList = v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) SetGmtService(v string) *GetQualityCheckTaskResultResponseBodyDataConversationList {
+	s.GmtService = &v
+	return s
+}
+
+type GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList struct {
+	// example:
+	//
+	// 0
+	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// null
+	CustomerId        *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// example:
+	//
+	// 0
+	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// example:
+	//
+	// 0
+	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 0
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// TEXT
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetBegin(v int32) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.Begin = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetBeginTime(v string) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetContent(v string) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.Content = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetCustomerId(v string) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetCustomerServiceId(v string) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.CustomerServiceId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetCustomerServiceType(v string) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.CustomerServiceType = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetEnd(v int32) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.End = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetId(v int32) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetRole(v string) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.Role = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) SetType(v string) *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList {
+	s.Type = &v
+	return s
+}
+
+type GetQualityCheckTaskResultResponseBodyDataQualityCheckList struct {
+	CheckExplanation *string `json:"checkExplanation,omitempty" xml:"checkExplanation,omitempty"`
+	// example:
+	//
+	// PASSED
+	CheckPassed  *string `json:"checkPassed,omitempty" xml:"checkPassed,omitempty"`
+	CheckProcess *string `json:"checkProcess,omitempty" xml:"checkProcess,omitempty"`
+	// example:
+	//
+	// HIT
+	Checked *string `json:"checked,omitempty" xml:"checked,omitempty"`
+	// example:
+	//
+	// 2024-05-23 14:57:50
+	GmtEnd *string `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
+	// example:
+	//
+	// 2024-05-23 14:57:50
+	GmtStart *string `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
+	// example:
+	//
+	// 0
+	Mode           *string                                                                    `json:"mode,omitempty" xml:"mode,omitempty"`
+	OriginDialogue []*GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue `json:"originDialogue,omitempty" xml:"originDialogue,omitempty" type:"Repeated"`
+	// example:
+	//
+	// warning_customers
+	QualityGroupId  *string `json:"qualityGroupId,omitempty" xml:"qualityGroupId,omitempty"`
+	RuleDescription *string `json:"ruleDescription,omitempty" xml:"ruleDescription,omitempty"`
+	// example:
+	//
+	// wcm_start
+	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+}
+
+func (s GetQualityCheckTaskResultResponseBodyDataQualityCheckList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualityCheckTaskResultResponseBodyDataQualityCheckList) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetCheckExplanation(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.CheckExplanation = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetCheckPassed(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.CheckPassed = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetCheckProcess(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.CheckProcess = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetChecked(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.Checked = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetGmtEnd(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.GmtEnd = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetGmtStart(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetMode(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetOriginDialogue(v []*GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.OriginDialogue = v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetQualityGroupId(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.QualityGroupId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetRuleDescription(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.RuleDescription = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetRuleId(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.RuleId = &v
+	return s
+}
+
+type GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue struct {
+	// example:
+	//
+	// 0
+	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// example:
+	//
+	// 2024-05-23 14:57:50
+	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// xxx
+	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// example:
+	//
+	// 23876432
+	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// example:
+	//
+	// 0
+	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// example:
+	//
+	// 0
+	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 0
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// TEXT
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetBegin(v int32) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.Begin = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetBeginTime(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetContent(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.Content = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetCustomerId(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetCustomerServiceId(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.CustomerServiceId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetCustomerServiceType(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.CustomerServiceType = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetEnd(v int32) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.End = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetId(v int32) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.Id = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetRole(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.Role = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue) SetType(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue {
+	s.Type = &v
+	return s
+}
+
+type GetQualityCheckTaskResultResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualityCheckTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetQualityCheckTaskResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualityCheckTaskResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultResponse) SetHeaders(v map[string]*string) *GetQualityCheckTaskResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponse) SetStatusCode(v int32) *GetQualityCheckTaskResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponse) SetBody(v *GetQualityCheckTaskResultResponseBody) *GetQualityCheckTaskResultResponse {
 	s.Body = v
 	return s
 }
@@ -8961,6 +10077,82 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // 创建财报总结任务
 //
+// @param request - CreateDocsSummaryTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDocsSummaryTaskResponse
+func (client *Client) CreateDocsSummaryTaskWithOptions(workspaceId *string, request *CreateDocsSummaryTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDocsSummaryTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocInfos)) {
+		body["docInfos"] = request.DocInfos
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableTable)) {
+		body["enableTable"] = request.EnableTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instruction)) {
+		body["instruction"] = request.Instruction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDocsSummaryTask"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/summary/docs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDocsSummaryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建财报总结任务
+//
+// @param request - CreateDocsSummaryTaskRequest
+//
+// @return CreateDocsSummaryTaskResponse
+func (client *Client) CreateDocsSummaryTask(workspaceId *string, request *CreateDocsSummaryTaskRequest) (_result *CreateDocsSummaryTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDocsSummaryTaskResponse{}
+	_body, _err := client.CreateDocsSummaryTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建财报总结任务
+//
 // @param request - CreateFinReportSummaryTaskRequest
 //
 // @param headers - map
@@ -9270,6 +10462,90 @@ func (client *Client) CreatePredefinedDocument(workspaceId *string, request *Cre
 	headers := make(map[string]*string)
 	_result = &CreatePredefinedDocumentResponse{}
 	_body, _err := client.CreatePredefinedDocumentWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建财报总结的任务
+//
+// @param request - CreateQualityCheckTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQualityCheckTaskResponse
+func (client *Client) CreateQualityCheckTaskWithOptions(workspaceId *string, request *CreateQualityCheckTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateQualityCheckTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConversationList)) {
+		body["conversationList"] = request.ConversationList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtService)) {
+		body["gmtService"] = request.GmtService
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaData)) {
+		body["metaData"] = request.MetaData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualityGroup)) {
+		body["qualityGroup"] = request.QualityGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateQualityCheckTask"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/qualitycheck/task/submit"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateQualityCheckTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建财报总结的任务
+//
+// @param request - CreateQualityCheckTaskRequest
+//
+// @return CreateQualityCheckTaskResponse
+func (client *Client) CreateQualityCheckTask(workspaceId *string, request *CreateQualityCheckTaskRequest) (_result *CreateQualityCheckTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateQualityCheckTaskResponse{}
+	_body, _err := client.CreateQualityCheckTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10116,6 +11392,70 @@ func (client *Client) GetParseResult(workspaceId *string, request *GetParseResul
 	headers := make(map[string]*string)
 	_result = &GetParseResultResponse{}
 	_body, _err := client.GetParseResultWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取异步任务的结果
+//
+// @param request - GetQualityCheckTaskResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityCheckTaskResultResponse
+func (client *Client) GetQualityCheckTaskResultWithOptions(workspaceId *string, request *GetQualityCheckTaskResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQualityCheckTaskResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQualityCheckTaskResult"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/qualitycheck/task/query"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetQualityCheckTaskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取异步任务的结果
+//
+// @param request - GetQualityCheckTaskResultRequest
+//
+// @return GetQualityCheckTaskResultResponse
+func (client *Client) GetQualityCheckTaskResult(workspaceId *string, request *GetQualityCheckTaskResultRequest) (_result *GetQualityCheckTaskResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetQualityCheckTaskResultResponse{}
+	_body, _err := client.GetQualityCheckTaskResultWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
