@@ -840,6 +840,463 @@ func (s *CreateConversationAnalysisTaskResponse) SetBody(v *CreateConversationAn
 	return s
 }
 
+type CreateTaskRequest struct {
+	Dialogue *CreateTaskRequestDialogue `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
+	Examples *CreateTaskRequestExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Struct"`
+	Fields   []*CreateTaskRequestFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tyxmTurbo
+	ModelCode         *string                             `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	ResultTypes       []*string                           `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
+	ServiceInspection *CreateTaskRequestServiceInspection `json:"serviceInspection,omitempty" xml:"serviceInspection,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	TaskType      *string                         `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	TemplateIds   []*string                       `json:"templateIds,omitempty" xml:"templateIds,omitempty" type:"Repeated"`
+	Transcription *CreateTaskRequestTranscription `json:"transcription,omitempty" xml:"transcription,omitempty" type:"Struct"`
+}
+
+func (s CreateTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequest) SetDialogue(v *CreateTaskRequestDialogue) *CreateTaskRequest {
+	s.Dialogue = v
+	return s
+}
+
+func (s *CreateTaskRequest) SetExamples(v *CreateTaskRequestExamples) *CreateTaskRequest {
+	s.Examples = v
+	return s
+}
+
+func (s *CreateTaskRequest) SetFields(v []*CreateTaskRequestFields) *CreateTaskRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *CreateTaskRequest) SetModelCode(v string) *CreateTaskRequest {
+	s.ModelCode = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetResultTypes(v []*string) *CreateTaskRequest {
+	s.ResultTypes = v
+	return s
+}
+
+func (s *CreateTaskRequest) SetServiceInspection(v *CreateTaskRequestServiceInspection) *CreateTaskRequest {
+	s.ServiceInspection = v
+	return s
+}
+
+func (s *CreateTaskRequest) SetTaskType(v string) *CreateTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetTemplateIds(v []*string) *CreateTaskRequest {
+	s.TemplateIds = v
+	return s
+}
+
+func (s *CreateTaskRequest) SetTranscription(v *CreateTaskRequestTranscription) *CreateTaskRequest {
+	s.Transcription = v
+	return s
+}
+
+type CreateTaskRequestDialogue struct {
+	// This parameter is required.
+	Sentences []*CreateTaskRequestDialogueSentences `json:"sentences,omitempty" xml:"sentences,omitempty" type:"Repeated"`
+	// example:
+	//
+	// session-01
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s CreateTaskRequestDialogue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestDialogue) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestDialogue) SetSentences(v []*CreateTaskRequestDialogueSentences) *CreateTaskRequestDialogue {
+	s.Sentences = v
+	return s
+}
+
+func (s *CreateTaskRequestDialogue) SetSessionId(v string) *CreateTaskRequestDialogue {
+	s.SessionId = &v
+	return s
+}
+
+type CreateTaskRequestDialogueSentences struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// This parameter is required.
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CreateTaskRequestDialogueSentences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestDialogueSentences) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestDialogueSentences) SetRole(v string) *CreateTaskRequestDialogueSentences {
+	s.Role = &v
+	return s
+}
+
+func (s *CreateTaskRequestDialogueSentences) SetText(v string) *CreateTaskRequestDialogueSentences {
+	s.Text = &v
+	return s
+}
+
+type CreateTaskRequestExamples struct {
+	Output *string `json:"output,omitempty" xml:"output,omitempty"`
+	// This parameter is required.
+	Sentences []*CreateTaskRequestExamplesSentences `json:"sentences,omitempty" xml:"sentences,omitempty" type:"Repeated"`
+}
+
+func (s CreateTaskRequestExamples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestExamples) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestExamples) SetOutput(v string) *CreateTaskRequestExamples {
+	s.Output = &v
+	return s
+}
+
+func (s *CreateTaskRequestExamples) SetSentences(v []*CreateTaskRequestExamplesSentences) *CreateTaskRequestExamples {
+	s.Sentences = v
+	return s
+}
+
+type CreateTaskRequestExamplesSentences struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// This parameter is required.
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CreateTaskRequestExamplesSentences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestExamplesSentences) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestExamplesSentences) SetRole(v string) *CreateTaskRequestExamplesSentences {
+	s.Role = &v
+	return s
+}
+
+func (s *CreateTaskRequestExamplesSentences) SetText(v string) *CreateTaskRequestExamplesSentences {
+	s.Text = &v
+	return s
+}
+
+type CreateTaskRequestFields struct {
+	// example:
+	//
+	// phoneNumber
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// This parameter is required.
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// This parameter is required.
+	EnumValues []*CreateTaskRequestFieldsEnumValues `json:"enumValues,omitempty" xml:"enumValues,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateTaskRequestFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestFields) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestFields) SetCode(v string) *CreateTaskRequestFields {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateTaskRequestFields) SetDesc(v string) *CreateTaskRequestFields {
+	s.Desc = &v
+	return s
+}
+
+func (s *CreateTaskRequestFields) SetEnumValues(v []*CreateTaskRequestFieldsEnumValues) *CreateTaskRequestFields {
+	s.EnumValues = v
+	return s
+}
+
+func (s *CreateTaskRequestFields) SetName(v string) *CreateTaskRequestFields {
+	s.Name = &v
+	return s
+}
+
+type CreateTaskRequestFieldsEnumValues struct {
+	// This parameter is required.
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// This parameter is required.
+	EnumValue *string `json:"enumValue,omitempty" xml:"enumValue,omitempty"`
+}
+
+func (s CreateTaskRequestFieldsEnumValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestFieldsEnumValues) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestFieldsEnumValues) SetDesc(v string) *CreateTaskRequestFieldsEnumValues {
+	s.Desc = &v
+	return s
+}
+
+func (s *CreateTaskRequestFieldsEnumValues) SetEnumValue(v string) *CreateTaskRequestFieldsEnumValues {
+	s.EnumValue = &v
+	return s
+}
+
+type CreateTaskRequestServiceInspection struct {
+	// This parameter is required.
+	InspectionContents []*CreateTaskRequestServiceInspectionInspectionContents `json:"inspectionContents,omitempty" xml:"inspectionContents,omitempty" type:"Repeated"`
+	// This parameter is required.
+	InspectionIntroduction *string `json:"inspectionIntroduction,omitempty" xml:"inspectionIntroduction,omitempty"`
+	// This parameter is required.
+	SceneIntroduction *string `json:"sceneIntroduction,omitempty" xml:"sceneIntroduction,omitempty"`
+}
+
+func (s CreateTaskRequestServiceInspection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestServiceInspection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestServiceInspection) SetInspectionContents(v []*CreateTaskRequestServiceInspectionInspectionContents) *CreateTaskRequestServiceInspection {
+	s.InspectionContents = v
+	return s
+}
+
+func (s *CreateTaskRequestServiceInspection) SetInspectionIntroduction(v string) *CreateTaskRequestServiceInspection {
+	s.InspectionIntroduction = &v
+	return s
+}
+
+func (s *CreateTaskRequestServiceInspection) SetSceneIntroduction(v string) *CreateTaskRequestServiceInspection {
+	s.SceneIntroduction = &v
+	return s
+}
+
+type CreateTaskRequestServiceInspectionInspectionContents struct {
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateTaskRequestServiceInspectionInspectionContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestServiceInspectionInspectionContents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestServiceInspectionInspectionContents) SetContent(v string) *CreateTaskRequestServiceInspectionInspectionContents {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateTaskRequestServiceInspectionInspectionContents) SetTitle(v string) *CreateTaskRequestServiceInspectionInspectionContents {
+	s.Title = &v
+	return s
+}
+
+type CreateTaskRequestTranscription struct {
+	// example:
+	//
+	// 1
+	AutoSplit *int32 `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// example:
+	//
+	// 1
+	ClientChannel *int32 `json:"clientChannel,omitempty" xml:"clientChannel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sss.mp3
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceChannel         *int32    `json:"serviceChannel,omitempty" xml:"serviceChannel,omitempty"`
+	ServiceChannelKeywords []*string `json:"serviceChannelKeywords,omitempty" xml:"serviceChannelKeywords,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://1111.com/sss.mp3
+	VoiceFileUrl *string `json:"voiceFileUrl,omitempty" xml:"voiceFileUrl,omitempty"`
+}
+
+func (s CreateTaskRequestTranscription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestTranscription) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestTranscription) SetAutoSplit(v int32) *CreateTaskRequestTranscription {
+	s.AutoSplit = &v
+	return s
+}
+
+func (s *CreateTaskRequestTranscription) SetClientChannel(v int32) *CreateTaskRequestTranscription {
+	s.ClientChannel = &v
+	return s
+}
+
+func (s *CreateTaskRequestTranscription) SetFileName(v string) *CreateTaskRequestTranscription {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateTaskRequestTranscription) SetServiceChannel(v int32) *CreateTaskRequestTranscription {
+	s.ServiceChannel = &v
+	return s
+}
+
+func (s *CreateTaskRequestTranscription) SetServiceChannelKeywords(v []*string) *CreateTaskRequestTranscription {
+	s.ServiceChannelKeywords = v
+	return s
+}
+
+func (s *CreateTaskRequestTranscription) SetVoiceFileUrl(v string) *CreateTaskRequestTranscription {
+	s.VoiceFileUrl = &v
+	return s
+}
+
+type CreateTaskResponseBody struct {
+	Data *CreateTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9F1DB065-AE0D-5EE3-B1AF-48632CB0831C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskResponseBody) SetData(v *CreateTaskResponseBodyData) *CreateTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateTaskResponseBody) SetRequestId(v string) *CreateTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTaskResponseBody) SetSuccess(v string) *CreateTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateTaskResponseBodyData struct {
+	// example:
+	//
+	// 20240905-********-93E9-5D45-B4EF-045743A34071
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s CreateTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskResponseBodyData) SetTaskId(v string) *CreateTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CreateTaskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskResponse) SetHeaders(v map[string]*string) *CreateTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTaskResponse) SetStatusCode(v int32) *CreateTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetTaskResultRequest struct {
 	// example:
 	//
@@ -1630,6 +2087,102 @@ func (client *Client) CreateConversationAnalysisTask(workspaceId *string, appId 
 	headers := make(map[string]*string)
 	_result = &CreateConversationAnalysisTaskResponse{}
 	_body, _err := client.CreateConversationAnalysisTaskWithOptions(workspaceId, appId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建语音文件调用llm任务
+//
+// @param request - CreateTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskResponse
+func (client *Client) CreateTaskWithOptions(workspaceId *string, appId *string, request *CreateTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Dialogue)) {
+		body["dialogue"] = request.Dialogue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Examples)) {
+		body["examples"] = request.Examples
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelCode)) {
+		body["modelCode"] = request.ModelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultTypes)) {
+		body["resultTypes"] = request.ResultTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInspection)) {
+		body["serviceInspection"] = request.ServiceInspection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		body["taskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
+		body["templateIds"] = request.TemplateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transcription)) {
+		body["transcription"] = request.Transcription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTask"),
+		Version:     tea.String("2024-06-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/ccai/app/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/createTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建语音文件调用llm任务
+//
+// @param request - CreateTaskRequest
+//
+// @return CreateTaskResponse
+func (client *Client) CreateTask(workspaceId *string, appId *string, request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CreateTaskWithOptions(workspaceId, appId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
