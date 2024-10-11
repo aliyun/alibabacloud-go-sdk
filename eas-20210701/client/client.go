@@ -966,6 +966,7 @@ func (s *ServiceLabels) SetLabelValue(v string) *ServiceLabels {
 }
 
 type CloneServiceRequest struct {
+	// The label of the service to be cloned.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
 	//
@@ -994,6 +995,7 @@ func (s *CloneServiceRequest) SetBody(v string) *CloneServiceRequest {
 }
 
 type CloneServiceShrinkRequest struct {
+	// The label of the service to be cloned.
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
 	//
@@ -1190,7 +1192,12 @@ func (s *CommitServiceResponse) SetBody(v *CommitServiceResponseBody) *CommitSer
 }
 
 type CreateAclPolicyRequest struct {
+	// The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
+	//
+	// This parameter is required.
 	AclPolicyList []*CreateAclPolicyRequestAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -1216,10 +1223,16 @@ func (s *CreateAclPolicyRequest) SetVpcId(v string) *CreateAclPolicyRequest {
 }
 
 type CreateAclPolicyRequestAclPolicyList struct {
+	// The comment on the IP CIDR block in the VPC that can access the private gateway.
+	//
 	// example:
 	//
 	// default
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The IP CIDR block in the VPC that can access the private gateway.
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10.23.XX.XX/32
@@ -1245,7 +1258,12 @@ func (s *CreateAclPolicyRequestAclPolicyList) SetEntry(v string) *CreateAclPolic
 }
 
 type CreateAclPolicyShrinkRequest struct {
+	// The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
+	//
+	// This parameter is required.
 	AclPolicyListShrink *string `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty"`
+	// The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -1271,14 +1289,20 @@ func (s *CreateAclPolicyShrinkRequest) SetVpcId(v string) *CreateAclPolicyShrink
 }
 
 type CreateAclPolicyResponseBody struct {
+	// The private gateway ID.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Successfully add acl policy for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -1730,6 +1754,8 @@ type CreateGatewayRequest struct {
 	//
 	// eas-r-4gt8twzwllfo******
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	AutoRenewal  *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// Specifies whether to enable Internet access. Default value: false.
 	//
 	// Valid values:
@@ -1794,6 +1820,16 @@ func (s CreateGatewayRequest) GoString() string {
 
 func (s *CreateGatewayRequest) SetResourceName(v string) *CreateGatewayRequest {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetAutoRenewal(v bool) *CreateGatewayRequest {
+	s.AutoRenewal = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetChargeType(v string) *CreateGatewayRequest {
+	s.ChargeType = &v
 	return s
 }
 
@@ -3663,7 +3699,10 @@ func (s *CreateServiceMirrorResponse) SetBody(v *CreateServiceMirrorResponseBody
 }
 
 type DeleteAclPolicyRequest struct {
+	// The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
 	AclPolicyList []*DeleteAclPolicyRequestAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -3689,10 +3728,14 @@ func (s *DeleteAclPolicyRequest) SetVpcId(v string) *DeleteAclPolicyRequest {
 }
 
 type DeleteAclPolicyRequestAclPolicyList struct {
+	// The comment on the IP CIDR block in the VPC that can access the private gateway.
+	//
 	// example:
 	//
 	// default
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The IP CIDR block in the VPC that can access the private gateway.
+	//
 	// example:
 	//
 	// 10.23.XX.XX/32
@@ -3718,7 +3761,10 @@ func (s *DeleteAclPolicyRequestAclPolicyList) SetEntry(v string) *DeleteAclPolic
 }
 
 type DeleteAclPolicyShrinkRequest struct {
+	// The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
 	AclPolicyListShrink *string `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty"`
+	// The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -3744,14 +3790,20 @@ func (s *DeleteAclPolicyShrinkRequest) SetVpcId(v string) *DeleteAclPolicyShrink
 }
 
 type DeleteAclPolicyResponseBody struct {
+	// The private gateway ID.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Successfully delete acl policy for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -7287,6 +7339,8 @@ func (s *DevelopServiceResponse) SetBody(v *DevelopServiceResponseBody) *Develop
 }
 
 type ListAclPolicyRequest struct {
+	// The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -7307,12 +7361,18 @@ func (s *ListAclPolicyRequest) SetVpcId(v string) *ListAclPolicyRequest {
 }
 
 type ListAclPolicyResponseBody struct {
+	// The private gateway ID.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
-	GatewayId                *string                                              `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	InternetAclPolicyList    []*ListAclPolicyResponseBodyInternetAclPolicyList    `json:"InternetAclPolicyList,omitempty" xml:"InternetAclPolicyList,omitempty" type:"Repeated"`
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The access control policies of the private gateway over the Internet.
+	InternetAclPolicyList []*ListAclPolicyResponseBodyInternetAclPolicyList `json:"InternetAclPolicyList,omitempty" xml:"InternetAclPolicyList,omitempty" type:"Repeated"`
+	// The access control policies of the private gateway over the internal network.
 	IntranetVpcAclPolicyList []*ListAclPolicyResponseBodyIntranetVpcAclPolicyList `json:"IntranetVpcAclPolicyList,omitempty" xml:"IntranetVpcAclPolicyList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -7348,6 +7408,7 @@ func (s *ListAclPolicyResponseBody) SetRequestId(v string) *ListAclPolicyRespons
 }
 
 type ListAclPolicyResponseBodyInternetAclPolicyList struct {
+	// The whitelisted IP CIDR blocks in the VPC that can access the private gateway over the Internet.
 	AclPolicyList []*ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
 }
 
@@ -7365,8 +7426,18 @@ func (s *ListAclPolicyResponseBodyInternetAclPolicyList) SetAclPolicyList(v []*L
 }
 
 type ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList struct {
+	// The comment on the IP CIDR block in the VPC that can access the private gateway over the Internet.
+	//
+	// example:
+	//
+	// default
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Entry   *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	// The IP CIDR block in the VPC that can access the private gateway over the Internet.
+	//
+	// example:
+	//
+	// 10.23.XX.XX/32
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
 func (s ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList) String() string {
@@ -7388,7 +7459,10 @@ func (s *ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList) SetEntry(v
 }
 
 type ListAclPolicyResponseBodyIntranetVpcAclPolicyList struct {
+	// The whitelisted IP CIDR blocks in the VPC that can access the private gateway over the internal network.
 	AclPolicyList []*ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
+	// The VPC ID. For more information about how to obtain the VPC ID, see DescribeVpcs.
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -7414,8 +7488,18 @@ func (s *ListAclPolicyResponseBodyIntranetVpcAclPolicyList) SetVpcId(v string) *
 }
 
 type ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList struct {
+	// The comment on the IP CIDR block in the VPC that can access the private gateway over the internal network.
+	//
+	// example:
+	//
+	// Test Entry
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Entry   *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	// The IP CIDR block in the VPC that can access the private gateway over the internal network.
+	//
+	// example:
+	//
+	// 192.168.XX.XX/24
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
 func (s ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList) String() string {
@@ -7796,22 +7880,31 @@ func (s *ListBenchmarkTaskResponse) SetBody(v *ListBenchmarkTaskResponseBody) *L
 }
 
 type ListGatewayRequest struct {
+	// The private gateway ID. To obtain the private gateway ID, see the private_gateway_id parameter in the response parameters of the ListResources operation.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The private gateway alias.
+	//
 	// example:
 	//
 	// mygateway1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
 	// example:
 	//
 	// 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s ListGatewayRequest) String() string {
@@ -7842,20 +7935,34 @@ func (s *ListGatewayRequest) SetPageSize(v int32) *ListGatewayRequest {
 	return s
 }
 
+func (s *ListGatewayRequest) SetResourceName(v string) *ListGatewayRequest {
+	s.ResourceName = &v
+	return s
+}
+
 type ListGatewayResponseBody struct {
+	// The private gateways.
 	Gateways []*ListGatewayResponseBodyGateways `json:"Gateways,omitempty" xml:"Gateways,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of private gateways returned.
+	//
 	// example:
 	//
 	// 5
@@ -7896,46 +8003,85 @@ func (s *ListGatewayResponseBody) SetTotalCount(v int64) *ListGatewayResponseBod
 }
 
 type ListGatewayResponseBodyGateways struct {
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the private gateway was created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-05-19T14:19:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The private gateway ID.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The private gateway alias.
+	//
 	// example:
 	//
 	// mygateway1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The type of instances used for the private gateway.
+	//
 	// example:
 	//
 	// 2c4g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The public endpoint.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******.cn-wulanchabu.pai-eas.aliyuncs.com
 	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
+	// Indicates whether Internet access is enabled.
+	//
 	// example:
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	// The internal endpoint.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-wulanchabu.pai-eas.aliyuncs.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// Indicates whether it is the default private gateway.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The number of nodes in the private gateway.
+	//
 	// example:
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The state of the private gateway.
+	//
+	// Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Stopped
+	//
+	// 	- Failed
+	//
+	// 	- Running
+	//
+	// 	- Deleted
+	//
+	// 	- Deleting
+	//
+	// 	- Waiting
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the private gateway was updated. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-02-24T11:52:17Z
@@ -7948,6 +8094,11 @@ func (s ListGatewayResponseBodyGateways) String() string {
 
 func (s ListGatewayResponseBodyGateways) GoString() string {
 	return s.String()
+}
+
+func (s *ListGatewayResponseBodyGateways) SetChargeType(v string) *ListGatewayResponseBodyGateways {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *ListGatewayResponseBodyGateways) SetCreateTime(v string) *ListGatewayResponseBodyGateways {
@@ -9802,7 +9953,7 @@ type ListServicesRequest struct {
 	//
 	// foo
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The ID of the private gateway.
+	// The private gateway ID.
 	//
 	// example:
 	//
@@ -9856,6 +10007,32 @@ type ListServicesRequest struct {
 	//
 	// eas-r-hd0qwy8cxxxx
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The server role.
+	//
+	// Valid values:
+	//
+	// 	- DataLoader
+	//
+	// 	- FrontEnd
+	//
+	// 	- DataSet
+	//
+	// 	- SDProxy
+	//
+	// 	- LLMSscheduler
+	//
+	// 	- ScalableJob
+	//
+	// 	- LLMGateway
+	//
+	// 	- Job
+	//
+	// 	- Queue
+	//
+	// example:
+	//
+	// LLMGateway
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The service name.
 	//
 	// example:
@@ -10140,6 +10317,11 @@ func (s *ListServicesRequest) SetResourceName(v string) *ListServicesRequest {
 	return s
 }
 
+func (s *ListServicesRequest) SetRole(v string) *ListServicesRequest {
+	s.Role = &v
+	return s
+}
+
 func (s *ListServicesRequest) SetServiceName(v string) *ListServicesRequest {
 	s.ServiceName = &v
 	return s
@@ -10177,7 +10359,7 @@ type ListServicesShrinkRequest struct {
 	//
 	// foo
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The ID of the private gateway.
+	// The private gateway ID.
 	//
 	// example:
 	//
@@ -10231,6 +10413,32 @@ type ListServicesShrinkRequest struct {
 	//
 	// eas-r-hd0qwy8cxxxx
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The server role.
+	//
+	// Valid values:
+	//
+	// 	- DataLoader
+	//
+	// 	- FrontEnd
+	//
+	// 	- DataSet
+	//
+	// 	- SDProxy
+	//
+	// 	- LLMSscheduler
+	//
+	// 	- ScalableJob
+	//
+	// 	- LLMGateway
+	//
+	// 	- Job
+	//
+	// 	- Queue
+	//
+	// example:
+	//
+	// LLMGateway
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The service name.
 	//
 	// example:
@@ -10515,6 +10723,11 @@ func (s *ListServicesShrinkRequest) SetResourceName(v string) *ListServicesShrin
 	return s
 }
 
+func (s *ListServicesShrinkRequest) SetRole(v string) *ListServicesShrinkRequest {
+	s.Role = &v
+	return s
+}
+
 func (s *ListServicesShrinkRequest) SetServiceName(v string) *ListServicesShrinkRequest {
 	s.ServiceName = &v
 	return s
@@ -10637,7 +10850,10 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ListTenantAddonsResponseBody struct {
+	// The information about the plug-in.
 	Addons []*ListTenantAddonsResponseBodyAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -10663,7 +10879,10 @@ func (s *ListTenantAddonsResponseBody) SetRequestId(v string) *ListTenantAddonsR
 }
 
 type ListTenantAddonsResponseBodyAddons struct {
+	// The attributes of the plug-in.
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The name of the plug-in.
+	//
 	// example:
 	//
 	// prometheus_discovery
@@ -10718,10 +10937,14 @@ func (s *ListTenantAddonsResponse) SetBody(v *ListTenantAddonsResponseBody) *Lis
 }
 
 type ReinstallTenantAddonResponseBody struct {
+	// The returned message.
+	//
 	// example:
 	//
 	// Addon prometheus_discovery is successfully reinstalled
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -13178,7 +13401,7 @@ func (client *Client) CommitService(ClusterId *string, ServiceName *string) (_re
 
 // Summary:
 //
-// 创建网关访问权限ACL Policy
+// Creates an access control list (ACL) for a private gateway. The IP CIDR blocks added to the ACL can access the private gateway.
 //
 // @param tmpReq - CreateAclPolicyRequest
 //
@@ -13233,7 +13456,7 @@ func (client *Client) CreateAclPolicyWithOptions(ClusterId *string, GatewayId *s
 
 // Summary:
 //
-// 创建网关访问权限ACL Policy
+// Creates an access control list (ACL) for a private gateway. The IP CIDR blocks added to the ACL can access the private gateway.
 //
 // @param request - CreateAclPolicyRequest
 //
@@ -13425,6 +13648,14 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewal)) {
+		body["AutoRenewal"] = request.AutoRenewal
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		body["ChargeType"] = request.ChargeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableInternet)) {
 		body["EnableInternet"] = request.EnableInternet
 	}
@@ -14114,7 +14345,7 @@ func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string
 
 // Summary:
 //
-// 移除网关acl policy entry
+// Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
 //
 // @param tmpReq - DeleteAclPolicyRequest
 //
@@ -14169,7 +14400,7 @@ func (client *Client) DeleteAclPolicyWithOptions(ClusterId *string, GatewayId *s
 
 // Summary:
 //
-// 移除网关acl policy entry
+// Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
 //
 // @param request - DeleteAclPolicyRequest
 //
@@ -15892,7 +16123,7 @@ func (client *Client) DevelopService(ClusterId *string, ServiceName *string, req
 
 // Summary:
 //
-// 查询网关所有ACL Policy
+// Queries access control lists (ACLs) created for a private gateway.
 //
 // @param request - ListAclPolicyRequest
 //
@@ -15937,7 +16168,7 @@ func (client *Client) ListAclPolicyWithOptions(ClusterId *string, GatewayId *str
 
 // Summary:
 //
-// 查询网关所有ACL Policy
+// Queries access control lists (ACLs) created for a private gateway.
 //
 // @param request - ListAclPolicyRequest
 //
@@ -16032,7 +16263,7 @@ func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_res
 
 // Summary:
 //
-// 列举gateway
+// Queries a list of private gateways.
 //
 // @param request - ListGatewayRequest
 //
@@ -16063,6 +16294,10 @@ func (client *Client) ListGatewayWithOptions(request *ListGatewayRequest, header
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -16089,7 +16324,7 @@ func (client *Client) ListGatewayWithOptions(request *ListGatewayRequest, header
 
 // Summary:
 //
-// 列举gateway
+// Queries a list of private gateways.
 //
 // @param request - ListGatewayRequest
 //
@@ -16786,7 +17021,7 @@ func (client *Client) ListServiceVersions(ClusterId *string, ServiceName *string
 
 // Summary:
 //
-// Queries a list of services that are created by the current user.
+// Lists services.
 //
 // @param tmpReq - ListServicesRequest
 //
@@ -16847,6 +17082,10 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 		query["ResourceName"] = request.ResourceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
 		query["ServiceName"] = request.ServiceName
 	}
@@ -16897,7 +17136,7 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 
 // Summary:
 //
-// Queries a list of services that are created by the current user.
+// Lists services.
 //
 // @param request - ListServicesRequest
 //
@@ -16916,7 +17155,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
-// 获取租户配置列表
+// Queries a list of tenant plug-ins.
 //
 // @param headers - map
 //
@@ -16949,7 +17188,7 @@ func (client *Client) ListTenantAddonsWithOptions(headers map[string]*string, ru
 
 // Summary:
 //
-// 获取租户配置列表
+// Queries a list of tenant plug-ins.
 //
 // @return ListTenantAddonsResponse
 func (client *Client) ListTenantAddons() (_result *ListTenantAddonsResponse, _err error) {
@@ -16966,7 +17205,7 @@ func (client *Client) ListTenantAddons() (_result *ListTenantAddonsResponse, _er
 
 // Summary:
 //
-// 重置租户配置
+// Updates the information about a tenant plug-in.
 //
 // @param headers - map
 //
@@ -16999,7 +17238,7 @@ func (client *Client) ReinstallTenantAddonWithOptions(ClusterId *string, TenantA
 
 // Summary:
 //
-// 重置租户配置
+// Updates the information about a tenant plug-in.
 //
 // @return ReinstallTenantAddonResponse
 func (client *Client) ReinstallTenantAddon(ClusterId *string, TenantAddonName *string) (_result *ReinstallTenantAddonResponse, _err error) {
