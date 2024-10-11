@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,17 @@ import (
 )
 
 type CancelSparkStatementRequest struct {
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202106071620hangzhou****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2026****
 	StatementId *string `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
 }
 
@@ -36,7 +43,13 @@ func (s *CancelSparkStatementRequest) SetStatementId(v string) *CancelSparkState
 }
 
 type CancelSparkStatementResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 341ADFA1-4A68-4707-9CA7-FA86523A5F14
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -59,9 +72,9 @@ func (s *CancelSparkStatementResponseBody) SetRequestId(v string) *CancelSparkSt
 }
 
 type CancelSparkStatementResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelSparkStatementResponse) String() string {
@@ -88,10 +101,28 @@ func (s *CancelSparkStatementResponse) SetBody(v *CancelSparkStatementResponseBo
 }
 
 type CreateInstanceRequest struct {
-	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Component    *string `json:"Component,omitempty" xml:"Component,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// "{\\"operable\\":\\"false\\",\\"max_cu\\":\\"8\\",\\"instance_name\\":\\"api-test-9\\",\\"min_cu\\":\\"0\\",\\"engine\\":\\"spark\\",\\"region\\":\\"cn-hangzhou\\",\\"app_name\\":\\"xx\\",\\"app_version_name\\":\\"xx\\"}"
+	Component *string `json:"Component,omitempty" xml:"Component,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CU_PRESTO
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -123,11 +154,26 @@ func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
 }
 
 type CreateInstanceResponseBody struct {
+	// example:
+	//
+	// 600
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// An internal error occurred
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// example:
+	//
+	// 312F48C7-AFA0-46AA-B8F6-1B16B8808045
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -164,9 +210,9 @@ func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseB
 }
 
 type CreateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -193,9 +239,22 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type ExecuteSparkStatementRequest struct {
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// print(2+2)\\n
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202106071620hangzhou****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Kind  *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// example:
+	//
+	// sql
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
 }
 
 func (s ExecuteSparkStatementRequest) String() string {
@@ -222,7 +281,13 @@ func (s *ExecuteSparkStatementRequest) SetKind(v string) *ExecuteSparkStatementR
 }
 
 type ExecuteSparkStatementResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 2
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 0DC5B6F080E8-0DC5B6F080E8-0DC5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -245,9 +310,9 @@ func (s *ExecuteSparkStatementResponseBody) SetRequestId(v string) *ExecuteSpark
 }
 
 type ExecuteSparkStatementResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExecuteSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExecuteSparkStatementResponse) String() string {
@@ -274,9 +339,24 @@ func (s *ExecuteSparkStatementResponse) SetBody(v *ExecuteSparkStatementResponse
 }
 
 type GetJobAttemptLogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202105272322hangzhou5d64f1560000128-0001
 	JobAttemptId *string `json:"JobAttemptId,omitempty" xml:"JobAttemptId,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	VcName       *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202105272322hangzhou5d64f1560000128
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// release-test
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s GetJobAttemptLogRequest) String() string {
@@ -303,7 +383,13 @@ func (s *GetJobAttemptLogRequest) SetVcName(v string) *GetJobAttemptLogRequest {
 }
 
 type GetJobAttemptLogResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// local:///opt/spark/jars/offline-sql.jar, main_file\\n+ exec /usr/bin/tini -s -- /jdk/jdk8/bin/java -cp \\"/opt/tools/exec-wrapper.jar:.:::/opt/spark/jars/*\\" com.aliyun.dla.spark.SparkJobWrapper /opt/spark/bin/spark-submit --conf spark.driver.host=172.16.6.205 --conf spark.ui.port=4040 --conf \\"spark.driver.extraJavaOptions=-Dlog4j.configuration=file:///opt/spark/log-conf/log4j.properties -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/dump.hprof -XX:OnOutOfMemoryError=\\"bash /opt/tools/oss-cp.sh /tmp/dump.hprof oss://dla-test-cn-hangzhou/spark-logs/release-test/j202105272322hangzhou5d64f1560000128-0001/driver/dump.hprof; bash /opt/tools/job-stop.sh\\" \\"
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 9CE8F271-F918-43B6-8F58-F9F1C2DCFDB8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -326,9 +412,9 @@ func (s *GetJobAttemptLogResponseBody) SetRequestId(v string) *GetJobAttemptLogR
 }
 
 type GetJobAttemptLogResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobAttemptLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobAttemptLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobAttemptLogResponse) String() string {
@@ -355,7 +441,17 @@ func (s *GetJobAttemptLogResponse) SetBody(v *GetJobAttemptLogResponseBody) *Get
 }
 
 type GetJobDetailRequest struct {
-	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202010271622hangzhouf742a4330000923
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyCluster
 	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
@@ -379,7 +475,10 @@ func (s *GetJobDetailRequest) SetVcName(v string) *GetJobDetailRequest {
 
 type GetJobDetailResponseBody struct {
 	JobDetail *GetJobDetailResponseBodyJobDetail `json:"JobDetail,omitempty" xml:"JobDetail,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5F10AB6E-8984-4E32-B821-4E1512711B8C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJobDetailResponseBody) String() string {
@@ -401,22 +500,70 @@ func (s *GetJobDetailResponseBody) SetRequestId(v string) *GetJobDetailResponseB
 }
 
 type GetJobDetailResponseBodyJobDetail struct {
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeValue      *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
-	Detail               *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	DriverResourceSpec   *string `json:"DriverResourceSpec,omitempty" xml:"DriverResourceSpec,omitempty"`
-	ExecutorInstances    *string `json:"ExecutorInstances,omitempty" xml:"ExecutorInstances,omitempty"`
+	// example:
+	//
+	// 2020-10-27 16:23:16
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1603786996000
+	CreateTimeValue *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
+	// example:
+	//
+	// {\\"args\\":[\\"100\\"],\\"name\\":\\"SparkPi\\",\\"className\\":\\"org.apache.spark.examples.SparkPi\\",\\"conf\\":{\\"spark.driver.resourceSpec\\":\\"medium\\",\\"spark.executor.instances\\":5,\\"spark.executor.resourceSpec\\":\\"medium\\"},\\"file\\":\\"local:///tmp/spark-examples.jar\\"}
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// small
+	DriverResourceSpec *string `json:"DriverResourceSpec,omitempty" xml:"DriverResourceSpec,omitempty"`
+	// example:
+	//
+	// 1
+	ExecutorInstances *string `json:"ExecutorInstances,omitempty" xml:"ExecutorInstances,omitempty"`
+	// example:
+	//
+	// small
 	ExecutorResourceSpec *string `json:"ExecutorResourceSpec,omitempty" xml:"ExecutorResourceSpec,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	LastJobAttemptId     *string `json:"LastJobAttemptId,omitempty" xml:"LastJobAttemptId,omitempty"`
-	SparkUI              *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubmitTime           *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	SubmitTimeValue      *string `json:"SubmitTimeValue,omitempty" xml:"SubmitTimeValue,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimeValue      *string `json:"UpdateTimeValue,omitempty" xml:"UpdateTimeValue,omitempty"`
-	VcName               *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// example:
+	//
+	// j202010271622hangzhouf742a4330000923
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// SparkPi
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// 202105251618hzslot9906b0b40000005-0001
+	LastJobAttemptId *string `json:"LastJobAttemptId,omitempty" xml:"LastJobAttemptId,omitempty"`
+	// example:
+	//
+	// https://dlaui-cn-hangzhou.aliyuncs.com/?token=xxx
+	SparkUI *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2020-10-27 16:23:16
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// example:
+	//
+	// 1603786996000
+	SubmitTimeValue *string `json:"SubmitTimeValue,omitempty" xml:"SubmitTimeValue,omitempty"`
+	// example:
+	//
+	// 2020-10-27 16:23:16
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1603786996000
+	UpdateTimeValue *string `json:"UpdateTimeValue,omitempty" xml:"UpdateTimeValue,omitempty"`
+	// example:
+	//
+	// MyCluster
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s GetJobDetailResponseBodyJobDetail) String() string {
@@ -508,9 +655,9 @@ func (s *GetJobDetailResponseBodyJobDetail) SetVcName(v string) *GetJobDetailRes
 }
 
 type GetJobDetailResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobDetailResponse) String() string {
@@ -537,7 +684,17 @@ func (s *GetJobDetailResponse) SetBody(v *GetJobDetailResponseBody) *GetJobDetai
 }
 
 type GetJobLogRequest struct {
-	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202010271622hangzhouf742a4330000923
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyCluster
 	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
@@ -560,7 +717,13 @@ func (s *GetJobLogRequest) SetVcName(v string) *GetJobLogRequest {
 }
 
 type GetJobLogResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// INFO SparkContext: Running Spark version 2.x
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// EC031B4B-3E07-40D2-9BC5-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -583,9 +746,9 @@ func (s *GetJobLogResponseBody) SetRequestId(v string) *GetJobLogResponseBody {
 }
 
 type GetJobLogResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobLogResponse) String() string {
@@ -612,7 +775,17 @@ func (s *GetJobLogResponse) SetBody(v *GetJobLogResponseBody) *GetJobLogResponse
 }
 
 type GetJobStatusRequest struct {
-	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202011031935hangzhouf742a4330003667
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyCluster
 	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
@@ -635,8 +808,14 @@ func (s *GetJobStatusRequest) SetVcName(v string) *GetJobStatusRequest {
 }
 
 type GetJobStatusResponseBody struct {
+	// example:
+	//
+	// 5C3F9ADD-2350-4C21-A3A1-A906F8DF8016
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetJobStatusResponseBody) String() string {
@@ -658,9 +837,9 @@ func (s *GetJobStatusResponseBody) SetStatus(v string) *GetJobStatusResponseBody
 }
 
 type GetJobStatusResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobStatusResponse) String() string {
@@ -687,6 +866,11 @@ func (s *GetJobStatusResponse) SetBody(v *GetJobStatusResponseBody) *GetJobStatu
 }
 
 type GetSparkSessionStateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202104171040zjkb4cc449d0000000
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -704,8 +888,14 @@ func (s *GetSparkSessionStateRequest) SetJobId(v string) *GetSparkSessionStateRe
 }
 
 type GetSparkSessionStateResponseBody struct {
+	// example:
+	//
+	// 9AD49396-8F80-5511-9268-A6360B205136
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// killed
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GetSparkSessionStateResponseBody) String() string {
@@ -727,9 +917,9 @@ func (s *GetSparkSessionStateResponseBody) SetState(v string) *GetSparkSessionSt
 }
 
 type GetSparkSessionStateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSparkSessionStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSparkSessionStateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSparkSessionStateResponse) String() string {
@@ -756,8 +946,18 @@ func (s *GetSparkSessionStateResponse) SetBody(v *GetSparkSessionStateResponseBo
 }
 
 type GetSparkStatementRequest struct {
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	StatementId *int32  `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202106071620hangzhou00000000001
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	StatementId *int32 `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
 }
 
 func (s GetSparkStatementRequest) String() string {
@@ -779,8 +979,11 @@ func (s *GetSparkStatementRequest) SetStatementId(v int32) *GetSparkStatementReq
 }
 
 type GetSparkStatementResponseBody struct {
-	Data      *GetSparkStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetSparkStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C5DB60E0-6EB3-493C-8956-DA0D3A2EE656
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSparkStatementResponseBody) String() string {
@@ -802,13 +1005,34 @@ func (s *GetSparkStatementResponseBody) SetRequestId(v string) *GetSparkStatemen
 }
 
 type GetSparkStatementResponseBodyData struct {
-	Code          *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	CompletedTime *int64   `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
-	Id            *int32   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Output        *string  `json:"Output,omitempty" xml:"Output,omitempty"`
-	Process       *float32 `json:"Process,omitempty" xml:"Process,omitempty"`
-	StartedTime   *int64   `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	State         *string  `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// print(2+2)
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1623033200754
+	CompletedTime *int64 `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// "{\\"status\\":\\"ok\\",\\"execution_count\\":1,\\"data\\":{\\"text/plain\\":\\"4\\"}}"
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// 0.5
+	Process *float32 `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// 1623033200750
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// example:
+	//
+	// running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GetSparkStatementResponseBodyData) String() string {
@@ -855,9 +1079,9 @@ func (s *GetSparkStatementResponseBodyData) SetState(v string) *GetSparkStatemen
 }
 
 type GetSparkStatementResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSparkStatementResponse) String() string {
@@ -884,7 +1108,17 @@ func (s *GetSparkStatementResponse) SetBody(v *GetSparkStatementResponseBody) *G
 }
 
 type KillSparkJobRequest struct {
-	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202011031935hangzhouf742a4330003667
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyCluster
 	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
@@ -907,7 +1141,13 @@ func (s *KillSparkJobRequest) SetVcName(v string) *KillSparkJobRequest {
 }
 
 type KillSparkJobResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// deleted
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 3970ACB5-3E30-4A3A-B63A-1790FCC261F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -930,9 +1170,9 @@ func (s *KillSparkJobResponseBody) SetRequestId(v string) *KillSparkJobResponseB
 }
 
 type KillSparkJobResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *KillSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *KillSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s KillSparkJobResponse) String() string {
@@ -959,10 +1199,28 @@ func (s *KillSparkJobResponse) SetBody(v *KillSparkJobResponseBody) *KillSparkJo
 }
 
 type ListSparkJobRequest struct {
-	Condition  map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	PageNumber *int32                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	VcName     *string                `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// example:
+	//
+	// {   "createTime":"2020-12-28 09:00:00",   "jobName":"SparkPi" }
+	Condition map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySparkCluster
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s ListSparkJobRequest) String() string {
@@ -994,10 +1252,28 @@ func (s *ListSparkJobRequest) SetVcName(v string) *ListSparkJobRequest {
 }
 
 type ListSparkJobShrinkRequest struct {
+	// example:
+	//
+	// {   "createTime":"2020-12-28 09:00:00",   "jobName":"SparkPi" }
 	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	VcName          *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySparkCluster
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s ListSparkJobShrinkRequest) String() string {
@@ -1030,7 +1306,10 @@ func (s *ListSparkJobShrinkRequest) SetVcName(v string) *ListSparkJobShrinkReque
 
 type ListSparkJobResponseBody struct {
 	DataResult *ListSparkJobResponseBodyDataResult `json:"DataResult,omitempty" xml:"DataResult,omitempty" type:"Struct"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// E18B0634-F003-486A-90B9-4AA6932DA3AA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSparkJobResponseBody) String() string {
@@ -1052,10 +1331,19 @@ func (s *ListSparkJobResponseBody) SetRequestId(v string) *ListSparkJobResponseB
 }
 
 type ListSparkJobResponseBodyDataResult struct {
-	JobList    []*ListSparkJobResponseBodyDataResultJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
-	PageNumber *string                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *string                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	JobList []*ListSparkJobResponseBodyDataResultJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 4998
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSparkJobResponseBodyDataResult) String() string {
@@ -1087,21 +1375,66 @@ func (s *ListSparkJobResponseBodyDataResult) SetTotalCount(v string) *ListSparkJ
 }
 
 type ListSparkJobResponseBodyDataResultJobList struct {
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeValue      *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
-	Detail               *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	DriverResourceSpec   *string `json:"DriverResourceSpec,omitempty" xml:"DriverResourceSpec,omitempty"`
-	ExecutorInstances    *string `json:"ExecutorInstances,omitempty" xml:"ExecutorInstances,omitempty"`
+	// example:
+	//
+	// 2020-10-27 17:51:05
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1603792267000
+	CreateTimeValue *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
+	// example:
+	//
+	// {"args":["100"],"name":...}
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// small
+	DriverResourceSpec *string `json:"DriverResourceSpec,omitempty" xml:"DriverResourceSpec,omitempty"`
+	// example:
+	//
+	// 100
+	ExecutorInstances *string `json:"ExecutorInstances,omitempty" xml:"ExecutorInstances,omitempty"`
+	// example:
+	//
+	// small
 	ExecutorResourceSpec *string `json:"ExecutorResourceSpec,omitempty" xml:"ExecutorResourceSpec,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	SparkUI              *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubmitTime           *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	SubmitTimeValue      *string `json:"SubmitTimeValue,omitempty" xml:"SubmitTimeValue,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimeValue      *string `json:"UpdateTimeValue,omitempty" xml:"UpdateTimeValue,omitempty"`
-	VcName               *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// example:
+	//
+	// j202010271750hangzhouf742a4330000950
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// SparkPi
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// https://dlaui-cn-hangzhou.aliyuncs.com/?token=xxx
+	SparkUI *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2020-10-27 17:51:05
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// example:
+	//
+	// 1603792267000
+	SubmitTimeValue *string `json:"SubmitTimeValue,omitempty" xml:"SubmitTimeValue,omitempty"`
+	// example:
+	//
+	// 2020-10-27 17:51:05
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1603792267000
+	UpdateTimeValue *string `json:"UpdateTimeValue,omitempty" xml:"UpdateTimeValue,omitempty"`
+	// example:
+	//
+	// MyCluster
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s ListSparkJobResponseBodyDataResultJobList) String() string {
@@ -1188,9 +1521,9 @@ func (s *ListSparkJobResponseBodyDataResultJobList) SetVcName(v string) *ListSpa
 }
 
 type ListSparkJobResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSparkJobResponse) String() string {
@@ -1217,11 +1550,34 @@ func (s *ListSparkJobResponse) SetBody(v *ListSparkJobResponseBody) *ListSparkJo
 }
 
 type ListSparkJobAttemptRequest struct {
-	Condition  map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	JobId      *string                `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PageNumber *int32                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	VcName     *string                `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// example:
+	//
+	// {"status":"success", "createTime":"2021-05-27 11:00:00", "timeZone":"Asia/Shanghai"}
+	Condition map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202105272322hangzhou5d64f1560000128
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// release-test
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s ListSparkJobAttemptRequest) String() string {
@@ -1258,11 +1614,34 @@ func (s *ListSparkJobAttemptRequest) SetVcName(v string) *ListSparkJobAttemptReq
 }
 
 type ListSparkJobAttemptShrinkRequest struct {
+	// example:
+	//
+	// {"status":"success", "createTime":"2021-05-27 11:00:00", "timeZone":"Asia/Shanghai"}
 	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	VcName          *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202105272322hangzhou5d64f1560000128
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// release-test
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s ListSparkJobAttemptShrinkRequest) String() string {
@@ -1300,7 +1679,10 @@ func (s *ListSparkJobAttemptShrinkRequest) SetVcName(v string) *ListSparkJobAtte
 
 type ListSparkJobAttemptResponseBody struct {
 	DataResult *ListSparkJobAttemptResponseBodyDataResult `json:"DataResult,omitempty" xml:"DataResult,omitempty" type:"Struct"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4A839055-70C7-423D-A6F2-E714EA4502DB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSparkJobAttemptResponseBody) String() string {
@@ -1323,9 +1705,18 @@ func (s *ListSparkJobAttemptResponseBody) SetRequestId(v string) *ListSparkJobAt
 
 type ListSparkJobAttemptResponseBodyDataResult struct {
 	JobAttemptList []*ListSparkJobAttemptResponseBodyDataResultJobAttemptList `json:"JobAttemptList,omitempty" xml:"JobAttemptList,omitempty" type:"Repeated"`
-	PageNumber     *string                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *string                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *string                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSparkJobAttemptResponseBodyDataResult) String() string {
@@ -1357,19 +1748,58 @@ func (s *ListSparkJobAttemptResponseBodyDataResult) SetTotalCount(v string) *Lis
 }
 
 type ListSparkJobAttemptResponseBodyDataResultJobAttemptList struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeValue     *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
-	Detail              *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	DurationTime        *string `json:"DurationTime,omitempty" xml:"DurationTime,omitempty"`
-	DurationTimeValue   *string `json:"DurationTimeValue,omitempty" xml:"DurationTimeValue,omitempty"`
-	JobAttemptId        *string `json:"JobAttemptId,omitempty" xml:"JobAttemptId,omitempty"`
-	JobId               *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName             *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	SparkUI             *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TerminatedTime      *string `json:"TerminatedTime,omitempty" xml:"TerminatedTime,omitempty"`
+	// example:
+	//
+	// 2021-05-27 23:22:08
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1622128928000
+	CreateTimeValue *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
+	// example:
+	//
+	// {"xxx":"xxx"}
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// 00:01:12
+	DurationTime *string `json:"DurationTime,omitempty" xml:"DurationTime,omitempty"`
+	// example:
+	//
+	// 72000
+	DurationTimeValue *string `json:"DurationTimeValue,omitempty" xml:"DurationTimeValue,omitempty"`
+	// example:
+	//
+	// j202105272322hangzhou5d64f1560000128-0001
+	JobAttemptId *string `json:"JobAttemptId,omitempty" xml:"JobAttemptId,omitempty"`
+	// example:
+	//
+	// j202105272322hangzhou5d64f1560000128
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// xxx
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// xxx
+	SparkUI *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2021-05-27 23:23:20
+	TerminatedTime *string `json:"TerminatedTime,omitempty" xml:"TerminatedTime,omitempty"`
+	// example:
+	//
+	// 1622129000000
 	TerminatedTimeValue *string `json:"TerminatedTimeValue,omitempty" xml:"TerminatedTimeValue,omitempty"`
-	VcName              *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// example:
+	//
+	// release-test
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s ListSparkJobAttemptResponseBodyDataResultJobAttemptList) String() string {
@@ -1446,9 +1876,9 @@ func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetVcName(v st
 }
 
 type ListSparkJobAttemptResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSparkJobAttemptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSparkJobAttemptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSparkJobAttemptResponse) String() string {
@@ -1475,6 +1905,11 @@ func (s *ListSparkJobAttemptResponse) SetBody(v *ListSparkJobAttemptResponseBody
 }
 
 type ListSparkStatementsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// j202106071620hangzhou00000000001
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -1492,6 +1927,9 @@ func (s *ListSparkStatementsRequest) SetJobId(v string) *ListSparkStatementsRequ
 }
 
 type ListSparkStatementsResponseBody struct {
+	// example:
+	//
+	// C2AB7692-B9EF-4A50-BCFF-0DC5B6F080E8
 	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Statements []*ListSparkStatementsResponseBodyStatements `json:"Statements,omitempty" xml:"Statements,omitempty" type:"Repeated"`
 }
@@ -1515,13 +1953,34 @@ func (s *ListSparkStatementsResponseBody) SetStatements(v []*ListSparkStatements
 }
 
 type ListSparkStatementsResponseBodyStatements struct {
-	Code          *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	CompletedTime *int64   `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
-	Id            *int32   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Output        *string  `json:"Output,omitempty" xml:"Output,omitempty"`
-	Progress      *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	StartedTime   *int64   `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	State         *string  `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// print(2 + 2)
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1623033200754
+	CompletedTime *int64 `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
+	// example:
+	//
+	// 2
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// {\\"status\\":\\"ok\\",\\"execution_count\\":1,\\"data\\":{\\"text/plain\\":\\"4\\"}}
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// 1
+	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 1623033200750
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// example:
+	//
+	// running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListSparkStatementsResponseBodyStatements) String() string {
@@ -1568,9 +2027,9 @@ func (s *ListSparkStatementsResponseBodyStatements) SetState(v string) *ListSpar
 }
 
 type ListSparkStatementsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSparkStatementsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSparkStatementsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSparkStatementsResponse) String() string {
@@ -1597,8 +2056,16 @@ func (s *ListSparkStatementsResponse) SetBody(v *ListSparkStatementsResponseBody
 }
 
 type ReleaseInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dla-3qntmdtbqklsbsmceu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReleaseInstanceRequest) String() string {
@@ -1620,11 +2087,26 @@ func (s *ReleaseInstanceRequest) SetRegionId(v string) *ReleaseInstanceRequest {
 }
 
 type ReleaseInstanceResponseBody struct {
+	// example:
+	//
+	// 600
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// An internal error occurred
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// example:
+	//
+	// 312F48C7-AFA0-46AA-B8F6-1B16B8808045
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReleaseInstanceResponseBody) String() string {
@@ -1661,9 +2143,9 @@ func (s *ReleaseInstanceResponseBody) SetSuccess(v bool) *ReleaseInstanceRespons
 }
 
 type ReleaseInstanceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseInstanceResponse) String() string {
@@ -1690,8 +2172,18 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 }
 
 type SubmitSparkJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {     "name": "SparkPi",     "file": "local:///tmp/spark-examples.jar",     "className": "org.apache.spark.examples.SparkPi",     "args": [         "100"     ],     "conf": {         "spark.driver.resourceSpec": "medium",         "spark.executor.instances": 5,         "spark.executor.resourceSpec": "medium"     } }
 	ConfigJson *string `json:"ConfigJson,omitempty" xml:"ConfigJson,omitempty"`
-	VcName     *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyCluster
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s SubmitSparkJobRequest) String() string {
@@ -1713,7 +2205,13 @@ func (s *SubmitSparkJobRequest) SetVcName(v string) *SubmitSparkJobRequest {
 }
 
 type SubmitSparkJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// j202011032013hangzhouf742a4330003679
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// C039FD4D-2F3C-4556-AF09-864D3A6485B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1736,9 +2234,9 @@ func (s *SubmitSparkJobResponseBody) SetRequestId(v string) *SubmitSparkJobRespo
 }
 
 type SubmitSparkJobResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitSparkJobResponse) String() string {
@@ -1765,7 +2263,17 @@ func (s *SubmitSparkJobResponse) SetBody(v *SubmitSparkJobResponseBody) *SubmitS
 }
 
 type SubmitSparkSQLRequest struct {
-	Sql    *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// set spark.driver.resourceSpec=medium;set spark.executor.instances=5;  set spark.executor.resourceSpec=medium;  set spark.app.name=sparksqltest;  show databases;
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySparkCluster
 	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
@@ -1788,7 +2296,13 @@ func (s *SubmitSparkSQLRequest) SetVcName(v string) *SubmitSparkSQLRequest {
 }
 
 type SubmitSparkSQLResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// j202104261729hangzhou224ee5230000930
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// B570310A-8A49-461B-B81D-AE0B58D63DA4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1811,9 +2325,9 @@ func (s *SubmitSparkSQLResponseBody) SetRequestId(v string) *SubmitSparkSQLRespo
 }
 
 type SubmitSparkSQLResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitSparkSQLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSparkSQLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitSparkSQLResponse) String() string {
@@ -1840,6 +2354,9 @@ func (s *SubmitSparkSQLResponse) SetBody(v *SubmitSparkSQLResponseBody) *SubmitS
 }
 
 type ValidateVirtualClusterNameRequest struct {
+	// example:
+	//
+	// abc123
 	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
@@ -1857,8 +2374,11 @@ func (s *ValidateVirtualClusterNameRequest) SetVcName(v string) *ValidateVirtual
 }
 
 type ValidateVirtualClusterNameResponseBody struct {
-	Data      *ValidateVirtualClusterNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *ValidateVirtualClusterNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C039FD4D-2F3C-4556-AF09-864D3A6485B2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ValidateVirtualClusterNameResponseBody) String() string {
@@ -1880,7 +2400,13 @@ func (s *ValidateVirtualClusterNameResponseBody) SetRequestId(v string) *Validat
 }
 
 type ValidateVirtualClusterNameResponseBodyData struct {
-	Legal   *string `json:"Legal,omitempty" xml:"Legal,omitempty"`
+	// example:
+	//
+	// true
+	Legal *string `json:"Legal,omitempty" xml:"Legal,omitempty"`
+	// example:
+	//
+	// null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -1903,9 +2429,9 @@ func (s *ValidateVirtualClusterNameResponseBodyData) SetMessage(v string) *Valid
 }
 
 type ValidateVirtualClusterNameResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ValidateVirtualClusterNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValidateVirtualClusterNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ValidateVirtualClusterNameResponse) String() string {
@@ -2034,6 +2560,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - CancelSparkStatementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelSparkStatementResponse
 func (client *Client) CancelSparkStatementWithOptions(request *CancelSparkStatementRequest, runtime *util.RuntimeOptions) (_result *CancelSparkStatementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2071,6 +2602,9 @@ func (client *Client) CancelSparkStatementWithOptions(request *CancelSparkStatem
 	return _result, _err
 }
 
+// @param request - CancelSparkStatementRequest
+//
+// @return CancelSparkStatementResponse
 func (client *Client) CancelSparkStatement(request *CancelSparkStatementRequest) (_result *CancelSparkStatementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelSparkStatementResponse{}
@@ -2082,6 +2616,11 @@ func (client *Client) CancelSparkStatement(request *CancelSparkStatementRequest)
 	return _result, _err
 }
 
+// @param request - CreateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2127,6 +2666,9 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
@@ -2138,6 +2680,11 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - ExecuteSparkStatementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteSparkStatementResponse
 func (client *Client) ExecuteSparkStatementWithOptions(request *ExecuteSparkStatementRequest, runtime *util.RuntimeOptions) (_result *ExecuteSparkStatementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2179,6 +2726,9 @@ func (client *Client) ExecuteSparkStatementWithOptions(request *ExecuteSparkStat
 	return _result, _err
 }
 
+// @param request - ExecuteSparkStatementRequest
+//
+// @return ExecuteSparkStatementResponse
 func (client *Client) ExecuteSparkStatement(request *ExecuteSparkStatementRequest) (_result *ExecuteSparkStatementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteSparkStatementResponse{}
@@ -2190,6 +2740,11 @@ func (client *Client) ExecuteSparkStatement(request *ExecuteSparkStatementReques
 	return _result, _err
 }
 
+// @param request - GetJobAttemptLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobAttemptLogResponse
 func (client *Client) GetJobAttemptLogWithOptions(request *GetJobAttemptLogRequest, runtime *util.RuntimeOptions) (_result *GetJobAttemptLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2231,6 +2786,9 @@ func (client *Client) GetJobAttemptLogWithOptions(request *GetJobAttemptLogReque
 	return _result, _err
 }
 
+// @param request - GetJobAttemptLogRequest
+//
+// @return GetJobAttemptLogResponse
 func (client *Client) GetJobAttemptLog(request *GetJobAttemptLogRequest) (_result *GetJobAttemptLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetJobAttemptLogResponse{}
@@ -2242,6 +2800,11 @@ func (client *Client) GetJobAttemptLog(request *GetJobAttemptLogRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetJobDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobDetailResponse
 func (client *Client) GetJobDetailWithOptions(request *GetJobDetailRequest, runtime *util.RuntimeOptions) (_result *GetJobDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2279,6 +2842,9 @@ func (client *Client) GetJobDetailWithOptions(request *GetJobDetailRequest, runt
 	return _result, _err
 }
 
+// @param request - GetJobDetailRequest
+//
+// @return GetJobDetailResponse
 func (client *Client) GetJobDetail(request *GetJobDetailRequest) (_result *GetJobDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetJobDetailResponse{}
@@ -2290,6 +2856,11 @@ func (client *Client) GetJobDetail(request *GetJobDetailRequest) (_result *GetJo
 	return _result, _err
 }
 
+// @param request - GetJobLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobLogResponse
 func (client *Client) GetJobLogWithOptions(request *GetJobLogRequest, runtime *util.RuntimeOptions) (_result *GetJobLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2327,6 +2898,9 @@ func (client *Client) GetJobLogWithOptions(request *GetJobLogRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - GetJobLogRequest
+//
+// @return GetJobLogResponse
 func (client *Client) GetJobLog(request *GetJobLogRequest) (_result *GetJobLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetJobLogResponse{}
@@ -2338,6 +2912,11 @@ func (client *Client) GetJobLog(request *GetJobLogRequest) (_result *GetJobLogRe
 	return _result, _err
 }
 
+// @param request - GetJobStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobStatusResponse
 func (client *Client) GetJobStatusWithOptions(request *GetJobStatusRequest, runtime *util.RuntimeOptions) (_result *GetJobStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2375,6 +2954,9 @@ func (client *Client) GetJobStatusWithOptions(request *GetJobStatusRequest, runt
 	return _result, _err
 }
 
+// @param request - GetJobStatusRequest
+//
+// @return GetJobStatusResponse
 func (client *Client) GetJobStatus(request *GetJobStatusRequest) (_result *GetJobStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetJobStatusResponse{}
@@ -2386,6 +2968,11 @@ func (client *Client) GetJobStatus(request *GetJobStatusRequest) (_result *GetJo
 	return _result, _err
 }
 
+// @param request - GetSparkSessionStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSparkSessionStateResponse
 func (client *Client) GetSparkSessionStateWithOptions(request *GetSparkSessionStateRequest, runtime *util.RuntimeOptions) (_result *GetSparkSessionStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2419,6 +3006,9 @@ func (client *Client) GetSparkSessionStateWithOptions(request *GetSparkSessionSt
 	return _result, _err
 }
 
+// @param request - GetSparkSessionStateRequest
+//
+// @return GetSparkSessionStateResponse
 func (client *Client) GetSparkSessionState(request *GetSparkSessionStateRequest) (_result *GetSparkSessionStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSparkSessionStateResponse{}
@@ -2430,6 +3020,11 @@ func (client *Client) GetSparkSessionState(request *GetSparkSessionStateRequest)
 	return _result, _err
 }
 
+// @param request - GetSparkStatementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSparkStatementResponse
 func (client *Client) GetSparkStatementWithOptions(request *GetSparkStatementRequest, runtime *util.RuntimeOptions) (_result *GetSparkStatementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2467,6 +3062,9 @@ func (client *Client) GetSparkStatementWithOptions(request *GetSparkStatementReq
 	return _result, _err
 }
 
+// @param request - GetSparkStatementRequest
+//
+// @return GetSparkStatementResponse
 func (client *Client) GetSparkStatement(request *GetSparkStatementRequest) (_result *GetSparkStatementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSparkStatementResponse{}
@@ -2478,6 +3076,11 @@ func (client *Client) GetSparkStatement(request *GetSparkStatementRequest) (_res
 	return _result, _err
 }
 
+// @param request - KillSparkJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return KillSparkJobResponse
 func (client *Client) KillSparkJobWithOptions(request *KillSparkJobRequest, runtime *util.RuntimeOptions) (_result *KillSparkJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2515,6 +3118,9 @@ func (client *Client) KillSparkJobWithOptions(request *KillSparkJobRequest, runt
 	return _result, _err
 }
 
+// @param request - KillSparkJobRequest
+//
+// @return KillSparkJobResponse
 func (client *Client) KillSparkJob(request *KillSparkJobRequest) (_result *KillSparkJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &KillSparkJobResponse{}
@@ -2526,6 +3132,11 @@ func (client *Client) KillSparkJob(request *KillSparkJobRequest) (_result *KillS
 	return _result, _err
 }
 
+// @param tmpReq - ListSparkJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSparkJobResponse
 func (client *Client) ListSparkJobWithOptions(tmpReq *ListSparkJobRequest, runtime *util.RuntimeOptions) (_result *ListSparkJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2577,6 +3188,9 @@ func (client *Client) ListSparkJobWithOptions(tmpReq *ListSparkJobRequest, runti
 	return _result, _err
 }
 
+// @param request - ListSparkJobRequest
+//
+// @return ListSparkJobResponse
 func (client *Client) ListSparkJob(request *ListSparkJobRequest) (_result *ListSparkJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSparkJobResponse{}
@@ -2588,6 +3202,11 @@ func (client *Client) ListSparkJob(request *ListSparkJobRequest) (_result *ListS
 	return _result, _err
 }
 
+// @param tmpReq - ListSparkJobAttemptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSparkJobAttemptResponse
 func (client *Client) ListSparkJobAttemptWithOptions(tmpReq *ListSparkJobAttemptRequest, runtime *util.RuntimeOptions) (_result *ListSparkJobAttemptResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2643,6 +3262,9 @@ func (client *Client) ListSparkJobAttemptWithOptions(tmpReq *ListSparkJobAttempt
 	return _result, _err
 }
 
+// @param request - ListSparkJobAttemptRequest
+//
+// @return ListSparkJobAttemptResponse
 func (client *Client) ListSparkJobAttempt(request *ListSparkJobAttemptRequest) (_result *ListSparkJobAttemptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSparkJobAttemptResponse{}
@@ -2654,6 +3276,11 @@ func (client *Client) ListSparkJobAttempt(request *ListSparkJobAttemptRequest) (
 	return _result, _err
 }
 
+// @param request - ListSparkStatementsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSparkStatementsResponse
 func (client *Client) ListSparkStatementsWithOptions(request *ListSparkStatementsRequest, runtime *util.RuntimeOptions) (_result *ListSparkStatementsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2687,6 +3314,9 @@ func (client *Client) ListSparkStatementsWithOptions(request *ListSparkStatement
 	return _result, _err
 }
 
+// @param request - ListSparkStatementsRequest
+//
+// @return ListSparkStatementsResponse
 func (client *Client) ListSparkStatements(request *ListSparkStatementsRequest) (_result *ListSparkStatementsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSparkStatementsResponse{}
@@ -2698,6 +3328,11 @@ func (client *Client) ListSparkStatements(request *ListSparkStatementsRequest) (
 	return _result, _err
 }
 
+// @param request - ReleaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2735,6 +3370,9 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 	return _result, _err
 }
 
+// @param request - ReleaseInstanceRequest
+//
+// @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstanceResponse{}
@@ -2746,6 +3384,11 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	return _result, _err
 }
 
+// @param request - SubmitSparkJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSparkJobResponse
 func (client *Client) SubmitSparkJobWithOptions(request *SubmitSparkJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSparkJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2783,6 +3426,9 @@ func (client *Client) SubmitSparkJobWithOptions(request *SubmitSparkJobRequest, 
 	return _result, _err
 }
 
+// @param request - SubmitSparkJobRequest
+//
+// @return SubmitSparkJobResponse
 func (client *Client) SubmitSparkJob(request *SubmitSparkJobRequest) (_result *SubmitSparkJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSparkJobResponse{}
@@ -2794,6 +3440,11 @@ func (client *Client) SubmitSparkJob(request *SubmitSparkJobRequest) (_result *S
 	return _result, _err
 }
 
+// @param request - SubmitSparkSQLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSparkSQLResponse
 func (client *Client) SubmitSparkSQLWithOptions(request *SubmitSparkSQLRequest, runtime *util.RuntimeOptions) (_result *SubmitSparkSQLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2831,6 +3482,9 @@ func (client *Client) SubmitSparkSQLWithOptions(request *SubmitSparkSQLRequest, 
 	return _result, _err
 }
 
+// @param request - SubmitSparkSQLRequest
+//
+// @return SubmitSparkSQLResponse
 func (client *Client) SubmitSparkSQL(request *SubmitSparkSQLRequest) (_result *SubmitSparkSQLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSparkSQLResponse{}
@@ -2842,6 +3496,11 @@ func (client *Client) SubmitSparkSQL(request *SubmitSparkSQLRequest) (_result *S
 	return _result, _err
 }
 
+// @param request - ValidateVirtualClusterNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateVirtualClusterNameResponse
 func (client *Client) ValidateVirtualClusterNameWithOptions(request *ValidateVirtualClusterNameRequest, runtime *util.RuntimeOptions) (_result *ValidateVirtualClusterNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2875,6 +3534,9 @@ func (client *Client) ValidateVirtualClusterNameWithOptions(request *ValidateVir
 	return _result, _err
 }
 
+// @param request - ValidateVirtualClusterNameRequest
+//
+// @return ValidateVirtualClusterNameResponse
 func (client *Client) ValidateVirtualClusterName(request *ValidateVirtualClusterNameRequest) (_result *ValidateVirtualClusterNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ValidateVirtualClusterNameResponse{}

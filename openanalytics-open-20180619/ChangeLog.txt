@@ -1,3 +1,6 @@
+2024-10-11 Version: v3.0.1
+- Generated golang 2018-06-19 for openanalytics-open.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2018-06-19 for openanalytics-open.
 
