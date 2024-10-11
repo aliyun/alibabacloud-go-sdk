@@ -25393,7 +25393,8 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// example:
 	//
 	// 1
-	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	Encrypt     *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	EncryptMode *string `json:"EncryptMode,omitempty" xml:"EncryptMode,omitempty"`
 	// The encryption type of the media stream. Valid values:
 	//
 	// 	- **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
@@ -25565,6 +25566,11 @@ func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetDuration(v string) *Get
 
 func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetEncrypt(v int64) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
 	s.Encrypt = &v
+	return s
+}
+
+func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetEncryptMode(v string) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
+	s.EncryptMode = &v
 	return s
 }
 

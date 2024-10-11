@@ -1,3 +1,7 @@
+2024-10-11 Version: v4.3.1
+- Update API GetPlayInfo: update response param.
+
+
 2024-09-26 Version: v4.3.0
 - Support API ChangeResourceGroup.
 
