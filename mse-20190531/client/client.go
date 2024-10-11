@@ -3017,7 +3017,8 @@ type AddGatewayAuthRequestExternalAuthZJSON struct {
 	// example:
 	//
 	// Authorization
-	TokenKey *string `json:"TokenKey,omitempty" xml:"TokenKey,omitempty"`
+	TokenKey         *string `json:"TokenKey,omitempty" xml:"TokenKey,omitempty"`
+	WithRematchRoute *bool   `json:"WithRematchRoute,omitempty" xml:"WithRematchRoute,omitempty"`
 	// example:
 	//
 	// true
@@ -3069,6 +3070,11 @@ func (s *AddGatewayAuthRequestExternalAuthZJSON) SetTimeout(v int32) *AddGateway
 
 func (s *AddGatewayAuthRequestExternalAuthZJSON) SetTokenKey(v string) *AddGatewayAuthRequestExternalAuthZJSON {
 	s.TokenKey = &v
+	return s
+}
+
+func (s *AddGatewayAuthRequestExternalAuthZJSON) SetWithRematchRoute(v bool) *AddGatewayAuthRequestExternalAuthZJSON {
+	s.WithRematchRoute = &v
 	return s
 }
 
@@ -25617,7 +25623,8 @@ type GetGatewayAuthDetailResponseBodyDataExternalAuthZ struct {
 	// example:
 	//
 	// Authorization
-	TokenKey *string `json:"TokenKey,omitempty" xml:"TokenKey,omitempty"`
+	TokenKey         *string `json:"TokenKey,omitempty" xml:"TokenKey,omitempty"`
+	WithRematchRoute *bool   `json:"WithRematchRoute,omitempty" xml:"WithRematchRoute,omitempty"`
 	// example:
 	//
 	// true
@@ -25674,6 +25681,11 @@ func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetTimeout(v int32) 
 
 func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetTokenKey(v string) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
 	s.TokenKey = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyDataExternalAuthZ) SetWithRematchRoute(v bool) *GetGatewayAuthDetailResponseBodyDataExternalAuthZ {
+	s.WithRematchRoute = &v
 	return s
 }
 
@@ -35441,6 +35453,164 @@ func (s *ImportZookeeperDataResponse) SetStatusCode(v int32) *ImportZookeeperDat
 }
 
 func (s *ImportZookeeperDataResponse) SetBody(v *ImportZookeeperDataResponseBody) *ImportZookeeperDataResponse {
+	s.Body = v
+	return s
+}
+
+type InitializeServiceLinkRoleRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// AliyunServiceRoleForMSE
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// ""
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s InitializeServiceLinkRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitializeServiceLinkRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitializeServiceLinkRoleRequest) SetAcceptLanguage(v string) *InitializeServiceLinkRoleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleRequest) SetRoleName(v string) *InitializeServiceLinkRoleRequest {
+	s.RoleName = &v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleRequest) SetToken(v string) *InitializeServiceLinkRoleRequest {
+	s.Token = &v
+	return s
+}
+
+type InitializeServiceLinkRoleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *InitializeServiceLinkRoleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A5E7D4E3-D30C-56C1-817F-F2B8CE6BXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InitializeServiceLinkRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitializeServiceLinkRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitializeServiceLinkRoleResponseBody) SetCode(v string) *InitializeServiceLinkRoleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleResponseBody) SetData(v *InitializeServiceLinkRoleResponseBodyData) *InitializeServiceLinkRoleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleResponseBody) SetMessage(v string) *InitializeServiceLinkRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleResponseBody) SetRequestId(v string) *InitializeServiceLinkRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleResponseBody) SetSuccess(v bool) *InitializeServiceLinkRoleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InitializeServiceLinkRoleResponseBodyData struct {
+	// example:
+	//
+	// ram:CreateServiceLinkedRole
+	RequiredPermission *string `json:"RequiredPermission,omitempty" xml:"RequiredPermission,omitempty"`
+	// example:
+	//
+	// AliyunServiceRoleForMSE
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// mse.aliyuncs.com
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s InitializeServiceLinkRoleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitializeServiceLinkRoleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InitializeServiceLinkRoleResponseBodyData) SetRequiredPermission(v string) *InitializeServiceLinkRoleResponseBodyData {
+	s.RequiredPermission = &v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleResponseBodyData) SetRoleName(v string) *InitializeServiceLinkRoleResponseBodyData {
+	s.RoleName = &v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleResponseBodyData) SetServiceName(v string) *InitializeServiceLinkRoleResponseBodyData {
+	s.ServiceName = &v
+	return s
+}
+
+type InitializeServiceLinkRoleResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitializeServiceLinkRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InitializeServiceLinkRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitializeServiceLinkRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitializeServiceLinkRoleResponse) SetHeaders(v map[string]*string) *InitializeServiceLinkRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleResponse) SetStatusCode(v int32) *InitializeServiceLinkRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitializeServiceLinkRoleResponse) SetBody(v *InitializeServiceLinkRoleResponseBody) *InitializeServiceLinkRoleResponse {
 	s.Body = v
 	return s
 }
@@ -86667,6 +86837,74 @@ func (client *Client) ImportZookeeperData(request *ImportZookeeperDataRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportZookeeperDataResponse{}
 	_body, _err := client.ImportZookeeperDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户授权mseSLR
+//
+// @param request - InitializeServiceLinkRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitializeServiceLinkRoleResponse
+func (client *Client) InitializeServiceLinkRoleWithOptions(request *InitializeServiceLinkRoleRequest, runtime *util.RuntimeOptions) (_result *InitializeServiceLinkRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitializeServiceLinkRole"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitializeServiceLinkRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户授权mseSLR
+//
+// @param request - InitializeServiceLinkRoleRequest
+//
+// @return InitializeServiceLinkRoleResponse
+func (client *Client) InitializeServiceLinkRole(request *InitializeServiceLinkRoleRequest) (_result *InitializeServiceLinkRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitializeServiceLinkRoleResponse{}
+	_body, _err := client.InitializeServiceLinkRoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
