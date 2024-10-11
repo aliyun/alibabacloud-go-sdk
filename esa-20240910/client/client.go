@@ -7924,6 +7924,161 @@ func (s *DeleteCustomScenePolicyResponse) SetBody(v *DeleteCustomScenePolicyResp
 	return s
 }
 
+type DeleteKvRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_namespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DeleteKvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteKvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteKvRequest) SetKey(v string) *DeleteKvRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *DeleteKvRequest) SetNamespace(v string) *DeleteKvRequest {
+	s.Namespace = &v
+	return s
+}
+
+type DeleteKvResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteKvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteKvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteKvResponseBody) SetRequestId(v string) *DeleteKvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteKvResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteKvResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteKvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteKvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteKvResponse) SetHeaders(v map[string]*string) *DeleteKvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteKvResponse) SetStatusCode(v int32) *DeleteKvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteKvResponse) SetBody(v *DeleteKvResponseBody) *DeleteKvResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteKvNamespaceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_namespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DeleteKvNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteKvNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteKvNamespaceRequest) SetNamespace(v string) *DeleteKvNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+type DeleteKvNamespaceResponseBody struct {
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteKvNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteKvNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteKvNamespaceResponseBody) SetRequestId(v string) *DeleteKvNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteKvNamespaceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteKvNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteKvNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteKvNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteKvNamespaceResponse) SetHeaders(v map[string]*string) *DeleteKvNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteKvNamespaceResponse) SetStatusCode(v int32) *DeleteKvNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteKvNamespaceResponse) SetBody(v *DeleteKvNamespaceResponseBody) *DeleteKvNamespaceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteListRequest struct {
 	// This parameter is required.
 	//
@@ -9696,6 +9851,64 @@ func (s *DescribeIPRangeListResponse) SetBody(v *DescribeIPRangeListResponseBody
 	return s
 }
 
+type DescribeKvAccountStatusResponseBody struct {
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeKvAccountStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKvAccountStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKvAccountStatusResponseBody) SetRequestId(v string) *DescribeKvAccountStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeKvAccountStatusResponseBody) SetStatus(v string) *DescribeKvAccountStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeKvAccountStatusResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeKvAccountStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeKvAccountStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKvAccountStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKvAccountStatusResponse) SetHeaders(v map[string]*string) *DescribeKvAccountStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeKvAccountStatusResponse) SetStatusCode(v int32) *DescribeKvAccountStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeKvAccountStatusResponse) SetBody(v *DescribeKvAccountStatusResponseBody) *DescribeKvAccountStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePreloadTasksRequest struct {
 	// example:
 	//
@@ -10570,6 +10783,307 @@ func (s *GetCacheReserveSpecificationResponse) SetStatusCode(v int32) *GetCacheR
 }
 
 func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecificationResponseBody) *GetCacheReserveSpecificationResponse {
+	s.Body = v
+	return s
+}
+
+type GetKvRequest struct {
+	// example:
+	//
+	// true
+	Base64 *bool `json:"Base64,omitempty" xml:"Base64,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_namespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s GetKvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetKvRequest) SetBase64(v bool) *GetKvRequest {
+	s.Base64 = &v
+	return s
+}
+
+func (s *GetKvRequest) SetKey(v string) *GetKvRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *GetKvRequest) SetNamespace(v string) *GetKvRequest {
+	s.Namespace = &v
+	return s
+}
+
+type GetKvResponseBody struct {
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// test_value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetKvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetKvResponseBody) SetRequestId(v string) *GetKvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetKvResponseBody) SetValue(v string) *GetKvResponseBody {
+	s.Value = &v
+	return s
+}
+
+type GetKvResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetKvResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetKvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetKvResponse) SetHeaders(v map[string]*string) *GetKvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetKvResponse) SetStatusCode(v int32) *GetKvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetKvResponse) SetBody(v *GetKvResponseBody) *GetKvResponse {
+	s.Body = v
+	return s
+}
+
+type GetKvAccountResponseBody struct {
+	// example:
+	//
+	// 1073741824
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// 1 GB
+	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// example:
+	//
+	// 10048576
+	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
+	// example:
+	//
+	// 100 MB
+	CapacityUsedString *string                                  `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	NamespaceList      []*GetKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	NamespaceQuota *int32 `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
+	// example:
+	//
+	// 1
+	NamespaceUsed *int32 `json:"NamespaceUsed,omitempty" xml:"NamespaceUsed,omitempty"`
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetKvAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKvAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetKvAccountResponseBody) SetCapacity(v int64) *GetKvAccountResponseBody {
+	s.Capacity = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBody) SetCapacityString(v string) *GetKvAccountResponseBody {
+	s.CapacityString = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBody) SetCapacityUsed(v int64) *GetKvAccountResponseBody {
+	s.CapacityUsed = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBody) SetCapacityUsedString(v string) *GetKvAccountResponseBody {
+	s.CapacityUsedString = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBody) SetNamespaceList(v []*GetKvAccountResponseBodyNamespaceList) *GetKvAccountResponseBody {
+	s.NamespaceList = v
+	return s
+}
+
+func (s *GetKvAccountResponseBody) SetNamespaceQuota(v int32) *GetKvAccountResponseBody {
+	s.NamespaceQuota = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBody) SetNamespaceUsed(v int32) *GetKvAccountResponseBody {
+	s.NamespaceUsed = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBody) SetRequestId(v string) *GetKvAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBody) SetStatus(v string) *GetKvAccountResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetKvAccountResponseBodyNamespaceList struct {
+	// example:
+	//
+	// 1073741824
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// 1 GB
+	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// example:
+	//
+	// 100048576
+	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
+	// example:
+	//
+	// 100 MB
+	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	// example:
+	//
+	// the first namespace
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// test_namespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 643355322374688768
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetKvAccountResponseBodyNamespaceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKvAccountResponseBodyNamespaceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetKvAccountResponseBodyNamespaceList) SetCapacity(v int64) *GetKvAccountResponseBodyNamespaceList {
+	s.Capacity = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBodyNamespaceList) SetCapacityString(v string) *GetKvAccountResponseBodyNamespaceList {
+	s.CapacityString = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBodyNamespaceList) SetCapacityUsed(v int64) *GetKvAccountResponseBodyNamespaceList {
+	s.CapacityUsed = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBodyNamespaceList) SetCapacityUsedString(v string) *GetKvAccountResponseBodyNamespaceList {
+	s.CapacityUsedString = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBodyNamespaceList) SetDescription(v string) *GetKvAccountResponseBodyNamespaceList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBodyNamespaceList) SetNamespace(v string) *GetKvAccountResponseBodyNamespaceList {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBodyNamespaceList) SetNamespaceId(v string) *GetKvAccountResponseBodyNamespaceList {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *GetKvAccountResponseBodyNamespaceList) SetStatus(v string) *GetKvAccountResponseBodyNamespaceList {
+	s.Status = &v
+	return s
+}
+
+type GetKvAccountResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetKvAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetKvAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKvAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetKvAccountResponse) SetHeaders(v map[string]*string) *GetKvAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetKvAccountResponse) SetStatusCode(v int32) *GetKvAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetKvAccountResponse) SetBody(v *GetKvAccountResponseBody) *GetKvAccountResponse {
 	s.Body = v
 	return s
 }
@@ -28923,6 +29437,122 @@ func (client *Client) DeleteCustomScenePolicy(request *DeleteCustomScenePolicyRe
 
 // Summary:
 //
+// 删除Namespace的Key-Value对
+//
+// @param request - DeleteKvRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKvResponse
+func (client *Client) DeleteKvWithOptions(request *DeleteKvRequest, runtime *util.RuntimeOptions) (_result *DeleteKvResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteKv"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteKvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Namespace的Key-Value对
+//
+// @param request - DeleteKvRequest
+//
+// @return DeleteKvResponse
+func (client *Client) DeleteKv(request *DeleteKvRequest) (_result *DeleteKvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteKvResponse{}
+	_body, _err := client.DeleteKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Namespace
+//
+// @param request - DeleteKvNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKvNamespaceResponse
+func (client *Client) DeleteKvNamespaceWithOptions(request *DeleteKvNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteKvNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteKvNamespace"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteKvNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Namespace
+//
+// @param request - DeleteKvNamespaceRequest
+//
+// @return DeleteKvNamespaceResponse
+func (client *Client) DeleteKvNamespace(request *DeleteKvNamespaceRequest) (_result *DeleteKvNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteKvNamespaceResponse{}
+	_body, _err := client.DeleteKvNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除自定义列表
 //
 // @param request - DeleteListRequest
@@ -30062,6 +30692,53 @@ func (client *Client) DescribeIPRangeList() (_result *DescribeIPRangeListRespons
 
 // Summary:
 //
+// 查询账户的KV状态信
+//
+// @param request - DescribeKvAccountStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKvAccountStatusResponse
+func (client *Client) DescribeKvAccountStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeKvAccountStatusResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeKvAccountStatus"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeKvAccountStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询账户的KV状态信
+//
+// @return DescribeKvAccountStatusResponse
+func (client *Client) DescribeKvAccountStatus() (_result *DescribeKvAccountStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeKvAccountStatusResponse{}
+	_body, _err := client.DescribeKvAccountStatusWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 预热任务查询接口
 //
 // @param request - DescribePreloadTasksRequest
@@ -30464,6 +31141,109 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCacheReserveSpecificationResponse{}
 	_body, _err := client.GetCacheReserveSpecificationWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Key-Value对的某个Key值
+//
+// @param request - GetKvRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKvResponse
+func (client *Client) GetKvWithOptions(request *GetKvRequest, runtime *util.RuntimeOptions) (_result *GetKvResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetKv"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetKvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Key-Value对的某个Key值
+//
+// @param request - GetKvRequest
+//
+// @return GetKvResponse
+func (client *Client) GetKv(request *GetKvRequest) (_result *GetKvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetKvResponse{}
+	_body, _err := client.GetKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出账号下的NS
+//
+// @param request - GetKvAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKvAccountResponse
+func (client *Client) GetKvAccountWithOptions(runtime *util.RuntimeOptions) (_result *GetKvAccountResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetKvAccount"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetKvAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出账号下的NS
+//
+// @return GetKvAccountResponse
+func (client *Client) GetKvAccount() (_result *GetKvAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetKvAccountResponse{}
+	_body, _err := client.GetKvAccountWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
