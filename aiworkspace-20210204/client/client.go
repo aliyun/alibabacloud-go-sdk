@@ -375,16 +375,19 @@ func (s *DatasetLabel) SetValue(v string) *DatasetLabel {
 }
 
 type Experiment struct {
-	ArtifactUri       *string                  `json:"ArtifactUri,omitempty" xml:"ArtifactUri,omitempty"`
-	ExperimentId      *string                  `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	GmtCreateTime     *string                  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime   *string                  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels            []map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name              *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId           *string                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	TensorboardLogUri *string                  `json:"TensorboardLogUri,omitempty" xml:"TensorboardLogUri,omitempty"`
-	UserId            *string                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId       *string                  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Accessibility     *string            `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	ArtifactUri       *string            `json:"ArtifactUri,omitempty" xml:"ArtifactUri,omitempty"`
+	ExperimentId      *string            `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	GmtCreateTime     *string            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime   *string            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels            []*ExperimentLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestRun         *Run               `json:"LatestRun,omitempty" xml:"LatestRun,omitempty"`
+	Name              *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId           *string            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RequestId         *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TensorboardLogUri *string            `json:"TensorboardLogUri,omitempty" xml:"TensorboardLogUri,omitempty"`
+	UserId            *string            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId       *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Experiment) String() string {
@@ -393,6 +396,11 @@ func (s Experiment) String() string {
 
 func (s Experiment) GoString() string {
 	return s.String()
+}
+
+func (s *Experiment) SetAccessibility(v string) *Experiment {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *Experiment) SetArtifactUri(v string) *Experiment {
@@ -415,8 +423,13 @@ func (s *Experiment) SetGmtModifiedTime(v string) *Experiment {
 	return s
 }
 
-func (s *Experiment) SetLabels(v []map[string]interface{}) *Experiment {
+func (s *Experiment) SetLabels(v []*ExperimentLabel) *Experiment {
 	s.Labels = v
+	return s
+}
+
+func (s *Experiment) SetLatestRun(v *Run) *Experiment {
+	s.LatestRun = v
 	return s
 }
 
@@ -427,6 +440,11 @@ func (s *Experiment) SetName(v string) *Experiment {
 
 func (s *Experiment) SetOwnerId(v string) *Experiment {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *Experiment) SetRequestId(v string) *Experiment {
+	s.RequestId = &v
 	return s
 }
 
@@ -875,119 +893,209 @@ func (s *ModelVersion) SetVersionName(v string) *ModelVersion {
 	return s
 }
 
-type ServiceTemplate struct {
-	// example:
-	//
-	// 2021-01-21T17:12:35Z
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// example:
-	//
-	// 2021-01-21T17:12:35Z
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// example:
-	//
-	// {     "processor": "tensorflow_gpu_1.12" }
-	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels        []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	// example:
-	//
-	// 155770209****904
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// example:
-	//
-	// pai
-	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// example:
-	//
-	// 这里是一个描述。
-	ServiceTemplateDescription *string `json:"ServiceTemplateDescription,omitempty" xml:"ServiceTemplateDescription,omitempty"`
-	// example:
-	//
-	// https://***.md
-	ServiceTemplateDoc *string `json:"ServiceTemplateDoc,omitempty" xml:"ServiceTemplateDoc,omitempty"`
-	// example:
-	//
-	// st-asdkjf**skdhh
-	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" xml:"ServiceTemplateId,omitempty"`
-	// example:
-	//
-	// foo
-	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
-	// example:
-	//
-	// 155770209****904
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+type Run struct {
+	Accessibility   *string      `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	ExperimentId    *string      `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	GmtCreateTime   *string      `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string      `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels          []*RunLabel  `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Metrics         []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	Name            *string      `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId         *string      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Params          []*RunParam  `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId       *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RunId           *string      `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	SourceId        *string      `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType      *string      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	UserId          *string      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId     *string      `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
-func (s ServiceTemplate) String() string {
+func (s Run) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ServiceTemplate) GoString() string {
+func (s Run) GoString() string {
 	return s.String()
 }
 
-func (s *ServiceTemplate) SetGmtCreateTime(v string) *ServiceTemplate {
+func (s *Run) SetAccessibility(v string) *Run {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *Run) SetExperimentId(v string) *Run {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *Run) SetGmtCreateTime(v string) *Run {
 	s.GmtCreateTime = &v
 	return s
 }
 
-func (s *ServiceTemplate) SetGmtModifiedTime(v string) *ServiceTemplate {
+func (s *Run) SetGmtModifiedTime(v string) *Run {
 	s.GmtModifiedTime = &v
 	return s
 }
 
-func (s *ServiceTemplate) SetInferenceSpec(v map[string]interface{}) *ServiceTemplate {
-	s.InferenceSpec = v
-	return s
-}
-
-func (s *ServiceTemplate) SetLabels(v []*Label) *ServiceTemplate {
+func (s *Run) SetLabels(v []*RunLabel) *Run {
 	s.Labels = v
 	return s
 }
 
-func (s *ServiceTemplate) SetOrderNumber(v int64) *ServiceTemplate {
-	s.OrderNumber = &v
+func (s *Run) SetMetrics(v []*RunMetric) *Run {
+	s.Metrics = v
 	return s
 }
 
-func (s *ServiceTemplate) SetOwnerId(v string) *ServiceTemplate {
+func (s *Run) SetName(v string) *Run {
+	s.Name = &v
+	return s
+}
+
+func (s *Run) SetOwnerId(v string) *Run {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *ServiceTemplate) SetProvider(v string) *ServiceTemplate {
-	s.Provider = &v
+func (s *Run) SetParams(v []*RunParam) *Run {
+	s.Params = v
 	return s
 }
 
-func (s *ServiceTemplate) SetServiceTemplateDescription(v string) *ServiceTemplate {
-	s.ServiceTemplateDescription = &v
+func (s *Run) SetRequestId(v string) *Run {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ServiceTemplate) SetServiceTemplateDoc(v string) *ServiceTemplate {
-	s.ServiceTemplateDoc = &v
+func (s *Run) SetRunId(v string) *Run {
+	s.RunId = &v
 	return s
 }
 
-func (s *ServiceTemplate) SetServiceTemplateId(v string) *ServiceTemplate {
-	s.ServiceTemplateId = &v
+func (s *Run) SetSourceId(v string) *Run {
+	s.SourceId = &v
 	return s
 }
 
-func (s *ServiceTemplate) SetServiceTemplateName(v string) *ServiceTemplate {
-	s.ServiceTemplateName = &v
+func (s *Run) SetSourceType(v string) *Run {
+	s.SourceType = &v
 	return s
 }
 
-func (s *ServiceTemplate) SetUserId(v string) *ServiceTemplate {
+func (s *Run) SetUserId(v string) *Run {
 	s.UserId = &v
+	return s
+}
+
+func (s *Run) SetWorkspaceId(v string) *Run {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunLabel struct {
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// This parameter is required.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s RunLabel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunLabel) GoString() string {
+	return s.String()
+}
+
+func (s *RunLabel) SetGmtCreateTime(v string) *RunLabel {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *RunLabel) SetGmtModifiedTime(v string) *RunLabel {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *RunLabel) SetKey(v string) *RunLabel {
+	s.Key = &v
+	return s
+}
+
+func (s *RunLabel) SetRunId(v string) *RunLabel {
+	s.RunId = &v
+	return s
+}
+
+func (s *RunLabel) SetValue(v string) *RunLabel {
+	s.Value = &v
+	return s
+}
+
+type RunMetric struct {
+	// This parameter is required.
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Step      *int64  `json:"Step,omitempty" xml:"Step,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// This parameter is required.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s RunMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMetric) GoString() string {
+	return s.String()
+}
+
+func (s *RunMetric) SetKey(v string) *RunMetric {
+	s.Key = &v
+	return s
+}
+
+func (s *RunMetric) SetStep(v int64) *RunMetric {
+	s.Step = &v
+	return s
+}
+
+func (s *RunMetric) SetTimestamp(v int64) *RunMetric {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *RunMetric) SetValue(v float32) *RunMetric {
+	s.Value = &v
+	return s
+}
+
+type RunParam struct {
+	// This parameter is required.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s RunParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunParam) GoString() string {
+	return s.String()
+}
+
+func (s *RunParam) SetKey(v string) *RunParam {
+	s.Key = &v
+	return s
+}
+
+func (s *RunParam) SetValue(v string) *RunParam {
+	s.Value = &v
 	return s
 }
 
@@ -1861,6 +1969,123 @@ func (s *CreateDatasetLabelsResponse) SetBody(v *CreateDatasetLabelsResponseBody
 	return s
 }
 
+type CreateExperimentRequest struct {
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// Artifact的OSS存储路径
+	//
+	// example:
+	//
+	// oss://test-bucket.oss-cn-hangzhou.aliyuncs.com/test
+	ArtifactUri *string `json:"ArtifactUri,omitempty" xml:"ArtifactUri,omitempty"`
+	// 标签
+	Labels []*LabelInfo `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// 名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// exp-test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 工作空间ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 478**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateExperimentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExperimentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExperimentRequest) SetAccessibility(v string) *CreateExperimentRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateExperimentRequest) SetArtifactUri(v string) *CreateExperimentRequest {
+	s.ArtifactUri = &v
+	return s
+}
+
+func (s *CreateExperimentRequest) SetLabels(v []*LabelInfo) *CreateExperimentRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateExperimentRequest) SetName(v string) *CreateExperimentRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateExperimentRequest) SetWorkspaceId(v string) *CreateExperimentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateExperimentResponseBody struct {
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateExperimentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExperimentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExperimentResponseBody) SetExperimentId(v string) *CreateExperimentResponseBody {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *CreateExperimentResponseBody) SetRequestId(v string) *CreateExperimentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateExperimentResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateExperimentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExperimentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExperimentResponse) SetHeaders(v map[string]*string) *CreateExperimentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateExperimentResponse) SetStatusCode(v int32) *CreateExperimentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateExperimentResponse) SetBody(v *CreateExperimentResponseBody) *CreateExperimentResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMemberRequest struct {
 	// This parameter is required.
 	Members []*CreateMemberRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
@@ -2725,6 +2950,127 @@ func (s *CreateProductOrdersResponse) SetBody(v *CreateProductOrdersResponseBody
 	return s
 }
 
+type CreateRunRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// exp-6thbb5xrbmp*****
+	ExperimentId *string  `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	Labels       []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// myName
+	Name   *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Params []*RunParam `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// job-jdnhf***fnrimv
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// DLC
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s CreateRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunRequest) SetExperimentId(v string) *CreateRunRequest {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetLabels(v []*Label) *CreateRunRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateRunRequest) SetName(v string) *CreateRunRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetParams(v []*RunParam) *CreateRunRequest {
+	s.Params = v
+	return s
+}
+
+func (s *CreateRunRequest) SetSourceId(v string) *CreateRunRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetSourceType(v string) *CreateRunRequest {
+	s.SourceType = &v
+	return s
+}
+
+type CreateRunResponseBody struct {
+	// example:
+	//
+	// run-1meoz7VJd2C6f****
+	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBody) SetRunId(v string) *CreateRunResponseBody {
+	s.RunId = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetRequestId(v string) *CreateRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRunResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponse) SetHeaders(v map[string]*string) *CreateRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRunResponse) SetStatusCode(v int32) *CreateRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRunResponse) SetBody(v *CreateRunResponseBody) *CreateRunResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWorkspaceRequest struct {
 	// This parameter is required.
 	//
@@ -3259,6 +3605,104 @@ func (s *DeleteDatasetLabelsResponse) SetBody(v *DeleteDatasetLabelsResponseBody
 	return s
 }
 
+type DeleteExperimentResponseBody struct {
+	// example:
+	//
+	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteExperimentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExperimentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExperimentResponseBody) SetRequestId(v string) *DeleteExperimentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteExperimentResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteExperimentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExperimentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExperimentResponse) SetHeaders(v map[string]*string) *DeleteExperimentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteExperimentResponse) SetStatusCode(v int32) *DeleteExperimentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteExperimentResponse) SetBody(v *DeleteExperimentResponseBody) *DeleteExperimentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteExperimentLabelResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteExperimentLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExperimentLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExperimentLabelResponseBody) SetRequestId(v string) *DeleteExperimentLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteExperimentLabelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteExperimentLabelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteExperimentLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExperimentLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExperimentLabelResponse) SetHeaders(v map[string]*string) *DeleteExperimentLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteExperimentLabelResponse) SetStatusCode(v int32) *DeleteExperimentLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteExperimentLabelResponse) SetBody(v *DeleteExperimentLabelResponseBody) *DeleteExperimentLabelResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteMembersRequest struct {
 	// This parameter is required.
 	//
@@ -3574,6 +4018,108 @@ func (s *DeleteModelVersionLabelsResponse) SetStatusCode(v int32) *DeleteModelVe
 }
 
 func (s *DeleteModelVersionLabelsResponse) SetBody(v *DeleteModelVersionLabelsResponseBody) *DeleteModelVersionLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRunResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRunResponseBody) SetRequestId(v string) *DeleteRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRunResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRunResponse) SetHeaders(v map[string]*string) *DeleteRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRunResponse) SetStatusCode(v int32) *DeleteRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRunResponse) SetBody(v *DeleteRunResponseBody) *DeleteRunResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRunLabelResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteRunLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRunLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRunLabelResponseBody) SetRequestId(v string) *DeleteRunLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRunLabelResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRunLabelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRunLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRunLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRunLabelResponse) SetHeaders(v map[string]*string) *DeleteRunLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRunLabelResponse) SetStatusCode(v int32) *DeleteRunLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRunLabelResponse) SetBody(v *DeleteRunLabelResponseBody) *DeleteRunLabelResponse {
 	s.Body = v
 	return s
 }
@@ -4356,6 +4902,55 @@ func (s *GetDefaultWorkspaceResponse) SetStatusCode(v int32) *GetDefaultWorkspac
 }
 
 func (s *GetDefaultWorkspaceResponse) SetBody(v *GetDefaultWorkspaceResponseBody) *GetDefaultWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type GetExperimentRequest struct {
+	// example:
+	//
+	// false
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s GetExperimentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentRequest) SetVerbose(v bool) *GetExperimentRequest {
+	s.Verbose = &v
+	return s
+}
+
+type GetExperimentResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Experiment        `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetExperimentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentResponse) SetHeaders(v map[string]*string) *GetExperimentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetExperimentResponse) SetStatusCode(v int32) *GetExperimentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetExperimentResponse) SetBody(v *Experiment) *GetExperimentResponse {
 	s.Body = v
 	return s
 }
@@ -5237,151 +5832,51 @@ func (s *GetPermissionResponse) SetBody(v *GetPermissionResponseBody) *GetPermis
 	return s
 }
 
-type GetServiceTemplateResponseBody struct {
+type GetRunRequest struct {
 	// example:
 	//
-	// 2021-01-30T12:51:33.028Z
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// example:
-	//
-	// 2021-01-30T12:51:33.028Z
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// example:
-	//
-	// {
-	//
-	//       "processor": "tensorflow_gpu_1.12"
-	//
-	// }
-	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels        []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1234567890******
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// example:
-	//
-	// pai
-	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// example:
-	//
-	// 40325405-579C-4D82****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// stable diffusion 1.5
-	ServiceTemplateDescription *string `json:"ServiceTemplateDescription,omitempty" xml:"ServiceTemplateDescription,omitempty"`
-	// example:
-	//
-	// https://***.md
-	ServiceTemplateDoc *string `json:"ServiceTemplateDoc,omitempty" xml:"ServiceTemplateDoc,omitempty"`
-	// example:
-	//
-	// st-rbvg5wzlj****9ks92
-	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" xml:"ServiceTemplateId,omitempty"`
-	// example:
-	//
-	// stable_diffusion_aigc
-	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
-	// example:
-	//
-	// 1234567890******
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// true
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
-func (s GetServiceTemplateResponseBody) String() string {
+func (s GetRunRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetServiceTemplateResponseBody) GoString() string {
+func (s GetRunRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetServiceTemplateResponseBody) SetGmtCreateTime(v string) *GetServiceTemplateResponseBody {
-	s.GmtCreateTime = &v
+func (s *GetRunRequest) SetVerbose(v bool) *GetRunRequest {
+	s.Verbose = &v
 	return s
 }
 
-func (s *GetServiceTemplateResponseBody) SetGmtModifiedTime(v string) *GetServiceTemplateResponseBody {
-	s.GmtModifiedTime = &v
-	return s
+type GetRunResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Run               `json:"body,omitempty" xml:"body,omitempty"`
 }
 
-func (s *GetServiceTemplateResponseBody) SetInferenceSpec(v map[string]interface{}) *GetServiceTemplateResponseBody {
-	s.InferenceSpec = v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetLabels(v []*Label) *GetServiceTemplateResponseBody {
-	s.Labels = v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetOwnerId(v string) *GetServiceTemplateResponseBody {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetProvider(v string) *GetServiceTemplateResponseBody {
-	s.Provider = &v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetRequestId(v string) *GetServiceTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetServiceTemplateDescription(v string) *GetServiceTemplateResponseBody {
-	s.ServiceTemplateDescription = &v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetServiceTemplateDoc(v string) *GetServiceTemplateResponseBody {
-	s.ServiceTemplateDoc = &v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetServiceTemplateId(v string) *GetServiceTemplateResponseBody {
-	s.ServiceTemplateId = &v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetServiceTemplateName(v string) *GetServiceTemplateResponseBody {
-	s.ServiceTemplateName = &v
-	return s
-}
-
-func (s *GetServiceTemplateResponseBody) SetUserId(v string) *GetServiceTemplateResponseBody {
-	s.UserId = &v
-	return s
-}
-
-type GetServiceTemplateResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetServiceTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetServiceTemplateResponse) String() string {
+func (s GetRunResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetServiceTemplateResponse) GoString() string {
+func (s GetRunResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetServiceTemplateResponse) SetHeaders(v map[string]*string) *GetServiceTemplateResponse {
+func (s *GetRunResponse) SetHeaders(v map[string]*string) *GetRunResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetServiceTemplateResponse) SetStatusCode(v int32) *GetServiceTemplateResponse {
+func (s *GetRunResponse) SetStatusCode(v int32) *GetRunResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *GetServiceTemplateResponse) SetBody(v *GetServiceTemplateResponseBody) *GetServiceTemplateResponse {
+func (s *GetRunResponse) SetBody(v *Run) *GetRunResponse {
 	s.Body = v
 	return s
 }
@@ -5919,6 +6414,331 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 	return s
 }
 
+type ListExperimentRequest struct {
+	// example:
+	//
+	// is_evaluation:true
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// exp-test
+	Name    *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Options *ListExperimentRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// GmtCreateTime DESC,Name ASC
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// false
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// example:
+	//
+	// 151739
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListExperimentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExperimentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExperimentRequest) SetLabels(v string) *ListExperimentRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetMaxResults(v int64) *ListExperimentRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetName(v string) *ListExperimentRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetOptions(v *ListExperimentRequestOptions) *ListExperimentRequest {
+	s.Options = v
+	return s
+}
+
+func (s *ListExperimentRequest) SetOrder(v string) *ListExperimentRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetOrderBy(v string) *ListExperimentRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetPageNumber(v int32) *ListExperimentRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetPageSize(v int32) *ListExperimentRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetPageToken(v int64) *ListExperimentRequest {
+	s.PageToken = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetSortBy(v string) *ListExperimentRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetVerbose(v bool) *ListExperimentRequest {
+	s.Verbose = &v
+	return s
+}
+
+func (s *ListExperimentRequest) SetWorkspaceId(v string) *ListExperimentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListExperimentRequestOptions struct {
+	// example:
+	//
+	// true
+	MatchNameExactly *string `json:"match_name_exactly,omitempty" xml:"match_name_exactly,omitempty"`
+}
+
+func (s ListExperimentRequestOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExperimentRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListExperimentRequestOptions) SetMatchNameExactly(v string) *ListExperimentRequestOptions {
+	s.MatchNameExactly = &v
+	return s
+}
+
+type ListExperimentShrinkRequest struct {
+	// example:
+	//
+	// is_evaluation:true
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// exp-test
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OptionsShrink *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// GmtCreateTime DESC,Name ASC
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// false
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// example:
+	//
+	// 151739
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListExperimentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExperimentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExperimentShrinkRequest) SetLabels(v string) *ListExperimentShrinkRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetMaxResults(v int64) *ListExperimentShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetName(v string) *ListExperimentShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetOptionsShrink(v string) *ListExperimentShrinkRequest {
+	s.OptionsShrink = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetOrder(v string) *ListExperimentShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetOrderBy(v string) *ListExperimentShrinkRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetPageNumber(v int32) *ListExperimentShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetPageSize(v int32) *ListExperimentShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetPageToken(v int64) *ListExperimentShrinkRequest {
+	s.PageToken = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetSortBy(v string) *ListExperimentShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetVerbose(v bool) *ListExperimentShrinkRequest {
+	s.Verbose = &v
+	return s
+}
+
+func (s *ListExperimentShrinkRequest) SetWorkspaceId(v string) *ListExperimentShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListExperimentResponseBody struct {
+	Experiments []*Experiment `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 0C6835C5-A424-5AFB-ACC2-F1E3CA1ABF7C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListExperimentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExperimentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExperimentResponseBody) SetExperiments(v []*Experiment) *ListExperimentResponseBody {
+	s.Experiments = v
+	return s
+}
+
+func (s *ListExperimentResponseBody) SetNextPageToken(v int64) *ListExperimentResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListExperimentResponseBody) SetTotalCount(v int64) *ListExperimentResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListExperimentResponseBody) SetRequestId(v string) *ListExperimentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListExperimentResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListExperimentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExperimentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExperimentResponse) SetHeaders(v map[string]*string) *ListExperimentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExperimentResponse) SetStatusCode(v int32) *ListExperimentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListExperimentResponse) SetBody(v *ListExperimentResponseBody) *ListExperimentResponse {
+	s.Body = v
+	return s
+}
+
 type ListImageLabelsRequest struct {
 	// example:
 	//
@@ -6070,6 +6890,7 @@ func (s *ListImageLabelsResponse) SetBody(v *ListImageLabelsResponseBody) *ListI
 
 type ListImagesRequest struct {
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	ImageUri      *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 	// example:
 	//
 	// system.framework=XGBoost 1.6.0,system.official=true
@@ -6123,6 +6944,11 @@ func (s ListImagesRequest) GoString() string {
 
 func (s *ListImagesRequest) SetAccessibility(v string) *ListImagesRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *ListImagesRequest) SetImageUri(v string) *ListImagesRequest {
+	s.ImageUri = &v
 	return s
 }
 
@@ -7893,149 +8719,329 @@ func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResou
 	return s
 }
 
-type ListServiceTemplatesRequest struct {
+type ListRunMetricsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
-	// aigc
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// loss
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 100
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 0
+	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+}
+
+func (s ListRunMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRunMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRunMetricsRequest) SetKey(v string) *ListRunMetricsRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *ListRunMetricsRequest) SetMaxResults(v int64) *ListRunMetricsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListRunMetricsRequest) SetPageToken(v int64) *ListRunMetricsRequest {
+	s.PageToken = &v
+	return s
+}
+
+type ListRunMetricsResponseBody struct {
+	Metrics []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListRunMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRunMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRunMetricsResponseBody) SetMetrics(v []*RunMetric) *ListRunMetricsResponseBody {
+	s.Metrics = v
+	return s
+}
+
+func (s *ListRunMetricsResponseBody) SetNextPageToken(v int64) *ListRunMetricsResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListRunMetricsResponseBody) SetRequestId(v string) *ListRunMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRunMetricsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRunMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRunMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRunMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRunMetricsResponse) SetHeaders(v map[string]*string) *ListRunMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRunMetricsResponse) SetStatusCode(v int32) *ListRunMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRunMetricsResponse) SetBody(v *ListRunMetricsResponseBody) *ListRunMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type ListRunsRequest struct {
+	// example:
+	//
+	// exp-1zpfthdx******
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// is_evaluation:true
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// myName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// example:
 	//
+	// GmtCreateTime DESC,Name ASC
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
 	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
-	// pai
-	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// example:
-	//
-	// aigc
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// example:
-	//
-	// stable_diffusion_aigc
-	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
+	// 0
+	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// job-rbvg5wzlj****
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// TrainingService
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// true
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// example:
+	//
+	// 22840
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
-func (s ListServiceTemplatesRequest) String() string {
+func (s ListRunsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListServiceTemplatesRequest) GoString() string {
+func (s ListRunsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListServiceTemplatesRequest) SetLabel(v string) *ListServiceTemplatesRequest {
-	s.Label = &v
+func (s *ListRunsRequest) SetExperimentId(v string) *ListRunsRequest {
+	s.ExperimentId = &v
 	return s
 }
 
-func (s *ListServiceTemplatesRequest) SetOrder(v string) *ListServiceTemplatesRequest {
+func (s *ListRunsRequest) SetGmtCreateTime(v string) *ListRunsRequest {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListRunsRequest) SetLabels(v string) *ListRunsRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListRunsRequest) SetMaxResults(v int64) *ListRunsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListRunsRequest) SetName(v string) *ListRunsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRunsRequest) SetOrder(v string) *ListRunsRequest {
 	s.Order = &v
 	return s
 }
 
-func (s *ListServiceTemplatesRequest) SetPageNumber(v int32) *ListServiceTemplatesRequest {
+func (s *ListRunsRequest) SetOrderBy(v string) *ListRunsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListRunsRequest) SetPageNumber(v int64) *ListRunsRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListServiceTemplatesRequest) SetPageSize(v int32) *ListServiceTemplatesRequest {
+func (s *ListRunsRequest) SetPageSize(v int64) *ListRunsRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListServiceTemplatesRequest) SetProvider(v string) *ListServiceTemplatesRequest {
-	s.Provider = &v
+func (s *ListRunsRequest) SetPageToken(v int64) *ListRunsRequest {
+	s.PageToken = &v
 	return s
 }
 
-func (s *ListServiceTemplatesRequest) SetQuery(v string) *ListServiceTemplatesRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *ListServiceTemplatesRequest) SetServiceTemplateName(v string) *ListServiceTemplatesRequest {
-	s.ServiceTemplateName = &v
-	return s
-}
-
-func (s *ListServiceTemplatesRequest) SetSortBy(v string) *ListServiceTemplatesRequest {
+func (s *ListRunsRequest) SetSortBy(v string) *ListRunsRequest {
 	s.SortBy = &v
 	return s
 }
 
-type ListServiceTemplatesResponseBody struct {
-	// example:
-	//
-	// 40325405-579C-4D82****
-	RequestId        *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceTemplates []*ServiceTemplate `json:"ServiceTemplates,omitempty" xml:"ServiceTemplates,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 15
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+func (s *ListRunsRequest) SetSourceId(v string) *ListRunsRequest {
+	s.SourceId = &v
+	return s
 }
 
-func (s ListServiceTemplatesResponseBody) String() string {
+func (s *ListRunsRequest) SetSourceType(v string) *ListRunsRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListRunsRequest) SetVerbose(v bool) *ListRunsRequest {
+	s.Verbose = &v
+	return s
+}
+
+func (s *ListRunsRequest) SetWorkspaceId(v string) *ListRunsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListRunsResponseBody struct {
+	// example:
+	//
+	// 0
+	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	Runs          []*Run `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListRunsResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListServiceTemplatesResponseBody) GoString() string {
+func (s ListRunsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListServiceTemplatesResponseBody) SetRequestId(v string) *ListServiceTemplatesResponseBody {
-	s.RequestId = &v
+func (s *ListRunsResponseBody) SetNextPageToken(v int64) *ListRunsResponseBody {
+	s.NextPageToken = &v
 	return s
 }
 
-func (s *ListServiceTemplatesResponseBody) SetServiceTemplates(v []*ServiceTemplate) *ListServiceTemplatesResponseBody {
-	s.ServiceTemplates = v
+func (s *ListRunsResponseBody) SetRuns(v []*Run) *ListRunsResponseBody {
+	s.Runs = v
 	return s
 }
 
-func (s *ListServiceTemplatesResponseBody) SetTotalCount(v int64) *ListServiceTemplatesResponseBody {
+func (s *ListRunsResponseBody) SetTotalCount(v int64) *ListRunsResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
-type ListServiceTemplatesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListServiceTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+func (s *ListRunsResponseBody) SetRequestId(v string) *ListRunsResponseBody {
+	s.RequestId = &v
+	return s
 }
 
-func (s ListServiceTemplatesResponse) String() string {
+type ListRunsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRunsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRunsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListServiceTemplatesResponse) GoString() string {
+func (s ListRunsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListServiceTemplatesResponse) SetHeaders(v map[string]*string) *ListServiceTemplatesResponse {
+func (s *ListRunsResponse) SetHeaders(v map[string]*string) *ListRunsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListServiceTemplatesResponse) SetStatusCode(v int32) *ListServiceTemplatesResponse {
+func (s *ListRunsResponse) SetStatusCode(v int32) *ListRunsResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *ListServiceTemplatesResponse) SetBody(v *ListServiceTemplatesResponseBody) *ListServiceTemplatesResponse {
+func (s *ListRunsResponse) SetBody(v *ListRunsResponseBody) *ListRunsResponse {
 	s.Body = v
 	return s
 }
@@ -8445,6 +9451,74 @@ func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWor
 	return s
 }
 
+type LogRunMetricsRequest struct {
+	Metrics []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+}
+
+func (s LogRunMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogRunMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LogRunMetricsRequest) SetMetrics(v []*RunMetric) *LogRunMetricsRequest {
+	s.Metrics = v
+	return s
+}
+
+type LogRunMetricsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s LogRunMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogRunMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LogRunMetricsResponseBody) SetRequestId(v string) *LogRunMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type LogRunMetricsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LogRunMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s LogRunMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogRunMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LogRunMetricsResponse) SetHeaders(v map[string]*string) *LogRunMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LogRunMetricsResponse) SetStatusCode(v int32) *LogRunMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LogRunMetricsResponse) SetBody(v *LogRunMetricsResponseBody) *LogRunMetricsResponse {
+	s.Body = v
+	return s
+}
+
 type PublishCodeSourceResponseBody struct {
 	// example:
 	//
@@ -8757,6 +9831,72 @@ func (s *RemoveMemberRoleResponse) SetBody(v *RemoveMemberRoleResponseBody) *Rem
 	return s
 }
 
+type SetExperimentLabelsRequest struct {
+	Labels []*LabelInfo `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s SetExperimentLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetExperimentLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetExperimentLabelsRequest) SetLabels(v []*LabelInfo) *SetExperimentLabelsRequest {
+	s.Labels = v
+	return s
+}
+
+type SetExperimentLabelsResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetExperimentLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetExperimentLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetExperimentLabelsResponseBody) SetRequestId(v string) *SetExperimentLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetExperimentLabelsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetExperimentLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetExperimentLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetExperimentLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetExperimentLabelsResponse) SetHeaders(v map[string]*string) *SetExperimentLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetExperimentLabelsResponse) SetStatusCode(v int32) *SetExperimentLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetExperimentLabelsResponse) SetBody(v *SetExperimentLabelsResponseBody) *SetExperimentLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDatasetRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
@@ -8910,6 +10050,86 @@ func (s *UpdateDefaultWorkspaceResponse) SetStatusCode(v int32) *UpdateDefaultWo
 }
 
 func (s *UpdateDefaultWorkspaceResponse) SetBody(v *UpdateDefaultWorkspaceResponseBody) *UpdateDefaultWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateExperimentRequest struct {
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// 名称
+	//
+	// example:
+	//
+	// myName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateExperimentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentRequest) SetAccessibility(v string) *UpdateExperimentRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *UpdateExperimentRequest) SetName(v string) *UpdateExperimentRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateExperimentResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateExperimentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentResponseBody) SetRequestId(v string) *UpdateExperimentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateExperimentResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateExperimentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentResponse) SetHeaders(v map[string]*string) *UpdateExperimentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateExperimentResponse) SetStatusCode(v int32) *UpdateExperimentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateExperimentResponse) SetBody(v *UpdateExperimentResponseBody) *UpdateExperimentResponse {
 	s.Body = v
 	return s
 }
@@ -9207,6 +10427,89 @@ func (s *UpdateModelVersionResponse) SetStatusCode(v int32) *UpdateModelVersionR
 }
 
 func (s *UpdateModelVersionResponse) SetBody(v *UpdateModelVersionResponseBody) *UpdateModelVersionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRunRequest struct {
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// myName
+	Name   *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Params []*RunParam `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRunRequest) SetLabels(v []*Label) *UpdateRunRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *UpdateRunRequest) SetName(v string) *UpdateRunRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateRunRequest) SetParams(v []*RunParam) *UpdateRunRequest {
+	s.Params = v
+	return s
+}
+
+type UpdateRunResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRunResponseBody) SetRequestId(v string) *UpdateRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRunResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRunResponse) SetHeaders(v map[string]*string) *UpdateRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRunResponse) SetStatusCode(v int32) *UpdateRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRunResponse) SetBody(v *UpdateRunResponseBody) *UpdateRunResponse {
 	s.Body = v
 	return s
 }
@@ -9964,6 +11267,86 @@ func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateData
 
 // Summary:
 //
+// 创建实验
+//
+// @param request - CreateExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExperimentResponse
+func (client *Client) CreateExperimentWithOptions(request *CreateExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateExperimentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArtifactUri)) {
+		body["ArtifactUri"] = request.ArtifactUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateExperiment"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实验
+//
+// @param request - CreateExperimentRequest
+//
+// @return CreateExperimentResponse
+func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_result *CreateExperimentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateExperimentResponse{}
+	_body, _err := client.CreateExperimentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建成员
 //
 // @param request - CreateMemberRequest
@@ -10456,6 +11839,90 @@ func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (
 
 // Summary:
 //
+// 创建一次运行
+//
+// @param request - CreateRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRunResponse
+func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		body["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRun"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/runs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一次运行
+//
+// @param request - CreateRunRequest
+//
+// @return CreateRunResponse
+func (client *Client) CreateRun(request *CreateRunRequest) (_result *CreateRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRunResponse{}
+	_body, _err := client.CreateRunWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建工作空间
 //
 // @param request - CreateWorkspaceRequest
@@ -10764,6 +12231,106 @@ func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteData
 
 // Summary:
 //
+// 删除实验
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExperimentResponse
+func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExperiment"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实验
+//
+// @return DeleteExperimentResponse
+func (client *Client) DeleteExperiment(ExperimentId *string) (_result *DeleteExperimentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteExperimentResponse{}
+	_body, _err := client.DeleteExperimentWithOptions(ExperimentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实验标签
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExperimentLabelResponse
+func (client *Client) DeleteExperimentLabelWithOptions(ExperimentId *string, Key *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExperimentLabelResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExperimentLabel"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/labels/" + tea.StringValue(openapiutil.GetEncodeParam(Key))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteExperimentLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实验标签
+//
+// @return DeleteExperimentLabelResponse
+func (client *Client) DeleteExperimentLabel(ExperimentId *string, Key *string) (_result *DeleteExperimentLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteExperimentLabelResponse{}
+	_body, _err := client.DeleteExperimentLabelWithOptions(ExperimentId, Key, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除工作空间成员
 //
 // @param request - DeleteMembersRequest
@@ -11047,6 +12614,106 @@ func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *str
 	headers := make(map[string]*string)
 	_result = &DeleteModelVersionLabelsResponse{}
 	_body, _err := client.DeleteModelVersionLabelsWithOptions(ModelId, VersionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Run
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRunResponse
+func (client *Client) DeleteRunWithOptions(RunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRunResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRun"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/runs/" + tea.StringValue(openapiutil.GetEncodeParam(RunId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Run
+//
+// @return DeleteRunResponse
+func (client *Client) DeleteRun(RunId *string) (_result *DeleteRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRunResponse{}
+	_body, _err := client.DeleteRunWithOptions(RunId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Run标签
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRunLabelResponse
+func (client *Client) DeleteRunLabelWithOptions(RunId *string, Key *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRunLabelResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRunLabel"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/runs/" + tea.StringValue(openapiutil.GetEncodeParam(RunId)) + "/labels/" + tea.StringValue(openapiutil.GetEncodeParam(Key))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRunLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Run标签
+//
+// @return DeleteRunLabelResponse
+func (client *Client) DeleteRunLabel(RunId *string, Key *string) (_result *DeleteRunLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRunLabelResponse{}
+	_body, _err := client.DeleteRunLabelWithOptions(RunId, Key, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11345,6 +13012,70 @@ func (client *Client) GetDefaultWorkspace(request *GetDefaultWorkspaceRequest) (
 	headers := make(map[string]*string)
 	_result = &GetDefaultWorkspaceResponse{}
 	_body, _err := client.GetDefaultWorkspaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实验
+//
+// @param request - GetExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExperimentResponse
+func (client *Client) GetExperimentWithOptions(ExperimentId *string, request *GetExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetExperiment"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实验
+//
+// @param request - GetExperimentRequest
+//
+// @return GetExperimentResponse
+func (client *Client) GetExperiment(ExperimentId *string, request *GetExperimentRequest) (_result *GetExperimentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetExperimentResponse{}
+	_body, _err := client.GetExperimentWithOptions(ExperimentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11662,29 +13393,41 @@ func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string,
 
 // Summary:
 //
-// 获取服务模版
+// 获取Run详情
+//
+// @param request - GetRunRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return GetServiceTemplateResponse
-func (client *Client) GetServiceTemplateWithOptions(ServiceTemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceTemplateResponse, _err error) {
+// @return GetRunResponse
+func (client *Client) GetRunWithOptions(RunId *string, request *GetRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetServiceTemplate"),
+		Action:      tea.String("GetRun"),
 		Version:     tea.String("2021-02-04"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/servicetemplates/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceTemplateId))),
+		Pathname:    tea.String("/api/v1/runs/" + tea.StringValue(openapiutil.GetEncodeParam(RunId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceTemplateResponse{}
+	_result = &GetRunResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11695,14 +13438,16 @@ func (client *Client) GetServiceTemplateWithOptions(ServiceTemplateId *string, h
 
 // Summary:
 //
-// 获取服务模版
+// 获取Run详情
 //
-// @return GetServiceTemplateResponse
-func (client *Client) GetServiceTemplate(ServiceTemplateId *string) (_result *GetServiceTemplateResponse, _err error) {
+// @param request - GetRunRequest
+//
+// @return GetRunResponse
+func (client *Client) GetRun(RunId *string, request *GetRunRequest) (_result *GetRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetServiceTemplateResponse{}
-	_body, _err := client.GetServiceTemplateWithOptions(ServiceTemplateId, headers, runtime)
+	_result = &GetRunResponse{}
+	_body, _err := client.GetRunWithOptions(RunId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11968,6 +13713,120 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 
 // Summary:
 //
+// 获取实验列表
+//
+// @param tmpReq - ListExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExperimentResponse
+func (client *Client) ListExperimentWithOptions(tmpReq *ListExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListExperimentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListExperimentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Options)) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, tea.String("Options"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptionsShrink)) {
+		query["Options"] = request.OptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageToken)) {
+		query["PageToken"] = request.PageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExperiment"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实验列表
+//
+// @param request - ListExperimentRequest
+//
+// @return ListExperimentResponse
+func (client *Client) ListExperiment(request *ListExperimentRequest) (_result *ListExperimentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListExperimentResponse{}
+	_body, _err := client.ListExperimentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列举标签
 //
 // @param request - ListImageLabelsRequest
@@ -12065,6 +13924,10 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		query["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUri)) {
+		query["ImageUri"] = request.ImageUri
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
@@ -12746,51 +14609,31 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 
 // Summary:
 //
-// 获取服务模版列表
+// 获取Run的指标记录列表
 //
-// @param request - ListServiceTemplatesRequest
+// @param request - ListRunMetricsRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return ListServiceTemplatesResponse
-func (client *Client) ListServiceTemplatesWithOptions(request *ListServiceTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceTemplatesResponse, _err error) {
+// @return ListRunMetricsResponse
+func (client *Client) ListRunMetricsWithOptions(RunId *string, request *ListRunMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRunMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Label)) {
-		query["Label"] = request.Label
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Order)) {
-		query["Order"] = request.Order
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Provider)) {
-		query["Provider"] = request.Provider
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Query)) {
-		query["Query"] = request.Query
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceTemplateName)) {
-		query["ServiceTemplateName"] = request.ServiceTemplateName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
-		query["SortBy"] = request.SortBy
+	if !tea.BoolValue(util.IsUnset(request.PageToken)) {
+		query["PageToken"] = request.PageToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -12798,17 +14641,17 @@ func (client *Client) ListServiceTemplatesWithOptions(request *ListServiceTempla
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ListServiceTemplates"),
+		Action:      tea.String("ListRunMetrics"),
 		Version:     tea.String("2021-02-04"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/servicetemplates"),
+		Pathname:    tea.String("/api/v1/runs/" + tea.StringValue(openapiutil.GetEncodeParam(RunId)) + "/metrics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceTemplatesResponse{}
+	_result = &ListRunMetricsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12819,16 +14662,136 @@ func (client *Client) ListServiceTemplatesWithOptions(request *ListServiceTempla
 
 // Summary:
 //
-// 获取服务模版列表
+// 获取Run的指标记录列表
 //
-// @param request - ListServiceTemplatesRequest
+// @param request - ListRunMetricsRequest
 //
-// @return ListServiceTemplatesResponse
-func (client *Client) ListServiceTemplates(request *ListServiceTemplatesRequest) (_result *ListServiceTemplatesResponse, _err error) {
+// @return ListRunMetricsResponse
+func (client *Client) ListRunMetrics(RunId *string, request *ListRunMetricsRequest) (_result *ListRunMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListServiceTemplatesResponse{}
-	_body, _err := client.ListServiceTemplatesWithOptions(request, headers, runtime)
+	_result = &ListRunMetricsResponse{}
+	_body, _err := client.ListRunMetricsWithOptions(RunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Run列表
+//
+// @param request - ListRunsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRunsResponse
+func (client *Client) ListRunsWithOptions(request *ListRunsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRunsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtCreateTime)) {
+		query["GmtCreateTime"] = request.GmtCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageToken)) {
+		query["PageToken"] = request.PageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRuns"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/runs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRunsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Run列表
+//
+// @param request - ListRunsRequest
+//
+// @return ListRunsResponse
+func (client *Client) ListRuns(request *ListRunsRequest) (_result *ListRunsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRunsResponse{}
+	_body, _err := client.ListRunsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12997,6 +14960,70 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 	headers := make(map[string]*string)
 	_result = &ListWorkspacesResponse{}
 	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量记录Run的指标
+//
+// @param request - LogRunMetricsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LogRunMetricsResponse
+func (client *Client) LogRunMetricsWithOptions(RunId *string, request *LogRunMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LogRunMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		body["Metrics"] = request.Metrics
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LogRunMetrics"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/runs/" + tea.StringValue(openapiutil.GetEncodeParam(RunId)) + "/metrics/action/log"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LogRunMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量记录Run的指标
+//
+// @param request - LogRunMetricsRequest
+//
+// @return LogRunMetricsResponse
+func (client *Client) LogRunMetrics(RunId *string, request *LogRunMetricsRequest) (_result *LogRunMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &LogRunMetricsResponse{}
+	_body, _err := client.LogRunMetricsWithOptions(RunId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13306,6 +15333,70 @@ func (client *Client) RemoveMemberRole(WorkspaceId *string, MemberId *string, Ro
 
 // Summary:
 //
+// 更新实验标签
+//
+// @param request - SetExperimentLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetExperimentLabelsResponse
+func (client *Client) SetExperimentLabelsWithOptions(ExperimentId *string, request *SetExperimentLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetExperimentLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetExperimentLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId)) + "/labels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetExperimentLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实验标签
+//
+// @param request - SetExperimentLabelsRequest
+//
+// @return SetExperimentLabelsResponse
+func (client *Client) SetExperimentLabels(ExperimentId *string, request *SetExperimentLabelsRequest) (_result *SetExperimentLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SetExperimentLabelsResponse{}
+	_body, _err := client.SetExperimentLabelsWithOptions(ExperimentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新数据集
 //
 // @param request - UpdateDatasetRequest
@@ -13433,6 +15524,74 @@ func (client *Client) UpdateDefaultWorkspace(request *UpdateDefaultWorkspaceRequ
 	headers := make(map[string]*string)
 	_result = &UpdateDefaultWorkspaceResponse{}
 	_body, _err := client.UpdateDefaultWorkspaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实验
+//
+// @param request - UpdateExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExperimentResponse
+func (client *Client) UpdateExperimentWithOptions(ExperimentId *string, request *UpdateExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateExperimentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateExperiment"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(ExperimentId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实验
+//
+// @param request - UpdateExperimentRequest
+//
+// @return UpdateExperimentResponse
+func (client *Client) UpdateExperiment(ExperimentId *string, request *UpdateExperimentRequest) (_result *UpdateExperimentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateExperimentResponse{}
+	_body, _err := client.UpdateExperimentWithOptions(ExperimentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13637,6 +15796,78 @@ func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, r
 	headers := make(map[string]*string)
 	_result = &UpdateModelVersionResponse{}
 	_body, _err := client.UpdateModelVersionWithOptions(ModelId, VersionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Run
+//
+// @param request - UpdateRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRunResponse
+func (client *Client) UpdateRunWithOptions(RunId *string, request *UpdateRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRun"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/runs/" + tea.StringValue(openapiutil.GetEncodeParam(RunId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Run
+//
+// @param request - UpdateRunRequest
+//
+// @return UpdateRunResponse
+func (client *Client) UpdateRun(RunId *string, request *UpdateRunRequest) (_result *UpdateRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRunResponse{}
+	_body, _err := client.UpdateRunWithOptions(RunId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
