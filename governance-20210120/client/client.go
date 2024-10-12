@@ -2,7 +2,6 @@
 package client
 
 import (
-	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -458,7 +457,8 @@ type EnrollAccountRequest struct {
 	// example:
 	//
 	// resell
-	ResellAccountType *string `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
+	ResellAccountType *string                    `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
+	Tag               []*EnrollAccountRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s EnrollAccountRequest) String() string {
@@ -511,6 +511,11 @@ func (s *EnrollAccountRequest) SetRegionId(v string) *EnrollAccountRequest {
 
 func (s *EnrollAccountRequest) SetResellAccountType(v string) *EnrollAccountRequest {
 	s.ResellAccountType = &v
+	return s
+}
+
+func (s *EnrollAccountRequest) SetTag(v []*EnrollAccountRequestTag) *EnrollAccountRequest {
+	s.Tag = v
 	return s
 }
 
@@ -569,6 +574,230 @@ func (s *EnrollAccountRequestBaselineItems) SetSkip(v bool) *EnrollAccountReques
 }
 
 func (s *EnrollAccountRequestBaselineItems) SetVersion(v string) *EnrollAccountRequestBaselineItems {
+	s.Version = &v
+	return s
+}
+
+type EnrollAccountRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s EnrollAccountRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnrollAccountRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *EnrollAccountRequestTag) SetKey(v string) *EnrollAccountRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *EnrollAccountRequestTag) SetValue(v string) *EnrollAccountRequestTag {
+	s.Value = &v
+	return s
+}
+
+type EnrollAccountShrinkRequest struct {
+	// The prefix for the account name of the member.
+	//
+	// 	- If the account baseline is applied to an account that is newly created, you must configure this parameter.
+	//
+	// 	- If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	//
+	// example:
+	//
+	// test-account
+	AccountNamePrefix *string `json:"AccountNamePrefix,omitempty" xml:"AccountNamePrefix,omitempty"`
+	// The account ID.
+	//
+	// 	- If the account baseline is applied to an account that is newly created, you do not need to configure this parameter.
+	//
+	// 	- If the account baseline is applied to an existing account, you must configure this parameter.
+	//
+	// example:
+	//
+	// 12868156179****
+	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
+	// The baseline ID.
+	//
+	// If this parameter is left empty, the default baseline is used.
+	//
+	// example:
+	//
+	// afb-bp1durvn3lgqe28v****
+	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// An array that contains baseline items.
+	//
+	// If this parameter is specified, the configurations of the baseline items are merged with the baseline of the specified account. The configurations of the same baseline items are subject to the configuration of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configuration of the account baseline to the account.
+	BaselineItems []*EnrollAccountShrinkRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
+	// The display name of the account.
+	//
+	// 	- If the account baseline is applied to an account that is newly created, you must configure this parameter.
+	//
+	// 	- If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	//
+	// example:
+	//
+	// test-account
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the parent folder.
+	//
+	// 	- If the account baseline is applied to an account that is newly created, you need to specify a parent folder. If you do not configure this parameter, the account is created in the Root folder.
+	//
+	// 	- If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	//
+	// example:
+	//
+	// fd-5ESoku****
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The ID of the billing account.
+	//
+	// 	- If the account baseline is applied to an account that is newly created, you need to specify a billing account. If you do not configure this parameter, the self-pay settlement method is used for the account.
+	//
+	// 	- If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	//
+	// example:
+	//
+	// 19534534552****
+	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The identity type of the member. Valid values:
+	//
+	// 	- resell (default): The member is an account for a reseller. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+	//
+	// 	- non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+	//
+	// > This parameter is available only for resellers at the international site (alibabacloud.com).
+	//
+	// example:
+	//
+	// resell
+	ResellAccountType *string `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
+	TagShrink         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s EnrollAccountShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnrollAccountShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnrollAccountShrinkRequest) SetAccountNamePrefix(v string) *EnrollAccountShrinkRequest {
+	s.AccountNamePrefix = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetAccountUid(v int64) *EnrollAccountShrinkRequest {
+	s.AccountUid = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetBaselineId(v string) *EnrollAccountShrinkRequest {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetBaselineItems(v []*EnrollAccountShrinkRequestBaselineItems) *EnrollAccountShrinkRequest {
+	s.BaselineItems = v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetDisplayName(v string) *EnrollAccountShrinkRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetFolderId(v string) *EnrollAccountShrinkRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetPayerAccountUid(v int64) *EnrollAccountShrinkRequest {
+	s.PayerAccountUid = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetRegionId(v string) *EnrollAccountShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetResellAccountType(v string) *EnrollAccountShrinkRequest {
+	s.ResellAccountType = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequest) SetTagShrink(v string) *EnrollAccountShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+type EnrollAccountShrinkRequestBaselineItems struct {
+	// The configurations of the baseline item.
+	//
+	// example:
+	//
+	// {\\"Notifications\\":[{\\"GroupKey\\":\\"account_msg\\",\\"Contacts\\":[{\\"Name\\":\\"aa\\"}],\\"PmsgStatus\\":1,\\"EmailStatus\\":1,\\"SmsStatus\\":1}]}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The name of the baseline item.
+	//
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to skip the baseline item. Valid values:
+	//
+	// 	- false: The baseline item is not skipped.
+	//
+	// 	- true: The baseline item is skipped.
+	//
+	// example:
+	//
+	// false
+	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The version of the baseline item.
+	//
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s EnrollAccountShrinkRequestBaselineItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnrollAccountShrinkRequestBaselineItems) GoString() string {
+	return s.String()
+}
+
+func (s *EnrollAccountShrinkRequestBaselineItems) SetConfig(v string) *EnrollAccountShrinkRequestBaselineItems {
+	s.Config = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequestBaselineItems) SetName(v string) *EnrollAccountShrinkRequestBaselineItems {
+	s.Name = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequestBaselineItems) SetSkip(v bool) *EnrollAccountShrinkRequestBaselineItems {
+	s.Skip = &v
+	return s
+}
+
+func (s *EnrollAccountShrinkRequestBaselineItems) SetVersion(v string) *EnrollAccountShrinkRequestBaselineItems {
 	s.Version = &v
 	return s
 }
@@ -1201,7 +1430,8 @@ type GetEnrolledAccountResponseBodyInputs struct {
 	// example:
 	//
 	// 19534534552*****
-	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
+	PayerAccountUid *int64                                     `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
+	Tag             []*GetEnrolledAccountResponseBodyInputsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetEnrolledAccountResponseBodyInputs) String() string {
@@ -1239,6 +1469,11 @@ func (s *GetEnrolledAccountResponseBodyInputs) SetFolderId(v string) *GetEnrolle
 
 func (s *GetEnrolledAccountResponseBodyInputs) SetPayerAccountUid(v int64) *GetEnrolledAccountResponseBodyInputs {
 	s.PayerAccountUid = &v
+	return s
+}
+
+func (s *GetEnrolledAccountResponseBodyInputs) SetTag(v []*GetEnrolledAccountResponseBodyInputsTag) *GetEnrolledAccountResponseBodyInputs {
+	s.Tag = v
 	return s
 }
 
@@ -1298,6 +1533,29 @@ func (s *GetEnrolledAccountResponseBodyInputsBaselineItems) SetSkip(v bool) *Get
 
 func (s *GetEnrolledAccountResponseBodyInputsBaselineItems) SetVersion(v string) *GetEnrolledAccountResponseBodyInputsBaselineItems {
 	s.Version = &v
+	return s
+}
+
+type GetEnrolledAccountResponseBodyInputsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEnrolledAccountResponseBodyInputsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnrolledAccountResponseBodyInputsTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnrolledAccountResponseBodyInputsTag) SetKey(v string) *GetEnrolledAccountResponseBodyInputsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetEnrolledAccountResponseBodyInputsTag) SetValue(v string) *GetEnrolledAccountResponseBodyInputsTag {
+	s.Value = &v
 	return s
 }
 
@@ -3290,13 +3548,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.ProductId = tea.String("governance")
-	gatewayClient, _err := gatewayclient.NewClient()
-	if _err != nil {
-		return _err
-	}
-
-	client.Spi = gatewayClient
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -3374,24 +3626,13 @@ func (client *Client) BatchEnrollAccountsWithOptions(request *BatchEnrollAccount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchEnrollAccountsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchEnrollAccountsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchEnrollAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3457,24 +3698,13 @@ func (client *Client) CreateAccountFactoryBaselineWithOptions(request *CreateAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAccountFactoryBaselineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAccountFactoryBaselineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAccountFactoryBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3532,24 +3762,13 @@ func (client *Client) DeleteAccountFactoryBaselineWithOptions(request *DeleteAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAccountFactoryBaselineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAccountFactoryBaselineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAccountFactoryBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3580,16 +3799,22 @@ func (client *Client) DeleteAccountFactoryBaseline(request *DeleteAccountFactory
 //
 // Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
 //
-// @param request - EnrollAccountRequest
+// @param tmpReq - EnrollAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnrollAccountResponse
-func (client *Client) EnrollAccountWithOptions(request *EnrollAccountRequest, runtime *util.RuntimeOptions) (_result *EnrollAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) EnrollAccountWithOptions(tmpReq *EnrollAccountRequest, runtime *util.RuntimeOptions) (_result *EnrollAccountResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &EnrollAccountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountNamePrefix)) {
 		query["AccountNamePrefix"] = request.AccountNamePrefix
@@ -3627,6 +3852,10 @@ func (client *Client) EnrollAccountWithOptions(request *EnrollAccountRequest, ru
 		query["ResellAccountType"] = request.ResellAccountType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3641,24 +3870,13 @@ func (client *Client) EnrollAccountWithOptions(request *EnrollAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnrollAccountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnrollAccountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnrollAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3722,24 +3940,13 @@ func (client *Client) GetAccountFactoryBaselineWithOptions(request *GetAccountFa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAccountFactoryBaselineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAccountFactoryBaselineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAccountFactoryBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3797,24 +4004,13 @@ func (client *Client) GetEnrolledAccountWithOptions(request *GetEnrolledAccountR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEnrolledAccountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEnrolledAccountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEnrolledAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3888,24 +4084,13 @@ func (client *Client) ListAccountFactoryBaselineItemsWithOptions(request *ListAc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAccountFactoryBaselineItemsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAccountFactoryBaselineItemsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAccountFactoryBaselineItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3967,24 +4152,13 @@ func (client *Client) ListAccountFactoryBaselinesWithOptions(request *ListAccoun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAccountFactoryBaselinesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAccountFactoryBaselinesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAccountFactoryBaselinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4046,24 +4220,13 @@ func (client *Client) ListEnrolledAccountsWithOptions(request *ListEnrolledAccou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEnrolledAccountsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEnrolledAccountsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEnrolledAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4121,24 +4284,13 @@ func (client *Client) ListEvaluationMetadataWithOptions(request *ListEvaluationM
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEvaluationMetadataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEvaluationMetadataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEvaluationMetadataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4208,24 +4360,13 @@ func (client *Client) ListEvaluationMetricDetailsWithOptions(request *ListEvalua
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEvaluationMetricDetailsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEvaluationMetricDetailsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEvaluationMetricDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4283,24 +4424,13 @@ func (client *Client) ListEvaluationResultsWithOptions(request *ListEvaluationRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEvaluationResultsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEvaluationResultsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEvaluationResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4366,24 +4496,13 @@ func (client *Client) ListEvaluationScoreHistoryWithOptions(request *ListEvaluat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEvaluationScoreHistoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEvaluationScoreHistoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEvaluationScoreHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4445,24 +4564,13 @@ func (client *Client) RunEvaluationWithOptions(request *RunEvaluationRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunEvaluationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunEvaluationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunEvaluationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4532,24 +4640,13 @@ func (client *Client) UpdateAccountFactoryBaselineWithOptions(request *UpdateAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateAccountFactoryBaselineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateAccountFactoryBaselineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateAccountFactoryBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
