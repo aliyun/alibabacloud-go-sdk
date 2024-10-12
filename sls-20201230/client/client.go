@@ -481,13 +481,13 @@ type ConsumeProcessor struct {
 	//
 	// example:
 	//
-	// consume-processor-1
-	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// 字段过滤处理
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 字段过滤处理
+	// consume-processor-1
 	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
 	// example:
 	//
@@ -518,8 +518,8 @@ func (s *ConsumeProcessor) SetDescription(v string) *ConsumeProcessor {
 	return s
 }
 
-func (s *ConsumeProcessor) SetProcessorId(v string) *ConsumeProcessor {
-	s.ProcessorId = &v
+func (s *ConsumeProcessor) SetDisplayName(v string) *ConsumeProcessor {
+	s.DisplayName = &v
 	return s
 }
 
@@ -1156,13 +1156,13 @@ type IngestProcessor struct {
 	//
 	// example:
 	//
-	// ingest-processor-1
-	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// 字段过滤处理
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 字段过滤处理
+	// ingest-processor-1
 	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
 	// example:
 	//
@@ -1193,8 +1193,8 @@ func (s *IngestProcessor) SetDescription(v string) *IngestProcessor {
 	return s
 }
 
-func (s *IngestProcessor) SetProcessorId(v string) *IngestProcessor {
-	s.ProcessorId = &v
+func (s *IngestProcessor) SetDisplayName(v string) *IngestProcessor {
+	s.DisplayName = &v
 	return s
 }
 
@@ -1302,7 +1302,6 @@ func (s *LogContent) SetValue(v string) *LogContent {
 }
 
 type LogGroup struct {
-	// This parameter is required.
 	LogTags []*LogTag `json:"LogTags,omitempty" xml:"LogTags,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Logs []*LogItem `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
@@ -1310,8 +1309,6 @@ type LogGroup struct {
 	//
 	// 192.1.1.1
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// topic-test
@@ -1343,6 +1340,24 @@ func (s *LogGroup) SetSource(v string) *LogGroup {
 
 func (s *LogGroup) SetTopic(v string) *LogGroup {
 	s.Topic = &v
+	return s
+}
+
+type LogGroupList struct {
+	// This parameter is required.
+	LogGroupList []*LogGroup `json:"logGroupList,omitempty" xml:"logGroupList,omitempty" type:"Repeated"`
+}
+
+func (s LogGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *LogGroupList) SetLogGroupList(v []*LogGroup) *LogGroupList {
+	s.LogGroupList = v
 	return s
 }
 
@@ -5558,17 +5573,17 @@ func (s *CreateIndexResponse) SetStatusCode(v int32) *CreateIndexResponse {
 }
 
 type CreateLogStoreRequest struct {
-	// Specifies whether to record public IP addresses. Default value: false.
+	// Specifies whether to record the **public IP address*	- and **log receiving time**. Default value: false. Valid values:
 	//
-	// 	- true
+	// 	- true********
 	//
-	// 	- false
+	// 	- false********
 	//
 	// example:
 	//
 	// false
 	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// Specifies whether to enable automatic sharding.
+	// Specifies whether to enable automatic sharding. Valid values:
 	//
 	// 	- true
 	//
@@ -5578,7 +5593,7 @@ type CreateLogStoreRequest struct {
 	//
 	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// Specifies whether to enable the web tracking feature. Default value: false.
+	// Specifies whether to enable the web tracking feature. Default value: false. Valid values:
 	//
 	// 	- true
 	//
@@ -5622,7 +5637,7 @@ type CreateLogStoreRequest struct {
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 256.
 	//
-	// >  If you set autoSplit to true, you must specify maxSplitShard.
+	// >  If you set autoSplit to true, you must specify this parameter.
 	//
 	// example:
 	//
@@ -5632,7 +5647,7 @@ type CreateLogStoreRequest struct {
 	//
 	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
 	//
-	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
+	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
 	//
 	// example:
 	//
@@ -5659,7 +5674,7 @@ type CreateLogStoreRequest struct {
 	//
 	// None
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, logs are permanently stored.
+	// The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, data is permanently stored.
 	//
 	// This parameter is required.
 	//
@@ -6108,13 +6123,22 @@ func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupR
 }
 
 type CreateMetricStoreRequest struct {
+	// example:
+	//
+	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
 	// example:
 	//
 	// 64
-	MaxSplitShard *int32  `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	MetricType    *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
-	Mode          *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	// example:
+	//
+	// prometheus
+	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	// example:
+	//
+	// standard
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -6926,6 +6950,8 @@ type CreateSavedSearchRequest struct {
 	// *|select date_format(__time__-__time__%60, \\"%H:%i:%s\\") as time, COUNT(*) as pv group by time
 	SearchQuery *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
 	// The topic of the log.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8693,14 +8719,6 @@ type GetContextLogsRequest struct {
 	//
 	// 2|MTY1NTcwNTUzODY5MTY0MDk1Mg==|3|0
 	PackMeta *string `json:"pack_meta,omitempty" xml:"pack_meta,omitempty"`
-	// The type of the data in the Logstore. Set the value to context_log.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// context_log
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetContextLogsRequest) String() string {
@@ -8728,11 +8746,6 @@ func (s *GetContextLogsRequest) SetPackId(v string) *GetContextLogsRequest {
 
 func (s *GetContextLogsRequest) SetPackMeta(v string) *GetContextLogsRequest {
 	s.PackMeta = &v
-	return s
-}
-
-func (s *GetContextLogsRequest) SetType(v string) *GetContextLogsRequest {
-	s.Type = &v
 	return s
 }
 
@@ -10674,38 +10687,56 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 }
 
 type GetMetricStoreResponseBody struct {
+	// Indicates whether the automatic sharding feature is enabled.
+	//
 	// example:
 	//
 	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// The creation time. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1698933894
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The last update time. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1712023974
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The maximum number of shards into which existing shards can be automatically split.
+	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	// The metric type of the Metricstore. Example: prometheus.
+	//
 	// example:
 	//
 	// prometheus
 	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	// The specification type of the Metricstore. Example: standard.
+	//
 	// example:
 	//
 	// standard
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The name of the Metricstore.
+	//
 	// example:
 	//
 	// my_metric_store
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of shards.
+	//
 	// example:
 	//
 	// 2
 	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// The retention period. Unit: days.
+	//
 	// example:
 	//
 	// 7
@@ -11853,9 +11884,10 @@ type ListCollectionPoliciesResponseBody struct {
 	// example:
 	//
 	// 1
-	CurrentCount *int32                                          `json:"currentCount,omitempty" xml:"currentCount,omitempty"`
-	Data         []*ListCollectionPoliciesResponseBodyData       `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Statistics   []*ListCollectionPoliciesResponseBodyStatistics `json:"statistics,omitempty" xml:"statistics,omitempty" type:"Repeated"`
+	CurrentCount *int32 `json:"currentCount,omitempty" xml:"currentCount,omitempty"`
+	// The data of the policies that are matched against the query conditions. The data is returned based on paginated results.
+	Data       []*ListCollectionPoliciesResponseBodyData       `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Statistics []*ListCollectionPoliciesResponseBodyStatistics `json:"statistics,omitempty" xml:"statistics,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -11891,6 +11923,7 @@ func (s *ListCollectionPoliciesResponseBody) SetTotalCount(v int32) *ListCollect
 }
 
 type ListCollectionPoliciesResponseBodyData struct {
+	// The configuration for centralized storage.
 	CentralizeConfig *ListCollectionPoliciesResponseBodyDataCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -12001,6 +12034,8 @@ type ListCollectionPoliciesResponseBodyDataCentralizeConfig struct {
 	//
 	// cn-beijing
 	DestRegion *string `json:"destRegion,omitempty" xml:"destRegion,omitempty"`
+	// The data retention period for centralized storage. Unit: days.
+	//
 	// example:
 	//
 	// your-sls-logstore-ttl
@@ -13610,6 +13645,9 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 }
 
 type ListMetricStoresRequest struct {
+	// example:
+	//
+	// standard
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// example:
 	//
@@ -13654,9 +13692,15 @@ func (s *ListMetricStoresRequest) SetSize(v int32) *ListMetricStoresRequest {
 }
 
 type ListMetricStoresResponseBody struct {
+	// example:
+	//
+	// 10
 	Count        *int32    `json:"count,omitempty" xml:"count,omitempty"`
 	Metricstores []*string `json:"metricstores,omitempty" xml:"metricstores,omitempty" type:"Repeated"`
-	Total        *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMetricStoresResponseBody) String() string {
@@ -14822,6 +14866,112 @@ func (s *OpenSlsServiceResponse) SetStatusCode(v int32) *OpenSlsServiceResponse 
 	return s
 }
 
+type PullLogsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// lz4
+	AcceptEncoding *string `json:"Accept-Encoding,omitempty" xml:"Accept-Encoding,omitempty"`
+}
+
+func (s PullLogsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PullLogsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PullLogsHeaders) SetCommonHeaders(v map[string]*string) *PullLogsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PullLogsHeaders) SetAcceptEncoding(v string) *PullLogsHeaders {
+	s.AcceptEncoding = &v
+	return s
+}
+
+type PullLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MTQ0NzMyOTQwMTEwMjEzMDkwNA
+	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	// example:
+	//
+	// MTU1NzA1NzQwMTEwMjEzMDkwCg
+	EndCursor *string `json:"end_cursor,omitempty" xml:"end_cursor,omitempty"`
+	// example:
+	//
+	// 	- | where userId=\"123\"
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+}
+
+func (s PullLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PullLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PullLogsRequest) SetCount(v int32) *PullLogsRequest {
+	s.Count = &v
+	return s
+}
+
+func (s *PullLogsRequest) SetCursor(v string) *PullLogsRequest {
+	s.Cursor = &v
+	return s
+}
+
+func (s *PullLogsRequest) SetEndCursor(v string) *PullLogsRequest {
+	s.EndCursor = &v
+	return s
+}
+
+func (s *PullLogsRequest) SetQuery(v string) *PullLogsRequest {
+	s.Query = &v
+	return s
+}
+
+type PullLogsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LogGroupList      `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PullLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PullLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PullLogsResponse) SetHeaders(v map[string]*string) *PullLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PullLogsResponse) SetStatusCode(v int32) *PullLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PullLogsResponse) SetBody(v *LogGroupList) *PullLogsResponse {
+	s.Body = v
+	return s
+}
+
 type PutAnnotationDataRequest struct {
 	// The unique identifier of the data.
 	//
@@ -14877,6 +15027,74 @@ func (s *PutAnnotationDataResponse) SetHeaders(v map[string]*string) *PutAnnotat
 }
 
 func (s *PutAnnotationDataResponse) SetStatusCode(v int32) *PutAnnotationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type PutLogsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lz4
+	XLogCompresstype *string `json:"x-log-compresstype,omitempty" xml:"x-log-compresstype,omitempty"`
+}
+
+func (s PutLogsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutLogsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PutLogsHeaders) SetCommonHeaders(v map[string]*string) *PutLogsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PutLogsHeaders) SetXLogCompresstype(v string) *PutLogsHeaders {
+	s.XLogCompresstype = &v
+	return s
+}
+
+type PutLogsRequest struct {
+	Body *LogGroup `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PutLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutLogsRequest) SetBody(v *LogGroup) *PutLogsRequest {
+	s.Body = v
+	return s
+}
+
+type PutLogsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s PutLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutLogsResponse) SetHeaders(v map[string]*string) *PutLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutLogsResponse) SetStatusCode(v int32) *PutLogsResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -16690,12 +16908,18 @@ func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachin
 }
 
 type UpdateMetricStoreRequest struct {
+	// example:
+	//
+	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
 	// example:
 	//
 	// 64
-	MaxSplitShard *int32  `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	Mode          *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	// example:
+	//
+	// standard
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// example:
 	//
 	// 7
@@ -21156,7 +21380,7 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 
 // Summary:
 //
-// 删除下载任务
+// Deletes a download task.
 //
 // @param headers - map
 //
@@ -21192,7 +21416,7 @@ func (client *Client) DeleteDownloadJobWithOptions(project *string, downloadJobN
 
 // Summary:
 //
-// 删除下载任务
+// Deletes a download task.
 //
 // @return DeleteDownloadJobResponse
 func (client *Client) DeleteDownloadJob(project *string, downloadJobName *string) (_result *DeleteDownloadJobResponse, _err error) {
@@ -22336,7 +22560,7 @@ func (client *Client) EnableAlert(project *string, alertName *string) (_result *
 
 // Summary:
 //
-// 启用定时SQL任务
+// Enables the Scheduled SQL feature.
 //
 // @param headers - map
 //
@@ -22372,7 +22596,7 @@ func (client *Client) EnableScheduledSQLWithOptions(project *string, scheduledSQ
 
 // Summary:
 //
-// 启用定时SQL任务
+// Enables the Scheduled SQL feature.
 //
 // @return EnableScheduledSQLResponse
 func (client *Client) EnableScheduledSQL(project *string, scheduledSQLName *string) (_result *EnableScheduledSQLResponse, _err error) {
@@ -22999,10 +23223,6 @@ func (client *Client) GetContextLogsWithOptions(project *string, logstore *strin
 		query["pack_meta"] = request.PackMeta
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["type"] = request.Type
-	}
-
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -23012,7 +23232,7 @@ func (client *Client) GetContextLogsWithOptions(project *string, logstore *strin
 		Action:      tea.String("GetContextLogs"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore)),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "?type=context_log"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -23316,7 +23536,7 @@ func (client *Client) GetDashboard(project *string, dashboardName *string) (_res
 
 // Summary:
 //
-// 获取下载任务信息
+// Queries the information about a download task.
 //
 // @param headers - map
 //
@@ -23352,7 +23572,7 @@ func (client *Client) GetDownloadJobWithOptions(project *string, downloadJobName
 
 // Summary:
 //
-// 获取下载任务信息
+// Queries the information about a download task.
 //
 // @return GetDownloadJobResponse
 func (client *Client) GetDownloadJob(project *string, downloadJobName *string) (_result *GetDownloadJobResponse, _err error) {
@@ -24316,7 +24536,7 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 
 // Summary:
 //
-// 查询时序库
+// Queries a Metricstore.
 //
 // @param headers - map
 //
@@ -24352,7 +24572,7 @@ func (client *Client) GetMetricStoreWithOptions(project *string, name *string, h
 
 // Summary:
 //
-// 查询时序库
+// Queries a Metricstore.
 //
 // @return GetMetricStoreResponse
 func (client *Client) GetMetricStore(project *string, name *string) (_result *GetMetricStoreResponse, _err error) {
@@ -27355,6 +27575,91 @@ func (client *Client) OpenSlsService() (_result *OpenSlsServiceResponse, _err er
 
 // Summary:
 //
+// 从日志库 shard 拉取日志
+//
+// @param request - PullLogsRequest
+//
+// @param headers - PullLogsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PullLogsResponse
+func (client *Client) PullLogsWithOptions(project *string, logStore *string, shardId *string, request *PullLogsRequest, headers *PullLogsHeaders, runtime *util.RuntimeOptions) (_result *PullLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cursor)) {
+		query["cursor"] = request.Cursor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndCursor)) {
+		query["end_cursor"] = request.EndCursor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["query"] = request.Query
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AcceptEncoding)) {
+		realHeaders["Accept-Encoding"] = util.ToJSONString(headers.AcceptEncoding)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PullLogs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logStore) + "/shards/" + tea.StringValue(shardId) + "?type=log"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("none"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PullLogsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从日志库 shard 拉取日志
+//
+// @param request - PullLogsRequest
+//
+// @return PullLogsResponse
+func (client *Client) PullLogs(project *string, logStore *string, shardId *string, request *PullLogsRequest) (_result *PullLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &PullLogsHeaders{}
+	_result = &PullLogsResponse{}
+	_body, _err := client.PullLogsWithOptions(project, logStore, shardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds data to a dataset for storage.
 //
 // @param request - PutAnnotationDataRequest
@@ -27420,6 +27725,77 @@ func (client *Client) PutAnnotationData(datasetId *string, request *PutAnnotatio
 	headers := make(map[string]*string)
 	_result = &PutAnnotationDataResponse{}
 	_body, _err := client.PutAnnotationDataWithOptions(datasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 向日志库写入日志
+//
+// @param request - PutLogsRequest
+//
+// @param headers - PutLogsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutLogsResponse
+func (client *Client) PutLogsWithOptions(project *string, logstore *string, request *PutLogsRequest, headers *PutLogsHeaders, runtime *util.RuntimeOptions) (_result *PutLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XLogCompresstype)) {
+		realHeaders["x-log-compresstype"] = util.ToJSONString(headers.XLogCompresstype)
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutLogs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/lb"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("protobuf"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &PutLogsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 向日志库写入日志
+//
+// @param request - PutLogsRequest
+//
+// @return PutLogsResponse
+func (client *Client) PutLogs(project *string, logstore *string, request *PutLogsRequest) (_result *PutLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &PutLogsHeaders{}
+	_result = &PutLogsResponse{}
+	_body, _err := client.PutLogsWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

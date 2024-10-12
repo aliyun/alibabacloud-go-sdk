@@ -1,3 +1,19 @@
+2024-10-12 Version: v6.5.0
+- Support API PullLogs.
+- Support API PutLogs.
+- Update API CreateMetricStore: update param project.
+- Update API CreateMetricStore: update param body.
+- Update API CreateSavedSearch: update param body.
+- Update API GetMetricStore: update param project.
+- Update API GetMetricStoreMeteringMode: update param project.
+- Update API GetMetricStoreMeteringMode: update response param.
+- Update API ListMetricStores: update param project.
+- Update API ListMetricStores: update response param.
+- Update API UpdateMetricStore: update param project.
+- Update API UpdateMetricStore: update param body.
+- Update API UpdateMetricStoreMeteringMode: update param project.
+
+
 2024-09-02 Version: v6.4.1
 - Update API CreateIndex: update param body.
 - Update API GetIndex: update response param.
