@@ -14,6 +14,231 @@ import (
 	"io"
 )
 
+type CreateAnnualDocSummaryTaskRequest struct {
+	// This parameter is required.
+	AnaYears []*int32 `json:"anaYears,omitempty" xml:"anaYears,omitempty" type:"Repeated"`
+	// This parameter is required.
+	DocInfos []*CreateAnnualDocSummaryTaskRequestDocInfos `json:"docInfos,omitempty" xml:"docInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	EnableTable *bool   `json:"enableTable,omitempty" xml:"enableTable,omitempty"`
+	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-plus
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+}
+
+func (s CreateAnnualDocSummaryTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnnualDocSummaryTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnnualDocSummaryTaskRequest) SetAnaYears(v []*int32) *CreateAnnualDocSummaryTaskRequest {
+	s.AnaYears = v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskRequest) SetDocInfos(v []*CreateAnnualDocSummaryTaskRequestDocInfos) *CreateAnnualDocSummaryTaskRequest {
+	s.DocInfos = v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskRequest) SetEnableTable(v bool) *CreateAnnualDocSummaryTaskRequest {
+	s.EnableTable = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskRequest) SetInstruction(v string) *CreateAnnualDocSummaryTaskRequest {
+	s.Instruction = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskRequest) SetModelId(v string) *CreateAnnualDocSummaryTaskRequest {
+	s.ModelId = &v
+	return s
+}
+
+type CreateAnnualDocSummaryTaskRequestDocInfos struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 198386463432
+	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023
+	DocYear *int32 `json:"docYear,omitempty" xml:"docYear,omitempty"`
+	// example:
+	//
+	// 2
+	EndPage *int32 `json:"endPage,omitempty" xml:"endPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rdxrmo6amk
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// example:
+	//
+	// 1
+	StartPage *int32 `json:"startPage,omitempty" xml:"startPage,omitempty"`
+}
+
+func (s CreateAnnualDocSummaryTaskRequestDocInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnnualDocSummaryTaskRequestDocInfos) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnnualDocSummaryTaskRequestDocInfos) SetDocId(v string) *CreateAnnualDocSummaryTaskRequestDocInfos {
+	s.DocId = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskRequestDocInfos) SetDocYear(v int32) *CreateAnnualDocSummaryTaskRequestDocInfos {
+	s.DocYear = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskRequestDocInfos) SetEndPage(v int32) *CreateAnnualDocSummaryTaskRequestDocInfos {
+	s.EndPage = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskRequestDocInfos) SetLibraryId(v string) *CreateAnnualDocSummaryTaskRequestDocInfos {
+	s.LibraryId = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskRequestDocInfos) SetStartPage(v int32) *CreateAnnualDocSummaryTaskRequestDocInfos {
+	s.StartPage = &v
+	return s
+}
+
+type CreateAnnualDocSummaryTaskResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// example:
+	//
+	// 3284627354
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 32FFC91D-0A9F-585A-B84F-8A54C5187035
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s CreateAnnualDocSummaryTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnnualDocSummaryTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnnualDocSummaryTaskResponseBody) SetCost(v int64) *CreateAnnualDocSummaryTaskResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponseBody) SetData(v string) *CreateAnnualDocSummaryTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponseBody) SetDataType(v string) *CreateAnnualDocSummaryTaskResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponseBody) SetErrCode(v string) *CreateAnnualDocSummaryTaskResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponseBody) SetMessage(v string) *CreateAnnualDocSummaryTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponseBody) SetRequestId(v string) *CreateAnnualDocSummaryTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponseBody) SetSuccess(v bool) *CreateAnnualDocSummaryTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponseBody) SetTime(v string) *CreateAnnualDocSummaryTaskResponseBody {
+	s.Time = &v
+	return s
+}
+
+type CreateAnnualDocSummaryTaskResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAnnualDocSummaryTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAnnualDocSummaryTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnnualDocSummaryTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnnualDocSummaryTaskResponse) SetHeaders(v map[string]*string) *CreateAnnualDocSummaryTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponse) SetStatusCode(v int32) *CreateAnnualDocSummaryTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAnnualDocSummaryTaskResponse) SetBody(v *CreateAnnualDocSummaryTaskResponseBody) *CreateAnnualDocSummaryTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDocsSummaryTaskRequest struct {
 	// This parameter is required.
 	DocInfos []*CreateDocsSummaryTaskRequestDocInfos `json:"docInfos,omitempty" xml:"docInfos,omitempty" type:"Repeated"`
@@ -10066,6 +10291,86 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建按年文档总结任务
+//
+// @param request - CreateAnnualDocSummaryTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAnnualDocSummaryTaskResponse
+func (client *Client) CreateAnnualDocSummaryTaskWithOptions(workspaceId *string, request *CreateAnnualDocSummaryTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAnnualDocSummaryTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnaYears)) {
+		body["anaYears"] = request.AnaYears
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocInfos)) {
+		body["docInfos"] = request.DocInfos
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableTable)) {
+		body["enableTable"] = request.EnableTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instruction)) {
+		body["instruction"] = request.Instruction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAnnualDocSummaryTask"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/summary/doc/annual"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAnnualDocSummaryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建按年文档总结任务
+//
+// @param request - CreateAnnualDocSummaryTaskRequest
+//
+// @return CreateAnnualDocSummaryTaskResponse
+func (client *Client) CreateAnnualDocSummaryTask(workspaceId *string, request *CreateAnnualDocSummaryTaskRequest) (_result *CreateAnnualDocSummaryTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAnnualDocSummaryTaskResponse{}
+	_body, _err := client.CreateAnnualDocSummaryTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
