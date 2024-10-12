@@ -648,6 +648,634 @@ func (s *AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse) SetBody(v *A
 	return s
 }
 
+type AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody struct {
+	// example:
+	//
+	// []
+	Data []*AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetData(v []*AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetErrCode(v string) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetErrMessage(v string) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetHttpStatusCode(v int32) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetRequestId(v string) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetSuccess(v bool) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData struct {
+	// example:
+	//
+	// 10
+	FreeConcurrencyCount *int32 `json:"FreeConcurrencyCount,omitempty" xml:"FreeConcurrencyCount,omitempty"`
+	// example:
+	//
+	// 100
+	FreeCount *int32 `json:"FreeCount,omitempty" xml:"FreeCount,omitempty"`
+	// example:
+	//
+	// online_ai_algorithm_personalized_text_to_image_call_count
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// example:
+	//
+	// AI算法模型-个性化文生图-在线按量调用
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) SetFreeConcurrencyCount(v int32) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData {
+	s.FreeConcurrencyCount = &v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) SetFreeCount(v int32) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData {
+	s.FreeCount = &v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) SetServiceCode(v string) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) SetServiceName(v string) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData {
+	s.ServiceName = &v
+	return s
+}
+
+type AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse struct {
+	Headers    map[string]*string                                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) SetHeaders(v map[string]*string) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) SetStatusCode(v int32) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) SetBody(v *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse {
+	s.Body = v
+	return s
+}
+
+type PersonalizedTextToImageAddInferenceJobRequest struct {
+	// example:
+	//
+	// 1
+	ImageNumber *int32 `json:"imageNumber,omitempty" xml:"imageNumber,omitempty"`
+	// This parameter is required.
+	ImageUrl []*string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a <special-token> in the snow
+	Prompt *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
+	// example:
+	//
+	// 1
+	Seed *int64 `json:"seed,omitempty" xml:"seed,omitempty"`
+	// example:
+	//
+	// 1
+	Strength *float64 `json:"strength,omitempty" xml:"strength,omitempty"`
+	// example:
+	//
+	// 800
+	TrainSteps *int32 `json:"trainSteps,omitempty" xml:"trainSteps,omitempty"`
+}
+
+func (s PersonalizedTextToImageAddInferenceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageAddInferenceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobRequest) SetImageNumber(v int32) *PersonalizedTextToImageAddInferenceJobRequest {
+	s.ImageNumber = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobRequest) SetImageUrl(v []*string) *PersonalizedTextToImageAddInferenceJobRequest {
+	s.ImageUrl = v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobRequest) SetPrompt(v string) *PersonalizedTextToImageAddInferenceJobRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobRequest) SetSeed(v int64) *PersonalizedTextToImageAddInferenceJobRequest {
+	s.Seed = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobRequest) SetStrength(v float64) *PersonalizedTextToImageAddInferenceJobRequest {
+	s.Strength = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobRequest) SetTrainSteps(v int32) *PersonalizedTextToImageAddInferenceJobRequest {
+	s.TrainSteps = &v
+	return s
+}
+
+type PersonalizedTextToImageAddInferenceJobResponseBody struct {
+	// example:
+	//
+	// []
+	Data *PersonalizedTextToImageAddInferenceJobResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s PersonalizedTextToImageAddInferenceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageAddInferenceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBody) SetData(v *PersonalizedTextToImageAddInferenceJobResponseBodyData) *PersonalizedTextToImageAddInferenceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBody) SetErrCode(v string) *PersonalizedTextToImageAddInferenceJobResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBody) SetErrMessage(v string) *PersonalizedTextToImageAddInferenceJobResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBody) SetHttpStatusCode(v int32) *PersonalizedTextToImageAddInferenceJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBody) SetRequestId(v string) *PersonalizedTextToImageAddInferenceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBody) SetSuccess(v bool) *PersonalizedTextToImageAddInferenceJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PersonalizedTextToImageAddInferenceJobResponseBodyData struct {
+	// example:
+	//
+	// 2023-12-25T12:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 3220
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// FINISHED
+	JobStatus *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	// example:
+	//
+	// 0.5
+	JobTrainProgress *float64 `json:"jobTrainProgress,omitempty" xml:"jobTrainProgress,omitempty"`
+	// example:
+	//
+	// modelId-xxxx-xxxx-xxxx
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// promptId
+	//
+	// example:
+	//
+	// promptId-xxxx-xxxx-xxxx
+	PromptId *string `json:"promptId,omitempty" xml:"promptId,omitempty"`
+	// example:
+	//
+	// 0000.png
+	ResultImageUrl []*string `json:"resultImageUrl,omitempty" xml:"resultImageUrl,omitempty" type:"Repeated"`
+}
+
+func (s PersonalizedTextToImageAddInferenceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageAddInferenceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBodyData) SetCreateTime(v string) *PersonalizedTextToImageAddInferenceJobResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBodyData) SetId(v string) *PersonalizedTextToImageAddInferenceJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBodyData) SetJobStatus(v string) *PersonalizedTextToImageAddInferenceJobResponseBodyData {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBodyData) SetJobTrainProgress(v float64) *PersonalizedTextToImageAddInferenceJobResponseBodyData {
+	s.JobTrainProgress = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBodyData) SetModelId(v string) *PersonalizedTextToImageAddInferenceJobResponseBodyData {
+	s.ModelId = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBodyData) SetPromptId(v string) *PersonalizedTextToImageAddInferenceJobResponseBodyData {
+	s.PromptId = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponseBodyData) SetResultImageUrl(v []*string) *PersonalizedTextToImageAddInferenceJobResponseBodyData {
+	s.ResultImageUrl = v
+	return s
+}
+
+type PersonalizedTextToImageAddInferenceJobResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PersonalizedTextToImageAddInferenceJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PersonalizedTextToImageAddInferenceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageAddInferenceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponse) SetHeaders(v map[string]*string) *PersonalizedTextToImageAddInferenceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponse) SetStatusCode(v int32) *PersonalizedTextToImageAddInferenceJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageAddInferenceJobResponse) SetBody(v *PersonalizedTextToImageAddInferenceJobResponseBody) *PersonalizedTextToImageAddInferenceJobResponse {
+	s.Body = v
+	return s
+}
+
+type PersonalizedTextToImageQueryImageAssetRequest struct {
+	// example:
+	//
+	// base64
+	EncodeFormat *string `json:"encodeFormat,omitempty" xml:"encodeFormat,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0000.png
+	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
+}
+
+func (s PersonalizedTextToImageQueryImageAssetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageQueryImageAssetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageQueryImageAssetRequest) SetEncodeFormat(v string) *PersonalizedTextToImageQueryImageAssetRequest {
+	s.EncodeFormat = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryImageAssetRequest) SetImageId(v string) *PersonalizedTextToImageQueryImageAssetRequest {
+	s.ImageId = &v
+	return s
+}
+
+type PersonalizedTextToImageQueryImageAssetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       interface{}        `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PersonalizedTextToImageQueryImageAssetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageQueryImageAssetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageQueryImageAssetResponse) SetHeaders(v map[string]*string) *PersonalizedTextToImageQueryImageAssetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryImageAssetResponse) SetStatusCode(v int32) *PersonalizedTextToImageQueryImageAssetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryImageAssetResponse) SetBody(v interface{}) *PersonalizedTextToImageQueryImageAssetResponse {
+	s.Body = v
+	return s
+}
+
+type PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// girl-xxxx-xxxx-xxxx-xxxx
+	InferenceJobId *string `json:"inferenceJobId,omitempty" xml:"inferenceJobId,omitempty"`
+}
+
+func (s PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest) SetInferenceJobId(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest {
+	s.InferenceJobId = &v
+	return s
+}
+
+type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody struct {
+	// example:
+	//
+	// []
+	Data *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) SetData(v *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) SetErrCode(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) SetErrMessage(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) SetHttpStatusCode(v int32) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) SetRequestId(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) SetSuccess(v bool) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData struct {
+	// example:
+	//
+	// 2023-12-25T12:00:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 3220
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// FINISHED
+	JobStatus *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	// example:
+	//
+	// 0.5
+	JobTrainProgress *float64 `json:"jobTrainProgress,omitempty" xml:"jobTrainProgress,omitempty"`
+	// example:
+	//
+	// modelId-xxxx-xxxx-xxxx
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// promptId
+	//
+	// example:
+	//
+	// promptId-xxxx-xxxx-xxxx
+	PromptId *string `json:"promptId,omitempty" xml:"promptId,omitempty"`
+	// example:
+	//
+	// 0000.png
+	ResultImageUrl []*string `json:"resultImageUrl,omitempty" xml:"resultImageUrl,omitempty" type:"Repeated"`
+}
+
+func (s PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) SetCreateTime(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) SetId(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) SetJobStatus(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) SetJobTrainProgress(v float64) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData {
+	s.JobTrainProgress = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) SetModelId(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData {
+	s.ModelId = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) SetPromptId(v string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData {
+	s.PromptId = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData) SetResultImageUrl(v []*string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData {
+	s.ResultImageUrl = v
+	return s
+}
+
+type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse struct {
+	Headers    map[string]*string                                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse) SetHeaders(v map[string]*string) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse) SetStatusCode(v int32) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse) SetBody(v *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse {
+	s.Body = v
+	return s
+}
+
 type Personalizedtxt2imgAddInferenceJobRequest struct {
 	// example:
 	//
@@ -1928,6 +2556,272 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServcieList() (_resu
 	headers := make(map[string]*string)
 	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse{}
 	_body, _err := client.AliyunConsoleOpenApiQueryAliyunConsoleServcieListWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/列出阿里云控制台上可使用的服务列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse
+func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AliyunConsoleOpenApiQueryAliyunConsoleServiceList"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunconsole/queryAliyunConsoleServiceList"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/列出阿里云控制台上可使用的服务列表
+//
+// @return AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse
+func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServiceList() (_result *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
+	_body, _err := client.AliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 个性化文生图/基于一个预训练模型创建图片推理任务
+//
+// @param request - PersonalizedTextToImageAddInferenceJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PersonalizedTextToImageAddInferenceJobResponse
+func (client *Client) PersonalizedTextToImageAddInferenceJobWithOptions(request *PersonalizedTextToImageAddInferenceJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PersonalizedTextToImageAddInferenceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageNumber)) {
+		body["imageNumber"] = request.ImageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["imageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Seed)) {
+		body["seed"] = request.Seed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strength)) {
+		body["strength"] = request.Strength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainSteps)) {
+		body["trainSteps"] = request.TrainSteps
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PersonalizedTextToImageAddInferenceJob"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/personalizedtxt2img/addPreModelInferenceJob"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PersonalizedTextToImageAddInferenceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 个性化文生图/基于一个预训练模型创建图片推理任务
+//
+// @param request - PersonalizedTextToImageAddInferenceJobRequest
+//
+// @return PersonalizedTextToImageAddInferenceJobResponse
+func (client *Client) PersonalizedTextToImageAddInferenceJob(request *PersonalizedTextToImageAddInferenceJobRequest) (_result *PersonalizedTextToImageAddInferenceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PersonalizedTextToImageAddInferenceJobResponse{}
+	_body, _err := client.PersonalizedTextToImageAddInferenceJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 个性化文生图/通过唯一的图片编号获取图片内容
+//
+// @param request - PersonalizedTextToImageQueryImageAssetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PersonalizedTextToImageQueryImageAssetResponse
+func (client *Client) PersonalizedTextToImageQueryImageAssetWithOptions(request *PersonalizedTextToImageQueryImageAssetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PersonalizedTextToImageQueryImageAssetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncodeFormat)) {
+		query["encodeFormat"] = request.EncodeFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["imageId"] = request.ImageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PersonalizedTextToImageQueryImageAsset"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/personalizedtxt2img/queryImageAssetFromImageId"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &PersonalizedTextToImageQueryImageAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 个性化文生图/通过唯一的图片编号获取图片内容
+//
+// @param request - PersonalizedTextToImageQueryImageAssetRequest
+//
+// @return PersonalizedTextToImageQueryImageAssetResponse
+func (client *Client) PersonalizedTextToImageQueryImageAsset(request *PersonalizedTextToImageQueryImageAssetRequest) (_result *PersonalizedTextToImageQueryImageAssetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PersonalizedTextToImageQueryImageAssetResponse{}
+	_body, _err := client.PersonalizedTextToImageQueryImageAssetWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 个性化文生图/查询预制模型推理任务的状态
+//
+// @param request - PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse
+func (client *Client) PersonalizedTextToImageQueryPreModelInferenceJobInfoWithOptions(request *PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InferenceJobId)) {
+		query["inferenceJobId"] = request.InferenceJobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PersonalizedTextToImageQueryPreModelInferenceJobInfo"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/personalizedtxt2img/queryPreModelInferenceJobInfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 个性化文生图/查询预制模型推理任务的状态
+//
+// @param request - PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest
+//
+// @return PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse
+func (client *Client) PersonalizedTextToImageQueryPreModelInferenceJobInfo(request *PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest) (_result *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse{}
+	_body, _err := client.PersonalizedTextToImageQueryPreModelInferenceJobInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
