@@ -22546,7 +22546,8 @@ type SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments struct {
 	// example:
 	//
 	// 作者
-	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	Author   *string                                                                `json:"Author,omitempty" xml:"Author,omitempty"`
+	Comments []*SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -22588,6 +22589,11 @@ func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetAuthor(
 	return s
 }
 
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetComments(v []*SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
+	s.Comments = v
+	return s
+}
+
 func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetContent(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
 	s.Content = &v
 	return s
@@ -22615,6 +22621,29 @@ func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetTitle(v
 
 func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) SetUrl(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments {
 	s.Url = &v
+	return s
+}
+
+type SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments struct {
+	Text     *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments) SetText(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments {
+	s.Text = &v
+	return s
+}
+
+func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments) SetUsername(v string) *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments {
+	s.Username = &v
 	return s
 }
 
