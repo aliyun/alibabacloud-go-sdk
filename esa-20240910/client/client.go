@@ -14583,6 +14583,283 @@ func (s *ListCacheReserveInstancesResponse) SetBody(v *ListCacheReserveInstances
 	return s
 }
 
+type ListClientCertificatesRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListClientCertificatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientCertificatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientCertificatesRequest) SetPageNumber(v int64) *ListClientCertificatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListClientCertificatesRequest) SetPageSize(v int64) *ListClientCertificatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListClientCertificatesRequest) SetSiteId(v int64) *ListClientCertificatesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListClientCertificatesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListClientCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListClientCertificatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientCertificatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientCertificatesResponseBody) SetPageNumber(v int64) *ListClientCertificatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBody) SetPageSize(v int64) *ListClientCertificatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBody) SetRequestId(v string) *ListClientCertificatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBody) SetResult(v []*ListClientCertificatesResponseBodyResult) *ListClientCertificatesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBody) SetSiteId(v int64) *ListClientCertificatesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBody) SetSiteName(v string) *ListClientCertificatesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBody) SetTotalCount(v int64) *ListClientCertificatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListClientCertificatesResponseBodyResult struct {
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 2024-06-24 07:48:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b50d66
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// dcdn
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-07-20 06:18:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListClientCertificatesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientCertificatesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetCACertificateId(v string) *ListClientCertificatesResponseBodyResult {
+	s.CACertificateId = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetCommonName(v string) *ListClientCertificatesResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetCreateTime(v string) *ListClientCertificatesResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetId(v string) *ListClientCertificatesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetIssuer(v string) *ListClientCertificatesResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetName(v string) *ListClientCertificatesResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetNotAfter(v string) *ListClientCertificatesResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetNotBefore(v string) *ListClientCertificatesResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetPubkeyAlgorithm(v string) *ListClientCertificatesResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetSAN(v string) *ListClientCertificatesResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetSignatureAlgorithm(v string) *ListClientCertificatesResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetStatus(v string) *ListClientCertificatesResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetType(v string) *ListClientCertificatesResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponseBodyResult) SetUpdateTime(v string) *ListClientCertificatesResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListClientCertificatesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClientCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListClientCertificatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientCertificatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientCertificatesResponse) SetHeaders(v map[string]*string) *ListClientCertificatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClientCertificatesResponse) SetStatusCode(v int32) *ListClientCertificatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListClientCertificatesResponse) SetBody(v *ListClientCertificatesResponseBody) *ListClientCertificatesResponse {
+	s.Body = v
+	return s
+}
+
 type ListEdgeContainerAppRecordsRequest struct {
 	// This parameter is required.
 	//
@@ -32515,6 +32792,62 @@ func (client *Client) ListCacheReserveInstances(request *ListCacheReserveInstanc
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCacheReserveInstancesResponse{}
 	_body, _err := client.ListCacheReserveInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点下客户端证书列表
+//
+// @param request - ListClientCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClientCertificatesResponse
+func (client *Client) ListClientCertificatesWithOptions(request *ListClientCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListClientCertificatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClientCertificates"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListClientCertificatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点下客户端证书列表
+//
+// @param request - ListClientCertificatesRequest
+//
+// @return ListClientCertificatesResponse
+func (client *Client) ListClientCertificates(request *ListClientCertificatesRequest) (_result *ListClientCertificatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListClientCertificatesResponse{}
+	_body, _err := client.ListClientCertificatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
