@@ -4055,11 +4055,21 @@ func (s *VideoModerationCancelResponse) SetBody(v *VideoModerationCancelResponse
 type VideoModerationResultRequest struct {
 	// The type of the moderation service.
 	//
+	// Valid values:
+	//
+	// 	- liveStreamDetection: live stream moderation
+	//
+	// 	- videoDetection: video file moderation
+	//
+	// 	- liveStreamDetection_cb: live stream moderation_For regions outside the Chinese mainland
+	//
+	// 	- videoDetection_cb: video file moderation_For regions outside the Chinese mainland.
+	//
 	// example:
 	//
 	// videoDetection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters required by the moderation service. The value is a JSON string.
+	// The parameters required by the moderation service. The ID of the task that you want to query. You can specify one task ID at a time.
 	//
 	// example:
 	//
@@ -4086,13 +4096,13 @@ func (s *VideoModerationResultRequest) SetServiceParameters(v string) *VideoMode
 }
 
 type VideoModerationResultResponseBody struct {
-	// The returned HTTP status code.
+	// The returned HTTP status code. The status code 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The moderation results.
 	Data *VideoModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned in response to the request.
 	//
@@ -4100,7 +4110,7 @@ type VideoModerationResultResponseBody struct {
 	//
 	// success finished
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -4139,7 +4149,7 @@ func (s *VideoModerationResultResponseBody) SetRequestId(v string) *VideoModerat
 type VideoModerationResultResponseBodyData struct {
 	// The voice moderation results. The moderation results contain a structure.
 	AudioResult *VideoModerationResultResponseBodyDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Struct"`
-	// The ID of the moderated object.
+	// The value of dataId that is specified in the API request. If this parameter is not specified in the API request, the dataId field is not available in the response.
 	//
 	// example:
 	//
@@ -4152,7 +4162,12 @@ type VideoModerationResultResponseBodyData struct {
 	// example:
 	//
 	// liveId
-	LiveId    *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The task ID.
 	//
@@ -4203,7 +4218,12 @@ func (s *VideoModerationResultResponseBodyData) SetTaskId(v string) *VideoModera
 type VideoModerationResultResponseBodyDataAudioResult struct {
 	// Summary of voice labels.
 	AudioSummarys []*VideoModerationResultResponseBodyDataAudioResultAudioSummarys `json:"AudioSummarys,omitempty" xml:"AudioSummarys,omitempty" type:"Repeated"`
-	RiskLevel     *string                                                          `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The details about the text in the moderated voice. The value is a JSON array that contains one or more elements. Each element corresponds to a text entry.
 	SliceDetails []*VideoModerationResultResponseBodyDataAudioResultSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
 }
@@ -4232,7 +4252,7 @@ func (s *VideoModerationResultResponseBodyDataAudioResult) SetSliceDetails(v []*
 }
 
 type VideoModerationResultResponseBodyDataAudioResultAudioSummarys struct {
-	// Voice label.
+	// The voice label.
 	//
 	// example:
 	//
@@ -4288,7 +4308,12 @@ type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
 	// example:
 	//
 	// porn
-	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// Subcategory labels. Multiple labels are separated by commas (,).
 	//
@@ -4302,7 +4327,7 @@ type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// ""
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	// Risk score, default range 0-99.
+	// The risk score. Default range: 0 to 99.
 	//
 	// example:
 	//
@@ -4326,7 +4351,7 @@ type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// Disgusting
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// If the moderation object is a voice stream, this parameter indicates the temporary access URL of the voice stream to which the text entry corresponds. The validity period of the URL is 30 minutes. You must prepare another URL to store the audio stream at the earliest opportunity.
+	// If the moderation object is a voice stream, this parameter indicates the temporary access URL of the voice stream to which the text entry corresponds. The validity period of the URL is 30 minutes. You must prepare another URL to store the voice stream at the earliest opportunity.
 	//
 	// example:
 	//
@@ -4412,8 +4437,13 @@ type VideoModerationResultResponseBodyDataFrameResult struct {
 	// The summary of the labels against which captured frames are matched.
 	FrameSummarys []*VideoModerationResultResponseBodyDataFrameResultFrameSummarys `json:"FrameSummarys,omitempty" xml:"FrameSummarys,omitempty" type:"Repeated"`
 	// The information about the frames that match the labels.
-	Frames    []*VideoModerationResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
-	RiskLevel *string                                                   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Frames []*VideoModerationResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResult) String() string {
@@ -4445,6 +4475,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResult) SetRiskLevel(v string
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFrameSummarys struct {
+	// The description of the result.
+	//
+	// example:
+	//
+	// no risk
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label against which a captured frame is matched.
 	//
@@ -4491,9 +4526,14 @@ type VideoModerationResultResponseBodyDataFrameResultFrames struct {
 	// 338
 	Offset *float32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	// The results of frame moderation parameters such as the label parameter and the confidence parameter.
-	Results   []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	RiskLevel *string                                                          `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The temporary URL of a captured frame. This URL is valid for 30 minutes.
+	Results []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The temporary URL of a captured frame.
 	//
 	// example:
 	//
@@ -4541,9 +4581,9 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTimestamp(v 
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
-	// If a custom image library is hit, information about the hit custom image library is returned.
+	// If a custom image library is hit, information about the custom image library is returned.
 	CustomImage []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
-	// If the video contains a specific person, the recognized person code is returned.
+	// If the video contains a specific figure, the code of the identified figure is returned.
 	PublicFigure []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
 	// The results of frame moderation parameters such as the label parameter and the confidence parameter.
 	Result []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -4553,7 +4593,7 @@ type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
 	//
 	// tonalityImprove
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// Returns the text information in the hit image.
+	// The information about the text hit in the image is returned.
 	TextInImage map[string]interface{} `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
 }
 
@@ -4591,13 +4631,13 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetTextI
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage struct {
-	// The ID of the hit custom image.
+	// The ID of the custom image that is hit.
 	//
 	// example:
 	//
 	// 1234
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The custom image library ID of the hit.
+	// The ID of the custom image library that is hit.
 	//
 	// example:
 	//
@@ -4624,7 +4664,7 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImag
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure struct {
-	// Identified person coding information.
+	// The information about the code of the identified figure.
 	//
 	// example:
 	//
@@ -4651,8 +4691,13 @@ type VideoModerationResultResponseBodyDataFrameResultFramesResultsResult struct 
 	// example:
 	//
 	// 50
-	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The description of the result.
+	//
+	// example:
+	//
+	// no risk
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label returned after a frame is moderated. Multiple risk labels and the corresponding scores of confidence levels may be returned for a frame.
 	//
 	// example:
@@ -5061,7 +5106,8 @@ type VoiceModerationResultResponseBodyData struct {
 	// example:
 	//
 	// liveId
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId    *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The details about the audio segments.
 	SliceDetails []*VoiceModerationResultResponseBodyDataSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
 	// The task ID.
@@ -5093,6 +5139,11 @@ func (s *VoiceModerationResultResponseBodyData) SetDataId(v string) *VoiceModera
 
 func (s *VoiceModerationResultResponseBodyData) SetLiveId(v string) *VoiceModerationResultResponseBodyData {
 	s.LiveId = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyData) SetRiskLevel(v string) *VoiceModerationResultResponseBodyData {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -5142,6 +5193,7 @@ type VoiceModerationResultResponseBodyDataSliceDetails struct {
 	//
 	// {}
 	OriginAlgoResult map[string]interface{} `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
+	RiskLevel        *string                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The risk details that are hit.
 	//
 	// example:
@@ -5216,6 +5268,11 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetLabels(v string) 
 
 func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetOriginAlgoResult(v map[string]interface{}) *VoiceModerationResultResponseBodyDataSliceDetails {
 	s.OriginAlgoResult = v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetRiskLevel(v string) *VoiceModerationResultResponseBodyDataSliceDetails {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -6203,7 +6260,11 @@ func (client *Client) VideoModerationCancel(request *VideoModerationCancelReques
 
 // Summary:
 //
-// 获取视频检测结果
+// Obtains the moderation results of a Video Moderation 2.0 task
+//
+// Description:
+//
+// This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
 //
 // @param request - VideoModerationResultRequest
 //
@@ -6249,7 +6310,11 @@ func (client *Client) VideoModerationResultWithOptions(request *VideoModerationR
 
 // Summary:
 //
-// 获取视频检测结果
+// Obtains the moderation results of a Video Moderation 2.0 task
+//
+// Description:
+//
+// This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
 //
 // @param request - VideoModerationResultRequest
 //
