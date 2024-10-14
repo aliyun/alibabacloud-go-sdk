@@ -883,7 +883,8 @@ type CreateInstanceRequestDatasets struct {
 	// example:
 	//
 	// /mnt/data
-	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// Deprecated
 	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
 	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// example:
@@ -2048,6 +2049,23 @@ func (s *GetIdleInstanceCullerResponse) SetBody(v *GetIdleInstanceCullerResponse
 	return s
 }
 
+type GetInstanceRequest struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceRequest) SetToken(v string) *GetInstanceRequest {
+	s.Token = &v
+	return s
+}
+
 type GetInstanceResponseBody struct {
 	// example:
 	//
@@ -3133,6 +3151,7 @@ type GetInstanceEventsRequest struct {
 	//
 	// 2020-11-08T15:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetInstanceEventsRequest) String() string {
@@ -3155,6 +3174,11 @@ func (s *GetInstanceEventsRequest) SetMaxEventsNum(v int32) *GetInstanceEventsRe
 
 func (s *GetInstanceEventsRequest) SetStartTime(v string) *GetInstanceEventsRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *GetInstanceEventsRequest) SetToken(v string) *GetInstanceEventsRequest {
+	s.Token = &v
 	return s
 }
 
@@ -3832,6 +3856,7 @@ type GetLifecycleRequest struct {
 	//
 	// 2020-11-08T15:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetLifecycleRequest) String() string {
@@ -3864,6 +3889,11 @@ func (s *GetLifecycleRequest) SetSessionNumber(v int32) *GetLifecycleRequest {
 
 func (s *GetLifecycleRequest) SetStartTime(v string) *GetLifecycleRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *GetLifecycleRequest) SetToken(v string) *GetLifecycleRequest {
+	s.Token = &v
 	return s
 }
 
@@ -7278,7 +7308,8 @@ type UpdateInstanceRequestDatasets struct {
 	// example:
 	//
 	// /mnt/data
-	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// Deprecated
 	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
 	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// example:
@@ -8337,14 +8368,26 @@ func (client *Client) GetIdleInstanceCuller(InstanceId *string) (_result *GetIdl
 //
 // 获取实例详情
 //
+// @param request - GetInstanceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResponse
-func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetInstanceWithOptions(InstanceId *string, request *GetInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstance"),
@@ -8370,12 +8413,14 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 //
 // 获取实例详情
 //
+// @param request - GetInstanceRequest
+//
 // @return GetInstanceResponse
-func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetInstance(InstanceId *string, request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetInstanceResponse{}
-	_body, _err := client.GetInstanceWithOptions(InstanceId, headers, runtime)
+	_body, _err := client.GetInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8406,6 +8451,10 @@ func (client *Client) GetInstanceEventsWithOptions(InstanceId *string, request *
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8646,6 +8695,10 @@ func (client *Client) GetLifecycleWithOptions(InstanceId *string, request *GetLi
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
 	}
 
 	req := &openapi.OpenApiRequest{
