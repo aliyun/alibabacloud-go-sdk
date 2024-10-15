@@ -433,7 +433,7 @@ type MaintenanceWindow struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// example:
 	//
-	// 03:00:00Z
+	// 2020-10-15T12:31:00.000+08:00
 	MaintenanceTime *string `json:"maintenance_time,omitempty" xml:"maintenance_time,omitempty"`
 	// example:
 	//
@@ -3318,7 +3318,8 @@ type CreateClusterRequest struct {
 	// example:
 	//
 	// Hello@1234
-	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	LoginPassword     *string            `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
 	// Specifies whether to enable auto-renewal for master nodes. This parameter takes effect only when `master_instance_charge_type` is set to `PrePaid`. Valid values:
 	//
 	// 	- `true`: enables auto-renewal.
@@ -3480,7 +3481,8 @@ type CreateClusterRequest struct {
 	// example:
 	//
 	// 3
-	NumOfNodes *int64 `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
+	NumOfNodes      *int64                               `json:"num_of_nodes,omitempty" xml:"num_of_nodes,omitempty"`
+	OperationPolicy *CreateClusterRequestOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// The type of OS. Valid values:
 	//
 	// 	- Windows
@@ -4036,6 +4038,11 @@ func (s *CreateClusterRequest) SetLoginPassword(v string) *CreateClusterRequest 
 	return s
 }
 
+func (s *CreateClusterRequest) SetMaintenanceWindow(v *MaintenanceWindow) *CreateClusterRequest {
+	s.MaintenanceWindow = v
+	return s
+}
+
 func (s *CreateClusterRequest) SetMasterAutoRenew(v bool) *CreateClusterRequest {
 	s.MasterAutoRenew = &v
 	return s
@@ -4128,6 +4135,11 @@ func (s *CreateClusterRequest) SetNodepools(v []*Nodepool) *CreateClusterRequest
 
 func (s *CreateClusterRequest) SetNumOfNodes(v int64) *CreateClusterRequest {
 	s.NumOfNodes = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetOperationPolicy(v *CreateClusterRequestOperationPolicy) *CreateClusterRequest {
+	s.OperationPolicy = v
 	return s
 }
 
@@ -4333,6 +4345,46 @@ func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetZoneIds(v []*string) *CreateClusterRequest {
 	s.ZoneIds = v
+	return s
+}
+
+type CreateClusterRequestOperationPolicy struct {
+	ClusterAutoUpgrade *CreateClusterRequestOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
+}
+
+func (s CreateClusterRequestOperationPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestOperationPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestOperationPolicy) SetClusterAutoUpgrade(v *CreateClusterRequestOperationPolicyClusterAutoUpgrade) *CreateClusterRequestOperationPolicy {
+	s.ClusterAutoUpgrade = v
+	return s
+}
+
+type CreateClusterRequestOperationPolicyClusterAutoUpgrade struct {
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s CreateClusterRequestOperationPolicyClusterAutoUpgrade) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestOperationPolicyClusterAutoUpgrade) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestOperationPolicyClusterAutoUpgrade) SetChannel(v string) *CreateClusterRequestOperationPolicyClusterAutoUpgrade {
+	s.Channel = &v
+	return s
+}
+
+func (s *CreateClusterRequestOperationPolicyClusterAutoUpgrade) SetEnabled(v bool) *CreateClusterRequestOperationPolicyClusterAutoUpgrade {
+	s.Enabled = &v
 	return s
 }
 
@@ -8987,7 +9039,8 @@ type DescribeClusterDetailResponseBody struct {
 	// example:
 	//
 	// 1.18.8-aliyun.1
-	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	NextVersion     *string                                           `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	OperationPolicy *DescribeClusterDetailResponseBodyOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// The ROS parameters of the cluster.
 	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// example:
@@ -9193,6 +9246,11 @@ func (s *DescribeClusterDetailResponseBody) SetNextVersion(v string) *DescribeCl
 	return s
 }
 
+func (s *DescribeClusterDetailResponseBody) SetOperationPolicy(v *DescribeClusterDetailResponseBodyOperationPolicy) *DescribeClusterDetailResponseBody {
+	s.OperationPolicy = v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetParameters(v map[string]*string) *DescribeClusterDetailResponseBody {
 	s.Parameters = v
 	return s
@@ -9265,6 +9323,46 @@ func (s *DescribeClusterDetailResponseBody) SetWorkerRamRoleName(v string) *Desc
 
 func (s *DescribeClusterDetailResponseBody) SetZoneId(v string) *DescribeClusterDetailResponseBody {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeClusterDetailResponseBodyOperationPolicy struct {
+	ClusterAutoUpgrade *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
+}
+
+func (s DescribeClusterDetailResponseBodyOperationPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyOperationPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyOperationPolicy) SetClusterAutoUpgrade(v *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade) *DescribeClusterDetailResponseBodyOperationPolicy {
+	s.ClusterAutoUpgrade = v
+	return s
+}
+
+type DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade struct {
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade) SetChannel(v string) *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade {
+	s.Channel = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade) SetEnabled(v bool) *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade {
+	s.Enabled = &v
 	return s
 }
 
@@ -14755,7 +14853,8 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	// example:
 	//
 	// 1.18.8-aliyun.1
-	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	NextVersion     *string                                                `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	OperationPolicy *DescribeClustersV1ResponseBodyClustersOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// Indicates whether Alibaba Cloud DNS PrivateZone is enabled. Valid values:
 	//
 	// 	- `true`: Alibaba Cloud DNS PrivateZone is enabled.
@@ -14963,6 +15062,11 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetNextVersion(v string) *Descr
 	return s
 }
 
+func (s *DescribeClustersV1ResponseBodyClusters) SetOperationPolicy(v *DescribeClustersV1ResponseBodyClustersOperationPolicy) *DescribeClustersV1ResponseBodyClusters {
+	s.OperationPolicy = v
+	return s
+}
+
 func (s *DescribeClustersV1ResponseBodyClusters) SetPrivateZone(v bool) *DescribeClustersV1ResponseBodyClusters {
 	s.PrivateZone = &v
 	return s
@@ -15030,6 +15134,46 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetWorkerRamRoleName(v string) 
 
 func (s *DescribeClustersV1ResponseBodyClusters) SetZoneId(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeClustersV1ResponseBodyClustersOperationPolicy struct {
+	ClusterAutoUpgrade *DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
+}
+
+func (s DescribeClustersV1ResponseBodyClustersOperationPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersV1ResponseBodyClustersOperationPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersV1ResponseBodyClustersOperationPolicy) SetClusterAutoUpgrade(v *DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade) *DescribeClustersV1ResponseBodyClustersOperationPolicy {
+	s.ClusterAutoUpgrade = v
+	return s
+}
+
+type DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade struct {
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade) SetChannel(v string) *DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade {
+	s.Channel = &v
+	return s
+}
+
+func (s *DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade) SetEnabled(v bool) *DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade {
+	s.Enabled = &v
 	return s
 }
 
@@ -29532,6 +29676,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["login_password"] = request.LoginPassword
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaintenanceWindow)) {
+		body["maintenance_window"] = request.MaintenanceWindow
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MasterAutoRenew)) {
 		body["master_auto_renew"] = request.MasterAutoRenew
 	}
@@ -29606,6 +29754,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.NumOfNodes)) {
 		body["num_of_nodes"] = request.NumOfNodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationPolicy)) {
+		body["operation_policy"] = request.OperationPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OsType)) {
