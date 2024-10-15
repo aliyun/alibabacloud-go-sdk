@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,20 +11,47 @@ import (
 
 type AddVirtualNumberRelationRequest struct {
 	// The company names. Separate multiple company names with commas (,).
+	//
+	// example:
+	//
+	// Company 1
 	CorpNameList *string `json:"CorpNameList,omitempty" xml:"CorpNameList,omitempty"`
 	// The real numbers. Separate multiple real numbers with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1321111****,1322222****
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The virtual number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05516214****
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
 	// The service name. Default value: **dyvms**.
+	//
+	// example:
+	//
+	// dyvms
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The route type. Valid values:
 	//
-	// *   **0**: number location first.
-	// *   **1**: random.
+	// 	- **0**: number location first.
+	//
+	// 	- **1**: random.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	RouteType *int32 `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
@@ -82,16 +106,33 @@ func (s *AddVirtualNumberRelationRequest) SetRouteType(v int32) *AddVirtualNumbe
 type AddVirtualNumberRelationResponseBody struct {
 	// The response code.
 	//
-	// *   The value 200 indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value 200 indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The numbers that failed to be associated.
 	//
 	// > If all numbers are associated, no value is returned for this parameter.
+	//
+	// example:
+	//
+	// 1321111****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -156,43 +197,95 @@ type BatchRobotSmartCallRequest struct {
 	// The called number. Only mobile phone numbers in the Chinese mainland are supported.
 	//
 	// You can set up to 1,000 called numbers and separate the numbers with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	// The number displayed to called parties, which must be a number you purchased. You can view the numbers you purchased in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
 	//
 	// You can set up to 100 numbers and separate the numbers with commas (,).
-	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	// The company name, which must be the same as the **company name** specified on the [qualification management page](https://dyvms.console.aliyun.com/dyvms.htm#/corp/normal).
 	//
-	// > This parameter is optional if **isSelfLine** is set to **true**.
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 222
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// The company name, which must be the same as the **company name*	- specified on the [qualification management page](https://dyvms.console.aliyun.com/dyvms.htm#/corp/normal).
+	//
+	// > This parameter is optional if **isSelfLine*	- is set to **true**.
+	//
+	// example:
+	//
+	// Alibaba
 	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	// The ID of the robot or communication script that is used to initiate a call.
 	//
-	// You can obtain the **communication script ID** from the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page.
+	// You can obtain the **communication script ID*	- from the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567
 	DialogId *string `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	// The speech recognition identifier of early media. The default value is **false**, which means that the speech recognition identifier of early media is not enabled.
 	//
-	// Set the parameter to **true** if you want to enable the speech recognition identifier of early media.
+	// Set the parameter to **true*	- if you want to enable the speech recognition identifier of early media.
+	//
+	// example:
+	//
+	// true
 	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
 	// Specifies whether to call the self-managed line. Default value: **false**.
+	//
+	// example:
+	//
+	// true
 	IsSelfLine           *bool   `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether the call is scheduled. If you set this parameter to **true**, the **ScheduleTime** parameter is required.
+	// Specifies whether the call is scheduled. If you set this parameter to **true**, the **ScheduleTime*	- parameter is required.
+	//
+	// example:
+	//
+	// true
 	ScheduleCall *bool `json:"ScheduleCall,omitempty" xml:"ScheduleCall,omitempty"`
 	// The preset call time. This value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// >  This parameter is required only when **ScheduleCall** is set to **true**.
+	// >  This parameter is required only when **ScheduleCall*	- is set to **true**.
+	//
+	// example:
+	//
+	// 12
 	ScheduleTime *int64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
 	// The task name. The task name can be up to 30 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Batch Tasks
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The variable value of the TTS template, in the JSON format.
 	//
 	// The variable value must correspond to a number. The TtsParam parameter must be used together with the TtsParamHead parameter.
+	//
+	// example:
+	//
+	// [{"number":"1390000****","params":[“Miss li”,"miss wang","Mr.li"]}]
 	TtsParam *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
 	// The call tasks with variables, in the JSON format.
 	//
 	// The parameter value is a list of variable names. The TtsParamHead parameter must be used together with the TtsParam parameter.
+	//
+	// example:
+	//
+	// ["name1","name2","name3"]
 	TtsParamHead *string `json:"TtsParamHead,omitempty" xml:"TtsParamHead,omitempty"`
 }
 
@@ -277,14 +370,31 @@ func (s *BatchRobotSmartCallRequest) SetTtsParamHead(v string) *BatchRobotSmartC
 type BatchRobotSmartCallResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The unique ID of the robocall task. You can call the [QueryCallDetailByTaskId](~~393537~~) operation to query the details of the task based on the task ID.
+	// The unique ID of the robocall task. You can call the [QueryCallDetailByTaskId](https://help.aliyun.com/document_detail/393537.html) operation to query the details of the task based on the task ID.
+	//
+	// example:
+	//
+	// 4001112222
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -349,7 +459,13 @@ type CancelOrderRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the ID of the robocall task.
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](https://help.aliyun.com/document_detail/393531.html) operation to obtain the ID of the robocall task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1045001
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -384,17 +500,35 @@ func (s *CancelOrderRobotTaskRequest) SetTaskId(v int64) *CancelOrderRobotTaskRe
 type CancelOrderRobotTaskResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -459,7 +593,11 @@ type CancelRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](https://help.aliyun.com/document_detail/393531.html) operation to obtain the task ID.
+	//
+	// example:
+	//
+	// 1045001
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -494,17 +632,35 @@ func (s *CancelRobotTaskRequest) SetTaskId(v int64) *CancelRobotTaskRequest {
 type CancelRobotTaskResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -566,9 +722,23 @@ func (s *CancelRobotTaskResponse) SetBody(v *CancelRobotTaskResponseBody) *Cance
 }
 
 type ChangeMediaTypeRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNum            *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
-	MediaType            *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	CalledNum *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 示例值示例值
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -620,10 +790,22 @@ func (s *ChangeMediaTypeRequest) SetResourceOwnerId(v int64) *ChangeMediaTypeReq
 
 type ChangeMediaTypeResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model              *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// false
+	Model *bool `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeMediaTypeResponseBody) String() string {
@@ -691,38 +873,86 @@ func (s *ChangeMediaTypeResponse) SetBody(v *ChangeMediaTypeResponseBody) *Chang
 type CreateCallTaskRequest struct {
 	// The type of the task template. Valid values:
 	//
-	// *   **VMS_VOICE_TTS**: the text-to-speech (TTS) notification template.
-	// *   **VMS_VOICE_CODE**: the voice notification template.
-	// *   **VMS_TTS**: the voice verification code template.
+	// 	- **VMS_VOICE_TTS**: the text-to-speech (TTS) notification template.
+	//
+	// 	- **VMS_VOICE_CODE**: the voice notification template.
+	//
+	// 	- **VMS_TTS**: the voice verification code template.
+	//
+	// example:
+	//
+	// VMS_VOICE_TTS
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The called numbers.
 	//
-	// *   If you set DataType to LIST, the value of Data is in the LIST format.
-	// *   If you set DataType to JSON, the value of Data is in the JSON format.
+	// 	- If you set DataType to LIST, the value of Data is in the LIST format.
+	//
+	// 	- If you set DataType to JSON, the value of Data is in the JSON format.
+	//
+	// example:
+	//
+	// { "paramNames":["name1","name2","key3"], "calleeList":[ { "callee":"131222222", "params":["zangsan","zhangsan01","zhangsan02"] }, { "callee":"131222222", "params":["zangsan","zhangsan01","zhangsan02"] }, ] }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The type of called numbers. Valid values:
 	//
-	// *   **LIST**: the called numbers that are separated by commas (,).
-	// *   **JSON**: a JSON-formatted list of called numbers with template parameters.
+	// 	- **LIST**: the called numbers that are separated by commas (,).
+	//
+	// 	- **JSON**: a JSON-formatted list of called numbers with template parameters.
+	//
+	// example:
+	//
+	// JSON
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	FireTime *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The calling number. Only virtual numbers are supported.
+	//
+	// example:
+	//
+	// 05516214****
 	Resource             *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the calling number. Set the value to **LIST**.
+	//
+	// example:
+	//
+	// LIST
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 	// The task name.
+	//
+	// example:
+	//
+	// Aliyun
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The template ID.
+	//
+	// example:
+	//
+	// TTS_2122****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// The template name.
+	//
+	// example:
+	//
+	// Test Template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -806,10 +1036,22 @@ func (s *CreateCallTaskRequest) SetTemplateName(v string) *CreateCallTaskRequest
 
 type CreateCallTaskResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 123456
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ED815433-724A-4357-9991-A54AD2FF09FD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -868,52 +1110,110 @@ func (s *CreateCallTaskResponse) SetBody(v *CreateCallTaskResponseBody) *CreateC
 type CreateRobotTaskRequest struct {
 	// The calling number.
 	//
-	// You must use the phone numbers that you have purchased and separate multiple numbers with commas (,). You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service** > **Real Number Management** to view the numbers you purchased.
+	// You must use the phone numbers that you have purchased and separate multiple numbers with commas (,). You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service*	- > **Real Number Management*	- to view the numbers you purchased.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571****5678
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	// The company name, which must be the same as the **enterprise name** on the qualification management page.
+	// The company name, which must be the same as the **enterprise name*	- on the qualification management page.
+	//
+	// example:
+	//
+	// Alibaba
 	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	// The ID of the robot or communication script that is used to initiate the call.
 	//
-	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Intelligent Voice Robot** > **Communication Script Management** to view the communication script ID.
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Intelligent Voice Robot*	- > **Communication Script Management*	- to view the communication script ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000023****
 	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	// Specifies whether to call the self-managed line. Valid values:
 	//
-	// *   **false** (default)
-	// *   **true**
+	// 	- **false*	- (default)
+	//
+	// 	- **true**
 	//
 	// > If you set this parameter to **true**, calling numbers are not verified.
+	//
+	// example:
+	//
+	// false
 	IsSelfLine *bool `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
 	// Specifies whether to enable number status identification. Valid values:
 	//
-	// *   **false** (default)
-	// *   **true**
+	// 	- **false*	- (default)
+	//
+	// 	- **true**
 	//
 	// > If you set this parameter to **true**, the reason why a call is not answered is recorded.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	NumberStatusIdent *bool  `json:"NumberStatusIdent,omitempty" xml:"NumberStatusIdent,omitempty"`
 	OwnerId           *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The redial interval. Unit: minutes. The value must be greater than 1.
 	//
 	// > The maximum redial interval is 30 minutes.
+	//
+	// example:
+	//
+	// 5
 	RecallInterval *int32 `json:"RecallInterval,omitempty" xml:"RecallInterval,omitempty"`
 	// The call state in which redial is required. Separate multiple call states with commas (,). Valid values:
 	//
-	// *   **200010**: The phone of the called party is powered off.
-	// *   **200011**: The number of the called party is out of service.
-	// *   **200002**: The line is busy.
-	// *   **200012**: The call is lost.
-	// *   **200005**: The called party cannot be connected.
-	// *   **200003**: The called party does not respond to the call.
+	// 	- **200010**: The phone of the called party is powered off.
+	//
+	// 	- **200011**: The number of the called party is out of service.
+	//
+	// 	- **200002**: The line is busy.
+	//
+	// 	- **200012**: The call is lost.
+	//
+	// 	- **200005**: The called party cannot be connected.
+	//
+	// 	- **200003**: The called party does not respond to the call.
+	//
+	// example:
+	//
+	// 200010,200011
 	RecallStateCodes *string `json:"RecallStateCodes,omitempty" xml:"RecallStateCodes,omitempty"`
 	// The number of redial times.
+	//
+	// example:
+	//
+	// 1
 	RecallTimes          *int32  `json:"RecallTimes,omitempty" xml:"RecallTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable auto-redial. Valid values:
 	//
-	// *   **1**: enables auto-redial.
-	// *   **0**: disables auto-redial.
+	// 	- **1**: enables auto-redial.
+	//
+	// 	- **0**: disables auto-redial.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	RetryType *int32 `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
 	// The task name. The task name can be up to 30 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test Template
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -993,16 +1293,33 @@ func (s *CreateRobotTaskRequest) SetTaskName(v string) *CreateRobotTaskRequest {
 type CreateRobotTaskResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The unique ID of the robocall task.
 	//
-	// You can call the [QueryRobotTaskDetail](~~393538~~) operation to query the details of the task based on the task ID.
+	// You can call the [QueryRobotTaskDetail](https://help.aliyun.com/document_detail/393538.html) operation to query the details of the task based on the task ID.
+	//
+	// example:
+	//
+	// 400111****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1064,9 +1381,23 @@ func (s *CreateRobotTaskResponse) SetBody(v *CreateRobotTaskResponseBody) *Creat
 }
 
 type DegradeVideoFileRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	MediaType            *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 116012354148^1028137841****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590****000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// video
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 225869*****
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1117,11 +1448,20 @@ func (s *DegradeVideoFileRequest) SetResourceOwnerId(v int64) *DegradeVideoFileR
 }
 
 type DegradeVideoFileResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DegradeVideoFileResponseBody) String() string {
@@ -1191,6 +1531,12 @@ type DeleteRobotTaskRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1045001
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1225,17 +1571,35 @@ func (s *DeleteRobotTaskRequest) SetTaskId(v int64) *DeleteRobotTaskRequest {
 type DeleteRobotTaskResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1300,17 +1664,35 @@ type ExecuteCallTaskRequest struct {
 	// The time when the call task is executed, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// > You can leave this parameter empty.
+	//
+	// example:
+	//
+	// 2021-03-09 00:00:00
 	FireTime             *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The task state. Valid values:
 	//
-	// *   **RUNNING**
-	// *   **STOP**
-	// *   **CANCEL**
+	// 	- **RUNNING**
+	//
+	// 	- **STOP**
+	//
+	// 	- **CANCEL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task ID. You can call the [CreateCallTask](~~CreateCallTask~~) operation to obtain the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2256****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1354,13 +1736,26 @@ func (s *ExecuteCallTaskRequest) SetTaskId(v int64) *ExecuteCallTaskRequest {
 
 type ExecuteCallTaskResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 53D0F0Fe-cbbB-De28-6FCd-DdbBcefA46dD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1417,7 +1812,15 @@ func (s *ExecuteCallTaskResponse) SetBody(v *ExecuteCallTaskResponseBody) *Execu
 }
 
 type GetCallMediaTypeRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 116012854210^10281427****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1580000****
 	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1458,11 +1861,20 @@ func (s *GetCallMediaTypeRequest) SetResourceOwnerId(v int64) *GetCallMediaTypeR
 }
 
 type GetCallMediaTypeResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCallMediaTypeResponseBody) String() string {
@@ -1528,7 +1940,15 @@ func (s *GetCallMediaTypeResponse) SetBody(v *GetCallMediaTypeResponseBody) *Get
 }
 
 type GetCallProgressRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 示例值
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
 	CalledNum            *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1569,11 +1989,20 @@ func (s *GetCallProgressRequest) SetResourceOwnerId(v int64) *GetCallProgressReq
 }
 
 type GetCallProgressResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model              map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCallProgressResponseBody) String() string {
@@ -1641,7 +2070,13 @@ func (s *GetCallProgressResponse) SetBody(v *GetCallProgressResponseBody) *GetCa
 type GetHotlineQualificationByOrderRequest struct {
 	// The ticket ID.
 	//
-	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualification\&Communication Script Management** > **Qualification Management**, and then click the **400 Qualifications** tab to view the ticket ID.
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualification\\&Communication Script Management*	- > **Qualification Management**, and then click the **400 Qualifications*	- tab to view the ticket ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 22456****
 	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1679,14 +2114,27 @@ func (s *GetHotlineQualificationByOrderRequest) SetResourceOwnerId(v int64) *Get
 type GetHotlineQualificationByOrderResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
 	Data *GetHotlineQualificationByOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6086693B-2250-17CE-A41F-06259AB6DB1B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1720,13 +2168,26 @@ func (s *GetHotlineQualificationByOrderResponseBody) SetRequestId(v string) *Get
 
 type GetHotlineQualificationByOrderResponseBodyData struct {
 	// The ID of the qualification application ticket.
+	//
+	// example:
+	//
+	// 22456****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The qualification ID.
+	//
+	// example:
+	//
+	// 1478*****
 	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	// The qualification state. Valid values:
 	//
-	// *   **NORMAL**
-	// *   **OTHER**
+	// 	- **NORMAL**
+	//
+	// 	- **OTHER**
+	//
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1786,7 +2247,12 @@ type GetTemporaryFileUrlRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VideoId              *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 45a04670582571eebf9e4531948c****
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
 func (s GetTemporaryFileUrlRequest) String() string {
@@ -1818,12 +2284,24 @@ func (s *GetTemporaryFileUrlRequest) SetVideoId(v string) *GetTemporaryFileUrlRe
 }
 
 type GetTemporaryFileUrlResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 7BF47617-7851-48F7-A3A1-2021342A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTemporaryFileUrlResponseBody) String() string {
@@ -1898,6 +2376,10 @@ type GetTokenRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The token type.
+	//
+	// example:
+	//
+	// dyvms
 	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
 }
 
@@ -1932,16 +2414,37 @@ func (s *GetTokenRequest) SetTokenType(v string) *GetTokenRequest {
 type GetTokenResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The token.
+	//
+	// example:
+	//
+	// eyJhbGciOiJSUzI1NiIsImtpZCI6ImFjY2Vzc190ZXN0In0.eyJqdGkiOiJUTjhfRzFCaEpETTJ3LWVoeGJZZXRnIiwiaWF0IjoxNjIzMzk0NTI3LCJleHAiOjE2MjMzOTYzMjcsIm5iZi****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -2011,7 +2514,10 @@ type GetVideoFieldUrlRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VideoFile            *string `json:"VideoFile,omitempty" xml:"VideoFile,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	VideoFile *string `json:"VideoFile,omitempty" xml:"VideoFile,omitempty"`
 }
 
 func (s GetVideoFieldUrlRequest) String() string {
@@ -2043,11 +2549,20 @@ func (s *GetVideoFieldUrlRequest) SetVideoFile(v string) *GetVideoFieldUrlReques
 }
 
 type GetVideoFieldUrlResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model              map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetVideoFieldUrlResponseBody) String() string {
@@ -2115,44 +2630,88 @@ func (s *GetVideoFieldUrlResponse) SetBody(v *GetVideoFieldUrlResponseBody) *Get
 type IvrCallRequest struct {
 	// The end voice.
 	//
-	// *   If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **Voice Notification Files** tab to view the voice ID.
-	// *   If you use a TTS template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **TTS Template** tab to view the template ID.
+	// 	- If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages*	- > **Voice Notifications**, and then click the **Voice Notification Files*	- tab to view the voice ID.
+	//
+	// 	- If you use a TTS template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages*	- > **Voice Notifications**, and then click the **TTS Template*	- tab to view the template ID.
 	//
 	// > The value of the ByeCode parameter must be of the same type as the value of the StartCode parameter. This means that both parameters must specify voice IDs or TTS template IDs.
+	//
+	// example:
+	//
+	// TTS_1234****
 	ByeCode *string `json:"ByeCode,omitempty" xml:"ByeCode,omitempty"`
 	// The variables in the TTS template, in the JSON format.
 	//
 	// > This parameter is required when the ByeCode parameter is set to the ID of a TTS template that contains variables.
+	//
+	// example:
+	//
+	// {"name":"xxx","code":"123"}
 	ByeTtsParams *string `json:"ByeTtsParams,omitempty" xml:"ByeTtsParams,omitempty"`
 	// The called number.
 	//
 	// Only phone numbers in the Chinese mainland are supported. Each request supports only one called number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590****000
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	// The calling number.
 	//
-	// The value must be a number you purchased. Each request supports only one calling number. In most cases, a calling number is configured with the maximum number of concurrent requests. New requests fail if the maximum number of concurrent requests is reached. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service > Real Number Management** to view the number you purchased.
+	// The value must be a number you purchased. Each request supports only one calling number. In most cases, a calling number is configured with the maximum number of concurrent requests. New requests fail if the maximum number of concurrent requests is reached. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service > Real Number Management*	- to view the number you purchased.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571****5678
 	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
 	// The information about the key pressed by the subscriber.
 	MenuKeyMap []*IvrCallRequestMenuKeyMap `json:"MenuKeyMap,omitempty" xml:"MenuKeyMap,omitempty" type:"Repeated"`
 	// The ID that is reserved for the caller of the operation. This ID is returned to the caller in a receipt message.
 	//
 	// The value is of the STRING type and must be 1 to 15 bytes in length.
+	//
+	// example:
+	//
+	// PR0210428****
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of replay times. Valid values: 1 to 3.
+	//
+	// example:
+	//
+	// 3
 	PlayTimes            *int64  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The voice that is played when the call begins.
 	//
-	// *   If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > Voice Notifications, and then click the **Voice Notification Files** tab to view the voice ID.
-	// *   If you use a text-to-speech (TTS) template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **TTS Template** tab to view the template ID.
+	// 	- If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages*	- > Voice Notifications, and then click the **Voice Notification Files*	- tab to view the voice ID.
+	//
+	// 	- If you use a text-to-speech (TTS) template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages*	- > **Voice Notifications**, and then click the **TTS Template*	- tab to view the template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TTS_1234****
 	StartCode *string `json:"StartCode,omitempty" xml:"StartCode,omitempty"`
 	// The variables in the TTS template, in the JSON format.
 	//
 	// > This parameter is required when the StartCode parameter is set to the ID of a TTS template that contains variables.
+	//
+	// example:
+	//
+	// {"name":"xxx","code":"123"}
 	StartTtsParams *string `json:"StartTtsParams,omitempty" xml:"StartTtsParams,omitempty"`
 	// The timeout period for the subscriber to press a key. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 3000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -2230,20 +2789,33 @@ func (s *IvrCallRequest) SetTimeout(v int32) *IvrCallRequest {
 }
 
 type IvrCallRequestMenuKeyMap struct {
-	// The voice that corresponds to the key specified by the **MenuKeyMap.N.Key** parameter.
+	// The voice that corresponds to the key specified by the **MenuKeyMap.N.Key*	- parameter.
 	//
-	// *   If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **Voice Notification Files** tab to view the voice ID.
-	// *   If you use a TTS template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **TTS Template** tab to view the template ID.
+	// 	- If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages*	- > **Voice Notifications**, and then click the **Voice Notification Files*	- tab to view the voice ID.
+	//
+	// 	- If you use a TTS template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages*	- > **Voice Notifications**, and then click the **TTS Template*	- tab to view the template ID.
+	//
+	// example:
+	//
+	// TTS_1235****
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The key that can be pressed by the subscriber.
+	//
+	// example:
+	//
+	// 1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The variables in the TTS template, in the JSON format.
 	//
 	// >
 	//
-	// *   This parameter specifies the substitution relationship of the variables in the TTS template if the value of the **MenuKeyMap.N.Code** parameter is set to the ID of the TTS template.
+	// 	- This parameter specifies the substitution relationship of the variables in the TTS template if the value of the **MenuKeyMap.N.Code*	- parameter is set to the ID of the TTS template.
 	//
-	// *   This parameter is required if the value of the **MenuKeyMap.N.Code** parameter is set to the ID of a TTS template that contains variables.
+	// 	- This parameter is required if the value of the **MenuKeyMap.N.Code*	- parameter is set to the ID of a TTS template that contains variables.
+	//
+	// example:
+	//
+	// {"name":"xxx","code":"123"}
 	TtsParams *string `json:"TtsParams,omitempty" xml:"TtsParams,omitempty"`
 }
 
@@ -2273,16 +2845,33 @@ func (s *IvrCallRequestMenuKeyMap) SetTtsParams(v string) *IvrCallRequestMenuKey
 type IvrCallResponseBody struct {
 	// The unique receipt ID of the call.
 	//
-	// You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call based on the receipt ID.
+	// You can call the [QueryCallDetailByCallId](https://help.aliyun.com/document_detail/393529.html) operation to query the details of the call based on the receipt ID.
+	//
+	// example:
+	//
+	// 116012354148^10281378****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2346,33 +2935,70 @@ func (s *IvrCallResponse) SetBody(v *IvrCallResponseBody) *IvrCallResponse {
 type ListCallTaskRequest struct {
 	// The type of the task template. Valid values:
 	//
-	// *   **VMS_VOICE_TTS**: the text-to-speech (TTS) notification template.
-	// *   **VMS_VOICE_CODE**: the voice notification template.
-	// *   **VMS_TTS**: the voice verification code template.
+	// 	- **VMS_VOICE_TTS**: the text-to-speech (TTS) notification template.
+	//
+	// 	- **VMS_VOICE_CODE**: the voice notification template.
+	//
+	// 	- **VMS_TTS**: the voice verification code template.
+	//
+	// example:
+	//
+	// VMS_VOICE_CODE
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The task state. Valid values:
 	//
-	// *   **INIT**: The task is in the initial state.
-	// *   **RELEASE**: The task is being parsed.
-	// *   **RUNNING**: The task is running.
-	// *   **STOP**: The task is suspended.
-	// *   **SYSTEM_STOP**: The task is suspended by the system.
-	// *   **CANCEL**: The task is canceled.
-	// *   **SYSTEM_CANCEL**: The task is canceled by the system.
-	// *   **DONE**: The task is complete.
+	// 	- **INIT**: The task is in the initial state.
+	//
+	// 	- **RELEASE**: The task is being parsed.
+	//
+	// 	- **RUNNING**: The task is running.
+	//
+	// 	- **STOP**: The task is suspended.
+	//
+	// 	- **SYSTEM_STOP**: The task is suspended by the system.
+	//
+	// 	- **CANCEL**: The task is canceled.
+	//
+	// 	- **SYSTEM_CANCEL**: The task is canceled by the system.
+	//
+	// 	- **DONE**: The task is complete.
+	//
+	// example:
+	//
+	// DONE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 151001****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task name.
+	//
+	// example:
+	//
+	// Aliyun
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The template name.
+	//
+	// example:
+	//
+	// Test Template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -2436,16 +3062,36 @@ func (s *ListCallTaskRequest) SetTemplateName(v string) *ListCallTaskRequest {
 
 type ListCallTaskResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The task information.
 	Data []*ListCallTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 2
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5B0F201F-DCDA-45C2-AA92-1AE177F94991
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of tasks.
+	//
+	// example:
+	//
+	// 10
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2490,46 +3136,115 @@ func (s *ListCallTaskResponseBody) SetTotal(v int64) *ListCallTaskResponseBody {
 type ListCallTaskResponseBodyData struct {
 	// The type of the task template. Valid values:
 	//
-	// *   **VMS_VOICE_TTS**: the TTS notification template.
-	// *   **VMS_VOICE_CODE**: the voice notification template.
-	// *   **VMS_TTS**: the voice verification code template.
+	// 	- **VMS_VOICE_TTS**: the TTS notification template.
+	//
+	// 	- **VMS_VOICE_CODE**: the voice notification template.
+	//
+	// 	- **VMS_TTS**: the voice verification code template.
+	//
+	// example:
+	//
+	// VMS_VOICE_TTS
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The time when the task was completed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1614330986000
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
 	// The number of tasks that were complete.
+	//
+	// example:
+	//
+	// 2
 	CompletedCount *int64 `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
 	// The task progress.
+	//
+	// example:
+	//
+	// 26%
 	CompletedRate *int32 `json:"CompletedRate,omitempty" xml:"CompletedRate,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The type of the called number.
+	//
+	// example:
+	//
+	// LIST
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The time when the scheduled task was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1614330978000
 	FireTime *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 123879546214
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The calling number.
+	//
+	// example:
+	//
+	// 0571000****
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The task state. Valid values:
 	//
-	// *   **INIT**: The task was in the initial state.
-	// *   **RELEASE**: The task was being parsed.
-	// *   **RUNNING**: The task was running.
-	// *   **STOP**: The task was manually suspended.
-	// *   **SYSTEM_STOP**: The task was suspended by the system.
-	// *   **CANCEL**: The task was manually canceled.
-	// *   **SYSTEM_CANCEL**: The task was canceled by the system.
-	// *   **DONE**: The task was complete.
+	// 	- **INIT**: The task was in the initial state.
+	//
+	// 	- **RELEASE**: The task was being parsed.
+	//
+	// 	- **RUNNING**: The task was running.
+	//
+	// 	- **STOP**: The task was manually suspended.
+	//
+	// 	- **SYSTEM_STOP**: The task was suspended by the system.
+	//
+	// 	- **CANCEL**: The task was manually canceled.
+	//
+	// 	- **SYSTEM_CANCEL**: The task was canceled by the system.
+	//
+	// 	- **DONE**: The task was complete.
+	//
+	// example:
+	//
+	// DONE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 	// The task name.
+	//
+	// example:
+	//
+	// Aliyun
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The ID of the voice template.
+	//
+	// example:
+	//
+	// TTS_2100****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// The template name.
+	//
+	// example:
+	//
+	// Test Template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The total number of called numbers.
+	//
+	// example:
+	//
+	// 600
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2647,21 +3362,45 @@ func (s *ListCallTaskResponse) SetBody(v *ListCallTaskResponseBody) *ListCallTas
 
 type ListCallTaskDetailRequest struct {
 	// The called number.
+	//
+	// example:
+	//
+	// 1300000****
 	CalledNum *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The task state. Valid values:
 	//
-	// *   **SUCCESS**: The task is successful.
-	// *   **FAIL**: The task fails.
-	// *   **INIT**: The task is not started.
+	// 	- **SUCCESS**: The task is successful.
+	//
+	// 	- **FAIL**: The task fails.
+	//
+	// 	- **INIT**: The task is not started.
+	//
+	// example:
+	//
+	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 150001****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2716,20 +3455,45 @@ func (s *ListCallTaskDetailRequest) SetTaskId(v int64) *ListCallTaskDetailReques
 type ListCallTaskDetailResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the task.
 	Data []*ListCallTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D692AC3D-CBA8-417F-BEB9-5B73718922D4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of called numbers.
+	//
+	// example:
+	//
+	// 1000
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// The total number of pages.
+	//
+	// example:
+	//
+	// 1
 	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
@@ -2778,18 +3542,40 @@ func (s *ListCallTaskDetailResponseBody) SetTotalPage(v int64) *ListCallTaskDeta
 
 type ListCallTaskDetailResponseBodyData struct {
 	// The called number.
+	//
+	// example:
+	//
+	// 1300000****
 	CalledNum *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
 	// The calling number.
+	//
+	// example:
+	//
+	// 0571000****
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	// The call duration. Unit: seconds.
+	//
+	// example:
+	//
+	// 200
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The task state. Valid values:
 	//
-	// *   **SUCCESS**: The task was successful.
-	// *   **FAIL**: The task failed.
-	// *   **INIT**: The task was not started.
+	// 	- **SUCCESS**: The task was successful.
+	//
+	// 	- **FAIL**: The task failed.
+	//
+	// 	- **INIT**: The task was not started.
+	//
+	// example:
+	//
+	// FAIL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2857,13 +3643,33 @@ func (s *ListCallTaskDetailResponse) SetBody(v *ListCallTaskDetailResponseBody) 
 
 type ListHotlineTransferNumberRequest struct {
 	// The China 400 number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400****
 	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Valid values: 1 to 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+	// The qualification ID. You can call the [GetHotlineQualificationByOrder](https://help.aliyun.com/document_detail/393548.html) operation to obtain the qualification ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100***
 	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2915,14 +3721,27 @@ func (s *ListHotlineTransferNumberRequest) SetResourceOwnerId(v int64) *ListHotl
 type ListHotlineTransferNumberResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the registered phone number.
 	Data *ListHotlineTransferNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6086693B-2250-17CE-A41F-06259AB6DB1B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2956,10 +3775,22 @@ func (s *ListHotlineTransferNumberResponseBody) SetRequestId(v string) *ListHotl
 
 type ListHotlineTransferNumberResponseBodyData struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// The phone numbers.
 	Values []*ListHotlineTransferNumberResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -2995,16 +3826,40 @@ func (s *ListHotlineTransferNumberResponseBodyData) SetValues(v []*ListHotlineTr
 
 type ListHotlineTransferNumberResponseBodyDataValues struct {
 	// The China 400 number.
+	//
+	// example:
+	//
+	// 400****
 	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
 	// The ID card number of the number owner.
+	//
+	// example:
+	//
+	// 500***4119
 	IdentityCard *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
 	// The real name of the number owner or the company name.
+	//
+	// example:
+	//
+	// A***
 	NumberOwnerName *string `json:"NumberOwnerName,omitempty" xml:"NumberOwnerName,omitempty"`
 	// The registered phone number.
+	//
+	// example:
+	//
+	// 1580000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The qualification ID.
+	//
+	// example:
+	//
+	// 100***
 	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	// The resource code.
+	//
+	// example:
+	//
+	// 1***
 	ResUniqueCode *string `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
 }
 
@@ -3077,13 +3932,33 @@ func (s *ListHotlineTransferNumberResponse) SetBody(v *ListHotlineTransferNumber
 
 type ListHotlineTransferRegisterFileRequest struct {
 	// The China 400 number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400****
 	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Valid values: 1 to 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+	// The qualification ID. You can call the [GetHotlineQualificationByOrder](https://help.aliyun.com/document_detail/393548.html) operation to obtain the qualification ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000****
 	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3135,14 +4010,27 @@ func (s *ListHotlineTransferRegisterFileRequest) SetResourceOwnerId(v int64) *Li
 type ListHotlineTransferRegisterFileResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
 	Data *ListHotlineTransferRegisterFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6086693B-2250-17CE-A41F-06259AB6DB1B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3176,10 +4064,22 @@ func (s *ListHotlineTransferRegisterFileResponseBody) SetRequestId(v string) *Li
 
 type ListHotlineTransferRegisterFileResponseBodyData struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// The registration file.
 	Values []*ListHotlineTransferRegisterFileResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -3215,22 +4115,58 @@ func (s *ListHotlineTransferRegisterFileResponseBodyData) SetValues(v []*ListHot
 
 type ListHotlineTransferRegisterFileResponseBodyDataValues struct {
 	// The authenticity of the commitment.
+	//
+	// example:
+	//
+	// true
 	Agree *string `json:"Agree,omitempty" xml:"Agree,omitempty"`
 	// The enterprise name.
+	//
+	// example:
+	//
+	// A**
 	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	// The China 400 number.
+	//
+	// example:
+	//
+	// 400****
 	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
 	// The ID card number of the handler.
+	//
+	// example:
+	//
+	// 5****************9
 	MngOpIdentityCard *string `json:"MngOpIdentityCard,omitempty" xml:"MngOpIdentityCard,omitempty"`
 	// The email address of the handler.
+	//
+	// example:
+	//
+	// username@example.com
 	MngOpMail *string `json:"MngOpMail,omitempty" xml:"MngOpMail,omitempty"`
 	// The mobile phone number of the handler.
+	//
+	// example:
+	//
+	// 150****0000
 	MngOpMobile *string `json:"MngOpMobile,omitempty" xml:"MngOpMobile,omitempty"`
 	// The name of the handler.
+	//
+	// example:
+	//
+	// A***
 	MngOpName *string `json:"MngOpName,omitempty" xml:"MngOpName,omitempty"`
 	// The qualification ID.
+	//
+	// example:
+	//
+	// 1234****
 	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	// The unique code of the query operation.
+	//
+	// example:
+	//
+	// 1
 	ResUniqueCode *int64 `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
 }
 
@@ -3317,7 +4253,15 @@ func (s *ListHotlineTransferRegisterFileResponse) SetBody(v *ListHotlineTransfer
 }
 
 type PauseVideoFileRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 116012854210^10281427****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
 	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -3358,11 +4302,20 @@ func (s *PauseVideoFileRequest) SetResourceOwnerId(v int64) *PauseVideoFileReque
 }
 
 type PauseVideoFileResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PauseVideoFileResponseBody) String() string {
@@ -3428,13 +4381,31 @@ func (s *PauseVideoFileResponse) SetBody(v *PauseVideoFileResponseBody) *PauseVi
 }
 
 type PlayVideoFileRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 116012354148^1028137841****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 示例值
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// false
+	OnlyPhone *bool `json:"OnlyPhone,omitempty" xml:"OnlyPhone,omitempty"`
+	// example:
+	//
+	// 342268*****
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VideoId              *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
 func (s PlayVideoFileRequest) String() string {
@@ -3452,6 +4423,11 @@ func (s *PlayVideoFileRequest) SetCallId(v string) *PlayVideoFileRequest {
 
 func (s *PlayVideoFileRequest) SetCalledNumber(v string) *PlayVideoFileRequest {
 	s.CalledNumber = &v
+	return s
+}
+
+func (s *PlayVideoFileRequest) SetOnlyPhone(v bool) *PlayVideoFileRequest {
+	s.OnlyPhone = &v
 	return s
 }
 
@@ -3482,10 +4458,22 @@ func (s *PlayVideoFileRequest) SetVideoId(v string) *PlayVideoFileRequest {
 
 type PlayVideoFileResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model              *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// false
+	Model *bool `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PlayVideoFileResponseBody) String() string {
@@ -3555,24 +4543,46 @@ type QueryCallDetailByCallIdRequest struct {
 	//
 	// >
 	//
-	// *   The CallId parameter is included in the response parameters of the outbound call operation that you call to initiate a call.
+	// 	- The CallId parameter is included in the response parameters of the outbound call operation that you call to initiate a call.
 	//
-	// *   The date when the call specified by CallId is started must be the same as the date specified by QueryDate.
+	// 	- The date when the call specified by CallId is started must be the same as the date specified by QueryDate.
 	//
-	// *   The value of CallId must match the value of ProdId.
+	// 	- The value of CallId must match the value of ProdId.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 116014888060^10281631****
 	CallId  *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The service ID. Valid values:
 	//
-	// *   **11000000300006**: voice notification. You can call the [SingleCallByVoice](https://help.aliyun.com/document_detail/393517.html) operation to send a voice notification of the voice notification file type to the specified number.
-	// *   **11010000138001**: voice verification code. You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send a voice verification code or a text-to-speech (TTS) voice notification to the specified number.
-	// *   **11000000300005**: IVR. You can call the [IvrCall](https://help.aliyun.com/document_detail/393521.html) operation to initiate an interactive voice call to the specified number.
-	// *   **11000000300009**: Session Initiation Protocol (SIP) call.
-	// *   **11030000180001**: intelligent outbound call.
+	// 	- **11000000300006**: voice notification. You can call the [SingleCallByVoice](https://help.aliyun.com/document_detail/393517.html) operation to send a voice notification of the voice notification file type to the specified number.
+	//
+	// 	- **11010000138001**: voice verification code. You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send a voice verification code or a text-to-speech (TTS) voice notification to the specified number.
+	//
+	// 	- **11000000300005**: IVR. You can call the [IvrCall](https://help.aliyun.com/document_detail/393521.html) operation to initiate an interactive voice call to the specified number.
+	//
+	// 	- **11000000300009**: Session Initiation Protocol (SIP) call.
+	//
+	// 	- **11030000180001**: intelligent outbound call.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11000000300006
 	ProdId *int64 `json:"ProdId,omitempty" xml:"ProdId,omitempty"`
 	// The time at which call details are queried. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// > The system queries the call records that are generated within 24 hours after the specified point in time. For example, if you specify the time 20:00:01 on November 21, 2022, the system queries the call records that are generated for the specified call ID from 20:00:01 on November 21, 2022, to 20:00:01 on November 22, 2022.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1671552000000
 	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3619,29 +4629,59 @@ func (s *QueryCallDetailByCallIdRequest) SetResourceOwnerId(v int64) *QueryCallD
 type QueryCallDetailByCallIdResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the call, in the JSON format.
 	//
-	// *   **caller**: the calling number.
-	// *   **startDate**: the time when the call was started.
-	// *   **stateDesc**: the description of the call state.
-	// *   **duration**: the call duration. Unit: seconds. The value **0** indicates that the user was not connected.
-	// *   **callerShowNumber**: the calling number displayed to the called party.
-	// *   **gmtCreate**: the time when the call request was received.
-	// *   **state**: the call state. The call state is returned by the Internet service provider (ISP) in real time. For more information about call states, see [ISP-returned error codes](~~55085~~).
-	// *   **endDate**: the time when the call was ended.
-	// *   **calleeShowNumber**: the number displayed to the called party.
-	// *   **callee**: the called number.
-	// *   **aRingTime**: the time when Line A started to ring, in the yyyy-MM-dd HH:mm:ss format.
-	// *   **aEndTime**: the time when ringing on Line A ended, in the yyyy-MM-dd HH:mm:ss format.
-	// *   **bRingTime**: the time when Line B started to ring, in the yyyy-MM-dd HH:mm:ss format.
-	// *   **bEndTime**: the time when ringing on Line B ended, in the yyyy-MM-dd HH:mm:ss format.
+	// 	- **caller**: the calling number.
+	//
+	// 	- **startDate**: the time when the call was started.
+	//
+	// 	- **stateDesc**: the description of the call state.
+	//
+	// 	- **duration**: the call duration. Unit: seconds. The value **0*	- indicates that the user was not connected.
+	//
+	// 	- **callerShowNumber**: the calling number displayed to the called party.
+	//
+	// 	- **gmtCreate**: the time when the call request was received.
+	//
+	// 	- **state**: the call state. The call state is returned by the Internet service provider (ISP) in real time. For more information about call states, see [ISP-returned error codes](https://help.aliyun.com/document_detail/55085.html).
+	//
+	// 	- **endDate**: the time when the call was ended.
+	//
+	// 	- **calleeShowNumber**: the number displayed to the called party.
+	//
+	// 	- **callee**: the called number.
+	//
+	// 	- **aRingTime**: the time when Line A started to ring, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// 	- **aEndTime**: the time when ringing on Line A ended, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// 	- **bRingTime**: the time when Line B started to ring, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// 	- **bEndTime**: the time when ringing on Line B ended, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// example:
+	//
+	// {"caller":"18767****","startDate":"","stateDesc":"502","duration":0,"callerShowNumber":"05344****","gmtCreate":"2017-11-27 20:09:06","state":"502","endDate":"","calleeShowNumber":"053447****","bRingTime":"2022-01-01 12:02:00"，"bEndTime":"2022-01-01 12:02:28"，"callee":"1373546****"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3704,13 +4744,31 @@ func (s *QueryCallDetailByCallIdResponse) SetBody(v *QueryCallDetailByCallIdResp
 
 type QueryCallDetailByTaskIdRequest struct {
 	// The called number. You can view the outbound call records of only one called number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
 	Callee  *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start time of the outbound robocall task. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-10-09 09:02:03
 	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The unique ID of the outbound robocall task. The task ID is returned after the outbound robocall task is successfully delivered. You can view the task ID on the [Task Management](https://dyvms.console.aliyun.com/job/list) page of the Voice Messaging Service console, or call the **BatchRobotSmartCall** operation to obtain the **task ID**.
+	// The unique ID of the outbound robocall task. The task ID is returned after the outbound robocall task is successfully delivered. You can view the task ID on the [Task Management](https://dyvms.console.aliyun.com/job/list) page of the Voice Messaging Service console, or call the **BatchRobotSmartCall*	- operation to obtain the **task ID**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4001112222
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3755,69 +4813,89 @@ func (s *QueryCallDetailByTaskIdRequest) SetTaskId(v string) *QueryCallDetailByT
 type QueryCallDetailByTaskIdResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The call details of the outbound robocall task, in the JSON format.
 	//
-	// *   **startDate**: the time when the call was answered.
+	// 	- **startDate**: the time when the call was answered.
 	//
-	// *   **stateDesc**: the reason why the call was hung up. If the status code of early media was returned, this parameter indicates the reason why the status code of early media was used.
+	// 	- **stateDesc**: the reason why the call was hung up. If the status code of early media was returned, this parameter indicates the reason why the status code of early media was used.
 	//
-	// *   **statusCode**: the status code.
+	// 	- **statusCode**: the status code.
 	//
-	// *   **EndDate**: the time when the call was ended.
+	// 	- **EndDate**: the time when the call was ended.
 	//
-	// *   **calleeShowNumber**: the calling number displayed to the called party.
+	// 	- **calleeShowNumber**: the calling number displayed to the called party.
 	//
-	// *   **callee**: the called number.
+	// 	- **callee**: the called number.
 	//
-	// *   **duration**: the billing duration.
+	// 	- **duration**: the billing duration.
 	//
-	// *   **gmtCreate**: the time when the outbound robocall task was created.
+	// 	- **gmtCreate**: the time when the outbound robocall task was created.
 	//
-	// *   **hangupDirection**: the party who hung up.
+	// 	- **hangupDirection**: the party who hung up.
 	//
-	// *   **tags**: the call tags.
+	// 	- **tags**: the call tags.
 	//
-	// *   **dialogCount**: the number of conversation rounds in the call.
+	// 	- **dialogCount**: the number of conversation rounds in the call.
 	//
-	// *   **sureCount**: the number of times that the robocall task was acknowledged.
+	// 	- **sureCount**: the number of times that the robocall task was acknowledged.
 	//
-	// *   **denyCount**: the number of times that the robocall task was denied.
+	// 	- **denyCount**: the number of times that the robocall task was denied.
 	//
-	// *   **rejectCount**: the number of times that the robocall task was rejected.
+	// 	- **rejectCount**: the number of times that the robocall task was rejected.
 	//
-	// *   **customCount**: the number of times that the robocall task was customized.
+	// 	- **customCount**: the number of times that the robocall task was customized.
 	//
-	// *   **knowledgeCount**: the number of times that the knowledge base was queried.
+	// 	- **knowledgeCount**: the number of times that the knowledge base was queried.
 	//
-	// *   **recordFile**: the download URL of the recording file. The URL is valid only for 48 hours. The recording file must be downloaded in time.
+	// 	- **recordFile**: the download URL of the recording file. The URL is valid only for 48 hours. The recording file must be downloaded in time.
 	//
-	// *   **callId**: the call ID.
+	// 	- **callId**: the call ID.
 	//
-	// *   **recordStatus**: indicates whether a recording file was available. Valid values:
+	// 	- **recordStatus**: indicates whether a recording file was available. Valid values:
 	//
-	//     *   1: A recording file was available.
-	//     *   2: No recording file was available.
+	//     	- 1: A recording file was available.
 	//
-	// *   **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
+	//     	- 2: No recording file was available.
 	//
-	// *   **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
+	// 	- **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
 	//
-	// *   **callee**: the called number.
+	// 	- **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
 	//
-	// *   **dialogDetail**: the conversation details. The value is a JSON array that contains the following parameters:
+	// 	- **callee**: the called number.
 	//
-	//     *   **role**: the role who spoke.
-	//     *   **content**: the content of the speech.
-	//     *   **time**: the start time of the speech.
+	// 	- **dialogDetail**: the conversation details. The value is a JSON array that contains the following parameters:
+	//
+	//     	- **role**: the role who spoke.
+	//
+	//     	- **content**: the content of the speech.
+	//
+	//     	- **time**: the start time of the speech.
 	//
 	// > The preceding parameters are for reference only. The actually returned parameters prevail.
+	//
+	// example:
+	//
+	// {"rejectCount":0,"dialogCount":3,"tags":"","startDate":"2019-03-27 10:34:54","gmtCreate":"2019-03-27 10:34:40","sureCount":0,"state":"200000","recordFile":"http://alicom-fc-record-biz.cn-hangzhou.oss.aliyun-inc.com/Freeswitch_RU_115987800002_02c3554f-ea24-422d-b1de-e671f455f21a_record.wav?OSSAccessKeyId=bypFNbGJVk73****&Signature=VWHOX%2FFhvvtSkxfMTw%2F5fdJUQuk%3D&Expires=1554382725","defaultCount":0,"endDate":"2019-03-27 10:35:09","calleeShowNumber":"1390000****","customCount":0,"callId":"1390000****","knowledgeCount":0,"recordStatus":1,"denyCount":0,"duration":16,"knowledgeCommonCount":0,"callee":"1390000****","knowledgeBusinessCount":0,"hangupDirection":1}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D86B61A8-F2EE-4E4C-9F05-08A4676FFD89
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3881,6 +4959,12 @@ func (s *QueryCallDetailByTaskIdResponse) SetBody(v *QueryCallDetailByTaskIdResp
 type QueryCallInPoolTransferConfigRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The China 400 number used to transfer the call.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400****
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3917,14 +5001,27 @@ func (s *QueryCallInPoolTransferConfigRequest) SetResourceOwnerId(v int64) *Quer
 type QueryCallInPoolTransferConfigResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
 	Data *QueryCallInPoolTransferConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7BF47617-7851-48F7-A3A1-2021342A78E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3959,14 +5056,27 @@ func (s *QueryCallInPoolTransferConfigResponseBody) SetRequestId(v string) *Quer
 type QueryCallInPoolTransferConfigResponseBodyData struct {
 	// The call mode. Valid values:
 	//
-	// *   **roundRobin**
-	// *   **random**
+	// 	- **roundRobin**
+	//
+	// 	- **random**
+	//
+	// example:
+	//
+	// random
 	CalledRouteMode *string `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
 	// The details of the response parameters.
 	Details []*QueryCallInPoolTransferConfigResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 	// The time when the call transfer task was created.
+	//
+	// example:
+	//
+	// 1623137002000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timeout period for transferring the call.
+	//
+	// example:
+	//
+	// 30
 	TransferTimeout *string `json:"TransferTimeout,omitempty" xml:"TransferTimeout,omitempty"`
 }
 
@@ -4000,6 +5110,10 @@ func (s *QueryCallInPoolTransferConfigResponseBodyData) SetTransferTimeout(v str
 
 type QueryCallInPoolTransferConfigResponseBodyDataDetails struct {
 	// The number used to transfer the call.
+	//
+	// example:
+	//
+	// 400****
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
 }
 
@@ -4047,17 +5161,45 @@ func (s *QueryCallInPoolTransferConfigResponse) SetBody(v *QueryCallInPoolTransf
 
 type QueryCallInTransferRecordRequest struct {
 	// The calling number of the inbound call.
+	//
+	// example:
+	//
+	// 150****0000
 	CallInCaller *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Valid values: 1 to 10.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The phone number to which a call is transferred.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The time at which call transfer records are queried, in the YYYY-MM-DD hh:mm:ss format.
 	//
 	// > The query result is all the call transfer records of the specified day.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-06-28 00:00:00
 	QueryDate            *string `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4114,14 +5256,27 @@ func (s *QueryCallInTransferRecordRequest) SetResourceOwnerId(v int64) *QueryCal
 type QueryCallInTransferRecordResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
 	Data *QueryCallInTransferRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7BF47617-7851-48F7-A3A1-2021342A78E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4155,10 +5310,22 @@ func (s *QueryCallInTransferRecordResponseBody) SetRequestId(v string) *QueryCal
 
 type QueryCallInTransferRecordResponseBodyData struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 50
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// The call transfer records.
 	Values []*QueryCallInTransferRecordResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -4194,16 +5361,40 @@ func (s *QueryCallInTransferRecordResponseBodyData) SetValues(v []*QueryCallInTr
 
 type QueryCallInTransferRecordResponseBodyDataValues struct {
 	// The called number of the inbound call.
+	//
+	// example:
+	//
+	// 150****0000
 	CallInCalled *string `json:"CallInCalled,omitempty" xml:"CallInCalled,omitempty"`
 	// The calling number of the inbound call.
+	//
+	// example:
+	//
+	// 150****0000
 	CallInCaller *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
 	// The time when the call was initiated.
+	//
+	// example:
+	//
+	// 2020-10-03 10:21:21
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The recording URL.
+	//
+	// example:
+	//
+	// http://alicom-fc-media.cn-hangzhou.oss.aliyun-inc.com/dayuBizVoiceMrg/4238c230-9e74-41be-90b8-2fbe7684****.wav?Expires=1627538265&OSSAccessKeyId=bypFNbGJVk73****&Signature=****mUqkPqIQ%3D
 	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
 	// The phone number to which the call was transferred.
+	//
+	// example:
+	//
+	// 151****0000
 	TransferCalled *string `json:"TransferCalled,omitempty" xml:"TransferCalled,omitempty"`
 	// The calling number that transferred the call.
+	//
+	// example:
+	//
+	// 151****0000
 	TransferCaller *string `json:"TransferCaller,omitempty" xml:"TransferCaller,omitempty"`
 }
 
@@ -4277,10 +5468,17 @@ func (s *QueryCallInTransferRecordResponse) SetBody(v *QueryCallInTransferRecord
 type QueryRobotInfoListRequest struct {
 	// The review state. Valid values:
 	//
-	// *   **CONFIGURABLE**
-	// *   **AUDITING**
-	// *   **AUDITPASS**
-	// *   **AUDITFAIL**
+	// 	- **CONFIGURABLE**
+	//
+	// 	- **AUDITING**
+	//
+	// 	- **AUDITPASS**
+	//
+	// 	- **AUDITFAIL**
+	//
+	// example:
+	//
+	// AUDITING
 	AuditStatus          *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4318,25 +5516,51 @@ func (s *QueryRobotInfoListRequest) SetResourceOwnerId(v int64) *QueryRobotInfoL
 type QueryRobotInfoListResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The basic information about the robot, in the JSON format. The basic information contains the following parameters:
 	//
-	// *   **id**: the robot ID.
-	// *   **robotName**: the robot name.
-	// *   **robotType**: the robot type.
-	// *   **auditStatus**: the review state.
-	// *   **gmtCreate**: the time when the task was created.
-	// *   **gmtModified**: the time when the task was modified.
-	// *   **partnerId**: the partner ID.
-	// *   **asrId**: the ID of the automatic speech recognition (ASR) model.
-	// *   **asrType**: the ASR type. Valid values: **Public** and **Private**.
-	// *   **remark**: the additional information.
+	// 	- **id**: the robot ID.
+	//
+	// 	- **robotName**: the robot name.
+	//
+	// 	- **robotType**: the robot type.
+	//
+	// 	- **auditStatus**: the review state.
+	//
+	// 	- **gmtCreate**: the time when the task was created.
+	//
+	// 	- **gmtModified**: the time when the task was modified.
+	//
+	// 	- **partnerId**: the partner ID.
+	//
+	// 	- **asrId**: the ID of the automatic speech recognition (ASR) model.
+	//
+	// 	- **asrType**: the ASR type. Valid values: **Public*	- and **Private**.
+	//
+	// 	- **remark**: the additional information.
+	//
+	// example:
+	//
+	// {["id":1000010920004, "gmtModified":"Thu Mar 21 15:38:55 CST 2019", "auditStatus":"AUDITPASS","gmtCreate":"Thu Mar 21 12:00:51 CST 2019","remark":"tset","partnerId":100000022670001,"asrId":"a9a1d69081fd4266ad788346bf5e1b6c","robotType":"CUSTOM","asrType":"1","robotName":"Collection scenario"},{"id":1000010920003,"gmtModified":"Thu Mar 21 11:51:10 CST 2019","auditStatus":"AUDITPASS","gmtCreate":"Thu Mar 21 11:44:57 CST 2019","remark":"test","partnerId":100000022670001,"asrId":"a9a1d69081fd4266ad788346bf5e1b6c","robotType":"CUSTOM","asrType":"1","robotName":"Collection scenario"]}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// F59AF338-655D-48E8-9471-5EB07692B1CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4399,13 +5623,31 @@ func (s *QueryRobotInfoListResponse) SetBody(v *QueryRobotInfoListResponseBody) 
 
 type QueryRobotTaskCallDetailRequest struct {
 	// The called number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 130****0000
 	Callee  *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The timestamp of the time at which the call details you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-10-21 08:23:21
 	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](https://help.aliyun.com/document_detail/393531.html) operation to obtain the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1045001
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4450,41 +5692,83 @@ func (s *QueryRobotTaskCallDetailRequest) SetTaskId(v int64) *QueryRobotTaskCall
 type QueryRobotTaskCallDetailResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The call details of a robocall task, in the JSON format.
 	//
-	// *   **taskId**: the unique ID of the robocall task.
-	// *   **caller**: the calling number.
-	// *   **called**: the called number.
-	// *   **duration**: the call duration. Unit: seconds.
-	// *   **label**: the label of the called party.
-	// *   **dialogCount**: the number of conversation rounds in the call.
-	// *   **callResult**: the call result.
-	// *   **hangupDirection**: the party who hung up. Valid values: **0**: the robot. **1**: the called party.
-	// *   **transferResult**: the result of transferring the call to an agent. Valid values: **1**, **0**, and **3**. The value 1 indicates that the call was transferred to the agent. The value 0 indicates that the call failed to be transferred to the agent. The value 3 indicates that the call was not transferred to the agent.
-	// *   **transferNumber**: the phone number of the agent to whom the call was transferred.
-	// *   **transferFailReason**: the reason why the call failed to be transferred to the agent.
-	// *   **callId**: the unique receipt ID of the call, in the `taskId^bizId` format.
-	// *   **recallCurTimes**: the number of recalls.
-	// *   **callStartTime**: the start time of the call.
-	// *   **callEndTime**: the end time of the call.
-	// *   **sureCount**: the number of times that the robocall task was affirmed.
-	// *   **denyCount**: the number of times that the robocall task was denied.
-	// *   **rejectCount**: the number of times that the robocall task was rejected.
-	// *   **customCount**: the number of times that the robocall task was customized.
-	// *   **knowledgeCount**: the number of times that the knowledge base was queried.
-	// *   **defaultCount**: the default number of calls.
-	// *   **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
-	// *   **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
-	// *   **recordStatus**: Indicates whether the call has a recording file. Valid values: **1**: The call has a recording file. **2**: The call does not have a recording file.
-	// *   **recordFile**: the download URL of the recording file.
-	// *   **dialogDetail**: the dialog details, in a JSON-formatted array. **role**: the object of the speech. **content**: the content of the speech. **speakTime**: the time of the speech.
+	// 	- **taskId**: the unique ID of the robocall task.
+	//
+	// 	- **caller**: the calling number.
+	//
+	// 	- **called**: the called number.
+	//
+	// 	- **duration**: the call duration. Unit: seconds.
+	//
+	// 	- **label**: the label of the called party.
+	//
+	// 	- **dialogCount**: the number of conversation rounds in the call.
+	//
+	// 	- **callResult**: the call result.
+	//
+	// 	- **hangupDirection**: the party who hung up. Valid values: **0**: the robot. **1**: the called party.
+	//
+	// 	- **transferResult**: the result of transferring the call to an agent. Valid values: **1**, **0**, and **3**. The value 1 indicates that the call was transferred to the agent. The value 0 indicates that the call failed to be transferred to the agent. The value 3 indicates that the call was not transferred to the agent.
+	//
+	// 	- **transferNumber**: the phone number of the agent to whom the call was transferred.
+	//
+	// 	- **transferFailReason**: the reason why the call failed to be transferred to the agent.
+	//
+	// 	- **callId**: the unique receipt ID of the call, in the `taskId^bizId` format.
+	//
+	// 	- **recallCurTimes**: the number of recalls.
+	//
+	// 	- **callStartTime**: the start time of the call.
+	//
+	// 	- **callEndTime**: the end time of the call.
+	//
+	// 	- **sureCount**: the number of times that the robocall task was affirmed.
+	//
+	// 	- **denyCount**: the number of times that the robocall task was denied.
+	//
+	// 	- **rejectCount**: the number of times that the robocall task was rejected.
+	//
+	// 	- **customCount**: the number of times that the robocall task was customized.
+	//
+	// 	- **knowledgeCount**: the number of times that the knowledge base was queried.
+	//
+	// 	- **defaultCount**: the default number of calls.
+	//
+	// 	- **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
+	//
+	// 	- **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
+	//
+	// 	- **recordStatus**: Indicates whether the call has a recording file. Valid values: **1**: The call has a recording file. **2**: The call does not have a recording file.
+	//
+	// 	- **recordFile**: the download URL of the recording file.
+	//
+	// 	- **dialogDetail**: the dialog details, in a JSON-formatted array. **role**: the object of the speech. **content**: the content of the speech. **speakTime**: the time of the speech.
+	//
+	// example:
+	//
+	// { "taskId" : 1045001, "caller" : "0571-8899****", "called" : "130****0000", "duration" : "60", "label" : "Invitation", "dialogCount": "3", "callResult" : "Not Available", "hangupDirection" : "1", "transferResult" : "3", "transferNumber" ：0571-8833****, "transferFailReason" ："User hangs up", "callId" ："116950320375^10375010****", "recallCurTimes" : 2, "callStartTime" : "2019.06.14 15:22:23", "callEndTime" : "2019.06.14 15:22:55", "sureCount" : 2, "denyCount" : 2, "rejectCount" : 0, "customCount" : 0, "knowledgeCount" : 0, "defaultCount" : 0, "knowledgeBusinessCount" : 0, "knowledgeCommonCount" : 0, "recordStatus":1, "recordFile": "http://alicom-fc-record-biz.cn-hangzhou.oss.aliyun-inc.com/Freeswitch_RU_117074080001_ccd71132-8256-4eb4-9217-884e1d87c0d4_record.wav?Expires=1562740186&OSSAccessKeyId=bypFNbGJVk7****&Signature=99losPmytVl%2BMH85noZGD******", "dialogDetail": [{"role": "robot","speakTime": "2019-06-19 20:44:17","content":"prologue"}] }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4548,35 +5832,82 @@ func (s *QueryRobotTaskCallDetailResponse) SetBody(v *QueryRobotTaskCallDetailRe
 type QueryRobotTaskCallListRequest struct {
 	// The call result. Valid values:
 	//
-	// *   **200002**: The line is busy.
-	// *   **200005**: The called party cannot be connected.
-	// *   **200010**: The phone of the called party is powered off.
-	// *   **200011**: The called party is out of service.
-	// *   **200012**: The call is lost.
+	// 	- **200002**: The line is busy.
+	//
+	// 	- **200005**: The called party cannot be connected.
+	//
+	// 	- **200010**: The phone of the called party is powered off.
+	//
+	// 	- **200011**: The called party is out of service.
+	//
+	// 	- **200012**: The call is lost.
+	//
+	// example:
+	//
+	// 200002
 	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
 	// The called number.
+	//
+	// example:
+	//
+	// 1300****0000
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
 	// The minimum number of conversation rounds in the call.
+	//
+	// example:
+	//
+	// 0
 	DialogCountFrom *string `json:"DialogCountFrom,omitempty" xml:"DialogCountFrom,omitempty"`
 	// The maximum number of conversation rounds in the call.
+	//
+	// example:
+	//
+	// 5
 	DialogCountTo *string `json:"DialogCountTo,omitempty" xml:"DialogCountTo,omitempty"`
 	// The minimum call duration.
+	//
+	// example:
+	//
+	// 0
 	DurationFrom *string `json:"DurationFrom,omitempty" xml:"DurationFrom,omitempty"`
 	// The maximum call duration.
+	//
+	// example:
+	//
+	// 60
 	DurationTo *string `json:"DurationTo,omitempty" xml:"DurationTo,omitempty"`
 	// The party who hangs up. Valid values:
 	//
-	// *   **0**: the called party.
-	// *   **1**: the robot.
+	// 	- **0**: the called party.
+	//
+	// 	- **1**: the robot.
+	//
+	// example:
+	//
+	// 1
 	HangupDirection *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+	// The unique ID of the robocall task. You can call the [CreateRobotTask](https://help.aliyun.com/document_detail/393531.html) operation to obtain the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1045001****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4656,39 +5987,79 @@ func (s *QueryRobotTaskCallListRequest) SetTaskId(v string) *QueryRobotTaskCallL
 type QueryRobotTaskCallListResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the robocall task, which is a JSON-formatted array.
 	//
-	// *   **taskId**: the unique ID of the robocall task.
-	// *   **caller**: the calling number.
-	// *   **called**: the called number.
-	// *   **duration**: the call duration. Unit: seconds.
-	// *   **label**: the label of the called party.
-	// *   **dialogCount**: the number of conversation rounds in the call.
-	// *   **callResult**: the call result.
-	// *   **hangupDirection**: the party who hung up. Valid values: **1** and **0**. The value 1 indicates the called party, and the value 0 indicates the robot.
-	// *   **transferResult**: the result of transferring the call to an agent. Valid values: **1**, **0**, and **3**. The value 1 indicates that the call was transferred to an agent. The value 0 indicates that the call failed to be transferred to an agent. The value 3 indicates that the call was not transferred to an agent.
-	// *   **transferNumber**: the phone number of the agent to whom the call was transferred.
-	// *   **transferFailReason**: the reason why the call failed to be transferred to an agent.
-	// *   **callId**: the unique receipt ID of the call.
-	// *   **recallCurTimes**: the number of recalls.
-	// *   **callStartTime**: the start time of the call.
-	// *   **callEndTime**: the end time of the call.
-	// *   **sureCount**: the number of times that the robocall task was acknowledged.
-	// *   **denyCount**: the number of times that the robocall task was denied.
-	// *   **rejectCount**: the number of times that the robocall task was rejected.
-	// *   **customCount**: the number of times that the robocall task was customized.
-	// *   **knowledgeCount**: the number of times that the knowledge base was queried.
-	// *   **defaultCount**: the default number of calls.
-	// *   **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
-	// *   **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
-	// *   ****
+	// 	- **taskId**: the unique ID of the robocall task.
+	//
+	// 	- **caller**: the calling number.
+	//
+	// 	- **called**: the called number.
+	//
+	// 	- **duration**: the call duration. Unit: seconds.
+	//
+	// 	- **label**: the label of the called party.
+	//
+	// 	- **dialogCount**: the number of conversation rounds in the call.
+	//
+	// 	- **callResult**: the call result.
+	//
+	// 	- **hangupDirection**: the party who hung up. Valid values: **1*	- and **0**. The value 1 indicates the called party, and the value 0 indicates the robot.
+	//
+	// 	- **transferResult**: the result of transferring the call to an agent. Valid values: **1**, **0**, and **3**. The value 1 indicates that the call was transferred to an agent. The value 0 indicates that the call failed to be transferred to an agent. The value 3 indicates that the call was not transferred to an agent.
+	//
+	// 	- **transferNumber**: the phone number of the agent to whom the call was transferred.
+	//
+	// 	- **transferFailReason**: the reason why the call failed to be transferred to an agent.
+	//
+	// 	- **callId**: the unique receipt ID of the call.
+	//
+	// 	- **recallCurTimes**: the number of recalls.
+	//
+	// 	- **callStartTime**: the start time of the call.
+	//
+	// 	- **callEndTime**: the end time of the call.
+	//
+	// 	- **sureCount**: the number of times that the robocall task was acknowledged.
+	//
+	// 	- **denyCount**: the number of times that the robocall task was denied.
+	//
+	// 	- **rejectCount**: the number of times that the robocall task was rejected.
+	//
+	// 	- **customCount**: the number of times that the robocall task was customized.
+	//
+	// 	- **knowledgeCount**: the number of times that the knowledge base was queried.
+	//
+	// 	- **defaultCount**: the default number of calls.
+	//
+	// 	- **knowledgeBusinessCount**: the number of call failures caused by the business issues in the knowledge base.
+	//
+	// 	- **knowledgeCommonCount**: the number of call failures caused by the common issues in the knowledge base.
+	//
+	// 	- ****
+	//
+	// example:
+	//
+	// [ {"taskId":"1045001", "caller":"0571-889****", "called": "130****0000", "duration":"60", "label":"Invitation", "dialogCount":"3", "callResult":"Not Available", "hangupDirection":"1", "transferResult":"3", "transferNumber":"0571-8833****", "transferFailReason":"User hangs up", "callId":"116950320375^10375010****", "recallCurTimes":"2", "callStartTime":"2019.06.14 15:22:23", "callEndTime":"2019.06.14 15:22:55", "sureCount":"2", "denyCount":"2", "rejectCount":"0", "customCount:"0", "knowledgeCount":"0", "defaultCount":"0", "knowledgeBusinessCount":"0", "knowledgeCommonCount":"0"} ]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4751,6 +6122,12 @@ func (s *QueryRobotTaskCallListResponse) SetBody(v *QueryRobotTaskCallListRespon
 
 type QueryRobotTaskDetailRequest struct {
 	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1045001
 	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4788,33 +6165,67 @@ func (s *QueryRobotTaskDetailRequest) SetResourceOwnerId(v int64) *QueryRobotTas
 type QueryRobotTaskDetailResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the robocall task, in the JSON format.
 	//
-	// *   **Id**: the unique ID of the robocall task.
-	// *   **taskName**: the task name.
-	// *   **robotId**: the robot ID.
-	// *   **robotName**: the robot name.
-	// *   **corpName**: the company name.
-	// *   **caller**: the number displayed to the called party.
-	// *   **numberStatusIdent**: indicates whether number status identification was enabled. Valid values: **true** and **false**. The value true indicates that number status identification was enabled. The value false indicates that number status identification was not enabled.
-	// *   **status**: the task state. You can call the [QueryRobotTaskList](~~QueryRobotTaskList~~) operation to obtain the task state from the `status` parameter.
-	// *   **scheduleType**: the scheduling type. Valid values: **SINGLE** and **ORDER**. The value SINGLE indicates that the task was started immediately after it was created. The value ORDER indicates that the task was started at a scheduled time.
-	// *   **retryType**: indicates whether auto-redial was enabled. Valid values: **1** and **0**. The value 1 indicates that auto-redial was enabled. The value 0 indicates that auto-redial was not enabled.
-	// *   **recallStateCodes**: the call state in which redial is required. Valid values: **200010**, **200011**, **200002**, **200012**, and **200005**. The value 200010 indicates that the phone of the called party was powered off. The value 200011 indicates that the number of the called party was out of service. The value 200002 indicates that the line was busy. The value 200012 indicates that the call was lost. The value 200005 indicates that the called party could not be connected.
-	// *   **recallTimes**: the number of redial times.
-	// *   **recallInterval**: the redial interval. Unit: minutes.
-	// *   **createTime**: the time when the task was created, in the yyyy-MM-dd HH:mm:ss format.
-	// *   **fireTime**: the time when the task was started, in the yyyy-MM-dd HH:mm:ss format.
-	// *   **completeTime**: the time when the task was completed, in the yyyy-MM-dd HH:mm:ss format.
-	// *   **filename**: the name of the called number file.
-	// *   **ossFilePath**: the path of the called number file.
+	// 	- **Id**: the unique ID of the robocall task.
+	//
+	// 	- **taskName**: the task name.
+	//
+	// 	- **robotId**: the robot ID.
+	//
+	// 	- **robotName**: the robot name.
+	//
+	// 	- **corpName**: the company name.
+	//
+	// 	- **caller**: the number displayed to the called party.
+	//
+	// 	- **numberStatusIdent**: indicates whether number status identification was enabled. Valid values: **true*	- and **false**. The value true indicates that number status identification was enabled. The value false indicates that number status identification was not enabled.
+	//
+	// 	- **status**: the task state. You can call the [QueryRobotTaskList](~~QueryRobotTaskList~~) operation to obtain the task state from the `status` parameter.
+	//
+	// 	- **scheduleType**: the scheduling type. Valid values: **SINGLE*	- and **ORDER**. The value SINGLE indicates that the task was started immediately after it was created. The value ORDER indicates that the task was started at a scheduled time.
+	//
+	// 	- **retryType**: indicates whether auto-redial was enabled. Valid values: **1*	- and **0**. The value 1 indicates that auto-redial was enabled. The value 0 indicates that auto-redial was not enabled.
+	//
+	// 	- **recallStateCodes**: the call state in which redial is required. Valid values: **200010**, **200011**, **200002**, **200012**, and **200005**. The value 200010 indicates that the phone of the called party was powered off. The value 200011 indicates that the number of the called party was out of service. The value 200002 indicates that the line was busy. The value 200012 indicates that the call was lost. The value 200005 indicates that the called party could not be connected.
+	//
+	// 	- **recallTimes**: the number of redial times.
+	//
+	// 	- **recallInterval**: the redial interval. Unit: minutes.
+	//
+	// 	- **createTime**: the time when the task was created, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// 	- **fireTime**: the time when the task was started, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// 	- **completeTime**: the time when the task was completed, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// 	- **filename**: the name of the called number file.
+	//
+	// 	- **ossFilePath**: the path of the called number file.
+	//
+	// example:
+	//
+	// {"id":1045001,"taskName":"Test Template","robotId":1000000075003,"robotName":"robot","corpName":"company ","caller":"057156xxxx,0571568xxxx", "numberStatusIdent":true,"status":"INIT","scheduleType":"SINGLE", "retryType":1,"recallStateCodes":"200010,200011", "recallTimes":2,"recallInterval":5,"createTime": "2019-06-14 11:04:19","fireTime":"2019-06-14 11:05:23","completeTime": "2019-06-14 18:21:06","called": [{"fileName": "5102636f-7be6-4a2d-9ac7-755a2e140a50--robotCallApi", "ossFilePath": "http://test.cn-hangzhou.oss.aliyun-inc.com/5102636f-7be6-4a2d-9ac7-755a2e140a50--robotCallApi.xlsx"}]}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4878,27 +6289,56 @@ func (s *QueryRobotTaskDetailResponse) SetBody(v *QueryRobotTaskDetailResponseBo
 type QueryRobotTaskListRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The task state. Valid values:
 	//
-	// *   **INIT**: The task is not started.
-	// *   **READY**: The task is ready to start.
-	// *   **DISPATCH**: The task is being parsed.
-	// *   **EXCUTING**: The task is being executed.
-	// *   **MANUAL_STOP**: The task is manually suspended.
-	// *   **SYSTEM_STOP**: The task is suspended by the system.
-	// *   **ARREARS_STOP**: The task is suspended due to overdue payments.
-	// *   **CANCEL**: The task is manually canceled.
-	// *   **SYSTEM_CANCEL**: The task is canceled by the system.
-	// *   **FINISH**: The task is complete.
+	// 	- **INIT**: The task is not started.
+	//
+	// 	- **READY**: The task is ready to start.
+	//
+	// 	- **DISPATCH**: The task is being parsed.
+	//
+	// 	- **EXCUTING**: The task is being executed.
+	//
+	// 	- **MANUAL_STOP**: The task is manually suspended.
+	//
+	// 	- **SYSTEM_STOP**: The task is suspended by the system.
+	//
+	// 	- **ARREARS_STOP**: The task is suspended due to overdue payments.
+	//
+	// 	- **CANCEL**: The task is manually canceled.
+	//
+	// 	- **SYSTEM_CANCEL**: The task is canceled by the system.
+	//
+	// 	- **FINISH**: The task is complete.
+	//
+	// example:
+	//
+	// EXCUTING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task name.
+	//
+	// example:
+	//
+	// Test Template
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The date when the task is created, in the yyyy-MM-dd format.
+	//
+	// example:
+	//
+	// 2019-06-14
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -4952,30 +6392,68 @@ func (s *QueryRobotTaskListRequest) SetTime(v string) *QueryRobotTaskListRequest
 
 type QueryRobotTaskListResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The robocall tasks, in the JSON format.
 	//
-	// *   **id**: the unique ID of the robocall task.
-	// *   **taskName**: the task name.
-	// *   **robotId**: the robot ID.
-	// *   **robotName**: the robot name.
-	// *   **status**: the task state.
-	// *   **scheduleType**: the scheduling type. Valid values: **SINGLE** and **ORDER**. The value SINGLE indicates that the task was started immediately after it was created. The value ORDER indicates that the task was started at a scheduled time.
-	// *   **createTime**: the time when the task was created, in the yyyy.MM.dd HH:mm:ss format.
-	// *   **completeTime**: the time when the task was completed, in the yyyy.MM.dd HH:mm:ss format.
-	// *   **fireTime**: the time when the task was started, in the yyyy.MM.dd HH:mm:ss format.
-	// *   **totalCount**: the total number of calls processed.
-	// *   **finishCount**: the number of calls completed.
+	// 	- **id**: the unique ID of the robocall task.
+	//
+	// 	- **taskName**: the task name.
+	//
+	// 	- **robotId**: the robot ID.
+	//
+	// 	- **robotName**: the robot name.
+	//
+	// 	- **status**: the task state.
+	//
+	// 	- **scheduleType**: the scheduling type. Valid values: **SINGLE*	- and **ORDER**. The value SINGLE indicates that the task was started immediately after it was created. The value ORDER indicates that the task was started at a scheduled time.
+	//
+	// 	- **createTime**: the time when the task was created, in the yyyy.MM.dd HH:mm:ss format.
+	//
+	// 	- **completeTime**: the time when the task was completed, in the yyyy.MM.dd HH:mm:ss format.
+	//
+	// 	- **fireTime**: the time when the task was started, in the yyyy.MM.dd HH:mm:ss format.
+	//
+	// 	- **totalCount**: the total number of calls processed.
+	//
+	// 	- **finishCount**: the number of calls completed.
+	//
+	// example:
+	//
+	// [ {"id": 1045001, "taskName": "Test Template", "robotId": 1000000075003, "robotName": "robot", "status": "INIT","scheduleType": "SINGLE", "createTime": "2019.06.14 14:55:23", "completeTime": "2019.06.14 14:55:23", "fireTime": "2019.06.14 14:55:23", "totalCount": 1000, "finishCount": 998} ]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of tasks.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5083,18 +6561,37 @@ func (s *QueryRobotv2AllListRequest) SetResourceOwnerId(v int64) *QueryRobotv2Al
 type QueryRobotv2AllListResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the robot communication script, in the JSON format.
 	//
-	// *   **id**: the ID of the robot communication script.
-	// *   **robotName**: the name of the robot communication script.
-	// *   **robotType**: the type of the robot communication script.
+	// 	- **id**: the ID of the robot communication script.
+	//
+	// 	- **robotName**: the name of the robot communication script.
+	//
+	// 	- **robotType**: the type of the robot communication script.
+	//
+	// example:
+	//
+	// {"id":100000007****,"robotName":"Robot","robotType":"CUSTOM"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5156,7 +6653,15 @@ func (s *QueryRobotv2AllListResponse) SetBody(v *QueryRobotv2AllListResponseBody
 }
 
 type QueryVideoPlayProgressRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 116004767703^102806****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 159****0000
 	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -5197,11 +6702,20 @@ func (s *QueryVideoPlayProgressRequest) SetResourceOwnerId(v int64) *QueryVideoP
 }
 
 type QueryVideoPlayProgressResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryVideoPlayProgressResponseBody) String() string {
@@ -5269,17 +6783,34 @@ func (s *QueryVideoPlayProgressResponse) SetBody(v *QueryVideoPlayProgressRespon
 type QueryVirtualNumberRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The service name. Default value: **dyvms**.
+	//
+	// example:
+	//
+	// dyvms
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The route type. Valid values:
 	//
-	// *   **0**: number location first.
-	// *   **1**: random.
+	// 	- **0**: number location first.
+	//
+	// 	- **1**: random.
+	//
+	// example:
+	//
+	// 0
 	RouteType *int32 `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
@@ -5328,24 +6859,48 @@ func (s *QueryVirtualNumberRequest) SetRouteType(v int32) *QueryVirtualNumberReq
 
 type QueryVirtualNumberResponseBody struct {
 	// The response code. The value 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the numbers associated with the virtual numbers. The following fields are returned:
 	//
-	// *   createTime: the time when the number was activated.
-	// *   qualificationCount: the number of qualifications.
-	// *   cityCount: the number of cities.
-	// *   phoneNumCount: the number of virtual numbers.
-	// *   remark: the additional information.
-	// *   phoneNum: the virtual number.
-	// *   routeType: the route type.
-	// *   canCancel: indicates whether the number can be deactivated.
-	// *   specCount: the number of Internet service providers (ISPs).
-	// *   status: the number state. Valid values: **1**, **0**, and **-1**. The value 1 indicates that the number is valid. The value 0 indicates that the number is invalid. The value -1 indicates that the number was deactivated.
-	// *   pageNo: the page number.
-	// *   pageSize: the number of entries per page.
-	// *   total: the total number of virtual numbers.
+	// 	- createTime: the time when the number was activated.
+	//
+	// 	- qualificationCount: the number of qualifications.
+	//
+	// 	- cityCount: the number of cities.
+	//
+	// 	- phoneNumCount: the number of virtual numbers.
+	//
+	// 	- remark: the additional information.
+	//
+	// 	- phoneNum: the virtual number.
+	//
+	// 	- routeType: the route type.
+	//
+	// 	- canCancel: indicates whether the number can be deactivated.
+	//
+	// 	- specCount: the number of Internet service providers (ISPs).
+	//
+	// 	- status: the number state. Valid values: **1**, **0**, and **-1**. The value 1 indicates that the number is valid. The value 0 indicates that the number is invalid. The value -1 indicates that the number was deactivated.
+	//
+	// 	- pageNo: the page number.
+	//
+	// 	- pageSize: the number of entries per page.
+	//
+	// 	- total: the total number of virtual numbers.
+	//
+	// example:
+	//
+	// {"data":[{"createTime":"2020-07-15 04:00:00","qualificationCount":0,"cityCount":0,"phoneNumCount":1,"remark":"20200715Unicom CTD shut down","phoneNum":"05516214****","routeType":1,"canCancel":true,"specCount":0,"status":"1"}],"pageSize":1,"total":17,"pageNo":1}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9FF70B74-1B3C-44C1-ACDF-8DF962988F0E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5404,32 +6959,70 @@ func (s *QueryVirtualNumberResponse) SetBody(v *QueryVirtualNumberResponseBody) 
 type QueryVirtualNumberRelationRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The virtual number.
+	//
+	// example:
+	//
+	// 05516214****
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
 	// The service name. Default value: **dyvms**.
+	//
+	// example:
+	//
+	// dyvms
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	// The qualification ID.
 	//
-	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualifications\&Communication Scripts > Qualification Management**, and then click **Details** in the Actions column to view the qualification ID.
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualifications\\&Communication Scripts > Qualification Management**, and then click **Details*	- in the Actions column to view the qualification ID.
+	//
+	// example:
+	//
+	// 1000000542****
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	// The city to which the virtual number belongs.
+	//
+	// example:
+	//
+	// hangzhou
 	RegionNameCity *string `json:"RegionNameCity,omitempty" xml:"RegionNameCity,omitempty"`
 	// The real number.
+	//
+	// example:
+	//
+	// 1705559****
 	RelatedNum           *string `json:"RelatedNum,omitempty" xml:"RelatedNum,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The route type. Valid values:
 	//
 	// **0**: number location first. **1**: random.
+	//
+	// example:
+	//
+	// 0
 	RouteType *int32 `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 	// The number type. Valid values:
 	//
-	// *   **1**: the number provided by a virtual network operator, in the 05710000\*\*\*\* format.
-	// *   **2**: the number provided by an Internet service provider (ISP).
-	// *   **3**: a 5-digit phone number that starts with 95.
+	// 	- **1**: the number provided by a virtual network operator, in the 05710000\\*\\*\\*\\	- format.
+	//
+	// 	- **2**: the number provided by an Internet service provider (ISP).
+	//
+	// 	- **3**: a 5-digit phone number that starts with 95.
+	//
+	// example:
+	//
+	// 1
 	SpecId *int64 `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
 }
 
@@ -5504,18 +7097,35 @@ func (s *QueryVirtualNumberRelationRequest) SetSpecId(v int64) *QueryVirtualNumb
 type QueryVirtualNumberRelationResponseBody struct {
 	// The response code.
 	//
-	// *   The value 200 indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value 200 indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The list of associations between virtual numbers and real numbers. The following fields are returned:
 	//
-	// *   **relatedNum**: the real number.
-	// *   **createTime**: the time when the number was activated.
-	// *   **pageNo**: the page number.
-	// *   **pageSize**: the number of entries per page.
-	// *   **total**: the total number of entries returned.
+	// 	- **relatedNum**: the real number.
+	//
+	// 	- **createTime**: the time when the number was activated.
+	//
+	// 	- **pageNo**: the page number.
+	//
+	// 	- **pageSize**: the number of entries per page.
+	//
+	// 	- **total**: the total number of entries returned.
+	//
+	// example:
+	//
+	// {"data":[{"relatedNum":"1705559****","createTime":"2021-03-26 12:34:08"}],"pageSize":20,"total":1,"pageNo":1}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8FAD5988-B483-48A4-B251-6E8470A67371
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5574,15 +7184,26 @@ func (s *QueryVirtualNumberRelationResponse) SetBody(v *QueryVirtualNumberRelati
 type QueryVoiceFileAuditInfoRequest struct {
 	// The type of the voice file. Valid values:
 	//
-	// *   **0** (default): the voice notification file.
-	// *   **2**: the recording file.
+	// 	- **0*	- (default): the voice notification file.
+	//
+	// 	- **2**: the recording file.
+	//
+	// example:
+	//
+	// 0
 	BusinessType         *int32  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the voice file. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications** or **Voice File Management**, and then click the **Voice Notification Files** tab to view the **voice ID**.
+	// The ID of the voice file. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages*	- > **Voice Notifications*	- or **Voice File Management**, and then click the **Voice Notification Files*	- tab to view the **voice ID**.
 	//
 	// > You can query up to 10 voice files each time. Separate the voice file names with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8501d2eb-efbb-471f-xxx8-****.wav
 	VoiceCodes *string `json:"VoiceCodes,omitempty" xml:"VoiceCodes,omitempty"`
 }
 
@@ -5622,13 +7243,25 @@ func (s *QueryVoiceFileAuditInfoRequest) SetVoiceCodes(v string) *QueryVoiceFile
 type QueryVoiceFileAuditInfoResponseBody struct {
 	// The response code.
 	//
-	// The value OK indicates that the request was successful. For more information about other response codes, see [API error codes](~~112502~~).
+	// The value OK indicates that the request was successful. For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response parameters.
 	Data []*QueryVoiceFileAuditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5663,18 +7296,37 @@ func (s *QueryVoiceFileAuditInfoResponseBody) SetRequestId(v string) *QueryVoice
 type QueryVoiceFileAuditInfoResponseBodyData struct {
 	// The review state of the voice file. Valid values:
 	//
-	// *   **AUDIT_STATE_INIT**: The voice file was under review.
-	// *   **AUDIT_STATE_PASS**: The voice file was approved.
-	// *   **AUDIT_STATE_NOT_PASS**: The voice file was rejected.
-	// *   **AUDIT_STATE_UPLOADING**: The voice file was approved and is being uploaded.
-	// *   **AUDIT_STATE_REDOING**: The voice file was being reprocessed.
-	// *   **AUDIT_SATE_CANCEL**: The review of the voice file was canceled.
-	// *   **AUDIT_PAUSE**: The review of the voice file was suspended.
-	// *   **AUDIT_ORDER_FINISHED**: The voice file was approved by the ticket system and was waiting for the review of the Internet service provider (ISP).
+	// 	- **AUDIT_STATE_INIT**: The voice file was under review.
+	//
+	// 	- **AUDIT_STATE_PASS**: The voice file was approved.
+	//
+	// 	- **AUDIT_STATE_NOT_PASS**: The voice file was rejected.
+	//
+	// 	- **AUDIT_STATE_UPLOADING**: The voice file was approved and is being uploaded.
+	//
+	// 	- **AUDIT_STATE_REDOING**: The voice file was being reprocessed.
+	//
+	// 	- **AUDIT_SATE_CANCEL**: The review of the voice file was canceled.
+	//
+	// 	- **AUDIT_PAUSE**: The review of the voice file was suspended.
+	//
+	// 	- **AUDIT_ORDER_FINISHED**: The voice file was approved by the ticket system and was waiting for the review of the Internet service provider (ISP).
+	//
+	// example:
+	//
+	// AUDIT_STATE_NOT_PASS
 	AuditState *string `json:"AuditState,omitempty" xml:"AuditState,omitempty"`
 	// The reason why the voice file was rejected.
+	//
+	// example:
+	//
+	// This business is not supported
 	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
 	// The code of the voice file.
+	//
+	// example:
+	//
+	// 8501d2eb-efbb-471f-xxx8-****.wav
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
 }
 
@@ -5732,6 +7384,12 @@ func (s *QueryVoiceFileAuditInfoResponse) SetBody(v *QueryVoiceFileAuditInfoResp
 
 type RecoverCallInConfigRequest struct {
 	// The China 400 number that is used to transfer the inbound call.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400***
 	Number               *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -5768,15 +7426,32 @@ func (s *RecoverCallInConfigRequest) SetResourceOwnerId(v int64) *RecoverCallInC
 
 type RecoverCallInConfigResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the inbound call was resumed. Valid values:
 	//
-	// *   true: The inbound call was resumed.
-	// *   false: The inbound call failed to be resumed.
+	// 	- true: The inbound call was resumed.
+	//
+	// 	- false: The inbound call failed to be resumed.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// test
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// a78278ff-26bb-48ec-805c-26a0f4c102***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5838,7 +7513,15 @@ func (s *RecoverCallInConfigResponse) SetBody(v *RecoverCallInConfigResponseBody
 }
 
 type ResumeVideoFileRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 100001616500^1000018****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
 	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -5879,11 +7562,20 @@ func (s *ResumeVideoFileRequest) SetResourceOwnerId(v int64) *ResumeVideoFileReq
 }
 
 type ResumeVideoFileResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ResumeVideoFileResponseBody) String() string {
@@ -5950,13 +7642,25 @@ func (s *ResumeVideoFileResponse) SetBody(v *ResumeVideoFileResponseBody) *Resum
 
 type SeekVideoFileRequest struct {
 	// 呼叫唯一ID
+	//
+	// example:
+	//
+	// 示例值
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// 被叫号码
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 快进或快退值，负数为快退，单位秒
+	//
+	// example:
+	//
+	// 92
 	SeekTimes *int64 `json:"SeekTimes,omitempty" xml:"SeekTimes,omitempty"`
 }
 
@@ -5999,11 +7703,20 @@ func (s *SeekVideoFileRequest) SetSeekTimes(v int64) *SeekVideoFileRequest {
 }
 
 type SeekVideoFileResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 示例值
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SeekVideoFileResponseBody) String() string {
@@ -6070,13 +7783,31 @@ func (s *SeekVideoFileResponse) SetBody(v *SeekVideoFileResponseBody) *SeekVideo
 
 type SendVerificationRequest struct {
 	// The business type. Set the value to **CONTACT**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CONTACT
 	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The mobile phone number that receives the SMS verification code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 150****0000
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The mode of sending the SMS verification code. Set the value to **SMS**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS
 	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
@@ -6121,14 +7852,31 @@ func (s *SendVerificationRequest) SetVerifyType(v string) *SendVerificationReque
 type SendVerificationResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the verification code was sent successfully.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6086693B-2250-17CE-A41F-06259AB6DB1B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6192,15 +7940,36 @@ func (s *SendVerificationResponse) SetBody(v *SendVerificationResponseBody) *Sen
 type SetTransferCalleePoolConfigRequest struct {
 	// The call mode. Valid values:
 	//
-	// *   **roundRobin**
-	// *   **random**
+	// 	- **roundRobin**
+	//
+	// 	- **random**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// roundRobin
 	CalledRouteMode *string `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
 	// The information about the phone numbers for transferring the call.
+	//
+	// This parameter is required.
 	Details []*SetTransferCalleePoolConfigRequestDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 	OwnerId *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number used for transferring the call.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+	// The qualification ID. You can call the [GetHotlineQualificationByOrder](https://help.aliyun.com/document_detail/393548.html) operation to obtain the qualification ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 190***
 	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6251,8 +8020,18 @@ func (s *SetTransferCalleePoolConfigRequest) SetResourceOwnerId(v int64) *SetTra
 
 type SetTransferCalleePoolConfigRequestDetails struct {
 	// The called number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 151****0000
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
 	// The calling number.
+	//
+	// example:
+	//
+	// 150****0000
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 }
 
@@ -6277,14 +8056,31 @@ func (s *SetTransferCalleePoolConfigRequestDetails) SetCaller(v string) *SetTran
 type SetTransferCalleePoolConfigResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the phone numbers for transferring the call were configured.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// E7518CE1-B0FF-4C6F-9252-BF80271B2F99
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6348,46 +8144,84 @@ func (s *SetTransferCalleePoolConfigResponse) SetBody(v *SetTransferCalleePoolCo
 type SingleCallByTtsRequest struct {
 	// The mobile phone number that receives voice notifications.
 	//
-	// *   Number format in the Chinese mainland:
+	// 	- Number format in the Chinese mainland:
 	//
-	//     *   Mobile phone number, for example, 159\*\*\*\*0000.
-	//     *   Landline number, for example, 0571\*\*\*\*5678.
+	//     	- Mobile phone number, for example, 159\\*\\*\\*\\*0000.
 	//
-	// *   Number format outside the Chinese mainland: country code + phone number, for example, 85200\*\*\*\*00.
+	//     	- Landline number, for example, 0571\\*\\*\\*\\*5678.
+	//
+	// 	- Number format outside the Chinese mainland: country code + phone number, for example, 85200\\*\\*\\*\\*00.
 	//
 	// >
 	//
-	// *   Each request supports only one called number. For more information, see [How to use voice notifications in the Chinese mainland](~~150016~~) or [How to use voice verification codes in regions outside the Chinese mainland](~~270044~~).
+	// 	- Each request supports only one called number. For more information, see [How to use voice notifications in the Chinese mainland](https://help.aliyun.com/document_detail/150016.html) or [How to use voice verification codes in regions outside the Chinese mainland](https://help.aliyun.com/document_detail/270044.html).
 	//
-	// *   Voice verification codes are sent to a called number at the following frequency: one time per minute, five times per hour, and 20 times per 24 hours.
+	// 	- Voice verification codes are sent to a called number at the following frequency: one time per minute, five times per hour, and 20 times per 24 hours.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590****000
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	// The number displayed to the called party.
 	//
-	// *   You do not need to specify this parameter if you use the text-to-speech (TTS) notification template or voice verification code template for outbound calls in the common mode. For more information, see [FAQ about the common outbound call mode](~~172104~~).
-	// *   If you use the TTS notification template or voice verification code template for outbound calls in the dedicated mode, you must specify a number you purchased and only one number can be specified. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Voice Numbers** > **Real Number Management** to view the number you purchased.
+	// 	- You do not need to specify this parameter if you use the text-to-speech (TTS) notification template or voice verification code template for outbound calls in the common mode. For more information, see [FAQ about the common outbound call mode](https://help.aliyun.com/document_detail/172104.html).
+	//
+	// 	- If you use the TTS notification template or voice verification code template for outbound calls in the dedicated mode, you must specify a number you purchased and only one number can be specified. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Voice Numbers*	- > **Real Number Management*	- to view the number you purchased.
+	//
+	// example:
+	//
+	// 0571****5678
 	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
 	// The custom ID that is reserved for the caller of the operation when the request is initiated. This ID is returned to the caller in a receipt message.
 	//
 	// The value is of the STRING type and must be 1 to 15 bytes in length.
+	//
+	// example:
+	//
+	// 225869*****
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of times a voice notification is played back in a call. Valid values: 1 to 3. Default value: 3.
+	//
+	// example:
+	//
+	// 3
 	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The playback speed. Valid value: -500 to 500.
+	//
+	// example:
+	//
+	// 5
 	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
 	// The ID of the approved TTS notification template or voice verification code template.
 	//
-	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), and choose **Voice Messages** > **Voice Verification Codes** or choose **Voice Messages** > **Voice Notifications** to view the **template ID**.
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), and choose **Voice Messages*	- > **Voice Verification Codes*	- or choose **Voice Messages*	- > **Voice Notifications*	- to view the **template ID**.
 	//
 	// > The account to which the TTS template belongs must be the same as the account that is used to call the SingleCallByTts operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TTS_100****
 	TtsCode *string `json:"TtsCode,omitempty" xml:"TtsCode,omitempty"`
 	// The variables in the template, in the JSON format.
 	//
 	// > The variables in the template must be less than 250 characters in length. The length of each single variable is not limited. These variables do not support URLs. The variables in the verification code template support only digits and letters.
+	//
+	// example:
+	//
+	// {"AckNum":"123456"}
 	TtsParam *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
 	// The playback volume of the voice notification. Valid values: 0 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -6457,16 +8291,33 @@ func (s *SingleCallByTtsRequest) SetVolume(v int32) *SingleCallByTtsRequest {
 type SingleCallByTtsResponseBody struct {
 	// The unique receipt ID of the call.
 	//
-	// You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call based on the receipt ID.
+	// You can call the [QueryCallDetailByCallId](https://help.aliyun.com/document_detail/393529.html) operation to query the details of the call based on the receipt ID.
+	//
+	// example:
+	//
+	// 116012354148^10281378****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6528,17 +8379,43 @@ func (s *SingleCallByTtsResponse) SetBody(v *SingleCallByTtsResponseBody) *Singl
 }
 
 type SingleCallByVideoRequest struct {
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590****000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 0571****5678
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// example:
+	//
+	// abcdefgh
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 3
 	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	VideoCode            *string `json:"VideoCode,omitempty" xml:"VideoCode,omitempty"`
-	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// example:
+	//
+	// 100
+	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// This parameter is required.
+	VideoCode *string `json:"VideoCode,omitempty" xml:"VideoCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2d4c-4e78-8d2a-afbb06cf****.wav
+	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	// example:
+	//
+	// 100
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s SingleCallByVideoRequest) String() string {
@@ -6605,9 +8482,21 @@ func (s *SingleCallByVideoRequest) SetVolume(v int32) *SingleCallByVideoRequest 
 }
 
 type SingleCallByVideoResponseBody struct {
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 116012354148^10281378****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// a78278ff-26bb-48ec-805c-26a0f4c102***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6673,40 +8562,74 @@ type SingleCallByVoiceRequest struct {
 	//
 	// Number format:
 	//
-	// *   In the Chinese mainland:
+	// 	- In the Chinese mainland:
 	//
-	//     *   Mobile phone number, for example, 159\*\*\*\*0000.
-	//     *   Landline number, for example, 0571\*\*\*\*5678.
+	//     	- Mobile phone number, for example, 159\\*\\*\\*\\*0000.
 	//
-	// *   Outside the Chinese mainland: country code + phone number, for example, 85200\*\*\*\*00.
+	//     	- Landline number, for example, 0571\\*\\*\\*\\*5678.
+	//
+	// 	- Outside the Chinese mainland: country code + phone number, for example, 85200\\*\\*\\*\\*00.
 	//
 	// >
 	//
-	// *   You can specify only one called number for a request. For more information, see [How to use voice notifications in the Chinese mainland](~~150016~~) or [How to use voice notifications in regions outside the Chinese mainland](~~268810~~).
+	// 	- You can specify only one called number for a request. For more information, see [How to use voice notifications in the Chinese mainland](https://help.aliyun.com/document_detail/150016.html) or [How to use voice notifications in regions outside the Chinese mainland](https://help.aliyun.com/document_detail/268810.html).
 	//
-	// *   Voice notifications are sent to a called number at the following frequency: one time per minute, five times per hour, and 20 times per 24 hours.
+	// 	- Voice notifications are sent to a called number at the following frequency: one time per minute, five times per hour, and 20 times per 24 hours.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590****000
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	// The number displayed to the called party.
 	//
-	// *   You do not need to specify this parameter if you use a voice notification file that uses the common outbound call mode. For more information, see [FAQ about the common outbound call mode](~~172104~~).
-	// *   If you use a voice notification file that uses the dedicated outbound call mode, you must specify a number that you purchased. You can specify only one number. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service** > **Real Number Management** to view the number that you purchased.
+	// 	- You do not need to specify this parameter if you use a voice notification file that uses the common outbound call mode. For more information, see [FAQ about the common outbound call mode](https://help.aliyun.com/document_detail/172104.html).
+	//
+	// 	- If you use a voice notification file that uses the dedicated outbound call mode, you must specify a number that you purchased. You can specify only one number. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service*	- > **Real Number Management*	- to view the number that you purchased.
+	//
+	// example:
+	//
+	// 0571****5678
 	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
 	// The ID reserved for the caller. This ID is returned to the caller in a receipt message.
 	//
 	// The value must be of the STRING type and 1 to 15 bytes in length.
+	//
+	// example:
+	//
+	// 22596****
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of times the voice notification file is played. Valid values: 1 to 3.
+	//
+	// example:
+	//
+	// 3
 	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The playback speed of the voice notification file. Valid values: -500 to 500.
+	//
+	// example:
+	//
+	// 100
 	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
 	// The voice ID of the voice notification file.
 	//
-	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications** or **Voice File Management**, and then click the **Voice Notification Files** tab to view the **voice ID**.
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages*	- > **Voice Notifications*	- or **Voice File Management**, and then click the **Voice Notification Files*	- tab to view the **voice ID**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2d4c-4e78-8d2a-afbb06cf****.wav
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
 	// The playback volume of the voice notification file. Valid values: 0 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -6771,16 +8694,33 @@ func (s *SingleCallByVoiceRequest) SetVolume(v int32) *SingleCallByVoiceRequest 
 type SingleCallByVoiceResponseBody struct {
 	// The unique receipt ID for the call.
 	//
-	// You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call.
+	// You can call the [QueryCallDetailByCallId](https://help.aliyun.com/document_detail/393529.html) operation to query the details of the call.
+	//
+	// example:
+	//
+	// 116004767703^102806****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.****
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.****
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// E50FFA85-0B79-4421-A7BD-00B0A271966F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6842,13 +8782,29 @@ func (s *SingleCallByVoiceResponse) SetBody(v *SingleCallByVoiceResponseBody) *S
 }
 
 type SkipVideoFileRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 116012854210^10281427****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590****000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// PR0210428****
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SkipTimes            *int64  `json:"SkipTimes,omitempty" xml:"SkipTimes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 04:02:01
+	SkipTimes *int64 `json:"SkipTimes,omitempty" xml:"SkipTimes,omitempty"`
 }
 
 func (s SkipVideoFileRequest) String() string {
@@ -6896,10 +8852,22 @@ func (s *SkipVideoFileRequest) SetSkipTimes(v int64) *SkipVideoFileRequest {
 
 type SkipVideoFileResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SkipVideoFileResponseBody) String() string {
@@ -6970,129 +8938,246 @@ type SmartCallRequest struct {
 	// If you set the value of this parameter to false, the playback of the recording file cannot be interrupted even if the value of action_break is set to true.
 	//
 	// > The value of action_code_break takes precedence over the value of action_break.
+	//
+	// example:
+	//
+	// true
 	ActionCodeBreak *bool `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
 	// The duration that the user keeps speaking. The playback of the recording file is interrupted when this duration is reached. Unit: milliseconds.
 	//
-	// If the value of ActionCodeBreak is set to **true** for the recording file and the duration that the user keeps speaking reaches the specified duration, the playback of the recording file is interrupted. If you do not specify ActionCodeTimeBreak or set the value of ActionCodeTimeBreak to 0, the setting of ActionCodeBreak does not take effect.
+	// If the value of ActionCodeBreak is set to **true*	- for the recording file and the duration that the user keeps speaking reaches the specified duration, the playback of the recording file is interrupted. If you do not specify ActionCodeTimeBreak or set the value of ActionCodeTimeBreak to 0, the setting of ActionCodeBreak does not take effect.
+	//
+	// example:
+	//
+	// 120
 	ActionCodeTimeBreak *int32 `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
 	// The ASR base model. Valid values:
 	//
-	// *   **customer_service\_8k** (default): Chinese Mandarin.
-	// *   **dialect_customer_service\_8k**: a heavy accent.
+	// 	- **customer_service_8k*	- (default): Chinese Mandarin.
+	//
+	// 	- **dialect_customer_service_8k**: a heavy accent.
 	//
 	// > You must specify the ASR model when you call the SmartCall operation. We recommend that you specify either of the AsrModelId and AsrBaseId parameters.
 	//
-	// *   If you specify only the AsrModelId parameter, the specified ASR model is used.
+	// 	- If you specify only the AsrModelId parameter, the specified ASR model is used.
 	//
-	// *   If you specify only the AsrBaseId parameter, the ASR base model is used.
+	// 	- If you specify only the AsrBaseId parameter, the ASR base model is used.
 	//
-	// *   If you specify neither of the two parameters, the default ASR base model is used, that is, the default value customer_service\_8k is used for the AsrBaseId parameter.
+	// 	- If you specify neither of the two parameters, the default ASR base model is used, that is, the default value customer_service_8k is used for the AsrBaseId parameter.
 	//
-	// *   If you specify both parameters, make sure that their values do not conflict with each other.
+	// 	- If you specify both parameters, make sure that their values do not conflict with each other.
+	//
+	// example:
+	//
+	// customer_service_8k
 	AsrBaseId *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
 	// The ID of the Automatic Speech Recognition (ASR) model.
 	//
-	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and view the ID of the ASR model on the **ASR Model Management** page.
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and view the ID of the ASR model on the **ASR Model Management*	- page.
 	//
 	// > You must specify the ASR model when you call the SmartCall operation. We recommend that you specify either of the AsrModelId and AsrBaseId parameters.
 	//
-	// *   If you specify only the AsrModelId parameter, the specified ASR model is used.
+	// 	- If you specify only the AsrModelId parameter, the specified ASR model is used.
 	//
-	// *   If you specify only the AsrBaseId parameter, the specified ASR base model is used.
+	// 	- If you specify only the AsrBaseId parameter, the specified ASR base model is used.
 	//
-	// *   If you specify neither of the two parameters, the default value customer_service\_8k is used for the AsrBaseId parameter. This means that the default Mandarin ASR base model is used.
+	// 	- If you specify neither of the two parameters, the default value customer_service_8k is used for the AsrBaseId parameter. This means that the default Mandarin ASR base model is used.
 	//
-	// *   If you specify both parameters, make sure that their values do not conflict with each other.
+	// 	- If you specify both parameters, make sure that their values do not conflict with each other.
+	//
+	// example:
+	//
+	// 2070aca1eff146f9a7bc826f1c3d****
 	AsrModelId *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
 	// The ID of the background voice file that is played back when the user talks with the robot.
 	//
-	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice File Management**, click the **Intelligent Speech Interaction Recording File** tab, and then click **Details** in the Actions column to view the voice ID.
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice File Management**, click the **Intelligent Speech Interaction Recording File*	- tab, and then click **Details*	- in the Actions column to view the voice ID.
+	//
+	// example:
+	//
+	// 2d4c-4e78-8d2a-afbb06cf****.wav
 	BackgroundFileCode *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	BackgroundSpeed *int32 `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	BackgroundVolume *int32 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
 	// The called number. Only phone numbers in the Chinese mainland are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590****0000
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	// The number displayed to the called party. The value must be the number you purchased.
 	//
-	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Voice Numbers** > **Real Number Management** to view the number you purchased.
+	// You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Voice Numbers*	- > **Real Number Management*	- to view the number you purchased.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571****5678
 	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
 	// The dynamic extension ID that is reserved for the caller of the operation. This ID is returned in the callback URL and is used as the development identifier of the customer.
+	//
+	// example:
+	//
+	// abcdefgh
 	DynamicId *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
 	// Specifies whether to enable speech recognition of early media. Valid values:
 	//
-	// *   **false** (default): Speech recognition of early media is disabled.
-	// *   **true**: Speech recognition of early media is enabled.
+	// 	- **false*	- (default): Speech recognition of early media is disabled.
+	//
+	// 	- **true**: Speech recognition of early media is enabled.
 	//
 	// > If you set the value of this parameter to **true**, the reason why the call is not answered is recorded.
+	//
+	// example:
+	//
+	// true
 	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
 	// Specifies whether to enable Inverse Text Normalization (ITN) during post-processing. Default value: **false**. If you set the value to false, ITN is not enabled during post-processing.
 	//
 	// If you set the value to **true**, Chinese numerals are converted into Arabic numerals for output.
+	//
+	// example:
+	//
+	// false
 	EnableITN *bool `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
 	// The silence duration. The system determines the end of the conversation based on the silence duration of the user. Unit: milliseconds. Valid values: 1000 to 20000.****
 	//
 	// >
 	//
-	// *   If you specify a value out of the valid range, the default value **10000** is used.
+	// 	- If you specify a value out of the valid range, the default value **10000*	- is used.
 	//
-	// *   The parameter value can be adjusted during the conversation. The last setting prevails.
+	// 	- The parameter value can be adjusted during the conversation. The last setting prevails.
+	//
+	// example:
+	//
+	// 10000
 	MuteTime       *int32   `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
 	NoiseThreshold *float64 `json:"NoiseThreshold,omitempty" xml:"NoiseThreshold,omitempty"`
 	// The ID that is reserved for the caller of the operation. This ID is returned to the caller in a receipt message.
 	//
 	// The value is of the STRING type and must be 1 to 15 bytes in length.
+	//
+	// example:
+	//
+	// 342268*****
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The pause duration. The system determines the end of a sentence based on the pause duration of the user in the conversation. Unit: milliseconds. Valid values: 300 to 1200.****
 	//
 	// >
 	//
-	// *   If you specify a value out of the valid range, the default value **800** is used.
+	// 	- If you specify a value out of the valid range, the default value **800*	- is used.
 	//
-	// *   You cannot change the parameter value after specifying it.
+	// 	- You cannot change the parameter value after specifying it.
+	//
+	// example:
+	//
+	// 800
 	PauseTime *int32 `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
 	// Specifies whether to record the conversation. Valid values:
 	//
-	// *   **true**: The conversation is recorded.
-	// *   **false**: The conversation is not recorded.
+	// 	- **true**: The conversation is recorded.
+	//
+	// 	- **false**: The conversation is not recorded.
+	//
+	// example:
+	//
+	// true
 	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The maximum call duration. The call is automatically hung up when the maximum call duration is reached. Unit: seconds.
 	//
 	// > The maximum call duration is 3,600 seconds.
+	//
+	// example:
+	//
+	// 120
 	SessionTimeout *int32 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
 	// This parameter is unavailable.
+	//
+	// example:
+	//
+	// 1
 	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
 	// Specifies whether to enable streaming ASR, which intelligently judges what the user wants to express based on the first few words spoken by the user. Valid values:
 	//
-	// *   **0**: Streaming ASR is disabled.
-	// *   **1**: Streaming ASR is enabled.
+	// 	- **0**: Streaming ASR is disabled.
+	//
+	// 	- **1**: Streaming ASR is enabled.
+	//
+	// example:
+	//
+	// 1
 	StreamAsr *int32 `json:"StreamAsr,omitempty" xml:"StreamAsr,omitempty"`
 	// Specifies whether to set TTS sound parameters. Valid values:
 	//
-	// *   **true**: TTS sound parameters must be set. You must set the **TtsStyle**, **TtsColume**, and **TtsSpeed** parameters to specify a sound style.
-	// *   **false**: TTS sound parameters do not need to be set. The values of TTS sound parameters do not take effect even if you set them.
+	// 	- **true**: TTS sound parameters must be set. You must set the **TtsStyle**, **TtsColume**, and **TtsSpeed*	- parameters to specify a sound style.
+	//
+	// 	- **false**: TTS sound parameters do not need to be set. The values of TTS sound parameters do not take effect even if you set them.
+	//
+	// example:
+	//
+	// true
 	TtsConf *bool `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
 	// The speed of TTS variable playback. Valid values: -200 to 200. Default value: 0.
+	//
+	// example:
+	//
+	// 100
 	TtsSpeed *int32 `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
-	// The sound style for TTS variable playback. Default value: **xiaoyun**. For more information about the sound styles, see the **Sound styles** table below.
+	// The sound style for TTS variable playback. Default value: **xiaoyun**. For more information about the sound styles, see the **Sound styles*	- table below.
+	//
+	// example:
+	//
+	// xiaoyun
 	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
 	// The volume of TTS variable playback. Valid values: 0 to 100. Default value: 0.
+	//
+	// example:
+	//
+	// 10
 	TtsVolume *int32 `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
 	// The recording file that is played back in the intelligent outbound call.
 	//
-	// The file can be an online file, a voice file uploaded from the Voice Messaging Service console, or a text-to-speech (TTS) template that contains variables. You can specify multiple files and a TTS variable together. Separate them with commas (,). The values of the variables in the TTS template are specified by the **VoiceCodeParam** parameter.
+	// The file can be an online file, a voice file uploaded from the Voice Messaging Service console, or a text-to-speech (TTS) template that contains variables. You can specify multiple files and a TTS variable together. Separate them with commas (,). The values of the variables in the TTS template are specified by the **VoiceCodeParam*	- parameter.
 	//
-	// *   If you use an online file as the recording file, set the value of **VoiceCode** to the URL of the file that can be accessed over the Internet.
-	// *   If you use a voice file uploaded from the Voice Messaging Service console as the recording file, set the value of **VoiceCode** to the voice ID of the file. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice File Management**, click the **Intelligent Speech Interaction Recording File** tab, and then click **Details** in the Actions column to view the voice ID.
-	// *   If you use a TTS template that contains variables as the recording file, set the value of **VoiceCode** to a variable name such as $name$, and also set a value for the variable in the **VoiceCodeParam** parameter.
+	// 	- If you use an online file as the recording file, set the value of **VoiceCode*	- to the URL of the file that can be accessed over the Internet.
+	//
+	// 	- If you use a voice file uploaded from the Voice Messaging Service console as the recording file, set the value of **VoiceCode*	- to the voice ID of the file. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice File Management**, click the **Intelligent Speech Interaction Recording File*	- tab, and then click **Details*	- in the Actions column to view the voice ID.
+	//
+	// 	- If you use a TTS template that contains variables as the recording file, set the value of **VoiceCode*	- to a variable name such as $name$, and also set a value for the variable in the **VoiceCodeParam*	- parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2d4c-4e78-8d2a-afbb06cf****.wav,$name$
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	// The value of the TTS variable, in the JSON format. This value must match the TTS variable specified by the **VoiceCode** parameter.
+	// The value of the TTS variable, in the JSON format. This value must match the TTS variable specified by the **VoiceCode*	- parameter.
+	//
+	// example:
+	//
+	// {"name":"hello"}
 	VoiceCodeParam *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
 	// The volume at which the recording file is played. Valid values: -4 to 4. We recommend that you set the value of this parameter to **1**.
+	//
+	// example:
+	//
+	// 1
 	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -7258,15 +9343,32 @@ type SmartCallResponseBody struct {
 	// The unique receipt ID for this call.
 	//
 	// You can call the [QueryCallDetailByCallId](~~QueryCallDetailByCallId~~) operation to query the details of the call based on the receipt ID.
+	//
+	// example:
+	//
+	// 116012854210^10281427****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7328,14 +9430,30 @@ func (s *SmartCallResponse) SetBody(v *SmartCallResponseBody) *SmartCallResponse
 }
 
 type SmartCallOperateRequest struct {
-	// The unique receipt ID of the call. You can call the [SmartCall](~~393526~~) operation to obtain the receipt ID.
+	// The unique receipt ID of the call. You can call the [SmartCall](https://help.aliyun.com/document_detail/393526.html) operation to obtain the receipt ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 116012854210^1028142****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The action that is initiated to the called number of an outbound robocall.
 	//
-	// > Only the value **parallelBridge** is supported. This value indicates that a bridge action is initiated between a called number and an agent of the call center.
+	// > Only the value **parallelBridge*	- is supported. This value indicates that a bridge action is initiated between a called number and an agent of the call center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// parallelBridge
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The extended field.
+	//
+	// example:
+	//
+	// Param
 	Param                *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7382,17 +9500,35 @@ func (s *SmartCallOperateRequest) SetResourceOwnerId(v int64) *SmartCallOperateR
 type SmartCallOperateResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The action result. Valid values:
 	//
-	// *   **true**: The action was successful.
-	// *   **false**: The action failed.
+	// 	- **true**: The action was successful.
+	//
+	// 	- **false**: The action failed.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7458,8 +9594,18 @@ type StartRobotTaskRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The time scheduled for starting the robocall task, in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// example:
+	//
+	// 2019-06-14 14:55:23
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
 	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 104500****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -7499,17 +9645,35 @@ func (s *StartRobotTaskRequest) SetTaskId(v int64) *StartRobotTaskRequest {
 type StartRobotTaskResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7572,6 +9736,12 @@ func (s *StartRobotTaskResponse) SetBody(v *StartRobotTaskResponseBody) *StartRo
 
 type StopCallInConfigRequest struct {
 	// The China 400 number from which the inbound call to be stopped is transferred.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400***
 	Number               *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -7608,15 +9778,32 @@ func (s *StopCallInConfigRequest) SetResourceOwnerId(v int64) *StopCallInConfigR
 
 type StopCallInConfigResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the inbound call was stopped. Valid values:
 	//
-	// *   true: The inbound call was stopped.
-	// *   false: The inbound call failed to be stopped.
+	// 	- true: The inbound call was stopped.
+	//
+	// 	- false: The inbound call failed to be stopped.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// test
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// a78278ff-26bb-48ec-805c-26a0f4c102***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7682,6 +9869,12 @@ type StopRobotTaskRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1045001
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -7716,17 +9909,35 @@ func (s *StopRobotTaskRequest) SetTaskId(v int64) *StopRobotTaskRequest {
 type StopRobotTaskResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7790,29 +10001,84 @@ func (s *StopRobotTaskResponse) SetBody(v *StopRobotTaskResponseBody) *StopRobot
 type SubmitHotlineTransferRegisterRequest struct {
 	// The authenticity of the commitment. Valid values:
 	//
-	// *   **true**: The commitment is authentic.
-	// *   **false**: The commitment is not authentic.
+	// 	- **true**: The commitment is authentic.
+	//
+	// 	- **false**: The commitment is not authentic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	Agreement *string `json:"Agreement,omitempty" xml:"Agreement,omitempty"`
 	// The China 400 number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400****
 	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
 	// The ID card number of the handler.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5****************9
 	OperatorIdentityCard *string `json:"OperatorIdentityCard,omitempty" xml:"OperatorIdentityCard,omitempty"`
 	// The email address of the handler.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username@example.com
 	OperatorMail *string `json:"OperatorMail,omitempty" xml:"OperatorMail,omitempty"`
 	// The verification code that is received by the mailbox of the handler.
+	//
+	// example:
+	//
+	// 1234
 	OperatorMailVerifyCode *string `json:"OperatorMailVerifyCode,omitempty" xml:"OperatorMailVerifyCode,omitempty"`
 	// The mobile phone number of the handler.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 158****7230
 	OperatorMobile *string `json:"OperatorMobile,omitempty" xml:"OperatorMobile,omitempty"`
 	// The verification code that is received by the mobile phone of the handler.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
 	OperatorMobileVerifyCode *string `json:"OperatorMobileVerifyCode,omitempty" xml:"OperatorMobileVerifyCode,omitempty"`
 	// The name of the handler.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A***
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+	// The qualification ID. You can call the [GetHotlineQualificationByOrder](https://help.aliyun.com/document_detail/393548.html) operation to obtain the qualification ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000004933****
 	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The registration information about the China 400 number.
+	//
+	// This parameter is required.
 	TransferPhoneNumberInfos []*SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos `json:"TransferPhoneNumberInfos,omitempty" xml:"TransferPhoneNumberInfos,omitempty" type:"Repeated"`
 }
 
@@ -7891,10 +10157,28 @@ func (s *SubmitHotlineTransferRegisterRequest) SetTransferPhoneNumberInfos(v []*
 
 type SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos struct {
 	// The ID card number of the number owner.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 500***
 	IdentityCard *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
 	// The China 400 number that you want to submit for registration.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1580000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The real name or company name of the number owner.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A***
 	PhoneNumberOwnerName *string `json:"PhoneNumberOwnerName,omitempty" xml:"PhoneNumberOwnerName,omitempty"`
 }
 
@@ -7924,14 +10208,31 @@ func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetPhoneN
 type SubmitHotlineTransferRegisterResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The registration ID.
+	//
+	// example:
+	//
+	// 2258****
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6086693B-2250-17CE-A41F-06259AB6DB1B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7993,9 +10294,23 @@ func (s *SubmitHotlineTransferRegisterResponse) SetBody(v *SubmitHotlineTransfer
 }
 
 type UpgradeVideoFileRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	MediaType            *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 116012354148^10281378****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590****000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// video
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 225869*****
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -8046,11 +10361,20 @@ func (s *UpgradeVideoFileRequest) SetResourceOwnerId(v int64) *UpgradeVideoFileR
 }
 
 type UpgradeVideoFileResponseBody struct {
-	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpgradeVideoFileResponseBody) String() string {
@@ -8119,18 +10443,39 @@ type UploadRobotTaskCalledFileRequest struct {
 	// The called numbers. Separate multiple called numbers with commas (,).
 	//
 	// > After you create a robocall task, you must upload called numbers in batches. You can upload up to 300,000 called numbers for each task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1370****000,1370****111
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	// The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the ID of the robocall task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1045****
 	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The values of the variable in the text-to-speech (TTS) template, in the JSON format. The variable values specified by the TtsParam parameter must match the variable names specified by the TtsParamHead parameter.
 	//
-	// *   If all the called numbers carry the same variable values, you can set the value of the number field to **all** and upload only one copy of the variable values.
-	// *   If only some of the called numbers carry the same variable values, you can set the value of the number field to **all** for these called numbers and set the value of the number field and variable values for other called numbers based on your business requirements. The system preferentially selects the values that you set for the called numbers.
+	// 	- If all the called numbers carry the same variable values, you can set the value of the number field to **all*	- and upload only one copy of the variable values.
+	//
+	// 	- If only some of the called numbers carry the same variable values, you can set the value of the number field to **all*	- for these called numbers and set the value of the number field and variable values for other called numbers based on your business requirements. The system preferentially selects the values that you set for the called numbers.
+	//
+	// example:
+	//
+	// [{"number":"1370****000","params":["xiaowang","xiaoli","xiaozhou"]}]
 	TtsParam *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
 	// The list of variable names carried in the robocall task, in the JSON format. The TtsParamHead parameter must be used together with the TtsParam parameter.
+	//
+	// example:
+	//
+	// ["name1","name2","name3"]
 	TtsParamHead *string `json:"TtsParamHead,omitempty" xml:"TtsParamHead,omitempty"`
 }
 
@@ -8180,16 +10525,33 @@ func (s *UploadRobotTaskCalledFileRequest) SetTtsParamHead(v string) *UploadRobo
 type UploadRobotTaskCalledFileResponseBody struct {
 	// The response code.
 	//
-	// *   The value OK indicates that the request was successful.
-	// *   For more information about other response codes, see [API error codes](~~112502~~).
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The unique ID of the robocall task.
 	//
 	// You can call the [QueryRobotTaskDetail](~~QueryRobotTaskDetail~~) operation to query the details of the robocall task based on the task ID.
+	//
+	// example:
+	//
+	// 10450****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8297,14 +10659,21 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 200 times per second per account.
- *
- * @param request AddVirtualNumberRelationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddVirtualNumberRelationResponse
- */
+// Summary:
+//
+// Adds the association relationship between a virtual number and real numbers in batches.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 200 times per second per account.
+//
+// @param request - AddVirtualNumberRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddVirtualNumberRelationResponse
 func (client *Client) AddVirtualNumberRelationWithOptions(request *AddVirtualNumberRelationRequest, runtime *util.RuntimeOptions) (_result *AddVirtualNumberRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8366,13 +10735,19 @@ func (client *Client) AddVirtualNumberRelationWithOptions(request *AddVirtualNum
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 200 times per second per account.
- *
- * @param request AddVirtualNumberRelationRequest
- * @return AddVirtualNumberRelationResponse
- */
+// Summary:
+//
+// Adds the association relationship between a virtual number and real numbers in batches.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 200 times per second per account.
+//
+// @param request - AddVirtualNumberRelationRequest
+//
+// @return AddVirtualNumberRelationResponse
 func (client *Client) AddVirtualNumberRelation(request *AddVirtualNumberRelationRequest) (_result *AddVirtualNumberRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddVirtualNumberRelationResponse{}
@@ -8384,19 +10759,31 @@ func (client *Client) AddVirtualNumberRelation(request *AddVirtualNumberRelation
 	return _result, _err
 }
 
-/**
- * *   In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
- * *   The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
- * ## Prerequisites
- * *   You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
- * *   You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
- * *   You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
- * > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
- *
- * @param request BatchRobotSmartCallRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return BatchRobotSmartCallResponse
- */
+// Summary:
+//
+// Initiates an outbound robocall task.
+//
+// Description:
+//
+//   In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+//
+// 	- The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
+//
+// ## Prerequisites
+//
+// 	- You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
+//
+// 	- You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+//
+// 	- You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
+//
+// > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
+//
+// @param request - BatchRobotSmartCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchRobotSmartCallResponse
 func (client *Client) BatchRobotSmartCallWithOptions(request *BatchRobotSmartCallRequest, runtime *util.RuntimeOptions) (_result *BatchRobotSmartCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8482,18 +10869,29 @@ func (client *Client) BatchRobotSmartCallWithOptions(request *BatchRobotSmartCal
 	return _result, _err
 }
 
-/**
- * *   In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
- * *   The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
- * ## Prerequisites
- * *   You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
- * *   You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
- * *   You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
- * > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
- *
- * @param request BatchRobotSmartCallRequest
- * @return BatchRobotSmartCallResponse
- */
+// Summary:
+//
+// Initiates an outbound robocall task.
+//
+// Description:
+//
+//   In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+//
+// 	- The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
+//
+// ## Prerequisites
+//
+// 	- You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
+//
+// 	- You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+//
+// 	- You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
+//
+// > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
+//
+// @param request - BatchRobotSmartCallRequest
+//
+// @return BatchRobotSmartCallResponse
 func (client *Client) BatchRobotSmartCall(request *BatchRobotSmartCallRequest) (_result *BatchRobotSmartCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchRobotSmartCallResponse{}
@@ -8505,14 +10903,21 @@ func (client *Client) BatchRobotSmartCall(request *BatchRobotSmartCallRequest) (
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request CancelOrderRobotTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CancelOrderRobotTaskResponse
- */
+// Summary:
+//
+// Cancels a robocall task that has not been started.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - CancelOrderRobotTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelOrderRobotTaskResponse
 func (client *Client) CancelOrderRobotTaskWithOptions(request *CancelOrderRobotTaskRequest, runtime *util.RuntimeOptions) (_result *CancelOrderRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8558,13 +10963,19 @@ func (client *Client) CancelOrderRobotTaskWithOptions(request *CancelOrderRobotT
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request CancelOrderRobotTaskRequest
- * @return CancelOrderRobotTaskResponse
- */
+// Summary:
+//
+// Cancels a robocall task that has not been started.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - CancelOrderRobotTaskRequest
+//
+// @return CancelOrderRobotTaskResponse
 func (client *Client) CancelOrderRobotTask(request *CancelOrderRobotTaskRequest) (_result *CancelOrderRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelOrderRobotTaskResponse{}
@@ -8576,15 +10987,23 @@ func (client *Client) CancelOrderRobotTask(request *CancelOrderRobotTaskRequest)
 	return _result, _err
 }
 
-/**
- * Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request CancelRobotTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CancelRobotTaskResponse
- */
+// Summary:
+//
+// Terminates a robocall task.
+//
+// Description:
+//
+// Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - CancelRobotTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelRobotTaskResponse
 func (client *Client) CancelRobotTaskWithOptions(request *CancelRobotTaskRequest, runtime *util.RuntimeOptions) (_result *CancelRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8630,14 +11049,21 @@ func (client *Client) CancelRobotTaskWithOptions(request *CancelRobotTaskRequest
 	return _result, _err
 }
 
-/**
- * Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request CancelRobotTaskRequest
- * @return CancelRobotTaskResponse
- */
+// Summary:
+//
+// Terminates a robocall task.
+//
+// Description:
+//
+// Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - CancelRobotTaskRequest
+//
+// @return CancelRobotTaskResponse
 func (client *Client) CancelRobotTask(request *CancelRobotTaskRequest) (_result *CancelRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelRobotTaskResponse{}
@@ -8649,6 +11075,15 @@ func (client *Client) CancelRobotTask(request *CancelRobotTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// ChangeMediaType
+//
+// @param request - ChangeMediaTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeMediaTypeResponse
 func (client *Client) ChangeMediaTypeWithOptions(request *ChangeMediaTypeRequest, runtime *util.RuntimeOptions) (_result *ChangeMediaTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8706,6 +11141,13 @@ func (client *Client) ChangeMediaTypeWithOptions(request *ChangeMediaTypeRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// ChangeMediaType
+//
+// @param request - ChangeMediaTypeRequest
+//
+// @return ChangeMediaTypeResponse
 func (client *Client) ChangeMediaType(request *ChangeMediaTypeRequest) (_result *ChangeMediaTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeMediaTypeResponse{}
@@ -8717,15 +11159,23 @@ func (client *Client) ChangeMediaType(request *ChangeMediaTypeRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can create up to 1,000 voice notifications for each task.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request CreateCallTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateCallTaskResponse
- */
+// Summary:
+//
+// Creates a task for sending voice notifications or voice verification codes.
+//
+// Description:
+//
+// You can create up to 1,000 voice notifications for each task.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - CreateCallTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCallTaskResponse
 func (client *Client) CreateCallTaskWithOptions(request *CreateCallTaskRequest, runtime *util.RuntimeOptions) (_result *CreateCallTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8811,14 +11261,21 @@ func (client *Client) CreateCallTaskWithOptions(request *CreateCallTaskRequest, 
 	return _result, _err
 }
 
-/**
- * You can create up to 1,000 voice notifications for each task.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request CreateCallTaskRequest
- * @return CreateCallTaskResponse
- */
+// Summary:
+//
+// Creates a task for sending voice notifications or voice verification codes.
+//
+// Description:
+//
+// You can create up to 1,000 voice notifications for each task.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - CreateCallTaskRequest
+//
+// @return CreateCallTaskResponse
 func (client *Client) CreateCallTask(request *CreateCallTaskRequest) (_result *CreateCallTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCallTaskResponse{}
@@ -8830,15 +11287,23 @@ func (client *Client) CreateCallTask(request *CreateCallTaskRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request CreateRobotTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateRobotTaskResponse
- */
+// Summary:
+//
+// Initiates an outbound robocall task.
+//
+// Description:
+//
+// You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - CreateRobotTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRobotTaskResponse
 func (client *Client) CreateRobotTaskWithOptions(request *CreateRobotTaskRequest, runtime *util.RuntimeOptions) (_result *CreateRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8920,14 +11385,21 @@ func (client *Client) CreateRobotTaskWithOptions(request *CreateRobotTaskRequest
 	return _result, _err
 }
 
-/**
- * You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request CreateRobotTaskRequest
- * @return CreateRobotTaskResponse
- */
+// Summary:
+//
+// Initiates an outbound robocall task.
+//
+// Description:
+//
+// You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - CreateRobotTaskRequest
+//
+// @return CreateRobotTaskResponse
 func (client *Client) CreateRobotTask(request *CreateRobotTaskRequest) (_result *CreateRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRobotTaskResponse{}
@@ -8939,6 +11411,15 @@ func (client *Client) CreateRobotTask(request *CreateRobotTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// DegradeVideoFile
+//
+// @param request - DegradeVideoFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DegradeVideoFileResponse
 func (client *Client) DegradeVideoFileWithOptions(request *DegradeVideoFileRequest, runtime *util.RuntimeOptions) (_result *DegradeVideoFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8996,6 +11477,13 @@ func (client *Client) DegradeVideoFileWithOptions(request *DegradeVideoFileReque
 	return _result, _err
 }
 
+// Summary:
+//
+// DegradeVideoFile
+//
+// @param request - DegradeVideoFileRequest
+//
+// @return DegradeVideoFileResponse
 func (client *Client) DegradeVideoFile(request *DegradeVideoFileRequest) (_result *DegradeVideoFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DegradeVideoFileResponse{}
@@ -9007,15 +11495,23 @@ func (client *Client) DegradeVideoFile(request *DegradeVideoFileRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request DeleteRobotTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteRobotTaskResponse
- */
+// Summary:
+//
+// Deletes a robocall task.
+//
+// Description:
+//
+// You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - DeleteRobotTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRobotTaskResponse
 func (client *Client) DeleteRobotTaskWithOptions(request *DeleteRobotTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9061,14 +11557,21 @@ func (client *Client) DeleteRobotTaskWithOptions(request *DeleteRobotTaskRequest
 	return _result, _err
 }
 
-/**
- * You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request DeleteRobotTaskRequest
- * @return DeleteRobotTaskResponse
- */
+// Summary:
+//
+// Deletes a robocall task.
+//
+// Description:
+//
+// You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - DeleteRobotTaskRequest
+//
+// @return DeleteRobotTaskResponse
 func (client *Client) DeleteRobotTask(request *DeleteRobotTaskRequest) (_result *DeleteRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRobotTaskResponse{}
@@ -9080,14 +11583,21 @@ func (client *Client) DeleteRobotTask(request *DeleteRobotTaskRequest) (_result 
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ExecuteCallTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ExecuteCallTaskResponse
- */
+// Summary:
+//
+// Executes a call task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ExecuteCallTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteCallTaskResponse
 func (client *Client) ExecuteCallTaskWithOptions(request *ExecuteCallTaskRequest, runtime *util.RuntimeOptions) (_result *ExecuteCallTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9141,13 +11651,19 @@ func (client *Client) ExecuteCallTaskWithOptions(request *ExecuteCallTaskRequest
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ExecuteCallTaskRequest
- * @return ExecuteCallTaskResponse
- */
+// Summary:
+//
+// Executes a call task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ExecuteCallTaskRequest
+//
+// @return ExecuteCallTaskResponse
 func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result *ExecuteCallTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteCallTaskResponse{}
@@ -9159,6 +11675,15 @@ func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// GetCallMediaType
+//
+// @param request - GetCallMediaTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCallMediaTypeResponse
 func (client *Client) GetCallMediaTypeWithOptions(request *GetCallMediaTypeRequest, runtime *util.RuntimeOptions) (_result *GetCallMediaTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9208,6 +11733,13 @@ func (client *Client) GetCallMediaTypeWithOptions(request *GetCallMediaTypeReque
 	return _result, _err
 }
 
+// Summary:
+//
+// GetCallMediaType
+//
+// @param request - GetCallMediaTypeRequest
+//
+// @return GetCallMediaTypeResponse
 func (client *Client) GetCallMediaType(request *GetCallMediaTypeRequest) (_result *GetCallMediaTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCallMediaTypeResponse{}
@@ -9219,6 +11751,15 @@ func (client *Client) GetCallMediaType(request *GetCallMediaTypeRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// GetCallProgress
+//
+// @param request - GetCallProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCallProgressResponse
 func (client *Client) GetCallProgressWithOptions(request *GetCallProgressRequest, runtime *util.RuntimeOptions) (_result *GetCallProgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9268,6 +11809,13 @@ func (client *Client) GetCallProgressWithOptions(request *GetCallProgressRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// GetCallProgress
+//
+// @param request - GetCallProgressRequest
+//
+// @return GetCallProgressResponse
 func (client *Client) GetCallProgress(request *GetCallProgressRequest) (_result *GetCallProgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCallProgressResponse{}
@@ -9279,14 +11827,21 @@ func (client *Client) GetCallProgress(request *GetCallProgressRequest) (_result 
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request GetHotlineQualificationByOrderRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetHotlineQualificationByOrderResponse
- */
+// Summary:
+//
+// Obtains the qualification ID based on the ID of a qualification application ticket.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - GetHotlineQualificationByOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineQualificationByOrderResponse
 func (client *Client) GetHotlineQualificationByOrderWithOptions(request *GetHotlineQualificationByOrderRequest, runtime *util.RuntimeOptions) (_result *GetHotlineQualificationByOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9332,13 +11887,19 @@ func (client *Client) GetHotlineQualificationByOrderWithOptions(request *GetHotl
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request GetHotlineQualificationByOrderRequest
- * @return GetHotlineQualificationByOrderResponse
- */
+// Summary:
+//
+// Obtains the qualification ID based on the ID of a qualification application ticket.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - GetHotlineQualificationByOrderRequest
+//
+// @return GetHotlineQualificationByOrderResponse
 func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualificationByOrderRequest) (_result *GetHotlineQualificationByOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineQualificationByOrderResponse{}
@@ -9350,6 +11911,15 @@ func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualific
 	return _result, _err
 }
 
+// Summary:
+//
+// GetTemporaryFileUrl
+//
+// @param request - GetTemporaryFileUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemporaryFileUrlResponse
 func (client *Client) GetTemporaryFileUrlWithOptions(request *GetTemporaryFileUrlRequest, runtime *util.RuntimeOptions) (_result *GetTemporaryFileUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9395,6 +11965,13 @@ func (client *Client) GetTemporaryFileUrlWithOptions(request *GetTemporaryFileUr
 	return _result, _err
 }
 
+// Summary:
+//
+// GetTemporaryFileUrl
+//
+// @param request - GetTemporaryFileUrlRequest
+//
+// @return GetTemporaryFileUrlResponse
 func (client *Client) GetTemporaryFileUrl(request *GetTemporaryFileUrlRequest) (_result *GetTemporaryFileUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTemporaryFileUrlResponse{}
@@ -9406,14 +11983,21 @@ func (client *Client) GetTemporaryFileUrl(request *GetTemporaryFileUrlRequest) (
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to five times per second per account.
- *
- * @param request GetTokenRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetTokenResponse
- */
+// Summary:
+//
+// Obtains the token for authentication.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to five times per second per account.
+//
+// @param request - GetTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenResponse
 func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9459,13 +12043,19 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *uti
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to five times per second per account.
- *
- * @param request GetTokenRequest
- * @return GetTokenResponse
- */
+// Summary:
+//
+// Obtains the token for authentication.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to five times per second per account.
+//
+// @param request - GetTokenRequest
+//
+// @return GetTokenResponse
 func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTokenResponse{}
@@ -9477,6 +12067,15 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// GetVideoFieldUrl
+//
+// @param request - GetVideoFieldUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoFieldUrlResponse
 func (client *Client) GetVideoFieldUrlWithOptions(request *GetVideoFieldUrlRequest, runtime *util.RuntimeOptions) (_result *GetVideoFieldUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9522,6 +12121,13 @@ func (client *Client) GetVideoFieldUrlWithOptions(request *GetVideoFieldUrlReque
 	return _result, _err
 }
 
+// Summary:
+//
+// GetVideoFieldUrl
+//
+// @param request - GetVideoFieldUrlRequest
+//
+// @return GetVideoFieldUrlResponse
 func (client *Client) GetVideoFieldUrl(request *GetVideoFieldUrlRequest) (_result *GetVideoFieldUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVideoFieldUrlResponse{}
@@ -9533,17 +12139,27 @@ func (client *Client) GetVideoFieldUrl(request *GetVideoFieldUrlRequest) (_resul
 	return _result, _err
 }
 
-/**
- * *   Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](~~149795~~).
- * *   Voice numbers are purchased. For more information, see [Purchase numbers](~~149794~~).
- * *   When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](~~112503~~) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
- * ## QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request IvrCallRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return IvrCallResponse
- */
+// Summary:
+//
+// Initiates an interactive voice response (IVR) call to a specified number.
+//
+// Description:
+//
+//   Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](https://help.aliyun.com/document_detail/149795.html).
+//
+// 	- Voice numbers are purchased. For more information, see [Purchase numbers](https://help.aliyun.com/document_detail/149794.html).
+//
+// 	- When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](https://help.aliyun.com/document_detail/112503.html) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
+//
+// ## QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - IvrCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IvrCallResponse
 func (client *Client) IvrCallWithOptions(request *IvrCallRequest, runtime *util.RuntimeOptions) (_result *IvrCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9625,16 +12241,25 @@ func (client *Client) IvrCallWithOptions(request *IvrCallRequest, runtime *util.
 	return _result, _err
 }
 
-/**
- * *   Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](~~149795~~).
- * *   Voice numbers are purchased. For more information, see [Purchase numbers](~~149794~~).
- * *   When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](~~112503~~) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
- * ## QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request IvrCallRequest
- * @return IvrCallResponse
- */
+// Summary:
+//
+// Initiates an interactive voice response (IVR) call to a specified number.
+//
+// Description:
+//
+//   Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](https://help.aliyun.com/document_detail/149795.html).
+//
+// 	- Voice numbers are purchased. For more information, see [Purchase numbers](https://help.aliyun.com/document_detail/149794.html).
+//
+// 	- When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](https://help.aliyun.com/document_detail/112503.html) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
+//
+// ## QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - IvrCallRequest
+//
+// @return IvrCallResponse
 func (client *Client) IvrCall(request *IvrCallRequest) (_result *IvrCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IvrCallResponse{}
@@ -9646,14 +12271,21 @@ func (client *Client) IvrCall(request *IvrCallRequest) (_result *IvrCallResponse
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ListCallTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListCallTaskResponse
- */
+// Summary:
+//
+// Queries task information.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ListCallTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCallTaskResponse
 func (client *Client) ListCallTaskWithOptions(request *ListCallTaskRequest, runtime *util.RuntimeOptions) (_result *ListCallTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9723,13 +12355,19 @@ func (client *Client) ListCallTaskWithOptions(request *ListCallTaskRequest, runt
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ListCallTaskRequest
- * @return ListCallTaskResponse
- */
+// Summary:
+//
+// Queries task information.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ListCallTaskRequest
+//
+// @return ListCallTaskResponse
 func (client *Client) ListCallTask(request *ListCallTaskRequest) (_result *ListCallTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCallTaskResponse{}
@@ -9741,14 +12379,21 @@ func (client *Client) ListCallTask(request *ListCallTaskRequest) (_result *ListC
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ListCallTaskDetailRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListCallTaskDetailResponse
- */
+// Summary:
+//
+// Queries the information about a task based on the task ID.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ListCallTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCallTaskDetailResponse
 func (client *Client) ListCallTaskDetailWithOptions(request *ListCallTaskDetailRequest, runtime *util.RuntimeOptions) (_result *ListCallTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9810,13 +12455,19 @@ func (client *Client) ListCallTaskDetailWithOptions(request *ListCallTaskDetailR
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ListCallTaskDetailRequest
- * @return ListCallTaskDetailResponse
- */
+// Summary:
+//
+// Queries the information about a task based on the task ID.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ListCallTaskDetailRequest
+//
+// @return ListCallTaskDetailResponse
 func (client *Client) ListCallTaskDetail(request *ListCallTaskDetailRequest) (_result *ListCallTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCallTaskDetailResponse{}
@@ -9828,14 +12479,21 @@ func (client *Client) ListCallTaskDetail(request *ListCallTaskDetailRequest) (_r
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ListHotlineTransferNumberRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListHotlineTransferNumberResponse
- */
+// Summary:
+//
+// Queries a list of registered phone numbers that are used to transfer calls.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ListHotlineTransferNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotlineTransferNumberResponse
 func (client *Client) ListHotlineTransferNumberWithOptions(request *ListHotlineTransferNumberRequest, runtime *util.RuntimeOptions) (_result *ListHotlineTransferNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9893,13 +12551,19 @@ func (client *Client) ListHotlineTransferNumberWithOptions(request *ListHotlineT
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ListHotlineTransferNumberRequest
- * @return ListHotlineTransferNumberResponse
- */
+// Summary:
+//
+// Queries a list of registered phone numbers that are used to transfer calls.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ListHotlineTransferNumberRequest
+//
+// @return ListHotlineTransferNumberResponse
 func (client *Client) ListHotlineTransferNumber(request *ListHotlineTransferNumberRequest) (_result *ListHotlineTransferNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotlineTransferNumberResponse{}
@@ -9911,14 +12575,21 @@ func (client *Client) ListHotlineTransferNumber(request *ListHotlineTransferNumb
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ListHotlineTransferRegisterFileRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListHotlineTransferRegisterFileResponse
- */
+// Summary:
+//
+// Queries the registration information about a China 400 number.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ListHotlineTransferRegisterFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotlineTransferRegisterFileResponse
 func (client *Client) ListHotlineTransferRegisterFileWithOptions(request *ListHotlineTransferRegisterFileRequest, runtime *util.RuntimeOptions) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9976,13 +12647,19 @@ func (client *Client) ListHotlineTransferRegisterFileWithOptions(request *ListHo
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request ListHotlineTransferRegisterFileRequest
- * @return ListHotlineTransferRegisterFileResponse
- */
+// Summary:
+//
+// Queries the registration information about a China 400 number.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - ListHotlineTransferRegisterFileRequest
+//
+// @return ListHotlineTransferRegisterFileResponse
 func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransferRegisterFileRequest) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotlineTransferRegisterFileResponse{}
@@ -9994,6 +12671,15 @@ func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransf
 	return _result, _err
 }
 
+// Summary:
+//
+// PauseVideoFile
+//
+// @param request - PauseVideoFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseVideoFileResponse
 func (client *Client) PauseVideoFileWithOptions(request *PauseVideoFileRequest, runtime *util.RuntimeOptions) (_result *PauseVideoFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10043,6 +12729,13 @@ func (client *Client) PauseVideoFileWithOptions(request *PauseVideoFileRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// PauseVideoFile
+//
+// @param request - PauseVideoFileRequest
+//
+// @return PauseVideoFileResponse
 func (client *Client) PauseVideoFile(request *PauseVideoFileRequest) (_result *PauseVideoFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PauseVideoFileResponse{}
@@ -10054,6 +12747,15 @@ func (client *Client) PauseVideoFile(request *PauseVideoFileRequest) (_result *P
 	return _result, _err
 }
 
+// Summary:
+//
+// PlayVideoFile
+//
+// @param request - PlayVideoFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PlayVideoFileResponse
 func (client *Client) PlayVideoFileWithOptions(request *PlayVideoFileRequest, runtime *util.RuntimeOptions) (_result *PlayVideoFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10066,6 +12768,10 @@ func (client *Client) PlayVideoFileWithOptions(request *PlayVideoFileRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
 		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlyPhone)) {
+		query["OnlyPhone"] = request.OnlyPhone
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutId)) {
@@ -10111,6 +12817,13 @@ func (client *Client) PlayVideoFileWithOptions(request *PlayVideoFileRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// PlayVideoFile
+//
+// @param request - PlayVideoFileRequest
+//
+// @return PlayVideoFileResponse
 func (client *Client) PlayVideoFile(request *PlayVideoFileRequest) (_result *PlayVideoFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PlayVideoFileResponse{}
@@ -10122,15 +12835,23 @@ func (client *Client) PlayVideoFile(request *PlayVideoFileRequest) (_result *Pla
 	return _result, _err
 }
 
-/**
- * QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryCallDetailByCallIdRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryCallDetailByCallIdResponse
- */
+// Summary:
+//
+// Queries the details of a call.
+//
+// Description:
+//
+// QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryCallDetailByCallIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCallDetailByCallIdResponse
 func (client *Client) QueryCallDetailByCallIdWithOptions(request *QueryCallDetailByCallIdRequest, runtime *util.RuntimeOptions) (_result *QueryCallDetailByCallIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10184,14 +12905,21 @@ func (client *Client) QueryCallDetailByCallIdWithOptions(request *QueryCallDetai
 	return _result, _err
 }
 
-/**
- * QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryCallDetailByCallIdRequest
- * @return QueryCallDetailByCallIdResponse
- */
+// Summary:
+//
+// Queries the details of a call.
+//
+// Description:
+//
+// QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryCallDetailByCallIdRequest
+//
+// @return QueryCallDetailByCallIdResponse
 func (client *Client) QueryCallDetailByCallId(request *QueryCallDetailByCallIdRequest) (_result *QueryCallDetailByCallIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCallDetailByCallIdResponse{}
@@ -10203,6 +12931,15 @@ func (client *Client) QueryCallDetailByCallId(request *QueryCallDetailByCallIdRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the call details of an outbound robocall task.
+//
+// @param request - QueryCallDetailByTaskIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCallDetailByTaskIdResponse
 func (client *Client) QueryCallDetailByTaskIdWithOptions(request *QueryCallDetailByTaskIdRequest, runtime *util.RuntimeOptions) (_result *QueryCallDetailByTaskIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10256,6 +12993,13 @@ func (client *Client) QueryCallDetailByTaskIdWithOptions(request *QueryCallDetai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the call details of an outbound robocall task.
+//
+// @param request - QueryCallDetailByTaskIdRequest
+//
+// @return QueryCallDetailByTaskIdResponse
 func (client *Client) QueryCallDetailByTaskId(request *QueryCallDetailByTaskIdRequest) (_result *QueryCallDetailByTaskIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCallDetailByTaskIdResponse{}
@@ -10267,14 +13011,21 @@ func (client *Client) QueryCallDetailByTaskId(request *QueryCallDetailByTaskIdRe
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryCallInPoolTransferConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryCallInPoolTransferConfigResponse
- */
+// Summary:
+//
+// Queries the configuration of the phone number used to transfer a call.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryCallInPoolTransferConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCallInPoolTransferConfigResponse
 func (client *Client) QueryCallInPoolTransferConfigWithOptions(request *QueryCallInPoolTransferConfigRequest, runtime *util.RuntimeOptions) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10320,13 +13071,19 @@ func (client *Client) QueryCallInPoolTransferConfigWithOptions(request *QueryCal
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryCallInPoolTransferConfigRequest
- * @return QueryCallInPoolTransferConfigResponse
- */
+// Summary:
+//
+// Queries the configuration of the phone number used to transfer a call.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryCallInPoolTransferConfigRequest
+//
+// @return QueryCallInPoolTransferConfigResponse
 func (client *Client) QueryCallInPoolTransferConfig(request *QueryCallInPoolTransferConfigRequest) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCallInPoolTransferConfigResponse{}
@@ -10338,14 +13095,21 @@ func (client *Client) QueryCallInPoolTransferConfig(request *QueryCallInPoolTran
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryCallInTransferRecordRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryCallInTransferRecordResponse
- */
+// Summary:
+//
+// Queries call transfer records.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryCallInTransferRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCallInTransferRecordResponse
 func (client *Client) QueryCallInTransferRecordWithOptions(request *QueryCallInTransferRecordRequest, runtime *util.RuntimeOptions) (_result *QueryCallInTransferRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10407,13 +13171,19 @@ func (client *Client) QueryCallInTransferRecordWithOptions(request *QueryCallInT
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryCallInTransferRecordRequest
- * @return QueryCallInTransferRecordResponse
- */
+// Summary:
+//
+// Queries call transfer records.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryCallInTransferRecordRequest
+//
+// @return QueryCallInTransferRecordResponse
 func (client *Client) QueryCallInTransferRecord(request *QueryCallInTransferRecordRequest) (_result *QueryCallInTransferRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCallInTransferRecordResponse{}
@@ -10425,6 +13195,15 @@ func (client *Client) QueryCallInTransferRecord(request *QueryCallInTransferReco
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of robots.
+//
+// @param request - QueryRobotInfoListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRobotInfoListResponse
 func (client *Client) QueryRobotInfoListWithOptions(request *QueryRobotInfoListRequest, runtime *util.RuntimeOptions) (_result *QueryRobotInfoListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10470,6 +13249,13 @@ func (client *Client) QueryRobotInfoListWithOptions(request *QueryRobotInfoListR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of robots.
+//
+// @param request - QueryRobotInfoListRequest
+//
+// @return QueryRobotInfoListResponse
 func (client *Client) QueryRobotInfoList(request *QueryRobotInfoListRequest) (_result *QueryRobotInfoListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotInfoListResponse{}
@@ -10481,14 +13267,21 @@ func (client *Client) QueryRobotInfoList(request *QueryRobotInfoListRequest) (_r
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotTaskCallDetailRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryRobotTaskCallDetailResponse
- */
+// Summary:
+//
+// Queries the call details of a called number in a robocall task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotTaskCallDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRobotTaskCallDetailResponse
 func (client *Client) QueryRobotTaskCallDetailWithOptions(request *QueryRobotTaskCallDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRobotTaskCallDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10542,13 +13335,19 @@ func (client *Client) QueryRobotTaskCallDetailWithOptions(request *QueryRobotTas
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotTaskCallDetailRequest
- * @return QueryRobotTaskCallDetailResponse
- */
+// Summary:
+//
+// Queries the call details of a called number in a robocall task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotTaskCallDetailRequest
+//
+// @return QueryRobotTaskCallDetailResponse
 func (client *Client) QueryRobotTaskCallDetail(request *QueryRobotTaskCallDetailRequest) (_result *QueryRobotTaskCallDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotTaskCallDetailResponse{}
@@ -10560,14 +13359,21 @@ func (client *Client) QueryRobotTaskCallDetail(request *QueryRobotTaskCallDetail
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotTaskCallListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryRobotTaskCallListResponse
- */
+// Summary:
+//
+// Queries the information about a robocall task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotTaskCallListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRobotTaskCallListResponse
 func (client *Client) QueryRobotTaskCallListWithOptions(request *QueryRobotTaskCallListRequest, runtime *util.RuntimeOptions) (_result *QueryRobotTaskCallListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10649,13 +13455,19 @@ func (client *Client) QueryRobotTaskCallListWithOptions(request *QueryRobotTaskC
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotTaskCallListRequest
- * @return QueryRobotTaskCallListResponse
- */
+// Summary:
+//
+// Queries the information about a robocall task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotTaskCallListRequest
+//
+// @return QueryRobotTaskCallListResponse
 func (client *Client) QueryRobotTaskCallList(request *QueryRobotTaskCallListRequest) (_result *QueryRobotTaskCallListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotTaskCallListResponse{}
@@ -10667,14 +13479,21 @@ func (client *Client) QueryRobotTaskCallList(request *QueryRobotTaskCallListRequ
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotTaskDetailRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryRobotTaskDetailResponse
- */
+// Summary:
+//
+// Queries the details of a robocall task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRobotTaskDetailResponse
 func (client *Client) QueryRobotTaskDetailWithOptions(request *QueryRobotTaskDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRobotTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10720,13 +13539,19 @@ func (client *Client) QueryRobotTaskDetailWithOptions(request *QueryRobotTaskDet
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotTaskDetailRequest
- * @return QueryRobotTaskDetailResponse
- */
+// Summary:
+//
+// Queries the details of a robocall task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotTaskDetailRequest
+//
+// @return QueryRobotTaskDetailResponse
 func (client *Client) QueryRobotTaskDetail(request *QueryRobotTaskDetailRequest) (_result *QueryRobotTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotTaskDetailResponse{}
@@ -10738,14 +13563,21 @@ func (client *Client) QueryRobotTaskDetail(request *QueryRobotTaskDetailRequest)
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotTaskListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryRobotTaskListResponse
- */
+// Summary:
+//
+// Queries the information about all robocall tasks.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRobotTaskListResponse
 func (client *Client) QueryRobotTaskListWithOptions(request *QueryRobotTaskListRequest, runtime *util.RuntimeOptions) (_result *QueryRobotTaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10807,13 +13639,19 @@ func (client *Client) QueryRobotTaskListWithOptions(request *QueryRobotTaskListR
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotTaskListRequest
- * @return QueryRobotTaskListResponse
- */
+// Summary:
+//
+// Queries the information about all robocall tasks.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotTaskListRequest
+//
+// @return QueryRobotTaskListResponse
 func (client *Client) QueryRobotTaskList(request *QueryRobotTaskListRequest) (_result *QueryRobotTaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotTaskListResponse{}
@@ -10825,14 +13663,21 @@ func (client *Client) QueryRobotTaskList(request *QueryRobotTaskListRequest) (_r
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotv2AllListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryRobotv2AllListResponse
- */
+// Summary:
+//
+// Queries a list of robot communication scripts.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotv2AllListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRobotv2AllListResponse
 func (client *Client) QueryRobotv2AllListWithOptions(request *QueryRobotv2AllListRequest, runtime *util.RuntimeOptions) (_result *QueryRobotv2AllListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10874,13 +13719,19 @@ func (client *Client) QueryRobotv2AllListWithOptions(request *QueryRobotv2AllLis
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryRobotv2AllListRequest
- * @return QueryRobotv2AllListResponse
- */
+// Summary:
+//
+// Queries a list of robot communication scripts.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryRobotv2AllListRequest
+//
+// @return QueryRobotv2AllListResponse
 func (client *Client) QueryRobotv2AllList(request *QueryRobotv2AllListRequest) (_result *QueryRobotv2AllListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRobotv2AllListResponse{}
@@ -10892,6 +13743,15 @@ func (client *Client) QueryRobotv2AllList(request *QueryRobotv2AllListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// QueryVideoPlayProgress
+//
+// @param request - QueryVideoPlayProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryVideoPlayProgressResponse
 func (client *Client) QueryVideoPlayProgressWithOptions(request *QueryVideoPlayProgressRequest, runtime *util.RuntimeOptions) (_result *QueryVideoPlayProgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10941,6 +13801,13 @@ func (client *Client) QueryVideoPlayProgressWithOptions(request *QueryVideoPlayP
 	return _result, _err
 }
 
+// Summary:
+//
+// QueryVideoPlayProgress
+//
+// @param request - QueryVideoPlayProgressRequest
+//
+// @return QueryVideoPlayProgressResponse
 func (client *Client) QueryVideoPlayProgress(request *QueryVideoPlayProgressRequest) (_result *QueryVideoPlayProgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryVideoPlayProgressResponse{}
@@ -10952,14 +13819,21 @@ func (client *Client) QueryVideoPlayProgress(request *QueryVideoPlayProgressRequ
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryVirtualNumberRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryVirtualNumberResponse
- */
+// Summary:
+//
+// Queries a list of virtual numbers.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryVirtualNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryVirtualNumberResponse
 func (client *Client) QueryVirtualNumberWithOptions(request *QueryVirtualNumberRequest, runtime *util.RuntimeOptions) (_result *QueryVirtualNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11017,13 +13891,19 @@ func (client *Client) QueryVirtualNumberWithOptions(request *QueryVirtualNumberR
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request QueryVirtualNumberRequest
- * @return QueryVirtualNumberResponse
- */
+// Summary:
+//
+// Queries a list of virtual numbers.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - QueryVirtualNumberRequest
+//
+// @return QueryVirtualNumberResponse
 func (client *Client) QueryVirtualNumber(request *QueryVirtualNumberRequest) (_result *QueryVirtualNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryVirtualNumberResponse{}
@@ -11035,14 +13915,21 @@ func (client *Client) QueryVirtualNumber(request *QueryVirtualNumberRequest) (_r
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 200 times per second per account.
- *
- * @param request QueryVirtualNumberRelationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryVirtualNumberRelationResponse
- */
+// Summary:
+//
+// Queries a list of associations between virtual numbers and real numbers.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 200 times per second per account.
+//
+// @param request - QueryVirtualNumberRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryVirtualNumberRelationResponse
 func (client *Client) QueryVirtualNumberRelationWithOptions(request *QueryVirtualNumberRelationRequest, runtime *util.RuntimeOptions) (_result *QueryVirtualNumberRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11120,13 +14007,19 @@ func (client *Client) QueryVirtualNumberRelationWithOptions(request *QueryVirtua
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 200 times per second per account.
- *
- * @param request QueryVirtualNumberRelationRequest
- * @return QueryVirtualNumberRelationResponse
- */
+// Summary:
+//
+// Queries a list of associations between virtual numbers and real numbers.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 200 times per second per account.
+//
+// @param request - QueryVirtualNumberRelationRequest
+//
+// @return QueryVirtualNumberRelationResponse
 func (client *Client) QueryVirtualNumberRelation(request *QueryVirtualNumberRelationRequest) (_result *QueryVirtualNumberRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryVirtualNumberRelationResponse{}
@@ -11138,6 +14031,15 @@ func (client *Client) QueryVirtualNumberRelation(request *QueryVirtualNumberRela
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the review state of a voice file.
+//
+// @param request - QueryVoiceFileAuditInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryVoiceFileAuditInfoResponse
 func (client *Client) QueryVoiceFileAuditInfoWithOptions(request *QueryVoiceFileAuditInfoRequest, runtime *util.RuntimeOptions) (_result *QueryVoiceFileAuditInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11187,6 +14089,13 @@ func (client *Client) QueryVoiceFileAuditInfoWithOptions(request *QueryVoiceFile
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the review state of a voice file.
+//
+// @param request - QueryVoiceFileAuditInfoRequest
+//
+// @return QueryVoiceFileAuditInfoResponse
 func (client *Client) QueryVoiceFileAuditInfo(request *QueryVoiceFileAuditInfoRequest) (_result *QueryVoiceFileAuditInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryVoiceFileAuditInfoResponse{}
@@ -11198,6 +14107,15 @@ func (client *Client) QueryVoiceFileAuditInfo(request *QueryVoiceFileAuditInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes the inbound call that is transferred by using a China 400 number.
+//
+// @param request - RecoverCallInConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecoverCallInConfigResponse
 func (client *Client) RecoverCallInConfigWithOptions(request *RecoverCallInConfigRequest, runtime *util.RuntimeOptions) (_result *RecoverCallInConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11243,6 +14161,13 @@ func (client *Client) RecoverCallInConfigWithOptions(request *RecoverCallInConfi
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes the inbound call that is transferred by using a China 400 number.
+//
+// @param request - RecoverCallInConfigRequest
+//
+// @return RecoverCallInConfigResponse
 func (client *Client) RecoverCallInConfig(request *RecoverCallInConfigRequest) (_result *RecoverCallInConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecoverCallInConfigResponse{}
@@ -11254,6 +14179,15 @@ func (client *Client) RecoverCallInConfig(request *RecoverCallInConfigRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// ResumeVideoFile
+//
+// @param request - ResumeVideoFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeVideoFileResponse
 func (client *Client) ResumeVideoFileWithOptions(request *ResumeVideoFileRequest, runtime *util.RuntimeOptions) (_result *ResumeVideoFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11303,6 +14237,13 @@ func (client *Client) ResumeVideoFileWithOptions(request *ResumeVideoFileRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// ResumeVideoFile
+//
+// @param request - ResumeVideoFileRequest
+//
+// @return ResumeVideoFileResponse
 func (client *Client) ResumeVideoFile(request *ResumeVideoFileRequest) (_result *ResumeVideoFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeVideoFileResponse{}
@@ -11314,6 +14255,15 @@ func (client *Client) ResumeVideoFile(request *ResumeVideoFileRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// SeekVideoFile
+//
+// @param request - SeekVideoFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SeekVideoFileResponse
 func (client *Client) SeekVideoFileWithOptions(request *SeekVideoFileRequest, runtime *util.RuntimeOptions) (_result *SeekVideoFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11367,6 +14317,13 @@ func (client *Client) SeekVideoFileWithOptions(request *SeekVideoFileRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// SeekVideoFile
+//
+// @param request - SeekVideoFileRequest
+//
+// @return SeekVideoFileResponse
 func (client *Client) SeekVideoFile(request *SeekVideoFileRequest) (_result *SeekVideoFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SeekVideoFileResponse{}
@@ -11378,14 +14335,21 @@ func (client *Client) SeekVideoFile(request *SeekVideoFileRequest) (_result *See
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request SendVerificationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SendVerificationResponse
- */
+// Summary:
+//
+// Sends an SMS verification code.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - SendVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendVerificationResponse
 func (client *Client) SendVerificationWithOptions(request *SendVerificationRequest, runtime *util.RuntimeOptions) (_result *SendVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11439,13 +14403,19 @@ func (client *Client) SendVerificationWithOptions(request *SendVerificationReque
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request SendVerificationRequest
- * @return SendVerificationResponse
- */
+// Summary:
+//
+// Sends an SMS verification code.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - SendVerificationRequest
+//
+// @return SendVerificationResponse
 func (client *Client) SendVerification(request *SendVerificationRequest) (_result *SendVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendVerificationResponse{}
@@ -11457,14 +14427,21 @@ func (client *Client) SendVerification(request *SendVerificationRequest) (_resul
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request SetTransferCalleePoolConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetTransferCalleePoolConfigResponse
- */
+// Summary:
+//
+// Sets the phone numbers for transferring a call.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - SetTransferCalleePoolConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetTransferCalleePoolConfigResponse
 func (client *Client) SetTransferCalleePoolConfigWithOptions(request *SetTransferCalleePoolConfigRequest, runtime *util.RuntimeOptions) (_result *SetTransferCalleePoolConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11522,13 +14499,19 @@ func (client *Client) SetTransferCalleePoolConfigWithOptions(request *SetTransfe
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request SetTransferCalleePoolConfigRequest
- * @return SetTransferCalleePoolConfigResponse
- */
+// Summary:
+//
+// Sets the phone numbers for transferring a call.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - SetTransferCalleePoolConfigRequest
+//
+// @return SetTransferCalleePoolConfigResponse
 func (client *Client) SetTransferCalleePoolConfig(request *SetTransferCalleePoolConfigRequest) (_result *SetTransferCalleePoolConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetTransferCalleePoolConfigResponse{}
@@ -11540,16 +14523,25 @@ func (client *Client) SetTransferCalleePoolConfig(request *SetTransferCalleePool
 	return _result, _err
 }
 
-/**
- * *   Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
- * *   For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](~~150083~~).
- * ### QPS limits
- * You can call this operation up to 1,000 times per second per account.
- *
- * @param request SingleCallByTtsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SingleCallByTtsResponse
- */
+// Summary:
+//
+// Sends a voice verification code or a voice notification with variables to a specified phone number.
+//
+// Description:
+//
+//   Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+//
+// 	- For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](https://help.aliyun.com/document_detail/150083.html).
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account.
+//
+// @param request - SingleCallByTtsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SingleCallByTtsResponse
 func (client *Client) SingleCallByTtsWithOptions(request *SingleCallByTtsRequest, runtime *util.RuntimeOptions) (_result *SingleCallByTtsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11623,15 +14615,23 @@ func (client *Client) SingleCallByTtsWithOptions(request *SingleCallByTtsRequest
 	return _result, _err
 }
 
-/**
- * *   Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
- * *   For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](~~150083~~).
- * ### QPS limits
- * You can call this operation up to 1,000 times per second per account.
- *
- * @param request SingleCallByTtsRequest
- * @return SingleCallByTtsResponse
- */
+// Summary:
+//
+// Sends a voice verification code or a voice notification with variables to a specified phone number.
+//
+// Description:
+//
+//   Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+//
+// 	- For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](https://help.aliyun.com/document_detail/150083.html).
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account.
+//
+// @param request - SingleCallByTtsRequest
+//
+// @return SingleCallByTtsResponse
 func (client *Client) SingleCallByTts(request *SingleCallByTtsRequest) (_result *SingleCallByTtsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SingleCallByTtsResponse{}
@@ -11643,6 +14643,15 @@ func (client *Client) SingleCallByTts(request *SingleCallByTtsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音视频单呼接口
+//
+// @param request - SingleCallByVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SingleCallByVideoResponse
 func (client *Client) SingleCallByVideoWithOptions(request *SingleCallByVideoRequest, runtime *util.RuntimeOptions) (_result *SingleCallByVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11716,6 +14725,13 @@ func (client *Client) SingleCallByVideoWithOptions(request *SingleCallByVideoReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音视频单呼接口
+//
+// @param request - SingleCallByVideoRequest
+//
+// @return SingleCallByVideoResponse
 func (client *Client) SingleCallByVideo(request *SingleCallByVideoRequest) (_result *SingleCallByVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SingleCallByVideoResponse{}
@@ -11727,16 +14743,25 @@ func (client *Client) SingleCallByVideo(request *SingleCallByVideoRequest) (_res
 	return _result, _err
 }
 
-/**
- * > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
- * You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
- * ### QPS limits
- * You can call this operation up to 1,200 times per second per account.
- *
- * @param request SingleCallByVoiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SingleCallByVoiceResponse
- */
+// Summary:
+//
+// Sends a voice notification to a phone number by using a voice notification file.
+//
+// Description:
+//
+// > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+//
+// You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send voice notifications with variables.
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,200 times per second per account.
+//
+// @param request - SingleCallByVoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SingleCallByVoiceResponse
 func (client *Client) SingleCallByVoiceWithOptions(request *SingleCallByVoiceRequest, runtime *util.RuntimeOptions) (_result *SingleCallByVoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11806,15 +14831,23 @@ func (client *Client) SingleCallByVoiceWithOptions(request *SingleCallByVoiceReq
 	return _result, _err
 }
 
-/**
- * > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
- * You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
- * ### QPS limits
- * You can call this operation up to 1,200 times per second per account.
- *
- * @param request SingleCallByVoiceRequest
- * @return SingleCallByVoiceResponse
- */
+// Summary:
+//
+// Sends a voice notification to a phone number by using a voice notification file.
+//
+// Description:
+//
+// > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+//
+// You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send voice notifications with variables.
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,200 times per second per account.
+//
+// @param request - SingleCallByVoiceRequest
+//
+// @return SingleCallByVoiceResponse
 func (client *Client) SingleCallByVoice(request *SingleCallByVoiceRequest) (_result *SingleCallByVoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SingleCallByVoiceResponse{}
@@ -11826,6 +14859,15 @@ func (client *Client) SingleCallByVoice(request *SingleCallByVoiceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// SkipVideoFile
+//
+// @param request - SkipVideoFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SkipVideoFileResponse
 func (client *Client) SkipVideoFileWithOptions(request *SkipVideoFileRequest, runtime *util.RuntimeOptions) (_result *SkipVideoFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11883,6 +14925,13 @@ func (client *Client) SkipVideoFileWithOptions(request *SkipVideoFileRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// SkipVideoFile
+//
+// @param request - SkipVideoFileRequest
+//
+// @return SkipVideoFileResponse
 func (client *Client) SkipVideoFile(request *SkipVideoFileRequest) (_result *SkipVideoFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SkipVideoFileResponse{}
@@ -11894,16 +14943,25 @@ func (client *Client) SkipVideoFile(request *SkipVideoFileRequest) (_result *Ski
 	return _result, _err
 }
 
-/**
- * *   The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
- * *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
- * ### QPS limits
- * You can call this operation up to 1,000 times per second per account.
- *
- * @param request SmartCallRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SmartCallResponse
- */
+// Summary:
+//
+// Initiates an intelligent voice call.
+//
+// Description:
+//
+//   The SmartCall operation must be used together with the [intelligent outbound HTTP operation](https://help.aliyun.com/document_detail/112703.html). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
+//
+// 	- The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ 	- ￥`.
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account.
+//
+// @param request - SmartCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SmartCallResponse
 func (client *Client) SmartCallWithOptions(request *SmartCallRequest, runtime *util.RuntimeOptions) (_result *SmartCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12053,15 +15111,23 @@ func (client *Client) SmartCallWithOptions(request *SmartCallRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * *   The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
- * *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
- * ### QPS limits
- * You can call this operation up to 1,000 times per second per account.
- *
- * @param request SmartCallRequest
- * @return SmartCallResponse
- */
+// Summary:
+//
+// Initiates an intelligent voice call.
+//
+// Description:
+//
+//   The SmartCall operation must be used together with the [intelligent outbound HTTP operation](https://help.aliyun.com/document_detail/112703.html). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
+//
+// 	- The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ 	- ￥`.
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account.
+//
+// @param request - SmartCallRequest
+//
+// @return SmartCallResponse
 func (client *Client) SmartCall(request *SmartCallRequest) (_result *SmartCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SmartCallResponse{}
@@ -12073,16 +15139,25 @@ func (client *Client) SmartCall(request *SmartCallRequest) (_result *SmartCallRe
 	return _result, _err
 }
 
-/**
- * You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
- * > You can only initiate the action of bridging a called number and an agent of the call center.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request SmartCallOperateRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SmartCallOperateResponse
- */
+// Summary:
+//
+// Initiates an action in an outbound robocall. This operation is applicable only when the robocall is transferred to an agent or an agent is listening in on the conversation between the robot and the user.
+//
+// Description:
+//
+// You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
+//
+// > You can only initiate the action of bridging a called number and an agent of the call center.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - SmartCallOperateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SmartCallOperateResponse
 func (client *Client) SmartCallOperateWithOptions(request *SmartCallOperateRequest, runtime *util.RuntimeOptions) (_result *SmartCallOperateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12136,15 +15211,23 @@ func (client *Client) SmartCallOperateWithOptions(request *SmartCallOperateReque
 	return _result, _err
 }
 
-/**
- * You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
- * > You can only initiate the action of bridging a called number and an agent of the call center.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request SmartCallOperateRequest
- * @return SmartCallOperateResponse
- */
+// Summary:
+//
+// Initiates an action in an outbound robocall. This operation is applicable only when the robocall is transferred to an agent or an agent is listening in on the conversation between the robot and the user.
+//
+// Description:
+//
+// You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
+//
+// > You can only initiate the action of bridging a called number and an agent of the call center.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - SmartCallOperateRequest
+//
+// @return SmartCallOperateResponse
 func (client *Client) SmartCallOperate(request *SmartCallOperateRequest) (_result *SmartCallOperateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SmartCallOperateResponse{}
@@ -12156,14 +15239,21 @@ func (client *Client) SmartCallOperate(request *SmartCallOperateRequest) (_resul
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request StartRobotTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StartRobotTaskResponse
- */
+// Summary:
+//
+// Starts a robocall task immediately or at a scheduled time.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - StartRobotTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRobotTaskResponse
 func (client *Client) StartRobotTaskWithOptions(request *StartRobotTaskRequest, runtime *util.RuntimeOptions) (_result *StartRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12213,13 +15303,19 @@ func (client *Client) StartRobotTaskWithOptions(request *StartRobotTaskRequest, 
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request StartRobotTaskRequest
- * @return StartRobotTaskResponse
- */
+// Summary:
+//
+// Starts a robocall task immediately or at a scheduled time.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - StartRobotTaskRequest
+//
+// @return StartRobotTaskResponse
 func (client *Client) StartRobotTask(request *StartRobotTaskRequest) (_result *StartRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRobotTaskResponse{}
@@ -12231,6 +15327,15 @@ func (client *Client) StartRobotTask(request *StartRobotTaskRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops the inbound call that is transferred from a China 400 number.
+//
+// @param request - StopCallInConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopCallInConfigResponse
 func (client *Client) StopCallInConfigWithOptions(request *StopCallInConfigRequest, runtime *util.RuntimeOptions) (_result *StopCallInConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12276,6 +15381,13 @@ func (client *Client) StopCallInConfigWithOptions(request *StopCallInConfigReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops the inbound call that is transferred from a China 400 number.
+//
+// @param request - StopCallInConfigRequest
+//
+// @return StopCallInConfigResponse
 func (client *Client) StopCallInConfig(request *StopCallInConfigRequest) (_result *StopCallInConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopCallInConfigResponse{}
@@ -12287,15 +15399,23 @@ func (client *Client) StopCallInConfig(request *StopCallInConfigRequest) (_resul
 	return _result, _err
 }
 
-/**
- * After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request StopRobotTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StopRobotTaskResponse
- */
+// Summary:
+//
+// Stops a robocall task that is in progress.
+//
+// Description:
+//
+// After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - StopRobotTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopRobotTaskResponse
 func (client *Client) StopRobotTaskWithOptions(request *StopRobotTaskRequest, runtime *util.RuntimeOptions) (_result *StopRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12341,14 +15461,21 @@ func (client *Client) StopRobotTaskWithOptions(request *StopRobotTaskRequest, ru
 	return _result, _err
 }
 
-/**
- * After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request StopRobotTaskRequest
- * @return StopRobotTaskResponse
- */
+// Summary:
+//
+// Stops a robocall task that is in progress.
+//
+// Description:
+//
+// After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - StopRobotTaskRequest
+//
+// @return StopRobotTaskResponse
 func (client *Client) StopRobotTask(request *StopRobotTaskRequest) (_result *StopRobotTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopRobotTaskResponse{}
@@ -12360,14 +15487,21 @@ func (client *Client) StopRobotTask(request *StopRobotTaskRequest) (_result *Sto
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request SubmitHotlineTransferRegisterRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SubmitHotlineTransferRegisterResponse
- */
+// Summary:
+//
+// Submits a China 400 number for registration.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - SubmitHotlineTransferRegisterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitHotlineTransferRegisterResponse
 func (client *Client) SubmitHotlineTransferRegisterWithOptions(request *SubmitHotlineTransferRegisterRequest, runtime *util.RuntimeOptions) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12449,13 +15583,19 @@ func (client *Client) SubmitHotlineTransferRegisterWithOptions(request *SubmitHo
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request SubmitHotlineTransferRegisterRequest
- * @return SubmitHotlineTransferRegisterResponse
- */
+// Summary:
+//
+// Submits a China 400 number for registration.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - SubmitHotlineTransferRegisterRequest
+//
+// @return SubmitHotlineTransferRegisterResponse
 func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransferRegisterRequest) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitHotlineTransferRegisterResponse{}
@@ -12467,6 +15607,15 @@ func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransf
 	return _result, _err
 }
 
+// Summary:
+//
+// UpgradeVideoFile
+//
+// @param request - UpgradeVideoFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeVideoFileResponse
 func (client *Client) UpgradeVideoFileWithOptions(request *UpgradeVideoFileRequest, runtime *util.RuntimeOptions) (_result *UpgradeVideoFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12524,6 +15673,13 @@ func (client *Client) UpgradeVideoFileWithOptions(request *UpgradeVideoFileReque
 	return _result, _err
 }
 
+// Summary:
+//
+// UpgradeVideoFile
+//
+// @param request - UpgradeVideoFileRequest
+//
+// @return UpgradeVideoFileResponse
 func (client *Client) UpgradeVideoFile(request *UpgradeVideoFileRequest) (_result *UpgradeVideoFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeVideoFileResponse{}
@@ -12535,14 +15691,21 @@ func (client *Client) UpgradeVideoFile(request *UpgradeVideoFileRequest) (_resul
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request UploadRobotTaskCalledFileRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UploadRobotTaskCalledFileResponse
- */
+// Summary:
+//
+// Uploads the called numbers of a robocall task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - UploadRobotTaskCalledFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadRobotTaskCalledFileResponse
 func (client *Client) UploadRobotTaskCalledFileWithOptions(request *UploadRobotTaskCalledFileRequest, runtime *util.RuntimeOptions) (_result *UploadRobotTaskCalledFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12600,13 +15763,19 @@ func (client *Client) UploadRobotTaskCalledFileWithOptions(request *UploadRobotT
 	return _result, _err
 }
 
-/**
- * ### QPS limits
- * You can call this operation up to 100 times per second per account.
- *
- * @param request UploadRobotTaskCalledFileRequest
- * @return UploadRobotTaskCalledFileResponse
- */
+// Summary:
+//
+// Uploads the called numbers of a robocall task.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account.
+//
+// @param request - UploadRobotTaskCalledFileRequest
+//
+// @return UploadRobotTaskCalledFileResponse
 func (client *Client) UploadRobotTaskCalledFile(request *UploadRobotTaskCalledFileRequest) (_result *UploadRobotTaskCalledFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadRobotTaskCalledFileResponse{}
