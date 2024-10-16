@@ -167,25 +167,34 @@ func (s *AddCategoryResponse) SetBody(v *AddCategoryResponseBody) *AddCategoryRe
 }
 
 type AddFileRequest struct {
+	// The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 68abd1dea7b6404d8f7d7b9f7fbd332d.1716698936847
 	LeaseId *string `json:"LeaseId,omitempty" xml:"LeaseId,omitempty"`
+	// The parser. Valid value:
+	//
+	// 	- DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
-	Parser *string   `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// A list of tags associated with the document. The default value is null, which means no tags. You can specify up to 10 tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s AddFileRequest) String() string {
@@ -217,24 +226,33 @@ func (s *AddFileRequest) SetTags(v []*string) *AddFileRequest {
 }
 
 type AddFileShrinkRequest struct {
+	// The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 68abd1dea7b6404d8f7d7b9f7fbd332d.1716698936847
 	LeaseId *string `json:"LeaseId,omitempty" xml:"LeaseId,omitempty"`
+	// The parser. Valid value:
+	//
+	// 	- DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
-	Parser     *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// A list of tags associated with the document. The default value is null, which means no tags. You can specify up to 10 tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -267,23 +285,38 @@ func (s *AddFileShrinkRequest) SetTagsShrink(v string) *AddFileShrinkRequest {
 }
 
 type AddFileResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// DataCenter.FileTooLarge
-	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data fields.
 	Data *AddFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -329,10 +362,16 @@ func (s *AddFileResponseBody) SetSuccess(v string) *AddFileResponseBody {
 }
 
 type AddFileResponseBodyData struct {
+	// The primary key ID of the document. We recommend that you store the ID because it is required for all subsequent API operations related to this document.
+	//
 	// example:
 	//
 	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The parser that is used to parse the document. Valid value:
+	//
+	// 	- DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
+	//
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
@@ -387,14 +426,20 @@ func (s *AddFileResponse) SetBody(v *AddFileResponseBody) *AddFileResponse {
 }
 
 type ApplyFileUploadLeaseRequest struct {
+	// The name of the uploaded document, including the extension. Supported formats: pdf, doc, docx, md, txt, ppt, and pptx. The document name must be 4 to 128 characters in length.
+	//
 	// This parameter is required.
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The MD5 value of the uploaded document. This parameter is verified by the server (not in the current version).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 19657c391f6c70bcea63c154d8606bb3
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The size of the uploaded document, in bytes. This parameter is verified by the server (not in the current version). Valid values: 1 to 100000000.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -427,23 +472,38 @@ func (s *ApplyFileUploadLeaseRequest) SetSizeInBytes(v string) *ApplyFileUploadL
 }
 
 type ApplyFileUploadLeaseResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// DataCenter.FileTooLarge
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data fields.
 	Data *ApplyFileUploadLeaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -489,11 +549,20 @@ func (s *ApplyFileUploadLeaseResponseBody) SetSuccess(v bool) *ApplyFileUploadLe
 }
 
 type ApplyFileUploadLeaseResponseBodyData struct {
+	// The unique ID of the lease. You need to specify this parameter when you call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
+	//
 	// example:
 	//
 	// 1e6a159107384782be5e45ac4759b247.1719325231035
-	FileUploadLeaseId *string                                    `json:"FileUploadLeaseId,omitempty" xml:"FileUploadLeaseId,omitempty"`
-	Param             *ApplyFileUploadLeaseResponseBodyDataParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	FileUploadLeaseId *string `json:"FileUploadLeaseId,omitempty" xml:"FileUploadLeaseId,omitempty"`
+	// The HTTP request parameters used to upload the document.
+	Param *ApplyFileUploadLeaseResponseBodyDataParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// The upload method of the document. Valid values:
+	//
+	// 	- OSS.PreSignedURL
+	//
+	// 	- HTTP
+	//
 	// example:
 	//
 	// HTTP
@@ -524,16 +593,26 @@ func (s *ApplyFileUploadLeaseResponseBodyData) SetType(v string) *ApplyFileUploa
 }
 
 type ApplyFileUploadLeaseResponseBodyDataParam struct {
+	// The key-value pair to be placed in the Header. Both the key and the value are strings.
+	//
 	// example:
 	//
 	// "X-bailian-extra": "MTAwNTQyNjQ5NTE2OTE3OA==",
 	//
 	//         "Content-Type": "application/pdf"
 	Headers interface{} `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// The HTTP call method. Valid values:
+	//
+	// 	- PUT
+	//
+	// 	- POST
+	//
 	// example:
 	//
 	// PUT
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The upload URL of the document.
+	//
 	// example:
 	//
 	// https://bailian-datahub-data-origin-prod.oss-cn-hangzhou.aliyuncs.com/1005426495169178/10024405/68abd1dea7b6404d8f7d7b9f7fbd332d.1716698936847.pdf?Expires=1716699536&OSSAccessKeyId=TestID&Signature=HfwPUZo4pR6DatSDym0zFKVh9Wg%3D
@@ -965,51 +1044,135 @@ func (s *CreateAndPulishAgentResponse) SetBody(v *CreateAndPulishAgentResponseBo
 }
 
 type CreateIndexRequest struct {
+	// The list of primary key IDs of the categories to be imported into the knowledge base.
 	CategoryIds []*string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	// The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
+	//
+	// The default value is empty, which means using the intelligent splitting method.
+	//
+	// >  If you specify the `ChunkSize` parameter, you must also specify the `OverlapSize` and `Separator` parameters. If you do not specify these three parameters, the system uses the intelligent splitting method by default.
+	//
 	// example:
 	//
 	// 128
-	ChunkSize   *int32                        `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	Columns     []*CreateIndexRequestColumns  `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	DataSource  *CreateIndexRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	Description *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	DocumentIds []*string                     `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	ChunkSize *int32                       `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	Columns   []*CreateIndexRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// >  This parameter is not available. Do not specify this parameter.
+	DataSource *CreateIndexRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of primary key IDs of the documents to be imported into the knowledge base.
+	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+	//
+	// 	- text-embedding-v2
+	//
+	// The default value is null, which means using the text-embedding-v2 model.
+	//
 	// example:
 	//
 	// text-embedding-v2
 	EmbeddingModelName *string `json:"EmbeddingModelName,omitempty" xml:"EmbeddingModelName,omitempty"`
+	// The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
+	//
+	// The default value is empty, which means using the intelligent splitting method.
+	//
 	// example:
 	//
 	// 16
 	OverlapSize *int32 `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	// Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
+	//
+	// Default value: 0.20.
+	//
 	// example:
 	//
 	// 0.20
 	RerankMinScore *float64 `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
+	// The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- gte-rerank-hybrid
+	//
+	// 	- gte-rerank
+	//
+	// The default value is empty, which means using the official gte-rerank-hybrid model.
+	//
+	// >  If you need only semantic ranking, we recommend that you use gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend that you use gte-rerank-hybrid.
+	//
 	// example:
 	//
 	// gte-rerank-hybrid
 	RerankModelName *string `json:"RerankModelName,omitempty" xml:"RerankModelName,omitempty"`
+	// The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
+	//
+	// 	- \\n: line break
+	//
+	// 	- ，: Chinese comma
+	//
+	// 	- ,: English comma
+	//
+	// 	- 。 : Chinese full stop
+	//
+	// 	- .: English full stop
+	//
+	// 	- ！ : Chinese exclamation point
+	//
+	// 	- ! : English exclamation point
+	//
+	// 	- ；: Chinese semicolon
+	//
+	// 	- ;: English semicolon
+	//
+	// 	- ？ : Chinese question mark
+	//
+	// 	- ?: English question mark
+	//
+	// The default value is empty, which means using the intelligent splitting method.
+	//
 	// example:
 	//
 	// ,
 	Separator *string `json:"Separator,omitempty" xml:"Separator,omitempty"`
+	// The ID of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can view the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
+	//
 	// example:
 	//
 	// gp-bp321093j84
 	SinkInstanceId *string `json:"SinkInstanceId,omitempty" xml:"SinkInstanceId,omitempty"`
+	// The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SinkRegion *string `json:"SinkRegion,omitempty" xml:"SinkRegion,omitempty"`
+	// The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- DEFAULT: The built-in vector database.
+	//
+	// 	- ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend that you specify ADB.
+	//
+	// >  If you have not used AnalyticDB for AnalyticDB in Model Studio before, go to the [Create Knowledge Base](https://bailian.console.aliyun.com/#/knowledge-base/create) page, select ADB-PG as Vector Storage Type, and follow the instructions to grant permissions. If you specify ADB, you must also specify the `SinkInstanceId` and `SinkRegion` parameters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEFAULT
 	SinkType *string `json:"SinkType,omitempty" xml:"SinkType,omitempty"`
+	// The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
+	//
+	// 	- DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+	//
+	// >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+	//
+	// >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -1019,6 +1182,12 @@ type CreateIndexRequest struct {
 	//
 	// DATA_CENTER_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The data type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+	//
+	// 	- unstructured
+	//
+	// >  After a knowledge base is created, its data type cannot be changed. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1162,16 +1331,26 @@ func (s *CreateIndexRequestColumns) SetType(v string) *CreateIndexRequestColumns
 }
 
 type CreateIndexRequestDataSource struct {
-	CredentialId  *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
 	CredentialKey *string `json:"CredentialKey,omitempty" xml:"CredentialKey,omitempty"`
-	Database      *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	Endpoint      *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	IsPrivateLink *bool   `json:"IsPrivateLink,omitempty" xml:"IsPrivateLink,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SubPath       *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	SubType       *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	Table         *string `json:"Table,omitempty" xml:"Table,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	IsPrivateLink *bool `json:"IsPrivateLink,omitempty" xml:"IsPrivateLink,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateIndexRequestDataSource) String() string {
@@ -1233,51 +1412,135 @@ func (s *CreateIndexRequestDataSource) SetType(v string) *CreateIndexRequestData
 }
 
 type CreateIndexShrinkRequest struct {
+	// The list of primary key IDs of the categories to be imported into the knowledge base.
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	// The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
+	//
+	// The default value is empty, which means using the intelligent splitting method.
+	//
+	// >  If you specify the `ChunkSize` parameter, you must also specify the `OverlapSize` and `Separator` parameters. If you do not specify these three parameters, the system uses the intelligent splitting method by default.
+	//
 	// example:
 	//
 	// 128
-	ChunkSize         *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	ColumnsShrink     *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
-	DataSourceShrink  *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ChunkSize     *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
+	// >  This parameter is not available. Do not specify this parameter.
+	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of primary key IDs of the documents to be imported into the knowledge base.
 	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
+	// The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+	//
+	// 	- text-embedding-v2
+	//
+	// The default value is null, which means using the text-embedding-v2 model.
+	//
 	// example:
 	//
 	// text-embedding-v2
 	EmbeddingModelName *string `json:"EmbeddingModelName,omitempty" xml:"EmbeddingModelName,omitempty"`
+	// The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
+	//
+	// The default value is empty, which means using the intelligent splitting method.
+	//
 	// example:
 	//
 	// 16
 	OverlapSize *int32 `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	// Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
+	//
+	// Default value: 0.20.
+	//
 	// example:
 	//
 	// 0.20
 	RerankMinScore *float64 `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
+	// The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- gte-rerank-hybrid
+	//
+	// 	- gte-rerank
+	//
+	// The default value is empty, which means using the official gte-rerank-hybrid model.
+	//
+	// >  If you need only semantic ranking, we recommend that you use gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend that you use gte-rerank-hybrid.
+	//
 	// example:
 	//
 	// gte-rerank-hybrid
 	RerankModelName *string `json:"RerankModelName,omitempty" xml:"RerankModelName,omitempty"`
+	// The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
+	//
+	// 	- \\n: line break
+	//
+	// 	- ，: Chinese comma
+	//
+	// 	- ,: English comma
+	//
+	// 	- 。 : Chinese full stop
+	//
+	// 	- .: English full stop
+	//
+	// 	- ！ : Chinese exclamation point
+	//
+	// 	- ! : English exclamation point
+	//
+	// 	- ；: Chinese semicolon
+	//
+	// 	- ;: English semicolon
+	//
+	// 	- ？ : Chinese question mark
+	//
+	// 	- ?: English question mark
+	//
+	// The default value is empty, which means using the intelligent splitting method.
+	//
 	// example:
 	//
 	// ,
 	Separator *string `json:"Separator,omitempty" xml:"Separator,omitempty"`
+	// The ID of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can view the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
+	//
 	// example:
 	//
 	// gp-bp321093j84
 	SinkInstanceId *string `json:"SinkInstanceId,omitempty" xml:"SinkInstanceId,omitempty"`
+	// The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SinkRegion *string `json:"SinkRegion,omitempty" xml:"SinkRegion,omitempty"`
+	// The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- DEFAULT: The built-in vector database.
+	//
+	// 	- ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend that you specify ADB.
+	//
+	// >  If you have not used AnalyticDB for AnalyticDB in Model Studio before, go to the [Create Knowledge Base](https://bailian.console.aliyun.com/#/knowledge-base/create) page, select ADB-PG as Vector Storage Type, and follow the instructions to grant permissions. If you specify ADB, you must also specify the `SinkInstanceId` and `SinkRegion` parameters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DEFAULT
 	SinkType *string `json:"SinkType,omitempty" xml:"SinkType,omitempty"`
+	// The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
+	//
+	// 	- DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+	//
+	// >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+	//
+	// >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -1287,6 +1550,12 @@ type CreateIndexShrinkRequest struct {
 	//
 	// DATA_CENTER_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The data type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+	//
+	// 	- unstructured
+	//
+	// >  After a knowledge base is created, its data type cannot be changed. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1389,25 +1658,38 @@ func (s *CreateIndexShrinkRequest) SetStructureType(v string) *CreateIndexShrink
 }
 
 type CreateIndexResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// Forbidden
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateIndexResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Invalid input, variable name is missing
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 17204B98-7734-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -1453,6 +1735,10 @@ func (s *CreateIndexResponseBody) SetSuccess(v bool) *CreateIndexResponseBody {
 }
 
 type CreateIndexResponseBodyData struct {
+	// The primary key ID of the knowledge base, `IndexId`.
+	//
+	// >  We recommend that you store this ID. It is required for all subsequent API operations related to this knowledge base.
+	//
 	// example:
 	//
 	// jkurxhju6b
@@ -1648,6 +1934,89 @@ func (s *CreateMemoryNodeResponse) SetStatusCode(v int32) *CreateMemoryNodeRespo
 }
 
 func (s *CreateMemoryNodeResponse) SetBody(v *CreateMemoryNodeResponseBody) *CreateMemoryNodeResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePromptTemplateRequest struct {
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreatePromptTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePromptTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePromptTemplateRequest) SetContent(v string) *CreatePromptTemplateRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreatePromptTemplateRequest) SetName(v string) *CreatePromptTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+type CreatePromptTemplateResponseBody struct {
+	// example:
+	//
+	// 6e49109bfeb94a39bb268f4e483ccxxx
+	PromptTemplateId *string `json:"promptTemplateId,omitempty" xml:"promptTemplateId,omitempty"`
+	// example:
+	//
+	// FE9B6CBF-47E6-5D76-9C5D-B814DD5ABxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreatePromptTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePromptTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePromptTemplateResponseBody) SetPromptTemplateId(v string) *CreatePromptTemplateResponseBody {
+	s.PromptTemplateId = &v
+	return s
+}
+
+func (s *CreatePromptTemplateResponseBody) SetRequestId(v string) *CreatePromptTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePromptTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePromptTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePromptTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePromptTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePromptTemplateResponse) SetHeaders(v map[string]*string) *CreatePromptTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePromptTemplateResponse) SetStatusCode(v int32) *CreatePromptTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePromptTemplateResponse) SetBody(v *CreatePromptTemplateResponseBody) *CreatePromptTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -1956,6 +2325,8 @@ func (s *DeleteFileResponse) SetBody(v *DeleteFileResponseBody) *DeleteFileRespo
 }
 
 type DeleteIndexRequest struct {
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1978,24 +2349,36 @@ func (s *DeleteIndexRequest) SetIndexId(v string) *DeleteIndexRequest {
 }
 
 type DeleteIndexResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// Index.InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -2065,8 +2448,12 @@ func (s *DeleteIndexResponse) SetBody(v *DeleteIndexResponseBody) *DeleteIndexRe
 }
 
 type DeleteIndexDocumentRequest struct {
+	// The list of the primary key IDs of the documents.
+	//
 	// This parameter is required.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2094,8 +2481,12 @@ func (s *DeleteIndexDocumentRequest) SetIndexId(v string) *DeleteIndexDocumentRe
 }
 
 type DeleteIndexDocumentShrinkRequest struct {
+	// The list of the primary key IDs of the documents.
+	//
 	// This parameter is required.
 	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2123,25 +2514,38 @@ func (s *DeleteIndexDocumentShrinkRequest) SetIndexId(v string) *DeleteIndexDocu
 }
 
 type DeleteIndexDocumentResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// Index.InvalidParameter
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The parameters returned by the operation.
 	Data *DeleteIndexDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -2187,6 +2591,7 @@ func (s *DeleteIndexDocumentResponseBody) SetSuccess(v bool) *DeleteIndexDocumen
 }
 
 type DeleteIndexDocumentResponseBodyData struct {
+	// The list of primary key IDs of documents that are deleted.
 	DeletedDocument []*string `json:"DeletedDocument,omitempty" xml:"DeletedDocument,omitempty" type:"Repeated"`
 }
 
@@ -2330,24 +2735,88 @@ func (s *DeleteMemoryNodeResponse) SetBody(v *DeleteMemoryNodeResponseBody) *Del
 	return s
 }
 
+type DeletePromptTemplateResponseBody struct {
+	// example:
+	//
+	// FE9B6CBF-47E6-5D76-9C5D-B814DD5ABxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeletePromptTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePromptTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePromptTemplateResponseBody) SetRequestId(v string) *DeletePromptTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePromptTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePromptTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePromptTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePromptTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePromptTemplateResponse) SetHeaders(v map[string]*string) *DeletePromptTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePromptTemplateResponse) SetStatusCode(v int32) *DeletePromptTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePromptTemplateResponse) SetBody(v *DeletePromptTemplateResponseBody) *DeletePromptTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFileResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data fields.
 	Data *DescribeFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Requests throttling triggered.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -2393,39 +2862,66 @@ func (s *DescribeFileResponseBody) SetSuccess(v bool) *DescribeFileResponseBody 
 }
 
 type DescribeFileResponseBodyData struct {
+	// The ID of the category to which the document belongs.
+	//
 	// example:
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The timestamp when the document was uploaded to Model Studio. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC + 8.
+	//
 	// example:
 	//
 	// 2024-05-26 12:45:43
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The primary key ID of the document.
+	//
 	// example:
 	//
 	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The name of the document.
+	//
 	// example:
 	//
 	// test.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file type of the document. The value is an extension. Valid values: pdf, docx, doc, txt, md, pptx, and ppt.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The parser that is used to parse the document. Valid value:
+	//
+	// 	- DASHSCOPE_DOCMIND: The default document parser.
+	//
 	// example:
 	//
 	// DASHSCOPE_DOCMIND
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// The size of the document. Unit: bytes.
+	//
 	// example:
 	//
 	// 1234
 	SizeInBytes *int64 `json:"SizeInBytes,omitempty" xml:"SizeInBytes,omitempty"`
+	// The status of the document. Valid values:
+	//
+	// 	- INIT: pending parsing.
+	//
+	// 	- PARSING
+	//
+	// 	- PARSE_SUCCESS
+	//
+	// 	- PARSE_FAILED
+	//
 	// example:
 	//
 	// PARSE_SUCCESS
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags that are associated with the document. A document can be associated with multiple tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFileResponseBodyData) String() string {
@@ -2511,20 +3007,34 @@ func (s *DescribeFileResponse) SetBody(v *DescribeFileResponseBody) *DescribeFil
 }
 
 type GetIndexJobStatusRequest struct {
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 79c0aly8zw
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The knowledge base job ID, which is the `Data.Id` parameter returned by the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) or [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20230718xxxx-146c93bf
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Both the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) and [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations support batch import of documents. This operation returns both the overall `Status` of the job and the `Document.Status` of each document. If there are a large number of documents, you can use the `PageNumber` parameter to perform a paged query. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of document import jobs that are displayed on each page. No maximum value. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s GetIndexJobStatusRequest) String() string {
@@ -2556,23 +3066,38 @@ func (s *GetIndexJobStatusRequest) SetPageSize(v int32) *GetIndexJobStatusReques
 }
 
 type GetIndexJobStatusResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// Index.Forbidden
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetIndexJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -2618,11 +3143,24 @@ func (s *GetIndexJobStatusResponseBody) SetSuccess(v bool) *GetIndexJobStatusRes
 }
 
 type GetIndexJobStatusResponseBodyData struct {
+	// The list of imported documents.
 	Documents []*GetIndexJobStatusResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// The ID of the job.
+	//
 	// example:
 	//
 	// 66122af12a4e45ddae6bd6c845556647
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The status of the knowledge base job. Valid values:
+	//
+	// 	- COMPLETED
+	//
+	// 	- FAILED
+	//
+	// 	- RUNNING
+	//
+	// 	- PENDING
+	//
 	// example:
 	//
 	// PENDING
@@ -2653,19 +3191,36 @@ func (s *GetIndexJobStatusResponseBodyData) SetStatus(v string) *GetIndexJobStat
 }
 
 type GetIndexJobStatusResponseBodyDataDocuments struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// Index.Document.ChunkError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The primary key ID of the document.
+	//
 	// example:
 	//
 	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
-	DocId   *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The name of the document.
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// document parse error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The import status of the document. Valid values:
+	//
+	// 	- INSERT_ERROR
+	//
+	// 	- RUNNING
+	//
+	// 	- DELETED
+	//
+	// 	- FINISH
+	//
 	// example:
 	//
 	// RUNNING
@@ -2885,6 +3440,94 @@ func (s *GetMemoryNodeResponse) SetStatusCode(v int32) *GetMemoryNodeResponse {
 }
 
 func (s *GetMemoryNodeResponse) SetBody(v *GetMemoryNodeResponseBody) *GetMemoryNodeResponse {
+	s.Body = v
+	return s
+}
+
+type GetPromptTemplateResponseBody struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 6e49109bfeb94a39bb268f4e483ccxxx
+	PromptTemplateId *string `json:"promptTemplateId,omitempty" xml:"promptTemplateId,omitempty"`
+	// example:
+	//
+	// 8C56C7AF-6573-19CE-B018-E05E1EDCF4C5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// ["theme"]
+	Variables []*string `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// llm-us9hjmt32nysdxxx
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s GetPromptTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPromptTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPromptTemplateResponseBody) SetContent(v string) *GetPromptTemplateResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *GetPromptTemplateResponseBody) SetName(v string) *GetPromptTemplateResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPromptTemplateResponseBody) SetPromptTemplateId(v string) *GetPromptTemplateResponseBody {
+	s.PromptTemplateId = &v
+	return s
+}
+
+func (s *GetPromptTemplateResponseBody) SetRequestId(v string) *GetPromptTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPromptTemplateResponseBody) SetVariables(v []*string) *GetPromptTemplateResponseBody {
+	s.Variables = v
+	return s
+}
+
+func (s *GetPromptTemplateResponseBody) SetWorkspaceId(v string) *GetPromptTemplateResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetPromptTemplateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPromptTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPromptTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPromptTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPromptTemplateResponse) SetHeaders(v map[string]*string) *GetPromptTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPromptTemplateResponse) SetStatusCode(v int32) *GetPromptTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPromptTemplateResponse) SetBody(v *GetPromptTemplateResponseBody) *GetPromptTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -3481,21 +4124,30 @@ func (s *ListCategoryResponse) SetBody(v *ListCategoryResponseBody) *ListCategor
 }
 
 type ListChunksRequest struct {
+	// An array of field names. This parameter is used to filter non-private fields (prefixed with_underscores) in the Metadata parameter returned by this operation. By default, this parameter is left empty, which means all non-private fields in the Metadata parameter are returned. If you only want specified non-private fields, such as title, set this parameter to title.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The primary key ID of the document, which is the `FieldID` parameter returned by the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation. This parameter is not required for structured knowledge base, but is required for unstructured knowledge base. To view the ID, you can click the ID icon next to the file name on the [Data Management](https://bailian.console.aliyun.com/#/data-center) page. You can filter returned chunks by the document ID. This parameter is left empty by default.
+	//
 	// example:
 	//
 	// file_5f03dfea56da4050ab68d61871fc4cb3_10151493
 	Filed *string `json:"Filed,omitempty" xml:"Filed,omitempty"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// otoru9en4v
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The number of the pages to return. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of chunks to display on each page. Maximum value: 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -3536,25 +4188,38 @@ func (s *ListChunksRequest) SetPageSize(v int32) *ListChunksRequest {
 }
 
 type ListChunksResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Index.InvalidParameter
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *ListChunksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 8F97A63B-55F1-527F-9D6E-467B6A7E8CF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -3600,7 +4265,10 @@ func (s *ListChunksResponseBody) SetSuccess(v bool) *ListChunksResponseBody {
 }
 
 type ListChunksResponseBodyData struct {
+	// The list of chunks.
 	Nodes []*ListChunksResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The total number of chunks returned.
+	//
 	// example:
 	//
 	// 16
@@ -3626,12 +4294,16 @@ func (s *ListChunksResponseBodyData) SetTotal(v int64) *ListChunksResponseBodyDa
 }
 
 type ListChunksResponseBodyDataNodes struct {
+	// The metadata map of the chunk.
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The similarity score of the chunk.
+	//
 	// example:
 	//
 	// 0.3
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Text  *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The text of the chunk.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s ListChunksResponseBodyDataNodes) String() string {
@@ -3693,6 +4365,7 @@ type ListFileRequest struct {
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// example:
 	//
 	// 20
@@ -3713,6 +4386,11 @@ func (s ListFileRequest) GoString() string {
 
 func (s *ListFileRequest) SetCategoryId(v string) *ListFileRequest {
 	s.CategoryId = &v
+	return s
+}
+
+func (s *ListFileRequest) SetFileName(v string) *ListFileRequest {
+	s.FileName = &v
 	return s
 }
 
@@ -3962,21 +4640,40 @@ func (s *ListFileResponse) SetBody(v *ListFileResponseBody) *ListFileResponse {
 }
 
 type ListIndexDocumentsRequest struct {
+	// The names of the queried documents. The default value is null, which means the names are not used to filter the results.
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
+	// The import status of the documents to be queried. Valid values:
+	//
+	// 	- INSERT_ERROR
+	//
+	// 	- RUNNING
+	//
+	// 	- DELETED
+	//
+	// 	- FINISH
+	//
+	// The default value is null, which means the import status is not used to filter the results.
+	//
 	// example:
 	//
 	// FINISH
 	DocumentStatus *string `json:"DocumentStatus,omitempty" xml:"DocumentStatus,omitempty"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 79c0aly8zw
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The page numbers of the pages to return. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of documents displayed on each page. No maximum value. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -4017,25 +4714,38 @@ func (s *ListIndexDocumentsRequest) SetPageSize(v int32) *ListIndexDocumentsRequ
 }
 
 type ListIndexDocumentsResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// InvalidParameter
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListIndexDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -4081,19 +4791,28 @@ func (s *ListIndexDocumentsResponseBody) SetSuccess(v bool) *ListIndexDocumentsR
 }
 
 type ListIndexDocumentsResponseBodyData struct {
+	// The list of documents in the knowledge base.
 	Documents []*ListIndexDocumentsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// The primary key ID of the knowledge base.
+	//
 	// example:
 	//
 	// pno97tn8iu
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The specified page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The specified number of documents on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of documents returned.
+	//
 	// example:
 	//
 	// 2437
@@ -4134,31 +4853,56 @@ func (s *ListIndexDocumentsResponseBodyData) SetTotalCount(v int64) *ListIndexDo
 }
 
 type ListIndexDocumentsResponseBodyDataDocuments struct {
+	// The error status code of document import.
+	//
 	// example:
 	//
 	// 110002
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The format of the document. Valid values: pdf, docx, doc, txt, md, pptx, ppt, and EXCEL.
+	//
 	// example:
 	//
 	// pdf
 	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
+	// The primary key ID of the document.
+	//
 	// example:
 	//
 	// doc_c134aa2073204a5d936d870bf960f56a10024701
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The error message of document import.
+	//
 	// example:
 	//
 	// check fileUrlKey[file_path] / fileNameKey[null] / fileExtensionKey[file_extension] is invalid
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the document.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The size of the document. Unit: bytes.
+	//
 	// example:
 	//
 	// 996764
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// For unstructured knowledge base, this parameter is the category ID, which is the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) interface. To view the category ID, you can click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+	//
+	// For structured knowledge base, this parameter is the data table ID. To view the table ID, you can click the ID icon next to the table name on the Structured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+	//
 	// example:
 	//
 	// cate_21a407a3372c4ba7aedc649709143f0c10021401
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The import status of the document. Valid values:
+	//
+	// 	- INSERT_ERROR
+	//
+	// 	- RUNNING
+	//
+	// 	- DELETED
+	//
+	// 	- FINISH
+	//
 	// example:
 	//
 	// RUNNING
@@ -4243,14 +4987,22 @@ func (s *ListIndexDocumentsResponse) SetBody(v *ListIndexDocumentsResponseBody) 
 }
 
 type ListIndicesRequest struct {
+	// The name of the knowledge base. You can query knowledge base by name. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+	//
+	// This parameter is left empty by default, which means that all knowledge bases in the specified workspace are queried.
+	//
 	// example:
 	//
 	// idx_status_score
 	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The number of the pages to return. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of knowledge bases to display on each page. No maximum value. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -4281,25 +5033,38 @@ func (s *ListIndicesRequest) SetPageSize(v string) *ListIndicesRequest {
 }
 
 type ListIndicesResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// Index.InvalidParameter
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListIndicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -4345,15 +5110,22 @@ func (s *ListIndicesResponseBody) SetSuccess(v bool) *ListIndicesResponseBody {
 }
 
 type ListIndicesResponseBodyData struct {
+	// The list of knowledge bases.
 	Indices []*ListIndicesResponseBodyDataIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
+	// The specified page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The specified number of documents on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of knowledge bases returned.
+	//
 	// example:
 	//
 	// 48
@@ -4389,59 +5161,132 @@ func (s *ListIndicesResponseBodyData) SetTotalCount(v int32) *ListIndicesRespons
 }
 
 type ListIndicesResponseBodyDataIndices struct {
+	// The estimated length of chunks. Valid values: [1-2048].
+	//
 	// example:
 	//
 	// 5
 	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// The description of the knowledge base.
+	//
 	// example:
 	//
 	// If each RAM user belongs to a RAM group, the configuration is considered compliant.
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of the primary key IDs of the documents.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// The name of the embedding model. Valid values:
+	//
+	// 	- text-embedding-v2
+	//
 	// example:
 	//
 	// conv-rewrite-qwen-1.8b
 	EmbeddingModelName *string `json:"EmbeddingModelName,omitempty" xml:"EmbeddingModelName,omitempty"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// example:
 	//
 	// 259899
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the knowledge base.
+	//
 	// example:
 	//
 	// temp_mUB4j
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The overlap length. Valid values: [0-1024].
+	//
 	// example:
 	//
 	// 10
 	OverlapSize *int32 `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	// Similarity Threshold Valid values: [0.01-1.00].
+	//
 	// example:
 	//
 	// 0.01
 	RerankMinScore *string `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
+	// The name of the rank model. Valid values:
+	//
+	// 	- gte-rerank-hybrid
+	//
+	// 	- gte-rerank
+	//
 	// example:
 	//
 	// gte-rerank-hybrid
 	RerankModelName *string `json:"RerankModelName,omitempty" xml:"RerankModelName,omitempty"`
+	// The clause identifier. Separate multiple clause identifiers with |. Valid values:
+	//
+	// 	- \\n: line break
+	//
+	// 	- ，: Chinese comma
+	//
+	// 	- ,: English comma
+	//
+	// 	- 。 : Chinese full stop
+	//
+	// 	- .: English full stop
+	//
+	// 	- ！ : Chinese exclamation point
+	//
+	// 	- ! : English exclamation point
+	//
+	// 	- ；: Chinese semicolon
+	//
+	// 	- ;: English semicolon
+	//
+	// 	- ？ : Chinese question mark
+	//
+	// 	- ?: English question mark
+	//
 	// example:
 	//
 	// \\n
 	Separator *string `json:"Separator,omitempty" xml:"Separator,omitempty"`
+	// The ID of the vector storage instance.
+	//
 	// example:
 	//
 	// gp-bp1gq62t1788yw2ol
 	SinkInstanceId *string `json:"SinkInstanceId,omitempty" xml:"SinkInstanceId,omitempty"`
+	// The region of the vector storage instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SinkRegion *string `json:"SinkRegion,omitempty" xml:"SinkRegion,omitempty"`
+	// The vector storage type of the knowledge base. Valid values:
+	//
+	// 	- ES: Built-in vector database.
+	//
+	// 	- BUILT_IN: Built-in vector database.
+	//
+	// 	- ADB: AnalyticDB for PostgreSQL database.
+	//
 	// example:
 	//
 	// es
 	SinkType *string `json:"SinkType,omitempty" xml:"SinkType,omitempty"`
+	// The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For unstructured knowledge base, possible values:
+	//
+	// 	- DATA_CENTER_CATEGORY: The category type.
+	//
+	// 	- DATA_CENTER_FILE: The document type.
+	//
+	// For structured knowledge base, possible values:
+	//
+	// 	- DATA_CENTER_STRUCTURED_TABLE: The data table type.
+	//
 	// example:
 	//
 	// DATA_CENTER_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The vector storage type of the knowledge base. Valid values:
+	//
+	// 	- UNSTRUCTURED
+	//
 	// example:
 	//
 	// structured
@@ -4839,6 +5684,188 @@ func (s *ListMemoryNodesResponse) SetStatusCode(v int32) *ListMemoryNodesRespons
 }
 
 func (s *ListMemoryNodesResponse) SetBody(v *ListMemoryNodesResponseBody) *ListMemoryNodesResponse {
+	s.Body = v
+	return s
+}
+
+type ListPromptTemplatesRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// dc270401186b433f975d7e1faaa34e0e
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// System
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListPromptTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPromptTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPromptTemplatesRequest) SetMaxResults(v int32) *ListPromptTemplatesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPromptTemplatesRequest) SetName(v string) *ListPromptTemplatesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPromptTemplatesRequest) SetNextToken(v string) *ListPromptTemplatesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPromptTemplatesRequest) SetType(v string) *ListPromptTemplatesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListPromptTemplatesResponseBody struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// dc270401186b433f975d7e1faaa34e0e
+	NextToken       *string                                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	PromptTemplates []*ListPromptTemplatesResponseBodyPromptTemplates `json:"promptTemplates,omitempty" xml:"promptTemplates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FE9B6CBF-47E6-5D76-9C5D-B814DD5AB071
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// llm-us9hjmt32nysdxxx
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListPromptTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPromptTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPromptTemplatesResponseBody) SetMaxResults(v int32) *ListPromptTemplatesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBody) SetNextToken(v string) *ListPromptTemplatesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBody) SetPromptTemplates(v []*ListPromptTemplatesResponseBodyPromptTemplates) *ListPromptTemplatesResponseBody {
+	s.PromptTemplates = v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBody) SetRequestId(v string) *ListPromptTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBody) SetTotalCount(v int32) *ListPromptTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBody) SetWorkspaceId(v string) *ListPromptTemplatesResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListPromptTemplatesResponseBodyPromptTemplates struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// d6935b7efbe34d11b13df9307151cf8c
+	PromptTemplateId *string `json:"promptTemplateId,omitempty" xml:"promptTemplateId,omitempty"`
+	// example:
+	//
+	// "System"
+	Type      *string   `json:"type,omitempty" xml:"type,omitempty"`
+	Variables []*string `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+}
+
+func (s ListPromptTemplatesResponseBodyPromptTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPromptTemplatesResponseBodyPromptTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListPromptTemplatesResponseBodyPromptTemplates) SetContent(v string) *ListPromptTemplatesResponseBodyPromptTemplates {
+	s.Content = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBodyPromptTemplates) SetName(v string) *ListPromptTemplatesResponseBodyPromptTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBodyPromptTemplates) SetPromptTemplateId(v string) *ListPromptTemplatesResponseBodyPromptTemplates {
+	s.PromptTemplateId = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBodyPromptTemplates) SetType(v string) *ListPromptTemplatesResponseBodyPromptTemplates {
+	s.Type = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponseBodyPromptTemplates) SetVariables(v []*string) *ListPromptTemplatesResponseBodyPromptTemplates {
+	s.Variables = v
+	return s
+}
+
+type ListPromptTemplatesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPromptTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPromptTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPromptTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPromptTemplatesResponse) SetHeaders(v map[string]*string) *ListPromptTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPromptTemplatesResponse) SetStatusCode(v int32) *ListPromptTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPromptTemplatesResponse) SetBody(v *ListPromptTemplatesResponseBody) *ListPromptTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -5245,41 +6272,85 @@ func (s *ListPublishedAgentResponse) SetBody(v *ListPublishedAgentResponseBody) 
 }
 
 type RetrieveRequest struct {
+	// Vector retrieval top K. After generating vectors based on input text, the top K chunks in the knowledge base that are most similar to the vector representation of the input text are retrieved. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	DenseSimilarityTopK *int32 `json:"DenseSimilarityTopK,omitempty" xml:"DenseSimilarityTopK,omitempty"`
+	// Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: true.
+	//
 	// example:
 	//
 	// true
 	EnableReranking *bool `json:"EnableReranking,omitempty" xml:"EnableReranking,omitempty"`
+	// Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	EnableRewrite *bool     `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
 	Images        []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5pwe0m2g6t
-	IndexId *string                  `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	Query   *string                  `json:"Query,omitempty" xml:"Query,omitempty"`
-	Rerank  []*RetrieveRequestRerank `json:"Rerank,omitempty" xml:"Rerank,omitempty" type:"Repeated"`
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The input query prompt. The length and characters of the query are not limited.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Ranking configurations.
+	Rerank []*RetrieveRequestRerank `json:"Rerank,omitempty" xml:"Rerank,omitempty" type:"Repeated"`
+	// Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
+	//
+	// By default, this parameter is left empty. In this case, the similarity threshold of the knowledge base is used.
+	//
 	// example:
 	//
 	// 0.20
 	RerankMinScore *float32 `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
+	// The top N return data after reranking. Valid values: 1 to 20. Default value: 5.
+	//
 	// example:
 	//
 	// 5
-	RerankTopN *int32                    `json:"RerankTopN,omitempty" xml:"RerankTopN,omitempty"`
-	Rewrite    []*RetrieveRequestRewrite `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Repeated"`
+	RerankTopN *int32 `json:"RerankTopN,omitempty" xml:"RerankTopN,omitempty"`
+	// Conversation rewriting configurations.
+	Rewrite []*RetrieveRequestRewrite `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Repeated"`
+	// Specifies whether to save the retrieve test history. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
-	SaveRetrieverHistory *bool                `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
-	SearchFilters        []map[string]*string `json:"SearchFilters,omitempty" xml:"SearchFilters,omitempty" type:"Repeated"`
+	SaveRetrieverHistory *bool `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
+	// Specifies complex filter conditions. For more information about the syntax of SearchFilters, see the SearchFilter syntax section of this topic.
+	SearchFilters []map[string]*string `json:"SearchFilters,omitempty" xml:"SearchFilters,omitempty" type:"Repeated"`
+	// The top K of keyword retrieval. Chunks that exactly match the keywords of the input text are retrieved from the knowledge base. This filters out irrelevant chunks and boosts accuracy. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 100
@@ -5360,6 +6431,12 @@ func (s *RetrieveRequest) SetSparseSimilarityTopK(v int32) *RetrieveRequest {
 }
 
 type RetrieveRequestRerank struct {
+	// The name of the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- gte-rerank-hybrid: Recommended official model.
+	//
+	// 	- gte-rerank
+	//
 	// example:
 	//
 	// gte-rerank-hybrid
@@ -5380,6 +6457,15 @@ func (s *RetrieveRequestRerank) SetModelName(v string) *RetrieveRequestRerank {
 }
 
 type RetrieveRequestRewrite struct {
+	// Conversation rewriting model name. The query rewriting model automatically adjusts the original prompt based on the context to improve retrieval performance. Valid value:
+	//
+	// 	- conv-rewrite-qwen-1.8b
+	//
+	// By default, this parameter is left empty, which means conv-rewrite-qwen-1.8b is used.
+	//
+	// example:
+	//
+	// conv-rewrite-qwen-1.8b
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -5397,41 +6483,85 @@ func (s *RetrieveRequestRewrite) SetModelName(v string) *RetrieveRequestRewrite 
 }
 
 type RetrieveShrinkRequest struct {
+	// Vector retrieval top K. After generating vectors based on input text, the top K chunks in the knowledge base that are most similar to the vector representation of the input text are retrieved. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	DenseSimilarityTopK *int32 `json:"DenseSimilarityTopK,omitempty" xml:"DenseSimilarityTopK,omitempty"`
+	// Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: true.
+	//
 	// example:
 	//
 	// true
 	EnableReranking *bool `json:"EnableReranking,omitempty" xml:"EnableReranking,omitempty"`
+	// Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	EnableRewrite *bool   `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
 	ImagesShrink  *string `json:"Images,omitempty" xml:"Images,omitempty"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5pwe0m2g6t
-	IndexId      *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	Query        *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The input query prompt. The length and characters of the query are not limited.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Ranking configurations.
 	RerankShrink *string `json:"Rerank,omitempty" xml:"Rerank,omitempty"`
+	// Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
+	//
+	// By default, this parameter is left empty. In this case, the similarity threshold of the knowledge base is used.
+	//
 	// example:
 	//
 	// 0.20
 	RerankMinScore *float32 `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
+	// The top N return data after reranking. Valid values: 1 to 20. Default value: 5.
+	//
 	// example:
 	//
 	// 5
-	RerankTopN    *int32  `json:"RerankTopN,omitempty" xml:"RerankTopN,omitempty"`
+	RerankTopN *int32 `json:"RerankTopN,omitempty" xml:"RerankTopN,omitempty"`
+	// Conversation rewriting configurations.
 	RewriteShrink *string `json:"Rewrite,omitempty" xml:"Rewrite,omitempty"`
+	// Specifies whether to save the retrieve test history. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
-	SaveRetrieverHistory *bool   `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
-	SearchFiltersShrink  *string `json:"SearchFilters,omitempty" xml:"SearchFilters,omitempty"`
+	SaveRetrieverHistory *bool `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
+	// Specifies complex filter conditions. For more information about the syntax of SearchFilters, see the SearchFilter syntax section of this topic.
+	SearchFiltersShrink *string `json:"SearchFilters,omitempty" xml:"SearchFilters,omitempty"`
+	// The top K of keyword retrieval. Chunks that exactly match the keywords of the input text are retrieved from the knowledge base. This filters out irrelevant chunks and boosts accuracy. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 100
@@ -5512,25 +6642,38 @@ func (s *RetrieveShrinkRequest) SetSparseSimilarityTopK(v int32) *RetrieveShrink
 }
 
 type RetrieveResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// Index.InvalidParameter
-	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *RetrieveResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 17204B98-7734-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -5576,6 +6719,7 @@ func (s *RetrieveResponseBody) SetSuccess(v bool) *RetrieveResponseBody {
 }
 
 type RetrieveResponseBodyData struct {
+	// The list of queried chunks.
 	Nodes []*RetrieveResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -5593,12 +6737,16 @@ func (s *RetrieveResponseBodyData) SetNodes(v []*RetrieveResponseBodyDataNodes) 
 }
 
 type RetrieveResponseBodyDataNodes struct {
+	// The metadata map of the chunk.
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The similarity score of the chunk. Valid values:[0-1].
+	//
 	// example:
 	//
 	// 0.3
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Text  *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The text of the chunk.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s RetrieveResponseBodyDataNodes) String() string {
@@ -5654,14 +6802,26 @@ func (s *RetrieveResponse) SetBody(v *RetrieveResponseBody) *RetrieveResponse {
 }
 
 type SubmitIndexAddDocumentsJobRequest struct {
+	// The list of primary key IDs of the category.
 	CategoryIds []*string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	// The list of the primary key IDs of the documents.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 79c0aly8zw
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
+	//
+	// 	- DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+	//
+	// >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5699,14 +6859,26 @@ func (s *SubmitIndexAddDocumentsJobRequest) SetSourceType(v string) *SubmitIndex
 }
 
 type SubmitIndexAddDocumentsJobShrinkRequest struct {
+	// The list of primary key IDs of the category.
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	// The list of the primary key IDs of the documents.
 	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 79c0aly8zw
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+	//
+	// 	- DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
+	//
+	// 	- DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+	//
+	// >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5744,25 +6916,38 @@ func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetSourceType(v string) *Submi
 }
 
 type SubmitIndexAddDocumentsJobResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// Index.InvalidParameter
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *SubmitIndexAddDocumentsJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 778C0B3B-03C1-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -5808,6 +6993,8 @@ func (s *SubmitIndexAddDocumentsJobResponseBody) SetSuccess(v bool) *SubmitIndex
 }
 
 type SubmitIndexAddDocumentsJobResponseBodyData struct {
+	// The primary key ID of the task, `JobId`.
+	//
 	// example:
 	//
 	// 42687eb254a34802bed398357f5498ae
@@ -5857,6 +7044,8 @@ func (s *SubmitIndexAddDocumentsJobResponse) SetBody(v *SubmitIndexAddDocumentsJ
 }
 
 type SubmitIndexJobRequest struct {
+	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5879,25 +7068,38 @@ func (s *SubmitIndexJobRequest) SetIndexId(v string) *SubmitIndexJobRequest {
 }
 
 type SubmitIndexJobResponseBody struct {
+	// HTTP status code
+	//
 	// example:
 	//
 	// InvalidParameter
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *SubmitIndexJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indications whether the API call is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// True
@@ -5943,10 +7145,14 @@ func (s *SubmitIndexJobResponseBody) SetSuccess(v bool) *SubmitIndexJobResponseB
 }
 
 type SubmitIndexJobResponseBodyData struct {
+	// The primary key ID of the job, which is the `JobId` parameter of the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+	//
 	// example:
 	//
 	// eFDr2fGRzP9gdDZWAdo3YQ==
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The primary key ID of the knowledge base.
+	//
 	// example:
 	//
 	// khdyak1uuj
@@ -6505,6 +7711,78 @@ func (s *UpdateMemoryNodeResponse) SetBody(v *UpdateMemoryNodeResponseBody) *Upd
 	return s
 }
 
+type UpdatePromptTemplateRequest struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdatePromptTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePromptTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePromptTemplateRequest) SetContent(v string) *UpdatePromptTemplateRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdatePromptTemplateRequest) SetName(v string) *UpdatePromptTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdatePromptTemplateResponseBody struct {
+	// example:
+	//
+	// FE9B6CBF-47E6-5D76-9C5D-B814DD5ABxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdatePromptTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePromptTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePromptTemplateResponseBody) SetRequestId(v string) *UpdatePromptTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePromptTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePromptTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdatePromptTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePromptTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePromptTemplateResponse) SetHeaders(v map[string]*string) *UpdatePromptTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePromptTemplateResponse) SetStatusCode(v int32) *UpdatePromptTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePromptTemplateResponse) SetBody(v *UpdatePromptTemplateResponseBody) *UpdatePromptTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -6618,7 +7896,19 @@ func (client *Client) AddCategory(WorkspaceId *string, request *AddCategoryReque
 
 // Summary:
 //
-// 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
+// Imports an unstructured document stored in the temporary storage space to Data Management.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+//
+// >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
+//
+// 	- You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+//
+// 	- After you call this operation, the system parses and imports your document. The process takes some time.
+//
+// 	- This interface is not idempotent.
 //
 // @param tmpReq - AddFileRequest
 //
@@ -6681,7 +7971,19 @@ func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileReq
 
 // Summary:
 //
-// 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
+// Imports an unstructured document stored in the temporary storage space to Data Management.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+//
+// >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
+//
+// 	- You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+//
+// 	- After you call this operation, the system parses and imports your document. The process takes some time.
+//
+// 	- This interface is not idempotent.
 //
 // @param request - AddFileRequest
 //
@@ -6700,7 +8002,17 @@ func (client *Client) AddFile(WorkspaceId *string, request *AddFileRequest) (_re
 
 // Summary:
 //
-// 请求文档上传租约，进行文档上传。
+// Applies for a document upload lease to upload a document.
+//
+// Description:
+//
+//   This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
+//
+// 	- The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
+//
+// 	- After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours. Call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) interface in time to import the document to the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+//
+// 	- This interface is not idempotent.
 //
 // @param request - ApplyFileUploadLeaseRequest
 //
@@ -6753,7 +8065,17 @@ func (client *Client) ApplyFileUploadLeaseWithOptions(CategoryId *string, Worksp
 
 // Summary:
 //
-// 请求文档上传租约，进行文档上传。
+// Applies for a document upload lease to upload a document.
+//
+// Description:
+//
+//   This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
+//
+// 	- The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
+//
+// 	- After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours. Call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) interface in time to import the document to the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+//
+// 	- This interface is not idempotent.
 //
 // @param request - ApplyFileUploadLeaseRequest
 //
@@ -6854,7 +8176,15 @@ func (client *Client) CreateAndPulishAgent(workspaceId *string, request *CreateA
 
 // Summary:
 //
-// 创建并运行pipeline
+// Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+//
+// Description:
+//
+// 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. To upload documents, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
+//
+// 2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
+//
+// 3.  This interface is not idempotent.
 //
 // @param tmpReq - CreateIndexRequest
 //
@@ -6981,7 +8311,15 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 
 // Summary:
 //
-// 创建并运行pipeline
+// Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+//
+// Description:
+//
+// 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. To upload documents, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
+//
+// 2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
+//
+// 3.  This interface is not idempotent.
 //
 // @param request - CreateIndexRequest
 //
@@ -7119,6 +8457,74 @@ func (client *Client) CreateMemoryNode(workspaceId *string, memoryId *string, re
 	headers := make(map[string]*string)
 	_result = &CreateMemoryNodeResponse{}
 	_body, _err := client.CreateMemoryNodeWithOptions(workspaceId, memoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Prompt模板
+//
+// @param request - CreatePromptTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePromptTemplateResponse
+func (client *Client) CreatePromptTemplateWithOptions(workspaceId *string, request *CreatePromptTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePromptTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePromptTemplate"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/promptTemplates"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePromptTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Prompt模板
+//
+// @param request - CreatePromptTemplateRequest
+//
+// @return CreatePromptTemplateResponse
+func (client *Client) CreatePromptTemplate(workspaceId *string, request *CreatePromptTemplateRequest) (_result *CreatePromptTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePromptTemplateResponse{}
+	_body, _err := client.CreatePromptTemplateWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7270,7 +8676,19 @@ func (client *Client) DeleteFile(FileId *string, WorkspaceId *string) (_result *
 
 // Summary:
 //
-// 删除Index
+// Deletes a specified knowledge base permanently.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base).
+//
+// 	- After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
+//
+// 	- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+//
+// 	- This interface is idempotent.
 //
 // @param request - DeleteIndexRequest
 //
@@ -7315,7 +8733,19 @@ func (client *Client) DeleteIndexWithOptions(WorkspaceId *string, request *Delet
 
 // Summary:
 //
-// 删除Index
+// Deletes a specified knowledge base permanently.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base).
+//
+// 	- After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
+//
+// 	- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+//
+// 	- This interface is idempotent.
 //
 // @param request - DeleteIndexRequest
 //
@@ -7334,7 +8764,19 @@ func (client *Client) DeleteIndex(WorkspaceId *string, request *DeleteIndexReque
 
 // Summary:
 //
-// 删除index doc
+// Deletes one or more documents from a specified unstructured knowledge base permanently.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
+//
+// 	- After you delete a document, it cannot be recovered and the [Retrieve](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
+//
+// 	- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+//
+// 	- This interface is idempotent.
 //
 // @param tmpReq - DeleteIndexDocumentRequest
 //
@@ -7389,7 +8831,19 @@ func (client *Client) DeleteIndexDocumentWithOptions(WorkspaceId *string, tmpReq
 
 // Summary:
 //
-// 删除index doc
+// Deletes one or more documents from a specified unstructured knowledge base permanently.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
+//
+// 	- After you delete a document, it cannot be recovered and the [Retrieve](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
+//
+// 	- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+//
+// 	- This interface is idempotent.
 //
 // @param request - DeleteIndexDocumentRequest
 //
@@ -7508,7 +8962,69 @@ func (client *Client) DeleteMemoryNode(workspaceId *string, memoryId *string, me
 
 // Summary:
 //
-// 获取文档基本信息，包括文档名称、类型、状态等。
+// 基于模板Id删除Prompt模板。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePromptTemplateResponse
+func (client *Client) DeletePromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePromptTemplateResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePromptTemplate"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/promptTemplates/" + tea.StringValue(openapiutil.GetEncodeParam(promptTemplateId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePromptTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于模板Id删除Prompt模板。
+//
+// @return DeletePromptTemplateResponse
+func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId *string) (_result *DeletePromptTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePromptTemplateResponse{}
+	_body, _err := client.DeletePromptTemplateWithOptions(workspaceId, promptTemplateId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an unstructured document.
+//
+// Description:
+//
+// Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
+//
+// 	- If you upload the document by calling an API, make sure that you have called the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to obtain `FileId`.
+//
+// 	- You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
+//
+// 	- This operation is idempotent.
+//
+// **Throttling:*	- Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
 //
 // @param headers - map
 //
@@ -7541,7 +9057,19 @@ func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *strin
 
 // Summary:
 //
-// 获取文档基本信息，包括文档名称、类型、状态等。
+// Queries the details of an unstructured document.
+//
+// Description:
+//
+// Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
+//
+// 	- If you upload the document by calling an API, make sure that you have called the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to obtain `FileId`.
+//
+// 	- You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
+//
+// 	- This operation is idempotent.
+//
+// **Throttling:*	- Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
 //
 // @return DescribeFileResponse
 func (client *Client) DescribeFile(WorkspaceId *string, FileId *string) (_result *DescribeFileResponse, _err error) {
@@ -7558,7 +9086,15 @@ func (client *Client) DescribeFile(WorkspaceId *string, FileId *string) (_result
 
 // Summary:
 //
-// 获取Index运行状态
+// Queries the current status of a specified knowledge base creation or add document job.
+//
+// Description:
+//
+// 1.  A knowledge base job is running. You can call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to create a creation job or the [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operation to create a add document job. Then, obtain the `JobId` returned by the operations.
+//
+// 2.  We recommend that you call this operation at intervals of more than 5 seconds.
+//
+// 3.  This interface is idempotent.
 //
 // @param request - GetIndexJobStatusRequest
 //
@@ -7615,7 +9151,15 @@ func (client *Client) GetIndexJobStatusWithOptions(WorkspaceId *string, request 
 
 // Summary:
 //
-// 获取Index运行状态
+// Queries the current status of a specified knowledge base creation or add document job.
+//
+// Description:
+//
+// 1.  A knowledge base job is running. You can call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to create a creation job or the [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operation to create a add document job. Then, obtain the `JobId` returned by the operations.
+//
+// 2.  We recommend that you call this operation at intervals of more than 5 seconds.
+//
+// 3.  This interface is idempotent.
 //
 // @param request - GetIndexJobStatusRequest
 //
@@ -7725,6 +9269,56 @@ func (client *Client) GetMemoryNode(workspaceId *string, memoryId *string, memor
 	headers := make(map[string]*string)
 	_result = &GetMemoryNodeResponse{}
 	_body, _err := client.GetMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于模板Id获取Prompt模板。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPromptTemplateResponse
+func (client *Client) GetPromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPromptTemplateResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPromptTemplate"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/promptTemplates/" + tea.StringValue(openapiutil.GetEncodeParam(promptTemplateId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPromptTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于模板Id获取Prompt模板。
+//
+// @return GetPromptTemplateResponse
+func (client *Client) GetPromptTemplate(workspaceId *string, promptTemplateId *string) (_result *GetPromptTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPromptTemplateResponse{}
+	_body, _err := client.GetPromptTemplateWithOptions(workspaceId, promptTemplateId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7860,7 +9454,13 @@ func (client *Client) ListCategory(WorkspaceId *string, request *ListCategoryReq
 
 // Summary:
 //
-// Chunk
+// For unstructured knowledge base, obtains the details of all chunks of a specified document; for structured knowledge base, obtains the details of all chunks.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- This interface is idempotent.
 //
 // @param request - ListChunksRequest
 //
@@ -7921,7 +9521,13 @@ func (client *Client) ListChunksWithOptions(WorkspaceId *string, request *ListCh
 
 // Summary:
 //
-// Chunk
+// For unstructured knowledge base, obtains the details of all chunks of a specified document; for structured knowledge base, obtains the details of all chunks.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- This interface is idempotent.
 //
 // @param request - ListChunksRequest
 //
@@ -7957,6 +9563,10 @@ func (client *Client) ListFileWithOptions(WorkspaceId *string, request *ListFile
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
 		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -8012,7 +9622,13 @@ func (client *Client) ListFile(WorkspaceId *string, request *ListFileRequest) (_
 
 // Summary:
 //
-// 查询Index文件
+// Queries the details of one or more documents in a specified knowledge base.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- This interface is idempotent.
 //
 // @param request - ListIndexDocumentsRequest
 //
@@ -8073,7 +9689,13 @@ func (client *Client) ListIndexDocumentsWithOptions(WorkspaceId *string, request
 
 // Summary:
 //
-// 查询Index文件
+// Queries the details of one or more documents in a specified knowledge base.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- This interface is idempotent.
 //
 // @param request - ListIndexDocumentsRequest
 //
@@ -8092,7 +9714,11 @@ func (client *Client) ListIndexDocuments(WorkspaceId *string, request *ListIndex
 
 // Summary:
 //
-// 查询pipeline
+// Lists knowledge bases in a specified workspace.
+//
+// Description:
+//
+// This interface is idempotent.
 //
 // @param request - ListIndicesRequest
 //
@@ -8145,7 +9771,11 @@ func (client *Client) ListIndicesWithOptions(WorkspaceId *string, request *ListI
 
 // Summary:
 //
-// 查询pipeline
+// Lists knowledge bases in a specified workspace.
+//
+// Description:
+//
+// This interface is idempotent.
 //
 // @param request - ListIndicesRequest
 //
@@ -8300,6 +9930,82 @@ func (client *Client) ListMemoryNodes(workspaceId *string, memoryId *string, req
 
 // Summary:
 //
+// 获取Prompt模板列表。
+//
+// @param request - ListPromptTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPromptTemplatesResponse
+func (client *Client) ListPromptTemplatesWithOptions(workspaceId *string, request *ListPromptTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPromptTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPromptTemplates"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/promptTemplates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPromptTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prompt模板列表。
+//
+// @param request - ListPromptTemplatesRequest
+//
+// @return ListPromptTemplatesResponse
+func (client *Client) ListPromptTemplates(workspaceId *string, request *ListPromptTemplatesRequest) (_result *ListPromptTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPromptTemplatesResponse{}
+	_body, _err := client.ListPromptTemplatesWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询已发布的智能体应用列表
 //
 // @param request - ListPublishedAgentRequest
@@ -8368,7 +10074,15 @@ func (client *Client) ListPublishedAgent(workspaceId *string, request *ListPubli
 
 // Summary:
 //
-// 召回测试
+// Queries information from a specified knowledge base.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
+//
+// 	- This interface is idempotent.
 //
 // @param tmpReq - RetrieveRequest
 //
@@ -8479,7 +10193,15 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 
 // Summary:
 //
-// 召回测试
+// Queries information from a specified knowledge base.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
+//
+// 	- This interface is idempotent.
 //
 // @param request - RetrieveRequest
 //
@@ -8498,7 +10220,17 @@ func (client *Client) Retrieve(WorkspaceId *string, request *RetrieveRequest) (_
 
 // Summary:
 //
-// 知识索引
+// Adds parsed documents to an unstructured knowledge base.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- Before you call this operation, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to upload the documents to Model Studio.
+//
+// 	- After you call this operation, you can call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
+//
+// 	- Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
 //
 // @param tmpReq - SubmitIndexAddDocumentsJobRequest
 //
@@ -8565,7 +10297,17 @@ func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string,
 
 // Summary:
 //
-// 知识索引
+// Adds parsed documents to an unstructured knowledge base.
+//
+// Description:
+//
+//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//
+// 	- Before you call this operation, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to upload the documents to Model Studio.
+//
+// 	- After you call this operation, you can call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
+//
+// 	- Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
 //
 // @param request - SubmitIndexAddDocumentsJobRequest
 //
@@ -8584,7 +10326,17 @@ func (client *Client) SubmitIndexAddDocumentsJob(WorkspaceId *string, request *S
 
 // Summary:
 //
-// 提交索引任务
+// Submits a specified CreateIndex job to complete knowledge base creation.
+//
+// Description:
+//
+// 1.  Before you call this operation, you must call the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation and obtain the `IndexId`.
+//
+// 2.  Execution takes a period of time after this operation is called. Do not make new request before the request is returned.
+//
+// 3.  If you want to query the execution status of the job after you call this operation, call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+//
+// 4.  This interface is not idempotent.
 //
 // @param request - SubmitIndexJobRequest
 //
@@ -8629,7 +10381,17 @@ func (client *Client) SubmitIndexJobWithOptions(WorkspaceId *string, request *Su
 
 // Summary:
 //
-// 提交索引任务
+// Submits a specified CreateIndex job to complete knowledge base creation.
+//
+// Description:
+//
+// 1.  Before you call this operation, you must call the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation and obtain the `IndexId`.
+//
+// 2.  Execution takes a period of time after this operation is called. Do not make new request before the request is returned.
+//
+// 3.  If you want to query the execution status of the job after you call this operation, call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+//
+// 4.  This interface is not idempotent.
 //
 // @param request - SubmitIndexJobRequest
 //
@@ -8849,6 +10611,74 @@ func (client *Client) UpdateMemoryNode(workspaceId *string, memoryId *string, me
 	headers := make(map[string]*string)
 	_result = &UpdateMemoryNodeResponse{}
 	_body, _err := client.UpdateMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于模板Id增量更新Prompt模板。
+//
+// @param request - UpdatePromptTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePromptTemplateResponse
+func (client *Client) UpdatePromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, request *UpdatePromptTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePromptTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePromptTemplate"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/promptTemplates/" + tea.StringValue(openapiutil.GetEncodeParam(promptTemplateId))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePromptTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于模板Id增量更新Prompt模板。
+//
+// @param request - UpdatePromptTemplateRequest
+//
+// @return UpdatePromptTemplateResponse
+func (client *Client) UpdatePromptTemplate(workspaceId *string, promptTemplateId *string, request *UpdatePromptTemplateRequest) (_result *UpdatePromptTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePromptTemplateResponse{}
+	_body, _err := client.UpdatePromptTemplateWithOptions(workspaceId, promptTemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
