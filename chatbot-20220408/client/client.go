@@ -10278,6 +10278,112 @@ func (s *ListTongyiChatHistorysResponse) SetBody(v *ListTongyiChatHistorysRespon
 	return s
 }
 
+type ListTongyiConversationLogsRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-7QuUfaqMQe
+	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c3cec23cc8940bc9db4a318c8f4f0aa
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s ListTongyiConversationLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTongyiConversationLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTongyiConversationLogsRequest) SetAgentKey(v string) *ListTongyiConversationLogsRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListTongyiConversationLogsRequest) SetRobotInstanceId(v string) *ListTongyiConversationLogsRequest {
+	s.RobotInstanceId = &v
+	return s
+}
+
+func (s *ListTongyiConversationLogsRequest) SetSessionId(v string) *ListTongyiConversationLogsRequest {
+	s.SessionId = &v
+	return s
+}
+
+type ListTongyiConversationLogsResponseBody struct {
+	// example:
+	//
+	// 66
+	CostTime *string                  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	Datas    []map[string]interface{} `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 28805A7C-D695-548C-A31B-67E52C2C274F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTongyiConversationLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTongyiConversationLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTongyiConversationLogsResponseBody) SetCostTime(v string) *ListTongyiConversationLogsResponseBody {
+	s.CostTime = &v
+	return s
+}
+
+func (s *ListTongyiConversationLogsResponseBody) SetDatas(v []map[string]interface{}) *ListTongyiConversationLogsResponseBody {
+	s.Datas = v
+	return s
+}
+
+func (s *ListTongyiConversationLogsResponseBody) SetRequestId(v string) *ListTongyiConversationLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTongyiConversationLogsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTongyiConversationLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTongyiConversationLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTongyiConversationLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTongyiConversationLogsResponse) SetHeaders(v map[string]*string) *ListTongyiConversationLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTongyiConversationLogsResponse) SetStatusCode(v int32) *ListTongyiConversationLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTongyiConversationLogsResponse) SetBody(v *ListTongyiConversationLogsResponseBody) *ListTongyiConversationLogsResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserSayRequest struct {
 	// example:
 	//
@@ -18903,6 +19009,74 @@ func (client *Client) ListTongyiChatHistorys(request *ListTongyiChatHistorysRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTongyiChatHistorysResponse{}
 	_body, _err := client.ListTongyiChatHistorysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询通义晓蜜的单个会话对话记录
+//
+// @param request - ListTongyiConversationLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTongyiConversationLogsResponse
+func (client *Client) ListTongyiConversationLogsWithOptions(request *ListTongyiConversationLogsRequest, runtime *util.RuntimeOptions) (_result *ListTongyiConversationLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTongyiConversationLogs"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTongyiConversationLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询通义晓蜜的单个会话对话记录
+//
+// @param request - ListTongyiConversationLogsRequest
+//
+// @return ListTongyiConversationLogsResponse
+func (client *Client) ListTongyiConversationLogs(request *ListTongyiConversationLogsRequest) (_result *ListTongyiConversationLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTongyiConversationLogsResponse{}
+	_body, _err := client.ListTongyiConversationLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
