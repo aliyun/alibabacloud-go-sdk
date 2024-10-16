@@ -1,3 +1,8 @@
+2024-10-16 Version: v1.2.0
+- Support API GetAbnormalEventsCount.
+- Support API GetHealthPercentage.
+
+
 2024-09-18 Version: v1.1.1
 - Update API AuthDiagnosis: update param body.
 - Update API GenerateCopilotResponse: update response param.

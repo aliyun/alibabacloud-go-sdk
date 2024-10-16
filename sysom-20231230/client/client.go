@@ -226,6 +226,166 @@ func (s *GenerateCopilotResponseResponse) SetBody(v *GenerateCopilotResponseResp
 	return s
 }
 
+type GetAbnormalEventsCountRequest struct {
+	// example:
+	//
+	// 1808078950770264
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// example:
+	//
+	// 1725801327754
+	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-wz9d00ut2ska3mlyhn6j
+	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// test-pod
+	Pod *string `json:"pod,omitempty" xml:"pod,omitempty"`
+	// example:
+	//
+	// 1725797727754
+	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
+}
+
+func (s GetAbnormalEventsCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAbnormalEventsCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAbnormalEventsCountRequest) SetCluster(v string) *GetAbnormalEventsCountRequest {
+	s.Cluster = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountRequest) SetEnd(v float32) *GetAbnormalEventsCountRequest {
+	s.End = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountRequest) SetInstance(v string) *GetAbnormalEventsCountRequest {
+	s.Instance = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountRequest) SetNamespace(v string) *GetAbnormalEventsCountRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountRequest) SetPod(v string) *GetAbnormalEventsCountRequest {
+	s.Pod = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountRequest) SetStart(v float32) *GetAbnormalEventsCountRequest {
+	s.Start = &v
+	return s
+}
+
+type GetAbnormalEventsCountResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetAbnormalEventsCountResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// result: code=1 msg=(Request failed, status_code != 200)
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s GetAbnormalEventsCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAbnormalEventsCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAbnormalEventsCountResponseBody) SetCode(v string) *GetAbnormalEventsCountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountResponseBody) SetData(v []*GetAbnormalEventsCountResponseBodyData) *GetAbnormalEventsCountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAbnormalEventsCountResponseBody) SetMessage(v string) *GetAbnormalEventsCountResponseBody {
+	s.Message = &v
+	return s
+}
+
+type GetAbnormalEventsCountResponseBodyData struct {
+	// example:
+	//
+	// health
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1
+	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetAbnormalEventsCountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAbnormalEventsCountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAbnormalEventsCountResponseBodyData) SetType(v string) *GetAbnormalEventsCountResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountResponseBodyData) SetValue(v int64) *GetAbnormalEventsCountResponseBodyData {
+	s.Value = &v
+	return s
+}
+
+type GetAbnormalEventsCountResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAbnormalEventsCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAbnormalEventsCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAbnormalEventsCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAbnormalEventsCountResponse) SetHeaders(v map[string]*string) *GetAbnormalEventsCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAbnormalEventsCountResponse) SetStatusCode(v int32) *GetAbnormalEventsCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountResponse) SetBody(v *GetAbnormalEventsCountResponseBody) *GetAbnormalEventsCountResponse {
+	s.Body = v
+	return s
+}
+
 type GetDiagnosisResultRequest struct {
 	// This parameter is required.
 	//
@@ -895,6 +1055,150 @@ func (s *GetDiagnosisResultResponse) SetBody(v *GetDiagnosisResultResponseBody) 
 	return s
 }
 
+type GetHealthPercentageRequest struct {
+	// example:
+	//
+	// 1808078950770264
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1725801327754
+	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// i-wz9d00ut2ska3mlyhn6j
+	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1725797727754
+	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
+}
+
+func (s GetHealthPercentageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHealthPercentageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHealthPercentageRequest) SetCluster(v string) *GetHealthPercentageRequest {
+	s.Cluster = &v
+	return s
+}
+
+func (s *GetHealthPercentageRequest) SetEnd(v float32) *GetHealthPercentageRequest {
+	s.End = &v
+	return s
+}
+
+func (s *GetHealthPercentageRequest) SetInstance(v string) *GetHealthPercentageRequest {
+	s.Instance = &v
+	return s
+}
+
+func (s *GetHealthPercentageRequest) SetStart(v float32) *GetHealthPercentageRequest {
+	s.Start = &v
+	return s
+}
+
+type GetHealthPercentageResponseBody struct {
+	// example:
+	//
+	// SysomOpenAPI.ServerError
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetHealthPercentageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s GetHealthPercentageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHealthPercentageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHealthPercentageResponseBody) SetCode(v string) *GetHealthPercentageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHealthPercentageResponseBody) SetData(v []*GetHealthPercentageResponseBodyData) *GetHealthPercentageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetHealthPercentageResponseBody) SetMessage(v string) *GetHealthPercentageResponseBody {
+	s.Message = &v
+	return s
+}
+
+type GetHealthPercentageResponseBodyData struct {
+	// example:
+	//
+	// health
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1
+	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetHealthPercentageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHealthPercentageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetHealthPercentageResponseBodyData) SetType(v string) *GetHealthPercentageResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetHealthPercentageResponseBodyData) SetValue(v int64) *GetHealthPercentageResponseBodyData {
+	s.Value = &v
+	return s
+}
+
+type GetHealthPercentageResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHealthPercentageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHealthPercentageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHealthPercentageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHealthPercentageResponse) SetHeaders(v map[string]*string) *GetHealthPercentageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHealthPercentageResponse) SetStatusCode(v int32) *GetHealthPercentageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHealthPercentageResponse) SetBody(v *GetHealthPercentageResponseBody) *GetHealthPercentageResponse {
+	s.Body = v
+	return s
+}
+
 type InvokeDiagnosisRequest struct {
 	// This parameter is required.
 	//
@@ -1222,6 +1526,90 @@ func (client *Client) GenerateCopilotResponse(request *GenerateCopilotResponseRe
 
 // Summary:
 //
+// 获取节点/Pod不同等级异常事件的数量
+//
+// @param request - GetAbnormalEventsCountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAbnormalEventsCountResponse
+func (client *Client) GetAbnormalEventsCountWithOptions(request *GetAbnormalEventsCountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAbnormalEventsCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cluster)) {
+		query["cluster"] = request.Cluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		query["end"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instance)) {
+		query["instance"] = request.Instance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pod)) {
+		query["pod"] = request.Pod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["start"] = request.Start
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAbnormalEventsCount"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/openapi/cluster_health/range/abnormaly_events_count"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAbnormalEventsCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取节点/Pod不同等级异常事件的数量
+//
+// @param request - GetAbnormalEventsCountRequest
+//
+// @return GetAbnormalEventsCountResponse
+func (client *Client) GetAbnormalEventsCount(request *GetAbnormalEventsCountRequest) (_result *GetAbnormalEventsCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAbnormalEventsCountResponse{}
+	_body, _err := client.GetAbnormalEventsCountWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取诊断结果
 //
 // @param request - GetDiagnosisResultRequest
@@ -1277,6 +1665,82 @@ func (client *Client) GetDiagnosisResult(request *GetDiagnosisResultRequest) (_r
 	headers := make(map[string]*string)
 	_result = &GetDiagnosisResultResponse{}
 	_body, _err := client.GetDiagnosisResultWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一段时间的节点/pod健康度比例
+//
+// @param request - GetHealthPercentageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHealthPercentageResponse
+func (client *Client) GetHealthPercentageWithOptions(request *GetHealthPercentageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHealthPercentageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cluster)) {
+		query["cluster"] = request.Cluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		query["end"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instance)) {
+		query["instance"] = request.Instance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["start"] = request.Start
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHealthPercentage"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/openapi/cluster_health/range/health_percentage"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHealthPercentageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一段时间的节点/pod健康度比例
+//
+// @param request - GetHealthPercentageRequest
+//
+// @return GetHealthPercentageResponse
+func (client *Client) GetHealthPercentage(request *GetHealthPercentageRequest) (_result *GetHealthPercentageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetHealthPercentageResponse{}
+	_body, _err := client.GetHealthPercentageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
