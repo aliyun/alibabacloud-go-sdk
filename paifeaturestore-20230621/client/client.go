@@ -2481,6 +2481,7 @@ func (s *GetFeatureViewResponse) SetBody(v *GetFeatureViewResponseBody) *GetFeat
 }
 
 type GetInstanceResponseBody struct {
+	FeatureDBInstanceInfo *GetInstanceResponseBodyFeatureDBInstanceInfo `json:"FeatureDBInstanceInfo,omitempty" xml:"FeatureDBInstanceInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
@@ -2523,6 +2524,11 @@ func (s GetInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceResponseBody) SetFeatureDBInstanceInfo(v *GetInstanceResponseBodyFeatureDBInstanceInfo) *GetInstanceResponseBody {
+	s.FeatureDBInstanceInfo = v
+	return s
+}
+
 func (s *GetInstanceResponseBody) SetGmtCreateTime(v string) *GetInstanceResponseBody {
 	s.GmtCreateTime = &v
 	return s
@@ -2560,6 +2566,23 @@ func (s *GetInstanceResponseBody) SetStatus(v string) *GetInstanceResponseBody {
 
 func (s *GetInstanceResponseBody) SetType(v string) *GetInstanceResponseBody {
 	s.Type = &v
+	return s
+}
+
+type GetInstanceResponseBodyFeatureDBInstanceInfo struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetInstanceResponseBodyFeatureDBInstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyFeatureDBInstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyFeatureDBInstanceInfo) SetStatus(v string) *GetInstanceResponseBodyFeatureDBInstanceInfo {
+	s.Status = &v
 	return s
 }
 
@@ -5451,6 +5474,7 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
+	FeatureDBInstanceInfo *ListInstancesResponseBodyInstancesFeatureDBInstanceInfo `json:"FeatureDBInstanceInfo,omitempty" xml:"FeatureDBInstanceInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
@@ -5485,6 +5509,11 @@ func (s ListInstancesResponseBodyInstances) GoString() string {
 	return s.String()
 }
 
+func (s *ListInstancesResponseBodyInstances) SetFeatureDBInstanceInfo(v *ListInstancesResponseBodyInstancesFeatureDBInstanceInfo) *ListInstancesResponseBodyInstances {
+	s.FeatureDBInstanceInfo = v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetGmtCreateTime(v string) *ListInstancesResponseBodyInstances {
 	s.GmtCreateTime = &v
 	return s
@@ -5512,6 +5541,23 @@ func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesR
 
 func (s *ListInstancesResponseBodyInstances) SetType(v string) *ListInstancesResponseBodyInstances {
 	s.Type = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesFeatureDBInstanceInfo struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesFeatureDBInstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesFeatureDBInstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesFeatureDBInstanceInfo) SetStatus(v string) *ListInstancesResponseBodyInstancesFeatureDBInstanceInfo {
+	s.Status = &v
 	return s
 }
 
