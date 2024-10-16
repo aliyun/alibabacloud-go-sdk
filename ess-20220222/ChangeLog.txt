@@ -1,3 +1,10 @@
+2024-10-16 Version: v2.8.3
+- Update API CreateScalingGroup: add param StopInstanceTimeout.
+- Update API DescribeScalingGroups: update response param.
+- Update API ModifyScalingGroup: add param StopInstanceTimeout.
+- Update API RemoveInstances: add param StopInstanceTimeout.
+
+
 2024-10-10 Version: v2.8.2
 - Update API CreateScalingConfiguration: add param SecurityOptions.
 - Update API CreateScalingRule: add param HybridMetrics.

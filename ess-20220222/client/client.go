@@ -8912,7 +8912,8 @@ type CreateScalingGroupRequest struct {
 	// example:
 	//
 	// true
-	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	SpotInstanceRemedy  *bool  `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	StopInstanceTimeout *int32 `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
 	// > This parameter is unavailable.
 	//
 	// example:
@@ -9150,6 +9151,11 @@ func (s *CreateScalingGroupRequest) SetSpotInstancePools(v int32) *CreateScaling
 
 func (s *CreateScalingGroupRequest) SetSpotInstanceRemedy(v bool) *CreateScalingGroupRequest {
 	s.SpotInstanceRemedy = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequest) SetStopInstanceTimeout(v int32) *CreateScalingGroupRequest {
+	s.StopInstanceTimeout = &v
 	return s
 }
 
@@ -23323,7 +23329,8 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	// example:
 	//
 	// 1
-	StandbyCapacity *int32 `json:"StandbyCapacity,omitempty" xml:"StandbyCapacity,omitempty"`
+	StandbyCapacity     *int32 `json:"StandbyCapacity,omitempty" xml:"StandbyCapacity,omitempty"`
+	StopInstanceTimeout *int32 `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
 	// The number of instances that was stopped in Economical Mode in the scaling group.
 	//
 	// example:
@@ -23644,6 +23651,11 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetSpotInstanceRemedy(v
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetStandbyCapacity(v int32) *DescribeScalingGroupsResponseBodyScalingGroups {
 	s.StandbyCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetStopInstanceTimeout(v int32) *DescribeScalingGroupsResponseBodyScalingGroups {
+	s.StopInstanceTimeout = &v
 	return s
 }
 
@@ -35632,7 +35644,8 @@ type ModifyScalingGroupRequest struct {
 	// example:
 	//
 	// true
-	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	SpotInstanceRemedy  *bool  `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	StopInstanceTimeout *int32 `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
 	// The IDs of vSwitches.
 	//
 	// This parameter takes effect only when the network type of the scaling group is virtual private cloud (VPC). The specified vSwitches and the scaling group must reside in the same VPC.
@@ -35801,6 +35814,11 @@ func (s *ModifyScalingGroupRequest) SetSpotInstancePools(v int32) *ModifyScaling
 
 func (s *ModifyScalingGroupRequest) SetSpotInstanceRemedy(v bool) *ModifyScalingGroupRequest {
 	s.SpotInstanceRemedy = &v
+	return s
+}
+
+func (s *ModifyScalingGroupRequest) SetStopInstanceTimeout(v int32) *ModifyScalingGroupRequest {
+	s.StopInstanceTimeout = &v
 	return s
 }
 
@@ -37043,7 +37061,8 @@ type RemoveInstancesRequest struct {
 	// example:
 	//
 	// asg-bp18p2yfxow2dloq****
-	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupId      *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	StopInstanceTimeout *int32  `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
 }
 
 func (s RemoveInstancesRequest) String() string {
@@ -37106,6 +37125,11 @@ func (s *RemoveInstancesRequest) SetResourceOwnerId(v int64) *RemoveInstancesReq
 
 func (s *RemoveInstancesRequest) SetScalingGroupId(v string) *RemoveInstancesRequest {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *RemoveInstancesRequest) SetStopInstanceTimeout(v int32) *RemoveInstancesRequest {
+	s.StopInstanceTimeout = &v
 	return s
 }
 
@@ -41817,6 +41841,10 @@ func (client *Client) CreateScalingGroupWithOptions(request *CreateScalingGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.SpotInstanceRemedy)) {
 		query["SpotInstanceRemedy"] = request.SpotInstanceRemedy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopInstanceTimeout)) {
+		query["StopInstanceTimeout"] = request.StopInstanceTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SyncAlarmRuleToCms)) {
@@ -47719,6 +47747,10 @@ func (client *Client) ModifyScalingGroupWithOptions(request *ModifyScalingGroupR
 		query["SpotInstanceRemedy"] = request.SpotInstanceRemedy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StopInstanceTimeout)) {
+		query["StopInstanceTimeout"] = request.StopInstanceTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
 		query["VSwitchIds"] = request.VSwitchIds
 	}
@@ -48383,6 +48415,10 @@ func (client *Client) RemoveInstancesWithOptions(request *RemoveInstancesRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
 		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopInstanceTimeout)) {
+		query["StopInstanceTimeout"] = request.StopInstanceTimeout
 	}
 
 	req := &openapi.OpenApiRequest{
