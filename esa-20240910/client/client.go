@@ -3826,6 +3826,85 @@ func (s *CheckUserProjectNameResponse) SetBody(v *CheckUserProjectNameResponseBo
 	return s
 }
 
+type CommitRoutineStagingCodeRequest struct {
+	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	// example:
+	//
+	// CommitRoutineStagingCode
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CommitRoutineStagingCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitRoutineStagingCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CommitRoutineStagingCodeRequest) SetCodeDescription(v string) *CommitRoutineStagingCodeRequest {
+	s.CodeDescription = &v
+	return s
+}
+
+func (s *CommitRoutineStagingCodeRequest) SetName(v string) *CommitRoutineStagingCodeRequest {
+	s.Name = &v
+	return s
+}
+
+type CommitRoutineStagingCodeResponseBody struct {
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CommitRoutineStagingCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitRoutineStagingCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CommitRoutineStagingCodeResponseBody) SetCodeVersion(v string) *CommitRoutineStagingCodeResponseBody {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *CommitRoutineStagingCodeResponseBody) SetRequestId(v string) *CommitRoutineStagingCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CommitRoutineStagingCodeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CommitRoutineStagingCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CommitRoutineStagingCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitRoutineStagingCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CommitRoutineStagingCodeResponse) SetHeaders(v map[string]*string) *CommitRoutineStagingCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CommitRoutineStagingCodeResponse) SetStatusCode(v int32) *CommitRoutineStagingCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CommitRoutineStagingCodeResponse) SetBody(v *CommitRoutineStagingCodeResponseBody) *CommitRoutineStagingCodeResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCustomScenePolicyRequest struct {
 	// This parameter is required.
 	//
@@ -4872,6 +4951,274 @@ func (s *CreateRecordResponse) SetStatusCode(v int32) *CreateRecordResponse {
 }
 
 func (s *CreateRecordResponse) SetBody(v *CreateRecordResponseBody) *CreateRecordResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRoutineRequest struct {
+	// example:
+	//
+	// the description of this routine
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// test-routine1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 5ms
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+}
+
+func (s CreateRoutineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRequest) SetDescription(v string) *CreateRoutineRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRoutineRequest) SetName(v string) *CreateRoutineRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRoutineRequest) SetSpecName(v string) *CreateRoutineRequest {
+	s.SpecName = &v
+	return s
+}
+
+type CreateRoutineResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateRoutineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineResponseBody) SetRequestId(v string) *CreateRoutineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRoutineResponseBody) SetStatus(v string) *CreateRoutineResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateRoutineResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRoutineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRoutineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineResponse) SetHeaders(v map[string]*string) *CreateRoutineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRoutineResponse) SetStatusCode(v int32) *CreateRoutineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRoutineResponse) SetBody(v *CreateRoutineResponseBody) *CreateRoutineResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRoutineRelatedRecordRequest struct {
+	// example:
+	//
+	// CreateRoutineRelatedRecord
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s CreateRoutineRelatedRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRelatedRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRelatedRecordRequest) SetName(v string) *CreateRoutineRelatedRecordRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRoutineRelatedRecordRequest) SetRecordName(v string) *CreateRoutineRelatedRecordRequest {
+	s.RecordName = &v
+	return s
+}
+
+func (s *CreateRoutineRelatedRecordRequest) SetSiteId(v int64) *CreateRoutineRelatedRecordRequest {
+	s.SiteId = &v
+	return s
+}
+
+type CreateRoutineRelatedRecordResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateRoutineRelatedRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRelatedRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRelatedRecordResponseBody) SetRequestId(v string) *CreateRoutineRelatedRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRoutineRelatedRecordResponseBody) SetStatus(v string) *CreateRoutineRelatedRecordResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateRoutineRelatedRecordResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRoutineRelatedRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRoutineRelatedRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRelatedRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRelatedRecordResponse) SetHeaders(v map[string]*string) *CreateRoutineRelatedRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRoutineRelatedRecordResponse) SetStatusCode(v int32) *CreateRoutineRelatedRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRoutineRelatedRecordResponse) SetBody(v *CreateRoutineRelatedRecordResponseBody) *CreateRoutineRelatedRecordResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRoutineRelatedRouteRequest struct {
+	// example:
+	//
+	// CreateRoutineRelatedRoute
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Route  *string `json:"Route,omitempty" xml:"Route,omitempty"`
+	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s CreateRoutineRelatedRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRelatedRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRelatedRouteRequest) SetName(v string) *CreateRoutineRelatedRouteRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRoutineRelatedRouteRequest) SetRoute(v string) *CreateRoutineRelatedRouteRequest {
+	s.Route = &v
+	return s
+}
+
+func (s *CreateRoutineRelatedRouteRequest) SetSiteId(v int64) *CreateRoutineRelatedRouteRequest {
+	s.SiteId = &v
+	return s
+}
+
+type CreateRoutineRelatedRouteResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateRoutineRelatedRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRelatedRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRelatedRouteResponseBody) SetRequestId(v string) *CreateRoutineRelatedRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRoutineRelatedRouteResponseBody) SetStatus(v string) *CreateRoutineRelatedRouteResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateRoutineRelatedRouteResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRoutineRelatedRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRoutineRelatedRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRelatedRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRelatedRouteResponse) SetHeaders(v map[string]*string) *CreateRoutineRelatedRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRoutineRelatedRouteResponse) SetStatusCode(v int32) *CreateRoutineRelatedRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRoutineRelatedRouteResponse) SetBody(v *CreateRoutineRelatedRouteResponseBody) *CreateRoutineRelatedRouteResponse {
 	s.Body = v
 	return s
 }
@@ -8303,6 +8650,361 @@ func (s *DeleteRecordResponse) SetBody(v *DeleteRecordResponseBody) *DeleteRecor
 	return s
 }
 
+type DeleteRoutineRequest struct {
+	// example:
+	//
+	// test-routine1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DeleteRoutineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRequest) SetName(v string) *DeleteRoutineRequest {
+	s.Name = &v
+	return s
+}
+
+type DeleteRoutineResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteRoutineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineResponseBody) SetRequestId(v string) *DeleteRoutineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRoutineResponseBody) SetStatus(v string) *DeleteRoutineResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteRoutineResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRoutineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRoutineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineResponse) SetHeaders(v map[string]*string) *DeleteRoutineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRoutineResponse) SetStatusCode(v int32) *DeleteRoutineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRoutineResponse) SetBody(v *DeleteRoutineResponseBody) *DeleteRoutineResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRoutineCodeVersionRequest struct {
+	// example:
+	//
+	// 1710120201067203242
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// example:
+	//
+	// test-routine1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DeleteRoutineCodeVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineCodeVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineCodeVersionRequest) SetCodeVersion(v string) *DeleteRoutineCodeVersionRequest {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *DeleteRoutineCodeVersionRequest) SetName(v string) *DeleteRoutineCodeVersionRequest {
+	s.Name = &v
+	return s
+}
+
+type DeleteRoutineCodeVersionResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteRoutineCodeVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineCodeVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineCodeVersionResponseBody) SetRequestId(v string) *DeleteRoutineCodeVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRoutineCodeVersionResponseBody) SetStatus(v string) *DeleteRoutineCodeVersionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteRoutineCodeVersionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRoutineCodeVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRoutineCodeVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineCodeVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineCodeVersionResponse) SetHeaders(v map[string]*string) *DeleteRoutineCodeVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRoutineCodeVersionResponse) SetStatusCode(v int32) *DeleteRoutineCodeVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRoutineCodeVersionResponse) SetBody(v *DeleteRoutineCodeVersionResponseBody) *DeleteRoutineCodeVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRoutineRelatedRecordRequest struct {
+	// example:
+	//
+	// DeleteRoutineRelatedRecord
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecordId   *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteRoutineRelatedRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRelatedRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRelatedRecordRequest) SetName(v string) *DeleteRoutineRelatedRecordRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRecordRequest) SetRecordId(v int64) *DeleteRoutineRelatedRecordRequest {
+	s.RecordId = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRecordRequest) SetRecordName(v string) *DeleteRoutineRelatedRecordRequest {
+	s.RecordName = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRecordRequest) SetSiteId(v int64) *DeleteRoutineRelatedRecordRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteRoutineRelatedRecordResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteRoutineRelatedRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRelatedRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRelatedRecordResponseBody) SetRequestId(v string) *DeleteRoutineRelatedRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRecordResponseBody) SetStatus(v string) *DeleteRoutineRelatedRecordResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteRoutineRelatedRecordResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRoutineRelatedRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRoutineRelatedRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRelatedRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRelatedRecordResponse) SetHeaders(v map[string]*string) *DeleteRoutineRelatedRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRecordResponse) SetStatusCode(v int32) *DeleteRoutineRelatedRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRecordResponse) SetBody(v *DeleteRoutineRelatedRecordResponseBody) *DeleteRoutineRelatedRecordResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRoutineRelatedRouteRequest struct {
+	// example:
+	//
+	// DeleteRoutineRelatedRoute
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Route   *string `json:"Route,omitempty" xml:"Route,omitempty"`
+	RouteId *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	SiteId  *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteRoutineRelatedRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRelatedRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRelatedRouteRequest) SetName(v string) *DeleteRoutineRelatedRouteRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRouteRequest) SetRoute(v string) *DeleteRoutineRelatedRouteRequest {
+	s.Route = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRouteRequest) SetRouteId(v string) *DeleteRoutineRelatedRouteRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRouteRequest) SetSiteId(v int64) *DeleteRoutineRelatedRouteRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteRoutineRelatedRouteResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteRoutineRelatedRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRelatedRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRelatedRouteResponseBody) SetRequestId(v string) *DeleteRoutineRelatedRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRouteResponseBody) SetStatus(v string) *DeleteRoutineRelatedRouteResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteRoutineRelatedRouteResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRoutineRelatedRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRoutineRelatedRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRelatedRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRelatedRouteResponse) SetHeaders(v map[string]*string) *DeleteRoutineRelatedRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRouteResponse) SetStatusCode(v int32) *DeleteRoutineRelatedRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRoutineRelatedRouteResponse) SetBody(v *DeleteRoutineRelatedRouteResponseBody) *DeleteRoutineRelatedRouteResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteScheduledPreloadExecutionRequest struct {
 	// This parameter is required.
 	//
@@ -10787,6 +11489,98 @@ func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecifi
 	return s
 }
 
+type GetErServiceRequest struct {
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetErServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetErServiceRequest) SetOwnerId(v int64) *GetErServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetErServiceRequest) SetSecurityToken(v string) *GetErServiceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetErServiceResponseBody struct {
+	// example:
+	//
+	// er_paymode
+	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetErServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetErServiceResponseBody) SetPlanName(v string) *GetErServiceResponseBody {
+	s.PlanName = &v
+	return s
+}
+
+func (s *GetErServiceResponseBody) SetRequestId(v string) *GetErServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetErServiceResponseBody) SetStatus(v string) *GetErServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetErServiceResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetErServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetErServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetErServiceResponse) SetHeaders(v map[string]*string) *GetErServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetErServiceResponse) SetStatusCode(v int32) *GetErServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetErServiceResponse) SetBody(v *GetErServiceResponseBody) *GetErServiceResponse {
+	s.Body = v
+	return s
+}
+
 type GetKvRequest struct {
 	// example:
 	//
@@ -12102,6 +12896,481 @@ func (s *GetRecordResponse) SetStatusCode(v int32) *GetRecordResponse {
 }
 
 func (s *GetRecordResponse) SetBody(v *GetRecordResponseBody) *GetRecordResponse {
+	s.Body = v
+	return s
+}
+
+type GetRoutineRequest struct {
+	// example:
+	//
+	// GetRoutine
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetRoutineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineRequest) SetName(v string) *GetRoutineRequest {
+	s.Name = &v
+	return s
+}
+
+type GetRoutineResponseBody struct {
+	CodeVersions         []*GetRoutineResponseBodyCodeVersions   `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
+	CreateTime           *string                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultRelatedRecord *string                                 `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
+	Description          *string                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	Envs                 []*GetRoutineResponseBodyEnvs           `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
+	RelatedRecords       []*GetRoutineResponseBodyRelatedRecords `json:"RelatedRecords,omitempty" xml:"RelatedRecords,omitempty" type:"Repeated"`
+	RelatedRoutes        []*GetRoutineResponseBodyRelatedRoutes  `json:"RelatedRoutes,omitempty" xml:"RelatedRoutes,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetRoutineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineResponseBody) SetCodeVersions(v []*GetRoutineResponseBodyCodeVersions) *GetRoutineResponseBody {
+	s.CodeVersions = v
+	return s
+}
+
+func (s *GetRoutineResponseBody) SetCreateTime(v string) *GetRoutineResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetRoutineResponseBody) SetDefaultRelatedRecord(v string) *GetRoutineResponseBody {
+	s.DefaultRelatedRecord = &v
+	return s
+}
+
+func (s *GetRoutineResponseBody) SetDescription(v string) *GetRoutineResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetRoutineResponseBody) SetEnvs(v []*GetRoutineResponseBodyEnvs) *GetRoutineResponseBody {
+	s.Envs = v
+	return s
+}
+
+func (s *GetRoutineResponseBody) SetRelatedRecords(v []*GetRoutineResponseBodyRelatedRecords) *GetRoutineResponseBody {
+	s.RelatedRecords = v
+	return s
+}
+
+func (s *GetRoutineResponseBody) SetRelatedRoutes(v []*GetRoutineResponseBodyRelatedRoutes) *GetRoutineResponseBody {
+	s.RelatedRoutes = v
+	return s
+}
+
+func (s *GetRoutineResponseBody) SetRequestId(v string) *GetRoutineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetRoutineResponseBodyCodeVersions struct {
+	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	CodeVersion     *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+}
+
+func (s GetRoutineResponseBodyCodeVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineResponseBodyCodeVersions) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineResponseBodyCodeVersions) SetCodeDescription(v string) *GetRoutineResponseBodyCodeVersions {
+	s.CodeDescription = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyCodeVersions) SetCodeVersion(v string) *GetRoutineResponseBodyCodeVersions {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyCodeVersions) SetCreateTime(v string) *GetRoutineResponseBodyCodeVersions {
+	s.CreateTime = &v
+	return s
+}
+
+type GetRoutineResponseBodyEnvs struct {
+	CanaryAreaList    []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
+	CanaryCodeVersion *string   `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
+	CodeVersion       *string   `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	Env               *string   `json:"Env,omitempty" xml:"Env,omitempty"`
+	SpecName          *string   `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+}
+
+func (s GetRoutineResponseBodyEnvs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineResponseBodyEnvs) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineResponseBodyEnvs) SetCanaryAreaList(v []*string) *GetRoutineResponseBodyEnvs {
+	s.CanaryAreaList = v
+	return s
+}
+
+func (s *GetRoutineResponseBodyEnvs) SetCanaryCodeVersion(v string) *GetRoutineResponseBodyEnvs {
+	s.CanaryCodeVersion = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyEnvs) SetCodeVersion(v string) *GetRoutineResponseBodyEnvs {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyEnvs) SetEnv(v string) *GetRoutineResponseBodyEnvs {
+	s.Env = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyEnvs) SetSpecName(v string) *GetRoutineResponseBodyEnvs {
+	s.SpecName = &v
+	return s
+}
+
+type GetRoutineResponseBodyRelatedRecords struct {
+	RecordId   *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName   *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s GetRoutineResponseBodyRelatedRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineResponseBodyRelatedRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineResponseBodyRelatedRecords) SetRecordId(v int64) *GetRoutineResponseBodyRelatedRecords {
+	s.RecordId = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyRelatedRecords) SetRecordName(v string) *GetRoutineResponseBodyRelatedRecords {
+	s.RecordName = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyRelatedRecords) SetSiteId(v int64) *GetRoutineResponseBodyRelatedRecords {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyRelatedRecords) SetSiteName(v string) *GetRoutineResponseBodyRelatedRecords {
+	s.SiteName = &v
+	return s
+}
+
+type GetRoutineResponseBodyRelatedRoutes struct {
+	Route    *string `json:"Route,omitempty" xml:"Route,omitempty"`
+	RouteId  *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	SiteId   *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s GetRoutineResponseBodyRelatedRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineResponseBodyRelatedRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineResponseBodyRelatedRoutes) SetRoute(v string) *GetRoutineResponseBodyRelatedRoutes {
+	s.Route = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyRelatedRoutes) SetRouteId(v string) *GetRoutineResponseBodyRelatedRoutes {
+	s.RouteId = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyRelatedRoutes) SetSiteId(v int64) *GetRoutineResponseBodyRelatedRoutes {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetRoutineResponseBodyRelatedRoutes) SetSiteName(v string) *GetRoutineResponseBodyRelatedRoutes {
+	s.SiteName = &v
+	return s
+}
+
+type GetRoutineResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRoutineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRoutineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineResponse) SetHeaders(v map[string]*string) *GetRoutineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRoutineResponse) SetStatusCode(v int32) *GetRoutineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRoutineResponse) SetBody(v *GetRoutineResponseBody) *GetRoutineResponse {
+	s.Body = v
+	return s
+}
+
+type GetRoutineStagingCodeUploadInfoRequest struct {
+	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	// example:
+	//
+	// GetRoutineStagingCodeUploadInfo
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetRoutineStagingCodeUploadInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineStagingCodeUploadInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineStagingCodeUploadInfoRequest) SetCodeDescription(v string) *GetRoutineStagingCodeUploadInfoRequest {
+	s.CodeDescription = &v
+	return s
+}
+
+func (s *GetRoutineStagingCodeUploadInfoRequest) SetName(v string) *GetRoutineStagingCodeUploadInfoRequest {
+	s.Name = &v
+	return s
+}
+
+type GetRoutineStagingCodeUploadInfoResponseBody struct {
+	CodeVersion   *string                `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	OssPostConfig map[string]interface{} `json:"OssPostConfig,omitempty" xml:"OssPostConfig,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetRoutineStagingCodeUploadInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineStagingCodeUploadInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineStagingCodeUploadInfoResponseBody) SetCodeVersion(v string) *GetRoutineStagingCodeUploadInfoResponseBody {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *GetRoutineStagingCodeUploadInfoResponseBody) SetOssPostConfig(v map[string]interface{}) *GetRoutineStagingCodeUploadInfoResponseBody {
+	s.OssPostConfig = v
+	return s
+}
+
+func (s *GetRoutineStagingCodeUploadInfoResponseBody) SetRequestId(v string) *GetRoutineStagingCodeUploadInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetRoutineStagingCodeUploadInfoResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRoutineStagingCodeUploadInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRoutineStagingCodeUploadInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineStagingCodeUploadInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineStagingCodeUploadInfoResponse) SetHeaders(v map[string]*string) *GetRoutineStagingCodeUploadInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRoutineStagingCodeUploadInfoResponse) SetStatusCode(v int32) *GetRoutineStagingCodeUploadInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRoutineStagingCodeUploadInfoResponse) SetBody(v *GetRoutineStagingCodeUploadInfoResponseBody) *GetRoutineStagingCodeUploadInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetRoutineStagingEnvIpResponseBody struct {
+	IPV4 []*string `json:"IPV4,omitempty" xml:"IPV4,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetRoutineStagingEnvIpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineStagingEnvIpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineStagingEnvIpResponseBody) SetIPV4(v []*string) *GetRoutineStagingEnvIpResponseBody {
+	s.IPV4 = v
+	return s
+}
+
+func (s *GetRoutineStagingEnvIpResponseBody) SetRequestId(v string) *GetRoutineStagingEnvIpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetRoutineStagingEnvIpResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRoutineStagingEnvIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRoutineStagingEnvIpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineStagingEnvIpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineStagingEnvIpResponse) SetHeaders(v map[string]*string) *GetRoutineStagingEnvIpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRoutineStagingEnvIpResponse) SetStatusCode(v int32) *GetRoutineStagingEnvIpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRoutineStagingEnvIpResponse) SetBody(v *GetRoutineStagingEnvIpResponseBody) *GetRoutineStagingEnvIpResponse {
+	s.Body = v
+	return s
+}
+
+type GetRoutineUserInfoResponseBody struct {
+	// Id of the request
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Routines   []*GetRoutineUserInfoResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
+	Subdomains []*string                                 `json:"Subdomains,omitempty" xml:"Subdomains,omitempty" type:"Repeated"`
+}
+
+func (s GetRoutineUserInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineUserInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineUserInfoResponseBody) SetRequestId(v string) *GetRoutineUserInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRoutineUserInfoResponseBody) SetRoutines(v []*GetRoutineUserInfoResponseBodyRoutines) *GetRoutineUserInfoResponseBody {
+	s.Routines = v
+	return s
+}
+
+func (s *GetRoutineUserInfoResponseBody) SetSubdomains(v []*string) *GetRoutineUserInfoResponseBody {
+	s.Subdomains = v
+	return s
+}
+
+type GetRoutineUserInfoResponseBodyRoutines struct {
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+}
+
+func (s GetRoutineUserInfoResponseBodyRoutines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineUserInfoResponseBodyRoutines) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineUserInfoResponseBodyRoutines) SetCreateTime(v string) *GetRoutineUserInfoResponseBodyRoutines {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetRoutineUserInfoResponseBodyRoutines) SetDescription(v string) *GetRoutineUserInfoResponseBodyRoutines {
+	s.Description = &v
+	return s
+}
+
+func (s *GetRoutineUserInfoResponseBodyRoutines) SetRoutineName(v string) *GetRoutineUserInfoResponseBodyRoutines {
+	s.RoutineName = &v
+	return s
+}
+
+type GetRoutineUserInfoResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRoutineUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRoutineUserInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineUserInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineUserInfoResponse) SetHeaders(v map[string]*string) *GetRoutineUserInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRoutineUserInfoResponse) SetStatusCode(v int32) *GetRoutineUserInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRoutineUserInfoResponse) SetBody(v *GetRoutineUserInfoResponseBody) *GetRoutineUserInfoResponse {
 	s.Body = v
 	return s
 }
@@ -17950,6 +19219,139 @@ func (s *ListRecordsResponse) SetBody(v *ListRecordsResponseBody) *ListRecordsRe
 	return s
 }
 
+type ListRoutineCanaryAreasResponseBody struct {
+	CanaryAreas []*string `json:"CanaryAreas,omitempty" xml:"CanaryAreas,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListRoutineCanaryAreasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineCanaryAreasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineCanaryAreasResponseBody) SetCanaryAreas(v []*string) *ListRoutineCanaryAreasResponseBody {
+	s.CanaryAreas = v
+	return s
+}
+
+func (s *ListRoutineCanaryAreasResponseBody) SetRequestId(v string) *ListRoutineCanaryAreasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRoutineCanaryAreasResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRoutineCanaryAreasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRoutineCanaryAreasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineCanaryAreasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineCanaryAreasResponse) SetHeaders(v map[string]*string) *ListRoutineCanaryAreasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRoutineCanaryAreasResponse) SetStatusCode(v int32) *ListRoutineCanaryAreasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRoutineCanaryAreasResponse) SetBody(v *ListRoutineCanaryAreasResponseBody) *ListRoutineCanaryAreasResponse {
+	s.Body = v
+	return s
+}
+
+type ListRoutineOptionalSpecsResponseBody struct {
+	// Id of the request
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Specs     []*ListRoutineOptionalSpecsResponseBodySpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+}
+
+func (s ListRoutineOptionalSpecsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineOptionalSpecsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineOptionalSpecsResponseBody) SetRequestId(v string) *ListRoutineOptionalSpecsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRoutineOptionalSpecsResponseBody) SetSpecs(v []*ListRoutineOptionalSpecsResponseBodySpecs) *ListRoutineOptionalSpecsResponseBody {
+	s.Specs = v
+	return s
+}
+
+type ListRoutineOptionalSpecsResponseBodySpecs struct {
+	IsAvailable *bool   `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	SpecName    *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+}
+
+func (s ListRoutineOptionalSpecsResponseBodySpecs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineOptionalSpecsResponseBodySpecs) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineOptionalSpecsResponseBodySpecs) SetIsAvailable(v bool) *ListRoutineOptionalSpecsResponseBodySpecs {
+	s.IsAvailable = &v
+	return s
+}
+
+func (s *ListRoutineOptionalSpecsResponseBodySpecs) SetSpecName(v string) *ListRoutineOptionalSpecsResponseBodySpecs {
+	s.SpecName = &v
+	return s
+}
+
+type ListRoutineOptionalSpecsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRoutineOptionalSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRoutineOptionalSpecsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineOptionalSpecsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineOptionalSpecsResponse) SetHeaders(v map[string]*string) *ListRoutineOptionalSpecsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRoutineOptionalSpecsResponse) SetStatusCode(v int32) *ListRoutineOptionalSpecsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRoutineOptionalSpecsResponse) SetBody(v *ListRoutineOptionalSpecsResponseBody) *ListRoutineOptionalSpecsResponse {
+	s.Body = v
+	return s
+}
+
 type ListScheduledPreloadExecutionsRequest struct {
 	// This parameter is required.
 	//
@@ -22256,6 +23658,147 @@ func (s *PreloadCachesResponse) SetStatusCode(v int32) *PreloadCachesResponse {
 }
 
 func (s *PreloadCachesResponse) SetBody(v *PreloadCachesResponseBody) *PreloadCachesResponse {
+	s.Body = v
+	return s
+}
+
+type PublishRoutineCodeVersionRequest struct {
+	CanaryAreaList    []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
+	CanaryCodeVersion *string   `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
+	CodeVersion       *string   `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	Env               *string   `json:"Env,omitempty" xml:"Env,omitempty"`
+	// example:
+	//
+	// PublishRoutineCodeVersion
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s PublishRoutineCodeVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishRoutineCodeVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishRoutineCodeVersionRequest) SetCanaryAreaList(v []*string) *PublishRoutineCodeVersionRequest {
+	s.CanaryAreaList = v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionRequest) SetCanaryCodeVersion(v string) *PublishRoutineCodeVersionRequest {
+	s.CanaryCodeVersion = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionRequest) SetCodeVersion(v string) *PublishRoutineCodeVersionRequest {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionRequest) SetEnv(v string) *PublishRoutineCodeVersionRequest {
+	s.Env = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionRequest) SetName(v string) *PublishRoutineCodeVersionRequest {
+	s.Name = &v
+	return s
+}
+
+type PublishRoutineCodeVersionShrinkRequest struct {
+	CanaryAreaListShrink *string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty"`
+	CanaryCodeVersion    *string `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
+	CodeVersion          *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	Env                  *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// example:
+	//
+	// PublishRoutineCodeVersion
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s PublishRoutineCodeVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishRoutineCodeVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishRoutineCodeVersionShrinkRequest) SetCanaryAreaListShrink(v string) *PublishRoutineCodeVersionShrinkRequest {
+	s.CanaryAreaListShrink = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionShrinkRequest) SetCanaryCodeVersion(v string) *PublishRoutineCodeVersionShrinkRequest {
+	s.CanaryCodeVersion = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionShrinkRequest) SetCodeVersion(v string) *PublishRoutineCodeVersionShrinkRequest {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionShrinkRequest) SetEnv(v string) *PublishRoutineCodeVersionShrinkRequest {
+	s.Env = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionShrinkRequest) SetName(v string) *PublishRoutineCodeVersionShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type PublishRoutineCodeVersionResponseBody struct {
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PublishRoutineCodeVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishRoutineCodeVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishRoutineCodeVersionResponseBody) SetCodeVersion(v string) *PublishRoutineCodeVersionResponseBody {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionResponseBody) SetRequestId(v string) *PublishRoutineCodeVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PublishRoutineCodeVersionResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PublishRoutineCodeVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PublishRoutineCodeVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishRoutineCodeVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishRoutineCodeVersionResponse) SetHeaders(v map[string]*string) *PublishRoutineCodeVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionResponse) SetStatusCode(v int32) *PublishRoutineCodeVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishRoutineCodeVersionResponse) SetBody(v *PublishRoutineCodeVersionResponseBody) *PublishRoutineCodeVersionResponse {
 	s.Body = v
 	return s
 }
@@ -28274,6 +29817,70 @@ func (client *Client) CheckUserProjectName(request *CheckUserProjectNameRequest)
 
 // Summary:
 //
+// 提交Routine测试版本代码
+//
+// @param request - CommitRoutineStagingCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommitRoutineStagingCodeResponse
+func (client *Client) CommitRoutineStagingCodeWithOptions(request *CommitRoutineStagingCodeRequest, runtime *util.RuntimeOptions) (_result *CommitRoutineStagingCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CodeDescription)) {
+		body["CodeDescription"] = request.CodeDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CommitRoutineStagingCode"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CommitRoutineStagingCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交Routine测试版本代码
+//
+// @param request - CommitRoutineStagingCodeRequest
+//
+// @return CommitRoutineStagingCodeResponse
+func (client *Client) CommitRoutineStagingCode(request *CommitRoutineStagingCodeRequest) (_result *CommitRoutineStagingCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CommitRoutineStagingCodeResponse{}
+	_body, _err := client.CommitRoutineStagingCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建定制场景策略
 //
 // @param request - CreateCustomScenePolicyRequest
@@ -28665,6 +30272,210 @@ func (client *Client) CreateRecord(request *CreateRecordRequest) (_result *Creat
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRecordResponse{}
 	_body, _err := client.CreateRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建routine
+//
+// @param request - CreateRoutineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoutineResponse
+func (client *Client) CreateRoutineWithOptions(request *CreateRoutineRequest, runtime *util.RuntimeOptions) (_result *CreateRoutineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecName)) {
+		body["SpecName"] = request.SpecName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRoutine"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRoutineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建routine
+//
+// @param request - CreateRoutineRequest
+//
+// @return CreateRoutineResponse
+func (client *Client) CreateRoutine(request *CreateRoutineRequest) (_result *CreateRoutineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRoutineResponse{}
+	_body, _err := client.CreateRoutineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加Routine关联域名
+//
+// @param request - CreateRoutineRelatedRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoutineRelatedRecordResponse
+func (client *Client) CreateRoutineRelatedRecordWithOptions(request *CreateRoutineRelatedRecordRequest, runtime *util.RuntimeOptions) (_result *CreateRoutineRelatedRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordName)) {
+		body["RecordName"] = request.RecordName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		body["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRoutineRelatedRecord"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRoutineRelatedRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加Routine关联域名
+//
+// @param request - CreateRoutineRelatedRecordRequest
+//
+// @return CreateRoutineRelatedRecordResponse
+func (client *Client) CreateRoutineRelatedRecord(request *CreateRoutineRelatedRecordRequest) (_result *CreateRoutineRelatedRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRoutineRelatedRecordResponse{}
+	_body, _err := client.CreateRoutineRelatedRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加Routine关联路由
+//
+// @param request - CreateRoutineRelatedRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoutineRelatedRouteResponse
+func (client *Client) CreateRoutineRelatedRouteWithOptions(request *CreateRoutineRelatedRouteRequest, runtime *util.RuntimeOptions) (_result *CreateRoutineRelatedRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Route)) {
+		body["Route"] = request.Route
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		body["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRoutineRelatedRoute"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRoutineRelatedRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加Routine关联路由
+//
+// @param request - CreateRoutineRelatedRouteRequest
+//
+// @return CreateRoutineRelatedRouteResponse
+func (client *Client) CreateRoutineRelatedRoute(request *CreateRoutineRelatedRouteRequest) (_result *CreateRoutineRelatedRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRoutineRelatedRouteResponse{}
+	_body, _err := client.CreateRoutineRelatedRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30001,6 +31812,276 @@ func (client *Client) DeleteRecord(request *DeleteRecordRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRecordResponse{}
 	_body, _err := client.DeleteRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Routine
+//
+// @param request - DeleteRoutineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoutineResponse
+func (client *Client) DeleteRoutineWithOptions(request *DeleteRoutineRequest, runtime *util.RuntimeOptions) (_result *DeleteRoutineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRoutine"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRoutineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Routine
+//
+// @param request - DeleteRoutineRequest
+//
+// @return DeleteRoutineResponse
+func (client *Client) DeleteRoutine(request *DeleteRoutineRequest) (_result *DeleteRoutineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRoutineResponse{}
+	_body, _err := client.DeleteRoutineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Routine某版本代码
+//
+// @param request - DeleteRoutineCodeVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoutineCodeVersionResponse
+func (client *Client) DeleteRoutineCodeVersionWithOptions(request *DeleteRoutineCodeVersionRequest, runtime *util.RuntimeOptions) (_result *DeleteRoutineCodeVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CodeVersion)) {
+		body["CodeVersion"] = request.CodeVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRoutineCodeVersion"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRoutineCodeVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Routine某版本代码
+//
+// @param request - DeleteRoutineCodeVersionRequest
+//
+// @return DeleteRoutineCodeVersionResponse
+func (client *Client) DeleteRoutineCodeVersion(request *DeleteRoutineCodeVersionRequest) (_result *DeleteRoutineCodeVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRoutineCodeVersionResponse{}
+	_body, _err := client.DeleteRoutineCodeVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Routine关联域名
+//
+// @param request - DeleteRoutineRelatedRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoutineRelatedRecordResponse
+func (client *Client) DeleteRoutineRelatedRecordWithOptions(request *DeleteRoutineRelatedRecordRequest, runtime *util.RuntimeOptions) (_result *DeleteRoutineRelatedRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		body["RecordId"] = request.RecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordName)) {
+		body["RecordName"] = request.RecordName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRoutineRelatedRecord"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRoutineRelatedRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Routine关联域名
+//
+// @param request - DeleteRoutineRelatedRecordRequest
+//
+// @return DeleteRoutineRelatedRecordResponse
+func (client *Client) DeleteRoutineRelatedRecord(request *DeleteRoutineRelatedRecordRequest) (_result *DeleteRoutineRelatedRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRoutineRelatedRecordResponse{}
+	_body, _err := client.DeleteRoutineRelatedRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Routine关联路由
+//
+// @param request - DeleteRoutineRelatedRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoutineRelatedRouteResponse
+func (client *Client) DeleteRoutineRelatedRouteWithOptions(request *DeleteRoutineRelatedRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteRoutineRelatedRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Route)) {
+		body["Route"] = request.Route
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		body["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		body["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRoutineRelatedRoute"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRoutineRelatedRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Routine关联路由
+//
+// @param request - DeleteRoutineRelatedRouteRequest
+//
+// @return DeleteRoutineRelatedRouteResponse
+func (client *Client) DeleteRoutineRelatedRoute(request *DeleteRoutineRelatedRouteRequest) (_result *DeleteRoutineRelatedRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRoutineRelatedRouteResponse{}
+	_body, _err := client.DeleteRoutineRelatedRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31427,6 +33508,62 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 
 // Summary:
 //
+// GetErService
+//
+// @param request - GetErServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetErServiceResponse
+func (client *Client) GetErServiceWithOptions(request *GetErServiceRequest, runtime *util.RuntimeOptions) (_result *GetErServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetErService"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetErServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// GetErService
+//
+// @param request - GetErServiceRequest
+//
+// @return GetErServiceResponse
+func (client *Client) GetErService(request *GetErServiceRequest) (_result *GetErServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetErServiceResponse{}
+	_body, _err := client.GetErServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询Key-Value对的某个Key值
 //
 // @param request - GetKvRequest
@@ -31865,6 +34002,224 @@ func (client *Client) GetRecord(request *GetRecordRequest) (_result *GetRecordRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRecordResponse{}
 	_body, _err := client.GetRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine配置信息
+//
+// @param request - GetRoutineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineResponse
+func (client *Client) GetRoutineWithOptions(request *GetRoutineRequest, runtime *util.RuntimeOptions) (_result *GetRoutineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRoutine"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRoutineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine配置信息
+//
+// @param request - GetRoutineRequest
+//
+// @return GetRoutineResponse
+func (client *Client) GetRoutine(request *GetRoutineRequest) (_result *GetRoutineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRoutineResponse{}
+	_body, _err := client.GetRoutineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+//
+// @param request - GetRoutineStagingCodeUploadInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineStagingCodeUploadInfoResponse
+func (client *Client) GetRoutineStagingCodeUploadInfoWithOptions(request *GetRoutineStagingCodeUploadInfoRequest, runtime *util.RuntimeOptions) (_result *GetRoutineStagingCodeUploadInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CodeDescription)) {
+		body["CodeDescription"] = request.CodeDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRoutineStagingCodeUploadInfo"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRoutineStagingCodeUploadInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+//
+// @param request - GetRoutineStagingCodeUploadInfoRequest
+//
+// @return GetRoutineStagingCodeUploadInfoResponse
+func (client *Client) GetRoutineStagingCodeUploadInfo(request *GetRoutineStagingCodeUploadInfoRequest) (_result *GetRoutineStagingCodeUploadInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRoutineStagingCodeUploadInfoResponse{}
+	_body, _err := client.GetRoutineStagingCodeUploadInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询边缘函数测试环境IP
+//
+// @param request - GetRoutineStagingEnvIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineStagingEnvIpResponse
+func (client *Client) GetRoutineStagingEnvIpWithOptions(runtime *util.RuntimeOptions) (_result *GetRoutineStagingEnvIpResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetRoutineStagingEnvIp"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRoutineStagingEnvIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询边缘函数测试环境IP
+//
+// @return GetRoutineStagingEnvIpResponse
+func (client *Client) GetRoutineStagingEnvIp() (_result *GetRoutineStagingEnvIpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRoutineStagingEnvIpResponse{}
+	_body, _err := client.GetRoutineStagingEnvIpWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户的Routine列表
+//
+// @param request - GetRoutineUserInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineUserInfoResponse
+func (client *Client) GetRoutineUserInfoWithOptions(runtime *util.RuntimeOptions) (_result *GetRoutineUserInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetRoutineUserInfo"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRoutineUserInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户的Routine列表
+//
+// @return GetRoutineUserInfoResponse
+func (client *Client) GetRoutineUserInfo() (_result *GetRoutineUserInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRoutineUserInfoResponse{}
+	_body, _err := client.GetRoutineUserInfoWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33634,6 +35989,100 @@ func (client *Client) ListRecords(request *ListRecordsRequest) (_result *ListRec
 
 // Summary:
 //
+// 查询Routine灰度环境列表
+//
+// @param request - ListRoutineCanaryAreasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRoutineCanaryAreasResponse
+func (client *Client) ListRoutineCanaryAreasWithOptions(runtime *util.RuntimeOptions) (_result *ListRoutineCanaryAreasResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoutineCanaryAreas"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRoutineCanaryAreasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine灰度环境列表
+//
+// @return ListRoutineCanaryAreasResponse
+func (client *Client) ListRoutineCanaryAreas() (_result *ListRoutineCanaryAreasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRoutineCanaryAreasResponse{}
+	_body, _err := client.ListRoutineCanaryAreasWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine可选择规格列表
+//
+// @param request - ListRoutineOptionalSpecsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRoutineOptionalSpecsResponse
+func (client *Client) ListRoutineOptionalSpecsWithOptions(runtime *util.RuntimeOptions) (_result *ListRoutineOptionalSpecsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoutineOptionalSpecs"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRoutineOptionalSpecsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine可选择规格列表
+//
+// @return ListRoutineOptionalSpecsResponse
+func (client *Client) ListRoutineOptionalSpecs() (_result *ListRoutineOptionalSpecsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRoutineOptionalSpecsResponse{}
+	_body, _err := client.ListRoutineOptionalSpecsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出指定任务下的执行计划
 //
 // @param request - ListScheduledPreloadExecutionsRequest
@@ -34817,6 +37266,88 @@ func (client *Client) PreloadCaches(request *PreloadCachesRequest) (_result *Pre
 	runtime := &util.RuntimeOptions{}
 	_result = &PreloadCachesResponse{}
 	_body, _err := client.PreloadCachesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布Routine某版本代码
+//
+// @param tmpReq - PublishRoutineCodeVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishRoutineCodeVersionResponse
+func (client *Client) PublishRoutineCodeVersionWithOptions(tmpReq *PublishRoutineCodeVersionRequest, runtime *util.RuntimeOptions) (_result *PublishRoutineCodeVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PublishRoutineCodeVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CanaryAreaList)) {
+		request.CanaryAreaListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CanaryAreaList, tea.String("CanaryAreaList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CanaryAreaListShrink)) {
+		body["CanaryAreaList"] = request.CanaryAreaListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CanaryCodeVersion)) {
+		body["CanaryCodeVersion"] = request.CanaryCodeVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeVersion)) {
+		body["CodeVersion"] = request.CodeVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Env)) {
+		body["Env"] = request.Env
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishRoutineCodeVersion"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishRoutineCodeVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布Routine某版本代码
+//
+// @param request - PublishRoutineCodeVersionRequest
+//
+// @return PublishRoutineCodeVersionResponse
+func (client *Client) PublishRoutineCodeVersion(request *PublishRoutineCodeVersionRequest) (_result *PublishRoutineCodeVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PublishRoutineCodeVersionResponse{}
+	_body, _err := client.PublishRoutineCodeVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
