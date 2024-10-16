@@ -26,11 +26,31 @@ func (s *AgentBaseQuery) SetQuery(v string) *AgentBaseQuery {
 	return s
 }
 
+type CommonAgentQuery struct {
+	Query              *string `json:"query,omitempty" xml:"query,omitempty"`
+	QuerySceneEnumCode *string `json:"querySceneEnumCode,omitempty" xml:"querySceneEnumCode,omitempty"`
+}
+
+func (s CommonAgentQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommonAgentQuery) GoString() string {
+	return s.String()
+}
+
+func (s *CommonAgentQuery) SetQuery(v string) *CommonAgentQuery {
+	s.Query = &v
+	return s
+}
+
+func (s *CommonAgentQuery) SetQuerySceneEnumCode(v string) *CommonAgentQuery {
+	s.QuerySceneEnumCode = &v
+	return s
+}
+
 type QueryResult struct {
-	Data         []*QueryResultData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrorCode    *string            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	Success      *bool              `json:"success,omitempty" xml:"success,omitempty"`
+	Data []*QueryResultData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 }
 
 func (s QueryResult) String() string {
@@ -43,21 +63,6 @@ func (s QueryResult) GoString() string {
 
 func (s *QueryResult) SetData(v []*QueryResultData) *QueryResult {
 	s.Data = v
-	return s
-}
-
-func (s *QueryResult) SetErrorCode(v string) *QueryResult {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryResult) SetErrorMessage(v string) *QueryResult {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *QueryResult) SetSuccess(v bool) *QueryResult {
-	s.Success = &v
 	return s
 }
 
@@ -229,6 +234,52 @@ func (s *QueryResultDataMetadata) SetScore(v string) *QueryResultDataMetadata {
 
 func (s *QueryResultDataMetadata) SetWeeklyOpeningDays(v string) *QueryResultDataMetadata {
 	s.WeeklyOpeningDays = &v
+	return s
+}
+
+type CommonQueryBySceneRequest struct {
+	Body *CommonAgentQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CommonQueryBySceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommonQueryBySceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CommonQueryBySceneRequest) SetBody(v *CommonAgentQuery) *CommonQueryBySceneRequest {
+	s.Body = v
+	return s
+}
+
+type CommonQueryBySceneResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryResult       `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CommonQueryBySceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommonQueryBySceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CommonQueryBySceneResponse) SetHeaders(v map[string]*string) *CommonQueryBySceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CommonQueryBySceneResponse) SetStatusCode(v int32) *CommonQueryBySceneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CommonQueryBySceneResponse) SetBody(v *QueryResult) *CommonQueryBySceneResponse {
+	s.Body = v
 	return s
 }
 
@@ -503,6 +554,65 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 自然语言通用查询
+//
+// @param request - CommonQueryBySceneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommonQueryBySceneResponse
+func (client *Client) CommonQueryBySceneWithOptions(request *CommonQueryBySceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CommonQueryBySceneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CommonQueryByScene"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/amap-function-call-agent/iqs-agent-service/v2/nl/common"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CommonQueryBySceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 自然语言通用查询
+//
+// @param request - CommonQueryBySceneRequest
+//
+// @return CommonQueryBySceneResponse
+func (client *Client) CommonQueryByScene(request *CommonQueryBySceneRequest) (_result *CommonQueryBySceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CommonQueryBySceneResponse{}
+	_body, _err := client.CommonQueryBySceneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 景点查询
 //
 // @param request - QueryAttractionsRequest
@@ -562,7 +672,7 @@ func (client *Client) QueryAttractions(request *QueryAttractionsRequest) (_resul
 
 // Summary:
 //
-// 餐厅查询
+// 酒店查询
 //
 // @param request - QueryHotelsRequest
 //
@@ -602,7 +712,7 @@ func (client *Client) QueryHotelsWithOptions(request *QueryHotelsRequest, header
 
 // Summary:
 //
-// 餐厅查询
+// 酒店查询
 //
 // @param request - QueryHotelsRequest
 //
