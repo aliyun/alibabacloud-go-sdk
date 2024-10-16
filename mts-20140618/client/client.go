@@ -208,11 +208,13 @@ type AddMediaRequest struct {
 	//
 	// A test video
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The path of the input file. You can query the path of the input file in the MPS or OSS console. For more information, see the **Triggering and matching rules for a workflow*	- section of this topic.
+	// The URL of the input file. You can obtain the URL in the MPS or OSS console. For more information, see the **Triggering and matching rule for a workflow*	- section of this topic.
 	//
-	// 	- The value can be up to 3,200 bytes in length.
+	// 	- Only OSS HTTP URLs are supported. Alibaba Cloud CDN URLs and HTTPS URLs are not supported.
 	//
-	// 	- The URL complies with RFC 2396 and is encoded in UTF-8, with reserved characters being percent-encoded. For more information, see [URL encoding](https://help.aliyun.com/document_detail/423796.html).
+	// 	- The value can be up to 3,200 bytes in size.
+	//
+	// 	- The URL complies with RFC 2396 and is encoded in UTF-8. For more information, see [URL encoding](https://help.aliyun.com/document_detail/423796.html).
 	//
 	// This parameter is required.
 	//
@@ -5316,6 +5318,10 @@ type ImAuditRequest struct {
 	// 	- The image size cannot exceed 20 MB, the height or width of the image cannot exceed 30,000 pixels, and the image cannot exceed 0.25 billion pixels.
 	//
 	// 	- We recommend that you upload images of at least 256 × 256 pixels to ensure required moderation result.
+	//
+	// example:
+	//
+	// ["http://``127.66.**.**``/image.jpeg","http://``127.66.**.**``/photo.jpeg"]
 	Images               *string `json:"Images,omitempty" xml:"Images,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -7696,7 +7702,10 @@ type ListCustomViewsResponseBodyCustomViewsCustomView struct {
 	//
 	// 1
 	CustomViewId *string `json:"CustomViewId,omitempty" xml:"CustomViewId,omitempty"`
-	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// http://``127.66.**.**``/photo.jpeg
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s ListCustomViewsResponseBodyCustomViewsCustomView) String() string {
@@ -28007,6 +28016,7 @@ type QuerySmarttagJobResponseBody struct {
 	//
 	// Success
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
@@ -28028,6 +28038,11 @@ func (s QuerySmarttagJobResponseBody) GoString() string {
 
 func (s *QuerySmarttagJobResponseBody) SetJobStatus(v string) *QuerySmarttagJobResponseBody {
 	s.JobStatus = &v
+	return s
+}
+
+func (s *QuerySmarttagJobResponseBody) SetMessage(v string) *QuerySmarttagJobResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -31557,6 +31572,7 @@ type RegisterCustomFaceRequest struct {
 	//
 	// PersonId001-****
 	PersonId             *string `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
+	PersonName           *string `json:"PersonName,omitempty" xml:"PersonName,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -31591,6 +31607,11 @@ func (s *RegisterCustomFaceRequest) SetOwnerId(v int64) *RegisterCustomFaceReque
 
 func (s *RegisterCustomFaceRequest) SetPersonId(v string) *RegisterCustomFaceRequest {
 	s.PersonId = &v
+	return s
+}
+
+func (s *RegisterCustomFaceRequest) SetPersonName(v string) *RegisterCustomFaceRequest {
+	s.PersonName = &v
 	return s
 }
 
@@ -31686,6 +31707,10 @@ type RegisterCustomViewRequest struct {
 	// 1
 	CustomGroupId *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// http://``127.66.**.**``/image.jpeg
 	ImageUrl             *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -36326,7 +36351,7 @@ type SubmitJobsRequest struct {
 	//
 	// 	- To obtain the ID of an MPS queue, you can log on to the [MPS console](https://mps.console.aliyun.com/overview) and choose **Global Settings*	- > **MPS Queue and Callback*	- in the left-side navigation pane.
 	//
-	// 	- If you want to receive asynchronous message notifications, associate an MNS queue or topic with the MPS queue. For more information, see [Receive notifications](https://www.alibabacloud.com/help/zh/apsaravideo-for-media-processing/latest/receive-message-notifications).
+	// 	- If you want to receive asynchronous message notifications, associate an MNS queue or topic with the MPS queue. For more information, see [Receive notifications](https://help.aliyun.com/document_detail/42618.html).
 	//
 	// This parameter is required.
 	//
@@ -40176,7 +40201,11 @@ type SubmitMediaInfoJobRequest struct {
 	Input        *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the MPS queue to which the analysis job is submitted. To view the ID of the MPS queue, log on to the **MPS console*	- and choose **Global Settings*	- > **Pipelines*	- in the left-side navigation pane.
+	// The ID of the MPS queue to which the job was submitted. For more information, see [Terms](https://help.aliyun.com/document_detail/29197.html).
+	//
+	// 	- To view the ID of the MPS queue, log on to the [MPS console](https://mps.console.aliyun.com/overview) and choose **Global Settings*	- > **MPS queue and Callback*	- in the left-side navigation pane. On the MPS queue and Callback page, you can view the ID of an MPS queue or create an MPS queue.
+	//
+	// 	- If you want to receive asynchronous message notifications, associate an MNS queue or topic with the MPS queue. For more information, see [Receive message notifications](https://www.alibabacloud.com/help/en/mps/receive-message-notifications/?spm=a2c63.p38356.0.0.b48576d2jxNSca).
 	//
 	// example:
 	//
@@ -40604,7 +40633,7 @@ type SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesFormat struct {
 	//
 	// QuickTime/MOV
 	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	// The short name of the container format. For more information about the parameters, see [Parameter details](https://www.alibabacloud.com/help/zh/apsaravideo-for-media-processing/latest/parameter-details-a).
+	// The short name of the container format. For more information about the parameters, see [Parameter details](https://help.aliyun.com/document_detail/29253.html).
 	//
 	// example:
 	//
@@ -52071,6 +52100,10 @@ func (client *Client) QueryPipelineList(request *QueryPipelineListRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询智能标签任务
+//
 // @param request - QuerySmarttagJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -52129,6 +52162,10 @@ func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询智能标签任务
+//
 // @param request - QuerySmarttagJobRequest
 //
 // @return QuerySmarttagJobResponse
@@ -52778,6 +52815,10 @@ func (client *Client) RegisterCustomFaceWithOptions(request *RegisterCustomFaceR
 
 	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
 		query["PersonId"] = request.PersonId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonName)) {
+		query["PersonName"] = request.PersonName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -54137,7 +54178,7 @@ func (client *Client) SubmitImageCopyright(request *SubmitImageCopyrightRequest)
 //
 // Description:
 //
-//   SubmitJobs is an asynchronous operation. After you submit transcoding jobs, the jobs are added to an MPS queue to be scheduled and run. The transcoding jobs may not have been complete when the response is returned. After you call this operation, you can call the [QueryJobList](https://help.aliyun.com/document_detail/602836.html) operation to query the job results. You can also associate a Message Service (MNS) queue or topic with the MPS queue to receive notifications on the jobs. For more information, see [Receive notifications](https://www.alibabacloud.com/help/zh/apsaravideo-for-media-processing/latest/receive-message-notifications).
+//   SubmitJobs is an asynchronous operation. After you submit transcoding jobs, the jobs are added to an MPS queue to be scheduled and run. The transcoding jobs may not have been complete when the response is returned. After you call this operation, you can call the [QueryJobList](https://help.aliyun.com/document_detail/602836.html) operation to query the job results. You can also associate a Message Service (MNS) queue or topic with the MPS queue to receive notifications on the jobs. For more information, see [Receive notifications](https://help.aliyun.com/document_detail/42618.html).
 //
 // 	- An input file can be up to 100 GB in size. If the size of the input file exceeds this limit, the job may fail.
 //
@@ -54229,7 +54270,7 @@ func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime 
 //
 // Description:
 //
-//   SubmitJobs is an asynchronous operation. After you submit transcoding jobs, the jobs are added to an MPS queue to be scheduled and run. The transcoding jobs may not have been complete when the response is returned. After you call this operation, you can call the [QueryJobList](https://help.aliyun.com/document_detail/602836.html) operation to query the job results. You can also associate a Message Service (MNS) queue or topic with the MPS queue to receive notifications on the jobs. For more information, see [Receive notifications](https://www.alibabacloud.com/help/zh/apsaravideo-for-media-processing/latest/receive-message-notifications).
+//   SubmitJobs is an asynchronous operation. After you submit transcoding jobs, the jobs are added to an MPS queue to be scheduled and run. The transcoding jobs may not have been complete when the response is returned. After you call this operation, you can call the [QueryJobList](https://help.aliyun.com/document_detail/602836.html) operation to query the job results. You can also associate a Message Service (MNS) queue or topic with the MPS queue to receive notifications on the jobs. For more information, see [Receive notifications](https://help.aliyun.com/document_detail/42618.html).
 //
 // 	- An input file can be up to 100 GB in size. If the size of the input file exceeds this limit, the job may fail.
 //
@@ -54389,13 +54430,15 @@ func (client *Client) SubmitMediaCensorJob(request *SubmitMediaCensorJobRequest)
 //
 // Description:
 //
-// After you call the SubmitMediaInfoJob operation, ApsaraVideo Media Processing (MPS) analyzes the input media file and generates the analysis results. You can call the [QueryMediaInfoJobList](https://help.aliyun.com/document_detail/29221.html) operation to query the analysis results.
+//   Before you submit a media information analysis job, make sure that the input file is uploaded to an Object Storage Service (OSS) bucket. Otherwise, the job fails. You can configure upload callbacks to be notified of the upload status of files.****
 //
-// > We recommend that you submit a media information analysis job after you confirm that the media file is uploaded to Object Storage Service (OSS). You can configure upload callbacks to be notified of the upload status of files.
+// 	- A media information analysis job can be run in synchronous or asynchronous mode.
 //
-// ### QPS limit
+// 	- In asynchronous mode, the media information analysis job is submitted to and scheduled in an ApsaraVideo Media Processing (MPS) queue. In this case, the media information analysis job may be queued. The media information analysis job may not be generated when the response to the SubmitMediaInfoJob operation is returned. After the execution is complete, you can call the [QueryMediaInfoJobList](https://help.aliyun.com/document_detail/602828.html) operation to poll the execution results, or associate a Message Service (MNS) queue or topic with the MPS queue to receive the execution results. For more information, see [Receive message notifications](https://www.alibabacloud.com/help/en/mps/receive-message-notifications/?spm=a2c63.p38356.0.0.b48576d2jxNSca).
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
+// ### QPS limits
+//
+// You can call this operation up to 50 times per second per account. If the number of requests that you send to call this operation within one second reaches the request limit of this operation, new requests fail and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
 //
 // @param request - SubmitMediaInfoJobRequest
 //
@@ -54469,13 +54512,15 @@ func (client *Client) SubmitMediaInfoJobWithOptions(request *SubmitMediaInfoJobR
 //
 // Description:
 //
-// After you call the SubmitMediaInfoJob operation, ApsaraVideo Media Processing (MPS) analyzes the input media file and generates the analysis results. You can call the [QueryMediaInfoJobList](https://help.aliyun.com/document_detail/29221.html) operation to query the analysis results.
+//   Before you submit a media information analysis job, make sure that the input file is uploaded to an Object Storage Service (OSS) bucket. Otherwise, the job fails. You can configure upload callbacks to be notified of the upload status of files.****
 //
-// > We recommend that you submit a media information analysis job after you confirm that the media file is uploaded to Object Storage Service (OSS). You can configure upload callbacks to be notified of the upload status of files.
+// 	- A media information analysis job can be run in synchronous or asynchronous mode.
 //
-// ### QPS limit
+// 	- In asynchronous mode, the media information analysis job is submitted to and scheduled in an ApsaraVideo Media Processing (MPS) queue. In this case, the media information analysis job may be queued. The media information analysis job may not be generated when the response to the SubmitMediaInfoJob operation is returned. After the execution is complete, you can call the [QueryMediaInfoJobList](https://help.aliyun.com/document_detail/602828.html) operation to poll the execution results, or associate a Message Service (MNS) queue or topic with the MPS queue to receive the execution results. For more information, see [Receive message notifications](https://www.alibabacloud.com/help/en/mps/receive-message-notifications/?spm=a2c63.p38356.0.0.b48576d2jxNSca).
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
+// ### QPS limits
+//
+// You can call this operation up to 50 times per second per account. If the number of requests that you send to call this operation within one second reaches the request limit of this operation, new requests fail and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342832.html).
 //
 // @param request - SubmitMediaInfoJobRequest
 //
