@@ -39,9 +39,10 @@ func (s *Alert) SetTitle(v string) *Alert {
 }
 
 type AndroidPayload struct {
-	Body        *Body                  `json:"body,omitempty" xml:"body,omitempty"`
-	DisplayType *string                `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	Extra       map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+	Body                 *Body                  `json:"body,omitempty" xml:"body,omitempty"`
+	DisplayType          *string                `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	Extra                map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+	Message2ThirdChannel *Message2ThirdChannel  `json:"message2ThirdChannel,omitempty" xml:"message2ThirdChannel,omitempty"`
 }
 
 func (s AndroidPayload) String() string {
@@ -64,6 +65,11 @@ func (s *AndroidPayload) SetDisplayType(v string) *AndroidPayload {
 
 func (s *AndroidPayload) SetExtra(v map[string]interface{}) *AndroidPayload {
 	s.Extra = v
+	return s
+}
+
+func (s *AndroidPayload) SetMessage2ThirdChannel(v *Message2ThirdChannel) *AndroidPayload {
+	s.Message2ThirdChannel = v
 	return s
 }
 
@@ -324,6 +330,71 @@ func (s *IosPayload) SetAps(v *Aps) *IosPayload {
 
 func (s *IosPayload) SetExtra(v map[string]interface{}) *IosPayload {
 	s.Extra = v
+	return s
+}
+
+type Message2ThirdChannel struct {
+	SetBadge    *int64  `json:"SetBadge,omitempty" xml:"SetBadge,omitempty"`
+	AddBadge    *int64  `json:"addBadge,omitempty" xml:"addBadge,omitempty"`
+	BigBody     *string `json:"bigBody,omitempty" xml:"bigBody,omitempty"`
+	BigTitle    *string `json:"bigTitle,omitempty" xml:"bigTitle,omitempty"`
+	ExpandImage *string `json:"expandImage,omitempty" xml:"expandImage,omitempty"`
+	Img         *string `json:"img,omitempty" xml:"img,omitempty"`
+	Sound       *string `json:"sound,omitempty" xml:"sound,omitempty"`
+	Text        *string `json:"text,omitempty" xml:"text,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s Message2ThirdChannel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Message2ThirdChannel) GoString() string {
+	return s.String()
+}
+
+func (s *Message2ThirdChannel) SetSetBadge(v int64) *Message2ThirdChannel {
+	s.SetBadge = &v
+	return s
+}
+
+func (s *Message2ThirdChannel) SetAddBadge(v int64) *Message2ThirdChannel {
+	s.AddBadge = &v
+	return s
+}
+
+func (s *Message2ThirdChannel) SetBigBody(v string) *Message2ThirdChannel {
+	s.BigBody = &v
+	return s
+}
+
+func (s *Message2ThirdChannel) SetBigTitle(v string) *Message2ThirdChannel {
+	s.BigTitle = &v
+	return s
+}
+
+func (s *Message2ThirdChannel) SetExpandImage(v string) *Message2ThirdChannel {
+	s.ExpandImage = &v
+	return s
+}
+
+func (s *Message2ThirdChannel) SetImg(v string) *Message2ThirdChannel {
+	s.Img = &v
+	return s
+}
+
+func (s *Message2ThirdChannel) SetSound(v string) *Message2ThirdChannel {
+	s.Sound = &v
+	return s
+}
+
+func (s *Message2ThirdChannel) SetText(v string) *Message2ThirdChannel {
+	s.Text = &v
+	return s
+}
+
+func (s *Message2ThirdChannel) SetTitle(v string) *Message2ThirdChannel {
+	s.Title = &v
 	return s
 }
 
