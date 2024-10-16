@@ -3164,6 +3164,7 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 }
 
 type CreateDBResourceGroupRequest struct {
+	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -3278,6 +3279,11 @@ func (s CreateDBResourceGroupRequest) String() string {
 
 func (s CreateDBResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBResourceGroupRequest) SetAutoStopInterval(v string) *CreateDBResourceGroupRequest {
+	s.AutoStopInterval = &v
+	return s
 }
 
 func (s *CreateDBResourceGroupRequest) SetClusterMode(v string) *CreateDBResourceGroupRequest {
@@ -3421,6 +3427,7 @@ func (s *CreateDBResourceGroupRequestRules) SetTargetGroupName(v string) *Create
 }
 
 type CreateDBResourceGroupShrinkRequest struct {
+	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -3535,6 +3542,11 @@ func (s CreateDBResourceGroupShrinkRequest) String() string {
 
 func (s CreateDBResourceGroupShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetAutoStopInterval(v string) *CreateDBResourceGroupShrinkRequest {
+	s.AutoStopInterval = &v
+	return s
 }
 
 func (s *CreateDBResourceGroupShrinkRequest) SetClusterMode(v string) *CreateDBResourceGroupShrinkRequest {
@@ -13642,6 +13654,7 @@ func (s *DescribeDBResourceGroupResponseBody) SetRequestId(v string) *DescribeDB
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
+	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -13768,6 +13781,11 @@ func (s DescribeDBResourceGroupResponseBodyGroupsInfo) String() string {
 
 func (s DescribeDBResourceGroupResponseBodyGroupsInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetAutoStopInterval(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.AutoStopInterval = &v
+	return s
 }
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetClusterMode(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
@@ -17851,6 +17869,9 @@ func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategories) SetKe
 }
 
 type DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys struct {
+	EnableAutoMc *bool     `json:"EnableAutoMc,omitempty" xml:"EnableAutoMc,omitempty"`
+	Engine       []*string `json:"Engine,omitempty" xml:"Engine,omitempty" type:"Repeated"`
+	GroupType    []*string `json:"GroupType,omitempty" xml:"GroupType,omitempty" type:"Repeated"`
 	// The name of the metric.
 	//
 	// example:
@@ -17875,6 +17896,21 @@ func (s DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) St
 
 func (s DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) SetEnableAutoMc(v bool) *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys {
+	s.EnableAutoMc = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) SetEngine(v []*string) *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys {
+	s.Engine = v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) SetGroupType(v []*string) *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys {
+	s.GroupType = v
+	return s
 }
 
 func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) SetKeyName(v string) *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys {
@@ -27411,6 +27447,7 @@ func (s *ModifyDBClusterMaintainTimeResponse) SetBody(v *ModifyDBClusterMaintain
 }
 
 type ModifyDBResourceGroupRequest struct {
+	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -27511,6 +27548,7 @@ type ModifyDBResourceGroupRequest struct {
 	// The job resubmission rules.
 	Rules                   []*ModifyDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	SpecName                *string                              `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	Status                  *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
 	TargetResourceGroupName *string                              `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
@@ -27520,6 +27558,11 @@ func (s ModifyDBResourceGroupRequest) String() string {
 
 func (s ModifyDBResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequest) SetAutoStopInterval(v string) *ModifyDBResourceGroupRequest {
+	s.AutoStopInterval = &v
+	return s
 }
 
 func (s *ModifyDBResourceGroupRequest) SetClusterMode(v string) *ModifyDBResourceGroupRequest {
@@ -27602,6 +27645,11 @@ func (s *ModifyDBResourceGroupRequest) SetSpecName(v string) *ModifyDBResourceGr
 	return s
 }
 
+func (s *ModifyDBResourceGroupRequest) SetStatus(v string) *ModifyDBResourceGroupRequest {
+	s.Status = &v
+	return s
+}
+
 func (s *ModifyDBResourceGroupRequest) SetTargetResourceGroupName(v string) *ModifyDBResourceGroupRequest {
 	s.TargetResourceGroupName = &v
 	return s
@@ -27652,6 +27700,7 @@ func (s *ModifyDBResourceGroupRequestRules) SetTargetGroupName(v string) *Modify
 }
 
 type ModifyDBResourceGroupShrinkRequest struct {
+	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -27752,6 +27801,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// The job resubmission rules.
 	RulesShrink             *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	SpecName                *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
@@ -27761,6 +27811,11 @@ func (s ModifyDBResourceGroupShrinkRequest) String() string {
 
 func (s ModifyDBResourceGroupShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetAutoStopInterval(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.AutoStopInterval = &v
+	return s
 }
 
 func (s *ModifyDBResourceGroupShrinkRequest) SetClusterMode(v string) *ModifyDBResourceGroupShrinkRequest {
@@ -27840,6 +27895,11 @@ func (s *ModifyDBResourceGroupShrinkRequest) SetRulesShrink(v string) *ModifyDBR
 
 func (s *ModifyDBResourceGroupShrinkRequest) SetSpecName(v string) *ModifyDBResourceGroupShrinkRequest {
 	s.SpecName = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetStatus(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.Status = &v
 	return s
 }
 
@@ -30831,6 +30891,10 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoStopInterval)) {
+		query["AutoStopInterval"] = request.AutoStopInterval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
 		query["ClusterMode"] = request.ClusterMode
 	}
@@ -39823,6 +39887,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoStopInterval)) {
+		query["AutoStopInterval"] = request.AutoStopInterval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
 		query["ClusterMode"] = request.ClusterMode
 	}
@@ -39885,6 +39953,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 
 	if !tea.BoolValue(util.IsUnset(request.SpecName)) {
 		query["SpecName"] = request.SpecName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetResourceGroupName)) {
