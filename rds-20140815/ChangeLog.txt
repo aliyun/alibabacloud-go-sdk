@@ -1,3 +1,17 @@
+2024-10-16 Version: v8.2.4
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBProxy: update response param.
+- Update API DescribeDBProxyEndpoint: update response param.
+- Update API DescribeModifyParameterLog: update response param.
+- Update API ModifyDBProxy: add param DBProxyNodes.
+- Update API ModifyDBProxyEndpoint: add param EffectiveSpecificTime.
+- Update API ModifyDBProxyEndpoint: add param EffectiveTime.
+- Update API ModifyDBProxyEndpoint: add param VSwitchId.
+- Update API ModifyDBProxyInstance: add param DBProxyNodes.
+- Update API ModifyDBProxyInstance: add param MigrateAZ.
+- Update API SyncRCKeyPair: add param SyncMode.
+
+
 2024-09-26 Version: v8.2.3
 - Update API CloneDBInstance: add param DBInstanceDescription.
 - Update API CreateDBInstance: update param Period.

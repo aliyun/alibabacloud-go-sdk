@@ -2110,7 +2110,14 @@ type CloneDBInstanceRequest struct {
 	// example:
 	//
 	// mysql.n1.micro.1
-	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The instance name. The value must be 2 to 255 characters in length The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// >  The value cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// testInstance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//
@@ -2648,7 +2655,14 @@ type CloneDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// mysql.n1.micro.1
-	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The instance name. The value must be 2 to 255 characters in length The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// >  The value cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// testInstance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//
@@ -17139,7 +17153,7 @@ type DescribeAccountsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid value: **30 to 200**. Default value: **30**.
+	// The number of entries per page. Valid values: **30 to 200**. Default value: **30**.
 	//
 	// example:
 	//
@@ -26289,7 +26303,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// 150
-	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MaxIOPS             *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MultipleTempUpgrade *bool  `json:"MultipleTempUpgrade,omitempty" xml:"MultipleTempUpgrade,omitempty"`
 	// Indicates whether PgBouncer is enabled.
 	//
 	// >  This parameter is returned only for RDS instances that run PostgreSQL. If PgBouncer is enabled, the return value is **true**.
@@ -26733,6 +26748,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMax
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMaxIOPS(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MaxIOPS = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMultipleTempUpgrade(v bool) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.MultipleTempUpgrade = &v
 	return s
 }
 
@@ -36089,7 +36109,9 @@ type DescribeDBProxyResponseBody struct {
 	// example:
 	//
 	// 2
-	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyInstanceType *string                                  `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyKindCode     *string                                  `json:"DBProxyKindCode,omitempty" xml:"DBProxyKindCode,omitempty"`
+	DBProxyNodes        *DescribeDBProxyResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
 	// Connection Persistence State.
 	//
 	// Valid values:
@@ -36185,6 +36207,16 @@ func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceStatus(v string) *Descri
 
 func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceType(v string) *DescribeDBProxyResponseBody {
 	s.DBProxyInstanceType = &v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBody) SetDBProxyKindCode(v string) *DescribeDBProxyResponseBody {
+	s.DBProxyKindCode = &v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBody) SetDBProxyNodes(v *DescribeDBProxyResponseBodyDBProxyNodes) *DescribeDBProxyResponseBody {
+	s.DBProxyNodes = v
 	return s
 }
 
@@ -36364,6 +36396,55 @@ func (s *DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStrin
 
 func (s *DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStringItems) SetDBProxyVswitchId(v string) *DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStringItems {
 	s.DBProxyVswitchId = &v
+	return s
+}
+
+type DescribeDBProxyResponseBodyDBProxyNodes struct {
+	DBProxyNodes []*DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBProxyResponseBodyDBProxyNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBProxyResponseBodyDBProxyNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBProxyResponseBodyDBProxyNodes) SetDBProxyNodes(v []*DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes) *DescribeDBProxyResponseBodyDBProxyNodes {
+	s.DBProxyNodes = v
+	return s
+}
+
+type DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes struct {
+	CpuCores *string `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	// example:
+	//
+	// pn-xxxxxxx01
+	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes) SetCpuCores(v string) *DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes {
+	s.CpuCores = &v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes) SetNodeId(v string) *DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes) SetZoneId(v string) *DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes {
+	s.ZoneId = &v
 	return s
 }
 
@@ -36612,7 +36693,8 @@ type DescribeDBProxyEndpointResponseBody struct {
 	// example:
 	//
 	// TransactionReadSqlRouteOptimizeStatus:1;ConnectionPersist:0;ReadWriteSpliting:1
-	DBProxyFeatures *string `json:"DBProxyFeatures,omitempty" xml:"DBProxyFeatures,omitempty"`
+	DBProxyFeatures *string                                          `json:"DBProxyFeatures,omitempty" xml:"DBProxyFeatures,omitempty"`
+	DBProxyNodes    *DescribeDBProxyEndpointResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
 	// The description of the proxy terminal.
 	//
 	// example:
@@ -36629,6 +36711,8 @@ type DescribeDBProxyEndpointResponseBody struct {
 	//
 	// ReadWrite
 	DbProxyEndpointReadWriteMode *string `json:"DbProxyEndpointReadWriteMode,omitempty" xml:"DbProxyEndpointReadWriteMode,omitempty"`
+	DbProxyEndpointVswitchId     *string `json:"DbProxyEndpointVswitchId,omitempty" xml:"DbProxyEndpointVswitchId,omitempty"`
+	DbProxyEndpointZoneId        *string `json:"DbProxyEndpointZoneId,omitempty" xml:"DbProxyEndpointZoneId,omitempty"`
 	// An array that consists of the information about the proxy endpoint.
 	EndpointConnectItems *DescribeDBProxyEndpointResponseBodyEndpointConnectItems `json:"EndpointConnectItems,omitempty" xml:"EndpointConnectItems,omitempty" type:"Struct"`
 	// The method that is used to assign read weights. For more information, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html). Valid values:
@@ -36709,6 +36793,11 @@ func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyFeatures(v string) *Desc
 	return s
 }
 
+func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyNodes(v *DescribeDBProxyEndpointResponseBodyDBProxyNodes) *DescribeDBProxyEndpointResponseBody {
+	s.DBProxyNodes = v
+	return s
+}
+
 func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointAliases(v string) *DescribeDBProxyEndpointResponseBody {
 	s.DbProxyEndpointAliases = &v
 	return s
@@ -36716,6 +36805,16 @@ func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointAliases(v string
 
 func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointReadWriteMode(v string) *DescribeDBProxyEndpointResponseBody {
 	s.DbProxyEndpointReadWriteMode = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointVswitchId(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DbProxyEndpointVswitchId = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBody) SetDbProxyEndpointZoneId(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DbProxyEndpointZoneId = &v
 	return s
 }
 
@@ -36741,6 +36840,52 @@ func (s *DescribeDBProxyEndpointResponseBody) SetReadOnlyInstanceWeight(v string
 
 func (s *DescribeDBProxyEndpointResponseBody) SetRequestId(v string) *DescribeDBProxyEndpointResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type DescribeDBProxyEndpointResponseBodyDBProxyNodes struct {
+	DBProxyNodes []*DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBProxyEndpointResponseBodyDBProxyNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBProxyEndpointResponseBodyDBProxyNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBProxyEndpointResponseBodyDBProxyNodes) SetDBProxyNodes(v []*DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes) *DescribeDBProxyEndpointResponseBodyDBProxyNodes {
+	s.DBProxyNodes = v
+	return s
+}
+
+type DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes struct {
+	CpuCores *string `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	NodeId   *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
+	ZoneId   *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes) SetCpuCores(v string) *DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes {
+	s.CpuCores = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes) SetNodeId(v string) *DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes) SetZoneId(v string) *DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes {
+	s.ZoneId = &v
 	return s
 }
 
@@ -46655,7 +46800,7 @@ type DescribeModifyParameterLogRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. Pages start from 1.
 	//
 	// Default value: **1**.
 	//
@@ -46761,7 +46906,7 @@ type DescribeModifyParameterLogResponseBody struct {
 	//
 	// 5.6
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// An array that consists of parameter modification log entries.
+	// The log entries.
 	Items *DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -46879,7 +47024,7 @@ type DescribeModifyParameterLogResponseBodyItemsParameterChangeLog struct {
 	//
 	// innodb_stats_sample_pages
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The status of the new value specified for the parameter. Valid values:
+	// The status. Valid values:
 	//
 	// 	- **Applied:*	- The new value has taken effect.
 	//
@@ -62576,7 +62721,20 @@ type ListClassesRequest struct {
 	//
 	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the instance. Valid values:
+	//
+	// 	- **MySQL**
+	//
+	// 	- **SQLServer**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **MariaDB**
+	//
+	// example:
+	//
+	// MySQL
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The type of order that you want to query. Valid values:
 	//
 	// 	- **BUY**: specifies the query orders that are used to purchase instances.
@@ -62770,8 +62928,38 @@ type ListClassesResponseBodyItems struct {
 	//
 	// 2500
 	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
-	Category       *string `json:"category,omitempty" xml:"category,omitempty"`
-	StorageType    *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	// The RDS edition of the instance. Valid values:
+	//
+	// 	- Regular instance
+	//
+	//     	- **Basic**: RDS Basic Edition
+	//
+	//     	- **HighAvailability**: RDS High-availability Edition
+	//
+	//     	- **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL or PostgreSQL
+	//
+	//     	- **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
+	//
+	//     	- **Finance**: RDS Basic Edition for serverless instances
+	//
+	// 	- Serverless instance
+	//
+	//     	- **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+	//
+	//     	- **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+	//
+	//     	- **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
+	//
+	// example:
+	//
+	// Basic
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The storage type of the instance.
+	//
+	// example:
+	//
+	// cloud_essd
+	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
 }
 
 func (s ListClassesResponseBodyItems) String() string {
@@ -71020,7 +71208,8 @@ type ModifyDBProxyRequest struct {
 	// example:
 	//
 	// common
-	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyInstanceType *string                             `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyNodes        []*ModifyDBProxyRequestDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Repeated"`
 	// The network type of the instance. Set the value to **VPC**.
 	//
 	// > This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
@@ -71109,6 +71298,11 @@ func (s *ModifyDBProxyRequest) SetDBProxyInstanceType(v string) *ModifyDBProxyRe
 	return s
 }
 
+func (s *ModifyDBProxyRequest) SetDBProxyNodes(v []*ModifyDBProxyRequestDBProxyNodes) *ModifyDBProxyRequest {
+	s.DBProxyNodes = v
+	return s
+}
+
 func (s *ModifyDBProxyRequest) SetInstanceNetworkType(v string) *ModifyDBProxyRequest {
 	s.InstanceNetworkType = &v
 	return s
@@ -71150,6 +71344,224 @@ func (s *ModifyDBProxyRequest) SetVPCId(v string) *ModifyDBProxyRequest {
 }
 
 func (s *ModifyDBProxyRequest) SetVSwitchId(v string) *ModifyDBProxyRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type ModifyDBProxyRequestDBProxyNodes struct {
+	// example:
+	//
+	// 1
+	CpuCores *string `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	// example:
+	//
+	// 2
+	NodeCounts *string `json:"nodeCounts,omitempty" xml:"nodeCounts,omitempty"`
+	// example:
+	//
+	// cn-hagnzhou-c
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ModifyDBProxyRequestDBProxyNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBProxyRequestDBProxyNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBProxyRequestDBProxyNodes) SetCpuCores(v string) *ModifyDBProxyRequestDBProxyNodes {
+	s.CpuCores = &v
+	return s
+}
+
+func (s *ModifyDBProxyRequestDBProxyNodes) SetNodeCounts(v string) *ModifyDBProxyRequestDBProxyNodes {
+	s.NodeCounts = &v
+	return s
+}
+
+func (s *ModifyDBProxyRequestDBProxyNodes) SetZoneId(v string) *ModifyDBProxyRequestDBProxyNodes {
+	s.ZoneId = &v
+	return s
+}
+
+type ModifyDBProxyShrinkRequest struct {
+	// Specifies whether to enable or disable the database proxy feature. Valid values:
+	//
+	// 	- **Startup**: enables the database proxy feature.
+	//
+	// 	- **Shutdown**: disables the database proxy feature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Startup
+	ConfigDBProxyService *string `json:"ConfigDBProxyService,omitempty" xml:"ConfigDBProxyService,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// A reserved parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// normal
+	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
+	// The number of proxy instances that are enabled. Valid values: **1*	- to **16**. Default value: **1**.
+	//
+	// >  The capability of the database proxy to process requests increases with the number of proxy instances that are enabled. You can monitor the load on the instance and specify an appropriate number of proxy instances based on the load monitoring data.
+	//
+	// example:
+	//
+	// 1
+	DBProxyInstanceNum *string `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
+	// This parameter is reserved. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// common
+	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyNodesShrink  *string `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty"`
+	// The network type of the instance. Set the value to **VPC**.
+	//
+	// > This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+	//
+	// example:
+	//
+	// VPC
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Whether to enable connection keep. Valid values:
+	//
+	// - Enabled: enables connection keeping
+	//
+	// - Disabled: disables connection hold
+	//
+	// > - This parameter is supported only for an ApsaraDB RDS for MySQL.
+	//
+	// > - When you modify the connection persistence state, the value of **ConfigDBProxyService*	- is modify.
+	//
+	// example:
+	//
+	// Enabled
+	PersistentConnectionStatus *string `json:"PersistentConnectionStatus,omitempty" xml:"PersistentConnectionStatus,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the VPC ID.
+	//
+	// >  This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+	//
+	// example:
+	//
+	// vpc-xxxxxxxxxxxx
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the vSwitch ID.
+	//
+	// >  This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
+	//
+	// example:
+	//
+	// vsw-xxxxxxxxxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s ModifyDBProxyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBProxyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetConfigDBProxyService(v string) *ModifyDBProxyShrinkRequest {
+	s.ConfigDBProxyService = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetDBInstanceId(v string) *ModifyDBProxyShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetDBProxyEngineType(v string) *ModifyDBProxyShrinkRequest {
+	s.DBProxyEngineType = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetDBProxyInstanceNum(v string) *ModifyDBProxyShrinkRequest {
+	s.DBProxyInstanceNum = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetDBProxyInstanceType(v string) *ModifyDBProxyShrinkRequest {
+	s.DBProxyInstanceType = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetDBProxyNodesShrink(v string) *ModifyDBProxyShrinkRequest {
+	s.DBProxyNodesShrink = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetInstanceNetworkType(v string) *ModifyDBProxyShrinkRequest {
+	s.InstanceNetworkType = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetOwnerId(v int64) *ModifyDBProxyShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetPersistentConnectionStatus(v string) *ModifyDBProxyShrinkRequest {
+	s.PersistentConnectionStatus = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetRegionId(v string) *ModifyDBProxyShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetResourceGroupId(v string) *ModifyDBProxyShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetResourceOwnerAccount(v string) *ModifyDBProxyShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetResourceOwnerId(v int64) *ModifyDBProxyShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetVPCId(v string) *ModifyDBProxyShrinkRequest {
+	s.VPCId = &v
+	return s
+}
+
+func (s *ModifyDBProxyShrinkRequest) SetVSwitchId(v string) *ModifyDBProxyShrinkRequest {
 	s.VSwitchId = &v
 	return s
 }
@@ -71289,8 +71701,10 @@ type ModifyDBProxyEndpointRequest struct {
 	// example:
 	//
 	// RWSplit
-	DbEndpointType *string `json:"DbEndpointType,omitempty" xml:"DbEndpointType,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DbEndpointType        *string `json:"DbEndpointType,omitempty" xml:"DbEndpointType,omitempty"`
+	EffectiveSpecificTime *string `json:"EffectiveSpecificTime,omitempty" xml:"EffectiveSpecificTime,omitempty"`
+	EffectiveTime         *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The policy that is used to allocate read weights. Valid values:
 	//
 	// 	- **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
@@ -71335,6 +71749,10 @@ type ModifyDBProxyEndpointRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// vsw-uf6adz52c2p****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s ModifyDBProxyEndpointRequest) String() string {
@@ -71385,6 +71803,16 @@ func (s *ModifyDBProxyEndpointRequest) SetDbEndpointType(v string) *ModifyDBProx
 	return s
 }
 
+func (s *ModifyDBProxyEndpointRequest) SetEffectiveSpecificTime(v string) *ModifyDBProxyEndpointRequest {
+	s.EffectiveSpecificTime = &v
+	return s
+}
+
+func (s *ModifyDBProxyEndpointRequest) SetEffectiveTime(v string) *ModifyDBProxyEndpointRequest {
+	s.EffectiveTime = &v
+	return s
+}
+
 func (s *ModifyDBProxyEndpointRequest) SetOwnerId(v int64) *ModifyDBProxyEndpointRequest {
 	s.OwnerId = &v
 	return s
@@ -71417,6 +71845,11 @@ func (s *ModifyDBProxyEndpointRequest) SetResourceOwnerAccount(v string) *Modify
 
 func (s *ModifyDBProxyEndpointRequest) SetResourceOwnerId(v int64) *ModifyDBProxyEndpointRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBProxyEndpointRequest) SetVSwitchId(v string) *ModifyDBProxyEndpointRequest {
+	s.VSwitchId = &v
 	return s
 }
 
@@ -71671,7 +72104,8 @@ type ModifyDBProxyInstanceRequest struct {
 	// example:
 	//
 	// DedicatedProxy
-	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyInstanceType *string                                     `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyNodes        []*ModifyDBProxyInstanceRequestDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Repeated"`
 	// The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
 	// >  If the **EffectiveTime*	- parameter is set to **SpecificTime**, you must specify this parameter.
@@ -71693,8 +72127,9 @@ type ModifyDBProxyInstanceRequest struct {
 	// example:
 	//
 	// MaintainTime
-	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EffectiveTime *string                                  `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	MigrateAZ     []*ModifyDBProxyInstanceRequestMigrateAZ `json:"MigrateAZ,omitempty" xml:"MigrateAZ,omitempty" type:"Repeated"`
+	OwnerId       *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// example:
@@ -71741,6 +72176,11 @@ func (s *ModifyDBProxyInstanceRequest) SetDBProxyInstanceType(v string) *ModifyD
 	return s
 }
 
+func (s *ModifyDBProxyInstanceRequest) SetDBProxyNodes(v []*ModifyDBProxyInstanceRequestDBProxyNodes) *ModifyDBProxyInstanceRequest {
+	s.DBProxyNodes = v
+	return s
+}
+
 func (s *ModifyDBProxyInstanceRequest) SetEffectiveSpecificTime(v string) *ModifyDBProxyInstanceRequest {
 	s.EffectiveSpecificTime = &v
 	return s
@@ -71748,6 +72188,11 @@ func (s *ModifyDBProxyInstanceRequest) SetEffectiveSpecificTime(v string) *Modif
 
 func (s *ModifyDBProxyInstanceRequest) SetEffectiveTime(v string) *ModifyDBProxyInstanceRequest {
 	s.EffectiveTime = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceRequest) SetMigrateAZ(v []*ModifyDBProxyInstanceRequestMigrateAZ) *ModifyDBProxyInstanceRequest {
+	s.MigrateAZ = v
 	return s
 }
 
@@ -71772,6 +72217,220 @@ func (s *ModifyDBProxyInstanceRequest) SetResourceOwnerId(v int64) *ModifyDBProx
 }
 
 func (s *ModifyDBProxyInstanceRequest) SetVSwitchIds(v string) *ModifyDBProxyInstanceRequest {
+	s.VSwitchIds = &v
+	return s
+}
+
+type ModifyDBProxyInstanceRequestDBProxyNodes struct {
+	// example:
+	//
+	// 1
+	CpuCores *string `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	// example:
+	//
+	// 2
+	NodeCounts *string `json:"nodeCounts,omitempty" xml:"nodeCounts,omitempty"`
+	// example:
+	//
+	// cn-hagnzhou-c
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ModifyDBProxyInstanceRequestDBProxyNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBProxyInstanceRequestDBProxyNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBProxyInstanceRequestDBProxyNodes) SetCpuCores(v string) *ModifyDBProxyInstanceRequestDBProxyNodes {
+	s.CpuCores = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceRequestDBProxyNodes) SetNodeCounts(v string) *ModifyDBProxyInstanceRequestDBProxyNodes {
+	s.NodeCounts = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceRequestDBProxyNodes) SetZoneId(v string) *ModifyDBProxyInstanceRequestDBProxyNodes {
+	s.ZoneId = &v
+	return s
+}
+
+type ModifyDBProxyInstanceRequestMigrateAZ struct {
+	DbProxyEndpointId *string `json:"dbProxyEndpointId,omitempty" xml:"dbProxyEndpointId,omitempty"`
+	DestVSwitchId     *string `json:"destVSwitchId,omitempty" xml:"destVSwitchId,omitempty"`
+}
+
+func (s ModifyDBProxyInstanceRequestMigrateAZ) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBProxyInstanceRequestMigrateAZ) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBProxyInstanceRequestMigrateAZ) SetDbProxyEndpointId(v string) *ModifyDBProxyInstanceRequestMigrateAZ {
+	s.DbProxyEndpointId = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceRequestMigrateAZ) SetDestVSwitchId(v string) *ModifyDBProxyInstanceRequestMigrateAZ {
+	s.DestVSwitchId = &v
+	return s
+}
+
+type ModifyDBProxyInstanceShrinkRequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-t4n3a****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// A deprecated parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// normal
+	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
+	// The number of database proxies. If you set this parameter to 0, the database proxy feature is disabled for the instance. Valid values: **1*	- to **16**.
+	//
+	// >  The capability of the database proxy feature to process requests increases with the number of database proxies that are enabled. You can monitor the load on the instance and specify an appropriate number of database proxies based on the load monitoring data.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	DBProxyInstanceNum *string `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
+	// The database proxy type. Valid values:
+	//
+	// 	- **common**: general-purpose database proxy
+	//
+	// 	- **exclusive*	- (default): dedicated database proxy
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DedicatedProxy
+	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyNodesShrink  *string `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty"`
+	// The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// >  If the **EffectiveTime*	- parameter is set to **SpecificTime**, you must specify this parameter.
+	//
+	// example:
+	//
+	// 2019-07-10T13:15:12Z
+	EffectiveSpecificTime *string `json:"EffectiveSpecificTime,omitempty" xml:"EffectiveSpecificTime,omitempty"`
+	// The effective time. Valid values:
+	//
+	// 	- **Immediate**: The effective time is immediate.
+	//
+	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	//
+	// 	- **SpecificTime**: The effective time is a specified point in time.
+	//
+	// Default value: **MaintainTime**.
+	//
+	// example:
+	//
+	// MaintainTime
+	EffectiveTime   *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	MigrateAZShrink *string `json:"MigrateAZ,omitempty" xml:"MigrateAZ,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the vSwitch in the destination zone. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/610431.html) operation to query existing vSwitches.
+	//
+	// >  Only database proxies for ApsaraDB RDS for MySQL instances that use cloud disks can be migrated to different zones.
+	//
+	// example:
+	//
+	// vsw-uf6adz52c2p****
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+}
+
+func (s ModifyDBProxyInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBProxyInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetDBInstanceId(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetDBProxyEngineType(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.DBProxyEngineType = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetDBProxyInstanceNum(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.DBProxyInstanceNum = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetDBProxyInstanceType(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.DBProxyInstanceType = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetDBProxyNodesShrink(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.DBProxyNodesShrink = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetEffectiveSpecificTime(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.EffectiveSpecificTime = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetEffectiveTime(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.EffectiveTime = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetMigrateAZShrink(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.MigrateAZShrink = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetOwnerId(v int64) *ModifyDBProxyInstanceShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetRegionId(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetResourceOwnerAccount(v string) *ModifyDBProxyInstanceShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetResourceOwnerId(v int64) *ModifyDBProxyInstanceShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceShrinkRequest) SetVSwitchIds(v string) *ModifyDBProxyInstanceShrinkRequest {
 	s.VSwitchIds = &v
 	return s
 }
@@ -79912,104 +80571,178 @@ func (s *RevokeOperatorPermissionResponse) SetBody(v *RevokeOperatorPermissionRe
 }
 
 type RunRCInstancesRequest struct {
+	// The number of RDS Custom instances that you want to create. The parameter is available if you want to create multiple RDS Custom instances at a time.
+	//
+	// Valid values: **1*	- to **10**. Default value: **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable the automatic payment feature. Valid values:
+	//
+	// 	- **true*	- (default): enables the feature. Make sure that your account balance is sufficient.
+	//
+	// 	- **false**: disables the feature. An unpaid order is generated.
+	//
+	// >  If your account balance is insufficient, you can set the AutoPay parameter to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal for the instance. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataDisk    []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The information about the data disks.
+	DataDisk []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// The deployment set ID.
+	//
 	// example:
 	//
 	// ds-uf6670sipmph5j5b6ke4
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// The instance description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// Instance_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the image used by the instance.
+	//
 	// example:
 	//
 	// image-dsvjzw2ii8n4fvr6de
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The billing method of the instance. Set the value to **Prepaid**, which indicates the subscription billing method.
+	//
 	// example:
 	//
 	// Prepaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// ceshi
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types for RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mysql.i8.large.2cm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	// The name of the AccessKey pair. You can specify only one name.
+	//
 	// example:
 	//
 	// dell5502
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The password of the account that is used to log on to the instance.
+	//
 	// example:
 	//
 	// 2F9e9@a69c!e18b569c8
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The subscription duration of the instance. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// 	- **Year**
+	//
+	// 	- **Month*	- (default)
+	//
 	// example:
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	// The ID of the security group to which you want to add the new instance. Instances in the same security group can communicate with each other. The maximum number of instances allowed in a security group varies based on the type of the security group. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+	//
+	// >  The network type of the instance is determined by the security group specified by the SecurityGroupId parameter. For example, if the network type of the specified security group is VPC, the instance is a VPC-type instance. In this case, you must specify the VSwitchId parameter.
+	//
 	// example:
 	//
 	// sg-uf6av412xaxixuezol6w
-	SecurityGroupId *string                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SystemDisk      *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The specification of the system disk.
+	SystemDisk *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
+	//
+	// >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-2vcd61ngm890sk****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID of the instance. You can call the DescribeZones operation to query the zone IDs.
+	//
+	// >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
+	//
 	// example:
 	//
 	// cn-beijing-f
@@ -80150,22 +80883,36 @@ func (s *RunRCInstancesRequest) SetZoneId(v string) *RunRCInstancesRequest {
 }
 
 type RunRCInstancesRequestDataDisk struct {
+	// The type of the data disk. Set the value to **cloud_essd**, which indicates Enterprise SSDs (ESSDs).
+	//
 	// example:
 	//
 	// local_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// Specifies whether to encrypt the cloud disk. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
 	// example:
 	//
 	// false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The size of the data disk. Unit: GiB.
+	//
 	// example:
 	//
 	// 10
@@ -80206,10 +80953,14 @@ func (s *RunRCInstancesRequestDataDisk) SetSize(v int32) *RunRCInstancesRequestD
 }
 
 type RunRCInstancesRequestSystemDisk struct {
+	// The type of the system disk. Set the value to **cloud_essd**, which indicates ESSDs.
+	//
 	// example:
 	//
 	// cloud_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The size of the system disk. Unit: GiB. Only performance level 1 (PL1) ESSDs are supported. Valid values: 20 to 2048.
+	//
 	// example:
 	//
 	// 20
@@ -80235,104 +80986,178 @@ func (s *RunRCInstancesRequestSystemDisk) SetSize(v string) *RunRCInstancesReque
 }
 
 type RunRCInstancesShrinkRequest struct {
+	// The number of RDS Custom instances that you want to create. The parameter is available if you want to create multiple RDS Custom instances at a time.
+	//
+	// Valid values: **1*	- to **10**. Default value: **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable the automatic payment feature. Valid values:
+	//
+	// 	- **true*	- (default): enables the feature. Make sure that your account balance is sufficient.
+	//
+	// 	- **false**: disables the feature. An unpaid order is generated.
+	//
+	// >  If your account balance is insufficient, you can set the AutoPay parameter to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal for the instance. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The information about the data disks.
 	DataDiskShrink *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
+	// The deployment set ID.
+	//
 	// example:
 	//
 	// ds-uf6670sipmph5j5b6ke4
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	// The instance description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// Instance_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the image used by the instance.
+	//
 	// example:
 	//
 	// image-dsvjzw2ii8n4fvr6de
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The billing method of the instance. Set the value to **Prepaid**, which indicates the subscription billing method.
+	//
 	// example:
 	//
 	// Prepaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// ceshi
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types for RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mysql.i8.large.2cm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	// The name of the AccessKey pair. You can specify only one name.
+	//
 	// example:
 	//
 	// dell5502
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The password of the account that is used to log on to the instance.
+	//
 	// example:
 	//
 	// 2F9e9@a69c!e18b569c8
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The subscription duration of the instance. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// 	- **Year**
+	//
+	// 	- **Month*	- (default)
+	//
 	// example:
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// null
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	// The ID of the security group to which you want to add the new instance. Instances in the same security group can communicate with each other. The maximum number of instances allowed in a security group varies based on the type of the security group. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+	//
+	// >  The network type of the instance is determined by the security group specified by the SecurityGroupId parameter. For example, if the network type of the specified security group is VPC, the instance is a VPC-type instance. In this case, you must specify the VSwitchId parameter.
+	//
 	// example:
 	//
 	// sg-uf6av412xaxixuezol6w
-	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The specification of the system disk.
 	SystemDiskShrink *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	// The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
+	//
+	// >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-2vcd61ngm890sk****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID of the instance. You can call the DescribeZones operation to query the zone IDs.
+	//
+	// >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
+	//
 	// example:
 	//
 	// cn-beijing-f
@@ -80473,11 +81298,16 @@ func (s *RunRCInstancesShrinkRequest) SetZoneId(v string) *RunRCInstancesShrinkR
 }
 
 type RunRCInstancesResponseBody struct {
+	// The instance IDs (InstanceIdSet).
 	InstanceIdSets *RunRCInstancesResponseBodyInstanceIdSets `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Struct"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 237850846720798
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 535BD857-E88F-5B4F-A18C-FAF59A74741F
@@ -81580,6 +82410,7 @@ type SyncRCKeyPairRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SyncMode *bool   `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
 }
 
 func (s SyncRCKeyPairRequest) String() string {
@@ -81597,6 +82428,11 @@ func (s *SyncRCKeyPairRequest) SetKeyPairName(v string) *SyncRCKeyPairRequest {
 
 func (s *SyncRCKeyPairRequest) SetRegionId(v string) *SyncRCKeyPairRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SyncRCKeyPairRequest) SetSyncMode(v bool) *SyncRCKeyPairRequest {
+	s.SyncMode = &v
 	return s
 }
 
@@ -86136,7 +86972,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 //
 // ### [](#)Feature description
 //
-// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2841997.html).
+// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2402073.html).
 //
 // ### [](#)Prerequisites
 //
@@ -86234,7 +87070,7 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // ### [](#)Feature description
 //
-// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2841997.html).
+// This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2402073.html).
 //
 // ### [](#)Prerequisites
 //
@@ -108232,13 +109068,13 @@ func (client *Client) ModifyAccountMaskingPrivilege(request *ModifyAccountMaskin
 
 // Summary:
 //
-// Configures or modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+// Modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### [](#)Supported database engines
 //
-// SQL Server
+// SQL Server (This parameter is unavailable for ApsaraDB RDS for SQL Server instances that belong to the shared instance family and run SQL Server 2008 R2.)
 //
 // ### [](#)References
 //
@@ -108314,13 +109150,13 @@ func (client *Client) ModifyAccountSecurityPolicyWithOptions(request *ModifyAcco
 
 // Summary:
 //
-// Configures or modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+// Modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### [](#)Supported database engines
 //
-// SQL Server
+// SQL Server (This parameter is unavailable for ApsaraDB RDS for SQL Server instances that belong to the shared instance family and run SQL Server 2008 R2.)
 //
 // ### [](#)References
 //
@@ -111654,16 +112490,22 @@ func (client *Client) ModifyDBNode(request *ModifyDBNodeRequest) (_result *Modif
 //
 // 	- [Enable and configure the dedicated proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html)
 //
-// @param request - ModifyDBProxyRequest
+// @param tmpReq - ModifyDBProxyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBProxyResponse
-func (client *Client) ModifyDBProxyWithOptions(request *ModifyDBProxyRequest, runtime *util.RuntimeOptions) (_result *ModifyDBProxyResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyDBProxyWithOptions(tmpReq *ModifyDBProxyRequest, runtime *util.RuntimeOptions) (_result *ModifyDBProxyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ModifyDBProxyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DBProxyNodes)) {
+		request.DBProxyNodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBProxyNodes, tea.String("DBProxyNodes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ConfigDBProxyService)) {
 		query["ConfigDBProxyService"] = request.ConfigDBProxyService
@@ -111687,6 +112529,10 @@ func (client *Client) ModifyDBProxyWithOptions(request *ModifyDBProxyRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.DBProxyInstanceType)) {
 		query["DBProxyInstanceType"] = request.DBProxyInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBProxyNodesShrink)) {
+		query["DBProxyNodes"] = request.DBProxyNodesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceNetworkType)) {
@@ -111851,6 +112697,14 @@ func (client *Client) ModifyDBProxyEndpointWithOptions(request *ModifyDBProxyEnd
 		query["DbEndpointType"] = request.DbEndpointType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EffectiveSpecificTime)) {
+		query["EffectiveSpecificTime"] = request.EffectiveSpecificTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTime)) {
+		query["EffectiveTime"] = request.EffectiveTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -111877,6 +112731,10 @@ func (client *Client) ModifyDBProxyEndpointWithOptions(request *ModifyDBProxyEnd
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -112078,16 +112936,26 @@ func (client *Client) ModifyDBProxyEndpointAddress(request *ModifyDBProxyEndpoin
 //
 // >  Starting October 17, 2023, ApsaraDB RDS for MySQL instances that run RDS Cluster Edition offer one free-of-charge dedicated database proxy for each unit in phases. For more information, see [[Special offers/Price changes\\] One dedicated proxy is provided free of charge for ApsaraDB RDS for MySQL instances on RDS Cluster Edition](~~2555466~~).
 //
-// @param request - ModifyDBProxyInstanceRequest
+// @param tmpReq - ModifyDBProxyInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBProxyInstanceResponse
-func (client *Client) ModifyDBProxyInstanceWithOptions(request *ModifyDBProxyInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyDBProxyInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyDBProxyInstanceWithOptions(tmpReq *ModifyDBProxyInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyDBProxyInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ModifyDBProxyInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DBProxyNodes)) {
+		request.DBProxyNodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBProxyNodes, tea.String("DBProxyNodes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MigrateAZ)) {
+		request.MigrateAZShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MigrateAZ, tea.String("MigrateAZ"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
@@ -112109,12 +112977,20 @@ func (client *Client) ModifyDBProxyInstanceWithOptions(request *ModifyDBProxyIns
 		query["DBProxyInstanceType"] = request.DBProxyInstanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DBProxyNodesShrink)) {
+		query["DBProxyNodes"] = request.DBProxyNodesShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EffectiveSpecificTime)) {
 		query["EffectiveSpecificTime"] = request.EffectiveSpecificTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EffectiveTime)) {
 		query["EffectiveTime"] = request.EffectiveTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrateAZShrink)) {
+		query["MigrateAZ"] = request.MigrateAZShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -117518,7 +118394,15 @@ func (client *Client) RevokeOperatorPermission(request *RevokeOperatorPermission
 
 // Summary:
 //
-// 创建RDS用户专属主机实例
+// Creates one or more subscription RDS Custom instances. Before you call this operation, you must specify parameters such as ImageId, InstanceType, VSwitchId, and SecurityGroupId.
+//
+// Description:
+//
+//   Before you create RDS Custom instances, you must submit a ticket to add your Alibaba Cloud account to a whitelist.
+//
+// 	- You can create only subscription RDS Custom instances.
+//
+// 	- Subscription RDS Custom instances are supported in the China (Shanghai), China (Shenzhen), China (Beijing), and China (Hangzhou) regions.
 //
 // @param tmpReq - RunRCInstancesRequest
 //
@@ -117666,7 +118550,15 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 // Summary:
 //
-// 创建RDS用户专属主机实例
+// Creates one or more subscription RDS Custom instances. Before you call this operation, you must specify parameters such as ImageId, InstanceType, VSwitchId, and SecurityGroupId.
+//
+// Description:
+//
+//   Before you create RDS Custom instances, you must submit a ticket to add your Alibaba Cloud account to a whitelist.
+//
+// 	- You can create only subscription RDS Custom instances.
+//
+// 	- Subscription RDS Custom instances are supported in the China (Shanghai), China (Shenzhen), China (Beijing), and China (Hangzhou) regions.
 //
 // @param request - RunRCInstancesRequest
 //
@@ -118503,6 +119395,10 @@ func (client *Client) SyncRCKeyPairWithOptions(request *SyncRCKeyPairRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncMode)) {
+		query["SyncMode"] = request.SyncMode
 	}
 
 	req := &openapi.OpenApiRequest{
