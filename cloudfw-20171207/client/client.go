@@ -14978,7 +14978,10 @@ type DescribeRiskEventPayloadResponseBody struct {
 	// example:
 	//
 	// vpc-bp10w5nb30r4jzfyc****
-	DstVpcId *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	DstVpcId       *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	HitContentType *int32  `json:"HitContentType,omitempty" xml:"HitContentType,omitempty"`
+	HitTo          *int32  `json:"HitTo,omitempty" xml:"HitTo,omitempty"`
+	ParsedContent  *string `json:"ParsedContent,omitempty" xml:"ParsedContent,omitempty"`
 	// The attack payload of the intrusion event.
 	//
 	// example:
@@ -15059,6 +15062,21 @@ func (s *DescribeRiskEventPayloadResponseBody) SetDstPort(v int32) *DescribeRisk
 
 func (s *DescribeRiskEventPayloadResponseBody) SetDstVpcId(v string) *DescribeRiskEventPayloadResponseBody {
 	s.DstVpcId = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetHitContentType(v int32) *DescribeRiskEventPayloadResponseBody {
+	s.HitContentType = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetHitTo(v int32) *DescribeRiskEventPayloadResponseBody {
+	s.HitTo = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetParsedContent(v string) *DescribeRiskEventPayloadResponseBody {
+	s.ParsedContent = &v
 	return s
 }
 
