@@ -3368,7 +3368,7 @@ type CreateFileSystemRequest struct {
 	//
 	// >  	- Extreme NAS file system: All regions support KMS-managed keys.
 	//
-	// > 	- General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt), Australia (Sydney), and China East 1 Finance.
+	// > 	- General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt), Australia (Sydney) Closing Down, and China East 1 Finance.
 	//
 	// example:
 	//
@@ -11428,7 +11428,8 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	// example:
 	//
 	// 1
-	AccessPointCount *string `json:"AccessPointCount,omitempty" xml:"AccessPointCount,omitempty"`
+	AccessPointCount     *string `json:"AccessPointCount,omitempty" xml:"AccessPointCount,omitempty"`
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// The bandwidth of the file system.
 	//
 	// Unit: MB/s. This parameter is unavailable for General-purpose NAS file systems.
@@ -11569,6 +11570,7 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	//
 	// NFS
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	QuorumVswId  *string `json:"QuorumVswId,omitempty" xml:"QuorumVswId,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -11628,7 +11630,9 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	// example:
 	//
 	// 2.3.4
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version *string                                                     `json:"Version,omitempty" xml:"Version,omitempty"`
+	VpcId   *string                                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswIds  *DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds `json:"VswIds,omitempty" xml:"VswIds,omitempty" type:"Struct"`
 	// The ID of the zone where the file system resides.
 	//
 	// example:
@@ -11647,6 +11651,11 @@ func (s DescribeFileSystemsResponseBodyFileSystemsFileSystem) GoString() string 
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetAccessPointCount(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.AccessPointCount = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetAutoSnapshotPolicyId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.AutoSnapshotPolicyId = &v
 	return s
 }
 
@@ -11740,6 +11749,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetProtocolType(v
 	return s
 }
 
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetQuorumVswId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.QuorumVswId = &v
+	return s
+}
+
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetRegionId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.RegionId = &v
 	return s
@@ -11772,6 +11786,16 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetTags(v *Descri
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetVersion(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.Version = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetVpcId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetVswIds(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.VswIds = v
 	return s
 }
 
@@ -12253,6 +12277,23 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemTagsTag) SetKey(v s
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemTagsTag) SetValue(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemTagsTag {
 	s.Value = &v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds struct {
+	VswId []*string `json:"VswId,omitempty" xml:"VswId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds) SetVswId(v []*string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds {
+	s.VswId = v
 	return s
 }
 
@@ -16753,6 +16794,11 @@ func (s *GetRecycleBinAttributeResponseBody) SetRequestId(v string) *GetRecycleB
 }
 
 type GetRecycleBinAttributeResponseBodyRecycleBinAttribute struct {
+	// The size of the archived data that is dumped to the recycle bin. Unit: bytes.
+	//
+	// example:
+	//
+	// 1611661312
 	ArchiveSize *int64 `json:"ArchiveSize,omitempty" xml:"ArchiveSize,omitempty"`
 	// The time at which the recycle bin was enabled.
 	//
@@ -16768,7 +16814,7 @@ type GetRecycleBinAttributeResponseBodyRecycleBinAttribute struct {
 	//
 	// 0
 	ReservedDays *int64 `json:"ReservedDays,omitempty" xml:"ReservedDays,omitempty"`
-	// The size of the cold data that is dumped to the recycle bin. Unit: bytes.
+	// The size of the Infrequent Access (IA) data that is dumped to the recycle bin. Unit: bytes.
 	//
 	// example:
 	//
@@ -17876,10 +17922,18 @@ type ListRecycleBinJobsResponseBodyJobs struct {
 	// The error code returned.
 	//
 	// A valid value is returned only if you set the Status parameter to Fail or PartialSuccess.
+	//
+	// example:
+	//
+	// InvalidFileId.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// A valid value is returned only if you set the Status parameter to Fail or PartialSuccess.
+	//
+	// example:
+	//
+	// The Target File or Directory does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the file or directory in the job.
 	//
@@ -17923,7 +17977,7 @@ type ListRecycleBinJobsResponseBodyJobs struct {
 	//
 	// example:
 	//
-	// Running
+	// Fail
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the job. Valid values:
 	//
@@ -18843,7 +18897,7 @@ type ModifyAccessRuleRequest struct {
 	//
 	// example:
 	//
-	// 192.0.\*\*.**
+	// ``192.0.**.**``
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	// The access permissions for different types of users in the authorized object.
 	//
@@ -29007,6 +29061,10 @@ func (client *Client) GetDirectoryOrFileProperties(request *GetDirectoryOrFilePr
 //
 // Queries the recycle bin configurations of a General-purpose NAS file system.
 //
+// Description:
+//
+// Only General-purpose Apsara File Storage NAS (NAS) file systems support this operation.
+//
 // @param request - GetRecycleBinAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29044,6 +29102,10 @@ func (client *Client) GetRecycleBinAttributeWithOptions(request *GetRecycleBinAt
 // Summary:
 //
 // Queries the recycle bin configurations of a General-purpose NAS file system.
+//
+// Description:
+//
+// Only General-purpose Apsara File Storage NAS (NAS) file systems support this operation.
 //
 // @param request - GetRecycleBinAttributeRequest
 //
