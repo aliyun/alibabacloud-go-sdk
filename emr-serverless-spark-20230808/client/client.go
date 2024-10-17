@@ -2028,7 +2028,7 @@ func (s *GrantRoleToUsersResponse) SetBody(v *GrantRoleToUsersResponseBody) *Gra
 }
 
 type ListJobRunsRequest struct {
-	// The ID of the user who creates a Spark job.
+	// The ID of the user who created the job.
 	//
 	// example:
 	//
@@ -2253,7 +2253,7 @@ func (s *ListJobRunsRequestTags) SetValue(v string) *ListJobRunsRequestTags {
 }
 
 type ListJobRunsShrinkRequest struct {
-	// The ID of the user who creates a Spark job.
+	// The ID of the user who created the job.
 	//
 	// example:
 	//
@@ -2742,7 +2742,12 @@ type ListReleaseVersionsRequest struct {
 	//
 	// ONLINE
 	ReleaseVersionStatus *string `json:"releaseVersionStatus,omitempty" xml:"releaseVersionStatus,omitempty"`
-	WorkspaceId          *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// w-d2d82aa09155****
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ListReleaseVersionsRequest) String() string {
@@ -4455,6 +4460,206 @@ func (s *StartJobRunResponse) SetBody(v *StartJobRunResponseBody) *StartJobRunRe
 	return s
 }
 
+type StartSessionClusterRequest struct {
+	// example:
+	//
+	// root_queue
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// example:
+	//
+	// sc-xxxxxxxxxxx
+	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s StartSessionClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSessionClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartSessionClusterRequest) SetQueueName(v string) *StartSessionClusterRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *StartSessionClusterRequest) SetSessionClusterId(v string) *StartSessionClusterRequest {
+	s.SessionClusterId = &v
+	return s
+}
+
+func (s *StartSessionClusterRequest) SetRegionId(v string) *StartSessionClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartSessionClusterResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Workspace Id。
+	//
+	// example:
+	//
+	// w-******
+	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+}
+
+func (s StartSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartSessionClusterResponseBody) SetRequestId(v string) *StartSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartSessionClusterResponseBody) SetSessionClusterId(v string) *StartSessionClusterResponseBody {
+	s.SessionClusterId = &v
+	return s
+}
+
+type StartSessionClusterResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartSessionClusterResponse) SetHeaders(v map[string]*string) *StartSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartSessionClusterResponse) SetStatusCode(v int32) *StartSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartSessionClusterResponse) SetBody(v *StartSessionClusterResponseBody) *StartSessionClusterResponse {
+	s.Body = v
+	return s
+}
+
+type StopSessionClusterRequest struct {
+	// example:
+	//
+	// root_queue
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// example:
+	//
+	// sc-xxxxxxxxxxxx
+	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s StopSessionClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSessionClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopSessionClusterRequest) SetQueueName(v string) *StopSessionClusterRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *StopSessionClusterRequest) SetSessionClusterId(v string) *StopSessionClusterRequest {
+	s.SessionClusterId = &v
+	return s
+}
+
+func (s *StopSessionClusterRequest) SetRegionId(v string) *StopSessionClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopSessionClusterResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Workspace Id。
+	//
+	// example:
+	//
+	// w-******
+	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+}
+
+func (s StopSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopSessionClusterResponseBody) SetRequestId(v string) *StopSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopSessionClusterResponseBody) SetSessionClusterId(v string) *StopSessionClusterResponseBody {
+	s.SessionClusterId = &v
+	return s
+}
+
+type StopSessionClusterResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopSessionClusterResponse) SetHeaders(v map[string]*string) *StopSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopSessionClusterResponse) SetStatusCode(v int32) *StopSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopSessionClusterResponse) SetBody(v *StopSessionClusterResponseBody) *StopSessionClusterResponse {
+	s.Body = v
+	return s
+}
+
 type TerminateSqlStatementRequest struct {
 	// The region ID.
 	//
@@ -5546,6 +5751,154 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 	headers := make(map[string]*string)
 	_result = &StartJobRunResponse{}
 	_body, _err := client.StartJobRunWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动session集群
+//
+// @param request - StartSessionClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartSessionClusterResponse
+func (client *Client) StartSessionClusterWithOptions(workspaceId *string, request *StartSessionClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartSessionClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
+		body["queueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionClusterId)) {
+		body["sessionClusterId"] = request.SessionClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartSessionCluster"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/sessionClusters/action/startSessionCluster"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动session集群
+//
+// @param request - StartSessionClusterRequest
+//
+// @return StartSessionClusterResponse
+func (client *Client) StartSessionCluster(workspaceId *string, request *StartSessionClusterRequest) (_result *StartSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartSessionClusterResponse{}
+	_body, _err := client.StartSessionClusterWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动session集群
+//
+// @param request - StopSessionClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopSessionClusterResponse
+func (client *Client) StopSessionClusterWithOptions(workspaceId *string, request *StopSessionClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopSessionClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
+		body["queueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionClusterId)) {
+		body["sessionClusterId"] = request.SessionClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopSessionCluster"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/sessionClusters/action/stopSessionCluster"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动session集群
+//
+// @param request - StopSessionClusterRequest
+//
+// @return StopSessionClusterResponse
+func (client *Client) StopSessionCluster(workspaceId *string, request *StopSessionClusterRequest) (_result *StopSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopSessionClusterResponse{}
+	_body, _err := client.StopSessionClusterWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
