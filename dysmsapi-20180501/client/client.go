@@ -10,6 +10,10 @@ import (
 )
 
 type BatchSendMessageToGlobeRequest struct {
+	// example:
+	//
+	// sms-djnfjn344
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
 	//
 	// example:
@@ -32,7 +36,7 @@ type BatchSendMessageToGlobeRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The mobile phone numbers to which the message is sent. You must add the dialing code to the beginning of each mobile phone number.
 	//
-	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/en/short-message-service/latest/dialing-codes).
 	//
 	// This parameter is required.
 	//
@@ -64,6 +68,11 @@ func (s BatchSendMessageToGlobeRequest) String() string {
 
 func (s BatchSendMessageToGlobeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *BatchSendMessageToGlobeRequest) SetChannelId(v string) *BatchSendMessageToGlobeRequest {
+	s.ChannelId = &v
+	return s
 }
 
 func (s *BatchSendMessageToGlobeRequest) SetFrom(v string) *BatchSendMessageToGlobeRequest {
@@ -121,7 +130,7 @@ type BatchSendMessageToGlobeResponseBody struct {
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8D28D3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/error-codes).
+	// The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://www.alibabacloud.com/help/en/short-message-service/latest/error-codes).
 	//
 	// example:
 	//
@@ -1261,15 +1270,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 //   You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
 //
-// 	- You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature of the SMS console.
+// 	- You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature in the SMS console.
 //
-// 	- For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/zh/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
+// 	- For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/en/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
 //
 // 	- In each request, you can send messages to up to 1,000 mobile phone numbers.
 //
-// ### [](#qps)QPS limits
+// ### [](#qps-)QPS limit
 //
-// You can call this operation only once per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
+// You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - BatchSendMessageToGlobeRequest
 //
@@ -1282,6 +1291,10 @@ func (client *Client) BatchSendMessageToGlobeWithOptions(request *BatchSendMessa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["From"] = request.From
 	}
@@ -1337,15 +1350,15 @@ func (client *Client) BatchSendMessageToGlobeWithOptions(request *BatchSendMessa
 //
 //   You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
 //
-// 	- You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature of the SMS console.
+// 	- You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature in the SMS console.
 //
-// 	- For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/zh/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
+// 	- For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/en/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
 //
 // 	- In each request, you can send messages to up to 1,000 mobile phone numbers.
 //
-// ### [](#qps)QPS limits
+// ### [](#qps-)QPS limit
 //
-// You can call this operation only once per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
+// You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - BatchSendMessageToGlobeRequest
 //
