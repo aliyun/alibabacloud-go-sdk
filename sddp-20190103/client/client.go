@@ -9152,6 +9152,109 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 	return s
 }
 
+type DescribeIdentifyTaskStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 268
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// zh_cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeIdentifyTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIdentifyTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIdentifyTaskStatusRequest) SetId(v int64) *DescribeIdentifyTaskStatusRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeIdentifyTaskStatusRequest) SetLang(v string) *DescribeIdentifyTaskStatusRequest {
+	s.Lang = &v
+	return s
+}
+
+type DescribeIdentifyTaskStatusResponseBody struct {
+	Content *DescribeIdentifyTaskStatusResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 71064826-726F-4ADA-B879-05D8055476FB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeIdentifyTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIdentifyTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIdentifyTaskStatusResponseBody) SetContent(v *DescribeIdentifyTaskStatusResponseBodyContent) *DescribeIdentifyTaskStatusResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *DescribeIdentifyTaskStatusResponseBody) SetRequestId(v string) *DescribeIdentifyTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeIdentifyTaskStatusResponseBodyContent struct {
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeIdentifyTaskStatusResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIdentifyTaskStatusResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIdentifyTaskStatusResponseBodyContent) SetStatus(v int32) *DescribeIdentifyTaskStatusResponseBodyContent {
+	s.Status = &v
+	return s
+}
+
+type DescribeIdentifyTaskStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIdentifyTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeIdentifyTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIdentifyTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIdentifyTaskStatusResponse) SetHeaders(v map[string]*string) *DescribeIdentifyTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIdentifyTaskStatusResponse) SetStatusCode(v int32) *DescribeIdentifyTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeIdentifyTaskStatusResponse) SetBody(v *DescribeIdentifyTaskStatusResponseBody) *DescribeIdentifyTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceSourcesRequest struct {
 	// Specifies whether to enable the security audit feature. Valid values:
 	//
@@ -18251,6 +18354,62 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEventsResponse{}
 	_body, _err := client.DescribeEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询识别任务状态
+//
+// @param request - DescribeIdentifyTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIdentifyTaskStatusResponse
+func (client *Client) DescribeIdentifyTaskStatusWithOptions(request *DescribeIdentifyTaskStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeIdentifyTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIdentifyTaskStatus"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIdentifyTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询识别任务状态
+//
+// @param request - DescribeIdentifyTaskStatusRequest
+//
+// @return DescribeIdentifyTaskStatusResponse
+func (client *Client) DescribeIdentifyTaskStatus(request *DescribeIdentifyTaskStatusRequest) (_result *DescribeIdentifyTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIdentifyTaskStatusResponse{}
+	_body, _err := client.DescribeIdentifyTaskStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

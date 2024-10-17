@@ -1,3 +1,7 @@
+2024-10-17 Version: v2.4.0
+- Support API DescribeIdentifyTaskStatus.
+
+
 2024-09-18 Version: v2.3.1
 - Update API DescribeInstances: update response param.
 - Update API DescribeOssObjectDetailV2: update response param.
