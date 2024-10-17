@@ -2981,6 +2981,97 @@ func (s *QueryDomainTransferStatusResponse) SetBody(v *QueryDomainTransferStatus
 	return s
 }
 
+type QueryExchangeRateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// USD
+	FromCurrency *string `json:"FromCurrency,omitempty" xml:"FromCurrency,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CNY
+	ToCurrency *string `json:"ToCurrency,omitempty" xml:"ToCurrency,omitempty"`
+}
+
+func (s QueryExchangeRateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExchangeRateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExchangeRateRequest) SetFromCurrency(v string) *QueryExchangeRateRequest {
+	s.FromCurrency = &v
+	return s
+}
+
+func (s *QueryExchangeRateRequest) SetToCurrency(v string) *QueryExchangeRateRequest {
+	s.ToCurrency = &v
+	return s
+}
+
+type QueryExchangeRateResponseBody struct {
+	// example:
+	//
+	// 7.12
+	ExchangeRate *float64 `json:"ExchangeRate,omitempty" xml:"ExchangeRate,omitempty"`
+	// example:
+	//
+	// D200000-C0B9-4CD3-B92A-9B44A000000
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryExchangeRateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExchangeRateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExchangeRateResponseBody) SetExchangeRate(v float64) *QueryExchangeRateResponseBody {
+	s.ExchangeRate = &v
+	return s
+}
+
+func (s *QueryExchangeRateResponseBody) SetRequestId(v string) *QueryExchangeRateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryExchangeRateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryExchangeRateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryExchangeRateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExchangeRateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExchangeRateResponse) SetHeaders(v map[string]*string) *QueryExchangeRateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryExchangeRateResponse) SetStatusCode(v int32) *QueryExchangeRateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryExchangeRateResponse) SetBody(v *QueryExchangeRateResponseBody) *QueryExchangeRateResponse {
+	s.Body = v
+	return s
+}
+
 type QueryPurchasedDomainsRequest struct {
 	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -5144,6 +5235,70 @@ func (client *Client) QueryDomainTransferStatus(request *QueryDomainTransferStat
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainTransferStatusResponse{}
 	_body, _err := client.QueryDomainTransferStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询汇率
+//
+// @param request - QueryExchangeRateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryExchangeRateResponse
+func (client *Client) QueryExchangeRateWithOptions(request *QueryExchangeRateRequest, runtime *util.RuntimeOptions) (_result *QueryExchangeRateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FromCurrency)) {
+		query["FromCurrency"] = request.FromCurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToCurrency)) {
+		query["ToCurrency"] = request.ToCurrency
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryExchangeRate"),
+		Version:     tea.String("2018-02-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryExchangeRateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询汇率
+//
+// @param request - QueryExchangeRateRequest
+//
+// @return QueryExchangeRateResponse
+func (client *Client) QueryExchangeRate(request *QueryExchangeRateRequest) (_result *QueryExchangeRateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryExchangeRateResponse{}
+	_body, _err := client.QueryExchangeRateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
