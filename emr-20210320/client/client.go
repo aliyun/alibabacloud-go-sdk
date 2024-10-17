@@ -22,15 +22,22 @@ type AckConfig struct {
 	LimitMemory     *float32 `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
 	MountHostCgroup *bool    `json:"MountHostCgroup,omitempty" xml:"MountHostCgroup,omitempty"`
 	// ack 命名空间
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NodeAffinity *string `json:"NodeAffinity,omitempty" xml:"NodeAffinity,omitempty"`
 	// ack的节点标签限制
-	NodeSelectors []*Tag `json:"NodeSelectors,omitempty" xml:"NodeSelectors,omitempty" type:"Repeated"`
+	NodeSelectors   []*Tag           `json:"NodeSelectors,omitempty" xml:"NodeSelectors,omitempty" type:"Repeated"`
+	PodAffinity     *string          `json:"PodAffinity,omitempty" xml:"PodAffinity,omitempty"`
+	PodAntiAffinity *string          `json:"PodAntiAffinity,omitempty" xml:"PodAntiAffinity,omitempty"`
+	PreStartCommand []*string        `json:"PreStartCommand,omitempty" xml:"PreStartCommand,omitempty" type:"Repeated"`
+	Pvcs            []*AckConfigPvcs `json:"Pvcs,omitempty" xml:"Pvcs,omitempty" type:"Repeated"`
 	// Pod的CPU请求值
 	RequestCpu *float32 `json:"RequestCpu,omitempty" xml:"RequestCpu,omitempty"`
 	// Pod的内存请求值。
 	RequestMemory *float32 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
 	// ack的节点污点容忍
-	Tolerations []*Toleration `json:"Tolerations,omitempty" xml:"Tolerations,omitempty" type:"Repeated"`
+	Tolerations  []*Toleration            `json:"Tolerations,omitempty" xml:"Tolerations,omitempty" type:"Repeated"`
+	VolumeMounts []*AckConfigVolumeMounts `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
+	Volumes      []*AckConfigVolumes      `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
 }
 
 func (s AckConfig) String() string {
@@ -86,8 +93,33 @@ func (s *AckConfig) SetNamespace(v string) *AckConfig {
 	return s
 }
 
+func (s *AckConfig) SetNodeAffinity(v string) *AckConfig {
+	s.NodeAffinity = &v
+	return s
+}
+
 func (s *AckConfig) SetNodeSelectors(v []*Tag) *AckConfig {
 	s.NodeSelectors = v
+	return s
+}
+
+func (s *AckConfig) SetPodAffinity(v string) *AckConfig {
+	s.PodAffinity = &v
+	return s
+}
+
+func (s *AckConfig) SetPodAntiAffinity(v string) *AckConfig {
+	s.PodAntiAffinity = &v
+	return s
+}
+
+func (s *AckConfig) SetPreStartCommand(v []*string) *AckConfig {
+	s.PreStartCommand = v
+	return s
+}
+
+func (s *AckConfig) SetPvcs(v []*AckConfigPvcs) *AckConfig {
+	s.Pvcs = v
 	return s
 }
 
@@ -103,6 +135,103 @@ func (s *AckConfig) SetRequestMemory(v float32) *AckConfig {
 
 func (s *AckConfig) SetTolerations(v []*Toleration) *AckConfig {
 	s.Tolerations = v
+	return s
+}
+
+func (s *AckConfig) SetVolumeMounts(v []*AckConfigVolumeMounts) *AckConfig {
+	s.VolumeMounts = v
+	return s
+}
+
+func (s *AckConfig) SetVolumes(v []*AckConfigVolumes) *AckConfig {
+	s.Volumes = v
+	return s
+}
+
+type AckConfigPvcs struct {
+	DataDiskSize         *int64  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DataDiskStorageClass *string `json:"DataDiskStorageClass,omitempty" xml:"DataDiskStorageClass,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path                 *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s AckConfigPvcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AckConfigPvcs) GoString() string {
+	return s.String()
+}
+
+func (s *AckConfigPvcs) SetDataDiskSize(v int64) *AckConfigPvcs {
+	s.DataDiskSize = &v
+	return s
+}
+
+func (s *AckConfigPvcs) SetDataDiskStorageClass(v string) *AckConfigPvcs {
+	s.DataDiskStorageClass = &v
+	return s
+}
+
+func (s *AckConfigPvcs) SetName(v string) *AckConfigPvcs {
+	s.Name = &v
+	return s
+}
+
+func (s *AckConfigPvcs) SetPath(v string) *AckConfigPvcs {
+	s.Path = &v
+	return s
+}
+
+type AckConfigVolumeMounts struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s AckConfigVolumeMounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AckConfigVolumeMounts) GoString() string {
+	return s.String()
+}
+
+func (s *AckConfigVolumeMounts) SetName(v string) *AckConfigVolumeMounts {
+	s.Name = &v
+	return s
+}
+
+func (s *AckConfigVolumeMounts) SetPath(v string) *AckConfigVolumeMounts {
+	s.Path = &v
+	return s
+}
+
+type AckConfigVolumes struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AckConfigVolumes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AckConfigVolumes) GoString() string {
+	return s.String()
+}
+
+func (s *AckConfigVolumes) SetName(v string) *AckConfigVolumes {
+	s.Name = &v
+	return s
+}
+
+func (s *AckConfigVolumes) SetPath(v string) *AckConfigVolumes {
+	s.Path = &v
+	return s
+}
+
+func (s *AckConfigVolumes) SetType(v string) *AckConfigVolumes {
+	s.Type = &v
 	return s
 }
 
@@ -1300,7 +1429,8 @@ type Cluster struct {
 	// example:
 	//
 	// HA
-	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	DeployMode  *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// EMR默认角色。
 	//
 	// example:
@@ -1399,6 +1529,11 @@ func (s *Cluster) SetCreateTime(v int64) *Cluster {
 
 func (s *Cluster) SetDeployMode(v string) *Cluster {
 	s.DeployMode = &v
+	return s
+}
+
+func (s *Cluster) SetDescription(v string) *Cluster {
+	s.Description = &v
 	return s
 }
 
@@ -1635,7 +1770,8 @@ type ClusterSummary struct {
 	// example:
 	//
 	// 1592837465784
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// EMR服务角色。
 	EmrDefaultRole *string `json:"EmrDefaultRole,omitempty" xml:"EmrDefaultRole,omitempty"`
 	// 删除时间。
@@ -1714,6 +1850,11 @@ func (s *ClusterSummary) SetClusterType(v string) *ClusterSummary {
 
 func (s *ClusterSummary) SetCreateTime(v int64) *ClusterSummary {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ClusterSummary) SetDescription(v string) *ClusterSummary {
+	s.Description = &v
 	return s
 }
 
@@ -3261,6 +3402,50 @@ func (s *ListApiTemplatesDTO) SetUserId(v string) *ListApiTemplatesDTO {
 	return s
 }
 
+type ManagedScalingConstraints struct {
+	// 最大值。
+	//
+	// example:
+	//
+	// 2000
+	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	// 最大按量节点数量
+	//
+	// example:
+	//
+	// 0
+	MaxOnDemandCapacity *int32 `json:"MaxOnDemandCapacity,omitempty" xml:"MaxOnDemandCapacity,omitempty"`
+	// 最小值。
+	//
+	// example:
+	//
+	// 0
+	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
+}
+
+func (s ManagedScalingConstraints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ManagedScalingConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *ManagedScalingConstraints) SetMaxCapacity(v int32) *ManagedScalingConstraints {
+	s.MaxCapacity = &v
+	return s
+}
+
+func (s *ManagedScalingConstraints) SetMaxOnDemandCapacity(v int32) *ManagedScalingConstraints {
+	s.MaxOnDemandCapacity = &v
+	return s
+}
+
+func (s *ManagedScalingConstraints) SetMinCapacity(v int32) *ManagedScalingConstraints {
+	s.MinCapacity = &v
+	return s
+}
+
 type MetaStoreConf struct {
 	DbPassword *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
 	DbUrl      *string `json:"DbUrl,omitempty" xml:"DbUrl,omitempty"`
@@ -3978,8 +4163,9 @@ type NodeGroupConfig struct {
 	// example:
 	//
 	// ["sg-hp3abbae8lb6lmb1****"]
-	AdditionalSecurityGroupIds []*string `json:"AdditionalSecurityGroupIds,omitempty" xml:"AdditionalSecurityGroupIds,omitempty" type:"Repeated"`
-	ComponentTags              []*string `json:"ComponentTags,omitempty" xml:"ComponentTags,omitempty" type:"Repeated"`
+	AdditionalSecurityGroupIds []*string          `json:"AdditionalSecurityGroupIds,omitempty" xml:"AdditionalSecurityGroupIds,omitempty" type:"Repeated"`
+	AutoScalingPolicy          *AutoScalingPolicy `json:"AutoScalingPolicy,omitempty" xml:"AutoScalingPolicy,omitempty"`
+	ComponentTags              []*string          `json:"ComponentTags,omitempty" xml:"ComponentTags,omitempty" type:"Repeated"`
 	// 成本优化模式配置。
 	CostOptimizedConfig *CostOptimizedConfig `json:"CostOptimizedConfig,omitempty" xml:"CostOptimizedConfig,omitempty"`
 	// 数据盘。当前数据盘只支持一种磁盘类型，即数组元数个数N的取值范围：1~1。
@@ -4128,6 +4314,11 @@ func (s NodeGroupConfig) GoString() string {
 
 func (s *NodeGroupConfig) SetAdditionalSecurityGroupIds(v []*string) *NodeGroupConfig {
 	s.AdditionalSecurityGroupIds = v
+	return s
+}
+
+func (s *NodeGroupConfig) SetAutoScalingPolicy(v *AutoScalingPolicy) *NodeGroupConfig {
+	s.AutoScalingPolicy = v
 	return s
 }
 
@@ -5907,6 +6098,10 @@ type ScalingRule struct {
 	//
 	// <p>
 	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	// example:
+	//
+	// 1
+	MinAdjustmentValue *int32 `json:"MinAdjustmentValue,omitempty" xml:"MinAdjustmentValue,omitempty"`
 	// 规则名称。
 	//
 	// This parameter is required.
@@ -5953,6 +6148,11 @@ func (s *ScalingRule) SetAdjustmentValue(v int32) *ScalingRule {
 
 func (s *ScalingRule) SetMetricsTrigger(v *MetricsTrigger) *ScalingRule {
 	s.MetricsTrigger = v
+	return s
+}
+
+func (s *ScalingRule) SetMinAdjustmentValue(v int32) *ScalingRule {
+	s.MinAdjustmentValue = &v
 	return s
 }
 
@@ -7398,7 +7598,7 @@ func (s *ValueConstraints) SetValues(v []*int32) *ValueConstraints {
 }
 
 type CreateApiTemplateRequest struct {
-	// 接口名。
+	// The name of the API operation. You can create only a cluster API operation template. Set the value to CreateCluster.
 	//
 	// This parameter is required.
 	//
@@ -7406,7 +7606,7 @@ type CreateApiTemplateRequest struct {
 	//
 	// CreateCluster
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 接口request内容。
+	// The content of the cluster API operation template. Set the value to JSON strings of the request parameters of the [CreateCluster](https://help.aliyun.com/zh/emr/emr-on-ecs/developer-reference/api-emr-2021-03-20-createcluster) API operation for creating a cluster.
 	//
 	// This parameter is required.
 	//
@@ -7594,7 +7794,8 @@ type CreateClusterRequest struct {
 	// example:
 	//
 	// HA
-	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	DeployMode  *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The attributes of all ECS instances.
 	//
 	// This parameter is required.
@@ -7701,6 +7902,11 @@ func (s *CreateClusterRequest) SetClusterType(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetDeployMode(v string) *CreateClusterRequest {
 	s.DeployMode = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetDescription(v string) *CreateClusterRequest {
+	s.Description = &v
 	return s
 }
 
@@ -9340,7 +9546,7 @@ type GetAutoScalingPolicyResponseBodyScalingPolicy struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The maximum and minimum numbers of node groups.
+	// The maximum and minimum number of nodes in the node group.
 	Constraints *GetAutoScalingPolicyResponseBodyScalingPolicyConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
 	// The ID of the node group.
 	//
@@ -9550,7 +9756,7 @@ type GetClusterRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the region in which you want to create the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -9632,6 +9838,508 @@ func (s *GetClusterResponse) SetStatusCode(v int32) *GetClusterResponse {
 }
 
 func (s *GetClusterResponse) SetBody(v *GetClusterResponseBody) *GetClusterResponse {
+	s.Body = v
+	return s
+}
+
+type GetClusterCloneMetaRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetClusterCloneMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaRequest) SetClusterId(v string) *GetClusterCloneMetaRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaRequest) SetRegionId(v string) *GetClusterCloneMetaRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetClusterCloneMetaResponseBody struct {
+	// The metadata of the cluster that you want to clone.
+	ClusterCloneMeta *GetClusterCloneMetaResponseBodyClusterCloneMeta `json:"ClusterCloneMeta,omitempty" xml:"ClusterCloneMeta,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetClusterCloneMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBody) SetClusterCloneMeta(v *GetClusterCloneMetaResponseBodyClusterCloneMeta) *GetClusterCloneMetaResponseBody {
+	s.ClusterCloneMeta = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBody) SetRequestId(v string) *GetClusterCloneMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
+	// The modified configuration items.
+	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
+	// The services deployed in the cluster.
+	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// The bootstrap actions. Number of elements in the array: 1 to 10.
+	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// c-b933c5aac7f7****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster.
+	//
+	// example:
+	//
+	// emrtest
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The status of the cluster. Valid values:
+	//
+	// 	- STARTING
+	//
+	// 	- START_FAILED
+	//
+	// 	- BOOTSTRAPPING
+	//
+	// 	- RUNNING
+	//
+	// 	- TERMINATING
+	//
+	// 	- TERMINATED
+	//
+	// 	- TERMINATED_WITH_ERRORS
+	//
+	// 	- TERMINATE_FAILED
+	//
+	// example:
+	//
+	// RUNNING
+	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
+	// The cluster type. Valid values:
+	//
+	// 	- DATALAKE
+	//
+	// 	- OLAP
+	//
+	// 	- DATAFLOW
+	//
+	// 	- DATASERVING
+	//
+	// 	- CUSTOM
+	//
+	// 	- HADOOP
+	//
+	// example:
+	//
+	// DATALAKE
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The deployment mode of master nodes in the cluster. Valid values:
+	//
+	// 	- NORMAL: regular mode.
+	//
+	// 	- HA: high availability mode.
+	//
+	// example:
+	//
+	// HA
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The EMR service role.
+	//
+	// example:
+	//
+	// AliyunEMRDefaultRole
+	EmrDefaultRole *string `json:"EmrDefaultRole,omitempty" xml:"EmrDefaultRole,omitempty"`
+	// Indicates whether the service configurations of a Hadoop cluster that you made during cluster creation can be cloned. Valid values:
+	//
+	// 	- False
+	//
+	// 	- True
+	ExistCloneConfig *bool `json:"ExistCloneConfig,omitempty" xml:"ExistCloneConfig,omitempty"`
+	// The attributes of the node.
+	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
+	// The node groups. Number of elements in the array: 1 to 100.
+	NodeGroups []*NodeGroup `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	// The billing method of the cluster. Valid values:
+	//
+	// 	- PayAsYouGo
+	//
+	// 	- Subscription
+	//
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The EMR version.
+	//
+	// example:
+	//
+	// EMR-5.6.0
+	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzabjyop****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The auto scaling policies of each node group in the cluster.
+	ScalingPolicies []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies `json:"ScalingPolicies,omitempty" xml:"ScalingPolicies,omitempty" type:"Repeated"`
+	// The security mode of the cluster. Valid values:
+	//
+	// 	- NORMAL: regular mode. Kerberos is not enabled.
+	//
+	// 	- KERBEROS: Kerberos mode. Kerberos is enabled.
+	//
+	// example:
+	//
+	// NORMAL
+	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	// The subscription configurations.
+	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
+	// The list of tags.
+	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMeta) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetApplicationConfigs(v []*ApplicationConfig) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ApplicationConfigs = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetApplications(v []*Application) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.Applications = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetBootstrapScripts(v []*Script) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.BootstrapScripts = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterName(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterState(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ClusterState = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetDeployMode(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetEmrDefaultRole(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.EmrDefaultRole = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetExistCloneConfig(v bool) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ExistCloneConfig = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetNodeAttributes(v *NodeAttributes) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.NodeAttributes = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetNodeGroups(v []*NodeGroup) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.NodeGroups = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetPaymentType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetRegionId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetReleaseVersion(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetResourceGroupId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetScalingPolicies(v []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.ScalingPolicies = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetSecurityMode(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.SecurityMode = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetSubscriptionConfig(v *SubscriptionConfig) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.SubscriptionConfig = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetTags(v []*Tag) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.Tags = v
+	return s
+}
+
+type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The maximum and minimum number of nodes in the node group.
+	Constraints *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
+	// The node group ID.
+	//
+	// example:
+	//
+	// ng-869471354ecd****
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The ID of the auto scaling policy.
+	//
+	// example:
+	//
+	// asp-asduwe23znl***
+	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
+	// The list of auto scaling rules.
+	ScalingRules []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetClusterId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetConstraints(v *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
+	s.Constraints = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetNodeGroupId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
+	s.NodeGroupId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetScalingPolicyId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
+	s.ScalingPolicyId = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetScalingRules(v []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
+	s.ScalingRules = v
+	return s
+}
+
+type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints struct {
+	// The maximum number of nodes in the node group. Default value: 2000.
+	//
+	// example:
+	//
+	// 200
+	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	// The minimum number of nodes in the node group. Default value: 0.
+	//
+	// example:
+	//
+	// 50
+	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints) SetMaxCapacity(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints {
+	s.MaxCapacity = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints) SetMinCapacity(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints {
+	s.MinCapacity = &v
+	return s
+}
+
+type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules struct {
+	// The scaling type. This parameter is required. Valid values:
+	//
+	// 	- SCALE_OUT
+	//
+	// 	- SCALE_IN
+	//
+	// example:
+	//
+	// SCALE_OUT
+	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
+	// The adjustment value of the auto scaling rule. This parameter is required. The parameter value must be a positive integer, which indicates the number of instances to be added or removed.
+	//
+	// example:
+	//
+	// 100
+	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	// The description of load-based scaling.
+	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	// The name of the auto scaling rule.
+	//
+	// example:
+	//
+	// scaling-out-memory
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The description of time-based scaling.
+	TimeTrigger *TimeTrigger `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
+	// The trigger mode of the auto scaling rule. This parameter is required. Valid values:
+	//
+	// 	- TIME_TRIGGER: time-based scaling.
+	//
+	// 	- METRICS_TRIGGER: load-based scaling.
+	//
+	// example:
+	//
+	// TIME_TRIGGER
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) SetActivityType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules {
+	s.ActivityType = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) SetAdjustmentValue(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules {
+	s.AdjustmentValue = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) SetMetricsTrigger(v *MetricsTrigger) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules {
+	s.MetricsTrigger = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) SetRuleName(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) SetTimeTrigger(v *TimeTrigger) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules {
+	s.TimeTrigger = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) SetTriggerType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules {
+	s.TriggerType = &v
+	return s
+}
+
+type GetClusterCloneMetaResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClusterCloneMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetClusterCloneMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCloneMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCloneMetaResponse) SetHeaders(v map[string]*string) *GetClusterCloneMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponse) SetStatusCode(v int32) *GetClusterCloneMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponse) SetBody(v *GetClusterCloneMetaResponseBody) *GetClusterCloneMetaResponse {
 	s.Body = v
 	return s
 }
@@ -29724,7 +30432,13 @@ type GetOperationRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the operation.
+	// The operation ID.
+	//
+	// References:
+	//
+	// 	- [CreateCluster](https://help.aliyun.com/document_detail/454393.html)
+	//
+	// 	- [IncreaseNodes](https://help.aliyun.com/document_detail/454397.html)
 	//
 	// This parameter is required.
 	//
@@ -29824,7 +30538,7 @@ func (s *GetOperationResponse) SetBody(v *GetOperationResponseBody) *GetOperatio
 }
 
 type IncreaseNodesRequest struct {
-	// The configurations of the applications. Valid values of N: 1 to 1000.
+	// The application configurations. You can specify a maximum of 1,000 items.
 	//
 	// example:
 	//
@@ -29842,7 +30556,16 @@ type IncreaseNodesRequest struct {
 	//
 	// false
 	AutoPayOrder *bool `json:"AutoPayOrder,omitempty" xml:"AutoPayOrder,omitempty"`
-	AutoRenew    *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether to enable auto-renewal for nodes. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false (default value)
+	//
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The ID of the cluster.
 	//
 	// This parameter is required.
@@ -30770,7 +31493,7 @@ func (s *ListApplicationsRequest) SetRegionId(v string) *ListApplicationsRequest
 }
 
 type ListApplicationsResponseBody struct {
-	// The information about applications.
+	// The applications.
 	Applications []*ListApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The number of entries per page.
 	//
@@ -30838,7 +31561,13 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// HDFS
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The status of the application operation.
+	// The status of the applications. Valid values:
+	//
+	// 	- STOPPED: At least one application is in the Stopped state.
+	//
+	// 	- RUNNING: All applications are in the Running state.
+	//
+	// This parameter is returned only for DataLake, OLAP, Dataflow, DataServing, and custom clusters. For other types of clusters, no value is returned for this parameter.
 	//
 	// example:
 	//
@@ -31337,6 +32066,58 @@ type ListClustersRequest struct {
 	PaymentTypes []*string `json:"PaymentTypes,omitempty" xml:"PaymentTypes,omitempty" type:"Repeated"`
 	// The region ID.
 	//
+	// Valid values:
+	//
+	// 	- cn-qingdao
+	//
+	// 	- cn-beijing
+	//
+	// 	- cn-zhangjiakou
+	//
+	// 	- cn-huhehaote
+	//
+	// 	- cn-hangzhou
+	//
+	// 	- cn-shanghai
+	//
+	// 	- cn-shenzhen
+	//
+	// 	- cn-chengdu
+	//
+	// 	- cn-hongkong
+	//
+	// 	- cn-wulanchabu
+	//
+	// 	- cn-heyuan-acdr-1
+	//
+	// 	- cn-qingdao-acdr-ut-1
+	//
+	// 	- ap-northeast-1
+	//
+	// 	- ap-southeast-1
+	//
+	// 	- ap-southeast-2
+	//
+	// 	- ap-southeast-3
+	//
+	// 	- ap-southeast-5
+	//
+	// 	- ap-south-1
+	//
+	// 	- us-east-1
+	//
+	// 	- us-west-1
+	//
+	// 	- me-east-1
+	//
+	// 	- me-central-1
+	//
+	// 	- eu-central-1
+	//
+	// 	- eu-west-1
+	//
+	// 	- cn-north-2-gov-1
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31349,7 +32130,7 @@ type ListClustersRequest struct {
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags. You can specify a maximum of 20 items.
+	// The tags. Number of elements in the array: 1 to 20.
 	//
 	// example:
 	//
@@ -31899,12 +32680,6 @@ type ListComponentsRequest struct {
 	//
 	// null
 	ComponentStates []*string `json:"ComponentStates,omitempty" xml:"ComponentStates,omitempty" type:"Repeated"`
-	// 是否包含过期配置。
-	//
-	// example:
-	//
-	// true
-	IncludeExpiredConfig *bool `json:"IncludeExpiredConfig,omitempty" xml:"IncludeExpiredConfig,omitempty"`
 	// 一次获取的最大记录数。取值范围：1~100。
 	//
 	// example:
@@ -31952,11 +32727,6 @@ func (s *ListComponentsRequest) SetComponentNames(v []*string) *ListComponentsRe
 
 func (s *ListComponentsRequest) SetComponentStates(v []*string) *ListComponentsRequest {
 	s.ComponentStates = v
-	return s
-}
-
-func (s *ListComponentsRequest) SetIncludeExpiredConfig(v bool) *ListComponentsRequest {
-	s.IncludeExpiredConfig = &v
 	return s
 }
 
@@ -46411,228 +47181,6 @@ func (s *ListDoctorReportsResponse) SetBody(v *ListDoctorReportsResponseBody) *L
 	return s
 }
 
-type ListInspectionHistoryRequest struct {
-	// 集群ID。
-	//
-	// example:
-	//
-	// c-b933c5aac8fe****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 组件名称
-	Component *string `json:"Component,omitempty" xml:"Component,omitempty"`
-	// 节点id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
-	//
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
-	//
-	// example:
-	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 地域ID。
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 服务名称
-	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// 巡检历史类型 application/component
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s ListInspectionHistoryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInspectionHistoryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListInspectionHistoryRequest) SetClusterId(v string) *ListInspectionHistoryRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListInspectionHistoryRequest) SetComponent(v string) *ListInspectionHistoryRequest {
-	s.Component = &v
-	return s
-}
-
-func (s *ListInspectionHistoryRequest) SetInstanceId(v string) *ListInspectionHistoryRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListInspectionHistoryRequest) SetLanguage(v string) *ListInspectionHistoryRequest {
-	s.Language = &v
-	return s
-}
-
-func (s *ListInspectionHistoryRequest) SetMaxResults(v int32) *ListInspectionHistoryRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListInspectionHistoryRequest) SetNextToken(v string) *ListInspectionHistoryRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListInspectionHistoryRequest) SetRegionId(v string) *ListInspectionHistoryRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListInspectionHistoryRequest) SetService(v string) *ListInspectionHistoryRequest {
-	s.Service = &v
-	return s
-}
-
-func (s *ListInspectionHistoryRequest) SetType(v string) *ListInspectionHistoryRequest {
-	s.Type = &v
-	return s
-}
-
-type ListInspectionHistoryResponseBody struct {
-	// Created on 2023/8/21
-	Data []*ListInspectionHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
-	//
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
-	//
-	// example:
-	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
-	//
-	// example:
-	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
-	//
-	// example:
-	//
-	// 200
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListInspectionHistoryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInspectionHistoryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListInspectionHistoryResponseBody) SetData(v []*ListInspectionHistoryResponseBodyData) *ListInspectionHistoryResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListInspectionHistoryResponseBody) SetMaxResults(v int32) *ListInspectionHistoryResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListInspectionHistoryResponseBody) SetNextToken(v string) *ListInspectionHistoryResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListInspectionHistoryResponseBody) SetRequestId(v string) *ListInspectionHistoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListInspectionHistoryResponseBody) SetTotalCount(v int32) *ListInspectionHistoryResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListInspectionHistoryResponseBodyData struct {
-	// 变更消息
-	ChangeMessage *string `json:"ChangeMessage,omitempty" xml:"ChangeMessage,omitempty"`
-	// 巡检状态
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// 巡检变更明细
-	//
-	// example:
-	//
-	// null
-	InspectionItems []map[string]*string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty" type:"Repeated"`
-	ReportTime      *string              `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
-}
-
-func (s ListInspectionHistoryResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInspectionHistoryResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListInspectionHistoryResponseBodyData) SetChangeMessage(v string) *ListInspectionHistoryResponseBodyData {
-	s.ChangeMessage = &v
-	return s
-}
-
-func (s *ListInspectionHistoryResponseBodyData) SetHealthStatus(v string) *ListInspectionHistoryResponseBodyData {
-	s.HealthStatus = &v
-	return s
-}
-
-func (s *ListInspectionHistoryResponseBodyData) SetInspectionItems(v []map[string]*string) *ListInspectionHistoryResponseBodyData {
-	s.InspectionItems = v
-	return s
-}
-
-func (s *ListInspectionHistoryResponseBodyData) SetReportTime(v string) *ListInspectionHistoryResponseBodyData {
-	s.ReportTime = &v
-	return s
-}
-
-type ListInspectionHistoryResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListInspectionHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListInspectionHistoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInspectionHistoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListInspectionHistoryResponse) SetHeaders(v map[string]*string) *ListInspectionHistoryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListInspectionHistoryResponse) SetStatusCode(v int32) *ListInspectionHistoryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListInspectionHistoryResponse) SetBody(v *ListInspectionHistoryResponseBody) *ListInspectionHistoryResponse {
-	s.Body = v
-	return s
-}
-
 type ListInstanceTypesRequest struct {
 	// 集群ID，仅升配场景使用。
 	//
@@ -47496,352 +48044,6 @@ func (s *ListReleaseVersionsResponse) SetBody(v *ListReleaseVersionsResponseBody
 	return s
 }
 
-type ListResourceHealthInspectionsRequest struct {
-	// 应用名称。
-	//
-	// example:
-	//
-	// HDFS
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 集群ID。
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// c-b933c5aac8fe****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 组件名称。
-	//
-	// example:
-	//
-	// DataNode
-	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// 健康状态。
-	//
-	// example:
-	//
-	// ["BAD"]
-	HealthStatuses []*string `json:"HealthStatuses,omitempty" xml:"HealthStatuses,omitempty" type:"Repeated"`
-	// 语言
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
-	//
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
-	//
-	// example:
-	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 节点Id列表。
-	//
-	// example:
-	//
-	// ["i-bp14l5n4v46uxsscl033"]
-	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	// 节点名称列表。
-	//
-	// example:
-	//
-	// ["core1-1"]
-	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
-	// 地域ID。
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 查询的目标资源类型，合法值：
-	//
-	// <p>
-	//
-	// - APPLICATION
-	//
-	// <p>
-	//
-	// - COMPONENT
-	//
-	// <p>
-	//
-	// - COMPONENT_INSTANCE
-	//
-	// <p>
-	//
-	// example:
-	//
-	// APPLICATION
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-}
-
-func (s ListResourceHealthInspectionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListResourceHealthInspectionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetApplicationName(v string) *ListResourceHealthInspectionsRequest {
-	s.ApplicationName = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetClusterId(v string) *ListResourceHealthInspectionsRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetComponentName(v string) *ListResourceHealthInspectionsRequest {
-	s.ComponentName = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetHealthStatuses(v []*string) *ListResourceHealthInspectionsRequest {
-	s.HealthStatuses = v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetLanguage(v string) *ListResourceHealthInspectionsRequest {
-	s.Language = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetMaxResults(v int32) *ListResourceHealthInspectionsRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetNextToken(v string) *ListResourceHealthInspectionsRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetNodeIds(v []*string) *ListResourceHealthInspectionsRequest {
-	s.NodeIds = v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetNodeNames(v []*string) *ListResourceHealthInspectionsRequest {
-	s.NodeNames = v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetRegionId(v string) *ListResourceHealthInspectionsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsRequest) SetResourceType(v string) *ListResourceHealthInspectionsRequest {
-	s.ResourceType = &v
-	return s
-}
-
-type ListResourceHealthInspectionsResponseBody struct {
-	HealthInspections []*ListResourceHealthInspectionsResponseBodyHealthInspections `json:"HealthInspections,omitempty" xml:"HealthInspections,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
-	//
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
-	//
-	// example:
-	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
-	//
-	// example:
-	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
-	//
-	// example:
-	//
-	// 200
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListResourceHealthInspectionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListResourceHealthInspectionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListResourceHealthInspectionsResponseBody) SetHealthInspections(v []*ListResourceHealthInspectionsResponseBodyHealthInspections) *ListResourceHealthInspectionsResponseBody {
-	s.HealthInspections = v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBody) SetMaxResults(v int32) *ListResourceHealthInspectionsResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBody) SetNextToken(v string) *ListResourceHealthInspectionsResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBody) SetRequestId(v string) *ListResourceHealthInspectionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBody) SetTotalCount(v int32) *ListResourceHealthInspectionsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListResourceHealthInspectionsResponseBodyHealthInspections struct {
-	// 应用名称。
-	//
-	// example:
-	//
-	// HDFS
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 组件名称。
-	//
-	// example:
-	//
-	// DataNode
-	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// 健康详细信息。
-	//
-	// example:
-	//
-	// Connection timeout
-	HealthMessage *string `json:"HealthMessage,omitempty" xml:"HealthMessage,omitempty"`
-	// 健康状态。
-	//
-	// example:
-	//
-	// GOOD
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// 巡检项名称。
-	//
-	// example:
-	//
-	// live_status_check
-	InspectionName *string `json:"InspectionName,omitempty" xml:"InspectionName,omitempty"`
-	// 节点ID。
-	//
-	// example:
-	//
-	// core1-1
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 节点名称。
-	//
-	// example:
-	//
-	// core1-1
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// 最近上报时间戳。
-	//
-	// example:
-	//
-	// 1639709192940
-	ReportTime *int64 `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
-	// 规则名称。
-	//
-	// example:
-	//
-	// live_status_check_1
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-}
-
-func (s ListResourceHealthInspectionsResponseBodyHealthInspections) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListResourceHealthInspectionsResponseBodyHealthInspections) GoString() string {
-	return s.String()
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetApplicationName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.ApplicationName = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetComponentName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.ComponentName = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetHealthMessage(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.HealthMessage = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetHealthStatus(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.HealthStatus = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetInspectionName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.InspectionName = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetNodeId(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.NodeId = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetNodeName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.NodeName = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetReportTime(v int64) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.ReportTime = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetRuleName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
-	s.RuleName = &v
-	return s
-}
-
-type ListResourceHealthInspectionsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListResourceHealthInspectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListResourceHealthInspectionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListResourceHealthInspectionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListResourceHealthInspectionsResponse) SetHeaders(v map[string]*string) *ListResourceHealthInspectionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponse) SetStatusCode(v int32) *ListResourceHealthInspectionsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListResourceHealthInspectionsResponse) SetBody(v *ListResourceHealthInspectionsResponseBody) *ListResourceHealthInspectionsResponse {
-	s.Body = v
-	return s
-}
-
 type ListScriptsRequest struct {
 	// 集群ID。
 	//
@@ -48176,7 +48378,7 @@ type ListTagResourcesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Marks the current position to start reading. If this field is empty, the data is read from the beginning.
+	// The pagination token that is used in the request to retrieve a new page of results. If NextToken is empty, the query starts from the beginning.
 	//
 	// example:
 	//
@@ -48967,6 +49169,499 @@ func (s *RunApplicationActionResponse) SetBody(v *RunApplicationActionResponseBo
 	return s
 }
 
+type RunClusterRequest struct {
+	// 应用配置。数组元素个数N的取值范围：1~1000。
+	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
+	// 应用列表。数组元素个数N的取值范围：1~100。
+	//
+	// This parameter is required.
+	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// 引导脚本。数组元素个数N的取值范围：1~10。
+	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
+	// 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+	//
+	// example:
+	//
+	// A7D960FA-6DBA-5E07-8746-A63E3E4D****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// emrtest
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// 创建的EMR集群类型。取值范围：
+	//
+	// - DATALAKE：新版数据湖。
+	//
+	// - OLAP：数据分析。
+	//
+	// - DATAFLOW：实时数据流。
+	//
+	// - DATASERVING：数据服务。
+	//
+	// - CUSTOM：自定义集群。
+	//
+	// - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DATALAKE
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// 集群中的应用部署模式。取值范围：
+	//
+	// - NORMAL：非高可用部署。集群1个MASTER节点。
+	//
+	// - HA：高可用部署。高可用部署要求至少3个MASTER节点。
+	//
+	// 默认值：NORMAL。
+	//
+	// example:
+	//
+	// HA
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// example:
+	//
+	// Emr cluster for ETL
+	Description    *string         `json:"Description,omitempty" xml:"Description,omitempty"`
+	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
+	// 节点组。数组元素个数N的取值范围：1~100。
+	//
+	// <p>
+	//
+	// This parameter is required.
+	NodeGroups []*NodeGroupConfig `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	// 集群的付费类型。取值范围：
+	//
+	// - PayAsYouGo：后付费。
+	//
+	// - Subscription：预付费。
+	//
+	// 默认值：PayAsYouGo。
+	//
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// 区域ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// EMR发行版。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EMR-5.16.0
+	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
+	// 集群所在的企业资源组ID。
+	//
+	// example:
+	//
+	// rg-acfmzabjyop****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Kerberos安全模式。取值范围：
+	//
+	// - NORMAL：普通模式，不开启Kerberos模式。
+	//
+	// - KERBEROS：开启Kerberos模式。
+	//
+	// 默认值：NORMAL
+	//
+	// example:
+	//
+	// NORMAL
+	SecurityMode       *string             `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
+	// 标签。数组元数个数N的取值范围：0~20。
+	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s RunClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunClusterRequest) SetApplicationConfigs(v []*ApplicationConfig) *RunClusterRequest {
+	s.ApplicationConfigs = v
+	return s
+}
+
+func (s *RunClusterRequest) SetApplications(v []*Application) *RunClusterRequest {
+	s.Applications = v
+	return s
+}
+
+func (s *RunClusterRequest) SetBootstrapScripts(v []*Script) *RunClusterRequest {
+	s.BootstrapScripts = v
+	return s
+}
+
+func (s *RunClusterRequest) SetClientToken(v string) *RunClusterRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetClusterName(v string) *RunClusterRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetClusterType(v string) *RunClusterRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetDeployMode(v string) *RunClusterRequest {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetDescription(v string) *RunClusterRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetNodeAttributes(v *NodeAttributes) *RunClusterRequest {
+	s.NodeAttributes = v
+	return s
+}
+
+func (s *RunClusterRequest) SetNodeGroups(v []*NodeGroupConfig) *RunClusterRequest {
+	s.NodeGroups = v
+	return s
+}
+
+func (s *RunClusterRequest) SetPaymentType(v string) *RunClusterRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetRegionId(v string) *RunClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetReleaseVersion(v string) *RunClusterRequest {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetResourceGroupId(v string) *RunClusterRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetSecurityMode(v string) *RunClusterRequest {
+	s.SecurityMode = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetSubscriptionConfig(v *SubscriptionConfig) *RunClusterRequest {
+	s.SubscriptionConfig = v
+	return s
+}
+
+func (s *RunClusterRequest) SetTags(v []*Tag) *RunClusterRequest {
+	s.Tags = v
+	return s
+}
+
+type RunClusterShrinkRequest struct {
+	// 应用配置。数组元素个数N的取值范围：1~1000。
+	ApplicationConfigsShrink *string `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty"`
+	// 应用列表。数组元素个数N的取值范围：1~100。
+	//
+	// This parameter is required.
+	ApplicationsShrink *string `json:"Applications,omitempty" xml:"Applications,omitempty"`
+	// 引导脚本。数组元素个数N的取值范围：1~10。
+	BootstrapScriptsShrink *string `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty"`
+	// 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+	//
+	// example:
+	//
+	// A7D960FA-6DBA-5E07-8746-A63E3E4D****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// emrtest
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// 创建的EMR集群类型。取值范围：
+	//
+	// - DATALAKE：新版数据湖。
+	//
+	// - OLAP：数据分析。
+	//
+	// - DATAFLOW：实时数据流。
+	//
+	// - DATASERVING：数据服务。
+	//
+	// - CUSTOM：自定义集群。
+	//
+	// - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DATALAKE
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// 集群中的应用部署模式。取值范围：
+	//
+	// - NORMAL：非高可用部署。集群1个MASTER节点。
+	//
+	// - HA：高可用部署。高可用部署要求至少3个MASTER节点。
+	//
+	// 默认值：NORMAL。
+	//
+	// example:
+	//
+	// HA
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// example:
+	//
+	// Emr cluster for ETL
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NodeAttributesShrink *string `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
+	// 节点组。数组元素个数N的取值范围：1~100。
+	//
+	// <p>
+	//
+	// This parameter is required.
+	NodeGroupsShrink *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
+	// 集群的付费类型。取值范围：
+	//
+	// - PayAsYouGo：后付费。
+	//
+	// - Subscription：预付费。
+	//
+	// 默认值：PayAsYouGo。
+	//
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// 区域ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// EMR发行版。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EMR-5.16.0
+	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
+	// 集群所在的企业资源组ID。
+	//
+	// example:
+	//
+	// rg-acfmzabjyop****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Kerberos安全模式。取值范围：
+	//
+	// - NORMAL：普通模式，不开启Kerberos模式。
+	//
+	// - KERBEROS：开启Kerberos模式。
+	//
+	// 默认值：NORMAL
+	//
+	// example:
+	//
+	// NORMAL
+	SecurityMode             *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	SubscriptionConfigShrink *string `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
+	// 标签。数组元数个数N的取值范围：0~20。
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s RunClusterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunClusterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunClusterShrinkRequest) SetApplicationConfigsShrink(v string) *RunClusterShrinkRequest {
+	s.ApplicationConfigsShrink = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetApplicationsShrink(v string) *RunClusterShrinkRequest {
+	s.ApplicationsShrink = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetBootstrapScriptsShrink(v string) *RunClusterShrinkRequest {
+	s.BootstrapScriptsShrink = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetClientToken(v string) *RunClusterShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetClusterName(v string) *RunClusterShrinkRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetClusterType(v string) *RunClusterShrinkRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetDeployMode(v string) *RunClusterShrinkRequest {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetDescription(v string) *RunClusterShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetNodeAttributesShrink(v string) *RunClusterShrinkRequest {
+	s.NodeAttributesShrink = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetNodeGroupsShrink(v string) *RunClusterShrinkRequest {
+	s.NodeGroupsShrink = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetPaymentType(v string) *RunClusterShrinkRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetRegionId(v string) *RunClusterShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetReleaseVersion(v string) *RunClusterShrinkRequest {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetResourceGroupId(v string) *RunClusterShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetSecurityMode(v string) *RunClusterShrinkRequest {
+	s.SecurityMode = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetSubscriptionConfigShrink(v string) *RunClusterShrinkRequest {
+	s.SubscriptionConfigShrink = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetTagsShrink(v string) *RunClusterShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type RunClusterResponseBody struct {
+	// 集群ID。
+	//
+	// example:
+	//
+	// c-b933c5aac7f7***
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 操作ID。
+	//
+	// example:
+	//
+	// op-13c37a77c505****
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunClusterResponseBody) SetClusterId(v string) *RunClusterResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *RunClusterResponseBody) SetOperationId(v string) *RunClusterResponseBody {
+	s.OperationId = &v
+	return s
+}
+
+func (s *RunClusterResponseBody) SetRequestId(v string) *RunClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunClusterResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunClusterResponse) SetHeaders(v map[string]*string) *RunClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunClusterResponse) SetStatusCode(v int32) *RunClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunClusterResponse) SetBody(v *RunClusterResponseBody) *RunClusterResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	// The ID of the region in which you want to create the instance.
 	//
@@ -49213,7 +49908,7 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateApiTemplateRequest struct {
-	// 接口名。
+	// The name of the API. You can create only a cluster API operation template. Set the value to CreateCluster.
 	//
 	// This parameter is required.
 	//
@@ -49221,7 +49916,7 @@ type UpdateApiTemplateRequest struct {
 	//
 	// CreateCluster
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 接口request内容。
+	// The content of the cluster API operation template. Set the value to JSON strings of the request parameters of the [CreateCluster](https://help.aliyun.com/document_detail/454393.html) API for creating a cluster.
 	//
 	// This parameter is required.
 	//
@@ -49422,7 +50117,7 @@ type UpdateApplicationConfigsRequest struct {
 	//
 	// i-bp1cudc25w2bfwl5****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Specifies whether to refresh the configurations.
+	// Specifies whether to refresh the configurations. Default value: True.
 	//
 	// example:
 	//
@@ -49961,6 +50656,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.DeployMode)) {
 		query["DeployMode"] = request.DeployMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeAttributes)) {
@@ -50781,6 +51480,70 @@ func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetCluste
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClusterResponse{}
 	_body, _err := client.GetClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+//
+// @param request - GetClusterCloneMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClusterCloneMetaResponse
+func (client *Client) GetClusterCloneMetaWithOptions(request *GetClusterCloneMetaRequest, runtime *util.RuntimeOptions) (_result *GetClusterCloneMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterCloneMeta"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClusterCloneMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+//
+// @param request - GetClusterCloneMetaRequest
+//
+// @return GetClusterCloneMetaResponse
+func (client *Client) GetClusterCloneMeta(request *GetClusterCloneMetaRequest) (_result *GetClusterCloneMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClusterCloneMetaResponse{}
+	_body, _err := client.GetClusterCloneMetaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -52368,10 +53131,6 @@ func (client *Client) ListApplicationConfigs(request *ListApplicationConfigsRequ
 	return _result, _err
 }
 
-// Description:
-//
-// 查询应用列表。
-//
 // @param request - ListApplicationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -52426,10 +53185,6 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 	return _result, _err
 }
 
-// Description:
-//
-// 查询应用列表。
-//
 // @param request - ListApplicationsRequest
 //
 // @return ListApplicationsResponse
@@ -52728,10 +53483,6 @@ func (client *Client) ListComponentInstances(request *ListComponentInstancesRequ
 	return _result, _err
 }
 
-// Description:
-//
-// 查询组件列表。
-//
 // @param request - ListComponentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -52757,10 +53508,6 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ComponentStates)) {
 		query["ComponentStates"] = request.ComponentStates
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IncludeExpiredConfig)) {
-		query["IncludeExpiredConfig"] = request.IncludeExpiredConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -52798,10 +53545,6 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 	return _result, _err
 }
 
-// Description:
-//
-// 查询组件列表。
-//
 // @param request - ListComponentsRequest
 //
 // @return ListComponentsResponse
@@ -53880,90 +54623,6 @@ func (client *Client) ListDoctorReports(request *ListDoctorReportsRequest) (_res
 	return _result, _err
 }
 
-// @param request - ListInspectionHistoryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListInspectionHistoryResponse
-func (client *Client) ListInspectionHistoryWithOptions(request *ListInspectionHistoryRequest, runtime *util.RuntimeOptions) (_result *ListInspectionHistoryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Component)) {
-		query["Component"] = request.Component
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Language)) {
-		query["Language"] = request.Language
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Service)) {
-		query["Service"] = request.Service
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListInspectionHistory"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListInspectionHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListInspectionHistoryRequest
-//
-// @return ListInspectionHistoryResponse
-func (client *Client) ListInspectionHistory(request *ListInspectionHistoryRequest) (_result *ListInspectionHistoryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListInspectionHistoryResponse{}
-	_body, _err := client.ListInspectionHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // @param request - ListInstanceTypesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -54313,106 +54972,6 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListReleaseVersionsResponse{}
 	_body, _err := client.ListReleaseVersionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Description:
-//
-// 查询资源巡检项。
-//
-// @param request - ListResourceHealthInspectionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListResourceHealthInspectionsResponse
-func (client *Client) ListResourceHealthInspectionsWithOptions(request *ListResourceHealthInspectionsRequest, runtime *util.RuntimeOptions) (_result *ListResourceHealthInspectionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
-		query["ApplicationName"] = request.ApplicationName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ComponentName)) {
-		query["ComponentName"] = request.ComponentName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.HealthStatuses)) {
-		query["HealthStatuses"] = request.HealthStatuses
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Language)) {
-		query["Language"] = request.Language
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
-		query["NodeIds"] = request.NodeIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeNames)) {
-		query["NodeNames"] = request.NodeNames
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListResourceHealthInspections"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListResourceHealthInspectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-// 查询资源巡检项。
-//
-// @param request - ListResourceHealthInspectionsRequest
-//
-// @return ListResourceHealthInspectionsResponse
-func (client *Client) ListResourceHealthInspections(request *ListResourceHealthInspectionsRequest) (_result *ListResourceHealthInspectionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListResourceHealthInspectionsResponse{}
-	_body, _err := client.ListResourceHealthInspectionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54853,6 +55412,154 @@ func (client *Client) RunApplicationAction(request *RunApplicationActionRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &RunApplicationActionResponse{}
 	_body, _err := client.RunApplicationActionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - RunClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunClusterResponse
+func (client *Client) RunClusterWithOptions(tmpReq *RunClusterRequest, runtime *util.RuntimeOptions) (_result *RunClusterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationConfigs)) {
+		request.ApplicationConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationConfigs, tea.String("ApplicationConfigs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Applications)) {
+		request.ApplicationsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Applications, tea.String("Applications"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.BootstrapScripts)) {
+		request.BootstrapScriptsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BootstrapScripts, tea.String("BootstrapScripts"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeAttributes)) {
+		request.NodeAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeAttributes, tea.String("NodeAttributes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeGroups)) {
+		request.NodeGroupsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeGroups, tea.String("NodeGroups"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SubscriptionConfig)) {
+		request.SubscriptionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubscriptionConfig, tea.String("SubscriptionConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationConfigsShrink)) {
+		body["ApplicationConfigs"] = request.ApplicationConfigsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicationsShrink)) {
+		body["Applications"] = request.ApplicationsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BootstrapScriptsShrink)) {
+		body["BootstrapScripts"] = request.BootstrapScriptsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		body["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		body["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeployMode)) {
+		body["DeployMode"] = request.DeployMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeAttributesShrink)) {
+		body["NodeAttributes"] = request.NodeAttributesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupsShrink)) {
+		body["NodeGroups"] = request.NodeGroupsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		body["PaymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseVersion)) {
+		body["ReleaseVersion"] = request.ReleaseVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityMode)) {
+		body["SecurityMode"] = request.SecurityMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionConfigShrink)) {
+		body["SubscriptionConfig"] = request.SubscriptionConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunCluster"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RunClusterRequest
+//
+// @return RunClusterResponse
+func (client *Client) RunCluster(request *RunClusterRequest) (_result *RunClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunClusterResponse{}
+	_body, _err := client.RunClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
