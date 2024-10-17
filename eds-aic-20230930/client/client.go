@@ -306,10 +306,11 @@ func (s *BackupFileRequest) SetUploadType(v string) *BackupFileRequest {
 }
 
 type BackupFileResponseBody struct {
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data []*BackupFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
@@ -324,13 +325,53 @@ func (s BackupFileResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *BackupFileResponseBody) SetData(v string) *BackupFileResponseBody {
-	s.Data = &v
+func (s *BackupFileResponseBody) SetCount(v int64) *BackupFileResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *BackupFileResponseBody) SetData(v []*BackupFileResponseBodyData) *BackupFileResponseBody {
+	s.Data = v
 	return s
 }
 
 func (s *BackupFileResponseBody) SetRequestId(v string) *BackupFileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type BackupFileResponseBodyData struct {
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	BackupFileId      *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
+	BackupFileName    *string `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s BackupFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BackupFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BackupFileResponseBodyData) SetAndroidInstanceId(v string) *BackupFileResponseBodyData {
+	s.AndroidInstanceId = &v
+	return s
+}
+
+func (s *BackupFileResponseBodyData) SetBackupFileId(v string) *BackupFileResponseBodyData {
+	s.BackupFileId = &v
+	return s
+}
+
+func (s *BackupFileResponseBodyData) SetBackupFileName(v string) *BackupFileResponseBodyData {
+	s.BackupFileName = &v
+	return s
+}
+
+func (s *BackupFileResponseBodyData) SetTaskId(v string) *BackupFileResponseBodyData {
+	s.TaskId = &v
 	return s
 }
 
@@ -1126,6 +1167,7 @@ type CreatePolicyGroupRequest struct {
 	//
 	// off
 	LocalDrive        *string                                    `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	LockResolution    *string                                    `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
 	NetRedirectPolicy *CreatePolicyGroupRequestNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
 	PolicyGroupName   *string                                    `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 	// example:
@@ -1163,6 +1205,11 @@ func (s *CreatePolicyGroupRequest) SetHtml5FileTransfer(v string) *CreatePolicyG
 
 func (s *CreatePolicyGroupRequest) SetLocalDrive(v string) *CreatePolicyGroupRequest {
 	s.LocalDrive = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetLockResolution(v string) *CreatePolicyGroupRequest {
+	s.LockResolution = &v
 	return s
 }
 
@@ -1220,6 +1267,7 @@ type CreatePolicyGroupShrinkRequest struct {
 	//
 	// off
 	LocalDrive              *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	LockResolution          *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
 	NetRedirectPolicyShrink *string `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty"`
 	PolicyGroupName         *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 	// example:
@@ -1257,6 +1305,11 @@ func (s *CreatePolicyGroupShrinkRequest) SetHtml5FileTransfer(v string) *CreateP
 
 func (s *CreatePolicyGroupShrinkRequest) SetLocalDrive(v string) *CreatePolicyGroupShrinkRequest {
 	s.LocalDrive = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetLockResolution(v string) *CreatePolicyGroupShrinkRequest {
+	s.LockResolution = &v
 	return s
 }
 
@@ -2159,11 +2212,13 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
+	ChargeType          *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// example:
 	//
 	// ag-25nt4kk9whjh****
-	InstanceGroupId  *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	InstanceGroupId   *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceGroupIds  []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	InstanceGroupName *string   `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
 	// example:
 	//
 	// kp-5hh431emkpuoi****
@@ -2204,6 +2259,11 @@ func (s *DescribeAndroidInstancesRequest) SetAndroidInstanceName(v string) *Desc
 	return s
 }
 
+func (s *DescribeAndroidInstancesRequest) SetChargeType(v string) *DescribeAndroidInstancesRequest {
+	s.ChargeType = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesRequest) SetInstanceGroupId(v string) *DescribeAndroidInstancesRequest {
 	s.InstanceGroupId = &v
 	return s
@@ -2211,6 +2271,11 @@ func (s *DescribeAndroidInstancesRequest) SetInstanceGroupId(v string) *Describe
 
 func (s *DescribeAndroidInstancesRequest) SetInstanceGroupIds(v []*string) *DescribeAndroidInstancesRequest {
 	s.InstanceGroupIds = v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetInstanceGroupName(v string) *DescribeAndroidInstancesRequest {
+	s.InstanceGroupName = &v
 	return s
 }
 
@@ -2287,7 +2352,8 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// ag-ayyhomlal7po****
-	AndroidInstanceGroupId *string `json:"AndroidInstanceGroupId,omitempty" xml:"AndroidInstanceGroupId,omitempty"`
+	AndroidInstanceGroupId   *string `json:"AndroidInstanceGroupId,omitempty" xml:"AndroidInstanceGroupId,omitempty"`
+	AndroidInstanceGroupName *string `json:"AndroidInstanceGroupName,omitempty" xml:"AndroidInstanceGroupName,omitempty"`
 	// example:
 	//
 	// acp-8at8h6ejkadjh****
@@ -2315,7 +2381,10 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// test
-	BindUserId *string `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
+	BindUserId *string                                                   `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
+	ChargeType *string                                                   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Cpu        *string                                                   `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Disks      []*DescribeAndroidInstancesResponseBodyInstanceModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	// example:
 	//
 	// FilePathNotFound
@@ -2323,23 +2392,28 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// 2023-05-06 10:42:10
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtCreate  *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
 	// example:
 	//
 	// 2023-05-06 10:42:10
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// example:
 	//
 	// kp-5hh431emkpucs****
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	Memory    *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// example:
 	//
 	// 192.168.22.48
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	OfficeSiteId       *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// example:
 	//
 	// p-0btrd5zj8epo****
 	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
+	PolicyGroupId           *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	// example:
 	//
 	// 100
@@ -2361,6 +2435,11 @@ func (s DescribeAndroidInstancesResponseBodyInstanceModel) GoString() string {
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetAndroidInstanceGroupId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.AndroidInstanceGroupId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetAndroidInstanceGroupName(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.AndroidInstanceGroupName = &v
 	return s
 }
 
@@ -2399,6 +2478,21 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetBindUserId(v stri
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetChargeType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetCpu(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetDisks(v []*DescribeAndroidInstancesResponseBodyInstanceModelDisks) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.Disks = v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetErrorCode(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.ErrorCode = &v
 	return s
@@ -2409,8 +2503,18 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetGmtCreate(v strin
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetGmtExpired(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.GmtExpired = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetGmtModified(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetInstanceType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.InstanceType = &v
 	return s
 }
 
@@ -2419,13 +2523,28 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetKeyPairId(v strin
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetMemory(v int32) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.Memory = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetNetworkInterfaceIp(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.NetworkInterfaceIp = &v
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetOfficeSiteId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.OfficeSiteId = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPersistentAppInstanceId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.PersistentAppInstanceId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPolicyGroupId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.PolicyGroupId = &v
 	return s
 }
 
@@ -2441,6 +2560,29 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRegionId(v string
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRenderingType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.RenderingType = &v
+	return s
+}
+
+type DescribeAndroidInstancesResponseBodyInstanceModelDisks struct {
+	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelDisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisks) SetDiskSize(v int32) *DescribeAndroidInstancesResponseBodyInstanceModelDisks {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisks) SetDiskType(v string) *DescribeAndroidInstancesResponseBodyInstanceModelDisks {
+	s.DiskType = &v
 	return s
 }
 
@@ -2614,6 +2756,7 @@ type DescribeAppsResponseBodyData struct {
 	// INSTALLING
 	InstallationStatus *string   `json:"InstallationStatus,omitempty" xml:"InstallationStatus,omitempty"`
 	InstanceGroupList  []*string `json:"InstanceGroupList,omitempty" xml:"InstanceGroupList,omitempty" type:"Repeated"`
+	PackageName        *string   `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	// example:
 	//
 	// NORMAL
@@ -2675,6 +2818,11 @@ func (s *DescribeAppsResponseBodyData) SetInstallationStatus(v string) *Describe
 
 func (s *DescribeAppsResponseBodyData) SetInstanceGroupList(v []*string) *DescribeAppsResponseBodyData {
 	s.InstanceGroupList = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetPackageName(v string) *DescribeAppsResponseBodyData {
+	s.PackageName = &v
 	return s
 }
 
@@ -3689,6 +3837,7 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSpecRequest struct {
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// example:
 	//
 	// 20
@@ -3714,6 +3863,11 @@ func (s DescribeSpecRequest) String() string {
 
 func (s DescribeSpecRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSpecRequest) SetBizRegionId(v string) *DescribeSpecRequest {
+	s.BizRegionId = &v
+	return s
 }
 
 func (s *DescribeSpecRequest) SetMaxResults(v int32) *DescribeSpecRequest {
@@ -4471,7 +4625,7 @@ type FetchFileResponseBody struct {
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data []*FetchFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
@@ -4486,13 +4640,36 @@ func (s FetchFileResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FetchFileResponseBody) SetData(v string) *FetchFileResponseBody {
-	s.Data = &v
+func (s *FetchFileResponseBody) SetData(v []*FetchFileResponseBodyData) *FetchFileResponseBody {
+	s.Data = v
 	return s
 }
 
 func (s *FetchFileResponseBody) SetRequestId(v string) *FetchFileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type FetchFileResponseBodyData struct {
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s FetchFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FetchFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *FetchFileResponseBodyData) SetAndroidInstanceId(v string) *FetchFileResponseBodyData {
+	s.AndroidInstanceId = &v
+	return s
+}
+
+func (s *FetchFileResponseBodyData) SetTaskId(v string) *FetchFileResponseBodyData {
+	s.TaskId = &v
 	return s
 }
 
@@ -4953,6 +5130,7 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	//
 	// off
 	LocalDrive        *string                                                        `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	LockResolution    *string                                                        `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
 	NetRedirectPolicy *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
 	// example:
 	//
@@ -4999,6 +5177,11 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetHtml5FileTransfer(v st
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetLocalDrive(v string) *ListPolicyGroupsResponseBodyPolicyGroupModel {
 	s.LocalDrive = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetLockResolution(v string) *ListPolicyGroupsResponseBodyPolicyGroupModel {
+	s.LockResolution = &v
 	return s
 }
 
@@ -5427,6 +5610,7 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// off
 	LocalDrive        *string                                    `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	LockResolution    *string                                    `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
 	NetRedirectPolicy *ModifyPolicyGroupRequestNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
 	// example:
 	//
@@ -5468,6 +5652,11 @@ func (s *ModifyPolicyGroupRequest) SetHtml5FileTransfer(v string) *ModifyPolicyG
 
 func (s *ModifyPolicyGroupRequest) SetLocalDrive(v string) *ModifyPolicyGroupRequest {
 	s.LocalDrive = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetLockResolution(v string) *ModifyPolicyGroupRequest {
+	s.LockResolution = &v
 	return s
 }
 
@@ -5530,6 +5719,7 @@ type ModifyPolicyGroupShrinkRequest struct {
 	//
 	// off
 	LocalDrive              *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	LockResolution          *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
 	NetRedirectPolicyShrink *string `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty"`
 	// example:
 	//
@@ -5571,6 +5761,11 @@ func (s *ModifyPolicyGroupShrinkRequest) SetHtml5FileTransfer(v string) *ModifyP
 
 func (s *ModifyPolicyGroupShrinkRequest) SetLocalDrive(v string) *ModifyPolicyGroupShrinkRequest {
 	s.LocalDrive = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetLockResolution(v string) *ModifyPolicyGroupShrinkRequest {
+	s.LockResolution = &v
 	return s
 }
 
@@ -5772,10 +5967,11 @@ func (s *RecoveryFileRequest) SetUploadType(v string) *RecoveryFileRequest {
 }
 
 type RecoveryFileResponseBody struct {
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// example:
 	//
 	// 6AD56E39-430B-5401-AB4A-7B086454****
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data []*RecoveryFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 6AD56E39-430B-5401-AB4A-7B086454****
@@ -5790,13 +5986,41 @@ func (s RecoveryFileResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RecoveryFileResponseBody) SetData(v string) *RecoveryFileResponseBody {
-	s.Data = &v
+func (s *RecoveryFileResponseBody) SetCount(v int64) *RecoveryFileResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *RecoveryFileResponseBody) SetData(v []*RecoveryFileResponseBodyData) *RecoveryFileResponseBody {
+	s.Data = v
 	return s
 }
 
 func (s *RecoveryFileResponseBody) SetRequestId(v string) *RecoveryFileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type RecoveryFileResponseBodyData struct {
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s RecoveryFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoveryFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecoveryFileResponseBodyData) SetAndroidInstanceId(v string) *RecoveryFileResponseBodyData {
+	s.AndroidInstanceId = &v
+	return s
+}
+
+func (s *RecoveryFileResponseBodyData) SetTaskId(v string) *RecoveryFileResponseBodyData {
+	s.TaskId = &v
 	return s
 }
 
@@ -6152,7 +6376,7 @@ type SendFileResponseBody struct {
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data []*SendFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
@@ -6167,13 +6391,36 @@ func (s SendFileResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SendFileResponseBody) SetData(v string) *SendFileResponseBody {
-	s.Data = &v
+func (s *SendFileResponseBody) SetData(v []*SendFileResponseBodyData) *SendFileResponseBody {
+	s.Data = v
 	return s
 }
 
 func (s *SendFileResponseBody) SetRequestId(v string) *SendFileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type SendFileResponseBodyData struct {
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SendFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendFileResponseBodyData) SetAndroidInstanceId(v string) *SendFileResponseBodyData {
+	s.AndroidInstanceId = &v
+	return s
+}
+
+func (s *SendFileResponseBodyData) SetTaskId(v string) *SendFileResponseBodyData {
+	s.TaskId = &v
 	return s
 }
 
@@ -6972,6 +7219,10 @@ func (client *Client) AuthorizeAndroidInstance(request *AuthorizeAndroidInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 数据备份
+//
 // @param request - BackupFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7030,6 +7281,10 @@ func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 数据备份
+//
 // @param request - BackupFileRequest
 //
 // @return BackupFileResponse
@@ -7487,6 +7742,10 @@ func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequ
 
 	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
 		body["LocalDrive"] = request.LocalDrive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LockResolution)) {
+		body["LockResolution"] = request.LockResolution
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetRedirectPolicyShrink)) {
@@ -7963,12 +8222,20 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 		query["AndroidInstanceName"] = request.AndroidInstanceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceGroupId)) {
 		query["InstanceGroupId"] = request.InstanceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceGroupIds)) {
 		query["InstanceGroupIds"] = request.InstanceGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupName)) {
+		query["InstanceGroupName"] = request.InstanceGroupName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPairId)) {
@@ -8478,6 +8745,10 @@ func (client *Client) DescribeSpecWithOptions(request *DescribeSpecRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -9448,6 +9719,10 @@ func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequ
 		body["LocalDrive"] = request.LocalDrive
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LockResolution)) {
+		body["LockResolution"] = request.LockResolution
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NetRedirectPolicyShrink)) {
 		body["NetRedirectPolicy"] = request.NetRedirectPolicyShrink
 	}
@@ -9575,7 +9850,7 @@ func (client *Client) RebootAndroidInstancesInGroup(request *RebootAndroidInstan
 
 // Summary:
 //
-// 文件恢复
+// 数据恢复
 //
 // @param request - RecoveryFileRequest
 //
@@ -9633,7 +9908,7 @@ func (client *Client) RecoveryFileWithOptions(request *RecoveryFileRequest, runt
 
 // Summary:
 //
-// 文件恢复
+// 数据恢复
 //
 // @param request - RecoveryFileRequest
 //
