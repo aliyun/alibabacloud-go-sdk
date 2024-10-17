@@ -1,3 +1,14 @@
+2024-10-17 Version: v1.63.0
+- Support API PauseDataExportJob.
+- Support API RemoveDataExportJob.
+- Support API RestartDataExportJob.
+- Support API SuspendDataExportJob.
+- Update API GetDataExportOrderDetail: update response param.
+- Update API ListUsers: update param Role.
+- Update API SearchDatabase: update param PageSize.
+- Update API SearchDatabase: update response param.
+
+
 2024-08-02 Version: v1.62.3
 - Generated golang 2018-11-01 for dms-enterprise.
 

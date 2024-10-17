@@ -2142,7 +2142,7 @@ type ApproveOrderRequest struct {
 	//
 	// 1
 	ApprovalNodeId *int64 `json:"ApprovalNodeId,omitempty" xml:"ApprovalNodeId,omitempty"`
-	// If ApprovalType is set to ADD_APPROVAL_NODE, you need to specify this parameter. The position of the new approval node. Valid values:
+	// The position of the new approval node. You must specify this parameter if ApprovalType is set to ADD_APPROVAL_NODE. Valid values:
 	//
 	// 	- **PRE_ADD_APPROVAL_NODE**: before the current approval node.
 	//
@@ -2181,14 +2181,26 @@ type ApproveOrderRequest struct {
 	// example:
 	//
 	// 12***
-	NewApprover     *int64  `json:"NewApprover,omitempty" xml:"NewApprover,omitempty"`
+	NewApprover *int64 `json:"NewApprover,omitempty" xml:"NewApprover,omitempty"`
+	// >  You can specify this parameter if ApprovalType is set to TRANSFER. You need to only specify one of NewApproverList and NewApprover.
+	//
+	// The IDs of the users to whom the ticket is transferred. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// 154***,155***,156***
 	NewApproverList *string `json:"NewApproverList,omitempty" xml:"NewApproverList,omitempty"`
 	// The ID of the user that transfers the ticket to another user. The default value is the ID of the current user. If the current user is an administrator or a database administrator (DBA), the user can change the value of this parameter to the ID of another user.
 	//
 	// example:
 	//
 	// 23***
-	OldApprover      *int64  `json:"OldApprover,omitempty" xml:"OldApprover,omitempty"`
+	OldApprover *int64 `json:"OldApprover,omitempty" xml:"OldApprover,omitempty"`
+	// The UID of the Alibaba Cloud account that actually calls the API.
+	//
+	// example:
+	//
+	// 21400447956867****
 	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
 	//
@@ -5103,8 +5115,13 @@ type CreateDataExportOrderRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	PluginParam      *CreateDataExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
-	RealLoginUserUid *string                                  `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
+	PluginParam *CreateDataExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
+	// The UID of the Alibaba Cloud account that actually calls the API.
+	//
+	// example:
+	//
+	// 21400447956867****
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders involved in this operation.
 	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	// The tenant ID.
@@ -5375,7 +5392,12 @@ type CreateDataExportOrderShrinkRequest struct {
 	//
 	// This parameter is required.
 	PluginParamShrink *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
-	RealLoginUserUid  *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
+	// The UID of the Alibaba Cloud account that actually calls the API.
+	//
+	// example:
+	//
+	// 21400447956867****
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders involved in this operation.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	// The tenant ID.
@@ -17669,11 +17691,11 @@ type GetDataCorrectOrderDetailResponseBody struct {
 	//
 	// 427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - **true**: The request is successful.
+	// 	- **true**
 	//
-	// - **false**: The request fails.
+	// 	- **false**
 	//
 	// example:
 	//
@@ -17715,6 +17737,7 @@ func (s *GetDataCorrectOrderDetailResponseBody) SetSuccess(v bool) *GetDataCorre
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail struct {
+	// The configurations of the ticket. This parameter is used to store the configuration information specific to a data change ticket type.
 	ConfigDetail *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail `json:"ConfigDetail,omitempty" xml:"ConfigDetail,omitempty" type:"Struct"`
 	// The information about the database in which data is changed.
 	DatabaseList *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Struct"`
@@ -17734,29 +17757,29 @@ type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail struct {
 	OrderDetail *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailOrderDetail `json:"OrderDetail,omitempty" xml:"OrderDetail,omitempty" type:"Struct"`
 	// The precheck details of the ticket.
 	PreCheckDetail *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail `json:"PreCheckDetail,omitempty" xml:"PreCheckDetail,omitempty" type:"Struct"`
-	// The status of the ticket. Valid values:
+	// The specific state of the data change ticket. Valid values:
 	//
-	// - **new**: The ticket is created.
+	// >  The state of the ticket is not exactly equivalent to the status code for the ticket. To query the status code of the ticket, you can call the [GetOrderBaseInfo](https://help.aliyun.com/document_detail/465868.html) operation and check the value of StatusCode in the response.
 	//
-	// - **precheck**: The ticket is being prechecked.
+	// 	- **new**: The ticket is created.
 	//
-	// - **precheck_fail**: The ticket fails the precheck.
+	// 	- **precheck**: The ticket is in the pre-check phase.
 	//
-	// - **precheck_success**: The ticket passes the precheck and waits to be submitted for approval.
+	// 	- **precheckFailed**: The ticket failed to pass the precheck.
 	//
-	// - **toaudit**: The ticket is being reviewed.
+	// 	- **precheck_success**: The ticket passes the precheck and waits to be submitted for approval.
 	//
-	// - **Approved**: The ticket is approved.
+	// 	- **toaudit**: The ticket is being reviewed.
 	//
-	// - **reject**: The ticket is rejected.
+	// 	- **Approved**: The ticket is approved.
 	//
-	// - **waiting**: The ticket is submitted and waits to be scheduled.
+	// 	- **reject**: The ticket is rejected.
 	//
-	// - **processing**: The ticket is being executed.
+	// 	- **waiting**: The task is submitted and waits to be scheduled.
 	//
-	// - **success**: The ticket is executed.
+	// 	- **processing**: The task is being executed.
 	//
-	// - **closed**: The ticket is closed.
+	// 	- **Success**: The task is successful.
 	//
 	// example:
 	//
@@ -17803,20 +17826,114 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetStatus(
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail struct {
-	Cron                  *bool                                                                                   `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	CronCallTimes         *int32                                                                                  `json:"CronCallTimes,omitempty" xml:"CronCallTimes,omitempty"`
-	CronExtConfig         *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig   `json:"CronExtConfig,omitempty" xml:"CronExtConfig,omitempty" type:"Struct"`
-	CronFormat            *string                                                                                 `json:"CronFormat,omitempty" xml:"CronFormat,omitempty"`
-	CronLastCallStartTime *string                                                                                 `json:"CronLastCallStartTime,omitempty" xml:"CronLastCallStartTime,omitempty"`
-	CronNextCallTime      *string                                                                                 `json:"CronNextCallTime,omitempty" xml:"CronNextCallTime,omitempty"`
-	CronStatus            *string                                                                                 `json:"CronStatus,omitempty" xml:"CronStatus,omitempty"`
-	CsvTableName          *string                                                                                 `json:"CsvTableName,omitempty" xml:"CsvTableName,omitempty"`
-	CurrentTaskId         *int64                                                                                  `json:"CurrentTaskId,omitempty" xml:"CurrentTaskId,omitempty"`
-	DetailType            *string                                                                                 `json:"DetailType,omitempty" xml:"DetailType,omitempty"`
-	Duration              *int32                                                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FileEncoding          *string                                                                                 `json:"FileEncoding,omitempty" xml:"FileEncoding,omitempty"`
-	FileType              *string                                                                                 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	ImportExtConfig       *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig `json:"ImportExtConfig,omitempty" xml:"ImportExtConfig,omitempty" type:"Struct"`
+	// Indicates whether the task is a scheduled task for historical data cleanup. This parameter is a reserved parameter and is valid only if the value of DetailType is CRON_CLEAR_DATA.
+	//
+	// example:
+	//
+	// true
+	Cron *bool `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// The number of times the scheduled task is run. This parameter is valid only if the value of DetailType is CRON_CLEAR_DATA.
+	//
+	// example:
+	//
+	// 0
+	CronCallTimes *int32 `json:"CronCallTimes,omitempty" xml:"CronCallTimes,omitempty"`
+	// The additional configuration information about historical data cleanup. This parameter is valid only if the value of DetailType is CRON_CLEAR_DATA.
+	CronExtConfig *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig `json:"CronExtConfig,omitempty" xml:"CronExtConfig,omitempty" type:"Struct"`
+	// The CRON expression of the scheduled task. This parameter is valid only if the value of DetailType is CRON_CLEAR_DATA.
+	//
+	// example:
+	//
+	// 0 0 2 	- 	- ?
+	CronFormat *string `json:"CronFormat,omitempty" xml:"CronFormat,omitempty"`
+	// The time when the task was last run.
+	//
+	// example:
+	//
+	// 2024-04-19 02:00:00.0
+	CronLastCallStartTime *string `json:"CronLastCallStartTime,omitempty" xml:"CronLastCallStartTime,omitempty"`
+	// The time when the task is run next time. This parameter is returned only if the value of CronStatus is SUCCESS.
+	//
+	// example:
+	//
+	// 2024-04-19 02:00:00
+	CronNextCallTime *string `json:"CronNextCallTime,omitempty" xml:"CronNextCallTime,omitempty"`
+	// The state of the scheduled task. If this parameter is empty, the task is not run. Valid values:
+	//
+	// 	- PAUSE: The task is suspended.
+	//
+	// 	- WAITING: The task is waiting to be run.
+	//
+	// 	- SUCCESS: The task is run.
+	//
+	// example:
+	//
+	// SUCCESS
+	CronStatus *string `json:"CronStatus,omitempty" xml:"CronStatus,omitempty"`
+	// The name of the table to which data is to be imported. This parameter is valid only if the value of DetailType is BIG_FILE. If the value of FileType is SQL, this parameter is empty.
+	//
+	// example:
+	//
+	// tb_import_tb_name
+	CsvTableName *string `json:"CsvTableName,omitempty" xml:"CsvTableName,omitempty"`
+	// The ID of the current data change task. This is a reserved parameter and can be ignored.
+	//
+	// example:
+	//
+	// 13***
+	CurrentTaskId *int64 `json:"CurrentTaskId,omitempty" xml:"CurrentTaskId,omitempty"`
+	// The type of the ticket. Valid values:
+	//
+	// 	- COMMON: regular data change.
+	//
+	// 	- CHUNK_DML: lock-free data change.
+	//
+	// 	- BIG_FILE: large data import.
+	//
+	// 	- CRON_CLEAR_DATA: historical data cleanup.
+	//
+	// 	- PROCEDURE: programmable object change.
+	//
+	// example:
+	//
+	// BIG_FILE
+	DetailType *string `json:"DetailType,omitempty" xml:"DetailType,omitempty"`
+	// The execution duration of the scheduled task. Unit: hour. This parameter is valid only if the value of DetailType is CRON_CLEAR_DATA. If the value is greater than 0, an execution duration is set.
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The encoding method of the file. This parameter may be empty, which indicates the value of AUTO. Valid values:
+	//
+	// 	- **AUTO**: automatic identification.
+	//
+	// 	- **UTF-8**: UTF-8 encoding.
+	//
+	// 	- **GBK**: GBK encoding.
+	//
+	// 	- **ISO-8859-1**: ISO-8859-1 encoding.
+	//
+	// example:
+	//
+	// UTF-8
+	FileEncoding *string `json:"FileEncoding,omitempty" xml:"FileEncoding,omitempty"`
+	// The type of the file to be imported. This parameter is valid if the value of DetailType is BIG_FILE. Valid values:
+	//
+	// 	- **SQL**: an SQL file.
+	//
+	// 	- **CSV**: a CSV file.
+	//
+	// 	- **EXCEL**: an Excel file.
+	//
+	// 	- **JSON**: a JSON file, which is supported only by MongoDB databases.
+	//
+	// example:
+	//
+	// CSV
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The additional configuration information about data import. This parameter is valid if the value of DetailType is BIG_FILE.
+	ImportExtConfig *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig `json:"ImportExtConfig,omitempty" xml:"ImportExtConfig,omitempty" type:"Struct"`
 }
 
 func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) String() string {
@@ -17898,7 +18015,21 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig struct {
-	CurrentClearTaskCount             *int32 `json:"CurrentClearTaskCount,omitempty" xml:"CurrentClearTaskCount,omitempty"`
+	// The number of times defragmentation is performed. This parameter is valid only if the value of OptimizeTableAfterEveryClearTimes is greater than 0.
+	//
+	// example:
+	//
+	// 0
+	CurrentClearTaskCount *int32 `json:"CurrentClearTaskCount,omitempty" xml:"CurrentClearTaskCount,omitempty"`
+	// Indicates whether the Periodically Optimize Table feature is enabled. Valid values:
+	//
+	// 	- **0*	- (default): The feature is disabled.
+	//
+	// 	- **A value greater than 0**: The feature is enabled. The value indicates the number of cleanups after which the system performs defragmentation.
+	//
+	// example:
+	//
+	// 0
 	OptimizeTableAfterEveryClearTimes *int32 `json:"OptimizeTableAfterEveryClearTimes,omitempty" xml:"OptimizeTableAfterEveryClearTimes,omitempty"`
 }
 
@@ -17921,10 +18052,52 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig struct {
-	CsvFirstRowIsColumnDef *bool   `json:"CsvFirstRowIsColumnDef,omitempty" xml:"CsvFirstRowIsColumnDef,omitempty"`
-	IgnoreError            *bool   `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
-	ImportMode             *string `json:"ImportMode,omitempty" xml:"ImportMode,omitempty"`
-	InsertType             *string `json:"InsertType,omitempty" xml:"InsertType,omitempty"`
+	// Indicates whether the first row of the CSV file contains field names. Valid values:
+	//
+	// 	- **true**: The first row in the CSV file contains field names.
+	//
+	// 	- **false**: The first row in the CSV file contains data.
+	//
+	// >  This parameter is valid if the value of **FileType*	- is **CSV*	- or **EXCEL**.
+	//
+	// example:
+	//
+	// true
+	CsvFirstRowIsColumnDef *bool `json:"CsvFirstRowIsColumnDef,omitempty" xml:"CsvFirstRowIsColumnDef,omitempty"`
+	// Indicates whether an error that occurs is ignored. Valid values:
+	//
+	// 	- **true**: If an error occurs when SQL statements are being executed, DMS skips the current SQL statement and continues to execute subsequent SQL statements.
+	//
+	// 	- **false**: If an error occurs when SQL statements are being executed, DMS stops executing subsequent SQL statements.
+	//
+	// example:
+	//
+	// false
+	IgnoreError *bool `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
+	// The import mode. Valid values:
+	//
+	// 	- **FAST_MODE**: fast mode. In the Execute step, the uploaded file is read and SQL statements are executed to import data to the specified destination database. Compared with the security mode, this mode can be used to import data in a less secure but more efficient manner.
+	//
+	// 	- **SAFE_MODE**: security mode. In the Precheck step, the uploaded file is parsed, and SQL statements or CSV file data is cached. In the Execute step, the cached SQL statements are read and executed to import data, or the cached CSV file data is read and imported to the specified destination database. Compared with the fast mode, this mode can be used to import data in a more secure but less efficient manner.
+	//
+	// example:
+	//
+	// FAST_MODE
+	ImportMode *string `json:"ImportMode,omitempty" xml:"ImportMode,omitempty"`
+	// The mode in which data is to be imported to the destination table. Valid values:
+	//
+	// 	- **INSERT**: The database checks the primary key during data insertion. If the primary key is duplicated, an error is reported.
+	//
+	// 	- **INSERT_IGNORE**: If the imported data contains data records that are the same as those in the destination table, the new data records are ignored.
+	//
+	// 	- **REPLACE_INTO**: If the imported data contains a row that has the same value for the primary key or unique index as an existing row in the destination table, the system deletes the existing row and inserts the new row into the destination table.
+	//
+	// >  This parameter is valid if the value of FileType is CSV or EXCEL.
+	//
+	// example:
+	//
+	// INSERT
+	InsertType *string `json:"InsertType,omitempty" xml:"InsertType,omitempty"`
 }
 
 func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig) String() string {
@@ -17973,7 +18146,7 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListDatabase struct {
-	// The ID of the database.
+	// The database ID.
 	//
 	// example:
 	//
@@ -17987,21 +18160,21 @@ type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListData
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The type of the environment to which the database belongs. Valid values:
 	//
-	// - product: production environment
+	// 	- product: production environment.
 	//
-	// - dev: development environment
+	// 	- dev: development environment.
 	//
-	// - pre: staging environment
+	// 	- pre: pre-release environment.
 	//
-	// - test: test environment
+	// 	- test: test environment.
 	//
-	// - sit: system integration testing (SIT) environment
+	// 	- sit: system integration testing (SIT) environment
 	//
-	// - uat: user acceptance testing (UAT) environment
+	// 	- uat: user acceptance testing (UAT) environment.
 	//
-	// - pet: stress testing environment
+	// 	- pet: stress testing environment.
 	//
-	// - stag: STAG environment
+	// 	- stag: staging environment.
 	//
 	// example:
 	//
@@ -18009,9 +18182,9 @@ type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListData
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// Indicates whether the database is a logical database. Valid values:
 	//
-	// - **true**: The database is a logical database.
+	// 	- **true.**: The database is a logical database.
 	//
-	// - **false**: The database is a physical database.
+	// 	- **false**: The database is a physical database.
 	//
 	// example:
 	//
@@ -18220,7 +18393,7 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDeta
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailTaskCheckDO struct {
-	// The status of the precheck. Valid values:
+	// The state of the precheck. Valid values:
 	//
 	// 	- **WAITING**: The ticket is pending precheck.
 	//
@@ -18248,7 +18421,7 @@ type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailTa
 	//
 	// PERMISSION_CHECK
 	CheckStep *string `json:"CheckStep,omitempty" xml:"CheckStep,omitempty"`
-	// The message that indicates a check step.
+	// The message that appears when a check step is executed.
 	//
 	// example:
 	//
@@ -19561,6 +19734,7 @@ func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetail) SetOrderDeta
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The state of the data export ticket. Valid values:
 	//
 	// 	- **PRE_CHECKING**: The ticket was being prechecked.
@@ -19601,6 +19775,11 @@ func (s GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo) String
 
 func (s GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo) GoString() string {
 	return s.String()
+}
+
+func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo) SetJobId(v int64) *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo {
+	s.JobId = &v
+	return s
 }
 
 func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo) SetJobStatus(v string) *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo {
@@ -42763,7 +42942,7 @@ func (s *ListSQLExecAuditLogResponse) SetBody(v *ListSQLExecAuditLogResponseBody
 type ListSQLReviewOriginSQLRequest struct {
 	// The parameters that are used to filter SQL statements involved in the ticket.
 	OrderActionDetail *ListSQLReviewOriginSQLRequestOrderActionDetail `json:"OrderActionDetail,omitempty" xml:"OrderActionDetail,omitempty" type:"Struct"`
-	// The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ID of the ticket.
+	// The ID of the SQL review ticket. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ticket ID.
 	//
 	// This parameter is required.
 	//
@@ -42771,7 +42950,7 @@ type ListSQLReviewOriginSQLRequest struct {
 	//
 	// 123321
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/465818.html) operation to query the ID of the tenant.
+	// The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
 	//
 	// example:
 	//
@@ -42805,43 +42984,43 @@ func (s *ListSQLReviewOriginSQLRequest) SetTid(v int64) *ListSQLReviewOriginSQLR
 type ListSQLReviewOriginSQLRequestOrderActionDetail struct {
 	// The review status of the SQL statement. Valid values:
 	//
-	// 	- **new**: The SQL statement is pending for analysis.
+	// 	- **new**: The SQL statement was waiting to be reviewed.
 	//
-	// 	- **unknown**: The SQL statement failed to be parsed.
+	// 	- **unknown**: The SQL statement cannot be parsed.
 	//
-	// 	- **check_not_pass**: The SQL statement failed the review.
+	// 	- **check_not_pass**: The SQL statement failed to pass the review.
 	//
 	// 	- **check_pass**: The SQL statement passed the review.
 	//
-	// 	- **force_pass**: The SQL statement passed the review by manual effort.
+	// 	- **force_pass**: The SQL statement passed the manual review.
 	//
-	// 	- **force_not_pass**: The SQL statement failed the review by manual effort.
+	// 	- **force_not_pass**: The SQL statement failed to pass the manual review.
 	//
 	// example:
 	//
 	// check_not_pass
 	CheckStatusResult *string `json:"CheckStatusResult,omitempty" xml:"CheckStatusResult,omitempty"`
-	// The ID of the file.
+	// The ID of the file that contains the SQL statements to be reviewed.
 	//
 	// example:
 	//
 	// 123345
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The paging settings.
+	// The pagination information.
 	Page *ListSQLReviewOriginSQLRequestOrderActionDetailPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 	// The optimization suggestion for the SQL statement. Valid values:
 	//
-	// 	- **MUST_IMPROVE**: The SQL statement must be improved.
+	// 	- **MUST_IMPROVE**: The SQL statement must be optimized.
 	//
 	// 	- **POTENTIAL_ISSUE**: The SQL statement contains potential issues.
 	//
-	// 	- **SUGGEST_IMPROVE**: We recommend that you improve the SQL statement.
+	// 	- **SUGGEST_IMPROVE**: We recommend that you optimize the SQL statement.
 	//
 	// 	- **USE_DMS_TOOLKIT**: We recommend that you change schemas without locking tables.
 	//
 	// 	- **USE_DMS_DML_UNLOCK**: We recommend that you change data without locking tables.
 	//
-	// 	- **TABLE_INDEX_SUGGEST**: We recommend that you use SQL statements that use indexes.
+	// 	- **TABLE_INDEX_SUGGEST**: We recommend that you optimize indexes for the SQL statement.
 	//
 	// example:
 	//
@@ -42878,13 +43057,13 @@ func (s *ListSQLReviewOriginSQLRequestOrderActionDetail) SetSQLReviewResult(v st
 }
 
 type ListSQLReviewOriginSQLRequestOrderActionDetailPage struct {
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -42913,7 +43092,7 @@ func (s *ListSQLReviewOriginSQLRequestOrderActionDetailPage) SetPageSize(v int32
 type ListSQLReviewOriginSQLShrinkRequest struct {
 	// The parameters that are used to filter SQL statements involved in the ticket.
 	OrderActionDetailShrink *string `json:"OrderActionDetail,omitempty" xml:"OrderActionDetail,omitempty"`
-	// The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ID of the ticket.
+	// The ID of the SQL review ticket. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ticket ID.
 	//
 	// This parameter is required.
 	//
@@ -42921,7 +43100,7 @@ type ListSQLReviewOriginSQLShrinkRequest struct {
 	//
 	// 123321
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/465818.html) operation to query the ID of the tenant.
+	// The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
 	//
 	// example:
 	//
@@ -42953,13 +43132,13 @@ func (s *ListSQLReviewOriginSQLShrinkRequest) SetTid(v int64) *ListSQLReviewOrig
 }
 
 type ListSQLReviewOriginSQLResponseBody struct {
-	// The error code returned.
+	// The error code that is returned.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message that is returned if the request failed.
 	//
 	// example:
 	//
@@ -42967,19 +43146,23 @@ type ListSQLReviewOriginSQLResponseBody struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The information about the parsed SQL statements.
 	OriginSQLList []*ListSQLReviewOriginSQLResponseBodyOriginSQLList `json:"OriginSQLList,omitempty" xml:"OriginSQLList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful. Valid values: Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of the SQL statements.
+	// The number of SQL statements in the file.
 	//
 	// example:
 	//
@@ -43028,29 +43211,29 @@ func (s *ListSQLReviewOriginSQLResponseBody) SetTotalCount(v int32) *ListSQLRevi
 type ListSQLReviewOriginSQLResponseBodyOriginSQLList struct {
 	// The review status of the SQL statement. Valid values:
 	//
-	// 	- **new**: The SQL statement is pending for analysis.
+	// 	- **new**: The SQL statement was waiting to be reviewed.
 	//
-	// 	- **unknown**: The SQL statement failed to be parsed.
+	// 	- **unknown**: The SQL statement cannot be parsed.
 	//
-	// 	- **check_not_pass**: The SQL statement failed the review.
+	// 	- **check_not_pass**: The SQL statement failed to pass the review.
 	//
 	// 	- **check_pass**: The SQL statement passed the review.
 	//
-	// 	- **force_pass**: The SQL statement passed the review by manual effort.
+	// 	- **force_pass**: The SQL statement passed the manual review.
 	//
-	// 	- **force_not_pass**: The SQL statement failed the review by manual effort.
+	// 	- **force_not_pass**: The SQL statement failed to pass the manual review.
 	//
 	// example:
 	//
 	// check_pass
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The time when the SQL statement is reviewed.
+	// The time when the SQL statement was reviewed.
 	//
 	// example:
 	//
 	// 2021-06-09 21:07:00
 	CheckedTime *string `json:"CheckedTime,omitempty" xml:"CheckedTime,omitempty"`
-	// The ID of the file.
+	// The file ID.
 	//
 	// example:
 	//
@@ -43062,25 +43245,25 @@ type ListSQLReviewOriginSQLResponseBodyOriginSQLList struct {
 	//
 	// test.sql
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The statistics of optimization suggestions for SQL statements. The value is a JSON string. The following optimization suggestions are involved:
+	// The statistics on the optimization suggestions for SQL statements. The value is a JSON string. Valid values:
 	//
-	// 	- **MUST_IMPROVE**: The SQL statement must be improved.
+	// 	- **MUST_IMPROVE**: The SQL statements must be optimized.
 	//
-	// 	- **POTENTIAL_ISSUE**: The SQL statement contains potential issues.
+	// 	- **POTENTIAL_ISSUE**: The SQL statements contain potential issues.
 	//
-	// 	- **SUGGEST_IMPROVE**: We recommend that you improve the SQL statement.
+	// 	- **SUGGEST_IMPROVE**: We recommend that you optimize the SQL statements.
 	//
 	// 	- **USEDMSTOOLKIT**: We recommend that you change schemas without locking tables.
 	//
 	// 	- **USEDMSDML_UNLOCK**: We recommend that you change data without locking tables.
 	//
-	// 	- **TABLEINDEXSUGGEST**: We recommend that you use SQL statements that use indexes.
+	// 	- **TABLEINDEXSUGGEST**: We recommend that you optimize indexes for the SQL statements.
 	//
 	// example:
 	//
 	// {"POTENTIAL_ISSUE":1,"SUGGEST_IMPROVE":1}
 	ReviewSummary *string `json:"ReviewSummary,omitempty" xml:"ReviewSummary,omitempty"`
-	// The SQL statement.
+	// The SQL statement in the file.
 	//
 	// example:
 	//
@@ -43092,19 +43275,19 @@ type ListSQLReviewOriginSQLResponseBodyOriginSQLList struct {
 	//
 	// 1111
 	SQLId *int64 `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// SQLName.
+	// The name of the SQL statement.
 	//
 	// example:
 	//
 	// getByPk
 	SQLName *string `json:"SQLName,omitempty" xml:"SQLName,omitempty"`
-	// The key that is used to query the details of optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2712723\\&spm) operation to query the details of optimization suggestions based on the key.
+	// The key that is used to query the information about optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://help.aliyun.com/document_detail/465919.html) operation to query the details based on this key.
 	//
 	// example:
 	//
 	// a57e54ec5433475ea3082d882fdb89c5
 	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
-	// The MD5 hash value of the SQL statement.
+	// The MD5 hash value that is obtained after the SQL statement is calculated by using a hash algorithm.
 	//
 	// example:
 	//
@@ -51037,6 +51220,124 @@ func (s *PauseDataCorrectSQLJobResponse) SetBody(v *PauseDataCorrectSQLJobRespon
 	return s
 }
 
+type PauseDataExportJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1276****
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 546****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s PauseDataExportJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataExportJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataExportJobRequest) SetJobId(v int64) *PauseDataExportJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *PauseDataExportJobRequest) SetOrderId(v int64) *PauseDataExportJobRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *PauseDataExportJobRequest) SetTid(v int64) *PauseDataExportJobRequest {
+	s.Tid = &v
+	return s
+}
+
+type PauseDataExportJobResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PauseDataExportJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataExportJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataExportJobResponseBody) SetErrorCode(v string) *PauseDataExportJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *PauseDataExportJobResponseBody) SetErrorMessage(v string) *PauseDataExportJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PauseDataExportJobResponseBody) SetRequestId(v string) *PauseDataExportJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PauseDataExportJobResponseBody) SetSuccess(v bool) *PauseDataExportJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PauseDataExportJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PauseDataExportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PauseDataExportJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataExportJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataExportJobResponse) SetHeaders(v map[string]*string) *PauseDataExportJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PauseDataExportJobResponse) SetStatusCode(v int32) *PauseDataExportJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PauseDataExportJobResponse) SetBody(v *PauseDataExportJobResponseBody) *PauseDataExportJobResponse {
+	s.Body = v
+	return s
+}
+
 type PreviewWorkflowRequest struct {
 	// This parameter is required.
 	//
@@ -52720,6 +53021,124 @@ func (s *RegisterUserResponse) SetBody(v *RegisterUserResponseBody) *RegisterUse
 	return s
 }
 
+type RemoveDataExportJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1276****
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 420****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s RemoveDataExportJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDataExportJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDataExportJobRequest) SetJobId(v int64) *RemoveDataExportJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *RemoveDataExportJobRequest) SetOrderId(v int64) *RemoveDataExportJobRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RemoveDataExportJobRequest) SetTid(v int64) *RemoveDataExportJobRequest {
+	s.Tid = &v
+	return s
+}
+
+type RemoveDataExportJobResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RemoveDataExportJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDataExportJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDataExportJobResponseBody) SetErrorCode(v string) *RemoveDataExportJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RemoveDataExportJobResponseBody) SetErrorMessage(v string) *RemoveDataExportJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RemoveDataExportJobResponseBody) SetRequestId(v string) *RemoveDataExportJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveDataExportJobResponseBody) SetSuccess(v bool) *RemoveDataExportJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RemoveDataExportJobResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveDataExportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveDataExportJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDataExportJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDataExportJobResponse) SetHeaders(v map[string]*string) *RemoveDataExportJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveDataExportJobResponse) SetStatusCode(v int32) *RemoveDataExportJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveDataExportJobResponse) SetBody(v *RemoveDataExportJobResponseBody) *RemoveDataExportJobResponse {
+	s.Body = v
+	return s
+}
+
 type RestartDataCorrectSQLJobRequest struct {
 	// The ID of the SQL task. You can call the [GetDataCorrectTaskDetail](https://help.aliyun.com/document_detail/208481.html) and [ListDBTaskSQLJob](https://help.aliyun.com/document_detail/207049.html) operations to obtain the value of this parameter.
 	//
@@ -52869,6 +53288,124 @@ func (s *RestartDataCorrectSQLJobResponse) SetStatusCode(v int32) *RestartDataCo
 }
 
 func (s *RestartDataCorrectSQLJobResponse) SetBody(v *RestartDataCorrectSQLJobResponseBody) *RestartDataCorrectSQLJobResponse {
+	s.Body = v
+	return s
+}
+
+type RestartDataExportJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1276****
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 420****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 23****
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s RestartDataExportJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDataExportJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDataExportJobRequest) SetJobId(v int64) *RestartDataExportJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *RestartDataExportJobRequest) SetOrderId(v int64) *RestartDataExportJobRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RestartDataExportJobRequest) SetTid(v int64) *RestartDataExportJobRequest {
+	s.Tid = &v
+	return s
+}
+
+type RestartDataExportJobResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RestartDataExportJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDataExportJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDataExportJobResponseBody) SetErrorCode(v string) *RestartDataExportJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RestartDataExportJobResponseBody) SetErrorMessage(v string) *RestartDataExportJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RestartDataExportJobResponseBody) SetRequestId(v string) *RestartDataExportJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RestartDataExportJobResponseBody) SetSuccess(v bool) *RestartDataExportJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RestartDataExportJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartDataExportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestartDataExportJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDataExportJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDataExportJobResponse) SetHeaders(v map[string]*string) *RestartDataExportJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartDataExportJobResponse) SetStatusCode(v int32) *RestartDataExportJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartDataExportJobResponse) SetBody(v *RestartDataExportJobResponseBody) *RestartDataExportJobResponse {
 	s.Body = v
 	return s
 }
@@ -53291,7 +53828,7 @@ func (s *RevokeTemplateAuthorityResponse) SetBody(v *RevokeTemplateAuthorityResp
 }
 
 type RevokeUserPermissionRequest struct {
-	// The ID of the database. The database can be a physical database or a logical database.
+	// The database ID. The database can be a physical database or a logical database.
 	//
 	// 	- To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
 	//
@@ -53301,17 +53838,17 @@ type RevokeUserPermissionRequest struct {
 	//
 	// 1860****
 	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The object type on which the permission you want to revoke from the user. Valid values:
+	// The type of the object on which you want to revoke permissions from a user. Valid values:
 	//
-	// 	- **INSTANCE**: database instances
+	// 	- **INSTANCE**: instances.
 	//
-	// 	- **DATABASE**: physical databases
+	// 	- **DATABASE**: physical databases.
 	//
-	// 	- **LOGIC_DATABASE**: logical databases
+	// 	- **LOGIC_DATABASE**: logical databases.
 	//
-	// 	- **TABLE**: physical tables
+	// 	- **TABLE**: physical tables.
 	//
-	// 	- **LOGIC_TABLE**: logical tables
+	// 	- **LOGIC_TABLE**: logical tables.
 	//
 	// This parameter is required.
 	//
@@ -53319,7 +53856,7 @@ type RevokeUserPermissionRequest struct {
 	//
 	// DATABASE
 	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	// The ID of the database instance. You must specify this parameter when you revoke a permission from the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the database instance ID.
+	// The database instance ID. You must specify this parameter if you revoke a permission from the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the ID of the database instance.
 	//
 	// example:
 	//
@@ -53331,21 +53868,27 @@ type RevokeUserPermissionRequest struct {
 	//
 	// 	- **false**: The database is a physical database.
 	//
-	// > 	- If the database is a logical database, set this parameter to **true**.
+	// >
 	//
-	// > 	- If the database is a physical database, set this parameter to **false**.
+	// 	- If the database is a logical database, set this parameter to **true**.
+	//
+	// 	- If the database is a physical database, set this parameter to **false**.
 	//
 	// example:
 	//
 	// false
 	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The type of the permission. Valid values:
+	// The type of the permissions. Valid values:
 	//
-	// 	- **QUERY**: the data query permission
+	// 	- **QUERY**: query permissions.
 	//
-	// 	- **EXPORT**: the data export permission
+	// 	- **EXPORT**: export permissions.
 	//
-	// 	- **CORRECT**: the data change permission
+	// 	- **CORRECT**: change permissions.
+	//
+	// 	- **LOGIN**: logon permissions.
+	//
+	// 	- **PERF**: query permissions on the performance details of an instance.
 	//
 	// This parameter is required.
 	//
@@ -53353,7 +53896,7 @@ type RevokeUserPermissionRequest struct {
 	//
 	// CORRECT
 	PermTypes *string `json:"PermTypes,omitempty" xml:"PermTypes,omitempty"`
-	// The ID of the table. You must specify this parameter when you revoke a permission from the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table ID.
+	// The table ID. You must specify this parameter if you revoke a permission from the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table ID.
 	//
 	// example:
 	//
@@ -53365,13 +53908,13 @@ type RevokeUserPermissionRequest struct {
 	//
 	// table_name
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
+	// The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
 	//
 	// example:
 	//
 	// 3***
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	// The ID of the permission. You can call the [ListUserPermission](https://help.aliyun.com/document_detail/146957.html) operation to query the permission ID.
+	// The permission ID. You can call the [ListUserPermission](https://help.aliyun.com/document_detail/146957.html) operation to query the permission ID.
 	//
 	// This parameter is required.
 	//
@@ -53379,7 +53922,7 @@ type RevokeUserPermissionRequest struct {
 	//
 	// 774****
 	UserAccessId *string `json:"UserAccessId,omitempty" xml:"UserAccessId,omitempty"`
-	// The ID of the user. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query the user ID.
+	// The user ID. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query the ID of the user.
 	//
 	// This parameter is required.
 	//
@@ -53448,19 +53991,19 @@ func (s *RevokeUserPermissionRequest) SetUserId(v string) *RevokeUserPermissionR
 }
 
 type RevokeUserPermissionResponseBody struct {
-	// The error code returned.
+	// The error code that is returned.
 	//
 	// example:
 	//
 	// MissingUserId
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message that is returned.
 	//
 	// example:
 	//
 	// UserId is mandatory for this action.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -53468,9 +54011,9 @@ type RevokeUserPermissionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// 	- **true**
 	//
-	// 	- **false**: The request failed.
+	// 	- **false**
 	//
 	// example:
 	//
@@ -55751,6 +56294,124 @@ func (s *SubmitStructSyncOrderApprovalResponse) SetStatusCode(v int32) *SubmitSt
 }
 
 func (s *SubmitStructSyncOrderApprovalResponse) SetBody(v *SubmitStructSyncOrderApprovalResponseBody) *SubmitStructSyncOrderApprovalResponse {
+	s.Body = v
+	return s
+}
+
+type SuspendDataExportJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1276****
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 903****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s SuspendDataExportJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendDataExportJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendDataExportJobRequest) SetJobId(v int64) *SuspendDataExportJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *SuspendDataExportJobRequest) SetOrderId(v int64) *SuspendDataExportJobRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *SuspendDataExportJobRequest) SetTid(v int64) *SuspendDataExportJobRequest {
+	s.Tid = &v
+	return s
+}
+
+type SuspendDataExportJobResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// FE8EE2F1-4880-46BC-A704-5CF63EAF9A04
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SuspendDataExportJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendDataExportJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendDataExportJobResponseBody) SetErrorCode(v string) *SuspendDataExportJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SuspendDataExportJobResponseBody) SetErrorMessage(v string) *SuspendDataExportJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SuspendDataExportJobResponseBody) SetRequestId(v string) *SuspendDataExportJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SuspendDataExportJobResponseBody) SetSuccess(v bool) *SuspendDataExportJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SuspendDataExportJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendDataExportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SuspendDataExportJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendDataExportJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendDataExportJobResponse) SetHeaders(v map[string]*string) *SuspendDataExportJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendDataExportJobResponse) SetStatusCode(v int32) *SuspendDataExportJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SuspendDataExportJobResponse) SetBody(v *SuspendDataExportJobResponseBody) *SuspendDataExportJobResponse {
 	s.Body = v
 	return s
 }
@@ -73785,6 +74446,74 @@ func (client *Client) PauseDataCorrectSQLJob(request *PauseDataCorrectSQLJobRequ
 
 // Summary:
 //
+// 终止数据导出任务
+//
+// @param request - PauseDataExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseDataExportJobResponse
+func (client *Client) PauseDataExportJobWithOptions(request *PauseDataExportJobRequest, runtime *util.RuntimeOptions) (_result *PauseDataExportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PauseDataExportJob"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PauseDataExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 终止数据导出任务
+//
+// @param request - PauseDataExportJobRequest
+//
+// @return PauseDataExportJobResponse
+func (client *Client) PauseDataExportJob(request *PauseDataExportJobRequest) (_result *PauseDataExportJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PauseDataExportJobResponse{}
+	_body, _err := client.PauseDataExportJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建工单审批流
 //
 // @param request - PreviewWorkflowRequest
@@ -74445,6 +75174,74 @@ func (client *Client) RegisterUser(request *RegisterUserRequest) (_result *Regis
 
 // Summary:
 //
+// 删除数据导出任务
+//
+// @param request - RemoveDataExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDataExportJobResponse
+func (client *Client) RemoveDataExportJobWithOptions(request *RemoveDataExportJobRequest, runtime *util.RuntimeOptions) (_result *RemoveDataExportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveDataExportJob"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveDataExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据导出任务
+//
+// @param request - RemoveDataExportJobRequest
+//
+// @return RemoveDataExportJobResponse
+func (client *Client) RemoveDataExportJob(request *RemoveDataExportJobRequest) (_result *RemoveDataExportJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveDataExportJobResponse{}
+	_body, _err := client.RemoveDataExportJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Reruns a failed SQL task for data change.
 //
 // @param request - RestartDataCorrectSQLJobRequest
@@ -74508,6 +75305,74 @@ func (client *Client) RestartDataCorrectSQLJob(request *RestartDataCorrectSQLJob
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDataCorrectSQLJobResponse{}
 	_body, _err := client.RestartDataCorrectSQLJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启数据导出任务
+//
+// @param request - RestartDataExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDataExportJobResponse
+func (client *Client) RestartDataExportJobWithOptions(request *RestartDataExportJobRequest, runtime *util.RuntimeOptions) (_result *RestartDataExportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartDataExportJob"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartDataExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启数据导出任务
+//
+// @param request - RestartDataExportJobRequest
+//
+// @return RestartDataExportJobResponse
+func (client *Client) RestartDataExportJob(request *RestartDataExportJobRequest) (_result *RestartDataExportJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartDataExportJobResponse{}
+	_body, _err := client.RestartDataExportJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -74737,7 +75602,7 @@ func (client *Client) RevokeTemplateAuthority(request *RevokeTemplateAuthorityRe
 
 // Summary:
 //
-// Revokes a permission on a resource from a user.
+// Revokes the permissions on instances, databases, and tables from a user.
 //
 // @param request - RevokeUserPermissionRequest
 //
@@ -74815,7 +75680,7 @@ func (client *Client) RevokeUserPermissionWithOptions(request *RevokeUserPermiss
 
 // Summary:
 //
-// Revokes a permission on a resource from a user.
+// Revokes the permissions on instances, databases, and tables from a user.
 //
 // @param request - RevokeUserPermissionRequest
 //
@@ -75450,6 +76315,74 @@ func (client *Client) SubmitStructSyncOrderApproval(request *SubmitStructSyncOrd
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitStructSyncOrderApprovalResponse{}
 	_body, _err := client.SubmitStructSyncOrderApprovalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 中断数据导出任务
+//
+// @param request - SuspendDataExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendDataExportJobResponse
+func (client *Client) SuspendDataExportJobWithOptions(request *SuspendDataExportJobRequest, runtime *util.RuntimeOptions) (_result *SuspendDataExportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendDataExportJob"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SuspendDataExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 中断数据导出任务
+//
+// @param request - SuspendDataExportJobRequest
+//
+// @return SuspendDataExportJobResponse
+func (client *Client) SuspendDataExportJob(request *SuspendDataExportJobRequest) (_result *SuspendDataExportJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SuspendDataExportJobResponse{}
+	_body, _err := client.SuspendDataExportJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
