@@ -11,6 +11,7 @@ import (
 
 type AIAgentRuntimeConfig struct {
 	AvatarChat3D *AIAgentRuntimeConfigAvatarChat3D `json:"AvatarChat3D,omitempty" xml:"AvatarChat3D,omitempty" type:"Struct"`
+	VisionChat   *AIAgentRuntimeConfigVisionChat   `json:"VisionChat,omitempty" xml:"VisionChat,omitempty" type:"Struct"`
 	VoiceChat    *AIAgentRuntimeConfigVoiceChat    `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
 }
 
@@ -24,6 +25,11 @@ func (s AIAgentRuntimeConfig) GoString() string {
 
 func (s *AIAgentRuntimeConfig) SetAvatarChat3D(v *AIAgentRuntimeConfigAvatarChat3D) *AIAgentRuntimeConfig {
 	s.AvatarChat3D = v
+	return s
+}
+
+func (s *AIAgentRuntimeConfig) SetVisionChat(v *AIAgentRuntimeConfigVisionChat) *AIAgentRuntimeConfig {
+	s.VisionChat = v
 	return s
 }
 
@@ -61,6 +67,35 @@ func (s *AIAgentRuntimeConfigAvatarChat3D) SetChannelId(v string) *AIAgentRuntim
 	return s
 }
 
+type AIAgentRuntimeConfigVisionChat struct {
+	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
+	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s AIAgentRuntimeConfigVisionChat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentRuntimeConfigVisionChat) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentRuntimeConfigVisionChat) SetAgentUserId(v string) *AIAgentRuntimeConfigVisionChat {
+	s.AgentUserId = &v
+	return s
+}
+
+func (s *AIAgentRuntimeConfigVisionChat) SetAuthToken(v string) *AIAgentRuntimeConfigVisionChat {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *AIAgentRuntimeConfigVisionChat) SetChannelId(v string) *AIAgentRuntimeConfigVisionChat {
+	s.ChannelId = &v
+	return s
+}
+
 type AIAgentRuntimeConfigVoiceChat struct {
 	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
 	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
@@ -92,6 +127,7 @@ func (s *AIAgentRuntimeConfigVoiceChat) SetChannelId(v string) *AIAgentRuntimeCo
 
 type AIAgentTemplateConfig struct {
 	AvatarChat3D *AIAgentTemplateConfigAvatarChat3D `json:"AvatarChat3D,omitempty" xml:"AvatarChat3D,omitempty" type:"Struct"`
+	VisionChat   *AIAgentTemplateConfigVisionChat   `json:"VisionChat,omitempty" xml:"VisionChat,omitempty" type:"Struct"`
 	VoiceChat    *AIAgentTemplateConfigVoiceChat    `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
 }
 
@@ -108,12 +144,18 @@ func (s *AIAgentTemplateConfig) SetAvatarChat3D(v *AIAgentTemplateConfigAvatarCh
 	return s
 }
 
+func (s *AIAgentTemplateConfig) SetVisionChat(v *AIAgentTemplateConfigVisionChat) *AIAgentTemplateConfig {
+	s.VisionChat = v
+	return s
+}
+
 func (s *AIAgentTemplateConfig) SetVoiceChat(v *AIAgentTemplateConfigVoiceChat) *AIAgentTemplateConfig {
 	s.VoiceChat = v
 	return s
 }
 
 type AIAgentTemplateConfigAvatarChat3D struct {
+	AsrMaxSilence        *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	AvatarId             *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown     *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
@@ -128,6 +170,11 @@ func (s AIAgentTemplateConfigAvatarChat3D) String() string {
 
 func (s AIAgentTemplateConfigAvatarChat3D) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetAsrMaxSilence(v int32) *AIAgentTemplateConfigAvatarChat3D {
+	s.AsrMaxSilence = &v
+	return s
 }
 
 func (s *AIAgentTemplateConfigAvatarChat3D) SetAvatarId(v string) *AIAgentTemplateConfigAvatarChat3D {
@@ -160,7 +207,61 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetVolume(v int64) *AIAgentTemplateC
 	return s
 }
 
+type AIAgentTemplateConfigVisionChat struct {
+	AsrMaxSilence            *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	EnableIntelligentSegment *bool   `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	EnableVoiceInterrupt     *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	GracefulShutdown         *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting                 *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	VoiceId                  *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	Volume                   *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s AIAgentTemplateConfigVisionChat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentTemplateConfigVisionChat) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetAsrMaxSilence(v int32) *AIAgentTemplateConfigVisionChat {
+	s.AsrMaxSilence = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetEnableIntelligentSegment(v bool) *AIAgentTemplateConfigVisionChat {
+	s.EnableIntelligentSegment = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetEnableVoiceInterrupt(v bool) *AIAgentTemplateConfigVisionChat {
+	s.EnableVoiceInterrupt = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetGracefulShutdown(v bool) *AIAgentTemplateConfigVisionChat {
+	s.GracefulShutdown = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetGreeting(v string) *AIAgentTemplateConfigVisionChat {
+	s.Greeting = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetVoiceId(v string) *AIAgentTemplateConfigVisionChat {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetVolume(v int64) *AIAgentTemplateConfigVisionChat {
+	s.Volume = &v
+	return s
+}
+
 type AIAgentTemplateConfigVoiceChat struct {
+	AsrMaxSilence        *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown     *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
 	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
@@ -174,6 +275,11 @@ func (s AIAgentTemplateConfigVoiceChat) String() string {
 
 func (s AIAgentTemplateConfigVoiceChat) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetAsrMaxSilence(v int32) *AIAgentTemplateConfigVoiceChat {
+	s.AsrMaxSilence = &v
+	return s
 }
 
 func (s *AIAgentTemplateConfigVoiceChat) SetEnableVoiceInterrupt(v bool) *AIAgentTemplateConfigVoiceChat {
@@ -201,13 +307,254 @@ func (s *AIAgentTemplateConfigVoiceChat) SetVolume(v int64) *AIAgentTemplateConf
 	return s
 }
 
+type AppInfoDTO struct {
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 1-普通应用，2-内嵌SDK.
+	AppType   *int32                 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	GmtCreate *string                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	ItemId    *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Platforms []*AppInfoDTOPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	UserId    *int64                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AppInfoDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppInfoDTO) GoString() string {
+	return s.String()
+}
+
+func (s *AppInfoDTO) SetAppName(v string) *AppInfoDTO {
+	s.AppName = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetAppType(v int32) *AppInfoDTO {
+	s.AppType = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetGmtCreate(v string) *AppInfoDTO {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetItemId(v string) *AppInfoDTO {
+	s.ItemId = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetPlatforms(v []*AppInfoDTOPlatforms) *AppInfoDTO {
+	s.Platforms = v
+	return s
+}
+
+func (s *AppInfoDTO) SetUserId(v int64) *AppInfoDTO {
+	s.UserId = &v
+	return s
+}
+
+type AppInfoDTOPlatforms struct {
+	ItemId         *string   `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LicenseItemIds []*string `json:"LicenseItemIds,omitempty" xml:"LicenseItemIds,omitempty" type:"Repeated"`
+	PkgName        *string   `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
+	PkgSignature   *string   `json:"PkgSignature,omitempty" xml:"PkgSignature,omitempty"`
+	PlatformType   *int64    `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	Type           *int64    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AppInfoDTOPlatforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppInfoDTOPlatforms) GoString() string {
+	return s.String()
+}
+
+func (s *AppInfoDTOPlatforms) SetItemId(v string) *AppInfoDTOPlatforms {
+	s.ItemId = &v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetLicenseItemIds(v []*string) *AppInfoDTOPlatforms {
+	s.LicenseItemIds = v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetPkgName(v string) *AppInfoDTOPlatforms {
+	s.PkgName = &v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetPkgSignature(v string) *AppInfoDTOPlatforms {
+	s.PkgSignature = &v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetPlatformType(v int64) *AppInfoDTOPlatforms {
+	s.PlatformType = &v
+	return s
+}
+
+func (s *AppInfoDTOPlatforms) SetType(v int64) *AppInfoDTOPlatforms {
+	s.Type = &v
+	return s
+}
+
+type LicenseInstanceAppDTO struct {
+	AppId            *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BeginOn          *string                                `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
+	ContractNo       *string                                `json:"ContractNo,omitempty" xml:"ContractNo,omitempty"`
+	CreationTime     *string                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ExpiredOn        *string                                `json:"ExpiredOn,omitempty" xml:"ExpiredOn,omitempty"`
+	InstanceId       *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemId           *string                                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LicenseConfigs   []*LicenseInstanceAppDTOLicenseConfigs `json:"LicenseConfigs,omitempty" xml:"LicenseConfigs,omitempty" type:"Repeated"`
+	ModificationTime *string                                `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	Status           *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId           *int64                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s LicenseInstanceAppDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LicenseInstanceAppDTO) GoString() string {
+	return s.String()
+}
+
+func (s *LicenseInstanceAppDTO) SetAppId(v string) *LicenseInstanceAppDTO {
+	s.AppId = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetBeginOn(v string) *LicenseInstanceAppDTO {
+	s.BeginOn = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetContractNo(v string) *LicenseInstanceAppDTO {
+	s.ContractNo = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetCreationTime(v string) *LicenseInstanceAppDTO {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetExpiredOn(v string) *LicenseInstanceAppDTO {
+	s.ExpiredOn = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetInstanceId(v string) *LicenseInstanceAppDTO {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetItemId(v string) *LicenseInstanceAppDTO {
+	s.ItemId = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetLicenseConfigs(v []*LicenseInstanceAppDTOLicenseConfigs) *LicenseInstanceAppDTO {
+	s.LicenseConfigs = v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetModificationTime(v string) *LicenseInstanceAppDTO {
+	s.ModificationTime = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetStatus(v string) *LicenseInstanceAppDTO {
+	s.Status = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTO) SetUserId(v int64) *LicenseInstanceAppDTO {
+	s.UserId = &v
+	return s
+}
+
+type LicenseInstanceAppDTOLicenseConfigs struct {
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	FeatureIds      *string `json:"FeatureIds,omitempty" xml:"FeatureIds,omitempty"`
+	SdkId           *int32  `json:"SdkId,omitempty" xml:"SdkId,omitempty"`
+	SdkName         *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	Subscription    *string `json:"Subscription,omitempty" xml:"Subscription,omitempty"`
+	SubscriptionImp *string `json:"SubscriptionImp,omitempty" xml:"SubscriptionImp,omitempty"`
+	SubscriptionPkg *string `json:"SubscriptionPkg,omitempty" xml:"SubscriptionPkg,omitempty"`
+}
+
+func (s LicenseInstanceAppDTOLicenseConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LicenseInstanceAppDTOLicenseConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetBusinessType(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetFeatureIds(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.FeatureIds = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSdkId(v int32) *LicenseInstanceAppDTOLicenseConfigs {
+	s.SdkId = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSdkName(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.SdkName = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscription(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.Subscription = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionImp(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.SubscriptionImp = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionPkg(v string) *LicenseInstanceAppDTOLicenseConfigs {
+	s.SubscriptionPkg = &v
+	return s
+}
+
 type AddCategoryRequest struct {
+	// The category name.
+	//
+	// 	- The value can be up to 64 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// This parameter is required.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The ID of the parent category.
+	//
 	// example:
 	//
 	// 5
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The type of the category. Valid values:
+	//
+	// 	- default: audio, video, and image files. This is the default value.
+	//
+	// 	- material: short video materials.
+	//
 	// example:
 	//
 	// default
@@ -238,7 +585,10 @@ func (s *AddCategoryRequest) SetType(v string) *AddCategoryRequest {
 }
 
 type AddCategoryResponseBody struct {
+	// The information about the category.
 	Category *AddCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
@@ -264,19 +614,32 @@ func (s *AddCategoryResponseBody) SetRequestId(v string) *AddCategoryResponseBod
 }
 
 type AddCategoryResponseBodyCategory struct {
+	// The ID of the created category.
+	//
 	// example:
 	//
 	// 45
-	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category name.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The level of the category. A value of **0*	- indicates a level-1 category, a value of **1*	- indicates a level-2 category, and a value of **2*	- indicates a level-3 category.
+	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the parent category. By default, if ParentId is left empty or less than 1, -1 is returned, which indicates that the created category is the root directory.
+	//
 	// example:
 	//
 	// -1
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The type of the category. Valid values:
+	//
+	// 	- **default**: audio, video, and image files. This is the default value.
+	//
+	// 	- **material**: short video materials.
+	//
 	// example:
 	//
 	// default
@@ -346,12 +709,26 @@ func (s *AddCategoryResponse) SetBody(v *AddCategoryResponseBody) *AddCategoryRe
 }
 
 type AddEditingProjectMaterialsRequest struct {
+	// The material ID. Separate multiple material IDs with commas (,). Each type supports up to 10 material IDs. The following material types are supported:
+	//
+	// 	- video
+	//
+	// 	- audio
+	//
+	// 	- image
+	//
+	// 	- liveStream
+	//
+	// 	- editingProject
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"video":"*****2e057304fcd9b145c5cafc*****", "image":"****8021a8d493da643c8acd98*****,*****cb6307a4edea614d8b3f3c*****", "liveStream": "[{\\"appName\\":\\"testrecord\\",\\"domainName\\":\\"test.alivecdn.com\\",\\"liveUrl\\":\\"rtmp://test.alivecdn.com/testrecord/teststream\\",\\"streamName\\":\\"teststream\\"}]", "editingProject": "*****9b145c5cafc2e057304fcd*****"}
 	MaterialMaps *string `json:"MaterialMaps,omitempty" xml:"MaterialMaps,omitempty"`
+	// The ID of the online editing project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -379,16 +756,24 @@ func (s *AddEditingProjectMaterialsRequest) SetProjectId(v string) *AddEditingPr
 }
 
 type AddEditingProjectMaterialsResponseBody struct {
+	// The materials associated with the live stream.
 	LiveMaterials []*AddEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
-	MediaInfos    []*AddEditingProjectMaterialsResponseBodyMediaInfos    `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	// The media assets that meet the specified conditions.
+	MediaInfos []*AddEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// *****67ae06542b9b93e0d1c387*****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The materials associated with the editing project. A live stream editing project will be associated with a regular editing project after the live streaming ends.
+	//
 	// example:
 	//
 	// *****9b145c5cafc2e057304fcd*****
 	ProjectMaterials []*string `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// *****ACB-44F2-5F2D-88D7-1283E70*****
@@ -429,18 +814,26 @@ func (s *AddEditingProjectMaterialsResponseBody) SetRequestId(v string) *AddEdit
 }
 
 type AddEditingProjectMaterialsResponseBodyLiveMaterials struct {
+	// The application name of the live stream.
+	//
 	// example:
 	//
 	// testrecord
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The domain name of the live stream.
+	//
 	// example:
 	//
 	// test.alivecdn.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The URL of the live stream.
+	//
 	// example:
 	//
 	// rtmp://test.alivecdn.com/testrecord/teststream
 	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+	// The name of the live stream.
+	//
 	// example:
 	//
 	// teststream
@@ -477,8 +870,11 @@ func (s *AddEditingProjectMaterialsResponseBodyLiveMaterials) SetStreamName(v st
 
 type AddEditingProjectMaterialsResponseBodyMediaInfos struct {
 	// FileInfos
-	FileInfoList   []*AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	FileInfoList []*AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// The basic information of the media assets.
 	MediaBasicInfo *AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// *****5cb2e35433198daae94a72*****
@@ -509,6 +905,7 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfos) SetMediaId(v string) 
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList struct {
+	// The basic information of the file, including the duration and size.
 	FileBasicInfo *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -526,46 +923,78 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) SetFileBa
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 1132.68
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 216.206667
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 30611502
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file status.
+	//
+	// \\-Uploading
+	//
+	// \\-Normal
+	//
+	// \\-UploadFail
+	//
+	// \\-Disable
+	//
+	// \\-Deleted
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The Object Storage Service (OSS) URL of the file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The container format.
+	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 960
@@ -636,74 +1065,118 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicIn
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
+	// The business type of the media asset.
+	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The category of the media asset.
+	//
 	// example:
 	//
 	// audio
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The thumbnail URL of the media asset.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the media asset was created.
+	//
 	// example:
 	//
 	// 2020-12-23T03:32:59Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the media asset was deleted.
+	//
 	// example:
 	//
 	// 2020-12-23T03:32:59Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// The description of the media asset.
+	//
 	// example:
 	//
 	// sample_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the media asset in another service.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/file.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// *****5cb2e35433198daae94a72*****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags of the media asset.
+	//
 	// example:
 	//
 	// sample_tag
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset.
+	//
 	// example:
 	//
 	// Video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The time when the media asset was last modified.
+	//
 	// example:
 	//
 	// 2020-12-23T03:32:59Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The snapshots of the media asset.
+	//
 	// example:
 	//
 	// null
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// The source of the media asset.
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The sprite of the media asset.
+	//
 	// example:
 	//
 	// http://outin-example.oss-cn-shanghai.aliyuncs.com/test.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// The status of the media asset. Valid values:
+	//
+	// \\- Init
+	//
+	// \\- Preparing
+	//
+	// \\- PrepareFail
+	//
+	// \\- Normal
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The title of the media asset.
+	//
 	// example:
 	//
 	// default_title_2020-12-23T03:32:59Z
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The transcoding status of the media asset.
+	//
 	// example:
 	//
 	// Init
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// userData
@@ -913,12 +1386,16 @@ func (s *AddFavoritePublicMediaResponse) SetBody(v *AddFavoritePublicMediaRespon
 }
 
 type AddMediaMarksRequest struct {
+	// The ID of the media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 53afdf003a2171ed9c6a16b5feac6402
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The mark information. The value must be a JSONArray.
+	//
 	// This parameter is required.
 	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
 }
@@ -942,14 +1419,20 @@ func (s *AddMediaMarksRequest) SetMediaMarks(v string) *AddMediaMarksRequest {
 }
 
 type AddMediaMarksResponseBody struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 53afdf003a******6a16b5feac6402
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The IDs of the marks that are added.
+	//
 	// example:
 	//
 	// mark-f82d*****4994b0915948ef7e16,mark-3d56d*****4c8fa9ae2a1f9e5d2d60
 	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 771A1414-27BF-53E6-AB73-EFCB*****ACF
@@ -1241,17 +1724,46 @@ func (s *AddTemplateResponse) SetBody(v *AddTemplateResponseBody) *AddTemplateRe
 }
 
 type AlterSearchIndexRequest struct {
+	// The configurations of the index.
+	//
+	// >  You must specify either IndexStatus or IndexConfig.
+	//
 	// example:
 	//
 	// {}
 	IndexConfig *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	// The state of the index. Valid values:
+	//
+	// 	- active (default): the index is enabled.
+	//
+	// 	- Deactive: the index is not enabled.
+	//
+	// >  You must specify either IndexStatus or IndexConfig.
+	//
+	// example:
+	//
+	// Active
 	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	// The category of the index. Valid values:
+	//
+	// 	- mm: large visual model.
+	//
+	// 	- face: face recognition.
+	//
+	// 	- aiLabel: smart tagging.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mm
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// The name of the search library.
+	//
+	// 	- If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
+	//
+	// 	- To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
+	//
 	// example:
 	//
 	// test1
@@ -1287,14 +1799,28 @@ func (s *AlterSearchIndexRequest) SetSearchLibName(v string) *AlterSearchIndexRe
 }
 
 type AlterSearchIndexResponseBody struct {
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AlterSearchIndexResponseBody) String() string {
@@ -1350,10 +1876,18 @@ func (s *AlterSearchIndexResponse) SetBody(v *AlterSearchIndexResponseBody) *Alt
 }
 
 type BatchGetMediaInfosRequest struct {
+	// The additional information that you want to query about the media assets. By default, only BasicInfo is returned. The following additional information can be queried:
+	//
+	// \\- FileInfo
+	//
+	// \\- DynamicMetaData
+	//
 	// example:
 	//
 	// FileInfo,DynamicMetaData
 	AdditionType *string `json:"AdditionType,omitempty" xml:"AdditionType,omitempty"`
+	// The IDs of the media assets that you want to query. Separate the IDs with commas (,).
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******,******c48fb37407365d4f2cd8******
@@ -1379,7 +1913,10 @@ func (s *BatchGetMediaInfosRequest) SetMediaIds(v string) *BatchGetMediaInfosReq
 }
 
 type BatchGetMediaInfosResponseBody struct {
+	// The queried media assets.
 	MediaInfos []*BatchGetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -1406,8 +1943,11 @@ func (s *BatchGetMediaInfosResponseBody) SetRequestId(v string) *BatchGetMediaIn
 
 type BatchGetMediaInfosResponseBodyMediaInfos struct {
 	// FileInfos
-	FileInfoList   []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	FileInfoList []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// The basic information of the media asset.
 	MediaBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ******c48fb37407365d4f2cd8******
@@ -1438,6 +1978,7 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMediaId(v string) *BatchGe
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosFileInfoList struct {
+	// The basic information of the file, including the duration and size.
 	FileBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -1455,46 +1996,68 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetFileBasicInfo(
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 1132.68
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 200
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// example
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 30611502
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file status.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The Object Storage Service (OSS) URL of the file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The container format.
+	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 1920
@@ -1565,24 +2128,36 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetW
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
+	// The business type of the media asset.
+	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The category of the media asset.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The thumbnail URL of the media asset.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the media asset was created.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the media asset was deleted.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// The description of the media asset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the media asset in another service.
+	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
@@ -1592,37 +2167,67 @@ type BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	// example:
 	//
 	// ******c48fb37407365d4f2cd8******
-	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags of the media asset.
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset. Valid values:
+	//
+	// \\- image
+	//
+	// \\- video
+	//
+	// \\- audio
+	//
+	// \\- text
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The time when the media asset was last modified.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:12Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The snapshots of the media asset.
+	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"3","iceJobId":"******f48f0e4154976b2b8c45******","location":"oss-cn-beijing","snapshotRegular":"example.jpg","templateId":"******e6a6440b29eb60bd7c******"}]
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// The source of the media asset. Valid values:
+	//
+	// \\- oss
+	//
+	// \\- vod
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The sprite.
+	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// The status of the media asset.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the media asset.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The transcoding status of the media asset.
+	//
 	// example:
 	//
 	// Init
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// userDataTest
@@ -2709,36 +3314,66 @@ func (s *CreateDNADBResponse) SetBody(v *CreateDNADBResponseBody) *CreateDNADBRe
 }
 
 type CreateEditingProjectRequest struct {
+	// The business configuration of the project. This parameter can be ignored for general editing projects.
+	//
+	// For a live stream editing project, observe the following rules: OutputMediaConfig.StorageLocation is required. OutputMediaConfig.Path is optional. If you do not specify this option, the live streaming clips are stored in the root directory by default.
+	//
+	// Valid values of OutputMediaTarget include vod-media and oss-object. If you do not specify OutputMediaTarget, the default value oss-object is used.
+	//
+	// If you set OutputMediaTarget to vod-media, the setting of OutputMediaConfig.Path does not take effect.
+	//
 	// example:
 	//
 	// { "OutputMediaConfig" : { "StorageLocation": "test-bucket.oss-cn-shanghai.aliyuncs.com", "Path": "test-path" }, "OutputMediaTarget": "oss-object", "ReservationTime": "2021-06-21T08:05:00Z" }
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
-	ClipsParam     *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The thumbnail URL of the online editing project.
+	//
 	// example:
 	//
 	// https://example.com/example.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The description of the online editing project.
+	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The material associated with the project. Separate multiple material IDs with commas (,). Each type supports up to 10 material IDs.
+	//
 	// example:
 	//
 	// {"video":"*****2e057304fcd9b145c5cafc*****", "image":"****8021a8d493da643c8acd98*****,*****cb6307a4edea614d8b3f3c*****", "liveStream": "[{\\"appName\\":\\"testrecord\\",\\"domainName\\":\\"test.alivecdn.com\\",\\"liveUrl\\":\\"rtmp://test.alivecdn.com/testrecord/teststream\\",\\"streamName\\":\\"teststream\\"}]", "editingProject": "*****9b145c5cafc2e057304fcd*****"}
 	MaterialMaps *string `json:"MaterialMaps,omitempty" xml:"MaterialMaps,omitempty"`
+	// The type of the editing project. Valid values: EditingProject and LiveEditingProject. A value of EditingProject indicates a regular editing project, and a value of LiveEditingProject indicates a live stream editing project.
+	//
 	// example:
 	//
 	// LiveEditingProject
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// The template ID. This parameter is used to quickly build a timeline with ease. Note: Only one of Timeline and TemplateId can be specified. If TemplateId is specified, ClipsParam must also be specified.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type. This parameter is required if you create a template-based online editing project. Default value: Timeline. Valid values:
+	//
+	// 	- Timeline: a regular template.
+	//
+	// 	- VETemplate: an advanced template.
+	//
+	// example:
+	//
+	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// example:
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****4d7cf14dc7b83b0e801c****"},{"MediaId":"****4d7cf14dc7b83b0e801c****"}]}]}
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// The title of the online editing project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2806,8 +3441,9 @@ func (s *CreateEditingProjectRequest) SetTitle(v string) *CreateEditingProjectRe
 }
 
 type CreateEditingProjectResponseBody struct {
+	// The information about the online editing project.
 	Project *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -2834,71 +3470,158 @@ func (s *CreateEditingProjectResponseBody) SetRequestId(v string) *CreateEditing
 }
 
 type CreateEditingProjectResponseBodyProject struct {
+	// The business configuration of the project. This parameter can be ignored for general editing projects.
+	//
 	// example:
 	//
 	// { "OutputMediaConfig" :    { "StorageLocation": "test-bucket.oss-cn-shanghai.aliyuncs.com", "Path": "test-path"   }, "OutputMediaTarget": "oss-object", "ReservationTime": "2021-06-21T08:05:00Z" }
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	// The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+	//
+	// 	- Reserving
+	//
+	// 	- ReservationCanceled
+	//
+	// 	- BroadCasting
+	//
+	// 	- LoadingFailed
+	//
+	// 	- LiveFinished
+	//
 	// example:
 	//
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	ClipsParam     *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The template material parameters.
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The thumbnail URL of the online editing project.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The method for creating the online editing project. Valid values:
+	//
+	// \\- OpenAPI
+	//
+	// \\- AliyunConsole
+	//
+	// \\- WebSDK
+	//
+	// \\- LiveEditingOpenAPI
+	//
+	// \\- LiveEditingConsole
+	//
 	// example:
 	//
 	// WebSDK
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The time when the online editing project was created.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the online editing project.
+	//
 	// example:
 	//
 	// example_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The duration of the online editing project.
+	//
 	// example:
 	//
 	// 3.4200000
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The method for editing the online editing project. Valid values:
+	//
+	// \\- OpenAPI
+	//
+	// \\- AliyunConsole
+	//
+	// \\- WebSDK
+	//
+	// \\- LiveEditingOpenAPI
+	//
+	// \\- LiveEditingConsole
+	//
 	// example:
 	//
 	// WebSDK
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// The time when the online editing project was last edited.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// ****01bf24bf41c78b2754cb3187****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the editing project. Default value: EditingProject. Valid values:
+	//
+	// \\- EditingProject: a regular editing project.
+	//
+	// \\- LiveEditingProject: a live stream editing project.
+	//
 	// example:
 	//
 	// LiveEditingProject
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// The status of the online editing project.
+	//
+	// Valid values:
+	//
+	// \\- 1: Draft
+	//
+	// \\- 2: Editing
+	//
+	// \\- 3: Producing
+	//
+	// \\- 4: Produced
+	//
+	// \\- 5: ProduceFailed
+	//
+	// \\- 7: Deleted
+	//
 	// example:
 	//
 	// 2
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the online editing project. For more information, see the status list.
+	//
 	// example:
 	//
 	// Editing
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type of the online editing project. Valid values:
+	//
+	// \\- Timeline
+	//
+	// \\- VETemplate
+	//
 	// example:
 	//
 	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The timeline of the online editing project, in the JSON format. For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662). If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
+	//
 	// example:
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****4d7cf14dc7b83b0e801c****"},{"MediaId":"****4d7cf14dc7b83b0e801c****"}]}]}
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// The title of the online editing project.
+	//
 	// example:
 	//
 	// example_title
@@ -3786,7 +4509,20 @@ type CreateSearchIndexRequest struct {
 	//
 	// {}
 	IndexConfig *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	// example:
+	//
+	// Active
 	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	// The category of the index. Valid values:
+	//
+	// 	- mm: large visual model. You can use this model to describe complex visual features and identify and search for specific actions, movements, and events in videos, such as when athletes score a goal or get injured.
+	//
+	// >  This feature is in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+	//
+	// 	- face: face recognition. You can use the face recognition technology to describe face characteristics and automatically mark or search for faces in videos.
+	//
+	// 	- aiLabel: smart tagging. The smart tagging category is used to describe content such as subtitles and audio in videos. You can use the speech recognition technology to automatically extract, mark, and search for subtitles and dialog content from videos. This helps you quickly locate the video content that is related to specific topics or keywords.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3828,12 +4564,18 @@ func (s *CreateSearchIndexRequest) SetSearchLibName(v string) *CreateSearchIndex
 }
 
 type CreateSearchIndexResponseBody struct {
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// *****ACB-44F2-5F2D-88D7-1283E70*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSearchIndexResponseBody) String() string {
@@ -3889,6 +4631,8 @@ func (s *CreateSearchIndexResponse) SetBody(v *CreateSearchIndexResponseBody) *C
 }
 
 type CreateSearchLibRequest struct {
+	// The name of the search library. The name can contain letters and digits and must start with a letter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3911,18 +4655,34 @@ func (s *CreateSearchLibRequest) SetSearchLibName(v string) *CreateSearchLibRequ
 }
 
 type CreateSearchLibResponseBody struct {
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the search library.
+	//
 	// example:
 	//
 	// test1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
-	Success       *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSearchLibResponseBody) String() string {
@@ -3983,30 +4743,88 @@ func (s *CreateSearchLibResponse) SetBody(v *CreateSearchLibResponseBody) *Creat
 }
 
 type CreateUploadMediaRequest struct {
+	// The application ID. Default value: app-1000000.
+	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The entity ID. You can call the CreateEntity operation to create an entity and specify a dynamic metadata structure.
+	//
 	// example:
 	//
 	// 9e177cac2fb44f8b8c67b199fcc7bffd
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The file information, which is in the JSON format and contains the following fields:
+	//
+	// 	- Type: required. The file type. Valid values: video, image, audio, text, and other.
+	//
+	// 	- Name: required. The file name without the extension.
+	//
+	// 	- Size: optional. The file size.
+	//
+	// 	- Ext: required. The file name extension.
+	//
 	// example:
 	//
 	// {\\"Type\\":\\"video\\",\\"Name\\":\\"test.mp4\\",\\"Size\\":108078336,\\"Ext\\":\\"mp4\\"}
 	FileInfo *string `json:"FileInfo,omitempty" xml:"FileInfo,omitempty"`
+	// The metadata of the media asset, which is a JSON string that contains the following fields:
+	//
+	// Title: required.
+	//
+	// 	- The value can be up to 128 characters in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
+	// Description: optional.
+	//
+	// 	- The value can be up to 1,024 characters in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
+	// CateId: optional.
+	//
+	// Tags: optional.
+	//
+	// BusinessType: required. Valid values:
+	//
+	// 	- opening or ending if Type is set to video
+	//
+	// 	- default or cover if Type is set to image
+	//
+	// 	- subtitles or font if Type is set to text
+	//
+	// 	- watermark if Type is set to material
+	//
+	// 	- general CoverURL: optional.
+	//
+	// DynamicMetaData: The value is a string.
+	//
 	// example:
 	//
 	// {\\"Title\\": \\"UploadTest\\", \\"Description\\": \\"UploadImageTest\\", \\"Tags\\": \\"tag1,tag2\\",\\"BusinessType\\":\\"cover\\"}
 	MediaMetaData *string `json:"MediaMetaData,omitempty" xml:"MediaMetaData,omitempty"`
+	// The postprocessing configurations. You can specify this parameter if Type is set to video or audio.
+	//
+	// Set ProcessType to Workflow.
+	//
 	// example:
 	//
 	// {\\"ProcessType\\":\\"Workflow\\",\\"ProcessID\\":\\"74ba870f1a4873a3ba238e0bf6fa9***\\"}
 	PostProcessConfig *string `json:"PostProcessConfig,omitempty" xml:"PostProcessConfig,omitempty"`
+	// The destination storage address.
+	//
+	// Set StorageType to oss.
+	//
+	// Set StorageLocation to an address in ApsaraVideo VOD. You cannot set this field to an OSS URL.
+	//
 	// example:
 	//
 	// {\\"StorageType\\":\\"oss\\",\\"StorageLocation\\":\\"outin-***.oss-cn-shanghai.aliyuncs.com\\"}
 	UploadTargetConfig *string `json:"UploadTargetConfig,omitempty" xml:"UploadTargetConfig,omitempty"`
+	// The user data. The value must be a JSON string. You can configure settings such as message callbacks.
+	//
 	// example:
 	//
 	// {"MessageCallback":{"CallbackURL":"http://example.aliyundoc.com"},"Extend":{"localId":"*****","test":"www"}}
@@ -4057,26 +4875,44 @@ func (s *CreateUploadMediaRequest) SetUserData(v string) *CreateUploadMediaReque
 }
 
 type CreateUploadMediaResponseBody struct {
+	// The OSS URL of the file. The URL does not contain the information used for authentication.
+	//
 	// example:
 	//
 	// http://outin-***.oss-cn-north-2-gov-1.aliyuncs.com/sv/40360f05-181f63c3110-0004-cd8e-27f-de3c9.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The URL of the media asset.
+	//
+	// >  If a domain name for Alibaba Cloud CDN (CDN) is specified, a CDN URL is returned. Otherwise, an OSS URL is returned. If the HTTP status code 403 is returned when you access the URL from your browser, the URL authentication feature of ApsaraVideo VOD is enabled. To resolve this issue, disable URL authentication or generate an authentication signature.
+	//
 	// example:
 	//
 	// https://xxq-live-playback.oss-cn-shanghai.aliyuncs.com/capture/5d96d2b4-111b-4e5d-a0e5-20f44405bb55.mp4
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E84BE44-58A7-****-****-FBEBEA16EF94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The upload URL.
+	//
+	// >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use OSS SDK or call an OSS API operation to upload media files.
+	//
 	// example:
 	//
 	// eyJFbmRwb2ludCI6Imh0dHBzOi8vb3NzLWNuLXNoYW5naGFpLmFsaXl1bmNzLmNvbSIsIkJ1Y2tldCI6InN6aGQtdmlkZW8iLCJGaWxlTmFtZSI6InZvZC0yOTYzMWEvc3YvNTBmYTJlODQtMTgxMjdhZGRiMTcvNTBmYTJlODQtMTgxMjdhZGRiM***
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
+	// The upload credential.
+	//
+	// >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use OSS SDK or call an OSS API operation to upload media files.
+	//
 	// example:
 	//
 	// eyJBY2Nlc3NLZXlJZCI6IkxUQUk0Rm53bTk1dHdxQjMxR3IzSE5hRCIsIkFjY2Vzc0tleVNlY3JldCI6Ik9lWllKR0dTMTlkNkZaM1E3UVpJQmdmSVdnM3BPaiIsIkV4cGlyYXRpb24iOiI***
@@ -4151,22 +4987,68 @@ func (s *CreateUploadMediaResponse) SetBody(v *CreateUploadMediaResponseBody) *C
 }
 
 type CreateUploadStreamRequest struct {
+	// The quality of the media stream. Valid values:
+	//
+	// 	- FD: low definition.
+	//
+	// 	- LD: standard definition.
+	//
+	// 	- SD: high definition.
+	//
+	// 	- HD: ultra-high definition.
+	//
+	// 	- OD: original quality.
+	//
+	// 	- 2K: 2K resolution.
+	//
+	// 	- 4K: 4K resolution.
+	//
+	// 	- SQ: standard sound quality.
+	//
+	// 	- HQ: high sound quality.
+	//
 	// example:
 	//
 	// HD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The file name extension of the media stream.
+	//
 	// example:
 	//
 	// MP4
 	FileExtension *string `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
+	// The high dynamic range (HDR) format of the transcoded stream. Valid values:
+	//
+	// 	- HDR
+	//
+	// 	- HDR10
+	//
+	// 	- HLG
+	//
+	// 	- DolbyVision
+	//
+	// 	- HDRVivid
+	//
+	// 	- SDR+
+	//
+	// >
+	//
+	// 	- The value is not case-sensitive,
+	//
+	// 	- You can leave this parameter empty for non-HDR streams.
+	//
 	// example:
 	//
 	// HDR10
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// {"MessageCallback":{"CallbackURL":"http://aliyundoc.com"}, "Extend":{"localId":"xxx","test":"www"}}
@@ -4207,22 +5089,36 @@ func (s *CreateUploadStreamRequest) SetUserData(v string) *CreateUploadStreamReq
 }
 
 type CreateUploadStreamResponseBody struct {
+	// The Object Storage Service (OSS) URL of the file. The URL does not contain the information used for authentication.
+	//
 	// example:
 	//
 	// http://outin-***.oss-cn-shanghai.aliyuncs.com/stream/48555e8b-181dd5a8c07/48555e8b-181dd5a8c07.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The upload URL.
+	//
+	// >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use OSS SDK or call an OSS API operation to upload media files.
+	//
 	// example:
 	//
 	// eyJFbmRwb2ludCI6Imh0dHBzOi8vb3NzLWNuLXNoYW5naGFpLmFsaXl1bmNzLmNvbSIsIkJ1Y2tldCI6InN6aGQtdmlkZW8iLCJGaWxlTmFtZSI6InZvZC0yOTYzMWEvc3YvNTBmYTJlODQtMTgxMjdhZGRiMTcvNTBmYTJlODQtMTgxMjdhZGRiM***
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
+	// The upload credential.
+	//
+	// >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use OSS SDK or call an OSS API operation to upload media files.
+	//
 	// example:
 	//
 	// eyJBY2Nlc3NLZXlJZCI6IkxUQUk0Rm53bTk1dHdxQjMxR3IzSE5hRCIsIkFjY2Vzc0tleVNlY3JldCI6Ik9lWllKR0dTMTlkNkZaM1E3UVpJQmdmSVdnM3BPaiIsIkV4cGlyYXRpb24iOiI***
@@ -4504,6 +5400,14 @@ func (s *DeleteAvatarTrainingJobResponse) SetBody(v *DeleteAvatarTrainingJobResp
 }
 
 type DeleteCategoryRequest struct {
+	// The category ID. You can use one of the following methods to obtain the ID:
+	//
+	// 	- Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management*	- > **Category Management*	- to view the category ID.
+	//
+	// 	- View the value of CateId returned by the AddCategory operation that you called to create a category.
+	//
+	// 	- View the value of CateId returned by the GetCategories operation that you called to query a category.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4526,6 +5430,8 @@ func (s *DeleteCategoryRequest) SetCateId(v int64) *DeleteCategoryRequest {
 }
 
 type DeleteCategoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
@@ -4936,18 +5842,34 @@ func (s *DeleteDNAFilesResponse) SetBody(v *DeleteDNAFilesResponseBody) *DeleteD
 }
 
 type DeleteEditingProjectMaterialsRequest struct {
+	// The material ID. Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// *****cbd721b418a89a7dafb1dc*****,*****86f5d534c95997c55c96f*****
 	MaterialIds *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
+	// The material type. Valid values:
+	//
+	// \\- video
+	//
+	// \\- image
+	//
+	// \\- audio
+	//
+	// \\- subtitle
+	//
+	// \\- text
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// video
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
+	// The ID of the online editing project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4980,6 +5902,8 @@ func (s *DeleteEditingProjectMaterialsRequest) SetProjectId(v string) *DeleteEdi
 }
 
 type DeleteEditingProjectMaterialsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******36-3C1E-4417-BDB2-1E034F******
@@ -5029,6 +5953,8 @@ func (s *DeleteEditingProjectMaterialsResponse) SetBody(v *DeleteEditingProjectM
 }
 
 type DeleteEditingProjectsRequest struct {
+	// The ID of the online editing project. You can specify multiple IDs separated with commas (,).
+	//
 	// example:
 	//
 	// ****fb2101bf24bf41cb318787dc****,****87dcfb2101bf24bf41cb3187****
@@ -5049,6 +5975,8 @@ func (s *DeleteEditingProjectsRequest) SetProjectIds(v string) *DeleteEditingPro
 }
 
 type DeleteEditingProjectsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ****25818875-5F78-4AF6-D7393642CA58****
@@ -5675,16 +6603,22 @@ func (s *DeleteLiveTranscodeTemplateResponse) SetBody(v *DeleteLiveTranscodeTemp
 }
 
 type DeleteMediaFromSearchLibRequest struct {
+	// The ID of the media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The message body.
+	//
 	// example:
 	//
 	// {}
 	MsgBody *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	// The name of the search library. Default value: ims-default-search-lib.
+	//
 	// example:
 	//
 	// test1
@@ -5715,16 +6649,34 @@ func (s *DeleteMediaFromSearchLibRequest) SetSearchLibName(v string) *DeleteMedi
 }
 
 type DeleteMediaFromSearchLibResponseBody struct {
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMediaFromSearchLibResponseBody) String() string {
@@ -5785,11 +6737,28 @@ func (s *DeleteMediaFromSearchLibResponse) SetBody(v *DeleteMediaFromSearchLibRe
 }
 
 type DeleteMediaInfosRequest struct {
+	// Specifies whether to delete the physical file of the media asset.
+	//
+	// If the media asset is stored in your own OSS bucket, you must authorize the service role AliyunICEDefaultRole in advance. For more information<props="china">, see [Authorize IMS to delete recording files in OSS](https://help.aliyun.com/zh/ims/user-guide/record?spm=a2c4g.11186623.0.i8#0737d9c437bmn).
+	//
 	// example:
 	//
 	// false
-	DeletePhysicalFiles *bool   `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
-	InputURLs           *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
+	DeletePhysicalFiles *bool `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
+	// The URL of the media asset that you want to delete. The file corresponding to the URL must be registered with IMS. Separate multiple URLs with commas (,). The following two formats are supported:
+	//
+	// 1.  http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?
+	//
+	// 2.  OSS://example-bucket/example.mp4?\\
+	//
+	//     In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
+	InputURLs *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
+	// The ID of the media asset that you want to delete from Intelligent Media Services (IMS).
+	//
+	// 	- Separate multiple IDs with commas (,).
+	//
+	// If you leave MediaIds empty, you must specify InputURLs.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****,****15d4a4b0448391508f2cb486****
@@ -5820,8 +6789,12 @@ func (s *DeleteMediaInfosRequest) SetMediaIds(v string) *DeleteMediaInfosRequest
 }
 
 type DeleteMediaInfosResponseBody struct {
+	// The IDs or URLs of media assets that cannot be deleted. Generally, media assets cannot be deleted if you do not have the required permissions.
 	ForbiddenList []*string `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Repeated"`
-	IgnoredList   []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	// The IDs or URLs of ignored media assets. An error occurred while obtaining such media assets.
+	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0622C702-41BE-467E-AF2E-883D4517962E
@@ -5881,10 +6854,16 @@ func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *Del
 }
 
 type DeleteMediaMarksRequest struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The mark ID. You can specify multiple mark IDs separated with commas (,).
+	//
+	// If you do not specify MediaMarkIds, all the marks of the media asset are deleted.
+	//
 	// example:
 	//
 	// mark-f82d*****4994b0915948ef7e16,mark-3d56d*****4c8fa9ae2a1f9e5d2d60
@@ -5910,14 +6889,20 @@ func (s *DeleteMediaMarksRequest) SetMediaMarkIds(v string) *DeleteMediaMarksReq
 }
 
 type DeleteMediaMarksResponseBody struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The IDs of the deleted marks separated with commas (,).
+	//
 	// example:
 	//
 	// mark-f82d*****4994b0915948ef7e16,mark-3d56d*****4c8fa9ae2a1f9e5d2d60
 	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -6057,14 +7042,24 @@ func (s *DeletePipelineResponse) SetBody(v *DeletePipelineResponseBody) *DeleteP
 }
 
 type DeletePlayInfoRequest struct {
+	// Specifies whether to delete the physical file of the media stream.
+	//
+	// If the media asset is stored in your own Object Storage Service (OSS) bucket, you must authorize the service role AliyunICEDefaultRole in advance. <props="china">For more information, see [Authorize IMS to delete recording files in OSS](https://help.aliyun.com/document_detail/449331.html#p-ko2-wc7-iad).
+	//
+	// You can delete only the physical files of transcoded streams, but not the physical files of source files.
+	//
 	// example:
 	//
 	// false
 	DeletePhysicalFiles *bool `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
+	// The URL of the media stream file that you want to delete. Separate multiple URLs with commas (,).
+	//
 	// example:
 	//
 	// https://ice-test001.oss-cn-shanghai.aliyuncs.com/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87640*360.mp4
 	FileURLs *string `json:"FileURLs,omitempty" xml:"FileURLs,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 1d3518e0027d71ed80cd909598416303
@@ -6095,8 +7090,12 @@ func (s *DeletePlayInfoRequest) SetMediaId(v string) *DeletePlayInfoRequest {
 }
 
 type DeletePlayInfoResponseBody struct {
+	// The URLs of the media streams that cannot be deleted. Generally, media streams cannot be deleted if you do not have the required permissions.
 	ForbiddenList []*string `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Repeated"`
-	IgnoredList   []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	// The URLs of ignored media streams. An error occurred while obtaining such media assets because the IDs or URLs of the media assets do not exist.
+	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -7864,12 +8863,26 @@ func (s *DetectAudioForCustomizedVoiceJobResponse) SetBody(v *DetectAudioForCust
 }
 
 type DropSearchIndexRequest struct {
+	// The category of the index. Valid values:
+	//
+	// 	- mm: large visual model.
+	//
+	// 	- face: face recognition.
+	//
+	// 	- aiLabel: smart tagging.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mm
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// The name of the search library.
+	//
+	// 	- If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
+	//
+	// 	- To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
+	//
 	// example:
 	//
 	// test1
@@ -7895,12 +8908,28 @@ func (s *DropSearchIndexRequest) SetSearchLibName(v string) *DropSearchIndexRequ
 }
 
 type DropSearchIndexResponseBody struct {
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DropSearchIndexResponseBody) String() string {
@@ -7956,6 +8985,8 @@ func (s *DropSearchIndexResponse) SetBody(v *DropSearchIndexResponseBody) *DropS
 }
 
 type DropSearchLibRequest struct {
+	// The name of the search library.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7978,14 +9009,28 @@ func (s *DropSearchLibRequest) SetSearchLibName(v string) *DropSearchLibRequest 
 }
 
 type DropSearchLibResponseBody struct {
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DropSearchLibResponseBody) String() string {
@@ -9012,22 +10057,42 @@ func (s *GetBatchMediaProducingJobResponse) SetBody(v *GetBatchMediaProducingJob
 }
 
 type GetCategoriesRequest struct {
+	// The category ID. You can use one of the following methods to obtain the ID:
+	//
+	// 	- Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management*	- > **Category Management*	- to view the category ID.
+	//
+	// 	- View the value of CateId returned by the AddCategory operation that you called to create a category.
+	//
+	// 	- View the value of CateId returned by the GetCategories operation that you called to query a category.
+	//
 	// example:
 	//
 	// 33
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The page number. Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 10 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting rule of results. Valid values:
+	//
+	// \\- CreationTime:Desc (default): The results are sorted in reverse chronological order based on the creation time.
+	//
+	// \\- CreationTime:Asc: The results are sorted in chronological order based on the creation time.
+	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The type of the category. Valid values: default and material. A value of default indicates audio, video, and image files. This is the default value. A value of material indicates short video materials.
+	//
 	// example:
 	//
 	// default
@@ -9068,12 +10133,18 @@ func (s *GetCategoriesRequest) SetType(v string) *GetCategoriesRequest {
 }
 
 type GetCategoriesResponseBody struct {
+	// The information about the category.
 	Category *GetCategoriesResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
-	RequestId     *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The subcategories in the category.
 	SubCategories *GetCategoriesResponseBodySubCategories `json:"SubCategories,omitempty" xml:"SubCategories,omitempty" type:"Struct"`
+	// The total number of subcategories.
+	//
 	// example:
 	//
 	// 100
@@ -9109,19 +10180,32 @@ func (s *GetCategoriesResponseBody) SetSubTotal(v int64) *GetCategoriesResponseB
 }
 
 type GetCategoriesResponseBodyCategory struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// 46
-	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category name.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The level of the category. A value of **0*	- indicates a level-1 category, a value of **1*	- indicates a level-2 category, and a value of **2*	- indicates a level-3 category.
+	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the parent category.
+	//
 	// example:
 	//
 	// -1
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The type of the category. Valid values:
+	//
+	// 	- **default**: audio, video, and image files. This is the default value.
+	//
+	// 	- **material**: short video materials.
+	//
 	// example:
 	//
 	// default
@@ -9179,23 +10263,42 @@ func (s *GetCategoriesResponseBodySubCategories) SetCategory(v []*GetCategoriesR
 }
 
 type GetCategoriesResponseBodySubCategoriesCategory struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// 129
-	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category name.
+	//
+	// 	- The value can be up to 64 bytes in length.
+	//
+	// 	- The value is encoded in UTF-8.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The level of the category. A value of **0*	- indicates a level-1 category, a value of **1*	- indicates a level-2 category, and a value of **2*	- indicates a level-3 category.
+	//
 	// example:
 	//
 	// 1
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the parent category.
+	//
 	// example:
 	//
 	// 46
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The total number of subcategories.
+	//
 	// example:
 	//
 	// 100
 	SubTotal *int64 `json:"SubTotal,omitempty" xml:"SubTotal,omitempty"`
+	// The type of the category. Valid values:
+	//
+	// 	- **default**: audio, video, and image files. This is the default value.
+	//
+	// 	- **material**: short video materials.
+	//
 	// example:
 	//
 	// default
@@ -10523,12 +11626,23 @@ func (s *GetDynamicImageJobResponse) SetBody(v *GetDynamicImageJobResponseBody) 
 }
 
 type GetEditingProjectRequest struct {
+	// The ID of the online editing project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****fb2101bf24b2754cb318787dc****
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the request source. Valid values:
+	//
+	// \\- OpenAPI (default): Timeline conversion is not performed.
+	//
+	// \\- WebSDK: If you specify this value, the project timeline is automatically converted into the frontend style, and the materials in the timeline are associated with the project to enable preview by using frontend web SDKs.
+	//
+	// example:
+	//
+	// WebSDK
 	RequestSource *string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty"`
 }
 
@@ -10551,7 +11665,10 @@ func (s *GetEditingProjectRequest) SetRequestSource(v string) *GetEditingProject
 }
 
 type GetEditingProjectResponseBody struct {
+	// The information about the online editing project.
 	Project *GetEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
@@ -10577,67 +11694,166 @@ func (s *GetEditingProjectResponseBody) SetRequestId(v string) *GetEditingProjec
 }
 
 type GetEditingProjectResponseBodyProject struct {
+	// The business configuration of the project. This parameter can be ignored for general editing projects.
+	//
 	// example:
 	//
 	// { "OutputMediaConfig" : { "StorageLocation": "test-bucket.oss-cn-shanghai.aliyuncs.com", "Path": "test-path" }, "OutputMediaTarget": "oss-object", "ReservationTime": "2021-06-21T08:05:00Z" }
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	// The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+	//
+	// Reserving
+	//
+	// ReservationCanceled
+	//
+	// BroadCasting
+	//
+	// LoadingFailed
+	//
+	// LiveFinished
+	//
 	// example:
 	//
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	ClipsParam     *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The thumbnail URL of the online editing project.
+	//
 	// example:
 	//
 	// oss://example-bucket/example.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The method for creating the online editing project. Valid values:
+	//
+	// \\- OpenAPI
+	//
+	// \\- AliyunConsole
+	//
+	// \\- WebSDK
+	//
+	// \\- LiveEditingOpenAPI
+	//
+	// \\- LiveEditingConsole
+	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The time when the online editing project was created.
+	//
 	// example:
 	//
 	// 2020-12-20T12:00:00Z
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the online editing project.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The total duration of the online editing project.
+	//
 	// example:
 	//
 	// 24.120000
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The method for editing the online editing project. Valid values:
+	//
+	// \\- OpenAPI
+	//
+	// \\- AliyunConsole
+	//
+	// \\- WebSDK
+	//
+	// \\- LiveEditingOpenAPI
+	//
+	// \\- LiveEditingConsole
+	//
 	// example:
 	//
 	// OpenAPI
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// The time when the online editing project was last modified.
+	//
 	// example:
 	//
 	// 2020-12-20T13:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// ****fb2101bf24b2754cb318787dc****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the editing project. Default value: EditingProject. Valid values:
+	//
+	// \\- EditingProject: a regular editing project.
+	//
+	// \\- LiveEditingProject: a live stream editing project.
+	//
 	// example:
 	//
 	// EditingProject
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// The status of the online editing project. Valid values:
+	//
+	// \\- Draft
+	//
+	// \\- Editing
+	//
+	// \\- Producing
+	//
+	// \\- Produced
+	//
+	// \\- ProduceFailed
+	//
+	// \\- Deleted
+	//
 	// example:
 	//
 	// Editing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type of the online editing project. Valid values:
+	//
+	// \\- Timeline
+	//
+	// \\- VETemplate
+	//
 	// example:
 	//
 	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The timeline of the online editing project.
+	//
 	// example:
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****9b4d7cf14dc7b83b0e801cbe****"},{"MediaId":"****9b4d7cf14dc7b83b0e801cbe****"},{"MediaId":"****1656bca4474999c961a6d2a2****"}]}]}
-	Timeline                    *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// The error message returned if the project conversion failed. The error message displays the detailed information about the failure, and is returned only if the value of TimelineConvertStatus is ConvertFailed.
+	//
+	// example:
+	//
+	// The StorageLocation must be in the same division(apiRegion) as ICE service access point.
 	TimelineConvertErrorMessage *string `json:"TimelineConvertErrorMessage,omitempty" xml:"TimelineConvertErrorMessage,omitempty"`
-	TimelineConvertStatus       *string `json:"TimelineConvertStatus,omitempty" xml:"TimelineConvertStatus,omitempty"`
-	Title                       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The project conversion status. Conversion of an API-style timeline into a frontend-style timeline is an asynchronous process and takes effect only if RequestSource:WebSDK is specified.
+	//
+	// \\- Unconverted
+	//
+	// \\- Converting
+	//
+	// \\- Converted
+	//
+	// \\- ConvertFailed
+	//
+	// example:
+	//
+	// Converted
+	TimelineConvertStatus *string `json:"TimelineConvertStatus,omitempty" xml:"TimelineConvertStatus,omitempty"`
+	// The title of the online editing project.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetEditingProjectResponseBodyProject) String() string {
@@ -10773,6 +11989,8 @@ func (s *GetEditingProjectResponse) SetBody(v *GetEditingProjectResponseBody) *G
 }
 
 type GetEditingProjectMaterialsRequest struct {
+	// The ID of the online editing project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10795,16 +12013,24 @@ func (s *GetEditingProjectMaterialsRequest) SetProjectId(v string) *GetEditingPr
 }
 
 type GetEditingProjectMaterialsResponseBody struct {
+	// The materials associated with the live stream.
 	LiveMaterials []*GetEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
-	MediaInfos    []*GetEditingProjectMaterialsResponseBodyMediaInfos    `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	// The media assets that meet the specified conditions.
+	MediaInfos []*GetEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	// The project ID.
+	//
 	// example:
 	//
 	// *****67ae06542b9b93e0d1c387*****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The materials associated with the editing project. A live stream editing project will be associated with a regular editing project after the live streaming ends.
+	//
 	// example:
 	//
 	// *****9b145c5cafc2e057304fcd*****
 	ProjectMaterials []*string `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******89-C21D-4B78-AE24-3788B8******
@@ -10845,18 +12071,26 @@ func (s *GetEditingProjectMaterialsResponseBody) SetRequestId(v string) *GetEdit
 }
 
 type GetEditingProjectMaterialsResponseBodyLiveMaterials struct {
+	// The application name of the live stream.
+	//
 	// example:
 	//
 	// testrecord
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The domain name of the live stream.
+	//
 	// example:
 	//
 	// test.alivecdn.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The URL of the live stream.
+	//
 	// example:
 	//
 	// rtmp://test.alivecdn.com/testrecord/teststream
 	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+	// The name of the live stream.
+	//
 	// example:
 	//
 	// testrecord
@@ -10892,10 +12126,12 @@ func (s *GetEditingProjectMaterialsResponseBodyLiveMaterials) SetStreamName(v st
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfos struct {
-	// FileInfos
+	// The information about the file.
 	FileInfoList []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	// The basic information of the media asset.
 	MediaBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// *****64623a94eca8516569c8fe*****
@@ -10926,6 +12162,7 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) SetMediaId(v string) 
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList struct {
+	// The basic information of the file, such as the duration and size.
 	FileBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -10943,46 +12180,68 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) SetFileBa
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 1132.68
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 216.206667
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 30611502
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file status.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The Object Storage Service (OSS) URL of the file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The container format.
+	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 960
@@ -11053,73 +12312,116 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicIn
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
+	// The business type of the media asset.
+	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The category of the media asset.
+	//
 	// example:
 	//
 	// video
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The thumbnail URL of the media asset.
+	//
 	// example:
 	//
 	// http://sample-bucket.oss-cn-shanghai.aliyuncs.com/sample-corver.jpg?Expires=1628670610&OSSAccessKeyId=AK&Signature=signature
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the media asset was created.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the media asset was deleted.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// The description of the media asset.
+	//
 	// example:
 	//
 	// sample_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the media asset in another service.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/file.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
+	// The ID of the media asset.
 	//
 	// example:
 	//
 	// *****64623a94eca8516569c8f*****
-	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags of the media asset.
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset.
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The time when the media asset was last modified.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The snapshots of the media asset.
+	//
 	// example:
 	//
 	// null
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// The source of the media asset.
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The sprite of the media asset
+	//
 	// example:
 	//
 	// null
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// The status of the media asset.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The title of the media asset.
+	//
 	// example:
 	//
 	// file.mp4
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The transcoding status of the media asset.
+	//
+	// Valid values:
+	//
+	// 	- TranscodeSuccess: transcoding completed.
+	//
+	// 	- TranscodeFailed: transcoding failed.
+	//
+	// 	- Init: initializing.
+	//
+	// 	- Transcoding: transcoding in progress.
+	//
 	// example:
 	//
 	// Init
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// userData
@@ -11357,18 +12659,26 @@ func (s *GetEventCallbackResponse) SetBody(v *GetEventCallbackResponseBody) *Get
 }
 
 type GetLiveEditingIndexFileRequest struct {
+	// The application name of the live stream.
+	//
 	// example:
 	//
 	// testrecord
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The domain name of the live stream.
+	//
 	// example:
 	//
 	// test.alivecdn.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the live stream editing project.
+	//
 	// example:
 	//
 	// *****cb6307a4edea614d8b3f3c*****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the live stream.
+	//
 	// example:
 	//
 	// teststream
@@ -11404,7 +12714,10 @@ func (s *GetLiveEditingIndexFileRequest) SetStreamName(v string) *GetLiveEditing
 }
 
 type GetLiveEditingIndexFileResponseBody struct {
+	// The URL of the index file.
 	IndexFile *string `json:"IndexFile,omitempty" xml:"IndexFile,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E84BE44-58A7-****-****-FBEBEA16EF94
@@ -13194,18 +14507,43 @@ func (s *GetLiveTranscodeTemplateResponse) SetBody(v *GetLiveTranscodeTemplateRe
 }
 
 type GetMediaInfoRequest struct {
+	// The input URL of the media asset in another service. The URL must be registered in the IMS content library and bound to the ID of the media asset in IMS.
+	//
+	// 	- For a media asset from Object Storage Service (OSS), the URL may have one of the following formats:
+	//
+	// http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4 or
+	//
+	// oss://example-bucket/example.mp4. The second format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The ID of the media asset in IMS. If this parameter is left empty, the InputURL parameter must be specified.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the URL of the media asset to return in the response. Valid values:
+	//
+	// 	- oss (default): an OSS URL.
+	//
+	// 	- cdn: a CDN URL. A CDN URL is returned only if the media asset is imported from ApsaraVideo VOD and the relevant domain name is an accelerated domain name in ApsaraVideo VOD.
+	//
 	// example:
 	//
 	// cdn
-	OutputType         *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	// Specifies whether to return detailed information for specific media asset attributes. Supported attributes: AiRoughData.StandardSmartTagJob, which specifies whether to return detailed tag information if a tagging job has been submitted for the media asset. Valid values for the attribute:
+	//
+	// 	- false (default): The job result is returned as a URL.
+	//
+	// 	- true: The job result is returned as text.
+	//
+	// example:
+	//
+	// {"AiRoughData.StandardSmartTagJob": false}
 	ReturnDetailedInfo *string `json:"ReturnDetailedInfo,omitempty" xml:"ReturnDetailedInfo,omitempty"`
 }
 
@@ -13238,7 +14576,10 @@ func (s *GetMediaInfoRequest) SetReturnDetailedInfo(v string) *GetMediaInfoReque
 }
 
 type GetMediaInfoResponseBody struct {
+	// The information about the media asset.
 	MediaInfo *GetMediaInfoResponseBodyMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FDE2411-DB8D-4A9A-875B-275798F14A5E
@@ -13264,10 +14605,14 @@ func (s *GetMediaInfoResponseBody) SetRequestId(v string) *GetMediaInfoResponseB
 }
 
 type GetMediaInfoResponseBodyMediaInfo struct {
-	AiRoughData  *GetMediaInfoResponseBodyMediaInfoAiRoughData    `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
+	// The original AI analysis data.
+	AiRoughData *GetMediaInfoResponseBodyMediaInfoAiRoughData `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
+	// The file information.
 	FileInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	// The basic information about the media asset.
 	MediaBasicInfo *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
@@ -13303,20 +14648,64 @@ func (s *GetMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetMediaInfoRe
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughData struct {
+	// The AI category. Valid values:
+	//
+	// 	- Life
+	//
+	// 	- Good-looking
+	//
+	// 	- Cute pets
+	//
+	// 	- News
+	//
+	// 	- Ads
+	//
+	// 	- Environmental resources
+	//
+	// 	- Automobile
 	AiCategory *string `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
+	// The ID of the AI task.
+	//
 	// example:
 	//
 	// ****483915d4f2cd8ac20b48fb04****
 	AiJobId *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
+	// The analysis result.
+	//
 	// example:
 	//
 	// https://sample-bucket.cn-shanghai.aliyuncs.com/result.json
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The storage type. This parameter indicates the library in which the analysis data is stored. Valid values:
+	//
+	// 	- TEXT: the text library.
+	//
 	// example:
 	//
 	// TEXT
-	SaveType            *string                                                          `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	SaveType *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	// The information about the tagging job.
 	StandardSmartTagJob *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob `json:"StandardSmartTagJob,omitempty" xml:"StandardSmartTagJob,omitempty" type:"Struct"`
+	// The analysis status. Valid values:
+	//
+	// 	- Analyzing
+	//
+	// 	- AnalyzeSuccess
+	//
+	// 	- AnalyzeFailed
+	//
+	// 	- Saving
+	//
+	// 	- SaveSuccess
+	//
+	// 	- SaveFailed
+	//
+	// 	- Deleting
+	//
+	// 	- DeleteSuccess
+	//
+	// 	- DeleteFailed
+	//
 	// example:
 	//
 	// Analyzing
@@ -13362,10 +14751,32 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetStatus(v string) *GetM
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob struct {
-	AiJobId   *string                                                                   `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
-	ResultUrl *string                                                                   `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
-	Results   []*GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	Status    *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the AI task.
+	//
+	// example:
+	//
+	// ****483915d4f2cd8ac20b48fb04****
+	AiJobId *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
+	// The URL of the tagging result.
+	//
+	// example:
+	//
+	// http://xx.oss-cn-shanghai.aliyuncs.com/result2.txt
+	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	// The recognized tags.
+	Results []*GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The analysis status. Valid values:
+	//
+	// 	- Analyzing
+	//
+	// 	- AnalyzeSuccess
+	//
+	// 	- AnalyzeFailed
+	//
+	// example:
+	//
+	// Analyzing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) String() string {
@@ -13397,7 +14808,19 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) SetSta
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults struct {
+	// The result data. The value is a JSON string. For information about the data structures of different data types<props="china">, see [Description of the Results parameter](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-querysmarttagjob?spm=a2c4g.11186623.0.0.521d48b7KfapOL#api-detail-40).
+	//
+	// example:
+	//
+	// {"autoChapters": [...]}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The tagging type. Valid values:
+	//
+	// 	- NLP: natural language processing (NLP)-based tagging
+	//
+	// example:
+	//
+	// NLP
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -13420,10 +14843,14 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults)
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoList struct {
-	AudioStreamInfoList    []*GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList    `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo          *GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo            `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The information about the audio tracks. A media asset may have multiple audio tracks.
+	AudioStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
+	// The basic information about the file, including the duration and size.
+	FileBasicInfo *GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The information about the subtitle tracks. A media asset may have multiple subtitle tracks.
 	SubtitleStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
-	VideoStreamInfoList    []*GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList    `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
+	// The information about the video tracks. A media asset may have multiple video tracks.
+	VideoStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoFileInfoList) String() string {
@@ -13455,74 +14882,110 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoList) SetVideoStreamInfoList(v
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 127.794
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The output layout of sound channels.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The full name of the codec.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The short name of the codec.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the codec.
+	//
 	// example:
 	//
 	// 0x6134706d
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The tag string of the codec.
+	//
 	// example:
 	//
 	// mp4a
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the codec.
+	//
 	// example:
 	//
 	// 1/24000
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 16.200998
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The audio frame rate.
+	//
 	// example:
 	//
 	// 8
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The sequence number of the audio track.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// und
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of frames.
+	//
 	// example:
 	//
 	// 10
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The codec profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The sampling format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sampling rate.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 0.000000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/44100
@@ -13628,54 +15091,80 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetTi
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 1132.68
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The time when the file was created.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 216.206667
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 30611502
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file status.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The OSS URL of the file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The container format.
+	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The time when the file was last modified.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The region in which the file is stored.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 960
@@ -13756,42 +15245,62 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetWidth(v 
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList struct {
+	// The full name of the codec.
+	//
 	// example:
 	//
 	// SubRip Text
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The short name of the codec.
+	//
 	// example:
 	//
 	// srt
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the codec.
+	//
 	// example:
 	//
 	// unicode
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The tag string of the codec.
+	//
 	// example:
 	//
 	// unicode
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the codec.
+	//
 	// example:
 	//
 	// 29.97
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The sequence number of the subtitle track.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// und
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 0
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 30
@@ -13857,98 +15366,146 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) Se
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
+	// The average video frame rate.
+	//
 	// example:
 	//
 	// 24.0
 	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 1001.594
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The full name of the codec.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The short name of the codec.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the codec.
+	//
 	// example:
 	//
 	// 0x0000
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The tag string of the codec.
+	//
 	// example:
 	//
 	// [0][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the codec.
+	//
 	// example:
 	//
 	// 1/48
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The display aspect ratio (DAR).
+	//
 	// example:
 	//
 	// 0:1
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 216.206706
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The video frame rate.
+	//
 	// example:
 	//
 	// 24.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video track contains bidirectional frames (B-frames).
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The sequence number of the video track.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// und
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 30
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 5184
 	NbFrames *string `json:"Nb_frames,omitempty" xml:"Nb_frames,omitempty"`
+	// The number of frames.
+	//
 	// example:
 	//
 	// 5184
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The codec profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The sample aspect ratio (SAR).
+	//
 	// example:
 	//
 	// 0:1
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 0.081706
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/12288
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 960
@@ -14084,77 +15641,126 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetWi
 }
 
 type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
+	// The service to which the media asset belongs.
+	//
 	// example:
 	//
 	// ICE
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
+	// The business type.
+	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 3048
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category name.
+	//
 	// example:
 	//
 	// cateName
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The category.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The URL of the thumbnail.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the media asset was created.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the media asset was deleted.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:15Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// The content description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The input URL of the media asset in another service.
+	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
+	// The ID of the media asset.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
-	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags.
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset.
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The time when the media asset was last modified.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The custom ID. The ID can be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). The ID is unique among users.
+	//
 	// example:
 	//
 	// 123-1234
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Snapshots   *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// The snapshots.
+	//
+	// example:
+	//
+	// [
+	//
+	//     "http://example-bucket.oss-cn-shanghai.aliyuncs.com/snapshot-00001.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>",
+	//
+	//     "http://example-bucket.oss-cn-shanghai.aliyuncs.com/snapshot-00002.jpg?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>",
+	//
+	//     "http://example-bucket.oss-cn-shanghai.aliyuncs.com/snapshot-00003.jpg?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>"
+	//
+	// ]
+	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The sprite.
+	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The upload source of the media asset.
+	//
 	// example:
 	//
 	// general
 	UploadSource *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// userDataTest
@@ -15071,10 +16677,14 @@ func (s *GetMediaInfoJobResponse) SetBody(v *GetMediaInfoJobResponseBody) *GetMe
 }
 
 type GetMediaMarksRequest struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The mark ID. You can specify multiple mark IDs separated with commas (,).
+	//
 	// example:
 	//
 	// mark-f82d*****4994b0915948ef7e16,mark-3d56d*****4c8fa9ae2a1f9e5d2d60
@@ -15100,11 +16710,18 @@ func (s *GetMediaMarksRequest) SetMediaMarkIds(v string) *GetMediaMarksRequest {
 }
 
 type GetMediaMarksResponseBody struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The queried marks.
+	//
+	// 	- The value is in the JSONArray format.
 	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -15846,7 +17463,14 @@ func (s *GetPipelineResponse) SetBody(v *GetPipelineResponseBody) *GetPipelineRe
 }
 
 type GetPlayInfoRequest struct {
+	// The input URL that you specified for the media asset when you registered the media asset. For more information, see [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html).
+	//
+	// >  You must specify at least one of the MediaId and InputURL parameters.
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The ID of the media asset.
+	//
+	// >  You must specify at least one of the MediaId and InputURL parameters.
+	//
 	// example:
 	//
 	// 86434e152b7d4f20be480574439fe***
@@ -15872,8 +17496,12 @@ func (s *GetPlayInfoRequest) SetMediaId(v string) *GetPlayInfoRequest {
 }
 
 type GetPlayInfoResponseBody struct {
-	MediaBase    *GetPlayInfoResponseBodyMediaBase      `json:"MediaBase,omitempty" xml:"MediaBase,omitempty" type:"Struct"`
+	// The information about the media asset.
+	MediaBase *GetPlayInfoResponseBodyMediaBase `json:"MediaBase,omitempty" xml:"MediaBase,omitempty" type:"Struct"`
+	// The information about the audio or video stream.
 	PlayInfoList []*GetPlayInfoResponseBodyPlayInfoList `json:"PlayInfoList,omitempty" xml:"PlayInfoList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -15904,29 +17532,80 @@ func (s *GetPlayInfoResponseBody) SetRequestId(v string) *GetPlayInfoResponseBod
 }
 
 type GetPlayInfoResponseBodyMediaBase struct {
+	// The category ID. You can use one of the following methods to obtain the ID:
+	//
+	// 	- Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management*	- > **Category Management*	- to view the category ID.
+	//
+	// 	- View the value of the CateId parameter returned by the AddCategory operation that you called to create a category.
+	//
+	// 	- View the value of the CateId parameter returned by the GetCategories operation that you called to query a category.
+	//
+	// example:
+	//
+	// 4220
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The URL of the thumbnail.
+	//
 	// example:
 	//
 	// https://***.oss-cn-shanghai.aliyuncs.com/cover/281c64d6-b5fb-4c57-97cd-84da56a8b151_large_cover_url.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the media asset was created.
+	//
 	// example:
 	//
 	// 2021-09-22T10:07:31+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The content description.
+	//
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 2eea77a61c7b4ddd95bec34a6f65b***
-	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags.
+	//
+	// 	- Up to 16 tags are supported.
+	//
+	// 	- Multiple tags are separated by commas (,).
+	//
+	// 	- Each tag can be up to 32 bytes in length.
+	//
+	// 	- The value is encoded in UTF-8.
+	//
+	// example:
+	//
+	// test,ccc
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset. Valid values:
+	//
+	// video audio
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The resource status. Valid values:
+	//
+	// Init: the initial state, which indicates that the source file is not ready.
+	//
+	// Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+	//
+	// PrepareFail: The source file failed to be prepared. For example, the information of the source file failed to be obtained.
+	//
+	// Normal: The source file is ready.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// testTitle
@@ -15987,94 +17666,210 @@ func (s *GetPlayInfoResponseBodyMediaBase) SetTitle(v string) *GetPlayInfoRespon
 }
 
 type GetPlayInfoResponseBodyPlayInfoList struct {
+	// The color depth.
+	//
 	// example:
 	//
 	// 8
 	BitDepth *int32 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
+	// The bitrate of the media stream. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 20
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The time when the media stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-05-10T02:28:49Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The quality of the media stream. Valid values:
+	//
+	// 	- **FD**: low definition
+	//
+	// 	- **LD**: standard definition
+	//
+	// 	- **SD**: high definition
+	//
+	// 	- **HD**: ultra-high definition
+	//
+	// 	- **OD**: original definition
+	//
+	// 	- **2K**
+	//
+	// 	- **4K**
+	//
+	// 	- **SQ**: standard sound quality
+	//
+	// 	- **HQ**: high sound quality
+	//
+	// 	- **AUTO**: adaptive bitrate
+	//
 	// example:
 	//
 	// HD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The duration of the media stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 9.0464
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Indicates whether the media stream is encrypted. Valid values:
+	//
+	// 	- **0**: The media stream is not encrypted.
+	//
+	// 	- **1**: The media stream is encrypted.
+	//
 	// example:
 	//
 	// 0
 	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// The encryption type of the media stream. Valid values:
+	//
+	// 	- **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
+	//
+	// 	- **HLSEncryption**: HTTP Live Streaming (HLS) encryption
+	//
+	// >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
+	//
 	// example:
 	//
 	// AliyunVoDEncryption
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The OSS URL of the file.
+	//
 	// example:
 	//
 	// http://outin-***.oss-cn-shanghai.aliyuncs.com/sv/43a68ee9-181809b6aba/43a68ee9-181809b6aba.mpeg
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The format of the media stream.
+	//
+	// 	- If the media asset is a video file, the valid values are **mp4*	- and **m3u8**.
+	//
+	// 	- If the media asset is an audio-only file, the value is **mp3**.
+	//
 	// example:
 	//
 	// mp4
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The frame rate of the media stream. Unit: frames per second (FPS).
+	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The high dynamic range (HDR) type of the media stream. Valid values:
+	//
+	// 	- HDR
+	//
+	// 	- HDR10
+	//
+	// 	- HLG
+	//
+	// 	- DolbyVision
+	//
+	// 	- HDRVivid
+	//
+	// 	- SDR+
+	//
 	// example:
 	//
 	// HDR
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	// The height of the media stream. Unit: pixels.
+	//
 	// example:
 	//
 	// 1080
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 36c9d38e70bf43ed9f7f8f48d6356***
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The time when the media stream was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-05-13T11:39:41.714+08:00
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The type of Narrowband HD™ transcoding. Valid values:
+	//
+	// 	- **0**: standard transcoding
+	//
+	// 	- **1.0**: Narrowband HD™ 1.0 transcoding
+	//
+	// 	- **2.0**: Narrowband HD™ 2.0 transcoding
+	//
+	// This parameter is returned only when a definition that is available in the built-in Narrowband HD™ 1.0 transcoding template is specified. For more information, see the [Definition parameter in TranscodeTemplate](https://help.aliyun.com/document_detail/52839.html) table.
+	//
 	// example:
 	//
 	// 0
 	NarrowBandType *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
+	// The playback URL of the media stream.
+	//
 	// example:
 	//
 	// https://***.aliyuncdn.com/sv/756bee1-17f980f0945/756bee1-17f980f0945.mp4
 	PlayURL *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
+	// The size of the media stream. Unit: bytes.
+	//
 	// example:
 	//
 	// 418112
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The status of the media stream. Valid values:
+	//
+	// 	- **Normal**
+	//
+	// 	- **Invisible**
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the media stream, which are used to identify the transcoding type.
+	//
 	// example:
 	//
 	// "{\\"ims.audioServiceType\\": \\"AudioEnhancement\\"}"
 	StreamTags *string `json:"StreamTags,omitempty" xml:"StreamTags,omitempty"`
+	// The type of the media stream. If the media stream is a video stream, the value is **video**. If the media stream is an audio-only stream, the value is **audio**.
+	//
 	// example:
 	//
 	// video
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// The type of the transcoding template. Valid values:
+	//
+	// 	- Normal: standard transcoding
+	//
+	// 	- AudioTranscode: audio transcoding
+	//
+	// 	- Remux: container format conversion
+	//
+	// 	- NarrowBandV1: Narrowband HD™ 1.0
+	//
+	// 	- NarrowBandV2: Narrowband HD™ 2.0
+	//
+	// 	- UHD: audio and video enhancement (ultra-high definition)
+	//
 	// example:
 	//
 	// Normal
 	TransTemplateType *string `json:"TransTemplateType,omitempty" xml:"TransTemplateType,omitempty"`
+	// The ID of the watermark that is associated with the media stream.
+	//
 	// example:
 	//
 	// 5bed88672b1e2520ead228935ed51***
 	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
+	// The width of the media stream. Unit: pixels.
+	//
 	// example:
 	//
 	// 1024
@@ -21871,10 +23666,28 @@ func (s *GetTranscodeJobResponse) SetBody(v *GetTranscodeJobResponseBody) *GetTr
 }
 
 type GetUrlUploadInfosRequest struct {
+	// The IDs of the upload jobs. You can specify one or more job IDs. You can obtain the job IDs from the response parameter JobId of the [UploadMediaByURL](https://help.aliyun.com/document_detail/86311.html) operation.
+	//
+	// 	- You can specify a maximum of 10 job IDs.
+	//
+	// 	- Separate the job IDs with commas (,).
+	//
+	// >  You must specify either JobIds or UploadURLs. If you specify both parameters, only the value of JobIds takes effect.
+	//
 	// example:
 	//
 	// df2ac80b481346daa1db6a7c40edc7f8
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
+	// The upload URLs of the source files. You can specify a maximum of 10 URLs. Separate the URLs with commas (,).
+	//
+	// >
+	//
+	// 	- The URLs must be encoded.
+	//
+	// 	- If a media file is uploaded multiple times, we recommend that you specify the URL of the media file only once in this parameter.
+	//
+	// 	- You must specify either JobIds or UploadURLs. If you specify both parameters, only the value of JobIds takes effect.
+	//
 	// example:
 	//
 	// https://media.w3.org/2010/05/sintel/trailer.mp4
@@ -21900,11 +23713,15 @@ func (s *GetUrlUploadInfosRequest) SetUploadURLs(v string) *GetUrlUploadInfosReq
 }
 
 type GetUrlUploadInfosResponseBody struct {
+	// The job IDs or upload URLs that do not exist.
 	NonExists []*string `json:"NonExists,omitempty" xml:"NonExists,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId         *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about URL-based upload jobs.
 	URLUploadInfoList []*GetUrlUploadInfosResponseBodyURLUploadInfoList `json:"URLUploadInfoList,omitempty" xml:"URLUploadInfoList,omitempty" type:"Repeated"`
 }
 
@@ -21932,42 +23749,64 @@ func (s *GetUrlUploadInfosResponseBody) SetURLUploadInfoList(v []*GetUrlUploadIn
 }
 
 type GetUrlUploadInfosResponseBodyURLUploadInfoList struct {
+	// The time when the upload job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-11-26 21:47:37
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the upload job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-11-07T10:03:37Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The error code returned if the upload job failed.
+	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the upload job failed.
+	//
 	// example:
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 64610
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The ID of the upload job.
+	//
 	// example:
 	//
 	// 3829500c0fef429fa4ec1680b122d***
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the uploaded media file.
+	//
 	// example:
 	//
 	// 5014ca70f08171ecbf940764a0fd6***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The status of the upload job. For more information about the valid values of the parameter, see the "Status: the status of a URL-based upload job" section of the [Basic data types](https://help.aliyun.com/document_detail/52839.html) topic.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The upload URL of the source file.
+	//
+	// >  A maximum of 100 URLs can be returned.
+	//
 	// example:
 	//
 	// http://****.mp4
 	UploadURL *string `json:"UploadURL,omitempty" xml:"UploadURL,omitempty"`
+	// The user data. The value is a JSON string.
+	//
 	// example:
 	//
 	// {"MessageCallback":"{"CallbackURL":"http://example.aliyundoc.com"}", "Extend":"{"localId":"***", "test":"www"}"}
@@ -22062,30 +23901,72 @@ func (s *GetUrlUploadInfosResponse) SetBody(v *GetUrlUploadInfosResponseBody) *G
 }
 
 type GetVideoListRequest struct {
+	// The ID of the category.
+	//
 	// example:
 	//
 	// 781111
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2017-01-11T12:59:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting method of the results. Valid values:
+	//
+	// 	- CreationTime:Desc (default): sorts results in reverse chronological order.
+	//
+	// 	- CreationTime:Asc: sorts results in chronological order.
+	//
 	// example:
 	//
 	// CreationTime:Asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the video. You can specify multiple video statuses and separate them with commas (,).
+	//
+	// Valid values:
+	//
+	// 	- PrepareFail: The file is abnormal.
+	//
+	// 	- UploadFail: The video failed to be uploaded.
+	//
+	// 	- UploadSucc: The video is uploaded.
+	//
+	// 	- Transcoding: The video is being transcoded.
+	//
+	// 	- TranscodeFail: The video failed to be transcoded.
+	//
+	// 	- ProduceFail: The video failed to be produced.
+	//
+	// 	- Normal: The video is normal.
+	//
+	// 	- Uploading: The video is being uploaded.
+	//
+	// 	- Preparing: The file is being generated.
+	//
+	// 	- Blocked: The video is blocked.
+	//
+	// 	- checking: The video is being reviewed.
+	//
 	// example:
 	//
 	// Uploading,Normal
@@ -22136,21 +24017,32 @@ func (s *GetVideoListRequest) SetStatus(v string) *GetVideoListRequest {
 }
 
 type GetVideoListResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the audio and video files.
 	MediaList []*GetVideoListResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
-	// Id of the request。
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of audio and video files that meet the conditions.
+	//
 	// example:
 	//
 	// 163
@@ -22191,51 +24083,100 @@ func (s *GetVideoListResponseBody) SetTotal(v int64) *GetVideoListResponseBody {
 }
 
 type GetVideoListResponseBodyMediaList struct {
+	// The ID of the application. Default value: app-1000000.
+	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the category.
+	//
 	// example:
 	//
 	// 3679
-	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The name of the category.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The URL of the thumbnail.
+	//
 	// example:
 	//
 	// http://example.aliyundoc.com/snapshot/****.jpg?auth_key=1498476426-0-0-f00b9455c49a423ce69cf4e27333****
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The time when the audio or video file was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-11-14T09:15:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the audio or video file.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 135.6
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the audio or video file.
+	//
 	// example:
 	//
 	// 1c6ce34007d571ed94667630a6bc****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The time when the audio or video file was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-11-14T09:16:50Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The size of the source file. Unit: bytes.
+	//
 	// example:
 	//
 	// 10897890
-	Size      *int64    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The array of video snapshot URLs.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The status of the video.
+	//
+	// Valid values:
+	//
+	// 	- PrepareFail: The file is abnormal.
+	//
+	// 	- UploadFail: The video failed to be uploaded.
+	//
+	// 	- UploadSucc: The video is uploaded.
+	//
+	// 	- Transcoding: The video is being transcoded.
+	//
+	// 	- TranscodeFail: The video failed to be transcoded.
+	//
+	// 	- ProduceFail: The video failed to be produced.
+	//
+	// 	- Normal: The video is normal.
+	//
+	// 	- Uploading: The video is being uploaded.
+	//
+	// 	- Preparing: The file is being generated.
+	//
+	// 	- Blocked: The video is blocked.
+	//
+	// 	- checking: The video is being reviewed.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage address.
+	//
 	// example:
 	//
 	// out-****.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The tags of the audio or video file.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the audio or video file.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetVideoListResponseBodyMediaList) String() string {
@@ -22573,24 +24514,46 @@ func (s *GetWorkflowTaskResponse) SetBody(v *GetWorkflowTaskResponseBody) *GetWo
 }
 
 type InsertMediaToSearchLibRequest struct {
+	// The URL of the video, audio, or image file that you want to import to the search library.
+	//
+	// Note: Make sure that you specify a correct file name and the bucket in which the file resides is in the same region where this operation is called. Otherwise, the file cannot be found or the operation may fail.
+	//
+	// Specify an Object Storage Service (OSS) URL in the following format: oss://[Bucket name]/[File path]. For example, you can specify oss://[example-bucket-****]/[object_path-****].
+	//
+	// Specify an HTTP URL in the following format: public endpoint. For example, you can specify http://example-test-\\*\\*\\*\\*.mp4.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http://example-test-****.mp4
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The ID of the media asset. Each media ID is unique. If you leave this parameter empty, a media ID is automatically generated for this parameter.
+	//
 	// example:
 	//
 	// 411bed50018971edb60b0764a0ec6***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the media asset. Valid values:
+	//
+	// 	- video (default)
+	//
+	// 	- image
+	//
+	// 	- audio
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The message body.
+	//
 	// example:
 	//
 	// {}
 	MsgBody *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	// The name of the search library. Default value: ims-default-search-lib.
+	//
 	// example:
 	//
 	// test1
@@ -22631,18 +24594,34 @@ func (s *InsertMediaToSearchLibRequest) SetSearchLibName(v string) *InsertMediaT
 }
 
 type InsertMediaToSearchLibResponseBody struct {
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// *****ACB-44F2-5F2D-88D7-1283E70*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InsertMediaToSearchLibResponseBody) String() string {
@@ -22872,10 +24851,16 @@ func (s *ListAIAgentInstanceResponse) SetBody(v *ListAIAgentInstanceResponseBody
 }
 
 type ListAllPublicMediaTagsRequest struct {
+	// The business type of the media asset.
+	//
 	// example:
 	//
 	// "sticker"
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The entity ID, which is used to distinguish between media assets of different types in the public domain.
+	//
+	// Set this parameter to Copyright_Music, which indicates music in the public domain.
+	//
 	// example:
 	//
 	// Copyright_Music
@@ -22901,7 +24886,10 @@ func (s *ListAllPublicMediaTagsRequest) SetEntityId(v string) *ListAllPublicMedi
 }
 
 type ListAllPublicMediaTagsResponseBody struct {
+	// The tags of media assets in the public media library.
 	MediaTagList []*ListAllPublicMediaTagsResponseBodyMediaTagList `json:"MediaTagList,omitempty" xml:"MediaTagList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B45F83B7-7F87-4792-BFE9-63CD2137CAF0
@@ -22927,16 +24915,22 @@ func (s *ListAllPublicMediaTagsResponseBody) SetRequestId(v string) *ListAllPubl
 }
 
 type ListAllPublicMediaTagsResponseBodyMediaTagList struct {
+	// The ID of the media tag.
+	//
 	// example:
 	//
 	// sticker-gif
 	MediaTagId *string `json:"MediaTagId,omitempty" xml:"MediaTagId,omitempty"`
+	// The name of the media tag in Chinese.
+	//
 	// example:
 	//
 	// Gif
-	MediaTagNameChinese *string                                                  `json:"MediaTagNameChinese,omitempty" xml:"MediaTagNameChinese,omitempty"`
-	MediaTagNameEnglish *string                                                  `json:"MediaTagNameEnglish,omitempty" xml:"MediaTagNameEnglish,omitempty"`
-	Options             []*ListAllPublicMediaTagsResponseBodyMediaTagListOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	MediaTagNameChinese *string `json:"MediaTagNameChinese,omitempty" xml:"MediaTagNameChinese,omitempty"`
+	// The name of the material tag in English.
+	MediaTagNameEnglish *string `json:"MediaTagNameEnglish,omitempty" xml:"MediaTagNameEnglish,omitempty"`
+	// The options.
+	Options []*ListAllPublicMediaTagsResponseBodyMediaTagListOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
 }
 
 func (s ListAllPublicMediaTagsResponseBodyMediaTagList) String() string {
@@ -22968,11 +24962,16 @@ func (s *ListAllPublicMediaTagsResponseBodyMediaTagList) SetOptions(v []*ListAll
 }
 
 type ListAllPublicMediaTagsResponseBodyMediaTagListOptions struct {
+	// The option name in Chinese.
 	OptionChineseName *string `json:"OptionChineseName,omitempty" xml:"OptionChineseName,omitempty"`
+	// The option name in English.
+	//
 	// example:
 	//
 	// Angry
 	OptionEnglishName *string `json:"OptionEnglishName,omitempty" xml:"OptionEnglishName,omitempty"`
+	// The option ID.
+	//
 	// example:
 	//
 	// Angry
@@ -25060,42 +27059,90 @@ func (s *ListDynamicImageJobsResponse) SetBody(v *ListDynamicImageJobsResponseBo
 }
 
 type ListEditingProjectsRequest struct {
+	// The method for creating the online editing project. Valid values:
+	//
+	// \\- OpenAPI
+	//
+	// \\- AliyunConsole
+	//
+	// \\- WebSDK
+	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-02-02T23:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The search keyword. You can search by job ID.
+	//
 	// example:
 	//
 	// ******6f36bc45d09a9d5cde49******
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of entries per page. A maximum of 100 entries can be returned on each page.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// 8EqYpQbZ6Eh7+Zz8DxVYoQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The type of the editing project. Valid values:
+	//
+	// 	- EditingProject: a regular editing project.
+	//
+	// 	- LiveEditingProject: a live stream editing project.
+	//
 	// example:
 	//
 	// EditingProject
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// The order of sorting of the results. Valid values:
+	//
+	// 	- CreationTime:Desc (default): sorts the results in reverse chronological order.
+	//
+	// 	- CreationTime:Asc: sorts the results in chronological order.
+	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2017-12-21T08:00:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the online editing project. By default, online editing projects in all states are queried.
+	//
 	// example:
 	//
 	// Produced
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template type. This parameter is required if you create a template-based online editing project. Default value: Timeline.
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- Timeline: a regular template.
+	//
+	// 	- VETemplate: an advanced template.
+	//
+	// 	- None: general editing.
+	//
 	// example:
 	//
 	// None
@@ -25161,18 +27208,23 @@ func (s *ListEditingProjectsRequest) SetTemplateType(v string) *ListEditingProje
 }
 
 type ListEditingProjectsResponseBody struct {
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Nzv3rcKla9wHUGua9YXHNA==
-	NextToken   *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The queried online editing projects.
 	ProjectList []*ListEditingProjectsResponseBodyProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -25209,60 +27261,112 @@ func (s *ListEditingProjectsResponseBody) SetRequestId(v string) *ListEditingPro
 }
 
 type ListEditingProjectsResponseBodyProjectList struct {
+	// The business configuration of the project. This parameter can be ignored for general editing projects.
+	//
 	// example:
 	//
 	// {}
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	// The business status of the project. This parameter can be ignored for general editing projects.
+	//
 	// example:
 	//
 	// {}
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// The thumbnail URL of the online editing project.
+	//
 	// example:
 	//
 	// https://xxx.com/cover/xxx.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The method for editing the online editing project. Valid values:
+	//
+	// \\- OpenAPI
+	//
+	// \\- AliyunConsole
+	//
+	// \\- WebSDK
+	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The time when the online editing project was created.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the online editing project.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The error code returned if the production of the online editing project failed.
+	//
 	// example:
 	//
 	// InvalidParameter
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the production of the online editing project failed.
+	//
 	// example:
 	//
 	// The specified parameter \\"LiveStreamConfig\\" is not valid. specified parameter example is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The method for modifying the online editing project last time.
+	//
 	// example:
 	//
 	// OpenAPI
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// The time when the online editing project was last modified.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// ****fddd7748b58bf1d47e95****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the editing project. Valid values:
+	//
+	// 	- EditingProject: a regular editing project.
+	//
+	// 	- LiveEditingProject: a live stream editing project.
+	//
 	// example:
 	//
 	// EditingProject
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// The status of the online editing project. Valid values:
+	//
+	// \\- Draft
+	//
+	// \\- Editing
+	//
+	// \\- Producing
+	//
+	// \\- Produced
+	//
+	// \\- ProduceFailed
+	//
 	// example:
 	//
 	// Produced
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template type. Valid values:
+	//
+	// 	- Timeline: a regular template.
+	//
+	// 	- VETemplate: an advanced template.
+	//
 	// example:
 	//
 	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the online editing project.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListEditingProjectsResponseBodyProjectList) String() string {
@@ -27615,46 +29719,116 @@ func (s *ListLiveTranscodeTemplatesResponse) SetBody(v *ListLiveTranscodeTemplat
 }
 
 type ListMediaBasicInfosRequest struct {
+	// The business type of the media asset. Valid values:
+	//
+	// \\- subtitles
+	//
+	// \\- watermark
+	//
+	// \\- opening
+	//
+	// \\- ending
+	//
+	// \\- general
+	//
 	// example:
 	//
 	// opening
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The end time of utcCreated.
+	//
+	// \\- The value is the end of the left-open right-closed interval.
+	//
+	// \\- Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. For example, 2017-01-11T12:00:00Z indicates 20:00:00 on January 11, 2017 (UTC +8).
+	//
 	// example:
 	//
 	// 2020-12-20T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to return the basic information of the source file.
+	//
 	// example:
 	//
 	// true
 	IncludeFileBasicInfo *bool `json:"IncludeFileBasicInfo,omitempty" xml:"IncludeFileBasicInfo,omitempty"`
+	// The maximum number of entries to return.
+	//
+	// Maximum value: 100. Default value: 10.
+	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the media asset. Valid values:
+	//
+	// \\- image
+	//
+	// \\- video
+	//
+	// \\- audio
+	//
+	// \\- text
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// pSa1SQ0wCe5pzVrQ6mWZEw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The order of sorting by utcCreated. Default value: desc. Valid values:
+	//
+	// \\- desc
+	//
+	// \\- asc
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The source of the media asset. Valid values:
+	//
+	// \\- oss: Object Storage Service (OSS).
+	//
+	// \\- vod: ApsaraVideo VOD.
+	//
+	// \\- live: ApsaraVideo Live.
+	//
+	// \\- general: other sources. This is the default value.
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The start time of utcCreated.
+	//
+	// \\- The value is the beginning of a left-open right-closed interval.
+	//
+	// \\- Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. For example, 2017-01-11T12:00:00Z indicates 20:00:00 on January 11, 2017 (UTC +8).
+	//
 	// example:
 	//
 	// 2020-12-20T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the media asset. Valid values:
+	//
+	// \\- Init: the initial state, which indicates that the source file is not ready.
+	//
+	// \\- Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+	//
+	// \\- PrepareFail: The source file failed to be prepared. For example, the information of the source file failed to be obtained.
+	//
+	// \\- Normal: The source file is ready.
+	//
 	// example:
 	//
 	// Normal
@@ -27725,19 +29899,28 @@ func (s *ListMediaBasicInfosRequest) SetStatus(v string) *ListMediaBasicInfosReq
 }
 
 type ListMediaBasicInfosResponseBody struct {
+	// The maximum number of entries returned in the query.
+	//
 	// example:
 	//
 	// 2
-	MaxResults *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The media assets that meet the specified conditions.
 	MediaInfos []*ListMediaBasicInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// 8EqYpQbZ6Eh7+Zz8DxVYoQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******B7-7F87-4792-BFE9-63CD21******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 4
@@ -27782,6 +29965,8 @@ type ListMediaBasicInfosResponseBodyMediaInfos struct {
 	FileInfoList []*ListMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	// BasicInfo
 	MediaBasicInfo *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
@@ -27812,6 +29997,7 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfos) SetMediaId(v string) *ListMe
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosFileInfoList struct {
+	// The basic information of the file, including the duration and size.
 	FileBasicInfo *ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -27829,54 +30015,80 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfosFileInfoList) SetFileBasicInfo
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 1912.13
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The time when the file was created.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 60.00000
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 14340962
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file status.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The OSS URL of the file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example2.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The container format.
+	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 720
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The time when the file was last modified.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 1280
@@ -27957,81 +30169,122 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) Set
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
+	// The service to which the media asset belongs.
+	//
 	// example:
 	//
 	// ICE
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
+	// The business type of the media asset.
+	//
 	// example:
 	//
 	// opening
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 3049
-	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category of the media asset.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The thumbnail URL of the media asset.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the media asset was created.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the media asset was deleted.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// The description of the media asset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the media asset in another service.
+	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags of the media asset.
+	//
 	// example:
 	//
 	// tags,tags2
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset.
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The time when the media asset was last modified.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The custom ID of the media asset. The ID is a string that contains 6 to 64 characters. Only letters, digits, hyphens (-), and underscores (_) are supported. The ID is unique among users.
+	//
 	// example:
 	//
 	// 123-123
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// The snapshots of the media asset.
+	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"3","iceJobId":"******f48f0e4154976b2b8c45******","location":"oss-cn-beijing","snapshotRegular":"example.jpg","templateId":"******e6a6440b29eb60bd7c******"}]
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// The source of the media asset.
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The sprite.
+	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// The status of the media asset.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the media asset.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The transcoding status of the media asset.
+	//
 	// example:
 	//
 	// Init
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
+	// The upload source of the media asset.
+	//
 	// example:
 	//
 	// general
 	UploadSource *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// userData
@@ -29010,10 +31263,14 @@ func (s *ListMediaInfoJobsResponse) SetBody(v *ListMediaInfoJobsResponseBody) *L
 }
 
 type ListMediaMarksRequest struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 411bed50018971edb60b0764a0ec6***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The mark ID. You can specify multiple IDs separated with commas (,). This parameter is discontinued.
+	//
 	// example:
 	//
 	// mark-f82d*****4994b0915948ef7e16,mark-3d56d*****4c8fa9ae2a1f9e5d2d60
@@ -29039,11 +31296,16 @@ func (s *ListMediaMarksRequest) SetMediaMarkIds(v string) *ListMediaMarksRequest
 }
 
 type ListMediaMarksResponseBody struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The marks of the media asset, in the JSONArray format.
 	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -29923,27 +32185,92 @@ func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipel
 }
 
 type ListPublicMediaBasicInfosRequest struct {
+	// The business type of the media asset. Valid values:
+	//
+	// 	- sticker
+	//
+	// 	- bgm
+	//
+	// 	- bgi
+	//
+	// example:
+	//
+	// sticker
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// Specifies whether to return the basic information of the media asset.
+	//
 	// example:
 	//
 	// true
 	IncludeFileBasicInfo *bool `json:"IncludeFileBasicInfo,omitempty" xml:"IncludeFileBasicInfo,omitempty"`
+	// The maximum number of entries to return.
+	//
+	// Maximum value: 100. Default value: 10.
+	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The media tag. All media assets that contain the specified media tag are returned. Valid values:
+	//
+	// 	- Sticker tags:
+	//
+	//     	- sticker-atmosphere
+	//
+	//     	- sticker-bubble
+	//
+	//     	- sticker-cute
+	//
+	//     	- sticker-daily
+	//
+	//     	- sticker-expression
+	//
+	//     	- sticker-gif
+	//
+	// 	- Background music (BGM) tags:
+	//
+	//     	- bgm-romantic
+	//
+	//     	- bgm-cuisine
+	//
+	//     	- bgm-chinese-style
+	//
+	//     	- bgm-upbeat
+	//
+	//     	- bgm-dynamic
+	//
+	//     	- bgm-relaxing
+	//
+	//     	- bgm-quirky
+	//
+	//     	- bgm-beauty
+	//
+	// 	- Background image (BGI) tags:
+	//
+	//     	- bgi-grad
+	//
+	//     	- bgi-solid
+	//
+	//     	- bgi-pic
+	//
 	// example:
 	//
 	// ticker-atmosphere
 	MediaTagId *string `json:"MediaTagId,omitempty" xml:"MediaTagId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// pSa1SQ0wCe5pzVrQ6mWZEw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number. Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
@@ -29994,19 +32321,28 @@ func (s *ListPublicMediaBasicInfosRequest) SetPageSize(v int32) *ListPublicMedia
 }
 
 type ListPublicMediaBasicInfosResponseBody struct {
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 2
-	MaxResults *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The media assets that meet the specified conditions.
 	MediaInfos []*ListPublicMediaBasicInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// 8EqYpQbZ6Eh7+Zz8DxVYoQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******B7-7F87-4792-BFE9-63CD21******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of media assets that meet the specified conditions.
+	//
 	// example:
 	//
 	// 2
@@ -30047,10 +32383,12 @@ func (s *ListPublicMediaBasicInfosResponseBody) SetTotalCount(v int64) *ListPubl
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfos struct {
-	// FileInfos
+	// The file information of the media asset.
 	FileInfoList []*ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	// The basic information of the media asset.
 	MediaBasicInfo *ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
@@ -30081,6 +32419,7 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfos) SetMediaId(v string) *
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList struct {
+	// The basic information of the file, such as the duration and size.
 	FileBasicInfo *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -30098,46 +32437,68 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList) SetFileBas
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 270112.12
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 10.040000
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 338990717
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file status.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The Object Storage Service (OSS) URL of the file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The container format.
+	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 1920
@@ -30208,69 +32569,100 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInf
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
+	// The business type of the media asset.
+	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The category of the media asset.
+	//
 	// example:
 	//
 	// video
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The thumbnail URL of the media asset.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the media asset was created.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the media asset was deleted.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:04Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// The description of the media asset.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the media asset in another service.
+	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// MediaId
+	// The ID of the media asset.
 	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags of the media asset.
+	//
 	// example:
 	//
 	// sticker-daily
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset.
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The time when the media asset was last modified.
+	//
 	// example:
 	//
 	// 2021-01-08T16:52:04Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The snapshots of the media asset.
+	//
 	// example:
 	//
 	// null
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// The source of the media asset.
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status of the media asset.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the media asset.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The transcoding status of the media asset.
+	//
 	// example:
 	//
 	// Init
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// userData
@@ -35612,12 +38004,16 @@ func (s *QueryMediaCensorJobListResponse) SetBody(v *QueryMediaCensorJobListResp
 }
 
 type QueryMediaIndexJobRequest struct {
+	// The ID of the media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c2e77390f75271ec802f0674a2ce6***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The name of the search library. Default value: ims-default-search-lib.
+	//
 	// example:
 	//
 	// test1
@@ -35643,15 +38039,26 @@ func (s *QueryMediaIndexJobRequest) SetSearchLibName(v string) *QueryMediaIndexJ
 }
 
 type QueryMediaIndexJobResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code             *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The indexing jobs enabled for the media asset.
 	IndexJobInfoList []*QueryMediaIndexJobResponseBodyIndexJobInfoList `json:"IndexJobInfoList,omitempty" xml:"IndexJobInfoList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E84BE44-58A7-****-****-FBEBEA16EF94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -35687,18 +38094,38 @@ func (s *QueryMediaIndexJobResponseBody) SetSuccess(v string) *QueryMediaIndexJo
 }
 
 type QueryMediaIndexJobResponseBodyIndexJobInfoList struct {
+	// The end time of the indexing job.
+	//
 	// example:
 	//
 	// 2023-11-21 11:33:51
 	GmtFinish *string `json:"GmtFinish,omitempty" xml:"GmtFinish,omitempty"`
+	// The time when the index job was submitted.
+	//
 	// example:
 	//
 	// 2023-11-21 11:33:50
 	GmtSubmit *string `json:"GmtSubmit,omitempty" xml:"GmtSubmit,omitempty"`
+	// The index type. Valid values:
+	//
+	// 	- mm: large visual model.
+	//
+	// 	- face: face recognition.
+	//
+	// 	- aiLabel: smart tagging.
+	//
 	// example:
 	//
 	// mm
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// The job status. Valid values:
+	//
+	// 	- Running
+	//
+	// 	- Success
+	//
+	// 	- Fail
+	//
 	// example:
 	//
 	// Success
@@ -35763,12 +38190,26 @@ func (s *QueryMediaIndexJobResponse) SetBody(v *QueryMediaIndexJobResponseBody) 
 }
 
 type QuerySearchIndexRequest struct {
+	// The category of the index. Valid values:
+	//
+	// 	- mm: large visual model.
+	//
+	// 	- face: face recognition.
+	//
+	// 	- aiLabel: smart tagging.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mm
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// The name of the search library.
+	//
+	// 	- If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
+	//
+	// 	- To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
+	//
 	// example:
 	//
 	// test1
@@ -35794,24 +38235,62 @@ func (s *QuerySearchIndexRequest) SetSearchLibName(v string) *QuerySearchIndexRe
 }
 
 type QuerySearchIndexResponseBody struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The state of the index. Valid values:
+	//
+	// 	- active: the index is enabled.
+	//
+	// 	- Deactive: the index is not enabled.
+	//
+	// example:
+	//
+	// Active
 	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	// The category of the index. Valid values:
+	//
+	// 	- mm: large visual model.
+	//
+	// 	- face: face recognition.
+	//
+	// 	- aiLabel: smart tagging.
+	//
 	// example:
 	//
 	// mm
-	IndexType  *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// The total number of media assets.
+	//
+	// example:
+	//
+	// 12
 	MediaTotal *string `json:"MediaTotal,omitempty" xml:"MediaTotal,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 4E84BE44-58A7-****-****-FBEBEA16EF94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the search library.
+	//
 	// example:
 	//
 	// test1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
-	Success       *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QuerySearchIndexResponseBody) String() string {
@@ -35887,6 +38366,8 @@ func (s *QuerySearchIndexResponse) SetBody(v *QuerySearchIndexResponseBody) *Que
 }
 
 type QuerySearchLibRequest struct {
+	// The name of the search library.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -35909,21 +38390,47 @@ func (s *QuerySearchLibRequest) SetSearchLibName(v string) *QuerySearchLibReques
 }
 
 type QuerySearchLibResponseBody struct {
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the search library.
+	//
 	// example:
 	//
 	// test1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// The status of the search library.
+	//
+	// Valid values:
+	//
+	// 	- normal
+	//
+	// 	- deleting
+	//
+	// 	- deleteFail
+	//
 	// example:
 	//
 	// normal
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -36140,6 +38647,8 @@ func (s *QuerySmarttagJobResponse) SetBody(v *QuerySmarttagJobResponseBody) *Que
 }
 
 type RefreshUploadMediaRequest struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 411bed50018971edb60b0764a0ec6***
@@ -36160,18 +38669,30 @@ func (s *RefreshUploadMediaRequest) SetMediaId(v string) *RefreshUploadMediaRequ
 }
 
 type RefreshUploadMediaResponseBody struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// c2e77390f75271ec802f0674a2ce6***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The upload URL.
+	//
+	// >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use Object Storage Service (OSS) SDK or call an OSS API operation to upload media files.
+	//
 	// example:
 	//
 	// eyJFbmRwb2ludCI6Imh0dHBzOi8vb3NzLWNuLXNoYW5naGFpLmFsaXl1bmNzLmNvbSIsIkJ1Y2tldCI6InN6aGQtdmlkZW8iLCJGaWxlTmFtZSI6InZvZC0yOTYzMWEvc3YvNTBmYTJlODQtMTgxMjdhZGRiMTcvNTBmYTJlODQtMTgxMjdhZGRiM***
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
+	// The upload credential.
+	//
+	// >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload credential before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use OSS SDK or call an OSS API operation to upload media files.
+	//
 	// example:
 	//
 	// eyJBY2Nlc3NLZXlJZCI6IkxUQUk0Rm53bTk1dHdxQjMxR3IzSE5hRCIsIkFjY2Vzc0tleVNlY3JldCI6Ik9lWllKR0dTMTlkNkZaM1E3UVpJQmdmSVdnM3BPaiIsIkV4cGlyYXRpb24iOiI***
@@ -36236,51 +38757,164 @@ func (s *RefreshUploadMediaResponse) SetBody(v *RefreshUploadMediaResponseBody) 
 }
 
 type RegisterMediaInfoRequest struct {
+	// The business type of the media asset. Valid values:
+	//
+	// 	- subtitles
+	//
+	// 	- watermark
+	//
+	// 	- opening
+	//
+	// 	- ending
+	//
+	// 	- general
+	//
 	// example:
 	//
 	// opening
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 3048
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. The value must be a UUID that contains 32 characters.
+	//
 	// example:
 	//
 	// ****0311a423d11a5f7dee713535****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The thumbnail URL of the media asset.
+	//
+	// 	- The value can be up to 128 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The description of the media asset.
+	//
+	// 	- The value can be up to 1,024 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// defaultDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the media asset in another service. The URL is associated with the ID of the media asset in IMS. The URL cannot be modified once registered. The following types of URLs are supported:
+	//
+	// 	- OSS URL in one of the following formats:
+	//
+	// http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
+	//
+	// oss://example-bucket/example.mp4: In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
+	//
+	// 	- URL of an ApsaraVideo VOD media asset
+	//
+	// vod://\\*\\*\\*20b48fb04483915d4f2cd8ac\\*\\*\\*\\*
+	//
 	// This parameter is required.
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The tags of the media asset.
+	//
+	// 	- Up to 16 tags are supported.
+	//
+	// 	- Separate multiple tags with commas (,).
+	//
+	// 	- Each tag can be up to 32 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// tag1,tag2
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset. Valid values:
+	//
+	// 	- image
+	//
+	// 	- video
+	//
+	// 	- audio
+	//
+	// 	- text
+	//
+	// We recommend that you specify this parameter based on your business requirements. If you set InputURL to an OSS URL, the media asset type can be automatically determined based on the file name extension. For more information
+	//
+	// <props="china">, see [File formats](https://help.aliyun.com/document_detail/466207.html).
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Specifies whether to overwrite the media asset that has been registered by using the same URL. Default value: false. Valid values:
+	//
+	// \\- true: If a media asset has been registered by using the same URL, the original media asset is deleted and the new media asset is registered.
+	//
+	// \\- false: If a media asset has been registered by using the same URL, the new media asset is not registered. A URL cannot be used to register multiple media assets.
+	//
 	// example:
 	//
 	// true
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// The custom ID. The ID can be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). Make sure that the ID is unique among users.
+	//
 	// example:
 	//
 	// 123-123
-	ReferenceId        *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	RegisterConfig     *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
+	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// The registration configurations.
+	//
+	// By default, a sprite is generated for the media asset. You can set NeedSprite to false to disable automatic sprite generation.
+	//
+	// By default, a snapshot is generated for the media asset. You can set NeedSnapshot to false to disable automatic snapshot generation.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "NeedSprite": "false"
+	//
+	// }
+	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
+	// The ID of the smart tagging template. Valid values:
+	//
+	// 	- S00000101-300080: the system template that supports natural language processing (NLP) for content recognition.
+	//
+	// 	- S00000103-000001: the system template that supports NLP for content recognition and all tagging capabilities.
+	//
+	// 	- S00000103-000002: the system template that supports all tagging capabilities but does not support NLP for content recognition.
+	//
+	// After you configure this parameter, a smart tag analysis task is automatically initiated after the media asset is registered. For more information about the billable items<props="china">, see [Smart tagging](https://help.aliyun.com/zh/ims/media-ai-billing?spm=a2c4g.11186623.0.0.3147392dWwlSjL#p-k38-3rb-dug).
+	//
+	// example:
+	//
+	// S00000101-300080
 	SmartTagTemplateId *string `json:"SmartTagTemplateId,omitempty" xml:"SmartTagTemplateId,omitempty"`
+	// The title. If you do not specify this parameter, a default title is automatically generated based on the date.
+	//
+	// 	- The value can be up to 128 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// defaultTitle
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user data. You can specify a custom callback URL. For more information<props="china"> ,see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
+	//
+	// 	- The value can be up to 1,024 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
+	// 	- The value must be in the JSON format.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// ******b4fb044839815d4f2cd8******
@@ -36371,10 +39005,14 @@ func (s *RegisterMediaInfoRequest) SetWorkflowId(v string) *RegisterMediaInfoReq
 }
 
 type RegisterMediaInfoResponseBody struct {
+	// The ID of the media asset in IMS.
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******5A-CAAC-4850-A3AF-B74606******
@@ -36429,11 +39067,22 @@ func (s *RegisterMediaInfoResponse) SetBody(v *RegisterMediaInfoResponseBody) *R
 }
 
 type RegisterMediaStreamRequest struct {
+	// The URL of the media asset in another service. The URL is associated with the ID of the media asset in IMS. The URL cannot be modified once registered.
+	//
+	// Set this parameter to the OSS URL of the media asset. The following formats are supported:
+	//
+	// http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
+	//
+	// oss://example-bucket/example.mp4: In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 5e778ec0027b71ed80a8909598506***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// {"MessageCallback":{"CallbackURL":"http://test.test.com"}, "Extend":{"localId":"xxx","test":"www"}}
@@ -36464,10 +39113,14 @@ func (s *RegisterMediaStreamRequest) SetUserData(v string) *RegisterMediaStreamR
 }
 
 type RegisterMediaStreamResponseBody struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 5e778ec0027b71ed80a8909598506302
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -36996,7 +39649,9 @@ type SearchMediaRequest struct {
 	//
 	// 2d3bf1e35a1e42b5ab338d701efa7603
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The filter conditions. For more information about the parameter syntax, see [Media asset search protocols](https://help.aliyun.com/document_detail/2584256.html).
+	// The filter conditions. For more information about the parameter syntax
+	//
+	// <props="china">, see [Media asset search protocols](https://help.aliyun.com/document_detail/2584256.html).
 	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -37584,7 +40239,7 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) SetTo(v float64) *Se
 }
 
 type SearchMediaResponseBodyMediaInfoListAiRoughData struct {
-	// The category of the AI job.
+	// TV Series
 	//
 	// example:
 	//
@@ -37822,8 +40477,14 @@ func (s *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) SetWidth
 }
 
 type SearchMediaResponseBodyMediaInfoListIndexStatusList struct {
+	// example:
+	//
+	// Success
 	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
-	IndexType   *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// example:
+	//
+	// mm
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
 }
 
 func (s SearchMediaResponseBodyMediaInfoListIndexStatusList) String() string {
@@ -37945,7 +40606,7 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// The state of the resource.
+	// The state of the media asset.
 	//
 	// example:
 	//
@@ -38126,36 +40787,79 @@ func (s *SearchMediaResponse) SetBody(v *SearchMediaResponseBody) *SearchMediaRe
 }
 
 type SearchMediaByAILabelRequest struct {
+	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	// The ID of the media asset. This parameter is required if you want to query media asset clips.
+	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the media assets. Valid values:
+	//
+	// 	- image
+	//
+	// 	- video
+	//
+	// 	- audio
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The type of query. Valid values:
+	//
+	// 	- PersonName: queries media assets based on character names.
+	//
+	// 	- Ocr: queries media assets based on subtitles.
+	//
+	// 	- AiCategory: queries media assets based on AI categories.
+	//
+	// 	- FullSearch (default): queries all media assets.
+	//
 	// example:
 	//
 	// Ocr
 	MultimodalSearchType *string `json:"MultimodalSearchType,omitempty" xml:"MultimodalSearchType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 20
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the search library.
+	//
+	// example:
+	//
+	// test-1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// The sorting method of the results. Valid values:
+	//
+	// 	- CreationTime:Desc (default): sorts results in reverse chronological order.
+	//
+	// 	- CreationTime:Asc: sorts results in chronological order.
+	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Specifies whether to query media asset clips. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	SpecificSearch *bool   `json:"SpecificSearch,omitempty" xml:"SpecificSearch,omitempty"`
-	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	SpecificSearch *bool `json:"SpecificSearch,omitempty" xml:"SpecificSearch,omitempty"`
+	// The content that you want to query.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s SearchMediaByAILabelRequest) String() string {
@@ -38164,6 +40868,11 @@ func (s SearchMediaByAILabelRequest) String() string {
 
 func (s SearchMediaByAILabelRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SearchMediaByAILabelRequest) SetMatchingMode(v string) *SearchMediaByAILabelRequest {
+	s.MatchingMode = &v
+	return s
 }
 
 func (s *SearchMediaByAILabelRequest) SetMediaId(v string) *SearchMediaByAILabelRequest {
@@ -38212,19 +40921,28 @@ func (s *SearchMediaByAILabelRequest) SetText(v string) *SearchMediaByAILabelReq
 }
 
 type SearchMediaByAILabelResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The media assets that contain the specified content.
 	MediaList []*SearchMediaByAILabelResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of audio and video files that meet the conditions.
+	//
 	// example:
 	//
 	// 30
@@ -38265,47 +40983,96 @@ func (s *SearchMediaByAILabelResponseBody) SetTotal(v int64) *SearchMediaByAILab
 }
 
 type SearchMediaByAILabelResponseBodyMediaList struct {
+	// The details of the AI job.
 	AiData *SearchMediaByAILabelResponseBodyMediaListAiData `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
+	// The ID of the application. Default value: app-1000000.
+	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The URL of the thumbnail.
+	//
 	// example:
 	//
 	// http://example.aliyundoc.com/snapshot/****.jpg?auth_key=1498476426-0-0-f00b9455c49a423ce69cf4e27333****
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The time when the media asset was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-11-14T09:15:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the media asset.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 12.2
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 1c6ce34007d571ed94667630a6bc****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The time when the media asset was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-11-14T09:15:50Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The size of the source file. Unit: bytes.
+	//
 	// example:
 	//
 	// 10897890
-	Size      *int64    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The array of video snapshot URLs.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The status of the video.
+	//
+	// Valid values:
+	//
+	// 	- PrepareFail
+	//
+	// 	- UploadFail
+	//
+	// 	- Init
+	//
+	// 	- UploadSucc
+	//
+	// 	- Transcoding
+	//
+	// 	- TranscodeFail
+	//
+	// 	- Deleted
+	//
+	// 	- Normal
+	//
+	// 	- Uploading
+	//
+	// 	- Preparing
+	//
+	// 	- Blocked
+	//
+	// 	- Checking
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage address.
+	//
 	// example:
 	//
 	// out-****.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The tags of the media asset.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the media asset.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SearchMediaByAILabelResponseBodyMediaList) String() string {
@@ -38387,9 +41154,12 @@ func (s *SearchMediaByAILabelResponseBodyMediaList) SetTitle(v string) *SearchMe
 }
 
 type SearchMediaByAILabelResponseBodyMediaListAiData struct {
+	// The tags of the AI job.
 	AiLabelInfo []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo `json:"AiLabelInfo,omitempty" xml:"AiLabelInfo,omitempty" type:"Repeated"`
-	AsrInfo     []*SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo     `json:"AsrInfo,omitempty" xml:"AsrInfo,omitempty" type:"Repeated"`
-	OcrInfo     []*SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo     `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty" type:"Repeated"`
+	// The information about audio files.
+	AsrInfo []*SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo `json:"AsrInfo,omitempty" xml:"AsrInfo,omitempty" type:"Repeated"`
+	// The information about subtitle files.
+	OcrInfo []*SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty" type:"Repeated"`
 }
 
 func (s SearchMediaByAILabelResponseBodyMediaListAiData) String() string {
@@ -38416,18 +41186,28 @@ func (s *SearchMediaByAILabelResponseBodyMediaListAiData) SetOcrInfo(v []*Search
 }
 
 type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo struct {
+	// The category.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the face.
+	//
 	// example:
 	//
 	// 5FE19530C7A422197535FE74F5DB****
 	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	// The ID of the entity.
+	//
 	// example:
 	//
 	// 103102503**
-	LabelId     *string                                                                  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
-	LabelName   *string                                                                  `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
-	LabelType   *string                                                                  `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
+	LabelId *string `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	// The name of the entity.
+	LabelName *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	// The type of the tag.
+	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
+	// The information about the clips.
 	Occurrences []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences `json:"Occurrences,omitempty" xml:"Occurrences,omitempty" type:"Repeated"`
+	// The source.
+	//
 	// example:
 	//
 	// vision
@@ -38478,36 +41258,53 @@ func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) SetSource(v
 }
 
 type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences struct {
+	// The ID of the clip.
+	//
 	// example:
 	//
 	// 158730355E4B82257D8AA1583A58****
-	ClipId  *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	// The content of the text.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The fine-grained ID of the entity.
+	//
 	// example:
 	//
 	// 103102503**
-	FinegrainId   *string `json:"FinegrainId,omitempty" xml:"FinegrainId,omitempty"`
+	FinegrainId *string `json:"FinegrainId,omitempty" xml:"FinegrainId,omitempty"`
+	// The fine-grained name of the entity.
 	FinegrainName *string `json:"FinegrainName,omitempty" xml:"FinegrainName,omitempty"`
+	// The start time of the clip.
+	//
 	// example:
 	//
 	// 1.4
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// The image that contains the most face information.
+	//
 	// example:
 	//
 	// https://service-****-public.oss-cn-hangzhou.aliyuncs.com/1563457****438522/service-image/f788974f-9595-43b2-a478-7c7a1afb****.jpg
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 0.75287705
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The sequence ID of the vector table.
+	//
 	// example:
 	//
 	// 85010D1**
 	TableBatchSeqId *string `json:"TableBatchSeqId,omitempty" xml:"TableBatchSeqId,omitempty"`
+	// The end time of the clip.
+	//
 	// example:
 	//
 	// 2.5
-	To     *float64                                                                       `json:"To,omitempty" xml:"To,omitempty"`
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// The tracks.
 	Tracks []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks `json:"Tracks,omitempty" xml:"Tracks,omitempty" type:"Repeated"`
 }
 
@@ -38570,14 +41367,20 @@ func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) 
 }
 
 type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks struct {
+	// The coordinates of the bounding box.
+	//
 	// example:
 	//
 	// 468.0;67.0;615.0;267.0
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The size of the bounding box.
+	//
 	// example:
 	//
 	// 50
 	Size *float64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The timestamp of the track.
+	//
 	// example:
 	//
 	// 1.4
@@ -38608,19 +41411,28 @@ func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTr
 }
 
 type SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo struct {
+	// The ID of the clip.
+	//
 	// example:
 	//
 	// 5FE19530C7A422197535FE74F5DB****
-	ClipId  *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	// The content of the audio.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The start time of the clip.
+	//
 	// example:
 	//
 	// 1.4
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// The timestamp of the clip.
+	//
 	// example:
 	//
 	// 1.4
 	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The end time of the clip.
+	//
 	// example:
 	//
 	// 2.5
@@ -38661,19 +41473,28 @@ func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) SetTo(v float64
 }
 
 type SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo struct {
+	// The ID of the clip.
+	//
 	// example:
 	//
 	// 5FE19530C7A422197535FE74F5DB****
-	ClipId  *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	// The content of the text.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The start time of the clip.
+	//
 	// example:
 	//
 	// 1.4
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// The timestamp of the clip.
+	//
 	// example:
 	//
 	// 1.4
 	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The end time of the clip.
+	//
 	// example:
 	//
 	// 2.5
@@ -38743,32 +41564,56 @@ func (s *SearchMediaByAILabelResponse) SetBody(v *SearchMediaByAILabelResponseBo
 }
 
 type SearchMediaByFaceRequest struct {
+	// The ID of the entity.
+	//
 	// example:
 	//
 	// 2d3bf1e35a1e42b5ab338d701efa****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The token that is used to identify the query. You can use this parameter in the SearchMediaClipByFace operation to specify the same query conditions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zxtest-huangxuan-2023-3-7-V1
 	FaceSearchToken *string `json:"FaceSearchToken,omitempty" xml:"FaceSearchToken,omitempty"`
-	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The type of the media asset. Valid values:
+	//
+	// 	- image
+	//
+	// 	- video
+	//
+	// example:
+	//
+	// video
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The URL of the face image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://****.oss-cn-shanghai.aliyuncs.com/input/huangxuan****.jpg
 	PersonImageUrl *string `json:"PersonImageUrl,omitempty" xml:"PersonImageUrl,omitempty"`
-	SearchLibName  *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// The name of the search library.
+	//
+	// example:
+	//
+	// test1
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 }
 
 func (s SearchMediaByFaceRequest) String() string {
@@ -38815,19 +41660,28 @@ func (s *SearchMediaByFaceRequest) SetSearchLibName(v string) *SearchMediaByFace
 }
 
 type SearchMediaByFaceResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
-	Code          *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The media assets that meet the conditions.
 	MediaInfoList []*SearchMediaByFaceResponseBodyMediaInfoList `json:"MediaInfoList,omitempty" xml:"MediaInfoList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7CA7D615-CFB1-5437-9A12-2D185C3EE6CB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true false
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of data records that meet the specified filter condition.
+	//
 	// example:
 	//
 	// 163
@@ -38868,6 +41722,8 @@ func (s *SearchMediaByFaceResponseBody) SetTotal(v int64) *SearchMediaByFaceResp
 }
 
 type SearchMediaByFaceResponseBodyMediaInfoList struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 3b187b3620c8490886cfc2a9578c****
@@ -38917,6 +41773,8 @@ func (s *SearchMediaByFaceResponse) SetBody(v *SearchMediaByFaceResponseBody) *S
 }
 
 type SearchMediaByHybridRequest struct {
+	// The ID of the media asset. The details of the media asset are returned.
+	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
@@ -39125,23 +41983,38 @@ func (s *SearchMediaByHybridResponse) SetBody(v *SearchMediaByHybridResponseBody
 }
 
 type SearchMediaByMultimodalRequest struct {
+	// The type of the media assets.
+	//
+	// Valid values:
+	//
+	// 	- image
+	//
+	// 	- video (default)
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search library.
+	//
 	// example:
 	//
 	// test-1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
-	Text          *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The content that you want to query. You can describe the content in natural language.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s SearchMediaByMultimodalRequest) String() string {
@@ -39178,19 +42051,28 @@ func (s *SearchMediaByMultimodalRequest) SetText(v string) *SearchMediaByMultimo
 }
 
 type SearchMediaByMultimodalResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The media assets that contain the specified content.
 	MediaList []*SearchMediaByMultimodalResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true false
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of data records that meet the specified filter condition.
+	//
 	// example:
 	//
 	// 20
@@ -39231,7 +42113,10 @@ func (s *SearchMediaByMultimodalResponseBody) SetTotal(v int64) *SearchMediaByMu
 }
 
 type SearchMediaByMultimodalResponseBodyMediaList struct {
+	// The information about the clip.
 	ClipInfo []*SearchMediaByMultimodalResponseBodyMediaListClipInfo `json:"ClipInfo,omitempty" xml:"ClipInfo,omitempty" type:"Repeated"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// a18936e0e28771edb59ae6f6f47a****
@@ -39257,14 +42142,20 @@ func (s *SearchMediaByMultimodalResponseBodyMediaList) SetMediaId(v string) *Sea
 }
 
 type SearchMediaByMultimodalResponseBodyMediaListClipInfo struct {
+	// The start time of the clip.
+	//
 	// example:
 	//
 	// 2
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 1.2
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The end time of the clip.
+	//
 	// example:
 	//
 	// 4
@@ -39324,30 +42215,45 @@ func (s *SearchMediaByMultimodalResponse) SetBody(v *SearchMediaByMultimodalResp
 }
 
 type SearchMediaClipByFaceRequest struct {
+	// The ID of the entity.
+	//
 	// example:
 	//
 	// 2d3bf1e35a1e42b5ab338d701efa****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The value of this parameter is the same as that of the FaceSearchToken parameter in the SearchMediaByFace request. This specifies to return media asset clips that meet the same query conditions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zxtest-huangxuan-2023-3-7-V1
 	FaceSearchToken *string `json:"FaceSearchToken,omitempty" xml:"FaceSearchToken,omitempty"`
+	// The ID of the media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3b187b3620c8490886cfc2a9578c****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the search library.
+	//
+	// example:
+	//
+	// test1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 }
 
@@ -39390,19 +42296,28 @@ func (s *SearchMediaClipByFaceRequest) SetSearchLibName(v string) *SearchMediaCl
 }
 
 type SearchMediaClipByFaceResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
-	Code          *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The media asset clips that meet the requirements.
 	MediaClipList []*SearchMediaClipByFaceResponseBodyMediaClipList `json:"MediaClipList,omitempty" xml:"MediaClipList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E44FFACD-9E90-555A-A09A-6FD3B7335E39
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of media asset clips that meet the conditions.
+	//
 	// example:
 	//
 	// 5
@@ -39443,16 +42358,24 @@ func (s *SearchMediaClipByFaceResponseBody) SetTotal(v int64) *SearchMediaClipBy
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipList struct {
+	// The type of the character. Valid values: celebrity sensitive politician custom unknown
+	//
 	// example:
 	//
 	// celebrity
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the entity, which is the same as the entity ID returned in tag analysis.
+	//
 	// example:
 	//
 	// 1031025****
-	EntityId         *string                                                           `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	LabelName        *string                                                           `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The name of the entity.
+	LabelName *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	// The information about clips related to the face.
 	OccurrencesInfos []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos `json:"OccurrencesInfos,omitempty" xml:"OccurrencesInfos,omitempty" type:"Repeated"`
+	// The score of the clip. The value is of the Float type. The value is in the range of [0,1].
+	//
 	// example:
 	//
 	// 0.99041677
@@ -39493,14 +42416,19 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipList) SetScore(v float32) *Se
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos struct {
+	// The end time of the clip. Unit: seconds. The value is of the Float type.
+	//
 	// example:
 	//
 	// 69.06635
 	EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the clip. Unit: seconds. The value is of the Float type.
+	//
 	// example:
 	//
 	// 61.066353
-	StartTime *float32                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The information about the face in the clip.
 	TrackData []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData `json:"TrackData,omitempty" xml:"TrackData,omitempty" type:"Repeated"`
 }
 
@@ -39528,7 +42456,10 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) SetTrac
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData struct {
+	// The coordinates of the face.
 	BoxPosition *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition `json:"BoxPosition,omitempty" xml:"BoxPosition,omitempty" type:"Struct"`
+	// The timestamp when the face appears in the clip. Unit: seconds. The value is of the Float type.
+	//
 	// example:
 	//
 	// 62.03302
@@ -39554,18 +42485,26 @@ func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData
 }
 
 type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition struct {
+	// The height of the rectangle frame. Unit: pixels.
+	//
 	// example:
 	//
 	// 168
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// The width of the rectangle frame. Unit: pixels.
+	//
 	// example:
 	//
 	// 128
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// The x-axis coordinate of the upper-left corner. Unit: pixels.
+	//
 	// example:
 	//
 	// 517
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-axis coordinate of the upper-left corner. Unit: pixels.
+	//
 	// example:
 	//
 	// 409
@@ -44294,10 +47233,14 @@ func (s *SubmitLiveTranscodeJobResponse) SetBody(v *SubmitLiveTranscodeJobRespon
 }
 
 type SubmitMediaAiAnalysisJobRequest struct {
+	// The analysis parameters.
+	//
 	// example:
 	//
 	// {"nlpParams":{"sourceLanguage":"cn","diarizationEnabled":true,"speakerCount":0,"summarizationEnabled":false,"translationEnabled":false}}
 	AnalysisParams *string `json:"AnalysisParams,omitempty" xml:"AnalysisParams,omitempty"`
+	// The media asset that you want to analyze. You can specify an Object Storage Service (OSS) URL, a media asset ID, or an external URL.
+	//
 	// example:
 	//
 	// {"MediaType":"video","Media":"https://xxx.com/your_movie.mp4"}
@@ -44323,11 +47266,13 @@ func (s *SubmitMediaAiAnalysisJobRequest) SetInput(v string) *SubmitMediaAiAnaly
 }
 
 type SubmitMediaAiAnalysisJobResponseBody struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -52373,22 +55318,40 @@ func (s *SubmitTranscodeJobResponse) SetBody(v *SubmitTranscodeJobResponseBody) 
 }
 
 type SubmitVideoTranslationJobRequest struct {
+	// 	- The client token.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 	- The job description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 	- The configuration parameters of the video translation job.
+	//
+	// 	- The value must be in the JSON format.
+	//
 	// example:
 	//
 	// {"SourceLanguage":"zh","TargetLanguage":"en","DetextArea":"Auto"}
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	// 	- The input parameters of the video translation job.
+	//
+	// 	- A video translation job takes a video or subtitle file as the input.
+	//
+	// 	- The value must be in the JSON format.
+	//
 	// example:
 	//
 	// {"Type":"Video","Media":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/xxx.mp4"}
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// 	- The output parameters of the video translation job.
+	//
+	// 	- A video translation job can generate a video or subtitle file as the output.
+	//
 	// example:
 	//
 	// {"MediaURL": "https://your-bucket.oss-cn-shanghai.aliyuncs.com/your-object.mp4"}
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 	- The job title.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 	- The user data.
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitVideoTranslationJobRequest) String() string {
@@ -52435,10 +55398,26 @@ func (s *SubmitVideoTranslationJobRequest) SetUserData(v string) *SubmitVideoTra
 }
 
 type SubmitVideoTranslationJobResponseBody struct {
+	// The data returned.
 	Data *SubmitVideoTranslationJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitVideoTranslationJobResponseBody) String() string {
@@ -52465,6 +55444,11 @@ func (s *SubmitVideoTranslationJobResponseBody) SetSuccess(v bool) *SubmitVideoT
 }
 
 type SubmitVideoTranslationJobResponseBodyData struct {
+	// The ID of the video translation job.
+	//
+	// example:
+	//
+	// ****d718e2ff4f018ccf419a7b71****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -52782,12 +55766,22 @@ func (s *UpdateAvatarTrainingJobResponse) SetBody(v *UpdateAvatarTrainingJobResp
 }
 
 type UpdateCategoryRequest struct {
+	// The category ID. You can use one of the following methods to obtain the ID:
+	//
+	// 	- Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management*	- > **Category Management*	- to view the category ID.
+	//
+	// 	- View the value of CateId returned by the AddCategory operation that you called to create a category.
+	//
+	// 	- View the value of CateId returned by the GetCategories operation that you called to query a category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 43
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category name.
+	//
 	// This parameter is required.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 }
@@ -52811,6 +55805,8 @@ func (s *UpdateCategoryRequest) SetCateName(v string) *UpdateCategoryRequest {
 }
 
 type UpdateCategoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E84BE44-58A7-****-****-FBEBEA16EF94
@@ -53047,30 +56043,47 @@ func (s *UpdateCustomizedVoiceResponse) SetBody(v *UpdateCustomizedVoiceResponse
 }
 
 type UpdateEditingProjectRequest struct {
+	// The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+	//
+	// 	- Reserving
+	//
+	// 	- ReservationCanceled
+	//
 	// example:
 	//
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	ClipsParam     *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The thumbnail URL of the online editing project.
+	//
 	// example:
 	//
 	// https://****.com/6AB4D0E1E1C7446888****.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The description of the online editing project.
+	//
 	// example:
 	//
 	// testtimeline001desciption
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the online editing project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****4ee4b97e27b525142a6b2****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The template ID. This parameter is used to quickly build a timeline with ease. Note: Only one of ProjectId, Timeline, and TemplateId can be specified. If TemplateId is specified, ClipsParam must also be specified.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Timeline   *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// The title of the online editing project.
+	//
 	// example:
 	//
 	// testtimeline
@@ -53126,6 +56139,8 @@ func (s *UpdateEditingProjectRequest) SetTitle(v string) *UpdateEditingProjectRe
 }
 
 type UpdateEditingProjectResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ****25818875-5F78-4AF6-D7393642CA58****
@@ -54003,50 +57018,118 @@ func (s *UpdateLiveTranscodeTemplateResponse) SetBody(v *UpdateLiveTranscodeTemp
 }
 
 type UpdateMediaInfoRequest struct {
+	// Specifies whether to append tags. Default value: false. Valid values:
+	//
+	// 	- true: updates the MediaTags parameter by appending new tags.
+	//
+	// 	- false: updates the MediaTags parameter by overwriting existing tags with new tags.
+	//
 	// example:
 	//
 	// true
 	AppendTags *bool `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
+	// The business type. Valid values:
+	//
+	// 	- subtitles
+	//
+	// 	- watermark
+	//
+	// 	- opening
+	//
+	// 	- ending
+	//
+	// 	- general
+	//
 	// example:
 	//
 	// video
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 3048
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category.
+	//
+	// 	- The value can be up to 64 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// defaultCategory
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The URL of the thumbnail.
+	//
+	// 	- The value can be up to 128 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The content description.
+	//
+	// 	- The value can be up to 1,024 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// defaultDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The input URL of the media asset in another service. The URL must be bound to the ID of the media asset in IMS. The URL cannot be modified once registered.
+	//
+	// For a media asset from Object Storage Service (OSS), the URL may have one of the following formats:
+	//
+	// 1\\. http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
+	//
+	// 2\\. oss://example-bucket/example.mp4. This format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The ID of the media asset. If this parameter is left empty, you must specify the input URL of the media asset, which has been registered in the IMS content library.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags.
+	//
+	// 	- Up to 16 tags are supported.
+	//
+	// 	- Separate multiple tags with commas (,).
+	//
+	// 	- Each tag can be up to 32 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// updateTags1,updateTags2
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The custom ID. The ID can be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). Make sure that the ID is unique among users.
+	//
 	// example:
 	//
 	// 123-123
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// The title.
+	//
+	// 	- The value can be up to 128 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// defaultTitle
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user data. It can be up to 1,024 bytes in size.
+	//
 	// example:
 	//
 	// userData
@@ -54122,10 +57205,14 @@ func (s *UpdateMediaInfoRequest) SetUserData(v string) *UpdateMediaInfoRequest {
 }
 
 type UpdateMediaInfoResponseBody struct {
+	// The ID of the media asset in IMS.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -54180,12 +57267,16 @@ func (s *UpdateMediaInfoResponse) SetBody(v *UpdateMediaInfoResponseBody) *Updat
 }
 
 type UpdateMediaMarksRequest struct {
+	// The ID of the media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 53afdf003a******6a16b5feac6402
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The marks of the media asset.
+	//
 	// This parameter is required.
 	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
 }
@@ -54209,14 +57300,20 @@ func (s *UpdateMediaMarksRequest) SetMediaMarks(v string) *UpdateMediaMarksReque
 }
 
 type UpdateMediaMarksResponseBody struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 53afdf003a******6a16b5feac6402
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The IDs of the successfully modified marks.
+	//
 	// example:
 	//
 	// mark-f82d*****4994b0915948ef7e16,mark-3d56d*****4c8fa9ae2a1f9e5d2d60
 	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -54276,18 +57373,24 @@ func (s *UpdateMediaMarksResponse) SetBody(v *UpdateMediaMarksResponseBody) *Upd
 }
 
 type UpdateMediaToSearchLibRequest struct {
+	// The ID of the media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The message body.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {}
 	MsgBody *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	// The name of the search library. Default value: ims-default-search-lib.
+	//
 	// example:
 	//
 	// test1
@@ -54318,16 +57421,34 @@ func (s *UpdateMediaToSearchLibRequest) SetSearchLibName(v string) *UpdateMediaT
 }
 
 type UpdateMediaToSearchLibResponseBody struct {
+	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4E84BE44-58A7-****-****-FBEBEA16EF94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateMediaToSearchLibResponseBody) String() string {
@@ -54769,30 +57890,66 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 }
 
 type UploadMediaByURLRequest struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The entity ID. You can call the CreateEntity operation to create an entity and specify a dynamic metadata structure.
+	//
 	// example:
 	//
 	// d67281da3c8743b8823ad12976187***
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The metadata of the media file that you want to upload. The value must be a JSON string.
+	//
+	// 	- This parameter takes effect only if its value matches a URL that is specified in UploadURLs.
+	//
+	// 	- You must convert the JSON-formatted data, such as [UploadMetadata, UploadMetadata,…], into a JSON string.
+	//
+	// 	- For more information, see the "UploadMetadata" section of this topic.
+	//
 	// example:
 	//
 	// [{"SourceURL":"https://example.aliyundoc.com/video01.mp4","Title":"urlUploadTest"}]
 	MediaMetaData *string `json:"MediaMetaData,omitempty" xml:"MediaMetaData,omitempty"`
+	// The postprocessing configurations. You can specify this parameter if Type is set to video or audio.
+	//
+	// Set ProcessType to Workflow.
+	//
 	// example:
 	//
 	// {"ProcessType": "Workflow","ProcessID":"b72a06c6beeb4dcdb898feef067b1***"}
 	PostProcessConfig *string `json:"PostProcessConfig,omitempty" xml:"PostProcessConfig,omitempty"`
+	// The destination storage address.
+	//
+	// Set StorageType to oss.
+	//
+	// Set StorageLocation to an address in ApsaraVideo VOD. You cannot set this field to an OSS URL.
+	//
 	// example:
 	//
 	// {"StorageType":"oss","StorageLocation":"outin-***.oss-cn-shanghai.aliyuncs.com"}
 	UploadTargetConfig *string `json:"UploadTargetConfig,omitempty" xml:"UploadTargetConfig,omitempty"`
+	// The URL of the source file.
+	//
+	// 	- The URL must contain a file name extension, such as mp4 in `https://****.mp4`.
+	//
+	//     	- If the URL does not contain a file name extension, you can specify one by setting `FileExtension` in `UploadMetadata`.
+	//
+	//     	- If the URL contains a file name extension and `FileExtension` is also specified, the value of `FileExtension` prevails.
+	//
+	// 	- URL encoding is required. Separate multiple URLs with commas (,). You can specify a maximum of 20 URLs.
+	//
+	// 	- Special characters may cause upload failures. Therefore, you must encode URLs before you separate them with commas (,).
+	//
 	// example:
 	//
 	// https://diffurl.mp4
 	UploadURLs *string `json:"UploadURLs,omitempty" xml:"UploadURLs,omitempty"`
+	// The user data. The value must be a JSON string. You can configure settings such as message callbacks.
+	//
 	// example:
 	//
 	// {"MessageCallback":{"CallbackURL":"http://example.aliyundoc.com"},"Extend":{"localId":"xxx","test":"www"}}
@@ -54843,10 +58000,13 @@ func (s *UploadMediaByURLRequest) SetUserData(v string) *UploadMediaByURLRequest
 }
 
 type UploadMediaByURLResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ****83B7-7F87-4792-BFE9-63CD2137****
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about upload jobs.
 	UploadJobs []*UploadMediaByURLResponseBodyUploadJobs `json:"UploadJobs,omitempty" xml:"UploadJobs,omitempty" type:"Repeated"`
 }
 
@@ -54869,14 +58029,20 @@ func (s *UploadMediaByURLResponseBody) SetUploadJobs(v []*UploadMediaByURLRespon
 }
 
 type UploadMediaByURLResponseBodyUploadJobs struct {
+	// The ID of the upload job.
+	//
 	// example:
 	//
 	// 20ce1e05dba64576b96e9683879f0***
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// f476988629f54a7b8a4ba90d1a6c7***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The URL of the source file that is uploaded in the upload job.
+	//
 	// example:
 	//
 	// http://example****.mp4
@@ -54936,26 +58102,76 @@ func (s *UploadMediaByURLResponse) SetBody(v *UploadMediaByURLResponseBody) *Upl
 }
 
 type UploadStreamByURLRequest struct {
+	// The quality of the media stream. Valid values:
+	//
+	// 	- FD: low definition.
+	//
+	// 	- LD: standard definition.
+	//
+	// 	- SD: high definition.
+	//
+	// 	- HD: ultra-high definition.
+	//
+	// 	- OD: original quality.
+	//
+	// 	- 2K: 2K resolution.
+	//
+	// 	- 4K: 4K resolution.
+	//
+	// 	- SQ: standard sound quality.
+	//
+	// 	- HQ: high sound quality.
+	//
 	// example:
 	//
 	// HD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The file name extension of the media stream.
+	//
 	// example:
 	//
 	// mp4
 	FileExtension *string `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
+	// The high dynamic range (HDR) format of the transcoded stream. Valid values:
+	//
+	// 	- HDR
+	//
+	// 	- HDR10
+	//
+	// 	- HLG
+	//
+	// 	- DolbyVision
+	//
+	// 	- HDRVivid
+	//
+	// 	- SDR+
+	//
+	// >
+	//
+	// 	- The value is not case-sensitive,
+	//
+	// 	- You can leave this parameter empty for non-HDR streams.
+	//
 	// example:
 	//
 	// HDR10
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 411bed50018971edb60b0764a0ec6***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The URL of the transcoded stream file.
+	//
+	// If the URL of the transcoded stream requires authentication, you must specify the authentication parameters in the stream URL and make sure that the URL can be accessed over the Internet.
+	//
 	// example:
 	//
 	// https://example.com/sample-stream.mp4
 	StreamURL *string `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// {"MessageCallback":{"CallbackURL":"http://test.test.com"}, "Extend":{"localId":"xxx","test":"www"}}
@@ -55001,22 +58217,32 @@ func (s *UploadStreamByURLRequest) SetUserData(v string) *UploadStreamByURLReque
 }
 
 type UploadStreamByURLResponseBody struct {
+	// The OSS URL of the file.
+	//
 	// example:
 	//
 	// http://outin-***.oss-cn-shanghai.aliyuncs.com/stream/48555e8b-181dd5a8c07/48555e8b-181dd5a8c07.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The ID of the upload job.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 411bed50018971edb60b0764a0ec6***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******89-C21D-4B78-AE24-3788B8******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The URL of the source file that is uploaded in the upload job.
+	//
 	// example:
 	//
 	// https://example.com/sample-stream.mp4
@@ -55193,7 +58419,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建媒资分类
+// Creates a category.
+//
+// Description:
+//
+// You can create at most three levels of categories. Each category level can contain a maximum of 100 subcategories.
 //
 // @param request - AddCategoryRequest
 //
@@ -55243,7 +58473,11 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 
 // Summary:
 //
-// 创建媒资分类
+// Creates a category.
+//
+// Description:
+//
+// You can create at most three levels of categories. Each category level can contain a maximum of 100 subcategories.
 //
 // @param request - AddCategoryRequest
 //
@@ -55261,7 +58495,7 @@ func (client *Client) AddCategory(request *AddCategoryRequest) (_result *AddCate
 
 // Summary:
 //
-// 剪辑工程增加素材
+// Adds one or more materials to an online editing project.
 //
 // @param request - AddEditingProjectMaterialsRequest
 //
@@ -55307,7 +58541,7 @@ func (client *Client) AddEditingProjectMaterialsWithOptions(request *AddEditingP
 
 // Summary:
 //
-// 剪辑工程增加素材
+// Adds one or more materials to an online editing project.
 //
 // @param request - AddEditingProjectMaterialsRequest
 //
@@ -55385,7 +58619,7 @@ func (client *Client) AddFavoritePublicMedia(request *AddFavoritePublicMediaRequ
 
 // Summary:
 //
-// 为媒资增加标注信息
+// Adds marks for a media asset.
 //
 // @param request - AddMediaMarksRequest
 //
@@ -55431,7 +58665,7 @@ func (client *Client) AddMediaMarksWithOptions(request *AddMediaMarksRequest, ru
 
 // Summary:
 //
-// 为媒资增加标注信息
+// Adds marks for a media asset.
 //
 // @param request - AddMediaMarksRequest
 //
@@ -55539,7 +58773,7 @@ func (client *Client) AddTemplate(request *AddTemplateRequest) (_result *AddTemp
 
 // Summary:
 //
-// 更新搜索索引
+// Modifies search index information including index status and configurations.
 //
 // @param request - AlterSearchIndexRequest
 //
@@ -55593,7 +58827,7 @@ func (client *Client) AlterSearchIndexWithOptions(request *AlterSearchIndexReque
 
 // Summary:
 //
-// 更新搜索索引
+// Modifies search index information including index status and configurations.
 //
 // @param request - AlterSearchIndexRequest
 //
@@ -55611,7 +58845,7 @@ func (client *Client) AlterSearchIndex(request *AlterSearchIndexRequest) (_resul
 
 // Summary:
 //
-// 批量获取媒资信息
+// Queries the information about multiple media assets at a time based on media asset IDs.
 //
 // @param request - BatchGetMediaInfosRequest
 //
@@ -55657,7 +58891,7 @@ func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosR
 
 // Summary:
 //
-// 批量获取媒资信息
+// Queries the information about multiple media assets at a time based on media asset IDs.
 //
 // @param request - BatchGetMediaInfosRequest
 //
@@ -56187,7 +59421,7 @@ func (client *Client) CreateDNADB(request *CreateDNADBRequest) (_result *CreateD
 
 // Summary:
 //
-// 创建云剪辑工程
+// Creates an online editing project. You can specify configurations such as the title, description, timeline, and thumbnail for the project.
 //
 // @param request - CreateEditingProjectRequest
 //
@@ -56267,7 +59501,7 @@ func (client *Client) CreateEditingProjectWithOptions(request *CreateEditingProj
 
 // Summary:
 //
-// 创建云剪辑工程
+// Creates an online editing project. You can specify configurations such as the title, description, timeline, and thumbnail for the project.
 //
 // @param request - CreateEditingProjectRequest
 //
@@ -56571,6 +59805,10 @@ func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *C
 //
 // 创建搜索索引
 //
+// Description:
+//
+// The large visual model feature is still in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+//
 // @param request - CreateSearchIndexRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56625,6 +59863,10 @@ func (client *Client) CreateSearchIndexWithOptions(request *CreateSearchIndexReq
 //
 // 创建搜索索引
 //
+// Description:
+//
+// The large visual model feature is still in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+//
 // @param request - CreateSearchIndexRequest
 //
 // @return CreateSearchIndexResponse
@@ -56641,7 +59883,7 @@ func (client *Client) CreateSearchIndex(request *CreateSearchIndexRequest) (_res
 
 // Summary:
 //
-// 创建库
+// Creates a search library to store media assets.
 //
 // @param request - CreateSearchLibRequest
 //
@@ -56683,7 +59925,7 @@ func (client *Client) CreateSearchLibWithOptions(request *CreateSearchLibRequest
 
 // Summary:
 //
-// 创建库
+// Creates a search library to store media assets.
 //
 // @param request - CreateSearchLibRequest
 //
@@ -56701,7 +59943,23 @@ func (client *Client) CreateSearchLib(request *CreateSearchLibRequest) (_result 
 
 // Summary:
 //
-// 本地媒资上传
+// Obtains the upload URL and credential of a media asset and creates information about the media asset.
+//
+// Description:
+//
+//   You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
+//
+// 	- Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
+//
+// 	- If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
+//
+// 	- After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
+//
+// 	- The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
+//
+// 	- You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+//
+// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - CreateUploadMediaRequest
 //
@@ -56767,7 +60025,23 @@ func (client *Client) CreateUploadMediaWithOptions(request *CreateUploadMediaReq
 
 // Summary:
 //
-// 本地媒资上传
+// Obtains the upload URL and credential of a media asset and creates information about the media asset.
+//
+// Description:
+//
+//   You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
+//
+// 	- Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
+//
+// 	- If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
+//
+// 	- After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
+//
+// 	- The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
+//
+// 	- You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+//
+// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - CreateUploadMediaRequest
 //
@@ -56785,7 +60059,15 @@ func (client *Client) CreateUploadMedia(request *CreateUploadMediaRequest) (_res
 
 // Summary:
 //
-// 本地上传媒体流
+// Obtains the upload URL and credential of a media stream.
+//
+// Description:
+//
+//   You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
+//
+// 	- You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+//
+// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - CreateUploadStreamRequest
 //
@@ -56843,7 +60125,15 @@ func (client *Client) CreateUploadStreamWithOptions(request *CreateUploadStreamR
 
 // Summary:
 //
-// 本地上传媒体流
+// Obtains the upload URL and credential of a media stream.
+//
+// Description:
+//
+//   You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
+//
+// 	- You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+//
+// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - CreateUploadStreamRequest
 //
@@ -56981,7 +60271,11 @@ func (client *Client) DeleteAvatarTrainingJob(request *DeleteAvatarTrainingJobRe
 
 // Summary:
 //
-// 删除媒资分类
+// Deletes a media asset category.
+//
+// Description:
+//
+// This operation also deletes the subcategories, including the level-2 and level-3 categories, of the category.
 //
 // @param request - DeleteCategoryRequest
 //
@@ -57023,7 +60317,11 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 
 // Summary:
 //
-// 删除媒资分类
+// Deletes a media asset category.
+//
+// Description:
+//
+// This operation also deletes the subcategories, including the level-2 and level-3 categories, of the category.
 //
 // @param request - DeleteCategoryRequest
 //
@@ -57317,7 +60615,7 @@ func (client *Client) DeleteDNAFiles(request *DeleteDNAFilesRequest) (_result *D
 
 // Summary:
 //
-// 删除剪辑工程关联素材
+// Deletes one or more materials from an online editing project.
 //
 // @param request - DeleteEditingProjectMaterialsRequest
 //
@@ -57367,7 +60665,7 @@ func (client *Client) DeleteEditingProjectMaterialsWithOptions(request *DeleteEd
 
 // Summary:
 //
-// 删除剪辑工程关联素材
+// Deletes one or more materials from an online editing project.
 //
 // @param request - DeleteEditingProjectMaterialsRequest
 //
@@ -57385,7 +60683,7 @@ func (client *Client) DeleteEditingProjectMaterials(request *DeleteEditingProjec
 
 // Summary:
 //
-// 删除云剪辑工程
+// Deletes one or more online editing project.
 //
 // @param request - DeleteEditingProjectsRequest
 //
@@ -57427,7 +60725,7 @@ func (client *Client) DeleteEditingProjectsWithOptions(request *DeleteEditingPro
 
 // Summary:
 //
-// 删除云剪辑工程
+// Deletes one or more online editing project.
 //
 // @param request - DeleteEditingProjectsRequest
 //
@@ -57823,7 +61121,7 @@ func (client *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTe
 
 // Summary:
 //
-// 删除媒资从搜索
+// Deletes a specific media asset from a search library.
 //
 // @param request - DeleteMediaFromSearchLibRequest
 //
@@ -57873,7 +61171,7 @@ func (client *Client) DeleteMediaFromSearchLibWithOptions(request *DeleteMediaFr
 
 // Summary:
 //
-// 删除媒资从搜索
+// Deletes a specific media asset from a search library.
 //
 // @param request - DeleteMediaFromSearchLibRequest
 //
@@ -57891,7 +61189,7 @@ func (client *Client) DeleteMediaFromSearchLib(request *DeleteMediaFromSearchLib
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes multiple media assets at a time. You can delete at most 20 media assets at a time. If MediaIds is specified, it is preferentially used. If MediaIds is empty, InputURLs must be specified.
 //
 // @param request - DeleteMediaInfosRequest
 //
@@ -57941,7 +61239,7 @@ func (client *Client) DeleteMediaInfosWithOptions(request *DeleteMediaInfosReque
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes multiple media assets at a time. You can delete at most 20 media assets at a time. If MediaIds is specified, it is preferentially used. If MediaIds is empty, InputURLs must be specified.
 //
 // @param request - DeleteMediaInfosRequest
 //
@@ -57959,7 +61257,7 @@ func (client *Client) DeleteMediaInfos(request *DeleteMediaInfosRequest) (_resul
 
 // Summary:
 //
-// 删除媒资标注信息
+// Deletes the marks of a media asset.
 //
 // @param request - DeleteMediaMarksRequest
 //
@@ -58005,7 +61303,7 @@ func (client *Client) DeleteMediaMarksWithOptions(request *DeleteMediaMarksReque
 
 // Summary:
 //
-// 删除媒资标注信息
+// Deletes the marks of a media asset.
 //
 // @param request - DeleteMediaMarksRequest
 //
@@ -58083,7 +61381,11 @@ func (client *Client) DeletePipeline(request *DeletePipelineRequest) (_result *D
 
 // Summary:
 //
-// 删除播放信息
+// Deletes media streams such as video streams and audio streams.
+//
+// Description:
+//
+// You can call this operation to delete multiple media streams at a time.
 //
 // @param request - DeletePlayInfoRequest
 //
@@ -58133,7 +61435,11 @@ func (client *Client) DeletePlayInfoWithOptions(request *DeletePlayInfoRequest, 
 
 // Summary:
 //
-// 删除播放信息
+// Deletes media streams such as video streams and audio streams.
+//
+// Description:
+//
+// You can call this operation to delete multiple media streams at a time.
 //
 // @param request - DeletePlayInfoRequest
 //
@@ -58923,7 +62229,7 @@ func (client *Client) DetectAudioForCustomizedVoiceJob(request *DetectAudioForCu
 
 // Summary:
 //
-// 删除搜索索引
+// Deletes a search index. After you delete a search index, the existing index data is cleared and index-based analysis, storage, and query are not supported for subsequent media assets.
 //
 // @param request - DropSearchIndexRequest
 //
@@ -58969,7 +62275,7 @@ func (client *Client) DropSearchIndexWithOptions(request *DropSearchIndexRequest
 
 // Summary:
 //
-// 删除搜索索引
+// Deletes a search index. After you delete a search index, the existing index data is cleared and index-based analysis, storage, and query are not supported for subsequent media assets.
 //
 // @param request - DropSearchIndexRequest
 //
@@ -58987,7 +62293,7 @@ func (client *Client) DropSearchIndex(request *DropSearchIndexRequest) (_result 
 
 // Summary:
 //
-// 删除库
+// Deletes a search library and all media assets in the library.
 //
 // @param request - DropSearchLibRequest
 //
@@ -59029,7 +62335,7 @@ func (client *Client) DropSearchLibWithOptions(request *DropSearchLibRequest, ru
 
 // Summary:
 //
-// 删除库
+// Deletes a search library and all media assets in the library.
 //
 // @param request - DropSearchLibRequest
 //
@@ -59352,7 +62658,11 @@ func (client *Client) GetBatchMediaProducingJob(request *GetBatchMediaProducingJ
 
 // Summary:
 //
-// 查询媒资分类
+// Queries the information about a category and its subcategories.
+//
+// Description:
+//
+// You can call this operation to query the information about a category and its subcategories based on the category ID and category type.
 //
 // @param request - GetCategoriesRequest
 //
@@ -59410,7 +62720,11 @@ func (client *Client) GetCategoriesWithOptions(request *GetCategoriesRequest, ru
 
 // Summary:
 //
-// 查询媒资分类
+// Queries the information about a category and its subcategories.
+//
+// Description:
+//
+// You can call this operation to query the information about a category and its subcategories based on the category ID and category type.
 //
 // @param request - GetCategoriesRequest
 //
@@ -59830,7 +63144,7 @@ func (client *Client) GetDynamicImageJob(request *GetDynamicImageJobRequest) (_r
 
 // Summary:
 //
-// 获取单个云剪辑工程
+// Queries the information about an online editing project.
 //
 // @param request - GetEditingProjectRequest
 //
@@ -59876,7 +63190,7 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 
 // Summary:
 //
-// 获取单个云剪辑工程
+// Queries the information about an online editing project.
 //
 // @param request - GetEditingProjectRequest
 //
@@ -59894,7 +63208,7 @@ func (client *Client) GetEditingProject(request *GetEditingProjectRequest) (_res
 
 // Summary:
 //
-// 获取剪辑工程关联素材
+// Queries all materials associated with an online editing project.
 //
 // @param request - GetEditingProjectMaterialsRequest
 //
@@ -59936,7 +63250,7 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 
 // Summary:
 //
-// 获取剪辑工程关联素材
+// Queries all materials associated with an online editing project.
 //
 // @param request - GetEditingProjectMaterialsRequest
 //
@@ -60001,7 +63315,7 @@ func (client *Client) GetEventCallback() (_result *GetEventCallbackResponse, _er
 
 // Summary:
 //
-// 获取直播剪辑m3u8索引文件
+// Queries the index file of a live stream. The index file is used to preview an editing project in the console.
 //
 // @param request - GetLiveEditingIndexFileRequest
 //
@@ -60055,7 +63369,7 @@ func (client *Client) GetLiveEditingIndexFileWithOptions(request *GetLiveEditing
 
 // Summary:
 //
-// 获取直播剪辑m3u8索引文件
+// Queries the index file of a live stream. The index file is used to preview an editing project in the console.
 //
 // @param request - GetLiveEditingIndexFileRequest
 //
@@ -60477,7 +63791,11 @@ func (client *Client) GetLiveTranscodeTemplate(request *GetLiveTranscodeTemplate
 
 // Summary:
 //
-// 获取媒资内容信息
+// Queries information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+//
+// Description:
+//
+// If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified.
 //
 // @param request - GetMediaInfoRequest
 //
@@ -60531,7 +63849,11 @@ func (client *Client) GetMediaInfoWithOptions(request *GetMediaInfoRequest, runt
 
 // Summary:
 //
-// 获取媒资内容信息
+// Queries information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+//
+// Description:
+//
+// If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified.
 //
 // @param request - GetMediaInfoRequest
 //
@@ -60601,7 +63923,7 @@ func (client *Client) GetMediaInfoJob(request *GetMediaInfoJobRequest) (_result 
 
 // Summary:
 //
-// 获取媒资标注信息
+// Queries the information about marks based on mark IDs.
 //
 // @param request - GetMediaMarksRequest
 //
@@ -60647,7 +63969,7 @@ func (client *Client) GetMediaMarksWithOptions(request *GetMediaMarksRequest, ru
 
 // Summary:
 //
-// 获取媒资标注信息
+// Queries the information about marks based on mark IDs.
 //
 // @param request - GetMediaMarksRequest
 //
@@ -60841,7 +64163,11 @@ func (client *Client) GetPipeline(request *GetPipelineRequest) (_result *GetPipe
 
 // Summary:
 //
-// 获取播放信息
+// Queries the playback URL of a video or audio file based on its ID.
+//
+// Description:
+//
+// You use the ID of a video or audio file to query the playback URL of the file. Then, you can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
 //
 // @param request - GetPlayInfoRequest
 //
@@ -60887,7 +64213,11 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 
 // Summary:
 //
-// 获取播放信息
+// Queries the playback URL of a video or audio file based on its ID.
+//
+// Description:
+//
+// You use the ID of a video or audio file to query the playback URL of the file. Then, you can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
 //
 // @param request - GetPlayInfoRequest
 //
@@ -61525,7 +64855,13 @@ func (client *Client) GetTranscodeJob(request *GetTranscodeJobRequest) (_result 
 
 // Summary:
 //
-// 获取URL上传信息
+// Queries the information about URL-based upload jobs.
+//
+// Description:
+//
+// You can call this operation to query the information, including the upload status, user data, creation time, and completion time, about URL-based upload jobs based on the returned job IDs or the URLs used during the upload.
+//
+// If an upload job fails, you can view the error code and error message. If an upload job is successful, you can obtain the video ID.
 //
 // @param request - GetUrlUploadInfosRequest
 //
@@ -61571,7 +64907,13 @@ func (client *Client) GetUrlUploadInfosWithOptions(request *GetUrlUploadInfosReq
 
 // Summary:
 //
-// 获取URL上传信息
+// Queries the information about URL-based upload jobs.
+//
+// Description:
+//
+// You can call this operation to query the information, including the upload status, user data, creation time, and completion time, about URL-based upload jobs based on the returned job IDs or the URLs used during the upload.
+//
+// If an upload job fails, you can view the error code and error message. If an upload job is successful, you can obtain the video ID.
 //
 // @param request - GetUrlUploadInfosRequest
 //
@@ -61589,7 +64931,11 @@ func (client *Client) GetUrlUploadInfos(request *GetUrlUploadInfosRequest) (_res
 
 // Summary:
 //
-// 获取媒资新增列表
+// Queries information about video and audio files.
+//
+// Description:
+//
+// You can call this operation to query information about up to the first 5,000 audio and video files based on the filter condition, such as the status or category ID of the file. We recommend that you set the StartTime and EndTime parameters to narrow down the time range and perform multiple queries to obtain data.
 //
 // @param request - GetVideoListRequest
 //
@@ -61655,7 +65001,11 @@ func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runt
 
 // Summary:
 //
-// 获取媒资新增列表
+// Queries information about video and audio files.
+//
+// Description:
+//
+// You can call this operation to query information about up to the first 5,000 audio and video files based on the filter condition, such as the status or category ID of the file. We recommend that you set the StartTime and EndTime parameters to narrow down the time range and perform multiple queries to obtain data.
 //
 // @param request - GetVideoListRequest
 //
@@ -61733,7 +65083,7 @@ func (client *Client) GetWorkflowTask(request *GetWorkflowTaskRequest) (_result 
 
 // Summary:
 //
-// 插入媒资到搜索
+// Adds a media asset in a search library. Before you call this operation, you must create a search library.
 //
 // @param request - InsertMediaToSearchLibRequest
 //
@@ -61791,7 +65141,7 @@ func (client *Client) InsertMediaToSearchLibWithOptions(request *InsertMediaToSe
 
 // Summary:
 //
-// 插入媒资到搜索
+// Adds a media asset in a search library. Before you call this operation, you must create a search library.
 //
 // @param request - InsertMediaToSearchLibRequest
 //
@@ -61885,7 +65235,7 @@ func (client *Client) ListAIAgentInstance(request *ListAIAgentInstanceRequest) (
 
 // Summary:
 //
-// 列出公共素材库所有标签
+// Queries a list of tags of media assets in the public media library.
 //
 // @param request - ListAllPublicMediaTagsRequest
 //
@@ -61931,7 +65281,7 @@ func (client *Client) ListAllPublicMediaTagsWithOptions(request *ListAllPublicMe
 
 // Summary:
 //
-// 列出公共素材库所有标签
+// Queries a list of tags of media assets in the public media library.
 //
 // @param request - ListAllPublicMediaTagsRequest
 //
@@ -62637,7 +65987,7 @@ func (client *Client) ListDynamicImageJobs(request *ListDynamicImageJobsRequest)
 
 // Summary:
 //
-// 获取云剪辑工程列表
+// Queries a list of projects that meet the specified conditions. You can filter projects by project creation time.
 //
 // @param request - ListEditingProjectsRequest
 //
@@ -62715,7 +66065,7 @@ func (client *Client) ListEditingProjectsWithOptions(request *ListEditingProject
 
 // Summary:
 //
-// 获取云剪辑工程列表
+// Queries a list of projects that meet the specified conditions. You can filter projects by project creation time.
 //
 // @param request - ListEditingProjectsRequest
 //
@@ -63237,7 +66587,11 @@ func (client *Client) ListLiveTranscodeTemplates(request *ListLiveTranscodeTempl
 
 // Summary:
 //
-// 列出符合条件的媒资基础信息
+// Queries the basic information of all media assets that meet the specified conditions.
+//
+// Description:
+//
+// If includeFileBasicInfo is set to true, the basic information, such as the duration and file size, of the source file is also returned. At most the first 100 entries that meet the specified conditions are returned. All media assets must exactly match all non-empty fields. The fields that support exact match include MediaType, Source, BusinessType, Category, and Status. If all information cannot be returned at a time, you can use NextToken to initiate a request to retrieve a new page of results.
 //
 // @param request - ListMediaBasicInfosRequest
 //
@@ -63319,7 +66673,11 @@ func (client *Client) ListMediaBasicInfosWithOptions(request *ListMediaBasicInfo
 
 // Summary:
 //
-// 列出符合条件的媒资基础信息
+// Queries the basic information of all media assets that meet the specified conditions.
+//
+// Description:
+//
+// If includeFileBasicInfo is set to true, the basic information, such as the duration and file size, of the source file is also returned. At most the first 100 entries that meet the specified conditions are returned. All media assets must exactly match all non-empty fields. The fields that support exact match include MediaType, Source, BusinessType, Category, and Status. If all information cannot be returned at a time, you can use NextToken to initiate a request to retrieve a new page of results.
 //
 // @param request - ListMediaBasicInfosRequest
 //
@@ -63413,7 +66771,7 @@ func (client *Client) ListMediaInfoJobs(request *ListMediaInfoJobsRequest) (_res
 
 // Summary:
 //
-// 获取媒资的标注信息
+// Queries a list of marks of a media asset.
 //
 // @param request - ListMediaMarksRequest
 //
@@ -63459,7 +66817,7 @@ func (client *Client) ListMediaMarksWithOptions(request *ListMediaMarksRequest, 
 
 // Summary:
 //
-// 获取媒资的标注信息
+// Queries a list of marks of a media asset.
 //
 // @param request - ListMediaMarksRequest
 //
@@ -63717,7 +67075,7 @@ func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *Lis
 
 // Summary:
 //
-// 列出公共素材库素材的基础信息
+// Queries a list of media assets in the public media library that meet the specified conditions. A maximum of 100 media assets can be returned.
 //
 // @param request - ListPublicMediaBasicInfosRequest
 //
@@ -63783,7 +67141,7 @@ func (client *Client) ListPublicMediaBasicInfosWithOptions(request *ListPublicMe
 
 // Summary:
 //
-// 列出公共素材库素材的基础信息
+// Queries a list of media assets in the public media library that meet the specified conditions. A maximum of 100 media assets can be returned.
 //
 // @param request - ListPublicMediaBasicInfosRequest
 //
@@ -64672,7 +68030,7 @@ func (client *Client) QueryMediaCensorJobList(request *QueryMediaCensorJobListRe
 
 // Summary:
 //
-// 查询索引任务
+// Queries the indexing jobs enabled for a media asset.
 //
 // @param request - QueryMediaIndexJobRequest
 //
@@ -64718,7 +68076,7 @@ func (client *Client) QueryMediaIndexJobWithOptions(request *QueryMediaIndexJobR
 
 // Summary:
 //
-// 查询索引任务
+// Queries the indexing jobs enabled for a media asset.
 //
 // @param request - QueryMediaIndexJobRequest
 //
@@ -64736,7 +68094,7 @@ func (client *Client) QueryMediaIndexJob(request *QueryMediaIndexJobRequest) (_r
 
 // Summary:
 //
-// 查询搜索索引
+// Queries the details of a search index.
 //
 // @param request - QuerySearchIndexRequest
 //
@@ -64782,7 +68140,7 @@ func (client *Client) QuerySearchIndexWithOptions(request *QuerySearchIndexReque
 
 // Summary:
 //
-// 查询搜索索引
+// Queries the details of a search index.
 //
 // @param request - QuerySearchIndexRequest
 //
@@ -64800,7 +68158,7 @@ func (client *Client) QuerySearchIndex(request *QuerySearchIndexRequest) (_resul
 
 // Summary:
 //
-// 查询库
+// Queries the information about a search library.
 //
 // @param request - QuerySearchLibRequest
 //
@@ -64842,7 +68200,7 @@ func (client *Client) QuerySearchLibWithOptions(request *QuerySearchLibRequest, 
 
 // Summary:
 //
-// 查询库
+// Queries the information about a search library.
 //
 // @param request - QuerySearchLibRequest
 //
@@ -64916,7 +68274,11 @@ func (client *Client) QuerySmarttagJob(request *QuerySmarttagJobRequest) (_resul
 
 // Summary:
 //
-// 刷新媒资上传凭证
+// Obtain a new upload credential for a media asset after its upload 
+//
+// Description:
+//
+// You can also call this operation to overwrite media files. After you obtain the upload URL of a media file, you can upload the media file again without changing the audio or video ID.
 //
 // @param request - RefreshUploadMediaRequest
 //
@@ -64958,7 +68320,11 @@ func (client *Client) RefreshUploadMediaWithOptions(request *RefreshUploadMediaR
 
 // Summary:
 //
-// 刷新媒资上传凭证
+// Obtain a new upload credential for a media asset after its upload credential expires.
+//
+// Description:
+//
+// You can also call this operation to overwrite media files. After you obtain the upload URL of a media file, you can upload the media file again without changing the audio or video ID.
 //
 // @param request - RefreshUploadMediaRequest
 //
@@ -64976,7 +68342,11 @@ func (client *Client) RefreshUploadMedia(request *RefreshUploadMediaRequest) (_r
 
 // Summary:
 //
-// 注册内容库资源
+// Registers a media asset with Intelligent Media Services (IMS). IMS assigns an ID to the media asset. This operation asynchronously accesses the media asset service in which the media asset is stored to obtain the file information of the media asset based on the input URL. You can also specify basic information, such as the title, tags, and description, for the media asset. This operation returns the ID of the media asset. You can call the GetMediaInfo operation based on the ID to query the details of the media asset. You can set InputURL only to the URL of an Object Storage Service (OSS) file or an ApsaraVideo VOD media asset.
+//
+// Description:
+//
+// Registering a media asset is an asynchronous job that takes 2 to 3 seconds. When the operation returns the ID of the media asset, the registration may have not be completed. If you call the GetMediaInfo operation at this time, you may fail to obtain the information about the media asset.
 //
 // @param request - RegisterMediaInfoRequest
 //
@@ -65074,7 +68444,11 @@ func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoReq
 
 // Summary:
 //
-// 注册内容库资源
+// Registers a media asset with Intelligent Media Services (IMS). IMS assigns an ID to the media asset. This operation asynchronously accesses the media asset service in which the media asset is stored to obtain the file information of the media asset based on the input URL. You can also specify basic information, such as the title, tags, and description, for the media asset. This operation returns the ID of the media asset. You can call the GetMediaInfo operation based on the ID to query the details of the media asset. You can set InputURL only to the URL of an Object Storage Service (OSS) file or an ApsaraVideo VOD media asset.
+//
+// Description:
+//
+// Registering a media asset is an asynchronous job that takes 2 to 3 seconds. When the operation returns the ID of the media asset, the registration may have not be completed. If you call the GetMediaInfo operation at this time, you may fail to obtain the information about the media asset.
 //
 // @param request - RegisterMediaInfoRequest
 //
@@ -65092,7 +68466,11 @@ func (client *Client) RegisterMediaInfo(request *RegisterMediaInfoRequest) (_res
 
 // Summary:
 //
-// 注册媒体流
+// Registers a media stream.
+//
+// Description:
+//
+// You can call this operation to register a media stream file in an Object Storage Service (OSS) bucket with Intelligent Media Services (IMS) and associate the media stream with the specified media asset ID.
 //
 // @param request - RegisterMediaStreamRequest
 //
@@ -65142,7 +68520,11 @@ func (client *Client) RegisterMediaStreamWithOptions(request *RegisterMediaStrea
 
 // Summary:
 //
-// 注册媒体流
+// Registers a media stream.
+//
+// Description:
+//
+// You can call this operation to register a media stream file in an Object Storage Service (OSS) bucket with Intelligent Media Services (IMS) and associate the media stream with the specified media asset ID.
 //
 // @param request - RegisterMediaStreamRequest
 //
@@ -65412,7 +68794,11 @@ func (client *Client) SearchMedia(request *SearchMediaRequest) (_result *SearchM
 
 // Summary:
 //
-// 智能标签搜索
+// Queries media assets based on character names, subtitles, or AI categories.
+//
+// Description:
+//
+// You can call this operation to query media assets or media asset clips based on character names, subtitles, or AI categories.
 //
 // @param request - SearchMediaByAILabelRequest
 //
@@ -65425,6 +68811,10 @@ func (client *Client) SearchMediaByAILabelWithOptions(request *SearchMediaByAILa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MatchingMode)) {
+		query["MatchingMode"] = request.MatchingMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
 		query["MediaId"] = request.MediaId
 	}
@@ -65486,7 +68876,11 @@ func (client *Client) SearchMediaByAILabelWithOptions(request *SearchMediaByAILa
 
 // Summary:
 //
-// 智能标签搜索
+// Queries media assets based on character names, subtitles, or AI categories.
+//
+// Description:
+//
+// You can call this operation to query media assets or media asset clips based on character names, subtitles, or AI categories.
 //
 // @param request - SearchMediaByAILabelRequest
 //
@@ -65504,7 +68898,11 @@ func (client *Client) SearchMediaByAILabel(request *SearchMediaByAILabelRequest)
 
 // Summary:
 //
-// 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+// Queries the information about media assets that are related to a specific face.
+//
+// Description:
+//
+// If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
 //
 // @param request - SearchMediaByFaceRequest
 //
@@ -65570,7 +68968,11 @@ func (client *Client) SearchMediaByFaceWithOptions(request *SearchMediaByFaceReq
 
 // Summary:
 //
-// 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+// Queries the information about media assets that are related to a specific face.
+//
+// Description:
+//
+// If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
 //
 // @param request - SearchMediaByFaceRequest
 //
@@ -65588,7 +68990,7 @@ func (client *Client) SearchMediaByFace(request *SearchMediaByFaceRequest) (_res
 
 // Summary:
 //
-// 混合搜索
+// Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
 //
 // @param request - SearchMediaByHybridRequest
 //
@@ -65650,7 +69052,7 @@ func (client *Client) SearchMediaByHybridWithOptions(request *SearchMediaByHybri
 
 // Summary:
 //
-// 混合搜索
+// Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
 //
 // @param request - SearchMediaByHybridRequest
 //
@@ -65668,7 +69070,11 @@ func (client *Client) SearchMediaByHybrid(request *SearchMediaByHybridRequest) (
 
 // Summary:
 //
-// 多模态搜索
+// Queries media assets by using the large visual model. You can use natural language for the query.
+//
+// Description:
+//
+// If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
 //
 // @param request - SearchMediaByMultimodalRequest
 //
@@ -65726,7 +69132,11 @@ func (client *Client) SearchMediaByMultimodalWithOptions(request *SearchMediaByM
 
 // Summary:
 //
-// 多模态搜索
+// Queries media assets by using the large visual model. You can use natural language for the query.
+//
+// Description:
+//
+// If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
 //
 // @param request - SearchMediaByMultimodalRequest
 //
@@ -65744,7 +69154,11 @@ func (client *Client) SearchMediaByMultimodal(request *SearchMediaByMultimodalRe
 
 // Summary:
 //
-// 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+// Queries the information about media asset clips that are related to a specific face based on the response to the SearchMediaByFace operation.
+//
+// Description:
+//
+// If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
 //
 // @param request - SearchMediaClipByFaceRequest
 //
@@ -65806,7 +69220,11 @@ func (client *Client) SearchMediaClipByFaceWithOptions(request *SearchMediaClipB
 
 // Summary:
 //
-// 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+// Queries the information about media asset clips that are related to a specific face based on the response to the SearchMediaByFace operation.
+//
+// Description:
+//
+// If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
 //
 // @param request - SearchMediaClipByFaceRequest
 //
@@ -68026,7 +71444,7 @@ func (client *Client) SubmitLiveTranscodeJob(request *SubmitLiveTranscodeJobRequ
 
 // Summary:
 //
-// 提交媒资结构化分析任务
+// Submits a structural analysis job for a media asset. For example, you can submit a job to analyze the speaker, translate the video, and obtain the paragraph summary.
 //
 // @param request - SubmitMediaAiAnalysisJobRequest
 //
@@ -68072,7 +71490,7 @@ func (client *Client) SubmitMediaAiAnalysisJobWithOptions(request *SubmitMediaAi
 
 // Summary:
 //
-// 提交媒资结构化分析任务
+// Submits a structural analysis job for a media asset. For example, you can submit a job to analyze the speaker, translate the video, and obtain the paragraph summary.
 //
 // @param request - SubmitMediaAiAnalysisJobRequest
 //
@@ -69040,7 +72458,11 @@ func (client *Client) SubmitTranscodeJob(request *SubmitTranscodeJobRequest) (_r
 
 // Summary:
 //
-// 提交视频翻译任务
+// Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+//
+// Description:
+//
+// After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //
@@ -69106,7 +72528,11 @@ func (client *Client) SubmitVideoTranslationJobWithOptions(request *SubmitVideoT
 
 // Summary:
 //
-// 提交视频翻译任务
+// Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+//
+// Description:
+//
+// After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //
@@ -69282,7 +72708,11 @@ func (client *Client) UpdateAvatarTrainingJob(request *UpdateAvatarTrainingJobRe
 
 // Summary:
 //
-// 更新媒资分类
+// Updates a category.
+//
+// Description:
+//
+// After you create a media asset category, you can call this operation to find the category based on the category ID and change the name of the category.
 //
 // @param request - UpdateCategoryRequest
 //
@@ -69328,7 +72758,11 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 
 // Summary:
 //
-// 更新媒资分类
+// Updates a category.
+//
+// Description:
+//
+// After you create a media asset category, you can call this operation to find the category based on the category ID and change the name of the category.
 //
 // @param request - UpdateCategoryRequest
 //
@@ -69478,7 +72912,7 @@ func (client *Client) UpdateCustomizedVoice(request *UpdateCustomizedVoiceReques
 
 // Summary:
 //
-// 修改云剪辑工程
+// Modifies an online editing project. You can call this operation to modify the configurations such as the title, timeline, and thumbnail of an online editing project.
 //
 // @param request - UpdateEditingProjectRequest
 //
@@ -69550,7 +72984,7 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 
 // Summary:
 //
-// 修改云剪辑工程
+// Modifies an online editing project. You can call this operation to modify the configurations such as the title, timeline, and thumbnail of an online editing project.
 //
 // @param request - UpdateEditingProjectRequest
 //
@@ -69882,7 +73316,11 @@ func (client *Client) UpdateLiveTranscodeTemplate(request *UpdateLiveTranscodeTe
 
 // Summary:
 //
-// UpdateMediaInfo
+// Updates information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+//
+// Description:
+//
+// If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified. The request ID and media asset ID are returned. You cannot modify the input URL of a media asset by specifying the ID of the media asset.
 //
 // @param request - UpdateMediaInfoRequest
 //
@@ -69968,7 +73406,11 @@ func (client *Client) UpdateMediaInfoWithOptions(request *UpdateMediaInfoRequest
 
 // Summary:
 //
-// UpdateMediaInfo
+// Updates information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+//
+// Description:
+//
+// If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified. The request ID and media asset ID are returned. You cannot modify the input URL of a media asset by specifying the ID of the media asset.
 //
 // @param request - UpdateMediaInfoRequest
 //
@@ -69986,7 +73428,7 @@ func (client *Client) UpdateMediaInfo(request *UpdateMediaInfoRequest) (_result 
 
 // Summary:
 //
-// 为媒资修改标注信息
+// Modifies the marks of a media asset.
 //
 // @param request - UpdateMediaMarksRequest
 //
@@ -70032,7 +73474,7 @@ func (client *Client) UpdateMediaMarksWithOptions(request *UpdateMediaMarksReque
 
 // Summary:
 //
-// 为媒资修改标注信息
+// Modifies the marks of a media asset.
 //
 // @param request - UpdateMediaMarksRequest
 //
@@ -70050,7 +73492,7 @@ func (client *Client) UpdateMediaMarks(request *UpdateMediaMarksRequest) (_resul
 
 // Summary:
 //
-// 更新媒资到搜索
+// Updates the media asset information in a search library.
 //
 // @param request - UpdateMediaToSearchLibRequest
 //
@@ -70100,7 +73542,7 @@ func (client *Client) UpdateMediaToSearchLibWithOptions(request *UpdateMediaToSe
 
 // Summary:
 //
-// 更新媒资到搜索
+// Updates the media asset information in a search library.
 //
 // @param request - UpdateMediaToSearchLibRequest
 //
@@ -70350,7 +73792,21 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 
 // Summary:
 //
-// URL拉取上传
+// Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+//
+// Description:
+//
+//   If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
+//
+// 	- After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
+//
+// 	- You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
+//
+// 	- You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+//
+// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//
+// 	- You can call this operation to upload only audio and video files.
 //
 // @param request - UploadMediaByURLRequest
 //
@@ -70416,7 +73872,21 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 
 // Summary:
 //
-// URL拉取上传
+// Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+//
+// Description:
+//
+//   If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
+//
+// 	- After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
+//
+// 	- You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
+//
+// 	- You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+//
+// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//
+// 	- You can call this operation to upload only audio and video files.
 //
 // @param request - UploadMediaByURLRequest
 //
@@ -70434,7 +73904,15 @@ func (client *Client) UploadMediaByURL(request *UploadMediaByURLRequest) (_resul
 
 // Summary:
 //
-// URL拉取上传媒体流
+// Uploads a media stream file based on the URL of the source file.
+//
+// Description:
+//
+//   You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
+//
+// 	- You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+//
+// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - UploadStreamByURLRequest
 //
@@ -70496,7 +73974,15 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 
 // Summary:
 //
-// URL拉取上传媒体流
+// Uploads a media stream file based on the URL of the source file.
+//
+// Description:
+//
+//   You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
+//
+// 	- You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+//
+// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - UploadStreamByURLRequest
 //

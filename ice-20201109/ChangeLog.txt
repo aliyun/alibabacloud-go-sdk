@@ -1,3 +1,7 @@
+2024-10-17 Version: v4.6.2
+- Update API SearchMediaByAILabel: add param MatchingMode.
+
+
 2024-09-24 Version: v4.6.1
 - Update API UpdateAIAgentInstance: add param UserData.
 
