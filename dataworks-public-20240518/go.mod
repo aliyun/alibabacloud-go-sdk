@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/dataworks-public-20240518
+module github.com/alibabacloud-go/dataworks-public-20240518/v2
 
 go 1.14
 
