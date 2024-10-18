@@ -5990,6 +5990,8 @@ type CreateSiteDeliveryTaskRequest struct {
 	KafkaDelivery *CreateSiteDeliveryTaskRequestKafkaDelivery `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty" type:"Struct"`
 	OssDelivery   *CreateSiteDeliveryTaskRequestOssDelivery   `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty" type:"Struct"`
 	S3Delivery    *CreateSiteDeliveryTaskRequestS3Delivery    `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12312312112***
@@ -6413,6 +6415,8 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
 	OssDeliveryShrink   *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
 	S3DeliveryShrink    *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12312312112***
