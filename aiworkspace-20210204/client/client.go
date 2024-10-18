@@ -215,16 +215,32 @@ type Dataset struct {
 	// example:
 	//
 	// d-c0h44g3wlwkj8o4348
-	DatasetId       *string  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	Description     *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels          []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name            *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// Animal images.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtModifiedTime *string         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels          []*Label        `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion   *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// example:
+	//
+	// AnimalDataset
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
 	// jsonstring
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// 1004110000006048
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
@@ -236,6 +252,14 @@ type Dataset struct {
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
 	// example:
 	//
+	// d-bvfasdf4wxxj8o411
+	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	// example:
+	//
+	// v2
+	SourceDatasetVersion *string `json:"SourceDatasetVersion,omitempty" xml:"SourceDatasetVersion,omitempty"`
+	// example:
+	//
 	// Source Id
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// example:
@@ -244,8 +268,15 @@ type Dataset struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// example:
 	//
+	// text-classification
+	TagTemplateType *string `json:"TagTemplateType,omitempty" xml:"TagTemplateType,omitempty"`
+	// example:
+	//
 	// oss://xxx
-	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// 2004110000006048
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// example:
 	//
@@ -301,6 +332,11 @@ func (s *Dataset) SetLabels(v []*Label) *Dataset {
 	return s
 }
 
+func (s *Dataset) SetLatestVersion(v *DatasetVersion) *Dataset {
+	s.LatestVersion = v
+	return s
+}
+
 func (s *Dataset) SetName(v string) *Dataset {
 	s.Name = &v
 	return s
@@ -326,6 +362,16 @@ func (s *Dataset) SetProviderType(v string) *Dataset {
 	return s
 }
 
+func (s *Dataset) SetSourceDatasetId(v string) *Dataset {
+	s.SourceDatasetId = &v
+	return s
+}
+
+func (s *Dataset) SetSourceDatasetVersion(v string) *Dataset {
+	s.SourceDatasetVersion = &v
+	return s
+}
+
 func (s *Dataset) SetSourceId(v string) *Dataset {
 	s.SourceId = &v
 	return s
@@ -333,6 +379,11 @@ func (s *Dataset) SetSourceId(v string) *Dataset {
 
 func (s *Dataset) SetSourceType(v string) *Dataset {
 	s.SourceType = &v
+	return s
+}
+
+func (s *Dataset) SetTagTemplateType(v string) *Dataset {
+	s.TagTemplateType = &v
 	return s
 }
 
@@ -371,6 +422,107 @@ func (s *DatasetLabel) SetKey(v string) *DatasetLabel {
 
 func (s *DatasetLabel) SetValue(v string) *DatasetLabel {
 	s.Value = &v
+	return s
+}
+
+type DatasetVersion struct {
+	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	DataSize  *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// OSS
+	DataSourceType  *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	Description     *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime   *string  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels          []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Options         *string  `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// FILE
+	Property   *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// OSS://xxx
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// v1
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s DatasetVersion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DatasetVersion) GoString() string {
+	return s.String()
+}
+
+func (s *DatasetVersion) SetDataCount(v int64) *DatasetVersion {
+	s.DataCount = &v
+	return s
+}
+
+func (s *DatasetVersion) SetDataSize(v int64) *DatasetVersion {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DatasetVersion) SetDataSourceType(v string) *DatasetVersion {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DatasetVersion) SetDescription(v string) *DatasetVersion {
+	s.Description = &v
+	return s
+}
+
+func (s *DatasetVersion) SetGmtCreateTime(v string) *DatasetVersion {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *DatasetVersion) SetGmtModifiedTime(v string) *DatasetVersion {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *DatasetVersion) SetLabels(v []*Label) *DatasetVersion {
+	s.Labels = v
+	return s
+}
+
+func (s *DatasetVersion) SetOptions(v string) *DatasetVersion {
+	s.Options = &v
+	return s
+}
+
+func (s *DatasetVersion) SetProperty(v string) *DatasetVersion {
+	s.Property = &v
+	return s
+}
+
+func (s *DatasetVersion) SetSourceId(v string) *DatasetVersion {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DatasetVersion) SetSourceType(v string) *DatasetVersion {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DatasetVersion) SetUri(v string) *DatasetVersion {
+	s.Uri = &v
+	return s
+}
+
+func (s *DatasetVersion) SetVersionName(v string) *DatasetVersion {
+	s.VersionName = &v
 	return s
 }
 
@@ -1701,6 +1853,8 @@ type CreateDatasetRequest struct {
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	DataCount     *int64  `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	DataSize      *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1737,7 +1891,9 @@ type CreateDatasetRequest struct {
 	// example:
 	//
 	// Ecs
-	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	ProviderType         *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	SourceDatasetId      *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	SourceDatasetVersion *string `json:"SourceDatasetVersion,omitempty" xml:"SourceDatasetVersion,omitempty"`
 	// example:
 	//
 	// jdnhf***fnrimv
@@ -1755,7 +1911,9 @@ type CreateDatasetRequest struct {
 	// example:
 	//
 	// 29884000000186970
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId             *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VersionDescription *string  `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	VersionLabels      []*Label `json:"VersionLabels,omitempty" xml:"VersionLabels,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 478**
@@ -1772,6 +1930,16 @@ func (s CreateDatasetRequest) GoString() string {
 
 func (s *CreateDatasetRequest) SetAccessibility(v string) *CreateDatasetRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDataCount(v int64) *CreateDatasetRequest {
+	s.DataCount = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDataSize(v int64) *CreateDatasetRequest {
+	s.DataSize = &v
 	return s
 }
 
@@ -1820,6 +1988,16 @@ func (s *CreateDatasetRequest) SetProviderType(v string) *CreateDatasetRequest {
 	return s
 }
 
+func (s *CreateDatasetRequest) SetSourceDatasetId(v string) *CreateDatasetRequest {
+	s.SourceDatasetId = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetSourceDatasetVersion(v string) *CreateDatasetRequest {
+	s.SourceDatasetVersion = &v
+	return s
+}
+
 func (s *CreateDatasetRequest) SetSourceId(v string) *CreateDatasetRequest {
 	s.SourceId = &v
 	return s
@@ -1837,6 +2015,16 @@ func (s *CreateDatasetRequest) SetUri(v string) *CreateDatasetRequest {
 
 func (s *CreateDatasetRequest) SetUserId(v string) *CreateDatasetRequest {
 	s.UserId = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetVersionDescription(v string) *CreateDatasetRequest {
+	s.VersionDescription = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetVersionLabels(v []*Label) *CreateDatasetRequest {
+	s.VersionLabels = v
 	return s
 }
 
@@ -4484,8 +4672,9 @@ type GetDatasetResponseBody struct {
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
-	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels          []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	GmtModifiedTime *string         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels          []*Label        `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion   *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// example:
 	//
 	// myName
@@ -4511,7 +4700,9 @@ type GetDatasetResponseBody struct {
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceDatasetId      *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	SourceDatasetVersion *string `json:"SourceDatasetVersion,omitempty" xml:"SourceDatasetVersion,omitempty"`
 	// example:
 	//
 	// jdnhf***fnrimv
@@ -4519,7 +4710,8 @@ type GetDatasetResponseBody struct {
 	// example:
 	//
 	// USER
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TagTemplateType *string `json:"TagTemplateType,omitempty" xml:"TagTemplateType,omitempty"`
 	// example:
 	//
 	// nas://09f****f2.cn-hangzhou/
@@ -4582,6 +4774,11 @@ func (s *GetDatasetResponseBody) SetLabels(v []*Label) *GetDatasetResponseBody {
 	return s
 }
 
+func (s *GetDatasetResponseBody) SetLatestVersion(v *DatasetVersion) *GetDatasetResponseBody {
+	s.LatestVersion = v
+	return s
+}
+
 func (s *GetDatasetResponseBody) SetName(v string) *GetDatasetResponseBody {
 	s.Name = &v
 	return s
@@ -4617,6 +4814,16 @@ func (s *GetDatasetResponseBody) SetRequestId(v string) *GetDatasetResponseBody 
 	return s
 }
 
+func (s *GetDatasetResponseBody) SetSourceDatasetId(v string) *GetDatasetResponseBody {
+	s.SourceDatasetId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetSourceDatasetVersion(v string) *GetDatasetResponseBody {
+	s.SourceDatasetVersion = &v
+	return s
+}
+
 func (s *GetDatasetResponseBody) SetSourceId(v string) *GetDatasetResponseBody {
 	s.SourceId = &v
 	return s
@@ -4624,6 +4831,11 @@ func (s *GetDatasetResponseBody) SetSourceId(v string) *GetDatasetResponseBody {
 
 func (s *GetDatasetResponseBody) SetSourceType(v string) *GetDatasetResponseBody {
 	s.SourceType = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetTagTemplateType(v string) *GetDatasetResponseBody {
+	s.TagTemplateType = &v
 	return s
 }
 
@@ -6266,8 +6478,9 @@ type ListDatasetsRequest struct {
 	// example:
 	//
 	// FILE
-	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Provider   *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Properties      *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Provider        *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
 	// example:
 	//
 	// d-rbvg5wzljzjhc9ks92
@@ -6332,6 +6545,11 @@ func (s *ListDatasetsRequest) SetProperties(v string) *ListDatasetsRequest {
 
 func (s *ListDatasetsRequest) SetProvider(v string) *ListDatasetsRequest {
 	s.Provider = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetSourceDatasetId(v string) *ListDatasetsRequest {
+	s.SourceDatasetId = &v
 	return s
 }
 
@@ -11102,6 +11320,14 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 		body["Accessibility"] = request.Accessibility
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DataCount)) {
+		body["DataCount"] = request.DataCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSize)) {
+		body["DataSize"] = request.DataSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
 		body["DataSourceType"] = request.DataSourceType
 	}
@@ -11138,6 +11364,14 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 		body["ProviderType"] = request.ProviderType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceDatasetId)) {
+		body["SourceDatasetId"] = request.SourceDatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDatasetVersion)) {
+		body["SourceDatasetVersion"] = request.SourceDatasetVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
 		body["SourceId"] = request.SourceId
 	}
@@ -11152,6 +11386,14 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		body["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionDescription)) {
+		body["VersionDescription"] = request.VersionDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionLabels)) {
+		body["VersionLabels"] = request.VersionLabels
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -13654,6 +13896,10 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.Provider)) {
 		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDatasetId)) {
+		query["SourceDatasetId"] = request.SourceDatasetId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
