@@ -2281,53 +2281,6 @@ func (s *CancelTaskResponse) SetStatusCode(v int32) *CancelTaskResponse {
 	return s
 }
 
-type CancelWorkflowRequest struct {
-	// The operation that you want to perform. Set the value to cancel.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cancel
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-}
-
-func (s CancelWorkflowRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelWorkflowRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CancelWorkflowRequest) SetAction(v string) *CancelWorkflowRequest {
-	s.Action = &v
-	return s
-}
-
-type CancelWorkflowResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s CancelWorkflowResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelWorkflowResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CancelWorkflowResponse) SetHeaders(v map[string]*string) *CancelWorkflowResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CancelWorkflowResponse) SetStatusCode(v int32) *CancelWorkflowResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type CheckControlPlaneLogEnableResponseBody struct {
 	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
@@ -7883,167 +7836,6 @@ func (s *DeployPolicyInstanceResponse) SetBody(v *DeployPolicyInstanceResponseBo
 	return s
 }
 
-type DescirbeWorkflowResponseBody struct {
-	// The time when the workflow was created.
-	//
-	// example:
-	//
-	// 2020-01-15 16:30:25 +0800 CST
-	CreateTime *string `json:"create_time,omitempty" xml:"create_time,omitempty"`
-	// The duration of the workflow.
-	//
-	// example:
-	//
-	// 1h15m33.529968361s
-	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The end time of the task.
-	//
-	// example:
-	//
-	// 0001-01-01 00:00:00 +0000 UTC
-	FinishTime *string `json:"finish_time,omitempty" xml:"finish_time,omitempty"`
-	// The size of the input data.
-	//
-	// example:
-	//
-	// 0
-	InputDataSize *string `json:"input_data_size,omitempty" xml:"input_data_size,omitempty"`
-	// The name of the workflow.
-	//
-	// example:
-	//
-	// wgs-gpu-97xfn
-	JobName *string `json:"job_name,omitempty" xml:"job_name,omitempty"`
-	// The namespace to which the workflow belongs.
-	//
-	// example:
-	//
-	// 1171330362041663
-	JobNamespace *string `json:"job_namespace,omitempty" xml:"job_namespace,omitempty"`
-	// The size of the output data.
-	//
-	// example:
-	//
-	// 0
-	OutputDataSize *string `json:"output_data_size,omitempty" xml:"output_data_size,omitempty"`
-	// The current state of the workflow.
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The number of base pairs.
-	//
-	// example:
-	//
-	// 0
-	TotalBases *string `json:"total_bases,omitempty" xml:"total_bases,omitempty"`
-	// The number of reads.
-	//
-	// example:
-	//
-	// 0
-	TotalReads *string `json:"total_reads,omitempty" xml:"total_reads,omitempty"`
-	// The user input parameters.
-	//
-	// example:
-	//
-	// {\\"wgs_oss_region\\":\\"cn-shenzhen\\",\\"wgs_fastq_first_name\\":\\"fastq/huada/MGISEQ-200019SZ0002402\\",\\"wgs_fastq_second_name\\":\\"fastq/huada/MGISEQ-200019SZ0002402\\",\\"wgs_bucket_name\\":\\"gene-shenzhen\\",\\"wgs_vcf_file_name\\":\\"output/vcf/huada.vcf\\",\\"wgs_bam_file_name\\":\\"output/bam/huada.bam\\",\\"wgs_reference_file\\":\\"hg19\\",\\"wgs_service\\":\\"g\\"}
-	UserInputData *string `json:"user_input_data,omitempty" xml:"user_input_data,omitempty"`
-}
-
-func (s DescirbeWorkflowResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescirbeWorkflowResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescirbeWorkflowResponseBody) SetCreateTime(v string) *DescirbeWorkflowResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetDuration(v string) *DescirbeWorkflowResponseBody {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetFinishTime(v string) *DescirbeWorkflowResponseBody {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetInputDataSize(v string) *DescirbeWorkflowResponseBody {
-	s.InputDataSize = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetJobName(v string) *DescirbeWorkflowResponseBody {
-	s.JobName = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetJobNamespace(v string) *DescirbeWorkflowResponseBody {
-	s.JobNamespace = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetOutputDataSize(v string) *DescirbeWorkflowResponseBody {
-	s.OutputDataSize = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetStatus(v string) *DescirbeWorkflowResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetTotalBases(v string) *DescirbeWorkflowResponseBody {
-	s.TotalBases = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetTotalReads(v string) *DescirbeWorkflowResponseBody {
-	s.TotalReads = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponseBody) SetUserInputData(v string) *DescirbeWorkflowResponseBody {
-	s.UserInputData = &v
-	return s
-}
-
-type DescirbeWorkflowResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescirbeWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescirbeWorkflowResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescirbeWorkflowResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescirbeWorkflowResponse) SetHeaders(v map[string]*string) *DescirbeWorkflowResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescirbeWorkflowResponse) SetStatusCode(v int32) *DescirbeWorkflowResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescirbeWorkflowResponse) SetBody(v *DescirbeWorkflowResponseBody) *DescirbeWorkflowResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeAddonRequest struct {
 	// The ID of the cluster. If you specify a cluster ID, only components used in the cluster are queried. Other parameters are ignored.
 	//
@@ -8946,6 +8738,10 @@ func (s *DescribeClusterAttachScriptsResponse) SetBody(v string) *DescribeCluste
 }
 
 type DescribeClusterDetailResponseBody struct {
+	// example:
+	//
+	// cluster.local
+	ClusterDomain *string `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -8972,6 +8768,10 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// Kubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	// example:
+	//
+	// 172.20.0.0/16
+	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
 	// The time when the cluster was created.
 	//
 	// example:
@@ -9010,6 +8810,10 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// 1.16.6-aliyun.1
 	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
+	// example:
+	//
+	// ipv4
+	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
 	// The maintenance window of the cluster. This feature is available only in ACK Pro clusters.
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
 	// The endpoints of the cluster, including an internal endpoint and a public endpoint.
@@ -9039,7 +8843,11 @@ type DescribeClusterDetailResponseBody struct {
 	// example:
 	//
 	// 1.18.8-aliyun.1
-	NextVersion     *string                                           `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	// example:
+	//
+	// 26
+	NodeCidrMask    *string                                           `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
 	OperationPolicy *DescribeClusterDetailResponseBodyOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
 	// The ROS parameters of the cluster.
 	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
@@ -9061,6 +8869,10 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// Default
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	// example:
+	//
+	// ipvs
+	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
 	// The region ID of the cluster.
 	//
 	// example:
@@ -9079,6 +8891,12 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// sg-25yq****
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 172.21.0.0/20
+	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
 	// The number of nodes in the cluster. Master nodes and worker nodes are included.
 	//
 	// example:
@@ -9115,6 +8933,8 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// Deprecated
+	//
 	// The pod CIDR block. It must be a valid and private CIDR block, and must be one of the following CIDR blocks or their subnets:
 	//
 	// 	- 10.0.0.0/8
@@ -9133,6 +8953,10 @@ type DescribeClusterDetailResponseBody struct {
 	SubnetCidr *string `json:"subnet_cidr,omitempty" xml:"subnet_cidr,omitempty"`
 	// The resource tags of the cluster.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Asia/Shanghai
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The time when the cluster was updated.
 	//
 	// example:
@@ -9145,12 +8969,15 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// vpc-2zecuu62b9zw7a7qn****
 	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
+	// Deprecated
+	//
 	// The IDs of the vSwitches. You can select one to three vSwitches when you create a cluster. We recommend that you select vSwitches in different zones to ensure high availability.
 	//
 	// example:
 	//
 	// vsw-2zete8s4qocqg0mf6****,vsw-2zete8s4qocqg0mf6****
-	VswitchId *string `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
+	VswitchId  *string   `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 	// The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage Elastic Compute Service (ECS) instances.
 	//
 	// example:
@@ -9171,6 +8998,11 @@ func (s DescribeClusterDetailResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeClusterDetailResponseBody) SetClusterDomain(v string) *DescribeClusterDetailResponseBody {
+	s.ClusterDomain = &v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetClusterId(v string) *DescribeClusterDetailResponseBody {
 	s.ClusterId = &v
 	return s
@@ -9183,6 +9015,11 @@ func (s *DescribeClusterDetailResponseBody) SetClusterSpec(v string) *DescribeCl
 
 func (s *DescribeClusterDetailResponseBody) SetClusterType(v string) *DescribeClusterDetailResponseBody {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetContainerCidr(v string) *DescribeClusterDetailResponseBody {
+	s.ContainerCidr = &v
 	return s
 }
 
@@ -9216,6 +9053,11 @@ func (s *DescribeClusterDetailResponseBody) SetInitVersion(v string) *DescribeCl
 	return s
 }
 
+func (s *DescribeClusterDetailResponseBody) SetIpStack(v string) *DescribeClusterDetailResponseBody {
+	s.IpStack = &v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetMaintenanceWindow(v *MaintenanceWindow) *DescribeClusterDetailResponseBody {
 	s.MaintenanceWindow = v
 	return s
@@ -9246,6 +9088,11 @@ func (s *DescribeClusterDetailResponseBody) SetNextVersion(v string) *DescribeCl
 	return s
 }
 
+func (s *DescribeClusterDetailResponseBody) SetNodeCidrMask(v string) *DescribeClusterDetailResponseBody {
+	s.NodeCidrMask = &v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetOperationPolicy(v *DescribeClusterDetailResponseBodyOperationPolicy) *DescribeClusterDetailResponseBody {
 	s.OperationPolicy = v
 	return s
@@ -9266,6 +9113,11 @@ func (s *DescribeClusterDetailResponseBody) SetProfile(v string) *DescribeCluste
 	return s
 }
 
+func (s *DescribeClusterDetailResponseBody) SetProxyMode(v string) *DescribeClusterDetailResponseBody {
+	s.ProxyMode = &v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetRegionId(v string) *DescribeClusterDetailResponseBody {
 	s.RegionId = &v
 	return s
@@ -9278,6 +9130,11 @@ func (s *DescribeClusterDetailResponseBody) SetResourceGroupId(v string) *Descri
 
 func (s *DescribeClusterDetailResponseBody) SetSecurityGroupId(v string) *DescribeClusterDetailResponseBody {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetServiceCidr(v string) *DescribeClusterDetailResponseBody {
+	s.ServiceCidr = &v
 	return s
 }
 
@@ -9301,6 +9158,11 @@ func (s *DescribeClusterDetailResponseBody) SetTags(v []*Tag) *DescribeClusterDe
 	return s
 }
 
+func (s *DescribeClusterDetailResponseBody) SetTimezone(v string) *DescribeClusterDetailResponseBody {
+	s.Timezone = &v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetUpdated(v string) *DescribeClusterDetailResponseBody {
 	s.Updated = &v
 	return s
@@ -9313,6 +9175,11 @@ func (s *DescribeClusterDetailResponseBody) SetVpcId(v string) *DescribeClusterD
 
 func (s *DescribeClusterDetailResponseBody) SetVswitchId(v string) *DescribeClusterDetailResponseBody {
 	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetVswitchIds(v []*string) *DescribeClusterDetailResponseBody {
+	s.VswitchIds = v
 	return s
 }
 
@@ -14742,6 +14609,10 @@ func (s *DescribeClustersV1ResponseBody) SetPageInfo(v *DescribeClustersV1Respon
 }
 
 type DescribeClustersV1ResponseBodyClusters struct {
+	// example:
+	//
+	// cluster.local
+	ClusterDomain *string `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -14768,6 +14639,10 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// Kubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	// example:
+	//
+	// 172.20.0.0/16
+	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
 	// The time when the cluster was created.
 	//
 	// example:
@@ -14812,6 +14687,10 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// 1.16.9-aliyun.1
 	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
+	// example:
+	//
+	// ipv4
+	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
 	// The maintenance window of the cluster. This feature is available only for ACK managed clusters and ACK Serverless clusters.
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
 	// The address of the cluster API server. It includes an internal endpoint and a public endpoint.
@@ -14879,6 +14758,10 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// Default
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	// example:
+	//
+	// ipvs
+	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
 	// The region ID of the cluster.
 	//
 	// example:
@@ -14897,6 +14780,12 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// sg-2vcgwsrwgt5mp0yi****
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 172.21.0.0/20
+	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
 	// The number of nodes in the cluster, including master nodes and worker nodes.
 	//
 	// example:
@@ -14929,6 +14818,8 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// Deprecated
+	//
 	// The pod CIDR block. It must be a valid and private CIDR block, and must be one of the following CIDR blocks or their subnets:
 	//
 	// 	- 10.0.0.0/8
@@ -14947,6 +14838,10 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	SubnetCidr *string `json:"subnet_cidr,omitempty" xml:"subnet_cidr,omitempty"`
 	// The resource labels of the cluster.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Asia/Shanghai
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The time when the cluster was updated.
 	//
 	// example:
@@ -14959,12 +14854,15 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// vpc-2vcg932hsxsxuqbgl****
 	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
+	// Deprecated
+	//
 	// The IDs of the vSwitches. You can select one to three vSwitches when you create a cluster. We recommend that you select vSwitches in different zones to ensure high availability.
 	//
 	// example:
 	//
 	// vsw-2vc41xuumx5z2rdma****,vsw-2vc41xuumx5z2rdma****
-	VswitchId *string `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
+	VswitchId  *string   `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 	// The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage ECS instances.
 	//
 	// example:
@@ -14987,6 +14885,11 @@ func (s DescribeClustersV1ResponseBodyClusters) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeClustersV1ResponseBodyClusters) SetClusterDomain(v string) *DescribeClustersV1ResponseBodyClusters {
+	s.ClusterDomain = &v
+	return s
+}
+
 func (s *DescribeClustersV1ResponseBodyClusters) SetClusterId(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.ClusterId = &v
 	return s
@@ -14999,6 +14902,11 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetClusterSpec(v string) *Descr
 
 func (s *DescribeClustersV1ResponseBodyClusters) SetClusterType(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeClustersV1ResponseBodyClusters) SetContainerCidr(v string) *DescribeClustersV1ResponseBodyClusters {
+	s.ContainerCidr = &v
 	return s
 }
 
@@ -15029,6 +14937,11 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetExternalLoadbalancerId(v str
 
 func (s *DescribeClustersV1ResponseBodyClusters) SetInitVersion(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.InitVersion = &v
+	return s
+}
+
+func (s *DescribeClustersV1ResponseBodyClusters) SetIpStack(v string) *DescribeClustersV1ResponseBodyClusters {
+	s.IpStack = &v
 	return s
 }
 
@@ -15077,6 +14990,11 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetProfile(v string) *DescribeC
 	return s
 }
 
+func (s *DescribeClustersV1ResponseBodyClusters) SetProxyMode(v string) *DescribeClustersV1ResponseBodyClusters {
+	s.ProxyMode = &v
+	return s
+}
+
 func (s *DescribeClustersV1ResponseBodyClusters) SetRegionId(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.RegionId = &v
 	return s
@@ -15089,6 +15007,11 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetResourceGroupId(v string) *D
 
 func (s *DescribeClustersV1ResponseBodyClusters) SetSecurityGroupId(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeClustersV1ResponseBodyClusters) SetServiceCidr(v string) *DescribeClustersV1ResponseBodyClusters {
+	s.ServiceCidr = &v
 	return s
 }
 
@@ -15112,6 +15035,11 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetTags(v []*Tag) *DescribeClus
 	return s
 }
 
+func (s *DescribeClustersV1ResponseBodyClusters) SetTimezone(v string) *DescribeClustersV1ResponseBodyClusters {
+	s.Timezone = &v
+	return s
+}
+
 func (s *DescribeClustersV1ResponseBodyClusters) SetUpdated(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.Updated = &v
 	return s
@@ -15124,6 +15052,11 @@ func (s *DescribeClustersV1ResponseBodyClusters) SetVpcId(v string) *DescribeClu
 
 func (s *DescribeClustersV1ResponseBodyClusters) SetVswitchId(v string) *DescribeClustersV1ResponseBodyClusters {
 	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeClustersV1ResponseBodyClusters) SetVswitchIds(v []*string) *DescribeClustersV1ResponseBodyClusters {
+	s.VswitchIds = v
 	return s
 }
 
@@ -19510,97 +19443,6 @@ func (s *DescribeUserQuotaResponse) SetBody(v *DescribeUserQuotaResponseBody) *D
 	return s
 }
 
-type DescribeWorkflowsResponseBody struct {
-	// The list of jobs.
-	Jobs []*DescribeWorkflowsResponseBodyJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
-}
-
-func (s DescribeWorkflowsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWorkflowsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWorkflowsResponseBody) SetJobs(v []*DescribeWorkflowsResponseBodyJobs) *DescribeWorkflowsResponseBody {
-	s.Jobs = v
-	return s
-}
-
-type DescribeWorkflowsResponseBodyJobs struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// cb1a7214cfc0b41d9bb086affc2d8f51c
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The time when the workflow was created.
-	//
-	// example:
-	//
-	// 2020-01-15T13:18:52Z
-	CreateTime *string `json:"create_time,omitempty" xml:"create_time,omitempty"`
-	// The name of the workflow.
-	//
-	// example:
-	//
-	// wgs-gpu-qb4dk
-	JobName *string `json:"job_name,omitempty" xml:"job_name,omitempty"`
-}
-
-func (s DescribeWorkflowsResponseBodyJobs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWorkflowsResponseBodyJobs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWorkflowsResponseBodyJobs) SetClusterId(v string) *DescribeWorkflowsResponseBodyJobs {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeWorkflowsResponseBodyJobs) SetCreateTime(v string) *DescribeWorkflowsResponseBodyJobs {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeWorkflowsResponseBodyJobs) SetJobName(v string) *DescribeWorkflowsResponseBodyJobs {
-	s.JobName = &v
-	return s
-}
-
-type DescribeWorkflowsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeWorkflowsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeWorkflowsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWorkflowsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWorkflowsResponse) SetHeaders(v map[string]*string) *DescribeWorkflowsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeWorkflowsResponse) SetStatusCode(v int32) *DescribeWorkflowsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeWorkflowsResponse) SetBody(v *DescribeWorkflowsResponseBody) *DescribeWorkflowsResponse {
-	s.Body = v
-	return s
-}
-
 type EdgeClusterAddEdgeMachineRequest struct {
 	// The timeout period of sessions. Unit: seconds.
 	//
@@ -22752,6 +22594,7 @@ type ModifyClusterRequest struct {
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 	// The storage configurations of system events.
 	SystemEventsLogging *ModifyClusterRequestSystemEventsLogging `json:"system_events_logging,omitempty" xml:"system_events_logging,omitempty" type:"Struct"`
+	VswitchIds          []*string                                `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
 func (s ModifyClusterRequest) String() string {
@@ -22829,6 +22672,11 @@ func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterReques
 
 func (s *ModifyClusterRequest) SetSystemEventsLogging(v *ModifyClusterRequestSystemEventsLogging) *ModifyClusterRequest {
 	s.SystemEventsLogging = v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetVswitchIds(v []*string) *ModifyClusterRequest {
+	s.VswitchIds = v
 	return s
 }
 
@@ -25178,29 +25026,6 @@ func (s *RemoveNodePoolNodesResponse) SetBody(v *RemoveNodePoolNodesResponseBody
 	return s
 }
 
-type RemoveWorkflowResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s RemoveWorkflowResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveWorkflowResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveWorkflowResponse) SetHeaders(v map[string]*string) *RemoveWorkflowResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveWorkflowResponse) SetStatusCode(v int32) *RemoveWorkflowResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type RepairClusterNodePoolRequest struct {
 	// Specifies whether to restart the instance of the node.
 	//
@@ -26424,285 +26249,6 @@ func (s *StartAlertResponse) SetStatusCode(v int32) *StartAlertResponse {
 }
 
 func (s *StartAlertResponse) SetBody(v *StartAlertResponseBody) *StartAlertResponse {
-	s.Body = v
-	return s
-}
-
-type StartWorkflowRequest struct {
-	// The name of the output BAM file.
-	//
-	// example:
-	//
-	// abc.bam
-	MappingBamOutFilename *string `json:"mapping_bam_out_filename,omitempty" xml:"mapping_bam_out_filename,omitempty"`
-	// The output path of the Binary Alignment Map (BAM) file.
-	//
-	// example:
-	//
-	// output/bamDirName
-	MappingBamOutPath *string `json:"mapping_bam_out_path,omitempty" xml:"mapping_bam_out_path,omitempty"`
-	// The name of the OSS bucket that stores the data of the mapping workflow.
-	//
-	// example:
-	//
-	// gene-shenzhen
-	MappingBucketName *string `json:"mapping_bucket_name,omitempty" xml:"mapping_bucket_name,omitempty"`
-	// The name of the first FASTQ file of the mapping workflow.
-	//
-	// example:
-	//
-	// MGISEQ2000_PCR-free_NA12878_1_V100003043_L01_1.fq.gz
-	MappingFastqFirstFilename *string `json:"mapping_fastq_first_filename,omitempty" xml:"mapping_fastq_first_filename,omitempty"`
-	// The path of the FASTQ files of the mapping workflow.
-	//
-	// example:
-	//
-	// fastq/MGISEQ2000
-	MappingFastqPath *string `json:"mapping_fastq_path,omitempty" xml:"mapping_fastq_path,omitempty"`
-	// The name of the second FASTQ file of the mapping workflow.
-	//
-	// example:
-	//
-	// MGISEQ2000_PCR-free_NA12878_1_V100003043_L01_2.fq.gz
-	MappingFastqSecondFilename *string `json:"mapping_fastq_second_filename,omitempty" xml:"mapping_fastq_second_filename,omitempty"`
-	// Specifies whether to mark duplicate values.
-	//
-	// example:
-	//
-	// true
-	MappingIsMarkDup *string `json:"mapping_is_mark_dup,omitempty" xml:"mapping_is_mark_dup,omitempty"`
-	// The region where the Object Storage Service (OSS) bucket that stores the data of the mapping workflow is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	MappingOssRegion *string `json:"mapping_oss_region,omitempty" xml:"mapping_oss_region,omitempty"`
-	// The path of the reference files of the mapping workflow.
-	//
-	// example:
-	//
-	// reference/hg19
-	MappingReferencePath *string `json:"mapping_reference_path,omitempty" xml:"mapping_reference_path,omitempty"`
-	// The type of service-level agreement (SLA). Valid values:
-	//
-	// 	- s: the silver level (S-level). It requires 1 extra minute to process every 1.5 billion base pairs beyond the limit of 90 billion base pairs.
-	//
-	// 	- g: the gold level (G-level). It requires 1 extra minute to process every 2 billion base pairs beyond the limit of 90 billion base pairs.
-	//
-	// 	- p: the platinum level (P-level). It requires 1 extra minute to process every 3 billion base pairs beyond the limit of 90 billion base pairs.
-	//
-	// example:
-	//
-	// s
-	Service *string `json:"service,omitempty" xml:"service,omitempty"`
-	// The name of the OSS bucket that stores the data of the WGS workflow.
-	//
-	// example:
-	//
-	// gene-shenzhen
-	WgsBucketName *string `json:"wgs_bucket_name,omitempty" xml:"wgs_bucket_name,omitempty"`
-	// The name of the first FASTQ file of the WGS workflow.
-	//
-	// example:
-	//
-	// MGISEQ2000_PCR-free_NA12878_1_V100003043_L01_1.fq.gz
-	WgsFastqFirstFilename *string `json:"wgs_fastq_first_filename,omitempty" xml:"wgs_fastq_first_filename,omitempty"`
-	// The path of the FASTQ files of the WGS workflow.
-	//
-	// example:
-	//
-	// fastq/MGISEQ2000
-	WgsFastqPath *string `json:"wgs_fastq_path,omitempty" xml:"wgs_fastq_path,omitempty"`
-	// The name of the second FASTQ file of the WGS workflow.
-	//
-	// example:
-	//
-	// MGISEQ2000_PCR-free_NA12878_1_V100003043_L01_2.fq.gz
-	WgsFastqSecondFilename *string `json:"wgs_fastq_second_filename,omitempty" xml:"wgs_fastq_second_filename,omitempty"`
-	// The region where the OSS bucket that stores the data of the whole genome sequencing (WGS) workflow is deployed.
-	//
-	// example:
-	//
-	// cn-shenzhen
-	WgsOssRegion *string `json:"wgs_oss_region,omitempty" xml:"wgs_oss_region,omitempty"`
-	// The path of the reference files of the WGS workflow.
-	//
-	// example:
-	//
-	// reference/hg19
-	WgsReferencePath *string `json:"wgs_reference_path,omitempty" xml:"wgs_reference_path,omitempty"`
-	// The name of the output VCF file.
-	//
-	// example:
-	//
-	// abc.vcf
-	WgsVcfOutFilename *string `json:"wgs_vcf_out_filename,omitempty" xml:"wgs_vcf_out_filename,omitempty"`
-	// The output path of the Variant Call Format (VCF) file.
-	//
-	// example:
-	//
-	// output/vcf
-	WgsVcfOutPath *string `json:"wgs_vcf_out_path,omitempty" xml:"wgs_vcf_out_path,omitempty"`
-	// The type of workflow. Valid values: wgs and mapping.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// mapping
-	WorkflowType *string `json:"workflow_type,omitempty" xml:"workflow_type,omitempty"`
-}
-
-func (s StartWorkflowRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartWorkflowRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartWorkflowRequest) SetMappingBamOutFilename(v string) *StartWorkflowRequest {
-	s.MappingBamOutFilename = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetMappingBamOutPath(v string) *StartWorkflowRequest {
-	s.MappingBamOutPath = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetMappingBucketName(v string) *StartWorkflowRequest {
-	s.MappingBucketName = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetMappingFastqFirstFilename(v string) *StartWorkflowRequest {
-	s.MappingFastqFirstFilename = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetMappingFastqPath(v string) *StartWorkflowRequest {
-	s.MappingFastqPath = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetMappingFastqSecondFilename(v string) *StartWorkflowRequest {
-	s.MappingFastqSecondFilename = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetMappingIsMarkDup(v string) *StartWorkflowRequest {
-	s.MappingIsMarkDup = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetMappingOssRegion(v string) *StartWorkflowRequest {
-	s.MappingOssRegion = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetMappingReferencePath(v string) *StartWorkflowRequest {
-	s.MappingReferencePath = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetService(v string) *StartWorkflowRequest {
-	s.Service = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWgsBucketName(v string) *StartWorkflowRequest {
-	s.WgsBucketName = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWgsFastqFirstFilename(v string) *StartWorkflowRequest {
-	s.WgsFastqFirstFilename = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWgsFastqPath(v string) *StartWorkflowRequest {
-	s.WgsFastqPath = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWgsFastqSecondFilename(v string) *StartWorkflowRequest {
-	s.WgsFastqSecondFilename = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWgsOssRegion(v string) *StartWorkflowRequest {
-	s.WgsOssRegion = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWgsReferencePath(v string) *StartWorkflowRequest {
-	s.WgsReferencePath = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWgsVcfOutFilename(v string) *StartWorkflowRequest {
-	s.WgsVcfOutFilename = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWgsVcfOutPath(v string) *StartWorkflowRequest {
-	s.WgsVcfOutPath = &v
-	return s
-}
-
-func (s *StartWorkflowRequest) SetWorkflowType(v string) *StartWorkflowRequest {
-	s.WorkflowType = &v
-	return s
-}
-
-type StartWorkflowResponseBody struct {
-	// The name of the workflow.
-	//
-	// example:
-	//
-	// mapping-gpu-66xv7
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-}
-
-func (s StartWorkflowResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartWorkflowResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartWorkflowResponseBody) SetJobName(v string) *StartWorkflowResponseBody {
-	s.JobName = &v
-	return s
-}
-
-type StartWorkflowResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *StartWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s StartWorkflowResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartWorkflowResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartWorkflowResponse) SetHeaders(v map[string]*string) *StartWorkflowResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartWorkflowResponse) SetStatusCode(v int32) *StartWorkflowResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWorkflowResponse {
 	s.Body = v
 	return s
 }
@@ -29029,76 +28575,6 @@ func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CancelWorkflow is deprecated
-//
-// Summary:
-//
-// You can call the CancelWorkflow operation to cancel an ongoing workflow.
-//
-// @param request - CancelWorkflowRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CancelWorkflowResponse
-// Deprecated
-func (client *Client) CancelWorkflowWithOptions(workflowName *string, request *CancelWorkflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelWorkflowResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Action)) {
-		body["action"] = request.Action
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CancelWorkflow"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/gs/workflow/" + tea.StringValue(openapiutil.GetEncodeParam(workflowName))),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &CancelWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CancelWorkflow is deprecated
-//
-// Summary:
-//
-// You can call the CancelWorkflow operation to cancel an ongoing workflow.
-//
-// @param request - CancelWorkflowRequest
-//
-// @return CancelWorkflowResponse
-// Deprecated
-func (client *Client) CancelWorkflow(workflowName *string, request *CancelWorkflowRequest) (_result *CancelWorkflowResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelWorkflowResponse{}
-	_body, _err := client.CancelWorkflowWithOptions(workflowName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
 // Queries the current log configuration of control plane components, including the log retention period and the log collection component. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager.
@@ -31184,62 +30660,6 @@ func (client *Client) DeployPolicyInstance(clusterId *string, policyName *string
 	headers := make(map[string]*string)
 	_result = &DeployPolicyInstanceResponse{}
 	_body, _err := client.DeployPolicyInstanceWithOptions(clusterId, policyName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescirbeWorkflow is deprecated
-//
-// Summary:
-//
-// You can call the DescirbeWorkflow operation to query detailed information about a workflow.
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescirbeWorkflowResponse
-// Deprecated
-func (client *Client) DescirbeWorkflowWithOptions(workflowName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescirbeWorkflowResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescirbeWorkflow"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/gs/workflow/" + tea.StringValue(openapiutil.GetEncodeParam(workflowName))),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescirbeWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescirbeWorkflow is deprecated
-//
-// Summary:
-//
-// You can call the DescirbeWorkflow operation to query detailed information about a workflow.
-//
-// @return DescirbeWorkflowResponse
-// Deprecated
-func (client *Client) DescirbeWorkflow(workflowName *string) (_result *DescirbeWorkflowResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescirbeWorkflowResponse{}
-	_body, _err := client.DescirbeWorkflowWithOptions(workflowName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34061,62 +33481,6 @@ func (client *Client) DescribeUserQuota() (_result *DescribeUserQuotaResponse, _
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeWorkflows is deprecated
-//
-// Summary:
-//
-// You can call the DescribeWorkflows operation to query all workflows.
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeWorkflowsResponse
-// Deprecated
-func (client *Client) DescribeWorkflowsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWorkflowsResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeWorkflows"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/gs/workflows"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeWorkflowsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeWorkflows is deprecated
-//
-// Summary:
-//
-// You can call the DescribeWorkflows operation to query all workflows.
-//
-// @return DescribeWorkflowsResponse
-// Deprecated
-func (client *Client) DescribeWorkflows() (_result *DescribeWorkflowsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeWorkflowsResponse{}
-	_body, _err := client.DescribeWorkflowsWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
 // You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
@@ -35454,6 +34818,10 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		body["system_events_logging"] = request.SystemEventsLogging
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
+		body["vswitch_ids"] = request.VswitchIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -36398,62 +35766,6 @@ func (client *Client) RemoveNodePoolNodes(ClusterId *string, NodepoolId *string,
 	return _result, _err
 }
 
-// Deprecated: OpenAPI RemoveWorkflow is deprecated
-//
-// Summary:
-//
-// You can call the RemoveWorkflow operation to delete a workflow.
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RemoveWorkflowResponse
-// Deprecated
-func (client *Client) RemoveWorkflowWithOptions(workflowName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveWorkflowResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RemoveWorkflow"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/gs/workflow/" + tea.StringValue(openapiutil.GetEncodeParam(workflowName))),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &RemoveWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI RemoveWorkflow is deprecated
-//
-// Summary:
-//
-// You can call the RemoveWorkflow operation to delete a workflow.
-//
-// @return RemoveWorkflowResponse
-// Deprecated
-func (client *Client) RemoveWorkflow(workflowName *string) (_result *RemoveWorkflowResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RemoveWorkflowResponse{}
-	_body, _err := client.RemoveWorkflowWithOptions(workflowName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
 // Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
@@ -37275,148 +36587,6 @@ func (client *Client) StartAlert(ClusterId *string, request *StartAlertRequest) 
 	headers := make(map[string]*string)
 	_result = &StartAlertResponse{}
 	_body, _err := client.StartAlertWithOptions(ClusterId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Deprecated: OpenAPI StartWorkflow is deprecated
-//
-// Summary:
-//
-// You can call the StartWorkflow operation to create a workflow.
-//
-// @param request - StartWorkflowRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return StartWorkflowResponse
-// Deprecated
-func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartWorkflowResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MappingBamOutFilename)) {
-		body["mapping_bam_out_filename"] = request.MappingBamOutFilename
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MappingBamOutPath)) {
-		body["mapping_bam_out_path"] = request.MappingBamOutPath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MappingBucketName)) {
-		body["mapping_bucket_name"] = request.MappingBucketName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MappingFastqFirstFilename)) {
-		body["mapping_fastq_first_filename"] = request.MappingFastqFirstFilename
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MappingFastqPath)) {
-		body["mapping_fastq_path"] = request.MappingFastqPath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MappingFastqSecondFilename)) {
-		body["mapping_fastq_second_filename"] = request.MappingFastqSecondFilename
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MappingIsMarkDup)) {
-		body["mapping_is_mark_dup"] = request.MappingIsMarkDup
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MappingOssRegion)) {
-		body["mapping_oss_region"] = request.MappingOssRegion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MappingReferencePath)) {
-		body["mapping_reference_path"] = request.MappingReferencePath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Service)) {
-		body["service"] = request.Service
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WgsBucketName)) {
-		body["wgs_bucket_name"] = request.WgsBucketName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WgsFastqFirstFilename)) {
-		body["wgs_fastq_first_filename"] = request.WgsFastqFirstFilename
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WgsFastqPath)) {
-		body["wgs_fastq_path"] = request.WgsFastqPath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WgsFastqSecondFilename)) {
-		body["wgs_fastq_second_filename"] = request.WgsFastqSecondFilename
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WgsOssRegion)) {
-		body["wgs_oss_region"] = request.WgsOssRegion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WgsReferencePath)) {
-		body["wgs_reference_path"] = request.WgsReferencePath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WgsVcfOutFilename)) {
-		body["wgs_vcf_out_filename"] = request.WgsVcfOutFilename
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WgsVcfOutPath)) {
-		body["wgs_vcf_out_path"] = request.WgsVcfOutPath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkflowType)) {
-		body["workflow_type"] = request.WorkflowType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StartWorkflow"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/gs/workflow"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &StartWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI StartWorkflow is deprecated
-//
-// Summary:
-//
-// You can call the StartWorkflow operation to create a workflow.
-//
-// @param request - StartWorkflowRequest
-//
-// @return StartWorkflowResponse
-// Deprecated
-func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *StartWorkflowResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StartWorkflowResponse{}
-	_body, _err := client.StartWorkflowWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
