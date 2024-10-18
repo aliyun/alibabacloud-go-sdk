@@ -2339,6 +2339,120 @@ func (s *ExportKeywordResponse) SetBody(v *ExportKeywordResponseBody) *ExportKey
 	return s
 }
 
+type ExportOssCheckStatRequest struct {
+	// example:
+	//
+	// true
+	ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
+	// example:
+	//
+	// 2024-03-11 10:00:00
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// P_UX0K5X
+	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2024-03-10 10:00:00
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s ExportOssCheckStatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportOssCheckStatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportOssCheckStatRequest) SetByMonth(v bool) *ExportOssCheckStatRequest {
+	s.ByMonth = &v
+	return s
+}
+
+func (s *ExportOssCheckStatRequest) SetEndDate(v string) *ExportOssCheckStatRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *ExportOssCheckStatRequest) SetParentTaskId(v string) *ExportOssCheckStatRequest {
+	s.ParentTaskId = &v
+	return s
+}
+
+func (s *ExportOssCheckStatRequest) SetRegionId(v string) *ExportOssCheckStatRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ExportOssCheckStatRequest) SetStartDate(v string) *ExportOssCheckStatRequest {
+	s.StartDate = &v
+	return s
+}
+
+type ExportOssCheckStatResponseBody struct {
+	// example:
+	//
+	// https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com/console_data/production/scanResult/osscheck/ossCheckStat_aliUf5B3lJfOkLpqozLIn94Uy-1XxKyX.xlsx
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportOssCheckStatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportOssCheckStatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportOssCheckStatResponseBody) SetData(v string) *ExportOssCheckStatResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExportOssCheckStatResponseBody) SetRequestId(v string) *ExportOssCheckStatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportOssCheckStatResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportOssCheckStatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportOssCheckStatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportOssCheckStatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportOssCheckStatResponse) SetHeaders(v map[string]*string) *ExportOssCheckStatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportOssCheckStatResponse) SetStatusCode(v int32) *ExportOssCheckStatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportOssCheckStatResponse) SetBody(v *ExportOssCheckStatResponseBody) *ExportOssCheckStatResponse {
+	s.Body = v
+	return s
+}
+
 type ExportResultRequest struct {
 	// example:
 	//
@@ -4396,6 +4510,166 @@ func (s *GetKeywordImportResultResponse) SetStatusCode(v int32) *GetKeywordImpor
 }
 
 func (s *GetKeywordImportResultResponse) SetBody(v *GetKeywordImportResultResponseBody) *GetKeywordImportResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetOssCheckStatRequest struct {
+	// example:
+	//
+	// true
+	ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
+	// example:
+	//
+	// 2023-08-24 10:01:55
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// P_UNHBH
+	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2023-08-11 09:00:19
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s GetOssCheckStatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssCheckStatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssCheckStatRequest) SetByMonth(v bool) *GetOssCheckStatRequest {
+	s.ByMonth = &v
+	return s
+}
+
+func (s *GetOssCheckStatRequest) SetEndDate(v string) *GetOssCheckStatRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetOssCheckStatRequest) SetParentTaskId(v string) *GetOssCheckStatRequest {
+	s.ParentTaskId = &v
+	return s
+}
+
+func (s *GetOssCheckStatRequest) SetRegionId(v string) *GetOssCheckStatRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetOssCheckStatRequest) SetStartDate(v string) *GetOssCheckStatRequest {
+	s.StartDate = &v
+	return s
+}
+
+type GetOssCheckStatResponseBody struct {
+	BarChart *GetOssCheckStatResponseBodyBarChart `json:"BarChart,omitempty" xml:"BarChart,omitempty" type:"Struct"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetOssCheckStatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssCheckStatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssCheckStatResponseBody) SetBarChart(v *GetOssCheckStatResponseBodyBarChart) *GetOssCheckStatResponseBody {
+	s.BarChart = v
+	return s
+}
+
+func (s *GetOssCheckStatResponseBody) SetRequestId(v string) *GetOssCheckStatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetOssCheckStatResponseBodyBarChart struct {
+	X []*string                               `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
+	Y []*GetOssCheckStatResponseBodyBarChartY `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
+}
+
+func (s GetOssCheckStatResponseBodyBarChart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssCheckStatResponseBodyBarChart) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssCheckStatResponseBodyBarChart) SetX(v []*string) *GetOssCheckStatResponseBodyBarChart {
+	s.X = v
+	return s
+}
+
+func (s *GetOssCheckStatResponseBodyBarChart) SetY(v []*GetOssCheckStatResponseBodyBarChartY) *GetOssCheckStatResponseBodyBarChart {
+	s.Y = v
+	return s
+}
+
+type GetOssCheckStatResponseBodyBarChartY struct {
+	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// document_detection
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOssCheckStatResponseBodyBarChartY) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssCheckStatResponseBodyBarChartY) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssCheckStatResponseBodyBarChartY) SetData(v []*int64) *GetOssCheckStatResponseBodyBarChartY {
+	s.Data = v
+	return s
+}
+
+func (s *GetOssCheckStatResponseBodyBarChartY) SetName(v string) *GetOssCheckStatResponseBodyBarChartY {
+	s.Name = &v
+	return s
+}
+
+type GetOssCheckStatResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOssCheckStatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOssCheckStatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssCheckStatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssCheckStatResponse) SetHeaders(v map[string]*string) *GetOssCheckStatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOssCheckStatResponse) SetStatusCode(v int32) *GetOssCheckStatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOssCheckStatResponse) SetBody(v *GetOssCheckStatResponseBody) *GetOssCheckStatResponse {
 	s.Body = v
 	return s
 }
@@ -10967,6 +11241,84 @@ func (client *Client) ExportKeyword(request *ExportKeywordRequest) (_result *Exp
 
 // Summary:
 //
+// oss用量统计导出
+//
+// @param request - ExportOssCheckStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportOssCheckStatResponse
+func (client *Client) ExportOssCheckStatWithOptions(request *ExportOssCheckStatRequest, runtime *util.RuntimeOptions) (_result *ExportOssCheckStatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ByMonth)) {
+		body["ByMonth"] = request.ByMonth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentTaskId)) {
+		body["ParentTaskId"] = request.ParentTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportOssCheckStat"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportOssCheckStatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// oss用量统计导出
+//
+// @param request - ExportOssCheckStatRequest
+//
+// @return ExportOssCheckStatResponse
+func (client *Client) ExportOssCheckStat(request *ExportOssCheckStatRequest) (_result *ExportOssCheckStatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportOssCheckStatResponse{}
+	_body, _err := client.ExportOssCheckStatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 导出oss扫描结果
 //
 // @param tmpReq - ExportResultRequest
@@ -11836,6 +12188,84 @@ func (client *Client) GetKeywordImportResult(request *GetKeywordImportResultRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetKeywordImportResultResponse{}
 	_body, _err := client.GetKeywordImportResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// oss用量统计
+//
+// @param request - GetOssCheckStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOssCheckStatResponse
+func (client *Client) GetOssCheckStatWithOptions(request *GetOssCheckStatRequest, runtime *util.RuntimeOptions) (_result *GetOssCheckStatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ByMonth)) {
+		body["ByMonth"] = request.ByMonth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentTaskId)) {
+		body["ParentTaskId"] = request.ParentTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOssCheckStat"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOssCheckStatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// oss用量统计
+//
+// @param request - GetOssCheckStatRequest
+//
+// @return GetOssCheckStatResponse
+func (client *Client) GetOssCheckStat(request *GetOssCheckStatRequest) (_result *GetOssCheckStatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOssCheckStatResponse{}
+	_body, _err := client.GetOssCheckStatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
