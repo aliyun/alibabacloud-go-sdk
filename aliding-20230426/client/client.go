@@ -1305,6 +1305,303 @@ func (s *AddScenegroupMemberResponse) SetBody(v *AddScenegroupMemberResponseBody
 	return s
 }
 
+type AddTicketMemoHeaders struct {
+	CommonHeaders  map[string]*string                  `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *AddTicketMemoHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s AddTicketMemoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoHeaders) SetCommonHeaders(v map[string]*string) *AddTicketMemoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddTicketMemoHeaders) SetAccountContext(v *AddTicketMemoHeadersAccountContext) *AddTicketMemoHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type AddTicketMemoHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s AddTicketMemoHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoHeadersAccountContext) SetAccountId(v string) *AddTicketMemoHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type AddTicketMemoShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s AddTicketMemoShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoShrinkHeaders) SetCommonHeaders(v map[string]*string) *AddTicketMemoShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddTicketMemoShrinkHeaders) SetAccountContextShrink(v string) *AddTicketMemoShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type AddTicketMemoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId  *string                            `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	TenantContext *AddTicketMemoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	TicketMemo    *AddTicketMemoRequestTicketMemo    `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty" type:"Struct"`
+}
+
+func (s AddTicketMemoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoRequest) SetOpenTeamId(v string) *AddTicketMemoRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *AddTicketMemoRequest) SetOpenTicketId(v string) *AddTicketMemoRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *AddTicketMemoRequest) SetTenantContext(v *AddTicketMemoRequestTenantContext) *AddTicketMemoRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *AddTicketMemoRequest) SetTicketMemo(v *AddTicketMemoRequestTicketMemo) *AddTicketMemoRequest {
+	s.TicketMemo = v
+	return s
+}
+
+type AddTicketMemoRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s AddTicketMemoRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoRequestTenantContext) SetTenantId(v string) *AddTicketMemoRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type AddTicketMemoRequestTicketMemo struct {
+	Attachments []*AddTicketMemoRequestTicketMemoAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	Memo        *string                                      `json:"Memo,omitempty" xml:"Memo,omitempty"`
+}
+
+func (s AddTicketMemoRequestTicketMemo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoRequestTicketMemo) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoRequestTicketMemo) SetAttachments(v []*AddTicketMemoRequestTicketMemoAttachments) *AddTicketMemoRequestTicketMemo {
+	s.Attachments = v
+	return s
+}
+
+func (s *AddTicketMemoRequestTicketMemo) SetMemo(v string) *AddTicketMemoRequestTicketMemo {
+	s.Memo = &v
+	return s
+}
+
+type AddTicketMemoRequestTicketMemoAttachments struct {
+	// example:
+	//
+	// "ticket/image/44xxxx9/43003/e27204b38xxxx1640499.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// wahaha.txt
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s AddTicketMemoRequestTicketMemoAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoRequestTicketMemoAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoRequestTicketMemoAttachments) SetFileName(v string) *AddTicketMemoRequestTicketMemoAttachments {
+	s.FileName = &v
+	return s
+}
+
+func (s *AddTicketMemoRequestTicketMemoAttachments) SetKey(v string) *AddTicketMemoRequestTicketMemoAttachments {
+	s.Key = &v
+	return s
+}
+
+type AddTicketMemoShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId        *string `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	TicketMemoShrink    *string `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty"`
+}
+
+func (s AddTicketMemoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoShrinkRequest) SetOpenTeamId(v string) *AddTicketMemoShrinkRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *AddTicketMemoShrinkRequest) SetOpenTicketId(v string) *AddTicketMemoShrinkRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *AddTicketMemoShrinkRequest) SetTenantContextShrink(v string) *AddTicketMemoShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *AddTicketMemoShrinkRequest) SetTicketMemoShrink(v string) *AddTicketMemoShrinkRequest {
+	s.TicketMemoShrink = &v
+	return s
+}
+
+type AddTicketMemoResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s AddTicketMemoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoResponseBody) SetRequestId(v string) *AddTicketMemoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddTicketMemoResponseBody) SetVendorRequestId(v string) *AddTicketMemoResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *AddTicketMemoResponseBody) SetVendorType(v string) *AddTicketMemoResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type AddTicketMemoResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddTicketMemoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddTicketMemoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketMemoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketMemoResponse) SetHeaders(v map[string]*string) *AddTicketMemoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTicketMemoResponse) SetStatusCode(v int32) *AddTicketMemoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddTicketMemoResponse) SetBody(v *AddTicketMemoResponseBody) *AddTicketMemoResponse {
+	s.Body = v
+	return s
+}
+
 type AddWorkspaceHeaders struct {
 	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *AddWorkspaceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -2230,6 +2527,359 @@ func (s *AddWorkspaceMembersResponse) SetStatusCode(v int32) *AddWorkspaceMember
 }
 
 func (s *AddWorkspaceMembersResponse) SetBody(v *AddWorkspaceMembersResponseBody) *AddWorkspaceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type AssignTicketHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *AssignTicketHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s AssignTicketHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketHeaders) SetCommonHeaders(v map[string]*string) *AssignTicketHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AssignTicketHeaders) SetAccountContext(v *AssignTicketHeadersAccountContext) *AssignTicketHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type AssignTicketHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s AssignTicketHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketHeadersAccountContext) SetAccountId(v string) *AssignTicketHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type AssignTicketShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s AssignTicketShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketShrinkHeaders) SetCommonHeaders(v map[string]*string) *AssignTicketShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AssignTicketShrinkHeaders) SetAccountContextShrink(v string) *AssignTicketShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type AssignTicketRequest struct {
+	Notify *AssignTicketRequestNotify `json:"Notify,omitempty" xml:"Notify,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId     *string                           `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	ProcessorUserIds []*string                         `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty" type:"Repeated"`
+	TenantContext    *AssignTicketRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	TicketMemo       *AssignTicketRequestTicketMemo    `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty" type:"Struct"`
+}
+
+func (s AssignTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketRequest) SetNotify(v *AssignTicketRequestNotify) *AssignTicketRequest {
+	s.Notify = v
+	return s
+}
+
+func (s *AssignTicketRequest) SetOpenTeamId(v string) *AssignTicketRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *AssignTicketRequest) SetOpenTicketId(v string) *AssignTicketRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *AssignTicketRequest) SetProcessorUserIds(v []*string) *AssignTicketRequest {
+	s.ProcessorUserIds = v
+	return s
+}
+
+func (s *AssignTicketRequest) SetTenantContext(v *AssignTicketRequestTenantContext) *AssignTicketRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *AssignTicketRequest) SetTicketMemo(v *AssignTicketRequestTicketMemo) *AssignTicketRequest {
+	s.TicketMemo = v
+	return s
+}
+
+type AssignTicketRequestNotify struct {
+	GroupNoticeReceiverUserIds []*string `json:"GroupNoticeReceiverUserIds,omitempty" xml:"GroupNoticeReceiverUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	NoticeAllGroupMember      *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
+	WorkNoticeReceiverUserIds []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
+}
+
+func (s AssignTicketRequestNotify) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketRequestNotify) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketRequestNotify) SetGroupNoticeReceiverUserIds(v []*string) *AssignTicketRequestNotify {
+	s.GroupNoticeReceiverUserIds = v
+	return s
+}
+
+func (s *AssignTicketRequestNotify) SetNoticeAllGroupMember(v bool) *AssignTicketRequestNotify {
+	s.NoticeAllGroupMember = &v
+	return s
+}
+
+func (s *AssignTicketRequestNotify) SetWorkNoticeReceiverUserIds(v []*string) *AssignTicketRequestNotify {
+	s.WorkNoticeReceiverUserIds = v
+	return s
+}
+
+type AssignTicketRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s AssignTicketRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketRequestTenantContext) SetTenantId(v string) *AssignTicketRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type AssignTicketRequestTicketMemo struct {
+	Attachments []*AssignTicketRequestTicketMemoAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	Memo        *string                                     `json:"Memo,omitempty" xml:"Memo,omitempty"`
+}
+
+func (s AssignTicketRequestTicketMemo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketRequestTicketMemo) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketRequestTicketMemo) SetAttachments(v []*AssignTicketRequestTicketMemoAttachments) *AssignTicketRequestTicketMemo {
+	s.Attachments = v
+	return s
+}
+
+func (s *AssignTicketRequestTicketMemo) SetMemo(v string) *AssignTicketRequestTicketMemo {
+	s.Memo = &v
+	return s
+}
+
+type AssignTicketRequestTicketMemoAttachments struct {
+	// example:
+	//
+	// ticket/image/44708069/43003/e27aec4499.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// wahaha.txt
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s AssignTicketRequestTicketMemoAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketRequestTicketMemoAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketRequestTicketMemoAttachments) SetFileName(v string) *AssignTicketRequestTicketMemoAttachments {
+	s.FileName = &v
+	return s
+}
+
+func (s *AssignTicketRequestTicketMemoAttachments) SetKey(v string) *AssignTicketRequestTicketMemoAttachments {
+	s.Key = &v
+	return s
+}
+
+type AssignTicketShrinkRequest struct {
+	NotifyShrink *string `json:"Notify,omitempty" xml:"Notify,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId           *string `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	ProcessorUserIdsShrink *string `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty"`
+	TenantContextShrink    *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	TicketMemoShrink       *string `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty"`
+}
+
+func (s AssignTicketShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketShrinkRequest) SetNotifyShrink(v string) *AssignTicketShrinkRequest {
+	s.NotifyShrink = &v
+	return s
+}
+
+func (s *AssignTicketShrinkRequest) SetOpenTeamId(v string) *AssignTicketShrinkRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *AssignTicketShrinkRequest) SetOpenTicketId(v string) *AssignTicketShrinkRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *AssignTicketShrinkRequest) SetProcessorUserIdsShrink(v string) *AssignTicketShrinkRequest {
+	s.ProcessorUserIdsShrink = &v
+	return s
+}
+
+func (s *AssignTicketShrinkRequest) SetTenantContextShrink(v string) *AssignTicketShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *AssignTicketShrinkRequest) SetTicketMemoShrink(v string) *AssignTicketShrinkRequest {
+	s.TicketMemoShrink = &v
+	return s
+}
+
+type AssignTicketResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s AssignTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketResponseBody) SetRequestId(v string) *AssignTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AssignTicketResponseBody) SetVendorRequestId(v string) *AssignTicketResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *AssignTicketResponseBody) SetVendorType(v string) *AssignTicketResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type AssignTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssignTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AssignTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssignTicketResponse) SetHeaders(v map[string]*string) *AssignTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssignTicketResponse) SetStatusCode(v int32) *AssignTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssignTicketResponse) SetBody(v *AssignTicketResponseBody) *AssignTicketResponse {
 	s.Body = v
 	return s
 }
@@ -17483,6 +18133,347 @@ func (s *ExpandGroupCapacityResponse) SetBody(v *ExpandGroupCapacityResponseBody
 	return s
 }
 
+type FinishTicketHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *FinishTicketHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s FinishTicketHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketHeaders) SetCommonHeaders(v map[string]*string) *FinishTicketHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FinishTicketHeaders) SetAccountContext(v *FinishTicketHeadersAccountContext) *FinishTicketHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type FinishTicketHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s FinishTicketHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketHeadersAccountContext) SetAccountId(v string) *FinishTicketHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type FinishTicketShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s FinishTicketShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketShrinkHeaders) SetCommonHeaders(v map[string]*string) *FinishTicketShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FinishTicketShrinkHeaders) SetAccountContextShrink(v string) *FinishTicketShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type FinishTicketRequest struct {
+	Notify *FinishTicketRequestNotify `json:"Notify,omitempty" xml:"Notify,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId  *string                           `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	TenantContext *FinishTicketRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	TicketMemo    *FinishTicketRequestTicketMemo    `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty" type:"Struct"`
+}
+
+func (s FinishTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketRequest) SetNotify(v *FinishTicketRequestNotify) *FinishTicketRequest {
+	s.Notify = v
+	return s
+}
+
+func (s *FinishTicketRequest) SetOpenTeamId(v string) *FinishTicketRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *FinishTicketRequest) SetOpenTicketId(v string) *FinishTicketRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *FinishTicketRequest) SetTenantContext(v *FinishTicketRequestTenantContext) *FinishTicketRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *FinishTicketRequest) SetTicketMemo(v *FinishTicketRequestTicketMemo) *FinishTicketRequest {
+	s.TicketMemo = v
+	return s
+}
+
+type FinishTicketRequestNotify struct {
+	GroupNoticeReceiverUserIds []*string `json:"GroupNoticeReceiverUserIds,omitempty" xml:"GroupNoticeReceiverUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	NoticeAllGroupMember      *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
+	WorkNoticeReceiverUserIds []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
+}
+
+func (s FinishTicketRequestNotify) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketRequestNotify) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketRequestNotify) SetGroupNoticeReceiverUserIds(v []*string) *FinishTicketRequestNotify {
+	s.GroupNoticeReceiverUserIds = v
+	return s
+}
+
+func (s *FinishTicketRequestNotify) SetNoticeAllGroupMember(v bool) *FinishTicketRequestNotify {
+	s.NoticeAllGroupMember = &v
+	return s
+}
+
+func (s *FinishTicketRequestNotify) SetWorkNoticeReceiverUserIds(v []*string) *FinishTicketRequestNotify {
+	s.WorkNoticeReceiverUserIds = v
+	return s
+}
+
+type FinishTicketRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s FinishTicketRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketRequestTenantContext) SetTenantId(v string) *FinishTicketRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type FinishTicketRequestTicketMemo struct {
+	Attachments []*FinishTicketRequestTicketMemoAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	Memo        *string                                     `json:"Memo,omitempty" xml:"Memo,omitempty"`
+}
+
+func (s FinishTicketRequestTicketMemo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketRequestTicketMemo) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketRequestTicketMemo) SetAttachments(v []*FinishTicketRequestTicketMemoAttachments) *FinishTicketRequestTicketMemo {
+	s.Attachments = v
+	return s
+}
+
+func (s *FinishTicketRequestTicketMemo) SetMemo(v string) *FinishTicketRequestTicketMemo {
+	s.Memo = &v
+	return s
+}
+
+type FinishTicketRequestTicketMemoAttachments struct {
+	// example:
+	//
+	// wahaha.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// ticket/image/44xxxx9/43003/e27xxxx1640499.txt
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s FinishTicketRequestTicketMemoAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketRequestTicketMemoAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketRequestTicketMemoAttachments) SetFileName(v string) *FinishTicketRequestTicketMemoAttachments {
+	s.FileName = &v
+	return s
+}
+
+func (s *FinishTicketRequestTicketMemoAttachments) SetKey(v string) *FinishTicketRequestTicketMemoAttachments {
+	s.Key = &v
+	return s
+}
+
+type FinishTicketShrinkRequest struct {
+	NotifyShrink *string `json:"Notify,omitempty" xml:"Notify,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId        *string `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	TicketMemoShrink    *string `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty"`
+}
+
+func (s FinishTicketShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketShrinkRequest) SetNotifyShrink(v string) *FinishTicketShrinkRequest {
+	s.NotifyShrink = &v
+	return s
+}
+
+func (s *FinishTicketShrinkRequest) SetOpenTeamId(v string) *FinishTicketShrinkRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *FinishTicketShrinkRequest) SetOpenTicketId(v string) *FinishTicketShrinkRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *FinishTicketShrinkRequest) SetTenantContextShrink(v string) *FinishTicketShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *FinishTicketShrinkRequest) SetTicketMemoShrink(v string) *FinishTicketShrinkRequest {
+	s.TicketMemoShrink = &v
+	return s
+}
+
+type FinishTicketResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s FinishTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketResponseBody) SetRequestId(v string) *FinishTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FinishTicketResponseBody) SetVendorRequestId(v string) *FinishTicketResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *FinishTicketResponseBody) SetVendorType(v string) *FinishTicketResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type FinishTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FinishTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FinishTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketResponse) SetHeaders(v map[string]*string) *FinishTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FinishTicketResponse) SetStatusCode(v int32) *FinishTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FinishTicketResponse) SetBody(v *FinishTicketResponseBody) *FinishTicketResponse {
+	s.Body = v
+	return s
+}
+
 type GetActivityListHeaders struct {
 	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetActivityListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -22264,6 +23255,352 @@ func (s *GetFormListInAppResponse) SetBody(v *GetFormListInAppResponseBody) *Get
 	return s
 }
 
+type GetGroupLiveListHeaders struct {
+	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetGroupLiveListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetGroupLiveListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListHeaders) SetCommonHeaders(v map[string]*string) *GetGroupLiveListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetGroupLiveListHeaders) SetAccountContext(v *GetGroupLiveListHeadersAccountContext) *GetGroupLiveListHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetGroupLiveListHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetGroupLiveListHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListHeadersAccountContext) SetAccountId(v string) *GetGroupLiveListHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetGroupLiveListShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetGroupLiveListShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetGroupLiveListShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetGroupLiveListShrinkHeaders) SetAccountContextShrink(v string) *GetGroupLiveListShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetGroupLiveListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1398324600000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cidt*****Xa4K10w==
+	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1398324600000
+	StartTime     *int64                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *GetGroupLiveListRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetGroupLiveListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListRequest) SetEndTime(v int64) *GetGroupLiveListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetGroupLiveListRequest) SetOpenConversationId(v string) *GetGroupLiveListRequest {
+	s.OpenConversationId = &v
+	return s
+}
+
+func (s *GetGroupLiveListRequest) SetStartTime(v int64) *GetGroupLiveListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetGroupLiveListRequest) SetTenantContext(v *GetGroupLiveListRequestTenantContext) *GetGroupLiveListRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetGroupLiveListRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetGroupLiveListRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListRequestTenantContext) SetTenantId(v string) *GetGroupLiveListRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetGroupLiveListShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1398324600000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cidt*****Xa4K10w==
+	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1398324600000
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetGroupLiveListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListShrinkRequest) SetEndTime(v int64) *GetGroupLiveListShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetGroupLiveListShrinkRequest) SetOpenConversationId(v string) *GetGroupLiveListShrinkRequest {
+	s.OpenConversationId = &v
+	return s
+}
+
+func (s *GetGroupLiveListShrinkRequest) SetStartTime(v int64) *GetGroupLiveListShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetGroupLiveListShrinkRequest) SetTenantContextShrink(v string) *GetGroupLiveListShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetGroupLiveListResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *GetGroupLiveListResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetGroupLiveListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListResponseBody) SetRequestId(v string) *GetGroupLiveListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGroupLiveListResponseBody) SetResult(v *GetGroupLiveListResponseBodyResult) *GetGroupLiveListResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetGroupLiveListResponseBody) SetVendorRequestId(v string) *GetGroupLiveListResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetGroupLiveListResponseBody) SetVendorType(v string) *GetGroupLiveListResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetGroupLiveListResponseBodyResult struct {
+	// example:
+	//
+	// 直播列表
+	GroupLiveList []*GetGroupLiveListResponseBodyResultGroupLiveList `json:"GroupLiveList,omitempty" xml:"GroupLiveList,omitempty" type:"Repeated"`
+}
+
+func (s GetGroupLiveListResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListResponseBodyResult) SetGroupLiveList(v []*GetGroupLiveListResponseBodyResultGroupLiveList) *GetGroupLiveListResponseBodyResult {
+	s.GroupLiveList = v
+	return s
+}
+
+type GetGroupLiveListResponseBodyResultGroupLiveList struct {
+	// example:
+	//
+	// nickName
+	AnchorNickname *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
+	// example:
+	//
+	// Eijxx
+	AnchorUnionId *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	// example:
+	//
+	// 1398324600000
+	LiveEndTime *int64 `json:"LiveEndTime,omitempty" xml:"LiveEndTime,omitempty"`
+	// example:
+	//
+	// 1398321600000
+	LiveStartTime *int64 `json:"LiveStartTime,omitempty" xml:"LiveStartTime,omitempty"`
+	// example:
+	//
+	// 4d38xxxxx
+	LiveUuid *string `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
+	// example:
+	//
+	// 直播标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetGroupLiveListResponseBodyResultGroupLiveList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListResponseBodyResultGroupLiveList) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListResponseBodyResultGroupLiveList) SetAnchorNickname(v string) *GetGroupLiveListResponseBodyResultGroupLiveList {
+	s.AnchorNickname = &v
+	return s
+}
+
+func (s *GetGroupLiveListResponseBodyResultGroupLiveList) SetAnchorUnionId(v string) *GetGroupLiveListResponseBodyResultGroupLiveList {
+	s.AnchorUnionId = &v
+	return s
+}
+
+func (s *GetGroupLiveListResponseBodyResultGroupLiveList) SetLiveEndTime(v int64) *GetGroupLiveListResponseBodyResultGroupLiveList {
+	s.LiveEndTime = &v
+	return s
+}
+
+func (s *GetGroupLiveListResponseBodyResultGroupLiveList) SetLiveStartTime(v int64) *GetGroupLiveListResponseBodyResultGroupLiveList {
+	s.LiveStartTime = &v
+	return s
+}
+
+func (s *GetGroupLiveListResponseBodyResultGroupLiveList) SetLiveUuid(v string) *GetGroupLiveListResponseBodyResultGroupLiveList {
+	s.LiveUuid = &v
+	return s
+}
+
+func (s *GetGroupLiveListResponseBodyResultGroupLiveList) SetTitle(v string) *GetGroupLiveListResponseBodyResultGroupLiveList {
+	s.Title = &v
+	return s
+}
+
+type GetGroupLiveListResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGroupLiveListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGroupLiveListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupLiveListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupLiveListResponse) SetHeaders(v map[string]*string) *GetGroupLiveListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGroupLiveListResponse) SetStatusCode(v int32) *GetGroupLiveListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGroupLiveListResponse) SetBody(v *GetGroupLiveListResponseBody) *GetGroupLiveListResponse {
+	s.Body = v
+	return s
+}
+
 type GetInnerGroupMembersHeaders struct {
 	CommonHeaders  map[string]*string                         `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetInnerGroupMembersHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -25911,6 +27248,1138 @@ func (s *GetMineWorkspaceResponse) SetStatusCode(v int32) *GetMineWorkspaceRespo
 }
 
 func (s *GetMineWorkspaceResponse) SetBody(v *GetMineWorkspaceResponseBody) *GetMineWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultiDimTableAllFieldsHeaders struct {
+	CommonHeaders  map[string]*string                              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetMultiDimTableAllFieldsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultiDimTableAllFieldsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsHeaders) SetCommonHeaders(v map[string]*string) *GetMultiDimTableAllFieldsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsHeaders) SetAccountContext(v *GetMultiDimTableAllFieldsHeadersAccountContext) *GetMultiDimTableAllFieldsHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetMultiDimTableAllFieldsHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetMultiDimTableAllFieldsHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsHeadersAccountContext) SetAccountId(v string) *GetMultiDimTableAllFieldsHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetMultiDimTableAllFieldsShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetMultiDimTableAllFieldsShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetMultiDimTableAllFieldsShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsShrinkHeaders) SetAccountContextShrink(v string) *GetMultiDimTableAllFieldsShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetMultiDimTableAllFieldsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 338534
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	SheetIdOrName *string                                        `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *GetMultiDimTableAllFieldsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultiDimTableAllFieldsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsRequest) SetBaseId(v string) *GetMultiDimTableAllFieldsRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsRequest) SetSheetIdOrName(v string) *GetMultiDimTableAllFieldsRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsRequest) SetTenantContext(v *GetMultiDimTableAllFieldsRequestTenantContext) *GetMultiDimTableAllFieldsRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetMultiDimTableAllFieldsRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetMultiDimTableAllFieldsRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsRequestTenantContext) SetTenantId(v string) *GetMultiDimTableAllFieldsRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetMultiDimTableAllFieldsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 338534
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetMultiDimTableAllFieldsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsShrinkRequest) SetBaseId(v string) *GetMultiDimTableAllFieldsShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsShrinkRequest) SetSheetIdOrName(v string) *GetMultiDimTableAllFieldsShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsShrinkRequest) SetTenantContextShrink(v string) *GetMultiDimTableAllFieldsShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetMultiDimTableAllFieldsResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// []
+	Value []*GetMultiDimTableAllFieldsResponseBodyValue `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetMultiDimTableAllFieldsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsResponseBody) SetRequestId(v string) *GetMultiDimTableAllFieldsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsResponseBody) SetValue(v []*GetMultiDimTableAllFieldsResponseBodyValue) *GetMultiDimTableAllFieldsResponseBody {
+	s.Value = v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsResponseBody) SetVendorRequestId(v string) *GetMultiDimTableAllFieldsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsResponseBody) SetVendorType(v string) *GetMultiDimTableAllFieldsResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetMultiDimTableAllFieldsResponseBodyValue struct {
+	// example:
+	//
+	// stxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Sheet1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// xxx
+	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// xxx
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetMultiDimTableAllFieldsResponseBodyValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsResponseBodyValue) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsResponseBodyValue) SetId(v string) *GetMultiDimTableAllFieldsResponseBodyValue {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsResponseBodyValue) SetName(v string) *GetMultiDimTableAllFieldsResponseBodyValue {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsResponseBodyValue) SetProperty(v map[string]interface{}) *GetMultiDimTableAllFieldsResponseBodyValue {
+	s.Property = v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsResponseBodyValue) SetType(v string) *GetMultiDimTableAllFieldsResponseBodyValue {
+	s.Type = &v
+	return s
+}
+
+type GetMultiDimTableAllFieldsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiDimTableAllFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultiDimTableAllFieldsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllFieldsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllFieldsResponse) SetHeaders(v map[string]*string) *GetMultiDimTableAllFieldsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsResponse) SetStatusCode(v int32) *GetMultiDimTableAllFieldsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllFieldsResponse) SetBody(v *GetMultiDimTableAllFieldsResponseBody) *GetMultiDimTableAllFieldsResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultiDimTableAllSheetsHeaders struct {
+	CommonHeaders  map[string]*string                              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetMultiDimTableAllSheetsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultiDimTableAllSheetsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsHeaders) SetCommonHeaders(v map[string]*string) *GetMultiDimTableAllSheetsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsHeaders) SetAccountContext(v *GetMultiDimTableAllSheetsHeadersAccountContext) *GetMultiDimTableAllSheetsHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetMultiDimTableAllSheetsHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetMultiDimTableAllSheetsHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsHeadersAccountContext) SetAccountId(v string) *GetMultiDimTableAllSheetsHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetMultiDimTableAllSheetsShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetMultiDimTableAllSheetsShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetMultiDimTableAllSheetsShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsShrinkHeaders) SetAccountContextShrink(v string) *GetMultiDimTableAllSheetsShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetMultiDimTableAllSheetsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 144972
+	BaseId        *string                                        `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	TenantContext *GetMultiDimTableAllSheetsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultiDimTableAllSheetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsRequest) SetBaseId(v string) *GetMultiDimTableAllSheetsRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsRequest) SetTenantContext(v *GetMultiDimTableAllSheetsRequestTenantContext) *GetMultiDimTableAllSheetsRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetMultiDimTableAllSheetsRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetMultiDimTableAllSheetsRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsRequestTenantContext) SetTenantId(v string) *GetMultiDimTableAllSheetsRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetMultiDimTableAllSheetsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 144972
+	BaseId              *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetMultiDimTableAllSheetsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsShrinkRequest) SetBaseId(v string) *GetMultiDimTableAllSheetsShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsShrinkRequest) SetTenantContextShrink(v string) *GetMultiDimTableAllSheetsShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetMultiDimTableAllSheetsResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// []
+	Value []*GetMultiDimTableAllSheetsResponseBodyValue `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetMultiDimTableAllSheetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsResponseBody) SetRequestId(v string) *GetMultiDimTableAllSheetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsResponseBody) SetValue(v []*GetMultiDimTableAllSheetsResponseBodyValue) *GetMultiDimTableAllSheetsResponseBody {
+	s.Value = v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsResponseBody) SetVendorRequestId(v string) *GetMultiDimTableAllSheetsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsResponseBody) SetVendorType(v string) *GetMultiDimTableAllSheetsResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetMultiDimTableAllSheetsResponseBodyValue struct {
+	// example:
+	//
+	// xxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// xxx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetMultiDimTableAllSheetsResponseBodyValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsResponseBodyValue) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsResponseBodyValue) SetId(v string) *GetMultiDimTableAllSheetsResponseBodyValue {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsResponseBodyValue) SetName(v string) *GetMultiDimTableAllSheetsResponseBodyValue {
+	s.Name = &v
+	return s
+}
+
+type GetMultiDimTableAllSheetsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiDimTableAllSheetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultiDimTableAllSheetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableAllSheetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableAllSheetsResponse) SetHeaders(v map[string]*string) *GetMultiDimTableAllSheetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsResponse) SetStatusCode(v int32) *GetMultiDimTableAllSheetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultiDimTableAllSheetsResponse) SetBody(v *GetMultiDimTableAllSheetsResponseBody) *GetMultiDimTableAllSheetsResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultiDimTableRecordHeaders struct {
+	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetMultiDimTableRecordHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultiDimTableRecordHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordHeaders) SetCommonHeaders(v map[string]*string) *GetMultiDimTableRecordHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultiDimTableRecordHeaders) SetAccountContext(v *GetMultiDimTableRecordHeadersAccountContext) *GetMultiDimTableRecordHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetMultiDimTableRecordHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetMultiDimTableRecordHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordHeadersAccountContext) SetAccountId(v string) *GetMultiDimTableRecordHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetMultiDimTableRecordShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetMultiDimTableRecordShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetMultiDimTableRecordShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultiDimTableRecordShrinkHeaders) SetAccountContextShrink(v string) *GetMultiDimTableRecordShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetMultiDimTableRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 101114
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	SheetIdOrName *string                                     `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *GetMultiDimTableRecordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultiDimTableRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordRequest) SetBaseId(v string) *GetMultiDimTableRecordRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordRequest) SetRecordId(v string) *GetMultiDimTableRecordRequest {
+	s.RecordId = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordRequest) SetSheetIdOrName(v string) *GetMultiDimTableRecordRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordRequest) SetTenantContext(v *GetMultiDimTableRecordRequestTenantContext) *GetMultiDimTableRecordRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetMultiDimTableRecordRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetMultiDimTableRecordRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordRequestTenantContext) SetTenantId(v string) *GetMultiDimTableRecordRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetMultiDimTableRecordShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 101114
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetMultiDimTableRecordShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordShrinkRequest) SetBaseId(v string) *GetMultiDimTableRecordShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordShrinkRequest) SetRecordId(v string) *GetMultiDimTableRecordShrinkRequest {
+	s.RecordId = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordShrinkRequest) SetSheetIdOrName(v string) *GetMultiDimTableRecordShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordShrinkRequest) SetTenantContextShrink(v string) *GetMultiDimTableRecordShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetMultiDimTableRecordResponseBody struct {
+	CreatedBy *GetMultiDimTableRecordResponseBodyCreatedBy `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// xxx
+	Fields map[string]interface{} `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// example:
+	//
+	// xxx
+	Id             *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastModifiedBy *GetMultiDimTableRecordResponseBodyLastModifiedBy `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetMultiDimTableRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetCreatedBy(v *GetMultiDimTableRecordResponseBodyCreatedBy) *GetMultiDimTableRecordResponseBody {
+	s.CreatedBy = v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetCreatedTime(v int64) *GetMultiDimTableRecordResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetFields(v map[string]interface{}) *GetMultiDimTableRecordResponseBody {
+	s.Fields = v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetId(v string) *GetMultiDimTableRecordResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetLastModifiedBy(v *GetMultiDimTableRecordResponseBodyLastModifiedBy) *GetMultiDimTableRecordResponseBody {
+	s.LastModifiedBy = v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetLastModifiedTime(v int64) *GetMultiDimTableRecordResponseBody {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetRequestId(v string) *GetMultiDimTableRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetVendorRequestId(v string) *GetMultiDimTableRecordResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponseBody) SetVendorType(v string) *GetMultiDimTableRecordResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetMultiDimTableRecordResponseBodyCreatedBy struct {
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetMultiDimTableRecordResponseBodyCreatedBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordResponseBodyCreatedBy) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordResponseBodyCreatedBy) SetUserId(v string) *GetMultiDimTableRecordResponseBodyCreatedBy {
+	s.UserId = &v
+	return s
+}
+
+type GetMultiDimTableRecordResponseBodyLastModifiedBy struct {
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetMultiDimTableRecordResponseBodyLastModifiedBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordResponseBodyLastModifiedBy) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordResponseBodyLastModifiedBy) SetUserId(v string) *GetMultiDimTableRecordResponseBodyLastModifiedBy {
+	s.UserId = &v
+	return s
+}
+
+type GetMultiDimTableRecordResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiDimTableRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultiDimTableRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableRecordResponse) SetHeaders(v map[string]*string) *GetMultiDimTableRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponse) SetStatusCode(v int32) *GetMultiDimTableRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultiDimTableRecordResponse) SetBody(v *GetMultiDimTableRecordResponseBody) *GetMultiDimTableRecordResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultiDimTableSheetHeaders struct {
+	CommonHeaders  map[string]*string                          `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetMultiDimTableSheetHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultiDimTableSheetHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableSheetHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableSheetHeaders) SetCommonHeaders(v map[string]*string) *GetMultiDimTableSheetHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultiDimTableSheetHeaders) SetAccountContext(v *GetMultiDimTableSheetHeadersAccountContext) *GetMultiDimTableSheetHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetMultiDimTableSheetHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetMultiDimTableSheetHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableSheetHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableSheetHeadersAccountContext) SetAccountId(v string) *GetMultiDimTableSheetHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetMultiDimTableSheetShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetMultiDimTableSheetShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableSheetShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableSheetShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetMultiDimTableSheetShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMultiDimTableSheetShrinkHeaders) SetAccountContextShrink(v string) *GetMultiDimTableSheetShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetMultiDimTableSheetRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 169899
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	SheetIdOrName *string                                    `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *GetMultiDimTableSheetRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetMultiDimTableSheetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableSheetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableSheetRequest) SetBaseId(v string) *GetMultiDimTableSheetRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetRequest) SetSheetIdOrName(v string) *GetMultiDimTableSheetRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetRequest) SetTenantContext(v *GetMultiDimTableSheetRequestTenantContext) *GetMultiDimTableSheetRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetMultiDimTableSheetRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetMultiDimTableSheetRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableSheetRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableSheetRequestTenantContext) SetTenantId(v string) *GetMultiDimTableSheetRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetMultiDimTableSheetShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 169899
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetMultiDimTableSheetShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableSheetShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableSheetShrinkRequest) SetBaseId(v string) *GetMultiDimTableSheetShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetShrinkRequest) SetSheetIdOrName(v string) *GetMultiDimTableSheetShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetShrinkRequest) SetTenantContextShrink(v string) *GetMultiDimTableSheetShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetMultiDimTableSheetResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// Sheet1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetMultiDimTableSheetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableSheetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableSheetResponseBody) SetId(v string) *GetMultiDimTableSheetResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetResponseBody) SetName(v string) *GetMultiDimTableSheetResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetResponseBody) SetRequestId(v string) *GetMultiDimTableSheetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetResponseBody) SetVendorRequestId(v string) *GetMultiDimTableSheetResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetResponseBody) SetVendorType(v string) *GetMultiDimTableSheetResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetMultiDimTableSheetResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiDimTableSheetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultiDimTableSheetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiDimTableSheetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiDimTableSheetResponse) SetHeaders(v map[string]*string) *GetMultiDimTableSheetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiDimTableSheetResponse) SetStatusCode(v int32) *GetMultiDimTableSheetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultiDimTableSheetResponse) SetBody(v *GetMultiDimTableSheetResponseBody) *GetMultiDimTableSheetResponse {
 	s.Body = v
 	return s
 }
@@ -33780,6 +36249,468 @@ func (s *GetTemplateListByUserIdResponse) SetBody(v *GetTemplateListByUserIdResp
 	return s
 }
 
+type GetTicketHeaders struct {
+	CommonHeaders  map[string]*string              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetTicketHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetTicketHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketHeaders) SetCommonHeaders(v map[string]*string) *GetTicketHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetTicketHeaders) SetAccountContext(v *GetTicketHeadersAccountContext) *GetTicketHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetTicketHeadersAccountContext struct {
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetTicketHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketHeadersAccountContext) SetAccountId(v string) *GetTicketHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetTicketShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetTicketShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetTicketShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetTicketShrinkHeaders) SetAccountContextShrink(v string) *GetTicketShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetTicketRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId  *string                        `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	TenantContext *GetTicketRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketRequest) SetOpenTeamId(v string) *GetTicketRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *GetTicketRequest) SetOpenTicketId(v string) *GetTicketRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *GetTicketRequest) SetTenantContext(v *GetTicketRequestTenantContext) *GetTicketRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetTicketRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetTicketRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketRequestTenantContext) SetTenantId(v string) *GetTicketRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetTicketShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId        *string `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetTicketShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketShrinkRequest) SetOpenTeamId(v string) *GetTicketShrinkRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *GetTicketShrinkRequest) SetOpenTicketId(v string) *GetTicketShrinkRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *GetTicketShrinkRequest) SetTenantContextShrink(v string) *GetTicketShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetTicketResponseBody struct {
+	// example:
+	//
+	// 2021-07-09 14:45:01
+	CreateTime *string                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Creator    *GetTicketResponseBodyCreator `json:"creator,omitempty" xml:"creator,omitempty" type:"Struct"`
+	// example:
+	//
+	// [{ "customerVisible": true,"editable": false,"identifier": "input1","name": "正文","placeholder": "请输入","required": false,"type": "TEXT_AREA","value": "123"},{"customerVisible": true,"editable": false,"identifier": "input2","name": "单选","options": [{"color": "#000000","value": "选项1"},{"color": "#000000","value": "选项2"},{"color": "#000000","value": "选项3"}],"required": false,"type": "RADIO"},{"customerVisible": true,"editable": false,"identifier": "input3","name": "多选","options": [{"color": "#000000","value": "选项1"},{"color": "#000000","value": "选项2"},{"color": "#000000","value": "选项3"}],"required": false,"type": "CHECKBOX"},{"customerVisible": true,"editable": false,"identifier": "input5","name": "数字","required": false,"type": "INPUT_NUMBER"},{"customerVisible": true,"editable": false,"identifier": "input6","maxFileNum": 20,"name": "上传","required": false,"type": "FILE"},{"customerVisible": true,"editable": false,"identifier": "input7","maxFileNum": 20,"name": "图片","required": false,"type": "IMAGE"},{"customerVisible": true,"editable": false,"format": "DATE_TIME","identifier": "input8","name": "日期","required": false,"type": "DATE_TIME_PICKER"}]
+	CustomFields *string `json:"customFields,omitempty" xml:"customFields,omitempty"`
+	// example:
+	//
+	// cidZBSNxxxxXUCrAA==
+	OpenConversationId *string `json:"openConversationId,omitempty" xml:"openConversationId,omitempty"`
+	// example:
+	//
+	// a8iSxxxxtgiE
+	OpenTicketId *string                         `json:"openTicketId,omitempty" xml:"openTicketId,omitempty"`
+	Processor    *GetTicketResponseBodyProcessor `json:"processor,omitempty" xml:"processor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// SG
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// example:
+	//
+	// {"groupId":1893227,"groupIsNormal":true,"groupName":"API和SPI测试群","groupSetId":29003,"groupSetName":"默认服务群组","scene":"SG"}
+	SceneContext *string `json:"sceneContext,omitempty" xml:"sceneContext,omitempty"`
+	// example:
+	//
+	// FINISHED
+	Stage    *string                        `json:"stage,omitempty" xml:"stage,omitempty"`
+	Takers   []*GetTicketResponseBodyTakers `json:"takers,omitempty" xml:"takers,omitempty" type:"Repeated"`
+	Template *GetTicketResponseBodyTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+	// example:
+	//
+	// 贤文api测试，处理人王鸿程和李航宇
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 2021-07-09 19:26:09
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponseBody) SetCreateTime(v string) *GetTicketResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetCreator(v *GetTicketResponseBodyCreator) *GetTicketResponseBody {
+	s.Creator = v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetCustomFields(v string) *GetTicketResponseBody {
+	s.CustomFields = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetOpenConversationId(v string) *GetTicketResponseBody {
+	s.OpenConversationId = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetOpenTicketId(v string) *GetTicketResponseBody {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetProcessor(v *GetTicketResponseBodyProcessor) *GetTicketResponseBody {
+	s.Processor = v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetRequestId(v string) *GetTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetScene(v string) *GetTicketResponseBody {
+	s.Scene = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetSceneContext(v string) *GetTicketResponseBody {
+	s.SceneContext = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetStage(v string) *GetTicketResponseBody {
+	s.Stage = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetTakers(v []*GetTicketResponseBodyTakers) *GetTicketResponseBody {
+	s.Takers = v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetTemplate(v *GetTicketResponseBodyTemplate) *GetTicketResponseBody {
+	s.Template = v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetTitle(v string) *GetTicketResponseBody {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetUpdateTime(v string) *GetTicketResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetVendorRequestId(v string) *GetTicketResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetVendorType(v string) *GetTicketResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetTicketResponseBodyCreator struct {
+	// example:
+	//
+	// 贤文
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// example:
+	//
+	// 012345
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+}
+
+func (s GetTicketResponseBodyCreator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponseBodyCreator) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponseBodyCreator) SetNickName(v string) *GetTicketResponseBodyCreator {
+	s.NickName = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyCreator) SetUnionId(v string) *GetTicketResponseBodyCreator {
+	s.UnionId = &v
+	return s
+}
+
+type GetTicketResponseBodyProcessor struct {
+	// example:
+	//
+	// 贤文
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// example:
+	//
+	// 012345
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+}
+
+func (s GetTicketResponseBodyProcessor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponseBodyProcessor) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponseBodyProcessor) SetNickName(v string) *GetTicketResponseBodyProcessor {
+	s.NickName = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyProcessor) SetUnionId(v string) *GetTicketResponseBodyProcessor {
+	s.UnionId = &v
+	return s
+}
+
+type GetTicketResponseBodyTakers struct {
+	// example:
+	//
+	// 贤文
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// example:
+	//
+	// 012345
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+}
+
+func (s GetTicketResponseBodyTakers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponseBodyTakers) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponseBodyTakers) SetNickName(v string) *GetTicketResponseBodyTakers {
+	s.NickName = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyTakers) SetUnionId(v string) *GetTicketResponseBodyTakers {
+	s.UnionId = &v
+	return s
+}
+
+type GetTicketResponseBodyTemplate struct {
+	// OpenTemplateBizId
+	//
+	// example:
+	//
+	// OpenTemplateBizId
+	OpenTemplateBizId *string `json:"OpenTemplateBizId,omitempty" xml:"OpenTemplateBizId,omitempty"`
+	// OpenTemplateBizId
+	//
+	// example:
+	//
+	// OpenTemplateBizId
+	OpenTemplateId *string `json:"OpenTemplateId,omitempty" xml:"OpenTemplateId,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GetTicketResponseBodyTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponseBodyTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponseBodyTemplate) SetOpenTemplateBizId(v string) *GetTicketResponseBodyTemplate {
+	s.OpenTemplateBizId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyTemplate) SetOpenTemplateId(v string) *GetTicketResponseBodyTemplate {
+	s.OpenTemplateId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyTemplate) SetTemplateName(v string) *GetTicketResponseBodyTemplate {
+	s.TemplateName = &v
+	return s
+}
+
+type GetTicketResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponse) SetHeaders(v map[string]*string) *GetTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTicketResponse) SetStatusCode(v int32) *GetTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTicketResponse) SetBody(v *GetTicketResponseBody) *GetTicketResponse {
+	s.Body = v
+	return s
+}
+
 type GetTodoTaskHeaders struct {
 	CommonHeaders  map[string]*string                `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetTodoTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -41414,6 +44345,474 @@ func (s *ListFormRemarksResponse) SetBody(v *ListFormRemarksResponseBody) *ListF
 	return s
 }
 
+type ListMultiDimTableRecordsHeaders struct {
+	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListMultiDimTableRecordsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListMultiDimTableRecordsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsHeaders) SetCommonHeaders(v map[string]*string) *ListMultiDimTableRecordsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsHeaders) SetAccountContext(v *ListMultiDimTableRecordsHeadersAccountContext) *ListMultiDimTableRecordsHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListMultiDimTableRecordsHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsHeadersAccountContext) SetAccountId(v string) *ListMultiDimTableRecordsHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListMultiDimTableRecordsShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListMultiDimTableRecordsShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsShrinkHeaders) SetAccountContextShrink(v string) *ListMultiDimTableRecordsShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListMultiDimTableRecordsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 101114
+	BaseId *string                                `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	Filter *ListMultiDimTableRecordsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAUUg5QSTWwHyeElt8z5z4Qo=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	SheetIdOrName *string                                       `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *ListMultiDimTableRecordsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s ListMultiDimTableRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsRequest) SetBaseId(v string) *ListMultiDimTableRecordsRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsRequest) SetFilter(v *ListMultiDimTableRecordsRequestFilter) *ListMultiDimTableRecordsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsRequest) SetMaxResults(v int32) *ListMultiDimTableRecordsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsRequest) SetNextToken(v string) *ListMultiDimTableRecordsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsRequest) SetSheetIdOrName(v string) *ListMultiDimTableRecordsRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsRequest) SetTenantContext(v *ListMultiDimTableRecordsRequestTenantContext) *ListMultiDimTableRecordsRequest {
+	s.TenantContext = v
+	return s
+}
+
+type ListMultiDimTableRecordsRequestFilter struct {
+	// example:
+	//
+	// and
+	Combination *string                                            `json:"Combination,omitempty" xml:"Combination,omitempty"`
+	Conditions  []*ListMultiDimTableRecordsRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+}
+
+func (s ListMultiDimTableRecordsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsRequestFilter) SetCombination(v string) *ListMultiDimTableRecordsRequestFilter {
+	s.Combination = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsRequestFilter) SetConditions(v []*ListMultiDimTableRecordsRequestFilterConditions) *ListMultiDimTableRecordsRequestFilter {
+	s.Conditions = v
+	return s
+}
+
+type ListMultiDimTableRecordsRequestFilterConditions struct {
+	// example:
+	//
+	// Sandbox
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// equal
+	Operator *string       `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value    []interface{} `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListMultiDimTableRecordsRequestFilterConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsRequestFilterConditions) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsRequestFilterConditions) SetField(v string) *ListMultiDimTableRecordsRequestFilterConditions {
+	s.Field = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsRequestFilterConditions) SetOperator(v string) *ListMultiDimTableRecordsRequestFilterConditions {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsRequestFilterConditions) SetValue(v []interface{}) *ListMultiDimTableRecordsRequestFilterConditions {
+	s.Value = v
+	return s
+}
+
+type ListMultiDimTableRecordsRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsRequestTenantContext) SetTenantId(v string) *ListMultiDimTableRecordsRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type ListMultiDimTableRecordsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 101114
+	BaseId       *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAUUg5QSTWwHyeElt8z5z4Qo=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsShrinkRequest) SetBaseId(v string) *ListMultiDimTableRecordsShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsShrinkRequest) SetFilterShrink(v string) *ListMultiDimTableRecordsShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsShrinkRequest) SetMaxResults(v int32) *ListMultiDimTableRecordsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsShrinkRequest) SetNextToken(v string) *ListMultiDimTableRecordsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsShrinkRequest) SetSheetIdOrName(v string) *ListMultiDimTableRecordsShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsShrinkRequest) SetTenantContextShrink(v string) *ListMultiDimTableRecordsShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type ListMultiDimTableRecordsResponseBody struct {
+	// example:
+	//
+	// true
+	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	// example:
+	//
+	// 1234567890
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// []
+	Records []*ListMultiDimTableRecordsResponseBodyRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsResponseBody) SetHasMore(v bool) *ListMultiDimTableRecordsResponseBody {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBody) SetNextToken(v string) *ListMultiDimTableRecordsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBody) SetRecords(v []*ListMultiDimTableRecordsResponseBodyRecords) *ListMultiDimTableRecordsResponseBody {
+	s.Records = v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBody) SetRequestId(v string) *ListMultiDimTableRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBody) SetVendorRequestId(v string) *ListMultiDimTableRecordsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBody) SetVendorType(v string) *ListMultiDimTableRecordsResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListMultiDimTableRecordsResponseBodyRecords struct {
+	CreatedBy *ListMultiDimTableRecordsResponseBodyRecordsCreatedBy `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// title,shortTitle
+	Fields map[string]interface{} `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// example:
+	//
+	// 123
+	Id             *string                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastModifiedBy *ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsResponseBodyRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsResponseBodyRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsResponseBodyRecords) SetCreatedBy(v *ListMultiDimTableRecordsResponseBodyRecordsCreatedBy) *ListMultiDimTableRecordsResponseBodyRecords {
+	s.CreatedBy = v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBodyRecords) SetCreatedTime(v int64) *ListMultiDimTableRecordsResponseBodyRecords {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBodyRecords) SetFields(v map[string]interface{}) *ListMultiDimTableRecordsResponseBodyRecords {
+	s.Fields = v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBodyRecords) SetId(v string) *ListMultiDimTableRecordsResponseBodyRecords {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBodyRecords) SetLastModifiedBy(v *ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy) *ListMultiDimTableRecordsResponseBodyRecords {
+	s.LastModifiedBy = v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponseBodyRecords) SetLastModifiedTime(v int64) *ListMultiDimTableRecordsResponseBodyRecords {
+	s.LastModifiedTime = &v
+	return s
+}
+
+type ListMultiDimTableRecordsResponseBodyRecordsCreatedBy struct {
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsResponseBodyRecordsCreatedBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsResponseBodyRecordsCreatedBy) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsResponseBodyRecordsCreatedBy) SetUserId(v string) *ListMultiDimTableRecordsResponseBodyRecordsCreatedBy {
+	s.UserId = &v
+	return s
+}
+
+type ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy struct {
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy) SetUserId(v string) *ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy {
+	s.UserId = &v
+	return s
+}
+
+type ListMultiDimTableRecordsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMultiDimTableRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMultiDimTableRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiDimTableRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiDimTableRecordsResponse) SetHeaders(v map[string]*string) *ListMultiDimTableRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponse) SetStatusCode(v int32) *ListMultiDimTableRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMultiDimTableRecordsResponse) SetBody(v *ListMultiDimTableRecordsResponseBody) *ListMultiDimTableRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type ListNavigationByFormTypeHeaders struct {
 	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *ListNavigationByFormTypeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -43590,6 +46989,395 @@ func (s *ListTemplateResponse) SetStatusCode(v int32) *ListTemplateResponse {
 }
 
 func (s *ListTemplateResponse) SetBody(v *ListTemplateResponseBody) *ListTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ListTicketOperateRecordHeaders struct {
+	CommonHeaders  map[string]*string                            `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListTicketOperateRecordHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListTicketOperateRecordHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordHeaders) SetCommonHeaders(v map[string]*string) *ListTicketOperateRecordHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTicketOperateRecordHeaders) SetAccountContext(v *ListTicketOperateRecordHeadersAccountContext) *ListTicketOperateRecordHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListTicketOperateRecordHeadersAccountContext struct {
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListTicketOperateRecordHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordHeadersAccountContext) SetAccountId(v string) *ListTicketOperateRecordHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListTicketOperateRecordShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListTicketOperateRecordShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListTicketOperateRecordShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTicketOperateRecordShrinkHeaders) SetAccountContextShrink(v string) *ListTicketOperateRecordShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListTicketOperateRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId  *string                                      `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	TenantContext *ListTicketOperateRecordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s ListTicketOperateRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordRequest) SetOpenTeamId(v string) *ListTicketOperateRecordRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordRequest) SetOpenTicketId(v string) *ListTicketOperateRecordRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordRequest) SetTenantContext(v *ListTicketOperateRecordRequestTenantContext) *ListTicketOperateRecordRequest {
+	s.TenantContext = v
+	return s
+}
+
+type ListTicketOperateRecordRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s ListTicketOperateRecordRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordRequestTenantContext) SetTenantId(v string) *ListTicketOperateRecordRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type ListTicketOperateRecordShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId        *string `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s ListTicketOperateRecordShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordShrinkRequest) SetOpenTeamId(v string) *ListTicketOperateRecordShrinkRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordShrinkRequest) SetOpenTicketId(v string) *ListTicketOperateRecordShrinkRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordShrinkRequest) SetTenantContextShrink(v string) *ListTicketOperateRecordShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type ListTicketOperateRecordResponseBody struct {
+	Records []*ListTicketOperateRecordResponseBodyRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListTicketOperateRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordResponseBody) SetRecords(v []*ListTicketOperateRecordResponseBodyRecords) *ListTicketOperateRecordResponseBody {
+	s.Records = v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBody) SetRequestId(v string) *ListTicketOperateRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBody) SetVendorRequestId(v string) *ListTicketOperateRecordResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBody) SetVendorType(v string) *ListTicketOperateRecordResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListTicketOperateRecordResponseBodyRecords struct {
+	// example:
+	//
+	// a8iSxxxxgtgiE
+	OpenTicketId *string `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	// example:
+	//
+	// {"originTakers":[{"nickName":"贤文","unionId":"Dq9hxxxxwiEiE"},{"nickName":"王鸿程","unionId":"4kITooxxxx5wiEiE"}]}
+	OperateData *string `json:"OperateData,omitempty" xml:"OperateData,omitempty"`
+	// example:
+	//
+	// 2021-07-09 19:26:09
+	OperateTime *string `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	// example:
+	//
+	// FINISH
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// 结单
+	OperationDisplayName *string                                               `json:"OperationDisplayName,omitempty" xml:"OperationDisplayName,omitempty"`
+	Operator             *ListTicketOperateRecordResponseBodyRecordsOperator   `json:"Operator,omitempty" xml:"Operator,omitempty" type:"Struct"`
+	TicketMemo           *ListTicketOperateRecordResponseBodyRecordsTicketMemo `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty" type:"Struct"`
+}
+
+func (s ListTicketOperateRecordResponseBodyRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordResponseBodyRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecords) SetOpenTicketId(v string) *ListTicketOperateRecordResponseBodyRecords {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecords) SetOperateData(v string) *ListTicketOperateRecordResponseBodyRecords {
+	s.OperateData = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecords) SetOperateTime(v string) *ListTicketOperateRecordResponseBodyRecords {
+	s.OperateTime = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecords) SetOperation(v string) *ListTicketOperateRecordResponseBodyRecords {
+	s.Operation = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecords) SetOperationDisplayName(v string) *ListTicketOperateRecordResponseBodyRecords {
+	s.OperationDisplayName = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecords) SetOperator(v *ListTicketOperateRecordResponseBodyRecordsOperator) *ListTicketOperateRecordResponseBodyRecords {
+	s.Operator = v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecords) SetTicketMemo(v *ListTicketOperateRecordResponseBodyRecordsTicketMemo) *ListTicketOperateRecordResponseBodyRecords {
+	s.TicketMemo = v
+	return s
+}
+
+type ListTicketOperateRecordResponseBodyRecordsOperator struct {
+	// example:
+	//
+	// 贤文
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// example:
+	//
+	// 012345
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+}
+
+func (s ListTicketOperateRecordResponseBodyRecordsOperator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordResponseBodyRecordsOperator) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecordsOperator) SetNickName(v string) *ListTicketOperateRecordResponseBodyRecordsOperator {
+	s.NickName = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecordsOperator) SetUnionId(v string) *ListTicketOperateRecordResponseBodyRecordsOperator {
+	s.UnionId = &v
+	return s
+}
+
+type ListTicketOperateRecordResponseBodyRecordsTicketMemo struct {
+	Attachments []*ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 贤文结束工单
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+}
+
+func (s ListTicketOperateRecordResponseBodyRecordsTicketMemo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordResponseBodyRecordsTicketMemo) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecordsTicketMemo) SetAttachments(v []*ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments) *ListTicketOperateRecordResponseBodyRecordsTicketMemo {
+	s.Attachments = v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecordsTicketMemo) SetMemo(v string) *ListTicketOperateRecordResponseBodyRecordsTicketMemo {
+	s.Memo = &v
+	return s
+}
+
+type ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments struct {
+	// example:
+	//
+	// wahaha.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// ticket/image/447xxxx9/43003/e2xxxec4243e940a1367_1625xxxx99.txt
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments) SetFileName(v string) *ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments) SetKey(v string) *ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments {
+	s.Key = &v
+	return s
+}
+
+type ListTicketOperateRecordResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTicketOperateRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTicketOperateRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketOperateRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketOperateRecordResponse) SetHeaders(v map[string]*string) *ListTicketOperateRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponse) SetStatusCode(v int32) *ListTicketOperateRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTicketOperateRecordResponse) SetBody(v *ListTicketOperateRecordResponseBody) *ListTicketOperateRecordResponse {
 	s.Body = v
 	return s
 }
@@ -47905,6 +51693,326 @@ func (s *QueryDentryResponse) SetStatusCode(v int32) *QueryDentryResponse {
 }
 
 func (s *QueryDentryResponse) SetBody(v *QueryDentryResponseBody) *QueryDentryResponse {
+	s.Body = v
+	return s
+}
+
+type QueryGroupLiveInfoHeaders struct {
+	CommonHeaders  map[string]*string                       `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *QueryGroupLiveInfoHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s QueryGroupLiveInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupLiveInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupLiveInfoHeaders) SetCommonHeaders(v map[string]*string) *QueryGroupLiveInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryGroupLiveInfoHeaders) SetAccountContext(v *QueryGroupLiveInfoHeadersAccountContext) *QueryGroupLiveInfoHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type QueryGroupLiveInfoHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s QueryGroupLiveInfoHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupLiveInfoHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupLiveInfoHeadersAccountContext) SetAccountId(v string) *QueryGroupLiveInfoHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type QueryGroupLiveInfoShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s QueryGroupLiveInfoShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupLiveInfoShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupLiveInfoShrinkHeaders) SetCommonHeaders(v map[string]*string) *QueryGroupLiveInfoShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryGroupLiveInfoShrinkHeaders) SetAccountContextShrink(v string) *QueryGroupLiveInfoShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type QueryGroupLiveInfoRequest struct {
+	// example:
+	//
+	// Eijxxx
+	AnchorUnionId *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	// example:
+	//
+	// 123456
+	LiveUuid      *string                                 `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
+	TenantContext *QueryGroupLiveInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s QueryGroupLiveInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupLiveInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupLiveInfoRequest) SetAnchorUnionId(v string) *QueryGroupLiveInfoRequest {
+	s.AnchorUnionId = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoRequest) SetLiveUuid(v string) *QueryGroupLiveInfoRequest {
+	s.LiveUuid = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoRequest) SetTenantContext(v *QueryGroupLiveInfoRequestTenantContext) *QueryGroupLiveInfoRequest {
+	s.TenantContext = v
+	return s
+}
+
+type QueryGroupLiveInfoRequestTenantContext struct {
+	// example:
+	//
+	// 1
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QueryGroupLiveInfoRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupLiveInfoRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupLiveInfoRequestTenantContext) SetTenantId(v string) *QueryGroupLiveInfoRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type QueryGroupLiveInfoShrinkRequest struct {
+	// example:
+	//
+	// Eijxxx
+	AnchorUnionId *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	// example:
+	//
+	// 123456
+	LiveUuid            *string `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s QueryGroupLiveInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupLiveInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupLiveInfoShrinkRequest) SetAnchorUnionId(v string) *QueryGroupLiveInfoShrinkRequest {
+	s.AnchorUnionId = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoShrinkRequest) SetLiveUuid(v string) *QueryGroupLiveInfoShrinkRequest {
+	s.LiveUuid = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoShrinkRequest) SetTenantContextShrink(v string) *QueryGroupLiveInfoShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type QueryGroupLiveInfoResponseBody struct {
+	// example:
+	//
+	// http://xxx/kk.jpg
+	CoverUrl *string `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
+	// example:
+	//
+	// 59886
+	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// 1687928400000
+	EndTime      *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Introduction *string `json:"introduction,omitempty" xml:"introduction,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	LiveId *string `json:"liveId,omitempty" xml:"liveId,omitempty"`
+	// example:
+	//
+	// http://ssssss
+	LivePlayUrl *string `json:"livePlayUrl,omitempty" xml:"livePlayUrl,omitempty"`
+	LiveStatus  *int32  `json:"liveStatus,omitempty" xml:"liveStatus,omitempty"`
+	// example:
+	//
+	// 13414
+	PlaybackDuration *int64 `json:"playbackDuration,omitempty" xml:"playbackDuration,omitempty"`
+	// requestId
+	//
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 1687924800000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// 0
+	SubscribeCount *int32  `json:"subscribeCount,omitempty" xml:"subscribeCount,omitempty"`
+	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 10
+	Uv              *int32  `json:"uv,omitempty" xml:"uv,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s QueryGroupLiveInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupLiveInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetCoverUrl(v string) *QueryGroupLiveInfoResponseBody {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetDuration(v int64) *QueryGroupLiveInfoResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetEndTime(v int64) *QueryGroupLiveInfoResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetIntroduction(v string) *QueryGroupLiveInfoResponseBody {
+	s.Introduction = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetLiveId(v string) *QueryGroupLiveInfoResponseBody {
+	s.LiveId = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetLivePlayUrl(v string) *QueryGroupLiveInfoResponseBody {
+	s.LivePlayUrl = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetLiveStatus(v int32) *QueryGroupLiveInfoResponseBody {
+	s.LiveStatus = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetPlaybackDuration(v int64) *QueryGroupLiveInfoResponseBody {
+	s.PlaybackDuration = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetRequestId(v string) *QueryGroupLiveInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetStartTime(v int64) *QueryGroupLiveInfoResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetSubscribeCount(v int32) *QueryGroupLiveInfoResponseBody {
+	s.SubscribeCount = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetTitle(v string) *QueryGroupLiveInfoResponseBody {
+	s.Title = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetUv(v int32) *QueryGroupLiveInfoResponseBody {
+	s.Uv = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetVendorRequestId(v string) *QueryGroupLiveInfoResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetVendorType(v string) *QueryGroupLiveInfoResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type QueryGroupLiveInfoResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryGroupLiveInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryGroupLiveInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupLiveInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupLiveInfoResponse) SetHeaders(v map[string]*string) *QueryGroupLiveInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponse) SetStatusCode(v int32) *QueryGroupLiveInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponse) SetBody(v *QueryGroupLiveInfoResponseBody) *QueryGroupLiveInfoResponse {
 	s.Body = v
 	return s
 }
@@ -54963,6 +59071,261 @@ func (s *RemoveMeetingRoomsResponse) SetStatusCode(v int32) *RemoveMeetingRoomsR
 }
 
 func (s *RemoveMeetingRoomsResponse) SetBody(v *RemoveMeetingRoomsResponseBody) *RemoveMeetingRoomsResponse {
+	s.Body = v
+	return s
+}
+
+type RespondEventHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *RespondEventHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s RespondEventHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RespondEventHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RespondEventHeaders) SetCommonHeaders(v map[string]*string) *RespondEventHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RespondEventHeaders) SetAccountContext(v *RespondEventHeadersAccountContext) *RespondEventHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type RespondEventHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s RespondEventHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RespondEventHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *RespondEventHeadersAccountContext) SetAccountId(v string) *RespondEventHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type RespondEventShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s RespondEventShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RespondEventShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RespondEventShrinkHeaders) SetCommonHeaders(v map[string]*string) *RespondEventShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RespondEventShrinkHeaders) SetAccountContextShrink(v string) *RespondEventShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type RespondEventRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// primary
+	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RHN2REJFc2w4VHNiUUlvcVB0ejFydz09
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accepted
+	ResponseStatus *string                           `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
+	TenantContext  *RespondEventRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s RespondEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RespondEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RespondEventRequest) SetCalendarId(v string) *RespondEventRequest {
+	s.CalendarId = &v
+	return s
+}
+
+func (s *RespondEventRequest) SetEventId(v string) *RespondEventRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *RespondEventRequest) SetResponseStatus(v string) *RespondEventRequest {
+	s.ResponseStatus = &v
+	return s
+}
+
+func (s *RespondEventRequest) SetTenantContext(v *RespondEventRequestTenantContext) *RespondEventRequest {
+	s.TenantContext = v
+	return s
+}
+
+type RespondEventRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s RespondEventRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RespondEventRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *RespondEventRequestTenantContext) SetTenantId(v string) *RespondEventRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type RespondEventShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// primary
+	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RHN2REJFc2w4VHNiUUlvcVB0ejFydz09
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accepted
+	ResponseStatus      *string `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s RespondEventShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RespondEventShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RespondEventShrinkRequest) SetCalendarId(v string) *RespondEventShrinkRequest {
+	s.CalendarId = &v
+	return s
+}
+
+func (s *RespondEventShrinkRequest) SetEventId(v string) *RespondEventShrinkRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *RespondEventShrinkRequest) SetResponseStatus(v string) *RespondEventShrinkRequest {
+	s.ResponseStatus = &v
+	return s
+}
+
+func (s *RespondEventShrinkRequest) SetTenantContextShrink(v string) *RespondEventShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type RespondEventResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s RespondEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RespondEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RespondEventResponseBody) SetRequestId(v string) *RespondEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RespondEventResponseBody) SetVendorRequestId(v string) *RespondEventResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *RespondEventResponseBody) SetVendorType(v string) *RespondEventResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type RespondEventResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RespondEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RespondEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RespondEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RespondEventResponse) SetHeaders(v map[string]*string) *RespondEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RespondEventResponse) SetStatusCode(v int32) *RespondEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RespondEventResponse) SetBody(v *RespondEventResponseBody) *RespondEventResponse {
 	s.Body = v
 	return s
 }
@@ -62040,6 +66403,359 @@ func (s *TerminateInstanceResponse) SetBody(v *TerminateInstanceResponseBody) *T
 	return s
 }
 
+type TransferTicketHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *TransferTicketHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s TransferTicketHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketHeaders) SetCommonHeaders(v map[string]*string) *TransferTicketHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TransferTicketHeaders) SetAccountContext(v *TransferTicketHeadersAccountContext) *TransferTicketHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type TransferTicketHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s TransferTicketHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketHeadersAccountContext) SetAccountId(v string) *TransferTicketHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type TransferTicketShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s TransferTicketShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketShrinkHeaders) SetCommonHeaders(v map[string]*string) *TransferTicketShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TransferTicketShrinkHeaders) SetAccountContextShrink(v string) *TransferTicketShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type TransferTicketRequest struct {
+	Notify *TransferTicketRequestNotify `json:"Notify,omitempty" xml:"Notify,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId     *string                             `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	ProcessorUserIds []*string                           `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty" type:"Repeated"`
+	TenantContext    *TransferTicketRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	TicketMemo       *TransferTicketRequestTicketMemo    `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty" type:"Struct"`
+}
+
+func (s TransferTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketRequest) SetNotify(v *TransferTicketRequestNotify) *TransferTicketRequest {
+	s.Notify = v
+	return s
+}
+
+func (s *TransferTicketRequest) SetOpenTeamId(v string) *TransferTicketRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *TransferTicketRequest) SetOpenTicketId(v string) *TransferTicketRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *TransferTicketRequest) SetProcessorUserIds(v []*string) *TransferTicketRequest {
+	s.ProcessorUserIds = v
+	return s
+}
+
+func (s *TransferTicketRequest) SetTenantContext(v *TransferTicketRequestTenantContext) *TransferTicketRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *TransferTicketRequest) SetTicketMemo(v *TransferTicketRequestTicketMemo) *TransferTicketRequest {
+	s.TicketMemo = v
+	return s
+}
+
+type TransferTicketRequestNotify struct {
+	GroupNoticeReceiverUserIds []*string `json:"GroupNoticeReceiverUserIds,omitempty" xml:"GroupNoticeReceiverUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	NoticeAllGroupMember      *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
+	WorkNoticeReceiverUserIds []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
+}
+
+func (s TransferTicketRequestNotify) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketRequestNotify) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketRequestNotify) SetGroupNoticeReceiverUserIds(v []*string) *TransferTicketRequestNotify {
+	s.GroupNoticeReceiverUserIds = v
+	return s
+}
+
+func (s *TransferTicketRequestNotify) SetNoticeAllGroupMember(v bool) *TransferTicketRequestNotify {
+	s.NoticeAllGroupMember = &v
+	return s
+}
+
+func (s *TransferTicketRequestNotify) SetWorkNoticeReceiverUserIds(v []*string) *TransferTicketRequestNotify {
+	s.WorkNoticeReceiverUserIds = v
+	return s
+}
+
+type TransferTicketRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s TransferTicketRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketRequestTenantContext) SetTenantId(v string) *TransferTicketRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type TransferTicketRequestTicketMemo struct {
+	Attachments []*TransferTicketRequestTicketMemoAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	Memo        *string                                       `json:"Memo,omitempty" xml:"Memo,omitempty"`
+}
+
+func (s TransferTicketRequestTicketMemo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketRequestTicketMemo) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketRequestTicketMemo) SetAttachments(v []*TransferTicketRequestTicketMemoAttachments) *TransferTicketRequestTicketMemo {
+	s.Attachments = v
+	return s
+}
+
+func (s *TransferTicketRequestTicketMemo) SetMemo(v string) *TransferTicketRequestTicketMemo {
+	s.Memo = &v
+	return s
+}
+
+type TransferTicketRequestTicketMemoAttachments struct {
+	// example:
+	//
+	// auto-test-1727143229007.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s TransferTicketRequestTicketMemoAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketRequestTicketMemoAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketRequestTicketMemoAttachments) SetFileName(v string) *TransferTicketRequestTicketMemoAttachments {
+	s.FileName = &v
+	return s
+}
+
+func (s *TransferTicketRequestTicketMemoAttachments) SetKey(v string) *TransferTicketRequestTicketMemoAttachments {
+	s.Key = &v
+	return s
+}
+
+type TransferTicketShrinkRequest struct {
+	NotifyShrink *string `json:"Notify,omitempty" xml:"Notify,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eKWh3xxxxiE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dq9hP8Sk2v6vQxxxxiE
+	OpenTicketId           *string `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
+	ProcessorUserIdsShrink *string `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty"`
+	TenantContextShrink    *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	TicketMemoShrink       *string `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty"`
+}
+
+func (s TransferTicketShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketShrinkRequest) SetNotifyShrink(v string) *TransferTicketShrinkRequest {
+	s.NotifyShrink = &v
+	return s
+}
+
+func (s *TransferTicketShrinkRequest) SetOpenTeamId(v string) *TransferTicketShrinkRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *TransferTicketShrinkRequest) SetOpenTicketId(v string) *TransferTicketShrinkRequest {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *TransferTicketShrinkRequest) SetProcessorUserIdsShrink(v string) *TransferTicketShrinkRequest {
+	s.ProcessorUserIdsShrink = &v
+	return s
+}
+
+func (s *TransferTicketShrinkRequest) SetTenantContextShrink(v string) *TransferTicketShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *TransferTicketShrinkRequest) SetTicketMemoShrink(v string) *TransferTicketShrinkRequest {
+	s.TicketMemoShrink = &v
+	return s
+}
+
+type TransferTicketResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s TransferTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketResponseBody) SetRequestId(v string) *TransferTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TransferTicketResponseBody) SetVendorRequestId(v string) *TransferTicketResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *TransferTicketResponseBody) SetVendorType(v string) *TransferTicketResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type TransferTicketResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TransferTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketResponse) SetHeaders(v map[string]*string) *TransferTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransferTicketResponse) SetStatusCode(v int32) *TransferTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TransferTicketResponse) SetBody(v *TransferTicketResponseBody) *TransferTicketResponse {
+	s.Body = v
+	return s
+}
+
 type UnsubscribeCalendarHeaders struct {
 	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *UnsubscribeCalendarHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -67747,6 +72463,107 @@ func (client *Client) AddScenegroupMember(request *AddScenegroupMemberRequest) (
 
 // Summary:
 //
+// 工单添加备注
+//
+// @param tmpReq - AddTicketMemoRequest
+//
+// @param tmpHeader - AddTicketMemoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddTicketMemoResponse
+func (client *Client) AddTicketMemoWithOptions(tmpReq *AddTicketMemoRequest, tmpHeader *AddTicketMemoHeaders, runtime *util.RuntimeOptions) (_result *AddTicketMemoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddTicketMemoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &AddTicketMemoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TicketMemo)) {
+		request.TicketMemoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TicketMemo, tea.String("TicketMemo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpenTeamId)) {
+		body["OpenTeamId"] = request.OpenTeamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTicketId)) {
+		body["OpenTicketId"] = request.OpenTicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketMemoShrink)) {
+		body["TicketMemo"] = request.TicketMemoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTicketMemo"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ticket/addTicketMemo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddTicketMemoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 工单添加备注
+//
+// @param request - AddTicketMemoRequest
+//
+// @return AddTicketMemoResponse
+func (client *Client) AddTicketMemo(request *AddTicketMemoRequest) (_result *AddTicketMemoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddTicketMemoHeaders{}
+	_result = &AddTicketMemoResponse{}
+	_body, _err := client.AddTicketMemoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新建知识库
 //
 // @param tmpReq - AddWorkspaceRequest
@@ -68033,6 +72850,123 @@ func (client *Client) AddWorkspaceMembers(request *AddWorkspaceMembersRequest) (
 	headers := &AddWorkspaceMembersHeaders{}
 	_result = &AddWorkspaceMembersResponse{}
 	_body, _err := client.AddWorkspaceMembersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 指派工单
+//
+// @param tmpReq - AssignTicketRequest
+//
+// @param tmpHeader - AssignTicketHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssignTicketResponse
+func (client *Client) AssignTicketWithOptions(tmpReq *AssignTicketRequest, tmpHeader *AssignTicketHeaders, runtime *util.RuntimeOptions) (_result *AssignTicketResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AssignTicketShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &AssignTicketShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notify)) {
+		request.NotifyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notify, tea.String("Notify"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ProcessorUserIds)) {
+		request.ProcessorUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProcessorUserIds, tea.String("ProcessorUserIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TicketMemo)) {
+		request.TicketMemoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TicketMemo, tea.String("TicketMemo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NotifyShrink)) {
+		body["Notify"] = request.NotifyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTeamId)) {
+		body["OpenTeamId"] = request.OpenTeamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTicketId)) {
+		body["OpenTicketId"] = request.OpenTicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessorUserIdsShrink)) {
+		body["ProcessorUserIds"] = request.ProcessorUserIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketMemoShrink)) {
+		body["TicketMemo"] = request.TicketMemoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssignTicket"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ticket/assignTicket"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssignTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 指派工单
+//
+// @param request - AssignTicketRequest
+//
+// @return AssignTicketResponse
+func (client *Client) AssignTicket(request *AssignTicketRequest) (_result *AssignTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AssignTicketHeaders{}
+	_result = &AssignTicketResponse{}
+	_body, _err := client.AssignTicketWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -73434,6 +78368,115 @@ func (client *Client) ExpandGroupCapacity(request *ExpandGroupCapacityRequest) (
 
 // Summary:
 //
+// 完结工单
+//
+// @param tmpReq - FinishTicketRequest
+//
+// @param tmpHeader - FinishTicketHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishTicketResponse
+func (client *Client) FinishTicketWithOptions(tmpReq *FinishTicketRequest, tmpHeader *FinishTicketHeaders, runtime *util.RuntimeOptions) (_result *FinishTicketResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &FinishTicketShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &FinishTicketShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notify)) {
+		request.NotifyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notify, tea.String("Notify"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TicketMemo)) {
+		request.TicketMemoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TicketMemo, tea.String("TicketMemo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NotifyShrink)) {
+		body["Notify"] = request.NotifyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTeamId)) {
+		body["OpenTeamId"] = request.OpenTeamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTicketId)) {
+		body["OpenTicketId"] = request.OpenTicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketMemoShrink)) {
+		body["TicketMemo"] = request.TicketMemoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FinishTicket"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ticket/finishTicket"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FinishTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 完结工单
+//
+// @param request - FinishTicketRequest
+//
+// @return FinishTicketResponse
+func (client *Client) FinishTicket(request *FinishTicketRequest) (_result *FinishTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &FinishTicketHeaders{}
+	_result = &FinishTicketResponse{}
+	_body, _err := client.FinishTicketWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取流程设计的节点信息
 //
 // @param request - GetActivityListRequest
@@ -74782,6 +79825,103 @@ func (client *Client) GetFormListInApp(request *GetFormListInAppRequest) (_resul
 
 // Summary:
 //
+// 查询群内直播信息(最早支持2024年01月数据)
+//
+// @param tmpReq - GetGroupLiveListRequest
+//
+// @param tmpHeader - GetGroupLiveListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupLiveListResponse
+func (client *Client) GetGroupLiveListWithOptions(tmpReq *GetGroupLiveListRequest, tmpHeader *GetGroupLiveListHeaders, runtime *util.RuntimeOptions) (_result *GetGroupLiveListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetGroupLiveListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetGroupLiveListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenConversationId)) {
+		body["OpenConversationId"] = request.OpenConversationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGroupLiveList"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/getGroupLiveList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGroupLiveListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询群内直播信息(最早支持2024年01月数据)
+//
+// @param request - GetGroupLiveListRequest
+//
+// @return GetGroupLiveListResponse
+func (client *Client) GetGroupLiveList(request *GetGroupLiveListRequest) (_result *GetGroupLiveListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetGroupLiveListHeaders{}
+	_result = &GetGroupLiveListResponse{}
+	_body, _err := client.GetGroupLiveListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询企业内部群成员
 //
 // @param request - GetInnerGroupMembersRequest
@@ -75706,6 +80846,378 @@ func (client *Client) GetMineWorkspace(request *GetMineWorkspaceRequest) (_resul
 	headers := &GetMineWorkspaceHeaders{}
 	_result = &GetMineWorkspaceResponse{}
 	_body, _err := client.GetMineWorkspaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取所有字段
+//
+// @param tmpReq - GetMultiDimTableAllFieldsRequest
+//
+// @param tmpHeader - GetMultiDimTableAllFieldsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiDimTableAllFieldsResponse
+func (client *Client) GetMultiDimTableAllFieldsWithOptions(tmpReq *GetMultiDimTableAllFieldsRequest, tmpHeader *GetMultiDimTableAllFieldsHeaders, runtime *util.RuntimeOptions) (_result *GetMultiDimTableAllFieldsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetMultiDimTableAllFieldsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetMultiDimTableAllFieldsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultiDimTableAllFields"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/getMultiDimTableAllFields"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultiDimTableAllFieldsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取所有字段
+//
+// @param request - GetMultiDimTableAllFieldsRequest
+//
+// @return GetMultiDimTableAllFieldsResponse
+func (client *Client) GetMultiDimTableAllFields(request *GetMultiDimTableAllFieldsRequest) (_result *GetMultiDimTableAllFieldsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetMultiDimTableAllFieldsHeaders{}
+	_result = &GetMultiDimTableAllFieldsResponse{}
+	_body, _err := client.GetMultiDimTableAllFieldsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取所有数据表
+//
+// @param tmpReq - GetMultiDimTableAllSheetsRequest
+//
+// @param tmpHeader - GetMultiDimTableAllSheetsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiDimTableAllSheetsResponse
+func (client *Client) GetMultiDimTableAllSheetsWithOptions(tmpReq *GetMultiDimTableAllSheetsRequest, tmpHeader *GetMultiDimTableAllSheetsHeaders, runtime *util.RuntimeOptions) (_result *GetMultiDimTableAllSheetsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetMultiDimTableAllSheetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetMultiDimTableAllSheetsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultiDimTableAllSheets"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/getMultiDimTableAllSheets"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultiDimTableAllSheetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取所有数据表
+//
+// @param request - GetMultiDimTableAllSheetsRequest
+//
+// @return GetMultiDimTableAllSheetsResponse
+func (client *Client) GetMultiDimTableAllSheets(request *GetMultiDimTableAllSheetsRequest) (_result *GetMultiDimTableAllSheetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetMultiDimTableAllSheetsHeaders{}
+	_result = &GetMultiDimTableAllSheetsResponse{}
+	_body, _err := client.GetMultiDimTableAllSheetsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取记录
+//
+// @param tmpReq - GetMultiDimTableRecordRequest
+//
+// @param tmpHeader - GetMultiDimTableRecordHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiDimTableRecordResponse
+func (client *Client) GetMultiDimTableRecordWithOptions(tmpReq *GetMultiDimTableRecordRequest, tmpHeader *GetMultiDimTableRecordHeaders, runtime *util.RuntimeOptions) (_result *GetMultiDimTableRecordResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetMultiDimTableRecordShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetMultiDimTableRecordShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		body["RecordId"] = request.RecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultiDimTableRecord"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/getMultiDimTableRecord"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultiDimTableRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取记录
+//
+// @param request - GetMultiDimTableRecordRequest
+//
+// @return GetMultiDimTableRecordResponse
+func (client *Client) GetMultiDimTableRecord(request *GetMultiDimTableRecordRequest) (_result *GetMultiDimTableRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetMultiDimTableRecordHeaders{}
+	_result = &GetMultiDimTableRecordResponse{}
+	_body, _err := client.GetMultiDimTableRecordWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据表
+//
+// @param tmpReq - GetMultiDimTableSheetRequest
+//
+// @param tmpHeader - GetMultiDimTableSheetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiDimTableSheetResponse
+func (client *Client) GetMultiDimTableSheetWithOptions(tmpReq *GetMultiDimTableSheetRequest, tmpHeader *GetMultiDimTableSheetHeaders, runtime *util.RuntimeOptions) (_result *GetMultiDimTableSheetResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetMultiDimTableSheetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetMultiDimTableSheetShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultiDimTableSheet"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/getMultiDimTableSheet"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultiDimTableSheetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据表
+//
+// @param request - GetMultiDimTableSheetRequest
+//
+// @return GetMultiDimTableSheetResponse
+func (client *Client) GetMultiDimTableSheet(request *GetMultiDimTableSheetRequest) (_result *GetMultiDimTableSheetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetMultiDimTableSheetHeaders{}
+	_result = &GetMultiDimTableSheetResponse{}
+	_body, _err := client.GetMultiDimTableSheetWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -77758,6 +83270,99 @@ func (client *Client) GetTemplateListByUserId(request *GetTemplateListByUserIdRe
 
 // Summary:
 //
+// 获取指定工单详情
+//
+// @param tmpReq - GetTicketRequest
+//
+// @param tmpHeader - GetTicketHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTicketResponse
+func (client *Client) GetTicketWithOptions(tmpReq *GetTicketRequest, tmpHeader *GetTicketHeaders, runtime *util.RuntimeOptions) (_result *GetTicketResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetTicketShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetTicketShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpenTeamId)) {
+		body["OpenTeamId"] = request.OpenTeamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTicketId)) {
+		body["OpenTicketId"] = request.OpenTicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTicket"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ticket/getTicket"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定工单详情
+//
+// @param request - GetTicketRequest
+//
+// @return GetTicketResponse
+func (client *Client) GetTicket(request *GetTicketRequest) (_result *GetTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetTicketHeaders{}
+	_result = &GetTicketResponse{}
+	_body, _err := client.GetTicketWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取钉钉待办任务详情
 //
 // @param tmpReq - GetTodoTaskRequest
@@ -79631,6 +85236,115 @@ func (client *Client) ListFormRemarks(request *ListFormRemarksRequest) (_result 
 
 // Summary:
 //
+// 列出多行记录
+//
+// @param tmpReq - ListMultiDimTableRecordsRequest
+//
+// @param tmpHeader - ListMultiDimTableRecordsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultiDimTableRecordsResponse
+func (client *Client) ListMultiDimTableRecordsWithOptions(tmpReq *ListMultiDimTableRecordsRequest, tmpHeader *ListMultiDimTableRecordsHeaders, runtime *util.RuntimeOptions) (_result *ListMultiDimTableRecordsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListMultiDimTableRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &ListMultiDimTableRecordsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		body["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMultiDimTableRecords"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/listMultiDimTableRecords"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMultiDimTableRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出多行记录
+//
+// @param request - ListMultiDimTableRecordsRequest
+//
+// @return ListMultiDimTableRecordsResponse
+func (client *Client) ListMultiDimTableRecords(request *ListMultiDimTableRecordsRequest) (_result *ListMultiDimTableRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListMultiDimTableRecordsHeaders{}
+	_result = &ListMultiDimTableRecordsResponse{}
+	_body, _err := client.ListMultiDimTableRecordsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取应用下的页面列表
 //
 // @param request - ListNavigationByFormTypeRequest
@@ -80224,6 +85938,99 @@ func (client *Client) ListTemplate(request *ListTemplateRequest) (_result *ListT
 	headers := &ListTemplateHeaders{}
 	_result = &ListTemplateResponse{}
 	_body, _err := client.ListTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工单操作记录
+//
+// @param tmpReq - ListTicketOperateRecordRequest
+//
+// @param tmpHeader - ListTicketOperateRecordHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTicketOperateRecordResponse
+func (client *Client) ListTicketOperateRecordWithOptions(tmpReq *ListTicketOperateRecordRequest, tmpHeader *ListTicketOperateRecordHeaders, runtime *util.RuntimeOptions) (_result *ListTicketOperateRecordResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTicketOperateRecordShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &ListTicketOperateRecordShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpenTeamId)) {
+		body["OpenTeamId"] = request.OpenTeamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTicketId)) {
+		body["OpenTicketId"] = request.OpenTicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTicketOperateRecord"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ticket/listTicketOperateRecord"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTicketOperateRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工单操作记录
+//
+// @param request - ListTicketOperateRecordRequest
+//
+// @return ListTicketOperateRecordResponse
+func (client *Client) ListTicketOperateRecord(request *ListTicketOperateRecordRequest) (_result *ListTicketOperateRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListTicketOperateRecordHeaders{}
+	_result = &ListTicketOperateRecordResponse{}
+	_body, _err := client.ListTicketOperateRecordWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -81054,6 +86861,101 @@ func (client *Client) QueryDentry(request *QueryDentryRequest) (_result *QueryDe
 	headers := &QueryDentryHeaders{}
 	_result = &QueryDentryResponse{}
 	_body, _err := client.QueryDentryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询直播信息
+//
+// @param tmpReq - QueryGroupLiveInfoRequest
+//
+// @param tmpHeader - QueryGroupLiveInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryGroupLiveInfoResponse
+func (client *Client) QueryGroupLiveInfoWithOptions(tmpReq *QueryGroupLiveInfoRequest, tmpHeader *QueryGroupLiveInfoHeaders, runtime *util.RuntimeOptions) (_result *QueryGroupLiveInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryGroupLiveInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &QueryGroupLiveInfoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnchorUnionId)) {
+		query["AnchorUnionId"] = request.AnchorUnionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LiveUuid)) {
+		query["LiveUuid"] = request.LiveUuid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryGroupLiveInfo"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/queryGroupLiveInfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryGroupLiveInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询直播信息
+//
+// @param request - QueryGroupLiveInfoRequest
+//
+// @return QueryGroupLiveInfoResponse
+func (client *Client) QueryGroupLiveInfo(request *QueryGroupLiveInfoRequest) (_result *QueryGroupLiveInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryGroupLiveInfoHeaders{}
+	_result = &QueryGroupLiveInfoResponse{}
+	_body, _err := client.QueryGroupLiveInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -83126,6 +89028,103 @@ func (client *Client) RemoveMeetingRooms(request *RemoveMeetingRoomsRequest) (_r
 	headers := &RemoveMeetingRoomsHeaders{}
 	_result = &RemoveMeetingRoomsResponse{}
 	_body, _err := client.RemoveMeetingRoomsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置日程响应邀请状态
+//
+// @param tmpReq - RespondEventRequest
+//
+// @param tmpHeader - RespondEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RespondEventResponse
+func (client *Client) RespondEventWithOptions(tmpReq *RespondEventRequest, tmpHeader *RespondEventHeaders, runtime *util.RuntimeOptions) (_result *RespondEventResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RespondEventShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &RespondEventShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalendarId)) {
+		body["CalendarId"] = request.CalendarId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		body["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseStatus)) {
+		body["ResponseStatus"] = request.ResponseStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RespondEvent"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/calendar/respondEvent"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RespondEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置日程响应邀请状态
+//
+// @param request - RespondEventRequest
+//
+// @return RespondEventResponse
+func (client *Client) RespondEvent(request *RespondEventRequest) (_result *RespondEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RespondEventHeaders{}
+	_result = &RespondEventResponse{}
+	_body, _err := client.RespondEventWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -85681,6 +91680,123 @@ func (client *Client) TerminateInstance(request *TerminateInstanceRequest) (_res
 	headers := &TerminateInstanceHeaders{}
 	_result = &TerminateInstanceResponse{}
 	_body, _err := client.TerminateInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 转交工单
+//
+// @param tmpReq - TransferTicketRequest
+//
+// @param tmpHeader - TransferTicketHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferTicketResponse
+func (client *Client) TransferTicketWithOptions(tmpReq *TransferTicketRequest, tmpHeader *TransferTicketHeaders, runtime *util.RuntimeOptions) (_result *TransferTicketResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TransferTicketShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &TransferTicketShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notify)) {
+		request.NotifyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notify, tea.String("Notify"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ProcessorUserIds)) {
+		request.ProcessorUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProcessorUserIds, tea.String("ProcessorUserIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TicketMemo)) {
+		request.TicketMemoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TicketMemo, tea.String("TicketMemo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NotifyShrink)) {
+		body["Notify"] = request.NotifyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTeamId)) {
+		body["OpenTeamId"] = request.OpenTeamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTicketId)) {
+		body["OpenTicketId"] = request.OpenTicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessorUserIdsShrink)) {
+		body["ProcessorUserIds"] = request.ProcessorUserIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketMemoShrink)) {
+		body["TicketMemo"] = request.TicketMemoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransferTicket"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ticket/transferTicket"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransferTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 转交工单
+//
+// @param request - TransferTicketRequest
+//
+// @return TransferTicketResponse
+func (client *Client) TransferTicket(request *TransferTicketRequest) (_result *TransferTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TransferTicketHeaders{}
+	_result = &TransferTicketResponse{}
+	_body, _err := client.TransferTicketWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
