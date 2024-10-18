@@ -2026,7 +2026,7 @@ type ListListenersRequest struct {
 	// example:
 	//
 	// 10
-	Skip *int64                     `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	Skip *int32                     `json:"Skip,omitempty" xml:"Skip,omitempty"`
 	Tag  []*ListListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -2058,7 +2058,7 @@ func (s *ListListenersRequest) SetNextToken(v string) *ListListenersRequest {
 	return s
 }
 
-func (s *ListListenersRequest) SetSkip(v int64) *ListListenersRequest {
+func (s *ListListenersRequest) SetSkip(v int32) *ListListenersRequest {
 	s.Skip = &v
 	return s
 }

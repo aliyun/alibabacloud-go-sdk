@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/gwlb-20240415
+module github.com/alibabacloud-go/gwlb-20240415/v2
 
 go 1.14
 
