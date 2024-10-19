@@ -476,6 +476,125 @@ func (s *AddTrafficSpecialControlResponse) SetBody(v *AddTrafficSpecialControlRe
 	return s
 }
 
+type AssociateInstanceWithPrivateDNSRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apigateway-hz-ead4f4b0bac8
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	IntranetDomains []*string `json:"IntranetDomains,omitempty" xml:"IntranetDomains,omitempty" type:"Repeated"`
+	SecurityToken   *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s AssociateInstanceWithPrivateDNSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateInstanceWithPrivateDNSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateInstanceWithPrivateDNSRequest) SetInstanceId(v string) *AssociateInstanceWithPrivateDNSRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AssociateInstanceWithPrivateDNSRequest) SetIntranetDomains(v []*string) *AssociateInstanceWithPrivateDNSRequest {
+	s.IntranetDomains = v
+	return s
+}
+
+func (s *AssociateInstanceWithPrivateDNSRequest) SetSecurityToken(v string) *AssociateInstanceWithPrivateDNSRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type AssociateInstanceWithPrivateDNSShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apigateway-hz-ead4f4b0bac8
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	IntranetDomainsShrink *string `json:"IntranetDomains,omitempty" xml:"IntranetDomains,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s AssociateInstanceWithPrivateDNSShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateInstanceWithPrivateDNSShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateInstanceWithPrivateDNSShrinkRequest) SetInstanceId(v string) *AssociateInstanceWithPrivateDNSShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AssociateInstanceWithPrivateDNSShrinkRequest) SetIntranetDomainsShrink(v string) *AssociateInstanceWithPrivateDNSShrinkRequest {
+	s.IntranetDomainsShrink = &v
+	return s
+}
+
+func (s *AssociateInstanceWithPrivateDNSShrinkRequest) SetSecurityToken(v string) *AssociateInstanceWithPrivateDNSShrinkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type AssociateInstanceWithPrivateDNSResponseBody struct {
+	// example:
+	//
+	// 03442A3D-3B7D-434C-8A95-A5FEB999B529
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssociateInstanceWithPrivateDNSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateInstanceWithPrivateDNSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateInstanceWithPrivateDNSResponseBody) SetRequestId(v string) *AssociateInstanceWithPrivateDNSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssociateInstanceWithPrivateDNSResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateInstanceWithPrivateDNSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AssociateInstanceWithPrivateDNSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateInstanceWithPrivateDNSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateInstanceWithPrivateDNSResponse) SetHeaders(v map[string]*string) *AssociateInstanceWithPrivateDNSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssociateInstanceWithPrivateDNSResponse) SetStatusCode(v int32) *AssociateInstanceWithPrivateDNSResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssociateInstanceWithPrivateDNSResponse) SetBody(v *AssociateInstanceWithPrivateDNSResponseBody) *AssociateInstanceWithPrivateDNSResponse {
+	s.Body = v
+	return s
+}
+
 type AttachApiProductRequest struct {
 	// The ID of the API product.
 	//
@@ -4191,6 +4310,174 @@ func (s *CreatePluginResponse) SetBody(v *CreatePluginResponseBody) *CreatePlugi
 	return s
 }
 
+type CreatePrivateDNSRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// api.demo.com
+	IntranetDomain *string                           `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	Records        []*CreatePrivateDNSRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	SecurityToken  *string                           `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreatePrivateDNSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrivateDNSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrivateDNSRequest) SetIntranetDomain(v string) *CreatePrivateDNSRequest {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *CreatePrivateDNSRequest) SetRecords(v []*CreatePrivateDNSRequestRecords) *CreatePrivateDNSRequest {
+	s.Records = v
+	return s
+}
+
+func (s *CreatePrivateDNSRequest) SetSecurityToken(v string) *CreatePrivateDNSRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreatePrivateDNSRequest) SetType(v string) *CreatePrivateDNSRequest {
+	s.Type = &v
+	return s
+}
+
+type CreatePrivateDNSRequestRecords struct {
+	// example:
+	//
+	// 192.168.0.1
+	Record *string `json:"Record,omitempty" xml:"Record,omitempty"`
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s CreatePrivateDNSRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrivateDNSRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrivateDNSRequestRecords) SetRecord(v string) *CreatePrivateDNSRequestRecords {
+	s.Record = &v
+	return s
+}
+
+func (s *CreatePrivateDNSRequestRecords) SetWeight(v int32) *CreatePrivateDNSRequestRecords {
+	s.Weight = &v
+	return s
+}
+
+type CreatePrivateDNSShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// api.demo.com
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	RecordsShrink  *string `json:"Records,omitempty" xml:"Records,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreatePrivateDNSShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrivateDNSShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrivateDNSShrinkRequest) SetIntranetDomain(v string) *CreatePrivateDNSShrinkRequest {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *CreatePrivateDNSShrinkRequest) SetRecordsShrink(v string) *CreatePrivateDNSShrinkRequest {
+	s.RecordsShrink = &v
+	return s
+}
+
+func (s *CreatePrivateDNSShrinkRequest) SetSecurityToken(v string) *CreatePrivateDNSShrinkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreatePrivateDNSShrinkRequest) SetType(v string) *CreatePrivateDNSShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type CreatePrivateDNSResponseBody struct {
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ015
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePrivateDNSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrivateDNSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrivateDNSResponseBody) SetRequestId(v string) *CreatePrivateDNSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePrivateDNSResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePrivateDNSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePrivateDNSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrivateDNSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrivateDNSResponse) SetHeaders(v map[string]*string) *CreatePrivateDNSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePrivateDNSResponse) SetStatusCode(v int32) *CreatePrivateDNSResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePrivateDNSResponse) SetBody(v *CreatePrivateDNSResponseBody) *CreatePrivateDNSResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSignatureRequest struct {
 	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
 	//
@@ -6531,6 +6818,103 @@ func (s *DeletePluginResponse) SetBody(v *DeletePluginResponseBody) *DeletePlugi
 	return s
 }
 
+type DeletePrivateDNSRequest struct {
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// api.demo.com
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DeletePrivateDNSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePrivateDNSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePrivateDNSRequest) SetForce(v bool) *DeletePrivateDNSRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *DeletePrivateDNSRequest) SetIntranetDomain(v string) *DeletePrivateDNSRequest {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *DeletePrivateDNSRequest) SetSecurityToken(v string) *DeletePrivateDNSRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DeletePrivateDNSRequest) SetType(v string) *DeletePrivateDNSRequest {
+	s.Type = &v
+	return s
+}
+
+type DeletePrivateDNSResponseBody struct {
+	// example:
+	//
+	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePrivateDNSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePrivateDNSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePrivateDNSResponseBody) SetRequestId(v string) *DeletePrivateDNSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePrivateDNSResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePrivateDNSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePrivateDNSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePrivateDNSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePrivateDNSResponse) SetHeaders(v map[string]*string) *DeletePrivateDNSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePrivateDNSResponse) SetStatusCode(v int32) *DeletePrivateDNSResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePrivateDNSResponse) SetBody(v *DeletePrivateDNSResponseBody) *DeletePrivateDNSResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSignatureRequest struct {
 	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
 	//
@@ -8379,8 +8763,13 @@ type DescribeApiResponseBodyRequestConfig struct {
 	// example:
 	//
 	// https://apigateway.aliyun.com/models/3a240a127dcc4afd9ab1bf7e947b4095/9e2df550e85b4121a79ec33e2619eaab
-	BodyModel       *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
-	EscapePathParam *bool   `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
+	BodyModel *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
+	// Whether to escape the Path parameter, if true, the [param] on the Path will be treated as a regular character.
+	//
+	// example:
+	//
+	// true
+	EscapePathParam *bool `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
 	// The description of the request body.
 	//
 	// example:
@@ -9871,8 +10260,13 @@ type DescribeApiDocResponseBodyRequestConfig struct {
 	// example:
 	//
 	// STREAM
-	BodyFormat      *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
-	EscapePathParam *bool   `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
+	BodyFormat *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
+	// Whether to escape the Path parameter, if true, the [param] on the Path will be treated as a regular character.
+	//
+	// example:
+	//
+	// true
+	EscapePathParam *bool `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
 	// The description of the request body.
 	//
 	// example:
@@ -12657,8 +13051,13 @@ type DescribeApiHistoryResponseBodyRequestConfig struct {
 	// example:
 	//
 	// https://apigateway.aliyun.com/models/3a240a1XXXXXXXXd9ab1bf7e947b4095/9e2df550e85b4XXXXXXXX619eaab
-	BodyModel       *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
-	EscapePathParam *bool   `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
+	BodyModel *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
+	// Whether to escape the Path parameter, if true, the [param] on the Path will be treated as a regular character.
+	//
+	// example:
+	//
+	// true
+	EscapePathParam *bool `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
 	// The description of the request body.
 	//
 	// example:
@@ -20587,8 +20986,9 @@ type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp struct {
 	// example:
 	//
 	// RELEASE
-	StageName *string                                                           `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	Tag       *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The key of the tag.
+	Tag *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 }
 
 func (s DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp) String() string {
@@ -20672,7 +21072,17 @@ func (s *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTag) SetTa
 }
 
 type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTagTagInfo struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// DEV
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// 240
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -36170,6 +36580,125 @@ func (s *DisableInstanceAccessControlResponse) SetBody(v *DisableInstanceAccessC
 	return s
 }
 
+type DissociateInstanceWithPrivateDNSRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apigateway-hz-ead4f4b0bac8
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	IntranetDomains []*string `json:"IntranetDomains,omitempty" xml:"IntranetDomains,omitempty" type:"Repeated"`
+	SecurityToken   *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DissociateInstanceWithPrivateDNSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateInstanceWithPrivateDNSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateInstanceWithPrivateDNSRequest) SetInstanceId(v string) *DissociateInstanceWithPrivateDNSRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DissociateInstanceWithPrivateDNSRequest) SetIntranetDomains(v []*string) *DissociateInstanceWithPrivateDNSRequest {
+	s.IntranetDomains = v
+	return s
+}
+
+func (s *DissociateInstanceWithPrivateDNSRequest) SetSecurityToken(v string) *DissociateInstanceWithPrivateDNSRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DissociateInstanceWithPrivateDNSShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apigateway-hz-ead4f4b0bac8
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	IntranetDomainsShrink *string `json:"IntranetDomains,omitempty" xml:"IntranetDomains,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DissociateInstanceWithPrivateDNSShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateInstanceWithPrivateDNSShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateInstanceWithPrivateDNSShrinkRequest) SetInstanceId(v string) *DissociateInstanceWithPrivateDNSShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DissociateInstanceWithPrivateDNSShrinkRequest) SetIntranetDomainsShrink(v string) *DissociateInstanceWithPrivateDNSShrinkRequest {
+	s.IntranetDomainsShrink = &v
+	return s
+}
+
+func (s *DissociateInstanceWithPrivateDNSShrinkRequest) SetSecurityToken(v string) *DissociateInstanceWithPrivateDNSShrinkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DissociateInstanceWithPrivateDNSResponseBody struct {
+	// example:
+	//
+	// 6C87A26A-6A18-4B8E-8099-705278381A2C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DissociateInstanceWithPrivateDNSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateInstanceWithPrivateDNSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateInstanceWithPrivateDNSResponseBody) SetRequestId(v string) *DissociateInstanceWithPrivateDNSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DissociateInstanceWithPrivateDNSResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DissociateInstanceWithPrivateDNSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DissociateInstanceWithPrivateDNSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateInstanceWithPrivateDNSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateInstanceWithPrivateDNSResponse) SetHeaders(v map[string]*string) *DissociateInstanceWithPrivateDNSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DissociateInstanceWithPrivateDNSResponse) SetStatusCode(v int32) *DissociateInstanceWithPrivateDNSResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DissociateInstanceWithPrivateDNSResponse) SetBody(v *DissociateInstanceWithPrivateDNSResponseBody) *DissociateInstanceWithPrivateDNSResponse {
+	s.Body = v
+	return s
+}
+
 type DryRunSwaggerRequest struct {
 	// The Swagger text content.
 	//
@@ -36815,28 +37344,55 @@ func (s *EnableInstanceAccessControlResponse) SetBody(v *EnableInstanceAccessCon
 }
 
 type ExportOASRequest struct {
+	// The APIs that you want to export.
 	ApiIdList []*string `json:"ApiIdList,omitempty" xml:"ApiIdList,omitempty" type:"Repeated"`
+	// The exported format:
+	//
+	// 	- json
+	//
+	// 	- yaml
+	//
 	// example:
 	//
 	// yaml
 	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	// The API group ID.
+	//
 	// example:
 	//
 	// 42925e7f5209438186d5560239af5xxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The OAS version. Valid values:
+	//
+	// 	- **oas2**
+	//
+	// 	- **oas3**
+	//
 	// example:
 	//
 	// oas2
 	OasVersion *string `json:"OasVersion,omitempty" xml:"OasVersion,omitempty"`
+	// The number of pages in which you want to export the APIs.
+	//
 	// example:
 	//
 	// 1
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The environment to which the API is published. Valid values:
+	//
+	// 	- **RELEASE**: the production environment
+	//
+	// 	- **PRE**: the pre-release environment
+	//
+	// 	- **TEST**: the test environment
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// Specifies whether to export API Gateway extensions at the same time.
+	//
 	// example:
 	//
 	// true
@@ -36892,28 +37448,55 @@ func (s *ExportOASRequest) SetWithXExtensions(v bool) *ExportOASRequest {
 }
 
 type ExportOASShrinkRequest struct {
+	// The APIs that you want to export.
 	ApiIdListShrink *string `json:"ApiIdList,omitempty" xml:"ApiIdList,omitempty"`
+	// The exported format:
+	//
+	// 	- json
+	//
+	// 	- yaml
+	//
 	// example:
 	//
 	// yaml
 	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	// The API group ID.
+	//
 	// example:
 	//
 	// 42925e7f5209438186d5560239af5xxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The OAS version. Valid values:
+	//
+	// 	- **oas2**
+	//
+	// 	- **oas3**
+	//
 	// example:
 	//
 	// oas2
 	OasVersion *string `json:"OasVersion,omitempty" xml:"OasVersion,omitempty"`
+	// The number of pages in which you want to export the APIs.
+	//
 	// example:
 	//
 	// 1
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The environment to which the API is published. Valid values:
+	//
+	// 	- **RELEASE**: the production environment
+	//
+	// 	- **PRE**: the pre-release environment
+	//
+	// 	- **TEST**: the test environment
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// Specifies whether to export API Gateway extensions at the same time.
+	//
 	// example:
 	//
 	// true
@@ -36969,10 +37552,14 @@ func (s *ExportOASShrinkRequest) SetWithXExtensions(v bool) *ExportOASShrinkRequ
 }
 
 type ExportOASResponseBody struct {
+	// The Base64-encoded data of the exported Swagger file. You can obtain the file by using Base64 decoding.
+	//
 	// example:
 	//
 	// UEsDBBQACAAIAABc8FgAAAAAAAAAAAAAAAA...
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876xxxxxxxx
@@ -38259,6 +38846,202 @@ func (s *ImportSwaggerResponse) SetStatusCode(v int32) *ImportSwaggerResponse {
 }
 
 func (s *ImportSwaggerResponse) SetBody(v *ImportSwaggerResponseBody) *ImportSwaggerResponse {
+	s.Body = v
+	return s
+}
+
+type ListPrivateDNSRequest struct {
+	// example:
+	//
+	// api.demo.com
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListPrivateDNSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateDNSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateDNSRequest) SetIntranetDomain(v string) *ListPrivateDNSRequest {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *ListPrivateDNSRequest) SetSecurityToken(v string) *ListPrivateDNSRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ListPrivateDNSRequest) SetType(v string) *ListPrivateDNSRequest {
+	s.Type = &v
+	return s
+}
+
+type ListPrivateDNSResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize       *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrivateDNSList []*ListPrivateDNSResponseBodyPrivateDNSList `json:"PrivateDNSList,omitempty" xml:"PrivateDNSList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ016
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPrivateDNSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateDNSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateDNSResponseBody) SetPageNumber(v int32) *ListPrivateDNSResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBody) SetPageSize(v int32) *ListPrivateDNSResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBody) SetPrivateDNSList(v []*ListPrivateDNSResponseBodyPrivateDNSList) *ListPrivateDNSResponseBody {
+	s.PrivateDNSList = v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBody) SetRequestId(v string) *ListPrivateDNSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBody) SetTotalCount(v int32) *ListPrivateDNSResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPrivateDNSResponseBodyPrivateDNSList struct {
+	BindInstances []*string `json:"BindInstances,omitempty" xml:"BindInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-05-10T08:17:00Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// api.demo.com
+	IntranetDomain *string                                            `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	Records        []*ListPrivateDNSResponseBodyPrivateDNSListRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListPrivateDNSResponseBodyPrivateDNSList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateDNSResponseBodyPrivateDNSList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateDNSResponseBodyPrivateDNSList) SetBindInstances(v []*string) *ListPrivateDNSResponseBodyPrivateDNSList {
+	s.BindInstances = v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBodyPrivateDNSList) SetCreatedTime(v string) *ListPrivateDNSResponseBodyPrivateDNSList {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBodyPrivateDNSList) SetIntranetDomain(v string) *ListPrivateDNSResponseBodyPrivateDNSList {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBodyPrivateDNSList) SetRecords(v []*ListPrivateDNSResponseBodyPrivateDNSListRecords) *ListPrivateDNSResponseBodyPrivateDNSList {
+	s.Records = v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBodyPrivateDNSList) SetType(v string) *ListPrivateDNSResponseBodyPrivateDNSList {
+	s.Type = &v
+	return s
+}
+
+type ListPrivateDNSResponseBodyPrivateDNSListRecords struct {
+	// example:
+	//
+	// 192.168.0.1
+	Record *string `json:"Record,omitempty" xml:"Record,omitempty"`
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ListPrivateDNSResponseBodyPrivateDNSListRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateDNSResponseBodyPrivateDNSListRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateDNSResponseBodyPrivateDNSListRecords) SetRecord(v string) *ListPrivateDNSResponseBodyPrivateDNSListRecords {
+	s.Record = &v
+	return s
+}
+
+func (s *ListPrivateDNSResponseBodyPrivateDNSListRecords) SetWeight(v int32) *ListPrivateDNSResponseBodyPrivateDNSListRecords {
+	s.Weight = &v
+	return s
+}
+
+type ListPrivateDNSResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPrivateDNSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPrivateDNSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateDNSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateDNSResponse) SetHeaders(v map[string]*string) *ListPrivateDNSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPrivateDNSResponse) SetStatusCode(v int32) *ListPrivateDNSResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPrivateDNSResponse) SetBody(v *ListPrivateDNSResponseBody) *ListPrivateDNSResponse {
 	s.Body = v
 	return s
 }
@@ -47114,6 +47897,176 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdatePrivateDNSRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// api.demo.com
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// This parameter is required.
+	Records       []*UpdatePrivateDNSRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	SecurityToken *string                           `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdatePrivateDNSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateDNSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateDNSRequest) SetIntranetDomain(v string) *UpdatePrivateDNSRequest {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *UpdatePrivateDNSRequest) SetRecords(v []*UpdatePrivateDNSRequestRecords) *UpdatePrivateDNSRequest {
+	s.Records = v
+	return s
+}
+
+func (s *UpdatePrivateDNSRequest) SetSecurityToken(v string) *UpdatePrivateDNSRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *UpdatePrivateDNSRequest) SetType(v string) *UpdatePrivateDNSRequest {
+	s.Type = &v
+	return s
+}
+
+type UpdatePrivateDNSRequestRecords struct {
+	// example:
+	//
+	// 192.168.0.2
+	Record *string `json:"Record,omitempty" xml:"Record,omitempty"`
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s UpdatePrivateDNSRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateDNSRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateDNSRequestRecords) SetRecord(v string) *UpdatePrivateDNSRequestRecords {
+	s.Record = &v
+	return s
+}
+
+func (s *UpdatePrivateDNSRequestRecords) SetWeight(v int32) *UpdatePrivateDNSRequestRecords {
+	s.Weight = &v
+	return s
+}
+
+type UpdatePrivateDNSShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// api.demo.com
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// This parameter is required.
+	RecordsShrink *string `json:"Records,omitempty" xml:"Records,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdatePrivateDNSShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateDNSShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateDNSShrinkRequest) SetIntranetDomain(v string) *UpdatePrivateDNSShrinkRequest {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *UpdatePrivateDNSShrinkRequest) SetRecordsShrink(v string) *UpdatePrivateDNSShrinkRequest {
+	s.RecordsShrink = &v
+	return s
+}
+
+func (s *UpdatePrivateDNSShrinkRequest) SetSecurityToken(v string) *UpdatePrivateDNSShrinkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *UpdatePrivateDNSShrinkRequest) SetType(v string) *UpdatePrivateDNSShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type UpdatePrivateDNSResponseBody struct {
+	// example:
+	//
+	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePrivateDNSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateDNSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateDNSResponseBody) SetRequestId(v string) *UpdatePrivateDNSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePrivateDNSResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePrivateDNSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdatePrivateDNSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrivateDNSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateDNSResponse) SetHeaders(v map[string]*string) *UpdatePrivateDNSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePrivateDNSResponse) SetStatusCode(v int32) *UpdatePrivateDNSResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePrivateDNSResponse) SetBody(v *UpdatePrivateDNSResponseBody) *UpdatePrivateDNSResponse {
+	s.Body = v
+	return s
+}
+
 type ValidateVpcConnectivityRequest struct {
 	// The ID of the API Gateway instance.
 	//
@@ -47684,6 +48637,82 @@ func (client *Client) AddTrafficSpecialControl(request *AddTrafficSpecialControl
 	runtime := &util.RuntimeOptions{}
 	_result = &AddTrafficSpecialControlResponse{}
 	_body, _err := client.AddTrafficSpecialControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 专享实例关联内网域名解析记录
+//
+// @param tmpReq - AssociateInstanceWithPrivateDNSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateInstanceWithPrivateDNSResponse
+func (client *Client) AssociateInstanceWithPrivateDNSWithOptions(tmpReq *AssociateInstanceWithPrivateDNSRequest, runtime *util.RuntimeOptions) (_result *AssociateInstanceWithPrivateDNSResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AssociateInstanceWithPrivateDNSShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IntranetDomains)) {
+		request.IntranetDomainsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IntranetDomains, tea.String("IntranetDomains"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IntranetDomainsShrink)) {
+		body["IntranetDomains"] = request.IntranetDomainsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateInstanceWithPrivateDNS"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssociateInstanceWithPrivateDNSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 专享实例关联内网域名解析记录
+//
+// @param request - AssociateInstanceWithPrivateDNSRequest
+//
+// @return AssociateInstanceWithPrivateDNSResponse
+func (client *Client) AssociateInstanceWithPrivateDNS(request *AssociateInstanceWithPrivateDNSRequest) (_result *AssociateInstanceWithPrivateDNSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssociateInstanceWithPrivateDNSResponse{}
+	_body, _err := client.AssociateInstanceWithPrivateDNSWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49567,6 +50596,86 @@ func (client *Client) CreatePlugin(request *CreatePluginRequest) (_result *Creat
 
 // Summary:
 //
+// 创建内网域名解析
+//
+// @param tmpReq - CreatePrivateDNSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrivateDNSResponse
+func (client *Client) CreatePrivateDNSWithOptions(tmpReq *CreatePrivateDNSRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateDNSResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePrivateDNSShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Records)) {
+		request.RecordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Records, tea.String("Records"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IntranetDomain)) {
+		query["IntranetDomain"] = request.IntranetDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordsShrink)) {
+		body["Records"] = request.RecordsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePrivateDNS"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePrivateDNSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建内网域名解析
+//
+// @param request - CreatePrivateDNSRequest
+//
+// @return CreatePrivateDNSResponse
+func (client *Client) CreatePrivateDNS(request *CreatePrivateDNSRequest) (_result *CreatePrivateDNSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePrivateDNSResponse{}
+	_body, _err := client.CreatePrivateDNSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a backend signature key.
 //
 // Description:
@@ -51262,6 +52371,78 @@ func (client *Client) DeletePlugin(request *DeletePluginRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePluginResponse{}
 	_body, _err := client.DeletePluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除内网域名解析
+//
+// @param request - DeletePrivateDNSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrivateDNSResponse
+func (client *Client) DeletePrivateDNSWithOptions(request *DeletePrivateDNSRequest, runtime *util.RuntimeOptions) (_result *DeletePrivateDNSResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntranetDomain)) {
+		query["IntranetDomain"] = request.IntranetDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePrivateDNS"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePrivateDNSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除内网域名解析
+//
+// @param request - DeletePrivateDNSRequest
+//
+// @return DeletePrivateDNSResponse
+func (client *Client) DeletePrivateDNS(request *DeletePrivateDNSRequest) (_result *DeletePrivateDNSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePrivateDNSResponse{}
+	_body, _err := client.DeletePrivateDNSWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58659,6 +59840,82 @@ func (client *Client) DisableInstanceAccessControl(request *DisableInstanceAcces
 
 // Summary:
 //
+// 专享实例解除的关联内网域名解析记录
+//
+// @param tmpReq - DissociateInstanceWithPrivateDNSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DissociateInstanceWithPrivateDNSResponse
+func (client *Client) DissociateInstanceWithPrivateDNSWithOptions(tmpReq *DissociateInstanceWithPrivateDNSRequest, runtime *util.RuntimeOptions) (_result *DissociateInstanceWithPrivateDNSResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DissociateInstanceWithPrivateDNSShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IntranetDomains)) {
+		request.IntranetDomainsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IntranetDomains, tea.String("IntranetDomains"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IntranetDomainsShrink)) {
+		body["IntranetDomains"] = request.IntranetDomainsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DissociateInstanceWithPrivateDNS"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DissociateInstanceWithPrivateDNSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 专享实例解除的关联内网域名解析记录
+//
+// @param request - DissociateInstanceWithPrivateDNSRequest
+//
+// @return DissociateInstanceWithPrivateDNSResponse
+func (client *Client) DissociateInstanceWithPrivateDNS(request *DissociateInstanceWithPrivateDNSRequest) (_result *DissociateInstanceWithPrivateDNSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DissociateInstanceWithPrivateDNSResponse{}
+	_body, _err := client.DissociateInstanceWithPrivateDNSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks the syntax before Swagger-compliant data is imported.
 //
 // @param tmpReq - DryRunSwaggerRequest
@@ -59110,6 +60367,74 @@ func (client *Client) ImportSwagger(request *ImportSwaggerRequest) (_result *Imp
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportSwaggerResponse{}
 	_body, _err := client.ImportSwaggerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询内网域名解析
+//
+// @param request - ListPrivateDNSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateDNSResponse
+func (client *Client) ListPrivateDNSWithOptions(request *ListPrivateDNSRequest, runtime *util.RuntimeOptions) (_result *ListPrivateDNSResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IntranetDomain)) {
+		query["IntranetDomain"] = request.IntranetDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPrivateDNS"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPrivateDNSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询内网域名解析
+//
+// @param request - ListPrivateDNSRequest
+//
+// @return ListPrivateDNSResponse
+func (client *Client) ListPrivateDNS(request *ListPrivateDNSRequest) (_result *ListPrivateDNSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPrivateDNSResponse{}
+	_body, _err := client.ListPrivateDNSWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -64129,6 +65454,86 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新内网域名解析
+//
+// @param tmpReq - UpdatePrivateDNSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrivateDNSResponse
+func (client *Client) UpdatePrivateDNSWithOptions(tmpReq *UpdatePrivateDNSRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateDNSResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdatePrivateDNSShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Records)) {
+		request.RecordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Records, tea.String("Records"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IntranetDomain)) {
+		query["IntranetDomain"] = request.IntranetDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordsShrink)) {
+		body["Records"] = request.RecordsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePrivateDNS"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePrivateDNSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新内网域名解析
+//
+// @param request - UpdatePrivateDNSRequest
+//
+// @return UpdatePrivateDNSResponse
+func (client *Client) UpdatePrivateDNS(request *UpdatePrivateDNSRequest) (_result *UpdatePrivateDNSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePrivateDNSResponse{}
+	_body, _err := client.UpdatePrivateDNSWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
