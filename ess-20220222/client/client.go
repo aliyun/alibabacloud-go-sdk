@@ -554,11 +554,13 @@ func (s *AttachAlbServerGroupsResponse) SetBody(v *AttachAlbServerGroupsResponse
 }
 
 type AttachDBInstancesRequest struct {
-	// The mode in which you want to attach the ApsaraDB RDS instance to the scaling group. Valid values:
+	// The mode in which you want to attach the database to the scaling group. Valid values:
 	//
-	// 	- SecurityIp: the SecurityIp mode. Auto Scaling automatically adds the private IP addresses of the scaled out instances to the IP address whitelist of the ApsaraDB RDS instance. You can select this mode only when you attach an ApsaraDB RDS instance to a scaling group.
+	// 	- SecurityIp: adds the private IP addresses of scaled out ECS instances to the IP address whitelist of the database. Take note that you can choose this mode only when the database that you want to attach is an ApsaraDB RDS instance.
 	//
-	// 	- SecurityGroup: the security group mode. Auto Scaling adds the security group of the scaling configuration to the security group whitelist for registration and association.
+	// 	- SecurityGroup: adds the security group of the scaling configuration based on which ECS instances are created in the scaling group to the security group whitelist of the database for registration.
+	//
+	// Default value: SecurityIp.
 	//
 	// example:
 	//
@@ -572,11 +574,11 @@ type AttachDBInstancesRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the ApsaraDB RDS instance.
+	// The IDs of the ApsaraDB RDS instances that you want to attach to the scaling group.
 	//
 	// This parameter is required.
 	DBInstances []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// Specifies whether to add the private IP addresses of all instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance. Valid values:
+	// Specifies whether to add the private IP addresses of all ECS instances in the scaling group to the IP address whitelist of an ApsaraDB RDS instance when you attach the ApsaraDB RDS instance to the scaling group. Valid values:
 	//
 	// 	- true
 	//
@@ -606,11 +608,11 @@ type AttachDBInstancesRequest struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The type of the database that you want to attach to the scaling group. Valid values:
 	//
-	// 	- ApsaraDB RDS
+	// 	- RDS
 	//
-	// 	- ApsaraDB for Redis
+	// 	- Redis
 	//
-	// 	- ApsaraDB for MongoDB
+	// 	- MongoDB
 	//
 	// Default value: RDS.
 	//
@@ -1548,6 +1550,8 @@ func (s *AttachVServerGroupsResponse) SetBody(v *AttachVServerGroupsResponseBody
 }
 
 type CancelInstanceRefreshRequest struct {
+	// The ID of the instance refresh task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1555,6 +1559,8 @@ type CancelInstanceRefreshRequest struct {
 	// ir-aca123sf****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1562,6 +1568,8 @@ type CancelInstanceRefreshRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1604,6 +1612,8 @@ func (s *CancelInstanceRefreshRequest) SetScalingGroupId(v string) *CancelInstan
 }
 
 type CancelInstanceRefreshResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
@@ -6775,6 +6785,15 @@ func (s *CreateScalingConfigurationRequestNetworkInterfaces) SetSecurityGroupIds
 }
 
 type CreateScalingConfigurationRequestSecurityOptions struct {
+	// The confidential computing mode. Valid values:
+	//
+	// 	- Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+	//
+	// 	- TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
+	//
+	// example:
+	//
+	// TDX
 	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
 }
 
@@ -8460,6 +8479,15 @@ func (s *CreateScalingConfigurationShrinkRequestNetworkInterfaces) SetSecurityGr
 }
 
 type CreateScalingConfigurationShrinkRequestSecurityOptions struct {
+	// The confidential computing mode. Valid values:
+	//
+	// 	- Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+	//
+	// 	- TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
+	//
+	// example:
+	//
+	// TDX
 	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
 }
 
@@ -8686,31 +8714,21 @@ type CreateScalingGroupRequest struct {
 	//
 	// 	- NONE: Auto Scaling does not check the health status of instances.
 	//
-	// 	- ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
+	// 	- ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
 	//
-	// 	- ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
-	//
-	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
+	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
 	//
 	// Default value: ECS.
+	//
+	// >  If you want to enable instance health check and load balancer health check at the same time, we recommend that you specify `HealthCheckTypes`.
 	//
 	// example:
 	//
 	// ECS
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The health check modes of the scaling group. Valid values:
+	// The health check mode of the scaling group.
 	//
-	// 	- NONE: Auto Scaling does not check the health status of instances.
-	//
-	// 	- ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-	//
-	// 	- ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
-	//
-	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
-	//
-	// >  HealthCheckTypes has the same effect as `HealthCheckType`. You can select one of them to specify based on your business requirements. If you specify `HealthCheckType`, `HealthCheckTypes` is ignored. HealthCheckTypes is optional.
-	//
-	// Default value: ECS.
+	// >  You can specify multiple values for this parameter to enable multiple health check options at the same time. If you specify `HealthCheckType`, this parameter is ignored.
 	HealthCheckTypes []*string `json:"HealthCheckTypes,omitempty" xml:"HealthCheckTypes,omitempty" type:"Repeated"`
 	// The ID of the ECS instance. When you create a scaling group, you can specify an existing ECS instance. Auto Scaling obtains the configurations of the ECS instance and automatically creates a scaling configuration from the obtained configurations.
 	//
@@ -8912,7 +8930,10 @@ type CreateScalingGroupRequest struct {
 	// example:
 	//
 	// true
-	SpotInstanceRemedy  *bool  `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	// example:
+	//
+	// 60
 	StopInstanceTimeout *int32 `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
 	// > This parameter is unavailable.
 	//
@@ -9777,7 +9798,7 @@ type CreateScalingRuleRequest struct {
 	//
 	// 60
 	Cooldown *int32 `json:"Cooldown,omitempty" xml:"Cooldown,omitempty"`
-	// Specifies whether to disable scale-in. This parameter is available only if you set the ScalingRuleType parameter to TargetTrackingScalingRule.
+	// Specifies whether to disable scale-in. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule.
 	//
 	// Default value: false.
 	//
@@ -9807,7 +9828,7 @@ type CreateScalingRuleRequest struct {
 	//
 	// 100
 	InitialMaxSize *int32 `json:"InitialMaxSize,omitempty" xml:"InitialMaxSize,omitempty"`
-	// The predefined metric of the scaling rule. If you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule, you must specify this parameter.
+	// The predefined metric that you want to monitor. If you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule, you must specify this parameter.
 	//
 	// Valid values if you set ScalingRuleType to TargetTrackingScalingRule:
 	//
@@ -9819,7 +9840,7 @@ type CreateScalingRuleRequest struct {
 	//
 	// 	- IntranetTx: the outbound traffic over an internal network.
 	//
-	// 	- IntranetRx: the inbound traffic over an internal network.
+	// 	- IntranetRx: the average inbound traffic over an internal network.
 	//
 	// 	- VpcInternetTx: the outbound traffic from a virtual private cloud (VPC) to the Internet.
 	//
@@ -9831,11 +9852,11 @@ type CreateScalingRuleRequest struct {
 	//
 	// 	- CpuUtilization: the average CPU utilization.
 	//
-	// 	- IntranetRx: the inbound traffic over an internal network.
+	// 	- IntranetRx: the average inbound traffic over an internal network.
 	//
-	// 	- IntranetTx: the outbound traffic over an internal network.
+	// 	- IntranetTx: the average outbound traffic over an internal network.
 	//
-	// For more information, see [Event-triggered tasks of the system monitoring type](https://www.alibabacloud.com/help/zh/auto-scaling/user-guide/event-triggered-tasks-of-the-system-monitoring-type).
+	// For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
 	//
 	// example:
 	//
@@ -9935,15 +9956,15 @@ type CreateScalingRuleRequest struct {
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 	// The type of the scaling rule. Valid values:
 	//
-	// 	- SimpleScalingRule: a simple scaling rule. Once a simple scaling rule is executed, Auto Scaling adjusts the number of ECS instances or elastic container instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
+	// 	- SimpleScalingRule: a simple scaling rule. After you execute a simple scaling rule, Auto Scaling adjusts the number of ECS instances or elastic container instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
 	//
-	// 	- TargetTrackingScalingRule: a target tracking scaling rule. Once a target tracking scaling rule is executed, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the specified target value (TargetValue).
+	// 	- TargetTrackingScalingRule: a target tracking scaling rule. After you execute a target tracking scaling rule, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the expected value (TargetValue).
 	//
-	// 	- StepScalingRule: a step scaling rule. Once a step scaling rule is executed, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
+	// 	- StepScalingRule: a step scaling rule. After you execute a step scaling rule, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
 	//
-	// 	- PredictiveScalingRule: a predictive scaling rule. Once a predictive scaling rule is executed, Auto Scaling analyzes the historical monitoring data based on the machine learning technology and predicts the trends of metric data. Auto Scaling also creates scheduled tasks to enable dynamic adjustment of the boundary values for the scaling group.
+	// 	- PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the value range for the scaling group.
 	//
-	// Default value: SimpleScalingRule.
+	// Default value: SimpleScalingRule
 	//
 	// example:
 	//
@@ -11626,7 +11647,7 @@ type DescribeAlarmsRequest struct {
 	// true
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
+	// The page number. Pages start from page 1.
 	//
 	// Default value: 1.
 	//
@@ -11634,7 +11655,7 @@ type DescribeAlarmsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
+	// The number of entries per page. Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -17082,18 +17103,309 @@ func (s *DescribeEciScalingConfigurationsResponse) SetBody(v *DescribeEciScaling
 	return s
 }
 
+type DescribeElasticStrengthRequest struct {
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// NoSpot
+	PriorityStrategy *string `json:"PriorityStrategy,omitempty" xml:"PriorityStrategy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-qingdao
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// asg-bp18p2yfxow2dloq****
+	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingGroupIds      []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
+	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
+}
+
+func (s DescribeElasticStrengthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticStrengthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticStrengthRequest) SetInstanceTypes(v []*string) *DescribeElasticStrengthRequest {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetPriorityStrategy(v string) *DescribeElasticStrengthRequest {
+	s.PriorityStrategy = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetRegionId(v string) *DescribeElasticStrengthRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetScalingGroupId(v string) *DescribeElasticStrengthRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetScalingGroupIds(v []*string) *DescribeElasticStrengthRequest {
+	s.ScalingGroupIds = v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetSystemDiskCategories(v []*string) *DescribeElasticStrengthRequest {
+	s.SystemDiskCategories = v
+	return s
+}
+
+type DescribeElasticStrengthResponseBody struct {
+	ElasticStrengthModels []*DescribeElasticStrengthResponseBodyElasticStrengthModels `json:"ElasticStrengthModels,omitempty" xml:"ElasticStrengthModels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 73469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId     *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourcePools []*DescribeElasticStrengthResponseBodyResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1.5
+	TotalStrength *float64 `json:"TotalStrength,omitempty" xml:"TotalStrength,omitempty"`
+}
+
+func (s DescribeElasticStrengthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticStrengthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticStrengthResponseBody) SetElasticStrengthModels(v []*DescribeElasticStrengthResponseBodyElasticStrengthModels) *DescribeElasticStrengthResponseBody {
+	s.ElasticStrengthModels = v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBody) SetRequestId(v string) *DescribeElasticStrengthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBody) SetResourcePools(v []*DescribeElasticStrengthResponseBodyResourcePools) *DescribeElasticStrengthResponseBody {
+	s.ResourcePools = v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBody) SetTotalStrength(v float64) *DescribeElasticStrengthResponseBody {
+	s.TotalStrength = &v
+	return s
+}
+
+type DescribeElasticStrengthResponseBodyElasticStrengthModels struct {
+	ResourcePools  []*DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
+	ScalingGroupId *string                                                                  `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// example:
+	//
+	// 1.5
+	TotalStrength *float64 `json:"TotalStrength,omitempty" xml:"TotalStrength,omitempty"`
+}
+
+func (s DescribeElasticStrengthResponseBodyElasticStrengthModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticStrengthResponseBodyElasticStrengthModels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModels) SetResourcePools(v []*DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) *DescribeElasticStrengthResponseBodyElasticStrengthModels {
+	s.ResourcePools = v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModels) SetScalingGroupId(v string) *DescribeElasticStrengthResponseBodyElasticStrengthModels {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModels) SetTotalStrength(v float64) *DescribeElasticStrengthResponseBodyElasticStrengthModels {
+	s.TotalStrength = &v
+	return s
+}
+
+type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools struct {
+	// example:
+	//
+	// InstanceTypesOrDiskTypesNotSupported
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ecs.r7.large
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// The instanceTypes or diskTypes are not supported.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 0.6
+	Strength   *float64  `json:"Strength,omitempty" xml:"Strength,omitempty"`
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) SetCode(v string) *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) SetInstanceType(v string) *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) SetMsg(v string) *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) SetStrength(v float64) *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools {
+	s.Strength = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) SetVSwitchIds(v []*string) *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) SetZoneId(v string) *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeElasticStrengthResponseBodyResourcePools struct {
+	// example:
+	//
+	// IMG_NOT_SUPPORTED
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ecs.c7t.xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// The instanceType does not support the image in the configuration.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 0.6
+	Strength   *float64  `json:"Strength,omitempty" xml:"Strength,omitempty"`
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeElasticStrengthResponseBodyResourcePools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticStrengthResponseBodyResourcePools) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetCode(v string) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetInstanceType(v string) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetMsg(v string) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetStrength(v float64) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.Strength = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetVSwitchIds(v []*string) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetZoneId(v string) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeElasticStrengthResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeElasticStrengthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeElasticStrengthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticStrengthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticStrengthResponse) SetHeaders(v map[string]*string) *DescribeElasticStrengthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponse) SetStatusCode(v int32) *DescribeElasticStrengthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponse) SetBody(v *DescribeElasticStrengthResponseBody) *DescribeElasticStrengthResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceRefreshesRequest struct {
+	// The IDs of the instance refresh tasks that you want to query.
 	InstanceRefreshTaskIds []*string `json:"InstanceRefreshTaskIds,omitempty" xml:"InstanceRefreshTaskIds,omitempty" type:"Repeated"`
+	// The maximum number of entries per page. Valid values: 1 to 50. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the scaling group to which the instance refresh task belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17102,6 +17414,10 @@ type DescribeInstanceRefreshesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the scaling group.
+	//
+	// >  When you call this operation, you must specify one of the following parameters: ScalingGroupId and InstanceRefreshTaskIds. You cannot specify both of them. If you specify neither of them, an error is reported.
+	//
 	// example:
 	//
 	// asg-bp1ffogfdauy0jw0****
@@ -17162,19 +17478,28 @@ func (s *DescribeInstanceRefreshesRequest) SetScalingGroupId(v string) *Describe
 }
 
 type DescribeInstanceRefreshesResponseBody struct {
+	// The instance refresh tasks.
 	InstanceRefreshTasks []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks `json:"InstanceRefreshTasks,omitempty" xml:"InstanceRefreshTasks,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of instance refresh tasks.
+	//
 	// example:
 	//
 	// 100
@@ -17215,47 +17540,90 @@ func (s *DescribeInstanceRefreshesResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
+	// The desired configurations of the instance refresh task.
 	DesiredConfiguration *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration `json:"DesiredConfiguration,omitempty" xml:"DesiredConfiguration,omitempty" type:"Struct"`
+	// The reason why the instance refresh task failed to be executed.
+	//
 	// example:
 	//
 	// The task exceeded its maximum run time of one week. So the task failed.
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The end time of the instance refresh task.
+	//
 	// example:
 	//
 	// 2024-08-22T02:09:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The refreshed number of instances in the scaling group.
+	//
 	// example:
 	//
 	// 10
 	FinishedUpdateCapacity *int32 `json:"FinishedUpdateCapacity,omitempty" xml:"FinishedUpdateCapacity,omitempty"`
+	// The ID of the instance refresh task.
+	//
 	// example:
 	//
 	// ir-1adfa123****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
+	// The ratio by which the number of instances in the scaling group can exceed the upper limit for the number of instances in the scaling group during instance refresh.
+	//
 	// example:
 	//
 	// 120
 	MaxHealthyPercentage *int32 `json:"MaxHealthyPercentage,omitempty" xml:"MaxHealthyPercentage,omitempty"`
+	// The ratio of the number of instances that provide services to the total number of instances in the scaling group during instance refresh.
+	//
 	// example:
 	//
 	// 80
 	MinHealthyPercentage *int32 `json:"MinHealthyPercentage,omitempty" xml:"MinHealthyPercentage,omitempty"`
+	// The region ID of the scaling group.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the scaling group.
+	//
 	// example:
 	//
 	// asg-bp16pbfcr8j9*****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The start time of the instance refresh task.
+	//
 	// example:
 	//
 	// 2024-08-22T01:09:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the instance refresh task. Valid values:
+	//
+	// 	- Pending: The instance refresh task is created and is waiting to be scheduled.
+	//
+	// 	- InProgress: The instance refresh task is being executed.
+	//
+	// 	- Paused: The instance refresh task is suspended.
+	//
+	// 	- Failed: The instance refresh task failed to be executed.
+	//
+	// 	- Successful: The instance refresh task is successful.
+	//
+	// 	- Cancelling: The instance refresh task is being canceled.
+	//
+	// 	- Cancelled: The instance refresh task is canceled.
+	//
+	// 	- RollbackInProgress: The instance refresh task is being rolled back.
+	//
+	// 	- RollbackSuccessful: The instance refresh task is rolled back.
+	//
+	// 	- RollbackFailed: The instance refresh task fails to be rolled back.
+	//
 	// example:
 	//
 	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of instances whose configurations are refreshed.
+	//
 	// example:
 	//
 	// 20
@@ -17331,10 +17699,14 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetTotalNeed
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration struct {
+	// The ID of the image file that provides the image resource for Auto Scaling to create instances.
+	//
 	// example:
 	//
 	// m-uf6g5noisr****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the scaling configuration.
+	//
 	// example:
 	//
 	// asc-wz91ibkhfor****
@@ -19148,10 +19520,13 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeScalingActivitiesRequest struct {
+	// example:
+	//
+	// ir-a12ds234fasd*****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
+	// The page number. Pages start from page 1.
 	//
 	// Default value: 1.
 	//
@@ -19159,7 +19534,7 @@ type DescribeScalingActivitiesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
+	// The number of entries per page. Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -19179,11 +19554,11 @@ type DescribeScalingActivitiesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The IDs of the scaling activities that you want to query.
 	//
-	// > When you call this operation, you must specify one of the `ScalingGroupId` and `ScalingActivityId.N` parameters. Otherwise, an error is reported.
+	// >  When you call this operation, you must specify one of the following parameters: `ScalingGroupId` and `ScalingActivityIds`. You cannot specify both of them at the same time. If you specify neither of them, an error is reported.
 	ScalingActivityIds []*string `json:"ScalingActivityIds,omitempty" xml:"ScalingActivityIds,omitempty" type:"Repeated"`
 	// The ID of the scaling group.
 	//
-	// > When you call this operation, you must specify one of the `ScalingGroupId` and `ScalingActivityId.N` parameters. Otherwise, an error is reported.
+	// >  When you call this operation, you must specify one of the following parameters: `ScalingGroupId` and `ScalingActivityIds`. You cannot specify both of them at the same time. If you specify neither of them, an error is reported.
 	//
 	// example:
 	//
@@ -19289,7 +19664,7 @@ type DescribeScalingActivitiesResponseBody struct {
 	//
 	// CC107349-57B7-4405-B1BF-9BF5AF7F2A46
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the scaling activities.
+	// The scaling activities.
 	ScalingActivities []*DescribeScalingActivitiesResponseBodyScalingActivities `json:"ScalingActivities,omitempty" xml:"ScalingActivities,omitempty" type:"Repeated"`
 	// The total number of scaling activities.
 	//
@@ -19339,7 +19714,7 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// {\\"goatscaler.io/managed\\":\\"true\\"}
 	ActivityMetadata *string `json:"ActivityMetadata,omitempty" xml:"ActivityMetadata,omitempty"`
-	// The total number of instances that are manually added to the scaling group after the scaling activity was complete.
+	// The total number of instances that are manually added to the scaling group after the scaling activity is complete.
 	//
 	// example:
 	//
@@ -19402,7 +19777,10 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	// example:
 	//
 	// The specified ECS resource is out of stock in this region. Please try again later.
-	ErrorMessage          *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// ir-asdf12adsxg*****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
 	// The context of the lifecycle hook.
 	LifecycleHookContext *DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty" type:"Struct"`
@@ -19424,9 +19802,9 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// If you query a scale-out activity, the value of this parameter indicates the number of instances that are created or the number of instances that are started from the Economical Mode during the scale-out event.
+	// 	- If you query a scale-out activity, the value of this parameter indicates the number of instances that are created or the number of instances that are started from Economical Mode.
 	//
-	// If you query a scale-in activity, the value of this parameter indicates the number of instances that are deleted or the number of instances that are stopped in the Economical Mode during the scale-in event.
+	// 	- If you query a scale-in activity, the value of this parameter indicates the number of instances that are deleted or the number of instances that are stopped in Economical Mode.
 	//
 	// example:
 	//
@@ -19482,25 +19860,25 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// 2
 	TotalCapacity *string `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
-	// The ID of the trigger source of the scaling activity.
+	// The ID of the trigger source of the scaling activity. Valid values:
 	//
-	// 	- If TriggerSourceType is set to Cms, the ID of the trigger source is the ID of an event-triggered task.
+	// 	- If the scaling activity is triggered by an event-triggered task, the ID of the trigger source is the ID of the event-triggered task.
 	//
-	// 	- If TriggerSourceType is set to Api, the ID of the trigger source is the ID of an Alibaba Cloud account or a RAM user.
+	// 	- If the scaling activity is triggered by calling an API operation, the ID of the trigger source is the ID of the Alibaba Cloud account or Resource Access Management (RAM) user that you use to call the API operation.
 	//
-	// 	- If TriggerSourceType is set to Api, the ID of the trigger source is null.
+	// 	- If the scaling activity is triggered by Auto Scaling, the ID of the trigger source is null.
 	//
 	// example:
 	//
 	// 2346366580*****
 	TriggerSourceId *string `json:"TriggerSourceId,omitempty" xml:"TriggerSourceId,omitempty"`
-	// The type of the trigger source of the scaling activity.
+	// The type of the trigger source of the scaling activity. Valid values:
 	//
-	// 	- Cms: triggered by an event-triggered task
+	// 	- Cms: The scaling activity is triggered by an event-triggered task.
 	//
-	// 	- APIs: triggered by API calling
+	// 	- APIs: The scaling activity is triggered by calling an API operation.
 	//
-	// 	- Ess: triggered by a system task
+	// 	- Ess: The scaling activity is triggered by Auto Scaling.
 	//
 	// example:
 	//
@@ -19662,7 +20040,7 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetTriggerSourc
 }
 
 type DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext struct {
-	// Indicates whether all lifecycle hooks are disabled. Valid values:
+	// Indicates whether all lifecycle hooks are disabled when the scaling activity is triggered. Valid values:
 	//
 	// 	- true
 	//
@@ -20305,8 +20683,9 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// sg-bp18kz60mefs****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
-	SecurityGroupIds []*string                                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	SecurityOptions  *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// The security options.
+	SecurityOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the preemptible instances. Unit: hours.
 	//
 	// example:
@@ -21465,6 +21844,15 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScheduler
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions struct {
+	// The confidential computing mode. Valid values:
+	//
+	// 	- Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+	//
+	// 	- TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
+	//
+	// example:
+	//
+	// TDX
 	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
 }
 
@@ -21693,7 +22081,7 @@ type DescribeScalingGroupDetailResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the scaling groups.
+	// The scaling group.
 	ScalingGroup *DescribeScalingGroupDetailResponseBodyScalingGroup `json:"ScalingGroup,omitempty" xml:"ScalingGroup,omitempty" type:"Struct"`
 }
 
@@ -21829,15 +22217,23 @@ type DescribeScalingGroupDetailResponseBodyScalingGroup struct {
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The health check mode of the scaling group. Valid values:
 	//
-	// 	- NONE: Auto Scaling does not perform health checks in the scaling group.
+	// 	- NONE: Auto Scaling does not perform health checks.
 	//
-	// 	- ECS: Auto Scaling performs health checks on ECS instances in the scaling group.
+	// 	- ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
+	//
+	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
 	//
 	// example:
 	//
 	// ECS
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The health check types.
+	// The health check mode of the scaling group. Valid values:
+	//
+	// 	- NONE: Auto Scaling does not perform health checks.
+	//
+	// 	- ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
+	//
+	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
 	HealthCheckTypes []*string `json:"HealthCheckTypes,omitempty" xml:"HealthCheckTypes,omitempty" type:"Repeated"`
 	// The number of instances that are in the Initialized state and not added to the scaling group.
 	//
@@ -23092,21 +23488,21 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	//
 	// 	- NONE: Auto Scaling does not perform health checks.
 	//
-	// 	- ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
+	// 	- ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
 	//
-	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB, formerly known as Server Load Balancer or SLB) instances are not used as the basis to perform health checks on the instances in the scaling group.
+	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
 	//
 	// example:
 	//
 	// ECS
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The health check modes of the scaling group. Valid values:
+	// The health check mode of the scaling group. Valid values:
 	//
 	// 	- NONE: Auto Scaling does not perform health checks.
 	//
-	// 	- ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
+	// 	- ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
 	//
-	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not used as the basis to perform health checks on the instances in the scaling group.
+	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
 	HealthCheckTypes []*string `json:"HealthCheckTypes,omitempty" xml:"HealthCheckTypes,omitempty" type:"Repeated"`
 	// The number of instances that are initialized before they are added into the scaling group.
 	//
@@ -23306,7 +23702,7 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	//
 	// lowestPrice
 	SpotAllocationStrategy *string `json:"SpotAllocationStrategy,omitempty" xml:"SpotAllocationStrategy,omitempty"`
-	// 伸缩组中抢占式实例的数量。
+	// The number of preemptible instances in the scaling group.
 	//
 	// example:
 	//
@@ -23329,7 +23725,10 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	// example:
 	//
 	// 1
-	StandbyCapacity     *int32 `json:"StandbyCapacity,omitempty" xml:"StandbyCapacity,omitempty"`
+	StandbyCapacity *int32 `json:"StandbyCapacity,omitempty" xml:"StandbyCapacity,omitempty"`
+	// example:
+	//
+	// 60
 	StopInstanceTimeout *int32 `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
 	// The number of instances that was stopped in Economical Mode in the scaling group.
 	//
@@ -24655,7 +25054,7 @@ func (s *DescribeScalingInstancesResponse) SetBody(v *DescribeScalingInstancesRe
 type DescribeScalingRulesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
+	// The page number. Pages start from page 1.
 	//
 	// Default value: 1.
 	//
@@ -24663,7 +25062,7 @@ type DescribeScalingRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
+	// The number of entries per page. Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -24707,7 +25106,7 @@ type DescribeScalingRulesRequest struct {
 	//
 	// SimpleScalingRule
 	ScalingRuleType *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
-	// Specifies whether to return CloudMonitor event-triggered tasks associated with scaling rules. Valid values:
+	// Specifies whether to return the event-triggered tasks that are associated with the scaling rule. Valid values:
 	//
 	// 	- true
 	//
@@ -32221,7 +32620,7 @@ type ModifyScalingConfigurationRequest struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The ENIs.
 	NetworkInterfaces []*ModifyScalingConfigurationRequestNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
-	// Specifies whether to overwrite existing data. Valid values:
+	// Specifies whether to override existing data. Valid values:
 	//
 	// 	- true
 	//
@@ -33628,6 +34027,15 @@ func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetSecurityGroupIds
 }
 
 type ModifyScalingConfigurationRequestSecurityOptions struct {
+	// The confidential computing mode. Valid values:
+	//
+	// 	- Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+	//
+	// 	- TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
+	//
+	// example:
+	//
+	// TDX
 	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
 }
 
@@ -33877,7 +34285,7 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The ENIs.
 	NetworkInterfaces []*ModifyScalingConfigurationShrinkRequestNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
-	// Specifies whether to overwrite existing data. Valid values:
+	// Specifies whether to override existing data. Valid values:
 	//
 	// 	- true
 	//
@@ -35284,6 +35692,15 @@ func (s *ModifyScalingConfigurationShrinkRequestNetworkInterfaces) SetSecurityGr
 }
 
 type ModifyScalingConfigurationShrinkRequestSecurityOptions struct {
+	// The confidential computing mode. Valid values:
+	//
+	// 	- Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+	//
+	// 	- TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
+	//
+	// example:
+	//
+	// TDX
 	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
 }
 
@@ -35463,29 +35880,21 @@ type ModifyScalingGroupRequest struct {
 	GroupDeletionProtection *bool `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
 	// The health check mode of the scaling group. Valid values:
 	//
-	// 	- NONE: Auto Scaling does not perform health checks.
+	// 	- NONE: Auto Scaling does not check the health status of instances.
 	//
-	// 	- ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
+	// 	- ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
 	//
-	// 	- ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
+	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group. Default value: ECS.
 	//
-	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
-	//
-	// >  HealthCheckType has the same effect as `HealthCheckTypes`. You can select one of them to specify based on your business requirements. If you specify `HealthCheckTypes`, `HealthCheckType` is ignored. HealthCheckType is optional.
+	// >  If you want to enable instance health check and load balancer health check at the same time, we recommend that you specify `HealthCheckTypes`.
 	//
 	// example:
 	//
 	// ECS
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The health check modes of the scaling group. Valid values:
+	// The health check mode of the scaling group.
 	//
-	// 	- NONE: Auto Scaling does not perform health checks.
-	//
-	// 	- ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-	//
-	// 	- ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
-	//
-	// 	- LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
+	// >  You can specify multiple values for this parameter to enable multiple health check options at the same time. If you specify HealthCheckType, this parameter is ignored.
 	HealthCheckTypes []*string `json:"HealthCheckTypes,omitempty" xml:"HealthCheckTypes,omitempty" type:"Repeated"`
 	// The ID of the launch template that is used by Auto Scaling to create instances.
 	//
@@ -35644,7 +36053,10 @@ type ModifyScalingGroupRequest struct {
 	// example:
 	//
 	// true
-	SpotInstanceRemedy  *bool  `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	// example:
+	//
+	// 60
 	StopInstanceTimeout *int32 `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
 	// The IDs of vSwitches.
 	//
@@ -36007,17 +36419,19 @@ type ModifyScalingRuleRequest struct {
 	//
 	// Valid values if you create a target tracking scaling rule:
 	//
+	// 	- CpuUtilizationAgent (recommended): the CPU utilization.
+	//
+	// 	- MemoryUtilization (recommended): the memory usage.
+	//
 	// 	- CpuUtilization: the average CPU utilization.
 	//
-	// 	- IntranetTx: the outbound traffic over an internal network.
+	// 	- IntranetTx: the average outbound traffic over an internal network.
 	//
-	// 	- IntranetRx: the inbound traffic over an internal network.
+	// 	- IntranetRx: the average inbound traffic over an internal network.
 	//
-	// 	- VpcInternetTx: the outbound traffic from a virtual private cloud (VPC) to the Internet.
+	// 	- VpcInternetTx: the average outbound traffic from a virtual private cloud (VPC) to the Internet.
 	//
-	// 	- VpcInternetRx: the inbound traffic from the Internet to a VPC.
-	//
-	// 	- MemoryUtilization: the memory usage.
+	// 	- VpcInternetRx: the average inbound traffic from the Internet to a VPC.
 	//
 	// 	- LoadBalancerRealServerAverageQps: the queries per second (QPS) per Application Load Balancer (ALB) server group.
 	//
@@ -36025,9 +36439,11 @@ type ModifyScalingRuleRequest struct {
 	//
 	// 	- CpuUtilization: the average CPU utilization.
 	//
-	// 	- IntranetRx: the inbound traffic over an internal network.
+	// 	- IntranetRx: the average inbound traffic over an internal network.
 	//
-	// 	- IntranetTx: the outbound traffic over an internal network.
+	// 	- IntranetTx: the average outbound traffic over an internal network.
+	//
+	// For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
 	//
 	// example:
 	//
@@ -37061,8 +37477,11 @@ type RemoveInstancesRequest struct {
 	// example:
 	//
 	// asg-bp18p2yfxow2dloq****
-	ScalingGroupId      *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	StopInstanceTimeout *int32  `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// example:
+	//
+	// 60
+	StopInstanceTimeout *int32 `json:"StopInstanceTimeout,omitempty" xml:"StopInstanceTimeout,omitempty"`
 }
 
 func (s RemoveInstancesRequest) String() string {
@@ -37196,6 +37615,8 @@ func (s *RemoveInstancesResponse) SetBody(v *RemoveInstancesResponseBody) *Remov
 }
 
 type ResumeInstanceRefreshRequest struct {
+	// The ID of the instance refresh task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37203,6 +37624,8 @@ type ResumeInstanceRefreshRequest struct {
 	// ir-a12ds234fasd*****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37210,6 +37633,8 @@ type ResumeInstanceRefreshRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37252,6 +37677,8 @@ func (s *ResumeInstanceRefreshRequest) SetScalingGroupId(v string) *ResumeInstan
 }
 
 type ResumeInstanceRefreshResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
@@ -37421,6 +37848,8 @@ func (s *ResumeProcessesResponse) SetBody(v *ResumeProcessesResponseBody) *Resum
 }
 
 type RollbackInstanceRefreshRequest struct {
+	// The ID of the instance refresh task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37428,6 +37857,8 @@ type RollbackInstanceRefreshRequest struct {
 	// ir-a12ds234fasd*****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37435,6 +37866,8 @@ type RollbackInstanceRefreshRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37477,6 +37910,8 @@ func (s *RollbackInstanceRefreshRequest) SetScalingGroupId(v string) *RollbackIn
 }
 
 type RollbackInstanceRefreshResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B13527BF-1FBD-4334-A512-20F5E9D3****
@@ -38388,20 +38823,37 @@ func (s *SetInstancesProtectionResponse) SetBody(v *SetInstancesProtectionRespon
 }
 
 type StartInstanceRefreshRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see "How to ensure idempotence".
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken          *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The desired configurations of the instance refresh task.
+	//
+	// >
+	//
+	// 	- When you call this operation, you must specify one of the following parameters: ScalingConfigurationId and ImageId.
+	//
+	// 	- Instances whose configurations match the desired configurations of the task are ignored during instance refresh.
 	DesiredConfiguration *StartInstanceRefreshRequestDesiredConfiguration `json:"DesiredConfiguration,omitempty" xml:"DesiredConfiguration,omitempty" type:"Struct"`
+	// The ratio of instances that can exceed the upper limit of the scaling group capacity to all instances in the scaling group during instance refresh. Valid values: 100 to 200. Default value: 120.
+	//
+	// >  If you set MinHealthyPercentage and MaxHealthyPercentage to 100, Auto Scaling refreshes the configurations of one instance each time the instance refresh task starts.
+	//
 	// example:
 	//
 	// 100
 	MaxHealthyPercentage *int32 `json:"MaxHealthyPercentage,omitempty" xml:"MaxHealthyPercentage,omitempty"`
+	// The ratio of instances that are in the In Service state to all instances in the scaling group during instance refresh. Valid values: 0 to 100. Default value: 80.
+	//
 	// example:
 	//
 	// 80
 	MinHealthyPercentage *int32 `json:"MinHealthyPercentage,omitempty" xml:"MinHealthyPercentage,omitempty"`
 	OwnerId              *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38409,6 +38861,8 @@ type StartInstanceRefreshRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38466,10 +38920,22 @@ func (s *StartInstanceRefreshRequest) SetScalingGroupId(v string) *StartInstance
 }
 
 type StartInstanceRefreshRequestDesiredConfiguration struct {
+	// The image ID.
+	//
+	// >
+	//
+	// 	- After the instance refresh task is complete, the active scaling configuration uses the image specified by this parameter.
+	//
+	// 	- If the instance configuration source of the scaling group is a launch template, you cannot specify this parameter.
+	//
 	// example:
 	//
 	// m-2ze8cqacj7opnf***
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the scaling configuration.
+	//
+	// >  After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
+	//
 	// example:
 	//
 	// asc-2zed7lqn4ts4****
@@ -38495,10 +38961,14 @@ func (s *StartInstanceRefreshRequestDesiredConfiguration) SetScalingConfiguratio
 }
 
 type StartInstanceRefreshResponseBody struct {
+	// The ID of the instance refresh task.
+	//
 	// example:
 	//
 	// ir-a12ds234fasd*****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
@@ -38553,6 +39023,8 @@ func (s *StartInstanceRefreshResponse) SetBody(v *StartInstanceRefreshResponseBo
 }
 
 type SuspendInstanceRefreshRequest struct {
+	// The ID of the instance refresh task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38560,6 +39032,8 @@ type SuspendInstanceRefreshRequest struct {
 	// ir-a12ds234fasd*****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38567,6 +39041,8 @@ type SuspendInstanceRefreshRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38609,6 +39085,8 @@ func (s *SuspendInstanceRefreshRequest) SetScalingGroupId(v string) *SuspendInst
 }
 
 type SuspendInstanceRefreshResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
@@ -39782,15 +40260,19 @@ func (client *Client) AttachAlbServerGroups(request *AttachAlbServerGroupsReques
 //
 // Description:
 //
-// Before you associate an ApsaraDB RDS instance with a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+// Before you attach an ApsaraDB RDS instance to a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
 //
-// 	- The ApsaraDB RDS instance and the scaling group must belong to the same Alibaba Cloud account.
+// 	- The ApsaraDB RDS instance and the scaling group belong to the same Alibaba Cloud account.
 //
-// 	- The ApsaraDB RDS instance must be unlocked. For more information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
+// 	- The ApsaraDB RDS instance is unlocked. For information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
 //
-// 	- The ApsaraDB RDS instance must be in the Running state.
+// 	- The ApsaraDB RDS instance is in the Running state.
 //
-// After an ApsaraDB RDS instance is associated with the scaling group, the default IP address whitelist of the ApsaraDB RDS instance can contain no more than 1,000 IP addresses. For more information, see [Set the whitelist](https://help.aliyun.com/document_detail/43185.html).
+// 	- The ApsaraDB RDS instance exists in the Alibaba Cloud account.
+//
+// 	- If you reattach an ApsaraDB RDS instance to a scaling group, the total number of attached ApsaraDB RDS instances of the scaling group remains unchanged. But Auto Scaling adds the private IP addresses of all Elastic Compute Service (ECS) instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance.
+//
+// >  After you attach an ApsaraDB RDS instance to a scaling group, make sure that the number of IP addresses in the default whitelist of the ApsaraDB RDS instance is limited to 1,000. For information about IP address whitelists, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/96118.html).
 //
 // @param request - AttachDBInstancesRequest
 //
@@ -39868,15 +40350,19 @@ func (client *Client) AttachDBInstancesWithOptions(request *AttachDBInstancesReq
 //
 // Description:
 //
-// Before you associate an ApsaraDB RDS instance with a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+// Before you attach an ApsaraDB RDS instance to a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
 //
-// 	- The ApsaraDB RDS instance and the scaling group must belong to the same Alibaba Cloud account.
+// 	- The ApsaraDB RDS instance and the scaling group belong to the same Alibaba Cloud account.
 //
-// 	- The ApsaraDB RDS instance must be unlocked. For more information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
+// 	- The ApsaraDB RDS instance is unlocked. For information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
 //
-// 	- The ApsaraDB RDS instance must be in the Running state.
+// 	- The ApsaraDB RDS instance is in the Running state.
 //
-// After an ApsaraDB RDS instance is associated with the scaling group, the default IP address whitelist of the ApsaraDB RDS instance can contain no more than 1,000 IP addresses. For more information, see [Set the whitelist](https://help.aliyun.com/document_detail/43185.html).
+// 	- The ApsaraDB RDS instance exists in the Alibaba Cloud account.
+//
+// 	- If you reattach an ApsaraDB RDS instance to a scaling group, the total number of attached ApsaraDB RDS instances of the scaling group remains unchanged. But Auto Scaling adds the private IP addresses of all Elastic Compute Service (ECS) instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance.
+//
+// >  After you attach an ApsaraDB RDS instance to a scaling group, make sure that the number of IP addresses in the default whitelist of the ApsaraDB RDS instance is limited to 1,000. For information about IP address whitelists, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/96118.html).
 //
 // @param request - AttachDBInstancesRequest
 //
@@ -40404,6 +40890,14 @@ func (client *Client) AttachVServerGroups(request *AttachVServerGroupsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels an instance refresh task. Take note that new instances that are used to replace old instances or that are scaled out still exist after you call this operation.
+//
+// Description:
+//
+//   You cannot call this operation to cancel instance refresh tasks that are being rolled back.
+//
 // @param request - CancelInstanceRefreshRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -40458,6 +40952,14 @@ func (client *Client) CancelInstanceRefreshWithOptions(request *CancelInstanceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels an instance refresh task. Take note that new instances that are used to replace old instances or that are scaled out still exist after you call this operation.
+//
+// Description:
+//
+//   You cannot call this operation to cancel instance refresh tasks that are being rolled back.
+//
 // @param request - CancelInstanceRefreshRequest
 //
 // @return CancelInstanceRefreshResponse
@@ -43458,6 +43960,66 @@ func (client *Client) DescribeEciScalingConfigurations(request *DescribeEciScali
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeElasticStrength
+//
+// @param request - DescribeElasticStrengthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticStrengthResponse
+func (client *Client) DescribeElasticStrengthWithOptions(request *DescribeElasticStrengthRequest, runtime *util.RuntimeOptions) (_result *DescribeElasticStrengthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeElasticStrength"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeElasticStrengthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeElasticStrength
+//
+// @param request - DescribeElasticStrengthRequest
+//
+// @return DescribeElasticStrengthResponse
+func (client *Client) DescribeElasticStrength(request *DescribeElasticStrengthRequest) (_result *DescribeElasticStrengthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeElasticStrengthResponse{}
+	_body, _err := client.DescribeElasticStrengthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries instance refresh tasks. If you want to view the basic information and execution progress of an instance refresh task, you can call the DescribeInstanceRefreshes operation.
+//
 // @param request - DescribeInstanceRefreshesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -43528,6 +44090,10 @@ func (client *Client) DescribeInstanceRefreshesWithOptions(request *DescribeInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instance refresh tasks. If you want to view the basic information and execution progress of an instance refresh task, you can call the DescribeInstanceRefreshes operation.
+//
 // @param request - DescribeInstanceRefreshesRequest
 //
 // @return DescribeInstanceRefreshesResponse
@@ -44092,15 +44658,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries scaling activities.
+// Queries scaling activities. You can call the DescribeScalingActivities operation to query the results of scaling activities triggered by scheduled tasks, event-triggered tasks, or manual execution of scaling rules. For example, you can query the status and cause of a scaling activity. You can also query the total number of instances after a scaling activity is complete.
 //
 // Description:
 //
-// You can specify a scaling group ID to query all scaling activities in the scaling group.
+//   You can query all scaling activities in a scaling group by specifying ScalingGroupId.
 //
-// You can filter query results based on the status of scaling activities.
+// 	- You can filter query results based on the status of scaling activities.
 //
-// You can query scaling activities that are executed in the previous 30 days.
+// 	- You can query scaling activities within the last 30 days.
 //
 // @param request - DescribeScalingActivitiesRequest
 //
@@ -44182,15 +44748,15 @@ func (client *Client) DescribeScalingActivitiesWithOptions(request *DescribeScal
 
 // Summary:
 //
-// Queries scaling activities.
+// Queries scaling activities. You can call the DescribeScalingActivities operation to query the results of scaling activities triggered by scheduled tasks, event-triggered tasks, or manual execution of scaling rules. For example, you can query the status and cause of a scaling activity. You can also query the total number of instances after a scaling activity is complete.
 //
 // Description:
 //
-// You can specify a scaling group ID to query all scaling activities in the scaling group.
+//   You can query all scaling activities in a scaling group by specifying ScalingGroupId.
 //
-// You can filter query results based on the status of scaling activities.
+// 	- You can filter query results based on the status of scaling activities.
 //
-// You can query scaling activities that are executed in the previous 30 days.
+// 	- You can query scaling activities within the last 30 days.
 //
 // @param request - DescribeScalingActivitiesRequest
 //
@@ -44376,7 +44942,7 @@ func (client *Client) DescribeScalingConfigurations(request *DescribeScalingConf
 
 // Summary:
 //
-// Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+// Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to YAML for a scaling group of the Elastic Container Instance type, the output is a Kubernetes Deployment file in the YAML format.
 //
 // @param request - DescribeScalingGroupDetailRequest
 //
@@ -44430,7 +44996,7 @@ func (client *Client) DescribeScalingGroupDetailWithOptions(request *DescribeSca
 
 // Summary:
 //
-// Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+// Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to YAML for a scaling group of the Elastic Container Instance type, the output is a Kubernetes Deployment file in the YAML format.
 //
 // @param request - DescribeScalingGroupDetailRequest
 //
@@ -48480,6 +49046,10 @@ func (client *Client) RemoveInstances(request *RemoveInstancesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes an instance refresh task.
+//
 // @param request - ResumeInstanceRefreshRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48534,6 +49104,10 @@ func (client *Client) ResumeInstanceRefreshWithOptions(request *ResumeInstanceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes an instance refresh task.
+//
 // @param request - ResumeInstanceRefreshRequest
 //
 // @return ResumeInstanceRefreshResponse
@@ -48628,6 +49202,10 @@ func (client *Client) ResumeProcesses(request *ResumeProcessesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Rolls back an instance refresh task. If the configurations of an instance refresh task cannot meet your business requirements, you can call this operation to roll back the task. During the rollback process, Auto Scaling creates instances based on the active scaling configuration to replace instances that are created based on the configurations of the instance refresh task.
+//
 // @param request - RollbackInstanceRefreshRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48682,6 +49260,10 @@ func (client *Client) RollbackInstanceRefreshWithOptions(request *RollbackInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Rolls back an instance refresh task. If the configurations of an instance refresh task cannot meet your business requirements, you can call this operation to roll back the task. During the rollback process, Auto Scaling creates instances based on the active scaling configuration to replace instances that are created based on the configurations of the instance refresh task.
+//
 // @param request - RollbackInstanceRefreshRequest
 //
 // @return RollbackInstanceRefreshResponse
@@ -48996,7 +49578,7 @@ func (client *Client) SetInstanceHealth(request *SetInstanceHealthRequest) (_res
 
 // Summary:
 //
-// Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
+// Puts or removes Elastic Compute Service (ECS) instances into or from the Protected state. After you put an ECS instance into the Protected state, the ECS instance will not be stopped or released when a scale-in event is triggered. In this case, you can manually delete the ECS instance in the Auto Scaling console or by calling the RemoveInstances operation.
 //
 // Description:
 //
@@ -49004,9 +49586,9 @@ func (client *Client) SetInstanceHealth(request *SetInstanceHealthRequest) (_res
 //
 // 	- ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
 //
-// 	- Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
+// 	- Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/459393.html).
 //
-// 	- ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
+// 	- ECS instances in the Protected state maintain their health status even when they undergo stopping or restarting processes.
 //
 // @param request - SetInstancesProtectionRequest
 //
@@ -49064,7 +49646,7 @@ func (client *Client) SetInstancesProtectionWithOptions(request *SetInstancesPro
 
 // Summary:
 //
-// Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
+// Puts or removes Elastic Compute Service (ECS) instances into or from the Protected state. After you put an ECS instance into the Protected state, the ECS instance will not be stopped or released when a scale-in event is triggered. In this case, you can manually delete the ECS instance in the Auto Scaling console or by calling the RemoveInstances operation.
 //
 // Description:
 //
@@ -49072,9 +49654,9 @@ func (client *Client) SetInstancesProtectionWithOptions(request *SetInstancesPro
 //
 // 	- ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
 //
-// 	- Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
+// 	- Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/459393.html).
 //
-// 	- ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
+// 	- ECS instances in the Protected state maintain their health status even when they undergo stopping or restarting processes.
 //
 // @param request - SetInstancesProtectionRequest
 //
@@ -49090,6 +49672,20 @@ func (client *Client) SetInstancesProtection(request *SetInstancesProtectionRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts an instance refresh task. If you want to batch update instance images, modify information in scaling configurations, and scale out instances based on new configurations, you can call the StartInstanceRefresh.html operation. After you start an instance refresh task, Auto Scaling gradually creates new instances from the desired configurations provided by the task to replace old instances. When all replacements are complete, the configurations of instances in your scaling group perfectly match your expectations.
+//
+// Description:
+//
+//   Only one instance refresh task can be executed at a time in a scaling group.
+//
+// 	- Instance refresh tasks are currently supported only by scaling groups of the Elastic Compute Service (ECS) type and using **the priority policy**. Scaling groups that use the number of vCPUs as the method to calculate the group capacity or scaling groups whose instance reclaim mode is **Economical Mode*	- or **Forcibly Recycle*	- do not support instance refresh tasks.
+//
+// 	- During the execution of an instance refresh task, scaling events can be complete as expected. Take note that instances that are scaled out use the desired configurations provided by the instance refresh task.
+//
+// 	- Instance refresh tasks does not take effect on instances that are manually added and instances that are in the Standby and Protected states.
+//
 // @param request - StartInstanceRefreshRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49156,6 +49752,20 @@ func (client *Client) StartInstanceRefreshWithOptions(request *StartInstanceRefr
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts an instance refresh task. If you want to batch update instance images, modify information in scaling configurations, and scale out instances based on new configurations, you can call the StartInstanceRefresh.html operation. After you start an instance refresh task, Auto Scaling gradually creates new instances from the desired configurations provided by the task to replace old instances. When all replacements are complete, the configurations of instances in your scaling group perfectly match your expectations.
+//
+// Description:
+//
+//   Only one instance refresh task can be executed at a time in a scaling group.
+//
+// 	- Instance refresh tasks are currently supported only by scaling groups of the Elastic Compute Service (ECS) type and using **the priority policy**. Scaling groups that use the number of vCPUs as the method to calculate the group capacity or scaling groups whose instance reclaim mode is **Economical Mode*	- or **Forcibly Recycle*	- do not support instance refresh tasks.
+//
+// 	- During the execution of an instance refresh task, scaling events can be complete as expected. Take note that instances that are scaled out use the desired configurations provided by the instance refresh task.
+//
+// 	- Instance refresh tasks does not take effect on instances that are manually added and instances that are in the Standby and Protected states.
+//
 // @param request - StartInstanceRefreshRequest
 //
 // @return StartInstanceRefreshResponse
@@ -49170,6 +49780,14 @@ func (client *Client) StartInstanceRefresh(request *StartInstanceRefreshRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Suspends an instance refresh task. You can call this operation to suspend an ongoing instance refresh task for observation.
+//
+// Description:
+//
+//   You cannot call this operation to suspend an instance refresh task that is being rolled back.
+//
 // @param request - SuspendInstanceRefreshRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -49224,6 +49842,14 @@ func (client *Client) SuspendInstanceRefreshWithOptions(request *SuspendInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Suspends an instance refresh task. You can call this operation to suspend an ongoing instance refresh task for observation.
+//
+// Description:
+//
+//   You cannot call this operation to suspend an instance refresh task that is being rolled back.
+//
 // @param request - SuspendInstanceRefreshRequest
 //
 // @return SuspendInstanceRefreshResponse
