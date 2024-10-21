@@ -11085,38 +11085,11 @@ func (s *QueryIntlFixedPriceOrderListResponseBody) SetRequestId(v string) *Query
 }
 
 type QueryIntlFixedPriceOrderListResponseBodyModule struct {
-	// example:
-	//
-	// T2023110718483800****
-	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// example:
-	//
-	// 1557037855000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// example:
-	//
-	// 11
-	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// example:
-	//
-	// 20.00
-	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
-	// example:
-	//
-	// 6
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 1557037855000
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// 155703785****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CurrentPageNum *int32                                                `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	Data           []*QueryIntlFixedPriceOrderListResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageSize       *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalItemNum   *int32                                                `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	TotalPageNum   *int32                                                `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryIntlFixedPriceOrderListResponseBodyModule) String() string {
@@ -11127,42 +11100,86 @@ func (s QueryIntlFixedPriceOrderListResponseBodyModule) GoString() string {
 	return s.String()
 }
 
-func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetBizId(v string) *QueryIntlFixedPriceOrderListResponseBodyModule {
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetCurrentPageNum(v int32) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.CurrentPageNum = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetData(v []*QueryIntlFixedPriceOrderListResponseBodyModuleData) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.Data = v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetPageSize(v int32) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetTotalItemNum(v int32) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.TotalItemNum = &v
+	return s
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetTotalPageNum(v int32) *QueryIntlFixedPriceOrderListResponseBodyModule {
+	s.TotalPageNum = &v
+	return s
+}
+
+type QueryIntlFixedPriceOrderListResponseBodyModuleData struct {
+	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	OrderType  *int32  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	Price      *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryIntlFixedPriceOrderListResponseBodyModuleData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIntlFixedPriceOrderListResponseBodyModuleData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIntlFixedPriceOrderListResponseBodyModuleData) SetBizId(v string) *QueryIntlFixedPriceOrderListResponseBodyModuleData {
 	s.BizId = &v
 	return s
 }
 
-func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetCreateTime(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+func (s *QueryIntlFixedPriceOrderListResponseBodyModuleData) SetCreateTime(v int64) *QueryIntlFixedPriceOrderListResponseBodyModuleData {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetDomain(v string) *QueryIntlFixedPriceOrderListResponseBodyModule {
+func (s *QueryIntlFixedPriceOrderListResponseBodyModuleData) SetDomain(v string) *QueryIntlFixedPriceOrderListResponseBodyModuleData {
 	s.Domain = &v
 	return s
 }
 
-func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetOrderType(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+func (s *QueryIntlFixedPriceOrderListResponseBodyModuleData) SetOrderType(v int32) *QueryIntlFixedPriceOrderListResponseBodyModuleData {
 	s.OrderType = &v
 	return s
 }
 
-func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetPrice(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+func (s *QueryIntlFixedPriceOrderListResponseBodyModuleData) SetPrice(v int64) *QueryIntlFixedPriceOrderListResponseBodyModuleData {
 	s.Price = &v
 	return s
 }
 
-func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetStatus(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+func (s *QueryIntlFixedPriceOrderListResponseBodyModuleData) SetStatus(v int32) *QueryIntlFixedPriceOrderListResponseBodyModuleData {
 	s.Status = &v
 	return s
 }
 
-func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetUpdateTime(v int64) *QueryIntlFixedPriceOrderListResponseBodyModule {
+func (s *QueryIntlFixedPriceOrderListResponseBodyModuleData) SetUpdateTime(v int64) *QueryIntlFixedPriceOrderListResponseBodyModuleData {
 	s.UpdateTime = &v
 	return s
 }
 
-func (s *QueryIntlFixedPriceOrderListResponseBodyModule) SetUserId(v string) *QueryIntlFixedPriceOrderListResponseBodyModule {
+func (s *QueryIntlFixedPriceOrderListResponseBodyModuleData) SetUserId(v string) *QueryIntlFixedPriceOrderListResponseBodyModuleData {
 	s.UserId = &v
 	return s
 }
@@ -17266,6 +17283,129 @@ func (s *SaveBatchTaskForReserveDropListDomainResponse) SetBody(v *SaveBatchTask
 	return s
 }
 
+type SaveBatchTaskForTransferOutByAuthorizationCodeRequest struct {
+	// example:
+	//
+	// en
+	Long *string `json:"Long,omitempty" xml:"Long,omitempty"`
+	// This parameter is required.
+	TransferOutParamList []*SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList `json:"TransferOutParamList,omitempty" xml:"TransferOutParamList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s SaveBatchTaskForTransferOutByAuthorizationCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForTransferOutByAuthorizationCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeRequest) SetLong(v string) *SaveBatchTaskForTransferOutByAuthorizationCodeRequest {
+	s.Long = &v
+	return s
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeRequest) SetTransferOutParamList(v []*SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList) *SaveBatchTaskForTransferOutByAuthorizationCodeRequest {
+	s.TransferOutParamList = v
+	return s
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeRequest) SetUserClientIp(v string) *SaveBatchTaskForTransferOutByAuthorizationCodeRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList struct {
+	// example:
+	//
+	// Test2o#Lck
+	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList) SetAuthorizationCode(v string) *SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList {
+	s.AuthorizationCode = &v
+	return s
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList) SetDomainName(v string) *SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList {
+	s.DomainName = &v
+	return s
+}
+
+type SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody struct {
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody) SetRequestId(v string) *SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody) SetTaskNo(v string) *SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+type SaveBatchTaskForTransferOutByAuthorizationCodeResponse struct {
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SaveBatchTaskForTransferOutByAuthorizationCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForTransferOutByAuthorizationCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeResponse) SetHeaders(v map[string]*string) *SaveBatchTaskForTransferOutByAuthorizationCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeResponse) SetStatusCode(v int32) *SaveBatchTaskForTransferOutByAuthorizationCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveBatchTaskForTransferOutByAuthorizationCodeResponse) SetBody(v *SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody) *SaveBatchTaskForTransferOutByAuthorizationCodeResponse {
+	s.Body = v
+	return s
+}
+
 type SaveBatchTaskForTransferProhibitionLockRequest struct {
 	// This parameter is required.
 	//
@@ -21484,6 +21624,115 @@ func (s *SaveSingleTaskForSynchronizingDnsHostResponse) SetStatusCode(v int32) *
 }
 
 func (s *SaveSingleTaskForSynchronizingDnsHostResponse) SetBody(v *SaveSingleTaskForSynchronizingDnsHostResponseBody) *SaveSingleTaskForSynchronizingDnsHostResponse {
+	s.Body = v
+	return s
+}
+
+type SaveSingleTaskForTransferOutByAuthorizationCodeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test2o#Lck
+	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s SaveSingleTaskForTransferOutByAuthorizationCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForTransferOutByAuthorizationCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeRequest) SetAuthorizationCode(v string) *SaveSingleTaskForTransferOutByAuthorizationCodeRequest {
+	s.AuthorizationCode = &v
+	return s
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeRequest) SetDomainName(v string) *SaveSingleTaskForTransferOutByAuthorizationCodeRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeRequest) SetLang(v string) *SaveSingleTaskForTransferOutByAuthorizationCodeRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeRequest) SetUserClientIp(v string) *SaveSingleTaskForTransferOutByAuthorizationCodeRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody struct {
+	// example:
+	//
+	// C560A803-B975-481D-A66B-A4395EA863A1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody) SetRequestId(v string) *SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody) SetTaskNo(v string) *SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+type SaveSingleTaskForTransferOutByAuthorizationCodeResponse struct {
+	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SaveSingleTaskForTransferOutByAuthorizationCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForTransferOutByAuthorizationCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeResponse) SetHeaders(v map[string]*string) *SaveSingleTaskForTransferOutByAuthorizationCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeResponse) SetStatusCode(v int32) *SaveSingleTaskForTransferOutByAuthorizationCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveSingleTaskForTransferOutByAuthorizationCodeResponse) SetBody(v *SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody) *SaveSingleTaskForTransferOutByAuthorizationCodeResponse {
 	s.Body = v
 	return s
 }
@@ -30479,6 +30728,74 @@ func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTa
 
 // Summary:
 //
+// 基于转移码的批量转出任务提交
+//
+// @param request - SaveBatchTaskForTransferOutByAuthorizationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForTransferOutByAuthorizationCodeResponse
+func (client *Client) SaveBatchTaskForTransferOutByAuthorizationCodeWithOptions(request *SaveBatchTaskForTransferOutByAuthorizationCodeRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForTransferOutByAuthorizationCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Long)) {
+		query["Long"] = request.Long
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransferOutParamList)) {
+		query["TransferOutParamList"] = request.TransferOutParamList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveBatchTaskForTransferOutByAuthorizationCode"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveBatchTaskForTransferOutByAuthorizationCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于转移码的批量转出任务提交
+//
+// @param request - SaveBatchTaskForTransferOutByAuthorizationCodeRequest
+//
+// @return SaveBatchTaskForTransferOutByAuthorizationCodeResponse
+func (client *Client) SaveBatchTaskForTransferOutByAuthorizationCode(request *SaveBatchTaskForTransferOutByAuthorizationCodeRequest) (_result *SaveBatchTaskForTransferOutByAuthorizationCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveBatchTaskForTransferOutByAuthorizationCodeResponse{}
+	_body, _err := client.SaveBatchTaskForTransferOutByAuthorizationCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 保存批量任务-开启/关闭禁止转移锁
 //
 // @param request - SaveBatchTaskForTransferProhibitionLockRequest
@@ -33018,6 +33335,78 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHost(request *SaveSingleT
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForSynchronizingDnsHostResponse{}
 	_body, _err := client.SaveSingleTaskForSynchronizingDnsHostWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于转移码的单个转出任务提交
+//
+// @param request - SaveSingleTaskForTransferOutByAuthorizationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForTransferOutByAuthorizationCodeResponse
+func (client *Client) SaveSingleTaskForTransferOutByAuthorizationCodeWithOptions(request *SaveSingleTaskForTransferOutByAuthorizationCodeRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForTransferOutByAuthorizationCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationCode)) {
+		query["AuthorizationCode"] = request.AuthorizationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveSingleTaskForTransferOutByAuthorizationCode"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveSingleTaskForTransferOutByAuthorizationCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于转移码的单个转出任务提交
+//
+// @param request - SaveSingleTaskForTransferOutByAuthorizationCodeRequest
+//
+// @return SaveSingleTaskForTransferOutByAuthorizationCodeResponse
+func (client *Client) SaveSingleTaskForTransferOutByAuthorizationCode(request *SaveSingleTaskForTransferOutByAuthorizationCodeRequest) (_result *SaveSingleTaskForTransferOutByAuthorizationCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveSingleTaskForTransferOutByAuthorizationCodeResponse{}
+	_body, _err := client.SaveSingleTaskForTransferOutByAuthorizationCodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
