@@ -31971,6 +31971,148 @@ func (s *ModifyFlowLogAttributeResponse) SetBody(v *ModifyFlowLogAttributeRespon
 	return s
 }
 
+type ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tm-u9nxup5kww5po8****
+	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	// example:
+	//
+	// descriptiontest
+	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tm-rule-fa9kgq1e90rmhc****
+	TrafficMatchRuleId *string `json:"TrafficMatchRuleId,omitempty" xml:"TrafficMatchRuleId,omitempty"`
+	// example:
+	//
+	// nametest
+	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
+}
+
+func (s ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetClientToken(v string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetDryRun(v bool) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetOwnerAccount(v string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetOwnerId(v int64) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetResourceOwnerAccount(v string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetResourceOwnerId(v int64) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMarkingPolicyId(v string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.TrafficMarkingPolicyId = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRuleDescription(v string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.TrafficMatchRuleDescription = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRuleId(v string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.TrafficMatchRuleId = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRuleName(v string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest {
+	s.TrafficMatchRuleName = &v
+	return s
+}
+
+type ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody struct {
+	// example:
+	//
+	// 13526224-5780-4426-8ADF-BC8B08700F23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody) SetRequestId(v string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse) SetHeaders(v map[string]*string) *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse) SetStatusCode(v int32) *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse) SetBody(v *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody) *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyTransitRouterCidrRequest struct {
 	// The new CIDR block of the transit router.
 	//
@@ -50781,6 +50923,102 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyFlowLogAttributeResponse{}
 	_body, _err := client.ModifyFlowLogAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑流分类规则的名称和描述
+//
+// @param request - ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
+func (client *Client) ModifyTrafficMatchRuleToTrafficMarkingPolicyWithOptions(request *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyId)) {
+		query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMatchRuleDescription)) {
+		query["TrafficMatchRuleDescription"] = request.TrafficMatchRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMatchRuleId)) {
+		query["TrafficMatchRuleId"] = request.TrafficMatchRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMatchRuleName)) {
+		query["TrafficMatchRuleName"] = request.TrafficMatchRuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTrafficMatchRuleToTrafficMarkingPolicy"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑流分类规则的名称和描述
+//
+// @param request - ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
+//
+// @return ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
+func (client *Client) ModifyTrafficMatchRuleToTrafficMarkingPolicy(request *ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest) (_result *ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse{}
+	_body, _err := client.ModifyTrafficMatchRuleToTrafficMarkingPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
