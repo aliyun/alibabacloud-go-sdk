@@ -2071,6 +2071,148 @@ func (s *DeepfakeDetectResponse) SetBody(v *DeepfakeDetectResponseBody) *Deepfak
 	return s
 }
 
+type DeleteFaceVerifyResultRequest struct {
+	// example:
+	//
+	// shae18209d29ce4e8ba252caae98ab15
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// Y
+	DeleteAfterQuery *string `json:"DeleteAfterQuery,omitempty" xml:"DeleteAfterQuery,omitempty"`
+}
+
+func (s DeleteFaceVerifyResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFaceVerifyResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFaceVerifyResultRequest) SetCertifyId(v string) *DeleteFaceVerifyResultRequest {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *DeleteFaceVerifyResultRequest) SetDeleteAfterQuery(v string) *DeleteFaceVerifyResultRequest {
+	s.DeleteAfterQuery = &v
+	return s
+}
+
+type DeleteFaceVerifyResultResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *DeleteFaceVerifyResultResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s DeleteFaceVerifyResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFaceVerifyResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFaceVerifyResultResponseBody) SetCode(v string) *DeleteFaceVerifyResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteFaceVerifyResultResponseBody) SetMessage(v string) *DeleteFaceVerifyResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteFaceVerifyResultResponseBody) SetRequestId(v string) *DeleteFaceVerifyResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFaceVerifyResultResponseBody) SetResultObject(v *DeleteFaceVerifyResultResponseBodyResultObject) *DeleteFaceVerifyResultResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type DeleteFaceVerifyResultResponseBodyResultObject struct {
+	// example:
+	//
+	// sha58aeae7ea2f5ed069530f58df4e6d
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// N
+	DeleteResult *string `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
+	// example:
+	//
+	// NOT_DELETE_REPEATEDLY
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+}
+
+func (s DeleteFaceVerifyResultResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFaceVerifyResultResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFaceVerifyResultResponseBodyResultObject) SetCertifyId(v string) *DeleteFaceVerifyResultResponseBodyResultObject {
+	s.CertifyId = &v
+	return s
+}
+
+func (s *DeleteFaceVerifyResultResponseBodyResultObject) SetDeleteResult(v string) *DeleteFaceVerifyResultResponseBodyResultObject {
+	s.DeleteResult = &v
+	return s
+}
+
+func (s *DeleteFaceVerifyResultResponseBodyResultObject) SetFailReason(v string) *DeleteFaceVerifyResultResponseBodyResultObject {
+	s.FailReason = &v
+	return s
+}
+
+type DeleteFaceVerifyResultResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFaceVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFaceVerifyResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFaceVerifyResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFaceVerifyResultResponse) SetHeaders(v map[string]*string) *DeleteFaceVerifyResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFaceVerifyResultResponse) SetStatusCode(v int32) *DeleteFaceVerifyResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFaceVerifyResultResponse) SetBody(v *DeleteFaceVerifyResultResponseBody) *DeleteFaceVerifyResultResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDeviceInfoRequest struct {
 	// example:
 	//
@@ -8378,6 +8520,70 @@ func (client *Client) DeepfakeDetect(request *DeepfakeDetectRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeepfakeDetectResponse{}
 	_body, _err := client.DeepfakeDetectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 金融级服务敏感数据删除接口
+//
+// @param request - DeleteFaceVerifyResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFaceVerifyResultResponse
+func (client *Client) DeleteFaceVerifyResultWithOptions(request *DeleteFaceVerifyResultRequest, runtime *util.RuntimeOptions) (_result *DeleteFaceVerifyResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeleteAfterQuery)) {
+		query["DeleteAfterQuery"] = request.DeleteAfterQuery
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFaceVerifyResult"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFaceVerifyResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 金融级服务敏感数据删除接口
+//
+// @param request - DeleteFaceVerifyResultRequest
+//
+// @return DeleteFaceVerifyResultResponse
+func (client *Client) DeleteFaceVerifyResult(request *DeleteFaceVerifyResultRequest) (_result *DeleteFaceVerifyResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFaceVerifyResultResponse{}
+	_body, _err := client.DeleteFaceVerifyResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
