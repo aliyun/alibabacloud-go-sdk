@@ -1508,7 +1508,8 @@ type CreateServiceRequestServiceInfo struct {
 	// example:
 	//
 	// TiDB是A公司自主设计、研发的开源分布式关系型数据库。
-	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	ShortDescription *string                                     `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	Softwares        []*CreateServiceRequestServiceInfoSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
 }
 
 func (s CreateServiceRequestServiceInfo) String() string {
@@ -1549,6 +1550,11 @@ func (s *CreateServiceRequestServiceInfo) SetShortDescription(v string) *CreateS
 	return s
 }
 
+func (s *CreateServiceRequestServiceInfo) SetSoftwares(v []*CreateServiceRequestServiceInfoSoftwares) *CreateServiceRequestServiceInfo {
+	s.Softwares = v
+	return s
+}
+
 type CreateServiceRequestServiceInfoAgreements struct {
 	// Protocol name.
 	//
@@ -1579,6 +1585,29 @@ func (s *CreateServiceRequestServiceInfoAgreements) SetName(v string) *CreateSer
 
 func (s *CreateServiceRequestServiceInfoAgreements) SetUrl(v string) *CreateServiceRequestServiceInfoAgreements {
 	s.Url = &v
+	return s
+}
+
+type CreateServiceRequestServiceInfoSoftwares struct {
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CreateServiceRequestServiceInfoSoftwares) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceRequestServiceInfoSoftwares) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceRequestServiceInfoSoftwares) SetName(v string) *CreateServiceRequestServiceInfoSoftwares {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceRequestServiceInfoSoftwares) SetVersion(v string) *CreateServiceRequestServiceInfoSoftwares {
+	s.Version = &v
 	return s
 }
 
@@ -4627,7 +4656,8 @@ type GetServiceResponseBodyServiceInfos struct {
 	// example:
 	//
 	// B是A公司自主设计并研发的开源分布式的关系型数据库
-	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	ShortDescription *string                                        `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	Softwares        []*GetServiceResponseBodyServiceInfosSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceResponseBodyServiceInfos) String() string {
@@ -4668,6 +4698,11 @@ func (s *GetServiceResponseBodyServiceInfos) SetShortDescription(v string) *GetS
 	return s
 }
 
+func (s *GetServiceResponseBodyServiceInfos) SetSoftwares(v []*GetServiceResponseBodyServiceInfosSoftwares) *GetServiceResponseBodyServiceInfos {
+	s.Softwares = v
+	return s
+}
+
 type GetServiceResponseBodyServiceInfosAgreements struct {
 	// The agreement name.
 	//
@@ -4698,6 +4733,29 @@ func (s *GetServiceResponseBodyServiceInfosAgreements) SetName(v string) *GetSer
 
 func (s *GetServiceResponseBodyServiceInfosAgreements) SetUrl(v string) *GetServiceResponseBodyServiceInfosAgreements {
 	s.Url = &v
+	return s
+}
+
+type GetServiceResponseBodyServiceInfosSoftwares struct {
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetServiceResponseBodyServiceInfosSoftwares) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyServiceInfosSoftwares) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyServiceInfosSoftwares) SetName(v string) *GetServiceResponseBodyServiceInfosSoftwares {
+	s.Name = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfosSoftwares) SetVersion(v string) *GetServiceResponseBodyServiceInfosSoftwares {
+	s.Version = &v
 	return s
 }
 
@@ -12609,7 +12667,8 @@ type UpdateServiceRequestServiceInfo struct {
 	// example:
 	//
 	// B是A公司自主设计并研发的开源分布式的关系型数据库
-	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	ShortDescription *string                                     `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	Softwares        []*UpdateServiceRequestServiceInfoSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServiceRequestServiceInfo) String() string {
@@ -12650,6 +12709,11 @@ func (s *UpdateServiceRequestServiceInfo) SetShortDescription(v string) *UpdateS
 	return s
 }
 
+func (s *UpdateServiceRequestServiceInfo) SetSoftwares(v []*UpdateServiceRequestServiceInfoSoftwares) *UpdateServiceRequestServiceInfo {
+	s.Softwares = v
+	return s
+}
+
 type UpdateServiceRequestServiceInfoAgreements struct {
 	// Protocol name.
 	//
@@ -12680,6 +12744,29 @@ func (s *UpdateServiceRequestServiceInfoAgreements) SetName(v string) *UpdateSer
 
 func (s *UpdateServiceRequestServiceInfoAgreements) SetUrl(v string) *UpdateServiceRequestServiceInfoAgreements {
 	s.Url = &v
+	return s
+}
+
+type UpdateServiceRequestServiceInfoSoftwares struct {
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s UpdateServiceRequestServiceInfoSoftwares) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequestServiceInfoSoftwares) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestServiceInfoSoftwares) SetName(v string) *UpdateServiceRequestServiceInfoSoftwares {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateServiceRequestServiceInfoSoftwares) SetVersion(v string) *UpdateServiceRequestServiceInfoSoftwares {
+	s.Version = &v
 	return s
 }
 
@@ -13079,7 +13166,8 @@ type UpdateServiceShrinkRequestServiceInfo struct {
 	// example:
 	//
 	// B是A公司自主设计并研发的开源分布式的关系型数据库
-	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	ShortDescription *string                                           `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	Softwares        []*UpdateServiceShrinkRequestServiceInfoSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServiceShrinkRequestServiceInfo) String() string {
@@ -13120,6 +13208,11 @@ func (s *UpdateServiceShrinkRequestServiceInfo) SetShortDescription(v string) *U
 	return s
 }
 
+func (s *UpdateServiceShrinkRequestServiceInfo) SetSoftwares(v []*UpdateServiceShrinkRequestServiceInfoSoftwares) *UpdateServiceShrinkRequestServiceInfo {
+	s.Softwares = v
+	return s
+}
+
 type UpdateServiceShrinkRequestServiceInfoAgreements struct {
 	// Protocol name.
 	//
@@ -13150,6 +13243,29 @@ func (s *UpdateServiceShrinkRequestServiceInfoAgreements) SetName(v string) *Upd
 
 func (s *UpdateServiceShrinkRequestServiceInfoAgreements) SetUrl(v string) *UpdateServiceShrinkRequestServiceInfoAgreements {
 	s.Url = &v
+	return s
+}
+
+type UpdateServiceShrinkRequestServiceInfoSoftwares struct {
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s UpdateServiceShrinkRequestServiceInfoSoftwares) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceShrinkRequestServiceInfoSoftwares) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceShrinkRequestServiceInfoSoftwares) SetName(v string) *UpdateServiceShrinkRequestServiceInfoSoftwares {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequestServiceInfoSoftwares) SetVersion(v string) *UpdateServiceShrinkRequestServiceInfoSoftwares {
+	s.Version = &v
 	return s
 }
 
