@@ -814,8 +814,9 @@ type AuthorizeInstanceGroupRequest struct {
 	// example:
 	//
 	// CloudApp
-	ProductType        *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
+	ProductType        *string                                `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	UnAuthorizeUserIds []*string                              `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
+	UserMeta           *AuthorizeInstanceGroupRequestUserMeta `json:"UserMeta,omitempty" xml:"UserMeta,omitempty" type:"Struct"`
 }
 
 func (s AuthorizeInstanceGroupRequest) String() string {
@@ -843,6 +844,85 @@ func (s *AuthorizeInstanceGroupRequest) SetProductType(v string) *AuthorizeInsta
 
 func (s *AuthorizeInstanceGroupRequest) SetUnAuthorizeUserIds(v []*string) *AuthorizeInstanceGroupRequest {
 	s.UnAuthorizeUserIds = v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupRequest) SetUserMeta(v *AuthorizeInstanceGroupRequestUserMeta) *AuthorizeInstanceGroupRequest {
+	s.UserMeta = v
+	return s
+}
+
+type AuthorizeInstanceGroupRequestUserMeta struct {
+	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AuthorizeInstanceGroupRequestUserMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeInstanceGroupRequestUserMeta) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeInstanceGroupRequestUserMeta) SetAdDomain(v string) *AuthorizeInstanceGroupRequestUserMeta {
+	s.AdDomain = &v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupRequestUserMeta) SetType(v string) *AuthorizeInstanceGroupRequestUserMeta {
+	s.Type = &v
+	return s
+}
+
+type AuthorizeInstanceGroupShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AuthorizeUserIds   []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType        *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
+	UserMetaShrink     *string   `json:"UserMeta,omitempty" xml:"UserMeta,omitempty"`
+}
+
+func (s AuthorizeInstanceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeInstanceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeInstanceGroupShrinkRequest) SetAppInstanceGroupId(v string) *AuthorizeInstanceGroupShrinkRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupShrinkRequest) SetAuthorizeUserIds(v []*string) *AuthorizeInstanceGroupShrinkRequest {
+	s.AuthorizeUserIds = v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupShrinkRequest) SetProductType(v string) *AuthorizeInstanceGroupShrinkRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupShrinkRequest) SetUnAuthorizeUserIds(v []*string) *AuthorizeInstanceGroupShrinkRequest {
+	s.UnAuthorizeUserIds = v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupShrinkRequest) SetUserMetaShrink(v string) *AuthorizeInstanceGroupShrinkRequest {
+	s.UserMetaShrink = &v
 	return s
 }
 
@@ -1328,8 +1408,7 @@ type CreateAppInstanceGroupRequest struct {
 	// example:
 	//
 	// img-8z4nztpaqvay4****
-	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	// This parameter is required.
+	AppCenterImageId     *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// example:
 	//
@@ -1520,11 +1599,13 @@ type CreateAppInstanceGroupRequestNetwork struct {
 	//
 	// 60
 	IpExpireMinutes *int32                                        `json:"IpExpireMinutes,omitempty" xml:"IpExpireMinutes,omitempty"`
+	OfficeSiteId    *string                                       `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	Routes          []*CreateAppInstanceGroupRequestNetworkRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Shared
-	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	StrategyType *string   `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	VSwitchIds   []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateAppInstanceGroupRequestNetwork) String() string {
@@ -1545,6 +1626,11 @@ func (s *CreateAppInstanceGroupRequestNetwork) SetIpExpireMinutes(v int32) *Crea
 	return s
 }
 
+func (s *CreateAppInstanceGroupRequestNetwork) SetOfficeSiteId(v string) *CreateAppInstanceGroupRequestNetwork {
+	s.OfficeSiteId = &v
+	return s
+}
+
 func (s *CreateAppInstanceGroupRequestNetwork) SetRoutes(v []*CreateAppInstanceGroupRequestNetworkRoutes) *CreateAppInstanceGroupRequestNetwork {
 	s.Routes = v
 	return s
@@ -1552,6 +1638,11 @@ func (s *CreateAppInstanceGroupRequestNetwork) SetRoutes(v []*CreateAppInstanceG
 
 func (s *CreateAppInstanceGroupRequestNetwork) SetStrategyType(v string) *CreateAppInstanceGroupRequestNetwork {
 	s.StrategyType = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestNetwork) SetVSwitchIds(v []*string) *CreateAppInstanceGroupRequestNetwork {
+	s.VSwitchIds = v
 	return s
 }
 
@@ -1960,8 +2051,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// example:
 	//
 	// img-8z4nztpaqvay4****
-	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	// This parameter is required.
+	AppCenterImageId     *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// example:
 	//
@@ -3258,8 +3348,9 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// 1
-	MinAmount *int32                                                           `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
-	NodePool  []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	MinAmount    *int32                                                           `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	NodePool     []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	OfficeSiteId *string                                                          `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// example:
 	//
 	// Windows
@@ -3404,6 +3495,11 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetMinAmount(v i
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetNodePool(v []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.NodePool = v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetOfficeSiteId(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.OfficeSiteId = &v
 	return s
 }
 
@@ -5575,6 +5671,7 @@ type ListAppInstanceGroupRequest struct {
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	OfficeSiteId     *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// example:
 	//
 	// 1
@@ -5628,6 +5725,11 @@ func (s *ListAppInstanceGroupRequest) SetBizRegionId(v string) *ListAppInstanceG
 
 func (s *ListAppInstanceGroupRequest) SetNodeInstanceType(v string) *ListAppInstanceGroupRequest {
 	s.NodeInstanceType = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupRequest) SetOfficeSiteId(v string) *ListAppInstanceGroupRequest {
+	s.OfficeSiteId = &v
 	return s
 }
 
@@ -5759,8 +5861,9 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// 1
-	MinAmount *int32                                                            `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
-	NodePool  []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	MinAmount    *int32                                                            `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	NodePool     []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	OfficeSiteId *string                                                           `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// example:
 	//
 	// Windows
@@ -5895,6 +5998,11 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetMinAmount(v 
 
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetNodePool(v []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.NodePool = v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetOfficeSiteId(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.OfficeSiteId = &v
 	return s
 }
 
@@ -6613,17 +6721,23 @@ type ListNodeInstanceTypeRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	BizRegionId *string  `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	Cpu         *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Gpu         *float32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuMemory   *int32   `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
 	// 语言类型。
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Memory   *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
-	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	NodeInstanceType       *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
+	OrderBy                *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// 支持的操作系统类型。
 	//
 	// example:
@@ -6648,6 +6762,7 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SortType    *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 
 func (s ListNodeInstanceTypeRequest) String() string {
@@ -6663,13 +6778,43 @@ func (s *ListNodeInstanceTypeRequest) SetBizRegionId(v string) *ListNodeInstance
 	return s
 }
 
+func (s *ListNodeInstanceTypeRequest) SetCpu(v float32) *ListNodeInstanceTypeRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListNodeInstanceTypeRequest) SetGpu(v float32) *ListNodeInstanceTypeRequest {
+	s.Gpu = &v
+	return s
+}
+
+func (s *ListNodeInstanceTypeRequest) SetGpuMemory(v int32) *ListNodeInstanceTypeRequest {
+	s.GpuMemory = &v
+	return s
+}
+
 func (s *ListNodeInstanceTypeRequest) SetLanguage(v string) *ListNodeInstanceTypeRequest {
 	s.Language = &v
 	return s
 }
 
+func (s *ListNodeInstanceTypeRequest) SetMemory(v int32) *ListNodeInstanceTypeRequest {
+	s.Memory = &v
+	return s
+}
+
 func (s *ListNodeInstanceTypeRequest) SetNodeInstanceType(v string) *ListNodeInstanceTypeRequest {
 	s.NodeInstanceType = &v
+	return s
+}
+
+func (s *ListNodeInstanceTypeRequest) SetNodeInstanceTypeFamily(v string) *ListNodeInstanceTypeRequest {
+	s.NodeInstanceTypeFamily = &v
+	return s
+}
+
+func (s *ListNodeInstanceTypeRequest) SetOrderBy(v string) *ListNodeInstanceTypeRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -6690,6 +6835,11 @@ func (s *ListNodeInstanceTypeRequest) SetPageSize(v int32) *ListNodeInstanceType
 
 func (s *ListNodeInstanceTypeRequest) SetProductType(v string) *ListNodeInstanceTypeRequest {
 	s.ProductType = &v
+	return s
+}
+
+func (s *ListNodeInstanceTypeRequest) SetSortType(v string) *ListNodeInstanceTypeRequest {
+	s.SortType = &v
 	return s
 }
 
@@ -10540,16 +10690,22 @@ func (client *Client) AskSessionPackageRenewPrice(request *AskSessionPackageRene
 //
 // 授权用户
 //
-// @param request - AuthorizeInstanceGroupRequest
+// @param tmpReq - AuthorizeInstanceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AuthorizeInstanceGroupResponse
-func (client *Client) AuthorizeInstanceGroupWithOptions(request *AuthorizeInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *AuthorizeInstanceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) AuthorizeInstanceGroupWithOptions(tmpReq *AuthorizeInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *AuthorizeInstanceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &AuthorizeInstanceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserMeta)) {
+		request.UserMetaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserMeta, tea.String("UserMeta"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
 		body["AppInstanceGroupId"] = request.AppInstanceGroupId
@@ -10566,6 +10722,10 @@ func (client *Client) AuthorizeInstanceGroupWithOptions(request *AuthorizeInstan
 
 	if !tea.BoolValue(util.IsUnset(request.UnAuthorizeUserIds)) {
 		bodyFlat["UnAuthorizeUserIds"] = request.UnAuthorizeUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserMetaShrink)) {
+		body["UserMeta"] = request.UserMetaShrink
 	}
 
 	body = tea.ToMap(body,
@@ -12150,6 +12310,10 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 		query["NodeInstanceType"] = request.NodeInstanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OfficeSiteId)) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -12318,12 +12482,36 @@ func (client *Client) ListNodeInstanceTypeWithOptions(request *ListNodeInstanceT
 		query["BizRegionId"] = request.BizRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		query["Cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gpu)) {
+		query["Gpu"] = request.Gpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuMemory)) {
+		query["GpuMemory"] = request.GpuMemory
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Memory)) {
+		query["Memory"] = request.Memory
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeInstanceType)) {
 		query["NodeInstanceType"] = request.NodeInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeInstanceTypeFamily)) {
+		query["NodeInstanceTypeFamily"] = request.NodeInstanceTypeFamily
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OsType)) {
@@ -12340,6 +12528,10 @@ func (client *Client) ListNodeInstanceTypeWithOptions(request *ListNodeInstanceT
 
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
 		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
 	}
 
 	req := &openapi.OpenApiRequest{
