@@ -1821,6 +1821,7 @@ func (s *DeleteImagesFromLibResponse) SetBody(v *DeleteImagesFromLibResponseBody
 }
 
 type DeleteKeywordRequest struct {
+	KeywordIdList *string `json:"KeywordIdList,omitempty" xml:"KeywordIdList,omitempty"`
 	// example:
 	//
 	// [16754493]
@@ -1841,6 +1842,11 @@ func (s DeleteKeywordRequest) String() string {
 
 func (s DeleteKeywordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteKeywordRequest) SetKeywordIdList(v string) *DeleteKeywordRequest {
+	s.KeywordIdList = &v
+	return s
 }
 
 func (s *DeleteKeywordRequest) SetKeywordIds(v string) *DeleteKeywordRequest {
@@ -10971,6 +10977,10 @@ func (client *Client) DeleteKeywordWithOptions(request *DeleteKeywordRequest, ru
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeywordIdList)) {
+		body["KeywordIdList"] = request.KeywordIdList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KeywordIds)) {
 		body["KeywordIds"] = request.KeywordIds
 	}
