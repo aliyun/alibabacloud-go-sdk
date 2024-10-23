@@ -1968,7 +1968,7 @@ type GPUConfig struct {
 	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// example:
 	//
-	// fc.gpu.ampere.1
+	// fc.gpu.tesla.1
 	GpuType *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
 }
 
@@ -5033,6 +5033,10 @@ func (s *UpdateTriggerInput) SetTriggerConfig(v string) *UpdateTriggerInput {
 type VPCConfig struct {
 	// example:
 	//
+	// acs:ram::188077086902****:role/fc-test
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
 	// sg-bp18hj1wtxgy3b0***
 	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	VSwitchIds      []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
@@ -5048,6 +5052,11 @@ func (s VPCConfig) String() string {
 
 func (s VPCConfig) GoString() string {
 	return s.String()
+}
+
+func (s *VPCConfig) SetRole(v string) *VPCConfig {
+	s.Role = &v
+	return s
 }
 
 func (s *VPCConfig) SetSecurityGroupId(v string) *VPCConfig {
@@ -5411,7 +5420,7 @@ func (s *CreateTriggerResponse) SetBody(v *Trigger) *CreateTriggerResponse {
 }
 
 type CreateVpcBindingRequest struct {
-	// The configurations of the virtual private cloud (VPC) binding.
+	// The VPC binding configurations.
 	//
 	// This parameter is required.
 	Body *CreateVpcBindingInput `json:"body,omitempty" xml:"body,omitempty"`
@@ -5917,7 +5926,7 @@ func (s *GetCustomDomainResponse) SetBody(v *CustomDomain) *GetCustomDomainRespo
 }
 
 type GetFunctionRequest struct {
-	// The version or alias of the function.
+	// 2023-03-10T10:10:10Z
 	//
 	// example:
 	//
@@ -6429,7 +6438,7 @@ type ListAsyncTasksRequest struct {
 	//
 	// true
 	IncludePayload *bool `json:"includePayload,omitempty" xml:"includePayload,omitempty"`
-	// The number of asynchronous tasks to return. Valid values: [1,100]. Default value: 50.
+	// The number of asynchronous tasks to return. Valid values: [1,100]. Default value: 20.
 	//
 	// example:
 	//
@@ -6803,6 +6812,8 @@ func (s *ListFunctionVersionsResponse) SetBody(v *ListVersionsOutput) *ListFunct
 }
 
 type ListFunctionsRequest struct {
+	// The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 2.0 and Function Compute 3.0 are listed.
+	//
 	// example:
 	//
 	// v3
@@ -8265,7 +8276,7 @@ func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequ
 //
 // Description:
 //
-// If you wish to access applications or functions created in Function Compute via a fixed domain name in a production environment, or if you need to address the forced download behavior when accessing HTTP triggers, you can achieve this by binding a custom domain to your application or function.
+// If you want to use a fixed domain name to access an application or function in a production environment of Function Compute, or to resolve the issue of forced downloads when accessing an HTTP trigger, you can bind a custom domain name to the application or function.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -8309,7 +8320,7 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 //
 // Description:
 //
-// If you wish to access applications or functions created in Function Compute via a fixed domain name in a production environment, or if you need to address the forced download behavior when accessing HTTP triggers, you can achieve this by binding a custom domain to your application or function.
+// If you want to use a fixed domain name to access an application or function in a production environment of Function Compute, or to resolve the issue of forced downloads when accessing an HTTP trigger, you can bind a custom domain name to the application or function.
 //
 // @param request - CreateCustomDomainRequest
 //
@@ -8332,7 +8343,7 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 //
 // Description:
 //
-// In Function Compute, a function serves as the smallest unit of resource scheduling and execution, typically referring to a piece of code written by users that can execute independently in response to specific events or requests.
+// Resources of Function Compute are scheduled and run based on functions. A function usually refers to a code snippet that is written by a user and can be independently executed to respond to events and requests.
 //
 // @param request - CreateFunctionRequest
 //
@@ -8376,7 +8387,7 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 //
 // Description:
 //
-// In Function Compute, a function serves as the smallest unit of resource scheduling and execution, typically referring to a piece of code written by users that can execute independently in response to specific events or requests.
+// Resources of Function Compute are scheduled and run based on functions. A function usually refers to a code snippet that is written by a user and can be independently executed to respond to events and requests.
 //
 // @param request - CreateFunctionRequest
 //
@@ -9378,7 +9389,7 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 
 // Summary:
 //
-// Queries information about a function.
+// http://pre.hhht/#vpc
 //
 // @param request - GetFunctionRequest
 //
@@ -9423,7 +9434,7 @@ func (client *Client) GetFunctionWithOptions(functionName *string, request *GetF
 
 // Summary:
 //
-// Queries information about a function.
+// http://pre.hhht/#vpc
 //
 // @param request - GetFunctionRequest
 //
