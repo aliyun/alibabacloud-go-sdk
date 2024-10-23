@@ -51766,13 +51766,17 @@ func (s *QueryGroupLiveInfoShrinkHeaders) SetAccountContextShrink(v string) *Que
 }
 
 type QueryGroupLiveInfoRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
-	// Eijxxx
+	// 333d
 	AnchorUnionId *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// 123456
+	// 4d38xxxxx
 	LiveUuid      *string                                 `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
 	TenantContext *QueryGroupLiveInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
@@ -51821,13 +51825,17 @@ func (s *QueryGroupLiveInfoRequestTenantContext) SetTenantId(v string) *QueryGro
 }
 
 type QueryGroupLiveInfoShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
-	// Eijxxx
+	// 333d
 	AnchorUnionId *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// 123456
+	// 4d38xxxxx
 	LiveUuid            *string `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }
@@ -51888,6 +51896,7 @@ type QueryGroupLiveInfoResponseBody struct {
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	StaffId   *string `json:"staffId,omitempty" xml:"staffId,omitempty"`
 	// example:
 	//
 	// 1687924800000
@@ -51900,9 +51909,15 @@ type QueryGroupLiveInfoResponseBody struct {
 	// example:
 	//
 	// 10
-	Uv              *int32  `json:"uv,omitempty" xml:"uv,omitempty"`
+	Uv *int32 `json:"uv,omitempty" xml:"uv,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
-	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 }
 
 func (s QueryGroupLiveInfoResponseBody) String() string {
@@ -51955,6 +51970,11 @@ func (s *QueryGroupLiveInfoResponseBody) SetPlaybackDuration(v int64) *QueryGrou
 
 func (s *QueryGroupLiveInfoResponseBody) SetRequestId(v string) *QueryGroupLiveInfoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetStaffId(v string) *QueryGroupLiveInfoResponseBody {
+	s.StaffId = &v
 	return s
 }
 
@@ -86870,7 +86890,7 @@ func (client *Client) QueryDentry(request *QueryDentryRequest) (_result *QueryDe
 
 // Summary:
 //
-// 查询直播信息
+// 查询群直播详情
 //
 // @param tmpReq - QueryGroupLiveInfoRequest
 //
@@ -86896,16 +86916,15 @@ func (client *Client) QueryGroupLiveInfoWithOptions(tmpReq *QueryGroupLiveInfoRe
 		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
 	}
 
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AnchorUnionId)) {
-		query["AnchorUnionId"] = request.AnchorUnionId
+		body["AnchorUnionId"] = request.AnchorUnionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LiveUuid)) {
-		query["LiveUuid"] = request.LiveUuid
+		body["LiveUuid"] = request.LiveUuid
 	}
 
-	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
 		body["TenantContext"] = request.TenantContextShrink
 	}
@@ -86921,7 +86940,6 @@ func (client *Client) QueryGroupLiveInfoWithOptions(tmpReq *QueryGroupLiveInfoRe
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -86929,7 +86947,7 @@ func (client *Client) QueryGroupLiveInfoWithOptions(tmpReq *QueryGroupLiveInfoRe
 		Version:     tea.String("2023-04-26"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/dingtalk/v1/ysp/queryGroupLiveInfo"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("formData"),
@@ -86946,7 +86964,7 @@ func (client *Client) QueryGroupLiveInfoWithOptions(tmpReq *QueryGroupLiveInfoRe
 
 // Summary:
 //
-// 查询直播信息
+// 查询群直播详情
 //
 // @param request - QueryGroupLiveInfoRequest
 //
