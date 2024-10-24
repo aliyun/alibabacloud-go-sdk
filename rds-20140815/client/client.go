@@ -1126,6 +1126,122 @@ func (s *CalculateDBInstanceWeightResponse) SetBody(v *CalculateDBInstanceWeight
 	return s
 }
 
+type CancelActiveOperationTasksRequest struct {
+	// List of IDs for batch cancellation, separated by English commas (,). It is recommended to not exceed 25 at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 188****,188****,188****
+	Ids                  *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CancelActiveOperationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksRequest) SetIds(v string) *CancelActiveOperationTasksRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetOwnerAccount(v string) *CancelActiveOperationTasksRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetOwnerId(v int64) *CancelActiveOperationTasksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetResourceOwnerAccount(v string) *CancelActiveOperationTasksRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetResourceOwnerId(v int64) *CancelActiveOperationTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetSecurityToken(v string) *CancelActiveOperationTasksRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CancelActiveOperationTasksResponseBody struct {
+	// Batch cancellation task IDs, separated by English commas (,).
+	//
+	// example:
+	//
+	// 188****,188****,188****
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// A807C95D-410C-5BB5-96C0-C6E09F2C3D36
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelActiveOperationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksResponseBody) SetIds(v string) *CancelActiveOperationTasksResponseBody {
+	s.Ids = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponseBody) SetRequestId(v string) *CancelActiveOperationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelActiveOperationTasksResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelActiveOperationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksResponse) SetHeaders(v map[string]*string) *CancelActiveOperationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponse) SetStatusCode(v int32) *CancelActiveOperationTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponse) SetBody(v *CancelActiveOperationTasksResponseBody) *CancelActiveOperationTasksResponse {
+	s.Body = v
+	return s
+}
+
 type CheckAccountNameAvailableRequest struct {
 	// The username of the account.
 	//
@@ -51852,7 +51968,8 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// m-2oqiu973jwcxe****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The private IP addresses of the instance in the classic network.
-	InnerIpAddress *DescribeRCInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	InnerIpAddress     *DescribeRCInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	InstanceChargeType *string                                                `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -51942,7 +52059,8 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// EA2D4F34-01A7-46EB-A339-D80882135206
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The security groups.
 	SecurityGroupIds *DescribeRCInstanceAttributeResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
 	// The serial number of the instance.
@@ -52093,6 +52211,11 @@ func (s *DescribeRCInstanceAttributeResponseBody) SetInnerIpAddress(v *DescribeR
 	return s
 }
 
+func (s *DescribeRCInstanceAttributeResponseBody) SetInstanceChargeType(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.InstanceChargeType = &v
+	return s
+}
+
 func (s *DescribeRCInstanceAttributeResponseBody) SetInstanceId(v string) *DescribeRCInstanceAttributeResponseBody {
 	s.InstanceId = &v
 	return s
@@ -52160,6 +52283,11 @@ func (s *DescribeRCInstanceAttributeResponseBody) SetRegionId(v string) *Describ
 
 func (s *DescribeRCInstanceAttributeResponseBody) SetRequestId(v string) *DescribeRCInstanceAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetResourceGroupId(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -52613,6 +52741,7 @@ type DescribeRCInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The virtual private cloud (VPC) ID.
 	//
 	// example:
@@ -52646,6 +52775,11 @@ func (s *DescribeRCInstancesRequest) SetPageSize(v int32) *DescribeRCInstancesRe
 
 func (s *DescribeRCInstancesRequest) SetRegionId(v string) *DescribeRCInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCInstancesRequest) SetTag(v string) *DescribeRCInstancesRequest {
+	s.Tag = &v
 	return s
 }
 
@@ -52723,6 +52857,7 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// testrdscustom
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CreateMode  *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The database type.
 	//
 	// example:
@@ -52752,7 +52887,8 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	// example:
 	//
 	// i-2zeaiz4g9u23f40m****
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	HostName           *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -52804,6 +52940,11 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) SetClusterName(v string) *D
 	return s
 }
 
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetCreateMode(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.CreateMode = &v
+	return s
+}
+
 func (s *DescribeRCInstancesResponseBodyRCInstances) SetDbType(v string) *DescribeRCInstancesResponseBodyRCInstances {
 	s.DbType = &v
 	return s
@@ -52826,6 +52967,11 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) SetHostIp(v string) *Descri
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) SetHostName(v string) *DescribeRCInstancesResponseBodyRCInstances {
 	s.HostName = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetInstanceChargeType(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.InstanceChargeType = &v
 	return s
 }
 
@@ -52907,7 +53053,7 @@ type DescribeRCMetricListRequest struct {
 	//
 	// 1000
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The metric that you want to use. For more information, see [CloudMonitor metrics](javascript:void\\(0\\)).
+	// The metric that you want to use. For more information, see [CloudMonitor metrics](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	//
 	// This parameter is required.
 	//
@@ -69691,7 +69837,8 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType                 *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ReadOnlyDBInstanceClass *string `json:"ReadOnlyDBInstanceClass,omitempty" xml:"ReadOnlyDBInstanceClass,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -69860,6 +70007,11 @@ func (s *ModifyDBInstanceSpecRequest) SetOwnerId(v int64) *ModifyDBInstanceSpecR
 
 func (s *ModifyDBInstanceSpecRequest) SetPayType(v string) *ModifyDBInstanceSpecRequest {
 	s.PayType = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetReadOnlyDBInstanceClass(v string) *ModifyDBInstanceSpecRequest {
+	s.ReadOnlyDBInstanceClass = &v
 	return s
 }
 
@@ -70200,7 +70352,8 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// example:
 	//
 	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType                 *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ReadOnlyDBInstanceClass *string `json:"ReadOnlyDBInstanceClass,omitempty" xml:"ReadOnlyDBInstanceClass,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -70369,6 +70522,11 @@ func (s *ModifyDBInstanceSpecShrinkRequest) SetOwnerId(v int64) *ModifyDBInstanc
 
 func (s *ModifyDBInstanceSpecShrinkRequest) SetPayType(v string) *ModifyDBInstanceSpecShrinkRequest {
 	s.PayType = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecShrinkRequest) SetReadOnlyDBInstanceClass(v string) *ModifyDBInstanceSpecShrinkRequest {
+	s.ReadOnlyDBInstanceClass = &v
 	return s
 }
 
@@ -80609,6 +80767,7 @@ type RunRCInstancesRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateMode  *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The information about the data disks.
 	DataDisk []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	// The deployment set ID.
@@ -80632,7 +80791,8 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The ID of the image used by the instance.
 	//
 	// example:
@@ -80712,7 +80872,8 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
@@ -80729,6 +80890,7 @@ type RunRCInstancesRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The specification of the system disk.
 	SystemDisk *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	Tag        []*RunRCInstancesRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
 	//
 	// >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
@@ -80777,6 +80939,11 @@ func (s *RunRCInstancesRequest) SetClientToken(v string) *RunRCInstancesRequest 
 	return s
 }
 
+func (s *RunRCInstancesRequest) SetCreateMode(v string) *RunRCInstancesRequest {
+	s.CreateMode = &v
+	return s
+}
+
 func (s *RunRCInstancesRequest) SetDataDisk(v []*RunRCInstancesRequestDataDisk) *RunRCInstancesRequest {
 	s.DataDisk = v
 	return s
@@ -80794,6 +80961,11 @@ func (s *RunRCInstancesRequest) SetDescription(v string) *RunRCInstancesRequest 
 
 func (s *RunRCInstancesRequest) SetDryRun(v bool) *RunRCInstancesRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetHostName(v string) *RunRCInstancesRequest {
+	s.HostName = &v
 	return s
 }
 
@@ -80857,6 +81029,11 @@ func (s *RunRCInstancesRequest) SetRegionId(v string) *RunRCInstancesRequest {
 	return s
 }
 
+func (s *RunRCInstancesRequest) SetResourceGroupId(v string) *RunRCInstancesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *RunRCInstancesRequest) SetSecurityEnhancementStrategy(v string) *RunRCInstancesRequest {
 	s.SecurityEnhancementStrategy = &v
 	return s
@@ -80869,6 +81046,11 @@ func (s *RunRCInstancesRequest) SetSecurityGroupId(v string) *RunRCInstancesRequ
 
 func (s *RunRCInstancesRequest) SetSystemDisk(v *RunRCInstancesRequestSystemDisk) *RunRCInstancesRequest {
 	s.SystemDisk = v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetTag(v []*RunRCInstancesRequestTag) *RunRCInstancesRequest {
+	s.Tag = v
 	return s
 }
 
@@ -80985,6 +81167,29 @@ func (s *RunRCInstancesRequestSystemDisk) SetSize(v string) *RunRCInstancesReque
 	return s
 }
 
+type RunRCInstancesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s RunRCInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesRequestTag) SetKey(v string) *RunRCInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestTag) SetValue(v string) *RunRCInstancesRequestTag {
+	s.Value = &v
+	return s
+}
+
 type RunRCInstancesShrinkRequest struct {
 	// The number of RDS Custom instances that you want to create. The parameter is available if you want to create multiple RDS Custom instances at a time.
 	//
@@ -81024,6 +81229,7 @@ type RunRCInstancesShrinkRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateMode  *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The information about the data disks.
 	DataDiskShrink *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
 	// The deployment set ID.
@@ -81047,7 +81253,8 @@ type RunRCInstancesShrinkRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The ID of the image used by the instance.
 	//
 	// example:
@@ -81127,7 +81334,8 @@ type RunRCInstancesShrinkRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
@@ -81143,7 +81351,8 @@ type RunRCInstancesShrinkRequest struct {
 	// sg-uf6av412xaxixuezol6w
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The specification of the system disk.
-	SystemDiskShrink *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	SystemDiskShrink *string                           `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	Tag              []*RunRCInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
 	//
 	// >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
@@ -81192,6 +81401,11 @@ func (s *RunRCInstancesShrinkRequest) SetClientToken(v string) *RunRCInstancesSh
 	return s
 }
 
+func (s *RunRCInstancesShrinkRequest) SetCreateMode(v string) *RunRCInstancesShrinkRequest {
+	s.CreateMode = &v
+	return s
+}
+
 func (s *RunRCInstancesShrinkRequest) SetDataDiskShrink(v string) *RunRCInstancesShrinkRequest {
 	s.DataDiskShrink = &v
 	return s
@@ -81209,6 +81423,11 @@ func (s *RunRCInstancesShrinkRequest) SetDescription(v string) *RunRCInstancesSh
 
 func (s *RunRCInstancesShrinkRequest) SetDryRun(v bool) *RunRCInstancesShrinkRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetHostName(v string) *RunRCInstancesShrinkRequest {
+	s.HostName = &v
 	return s
 }
 
@@ -81272,6 +81491,11 @@ func (s *RunRCInstancesShrinkRequest) SetRegionId(v string) *RunRCInstancesShrin
 	return s
 }
 
+func (s *RunRCInstancesShrinkRequest) SetResourceGroupId(v string) *RunRCInstancesShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *RunRCInstancesShrinkRequest) SetSecurityEnhancementStrategy(v string) *RunRCInstancesShrinkRequest {
 	s.SecurityEnhancementStrategy = &v
 	return s
@@ -81287,6 +81511,11 @@ func (s *RunRCInstancesShrinkRequest) SetSystemDiskShrink(v string) *RunRCInstan
 	return s
 }
 
+func (s *RunRCInstancesShrinkRequest) SetTag(v []*RunRCInstancesShrinkRequestTag) *RunRCInstancesShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *RunRCInstancesShrinkRequest) SetVSwitchId(v string) *RunRCInstancesShrinkRequest {
 	s.VSwitchId = &v
 	return s
@@ -81294,6 +81523,29 @@ func (s *RunRCInstancesShrinkRequest) SetVSwitchId(v string) *RunRCInstancesShri
 
 func (s *RunRCInstancesShrinkRequest) SetZoneId(v string) *RunRCInstancesShrinkRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type RunRCInstancesShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s RunRCInstancesShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunRCInstancesShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesShrinkRequestTag) SetKey(v string) *RunRCInstancesShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequestTag) SetValue(v string) *RunRCInstancesShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -85487,6 +85739,154 @@ func (client *Client) CalculateDBInstanceWeight(request *CalculateDBInstanceWeig
 	runtime := &util.RuntimeOptions{}
 	_result = &CalculateDBInstanceWeightResponse{}
 	_body, _err := client.CalculateDBInstanceWeightWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// This interface is used to cancel maintenance tasks that have not yet started.
+//
+// Description:
+//
+// ### Supported Engines
+//
+// - RDS MySQL
+//
+// - RDS PostgreSQL
+//
+// - RDS SQL Server
+//
+// - RDS MariaDB
+//
+// ### Related Function Documentation
+//
+// 	Notice: Before using this interface, please carefully read the function documentation to ensure you fully understand the prerequisites and the impact of using the interface before proceeding with the operation.
+//
+// - [RDS MySQL Scheduled Events](https://help.aliyun.com/document_detail/104183.html)
+//
+// - [RDS PostgreSQL Scheduled Events](https://help.aliyun.com/document_detail/104452.html)
+//
+// - [RDS SQL Server Scheduled Events](https://help.aliyun.com/document_detail/104451.html)
+//
+// - [RDS MariaDB Scheduled Events](https://help.aliyun.com/document_detail/104454.html)
+//
+// ### Usage Restrictions
+//
+// The task cannot be canceled under the following conditions:
+//
+// - `allowCancel` is 0.
+//
+// - The current time is later than the task start time.
+//
+// - The task status is not 3 (waiting for execution).
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelActiveOperationTasksResponse
+func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelActiveOperationTasks"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// This interface is used to cancel maintenance tasks that have not yet started.
+//
+// Description:
+//
+// ### Supported Engines
+//
+// - RDS MySQL
+//
+// - RDS PostgreSQL
+//
+// - RDS SQL Server
+//
+// - RDS MariaDB
+//
+// ### Related Function Documentation
+//
+// 	Notice: Before using this interface, please carefully read the function documentation to ensure you fully understand the prerequisites and the impact of using the interface before proceeding with the operation.
+//
+// - [RDS MySQL Scheduled Events](https://help.aliyun.com/document_detail/104183.html)
+//
+// - [RDS PostgreSQL Scheduled Events](https://help.aliyun.com/document_detail/104452.html)
+//
+// - [RDS SQL Server Scheduled Events](https://help.aliyun.com/document_detail/104451.html)
+//
+// - [RDS MariaDB Scheduled Events](https://help.aliyun.com/document_detail/104454.html)
+//
+// ### Usage Restrictions
+//
+// The task cannot be canceled under the following conditions:
+//
+// - `allowCancel` is 0.
+//
+// - The current time is later than the task start time.
+//
+// - The task status is not 3 (waiting for execution).
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @return CancelActiveOperationTasksResponse
+func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationTasksRequest) (_result *CancelActiveOperationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CancelActiveOperationTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -103821,6 +104221,10 @@ func (client *Client) DescribeRCInstancesWithOptions(request *DescribeRCInstance
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
 		query["VpcId"] = request.VpcId
 	}
@@ -112073,6 +112477,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 		query["PayType"] = request.PayType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyDBInstanceClass)) {
+		query["ReadOnlyDBInstanceClass"] = request.ReadOnlyDBInstanceClass
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -113312,7 +113720,9 @@ func (client *Client) ModifyDasInstanceConfig(request *ModifyDasInstanceConfigRe
 //
 // ### [](#)References
 //
-// You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+// <props="china">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+//
+// <props="intl">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html).
 //
 // > : Before you call this operation, read the preceding topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
@@ -113394,7 +113804,9 @@ func (client *Client) ModifyDatabaseConfigWithOptions(request *ModifyDatabaseCon
 //
 // ### [](#)References
 //
-// You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+// <props="china">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+//
+// <props="intl">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html).
 //
 // > : Before you call this operation, read the preceding topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
@@ -118441,6 +118853,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreateMode)) {
+		query["CreateMode"] = request.CreateMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DataDiskShrink)) {
 		query["DataDisk"] = request.DataDiskShrink
 	}
@@ -118455,6 +118871,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
@@ -118505,6 +118925,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecurityEnhancementStrategy)) {
 		query["SecurityEnhancementStrategy"] = request.SecurityEnhancementStrategy
 	}
@@ -118515,6 +118939,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.SystemDiskShrink)) {
 		query["SystemDisk"] = request.SystemDiskShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
