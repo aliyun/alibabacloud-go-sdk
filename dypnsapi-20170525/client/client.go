@@ -1162,6 +1162,10 @@ func (s *DescribeVerifySchemeResponse) SetBody(v *DescribeVerifySchemeResponseBo
 }
 
 type GetAuthTokenRequest struct {
+	BizType   *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CmApiCode *int32 `json:"CmApiCode,omitempty" xml:"CmApiCode,omitempty"`
+	CtApiCode *int32 `json:"CtApiCode,omitempty" xml:"CtApiCode,omitempty"`
+	CuApiCode *int32 `json:"CuApiCode,omitempty" xml:"CuApiCode,omitempty"`
 	// The requested domain name.
 	//
 	// This parameter is required.
@@ -1181,7 +1185,8 @@ type GetAuthTokenRequest struct {
 	// example:
 	//
 	// https://www.aliyundoc.com/
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetAuthTokenRequest) String() string {
@@ -1190,6 +1195,26 @@ func (s GetAuthTokenRequest) String() string {
 
 func (s GetAuthTokenRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetAuthTokenRequest) SetBizType(v int32) *GetAuthTokenRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetAuthTokenRequest) SetCmApiCode(v int32) *GetAuthTokenRequest {
+	s.CmApiCode = &v
+	return s
+}
+
+func (s *GetAuthTokenRequest) SetCtApiCode(v int32) *GetAuthTokenRequest {
+	s.CtApiCode = &v
+	return s
+}
+
+func (s *GetAuthTokenRequest) SetCuApiCode(v int32) *GetAuthTokenRequest {
+	s.CuApiCode = &v
+	return s
 }
 
 func (s *GetAuthTokenRequest) SetOrigin(v string) *GetAuthTokenRequest {
@@ -1219,6 +1244,11 @@ func (s *GetAuthTokenRequest) SetSceneCode(v string) *GetAuthTokenRequest {
 
 func (s *GetAuthTokenRequest) SetUrl(v string) *GetAuthTokenRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *GetAuthTokenRequest) SetVersion(v string) *GetAuthTokenRequest {
+	s.Version = &v
 	return s
 }
 
@@ -5140,6 +5170,22 @@ func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CmApiCode)) {
+		query["CmApiCode"] = request.CmApiCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CtApiCode)) {
+		query["CtApiCode"] = request.CtApiCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CuApiCode)) {
+		query["CuApiCode"] = request.CuApiCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Origin)) {
 		query["Origin"] = request.Origin
 	}
@@ -5162,6 +5208,10 @@ func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
