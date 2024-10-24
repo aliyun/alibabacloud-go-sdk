@@ -2157,6 +2157,230 @@ func (s *CreateDatasetLabelsResponse) SetBody(v *CreateDatasetLabelsResponseBody
 	return s
 }
 
+type CreateDatasetVersionRequest struct {
+	// example:
+	//
+	// 300
+	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// example:
+	//
+	// 19000
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// OSS
+	DataSourceType *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels         []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {
+	//
+	//   "mountPath": "/mnt/data/"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// DIRECTORY
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// d-a0xbe5n03bhqof46ce
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// USER
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateDatasetVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetVersionRequest) SetDataCount(v int64) *CreateDatasetVersionRequest {
+	s.DataCount = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetDataSize(v int64) *CreateDatasetVersionRequest {
+	s.DataSize = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetDataSourceType(v string) *CreateDatasetVersionRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetDescription(v string) *CreateDatasetVersionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetLabels(v []*Label) *CreateDatasetVersionRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetOptions(v string) *CreateDatasetVersionRequest {
+	s.Options = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetProperty(v string) *CreateDatasetVersionRequest {
+	s.Property = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetSourceId(v string) *CreateDatasetVersionRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetSourceType(v string) *CreateDatasetVersionRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetUri(v string) *CreateDatasetVersionRequest {
+	s.Uri = &v
+	return s
+}
+
+type CreateDatasetVersionResponseBody struct {
+	// example:
+	//
+	// v1
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateDatasetVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetVersionResponseBody) SetVersionName(v string) *CreateDatasetVersionResponseBody {
+	s.VersionName = &v
+	return s
+}
+
+func (s *CreateDatasetVersionResponseBody) SetRequestId(v string) *CreateDatasetVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDatasetVersionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDatasetVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDatasetVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetVersionResponse) SetHeaders(v map[string]*string) *CreateDatasetVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetVersionResponse) SetStatusCode(v int32) *CreateDatasetVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatasetVersionResponse) SetBody(v *CreateDatasetVersionResponseBody) *CreateDatasetVersionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDatasetVersionLabelsRequest struct {
+	// This parameter is required.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s CreateDatasetVersionLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetVersionLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetVersionLabelsRequest) SetLabels(v []*Label) *CreateDatasetVersionLabelsRequest {
+	s.Labels = v
+	return s
+}
+
+type CreateDatasetVersionLabelsResponseBody struct {
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateDatasetVersionLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetVersionLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetVersionLabelsResponseBody) SetRequestId(v string) *CreateDatasetVersionLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDatasetVersionLabelsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDatasetVersionLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDatasetVersionLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetVersionLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetVersionLabelsResponse) SetHeaders(v map[string]*string) *CreateDatasetVersionLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetVersionLabelsResponse) SetStatusCode(v int32) *CreateDatasetVersionLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatasetVersionLabelsResponse) SetBody(v *CreateDatasetVersionLabelsResponseBody) *CreateDatasetVersionLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateExperimentRequest struct {
 	// example:
 	//
@@ -3793,6 +4017,126 @@ func (s *DeleteDatasetLabelsResponse) SetBody(v *DeleteDatasetLabelsResponseBody
 	return s
 }
 
+type DeleteDatasetVersionResponseBody struct {
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteDatasetVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetVersionResponseBody) SetRequestId(v string) *DeleteDatasetVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatasetVersionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDatasetVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDatasetVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetVersionResponse) SetHeaders(v map[string]*string) *DeleteDatasetVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetVersionResponse) SetStatusCode(v int32) *DeleteDatasetVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetVersionResponse) SetBody(v *DeleteDatasetVersionResponseBody) *DeleteDatasetVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDatasetVersionLabelsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1,key2
+	Keys *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+}
+
+func (s DeleteDatasetVersionLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetVersionLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetVersionLabelsRequest) SetKeys(v string) *DeleteDatasetVersionLabelsRequest {
+	s.Keys = &v
+	return s
+}
+
+type DeleteDatasetVersionLabelsResponseBody struct {
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteDatasetVersionLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetVersionLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetVersionLabelsResponseBody) SetRequestId(v string) *DeleteDatasetVersionLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatasetVersionLabelsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDatasetVersionLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDatasetVersionLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetVersionLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetVersionLabelsResponse) SetHeaders(v map[string]*string) *DeleteDatasetVersionLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetVersionLabelsResponse) SetStatusCode(v int32) *DeleteDatasetVersionLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetVersionLabelsResponse) SetBody(v *DeleteDatasetVersionLabelsResponseBody) *DeleteDatasetVersionLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteExperimentResponseBody struct {
 	// example:
 	//
@@ -4879,6 +5223,61 @@ func (s *GetDatasetResponse) SetStatusCode(v int32) *GetDatasetResponse {
 }
 
 func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatasetVersionResponseBody struct {
+	DatasetVersion *DatasetVersion `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetDatasetVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetVersionResponseBody) SetDatasetVersion(v *DatasetVersion) *GetDatasetVersionResponseBody {
+	s.DatasetVersion = v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetRequestId(v string) *GetDatasetVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDatasetVersionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatasetVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatasetVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetVersionResponse) SetHeaders(v map[string]*string) *GetDatasetVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatasetVersionResponse) SetStatusCode(v int32) *GetDatasetVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponse) SetBody(v *GetDatasetVersionResponseBody) *GetDatasetVersionResponse {
 	s.Body = v
 	return s
 }
@@ -6442,6 +6841,193 @@ func (s *ListCodeSourcesResponse) SetStatusCode(v int32) *ListCodeSourcesRespons
 }
 
 func (s *ListCodeSourcesResponse) SetBody(v *ListCodeSourcesResponseBody) *ListCodeSourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatasetVersionsRequest struct {
+	// example:
+	//
+	// OSS
+	DataSourcesTypes *string `json:"DataSourcesTypes,omitempty" xml:"DataSourcesTypes,omitempty"`
+	// example:
+	//
+	// key1,key2
+	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+	// example:
+	//
+	// value1,value2
+	LableValues *string `json:"LableValues,omitempty" xml:"LableValues,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// DIRECTORY
+	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// d-a0xbe5n03bhqof46ce
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// USER
+	SourceTypes *string `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty"`
+}
+
+func (s ListDatasetVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetVersionsRequest) SetDataSourcesTypes(v string) *ListDatasetVersionsRequest {
+	s.DataSourcesTypes = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetLabelKeys(v string) *ListDatasetVersionsRequest {
+	s.LabelKeys = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetLableValues(v string) *ListDatasetVersionsRequest {
+	s.LableValues = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetOrder(v string) *ListDatasetVersionsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetPageNumber(v int32) *ListDatasetVersionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetPageSize(v int32) *ListDatasetVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetProperties(v string) *ListDatasetVersionsRequest {
+	s.Properties = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetSortBy(v string) *ListDatasetVersionsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetSourceId(v string) *ListDatasetVersionsRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListDatasetVersionsRequest) SetSourceTypes(v string) *ListDatasetVersionsRequest {
+	s.SourceTypes = &v
+	return s
+}
+
+type ListDatasetVersionsResponseBody struct {
+	DatasetVersions []*DatasetVersion `json:"DatasetVersions,omitempty" xml:"DatasetVersions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListDatasetVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetVersionsResponseBody) SetDatasetVersions(v []*DatasetVersion) *ListDatasetVersionsResponseBody {
+	s.DatasetVersions = v
+	return s
+}
+
+func (s *ListDatasetVersionsResponseBody) SetPageNumber(v int32) *ListDatasetVersionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasetVersionsResponseBody) SetPageSize(v int32) *ListDatasetVersionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetVersionsResponseBody) SetTotalCount(v int32) *ListDatasetVersionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListDatasetVersionsResponseBody) SetRequestId(v string) *ListDatasetVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDatasetVersionsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatasetVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatasetVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetVersionsResponse) SetHeaders(v map[string]*string) *ListDatasetVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatasetVersionsResponse) SetStatusCode(v int32) *ListDatasetVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatasetVersionsResponse) SetBody(v *ListDatasetVersionsResponseBody) *ListDatasetVersionsResponse {
 	s.Body = v
 	return s
 }
@@ -10203,6 +10789,103 @@ func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDat
 	return s
 }
 
+type UpdateDatasetVersionRequest struct {
+	// example:
+	//
+	// 100
+	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// example:
+	//
+	// 100000
+	DataSize    *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "mountPath": "/mnt/data/"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+}
+
+func (s UpdateDatasetVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetVersionRequest) SetDataCount(v int64) *UpdateDatasetVersionRequest {
+	s.DataCount = &v
+	return s
+}
+
+func (s *UpdateDatasetVersionRequest) SetDataSize(v int64) *UpdateDatasetVersionRequest {
+	s.DataSize = &v
+	return s
+}
+
+func (s *UpdateDatasetVersionRequest) SetDescription(v string) *UpdateDatasetVersionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDatasetVersionRequest) SetOptions(v string) *UpdateDatasetVersionRequest {
+	s.Options = &v
+	return s
+}
+
+type UpdateDatasetVersionResponseBody struct {
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateDatasetVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetVersionResponseBody) SetRequestId(v string) *UpdateDatasetVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDatasetVersionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDatasetVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDatasetVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetVersionResponse) SetHeaders(v map[string]*string) *UpdateDatasetVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDatasetVersionResponse) SetStatusCode(v int32) *UpdateDatasetVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDatasetVersionResponse) SetBody(v *UpdateDatasetVersionResponseBody) *UpdateDatasetVersionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDefaultWorkspaceRequest struct {
 	// example:
 	//
@@ -11509,6 +12192,170 @@ func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateData
 
 // Summary:
 //
+// 创建数据集版本
+//
+// @param request - CreateDatasetVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetVersionResponse
+func (client *Client) CreateDatasetVersionWithOptions(DatasetId *string, request *CreateDatasetVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDatasetVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataCount)) {
+		body["DataCount"] = request.DataCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSize)) {
+		body["DataSize"] = request.DataSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Property)) {
+		body["Property"] = request.Property
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDatasetVersion"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/versions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集版本
+//
+// @param request - CreateDatasetVersionRequest
+//
+// @return CreateDatasetVersionResponse
+func (client *Client) CreateDatasetVersion(DatasetId *string, request *CreateDatasetVersionRequest) (_result *CreateDatasetVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDatasetVersionResponse{}
+	_body, _err := client.CreateDatasetVersionWithOptions(DatasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集版本的标签
+//
+// @param request - CreateDatasetVersionLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetVersionLabelsResponse
+func (client *Client) CreateDatasetVersionLabelsWithOptions(DatasetId *string, VersionName *string, request *CreateDatasetVersionLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDatasetVersionLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDatasetVersionLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName)) + "/labels"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatasetVersionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集版本的标签
+//
+// @param request - CreateDatasetVersionLabelsRequest
+//
+// @return CreateDatasetVersionLabelsResponse
+func (client *Client) CreateDatasetVersionLabels(DatasetId *string, VersionName *string, request *CreateDatasetVersionLabelsRequest) (_result *CreateDatasetVersionLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDatasetVersionLabelsResponse{}
+	_body, _err := client.CreateDatasetVersionLabelsWithOptions(DatasetId, VersionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建实验
 //
 // @param request - CreateExperimentRequest
@@ -12473,6 +13320,120 @@ func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteData
 
 // Summary:
 //
+// 删除指定版本的数据集信息，如果删除的版本是该数据集的仅存版本，版本删除后会联动删除dataset 表中的数据集信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetVersionResponse
+func (client *Client) DeleteDatasetVersionWithOptions(DatasetId *string, VersionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDatasetVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDatasetVersion"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定版本的数据集信息，如果删除的版本是该数据集的仅存版本，版本删除后会联动删除dataset 表中的数据集信息
+//
+// @return DeleteDatasetVersionResponse
+func (client *Client) DeleteDatasetVersion(DatasetId *string, VersionName *string) (_result *DeleteDatasetVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDatasetVersionResponse{}
+	_body, _err := client.DeleteDatasetVersionWithOptions(DatasetId, VersionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集版本的标签。
+//
+// @param request - DeleteDatasetVersionLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetVersionLabelsResponse
+func (client *Client) DeleteDatasetVersionLabelsWithOptions(DatasetId *string, VersionName *string, request *DeleteDatasetVersionLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDatasetVersionLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keys)) {
+		query["Keys"] = request.Keys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDatasetVersionLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName)) + "/labels"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatasetVersionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集版本的标签。
+//
+// @param request - DeleteDatasetVersionLabelsRequest
+//
+// @return DeleteDatasetVersionLabelsResponse
+func (client *Client) DeleteDatasetVersionLabels(DatasetId *string, VersionName *string, request *DeleteDatasetVersionLabelsRequest) (_result *DeleteDatasetVersionLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDatasetVersionLabelsResponse{}
+	_body, _err := client.DeleteDatasetVersionLabelsWithOptions(DatasetId, VersionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除实验
 //
 // @param headers - map
@@ -13199,6 +14160,56 @@ func (client *Client) GetDataset(DatasetId *string) (_result *GetDatasetResponse
 
 // Summary:
 //
+// 获取指定版本的数据集信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetVersionResponse
+func (client *Client) GetDatasetVersionWithOptions(DatasetId *string, VersionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatasetVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatasetVersion"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定版本的数据集信息
+//
+// @return GetDatasetVersionResponse
+func (client *Client) GetDatasetVersion(DatasetId *string, VersionName *string) (_result *GetDatasetVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDatasetVersionResponse{}
+	_body, _err := client.GetDatasetVersionWithOptions(DatasetId, VersionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取默认工作空间
 //
 // @param request - GetDefaultWorkspaceRequest
@@ -13838,6 +14849,106 @@ func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &ListCodeSourcesResponse{}
 	_body, _err := client.ListCodeSourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集版本列表
+//
+// @param request - ListDatasetVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetVersionsResponse
+func (client *Client) ListDatasetVersionsWithOptions(DatasetId *string, request *ListDatasetVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasetVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourcesTypes)) {
+		query["DataSourcesTypes"] = request.DataSourcesTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelKeys)) {
+		query["LabelKeys"] = request.LabelKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LableValues)) {
+		query["LableValues"] = request.LableValues
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Properties)) {
+		query["Properties"] = request.Properties
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypes)) {
+		query["SourceTypes"] = request.SourceTypes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatasetVersions"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/versions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatasetVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集版本列表
+//
+// @param request - ListDatasetVersionsRequest
+//
+// @return ListDatasetVersionsResponse
+func (client *Client) ListDatasetVersions(DatasetId *string, request *ListDatasetVersionsRequest) (_result *ListDatasetVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDatasetVersionsResponse{}
+	_body, _err := client.ListDatasetVersionsWithOptions(DatasetId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15706,6 +16817,82 @@ func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetReq
 	headers := make(map[string]*string)
 	_result = &UpdateDatasetResponse{}
 	_body, _err := client.UpdateDatasetWithOptions(DatasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新指定版本的数据集信息
+//
+// @param request - UpdateDatasetVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetVersionResponse
+func (client *Client) UpdateDatasetVersionWithOptions(DatasetId *string, VersionName *string, request *UpdateDatasetVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDatasetVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataCount)) {
+		body["DataCount"] = request.DataCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSize)) {
+		body["DataSize"] = request.DataSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["Options"] = request.Options
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDatasetVersion"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新指定版本的数据集信息
+//
+// @param request - UpdateDatasetVersionRequest
+//
+// @return UpdateDatasetVersionResponse
+func (client *Client) UpdateDatasetVersion(DatasetId *string, VersionName *string, request *UpdateDatasetVersionRequest) (_result *UpdateDatasetVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDatasetVersionResponse{}
+	_body, _err := client.UpdateDatasetVersionWithOptions(DatasetId, VersionName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
