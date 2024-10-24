@@ -2,7 +2,6 @@
 package client
 
 import (
-	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -2412,7 +2411,8 @@ type ListAnchorRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
 	// example:
 	//
 	// offlineSynthesis
@@ -2449,6 +2449,11 @@ func (s *ListAnchorRequest) SetPageNumber(v int32) *ListAnchorRequest {
 
 func (s *ListAnchorRequest) SetPageSize(v int32) *ListAnchorRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAnchorRequest) SetResSpecType(v string) *ListAnchorRequest {
+	s.ResSpecType = &v
 	return s
 }
 
@@ -2863,7 +2868,8 @@ type ListVoiceModelsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
 	// example:
 	//
 	// offlineSynthesis
@@ -2889,6 +2895,11 @@ func (s *ListVoiceModelsRequest) SetPageNumber(v int32) *ListVoiceModelsRequest 
 
 func (s *ListVoiceModelsRequest) SetPageSize(v int32) *ListVoiceModelsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListVoiceModelsRequest) SetResSpecType(v string) *ListVoiceModelsRequest {
+	s.ResSpecType = &v
 	return s
 }
 
@@ -3004,6 +3015,113 @@ func (s *ListVoiceModelsResponse) SetBody(v *ListVoiceModelsResponseBody) *ListV
 	return s
 }
 
+type OperateAvatarProjectRequest struct {
+	// example:
+	//
+	// DELETE
+	OperateType *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
+	// example:
+	//
+	// 812907463682949120
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// example:
+	//
+	// 1
+	ResChannelNumber *int32 `json:"resChannelNumber,omitempty" xml:"resChannelNumber,omitempty"`
+	// example:
+	//
+	// FREE
+	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+}
+
+func (s OperateAvatarProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateAvatarProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OperateAvatarProjectRequest) SetOperateType(v string) *OperateAvatarProjectRequest {
+	s.OperateType = &v
+	return s
+}
+
+func (s *OperateAvatarProjectRequest) SetProjectId(v string) *OperateAvatarProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *OperateAvatarProjectRequest) SetResChannelNumber(v int32) *OperateAvatarProjectRequest {
+	s.ResChannelNumber = &v
+	return s
+}
+
+func (s *OperateAvatarProjectRequest) SetResType(v string) *OperateAvatarProjectRequest {
+	s.ResType = &v
+	return s
+}
+
+type OperateAvatarProjectResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s OperateAvatarProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateAvatarProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OperateAvatarProjectResponseBody) SetRequestId(v string) *OperateAvatarProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OperateAvatarProjectResponseBody) SetSuccess(v bool) *OperateAvatarProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OperateAvatarProjectResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OperateAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s OperateAvatarProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperateAvatarProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OperateAvatarProjectResponse) SetHeaders(v map[string]*string) *OperateAvatarProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OperateAvatarProjectResponse) SetStatusCode(v int32) *OperateAvatarProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OperateAvatarProjectResponse) SetBody(v *OperateAvatarProjectResponseBody) *OperateAvatarProjectResponse {
+	s.Body = v
+	return s
+}
+
 type QueryAvatarProjectRequest struct {
 	// example:
 	//
@@ -3032,7 +3150,8 @@ type QueryAvatarProjectResponseBody struct {
 	// example:
 	//
 	// error
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	ErrorMsg *string                                 `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Frames   []*QueryAvatarProjectResponseBodyFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
 	// example:
 	//
 	// doc_test_3
@@ -3040,7 +3159,9 @@ type QueryAvatarProjectResponseBody struct {
 	// example:
 	//
 	// 2C331582-7390-5949-8D9A-AC8239185B37
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId   *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	ScaleType   *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
 	// example:
 	//
 	// DEPLOYING
@@ -3065,6 +3186,11 @@ func (s *QueryAvatarProjectResponseBody) SetErrorMsg(v string) *QueryAvatarProje
 	return s
 }
 
+func (s *QueryAvatarProjectResponseBody) SetFrames(v []*QueryAvatarProjectResponseBodyFrames) *QueryAvatarProjectResponseBody {
+	s.Frames = v
+	return s
+}
+
 func (s *QueryAvatarProjectResponseBody) SetProjectName(v string) *QueryAvatarProjectResponseBody {
 	s.ProjectName = &v
 	return s
@@ -3075,8 +3201,140 @@ func (s *QueryAvatarProjectResponseBody) SetRequestId(v string) *QueryAvatarProj
 	return s
 }
 
+func (s *QueryAvatarProjectResponseBody) SetResSpecType(v string) *QueryAvatarProjectResponseBody {
+	s.ResSpecType = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBody) SetScaleType(v string) *QueryAvatarProjectResponseBody {
+	s.ScaleType = &v
+	return s
+}
+
 func (s *QueryAvatarProjectResponseBody) SetStatus(v string) *QueryAvatarProjectResponseBody {
 	s.Status = &v
+	return s
+}
+
+type QueryAvatarProjectResponseBodyFrames struct {
+	Layers      []*QueryAvatarProjectResponseBodyFramesLayers    `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	VideoScript *QueryAvatarProjectResponseBodyFramesVideoScript `json:"videoScript,omitempty" xml:"videoScript,omitempty" type:"Struct"`
+}
+
+func (s QueryAvatarProjectResponseBodyFrames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarProjectResponseBodyFrames) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarProjectResponseBodyFrames) SetLayers(v []*QueryAvatarProjectResponseBodyFramesLayers) *QueryAvatarProjectResponseBodyFrames {
+	s.Layers = v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFrames) SetVideoScript(v *QueryAvatarProjectResponseBodyFramesVideoScript) *QueryAvatarProjectResponseBodyFrames {
+	s.VideoScript = v
+	return s
+}
+
+type QueryAvatarProjectResponseBodyFramesLayers struct {
+	Height    *int32                                              `json:"height,omitempty" xml:"height,omitempty"`
+	Material  *QueryAvatarProjectResponseBodyFramesLayersMaterial `json:"material,omitempty" xml:"material,omitempty" type:"Struct"`
+	PositionX *int32                                              `json:"positionX,omitempty" xml:"positionX,omitempty"`
+	PositionY *int32                                              `json:"positionY,omitempty" xml:"positionY,omitempty"`
+	Type      *string                                             `json:"type,omitempty" xml:"type,omitempty"`
+	Width     *int32                                              `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s QueryAvatarProjectResponseBodyFramesLayers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarProjectResponseBodyFramesLayers) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayers) SetHeight(v int32) *QueryAvatarProjectResponseBodyFramesLayers {
+	s.Height = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayers) SetMaterial(v *QueryAvatarProjectResponseBodyFramesLayersMaterial) *QueryAvatarProjectResponseBodyFramesLayers {
+	s.Material = v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayers) SetPositionX(v int32) *QueryAvatarProjectResponseBodyFramesLayers {
+	s.PositionX = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayers) SetPositionY(v int32) *QueryAvatarProjectResponseBodyFramesLayers {
+	s.PositionY = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayers) SetType(v string) *QueryAvatarProjectResponseBodyFramesLayers {
+	s.Type = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayers) SetWidth(v int32) *QueryAvatarProjectResponseBodyFramesLayers {
+	s.Width = &v
+	return s
+}
+
+type QueryAvatarProjectResponseBodyFramesLayersMaterial struct {
+	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	Id     *string `json:"id,omitempty" xml:"id,omitempty"`
+	Url    *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s QueryAvatarProjectResponseBodyFramesLayersMaterial) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarProjectResponseBodyFramesLayersMaterial) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayersMaterial) SetFormat(v string) *QueryAvatarProjectResponseBodyFramesLayersMaterial {
+	s.Format = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayersMaterial) SetId(v string) *QueryAvatarProjectResponseBodyFramesLayersMaterial {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayersMaterial) SetUrl(v string) *QueryAvatarProjectResponseBodyFramesLayersMaterial {
+	s.Url = &v
+	return s
+}
+
+type QueryAvatarProjectResponseBodyFramesVideoScript struct {
+	SpeedRate       *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
+	VoiceTemplateId *string `json:"voiceTemplateId,omitempty" xml:"voiceTemplateId,omitempty"`
+}
+
+func (s QueryAvatarProjectResponseBodyFramesVideoScript) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvatarProjectResponseBodyFramesVideoScript) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetSpeedRate(v string) *QueryAvatarProjectResponseBodyFramesVideoScript {
+	s.SpeedRate = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetVoiceTemplateId(v string) *QueryAvatarProjectResponseBodyFramesVideoScript {
+	s.VoiceTemplateId = &v
 	return s
 }
 
@@ -3222,6 +3480,187 @@ func (s *QueryAvatarResourceResponse) SetBody(v *QueryAvatarResourceResponseBody
 	return s
 }
 
+type QuerySessionInfoRequest struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 805800890535673856
+	ProjectId  *string   `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	StatusList []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
+}
+
+func (s QuerySessionInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySessionInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySessionInfoRequest) SetPageNo(v int32) *QuerySessionInfoRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QuerySessionInfoRequest) SetPageSize(v int32) *QuerySessionInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySessionInfoRequest) SetProjectId(v string) *QuerySessionInfoRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *QuerySessionInfoRequest) SetStatusList(v []*string) *QuerySessionInfoRequest {
+	s.StatusList = v
+	return s
+}
+
+type QuerySessionInfoShrinkRequest struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 805800890535673856
+	ProjectId        *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	StatusListShrink *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
+}
+
+func (s QuerySessionInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySessionInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySessionInfoShrinkRequest) SetPageNo(v int32) *QuerySessionInfoShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QuerySessionInfoShrinkRequest) SetPageSize(v int32) *QuerySessionInfoShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySessionInfoShrinkRequest) SetProjectId(v string) *QuerySessionInfoShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *QuerySessionInfoShrinkRequest) SetStatusListShrink(v string) *QuerySessionInfoShrinkRequest {
+	s.StatusListShrink = &v
+	return s
+}
+
+type QuerySessionInfoResponseBody struct {
+	QueryResourceInfoList []*QuerySessionInfoResponseBodyQueryResourceInfoList `json:"queryResourceInfoList,omitempty" xml:"queryResourceInfoList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4D902811-B75C-5D1B-8882-D515F8E2F977
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 26
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s QuerySessionInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySessionInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySessionInfoResponseBody) SetQueryResourceInfoList(v []*QuerySessionInfoResponseBodyQueryResourceInfoList) *QuerySessionInfoResponseBody {
+	s.QueryResourceInfoList = v
+	return s
+}
+
+func (s *QuerySessionInfoResponseBody) SetRequestId(v string) *QuerySessionInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySessionInfoResponseBody) SetTotal(v int64) *QuerySessionInfoResponseBody {
+	s.Total = &v
+	return s
+}
+
+type QuerySessionInfoResponseBodyQueryResourceInfoList struct {
+	// example:
+	//
+	// a169e9ec18404edc9972afd80866dc97
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// FREE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s QuerySessionInfoResponseBodyQueryResourceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySessionInfoResponseBodyQueryResourceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySessionInfoResponseBodyQueryResourceInfoList) SetSessionId(v string) *QuerySessionInfoResponseBodyQueryResourceInfoList {
+	s.SessionId = &v
+	return s
+}
+
+func (s *QuerySessionInfoResponseBodyQueryResourceInfoList) SetStatus(v string) *QuerySessionInfoResponseBodyQueryResourceInfoList {
+	s.Status = &v
+	return s
+}
+
+type QuerySessionInfoResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySessionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySessionInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySessionInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySessionInfoResponse) SetHeaders(v map[string]*string) *QuerySessionInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySessionInfoResponse) SetStatusCode(v int32) *QuerySessionInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySessionInfoResponse) SetBody(v *QuerySessionInfoResponseBody) *QuerySessionInfoResponse {
+	s.Body = v
+	return s
+}
+
 type QueryTextStreamResponseBody struct {
 	// example:
 	//
@@ -3296,6 +3735,350 @@ func (s *QueryTextStreamResponse) SetStatusCode(v int32) *QueryTextStreamRespons
 }
 
 func (s *QueryTextStreamResponse) SetBody(v *QueryTextStreamResponseBody) *QueryTextStreamResponse {
+	s.Body = v
+	return s
+}
+
+type SaveAvatarProjectRequest struct {
+	// example:
+	//
+	// 1000196
+	AgentId *string                           `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	Frames  []*SaveAvatarProjectRequestFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CREATE
+	OperateType *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
+	// example:
+	//
+	// 787594567117586432
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// example:
+	//
+	// df_cs_471437
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// example:
+	//
+	// STANDARD
+	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	// example:
+	//
+	// 9:16
+	ScaleType *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+}
+
+func (s SaveAvatarProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveAvatarProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveAvatarProjectRequest) SetAgentId(v string) *SaveAvatarProjectRequest {
+	s.AgentId = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetFrames(v []*SaveAvatarProjectRequestFrames) *SaveAvatarProjectRequest {
+	s.Frames = v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetOperateType(v string) *SaveAvatarProjectRequest {
+	s.OperateType = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetProjectId(v string) *SaveAvatarProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetProjectName(v string) *SaveAvatarProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetResSpecType(v string) *SaveAvatarProjectRequest {
+	s.ResSpecType = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetScaleType(v string) *SaveAvatarProjectRequest {
+	s.ScaleType = &v
+	return s
+}
+
+type SaveAvatarProjectRequestFrames struct {
+	Layers      []*SaveAvatarProjectRequestFramesLayers    `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	VideoScript *SaveAvatarProjectRequestFramesVideoScript `json:"videoScript,omitempty" xml:"videoScript,omitempty" type:"Struct"`
+}
+
+func (s SaveAvatarProjectRequestFrames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveAvatarProjectRequestFrames) GoString() string {
+	return s.String()
+}
+
+func (s *SaveAvatarProjectRequestFrames) SetLayers(v []*SaveAvatarProjectRequestFramesLayers) *SaveAvatarProjectRequestFrames {
+	s.Layers = v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFrames) SetVideoScript(v *SaveAvatarProjectRequestFramesVideoScript) *SaveAvatarProjectRequestFrames {
+	s.VideoScript = v
+	return s
+}
+
+type SaveAvatarProjectRequestFramesLayers struct {
+	// example:
+	//
+	// 100
+	Height   *int32                                        `json:"height,omitempty" xml:"height,omitempty"`
+	Material *SaveAvatarProjectRequestFramesLayersMaterial `json:"material,omitempty" xml:"material,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PositionX *int32 `json:"positionX,omitempty" xml:"positionX,omitempty"`
+	// example:
+	//
+	// 1
+	PositionY *int32 `json:"positionY,omitempty" xml:"positionY,omitempty"`
+	// example:
+	//
+	// ANCHOR
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 100
+	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s SaveAvatarProjectRequestFramesLayers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveAvatarProjectRequestFramesLayers) GoString() string {
+	return s.String()
+}
+
+func (s *SaveAvatarProjectRequestFramesLayers) SetHeight(v int32) *SaveAvatarProjectRequestFramesLayers {
+	s.Height = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesLayers) SetMaterial(v *SaveAvatarProjectRequestFramesLayersMaterial) *SaveAvatarProjectRequestFramesLayers {
+	s.Material = v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesLayers) SetPositionX(v int32) *SaveAvatarProjectRequestFramesLayers {
+	s.PositionX = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesLayers) SetPositionY(v int32) *SaveAvatarProjectRequestFramesLayers {
+	s.PositionY = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesLayers) SetType(v string) *SaveAvatarProjectRequestFramesLayers {
+	s.Type = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesLayers) SetWidth(v int32) *SaveAvatarProjectRequestFramesLayers {
+	s.Width = &v
+	return s
+}
+
+type SaveAvatarProjectRequestFramesLayersMaterial struct {
+	// example:
+	//
+	// image/png
+	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// example:
+	//
+	// 434508
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// https://alidocs.dingtalk.com/i/nodes/vy20BglGWOxjGpq0C5G4DlN0VA7depqY
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s SaveAvatarProjectRequestFramesLayersMaterial) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveAvatarProjectRequestFramesLayersMaterial) GoString() string {
+	return s.String()
+}
+
+func (s *SaveAvatarProjectRequestFramesLayersMaterial) SetFormat(v string) *SaveAvatarProjectRequestFramesLayersMaterial {
+	s.Format = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesLayersMaterial) SetId(v string) *SaveAvatarProjectRequestFramesLayersMaterial {
+	s.Id = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesLayersMaterial) SetUrl(v string) *SaveAvatarProjectRequestFramesLayersMaterial {
+	s.Url = &v
+	return s
+}
+
+type SaveAvatarProjectRequestFramesVideoScript struct {
+	// example:
+	//
+	// 1.0
+	SpeedRate *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
+	// example:
+	//
+	// 1
+	VoiceTemplateId *string `json:"voiceTemplateId,omitempty" xml:"voiceTemplateId,omitempty"`
+	// example:
+	//
+	// 50
+	Volume *string `json:"volume,omitempty" xml:"volume,omitempty"`
+}
+
+func (s SaveAvatarProjectRequestFramesVideoScript) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveAvatarProjectRequestFramesVideoScript) GoString() string {
+	return s.String()
+}
+
+func (s *SaveAvatarProjectRequestFramesVideoScript) SetSpeedRate(v string) *SaveAvatarProjectRequestFramesVideoScript {
+	s.SpeedRate = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesVideoScript) SetVoiceTemplateId(v string) *SaveAvatarProjectRequestFramesVideoScript {
+	s.VoiceTemplateId = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesVideoScript) SetVolume(v string) *SaveAvatarProjectRequestFramesVideoScript {
+	s.Volume = &v
+	return s
+}
+
+type SaveAvatarProjectResponseBody struct {
+	// example:
+	//
+	// 1000222
+	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// example:
+	//
+	// 040002
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// Failed to proxy flink ui request, message: An error occurred: Invalid UUID string: jobsn
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// error
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 812907463682949120
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// example:
+	//
+	// doc_test_3
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// example:
+	//
+	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// DRAFT
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s SaveAvatarProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveAvatarProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveAvatarProjectResponseBody) SetAgentId(v string) *SaveAvatarProjectResponseBody {
+	s.AgentId = &v
+	return s
+}
+
+func (s *SaveAvatarProjectResponseBody) SetErrorCode(v string) *SaveAvatarProjectResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SaveAvatarProjectResponseBody) SetErrorMessage(v string) *SaveAvatarProjectResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SaveAvatarProjectResponseBody) SetErrorMsg(v string) *SaveAvatarProjectResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SaveAvatarProjectResponseBody) SetProjectId(v string) *SaveAvatarProjectResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SaveAvatarProjectResponseBody) SetProjectName(v string) *SaveAvatarProjectResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *SaveAvatarProjectResponseBody) SetRequestId(v string) *SaveAvatarProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveAvatarProjectResponseBody) SetStatus(v string) *SaveAvatarProjectResponseBody {
+	s.Status = &v
+	return s
+}
+
+type SaveAvatarProjectResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveAvatarProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SaveAvatarProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveAvatarProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveAvatarProjectResponse) SetHeaders(v map[string]*string) *SaveAvatarProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveAvatarProjectResponse) SetStatusCode(v int32) *SaveAvatarProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveAvatarProjectResponse) SetBody(v *SaveAvatarProjectResponseBody) *SaveAvatarProjectResponse {
 	s.Body = v
 	return s
 }
@@ -3728,6 +4511,7 @@ func (s *SendTextMsgResponse) SetBody(v *SendTextMsgResponseBody) *SendTextMsgRe
 }
 
 type StartAvatarSessionRequest struct {
+	CustomPushUrl *string `json:"customPushUrl,omitempty" xml:"customPushUrl,omitempty"`
 	// example:
 	//
 	// 13534711288320
@@ -3744,6 +4528,11 @@ func (s StartAvatarSessionRequest) String() string {
 
 func (s StartAvatarSessionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StartAvatarSessionRequest) SetCustomPushUrl(v string) *StartAvatarSessionRequest {
+	s.CustomPushUrl = &v
+	return s
 }
 
 func (s *StartAvatarSessionRequest) SetProjectId(v string) *StartAvatarSessionRequest {
@@ -4156,7 +4945,8 @@ type SubmitProjectTaskRequestFramesLayersMaterial struct {
 	// example:
 	//
 	// 38863
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	Id    *string `json:"id,omitempty" xml:"id,omitempty"`
+	Speed *string `json:"speed,omitempty" xml:"speed,omitempty"`
 	// example:
 	//
 	// https://meeting.dingtalk.com/j/1COFppy0POR
@@ -4179,6 +4969,11 @@ func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetFormat(v string) *Subm
 
 func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetId(v string) *SubmitProjectTaskRequestFramesLayersMaterial {
 	s.Id = &v
+	return s
+}
+
+func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetSpeed(v string) *SubmitProjectTaskRequestFramesLayersMaterial {
+	s.Speed = &v
 	return s
 }
 
@@ -4559,13 +5354,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.ProductId = tea.String("IntelligentCreation")
-	gatewayClient, _err := gatewayclient.NewClient()
-	if _err != nil {
-		return _err
-	}
-
-	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -4642,24 +5430,13 @@ func (client *Client) AddTextFeedbackWithOptions(request *AddTextFeedbackRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddTextFeedbackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddTextFeedbackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddTextFeedbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4723,24 +5500,13 @@ func (client *Client) BatchGetProjectTaskWithOptions(tmpReq *BatchGetProjectTask
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchGetProjectTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchGetProjectTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchGetProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4802,24 +5568,13 @@ func (client *Client) CheckSessionWithOptions(request *CheckSessionRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4889,24 +5644,13 @@ func (client *Client) CountTextWithOptions(request *CountTextRequest, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CountTextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CountTextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CountTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4959,24 +5703,13 @@ func (client *Client) CreateIllustrationTaskWithOptions(textId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIllustrationTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIllustrationTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIllustrationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5086,24 +5819,13 @@ func (client *Client) CreateRealisticPortraitWithOptions(request *CreateRealisti
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRealisticPortraitResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRealisticPortraitResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRealisticPortraitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5156,24 +5878,13 @@ func (client *Client) CreateTextTaskWithOptions(request *CreateTextTaskRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTextTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTextTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTextTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5219,24 +5930,13 @@ func (client *Client) GetIllustrationWithOptions(textId *string, illustrationId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetIllustrationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetIllustrationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetIllustrationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5280,24 +5980,13 @@ func (client *Client) GetIllustrationTaskWithOptions(textId *string, illustratio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetIllustrationTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetIllustrationTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetIllustrationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5357,24 +6046,13 @@ func (client *Client) GetOssUploadTokenWithOptions(request *GetOssUploadTokenReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetOssUploadTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetOssUploadTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetOssUploadTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5436,24 +6114,13 @@ func (client *Client) GetProjectTaskWithOptions(request *GetProjectTaskRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetProjectTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetProjectTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5499,24 +6166,13 @@ func (client *Client) GetTextWithOptions(textId *string, headers map[string]*str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5560,24 +6216,13 @@ func (client *Client) GetTextTaskWithOptions(textTaskId *string, headers map[str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTextTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTextTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTextTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5633,24 +6278,13 @@ func (client *Client) GetTextTemplateWithOptions(request *GetTextTemplateRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTextTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTextTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTextTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5716,24 +6350,13 @@ func (client *Client) InteractTextWithOptions(request *InteractTextRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InteractTextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &InteractTextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &InteractTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5792,6 +6415,10 @@ func (client *Client) ListAnchorWithOptions(request *ListAnchorRequest, headers 
 		query["pageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResSpecType)) {
+		query["resSpecType"] = request.ResSpecType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UseScene)) {
 		query["useScene"] = request.UseScene
 	}
@@ -5811,24 +6438,13 @@ func (client *Client) ListAnchorWithOptions(request *ListAnchorRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAnchorResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAnchorResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAnchorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5892,24 +6508,13 @@ func (client *Client) ListAvatarProjectWithOptions(tmpReq *ListAvatarProjectRequ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAvatarProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAvatarProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAvatarProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5967,24 +6572,13 @@ func (client *Client) ListTextThemesWithOptions(request *ListTextThemesRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextThemesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextThemesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextThemesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6070,24 +6664,13 @@ func (client *Client) ListTextsWithOptions(request *ListTextsRequest, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6134,6 +6717,10 @@ func (client *Client) ListVoiceModelsWithOptions(request *ListVoiceModelsRequest
 		query["pageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResSpecType)) {
+		query["resSpecType"] = request.ResSpecType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UseScene)) {
 		query["useScene"] = request.UseScene
 	}
@@ -6157,24 +6744,13 @@ func (client *Client) ListVoiceModelsWithOptions(request *ListVoiceModelsRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListVoiceModelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListVoiceModelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListVoiceModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6189,6 +6765,82 @@ func (client *Client) ListVoiceModels(request *ListVoiceModelsRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &ListVoiceModelsResponse{}
 	_body, _err := client.ListVoiceModelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 操作实时数字人项目
+//
+// @param request - OperateAvatarProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateAvatarProjectResponse
+func (client *Client) OperateAvatarProjectWithOptions(request *OperateAvatarProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateAvatarProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		body["operateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["projectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResChannelNumber)) {
+		body["resChannelNumber"] = request.ResChannelNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResType)) {
+		body["resType"] = request.ResType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperateAvatarProject"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/avatar/project/operateProjectAvatar"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OperateAvatarProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 操作实时数字人项目
+//
+// @param request - OperateAvatarProjectRequest
+//
+// @return OperateAvatarProjectResponse
+func (client *Client) OperateAvatarProject(request *OperateAvatarProjectRequest) (_result *OperateAvatarProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &OperateAvatarProjectResponse{}
+	_body, _err := client.OperateAvatarProjectWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6232,24 +6884,13 @@ func (client *Client) QueryAvatarProjectWithOptions(request *QueryAvatarProjectR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryAvatarProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryAvatarProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryAvatarProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6307,24 +6948,13 @@ func (client *Client) QueryAvatarResourceWithOptions(request *QueryAvatarResourc
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryAvatarResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryAvatarResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryAvatarResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6339,6 +6969,88 @@ func (client *Client) QueryAvatarResource(request *QueryAvatarResourceRequest) (
 	headers := make(map[string]*string)
 	_result = &QueryAvatarResourceResponse{}
 	_body, _err := client.QueryAvatarResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询会话信息
+//
+// @param tmpReq - QuerySessionInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySessionInfoResponse
+func (client *Client) QuerySessionInfoWithOptions(tmpReq *QuerySessionInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QuerySessionInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QuerySessionInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StatusList)) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, tea.String("statusList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["pageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["projectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusListShrink)) {
+		query["statusList"] = request.StatusListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySessionInfo"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/avatar/project/querySessionInfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySessionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询会话信息
+//
+// @param request - QuerySessionInfoRequest
+//
+// @return QuerySessionInfoResponse
+func (client *Client) QuerySessionInfo(request *QuerySessionInfoRequest) (_result *QuerySessionInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QuerySessionInfoResponse{}
+	_body, _err := client.QuerySessionInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6370,24 +7082,13 @@ func (client *Client) QueryTextStreamWithOptions(textId *string, headers map[str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryTextStreamResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryTextStreamResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryTextStreamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6400,6 +7101,94 @@ func (client *Client) QueryTextStream(textId *string) (_result *QueryTextStreamR
 	headers := make(map[string]*string)
 	_result = &QueryTextStreamResponse{}
 	_body, _err := client.QueryTextStreamWithOptions(textId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存实时数字人项目
+//
+// @param request - SaveAvatarProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveAvatarProjectResponse
+func (client *Client) SaveAvatarProjectWithOptions(request *SaveAvatarProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveAvatarProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Frames)) {
+		body["frames"] = request.Frames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		body["operateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["projectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["projectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResSpecType)) {
+		body["resSpecType"] = request.ResSpecType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
+		body["scaleType"] = request.ScaleType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveAvatarProject"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/avatar/project/saveAvatarProject"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveAvatarProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存实时数字人项目
+//
+// @param request - SaveAvatarProjectRequest
+//
+// @return SaveAvatarProjectResponse
+func (client *Client) SaveAvatarProject(request *SaveAvatarProjectRequest) (_result *SaveAvatarProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SaveAvatarProjectResponse{}
+	_body, _err := client.SaveAvatarProjectWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6431,24 +7220,13 @@ func (client *Client) SelectImageTaskWithOptions(taskId *string, headers map[str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SelectImageTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SelectImageTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SelectImageTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6504,24 +7282,13 @@ func (client *Client) SelectResourceWithOptions(request *SelectResourceRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SelectResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SelectResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SelectResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6595,24 +7362,13 @@ func (client *Client) SendTextMsgWithOptions(request *SendTextMsgRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SendTextMsgResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SendTextMsgResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SendTextMsgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6651,6 +7407,10 @@ func (client *Client) StartAvatarSessionWithOptions(request *StartAvatarSessionR
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomPushUrl)) {
+		body["customPushUrl"] = request.CustomPushUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		body["projectId"] = request.ProjectId
 	}
@@ -6674,24 +7434,13 @@ func (client *Client) StartAvatarSessionWithOptions(request *StartAvatarSessionR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartAvatarSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartAvatarSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartAvatarSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6753,24 +7502,13 @@ func (client *Client) StopAvatarSessionWithOptions(request *StopAvatarSessionReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopAvatarSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopAvatarSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopAvatarSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6828,24 +7566,13 @@ func (client *Client) StopProjectTaskWithOptions(request *StopProjectTaskRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopProjectTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopProjectTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6915,24 +7642,13 @@ func (client *Client) SubmitProjectTaskWithOptions(request *SubmitProjectTaskReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitProjectTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitProjectTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7010,24 +7726,13 @@ func (client *Client) TransferPortraitStyleWithOptions(request *TransferPortrait
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TransferPortraitStyleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TransferPortraitStyleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TransferPortraitStyleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
