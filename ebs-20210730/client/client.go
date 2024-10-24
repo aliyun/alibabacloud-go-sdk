@@ -3323,7 +3323,7 @@ func (s *DescribeDedicatedBlockStorageClustersRequestTag) SetValue(v string) *De
 }
 
 type DescribeDedicatedBlockStorageClustersResponseBody struct {
-	// The queried dedicated block storage clusters.
+	// Details about the dedicated block storage clusters.
 	DedicatedBlockStorageClusters []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters `json:"DedicatedBlockStorageClusters,omitempty" xml:"DedicatedBlockStorageClusters,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
@@ -3396,7 +3396,7 @@ func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetTotalCount(v int6
 }
 
 type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters struct {
-	// The unique ID (UID) of the Alibaba Cloud account.
+	// The user ID.
 	//
 	// example:
 	//
@@ -3414,7 +3414,7 @@ type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClust
 	//
 	// 1657113211
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The storage capacity of the dedicated block storage cluster.
+	// Details about the storage capacity of the dedicated block storage cluster.
 	DedicatedBlockStorageClusterCapacity *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersDedicatedBlockStorageClusterCapacity `json:"DedicatedBlockStorageClusterCapacity,omitempty" xml:"DedicatedBlockStorageClusterCapacity,omitempty" type:"Struct"`
 	// The ID of the dedicated block storage cluster.
 	//
@@ -3434,7 +3434,7 @@ type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClust
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The dedicated block storage cluster enable thin provison.
+	// Indicates whether Thin Provision is enabled.
 	//
 	// example:
 	//
@@ -3456,7 +3456,7 @@ type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClust
 	//
 	// 	- PL3
 	//
-	// >  This parameter takes effect only if Category is set to cloud_essd.
+	// >  This parameter is valid only when the SupportedCategory value is cloud_essd.
 	//
 	// example:
 	//
@@ -3468,13 +3468,13 @@ type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClust
 	//
 	// cn-heyuan
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the dedicated block storage cluster belongs.
+	// The ID of the resource group to which the dedicated block storage cluster belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekzsoux****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Oversold ratio of cluster space capacity for creating disk.
+	// The capacity oversold ratio.
 	//
 	// example:
 	//
@@ -3494,7 +3494,7 @@ type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClust
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// StorageDomain.
+	// StorageDomain
 	//
 	// example:
 	//
@@ -3660,7 +3660,7 @@ type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClust
 	//
 	// 0
 	ClusterDeliveryCapacity *int64 `json:"ClusterDeliveryCapacity,omitempty" xml:"ClusterDeliveryCapacity,omitempty"`
-	// The to-be-delivered capacity of the dedicated block storage cluster. Unit: GB.
+	// The capacity to be delivered for the dedicated block storage cluster. Unit: GiB.
 	//
 	// example:
 	//
@@ -3684,7 +3684,7 @@ type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClust
 	//
 	// 73728
 	TotalSpaceCapacity *int64 `json:"TotalSpaceCapacity,omitempty" xml:"TotalSpaceCapacity,omitempty"`
-	// The used capacity of the dedicated block storage cluster. Unit: GB.
+	// The used capacity of the dedicated block storage cluster. Unit: GiB.
 	//
 	// example:
 	//
@@ -4668,24 +4668,31 @@ func (s *DescribeDiskMonitorDataListResponse) SetBody(v *DescribeDiskMonitorData
 }
 
 type DescribeDiskReplicaGroupsRequest struct {
-	// The IDs of replication pair-consistent groups. You can specify the IDs of one or more replication pair-consistent groups. Separate the IDs with commas (,).
+	// The IDs of the replication pair-consistent groups. You can specify the IDs of one or more replication pair-consistent groups. Separate the IDs with commas (,).
 	//
-	// This parameter is empty by default, which indicates that all replication pair-consistent groups in the specified region are queried.
+	// This parameter is empty by default, which indicates that all replication pair-consistent groups in the specified region are queried. You can specify up to the IDs of 100 replication pair-consistent groups.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	GroupIds *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	// The maximum number of entries to return on each page. Valid values: 1 to 500.
+	// The maximum number of entries per page. You can use this parameter together with NextToken.
+	//
+	// Valid values: 1 to 500.
 	//
 	// Default value: 10.
 	//
 	// example:
 	//
 	// 10
-	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The query token. Set the value to the NextToken value returned in the previous call to the DescribeDiskReplicaGroups operation. Leave this parameter empty the first time you call this operation. When NextToken is specified, the PageSize and PageNumber request parameters do not take effect and the TotalCount response parameter is invalid.
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the replication pair-consistent group. You can perform a fuzzy search.
+	//
+	// example:
+	//
+	// pg-name***
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
 	//
 	// example:
 	//
@@ -4697,15 +4704,13 @@ type DescribeDiskReplicaGroupsRequest struct {
 	//
 	// 5
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Valid values: 1 to 100.
+	// The number of entries to return on each page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the replication pair-consistent group.
+	// The ID of the region to which the replication pair-consistent group belongs.
 	//
 	// This parameter is required.
 	//
@@ -4713,7 +4718,7 @@ type DescribeDiskReplicaGroupsRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the replication group belongs.
+	// The ID of the resource group to which the replication pair-consistent group belongs.
 	//
 	// example:
 	//
@@ -4721,9 +4726,9 @@ type DescribeDiskReplicaGroupsRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the site from which the information of replication pair-consistent groups is retrieved. This parameter is used for scenarios where data is replicated across zones in replication pairs.
 	//
-	// 	- If the Site parameter is not specified, information such as the state of replication pair-consistent groups at the primary site is queried and returned.
+	// 	- If this parameter is not specified, information such as the status of replication pair-consistent groups at the primary site is queried and returned.
 	//
-	// 	- Otherwise, information such as the state of replication pair-consistent groups at the site specified by the Site parameter is queried and returned. Valid values:
+	// 	- Otherwise, information such as the state of replication pairs at the site specified by the Site parameter is queried and returned. Valid values:
 	//
 	//     	- production: primary site
 	//
@@ -4733,7 +4738,7 @@ type DescribeDiskReplicaGroupsRequest struct {
 	//
 	// production
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	// The resource tags. You can specify up to 20 tags.
+	// The tags to add to the replication pair-consistent group. You can specify up to 20 tags.
 	Tag []*DescribeDiskReplicaGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -4796,13 +4801,13 @@ func (s *DescribeDiskReplicaGroupsRequest) SetTag(v []*DescribeDiskReplicaGroups
 }
 
 type DescribeDiskReplicaGroupsRequestTag struct {
-	// The key of tag N of the replication group.
+	// The key of tag N of the replication pair-consistent group.
 	//
 	// example:
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the replication group.
+	// The value of tag N of the replication pair-consistent group.
 	//
 	// example:
 	//
@@ -4829,27 +4834,27 @@ func (s *DescribeDiskReplicaGroupsRequestTag) SetValue(v string) *DescribeDiskRe
 }
 
 type DescribeDiskReplicaGroupsResponseBody struct {
-	// The query token returned in this call.
+	// A pagination token.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Details about the replication pair-consistent groups.
+	// The information about the replication pair-consistent groups.
 	ReplicaGroups []*DescribeDiskReplicaGroupsResponseBodyReplicaGroups `json:"ReplicaGroups,omitempty" xml:"ReplicaGroups,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -4902,7 +4907,7 @@ func (s *DescribeDiskReplicaGroupsResponseBody) SetTotalCount(v int64) *Describe
 }
 
 type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
-	// The bandwidth value. Unit: Mbit/s. This parameter is unavailable and has a system-preset value.
+	// The bandwidth value. Unit: Kbit/s. This parameter is not publicly available and has a system-preset value.
 	//
 	// example:
 	//
@@ -4938,9 +4943,9 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	//
 	// 1637835114
 	LastRecoverPoint *int64 `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
-	// The IDs of the replications pairs that belong to the replication pair-consistent group.
+	// The IDs of replication pairs that belong to the replication pair-consistent group.
 	PairIds [][]byte `json:"PairIds,omitempty" xml:"PairIds,omitempty" type:"Repeated"`
-	// The number of replications pairs that belong to the replication pair-consistent group.
+	// The number of replication pairs that belong to the replication pair-consistent group.
 	//
 	// example:
 	//
@@ -4964,19 +4969,19 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	//
 	// 180
 	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	// The ID of the replication pair-consistent group.
+	// The IDs of the replication pair-consistent groups.
 	//
 	// example:
 	//
 	// pg-myreplica****
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	// The ID of the resource group to which the replication group belongs.
+	// The ID of the resource group to which the replication pair-consistent group belongs.
 	//
 	// example:
 	//
 	// rg-aek2a*******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the site from which the information of the replication pair and replication pair-consistent group is obtained. Valid values:
+	// The type of the site from which the information about the replication pairs and replication pair-consistent group was obtained. Valid values:
 	//
 	// 	- production: primary site
 	//
@@ -5010,49 +5015,49 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	//
 	// cn-shanghai-e
 	StandbyZone *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
-	// The state of the replication pair-consistent group. Valid values:
+	// The status of the replication pair-consistent group. Valid values:
 	//
 	// 	- invalid: The replication pair-consistent group is invalid, which indicates that abnormal replication pairs are present in the replication pair-consistent group.
 	//
 	// 	- creating: The replication pair-consistent group is being created.
 	//
-	// 	- created: The replication pair-consistent group is created.
+	// 	- created: The replication pair-consistent group was created.
 	//
-	// 	- create_failed: The replication pair-consistent group cannot be created.
+	// 	- create_failed: The replication pair-consistent group failed to be created.
 	//
-	// 	- manual_syncing: Data is being manually synchronized between the disks in the replication pair-consistent group. The first time data is being manually synchronized between the disks in a replication pair-consistent group, the replication pair-consistent group is in this state.
+	// 	- manual_syncing: Data was being manually synchronized between the disks in the replication pair-consistent group. When data was being manually synchronized for the first time, the replication pair is in this state.
 	//
-	// 	- syncing: Data is being synchronized between the disks in the replication pair-consistent group. While data is being asynchronously replicated from the primary disks to the secondary disks not for the first time, the replication pair-consistent group is in this state.
+	// 	- syncing: Data was being synchronized between the disks. When data is being asynchronously replicated from the primary disk to the secondary disk again in subsequent operations, the replication pair is in this state.
 	//
-	// 	- normal: The replication pair-consistent group is working as expected. When the system finishes replicating data from the primary disks to the secondary disks within the current replication cycle, the replication pair-consistent group enters this state.
+	// 	- normal: The replication pair was working as expected. When the system finishes replicating data from the primary disk to the secondary disk within the current replication cycle, the replication pair enters this state.
 	//
-	// 	- stopping: The replication pair-consistent group is being stopped.
+	// 	- stopping: The replication pair was being stopped.
 	//
-	// 	- stopped: The replication pair-consistent group is stopped.
+	// 	- stopped: The replication pair was stopped.
 	//
-	// 	- stop_failed: The replication pair-consistent group cannot be stopped.
+	// 	- stop_failed: The replication pair failed to be stopped.
 	//
-	// 	- failovering: A failover is being performed.
+	// 	- failovering: A failover was being performed.
 	//
-	// 	- failovered: A failover is performed.
+	// 	- failovered: A failover was performed.
 	//
-	// 	- failover_failed: A failover cannot be performed.
+	// 	- failover_failed: A failover failed to be performed.
 	//
-	// 	- reprotecting: A reverse replication is being performed.
+	// 	- reprotecting: A reverse replication was being performed.
 	//
-	// 	- reprotect_failed: A reverse replication cannot be performed.
+	// 	- reprotect_failed: A reverse replication failed to be performed.
 	//
-	// 	- deleting: The replication pair-consistent group is being deleted.
+	// 	- deleting: The replication pair was being deleted.
 	//
-	// 	- delete_failed: The replication pair-consistent group cannot be deleted.
+	// 	- delete_failed: The replication pair failed to be deleted.
 	//
-	// 	- deleted: The replication pair-consistent group is deleted.
+	// 	- deleted: The replication pair was deleted.
 	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the replication pair.
+	// The tags of the replication pair-consistent group.
 	Tags []*DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -5165,13 +5170,13 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetTags(v []*Descri
 }
 
 type DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags struct {
-	// The tag key of the replication group.
+	// The tag key of the replication pair-consistent group.
 	//
 	// example:
 	//
 	// testKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the replication group.
+	// The tag value of the replication pair-consistent group.
 	//
 	// example:
 	//
@@ -5346,8 +5351,13 @@ type DescribeDiskReplicaPairsRequest struct {
 	// example:
 	//
 	// 1
-	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the replication pair. Fuzzy search is supported.
+	//
+	// example:
+	//
+	// name***
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
 	//
 	// example:
@@ -10394,6 +10404,400 @@ func (s *GetDiskResponse) SetStatusCode(v int32) *GetDiskResponse {
 }
 
 func (s *GetDiskResponse) SetBody(v *GetDiskResponseBody) *GetDiskResponse {
+	s.Body = v
+	return s
+}
+
+type GetReportRequest struct {
+	// example:
+	//
+	// App1
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// report-74fbea80e802xxxx
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// example:
+	//
+	// history
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+}
+
+func (s GetReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetReportRequest) SetAppName(v string) *GetReportRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetReportRequest) SetRegionId(v string) *GetReportRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetReportRequest) SetReportId(v string) *GetReportRequest {
+	s.ReportId = &v
+	return s
+}
+
+func (s *GetReportRequest) SetReportType(v string) *GetReportRequest {
+	s.ReportType = &v
+	return s
+}
+
+type GetReportResponseBody struct {
+	Datas []*GetReportResponseBodyDatas `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// C123F94F-4E38-19AE-942A-A8D6F44F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetReportResponseBody) SetDatas(v []*GetReportResponseBodyDatas) *GetReportResponseBody {
+	s.Datas = v
+	return s
+}
+
+func (s *GetReportResponseBody) SetRequestId(v string) *GetReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetReportResponseBodyDatas struct {
+	Data []*GetReportResponseBodyDatasData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// disk_count_percent_by_category
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetReportResponseBodyDatas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReportResponseBodyDatas) GoString() string {
+	return s.String()
+}
+
+func (s *GetReportResponseBodyDatas) SetData(v []*GetReportResponseBodyDatasData) *GetReportResponseBodyDatas {
+	s.Data = v
+	return s
+}
+
+func (s *GetReportResponseBodyDatas) SetTitle(v string) *GetReportResponseBodyDatas {
+	s.Title = &v
+	return s
+}
+
+type GetReportResponseBodyDatasData struct {
+	// example:
+	//
+	// {
+	//
+	//   "1726416000": 0.44,
+	//
+	//   "1726502400": 0.44,
+	//
+	//   "1726588800": 0.44,
+	//
+	//   "1726675200": 0.44,
+	//
+	//   "1726761600": 0.43,
+	//
+	//   "1726848000": 0.43,
+	//
+	//   "1726934400": 0.43,
+	//
+	//   "1727020800": 0.43
+	//
+	// }
+	DataPoints map[string]interface{} `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "category": "cloud"
+	//
+	// }
+	Labels map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+}
+
+func (s GetReportResponseBodyDatasData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReportResponseBodyDatasData) GoString() string {
+	return s.String()
+}
+
+func (s *GetReportResponseBodyDatasData) SetDataPoints(v map[string]interface{}) *GetReportResponseBodyDatasData {
+	s.DataPoints = v
+	return s
+}
+
+func (s *GetReportResponseBodyDatasData) SetLabels(v map[string]interface{}) *GetReportResponseBodyDatasData {
+	s.Labels = v
+	return s
+}
+
+type GetReportResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetReportResponse) SetHeaders(v map[string]*string) *GetReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetReportResponse) SetStatusCode(v int32) *GetReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetReportResponse) SetBody(v *GetReportResponseBody) *GetReportResponse {
+	s.Body = v
+	return s
+}
+
+type ListReportsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// App1
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// a6792e832ff0XXXXX
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListReportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListReportsRequest) SetAppName(v string) *ListReportsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListReportsRequest) SetMaxResults(v int32) *ListReportsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListReportsRequest) SetNextToken(v string) *ListReportsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListReportsRequest) SetPageNumber(v int32) *ListReportsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListReportsRequest) SetPageSize(v int32) *ListReportsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListReportsRequest) SetRegionId(v string) *ListReportsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListReportsResponseBody struct {
+	// historyReports
+	HistoryReports []*ListReportsResponseBodyHistoryReports `json:"HistoryReports,omitempty" xml:"HistoryReports,omitempty" type:"Repeated"`
+	// example:
+	//
+	// a6792e832ff0XXXX
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// C123F94F-4E38-19AE-942A-A8D6F44F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListReportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListReportsResponseBody) SetHistoryReports(v []*ListReportsResponseBodyHistoryReports) *ListReportsResponseBody {
+	s.HistoryReports = v
+	return s
+}
+
+func (s *ListReportsResponseBody) SetNextToken(v string) *ListReportsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListReportsResponseBody) SetPageNumber(v int32) *ListReportsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListReportsResponseBody) SetPageSize(v int32) *ListReportsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListReportsResponseBody) SetRequestId(v string) *ListReportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListReportsResponseBody) SetTotalCount(v int64) *ListReportsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListReportsResponseBodyHistoryReports struct {
+	// example:
+	//
+	// default
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// report-e19c7b597f5fXX
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// example:
+	//
+	// default-2024-09-30~2024-10-07-Usage Report
+	ReportName *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	// example:
+	//
+	// 2024-10-07T02:09:17Z
+	ReportTime *string `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
+	// example:
+	//
+	// Weekly
+	SubscribePeriod *string `json:"SubscribePeriod,omitempty" xml:"SubscribePeriod,omitempty"`
+}
+
+func (s ListReportsResponseBodyHistoryReports) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReportsResponseBodyHistoryReports) GoString() string {
+	return s.String()
+}
+
+func (s *ListReportsResponseBodyHistoryReports) SetAppName(v string) *ListReportsResponseBodyHistoryReports {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListReportsResponseBodyHistoryReports) SetReportId(v string) *ListReportsResponseBodyHistoryReports {
+	s.ReportId = &v
+	return s
+}
+
+func (s *ListReportsResponseBodyHistoryReports) SetReportName(v string) *ListReportsResponseBodyHistoryReports {
+	s.ReportName = &v
+	return s
+}
+
+func (s *ListReportsResponseBodyHistoryReports) SetReportTime(v string) *ListReportsResponseBodyHistoryReports {
+	s.ReportTime = &v
+	return s
+}
+
+func (s *ListReportsResponseBodyHistoryReports) SetSubscribePeriod(v string) *ListReportsResponseBodyHistoryReports {
+	s.SubscribePeriod = &v
+	return s
+}
+
+type ListReportsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListReportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListReportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListReportsResponse) SetHeaders(v map[string]*string) *ListReportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListReportsResponse) SetStatusCode(v int32) *ListReportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListReportsResponse) SetBody(v *ListReportsResponseBody) *ListReportsResponse {
 	s.Body = v
 	return s
 }
@@ -15543,13 +15947,15 @@ func (client *Client) DescribeDiskMonitorDataList(request *DescribeDiskMonitorDa
 
 // Summary:
 //
-// Queries the details of one or more replication pair-consistent groups in a specific region.
+// Queries the details of replication pair-consistent groups in a specific region.
 //
 // Description:
 //
-// To perform a paged query, set the MaxResults and NextToken parameters.
+// ## [](#)Usage notes
 //
-// During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+// To perform a paged query, specify the MaxResults and NextToken parameters.
+//
+// During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
 //
 // @param request - DescribeDiskReplicaGroupsRequest
 //
@@ -15627,13 +16033,15 @@ func (client *Client) DescribeDiskReplicaGroupsWithOptions(request *DescribeDisk
 
 // Summary:
 //
-// Queries the details of one or more replication pair-consistent groups in a specific region.
+// Queries the details of replication pair-consistent groups in a specific region.
 //
 // Description:
 //
-// To perform a paged query, set the MaxResults and NextToken parameters.
+// ## [](#)Usage notes
 //
-// During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+// To perform a paged query, specify the MaxResults and NextToken parameters.
+//
+// During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
 //
 // @param request - DescribeDiskReplicaGroupsRequest
 //
@@ -15715,7 +16123,7 @@ func (client *Client) DescribeDiskReplicaPairProgress(request *DescribeDiskRepli
 
 // Summary:
 //
-// Queries information about replication pairs in a region.
+// Queries information about replication pairs in a specific region.
 //
 // Description:
 //
@@ -15807,7 +16215,7 @@ func (client *Client) DescribeDiskReplicaPairsWithOptions(request *DescribeDiskR
 
 // Summary:
 //
-// Queries information about replication pairs in a region.
+// Queries information about replication pairs in a specific region.
 //
 // Description:
 //
@@ -16873,6 +17281,162 @@ func (client *Client) GetDisk(request *GetDiskRequest) (_result *GetDiskResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDiskResponse{}
 	_body, _err := client.GetDiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 中心化角色：使用reportId获取用户使用报告
+//
+// @param request - GetReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReportResponse
+func (client *Client) GetReportWithOptions(request *GetReportRequest, runtime *util.RuntimeOptions) (_result *GetReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportType)) {
+		query["ReportType"] = request.ReportType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		body["ReportId"] = request.ReportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetReport"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 中心化角色：使用reportId获取用户使用报告
+//
+// @param request - GetReportRequest
+//
+// @return GetReportResponse
+func (client *Client) GetReport(request *GetReportRequest) (_result *GetReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetReportResponse{}
+	_body, _err := client.GetReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 中心化角色：查询历史报告
+//
+// @param request - ListReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReportsResponse
+func (client *Client) ListReportsWithOptions(request *ListReportsRequest, runtime *util.RuntimeOptions) (_result *ListReportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		body["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListReports"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 中心化角色：查询历史报告
+//
+// @param request - ListReportsRequest
+//
+// @return ListReportsResponse
+func (client *Client) ListReports(request *ListReportsRequest) (_result *ListReportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListReportsResponse{}
+	_body, _err := client.ListReportsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
