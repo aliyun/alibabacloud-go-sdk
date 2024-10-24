@@ -1,3 +1,7 @@
+2024-10-24 Version: v1.5.16
+- Update API GetJob: update response param.
+
+
 2024-09-03 Version: v1.5.15
 - Update API DeleteJob: update response param.
 - Update API ListJobs: update param Accessibility.

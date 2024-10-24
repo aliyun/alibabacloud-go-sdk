@@ -4490,6 +4490,7 @@ func (s *GetJobRequest) SetNeedDetail(v bool) *GetJobRequest {
 }
 
 type GetJobResponseBody struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// example:
 	//
 	// a*****
@@ -4621,6 +4622,11 @@ func (s GetJobResponseBody) String() string {
 
 func (s GetJobResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetJobResponseBody) SetAccessibility(v string) *GetJobResponseBody {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *GetJobResponseBody) SetClusterId(v string) *GetJobResponseBody {
