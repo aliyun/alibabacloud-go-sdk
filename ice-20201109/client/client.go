@@ -10533,7 +10533,8 @@ type GetCustomTemplateResponseBodyCustomTemplate struct {
 	// example:
 	//
 	// 2022-01-01T10:00:00Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime   *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FrontendHint *GetCustomTemplateResponseBodyCustomTemplateFrontendHint `json:"FrontendHint,omitempty" xml:"FrontendHint,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
@@ -10589,6 +10590,11 @@ func (s *GetCustomTemplateResponseBodyCustomTemplate) SetCreateTime(v string) *G
 	return s
 }
 
+func (s *GetCustomTemplateResponseBodyCustomTemplate) SetFrontendHint(v *GetCustomTemplateResponseBodyCustomTemplateFrontendHint) *GetCustomTemplateResponseBodyCustomTemplate {
+	s.FrontendHint = v
+	return s
+}
+
 func (s *GetCustomTemplateResponseBodyCustomTemplate) SetIsDefault(v bool) *GetCustomTemplateResponseBodyCustomTemplate {
 	s.IsDefault = &v
 	return s
@@ -10636,6 +10642,40 @@ func (s *GetCustomTemplateResponseBodyCustomTemplate) SetType(v int32) *GetCusto
 
 func (s *GetCustomTemplateResponseBodyCustomTemplate) SetTypeName(v string) *GetCustomTemplateResponseBodyCustomTemplate {
 	s.TypeName = &v
+	return s
+}
+
+type GetCustomTemplateResponseBodyCustomTemplateFrontendHint struct {
+	TranscodeTemplateHint *GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint `json:"TranscodeTemplateHint,omitempty" xml:"TranscodeTemplateHint,omitempty" type:"Struct"`
+}
+
+func (s GetCustomTemplateResponseBodyCustomTemplateFrontendHint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTemplateResponseBodyCustomTemplateFrontendHint) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTemplateResponseBodyCustomTemplateFrontendHint) SetTranscodeTemplateHint(v *GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint) *GetCustomTemplateResponseBodyCustomTemplateFrontendHint {
+	s.TranscodeTemplateHint = v
+	return s
+}
+
+type GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint struct {
+	BitrateControlType *string `json:"BitrateControlType,omitempty" xml:"BitrateControlType,omitempty"`
+}
+
+func (s GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint) SetBitrateControlType(v string) *GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint {
+	s.BitrateControlType = &v
 	return s
 }
 
@@ -25860,7 +25900,8 @@ type ListCustomTemplatesResponseBodyCustomTemplateList struct {
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime   *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FrontendHint *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint `json:"FrontendHint,omitempty" xml:"FrontendHint,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
@@ -25916,6 +25957,11 @@ func (s *ListCustomTemplatesResponseBodyCustomTemplateList) SetCreateTime(v stri
 	return s
 }
 
+func (s *ListCustomTemplatesResponseBodyCustomTemplateList) SetFrontendHint(v *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint) *ListCustomTemplatesResponseBodyCustomTemplateList {
+	s.FrontendHint = v
+	return s
+}
+
 func (s *ListCustomTemplatesResponseBodyCustomTemplateList) SetIsDefault(v bool) *ListCustomTemplatesResponseBodyCustomTemplateList {
 	s.IsDefault = &v
 	return s
@@ -25963,6 +26009,40 @@ func (s *ListCustomTemplatesResponseBodyCustomTemplateList) SetType(v int32) *Li
 
 func (s *ListCustomTemplatesResponseBodyCustomTemplateList) SetTypeName(v string) *ListCustomTemplatesResponseBodyCustomTemplateList {
 	s.TypeName = &v
+	return s
+}
+
+type ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint struct {
+	TranscodeTemplateHint *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint `json:"TranscodeTemplateHint,omitempty" xml:"TranscodeTemplateHint,omitempty" type:"Struct"`
+}
+
+func (s ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint) SetTranscodeTemplateHint(v *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint) *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint {
+	s.TranscodeTemplateHint = v
+	return s
+}
+
+type ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint struct {
+	BitrateControlType *string `json:"BitrateControlType,omitempty" xml:"BitrateControlType,omitempty"`
+}
+
+func (s ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint) SetBitrateControlType(v string) *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint {
+	s.BitrateControlType = &v
 	return s
 }
 
