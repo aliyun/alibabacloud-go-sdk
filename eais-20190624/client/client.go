@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,9 +10,24 @@ import (
 )
 
 type AttachEaiRequest struct {
-	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-wz93g6pyat2g7t7o****
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-sz8t15a7gt7z7j7i****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AttachEaiRequest) String() string {
@@ -42,9 +54,18 @@ func (s *AttachEaiRequest) SetRegionId(v string) *AttachEaiRequest {
 }
 
 type AttachEaiResponseBody struct {
-	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// i-wz93g6pyat2g7t7o****
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// eais-sz8t15a7gt7z7j7i****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// C3BCB7DA-BEB6-4982-A765-6EA61EC84474
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachEaiResponseBody) String() string {
@@ -71,9 +92,9 @@ func (s *AttachEaiResponseBody) SetRequestId(v string) *AttachEaiResponseBody {
 }
 
 type AttachEaiResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachEaiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachEaiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachEaiResponse) String() string {
@@ -100,10 +121,26 @@ func (s *AttachEaiResponse) SetBody(v *AttachEaiResponseBody) *AttachEaiResponse
 }
 
 type AttachEaisEiRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp14ws9hbt1oe0u9****
 	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
-	EiInstanceId     *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
-	EiInstanceType   *string `json:"EiInstanceType,omitempty" xml:"EiInstanceType,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// eais-hzu00xufs1c8j5nn****
+	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	EiInstanceType *string `json:"EiInstanceType,omitempty" xml:"EiInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AttachEaisEiRequest) String() string {
@@ -135,9 +172,18 @@ func (s *AttachEaisEiRequest) SetRegionId(v string) *AttachEaisEiRequest {
 }
 
 type AttachEaisEiResponseBody struct {
+	// example:
+	//
+	// i-bp14ws9hbt1oe0u9****
 	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
-	EiInstanceId     *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// eais-hzu00xufs1c8j5nn****
+	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
+	// example:
+	//
+	// C3BCB7DA-BEB6-4982-A765-6EA61EC8****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachEaisEiResponseBody) String() string {
@@ -164,9 +210,9 @@ func (s *AttachEaisEiResponseBody) SetRequestId(v string) *AttachEaisEiResponseB
 }
 
 type AttachEaisEiResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachEaisEiResponse) String() string {
@@ -193,8 +239,23 @@ func (s *AttachEaisEiResponse) SetBody(v *AttachEaisEiResponseBody) *AttachEaisE
 }
 
 type ChangeResourceGroupRequest struct {
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acfmvpuy4a5****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hzs4h26yyt5xkcke****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 }
 
@@ -222,6 +283,9 @@ func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResour
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// example:
+	//
+	// C3BCB7DA-BEB6-4982-A765-6EA61EC8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -239,9 +303,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -268,14 +332,36 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateEaiRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Image       *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// eais-test01
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// sg-uf66jeqopgqa9hdn****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vsw-uf6h3rbwbm90urjwa****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiRequest) String() string {
@@ -327,8 +413,14 @@ func (s *CreateEaiRequest) SetVSwitchId(v string) *CreateEaiRequest {
 }
 
 type CreateEaiResponseBody struct {
+	// example:
+	//
+	// eais-sz8t15a7gt7z7j7i****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// A655AB0E-31BB-45AD-9255-FCE93F6*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEaiResponseBody) String() string {
@@ -350,9 +442,9 @@ func (s *CreateEaiResponseBody) SetRequestId(v string) *CreateEaiResponseBody {
 }
 
 type CreateEaiResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEaiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEaiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEaiResponse) String() string {
@@ -378,180 +470,44 @@ func (s *CreateEaiResponse) SetBody(v *CreateEaiResponseBody) *CreateEaiResponse
 	return s
 }
 
-type CreateEaiAllRequest struct {
-	ClientImageId                 *string `json:"ClientImageId,omitempty" xml:"ClientImageId,omitempty"`
-	ClientInstanceName            *string `json:"ClientInstanceName,omitempty" xml:"ClientInstanceName,omitempty"`
-	ClientInstanceType            *string `json:"ClientInstanceType,omitempty" xml:"ClientInstanceType,omitempty"`
-	ClientInternetMaxBandwidthIn  *int32  `json:"ClientInternetMaxBandwidthIn,omitempty" xml:"ClientInternetMaxBandwidthIn,omitempty"`
-	ClientInternetMaxBandwidthOut *int32  `json:"ClientInternetMaxBandwidthOut,omitempty" xml:"ClientInternetMaxBandwidthOut,omitempty"`
-	ClientPassword                *string `json:"ClientPassword,omitempty" xml:"ClientPassword,omitempty"`
-	ClientSecurityGroupId         *string `json:"ClientSecurityGroupId,omitempty" xml:"ClientSecurityGroupId,omitempty"`
-	ClientSystemDiskCategory      *string `json:"ClientSystemDiskCategory,omitempty" xml:"ClientSystemDiskCategory,omitempty"`
-	ClientSystemDiskSize          *int32  `json:"ClientSystemDiskSize,omitempty" xml:"ClientSystemDiskSize,omitempty"`
-	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClientVSwitchId               *string `json:"ClientVSwitchId,omitempty" xml:"ClientVSwitchId,omitempty"`
-	ClientZoneId                  *string `json:"ClientZoneId,omitempty" xml:"ClientZoneId,omitempty"`
-	EaiInstanceType               *string `json:"EaiInstanceType,omitempty" xml:"EaiInstanceType,omitempty"`
-	InstanceName                  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId               *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s CreateEaiAllRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEaiAllRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEaiAllRequest) SetClientImageId(v string) *CreateEaiAllRequest {
-	s.ClientImageId = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientInstanceName(v string) *CreateEaiAllRequest {
-	s.ClientInstanceName = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientInstanceType(v string) *CreateEaiAllRequest {
-	s.ClientInstanceType = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientInternetMaxBandwidthIn(v int32) *CreateEaiAllRequest {
-	s.ClientInternetMaxBandwidthIn = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientInternetMaxBandwidthOut(v int32) *CreateEaiAllRequest {
-	s.ClientInternetMaxBandwidthOut = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientPassword(v string) *CreateEaiAllRequest {
-	s.ClientPassword = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientSecurityGroupId(v string) *CreateEaiAllRequest {
-	s.ClientSecurityGroupId = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientSystemDiskCategory(v string) *CreateEaiAllRequest {
-	s.ClientSystemDiskCategory = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientSystemDiskSize(v int32) *CreateEaiAllRequest {
-	s.ClientSystemDiskSize = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientToken(v string) *CreateEaiAllRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientVSwitchId(v string) *CreateEaiAllRequest {
-	s.ClientVSwitchId = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetClientZoneId(v string) *CreateEaiAllRequest {
-	s.ClientZoneId = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetEaiInstanceType(v string) *CreateEaiAllRequest {
-	s.EaiInstanceType = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetInstanceName(v string) *CreateEaiAllRequest {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetRegionId(v string) *CreateEaiAllRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateEaiAllRequest) SetResourceGroupId(v string) *CreateEaiAllRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type CreateEaiAllResponseBody struct {
-	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
-	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateEaiAllResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEaiAllResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEaiAllResponseBody) SetClientInstanceId(v string) *CreateEaiAllResponseBody {
-	s.ClientInstanceId = &v
-	return s
-}
-
-func (s *CreateEaiAllResponseBody) SetElasticAcceleratedInstanceId(v string) *CreateEaiAllResponseBody {
-	s.ElasticAcceleratedInstanceId = &v
-	return s
-}
-
-func (s *CreateEaiAllResponseBody) SetRequestId(v string) *CreateEaiAllResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateEaiAllResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEaiAllResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateEaiAllResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEaiAllResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEaiAllResponse) SetHeaders(v map[string]*string) *CreateEaiAllResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateEaiAllResponse) SetStatusCode(v int32) *CreateEaiAllResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateEaiAllResponse) SetBody(v *CreateEaiAllResponseBody) *CreateEaiAllResponse {
-	s.Body = v
-	return s
-}
-
 type CreateEaiEciRequest struct {
-	ClientToken     *string                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EaisName        *string                 `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
-	EaisType        *string                 `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
-	Eci             *CreateEaiEciRequestEci `json:"Eci,omitempty" xml:"Eci,omitempty" type:"Struct"`
-	RegionId        *string                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId *string                 `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// eais-test01
+	EaisName *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	EaisType *string                 `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
+	Eci      *CreateEaiEciRequestEci `json:"Eci,omitempty" xml:"Eci,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmvpuy4a5****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-uf66jeqopgqa9hdn****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-uf6h3rbwbm90urjwa****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiEciRequest) String() string {
@@ -604,10 +560,22 @@ func (s *CreateEaiEciRequest) SetVSwitchId(v string) *CreateEaiEciRequest {
 
 type CreateEaiEciRequestEci struct {
 	Container *CreateEaiEciRequestEciContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	EipId     *string                          `json:"EipId,omitempty" xml:"EipId,omitempty"`
-	Name      *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type      *string                          `json:"Type,omitempty" xml:"Type,omitempty"`
-	Volume    *string                          `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// example:
+	//
+	// eip-uf66jeqopgqa9hdn****
+	EipId *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
+	// example:
+	//
+	// test-nginx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ecs.c5.xlarge
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 00c7****-rivj.cn-hangzhou.extreme.nas.aliyuncs.com:/share
+	Volume *string `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s CreateEaiEciRequestEci) String() string {
@@ -644,10 +612,25 @@ func (s *CreateEaiEciRequestEci) SetVolume(v string) *CreateEaiEciRequestEci {
 }
 
 type CreateEaiEciRequestEciContainer struct {
-	Arg     *string `json:"Arg,omitempty" xml:"Arg,omitempty"`
+	// example:
+	//
+	// 100
+	Arg *string `json:"Arg,omitempty" xml:"Arg,omitempty"`
+	// example:
+	//
+	// sleep
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	Image   *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// nginx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// test1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// /mnt/eais=eais,/models=eais/models
 	Volumes *string `json:"Volumes,omitempty" xml:"Volumes,omitempty"`
 }
 
@@ -685,14 +668,43 @@ func (s *CreateEaiEciRequestEciContainer) SetVolumes(v string) *CreateEaiEciRequ
 }
 
 type CreateEaiEciShrinkRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EaisName        *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
-	EaisType        *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
-	EciShrink       *string `json:"Eci,omitempty" xml:"Eci,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// eais-test01
+	EaisName *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	EaisType  *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
+	EciShrink *string `json:"Eci,omitempty" xml:"Eci,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmvpuy4a5****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-uf66jeqopgqa9hdn****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-uf6h3rbwbm90urjwa****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiEciShrinkRequest) String() string {
@@ -744,9 +756,18 @@ func (s *CreateEaiEciShrinkRequest) SetVSwitchId(v string) *CreateEaiEciShrinkRe
 }
 
 type CreateEaiEciResponseBody struct {
-	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// eci-2zeh03ygxlrzmfi6****
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// eais-sz8t15a7gt7z7j7i****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F5FEB9AA-C108-577C-AB3D-D13524AF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEaiEciResponseBody) String() string {
@@ -773,9 +794,9 @@ func (s *CreateEaiEciResponseBody) SetRequestId(v string) *CreateEaiEciResponseB
 }
 
 type CreateEaiEciResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEaiEciResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEaiEciResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEaiEciResponse) String() string {
@@ -802,14 +823,43 @@ func (s *CreateEaiEciResponse) SetBody(v *CreateEaiEciResponseBody) *CreateEaiEc
 }
 
 type CreateEaiEcsRequest struct {
-	ClientToken     *string                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EaisName        *string                 `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
-	EaisType        *string                 `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
-	Ecs             *CreateEaiEcsRequestEcs `json:"Ecs,omitempty" xml:"Ecs,omitempty" type:"Struct"`
-	RegionId        *string                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId *string                 `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// eais-test01
+	EaisName *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	EaisType *string                 `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
+	Ecs      *CreateEaiEcsRequestEcs `json:"Ecs,omitempty" xml:"Ecs,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmvpuy4a5****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-uf66jeqopgqa9hdn****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-uf6h3rbwbm90urjwa****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiEcsRequest) String() string {
@@ -861,15 +911,42 @@ func (s *CreateEaiEcsRequest) SetVSwitchId(v string) *CreateEaiEcsRequest {
 }
 
 type CreateEaiEcsRequestEcs struct {
-	ImageId                 *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InternetMaxBandwidthIn  *string `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	// example:
+	//
+	// aliyun_2_1903_x64_20G_alibase_20200324.vhd
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// 10
+	InternetMaxBandwidthIn *string `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	// example:
+	//
+	// 10
 	InternetMaxBandwidthOut *string `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	SystemDiskCategory      *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	SystemDiskSize          *int64  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// test1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// EcsV587!
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// example:
+	//
+	// 40
+	SystemDiskSize *int64 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// example:
+	//
+	// ecs.g7.4xlarge
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateEaiEcsRequestEcs) String() string {
@@ -926,14 +1003,43 @@ func (s *CreateEaiEcsRequestEcs) SetZoneId(v string) *CreateEaiEcsRequestEcs {
 }
 
 type CreateEaiEcsShrinkRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EaisName        *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
-	EaisType        *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
-	EcsShrink       *string `json:"Ecs,omitempty" xml:"Ecs,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// eais-test01
+	EaisName *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	EaisType  *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
+	EcsShrink *string `json:"Ecs,omitempty" xml:"Ecs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmvpuy4a5****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-uf66jeqopgqa9hdn****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-uf6h3rbwbm90urjwa****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiEcsShrinkRequest) String() string {
@@ -985,9 +1091,18 @@ func (s *CreateEaiEcsShrinkRequest) SetVSwitchId(v string) *CreateEaiEcsShrinkRe
 }
 
 type CreateEaiEcsResponseBody struct {
-	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// i-bp1hjrvleawl4ogb****
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// eais-sz8t15a7gt7z7j7i****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F5FEB9AA-C108-577C-AB3D-D13524AF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEaiEcsResponseBody) String() string {
@@ -1014,9 +1129,9 @@ func (s *CreateEaiEcsResponseBody) SetRequestId(v string) *CreateEaiEcsResponseB
 }
 
 type CreateEaiEcsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEaiEcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEaiEcsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEaiEcsResponse) String() string {
@@ -1043,14 +1158,37 @@ func (s *CreateEaiEcsResponse) SetBody(v *CreateEaiEcsResponseBody) *CreateEaiEc
 }
 
 type CreateEaiJupyterRequest struct {
-	ClientToken     *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EaisName        *string                                  `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
-	EaisType        *string                                  `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
-	EnvironmentVar  []*CreateEaiJupyterRequestEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
-	RegionId        *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId *string                                  `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EaisName    *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	EaisType       *string                                  `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
+	EnvironmentVar []*CreateEaiJupyterRequestEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-uf66jeqopgqa9hdn****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-uf6h3rbwbm90urjwa****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiJupyterRequest) String() string {
@@ -1102,7 +1240,13 @@ func (s *CreateEaiJupyterRequest) SetVSwitchId(v string) *CreateEaiJupyterReques
 }
 
 type CreateEaiJupyterRequestEnvironmentVar struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// MY_USER_NAME
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test123
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1125,14 +1269,37 @@ func (s *CreateEaiJupyterRequestEnvironmentVar) SetValue(v string) *CreateEaiJup
 }
 
 type CreateEaiJupyterShrinkRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EaisName             *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EaisName    *string `json:"EaisName,omitempty" xml:"EaisName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais.ei-a6.2xlarge
 	EaisType             *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
 	EnvironmentVarShrink *string `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-uf66jeqopgqa9hdn****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-uf6h3rbwbm90urjwa****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiJupyterShrinkRequest) String() string {
@@ -1184,8 +1351,14 @@ func (s *CreateEaiJupyterShrinkRequest) SetVSwitchId(v string) *CreateEaiJupyter
 }
 
 type CreateEaiJupyterResponseBody struct {
+	// example:
+	//
+	// eais-hz8t15a7gt7z7j7i****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// A655AB0E-31BB-45AD-9255-FCE93F6*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEaiJupyterResponseBody) String() string {
@@ -1207,9 +1380,9 @@ func (s *CreateEaiJupyterResponseBody) SetRequestId(v string) *CreateEaiJupyterR
 }
 
 type CreateEaiJupyterResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEaiJupyterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEaiJupyterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEaiJupyterResponse) String() string {
@@ -1236,13 +1409,42 @@ func (s *CreateEaiJupyterResponse) SetBody(v *CreateEaiJupyterResponseBody) *Cre
 }
 
 type CreateEaisEiRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// test_ei
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmvpuy4a5****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-bp16jgp51ttnkbdr****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp17wmd1wb6fwlimk****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaisEiRequest) String() string {
@@ -1289,8 +1491,14 @@ func (s *CreateEaisEiRequest) SetVSwitchId(v string) *CreateEaisEiRequest {
 }
 
 type CreateEaisEiResponseBody struct {
+	// example:
+	//
+	// eais-hzu00xufs1c8j5nn****
 	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F5FEB9AA-C108-577C-AB3D-D13524AF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEaisEiResponseBody) String() string {
@@ -1312,9 +1520,9 @@ func (s *CreateEaisEiResponseBody) SetRequestId(v string) *CreateEaisEiResponseB
 }
 
 type CreateEaisEiResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateEaisEiResponse) String() string {
@@ -1341,9 +1549,22 @@ func (s *CreateEaisEiResponse) SetBody(v *CreateEaisEiResponseBody) *CreateEaisE
 }
 
 type DeleteEaiRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-sz8t15a7gt7z7j7i****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	Force                        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteEaiRequest) String() string {
@@ -1370,6 +1591,9 @@ func (s *DeleteEaiRequest) SetRegionId(v string) *DeleteEaiRequest {
 }
 
 type DeleteEaiResponseBody struct {
+	// example:
+	//
+	// F23AEEC7-4D98-4657-A104-0269270*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1387,9 +1611,9 @@ func (s *DeleteEaiResponseBody) SetRequestId(v string) *DeleteEaiResponseBody {
 }
 
 type DeleteEaiResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEaiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEaiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEaiResponse) String() string {
@@ -1416,9 +1640,22 @@ func (s *DeleteEaiResponse) SetBody(v *DeleteEaiResponseBody) *DeleteEaiResponse
 }
 
 type DeleteEaiAllRequest struct {
-	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// i-bp1fvhi60e1zizsp****
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hza1ahi0uuw0re33****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteEaiAllRequest) String() string {
@@ -1445,6 +1682,9 @@ func (s *DeleteEaiAllRequest) SetRegionId(v string) *DeleteEaiAllRequest {
 }
 
 type DeleteEaiAllResponseBody struct {
+	// example:
+	//
+	// AD4EA714-A35B-4710-BF92-8275BCDDB69F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1462,9 +1702,9 @@ func (s *DeleteEaiAllResponseBody) SetRequestId(v string) *DeleteEaiAllResponseB
 }
 
 type DeleteEaiAllResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEaiAllResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEaiAllResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEaiAllResponse) String() string {
@@ -1491,9 +1731,22 @@ func (s *DeleteEaiAllResponse) SetBody(v *DeleteEaiAllResponseBody) *DeleteEaiAl
 }
 
 type DeleteEaisEiRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hzu00xufs1c8j5nn****
 	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
-	Force        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteEaisEiRequest) String() string {
@@ -1520,6 +1773,9 @@ func (s *DeleteEaisEiRequest) SetRegionId(v string) *DeleteEaisEiRequest {
 }
 
 type DeleteEaisEiResponseBody struct {
+	// example:
+	//
+	// F23AEEC7-4D98-4657-A104-02692701****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1537,9 +1793,9 @@ func (s *DeleteEaisEiResponseBody) SetRequestId(v string) *DeleteEaisEiResponseB
 }
 
 type DeleteEaisEiResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEaisEiResponse) String() string {
@@ -1566,16 +1822,39 @@ func (s *DeleteEaisEiResponse) SetBody(v *DeleteEaisEiResponseBody) *DeleteEaisE
 }
 
 type DescribeEaisRequest struct {
-	ClientInstanceId              *string                   `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
-	ElasticAcceleratedInstanceIds *string                   `json:"ElasticAcceleratedInstanceIds,omitempty" xml:"ElasticAcceleratedInstanceIds,omitempty"`
-	InstanceName                  *string                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType                  *string                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	PageNumber                    *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                      *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId                      *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId               *string                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status                        *string                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag                           []*DescribeEaisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// ["eais-id1", "eais-id2"]
+	ElasticAcceleratedInstanceIds *string `json:"ElasticAcceleratedInstanceIds,omitempty" xml:"ElasticAcceleratedInstanceIds,omitempty"`
+	// example:
+	//
+	// eais*
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 200
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// InUse
+	Status *string                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*DescribeEaisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEaisRequest) String() string {
@@ -1660,11 +1939,23 @@ func (s *DescribeEaisRequestTag) SetValue(v string) *DescribeEaisRequestTag {
 }
 
 type DescribeEaisResponseBody struct {
-	Instances  *DescribeEaisResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	PageNumber *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances *DescribeEaisResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1E23D585-BBD8-436F-9615-54CACD6*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeEaisResponseBody) String() string {
@@ -1718,24 +2009,69 @@ func (s *DescribeEaisResponseBodyInstances) SetInstance(v []*DescribeEaisRespons
 }
 
 type DescribeEaisResponseBodyInstancesInstance struct {
-	Category                     *string                                        `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientInstanceId             *string                                        `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
-	ClientInstanceName           *string                                        `json:"ClientInstanceName,omitempty" xml:"ClientInstanceName,omitempty"`
-	ClientInstanceType           *string                                        `json:"ClientInstanceType,omitempty" xml:"ClientInstanceType,omitempty"`
-	CreationTime                 *string                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description                  *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	ElasticAcceleratedInstanceId *string                                        `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	InstanceName                 *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType                 *string                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	JupyterUrl                   *string                                        `json:"JupyterUrl,omitempty" xml:"JupyterUrl,omitempty"`
-	RegionId                     *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId              *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId              *string                                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	StartTime                    *string                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                       *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                         *DescribeEaisResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VSwitchId                    *string                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                       *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// jupyter
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// i-wz93g6pyat2g****
+	ClientInstanceId *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
+	// example:
+	//
+	// test1
+	ClientInstanceName *string `json:"ClientInstanceName,omitempty" xml:"ClientInstanceName,omitempty"`
+	// example:
+	//
+	// ecs.g5ne.large
+	ClientInstanceType *string `json:"ClientInstanceType,omitempty" xml:"ClientInstanceType,omitempty"`
+	// example:
+	//
+	// 2020-11-11T03:11Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// eais-sz8t15a7gt7****
+	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
+	// example:
+	//
+	// testName
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// eais.ei-a6.2xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// http://121.41.**.24:8888
+	JupyterUrl *string `json:"JupyterUrl,omitempty" xml:"JupyterUrl,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// sg-bp1gppir818lx4******
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// InUse
+	Status *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeEaisResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// example:
+	//
+	// vsw-bp1sd131hfmd76r******
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeEaisResponseBodyInstancesInstance) String() string {
@@ -1854,7 +2190,13 @@ func (s *DescribeEaisResponseBodyInstancesInstanceTags) SetTag(v []*DescribeEais
 }
 
 type DescribeEaisResponseBodyInstancesInstanceTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -1877,9 +2219,9 @@ func (s *DescribeEaisResponseBodyInstancesInstanceTagsTag) SetTagValue(v string)
 }
 
 type DescribeEaisResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEaisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEaisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEaisResponse) String() string {
@@ -1906,8 +2248,11 @@ func (s *DescribeEaisResponse) SetBody(v *DescribeEaisResponseBody) *DescribeEai
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// example:
+	//
+	// F5FEB9AA-C108-577C-AB3D-D13524AF1840
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1946,9 +2291,15 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// example:
+	//
+	// eais.cn-shenzhen.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -1975,9 +2326,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -2004,8 +2355,18 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DetachEaiRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-sz8t15a7gt7z7j7i****
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DetachEaiRequest) String() string {
@@ -2027,6 +2388,9 @@ func (s *DetachEaiRequest) SetRegionId(v string) *DetachEaiRequest {
 }
 
 type DetachEaiResponseBody struct {
+	// example:
+	//
+	// 04DEB304-2436-4CB9-BB63-468BCEA03D9D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2044,9 +2408,9 @@ func (s *DetachEaiResponseBody) SetRequestId(v string) *DetachEaiResponseBody {
 }
 
 type DetachEaiResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachEaiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachEaiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachEaiResponse) String() string {
@@ -2073,8 +2437,18 @@ func (s *DetachEaiResponse) SetBody(v *DetachEaiResponseBody) *DetachEaiResponse
 }
 
 type DetachEaisEiRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hzu00xufs1c8j5nn****
 	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DetachEaisEiRequest) String() string {
@@ -2096,6 +2470,9 @@ func (s *DetachEaisEiRequest) SetRegionId(v string) *DetachEaisEiRequest {
 }
 
 type DetachEaisEiResponseBody struct {
+	// example:
+	//
+	// 04DEB304-2436-4CB9-BB63-468BCEA0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2113,9 +2490,9 @@ func (s *DetachEaisEiResponseBody) SetRequestId(v string) *DetachEaisEiResponseB
 }
 
 type DetachEaisEiResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachEaisEiResponse) String() string {
@@ -2142,12 +2519,31 @@ func (s *DetachEaisEiResponse) SetBody(v *DetachEaisEiResponseBody) *DetachEaisE
 }
 
 type GetInstanceMetricsRequest struct {
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2022-11-22T16:30:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hznzre6ffmz9num4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MemoryUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TimeStep   *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+	// example:
+	//
+	// 2022-11-22T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 5m
+	TimeStep *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
 }
 
 func (s GetInstanceMetricsRequest) String() string {
@@ -2189,9 +2585,15 @@ func (s *GetInstanceMetricsRequest) SetTimeStep(v string) *GetInstanceMetricsReq
 }
 
 type GetInstanceMetricsResponseBody struct {
+	// example:
+	//
+	// eais-bj8b53it29hfhj******
 	InstanceId *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PodMetrics []*GetInstanceMetricsResponseBodyPodMetrics `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInstanceMetricsResponseBody) String() string {
@@ -2220,6 +2622,10 @@ func (s *GetInstanceMetricsResponseBody) SetRequestId(v string) *GetInstanceMetr
 type GetInstanceMetricsResponseBodyPodMetrics struct {
 	Metrics []*GetInstanceMetricsResponseBodyPodMetricsMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 	// Pod ID。
+	//
+	// example:
+	//
+	// eais-hznzre6ffmz9num4****-579b587ddf-9txr6
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
 }
 
@@ -2242,7 +2648,13 @@ func (s *GetInstanceMetricsResponseBodyPodMetrics) SetPodId(v string) *GetInstan
 }
 
 type GetInstanceMetricsResponseBodyPodMetricsMetrics struct {
-	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 1669107528450
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 4.536552540058814
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2265,9 +2677,9 @@ func (s *GetInstanceMetricsResponseBodyPodMetricsMetrics) SetValue(v string) *Ge
 }
 
 type GetInstanceMetricsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceMetricsResponse) String() string {
@@ -2293,9 +2705,375 @@ func (s *GetInstanceMetricsResponse) SetBody(v *GetInstanceMetricsResponseBody) 
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4884
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4885
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// F23AEEC7-4D98-4657-A104-02692701****
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// example:
+	//
+	// eais-hzs4h26yyt5xkcke****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// TestValue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type StartEaiJupyterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hze3x2gv9wimdj0k****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartEaiJupyterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartEaiJupyterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartEaiJupyterRequest) SetInstanceId(v string) *StartEaiJupyterRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartEaiJupyterRequest) SetRegionId(v string) *StartEaiJupyterRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartEaiJupyterResponseBody struct {
+	AccessDeniedDetail *StartEaiJupyterResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 04DEB304-2436-4CB9-BB63-468BCEA0****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartEaiJupyterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartEaiJupyterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartEaiJupyterResponseBody) SetAccessDeniedDetail(v *StartEaiJupyterResponseBodyAccessDeniedDetail) *StartEaiJupyterResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
+func (s *StartEaiJupyterResponseBody) SetRequestId(v string) *StartEaiJupyterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartEaiJupyterResponseBodyAccessDeniedDetail struct {
+	// example:
+	//
+	// eais:StartEaiJupyter
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// example:
+	//
+	// 20560152949032****
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// example:
+	//
+	// 170718266783****
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// example:
+	//
+	// AQFmfh3BZn4dwUQyNzY4MDVELTgzQkUtNTBEOC04QjQyLTNGM0U1QUI5MjhBRA==
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// example:
+	//
+	// ExplicitDeny
+	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// example:
+	//
+	// AccountLevelIdentityBasedPolicy
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s StartEaiJupyterResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartEaiJupyterResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *StartEaiJupyterResponseBodyAccessDeniedDetail) SetAuthAction(v string) *StartEaiJupyterResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *StartEaiJupyterResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *StartEaiJupyterResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *StartEaiJupyterResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *StartEaiJupyterResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *StartEaiJupyterResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *StartEaiJupyterResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *StartEaiJupyterResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *StartEaiJupyterResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *StartEaiJupyterResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *StartEaiJupyterResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *StartEaiJupyterResponseBodyAccessDeniedDetail) SetPolicyType(v string) *StartEaiJupyterResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
+	return s
+}
+
+type StartEaiJupyterResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartEaiJupyterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartEaiJupyterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartEaiJupyterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartEaiJupyterResponse) SetHeaders(v map[string]*string) *StartEaiJupyterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartEaiJupyterResponse) SetStatusCode(v int32) *StartEaiJupyterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartEaiJupyterResponse) SetBody(v *StartEaiJupyterResponseBody) *StartEaiJupyterResponse {
+	s.Body = v
+	return s
+}
+
 type StartEaisEiRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hzu00xufs1c8j5nn****
 	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StartEaisEiRequest) String() string {
@@ -2317,6 +3095,9 @@ func (s *StartEaisEiRequest) SetRegionId(v string) *StartEaisEiRequest {
 }
 
 type StartEaisEiResponseBody struct {
+	// example:
+	//
+	// F23AEEC7-4D98-4657-A104-02692701****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2334,9 +3115,9 @@ func (s *StartEaisEiResponseBody) SetRequestId(v string) *StartEaisEiResponseBod
 }
 
 type StartEaisEiResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartEaisEiResponse) String() string {
@@ -2362,9 +3143,181 @@ func (s *StartEaisEiResponse) SetBody(v *StartEaisEiResponseBody) *StartEaisEiRe
 	return s
 }
 
+type StopEaiJupyterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hze3x2gv9wimdj0k****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StopEaiJupyterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopEaiJupyterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopEaiJupyterRequest) SetInstanceId(v string) *StopEaiJupyterRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StopEaiJupyterRequest) SetRegionId(v string) *StopEaiJupyterRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopEaiJupyterResponseBody struct {
+	AccessDeniedDetail *StopEaiJupyterResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// F5FEB9AA-C108-577C-AB3D-D13524AF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopEaiJupyterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopEaiJupyterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopEaiJupyterResponseBody) SetAccessDeniedDetail(v *StopEaiJupyterResponseBodyAccessDeniedDetail) *StopEaiJupyterResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
+func (s *StopEaiJupyterResponseBody) SetRequestId(v string) *StopEaiJupyterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopEaiJupyterResponseBodyAccessDeniedDetail struct {
+	// example:
+	//
+	// eais:StopEaiJupyter
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// example:
+	//
+	// 20560152949032****
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// example:
+	//
+	// 170718266783****
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// example:
+	//
+	// AQFmj0FOZo9BTjMyQTFDRkIzLUE5MTItNUIwNC1BQzkxLTcyMUFFQTUyQjhGQQ==
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// example:
+	//
+	// ExplicitDeny
+	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// example:
+	//
+	// AccountLevelIdentityBasedPolicy
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s StopEaiJupyterResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopEaiJupyterResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *StopEaiJupyterResponseBodyAccessDeniedDetail) SetAuthAction(v string) *StopEaiJupyterResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *StopEaiJupyterResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *StopEaiJupyterResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *StopEaiJupyterResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *StopEaiJupyterResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *StopEaiJupyterResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *StopEaiJupyterResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *StopEaiJupyterResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *StopEaiJupyterResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *StopEaiJupyterResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *StopEaiJupyterResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *StopEaiJupyterResponseBodyAccessDeniedDetail) SetPolicyType(v string) *StopEaiJupyterResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
+	return s
+}
+
+type StopEaiJupyterResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopEaiJupyterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopEaiJupyterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopEaiJupyterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopEaiJupyterResponse) SetHeaders(v map[string]*string) *StopEaiJupyterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopEaiJupyterResponse) SetStatusCode(v int32) *StopEaiJupyterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopEaiJupyterResponse) SetBody(v *StopEaiJupyterResponseBody) *StopEaiJupyterResponse {
+	s.Body = v
+	return s
+}
+
 type StopEaisEiRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eais-hzu00xufs1c8j5nn****
 	EiInstanceId *string `json:"EiInstanceId,omitempty" xml:"EiInstanceId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopEaisEiRequest) String() string {
@@ -2386,6 +3339,9 @@ func (s *StopEaisEiRequest) SetRegionId(v string) *StopEaisEiRequest {
 }
 
 type StopEaisEiResponseBody struct {
+	// example:
+	//
+	// F23AEEC7-4D98-4657-A104-02692701****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2403,9 +3359,9 @@ func (s *StopEaisEiResponseBody) SetRequestId(v string) *StopEaisEiResponseBody 
 }
 
 type StopEaisEiResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopEaisEiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopEaisEiResponse) String() string {
@@ -2427,6 +3383,235 @@ func (s *StopEaisEiResponse) SetStatusCode(v int32) *StopEaisEiResponse {
 }
 
 func (s *StopEaisEiResponse) SetBody(v *StopEaisEiResponseBody) *StopEaisEiResponse {
+	s.Body = v
+	return s
+}
+
+type TagResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	// example:
+	//
+	// false
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	// example:
+	//
+	// 1E23D585-BBD8-436F-9615-54CACD67****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -2531,6 +3716,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 将弹性加速计算实例挂载到ECS实例上
+//
+// @param request - AttachEaiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachEaiResponse
 func (client *Client) AttachEaiWithOptions(request *AttachEaiRequest, runtime *util.RuntimeOptions) (_result *AttachEaiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2572,6 +3766,13 @@ func (client *Client) AttachEaiWithOptions(request *AttachEaiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 将弹性加速计算实例挂载到ECS实例上
+//
+// @param request - AttachEaiRequest
+//
+// @return AttachEaiResponse
 func (client *Client) AttachEai(request *AttachEaiRequest) (_result *AttachEaiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachEaiResponse{}
@@ -2583,6 +3784,15 @@ func (client *Client) AttachEai(request *AttachEaiRequest) (_result *AttachEaiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 将EI绑定到ECS或ECI实例上。
+//
+// @param request - AttachEaisEiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachEaisEiResponse
 func (client *Client) AttachEaisEiWithOptions(request *AttachEaisEiRequest, runtime *util.RuntimeOptions) (_result *AttachEaisEiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2628,6 +3838,13 @@ func (client *Client) AttachEaisEiWithOptions(request *AttachEaisEiRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 将EI绑定到ECS或ECI实例上。
+//
+// @param request - AttachEaisEiRequest
+//
+// @return AttachEaisEiResponse
 func (client *Client) AttachEaisEi(request *AttachEaisEiRequest) (_result *AttachEaisEiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachEaisEiResponse{}
@@ -2639,6 +3856,15 @@ func (client *Client) AttachEaisEi(request *AttachEaisEiRequest) (_result *Attac
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2680,6 +3906,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -2691,6 +3924,15 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个弹性加速计算实例
+//
+// @param request - CreateEaiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEaiResponse
 func (client *Client) CreateEaiWithOptions(request *CreateEaiRequest, runtime *util.RuntimeOptions) (_result *CreateEaiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2752,6 +3994,13 @@ func (client *Client) CreateEaiWithOptions(request *CreateEaiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个弹性加速计算实例
+//
+// @param request - CreateEaiRequest
+//
+// @return CreateEaiResponse
 func (client *Client) CreateEai(request *CreateEaiRequest) (_result *CreateEaiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEaiResponse{}
@@ -2763,125 +4012,15 @@ func (client *Client) CreateEai(request *CreateEaiRequest) (_result *CreateEaiRe
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request CreateEaiAllRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateEaiAllResponse
- */
-// Deprecated
-func (client *Client) CreateEaiAllWithOptions(request *CreateEaiAllRequest, runtime *util.RuntimeOptions) (_result *CreateEaiAllResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientImageId)) {
-		query["ClientImageId"] = request.ClientImageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInstanceName)) {
-		query["ClientInstanceName"] = request.ClientInstanceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInstanceType)) {
-		query["ClientInstanceType"] = request.ClientInstanceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInternetMaxBandwidthIn)) {
-		query["ClientInternetMaxBandwidthIn"] = request.ClientInternetMaxBandwidthIn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientInternetMaxBandwidthOut)) {
-		query["ClientInternetMaxBandwidthOut"] = request.ClientInternetMaxBandwidthOut
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientPassword)) {
-		query["ClientPassword"] = request.ClientPassword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientSecurityGroupId)) {
-		query["ClientSecurityGroupId"] = request.ClientSecurityGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientSystemDiskCategory)) {
-		query["ClientSystemDiskCategory"] = request.ClientSystemDiskCategory
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientSystemDiskSize)) {
-		query["ClientSystemDiskSize"] = request.ClientSystemDiskSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientVSwitchId)) {
-		query["ClientVSwitchId"] = request.ClientVSwitchId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientZoneId)) {
-		query["ClientZoneId"] = request.ClientZoneId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EaiInstanceType)) {
-		query["EaiInstanceType"] = request.EaiInstanceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
-		query["InstanceName"] = request.InstanceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateEaiAll"),
-		Version:     tea.String("2019-06-24"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateEaiAllResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request CreateEaiAllRequest
- * @return CreateEaiAllResponse
- */
-// Deprecated
-func (client *Client) CreateEaiAll(request *CreateEaiAllRequest) (_result *CreateEaiAllResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateEaiAllResponse{}
-	_body, _err := client.CreateEaiAllWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// 创建一个EAIS实例和ECI实例并绑定
+//
+// @param tmpReq - CreateEaiEciRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEaiEciResponse
 func (client *Client) CreateEaiEciWithOptions(tmpReq *CreateEaiEciRequest, runtime *util.RuntimeOptions) (_result *CreateEaiEciResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2949,6 +4088,13 @@ func (client *Client) CreateEaiEciWithOptions(tmpReq *CreateEaiEciRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个EAIS实例和ECI实例并绑定
+//
+// @param request - CreateEaiEciRequest
+//
+// @return CreateEaiEciResponse
 func (client *Client) CreateEaiEci(request *CreateEaiEciRequest) (_result *CreateEaiEciResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEaiEciResponse{}
@@ -2960,6 +4106,15 @@ func (client *Client) CreateEaiEci(request *CreateEaiEciRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个EAIS实例和ECS实例并绑定
+//
+// @param tmpReq - CreateEaiEcsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEaiEcsResponse
 func (client *Client) CreateEaiEcsWithOptions(tmpReq *CreateEaiEcsRequest, runtime *util.RuntimeOptions) (_result *CreateEaiEcsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3027,6 +4182,13 @@ func (client *Client) CreateEaiEcsWithOptions(tmpReq *CreateEaiEcsRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个EAIS实例和ECS实例并绑定
+//
+// @param request - CreateEaiEcsRequest
+//
+// @return CreateEaiEcsResponse
 func (client *Client) CreateEaiEcs(request *CreateEaiEcsRequest) (_result *CreateEaiEcsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEaiEcsResponse{}
@@ -3038,6 +4200,15 @@ func (client *Client) CreateEaiEcs(request *CreateEaiEcsRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个EAIS Jupyter环境
+//
+// @param tmpReq - CreateEaiJupyterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEaiJupyterResponse
 func (client *Client) CreateEaiJupyterWithOptions(tmpReq *CreateEaiJupyterRequest, runtime *util.RuntimeOptions) (_result *CreateEaiJupyterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3105,6 +4276,13 @@ func (client *Client) CreateEaiJupyterWithOptions(tmpReq *CreateEaiJupyterReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个EAIS Jupyter环境
+//
+// @param request - CreateEaiJupyterRequest
+//
+// @return CreateEaiJupyterResponse
 func (client *Client) CreateEaiJupyter(request *CreateEaiJupyterRequest) (_result *CreateEaiJupyterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEaiJupyterResponse{}
@@ -3116,6 +4294,15 @@ func (client *Client) CreateEaiJupyter(request *CreateEaiJupyterRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个弹性加速计算实例
+//
+// @param request - CreateEaisEiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEaisEiResponse
 func (client *Client) CreateEaisEiWithOptions(request *CreateEaisEiRequest, runtime *util.RuntimeOptions) (_result *CreateEaisEiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3173,6 +4360,13 @@ func (client *Client) CreateEaisEiWithOptions(request *CreateEaisEiRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个弹性加速计算实例
+//
+// @param request - CreateEaisEiRequest
+//
+// @return CreateEaisEiResponse
 func (client *Client) CreateEaisEi(request *CreateEaisEiRequest) (_result *CreateEaisEiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEaisEiResponse{}
@@ -3184,6 +4378,15 @@ func (client *Client) CreateEaisEi(request *CreateEaisEiRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放一个弹性加速计算实例
+//
+// @param request - DeleteEaiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEaiResponse
 func (client *Client) DeleteEaiWithOptions(request *DeleteEaiRequest, runtime *util.RuntimeOptions) (_result *DeleteEaiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3225,6 +4428,13 @@ func (client *Client) DeleteEaiWithOptions(request *DeleteEaiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放一个弹性加速计算实例
+//
+// @param request - DeleteEaiRequest
+//
+// @return DeleteEaiResponse
 func (client *Client) DeleteEai(request *DeleteEaiRequest) (_result *DeleteEaiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEaiResponse{}
@@ -3236,6 +4446,15 @@ func (client *Client) DeleteEai(request *DeleteEaiRequest) (_result *DeleteEaiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放一个弹性加速计算实例以及与其绑定的ECS或ECI实例
+//
+// @param request - DeleteEaiAllRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEaiAllResponse
 func (client *Client) DeleteEaiAllWithOptions(request *DeleteEaiAllRequest, runtime *util.RuntimeOptions) (_result *DeleteEaiAllResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3277,6 +4496,13 @@ func (client *Client) DeleteEaiAllWithOptions(request *DeleteEaiAllRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放一个弹性加速计算实例以及与其绑定的ECS或ECI实例
+//
+// @param request - DeleteEaiAllRequest
+//
+// @return DeleteEaiAllResponse
 func (client *Client) DeleteEaiAll(request *DeleteEaiAllRequest) (_result *DeleteEaiAllResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEaiAllResponse{}
@@ -3288,6 +4514,15 @@ func (client *Client) DeleteEaiAll(request *DeleteEaiAllRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放弹性加速计算实例
+//
+// @param request - DeleteEaisEiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEaisEiResponse
 func (client *Client) DeleteEaisEiWithOptions(request *DeleteEaisEiRequest, runtime *util.RuntimeOptions) (_result *DeleteEaisEiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3329,6 +4564,13 @@ func (client *Client) DeleteEaisEiWithOptions(request *DeleteEaisEiRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放弹性加速计算实例
+//
+// @param request - DeleteEaisEiRequest
+//
+// @return DeleteEaisEiResponse
 func (client *Client) DeleteEaisEi(request *DeleteEaisEiRequest) (_result *DeleteEaisEiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEaisEiResponse{}
@@ -3340,6 +4582,15 @@ func (client *Client) DeleteEaisEi(request *DeleteEaisEiRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询一个或多个弹性加速计算实例的详细信息
+//
+// @param request - DescribeEaisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEaisResponse
 func (client *Client) DescribeEaisWithOptions(request *DescribeEaisRequest, runtime *util.RuntimeOptions) (_result *DescribeEaisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3409,6 +4660,13 @@ func (client *Client) DescribeEaisWithOptions(request *DescribeEaisRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询一个或多个弹性加速计算实例的详细信息
+//
+// @param request - DescribeEaisRequest
+//
+// @return DescribeEaisResponse
 func (client *Client) DescribeEais(request *DescribeEaisRequest) (_result *DescribeEaisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEaisResponse{}
@@ -3420,6 +4678,15 @@ func (client *Client) DescribeEais(request *DescribeEaisRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询您可以使用的阿里云地域
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3442,6 +4709,11 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询您可以使用的阿里云地域
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -3453,6 +4725,15 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 	return _result, _err
 }
 
+// Summary:
+//
+// 从ECS实例上卸载弹性加速计算实例
+//
+// @param request - DetachEaiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachEaiResponse
 func (client *Client) DetachEaiWithOptions(request *DetachEaiRequest, runtime *util.RuntimeOptions) (_result *DetachEaiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3490,6 +4771,13 @@ func (client *Client) DetachEaiWithOptions(request *DetachEaiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 从ECS实例上卸载弹性加速计算实例
+//
+// @param request - DetachEaiRequest
+//
+// @return DetachEaiResponse
 func (client *Client) DetachEai(request *DetachEaiRequest) (_result *DetachEaiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachEaiResponse{}
@@ -3501,6 +4789,15 @@ func (client *Client) DetachEai(request *DetachEaiRequest) (_result *DetachEaiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 将EI实例与ECS或ECI实例解绑
+//
+// @param request - DetachEaisEiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachEaisEiResponse
 func (client *Client) DetachEaisEiWithOptions(request *DetachEaisEiRequest, runtime *util.RuntimeOptions) (_result *DetachEaisEiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3538,6 +4835,13 @@ func (client *Client) DetachEaisEiWithOptions(request *DetachEaisEiRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 将EI实例与ECS或ECI实例解绑
+//
+// @param request - DetachEaisEiRequest
+//
+// @return DetachEaisEiResponse
 func (client *Client) DetachEaisEi(request *DetachEaisEiRequest) (_result *DetachEaisEiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachEaisEiResponse{}
@@ -3549,6 +4853,15 @@ func (client *Client) DetachEaisEi(request *DetachEaisEiRequest) (_result *Detac
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取EAIS实例级别的监控数据
+//
+// @param request - GetInstanceMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceMetricsResponse
 func (client *Client) GetInstanceMetricsWithOptions(request *GetInstanceMetricsRequest, runtime *util.RuntimeOptions) (_result *GetInstanceMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3602,6 +4915,13 @@ func (client *Client) GetInstanceMetricsWithOptions(request *GetInstanceMetricsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取EAIS实例级别的监控数据
+//
+// @param request - GetInstanceMetricsRequest
+//
+// @return GetInstanceMetricsResponse
 func (client *Client) GetInstanceMetrics(request *GetInstanceMetricsRequest) (_result *GetInstanceMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceMetricsResponse{}
@@ -3613,6 +4933,155 @@ func (client *Client) GetInstanceMetrics(request *GetInstanceMetricsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签列表
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询标签列表
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个部署了notebook的弹性加速计算实例
+//
+// @param request - StartEaiJupyterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartEaiJupyterResponse
+func (client *Client) StartEaiJupyterWithOptions(request *StartEaiJupyterRequest, runtime *util.RuntimeOptions) (_result *StartEaiJupyterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartEaiJupyter"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartEaiJupyterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个部署了notebook的弹性加速计算实例
+//
+// @param request - StartEaiJupyterRequest
+//
+// @return StartEaiJupyterResponse
+func (client *Client) StartEaiJupyter(request *StartEaiJupyterRequest) (_result *StartEaiJupyterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartEaiJupyterResponse{}
+	_body, _err := client.StartEaiJupyterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个弹性加速计算实例
+//
+// @param request - StartEaisEiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartEaisEiResponse
 func (client *Client) StartEaisEiWithOptions(request *StartEaisEiRequest, runtime *util.RuntimeOptions) (_result *StartEaisEiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3650,6 +5119,13 @@ func (client *Client) StartEaisEiWithOptions(request *StartEaisEiRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动一个弹性加速计算实例
+//
+// @param request - StartEaisEiRequest
+//
+// @return StartEaisEiResponse
 func (client *Client) StartEaisEi(request *StartEaisEiRequest) (_result *StartEaisEiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartEaisEiResponse{}
@@ -3661,6 +5137,79 @@ func (client *Client) StartEaisEi(request *StartEaisEiRequest) (_result *StartEa
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止一个部署了notebook的弹性加速计算实例
+//
+// @param request - StopEaiJupyterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopEaiJupyterResponse
+func (client *Client) StopEaiJupyterWithOptions(request *StopEaiJupyterRequest, runtime *util.RuntimeOptions) (_result *StopEaiJupyterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopEaiJupyter"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopEaiJupyterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止一个部署了notebook的弹性加速计算实例
+//
+// @param request - StopEaiJupyterRequest
+//
+// @return StopEaiJupyterResponse
+func (client *Client) StopEaiJupyter(request *StopEaiJupyterRequest) (_result *StopEaiJupyterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopEaiJupyterResponse{}
+	_body, _err := client.StopEaiJupyterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止一个弹性加速计算实例
+//
+// @param request - StopEaisEiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopEaisEiResponse
 func (client *Client) StopEaisEiWithOptions(request *StopEaisEiRequest, runtime *util.RuntimeOptions) (_result *StopEaisEiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3698,10 +5247,165 @@ func (client *Client) StopEaisEiWithOptions(request *StopEaisEiRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止一个弹性加速计算实例
+//
+// @param request - StopEaisEiRequest
+//
+// @return StopEaisEiResponse
 func (client *Client) StopEaisEi(request *StopEaisEiRequest) (_result *StopEaisEiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopEaisEiResponse{}
 	_body, _err := client.StopEaisEiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 为弹性加速计算实例创建并绑定标签
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为弹性加速计算实例创建并绑定标签
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑并删除标签
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑并删除标签
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
