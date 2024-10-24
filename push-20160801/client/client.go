@@ -1291,7 +1291,8 @@ type MassPushRequestPushTask struct {
 	// example:
 	//
 	// 100001
-	AndroidNotificationNotifyId *int32 `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationNotifyId *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationThreadId *string `json:"AndroidNotificationThreadId,omitempty" xml:"AndroidNotificationThreadId,omitempty"`
 	// example:
 	//
 	// 0
@@ -1619,6 +1620,11 @@ func (s *MassPushRequestPushTask) SetAndroidNotificationHuaweiChannel(v string) 
 
 func (s *MassPushRequestPushTask) SetAndroidNotificationNotifyId(v int32) *MassPushRequestPushTask {
 	s.AndroidNotificationNotifyId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidNotificationThreadId(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationThreadId = &v
 	return s
 }
 
@@ -2091,7 +2097,8 @@ type PushRequest struct {
 	// example:
 	//
 	// 100001
-	AndroidNotificationNotifyId *int32 `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationNotifyId *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationThreadId *string `json:"AndroidNotificationThreadId,omitempty" xml:"AndroidNotificationThreadId,omitempty"`
 	// example:
 	//
 	// classification
@@ -2439,6 +2446,11 @@ func (s *PushRequest) SetAndroidNotificationHuaweiChannel(v string) *PushRequest
 
 func (s *PushRequest) SetAndroidNotificationNotifyId(v int32) *PushRequest {
 	s.AndroidNotificationNotifyId = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationThreadId(v string) *PushRequest {
+	s.AndroidNotificationThreadId = &v
 	return s
 }
 
@@ -5670,6 +5682,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定别名
+//
 // @param request - BindAliasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5716,6 +5732,10 @@ func (client *Client) BindAliasWithOptions(request *BindAliasRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定别名
+//
 // @param request - BindAliasRequest
 //
 // @return BindAliasResponse
@@ -5730,6 +5750,10 @@ func (client *Client) BindAlias(request *BindAliasRequest) (_result *BindAliasRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定手机号码
+//
 // @param request - BindPhoneRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5776,6 +5800,10 @@ func (client *Client) BindPhoneWithOptions(request *BindPhoneRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定手机号码
+//
 // @param request - BindPhoneRequest
 //
 // @return BindPhoneResponse
@@ -5790,6 +5818,10 @@ func (client *Client) BindPhone(request *BindPhoneRequest) (_result *BindPhoneRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定标签
+//
 // @param request - BindTagRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5840,6 +5872,10 @@ func (client *Client) BindTagWithOptions(request *BindTagRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定标签
+//
 // @param request - BindTagRequest
 //
 // @return BindTagResponse
@@ -5854,6 +5890,10 @@ func (client *Client) BindTag(request *BindTagRequest) (_result *BindTagResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消定时推送任务
+//
 // @param request - CancelPushRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5896,6 +5936,10 @@ func (client *Client) CancelPushWithOptions(request *CancelPushRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消定时推送任务
+//
 // @param request - CancelPushRequest
 //
 // @return CancelPushResponse
@@ -5964,6 +6008,10 @@ func (client *Client) CheckCertificate(request *CheckCertificateRequest) (_resul
 
 // Deprecated: OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
 //
+// Summary:
+//
+// 【废弃】验证设备有效性
+//
 // @param request - CheckDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6009,6 +6057,10 @@ func (client *Client) CheckDeviceWithOptions(request *CheckDeviceRequest, runtim
 
 // Deprecated: OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
 //
+// Summary:
+//
+// 【废弃】验证设备有效性
+//
 // @param request - CheckDeviceRequest
 //
 // @return CheckDeviceResponse
@@ -6024,6 +6076,10 @@ func (client *Client) CheckDevice(request *CheckDeviceRequest) (_result *CheckDe
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量检查设备有效性
+//
 // @param request - CheckDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6066,6 +6122,10 @@ func (client *Client) CheckDevicesWithOptions(request *CheckDevicesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量检查设备有效性
+//
 // @param request - CheckDevicesRequest
 //
 // @return CheckDevicesResponse
@@ -6080,6 +6140,10 @@ func (client *Client) CheckDevices(request *CheckDevicesRequest) (_result *Check
 	return _result, _err
 }
 
+// Summary:
+//
+// 完成持续推送任务
+//
 // @param request - CompleteContinuouslyPushRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6122,6 +6186,10 @@ func (client *Client) CompleteContinuouslyPushWithOptions(request *CompleteConti
 	return _result, _err
 }
 
+// Summary:
+//
+// 完成持续推送任务
+//
 // @param request - CompleteContinuouslyPushRequest
 //
 // @return CompleteContinuouslyPushResponse
@@ -6136,6 +6204,10 @@ func (client *Client) CompleteContinuouslyPush(request *CompleteContinuouslyPush
 	return _result, _err
 }
 
+// Summary:
+//
+// 持续推送
+//
 // @param request - ContinuouslyPushRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6186,6 +6258,10 @@ func (client *Client) ContinuouslyPushWithOptions(request *ContinuouslyPushReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 持续推送
+//
 // @param request - ContinuouslyPushRequest
 //
 // @return ContinuouslyPushResponse
@@ -6201,6 +6277,10 @@ func (client *Client) ContinuouslyPush(request *ContinuouslyPushRequest) (_resul
 }
 
 // Deprecated: OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+//
+// Summary:
+//
+// 【废弃】查询用户已创建的app列表
 //
 // @param request - ListSummaryAppsRequest
 //
@@ -6232,6 +6312,10 @@ func (client *Client) ListSummaryAppsWithOptions(runtime *util.RuntimeOptions) (
 
 // Deprecated: OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
 //
+// Summary:
+//
+// 【废弃】查询用户已创建的app列表
+//
 // @return ListSummaryAppsResponse
 // Deprecated
 func (client *Client) ListSummaryApps() (_result *ListSummaryAppsResponse, _err error) {
@@ -6245,6 +6329,10 @@ func (client *Client) ListSummaryApps() (_result *ListSummaryAppsResponse, _err 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取标签列表
+//
 // @param request - ListTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6283,6 +6371,10 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取标签列表
+//
 // @param request - ListTagsRequest
 //
 // @return ListTagsResponse
@@ -6297,6 +6389,10 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量推送
+//
 // @param request - MassPushRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6341,6 +6437,10 @@ func (client *Client) MassPushWithOptions(request *MassPushRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量推送
+//
 // @param request - MassPushRequest
 //
 // @return MassPushResponse
@@ -6355,6 +6455,10 @@ func (client *Client) MassPush(request *MassPushRequest) (_result *MassPushRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 高级推送接口
+//
 // @param request - PushRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6460,6 +6564,10 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationNotifyId)) {
 		query["AndroidNotificationNotifyId"] = request.AndroidNotificationNotifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationThreadId)) {
+		query["AndroidNotificationThreadId"] = request.AndroidNotificationThreadId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationVivoChannel)) {
@@ -6769,6 +6877,10 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 高级推送接口
+//
 // @param request - PushRequest
 //
 // @return PushResponse
@@ -6783,6 +6895,10 @@ func (client *Client) Push(request *PushRequest) (_result *PushResponse, _err er
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送消息给Android设备
+//
 // @param request - PushMessageToAndroidRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6845,6 +6961,10 @@ func (client *Client) PushMessageToAndroidWithOptions(request *PushMessageToAndr
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送消息给Android设备
+//
 // @param request - PushMessageToAndroidRequest
 //
 // @return PushMessageToAndroidResponse
@@ -6859,6 +6979,10 @@ func (client *Client) PushMessageToAndroid(request *PushMessageToAndroidRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送消息给iOS设备
+//
 // @param request - PushMessageToiOSRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6921,6 +7045,10 @@ func (client *Client) PushMessageToiOSWithOptions(request *PushMessageToiOSReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送消息给iOS设备
+//
 // @param request - PushMessageToiOSRequest
 //
 // @return PushMessageToiOSResponse
@@ -6935,6 +7063,10 @@ func (client *Client) PushMessageToiOS(request *PushMessageToiOSRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送通知给Android设备
+//
 // @param request - PushNoticeToAndroidRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7001,6 +7133,10 @@ func (client *Client) PushNoticeToAndroidWithOptions(request *PushNoticeToAndroi
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送通知给Android设备
+//
 // @param request - PushNoticeToAndroidRequest
 //
 // @return PushNoticeToAndroidResponse
@@ -7015,6 +7151,10 @@ func (client *Client) PushNoticeToAndroid(request *PushNoticeToAndroidRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送通知给iOS设备
+//
 // @param request - PushNoticeToiOSRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7081,6 +7221,10 @@ func (client *Client) PushNoticeToiOSWithOptions(request *PushNoticeToiOSRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送通知给iOS设备
+//
 // @param request - PushNoticeToiOSRequest
 //
 // @return PushNoticeToiOSResponse
@@ -7095,6 +7239,10 @@ func (client *Client) PushNoticeToiOS(request *PushNoticeToiOSRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询别名
+//
 // @param request - QueryAliasesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7137,6 +7285,10 @@ func (client *Client) QueryAliasesWithOptions(request *QueryAliasesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询别名
+//
 // @param request - QueryAliasesRequest
 //
 // @return QueryAliasesResponse
@@ -7151,6 +7303,10 @@ func (client *Client) QueryAliases(request *QueryAliasesRequest) (_result *Query
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询设备详情
+//
 // @param request - QueryDeviceInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7193,6 +7349,10 @@ func (client *Client) QueryDeviceInfoWithOptions(request *QueryDeviceInfoRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询设备详情
+//
 // @param request - QueryDeviceInfoRequest
 //
 // @return QueryDeviceInfoResponse
@@ -7207,6 +7367,10 @@ func (client *Client) QueryDeviceInfo(request *QueryDeviceInfoRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 设备新增与留存
+//
 // @param request - QueryDeviceStatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7261,6 +7425,10 @@ func (client *Client) QueryDeviceStatWithOptions(request *QueryDeviceStatRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 设备新增与留存
+//
 // @param request - QueryDeviceStatRequest
 //
 // @return QueryDeviceStatResponse
@@ -7275,6 +7443,10 @@ func (client *Client) QueryDeviceStat(request *QueryDeviceStatRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过账户查询设备列表
+//
 // @param request - QueryDevicesByAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7317,6 +7489,10 @@ func (client *Client) QueryDevicesByAccountWithOptions(request *QueryDevicesByAc
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过账户查询设备列表
+//
 // @param request - QueryDevicesByAccountRequest
 //
 // @return QueryDevicesByAccountResponse
@@ -7331,6 +7507,10 @@ func (client *Client) QueryDevicesByAccount(request *QueryDevicesByAccountReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过别名查询设备列表
+//
 // @param request - QueryDevicesByAliasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7373,6 +7553,10 @@ func (client *Client) QueryDevicesByAliasWithOptions(request *QueryDevicesByAlia
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过别名查询设备列表
+//
 // @param request - QueryDevicesByAliasRequest
 //
 // @return QueryDevicesByAliasResponse
@@ -7475,6 +7659,10 @@ func (client *Client) QueryPushRecords(request *QueryPushRecordsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// App维度推送统计
+//
 // @param request - QueryPushStatByAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7525,6 +7713,10 @@ func (client *Client) QueryPushStatByAppWithOptions(request *QueryPushStatByAppR
 	return _result, _err
 }
 
+// Summary:
+//
+// App维度推送统计
+//
 // @param request - QueryPushStatByAppRequest
 //
 // @return QueryPushStatByAppResponse
@@ -7539,6 +7731,10 @@ func (client *Client) QueryPushStatByApp(request *QueryPushStatByAppRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 任务维度推送统计
+//
 // @param request - QueryPushStatByMsgRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7581,6 +7777,10 @@ func (client *Client) QueryPushStatByMsgWithOptions(request *QueryPushStatByMsgR
 	return _result, _err
 }
 
+// Summary:
+//
+// 任务维度推送统计
+//
 // @param request - QueryPushStatByMsgRequest
 //
 // @return QueryPushStatByMsgResponse
@@ -7595,6 +7795,10 @@ func (client *Client) QueryPushStatByMsg(request *QueryPushStatByMsgRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签列表
+//
 // @param request - QueryTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7641,6 +7845,10 @@ func (client *Client) QueryTagsWithOptions(request *QueryTagsRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标签列表
+//
 // @param request - QueryTagsRequest
 //
 // @return QueryTagsResponse
@@ -7655,6 +7863,10 @@ func (client *Client) QueryTags(request *QueryTagsRequest) (_result *QueryTagsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 去重设备统计
+//
 // @param request - QueryUniqueDeviceStatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7705,6 +7917,10 @@ func (client *Client) QueryUniqueDeviceStatWithOptions(request *QueryUniqueDevic
 	return _result, _err
 }
 
+// Summary:
+//
+// 去重设备统计
+//
 // @param request - QueryUniqueDeviceStatRequest
 //
 // @return QueryUniqueDeviceStatResponse
@@ -7719,6 +7935,10 @@ func (client *Client) QueryUniqueDeviceStat(request *QueryUniqueDeviceStatReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除标签
+//
 // @param request - RemoveTagRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7761,6 +7981,10 @@ func (client *Client) RemoveTagWithOptions(request *RemoveTagRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除标签
+//
 // @param request - RemoveTagRequest
 //
 // @return RemoveTagResponse
@@ -7775,6 +7999,10 @@ func (client *Client) RemoveTag(request *RemoveTagRequest) (_result *RemoveTagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑别名
+//
 // @param request - UnbindAliasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7825,6 +8053,10 @@ func (client *Client) UnbindAliasWithOptions(request *UnbindAliasRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑别名
+//
 // @param request - UnbindAliasRequest
 //
 // @return UnbindAliasResponse
@@ -7839,6 +8071,10 @@ func (client *Client) UnbindAlias(request *UnbindAliasRequest) (_result *UnbindA
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑手机号码
+//
 // @param request - UnbindPhoneRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7881,6 +8117,10 @@ func (client *Client) UnbindPhoneWithOptions(request *UnbindPhoneRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑手机号码
+//
 // @param request - UnbindPhoneRequest
 //
 // @return UnbindPhoneResponse
@@ -7895,6 +8135,10 @@ func (client *Client) UnbindPhone(request *UnbindPhoneRequest) (_result *UnbindP
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定标签
+//
 // @param request - UnbindTagRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7945,6 +8189,10 @@ func (client *Client) UnbindTagWithOptions(request *UnbindTagRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定标签
+//
 // @param request - UnbindTagRequest
 //
 // @return UnbindTagResponse
