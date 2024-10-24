@@ -8468,6 +8468,307 @@ func (s *DescribeDomainAttackEventsResponse) SetBody(v *DescribeDomainAttackEven
 	return s
 }
 
+type DescribeDomainBpsRequest struct {
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1722339300
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 600
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1719211800
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainBpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainBpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainBpsRequest) SetDomain(v string) *DescribeDomainBpsRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainBpsRequest) SetEndTime(v int64) *DescribeDomainBpsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainBpsRequest) SetInterval(v int64) *DescribeDomainBpsRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDomainBpsRequest) SetRegion(v string) *DescribeDomainBpsRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDomainBpsRequest) SetStartTime(v int64) *DescribeDomainBpsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainBpsResponseBody struct {
+	DomainBps []*DescribeDomainBpsResponseBodyDomainBps `json:"DomainBps,omitempty" xml:"DomainBps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainBpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainBpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainBpsResponseBody) SetDomainBps(v []*DescribeDomainBpsResponseBodyDomainBps) *DescribeDomainBpsResponseBody {
+	s.DomainBps = v
+	return s
+}
+
+func (s *DescribeDomainBpsResponseBody) SetRequestId(v string) *DescribeDomainBpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainBpsResponseBodyDomainBps struct {
+	// example:
+	//
+	// 0
+	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 0
+	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+}
+
+func (s DescribeDomainBpsResponseBodyDomainBps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainBpsResponseBodyDomainBps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainBpsResponseBodyDomainBps) SetInBps(v int64) *DescribeDomainBpsResponseBodyDomainBps {
+	s.InBps = &v
+	return s
+}
+
+func (s *DescribeDomainBpsResponseBodyDomainBps) SetIndex(v int64) *DescribeDomainBpsResponseBodyDomainBps {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeDomainBpsResponseBodyDomainBps) SetOutBps(v int64) *DescribeDomainBpsResponseBodyDomainBps {
+	s.OutBps = &v
+	return s
+}
+
+type DescribeDomainBpsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainBpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainBpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainBpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainBpsResponse) SetHeaders(v map[string]*string) *DescribeDomainBpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainBpsResponse) SetStatusCode(v int32) *DescribeDomainBpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainBpsResponse) SetBody(v *DescribeDomainBpsResponseBody) *DescribeDomainBpsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainH2FingerprintRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1726318200
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1716435180
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainH2FingerprintRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainH2FingerprintRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainH2FingerprintRequest) SetDomain(v string) *DescribeDomainH2FingerprintRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintRequest) SetEndTime(v int64) *DescribeDomainH2FingerprintRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintRequest) SetLimit(v int64) *DescribeDomainH2FingerprintRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintRequest) SetStartTime(v int64) *DescribeDomainH2FingerprintRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainH2FingerprintResponseBody struct {
+	DomainH2Fp []*DescribeDomainH2FingerprintResponseBodyDomainH2Fp `json:"DomainH2Fp,omitempty" xml:"DomainH2Fp,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 112777CC-2AD6-46FC-A263-00B931406FCD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainH2FingerprintResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainH2FingerprintResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainH2FingerprintResponseBody) SetDomainH2Fp(v []*DescribeDomainH2FingerprintResponseBodyDomainH2Fp) *DescribeDomainH2FingerprintResponseBody {
+	s.DomainH2Fp = v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintResponseBody) SetRequestId(v string) *DescribeDomainH2FingerprintResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainH2FingerprintResponseBodyDomainH2Fp struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 532501bc316d02c8b1a007db76f2c796
+	H2Fingerprint *string `json:"H2Fingerprint,omitempty" xml:"H2Fingerprint,omitempty"`
+	// example:
+	//
+	// 471755
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+}
+
+func (s DescribeDomainH2FingerprintResponseBodyDomainH2Fp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainH2FingerprintResponseBodyDomainH2Fp) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainH2FingerprintResponseBodyDomainH2Fp) SetDomain(v string) *DescribeDomainH2FingerprintResponseBodyDomainH2Fp {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintResponseBodyDomainH2Fp) SetH2Fingerprint(v string) *DescribeDomainH2FingerprintResponseBodyDomainH2Fp {
+	s.H2Fingerprint = &v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintResponseBodyDomainH2Fp) SetPv(v int64) *DescribeDomainH2FingerprintResponseBodyDomainH2Fp {
+	s.Pv = &v
+	return s
+}
+
+type DescribeDomainH2FingerprintResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainH2FingerprintResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainH2FingerprintResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainH2FingerprintResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainH2FingerprintResponse) SetHeaders(v map[string]*string) *DescribeDomainH2FingerprintResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintResponse) SetStatusCode(v int32) *DescribeDomainH2FingerprintResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintResponse) SetBody(v *DescribeDomainH2FingerprintResponseBody) *DescribeDomainH2FingerprintResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDomainOverviewRequest struct {
 	// The domain name of the website that you want to query. If you leave this parameter unspecified, the statistics on all domain names are queried.
 	//
@@ -10201,6 +10502,645 @@ func (s *DescribeDomainTopAttackListResponse) SetStatusCode(v int32) *DescribeDo
 }
 
 func (s *DescribeDomainTopAttackListResponse) SetBody(v *DescribeDomainTopAttackListResponseBody) *DescribeDomainTopAttackListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainTopFingerprintRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1723552200
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1719211800
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainTopFingerprintRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopFingerprintRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopFingerprintRequest) SetDomain(v string) *DescribeDomainTopFingerprintRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintRequest) SetEndTime(v int64) *DescribeDomainTopFingerprintRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintRequest) SetInterval(v int64) *DescribeDomainTopFingerprintRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintRequest) SetLimit(v int64) *DescribeDomainTopFingerprintRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintRequest) SetRegion(v string) *DescribeDomainTopFingerprintRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintRequest) SetStartTime(v int64) *DescribeDomainTopFingerprintRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainTopFingerprintResponseBody struct {
+	DomainTopFp []*DescribeDomainTopFingerprintResponseBodyDomainTopFp `json:"DomainTopFp,omitempty" xml:"DomainTopFp,omitempty" type:"Repeated"`
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainTopFingerprintResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopFingerprintResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopFingerprintResponseBody) SetDomainTopFp(v []*DescribeDomainTopFingerprintResponseBodyDomainTopFp) *DescribeDomainTopFingerprintResponseBody {
+	s.DomainTopFp = v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintResponseBody) SetRequestId(v string) *DescribeDomainTopFingerprintResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainTopFingerprintResponseBodyDomainTopFp struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 8a374c9724582b14a4cfa58c8c9fb2bc
+	Fingerprinting *string `json:"Fingerprinting,omitempty" xml:"Fingerprinting,omitempty"`
+	// example:
+	//
+	// 22121
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+}
+
+func (s DescribeDomainTopFingerprintResponseBodyDomainTopFp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopFingerprintResponseBodyDomainTopFp) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopFingerprintResponseBodyDomainTopFp) SetDomain(v string) *DescribeDomainTopFingerprintResponseBodyDomainTopFp {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintResponseBodyDomainTopFp) SetFingerprinting(v string) *DescribeDomainTopFingerprintResponseBodyDomainTopFp {
+	s.Fingerprinting = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintResponseBodyDomainTopFp) SetPv(v int64) *DescribeDomainTopFingerprintResponseBodyDomainTopFp {
+	s.Pv = &v
+	return s
+}
+
+type DescribeDomainTopFingerprintResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainTopFingerprintResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainTopFingerprintResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopFingerprintResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopFingerprintResponse) SetHeaders(v map[string]*string) *DescribeDomainTopFingerprintResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintResponse) SetStatusCode(v int32) *DescribeDomainTopFingerprintResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintResponse) SetBody(v *DescribeDomainTopFingerprintResponseBody) *DescribeDomainTopFingerprintResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainTopHttpMethodRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1722339300
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1712449710
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainTopHttpMethodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopHttpMethodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopHttpMethodRequest) SetDomain(v string) *DescribeDomainTopHttpMethodRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodRequest) SetEndTime(v int64) *DescribeDomainTopHttpMethodRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodRequest) SetLimit(v int64) *DescribeDomainTopHttpMethodRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodRequest) SetRegion(v string) *DescribeDomainTopHttpMethodRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodRequest) SetStartTime(v int64) *DescribeDomainTopHttpMethodRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainTopHttpMethodResponseBody struct {
+	DomainTopMethod []*DescribeDomainTopHttpMethodResponseBodyDomainTopMethod `json:"DomainTopMethod,omitempty" xml:"DomainTopMethod,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainTopHttpMethodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopHttpMethodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopHttpMethodResponseBody) SetDomainTopMethod(v []*DescribeDomainTopHttpMethodResponseBodyDomainTopMethod) *DescribeDomainTopHttpMethodResponseBody {
+	s.DomainTopMethod = v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodResponseBody) SetRequestId(v string) *DescribeDomainTopHttpMethodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainTopHttpMethodResponseBodyDomainTopMethod struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// GET
+	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	// example:
+	//
+	// 22121
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+}
+
+func (s DescribeDomainTopHttpMethodResponseBodyDomainTopMethod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopHttpMethodResponseBodyDomainTopMethod) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopHttpMethodResponseBodyDomainTopMethod) SetDomain(v string) *DescribeDomainTopHttpMethodResponseBodyDomainTopMethod {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodResponseBodyDomainTopMethod) SetHttpMethod(v string) *DescribeDomainTopHttpMethodResponseBodyDomainTopMethod {
+	s.HttpMethod = &v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodResponseBodyDomainTopMethod) SetPv(v int64) *DescribeDomainTopHttpMethodResponseBodyDomainTopMethod {
+	s.Pv = &v
+	return s
+}
+
+type DescribeDomainTopHttpMethodResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainTopHttpMethodResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainTopHttpMethodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopHttpMethodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopHttpMethodResponse) SetHeaders(v map[string]*string) *DescribeDomainTopHttpMethodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodResponse) SetStatusCode(v int32) *DescribeDomainTopHttpMethodResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodResponse) SetBody(v *DescribeDomainTopHttpMethodResponseBody) *DescribeDomainTopHttpMethodResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainTopRefererRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1721561100
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1701991920
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainTopRefererRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopRefererRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopRefererRequest) SetDomain(v string) *DescribeDomainTopRefererRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainTopRefererRequest) SetEndTime(v int64) *DescribeDomainTopRefererRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainTopRefererRequest) SetLimit(v int64) *DescribeDomainTopRefererRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainTopRefererRequest) SetRegion(v string) *DescribeDomainTopRefererRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDomainTopRefererRequest) SetStartTime(v int64) *DescribeDomainTopRefererRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainTopRefererResponseBody struct {
+	DomainTopReferer []*DescribeDomainTopRefererResponseBodyDomainTopReferer `json:"DomainTopReferer,omitempty" xml:"DomainTopReferer,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainTopRefererResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopRefererResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopRefererResponseBody) SetDomainTopReferer(v []*DescribeDomainTopRefererResponseBodyDomainTopReferer) *DescribeDomainTopRefererResponseBody {
+	s.DomainTopReferer = v
+	return s
+}
+
+func (s *DescribeDomainTopRefererResponseBody) SetRequestId(v string) *DescribeDomainTopRefererResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainTopRefererResponseBodyDomainTopReferer struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 257031
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// example:
+	//
+	// aHR0cHM6Ly9zZXJ2aWNld2VjaGF0LmNvbS93eGY3ZDc5YWY0YzU4ZDH3NTEvNC9wYWdlLWZyYW1lLmh0bWw=
+	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+}
+
+func (s DescribeDomainTopRefererResponseBodyDomainTopReferer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopRefererResponseBodyDomainTopReferer) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopRefererResponseBodyDomainTopReferer) SetDomain(v string) *DescribeDomainTopRefererResponseBodyDomainTopReferer {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainTopRefererResponseBodyDomainTopReferer) SetPv(v int64) *DescribeDomainTopRefererResponseBodyDomainTopReferer {
+	s.Pv = &v
+	return s
+}
+
+func (s *DescribeDomainTopRefererResponseBodyDomainTopReferer) SetReferer(v string) *DescribeDomainTopRefererResponseBodyDomainTopReferer {
+	s.Referer = &v
+	return s
+}
+
+type DescribeDomainTopRefererResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainTopRefererResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainTopRefererResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopRefererResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopRefererResponse) SetHeaders(v map[string]*string) *DescribeDomainTopRefererResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainTopRefererResponse) SetStatusCode(v int32) *DescribeDomainTopRefererResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainTopRefererResponse) SetBody(v *DescribeDomainTopRefererResponseBody) *DescribeDomainTopRefererResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainTopUserAgentRequest struct {
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1708352700
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1609430400
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainTopUserAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopUserAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopUserAgentRequest) SetDomain(v string) *DescribeDomainTopUserAgentRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentRequest) SetEndTime(v int64) *DescribeDomainTopUserAgentRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentRequest) SetLimit(v int64) *DescribeDomainTopUserAgentRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentRequest) SetRegion(v string) *DescribeDomainTopUserAgentRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentRequest) SetStartTime(v int64) *DescribeDomainTopUserAgentRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainTopUserAgentResponseBody struct {
+	DomainTopUa []*DescribeDomainTopUserAgentResponseBodyDomainTopUa `json:"DomainTopUa,omitempty" xml:"DomainTopUa,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainTopUserAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopUserAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopUserAgentResponseBody) SetDomainTopUa(v []*DescribeDomainTopUserAgentResponseBodyDomainTopUa) *DescribeDomainTopUserAgentResponseBody {
+	s.DomainTopUa = v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentResponseBody) SetRequestId(v string) *DescribeDomainTopUserAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainTopUserAgentResponseBodyDomainTopUa struct {
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 22121
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// example:
+	//
+	// TW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvOTYuMC40NjY0LjExMCACYWZhcmkvNTM3LjM2
+	UserAgent *string `json:"UserAgent,omitempty" xml:"UserAgent,omitempty"`
+}
+
+func (s DescribeDomainTopUserAgentResponseBodyDomainTopUa) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopUserAgentResponseBodyDomainTopUa) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopUserAgentResponseBodyDomainTopUa) SetDomain(v string) *DescribeDomainTopUserAgentResponseBodyDomainTopUa {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentResponseBodyDomainTopUa) SetPv(v int64) *DescribeDomainTopUserAgentResponseBodyDomainTopUa {
+	s.Pv = &v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentResponseBodyDomainTopUa) SetUserAgent(v string) *DescribeDomainTopUserAgentResponseBodyDomainTopUa {
+	s.UserAgent = &v
+	return s
+}
+
+type DescribeDomainTopUserAgentResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainTopUserAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainTopUserAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainTopUserAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainTopUserAgentResponse) SetHeaders(v map[string]*string) *DescribeDomainTopUserAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentResponse) SetStatusCode(v int32) *DescribeDomainTopUserAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentResponse) SetBody(v *DescribeDomainTopUserAgentResponseBody) *DescribeDomainTopUserAgentResponse {
 	s.Body = v
 	return s
 }
@@ -13814,8 +14754,11 @@ type DescribeL7RsPolicyResponseBody struct {
 	// example:
 	//
 	// 9E7F6B2C-03F2-462F-9076-B782CF0DD502
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RsAttrRwTimeoutMax *int64  `json:"RsAttrRwTimeoutMax,omitempty" xml:"RsAttrRwTimeoutMax,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 300
+	RsAttrRwTimeoutMax *int64 `json:"RsAttrRwTimeoutMax,omitempty" xml:"RsAttrRwTimeoutMax,omitempty"`
 	// The back-to-origin retry switch. Valid values:
 	//
 	// 	- **1**: on
@@ -16391,7 +17334,7 @@ type DescribePortCcAttackTopIPResponseBody struct {
 	//
 	// 24F36D81-5E2D-52E5-9DB6-A3ED23CF271A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the source IP address of the attack.
+	// The top IP addresses from which most attacks are initiated.
 	TopIp []*DescribePortCcAttackTopIPResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
 }
 
@@ -20364,19 +21307,19 @@ func (s *DescribeUnBlockCountRequest) SetResourceGroupId(v string) *DescribeUnBl
 }
 
 type DescribeUnBlockCountResponseBody struct {
-	// The remaining quota that you can use the Diversion from Origin Server policy.
+	// The remaining number of times that you can enable the near-origin traffic diversion feature.
 	//
 	// example:
 	//
 	// 7
 	RemainCount *int32 `json:"RemainCount,omitempty" xml:"RemainCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total quota that you can use the Diversion from Origin Server policy.
+	// The total number of times that you can enable the near-origin traffic diversion feature.
 	//
 	// example:
 	//
@@ -23179,13 +24122,13 @@ type DescribeWebRulesRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// When paginating, set the page number of the current page. The default value is 1.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// When paginating, set the number of forwarding rules per page. The range of values is: 1~10.
+	// The number of entries per page. Valid values: **1*	- to **10**.
 	//
 	// example:
 	//
@@ -25031,9 +25974,9 @@ type ModifyBlockStatusRequest struct {
 	//
 	// 60
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the Anti-DDoS Pro instance to manage.
+	// The ID of the Anti-DDoS Proxy (Chinese Mainland) instance to manage.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Proxy instances.
 	//
 	// This parameter is required.
 	//
@@ -26322,13 +27265,13 @@ type ModifyNetworkRuleAttributeRequest struct {
 	//
 	// 	- **MaxconnEnable**: specifies whether to enable Maxconn. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Maxconn is disabled, and the value 1 indicates that Maxconn is enabled.
 	//
-	// 	- **CpsMode**: specifies whether to enable the source rate limit on new connections. This field is required and of the integer type. Valid values: 1 and 2. The value 1 indicates the source rate limit is enabled. The value 2 indicates that the system determines whether to enable the source rate limit.
+	// 	- **CpsMode**: specifies whether to enable the source rate limit on new connections. This field is required and of the integer type. Valid values: 1 and 2. The value 1 indicates that the source rate limit is disabled. The value 2 indicates that the system determines whether to enable the source rate limit.
 	//
 	// PayloadLen contains the following fields:
 	//
-	// 	- **Min**: the minimum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 2000.
+	// 	- **Min**: the minimum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 1500.
 	//
-	// 	- **Max**: the maximum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 6000.
+	// 	- **Max**: the maximum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 1500.
 	//
 	// This parameter is required.
 	//
@@ -33633,6 +34576,154 @@ func (client *Client) DescribeDomainAttackEvents(request *DescribeDomainAttackEv
 
 // Summary:
 //
+// 查询域名业务带宽流量
+//
+// @param request - DescribeDomainBpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainBpsResponse
+func (client *Client) DescribeDomainBpsWithOptions(request *DescribeDomainBpsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainBpsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainBps"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainBpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名业务带宽流量
+//
+// @param request - DescribeDomainBpsRequest
+//
+// @return DescribeDomainBpsResponse
+func (client *Client) DescribeDomainBps(request *DescribeDomainBpsRequest) (_result *DescribeDomainBpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainBpsResponse{}
+	_body, _err := client.DescribeDomainBpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP2指纹
+//
+// @param request - DescribeDomainH2FingerprintRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainH2FingerprintResponse
+func (client *Client) DescribeDomainH2FingerprintWithOptions(request *DescribeDomainH2FingerprintRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainH2FingerprintResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainH2Fingerprint"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainH2FingerprintResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP2指纹
+//
+// @param request - DescribeDomainH2FingerprintRequest
+//
+// @return DescribeDomainH2FingerprintResponse
+func (client *Client) DescribeDomainH2Fingerprint(request *DescribeDomainH2FingerprintRequest) (_result *DescribeDomainH2FingerprintResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainH2FingerprintResponse{}
+	_body, _err := client.DescribeDomainH2FingerprintWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the attack overview of a website, such as the peak HTTP and HTTPS traffic.
 //
 // @param request - DescribeDomainOverviewRequest
@@ -34157,6 +35248,314 @@ func (client *Client) DescribeDomainTopAttackList(request *DescribeDomainTopAtta
 
 // Summary:
 //
+// 查询域名 top fingerprint
+//
+// @param request - DescribeDomainTopFingerprintRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainTopFingerprintResponse
+func (client *Client) DescribeDomainTopFingerprintWithOptions(request *DescribeDomainTopFingerprintRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainTopFingerprintResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainTopFingerprint"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainTopFingerprintResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名 top fingerprint
+//
+// @param request - DescribeDomainTopFingerprintRequest
+//
+// @return DescribeDomainTopFingerprintResponse
+func (client *Client) DescribeDomainTopFingerprint(request *DescribeDomainTopFingerprintRequest) (_result *DescribeDomainTopFingerprintResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainTopFingerprintResponse{}
+	_body, _err := client.DescribeDomainTopFingerprintWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名 top HttpMethod
+//
+// @param request - DescribeDomainTopHttpMethodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainTopHttpMethodResponse
+func (client *Client) DescribeDomainTopHttpMethodWithOptions(request *DescribeDomainTopHttpMethodRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainTopHttpMethodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainTopHttpMethod"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainTopHttpMethodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名 top HttpMethod
+//
+// @param request - DescribeDomainTopHttpMethodRequest
+//
+// @return DescribeDomainTopHttpMethodResponse
+func (client *Client) DescribeDomainTopHttpMethod(request *DescribeDomainTopHttpMethodRequest) (_result *DescribeDomainTopHttpMethodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainTopHttpMethodResponse{}
+	_body, _err := client.DescribeDomainTopHttpMethodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名top referer
+//
+// @param request - DescribeDomainTopRefererRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainTopRefererResponse
+func (client *Client) DescribeDomainTopRefererWithOptions(request *DescribeDomainTopRefererRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainTopRefererResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainTopReferer"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainTopRefererResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名top referer
+//
+// @param request - DescribeDomainTopRefererRequest
+//
+// @return DescribeDomainTopRefererResponse
+func (client *Client) DescribeDomainTopReferer(request *DescribeDomainTopRefererRequest) (_result *DescribeDomainTopRefererResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainTopRefererResponse{}
+	_body, _err := client.DescribeDomainTopRefererWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询top user agent
+//
+// @param request - DescribeDomainTopUserAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainTopUserAgentResponse
+func (client *Client) DescribeDomainTopUserAgentWithOptions(request *DescribeDomainTopUserAgentRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainTopUserAgentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainTopUserAgent"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainTopUserAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询top user agent
+//
+// @param request - DescribeDomainTopUserAgentRequest
+//
+// @return DescribeDomainTopUserAgentResponse
+func (client *Client) DescribeDomainTopUserAgent(request *DescribeDomainTopUserAgentRequest) (_result *DescribeDomainTopUserAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainTopUserAgentResponse{}
+	_body, _err := client.DescribeDomainTopUserAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the areas and countries from which requests are sent to a website within a specified period of time.
 //
 // @param request - DescribeDomainViewSourceCountriesRequest
@@ -34517,11 +35916,11 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 
 // Summary:
 //
-// Queries the available burstable protection bandwidths of an Anti-DDoS Pro instance.
+// Queries the available burstable protection bandwidths of an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - DescribeElasticBandwidthSpecRequest
 //
@@ -34563,11 +35962,11 @@ func (client *Client) DescribeElasticBandwidthSpecWithOptions(request *DescribeE
 
 // Summary:
 //
-// Queries the available burstable protection bandwidths of an Anti-DDoS Pro instance.
+// Queries the available burstable protection bandwidths of an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - DescribeElasticBandwidthSpecRequest
 //
@@ -37877,11 +39276,11 @@ func (client *Client) DescribeUnBlackholeCount(request *DescribeUnBlackholeCount
 
 // Summary:
 //
-// Queries the remaining quota that allows you to use the Diversion from Origin Server policy.
+// Queries the total number and the remaining number of times that you can enable the near-origin traffic diversion feature.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - DescribeUnBlockCountRequest
 //
@@ -37923,11 +39322,11 @@ func (client *Client) DescribeUnBlockCountWithOptions(request *DescribeUnBlockCo
 
 // Summary:
 //
-// Queries the remaining quota that allows you to use the Diversion from Origin Server policy.
+// Queries the total number and the remaining number of times that you can enable the near-origin traffic diversion feature.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - DescribeUnBlockCountRequest
 //
