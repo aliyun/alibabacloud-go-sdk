@@ -584,6 +584,7 @@ type CreateAndroidInstanceGroupRequest struct {
 	//
 	// acp.basic.small
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
+	KeyPairId         *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
 	// example:
 	//
 	// 1
@@ -667,6 +668,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetInstanceGroupName(v string) *Crea
 
 func (s *CreateAndroidInstanceGroupRequest) SetInstanceGroupSpec(v string) *CreateAndroidInstanceGroupRequest {
 	s.InstanceGroupSpec = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetKeyPairId(v string) *CreateAndroidInstanceGroupRequest {
+	s.KeyPairId = &v
 	return s
 }
 
@@ -7428,6 +7434,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceGroupSpec)) {
 		query["InstanceGroupSpec"] = request.InstanceGroupSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairId)) {
+		query["KeyPairId"] = request.KeyPairId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NumberOfInstances)) {
