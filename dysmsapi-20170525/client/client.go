@@ -9,6 +9,152 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddExtCodeSignRequest struct {
+	// 扩展码A3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01
+	ExtCode              *string `json:"ExtCode,omitempty" xml:"ExtCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 签名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+}
+
+func (s AddExtCodeSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddExtCodeSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddExtCodeSignRequest) SetExtCode(v string) *AddExtCodeSignRequest {
+	s.ExtCode = &v
+	return s
+}
+
+func (s *AddExtCodeSignRequest) SetOwnerId(v int64) *AddExtCodeSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddExtCodeSignRequest) SetResourceOwnerAccount(v string) *AddExtCodeSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AddExtCodeSignRequest) SetResourceOwnerId(v int64) *AddExtCodeSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *AddExtCodeSignRequest) SetSignName(v string) *AddExtCodeSignRequest {
+	s.SignName = &v
+	return s
+}
+
+type AddExtCodeSignResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddExtCodeSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddExtCodeSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddExtCodeSignResponseBody) SetAccessDeniedDetail(v string) *AddExtCodeSignResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *AddExtCodeSignResponseBody) SetCode(v string) *AddExtCodeSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddExtCodeSignResponseBody) SetData(v bool) *AddExtCodeSignResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddExtCodeSignResponseBody) SetMessage(v string) *AddExtCodeSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddExtCodeSignResponseBody) SetRequestId(v string) *AddExtCodeSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddExtCodeSignResponseBody) SetSuccess(v bool) *AddExtCodeSignResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddExtCodeSignResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddExtCodeSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddExtCodeSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddExtCodeSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddExtCodeSignResponse) SetHeaders(v map[string]*string) *AddExtCodeSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddExtCodeSignResponse) SetStatusCode(v int32) *AddExtCodeSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddExtCodeSignResponse) SetBody(v *AddExtCodeSignResponseBody) *AddExtCodeSignResponse {
+	s.Body = v
+	return s
+}
+
 type AddShortUrlRequest struct {
 	// The validity period of the short URL. Unit: days. The maximum validity period is 90 days.
 	//
@@ -953,6 +1099,10 @@ type CreateCardSmsTemplateRequest struct {
 	// XiaoMi
 	Factorys *string `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
 	// The description of the message template.
+	//
+	// example:
+	//
+	// Image and Text Template
 	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
 	// The content of the card message template.
 	//
@@ -963,10 +1113,122 @@ type CreateCardSmsTemplateRequest struct {
 	// 	- Message template content varies based on the template type. For more information, see [Sample message templates](https://help.aliyun.com/document_detail/435361.html).
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//        "extendInfo":{
+	//
+	//               "scene":"HMOVM",
+	//
+	//               "purpose":"2",
+	//
+	//               "userExt":{
+	//
+	//                      "outId":"1234554321"
+	//
+	//               }
+	//
+	//        },
+	//
+	//        "templateContent":{
+	//
+	//               "pages":[
+	//
+	//                      {
+	//
+	// "tmpCards":[
+	//
+	//                                    {
+	//
+	//                                           "type":"IMAGE",
+	//
+	//                                           "srcType":1,
+	//
+	//                                           "src":"28755",
+	//
+	//                                           "actionType":"OPEN_APP",
+	//
+	//                                           "action":{
+	//
+	//                                                  "target":"https://s.tb.cn/c.KxzZ",
+	//
+	//                                                  "merchantName":"test-template",
+	//
+	//                                                  "packageName":[
+	//
+	//                                                         "com.taobao.taobao"],
+	//
+	//                                                  "floorUrl":"https://s.tb.cn/c.KxzZ"
+	//
+	//                                           },
+	//
+	//                                           "positionNumber":1
+	//
+	//                                    },
+	//
+	//                                    {
+	//
+	//                                           "type":"TEXT",
+	//
+	//                                           "content":"this is a test msg.",
+	//
+	//                                           "isTextTitle":true,
+	//
+	//                                           "positionNumber":2
+	//
+	//                                    },
+	//
+	//                                    {
+	//
+	//                                           "type":"TEXT",
+	//
+	//                                           "content":"Promotional information",
+	//
+	//                                           "isTextTitle":false,
+	//
+	//                                           "positionNumber":3
+	//
+	//                                    },
+	//
+	//                                    {
+	//
+	//                                           "type":"BUTTON",
+	//
+	//                                           "content":"Promotional information,",
+	//
+	//                                           "actionType":"OPEN_BROWSER",
+	//
+	//                                           "action":{
+	//
+	//                                                  "target":"https://www.aliyun.com",
+	//
+	//                                                  "merchantName":"Currently on the Alibaba Cloud official website."
+	//
+	// },
+	//
+	//                                           "positionNumber":4
+	//
+	//                                    }]
+	//
+	//                      }]
+	//
+	//        },
+	//
+	//        "cardSignName":"aliyun",
+	//
+	//        "cardType":5
+	//
+	// }
 	Template map[string]interface{} `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The name of the card message template.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun Image and Text Template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -1018,6 +1280,10 @@ type CreateCardSmsTemplateShrinkRequest struct {
 	// XiaoMi
 	Factorys *string `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
 	// The description of the message template.
+	//
+	// example:
+	//
+	// Image and Text Template
 	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
 	// The content of the card message template.
 	//
@@ -1028,10 +1294,122 @@ type CreateCardSmsTemplateShrinkRequest struct {
 	// 	- Message template content varies based on the template type. For more information, see [Sample message templates](https://help.aliyun.com/document_detail/435361.html).
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//        "extendInfo":{
+	//
+	//               "scene":"HMOVM",
+	//
+	//               "purpose":"2",
+	//
+	//               "userExt":{
+	//
+	//                      "outId":"1234554321"
+	//
+	//               }
+	//
+	//        },
+	//
+	//        "templateContent":{
+	//
+	//               "pages":[
+	//
+	//                      {
+	//
+	// "tmpCards":[
+	//
+	//                                    {
+	//
+	//                                           "type":"IMAGE",
+	//
+	//                                           "srcType":1,
+	//
+	//                                           "src":"28755",
+	//
+	//                                           "actionType":"OPEN_APP",
+	//
+	//                                           "action":{
+	//
+	//                                                  "target":"https://s.tb.cn/c.KxzZ",
+	//
+	//                                                  "merchantName":"test-template",
+	//
+	//                                                  "packageName":[
+	//
+	//                                                         "com.taobao.taobao"],
+	//
+	//                                                  "floorUrl":"https://s.tb.cn/c.KxzZ"
+	//
+	//                                           },
+	//
+	//                                           "positionNumber":1
+	//
+	//                                    },
+	//
+	//                                    {
+	//
+	//                                           "type":"TEXT",
+	//
+	//                                           "content":"this is a test msg.",
+	//
+	//                                           "isTextTitle":true,
+	//
+	//                                           "positionNumber":2
+	//
+	//                                    },
+	//
+	//                                    {
+	//
+	//                                           "type":"TEXT",
+	//
+	//                                           "content":"Promotional information",
+	//
+	//                                           "isTextTitle":false,
+	//
+	//                                           "positionNumber":3
+	//
+	//                                    },
+	//
+	//                                    {
+	//
+	//                                           "type":"BUTTON",
+	//
+	//                                           "content":"Promotional information,",
+	//
+	//                                           "actionType":"OPEN_BROWSER",
+	//
+	//                                           "action":{
+	//
+	//                                                  "target":"https://www.aliyun.com",
+	//
+	//                                                  "merchantName":"Currently on the Alibaba Cloud official website."
+	//
+	// },
+	//
+	//                                           "positionNumber":4
+	//
+	//                                    }]
+	//
+	//                      }]
+	//
+	//        },
+	//
+	//        "cardSignName":"aliyun",
+	//
+	//        "cardType":5
+	//
+	// }
 	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The name of the card message template.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun Image and Text Template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -1367,33 +1745,103 @@ func (s *CreateSmartShortUrlResponse) SetBody(v *CreateSmartShortUrlResponseBody
 }
 
 type CreateSmsSignRequest struct {
+	// Application scenarios, instructions as follows:
+	//
+	// - For registered websites, enter the domain name with HTTP or HTTPS that has been registered with the MIIT.
+	//
+	// - For launched apps, provide a display link from the app store with HTTP or HTTPS, ensuring the app is online.
+	//
+	// - For public accounts or mini-programs, input the full name, ensuring they are online.
+	//
+	// - For e-commerce platform store names, applicable only to enterprise users, provide a display link with HTTP or HTTPS for the store.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
-	ApplySceneContent *string   `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	MoreData          []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
-	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
+	//
+	// This parameter is optional; please fill it out based on your actual needs.
+	MoreData []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
+	OwnerId  *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Approved or under-review qualification ID.
+	//
+	// > - Before applying for an SMS signature, please first [Apply for Qualification](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+	//
+	// > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2004393xxxx
-	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// 8563**
+	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+	//
+	// > The scenario explanation is one of the reference materials for signature review. Please provide a detailed description of the usage scenarios for your live services, along with links to verify these services such as website URLs with MIIT备案, app store display links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A comprehensive application explanation enhances the efficiency of signature and template reviews. Refer to the **Application Scenario*	- column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
+	//
+	// example:
+	//
+	// SMS signature for the login scenario using verification code.
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Signature name. Please adhere to the [Signature Specifications](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-0p8-qn8-mmy).
+	//
+	// > - Signature names are case-insensitive; e.g., 【Aliyun Communication】 and 【aliyun communication】 are considered identical.
+	//
+	// > - If your verification code signature and general signature names are the same, the system defaults to using the general signature for sending SMS messages.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// Signature source. Values:
+	//
+	// - **0**: Full name or abbreviation of an enterprise or institution.
+	//
+	// - **1**: Full name or abbreviation of a MIIT-registered website.
+	//
+	// - **2**: Full name or abbreviation of an App.
+	//
+	// - **3**: Full name or abbreviation of an official account or mini-program.
+	//
+	// - **4**: Full name or abbreviation of an e-commerce platform store.
+	//
+	// - **5**: Full name or abbreviation of a trademark.
+	//
+	// For detailed information on signature sources, refer to [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-xup-k46-yi4).
+	//
+	// > This interface does not support applying for signatures with sources as **Test or Learning*	- and **Trial Use**. If you need to apply for signatures with these sources, please go to the [SMS Service Console](https://dysms.console.aliyun.com/domestic/text/sign/add/qualification).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// Signature type. Values:
+	//
+	// - **0**: Verification Code
+	//
+	// - **1**: General (Default)
+	//
+	// > It is recommended to use the default value: **General**.
+	//
 	// example:
 	//
 	// 1
 	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	// Choose whether the applied signature is for self-use or third-party use.
+	//
+	// - false: Self-use (default)
+	//
+	// - true: Third-party use
+	//
+	// 	Notice: Please select self-use qualification ID when the signature is for self-use; choose third-party use qualification ID when it\\"s for third-party use.
+	//
 	// example:
 	//
 	// false
@@ -1464,33 +1912,103 @@ func (s *CreateSmsSignRequest) SetThirdParty(v bool) *CreateSmsSignRequest {
 }
 
 type CreateSmsSignShrinkRequest struct {
+	// Application scenarios, instructions as follows:
+	//
+	// - For registered websites, enter the domain name with HTTP or HTTPS that has been registered with the MIIT.
+	//
+	// - For launched apps, provide a display link from the app store with HTTP or HTTPS, ensuring the app is online.
+	//
+	// - For public accounts or mini-programs, input the full name, ensuring they are online.
+	//
+	// - For e-commerce platform store names, applicable only to enterprise users, provide a display link with HTTP or HTTPS for the store.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	MoreDataShrink    *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
+	//
+	// This parameter is optional; please fill it out based on your actual needs.
+	MoreDataShrink *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Approved or under-review qualification ID.
+	//
+	// > - Before applying for an SMS signature, please first [Apply for Qualification](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+	//
+	// > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2004393xxxx
-	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// 8563**
+	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+	//
+	// > The scenario explanation is one of the reference materials for signature review. Please provide a detailed description of the usage scenarios for your live services, along with links to verify these services such as website URLs with MIIT备案, app store display links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A comprehensive application explanation enhances the efficiency of signature and template reviews. Refer to the **Application Scenario*	- column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
+	//
+	// example:
+	//
+	// SMS signature for the login scenario using verification code.
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Signature name. Please adhere to the [Signature Specifications](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-0p8-qn8-mmy).
+	//
+	// > - Signature names are case-insensitive; e.g., 【Aliyun Communication】 and 【aliyun communication】 are considered identical.
+	//
+	// > - If your verification code signature and general signature names are the same, the system defaults to using the general signature for sending SMS messages.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// Signature source. Values:
+	//
+	// - **0**: Full name or abbreviation of an enterprise or institution.
+	//
+	// - **1**: Full name or abbreviation of a MIIT-registered website.
+	//
+	// - **2**: Full name or abbreviation of an App.
+	//
+	// - **3**: Full name or abbreviation of an official account or mini-program.
+	//
+	// - **4**: Full name or abbreviation of an e-commerce platform store.
+	//
+	// - **5**: Full name or abbreviation of a trademark.
+	//
+	// For detailed information on signature sources, refer to [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-xup-k46-yi4).
+	//
+	// > This interface does not support applying for signatures with sources as **Test or Learning*	- and **Trial Use**. If you need to apply for signatures with these sources, please go to the [SMS Service Console](https://dysms.console.aliyun.com/domestic/text/sign/add/qualification).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// Signature type. Values:
+	//
+	// - **0**: Verification Code
+	//
+	// - **1**: General (Default)
+	//
+	// > It is recommended to use the default value: **General**.
+	//
 	// example:
 	//
 	// 1
 	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	// Choose whether the applied signature is for self-use or third-party use.
+	//
+	// - false: Self-use (default)
+	//
+	// - true: Third-party use
+	//
+	// 	Notice: Please select self-use qualification ID when the signature is for self-use; choose third-party use qualification ID when it\\"s for third-party use.
+	//
 	// example:
 	//
 	// false
@@ -1561,23 +2079,42 @@ func (s *CreateSmsSignShrinkRequest) SetThirdParty(v bool) *CreateSmsSignShrinkR
 }
 
 type CreateSmsSignResponseBody struct {
+	// Request status code.
+	//
+	// - OK indicates a successful request.
+	//
+	// - For other error codes, refer to the [Error Code List](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
-	// OK
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Work order number.
+	//
+	// This parameter is used by auditors when querying the audit. You will need to provide this work order number if you require expedited review.
+	//
 	// example:
 	//
-	// 20044156924
+	// 2004415****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used for troubleshooting and issue localization.
+	//
 	// example:
 	//
 	// CCA2BCFF-2BA7-427C-90EE-AC6994748607
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// Signature name.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
 func (s CreateSmsSignResponseBody) String() string {
@@ -1643,28 +2180,85 @@ func (s *CreateSmsSignResponse) SetBody(v *CreateSmsSignResponseBody) *CreateSms
 }
 
 type CreateSmsTemplateRequest struct {
+	// If there is an applicable scenario, you can fill it in.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType*	- parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional message.
+	//
 	// example:
 	//
 	// 0
-	IntlType             *int32    `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
-	MoreData             []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RelatedSignName      *string   `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
-	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	IntlType *int32 `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	// Additional materials you can upload, such as business proof documents or screenshots, to help reviewers understand your business details.
+	//
+	// This parameter is optional; please fill it in according to actual needs.
+	MoreData []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
+	OwnerId  *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The signature name that the template needs to be associated with. The associated SMS signature must have passed the review.
+	//
+	// This parameter is mandatory when the TemplateType parameter is **0**, **1**, or **2**.
+	//
+	// <notice>Associating a signature can expedite the review process. Note that this associated signature is unrelated to the signature selected when sending SMS messages.</notice>
+	//
+	// example:
+	//
+	// Aliyun
+	RelatedSignName *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	// Please describe the business scenario where you use SMS or provide an online link to the scenario, along with a complete example of the SMS (with variable contents filled), as complete information helps increase the template approval rate. Failure to follow guidelines or leaving this field blank may affect the approval of your template.
+	//
+	// example:
+	//
+	// Request verification code SMS.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Template content, up to 500 characters in length.
+	//
+	// Both the template content and variable content must comply with SMS specifications; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. For variable specifications, see [TemplateContent Variable Parameter Filling Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// You are applying for mobile registration. The verification code is: ${code}. It is valid for 5 minutes!
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// Template name, up to 30 characters in length.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyunCode
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template variable rules.
+	//
+	// For filling in variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+	//
 	// example:
 	//
 	// {"code":"characterWithNumber"}
 	TemplateRule *string `json:"TemplateRule,omitempty" xml:"TemplateRule,omitempty"`
+	// SMS type. Values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional message.
+	//
+	// - **3**: International/Hong Kong, Macao, and Taiwan messages.
+	//
+	// > Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For details on the differences between personal and enterprise user rights, please refer to [Usage Instructions](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1742,28 +2336,85 @@ func (s *CreateSmsTemplateRequest) SetTemplateType(v int32) *CreateSmsTemplateRe
 }
 
 type CreateSmsTemplateShrinkRequest struct {
+	// If there is an applicable scenario, you can fill it in.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType*	- parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional message.
+	//
 	// example:
 	//
 	// 0
-	IntlType             *int32  `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
-	MoreDataShrink       *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RelatedSignName      *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	IntlType *int32 `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	// Additional materials you can upload, such as business proof documents or screenshots, to help reviewers understand your business details.
+	//
+	// This parameter is optional; please fill it in according to actual needs.
+	MoreDataShrink *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The signature name that the template needs to be associated with. The associated SMS signature must have passed the review.
+	//
+	// This parameter is mandatory when the TemplateType parameter is **0**, **1**, or **2**.
+	//
+	// <notice>Associating a signature can expedite the review process. Note that this associated signature is unrelated to the signature selected when sending SMS messages.</notice>
+	//
+	// example:
+	//
+	// Aliyun
+	RelatedSignName *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	// Please describe the business scenario where you use SMS or provide an online link to the scenario, along with a complete example of the SMS (with variable contents filled), as complete information helps increase the template approval rate. Failure to follow guidelines or leaving this field blank may affect the approval of your template.
+	//
+	// example:
+	//
+	// Request verification code SMS.
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Template content, up to 500 characters in length.
+	//
+	// Both the template content and variable content must comply with SMS specifications; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. For variable specifications, see [TemplateContent Variable Parameter Filling Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// You are applying for mobile registration. The verification code is: ${code}. It is valid for 5 minutes!
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// Template name, up to 30 characters in length.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyunCode
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template variable rules.
+	//
+	// For filling in variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+	//
 	// example:
 	//
 	// {"code":"characterWithNumber"}
 	TemplateRule *string `json:"TemplateRule,omitempty" xml:"TemplateRule,omitempty"`
+	// SMS type. Values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional message.
+	//
+	// - **3**: International/Hong Kong, Macao, and Taiwan messages.
+	//
+	// > Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For details on the differences between personal and enterprise user rights, please refer to [Usage Instructions](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1841,26 +2492,49 @@ func (s *CreateSmsTemplateShrinkRequest) SetTemplateType(v int32) *CreateSmsTemp
 }
 
 type CreateSmsTemplateResponseBody struct {
+	// Request status code.
+	//
+	// 	- OK indicates a successful request.
+	//
+	// 	- For other error codes, refer to the **Error Codes*	- section of this chapter or the product\\"s [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
-	// OK
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Work order ID.
+	//
+	// This parameter is used by auditors when querying audits. If you need expedited review, you must provide this work order number.
+	//
 	// example:
 	//
-	// 20044158441
+	// 2005020****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID generated by Alibaba Cloud for this request, which is a unique identifier that can be used for troubleshooting and issue定位.
+	//
 	// example:
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// SMS template code.
+	//
+	// After submitting the template application, you can use the SMS template code to query the template audit details via the [GetSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-getsmstemplate?) API. You can also [configure delivery receipts](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1?spm), and obtain the template audit status messages through TemplateSmsReport.
+	//
 	// example:
 	//
-	// SMS_100000056
+	// SMS_10000****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// SMS template name.
+	//
+	// example:
+	//
+	// aliyunCode
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -1927,6 +2601,152 @@ func (s *CreateSmsTemplateResponse) SetStatusCode(v int32) *CreateSmsTemplateRes
 }
 
 func (s *CreateSmsTemplateResponse) SetBody(v *CreateSmsTemplateResponseBody) *CreateSmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteExtCodeSignRequest struct {
+	// 扩展码A3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01
+	ExtCode              *string `json:"ExtCode,omitempty" xml:"ExtCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 签名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+}
+
+func (s DeleteExtCodeSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExtCodeSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExtCodeSignRequest) SetExtCode(v string) *DeleteExtCodeSignRequest {
+	s.ExtCode = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignRequest) SetOwnerId(v int64) *DeleteExtCodeSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignRequest) SetResourceOwnerAccount(v string) *DeleteExtCodeSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignRequest) SetResourceOwnerId(v int64) *DeleteExtCodeSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignRequest) SetSignName(v string) *DeleteExtCodeSignRequest {
+	s.SignName = &v
+	return s
+}
+
+type DeleteExtCodeSignResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteExtCodeSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExtCodeSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExtCodeSignResponseBody) SetAccessDeniedDetail(v string) *DeleteExtCodeSignResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignResponseBody) SetCode(v string) *DeleteExtCodeSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignResponseBody) SetData(v bool) *DeleteExtCodeSignResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignResponseBody) SetMessage(v string) *DeleteExtCodeSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignResponseBody) SetRequestId(v string) *DeleteExtCodeSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignResponseBody) SetSuccess(v bool) *DeleteExtCodeSignResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteExtCodeSignResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteExtCodeSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteExtCodeSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExtCodeSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExtCodeSignResponse) SetHeaders(v map[string]*string) *DeleteExtCodeSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteExtCodeSignResponse) SetStatusCode(v int32) *DeleteExtCodeSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteExtCodeSignResponse) SetBody(v *DeleteExtCodeSignResponseBody) *DeleteExtCodeSignResponse {
 	s.Body = v
 	return s
 }
@@ -2314,6 +3134,368 @@ func (s *DeleteSmsTemplateResponse) SetBody(v *DeleteSmsTemplateResponseBody) *D
 	return s
 }
 
+type GetCardSmsDetailsRequest struct {
+	// example:
+	//
+	// 123456^0
+	BizCardId *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
+	// example:
+	//
+	// 12346^0
+	BizDigitId *string `json:"BizDigitId,omitempty" xml:"BizDigitId,omitempty"`
+	// example:
+	//
+	// 1234576^0
+	BizSmsId *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20240112
+	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+}
+
+func (s GetCardSmsDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsDetailsRequest) SetBizCardId(v string) *GetCardSmsDetailsRequest {
+	s.BizCardId = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetBizDigitId(v string) *GetCardSmsDetailsRequest {
+	s.BizDigitId = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetBizSmsId(v string) *GetCardSmsDetailsRequest {
+	s.BizSmsId = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetCurrentPage(v int64) *GetCardSmsDetailsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetOwnerId(v int64) *GetCardSmsDetailsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetPageSize(v int64) *GetCardSmsDetailsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetPhoneNumber(v string) *GetCardSmsDetailsRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetResourceOwnerAccount(v string) *GetCardSmsDetailsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetResourceOwnerId(v int64) *GetCardSmsDetailsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsRequest) SetSendDate(v string) *GetCardSmsDetailsRequest {
+	s.SendDate = &v
+	return s
+}
+
+type GetCardSmsDetailsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 卡片短信发送结果
+	CardSendDetailDTO *GetCardSmsDetailsResponseBodyCardSendDetailDTO `json:"CardSendDetailDTO,omitempty" xml:"CardSendDetailDTO,omitempty" type:"Struct"`
+	// 状态码
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 状态描述
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCardSmsDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsDetailsResponseBody) SetAccessDeniedDetail(v string) *GetCardSmsDetailsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBody) SetCardSendDetailDTO(v *GetCardSmsDetailsResponseBodyCardSendDetailDTO) *GetCardSmsDetailsResponseBody {
+	s.CardSendDetailDTO = v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBody) SetCode(v string) *GetCardSmsDetailsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBody) SetMessage(v string) *GetCardSmsDetailsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBody) SetSuccess(v bool) *GetCardSmsDetailsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCardSmsDetailsResponseBodyCardSendDetailDTO struct {
+	// 页码
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 页数
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Records  []*GetCardSmsDetailsResponseBodyCardSendDetailDTORecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// 总量
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardSmsDetailsResponseBodyCardSendDetailDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsDetailsResponseBodyCardSendDetailDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTO) SetCurrentPage(v int64) *GetCardSmsDetailsResponseBodyCardSendDetailDTO {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTO) SetPageSize(v int64) *GetCardSmsDetailsResponseBodyCardSendDetailDTO {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTO) SetRecords(v []*GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) *GetCardSmsDetailsResponseBodyCardSendDetailDTO {
+	s.Records = v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTO) SetTotalCount(v int64) *GetCardSmsDetailsResponseBodyCardSendDetailDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardSmsDetailsResponseBodyCardSendDetailDTORecords struct {
+	// 发送错误码
+	//
+	// example:
+	//
+	// Success
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// 客户传输outId
+	//
+	// example:
+	//
+	// 12345678
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// 接收短信手机号
+	//
+	// example:
+	//
+	// 156****9080
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// 接收时间
+	//
+	// example:
+	//
+	// 2024-09-27 11:26:35
+	ReceiveDate *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
+	// 接收短信类型
+	//
+	// example:
+	//
+	// CARD_SMS
+	ReceiveType *string `json:"ReceiveType,omitempty" xml:"ReceiveType,omitempty"`
+	// 渲染时间
+	//
+	// example:
+	//
+	// 2024-09-27 12:13:39
+	RenderDate *string `json:"RenderDate,omitempty" xml:"RenderDate,omitempty"`
+	// 解析状态.。0：未解析；1：解析成功；3：未解析
+	//
+	// example:
+	//
+	// 1
+	RenderStatus *int64 `json:"RenderStatus,omitempty" xml:"RenderStatus,omitempty"`
+	// 短信发送时间
+	//
+	// example:
+	//
+	// 2024-09-27 11:26:32
+	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	// 发送状态 1：发送中；2：发送失败；3：发送成功；4：寻址失败
+	//
+	// example:
+	//
+	// 3
+	SendStatus *int64 `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	// 短信内容。只有文本短信有值
+	//
+	// example:
+	//
+	// 您收到一条短信消息
+	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
+	// 模板code
+	//
+	// example:
+	//
+	// CARD_SMS_6***
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetErrCode(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetOutId(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.OutId = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetPhoneNumber(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetReceiveDate(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.ReceiveDate = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetReceiveType(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.ReceiveType = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetRenderDate(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.RenderDate = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetRenderStatus(v int64) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.RenderStatus = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetSendDate(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.SendDate = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetSendStatus(v int64) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.SendStatus = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetSmsContent(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.SmsContent = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords) SetTemplateCode(v string) *GetCardSmsDetailsResponseBodyCardSendDetailDTORecords {
+	s.TemplateCode = &v
+	return s
+}
+
+type GetCardSmsDetailsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCardSmsDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCardSmsDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsDetailsResponse) SetHeaders(v map[string]*string) *GetCardSmsDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponse) SetStatusCode(v int32) *GetCardSmsDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCardSmsDetailsResponse) SetBody(v *GetCardSmsDetailsResponseBody) *GetCardSmsDetailsResponse {
+	s.Body = v
+	return s
+}
+
 type GetCardSmsLinkRequest struct {
 	// The code type of the URLs.
 	//
@@ -2348,6 +3530,10 @@ type GetCardSmsLinkRequest struct {
 	// CARD_SMS_****
 	CardTemplateCode *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
 	// The variables of the message template.
+	//
+	// example:
+	//
+	// [{},{}]
 	CardTemplateParamJson *string `json:"CardTemplateParamJson,omitempty" xml:"CardTemplateParamJson,omitempty"`
 	// The custom short code. It can contain 4 to 8 digits or letters.
 	//
@@ -2398,6 +3584,10 @@ type GetCardSmsLinkRequest struct {
 	// > The signatures must be approved and correspond to the mobile numbers in sequence.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"aliyun\\", \\"aliyun2\\"]
 	SignNameJson *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
 }
 
@@ -2521,6 +3711,10 @@ type GetCardSmsLinkResponseBodyData struct {
 	// [\\"1390000****\\",\\"1370000****\\"]
 	CardPhoneNumbers *string `json:"CardPhoneNumbers,omitempty" xml:"CardPhoneNumbers,omitempty"`
 	// The signatures must correspond to the mobile numbers and short URLs in sequence.
+	//
+	// example:
+	//
+	// ["aliyun","aliyun2"]
 	CardSignNames *string `json:"CardSignNames,omitempty" xml:"CardSignNames,omitempty"`
 	// The short URLs.
 	//
@@ -2630,6 +3824,10 @@ type GetMediaResourceIdRequest struct {
 	// 12
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	// The description of the resource.
+	//
+	// example:
+	//
+	// remark
 	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
 	// The address of the resource.
 	//
@@ -3011,6 +4209,10 @@ func (s *GetOSSInfoForCardTemplateResponse) SetBody(v *GetOSSInfoForCardTemplate
 }
 
 type GetOSSInfoForUploadFileRequest struct {
+	// Business type, default value is **fcMediaSms**.
+	//
+	// When creating signatures and templates, and uploading **additional materials**, this value is **fcMediaSms**.
+	//
 	// example:
 	//
 	// fcMediaSms
@@ -3049,19 +4251,36 @@ func (s *GetOSSInfoForUploadFileRequest) SetResourceOwnerId(v int64) *GetOSSInfo
 }
 
 type GetOSSInfoForUploadFileResponseBody struct {
+	// Request status code.
+	//
+	// - OK return represents a successful request.
+	//
+	// - For other error codes, please refer to the [Error Code List](https://help.aliyun.com/document_detail/101346.htm).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
-	Message *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model   *GetOSSInfoForUploadFileResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Return result.
+	Model *GetOSSInfoForUploadFileResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request, can be used for troubleshooting and issue定位.
+	//
 	// example:
 	//
 	// A90E4451-FED7-49D2-87C8-00700EDCFD0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success. Values:
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
@@ -3102,26 +4321,38 @@ func (s *GetOSSInfoForUploadFileResponseBody) SetSuccess(v bool) *GetOSSInfoForU
 }
 
 type GetOSSInfoForUploadFileResponseBodyModel struct {
+	// AccessKey ID used for signing.
+	//
 	// example:
 	//
 	// LTAIxetqt1Dg****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// Expiration time.
+	//
 	// example:
 	//
 	// 1719297445
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Host address.
+	//
 	// example:
 	//
 	// https://alicom-fc-media.oss-cn-zhangjiakou.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Signature policy.
+	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyN***Ni0yNVQwNjozNzoyNS45NzBaI**iY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0sWyJzdGFydHMtd2l0***sIiRrZXkiLCIiXV19
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// Signature information calculated based on **AccessKey Secret*	- and **Policy**. When calling the OSS API, OSS verifies this signature information to confirm the legitimacy of the Post request.
+	//
 	// example:
 	//
 	// BXnwCWPrhVb*****aoZHZfli5KE=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// Policy path.
+	//
 	// example:
 	//
 	// 123456
@@ -3199,7 +4430,17 @@ type GetSmsSignRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Signature name. Must be an SMS signature already applied for by this account.
+	//
+	// - Obtain from the return parameters after calling the [CreateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-createsmssign?spm) API.
+	//
+	// - View the signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
@@ -3232,51 +4473,116 @@ func (s *GetSmsSignRequest) SetSignName(v string) *GetSmsSignRequest {
 }
 
 type GetSmsSignResponseBody struct {
+	// Content of application scenarios.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
-	ApplyScene *string                          `json:"ApplyScene,omitempty" xml:"ApplyScene,omitempty"`
-	AuditInfo  *GetSmsSignResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
+	ApplyScene *string `json:"ApplyScene,omitempty" xml:"ApplyScene,omitempty"`
+	// Audit information.
+	AuditInfo *GetSmsSignResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
+	// Request status code.
+	//
+	// - OK indicates a successful request.
+	//
+	// - For other error codes, see [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Creation date and time of the SMS signature.
+	//
 	// example:
 	//
 	// 2024-06-03 10:02:34
-	CreateDate  *string   `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// 更多资料信息，补充上传业务证明文件或业务截图文件列表。
 	FileUrlList []*string `json:"FileUrlList,omitempty" xml:"FileUrlList,omitempty" type:"Repeated"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Work order number.
+	//
+	// Used by reviewers when querying the review. You need to provide this work order number if you require expedited review.
+	//
 	// example:
 	//
 	// 20044156924
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Credential ID, the credential ID associated when applying for the signature.
+	//
 	// example:
 	//
-	// 2004393xxxx
-	QualificationId *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 2004393****
+	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+	//
+	// example:
+	//
+	// Send verification code text message during login.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used for troubleshooting and issue localization.
+	//
 	// example:
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// SMS signature code.
+	//
 	// example:
 	//
-	// SIGN_100xxx077042023_16884xxxx64065_hrsdB
+	// SIGN_100000077042023_17174665*****_ZM2kG
 	SignCode *string `json:"SignCode,omitempty" xml:"SignCode,omitempty"`
-	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// SMS signature name.
+	//
 	// example:
 	//
-	// 1
-	SignStatus *int64 `json:"SignStatus,omitempty" xml:"SignStatus,omitempty"`
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// Signature review status. Values:
+	//
+	// - **0**: Under review.
+	//
+	// - **1**: Approved.
+	//
+	// - **2**: Review failed, please check the Reason parameter for the failure cause.
+	//
+	// - **10**: Review canceled.
+	//
 	// example:
 	//
 	// 2
-	SignTag   *string `json:"SignTag,omitempty" xml:"SignTag,omitempty"`
+	SignStatus *int64 `json:"SignStatus,omitempty" xml:"SignStatus,omitempty"`
+	// Signature tag indicating whether the signature is user-defined, system-provided, test, or trial. Values:
+	//
+	// - 2: User-defined signature
+	//
+	// - 3: System-provided signature
+	//
+	// - 4: Test signature
+	//
+	// - 5: Trial signature
+	//
+	// example:
+	//
+	// 2
+	SignTag *string `json:"SignTag,omitempty" xml:"SignTag,omitempty"`
+	// scenarios for using signatures.
+	//
+	// example:
+	//
+	// App.
 	SignUsage *string `json:"SignUsage,omitempty" xml:"SignUsage,omitempty"`
+	// Signature usage indication—self-use or third-party use.
+	//
+	// - false: Self-use (default)
+	//
+	// - true: Third-party use
+	//
 	// example:
 	//
 	// false
@@ -3372,10 +4678,17 @@ func (s *GetSmsSignResponseBody) SetThirdParty(v bool) *GetSmsSignResponseBody {
 }
 
 type GetSmsSignResponseBodyAuditInfo struct {
+	// Audit date and time.
+	//
 	// example:
 	//
 	// 2024-06-03 12:02:34
-	AuditDate  *string `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
+	AuditDate *string `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
+	// Reasons for not passing the review.
+	//
+	// example:
+	//
+	// reason for rejection.
 	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
 }
 
@@ -3430,6 +4743,12 @@ type GetSmsTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// SMS template code.
+	//
+	// - Obtain the SMS template code from the return parameters of the [CreateSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-createsmstemplate?spm) API.
+	//
+	// - View the SMS template code on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3467,57 +4786,140 @@ func (s *GetSmsTemplateRequest) SetTemplateCode(v string) *GetSmsTemplateRequest
 }
 
 type GetSmsTemplateResponseBody struct {
+	// Application scenario content.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
-	ApplyScene *string                              `json:"ApplyScene,omitempty" xml:"ApplyScene,omitempty"`
-	AuditInfo  *GetSmsTemplateResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
+	ApplyScene *string `json:"ApplyScene,omitempty" xml:"ApplyScene,omitempty"`
+	// Audit information.
+	AuditInfo *GetSmsTemplateResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
+	// Request status code.
+	//
+	// 	- OK indicates a successful request.
+	//
+	// 	- For other error codes, please refer to [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the SMS template was created.
+	//
 	// example:
 	//
 	// 2024-06-03 10:02:34
-	CreateDate  *string                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// File information, compatible with signatures created by the [AddSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-addsmstemplate?spm) API.
 	FileUrlList *GetSmsTemplateResponseBodyFileUrlList `json:"FileUrlList,omitempty" xml:"FileUrlList,omitempty" type:"Struct"`
+	// International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType*	- parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional SMS.
+	//
 	// example:
 	//
 	// 0
 	IntlType *int32 `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
-	Message             *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Additional documentation information, supplementing uploaded business proof files or operational screenshots file list.
 	MoreDataFileUrlList *GetSmsTemplateResponseBodyMoreDataFileUrlList `json:"MoreDataFileUrlList,omitempty" xml:"MoreDataFileUrlList,omitempty" type:"Struct"`
+	// Work order number.
+	//
+	// This parameter is used by auditors when querying the audit. You need to provide this work order number when requesting expedited review.
+	//
 	// example:
 	//
-	// 20030193785
-	OrderId         *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// 2003019****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The SMS signature associated with the template when applied.
+	//
+	// example:
+	//
+	// 阿里云
 	RelatedSignName *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Explanation for the SMS template application, which is one of the reference information for template review.
+	//
+	// example:
+	//
+	// 申请验证码模板
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used for troubleshooting and issue定位.
+	//
 	// example:
 	//
 	// 819BE656-D2E0-4858-8B21-B2E47708****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// SMS template code.
+	//
 	// example:
 	//
-	// SMS_2322****
-	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// SMS_20375****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Content of the SMS template.
+	//
+	// example:
+	//
+	// 您正在申请手机注册，验证码为：${code}，5分钟内有效！
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Name of the SMS template.
+	//
 	// example:
 	//
-	// 1
+	// 验证码
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template review status. Return values:
+	//
+	// - **0**: Under review.
+	//
+	// - **1**: Approved.
+	//
+	// - **2**: Not approved, with reasons for failure returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ), invoke the [UpdateSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmstemplate?spm) API or modify the SMS template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+	//
+	// - **10**: Review canceled.
+	//
+	// example:
+	//
+	// 2
 	TemplateStatus *string `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// Template identifier, indicating whether the template is user-defined or system-provided. Values:
+	//
+	// - **2**: User-defined template.
+	//
+	// - **3**: System-provided template.
+	//
 	// example:
 	//
 	// 2
 	TemplateTag *int32 `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
+	// SMS type. Values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional SMS.
+	//
+	// - **3**: International/Hong Kong, Macao, and Taiwan messages.
+	//
+	// > Only enterprise-certified users can apply for promotional SMS and international/Hong Kong, Macao, and Taiwan messages. For details on the differences between personal and enterprise user rights, please refer to [Usage Notes](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+	//
 	// example:
 	//
-	// 1
+	// 0
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// Template variable rules.
+	//
+	// For detailed rules of template variables, refer to the [Example Document](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+	//
 	// example:
 	//
 	// {"code":"characterWithNumber"}
@@ -3628,10 +5030,17 @@ func (s *GetSmsTemplateResponseBody) SetVariableAttribute(v string) *GetSmsTempl
 }
 
 type GetSmsTemplateResponseBodyAuditInfo struct {
+	// Audit date and time.
+	//
 	// example:
 	//
 	// 2024-06-03 11:20:34
-	AuditDate  *string `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
+	AuditDate *string `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
+	// Reasons for failed audit.
+	//
+	// example:
+	//
+	// 模板内容中包含错别字。
 	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
 }
 
@@ -4720,6 +6129,277 @@ func (s *QueryCardSmsTemplateReportResponse) SetStatusCode(v int32) *QueryCardSm
 }
 
 func (s *QueryCardSmsTemplateReportResponse) SetBody(v *QueryCardSmsTemplateReportResponseBody) *QueryCardSmsTemplateReportResponse {
+	s.Body = v
+	return s
+}
+
+type QueryExtCodeSignRequest struct {
+	// 扩展码A3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01
+	ExtCode *string `json:"ExtCode,omitempty" xml:"ExtCode,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 签名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+}
+
+func (s QueryExtCodeSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExtCodeSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExtCodeSignRequest) SetExtCode(v string) *QueryExtCodeSignRequest {
+	s.ExtCode = &v
+	return s
+}
+
+func (s *QueryExtCodeSignRequest) SetOwnerId(v int64) *QueryExtCodeSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryExtCodeSignRequest) SetPageNo(v int64) *QueryExtCodeSignRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryExtCodeSignRequest) SetPageSize(v int64) *QueryExtCodeSignRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryExtCodeSignRequest) SetResourceOwnerAccount(v string) *QueryExtCodeSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryExtCodeSignRequest) SetResourceOwnerId(v int64) *QueryExtCodeSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryExtCodeSignRequest) SetSignName(v string) *QueryExtCodeSignRequest {
+	s.SignName = &v
+	return s
+}
+
+type QueryExtCodeSignResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QueryExtCodeSignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryExtCodeSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExtCodeSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExtCodeSignResponseBody) SetAccessDeniedDetail(v string) *QueryExtCodeSignResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBody) SetCode(v string) *QueryExtCodeSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBody) SetData(v *QueryExtCodeSignResponseBodyData) *QueryExtCodeSignResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBody) SetMessage(v string) *QueryExtCodeSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBody) SetRequestId(v string) *QueryExtCodeSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBody) SetSuccess(v bool) *QueryExtCodeSignResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryExtCodeSignResponseBodyData struct {
+	List []*QueryExtCodeSignResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 5
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryExtCodeSignResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExtCodeSignResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExtCodeSignResponseBodyData) SetList(v []*QueryExtCodeSignResponseBodyDataList) *QueryExtCodeSignResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBodyData) SetPageNo(v int64) *QueryExtCodeSignResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBodyData) SetPageSize(v int64) *QueryExtCodeSignResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBodyData) SetTotal(v int64) *QueryExtCodeSignResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QueryExtCodeSignResponseBodyDataList struct {
+	// 是否可回收
+	//
+	// example:
+	//
+	// 1
+	Active *int64 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// 扩展码A3
+	//
+	// example:
+	//
+	// 01
+	ExtCode *string `json:"ExtCode,omitempty" xml:"ExtCode,omitempty"`
+	// 近1个月发送成功条数（只读）
+	//
+	// example:
+	//
+	// 69
+	SendCount *int64 `json:"SendCount,omitempty" xml:"SendCount,omitempty"`
+	// 签名
+	//
+	// example:
+	//
+	// 示例值示例值
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// 来源
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s QueryExtCodeSignResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExtCodeSignResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExtCodeSignResponseBodyDataList) SetActive(v int64) *QueryExtCodeSignResponseBodyDataList {
+	s.Active = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBodyDataList) SetExtCode(v string) *QueryExtCodeSignResponseBodyDataList {
+	s.ExtCode = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBodyDataList) SetSendCount(v int64) *QueryExtCodeSignResponseBodyDataList {
+	s.SendCount = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBodyDataList) SetSignName(v string) *QueryExtCodeSignResponseBodyDataList {
+	s.SignName = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponseBodyDataList) SetSource(v string) *QueryExtCodeSignResponseBodyDataList {
+	s.Source = &v
+	return s
+}
+
+type QueryExtCodeSignResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryExtCodeSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryExtCodeSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExtCodeSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExtCodeSignResponse) SetHeaders(v map[string]*string) *QueryExtCodeSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryExtCodeSignResponse) SetStatusCode(v int32) *QueryExtCodeSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryExtCodeSignResponse) SetBody(v *QueryExtCodeSignResponseBody) *QueryExtCodeSignResponse {
 	s.Body = v
 	return s
 }
@@ -7203,6 +8883,10 @@ type SendBatchCardSmsRequest struct {
 	// > The signatures must be approved and correspond to the mobile numbers in sequence.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"aliyun\\",\\"aliyuncode\\"]
 	SignNameJson *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
 	// The code of the text message template that applies when the card message is rolled back. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
 	//
@@ -7759,6 +9443,10 @@ type SendCardSmsRequest struct {
 	// > The signature must be approved.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyun
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 	// The code of the text message template that applies when the card message is rolled back. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
 	//
@@ -7771,6 +9459,10 @@ type SendCardSmsRequest struct {
 	// The variables of the text message template.
 	//
 	// > If you need to add line breaks to the JSON template, make sure that the format is valid.
+	//
+	// example:
+	//
+	// {\\"uri\\":\\"Zg11tZ\\"}
 	SmsTemplateParam *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
 	// The extension code of the upstream message. Upstream messages are messages sent to the communication service provider. Upstream messages are used to customize a service, complete an inquiry, or send a request. You are charged for sending upstream messages based on the billing standards of the service provider.
 	//
@@ -7880,6 +9572,10 @@ type SendCardSmsRequestCardObjects struct {
 	// https://alibaba.com
 	CustomUrl *string `json:"customUrl,omitempty" xml:"customUrl,omitempty"`
 	// The variables. Special characters, such as $ and {}, do not need to be entered.
+	//
+	// example:
+	//
+	// {\\"param3\\":\\"three\\",\\"param1\\":\\"one\\",\\"param2\\":\\"two\\"}
 	DyncParams *string `json:"dyncParams,omitempty" xml:"dyncParams,omitempty"`
 	// The mobile phone number.
 	//
@@ -8646,33 +10342,49 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
+	// Specifies whether to delete all tags from the message template. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the cloud service. Set the value to **dysms**.
+	//
 	// example:
 	//
 	// dysms
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The region. Set the value to cn-hangzhou.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The array of message template codes. You can specify 1 to 20 message templates.
+	//
 	// example:
 	//
 	// SMS_23423423
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource. Set the value to TEMPLATE.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TEMPLATE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The array of tag keys. You can specify 1 to 20 tag keys.
+	//
 	// example:
 	//
 	// TestKey
@@ -8733,14 +10445,28 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A90E4451-FED7-49D2-87C8-00700A8C****
@@ -8799,34 +10525,251 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateExtCodeSignRequest struct {
+	// 要修改的扩展码A3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01
+	ExistExtCode *string `json:"ExistExtCode,omitempty" xml:"ExistExtCode,omitempty"`
+	// 修改后的扩展码A3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02
+	NewExtCode           *string `json:"NewExtCode,omitempty" xml:"NewExtCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 签名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+}
+
+func (s UpdateExtCodeSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExtCodeSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExtCodeSignRequest) SetExistExtCode(v string) *UpdateExtCodeSignRequest {
+	s.ExistExtCode = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignRequest) SetNewExtCode(v string) *UpdateExtCodeSignRequest {
+	s.NewExtCode = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignRequest) SetOwnerId(v int64) *UpdateExtCodeSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignRequest) SetResourceOwnerAccount(v string) *UpdateExtCodeSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignRequest) SetResourceOwnerId(v int64) *UpdateExtCodeSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignRequest) SetSignName(v string) *UpdateExtCodeSignRequest {
+	s.SignName = &v
+	return s
+}
+
+type UpdateExtCodeSignResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateExtCodeSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExtCodeSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExtCodeSignResponseBody) SetAccessDeniedDetail(v string) *UpdateExtCodeSignResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignResponseBody) SetCode(v string) *UpdateExtCodeSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignResponseBody) SetData(v bool) *UpdateExtCodeSignResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignResponseBody) SetMessage(v string) *UpdateExtCodeSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignResponseBody) SetRequestId(v string) *UpdateExtCodeSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignResponseBody) SetSuccess(v bool) *UpdateExtCodeSignResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateExtCodeSignResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateExtCodeSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateExtCodeSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExtCodeSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExtCodeSignResponse) SetHeaders(v map[string]*string) *UpdateExtCodeSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateExtCodeSignResponse) SetStatusCode(v int32) *UpdateExtCodeSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateExtCodeSignResponse) SetBody(v *UpdateExtCodeSignResponseBody) *UpdateExtCodeSignResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSmsSignRequest struct {
+	// Application scenarios, instructions as follows:
+	//
+	// - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
+	//
+	// - For launched apps, provide the display link from the app store with HTTP or HTTPS, ensuring the app is online.
+	//
+	// - For public accounts or mini-programs, fill in the full name, ensuring they are online.
+	//
+	// - For e-commerce platform store names (for enterprise users only), provide the display link with HTTP or HTTPS.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
-	ApplySceneContent *string   `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	MoreData          []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
-	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
+	MoreData []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
+	OwnerId  *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Approved or under-review qualification ID.
+	//
+	// > - Before applying for an SMS signature, please first [apply for qualifications](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+	//
+	// > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2004393xxxx
-	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// 8563**
+	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+	//
+	// > The scenario explanation is one of the reference information for signature review. Please provide a detailed description of the usage scenarios of the launched business, along with verifiable information such as website links, registered domain addresses, app store download links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A well-informed application explanation will enhance the efficiency of signature and template reviews. Refer to the **Application Scenarios*	- column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
+	//
+	// example:
+	//
+	// 登录场景申请验证码
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Signature not yet approved.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 阿里云验证码
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// Source of the signature. Values:
+	//
+	// - **0**: Full name or abbreviation of enterprises and institutions.
+	//
+	// - **1**: Full name or abbreviation of MIIT-registered websites.
+	//
+	// - **2**: Full name or abbreviation of app applications.
+	//
+	// - **3**: Full name or abbreviation of public accounts or mini-programs.
+	//
+	// - **4**: Full name or abbreviation of e-commerce platform store names.
+	//
+	// - **5**: Full name or abbreviation of trademarks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// Signature type. It is recommended to use the default value.
+	//
+	// - **0**: Verification code
+	//
+	// - **1**: General (default)
+	//
 	// example:
 	//
 	// 1
 	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	// Whether the signature is for self-use or others.
+	//
+	// - false: Self-use
+	//
+	// - true: Others
+	//
+	// 	Notice: When the signature is for self-use, select the self-use qualification ID; when it\\"s for others, choose the others\\" qualification ID.
+	//
 	// example:
 	//
 	// false
@@ -8897,33 +10840,91 @@ func (s *UpdateSmsSignRequest) SetThirdParty(v bool) *UpdateSmsSignRequest {
 }
 
 type UpdateSmsSignShrinkRequest struct {
+	// Application scenarios, instructions as follows:
+	//
+	// - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
+	//
+	// - For launched apps, provide the display link from the app store with HTTP or HTTPS, ensuring the app is online.
+	//
+	// - For public accounts or mini-programs, fill in the full name, ensuring they are online.
+	//
+	// - For e-commerce platform store names (for enterprise users only), provide the display link with HTTP or HTTPS.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	MoreDataShrink    *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
+	MoreDataShrink *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Approved or under-review qualification ID.
+	//
+	// > - Before applying for an SMS signature, please first [apply for qualifications](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+	//
+	// > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2004393xxxx
-	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// 8563**
+	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	// Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+	//
+	// > The scenario explanation is one of the reference information for signature review. Please provide a detailed description of the usage scenarios of the launched business, along with verifiable information such as website links, registered domain addresses, app store download links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A well-informed application explanation will enhance the efficiency of signature and template reviews. Refer to the **Application Scenarios*	- column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
+	//
+	// example:
+	//
+	// 登录场景申请验证码
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Signature not yet approved.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 阿里云验证码
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// Source of the signature. Values:
+	//
+	// - **0**: Full name or abbreviation of enterprises and institutions.
+	//
+	// - **1**: Full name or abbreviation of MIIT-registered websites.
+	//
+	// - **2**: Full name or abbreviation of app applications.
+	//
+	// - **3**: Full name or abbreviation of public accounts or mini-programs.
+	//
+	// - **4**: Full name or abbreviation of e-commerce platform store names.
+	//
+	// - **5**: Full name or abbreviation of trademarks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// Signature type. It is recommended to use the default value.
+	//
+	// - **0**: Verification code
+	//
+	// - **1**: General (default)
+	//
 	// example:
 	//
 	// 1
 	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	// Whether the signature is for self-use or others.
+	//
+	// - false: Self-use
+	//
+	// - true: Others
+	//
+	// 	Notice: When the signature is for self-use, select the self-use qualification ID; when it\\"s for others, choose the others\\" qualification ID.
+	//
 	// example:
 	//
 	// false
@@ -8994,23 +10995,42 @@ func (s *UpdateSmsSignShrinkRequest) SetThirdParty(v bool) *UpdateSmsSignShrinkR
 }
 
 type UpdateSmsSignResponseBody struct {
+	// Request status code.
+	//
+	// 	- OK indicates a successful request.
+	//
+	// 	- For other error codes, refer to [Error Code List](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Work order number.
+	//
+	// This parameter is used by auditors when querying audits. You need to provide this work order number for expedited review.
+	//
 	// example:
 	//
-	// 20044174408
+	// 2004417****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of this call request, uniquely generated by Alibaba Cloud, which can be used for troubleshooting and issue localization.
+	//
 	// example:
 	//
 	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The modified signature name.
+	//
+	// example:
+	//
+	// 登录验证
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
 func (s UpdateSmsSignResponseBody) String() string {
@@ -9076,34 +11096,95 @@ func (s *UpdateSmsSignResponse) SetBody(v *UpdateSmsSignResponseBody) *UpdateSms
 }
 
 type UpdateSmsTemplateRequest struct {
+	// Application scenarios, instructions as follows:
+	//
+	// - For registered websites, please enter the MIIT-registered domain with HTTP or HTTPS.
+	//
+	// - For launched apps, provide the app store display link with HTTP or HTTPS, ensuring the app is online.
+	//
+	// - For public accounts or mini-programs, enter the full name of the public account or mini-program, ensuring they are online.
+	//
+	// - For e-commerce platform stores, applicable only to enterprise users, enter the display link of the e-commerce store with HTTP or HTTPS.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType*	- parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional SMS.
+	//
 	// example:
 	//
 	// 0
-	IntlType             *int32    `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
-	MoreData             []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RelatedSignName      *string   `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
-	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	IntlType *int32 `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	// Additional information, such as uploading business proof documents or screenshots, to help reviewers understand your business details. Optional and can be left unset.
+	MoreData []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
+	OwnerId  *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// SMS signature associated with the template during the application.
+	//
+	// example:
+	//
+	// 阿里云
+	RelatedSignName *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	// Explanation for the SMS template application, which serves as a reference for template review.
+	//
+	// example:
+	//
+	// 登录场景使用验证码
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Template Code of an unapproved template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SMS_152550****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Template content, up to 500 characters in length.
+	//
+	// Both the template content and variable content must comply with SMS regulations; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. Variable specifications can be found in [TemplateContent Parameter Variable Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 您正在申请手机注册，验证码为：${code}，5分钟内有效！
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// Template name, up to 30 characters in length.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 验证码
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template variable rules.
+	//
+	// For guidance on filling variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
+	//
 	// example:
 	//
 	// {"code":"characterWithNumber"}
 	TemplateRule *string `json:"TemplateRule,omitempty" xml:"TemplateRule,omitempty"`
+	// SMS type. Values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional SMS.
+	//
+	// - **3**: International/Hong Kong, Macao, and Taiwan messages.
+	//
+	// > Only enterprise-certified users can apply for promotional SMS and international/Hong Kong, Macao, and Taiwan messages. Details on differences between personal and enterprise user rights are available in [Usage Guidelines](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9186,34 +11267,95 @@ func (s *UpdateSmsTemplateRequest) SetTemplateType(v int32) *UpdateSmsTemplateRe
 }
 
 type UpdateSmsTemplateShrinkRequest struct {
+	// Application scenarios, instructions as follows:
+	//
+	// - For registered websites, please enter the MIIT-registered domain with HTTP or HTTPS.
+	//
+	// - For launched apps, provide the app store display link with HTTP or HTTPS, ensuring the app is online.
+	//
+	// - For public accounts or mini-programs, enter the full name of the public account or mini-program, ensuring they are online.
+	//
+	// - For e-commerce platform stores, applicable only to enterprise users, enter the display link of the e-commerce store with HTTP or HTTPS.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType*	- parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional SMS.
+	//
 	// example:
 	//
 	// 0
-	IntlType             *int32  `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
-	MoreDataShrink       *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RelatedSignName      *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	IntlType *int32 `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	// Additional information, such as uploading business proof documents or screenshots, to help reviewers understand your business details. Optional and can be left unset.
+	MoreDataShrink *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// SMS signature associated with the template during the application.
+	//
+	// example:
+	//
+	// 阿里云
+	RelatedSignName *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	// Explanation for the SMS template application, which serves as a reference for template review.
+	//
+	// example:
+	//
+	// 登录场景使用验证码
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Template Code of an unapproved template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SMS_152550****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Template content, up to 500 characters in length.
+	//
+	// Both the template content and variable content must comply with SMS regulations; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. Variable specifications can be found in [TemplateContent Parameter Variable Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 您正在申请手机注册，验证码为：${code}，5分钟内有效！
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// Template name, up to 30 characters in length.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 验证码
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template variable rules.
+	//
+	// For guidance on filling variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
+	//
 	// example:
 	//
 	// {"code":"characterWithNumber"}
 	TemplateRule *string `json:"TemplateRule,omitempty" xml:"TemplateRule,omitempty"`
+	// SMS type. Values:
+	//
+	// - **0**: Verification code.
+	//
+	// - **1**: SMS notification.
+	//
+	// - **2**: Promotional SMS.
+	//
+	// - **3**: International/Hong Kong, Macao, and Taiwan messages.
+	//
+	// > Only enterprise-certified users can apply for promotional SMS and international/Hong Kong, Macao, and Taiwan messages. Details on differences between personal and enterprise user rights are available in [Usage Guidelines](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9296,26 +11438,47 @@ func (s *UpdateSmsTemplateShrinkRequest) SetTemplateType(v int32) *UpdateSmsTemp
 }
 
 type UpdateSmsTemplateResponseBody struct {
+	// Request status code.
+	//
+	// 	- OK indicates a successful request.
+	//
+	// 	- For other error codes, refer to the **Error Codes*	- section of this chapter or the product\\"s [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Work order number.
+	//
+	// This parameter is used by auditors when querying audits. You need to provide this work order number when requesting expedited review.
+	//
 	// example:
 	//
-	// 200412717818
+	// 20041271****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used to troubleshoot and locate issues.
+	//
 	// example:
 	//
 	// 819BE656-D2E0-4858-8B21-B2E477085AAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Code of the SMS template.
+	//
 	// example:
 	//
-	// SMS_2322****
+	// SMS_152550****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Name of the SMS template.
+	//
+	// example:
+	//
+	// 验证码
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -9434,6 +11597,82 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加验证码签名信息
+//
+// @param request - AddExtCodeSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddExtCodeSignResponse
+func (client *Client) AddExtCodeSignWithOptions(request *AddExtCodeSignRequest, runtime *util.RuntimeOptions) (_result *AddExtCodeSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtCode)) {
+		query["ExtCode"] = request.ExtCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddExtCodeSign"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddExtCodeSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加验证码签名信息
+//
+// @param request - AddExtCodeSignRequest
+//
+// @return AddExtCodeSignResponse
+func (client *Client) AddExtCodeSign(request *AddExtCodeSignRequest) (_result *AddExtCodeSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddExtCodeSignResponse{}
+	_body, _err := client.AddExtCodeSignWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10137,7 +12376,17 @@ func (client *Client) CreateSmartShortUrl(request *CreateSmartShortUrlRequest) (
 
 // Summary:
 //
-// 创建短信签名
+// Create SMS Signature
+//
+// Description:
+//
+// - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Individual authenticated users can apply for one formal signature per natural day under the same Alibaba Cloud account, while enterprise authenticated users have no current restrictions. For details on the differences in rights between individual and enterprise users, please refer to [User Guide](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm).
+//
+// - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
+//
+// - After submitting the signature application, you can query the signature review status and details via the [GetSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-getsmssign?spm) interface. You can also [Configure Receipt Messages](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1?spm) and obtain signature review status messages through SignSmsReport.
 //
 // @param tmpReq - CreateSmsSignRequest
 //
@@ -10225,7 +12474,17 @@ func (client *Client) CreateSmsSignWithOptions(tmpReq *CreateSmsSignRequest, run
 
 // Summary:
 //
-// 创建短信签名
+// Create SMS Signature
+//
+// Description:
+//
+// - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Individual authenticated users can apply for one formal signature per natural day under the same Alibaba Cloud account, while enterprise authenticated users have no current restrictions. For details on the differences in rights between individual and enterprise users, please refer to [User Guide](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm).
+//
+// - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
+//
+// - After submitting the signature application, you can query the signature review status and details via the [GetSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-getsmssign?spm) interface. You can also [Configure Receipt Messages](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1?spm) and obtain signature review status messages through SignSmsReport.
 //
 // @param request - CreateSmsSignRequest
 //
@@ -10243,7 +12502,21 @@ func (client *Client) CreateSmsSign(request *CreateSmsSignRequest) (_result *Cre
 
 // Summary:
 //
-// 创建短信模板
+// Create SMS Template
+//
+// Description:
+//
+// - For details about the changes of this new interface compared to the original one, please refer to [Announcement on the Update of SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - It is recommended to apply for SMS templates via the API with at least a 30-second interval between each request.
+//
+// - The template information applied through the API will be synchronized in the SMS service console. For operations related to templates in the console, please refer to SMS Templates.
+//
+// - After submitting the template application, you can query the audit status and details using the GetSmsTemplate interface. You can also configure delivery receipts to obtain the audit status messages via TemplateSmsReport.
+//
+// - Domestic SMS templates are not interchangeable with international/Hong Kong, Macao, and Taiwan SMS templates. Please apply for templates based on your business scenario.
+//
+// - Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For differences in rights between personal and enterprise users, please refer to Usage Instructions.
 //
 // @param tmpReq - CreateSmsTemplateRequest
 //
@@ -10335,7 +12608,21 @@ func (client *Client) CreateSmsTemplateWithOptions(tmpReq *CreateSmsTemplateRequ
 
 // Summary:
 //
-// 创建短信模板
+// Create SMS Template
+//
+// Description:
+//
+// - For details about the changes of this new interface compared to the original one, please refer to [Announcement on the Update of SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - It is recommended to apply for SMS templates via the API with at least a 30-second interval between each request.
+//
+// - The template information applied through the API will be synchronized in the SMS service console. For operations related to templates in the console, please refer to SMS Templates.
+//
+// - After submitting the template application, you can query the audit status and details using the GetSmsTemplate interface. You can also configure delivery receipts to obtain the audit status messages via TemplateSmsReport.
+//
+// - Domestic SMS templates are not interchangeable with international/Hong Kong, Macao, and Taiwan SMS templates. Please apply for templates based on your business scenario.
+//
+// - Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For differences in rights between personal and enterprise users, please refer to Usage Instructions.
 //
 // @param request - CreateSmsTemplateRequest
 //
@@ -10344,6 +12631,82 @@ func (client *Client) CreateSmsTemplate(request *CreateSmsTemplateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSmsTemplateResponse{}
 	_body, _err := client.CreateSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除验证码签名
+//
+// @param request - DeleteExtCodeSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExtCodeSignResponse
+func (client *Client) DeleteExtCodeSignWithOptions(request *DeleteExtCodeSignRequest, runtime *util.RuntimeOptions) (_result *DeleteExtCodeSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtCode)) {
+		query["ExtCode"] = request.ExtCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExtCodeSign"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteExtCodeSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除验证码签名
+//
+// @param request - DeleteExtCodeSignRequest
+//
+// @return DeleteExtCodeSignResponse
+func (client *Client) DeleteExtCodeSign(request *DeleteExtCodeSignRequest) (_result *DeleteExtCodeSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteExtCodeSignResponse{}
+	_body, _err := client.DeleteExtCodeSignWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10627,6 +12990,102 @@ func (client *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (_res
 
 // Summary:
 //
+// 查询卡片发送详情
+//
+// @param request - GetCardSmsDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCardSmsDetailsResponse
+func (client *Client) GetCardSmsDetailsWithOptions(request *GetCardSmsDetailsRequest, runtime *util.RuntimeOptions) (_result *GetCardSmsDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCardId)) {
+		query["BizCardId"] = request.BizCardId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizDigitId)) {
+		query["BizDigitId"] = request.BizDigitId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizSmsId)) {
+		query["BizSmsId"] = request.BizSmsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendDate)) {
+		query["SendDate"] = request.SendDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCardSmsDetails"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCardSmsDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询卡片发送详情
+//
+// @param request - GetCardSmsDetailsRequest
+//
+// @return GetCardSmsDetailsResponse
+func (client *Client) GetCardSmsDetails(request *GetCardSmsDetailsRequest) (_result *GetCardSmsDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCardSmsDetailsResponse{}
+	_body, _err := client.GetCardSmsDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the short URLs of a card messages template.
 //
 // Description:
@@ -10882,7 +13341,13 @@ func (client *Client) GetOSSInfoForCardTemplate() (_result *GetOSSInfoForCardTem
 
 // Summary:
 //
-// 短信上传文件，获取授权信息
+// SMS File Upload, Get Authorization Info
+//
+// Description:
+//
+// - When creating signatures or templates, you can upload materials such as login pages with links, backend page screenshots, software copyrights, supplementary agreements, etc. This helps the review personnel understand your business details. If there are multiple materials, they can be combined into one file, supporting png, jpg, jpeg, doc, docx, pdf formats.
+//
+// - For additional materials needed when creating signatures or templates, you can upload them to the OSS file system for storage. For file upload operations, refer to [OSS File Upload](https://help.aliyun.com/zh/sms/upload-files-through-oss).
 //
 // @param request - GetOSSInfoForUploadFileRequest
 //
@@ -10936,7 +13401,13 @@ func (client *Client) GetOSSInfoForUploadFileWithOptions(request *GetOSSInfoForU
 
 // Summary:
 //
-// 短信上传文件，获取授权信息
+// SMS File Upload, Get Authorization Info
+//
+// Description:
+//
+// - When creating signatures or templates, you can upload materials such as login pages with links, backend page screenshots, software copyrights, supplementary agreements, etc. This helps the review personnel understand your business details. If there are multiple materials, they can be combined into one file, supporting png, jpg, jpeg, doc, docx, pdf formats.
+//
+// - For additional materials needed when creating signatures or templates, you can upload them to the OSS file system for storage. For file upload operations, refer to [OSS File Upload](https://help.aliyun.com/zh/sms/upload-files-through-oss).
 //
 // @param request - GetOSSInfoForUploadFileRequest
 //
@@ -10954,7 +13425,15 @@ func (client *Client) GetOSSInfoForUploadFile(request *GetOSSInfoForUploadFileRe
 
 // Summary:
 //
-// 查询短信签名详情
+// Query SMS Signature Details
+//
+// Description:
+//
+// - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Review Time: Generally, after submitting the signature, Alibaba Cloud expects to complete the review within 2 hours (Review Business Hours: Monday to Sunday 9:00~21:00, with legal holidays postponed). It is recommended to submit your application before 18:00.
+//
+// - If the signature fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm), invoke the [UpdateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmssign?spm) API, or modify the unapproved SMS signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
 //
 // @param request - GetSmsSignRequest
 //
@@ -11008,7 +13487,15 @@ func (client *Client) GetSmsSignWithOptions(request *GetSmsSignRequest, runtime 
 
 // Summary:
 //
-// 查询短信签名详情
+// Query SMS Signature Details
+//
+// Description:
+//
+// - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Review Time: Generally, after submitting the signature, Alibaba Cloud expects to complete the review within 2 hours (Review Business Hours: Monday to Sunday 9:00~21:00, with legal holidays postponed). It is recommended to submit your application before 18:00.
+//
+// - If the signature fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm), invoke the [UpdateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmssign?spm) API, or modify the unapproved SMS signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
 //
 // @param request - GetSmsSignRequest
 //
@@ -11026,7 +13513,17 @@ func (client *Client) GetSmsSign(request *GetSmsSignRequest) (_result *GetSmsSig
 
 // Summary:
 //
-// 查询文本短信模板详情
+// Query Text SMS Template Details
+//
+// Description:
+//
+// - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Review Time: Under normal circumstances, Alibaba Cloud expects to complete the review within 2 hours after template submission (review working hours: Monday to Sunday 9:00~21:00, with statutory holidays postponed). It is recommended to submit your application before 18:00.
+//
+// - If the template fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ), invoke the [ModifySmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-modifysmstemplate?spm=a2c4g.11186623.0.0.5b1f6e8bQloFit) API or modify the SMS template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+//
+// - The current QuerySmsTemplate interface queries the audit details of a single template by template code. The [QuerySmsTemplateList](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-querysmstemplatelist?spm=a2c4g.11186623.0.0.24086e8bO8cFn4) interface can query the template details of all templates under your current account.
 //
 // @param request - GetSmsTemplateRequest
 //
@@ -11080,7 +13577,17 @@ func (client *Client) GetSmsTemplateWithOptions(request *GetSmsTemplateRequest, 
 
 // Summary:
 //
-// 查询文本短信模板详情
+// Query Text SMS Template Details
+//
+// Description:
+//
+// - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Review Time: Under normal circumstances, Alibaba Cloud expects to complete the review within 2 hours after template submission (review working hours: Monday to Sunday 9:00~21:00, with statutory holidays postponed). It is recommended to submit your application before 18:00.
+//
+// - If the template fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ), invoke the [ModifySmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-modifysmstemplate?spm=a2c4g.11186623.0.0.5b1f6e8bQloFit) API or modify the SMS template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+//
+// - The current QuerySmsTemplate interface queries the audit details of a single template by template code. The [QuerySmsTemplateList](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-querysmstemplatelist?spm=a2c4g.11186623.0.0.24086e8bO8cFn4) interface can query the template details of all templates under your current account.
 //
 // @param request - GetSmsTemplateRequest
 //
@@ -11587,6 +14094,90 @@ func (client *Client) QueryCardSmsTemplateReport(request *QueryCardSmsTemplateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCardSmsTemplateReportResponse{}
 	_body, _err := client.QueryCardSmsTemplateReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询验证码签名
+//
+// @param request - QueryExtCodeSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryExtCodeSignResponse
+func (client *Client) QueryExtCodeSignWithOptions(request *QueryExtCodeSignRequest, runtime *util.RuntimeOptions) (_result *QueryExtCodeSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtCode)) {
+		query["ExtCode"] = request.ExtCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryExtCodeSign"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryExtCodeSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询验证码签名
+//
+// @param request - QueryExtCodeSignRequest
+//
+// @return QueryExtCodeSignResponse
+func (client *Client) QueryExtCodeSign(request *QueryExtCodeSignRequest) (_result *QueryExtCodeSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryExtCodeSignResponse{}
+	_body, _err := client.QueryExtCodeSignWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13068,6 +15659,16 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes tags from a message template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
 // @param request - UntagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13138,6 +15739,16 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes tags from a message template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
 // @param request - UntagResourcesRequest
 //
 // @return UntagResourcesResponse
@@ -13154,7 +15765,95 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 修改文本短信签名
+// 修改验证码签名
+//
+// @param request - UpdateExtCodeSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExtCodeSignResponse
+func (client *Client) UpdateExtCodeSignWithOptions(request *UpdateExtCodeSignRequest, runtime *util.RuntimeOptions) (_result *UpdateExtCodeSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExistExtCode)) {
+		query["ExistExtCode"] = request.ExistExtCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewExtCode)) {
+		query["NewExtCode"] = request.NewExtCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateExtCodeSign"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateExtCodeSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改验证码签名
+//
+// @param request - UpdateExtCodeSignRequest
+//
+// @return UpdateExtCodeSignResponse
+func (client *Client) UpdateExtCodeSign(request *UpdateExtCodeSignRequest) (_result *UpdateExtCodeSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateExtCodeSignResponse{}
+	_body, _err := client.UpdateExtCodeSignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Update Text SMS Signature
+//
+// Description:
+//
+// - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Only signatures that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm) and call this interface to modify and resubmit for review after modification.
+//
+// - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, please see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
 //
 // @param tmpReq - UpdateSmsSignRequest
 //
@@ -13242,7 +15941,15 @@ func (client *Client) UpdateSmsSignWithOptions(tmpReq *UpdateSmsSignRequest, run
 
 // Summary:
 //
-// 修改文本短信签名
+// Update Text SMS Signature
+//
+// Description:
+//
+// - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Only signatures that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm) and call this interface to modify and resubmit for review after modification.
+//
+// - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, please see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
 //
 // @param request - UpdateSmsSignRequest
 //
@@ -13260,7 +15967,19 @@ func (client *Client) UpdateSmsSign(request *UpdateSmsSignRequest) (_result *Upd
 
 // Summary:
 //
-// 修改文本短信模板
+// Update Text SMS Template
+//
+// Description:
+//
+// - For details about the changes of this new interface compared to the original one, please refer to [Announcement on SMS Service Update: Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Only templates that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Template Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.4bf5561ajcFtMQ) and call this interface to modify and resubmit for review.
+//
+// - Modifications made through the interface will be synchronized in the SMS service console. For related operations on templates in the console, see [SMS Templates](https://help.aliyun.com/zh/sms/user-guide/message-templates/?spm=a2c4g.11186623.0.0.35a947464Itaxp).
+//
+// ### QPS Limit
+//
+// The single-user QPS limit for this interface is 1000 times/second. Exceeding this limit will result in API throttling, which may impact your business. Please make calls reasonably.
 //
 // @param tmpReq - UpdateSmsTemplateRequest
 //
@@ -13356,7 +16075,19 @@ func (client *Client) UpdateSmsTemplateWithOptions(tmpReq *UpdateSmsTemplateRequ
 
 // Summary:
 //
-// 修改文本短信模板
+// Update Text SMS Template
+//
+// Description:
+//
+// - For details about the changes of this new interface compared to the original one, please refer to [Announcement on SMS Service Update: Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+//
+// - Only templates that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Template Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.4bf5561ajcFtMQ) and call this interface to modify and resubmit for review.
+//
+// - Modifications made through the interface will be synchronized in the SMS service console. For related operations on templates in the console, see [SMS Templates](https://help.aliyun.com/zh/sms/user-guide/message-templates/?spm=a2c4g.11186623.0.0.35a947464Itaxp).
+//
+// ### QPS Limit
+//
+// The single-user QPS limit for this interface is 1000 times/second. Exceeding this limit will result in API throttling, which may impact your business. Please make calls reasonably.
 //
 // @param request - UpdateSmsTemplateRequest
 //
