@@ -1149,7 +1149,8 @@ type CreateServiceRequest struct {
 	// example:
 	//
 	// 10CM943JP0EN9D51H
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken        *string                                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ComplianceMetadata *CreateServiceRequestComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
 	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
 	//
 	// example:
@@ -1353,6 +1354,11 @@ func (s *CreateServiceRequest) SetClientToken(v string) *CreateServiceRequest {
 	return s
 }
 
+func (s *CreateServiceRequest) SetComplianceMetadata(v *CreateServiceRequestComplianceMetadata) *CreateServiceRequest {
+	s.ComplianceMetadata = v
+	return s
+}
+
 func (s *CreateServiceRequest) SetDeployMetadata(v string) *CreateServiceRequest {
 	s.DeployMetadata = &v
 	return s
@@ -1465,6 +1471,23 @@ func (s *CreateServiceRequest) SetUpgradeMetadata(v string) *CreateServiceReques
 
 func (s *CreateServiceRequest) SetVersionName(v string) *CreateServiceRequest {
 	s.VersionName = &v
+	return s
+}
+
+type CreateServiceRequestComplianceMetadata struct {
+	CompliancePacks []*string `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
+}
+
+func (s CreateServiceRequestComplianceMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceRequestComplianceMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceRequestComplianceMetadata) SetCompliancePacks(v []*string) *CreateServiceRequestComplianceMetadata {
+	s.CompliancePacks = v
 	return s
 }
 
@@ -1640,6 +1663,563 @@ func (s *CreateServiceRequestTag) SetKey(v string) *CreateServiceRequestTag {
 }
 
 func (s *CreateServiceRequestTag) SetValue(v string) *CreateServiceRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateServiceShrinkRequest struct {
+	// The alert configurations of the service.
+	//
+	// >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "TemplateUrl": "http://template.file.url",
+	//
+	//   // 应用分组级别告警元数据
+	//
+	//   "ApplicationGroups": [
+	//
+	//     {
+	//
+	//       "Name": "applicationGroup1",
+	//
+	//       "TemplateUrl": "url1"
+	//
+	//     },
+	//
+	//     {
+	//
+	//       "Name": "applicationGroup2",
+	//
+	//       "TemplateUrl": "url2"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
+	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	// The approval type of the service usage application. Valid values:
+	//
+	// 	- Manual: The application is manually approved.
+	//
+	// 	- AutoPass: The application is automatically approved.
+	//
+	// example:
+	//
+	// Manual
+	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The parameters for building the service
+	//
+	// example:
+	//
+	// { "ServiceTemplateId": "st-xxxxx"}
+	BuildParameters *string `json:"BuildParameters,omitempty" xml:"BuildParameters,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ComplianceMetadataShrink *string `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty"`
+	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	//
+	// example:
+	//
+	// {\\"TemplateConfigs\\":[{\\"Name\\":\\"模板1\\",\\"Url\\":\\"oss://computenest-test/template"
+	//
+	//             + ".json?RegionId=cn-beijing\\",\\"PredefinedParameters\\":[{\\"Name\\":\\"低配版\\","
+	//
+	//             + "\\"Parameters\\":{\\"InstanceType\\":\\"ecs.g5.large\\",\\"DataDiskSize\\":40}},{\\"Name\\":\\"高配版\\","
+	//
+	//             + "\\"Parameters\\":{\\"InstanceType\\":\\"ecs.g5.large\\",\\"DataDiskSize\\":200}}]}]}
+	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// 	- ack: The service is deployed by using Container Service for Kubernetes (ACK).
+	//
+	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	//
+	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ros
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The duration for which hosted O\\&M is implemented. Unit: seconds.
+	//
+	// example:
+	//
+	// 0
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >  This parameter is required if you set **ServiceType*	- to **private**.
+	//
+	// example:
+	//
+	// false
+	IsSupportOperated *bool `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	// The license metadata.
+	//
+	// example:
+	//
+	// {\\"RetentionDays\\":3}
+	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	// The logging configurations.
+	//
+	// example:
+	//
+	// { "Logstores": [ { "LogstoreName": "access-log", "LogPath": "/home/admin/app/logs", # This parameter is not required for containers. Configure the parameter in the YAML file. "FilePattern": "access.log\\*" # This parameter is not required for containers. Configure the parameter in the YAML file. } ] }
+	LogMetadata *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	// The hosted O\\&M configurations.
+	//
+	// example:
+	//
+	// {\\"PrometheusConfigMap\\":{\\"New_Vpc_Ack_And_Jumpserver\\":{}}}
+	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+	//
+	// example:
+	//
+	// policyName1, policyName2
+	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Whether resell is supported.
+	//
+	// example:
+	//
+	// false
+	Resellable *bool `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek25refu7r3opq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a544xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service details.
+	ServiceInfo []*CreateServiceShrinkRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	// The service type. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
+	// 	- poc: The service is a trial service.
+	//
+	// example:
+	//
+	// private
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The permission type of the deployment URL. Valid values:
+	//
+	// 	- Public: All users can go to the URL to create a service instance or a trial service instance.
+	//
+	// 	- Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+	//
+	// 	- OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+	//
+	// 	- OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	//
+	// 	- Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	//
+	// example:
+	//
+	// Public
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The source service ID for resell。
+	//
+	// example:
+	//
+	// service-70a3b15bb62643xxxxxx
+	SourceServiceId *string `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
+	// The source service version for resell。
+	//
+	// example:
+	//
+	// 1
+	SourceServiceVersion *string `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
+	// The custom tags.
+	Tag []*CreateServiceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The type of the tenant. Valid values:
+	//
+	// 	- SingleTenant
+	//
+	// 	- MultiTenant
+	//
+	// example:
+	//
+	// SingleTenant
+	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	//
+	// example:
+	//
+	// 7
+	TrialDuration *int64 `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	// The metadata about the upgrade.
+	//
+	// example:
+	//
+	// {\\"Description\\":\\"xxx\\",\\"SupportRollback\\":true,\\"SupportUpgradeFromVersions\\":[],\\"UpgradeComponents\\":[\\"Configuration\\"]}
+	UpgradeMetadata *string `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	// The version name.
+	//
+	// example:
+	//
+	// Draft
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s CreateServiceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceShrinkRequest) SetAlarmMetadata(v string) *CreateServiceShrinkRequest {
+	s.AlarmMetadata = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetApprovalType(v string) *CreateServiceShrinkRequest {
+	s.ApprovalType = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetBuildParameters(v string) *CreateServiceShrinkRequest {
+	s.BuildParameters = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetClientToken(v string) *CreateServiceShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetComplianceMetadataShrink(v string) *CreateServiceShrinkRequest {
+	s.ComplianceMetadataShrink = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetDeployMetadata(v string) *CreateServiceShrinkRequest {
+	s.DeployMetadata = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetDeployType(v string) *CreateServiceShrinkRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetDryRun(v bool) *CreateServiceShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetDuration(v int64) *CreateServiceShrinkRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetIsSupportOperated(v bool) *CreateServiceShrinkRequest {
+	s.IsSupportOperated = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetLicenseMetadata(v string) *CreateServiceShrinkRequest {
+	s.LicenseMetadata = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetLogMetadata(v string) *CreateServiceShrinkRequest {
+	s.LogMetadata = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetOperationMetadata(v string) *CreateServiceShrinkRequest {
+	s.OperationMetadata = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetPolicyNames(v string) *CreateServiceShrinkRequest {
+	s.PolicyNames = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetRegionId(v string) *CreateServiceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetResellable(v bool) *CreateServiceShrinkRequest {
+	s.Resellable = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetResourceGroupId(v string) *CreateServiceShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetServiceId(v string) *CreateServiceShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetServiceInfo(v []*CreateServiceShrinkRequestServiceInfo) *CreateServiceShrinkRequest {
+	s.ServiceInfo = v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetServiceType(v string) *CreateServiceShrinkRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetShareType(v string) *CreateServiceShrinkRequest {
+	s.ShareType = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetSourceServiceId(v string) *CreateServiceShrinkRequest {
+	s.SourceServiceId = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetSourceServiceVersion(v string) *CreateServiceShrinkRequest {
+	s.SourceServiceVersion = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetTag(v []*CreateServiceShrinkRequestTag) *CreateServiceShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetTenantType(v string) *CreateServiceShrinkRequest {
+	s.TenantType = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetTrialDuration(v int64) *CreateServiceShrinkRequest {
+	s.TrialDuration = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetUpgradeMetadata(v string) *CreateServiceShrinkRequest {
+	s.UpgradeMetadata = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetVersionName(v string) *CreateServiceShrinkRequest {
+	s.VersionName = &v
+	return s
+}
+
+type CreateServiceShrinkRequestServiceInfo struct {
+	// Protocol document information about the service.
+	Agreements []*CreateServiceShrinkRequestServiceInfoAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
+	// The URL of the service icon.
+	//
+	// example:
+	//
+	// http://img.tidb.oss.url
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh-CN
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The URL of the detailed description of the service.
+	//
+	// example:
+	//
+	// http://description.tidb.oss.url
+	LongDescriptionUrl *string `json:"LongDescriptionUrl,omitempty" xml:"LongDescriptionUrl,omitempty"`
+	// The service name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TiDB Database
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// TiDB是A公司自主设计、研发的开源分布式关系型数据库。
+	ShortDescription *string                                           `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	Softwares        []*CreateServiceShrinkRequestServiceInfoSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
+}
+
+func (s CreateServiceShrinkRequestServiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceShrinkRequestServiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceShrinkRequestServiceInfo) SetAgreements(v []*CreateServiceShrinkRequestServiceInfoAgreements) *CreateServiceShrinkRequestServiceInfo {
+	s.Agreements = v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestServiceInfo) SetImage(v string) *CreateServiceShrinkRequestServiceInfo {
+	s.Image = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestServiceInfo) SetLocale(v string) *CreateServiceShrinkRequestServiceInfo {
+	s.Locale = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestServiceInfo) SetLongDescriptionUrl(v string) *CreateServiceShrinkRequestServiceInfo {
+	s.LongDescriptionUrl = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestServiceInfo) SetName(v string) *CreateServiceShrinkRequestServiceInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestServiceInfo) SetShortDescription(v string) *CreateServiceShrinkRequestServiceInfo {
+	s.ShortDescription = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestServiceInfo) SetSoftwares(v []*CreateServiceShrinkRequestServiceInfoSoftwares) *CreateServiceShrinkRequestServiceInfo {
+	s.Softwares = v
+	return s
+}
+
+type CreateServiceShrinkRequestServiceInfoAgreements struct {
+	// Protocol name.
+	//
+	// example:
+	//
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Protocol url.
+	//
+	// example:
+	//
+	// https://aliyun.com/xxxxxxxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateServiceShrinkRequestServiceInfoAgreements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceShrinkRequestServiceInfoAgreements) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceShrinkRequestServiceInfoAgreements) SetName(v string) *CreateServiceShrinkRequestServiceInfoAgreements {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestServiceInfoAgreements) SetUrl(v string) *CreateServiceShrinkRequestServiceInfoAgreements {
+	s.Url = &v
+	return s
+}
+
+type CreateServiceShrinkRequestServiceInfoSoftwares struct {
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CreateServiceShrinkRequestServiceInfoSoftwares) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceShrinkRequestServiceInfoSoftwares) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceShrinkRequestServiceInfoSoftwares) SetName(v string) *CreateServiceShrinkRequestServiceInfoSoftwares {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestServiceInfoSoftwares) SetVersion(v string) *CreateServiceShrinkRequestServiceInfoSoftwares {
+	s.Version = &v
+	return s
+}
+
+type CreateServiceShrinkRequestTag struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// Usage
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// Web
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateServiceShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceShrinkRequestTag) SetKey(v string) *CreateServiceShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequestTag) SetValue(v string) *CreateServiceShrinkRequestTag {
 	s.Value = &v
 	return s
 }
@@ -3309,12 +3889,12 @@ type GetServiceRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// service-4ee86df83fd948******
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	ServiceName       *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The service version.
 	//
 	// example:
@@ -3355,6 +3935,16 @@ func (s *GetServiceRequest) SetRegionId(v string) *GetServiceRequest {
 
 func (s *GetServiceRequest) SetServiceId(v string) *GetServiceRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetServiceInstanceId(v string) *GetServiceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetServiceName(v string) *GetServiceRequest {
+	s.ServiceName = &v
 	return s
 }
 
@@ -3437,7 +4027,8 @@ type GetServiceResponseBody struct {
 	// example:
 	//
 	// cmjj00xxxx
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityCode      *string                                   `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ComplianceMetadata *GetServiceResponseBodyComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
 	// The time when the service was created.
 	//
 	// example:
@@ -3851,6 +4442,11 @@ func (s *GetServiceResponseBody) SetCommodity(v *GetServiceResponseBodyCommodity
 
 func (s *GetServiceResponseBody) SetCommodityCode(v string) *GetServiceResponseBody {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetComplianceMetadata(v *GetServiceResponseBodyComplianceMetadata) *GetServiceResponseBody {
+	s.ComplianceMetadata = v
 	return s
 }
 
@@ -4617,6 +5213,23 @@ func (s *GetServiceResponseBodyCommoditySpecifications) SetName(v string) *GetSe
 
 func (s *GetServiceResponseBodyCommoditySpecifications) SetTimes(v []*string) *GetServiceResponseBodyCommoditySpecifications {
 	s.Times = v
+	return s
+}
+
+type GetServiceResponseBodyComplianceMetadata struct {
+	CompliancePacks []*string `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceResponseBodyComplianceMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyComplianceMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyComplianceMetadata) SetCompliancePacks(v []*string) *GetServiceResponseBodyComplianceMetadata {
+	s.CompliancePacks = v
 	return s
 }
 
@@ -12104,7 +12717,8 @@ type UpdateServiceRequest struct {
 	// 788E7CP0EN9D51P
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Bind Commodity Information
-	Commodity *UpdateServiceRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	Commodity          *UpdateServiceRequestCommodity          `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	ComplianceMetadata *UpdateServiceRequestComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
 	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
 	//
 	// example:
@@ -12293,6 +12907,11 @@ func (s *UpdateServiceRequest) SetClientToken(v string) *UpdateServiceRequest {
 
 func (s *UpdateServiceRequest) SetCommodity(v *UpdateServiceRequestCommodity) *UpdateServiceRequest {
 	s.Commodity = v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetComplianceMetadata(v *UpdateServiceRequestComplianceMetadata) *UpdateServiceRequest {
+	s.ComplianceMetadata = v
 	return s
 }
 
@@ -12631,6 +13250,23 @@ func (s *UpdateServiceRequestCommoditySpecificationMappings) SetTemplateName(v s
 	return s
 }
 
+type UpdateServiceRequestComplianceMetadata struct {
+	CompliancePacks []*string `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
+}
+
+func (s UpdateServiceRequestComplianceMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequestComplianceMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestComplianceMetadata) SetCompliancePacks(v []*string) *UpdateServiceRequestComplianceMetadata {
+	s.CompliancePacks = v
+	return s
+}
+
 type UpdateServiceRequestServiceInfo struct {
 	// Protocol document information about the service.
 	Agreements []*UpdateServiceRequestServiceInfoAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
@@ -12833,7 +13469,8 @@ type UpdateServiceShrinkRequest struct {
 	// 788E7CP0EN9D51P
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Bind Commodity Information
-	CommodityShrink *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	CommodityShrink          *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	ComplianceMetadataShrink *string `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty"`
 	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
 	//
 	// example:
@@ -13022,6 +13659,11 @@ func (s *UpdateServiceShrinkRequest) SetClientToken(v string) *UpdateServiceShri
 
 func (s *UpdateServiceShrinkRequest) SetCommodityShrink(v string) *UpdateServiceShrinkRequest {
 	s.CommodityShrink = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequest) SetComplianceMetadataShrink(v string) *UpdateServiceShrinkRequest {
+	s.ComplianceMetadataShrink = &v
 	return s
 }
 
@@ -14465,16 +15107,22 @@ func (client *Client) CreateArtifact(request *CreateArtifactRequest) (_result *C
 //
 // Creates a service.
 //
-// @param request - CreateServiceRequest
+// @param tmpReq - CreateServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceResponse
-func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateServiceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ComplianceMetadata)) {
+		request.ComplianceMetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComplianceMetadata, tea.String("ComplianceMetadata"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlarmMetadata)) {
 		query["AlarmMetadata"] = request.AlarmMetadata
@@ -14490,6 +15138,10 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComplianceMetadataShrink)) {
+		query["ComplianceMetadata"] = request.ComplianceMetadataShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeployMetadata)) {
@@ -15236,6 +15888,14 @@ func (client *Client) GetServiceWithOptions(request *GetServiceRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
@@ -17118,6 +17778,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 		request.CommodityShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Commodity, tea.String("Commodity"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ComplianceMetadata)) {
+		request.ComplianceMetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComplianceMetadata, tea.String("ComplianceMetadata"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateOption)) {
 		request.UpdateOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateOption, tea.String("UpdateOption"), tea.String("json"))
 	}
@@ -17137,6 +17801,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.CommodityShrink)) {
 		query["Commodity"] = request.CommodityShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComplianceMetadataShrink)) {
+		query["ComplianceMetadata"] = request.ComplianceMetadataShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeployMetadata)) {
