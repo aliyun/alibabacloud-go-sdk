@@ -9,6 +9,1505 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataQualityEvaluationTask struct {
+	// example:
+	//
+	// 201
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// This is a daily run data quality evaluation plan.
+	Description *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Hooks       []*DataQualityEvaluationTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 质量校验任务
+	Name          *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Notifications []*DataQualityEvaluationTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
+	RuntimeConf *string                          `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	Target      *DataQualityEvaluationTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	TenantId *int64                            `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Trigger  *DataQualityEvaluationTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s DataQualityEvaluationTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTask) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTask) SetDataSourceId(v int64) *DataQualityEvaluationTask {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetDescription(v string) *DataQualityEvaluationTask {
+	s.Description = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetHooks(v []*DataQualityEvaluationTaskHooks) *DataQualityEvaluationTask {
+	s.Hooks = v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetId(v int64) *DataQualityEvaluationTask {
+	s.Id = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetName(v string) *DataQualityEvaluationTask {
+	s.Name = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetNotifications(v []*DataQualityEvaluationTaskNotifications) *DataQualityEvaluationTask {
+	s.Notifications = v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetProjectId(v int64) *DataQualityEvaluationTask {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetRuntimeConf(v string) *DataQualityEvaluationTask {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetTarget(v *DataQualityEvaluationTaskTarget) *DataQualityEvaluationTask {
+	s.Target = v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetTenantId(v int64) *DataQualityEvaluationTask {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTask) SetTrigger(v *DataQualityEvaluationTaskTrigger) *DataQualityEvaluationTask {
+	s.Trigger = v
+	return s
+}
+
+type DataQualityEvaluationTaskHooks struct {
+	// example:
+	//
+	// ${severity} == "High" AND ${status} == "Critical"
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// BlockTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityEvaluationTaskHooks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskHooks) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskHooks) SetCondition(v string) *DataQualityEvaluationTaskHooks {
+	s.Condition = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskHooks) SetType(v string) *DataQualityEvaluationTaskHooks {
+	s.Type = &v
+	return s
+}
+
+type DataQualityEvaluationTaskNotifications struct {
+	// example:
+	//
+	// ${blockType} == "Strong"
+	Condition     *string                                                `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Notifications []*DataQualityEvaluationTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+}
+
+func (s DataQualityEvaluationTaskNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskNotifications) SetCondition(v string) *DataQualityEvaluationTaskNotifications {
+	s.Condition = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskNotifications) SetNotifications(v []*DataQualityEvaluationTaskNotificationsNotifications) *DataQualityEvaluationTaskNotifications {
+	s.Notifications = v
+	return s
+}
+
+type DataQualityEvaluationTaskNotificationsNotifications struct {
+	NotificationChannels  []*DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	NotificationReceivers []*DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
+}
+
+func (s DataQualityEvaluationTaskNotificationsNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskNotificationsNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskNotificationsNotifications) SetNotificationChannels(v []*DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels) *DataQualityEvaluationTaskNotificationsNotifications {
+	s.NotificationChannels = v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskNotificationsNotifications) SetNotificationReceivers(v []*DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) *DataQualityEvaluationTaskNotificationsNotifications {
+	s.NotificationReceivers = v
+	return s
+}
+
+type DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels struct {
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels) SetChannels(v []*string) *DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels {
+	s.Channels = v
+	return s
+}
+
+type DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers struct {
+	// example:
+	//
+	// {"atAll":"true"}
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// AliUid
+	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) SetExtension(v string) *DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) SetReceiverType(v string) *DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) SetReceiverValues(v []*string) *DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type DataQualityEvaluationTaskTarget struct {
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityEvaluationTaskTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskTarget) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskTarget) SetDatabaseType(v string) *DataQualityEvaluationTaskTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskTarget) SetPartitionSpec(v string) *DataQualityEvaluationTaskTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskTarget) SetTableGuid(v string) *DataQualityEvaluationTaskTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskTarget) SetType(v string) *DataQualityEvaluationTaskTarget {
+	s.Type = &v
+	return s
+}
+
+type DataQualityEvaluationTaskTrigger struct {
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityEvaluationTaskTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskTrigger) SetTaskIds(v []*int64) *DataQualityEvaluationTaskTrigger {
+	s.TaskIds = v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskTrigger) SetType(v string) *DataQualityEvaluationTaskTrigger {
+	s.Type = &v
+	return s
+}
+
+type DataQualityEvaluationTaskInstance struct {
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// 10001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Passed
+	Status *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Task   *DataQualityEvaluationTaskInstanceTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+}
+
+func (s DataQualityEvaluationTaskInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstance) SetCreateTime(v int64) *DataQualityEvaluationTaskInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstance) SetFinishTime(v int64) *DataQualityEvaluationTaskInstance {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstance) SetId(v int64) *DataQualityEvaluationTaskInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstance) SetStatus(v string) *DataQualityEvaluationTaskInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstance) SetTask(v *DataQualityEvaluationTaskInstanceTask) *DataQualityEvaluationTaskInstance {
+	s.Task = v
+	return s
+}
+
+type DataQualityEvaluationTaskInstanceTask struct {
+	// example:
+	//
+	// 201
+	DataSourceId *int64                                        `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Hooks        []*DataQualityEvaluationTaskInstanceTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 质量校验任务
+	Name          *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Notifications []*DataQualityEvaluationTaskInstanceTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+	ProjectId     *int64                                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
+	RuntimeConf *string                                       `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	Target      *DataQualityEvaluationTaskInstanceTaskTarget  `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	TenantId    *int64                                        `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Trigger     *DataQualityEvaluationTaskInstanceTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s DataQualityEvaluationTaskInstanceTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstanceTask) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetDataSourceId(v int64) *DataQualityEvaluationTaskInstanceTask {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetHooks(v []*DataQualityEvaluationTaskInstanceTaskHooks) *DataQualityEvaluationTaskInstanceTask {
+	s.Hooks = v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetId(v int64) *DataQualityEvaluationTaskInstanceTask {
+	s.Id = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetName(v string) *DataQualityEvaluationTaskInstanceTask {
+	s.Name = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetNotifications(v []*DataQualityEvaluationTaskInstanceTaskNotifications) *DataQualityEvaluationTaskInstanceTask {
+	s.Notifications = v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetProjectId(v int64) *DataQualityEvaluationTaskInstanceTask {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetRuntimeConf(v string) *DataQualityEvaluationTaskInstanceTask {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetTarget(v *DataQualityEvaluationTaskInstanceTaskTarget) *DataQualityEvaluationTaskInstanceTask {
+	s.Target = v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetTenantId(v int64) *DataQualityEvaluationTaskInstanceTask {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTask) SetTrigger(v *DataQualityEvaluationTaskInstanceTaskTrigger) *DataQualityEvaluationTaskInstanceTask {
+	s.Trigger = v
+	return s
+}
+
+type DataQualityEvaluationTaskInstanceTaskHooks struct {
+	// example:
+	//
+	// ${severity} == "High" AND ${status} == "Critical"
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// BlockTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskHooks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskHooks) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskHooks) SetCondition(v string) *DataQualityEvaluationTaskInstanceTaskHooks {
+	s.Condition = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskHooks) SetType(v string) *DataQualityEvaluationTaskInstanceTaskHooks {
+	s.Type = &v
+	return s
+}
+
+type DataQualityEvaluationTaskInstanceTaskNotifications struct {
+	// example:
+	//
+	// ${blockType} == "Strong"
+	Condition     *string                                                            `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Notifications []*DataQualityEvaluationTaskInstanceTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskNotifications) SetCondition(v string) *DataQualityEvaluationTaskInstanceTaskNotifications {
+	s.Condition = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskNotifications) SetNotifications(v []*DataQualityEvaluationTaskInstanceTaskNotificationsNotifications) *DataQualityEvaluationTaskInstanceTaskNotifications {
+	s.Notifications = v
+	return s
+}
+
+type DataQualityEvaluationTaskInstanceTaskNotificationsNotifications struct {
+	NotificationChannels  []*DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	NotificationReceivers []*DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskNotificationsNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskNotificationsNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotifications) SetNotificationChannels(v []*DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels) *DataQualityEvaluationTaskInstanceTaskNotificationsNotifications {
+	s.NotificationChannels = v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotifications) SetNotificationReceivers(v []*DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) *DataQualityEvaluationTaskInstanceTaskNotificationsNotifications {
+	s.NotificationReceivers = v
+	return s
+}
+
+type DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels struct {
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels) SetChannels(v []*string) *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels {
+	s.Channels = v
+	return s
+}
+
+type DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers struct {
+	// example:
+	//
+	// {"atAll":"true"}
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// AliUid
+	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) SetExtension(v string) *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) SetReceiverType(v string) *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) SetReceiverValues(v []*string) *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type DataQualityEvaluationTaskInstanceTaskTarget struct {
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskTarget) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskTarget) SetDatabaseType(v string) *DataQualityEvaluationTaskInstanceTaskTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskTarget) SetPartitionSpec(v string) *DataQualityEvaluationTaskInstanceTaskTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskTarget) SetTableGuid(v string) *DataQualityEvaluationTaskInstanceTaskTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskTarget) SetType(v string) *DataQualityEvaluationTaskInstanceTaskTarget {
+	s.Type = &v
+	return s
+}
+
+type DataQualityEvaluationTaskInstanceTaskTrigger struct {
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityEvaluationTaskInstanceTaskTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskTrigger) SetTaskIds(v []*int64) *DataQualityEvaluationTaskInstanceTaskTrigger {
+	s.TaskIds = v
+	return s
+}
+
+func (s *DataQualityEvaluationTaskInstanceTaskTrigger) SetType(v string) *DataQualityEvaluationTaskInstanceTaskTrigger {
+	s.Type = &v
+	return s
+}
+
+type DataQualityResult struct {
+	Details []*DataQualityResultDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10001
+	Id   *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Rule *DataQualityResultRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
+	// example:
+	//
+	// [   {     "gender": "male",     "_count": 100   }, {     "gender": "female",     "_count": 100   } ]
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// example:
+	//
+	// Passed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 20001
+	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+}
+
+func (s DataQualityResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResult) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResult) SetDetails(v []*DataQualityResultDetails) *DataQualityResult {
+	s.Details = v
+	return s
+}
+
+func (s *DataQualityResult) SetId(v int64) *DataQualityResult {
+	s.Id = &v
+	return s
+}
+
+func (s *DataQualityResult) SetRule(v *DataQualityResultRule) *DataQualityResult {
+	s.Rule = v
+	return s
+}
+
+func (s *DataQualityResult) SetSample(v string) *DataQualityResult {
+	s.Sample = &v
+	return s
+}
+
+func (s *DataQualityResult) SetStatus(v string) *DataQualityResult {
+	s.Status = &v
+	return s
+}
+
+func (s *DataQualityResult) SetTaskInstanceId(v int64) *DataQualityResult {
+	s.TaskInstanceId = &v
+	return s
+}
+
+type DataQualityResultDetails struct {
+	// example:
+	//
+	// 100.0
+	CheckedValue *string `json:"CheckedValue,omitempty" xml:"CheckedValue,omitempty"`
+	// example:
+	//
+	// 0.0
+	ReferencedValue *string `json:"ReferencedValue,omitempty" xml:"ReferencedValue,omitempty"`
+	// example:
+	//
+	// Passed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DataQualityResultDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultDetails) SetCheckedValue(v string) *DataQualityResultDetails {
+	s.CheckedValue = &v
+	return s
+}
+
+func (s *DataQualityResultDetails) SetReferencedValue(v string) *DataQualityResultDetails {
+	s.ReferencedValue = &v
+	return s
+}
+
+func (s *DataQualityResultDetails) SetStatus(v string) *DataQualityResultDetails {
+	s.Status = &v
+	return s
+}
+
+type DataQualityResultRule struct {
+	CheckingConfig *DataQualityResultRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *bool                                 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers []*DataQualityResultRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 表不能为空
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId      *int64                               `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *DataQualityResultRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// High
+	Severity *string                      `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Target   *DataQualityResultRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DataQualityResultRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRule) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRule) SetCheckingConfig(v *DataQualityResultRuleCheckingConfig) *DataQualityResultRule {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *DataQualityResultRule) SetDescription(v string) *DataQualityResultRule {
+	s.Description = &v
+	return s
+}
+
+func (s *DataQualityResultRule) SetEnabled(v bool) *DataQualityResultRule {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DataQualityResultRule) SetErrorHandlers(v []*DataQualityResultRuleErrorHandlers) *DataQualityResultRule {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *DataQualityResultRule) SetId(v int64) *DataQualityResultRule {
+	s.Id = &v
+	return s
+}
+
+func (s *DataQualityResultRule) SetName(v string) *DataQualityResultRule {
+	s.Name = &v
+	return s
+}
+
+func (s *DataQualityResultRule) SetProjectId(v int64) *DataQualityResultRule {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DataQualityResultRule) SetSamplingConfig(v *DataQualityResultRuleSamplingConfig) *DataQualityResultRule {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *DataQualityResultRule) SetSeverity(v string) *DataQualityResultRule {
+	s.Severity = &v
+	return s
+}
+
+func (s *DataQualityResultRule) SetTarget(v *DataQualityResultRuleTarget) *DataQualityResultRule {
+	s.Target = v
+	return s
+}
+
+func (s *DataQualityResultRule) SetTemplateCode(v string) *DataQualityResultRule {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *DataQualityResultRule) SetTenantId(v int64) *DataQualityResultRule {
+	s.TenantId = &v
+	return s
+}
+
+type DataQualityResultRuleCheckingConfig struct {
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string                                        `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	Thresholds              *DataQualityResultRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityResultRuleCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRuleCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRuleCheckingConfig) SetReferencedSamplesFilter(v string) *DataQualityResultRuleCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *DataQualityResultRuleCheckingConfig) SetThresholds(v *DataQualityResultRuleCheckingConfigThresholds) *DataQualityResultRuleCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *DataQualityResultRuleCheckingConfig) SetType(v string) *DataQualityResultRuleCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type DataQualityResultRuleCheckingConfigThresholds struct {
+	Critical *DataQualityResultRuleCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	Expected *DataQualityResultRuleCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	Warned   *DataQualityResultRuleCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s DataQualityResultRuleCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRuleCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholds) SetCritical(v *DataQualityResultRuleCheckingConfigThresholdsCritical) *DataQualityResultRuleCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholds) SetExpected(v *DataQualityResultRuleCheckingConfigThresholdsExpected) *DataQualityResultRuleCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholds) SetWarned(v *DataQualityResultRuleCheckingConfigThresholdsWarned) *DataQualityResultRuleCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type DataQualityResultRuleCheckingConfigThresholdsCritical struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DataQualityResultRuleCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRuleCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholdsCritical) SetOperator(v string) *DataQualityResultRuleCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholdsCritical) SetValue(v string) *DataQualityResultRuleCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type DataQualityResultRuleCheckingConfigThresholdsExpected struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DataQualityResultRuleCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRuleCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholdsExpected) SetOperator(v string) *DataQualityResultRuleCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholdsExpected) SetValue(v string) *DataQualityResultRuleCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type DataQualityResultRuleCheckingConfigThresholdsWarned struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DataQualityResultRuleCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRuleCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholdsWarned) SetOperator(v string) *DataQualityResultRuleCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *DataQualityResultRuleCheckingConfigThresholdsWarned) SetValue(v string) *DataQualityResultRuleCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type DataQualityResultRuleErrorHandlers struct {
+	// example:
+	//
+	// SELECT 	- FROM tb_api_log WHERE id IS NULL
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityResultRuleErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRuleErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRuleErrorHandlers) SetErrorDataFilter(v string) *DataQualityResultRuleErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *DataQualityResultRuleErrorHandlers) SetType(v string) *DataQualityResultRuleErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type DataQualityResultRuleSamplingConfig struct {
+	// example:
+	//
+	// Min
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] }
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// id IS NULL
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s DataQualityResultRuleSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRuleSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRuleSamplingConfig) SetMetric(v string) *DataQualityResultRuleSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *DataQualityResultRuleSamplingConfig) SetMetricParameters(v string) *DataQualityResultRuleSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *DataQualityResultRuleSamplingConfig) SetSamplingFilter(v string) *DataQualityResultRuleSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *DataQualityResultRuleSamplingConfig) SetSettingConfig(v string) *DataQualityResultRuleSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type DataQualityResultRuleTarget struct {
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityResultRuleTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityResultRuleTarget) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityResultRuleTarget) SetDatabaseType(v string) *DataQualityResultRuleTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *DataQualityResultRuleTarget) SetPartitionSpec(v string) *DataQualityResultRuleTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *DataQualityResultRuleTarget) SetTableGuid(v string) *DataQualityResultRuleTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *DataQualityResultRuleTarget) SetType(v string) *DataQualityResultRuleTarget {
+	s.Type = &v
+	return s
+}
+
+type DataQualityRule struct {
+	CheckingConfig *DataQualityRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *bool                           `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers []*DataQualityRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 表不能为空
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId      *int64                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *DataQualityRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// High
+	Severity *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Target   *DataQualityRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DataQualityRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRule) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRule) SetCheckingConfig(v *DataQualityRuleCheckingConfig) *DataQualityRule {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *DataQualityRule) SetDescription(v string) *DataQualityRule {
+	s.Description = &v
+	return s
+}
+
+func (s *DataQualityRule) SetEnabled(v bool) *DataQualityRule {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DataQualityRule) SetErrorHandlers(v []*DataQualityRuleErrorHandlers) *DataQualityRule {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *DataQualityRule) SetId(v int64) *DataQualityRule {
+	s.Id = &v
+	return s
+}
+
+func (s *DataQualityRule) SetName(v string) *DataQualityRule {
+	s.Name = &v
+	return s
+}
+
+func (s *DataQualityRule) SetProjectId(v int64) *DataQualityRule {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DataQualityRule) SetSamplingConfig(v *DataQualityRuleSamplingConfig) *DataQualityRule {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *DataQualityRule) SetSeverity(v string) *DataQualityRule {
+	s.Severity = &v
+	return s
+}
+
+func (s *DataQualityRule) SetTarget(v *DataQualityRuleTarget) *DataQualityRule {
+	s.Target = v
+	return s
+}
+
+func (s *DataQualityRule) SetTemplateCode(v string) *DataQualityRule {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *DataQualityRule) SetTenantId(v int64) *DataQualityRule {
+	s.TenantId = &v
+	return s
+}
+
+type DataQualityRuleCheckingConfig struct {
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string                                  `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	Thresholds              *DataQualityRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityRuleCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleCheckingConfig) SetReferencedSamplesFilter(v string) *DataQualityRuleCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *DataQualityRuleCheckingConfig) SetThresholds(v *DataQualityRuleCheckingConfigThresholds) *DataQualityRuleCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *DataQualityRuleCheckingConfig) SetType(v string) *DataQualityRuleCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type DataQualityRuleCheckingConfigThresholds struct {
+	Critical *DataQualityRuleCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	Expected *DataQualityRuleCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	Warned   *DataQualityRuleCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s DataQualityRuleCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleCheckingConfigThresholds) SetCritical(v *DataQualityRuleCheckingConfigThresholdsCritical) *DataQualityRuleCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *DataQualityRuleCheckingConfigThresholds) SetExpected(v *DataQualityRuleCheckingConfigThresholdsExpected) *DataQualityRuleCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *DataQualityRuleCheckingConfigThresholds) SetWarned(v *DataQualityRuleCheckingConfigThresholdsWarned) *DataQualityRuleCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type DataQualityRuleCheckingConfigThresholdsCritical struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DataQualityRuleCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleCheckingConfigThresholdsCritical) SetOperator(v string) *DataQualityRuleCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *DataQualityRuleCheckingConfigThresholdsCritical) SetValue(v string) *DataQualityRuleCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type DataQualityRuleCheckingConfigThresholdsExpected struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DataQualityRuleCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleCheckingConfigThresholdsExpected) SetOperator(v string) *DataQualityRuleCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *DataQualityRuleCheckingConfigThresholdsExpected) SetValue(v string) *DataQualityRuleCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type DataQualityRuleCheckingConfigThresholdsWarned struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DataQualityRuleCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleCheckingConfigThresholdsWarned) SetOperator(v string) *DataQualityRuleCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *DataQualityRuleCheckingConfigThresholdsWarned) SetValue(v string) *DataQualityRuleCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type DataQualityRuleErrorHandlers struct {
+	// example:
+	//
+	// SELECT 	- FROM tb_api_log WHERE id IS NULL
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityRuleErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleErrorHandlers) SetErrorDataFilter(v string) *DataQualityRuleErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *DataQualityRuleErrorHandlers) SetType(v string) *DataQualityRuleErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type DataQualityRuleSamplingConfig struct {
+	// example:
+	//
+	// Min
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] }
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// id IS NULL
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s DataQualityRuleSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleSamplingConfig) SetMetric(v string) *DataQualityRuleSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *DataQualityRuleSamplingConfig) SetMetricParameters(v string) *DataQualityRuleSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *DataQualityRuleSamplingConfig) SetSamplingFilter(v string) *DataQualityRuleSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *DataQualityRuleSamplingConfig) SetSettingConfig(v string) *DataQualityRuleSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type DataQualityRuleTarget struct {
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DataQualityRuleTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataQualityRuleTarget) GoString() string {
+	return s.String()
+}
+
+func (s *DataQualityRuleTarget) SetDatabaseType(v string) *DataQualityRuleTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *DataQualityRuleTarget) SetPartitionSpec(v string) *DataQualityRuleTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *DataQualityRuleTarget) SetTableGuid(v string) *DataQualityRuleTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *DataQualityRuleTarget) SetType(v string) *DataQualityRuleTarget {
+	s.Type = &v
+	return s
+}
+
 type AbolishDeploymentRequest struct {
 	// The ID of the process.
 	//
@@ -115,12 +1614,16 @@ func (s *AbolishDeploymentResponse) SetBody(v *AbolishDeploymentResponseBody) *A
 }
 
 type AssociateProjectToResourceGroupRequest struct {
+	// The ID of the DataWorks workspace with which you want to associate the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -148,10 +1651,14 @@ func (s *AssociateProjectToResourceGroupRequest) SetResourceGroupId(v string) *A
 }
 
 type AssociateProjectToResourceGroupResponseBody struct {
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -2487,6 +3994,135 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 	return s
 }
 
+type CreateProjectMemberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24054
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateProjectMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectMemberRequest) SetProjectId(v int64) *CreateProjectMemberRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateProjectMemberRequest) SetRoleCodes(v []*string) *CreateProjectMemberRequest {
+	s.RoleCodes = v
+	return s
+}
+
+func (s *CreateProjectMemberRequest) SetUserId(v string) *CreateProjectMemberRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateProjectMemberShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24054
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateProjectMemberShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectMemberShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectMemberShrinkRequest) SetProjectId(v int64) *CreateProjectMemberShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateProjectMemberShrinkRequest) SetRoleCodesShrink(v string) *CreateProjectMemberShrinkRequest {
+	s.RoleCodesShrink = &v
+	return s
+}
+
+func (s *CreateProjectMemberShrinkRequest) SetUserId(v string) *CreateProjectMemberShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateProjectMemberResponseBody struct {
+	// example:
+	//
+	// 2B2F0B26-9253-5780-B6DB-F1A886D44D6F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateProjectMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectMemberResponseBody) SetRequestId(v string) *CreateProjectMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateProjectMemberResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProjectMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateProjectMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectMemberResponse) SetHeaders(v map[string]*string) *CreateProjectMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectMemberResponse) SetStatusCode(v int32) *CreateProjectMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProjectMemberResponse) SetBody(v *CreateProjectMemberResponseBody) *CreateProjectMemberResponse {
+	s.Body = v
+	return s
+}
+
 type CreateResourceRequest struct {
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
@@ -3692,6 +5328,88 @@ func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeletePro
 	return s
 }
 
+type DeleteProjectMemberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 534752
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DeleteProjectMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectMemberRequest) SetProjectId(v int64) *DeleteProjectMemberRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteProjectMemberRequest) SetUserId(v string) *DeleteProjectMemberRequest {
+	s.UserId = &v
+	return s
+}
+
+type DeleteProjectMemberResponseBody struct {
+	// example:
+	//
+	// 1FF0465F-209C-5964-8F30-FAF21B677CC6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteProjectMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectMemberResponseBody) SetRequestId(v string) *DeleteProjectMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteProjectMemberResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProjectMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteProjectMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectMemberResponse) SetHeaders(v map[string]*string) *DeleteProjectMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectMemberResponse) SetStatusCode(v int32) *DeleteProjectMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteProjectMemberResponse) SetBody(v *DeleteProjectMemberResponseBody) *DeleteProjectMemberResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteResourceRequest struct {
 	// The ID of the file resource.
 	//
@@ -3796,6 +5514,8 @@ func (s *DeleteResourceResponse) SetBody(v *DeleteResourceResponseBody) *DeleteR
 }
 
 type DeleteResourceGroupRequest struct {
+	// The ID of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3818,10 +5538,14 @@ func (s *DeleteResourceGroupRequest) SetId(v string) *DeleteResourceGroupRequest
 }
 
 type DeleteResourceGroupResponseBody struct {
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -4059,12 +5783,16 @@ func (s *DeleteWorkflowDefinitionResponse) SetBody(v *DeleteWorkflowDefinitionRe
 }
 
 type DissociateProjectFromResourceGroupRequest struct {
+	// The ID of the workspace from which you want to disassociate the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4092,10 +5820,14 @@ func (s *DissociateProjectFromResourceGroupRequest) SetResourceGroupId(v string)
 }
 
 type DissociateProjectFromResourceGroupResponseBody struct {
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -5094,6 +6826,8 @@ func (s *GetDIJobLogResponse) SetBody(v *GetDIJobLogResponseBody) *GetDIJobLogRe
 }
 
 type GetDataSourceRequest struct {
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5117,6 +6851,8 @@ func (s *GetDataSourceRequest) SetId(v int64) *GetDataSourceRequest {
 
 type GetDataSourceResponseBody struct {
 	DataSource *GetDataSourceResponseBodyDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
@@ -5142,6 +6878,8 @@ func (s *GetDataSourceResponseBody) SetRequestId(v string) *GetDataSourceRespons
 }
 
 type GetDataSourceResponseBodyDataSource struct {
+	// The connection properties of the data source.
+	//
 	// example:
 	//
 	// {
@@ -5162,46 +6900,74 @@ type GetDataSourceResponseBodyDataSource struct {
 	//
 	// }
 	ConnectionProperties interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// The mode in which the data source is added. The mode varies based on the data source type. Valid values:
+	//
+	// 	- InstanceMode: instance mode
+	//
+	// 	- UrlMode: connection string mode
+	//
+	// 	- CdhMode: CDH cluster mode
+	//
 	// example:
 	//
 	// UrlMode
 	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// The time when the data source was added. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1698286929333
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who adds the data source.
+	//
 	// example:
 	//
 	// 1107550004253538
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The description of the data source.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 16738
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the data source was last modified. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1698286929333
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The ID of the user who modifies the data source.
+	//
 	// example:
 	//
 	// 1107550004253538
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the workspace with which the data source is associated.
+	//
 	// example:
 	//
 	// 52660
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The unique business key of the data source. For example, the unique business key of a Hologres data source is in the ${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database} format.
+	//
 	// example:
 	//
 	// 1107550004253538:cn-beijing:holo:hgprecn-cn-x0r3oun4k001:testdb
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// hologres
@@ -6484,6 +8250,173 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 	return s
 }
 
+type GetProjectMemberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 88757
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetProjectMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberRequest) SetProjectId(v int64) *GetProjectMemberRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetProjectMemberRequest) SetUserId(v string) *GetProjectMemberRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetProjectMemberResponseBody struct {
+	ProjectMember *GetProjectMemberResponseBodyProjectMember `json:"ProjectMember,omitempty" xml:"ProjectMember,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetProjectMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberResponseBody) SetProjectMember(v *GetProjectMemberResponseBodyProjectMember) *GetProjectMemberResponseBody {
+	s.ProjectMember = v
+	return s
+}
+
+func (s *GetProjectMemberResponseBody) SetRequestId(v string) *GetProjectMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetProjectMemberResponseBodyProjectMember struct {
+	// example:
+	//
+	// 88757
+	ProjectId *int64                                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Roles     []*GetProjectMemberResponseBodyProjectMemberRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetProjectMemberResponseBodyProjectMember) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberResponseBodyProjectMember) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberResponseBodyProjectMember) SetProjectId(v int64) *GetProjectMemberResponseBodyProjectMember {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyProjectMember) SetRoles(v []*GetProjectMemberResponseBodyProjectMemberRoles) *GetProjectMemberResponseBodyProjectMember {
+	s.Roles = v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyProjectMember) SetStatus(v string) *GetProjectMemberResponseBodyProjectMember {
+	s.Status = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyProjectMember) SetUserId(v string) *GetProjectMemberResponseBodyProjectMember {
+	s.UserId = &v
+	return s
+}
+
+type GetProjectMemberResponseBodyProjectMemberRoles struct {
+	// example:
+	//
+	// role_project_guest
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// System
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetProjectMemberResponseBodyProjectMemberRoles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberResponseBodyProjectMemberRoles) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberResponseBodyProjectMemberRoles) SetCode(v string) *GetProjectMemberResponseBodyProjectMemberRoles {
+	s.Code = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyProjectMemberRoles) SetName(v string) *GetProjectMemberResponseBodyProjectMemberRoles {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyProjectMemberRoles) SetType(v string) *GetProjectMemberResponseBodyProjectMemberRoles {
+	s.Type = &v
+	return s
+}
+
+type GetProjectMemberResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProjectMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetProjectMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberResponse) SetHeaders(v map[string]*string) *GetProjectMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProjectMemberResponse) SetStatusCode(v int32) *GetProjectMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetProjectMemberResponse) SetBody(v *GetProjectMemberResponseBody) *GetProjectMemberResponse {
+	s.Body = v
+	return s
+}
+
 type GetProjectRoleRequest struct {
 	// This parameter is required.
 	//
@@ -7344,6 +9277,135 @@ func (s *GetWorkflowDefinitionResponse) SetStatusCode(v int32) *GetWorkflowDefin
 }
 
 func (s *GetWorkflowDefinitionResponse) SetBody(v *GetWorkflowDefinitionResponseBody) *GetWorkflowDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type GrantMemberProjectRolesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 105149
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GrantMemberProjectRolesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantMemberProjectRolesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantMemberProjectRolesRequest) SetProjectId(v int64) *GrantMemberProjectRolesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GrantMemberProjectRolesRequest) SetRoleCodes(v []*string) *GrantMemberProjectRolesRequest {
+	s.RoleCodes = v
+	return s
+}
+
+func (s *GrantMemberProjectRolesRequest) SetUserId(v string) *GrantMemberProjectRolesRequest {
+	s.UserId = &v
+	return s
+}
+
+type GrantMemberProjectRolesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 105149
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GrantMemberProjectRolesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantMemberProjectRolesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantMemberProjectRolesShrinkRequest) SetProjectId(v int64) *GrantMemberProjectRolesShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GrantMemberProjectRolesShrinkRequest) SetRoleCodesShrink(v string) *GrantMemberProjectRolesShrinkRequest {
+	s.RoleCodesShrink = &v
+	return s
+}
+
+func (s *GrantMemberProjectRolesShrinkRequest) SetUserId(v string) *GrantMemberProjectRolesShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type GrantMemberProjectRolesResponseBody struct {
+	// example:
+	//
+	// 2d9ced66-38ef-4923-baf6-391dd3a7e656
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GrantMemberProjectRolesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantMemberProjectRolesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantMemberProjectRolesResponseBody) SetRequestId(v string) *GrantMemberProjectRolesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GrantMemberProjectRolesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantMemberProjectRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GrantMemberProjectRolesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantMemberProjectRolesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantMemberProjectRolesResponse) SetHeaders(v map[string]*string) *GrantMemberProjectRolesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantMemberProjectRolesResponse) SetStatusCode(v int32) *GrantMemberProjectRolesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantMemberProjectRolesResponse) SetBody(v *GrantMemberProjectRolesResponseBody) *GrantMemberProjectRolesResponse {
 	s.Body = v
 	return s
 }
@@ -8870,7 +10932,7 @@ func (s *ListDIJobsResponseBody) SetRequestId(v string) *ListDIJobsResponseBody 
 }
 
 type ListDIJobsResponseBodyPagingInfo struct {
-	// The synchronization tasks that are returned.
+	// The synchronization tasks returned.
 	DIJobs []*ListDIJobsResponseBodyPagingInfoDIJobs `json:"DIJobs,omitempty" xml:"DIJobs,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -9055,6 +11117,2511 @@ func (s *ListDIJobsResponse) SetStatusCode(v int32) *ListDIJobsResponse {
 }
 
 func (s *ListDIJobsResponse) SetBody(v *ListDIJobsResponseBody) *ListDIJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesRequest struct {
+	// example:
+	//
+	// 2024-04-01
+	BizdateFrom *string `json:"BizdateFrom,omitempty" xml:"BizdateFrom,omitempty"`
+	// example:
+	//
+	// 2024-05-01
+	BizdateTo *string `json:"BizdateTo,omitempty" xml:"BizdateTo,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTimeFrom *int64 `json:"CreateTimeFrom,omitempty" xml:"CreateTimeFrom,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTimeTo *int64 `json:"CreateTimeTo,omitempty" xml:"CreateTimeTo,omitempty"`
+	// example:
+	//
+	// 10000
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// CWF2
+	TriggerClient *string `json:"TriggerClient,omitempty" xml:"TriggerClient,omitempty"`
+	// example:
+	//
+	// 1001
+	TriggerClientId *string `json:"TriggerClientId,omitempty" xml:"TriggerClientId,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetBizdateFrom(v string) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.BizdateFrom = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetBizdateTo(v string) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.BizdateTo = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetCreateTimeFrom(v int64) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.CreateTimeFrom = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetCreateTimeTo(v int64) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.CreateTimeTo = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetDataQualityEvaluationTaskId(v int64) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetPageNumber(v int32) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetPageSize(v int32) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetProjectId(v int64) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetTableGuid(v string) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetTriggerClient(v string) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.TriggerClient = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesRequest) SetTriggerClientId(v string) *ListDataQualityEvaluationTaskInstancesRequest {
+	s.TriggerClientId = &v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code       *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	PagingInfo *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetCode(v string) *ListDataQualityEvaluationTaskInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetMessage(v string) *ListDataQualityEvaluationTaskInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetPagingInfo(v *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) *ListDataQualityEvaluationTaskInstancesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetRequestId(v string) *ListDataQualityEvaluationTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo struct {
+	DataQualityEvaluationTaskInstances []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances `json:"DataQualityEvaluationTaskInstances,omitempty" xml:"DataQualityEvaluationTaskInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 294
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) SetDataQualityEvaluationTaskInstances(v []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo {
+	s.DataQualityEvaluationTaskInstances = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) SetPageNumber(v int32) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) SetPageSize(v int32) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances struct {
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// 10001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "bizdate": "20240517",
+	//
+	//   "triggerTime": "1710239005403"
+	//
+	// }
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Critical
+	Status *string                                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Task   *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	// example:
+	//
+	// {
+	//
+	//   "TriggerClientId": 10001,
+	//
+	//   "TriggerClient": "CWF2"
+	//
+	// }
+	TriggerContext *string `json:"TriggerContext,omitempty" xml:"TriggerContext,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) SetCreateTime(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) SetFinishTime(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) SetId(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) SetParameters(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) SetProjectId(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) SetStatus(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) SetTask(v *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances {
+	s.Task = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances) SetTriggerContext(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances {
+	s.TriggerContext = &v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask struct {
+	// 质量监控任务描述
+	//
+	// example:
+	//
+	// This is a daily run data quality evaluation plan.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	Hooks []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// 代表资源一级ID的资源属性字段
+	//
+	// example:
+	//
+	// 10001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 质量监控任务名称
+	//
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 数据质量校验任务通知订阅配置
+	Notifications *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
+	// 项目空间Id
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 代表region的资源属性字段
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	//
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK-SQL" }
+	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	Target *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// 租户Id
+	//
+	// example:
+	//
+	// 10
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// 数据质量校验任务的触发配置
+	Trigger *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetDescription(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetHooks(v []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.Hooks = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetId(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetName(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetNotifications(v *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.Notifications = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetProjectId(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetRegionId(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetRuntimeConf(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetTarget(v *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.Target = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetTenantId(v int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask) SetTrigger(v *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask {
+	s.Trigger = v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks struct {
+	// Hook触发条件
+	//
+	// example:
+	//
+	// ${severity} == "High" AND ${status} == "Critical"
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// Hook类型
+	//
+	// example:
+	//
+	// BlockTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks) SetCondition(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks) SetType(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications struct {
+	// 通知触发条件
+	//
+	// example:
+	//
+	// ${severity} == "High"
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// 具体的消息通知设置
+	Notifications []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications) SetCondition(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications) SetNotifications(v []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications {
+	s.Notifications = v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications struct {
+	// 告警接收人设置
+	NofiticationReceivers []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers `json:"NofiticationReceivers,omitempty" xml:"NofiticationReceivers,omitempty" type:"Repeated"`
+	// 通知方式
+	NotificationChannels []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications) SetNofiticationReceivers(v []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications {
+	s.NofiticationReceivers = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications) SetNotificationChannels(v []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications {
+	s.NotificationChannels = v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers struct {
+	// 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+	//
+	// example:
+	//
+	// {"atAll":"true"}
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 告警接收人类型
+	//
+	// example:
+	//
+	// AliUid
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// 告警接收人
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers) SetExtension(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers) SetReceiverType(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers) SetReceiverValues(v []*string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels struct {
+	// 通知方式
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels) SetChannels(v []*string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels {
+	s.Channels = v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget struct {
+	// 表所属的数据库类型
+	//
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// 分区表的分区设置
+	//
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// 表在数据地图中的唯一ID
+	//
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// 监控对象类型
+	//
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget) SetDatabaseType(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget) SetPartitionSpec(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget) SetTableGuid(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget) SetType(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger struct {
+	// 具体指明哪些调度节点的实例执行成功后可以触发
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// 何种事件可以触发质量校验任务执行
+	//
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger) SetTaskIds(v []*int64) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger {
+	s.TaskIds = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger) SetType(v string) *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityEvaluationTaskInstancesResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataQualityEvaluationTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponse) SetHeaders(v map[string]*string) *ListDataQualityEvaluationTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponse) SetStatusCode(v int32) *ListDataQualityEvaluationTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTaskInstancesResponse) SetBody(v *ListDataQualityEvaluationTaskInstancesResponseBody) *ListDataQualityEvaluationTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataQualityEvaluationTasksRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksRequest) SetName(v string) *ListDataQualityEvaluationTasksRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksRequest) SetPageNumber(v int32) *ListDataQualityEvaluationTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksRequest) SetPageSize(v int32) *ListDataQualityEvaluationTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksRequest) SetProjectId(v int64) *ListDataQualityEvaluationTasksRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksRequest) SetTableGuid(v string) *ListDataQualityEvaluationTasksRequest {
+	s.TableGuid = &v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBody struct {
+	// example:
+	//
+	// 200
+	Code       *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	PagingInfo *ListDataQualityEvaluationTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBody) SetCode(v string) *ListDataQualityEvaluationTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBody) SetMessage(v string) *ListDataQualityEvaluationTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBody) SetPagingInfo(v *ListDataQualityEvaluationTasksResponseBodyPagingInfo) *ListDataQualityEvaluationTasksResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBody) SetRequestId(v string) *ListDataQualityEvaluationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfo struct {
+	DataQualityEvaluationTasks []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks `json:"DataQualityEvaluationTasks,omitempty" xml:"DataQualityEvaluationTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 131
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfo) SetDataQualityEvaluationTasks(v []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) *ListDataQualityEvaluationTasksResponseBodyPagingInfo {
+	s.DataQualityEvaluationTasks = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfo) SetPageNumber(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfo) SetPageSize(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfo) SetTotalCount(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks struct {
+	// example:
+	//
+	// This is a daily run data quality evaluation plan
+	Description *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Hooks       []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10001
+	Id            *int64                                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name          *string                                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Notifications *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK-SQL" }
+	RuntimeConf *string                                                                               `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	Target      *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	TenantId *int64                                                                                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Trigger  *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetDescription(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetHooks(v []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.Hooks = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetId(v int64) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetName(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetNotifications(v *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.Notifications = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetProjectId(v int64) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetRuntimeConf(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetTarget(v *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.Target = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetTenantId(v int64) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetTrigger(v *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.Trigger = v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks struct {
+	// example:
+	//
+	// ${severity} == "High" AND ${status} == "Critical"
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// BlockTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks) SetCondition(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks) SetType(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications struct {
+	// example:
+	//
+	// ${severity} == "High"
+	Condition     *string                                                                                                     `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Notifications []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications) SetCondition(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications) SetNotifications(v []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications {
+	s.Notifications = v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications struct {
+	NotificationChannels  []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	NotificationReceivers []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications) SetNotificationChannels(v []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications {
+	s.NotificationChannels = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications) SetNotificationReceivers(v []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications {
+	s.NotificationReceivers = v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels struct {
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels) SetChannels(v []*string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels {
+	s.Channels = v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers struct {
+	// example:
+	//
+	// {"atAll":"true"}
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// AliUid
+	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers) SetExtension(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers) SetReceiverType(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers) SetReceiverValues(v []*string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget struct {
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget) SetDatabaseType(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget) SetPartitionSpec(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget) SetTableGuid(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget) SetType(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger struct {
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger) SetTaskIds(v []*int64) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger {
+	s.TaskIds = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger) SetType(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityEvaluationTasksResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataQualityEvaluationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataQualityEvaluationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityEvaluationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponse) SetHeaders(v map[string]*string) *ListDataQualityEvaluationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponse) SetStatusCode(v int32) *ListDataQualityEvaluationTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataQualityEvaluationTasksResponse) SetBody(v *ListDataQualityEvaluationTasksResponseBody) *ListDataQualityEvaluationTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataQualityResultsRequest struct {
+	// example:
+	//
+	// 2024-05-01
+	BizdateFrom *string `json:"BizdateFrom,omitempty" xml:"BizdateFrom,omitempty"`
+	// example:
+	//
+	// 2024-05-04
+	BizdateTo *string `json:"BizdateTo,omitempty" xml:"BizdateTo,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTimeFrom *int64 `json:"CreateTimeFrom,omitempty" xml:"CreateTimeFrom,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTimeTo *int64 `json:"CreateTimeTo,omitempty" xml:"CreateTimeTo,omitempty"`
+	// example:
+	//
+	// 200001
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// example:
+	//
+	// 10001
+	DataQualityEvaluationTaskInstanceId *int64 `json:"DataQualityEvaluationTaskInstanceId,omitempty" xml:"DataQualityEvaluationTaskInstanceId,omitempty"`
+	// example:
+	//
+	// 100001
+	DataQualityRuleId *int64 `json:"DataQualityRuleId,omitempty" xml:"DataQualityRuleId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListDataQualityResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsRequest) SetBizdateFrom(v string) *ListDataQualityResultsRequest {
+	s.BizdateFrom = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetBizdateTo(v string) *ListDataQualityResultsRequest {
+	s.BizdateTo = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetCreateTimeFrom(v int64) *ListDataQualityResultsRequest {
+	s.CreateTimeFrom = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetCreateTimeTo(v int64) *ListDataQualityResultsRequest {
+	s.CreateTimeTo = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetDataQualityEvaluationTaskId(v int64) *ListDataQualityResultsRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetDataQualityEvaluationTaskInstanceId(v int64) *ListDataQualityResultsRequest {
+	s.DataQualityEvaluationTaskInstanceId = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetDataQualityRuleId(v int64) *ListDataQualityResultsRequest {
+	s.DataQualityRuleId = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetPageNumber(v int32) *ListDataQualityResultsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetPageSize(v int32) *ListDataQualityResultsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityResultsRequest) SetProjectId(v int64) *ListDataQualityResultsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBody struct {
+	// example:
+	//
+	// 200
+	Code       *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	PagingInfo *ListDataQualityResultsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBody) SetCode(v string) *ListDataQualityResultsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBody) SetMessage(v string) *ListDataQualityResultsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBody) SetPagingInfo(v *ListDataQualityResultsResponseBodyPagingInfo) *ListDataQualityResultsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBody) SetRequestId(v string) *ListDataQualityResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfo struct {
+	DataQualityResults []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResults `json:"DataQualityResults,omitempty" xml:"DataQualityResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 219
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfo) SetDataQualityResults(v []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) *ListDataQualityResultsResponseBodyPagingInfo {
+	s.DataQualityResults = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfo) SetPageNumber(v int32) *ListDataQualityResultsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfo) SetPageSize(v int32) *ListDataQualityResultsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataQualityResultsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResults struct {
+	// example:
+	//
+	// 1708284916414
+	CreateTime *int64                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Details    []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 16033
+	Id   *int64                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Rule *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
+	// example:
+	//
+	// [
+	//
+	//   {
+	//
+	//     "gender": "male",
+	//
+	//     "_count": 100
+	//
+	//   }, {
+	//
+	//     "gender": "female",
+	//
+	//     "_count": 100
+	//
+	//   }
+	//
+	// ]
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// 	- RUNNING
+	//
+	// 	- ERROR
+	//
+	// 	- PASSED
+	//
+	// 	- WARNED
+	//
+	// 	- CRITICAL
+	//
+	// example:
+	//
+	// PASSED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 200001
+	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) SetCreateTime(v int64) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) SetDetails(v []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults {
+	s.Details = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) SetId(v int64) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) SetRule(v *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults {
+	s.Rule = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) SetSample(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults {
+	s.Sample = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) SetStatus(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) SetTaskInstanceId(v int64) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults {
+	s.TaskInstanceId = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails struct {
+	// example:
+	//
+	// 100.0
+	CheckedValue *string `json:"CheckedValue,omitempty" xml:"CheckedValue,omitempty"`
+	// example:
+	//
+	// 0.0
+	ReferencedValue *string `json:"ReferencedValue,omitempty" xml:"ReferencedValue,omitempty"`
+	// 	- ERROR
+	//
+	// 	- PASSED
+	//
+	// 	- WARNED
+	//
+	// 	- CRITICAL
+	//
+	// example:
+	//
+	// PASSED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails) SetCheckedValue(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails {
+	s.CheckedValue = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails) SetReferencedValue(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails {
+	s.ReferencedValue = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails) SetStatus(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails {
+	s.Status = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule struct {
+	CheckingConfig *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *bool                                                                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100001
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId      *int64                                                                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// 	- HIGH
+	//
+	// 	- NORMAL
+	//
+	// example:
+	//
+	// NORMAL
+	Severity *string                                                                   `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Target   *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetCheckingConfig(v *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetDescription(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetEnabled(v bool) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetErrorHandlers(v []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetId(v int64) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetName(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetProjectId(v int64) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetSamplingConfig(v *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetSeverity(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.Severity = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetTarget(v *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.Target = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetTemplateCode(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) SetTenantId(v int64) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule {
+	s.TenantId = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig struct {
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string                                                                                     `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	Thresholds              *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// 	- FIXED
+	//
+	// 	- FLUCTATION
+	//
+	// 	- AUTO
+	//
+	// 	- AVERAGE
+	//
+	// 	- VARIANCE
+	//
+	// 	- FLUCTATION_DISCREATE
+	//
+	// example:
+	//
+	// FIXED
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig) SetReferencedSamplesFilter(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig) SetThresholds(v *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig) SetType(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds struct {
+	Critical *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	Expected *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	Warned   *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds) SetCritical(v *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds) SetExpected(v *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds) SetWarned(v *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical struct {
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical) SetOperator(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical) SetValue(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected struct {
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected) SetOperator(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected) SetValue(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned struct {
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned) SetOperator(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned) SetValue(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers struct {
+	// example:
+	//
+	// SELECT 	- FROM tb_api_log WHERE id IS NULL
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// 	- SAVE_ERROR_DATA
+	//
+	// example:
+	//
+	// SAVE_ERROR_DATA
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers) SetErrorDataFilter(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers) SetType(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig struct {
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// example:
+	//
+	// COUNT
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "columns": [ "id", "name" ] }
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// id IS NULL
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig) SetMetric(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig) SetMetricParameters(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig) SetSamplingFilter(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig) SetSettingConfig(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget struct {
+	// 	- MAX_COMPUTE
+	//
+	// 	- EMR
+	//
+	// 	- CDH
+	//
+	// 	- HOLOGRES
+	//
+	// 	- ANALYTICDB_FOR_POSTGRESQL
+	//
+	// 	- ANALYTICDB_FOR_MYSQL
+	//
+	// 	- STAR_ROCKS
+	//
+	// example:
+	//
+	// MAX_COMPUTE
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// 	- TABLE
+	//
+	// example:
+	//
+	// TABLE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) SetDatabaseType(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) SetPartitionSpec(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) SetTableGuid(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget) SetType(v string) *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityResultsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataQualityResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataQualityResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityResultsResponse) SetHeaders(v map[string]*string) *ListDataQualityResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataQualityResultsResponse) SetStatusCode(v int32) *ListDataQualityResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataQualityResultsResponse) SetBody(v *ListDataQualityResultsResponseBody) *ListDataQualityResultsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataQualityRulesRequest struct {
+	// example:
+	//
+	// 10000
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// example:
+	//
+	// unit_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10002
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+}
+
+func (s ListDataQualityRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesRequest) SetDataQualityEvaluationTaskId(v int64) *ListDataQualityRulesRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *ListDataQualityRulesRequest) SetName(v string) *ListDataQualityRulesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataQualityRulesRequest) SetPageNumber(v int32) *ListDataQualityRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityRulesRequest) SetPageSize(v int32) *ListDataQualityRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityRulesRequest) SetProjectId(v int64) *ListDataQualityRulesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityRulesRequest) SetTableGuid(v string) *ListDataQualityRulesRequest {
+	s.TableGuid = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PagingInfo *ListDataQualityRulesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBody) SetCode(v string) *ListDataQualityRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBody) SetMessage(v string) *ListDataQualityRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBody) SetPagingInfo(v *ListDataQualityRulesResponseBodyPagingInfo) *ListDataQualityRulesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBody) SetRequestId(v string) *ListDataQualityRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfo struct {
+	DataQualityRules []*ListDataQualityRulesResponseBodyPagingInfoDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 294
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfo) SetDataQualityRules(v []*ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) *ListDataQualityRulesResponseBodyPagingInfo {
+	s.DataQualityRules = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfo) SetPageNumber(v int32) *ListDataQualityRulesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfo) SetPageSize(v int32) *ListDataQualityRulesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataQualityRulesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRules struct {
+	CheckingConfig *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *bool                                                                      `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers []*ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 22130
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100001
+	ProjectId      *int64                                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// High
+	Severity *string                                                           `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Target   *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// example:
+	//
+	// 100001
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetCheckingConfig(v *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetDescription(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetEnabled(v bool) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetErrorHandlers(v []*ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetId(v int64) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetName(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetProjectId(v int64) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetSamplingConfig(v *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetSeverity(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.Severity = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetTarget(v *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.Target = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetTemplateCode(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetTenantId(v int64) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules {
+	s.TenantId = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig struct {
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string                                                                             `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	Thresholds              *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig) SetReferencedSamplesFilter(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig) SetThresholds(v *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig) SetType(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds struct {
+	Critical *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	Expected *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	Warned   *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds) SetCritical(v *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds) SetExpected(v *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds) SetWarned(v *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical) SetOperator(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical) SetValue(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected) SetOperator(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected) SetValue(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned) SetOperator(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned) SetValue(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers struct {
+	// example:
+	//
+	// SELECT 	- FROM tb_api_log WHERE id IS NULL
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers) SetErrorDataFilter(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers) SetType(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig struct {
+	// example:
+	//
+	// Max
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// id IS NULL
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	//
+	// SET odps.sql.python.version=cp27;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig) SetMetric(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig) SetMetricParameters(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig) SetSamplingFilter(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig) SetSettingConfig(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget struct {
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) SetDatabaseType(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) SetPartitionSpec(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) SetTableGuid(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget) SetType(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityRulesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataQualityRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataQualityRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRulesResponse) SetHeaders(v map[string]*string) *ListDataQualityRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataQualityRulesResponse) SetStatusCode(v int32) *ListDataQualityRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataQualityRulesResponse) SetBody(v *ListDataQualityRulesResponseBody) *ListDataQualityRulesResponse {
 	s.Body = v
 	return s
 }
@@ -12938,6 +17505,288 @@ func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse
 	return s
 }
 
+type ListProjectMembersRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 62136
+	ProjectId *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+	UserIds   []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersRequest) SetPageNumber(v int32) *ListProjectMembersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectMembersRequest) SetPageSize(v int32) *ListProjectMembersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectMembersRequest) SetProjectId(v int64) *ListProjectMembersRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectMembersRequest) SetRoleCodes(v []*string) *ListProjectMembersRequest {
+	s.RoleCodes = v
+	return s
+}
+
+func (s *ListProjectMembersRequest) SetUserIds(v []*string) *ListProjectMembersRequest {
+	s.UserIds = v
+	return s
+}
+
+type ListProjectMembersShrinkRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 62136
+	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
+	UserIdsShrink   *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+}
+
+func (s ListProjectMembersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersShrinkRequest) SetPageNumber(v int32) *ListProjectMembersShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectMembersShrinkRequest) SetPageSize(v int32) *ListProjectMembersShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectMembersShrinkRequest) SetProjectId(v int64) *ListProjectMembersShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectMembersShrinkRequest) SetRoleCodesShrink(v string) *ListProjectMembersShrinkRequest {
+	s.RoleCodesShrink = &v
+	return s
+}
+
+func (s *ListProjectMembersShrinkRequest) SetUserIdsShrink(v string) *ListProjectMembersShrinkRequest {
+	s.UserIdsShrink = &v
+	return s
+}
+
+type ListProjectMembersResponseBody struct {
+	PagingInfo *ListProjectMembersResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9FBBBB1F-DD5E-5D8E-8F50-37F77460F056
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListProjectMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponseBody) SetPagingInfo(v *ListProjectMembersResponseBodyPagingInfo) *ListProjectMembersResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListProjectMembersResponseBody) SetRequestId(v string) *ListProjectMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListProjectMembersResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize       *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectMembers []*ListProjectMembersResponseBodyPagingInfoProjectMembers `json:"ProjectMembers,omitempty" xml:"ProjectMembers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProjectMembersResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfo) SetPageNumber(v int32) *ListProjectMembersResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfo) SetPageSize(v int32) *ListProjectMembersResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfo) SetProjectMembers(v []*ListProjectMembersResponseBodyPagingInfoProjectMembers) *ListProjectMembersResponseBodyPagingInfo {
+	s.ProjectMembers = v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfo) SetTotalCount(v int32) *ListProjectMembersResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProjectMembersResponseBodyPagingInfoProjectMembers struct {
+	// example:
+	//
+	// 62136
+	ProjectId *int64                                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Roles     []*ListProjectMembersResponseBodyPagingInfoProjectMembersRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListProjectMembersResponseBodyPagingInfoProjectMembers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponseBodyPagingInfoProjectMembers) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfoProjectMembers) SetProjectId(v int64) *ListProjectMembersResponseBodyPagingInfoProjectMembers {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfoProjectMembers) SetRoles(v []*ListProjectMembersResponseBodyPagingInfoProjectMembersRoles) *ListProjectMembersResponseBodyPagingInfoProjectMembers {
+	s.Roles = v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfoProjectMembers) SetStatus(v string) *ListProjectMembersResponseBodyPagingInfoProjectMembers {
+	s.Status = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfoProjectMembers) SetUserId(v string) *ListProjectMembersResponseBodyPagingInfoProjectMembers {
+	s.UserId = &v
+	return s
+}
+
+type ListProjectMembersResponseBodyPagingInfoProjectMembersRoles struct {
+	// example:
+	//
+	// role_project_guest
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// System
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListProjectMembersResponseBodyPagingInfoProjectMembersRoles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponseBodyPagingInfoProjectMembersRoles) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfoProjectMembersRoles) SetCode(v string) *ListProjectMembersResponseBodyPagingInfoProjectMembersRoles {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfoProjectMembersRoles) SetName(v string) *ListProjectMembersResponseBodyPagingInfoProjectMembersRoles {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPagingInfoProjectMembersRoles) SetType(v string) *ListProjectMembersResponseBodyPagingInfoProjectMembersRoles {
+	s.Type = &v
+	return s
+}
+
+type ListProjectMembersResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProjectMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListProjectMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponse) SetHeaders(v map[string]*string) *ListProjectMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectMembersResponse) SetStatusCode(v int32) *ListProjectMembersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectMembersResponse) SetBody(v *ListProjectMembersResponseBody) *ListProjectMembersResponse {
+	s.Body = v
+	return s
+}
+
 type ListProjectRolesRequest struct {
 	Codes []*string `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
 	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
@@ -13987,13 +18836,13 @@ type ListResourcesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- python
+	// 	- Python
 	//
-	// 	- jar
+	// 	- Jar
 	//
-	// 	- archive
+	// 	- Archive
 	//
-	// 	- file
+	// 	- File
 	//
 	// example:
 	//
@@ -14155,13 +19004,19 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The script information.
 	Script *ListResourcesResponseBodyPagingInfoResourcesScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The storage path of the source of the file resource. If the value of the SourecType parameter is local, this parameter is empty.
+	// The path of the source of the file resource. If the SourecType parameter is set to Local, this parameter is left empty.
 	//
 	// example:
 	//
 	// XXX/unknown/ide/1/XXX/20240820200851_963a9da676de44ef8d06a6576a8c4d6a.py
 	SourcePath *string `json:"SourcePath,omitempty" xml:"SourcePath,omitempty"`
 	// The storage type of the source of the file resource.
+	//
+	// Valid values:
+	//
+	// 	- Local
+	//
+	// 	- Oss
 	//
 	// example:
 	//
@@ -14175,6 +19030,14 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The storage type of the destination of the file resource.
 	//
+	// Valid values:
+	//
+	// 	- Gateway
+	//
+	// 	- Oss
+	//
+	// 	- Hdfs
+	//
 	// example:
 	//
 	// oss
@@ -14183,13 +19046,13 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// Valid values:
 	//
-	// 	- jar
+	// 	- Python
 	//
-	// 	- python
+	// 	- Jar
 	//
-	// 	- file
+	// 	- Archive
 	//
-	// 	- archive
+	// 	- File
 	//
 	// example:
 	//
@@ -15818,6 +20681,135 @@ func (s *RenameWorkflowDefinitionResponse) SetStatusCode(v int32) *RenameWorkflo
 }
 
 func (s *RenameWorkflowDefinitionResponse) SetBody(v *RenameWorkflowDefinitionResponseBody) *RenameWorkflowDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type RevokeMemberProjectRolesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 105149
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s RevokeMemberProjectRolesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeMemberProjectRolesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeMemberProjectRolesRequest) SetProjectId(v int64) *RevokeMemberProjectRolesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *RevokeMemberProjectRolesRequest) SetRoleCodes(v []*string) *RevokeMemberProjectRolesRequest {
+	s.RoleCodes = v
+	return s
+}
+
+func (s *RevokeMemberProjectRolesRequest) SetUserId(v string) *RevokeMemberProjectRolesRequest {
+	s.UserId = &v
+	return s
+}
+
+type RevokeMemberProjectRolesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 105149
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123422344899
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s RevokeMemberProjectRolesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeMemberProjectRolesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeMemberProjectRolesShrinkRequest) SetProjectId(v int64) *RevokeMemberProjectRolesShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *RevokeMemberProjectRolesShrinkRequest) SetRoleCodesShrink(v string) *RevokeMemberProjectRolesShrinkRequest {
+	s.RoleCodesShrink = &v
+	return s
+}
+
+func (s *RevokeMemberProjectRolesShrinkRequest) SetUserId(v string) *RevokeMemberProjectRolesShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type RevokeMemberProjectRolesResponseBody struct {
+	// example:
+	//
+	// 676271D6-53B4-57BE-89FA-72F7AE1418DF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevokeMemberProjectRolesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeMemberProjectRolesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeMemberProjectRolesResponseBody) SetRequestId(v string) *RevokeMemberProjectRolesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevokeMemberProjectRolesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeMemberProjectRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RevokeMemberProjectRolesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeMemberProjectRolesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeMemberProjectRolesResponse) SetHeaders(v map[string]*string) *RevokeMemberProjectRolesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeMemberProjectRolesResponse) SetStatusCode(v int32) *RevokeMemberProjectRolesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeMemberProjectRolesResponse) SetBody(v *RevokeMemberProjectRolesResponseBody) *RevokeMemberProjectRolesResponse {
 	s.Body = v
 	return s
 }
@@ -17634,16 +22626,22 @@ func (s *UpdateResourceResponse) SetBody(v *UpdateResourceResponseBody) *UpdateR
 }
 
 type UpdateResourceGroupRequest struct {
+	// The ID of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The new name that you want to change for the resource group.
+	//
 	// example:
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The new remarks that you want to modify for the resource group.
+	//
 	// example:
 	//
 	// 创建用于普通任务的通用资源组
@@ -17674,10 +22672,14 @@ func (s *UpdateResourceGroupRequest) SetRemark(v string) *UpdateResourceGroupReq
 }
 
 type UpdateResourceGroupResponseBody struct {
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -18073,7 +23075,7 @@ func (client *Client) AbolishDeployment(request *AbolishDeploymentRequest) (_res
 
 // Summary:
 //
-// 关联资源组到某个工作空间。
+// Associates a resource group with a workspace.
 //
 // @param request - AssociateProjectToResourceGroupRequest
 //
@@ -18119,7 +23121,7 @@ func (client *Client) AssociateProjectToResourceGroupWithOptions(request *Associ
 
 // Summary:
 //
-// 关联资源组到某个工作空间。
+// Associates a resource group with a workspace.
 //
 // @param request - AssociateProjectToResourceGroupRequest
 //
@@ -18896,6 +23898,80 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateProjectResponse{}
 	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加工作空间成员
+//
+// @param tmpReq - CreateProjectMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectMemberResponse
+func (client *Client) CreateProjectMemberWithOptions(tmpReq *CreateProjectMemberRequest, runtime *util.RuntimeOptions) (_result *CreateProjectMemberResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateProjectMemberShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoleCodes)) {
+		request.RoleCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoleCodes, tea.String("RoleCodes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCodesShrink)) {
+		body["RoleCodes"] = request.RoleCodesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProjectMember"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProjectMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加工作空间成员
+//
+// @param request - CreateProjectMemberRequest
+//
+// @return CreateProjectMemberResponse
+func (client *Client) CreateProjectMember(request *CreateProjectMemberRequest) (_result *CreateProjectMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProjectMemberResponse{}
+	_body, _err := client.CreateProjectMemberWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19701,6 +24777,70 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 
 // Summary:
 //
+// 移除工作空间成员
+//
+// @param request - DeleteProjectMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectMemberResponse
+func (client *Client) DeleteProjectMemberWithOptions(request *DeleteProjectMemberRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProjectMember"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteProjectMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除工作空间成员
+//
+// @param request - DeleteProjectMemberRequest
+//
+// @return DeleteProjectMemberResponse
+func (client *Client) DeleteProjectMember(request *DeleteProjectMemberRequest) (_result *DeleteProjectMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProjectMemberResponse{}
+	_body, _err := client.DeleteProjectMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a file resource from DataStudio.
 //
 // Description:
@@ -19773,7 +24913,7 @@ func (client *Client) DeleteResource(request *DeleteResourceRequest) (_result *D
 
 // Summary:
 //
-// 删除通用资源组。
+// Deletes a serverless resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -19815,7 +24955,7 @@ func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGrou
 
 // Summary:
 //
-// 删除通用资源组。
+// Deletes a serverless resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -19965,7 +25105,7 @@ func (client *Client) DeleteWorkflowDefinition(request *DeleteWorkflowDefinition
 
 // Summary:
 //
-// 将资源组和某个工作空间解除关联。
+// Disassociates a resource group from a workspace.
 //
 // @param request - DissociateProjectFromResourceGroupRequest
 //
@@ -20011,7 +25151,7 @@ func (client *Client) DissociateProjectFromResourceGroupWithOptions(request *Dis
 
 // Summary:
 //
-// 将资源组和某个工作空间解除关联。
+// Disassociates a resource group from a workspace.
 //
 // @param request - DissociateProjectFromResourceGroupRequest
 //
@@ -20223,7 +25363,13 @@ func (client *Client) GetDIJobLog(request *GetDIJobLogRequest) (_result *GetDIJo
 
 // Summary:
 //
-// 验证用
+// Queries a data source by ID.
+//
+// Description:
+//
+// You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
 //
 // @param request - GetDataSourceRequest
 //
@@ -20261,7 +25407,13 @@ func (client *Client) GetDataSourceWithOptions(request *GetDataSourceRequest, ru
 
 // Summary:
 //
-// 验证用
+// Queries a data source by ID.
+//
+// Description:
+//
+// You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
 //
 // @param request - GetDataSourceRequest
 //
@@ -20615,6 +25767,70 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 
 // Summary:
 //
+// 查询工作空间成员详情
+//
+// @param request - GetProjectMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectMemberResponse
+func (client *Client) GetProjectMemberWithOptions(request *GetProjectMemberRequest, runtime *util.RuntimeOptions) (_result *GetProjectMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProjectMember"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetProjectMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工作空间成员详情
+//
+// @param request - GetProjectMemberRequest
+//
+// @return GetProjectMemberResponse
+func (client *Client) GetProjectMember(request *GetProjectMemberRequest) (_result *GetProjectMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProjectMemberResponse{}
+	_body, _err := client.GetProjectMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询工作空间角色详情
 //
 // @param request - GetProjectRoleRequest
@@ -20894,6 +26110,80 @@ func (client *Client) GetWorkflowDefinition(request *GetWorkflowDefinitionReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWorkflowDefinitionResponse{}
 	_body, _err := client.GetWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 授予工作空间成员角色
+//
+// @param tmpReq - GrantMemberProjectRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantMemberProjectRolesResponse
+func (client *Client) GrantMemberProjectRolesWithOptions(tmpReq *GrantMemberProjectRolesRequest, runtime *util.RuntimeOptions) (_result *GrantMemberProjectRolesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GrantMemberProjectRolesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoleCodes)) {
+		request.RoleCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoleCodes, tea.String("RoleCodes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCodesShrink)) {
+		body["RoleCodes"] = request.RoleCodesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantMemberProjectRoles"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantMemberProjectRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 授予工作空间成员角色
+//
+// @param request - GrantMemberProjectRolesRequest
+//
+// @return GrantMemberProjectRolesResponse
+func (client *Client) GrantMemberProjectRoles(request *GrantMemberProjectRolesRequest) (_result *GrantMemberProjectRolesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GrantMemberProjectRolesResponse{}
+	_body, _err := client.GrantMemberProjectRolesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21244,6 +26534,214 @@ func (client *Client) ListDIJobs(request *ListDIJobsRequest) (_result *ListDIJob
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDIJobsResponse{}
 	_body, _err := client.ListDIJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ListDataQualityEvaluationTaskInstances
+//
+// @param request - ListDataQualityEvaluationTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityEvaluationTaskInstancesResponse
+func (client *Client) ListDataQualityEvaluationTaskInstancesWithOptions(request *ListDataQualityEvaluationTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *ListDataQualityEvaluationTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataQualityEvaluationTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataQualityEvaluationTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ListDataQualityEvaluationTaskInstances
+//
+// @param request - ListDataQualityEvaluationTaskInstancesRequest
+//
+// @return ListDataQualityEvaluationTaskInstancesResponse
+func (client *Client) ListDataQualityEvaluationTaskInstances(request *ListDataQualityEvaluationTaskInstancesRequest) (_result *ListDataQualityEvaluationTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataQualityEvaluationTaskInstancesResponse{}
+	_body, _err := client.ListDataQualityEvaluationTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListDataQualityEvaluationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityEvaluationTasksResponse
+func (client *Client) ListDataQualityEvaluationTasksWithOptions(request *ListDataQualityEvaluationTasksRequest, runtime *util.RuntimeOptions) (_result *ListDataQualityEvaluationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataQualityEvaluationTasks"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataQualityEvaluationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListDataQualityEvaluationTasksRequest
+//
+// @return ListDataQualityEvaluationTasksResponse
+func (client *Client) ListDataQualityEvaluationTasks(request *ListDataQualityEvaluationTasksRequest) (_result *ListDataQualityEvaluationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataQualityEvaluationTasksResponse{}
+	_body, _err := client.ListDataQualityEvaluationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListDataQualityResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityResultsResponse
+func (client *Client) ListDataQualityResultsWithOptions(request *ListDataQualityResultsRequest, runtime *util.RuntimeOptions) (_result *ListDataQualityResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataQualityResults"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataQualityResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListDataQualityResultsRequest
+//
+// @return ListDataQualityResultsResponse
+func (client *Client) ListDataQualityResults(request *ListDataQualityResultsRequest) (_result *ListDataQualityResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataQualityResultsResponse{}
+	_body, _err := client.ListDataQualityResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 质量监控规则分页查询
+//
+// @param request - ListDataQualityRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityRulesResponse
+func (client *Client) ListDataQualityRulesWithOptions(request *ListDataQualityRulesRequest, runtime *util.RuntimeOptions) (_result *ListDataQualityRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataQualityRules"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataQualityRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 质量监控规则分页查询
+//
+// @param request - ListDataQualityRulesRequest
+//
+// @return ListDataQualityRulesResponse
+func (client *Client) ListDataQualityRules(request *ListDataQualityRulesRequest) (_result *ListDataQualityRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataQualityRulesResponse{}
+	_body, _err := client.ListDataQualityRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21642,6 +27140,92 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNodesResponse{}
 	_body, _err := client.ListNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询工作空间成员详情
+//
+// @param tmpReq - ListProjectMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectMembersResponse
+func (client *Client) ListProjectMembersWithOptions(tmpReq *ListProjectMembersRequest, runtime *util.RuntimeOptions) (_result *ListProjectMembersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListProjectMembersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoleCodes)) {
+		request.RoleCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoleCodes, tea.String("RoleCodes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserIds)) {
+		request.UserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIds, tea.String("UserIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCodesShrink)) {
+		body["RoleCodes"] = request.RoleCodesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdsShrink)) {
+		body["UserIds"] = request.UserIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectMembers"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询工作空间成员详情
+//
+// @param request - ListProjectMembersRequest
+//
+// @return ListProjectMembersResponse
+func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_result *ListProjectMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectMembersResponse{}
+	_body, _err := client.ListProjectMembersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22629,6 +28213,80 @@ func (client *Client) RenameWorkflowDefinition(request *RenameWorkflowDefinition
 
 // Summary:
 //
+// 撤销工作空间成员的角色
+//
+// @param tmpReq - RevokeMemberProjectRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeMemberProjectRolesResponse
+func (client *Client) RevokeMemberProjectRolesWithOptions(tmpReq *RevokeMemberProjectRolesRequest, runtime *util.RuntimeOptions) (_result *RevokeMemberProjectRolesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RevokeMemberProjectRolesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoleCodes)) {
+		request.RoleCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoleCodes, tea.String("RoleCodes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCodesShrink)) {
+		body["RoleCodes"] = request.RoleCodesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeMemberProjectRoles"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeMemberProjectRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 撤销工作空间成员的角色
+//
+// @param request - RevokeMemberProjectRolesRequest
+//
+// @return RevokeMemberProjectRolesResponse
+func (client *Client) RevokeMemberProjectRoles(request *RevokeMemberProjectRolesRequest) (_result *RevokeMemberProjectRolesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeMemberProjectRolesResponse{}
+	_body, _err := client.RevokeMemberProjectRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 启动数据集成任务
 //
 // @param tmpReq - StartDIJobRequest
@@ -23251,7 +28909,7 @@ func (client *Client) UpdateResource(request *UpdateResourceRequest) (_result *U
 
 // Summary:
 //
-// 更新通用资源组基本信息。
+// Updates basic information about a resource group.
 //
 // @param request - UpdateResourceGroupRequest
 //
@@ -23301,7 +28959,7 @@ func (client *Client) UpdateResourceGroupWithOptions(request *UpdateResourceGrou
 
 // Summary:
 //
-// 更新通用资源组基本信息。
+// Updates basic information about a resource group.
 //
 // @param request - UpdateResourceGroupRequest
 //
