@@ -581,7 +581,7 @@ type AccosicateNetworkAclRequest struct {
 	//
 	// nacl-a2do9e413e0sp****
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	// The information about the resources with which you want to associate the network ACL.
+	// The type of resource with which you want to associate the network ACL.
 	//
 	// This parameter is required.
 	Resource []*AccosicateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
@@ -606,7 +606,7 @@ func (s *AccosicateNetworkAclRequest) SetResource(v []*AccosicateNetworkAclReque
 }
 
 type AccosicateNetworkAclRequestResource struct {
-	// The ID of the resource with which you want to associate the network ACL.
+	// The ID of the associated resource.
 	//
 	// This parameter is required.
 	//
@@ -614,9 +614,9 @@ type AccosicateNetworkAclRequestResource struct {
 	//
 	// n-5****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of resource with which you want to associate the network ACL. Set the value to **Network**.
+	// The type of the associated resource. Set the value to **Network**.
 	//
-	// ****
+	// Valid values of **N**: 0 to 29. You can associate a network ACL with at most 30 resources.
 	//
 	// This parameter is required.
 	//
@@ -1011,7 +1011,7 @@ type AddDeviceInternetPortRequest struct {
 	//
 	// i-5saiou41t6ude2ia56ri902ke
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The internal IP address of the instance.
+	// The private IP address of the simple application server.
 	//
 	// This parameter is required.
 	//
@@ -1401,7 +1401,7 @@ type AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet struct {
 	//
 	// eni-uf620pb4d19ljnu4a64m
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The secondary private IP addresses that are assigned to the ENI.
+	// The assigned private IP addresses.
 	PrivateIpSet []*string `json:"PrivateIpSet,omitempty" xml:"PrivateIpSet,omitempty" type:"Repeated"`
 }
 
@@ -1453,7 +1453,7 @@ func (s *AssignPrivateIpAddressesResponse) SetBody(v *AssignPrivateIpAddressesRe
 }
 
 type AssociateEnsEipAddressRequest struct {
-	// The ID of the EIP.
+	// The ID of the EIP that you want to associate.
 	//
 	// This parameter is required.
 	//
@@ -1461,9 +1461,9 @@ type AssociateEnsEipAddressRequest struct {
 	//
 	// eip-5sc1sgcrsrwgwdvx44hru3p63
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The ID of the cloud service with which you want to associate the EIP.
+	// The ID of the cloud service with which the EIP is associated.
 	//
-	// >  IDs of Edge Load Balancer (ELB) are supported.
+	// >  You can specify the ID of an Edge Load Balancer (ELB) instance ID.
 	//
 	// This parameter is required.
 	//
@@ -1477,7 +1477,7 @@ type AssociateEnsEipAddressRequest struct {
 	//
 	// 	- **SlbInstance**: an ELB instance.
 	//
-	// 	- **NetworkInterface**: a secondary ENI.
+	// 	- **NetworkInterface**: a secondary elastic network interface (ENI).
 	//
 	// 	- **NatSlbInstance**: If you want to associate multiple EIPs to an ELB instance, you need to set the parameter to this value.
 	//
@@ -1873,6 +1873,94 @@ func (s *AttachEnsInstancesResponse) SetBody(v *AttachEnsInstancesResponseBody) 
 	return s
 }
 
+type AttachNetworkInterfaceRequest struct {
+	// The ID of the instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-5p67acfmxazb4p****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the ENI.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eni-58z57orgmt6d1****
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+}
+
+func (s AttachNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachNetworkInterfaceRequest) SetInstanceId(v string) *AttachNetworkInterfaceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AttachNetworkInterfaceRequest) SetNetworkInterfaceId(v string) *AttachNetworkInterfaceRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+type AttachNetworkInterfaceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachNetworkInterfaceResponseBody) SetRequestId(v string) *AttachNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachNetworkInterfaceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachNetworkInterfaceResponse) SetHeaders(v map[string]*string) *AttachNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachNetworkInterfaceResponse) SetStatusCode(v int32) *AttachNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachNetworkInterfaceResponse) SetBody(v *AttachNetworkInterfaceResponseBody) *AttachNetworkInterfaceResponse {
+	s.Body = v
+	return s
+}
+
 type AuthorizeSecurityGroupRequest struct {
 	// The transport layer protocol. The values of this parameter are case-sensitive. Valid values:
 	//
@@ -1920,7 +2008,7 @@ type AuthorizeSecurityGroupRequest struct {
 	//
 	// 22/22
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the security group rule. Valid values: **1*	- to **100**.
+	// The priority of security group rule N. Valid values: **1*	- to **100**.
 	//
 	// Default value: **1**.
 	//
@@ -2067,15 +2155,15 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	//
 	// 10.0.XX.XX/8
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	// The transport layer protocol. The values of this parameter are case-sensitive. Valid values:
+	// The transport layer protocol. The value of this parameter is case-sensitive. Valid values:
 	//
-	// 	- tcp: TCP.
+	// 	- tcp
 	//
-	// 	- udp: UDP.
+	// 	- udp
 	//
-	// 	- icmp: ICMP.
+	// 	- icmp
 	//
-	// 	- gre: GRE.
+	// 	- gre
 	//
 	// 	- all: All protocols are supported.
 	//
@@ -2085,11 +2173,11 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	//
 	// all
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The action of security group rule N that determines whether to allow inbound access. Valid values:
+	// The action of the security group rule. Valid values:
 	//
 	// 	- accept: allows access. This is the default value.
 	//
-	// 	- drop: denies access and returns no responses.
+	// 	- drop: denies access and does not return responses.
 	//
 	// example:
 	//
@@ -2111,7 +2199,7 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	//
 	// 22/22
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the security group rule. Valid values: **1 to 100**. Default value: **1**.
+	// The priority of security group rule N. Valid values: **1 to 100**. Default value: **1**.
 	//
 	// example:
 	//
@@ -3389,6 +3477,93 @@ func (s *CreateClassicNetworkResponse) SetBody(v *CreateClassicNetworkResponseBo
 	return s
 }
 
+type CreateClusterRequest struct {
+	// example:
+	//
+	// 1.18.8
+	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
+	// example:
+	//
+	// mycluster-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequest) SetClusterVersion(v string) *CreateClusterRequest {
+	s.ClusterVersion = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetName(v string) *CreateClusterRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateClusterResponseBody struct {
+	// example:
+	//
+	// c34b69b095f8241c5a91cc2252dceb976
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterResponseBody) SetClusterId(v string) *CreateClusterResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateClusterResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterResponse) SetHeaders(v map[string]*string) *CreateClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClusterResponse) SetStatusCode(v int32) *CreateClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClusterResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDiskRequest struct {
 	// The category of the disk. Valid values:
 	//
@@ -3459,7 +3634,8 @@ type CreateDiskRequest struct {
 	// example:
 	//
 	// s-897654321****
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotId *string                 `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Tag        []*CreateDiskRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateDiskRequest) String() string {
@@ -3507,6 +3683,34 @@ func (s *CreateDiskRequest) SetSize(v string) *CreateDiskRequest {
 
 func (s *CreateDiskRequest) SetSnapshotId(v string) *CreateDiskRequest {
 	s.SnapshotId = &v
+	return s
+}
+
+func (s *CreateDiskRequest) SetTag(v []*CreateDiskRequestTag) *CreateDiskRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateDiskRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDiskRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiskRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiskRequestTag) SetKey(v string) *CreateDiskRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDiskRequestTag) SetValue(v string) *CreateDiskRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -3635,7 +3839,8 @@ type CreateEipInstanceRequest struct {
 	// example:
 	//
 	// EIP1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tag  []*CreateEipInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateEipInstanceRequest) String() string {
@@ -3678,6 +3883,34 @@ func (s *CreateEipInstanceRequest) SetIsp(v string) *CreateEipInstanceRequest {
 
 func (s *CreateEipInstanceRequest) SetName(v string) *CreateEipInstanceRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateEipInstanceRequest) SetTag(v []*CreateEipInstanceRequestTag) *CreateEipInstanceRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateEipInstanceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEipInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEipInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEipInstanceRequestTag) SetKey(v string) *CreateEipInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEipInstanceRequestTag) SetValue(v string) *CreateEipInstanceRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -4447,7 +4680,7 @@ type CreateFileSystemRequestOrderDetails struct {
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The storage protocol. Valid values: nsf and smb.
+	// The storage protocol. Set the value to nfs.
 	//
 	// This parameter is required.
 	//
@@ -5026,13 +5259,13 @@ type CreateInstanceRequest struct {
 	//
 	// 95BandwidthByMonth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The type of IP address. Valid values:
+	// The type of the IP address. Valid values:
 	//
-	// 	- **ipv4**: IPv4. This is the default value.
+	// 	- **ipv4*	- (default)
 	//
-	// 	- **ipv6**: IPv6.
+	// 	- **ipv6**
 	//
-	// 	- **ipv4Andipv6**: IPv4 and IPv6.
+	// 	- **ipv4Andipv6**
 	//
 	// example:
 	//
@@ -5063,7 +5296,7 @@ type CreateInstanceRequest struct {
 	//
 	// false
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// The billing method of the instance. The value is set to Subscription.
+	// The billing method of the instance. Set the value to Subscription.
 	//
 	// example:
 	//
@@ -5101,7 +5334,7 @@ type CreateInstanceRequest struct {
 	//
 	// 1
 	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// Specifies whether to automatically append sequential suffixes to the hostnames specified by the **HostName*	- parameter and instance names specified by the **InstanceName*	- parameter. The sequential numbers in the suffix range from **001*	- to **999**.
+	// Specifies whether to automatically append sequential suffixes to the hostnames specified by the **HostName*	- parameter and instance names specified by the **InstanceName*	- parameter. The sequential suffixes range from **001*	- to **999**.
 	//
 	// Examples: **LocalHost001*	- and **LocalHost002**, and **MyInstance001*	- and **MyInstance002**.
 	//
@@ -5626,7 +5859,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// n-5sax03dh2eyagujgsn7z9****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The billing method of the instance. Valid value: PostPaid. PostPaid specifies the pay-as-you-go billing method.
+	// The billing method of the cluster. Valid value: PostPaid. PostPaid specifies the pay-as-you-go billing method.
 	//
 	// This parameter is required.
 	//
@@ -7248,7 +7481,8 @@ type CreateNatGatewayRequest struct {
 	// example:
 	//
 	// n-5qj7ykuxmjn7k96l090sp****
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkId *string                       `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	Tag       []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
 	// This parameter is required.
@@ -7287,8 +7521,36 @@ func (s *CreateNatGatewayRequest) SetNetworkId(v string) *CreateNatGatewayReques
 	return s
 }
 
+func (s *CreateNatGatewayRequest) SetTag(v []*CreateNatGatewayRequestTag) *CreateNatGatewayRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateNatGatewayRequest) SetVSwitchId(v string) *CreateNatGatewayRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+type CreateNatGatewayRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateNatGatewayRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNatGatewayRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNatGatewayRequestTag) SetKey(v string) *CreateNatGatewayRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequestTag) SetValue(v string) *CreateNatGatewayRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -7396,7 +7658,8 @@ type CreateNetworkRequest struct {
 	// example:
 	//
 	// abc
-	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	NetworkName *string                    `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	Tag         []*CreateNetworkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateNetworkRequest) String() string {
@@ -7424,6 +7687,34 @@ func (s *CreateNetworkRequest) SetEnsRegionId(v string) *CreateNetworkRequest {
 
 func (s *CreateNetworkRequest) SetNetworkName(v string) *CreateNetworkRequest {
 	s.NetworkName = &v
+	return s
+}
+
+func (s *CreateNetworkRequest) SetTag(v []*CreateNetworkRequestTag) *CreateNetworkRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateNetworkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateNetworkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkRequestTag) SetKey(v string) *CreateNetworkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateNetworkRequestTag) SetValue(v string) *CreateNetworkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -8047,7 +8338,7 @@ type CreateSnapshotRequest struct {
 	//
 	// d-bp1s5fnvk4gn2tws0****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the ENS node.
+	// The ID of the ENS node. You can query the node ID by calling the [DescribeEnsRegions](~~DescribeEnsRegions~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -8165,6 +8456,7 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type CreateSnatEntryRequest struct {
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the Network Address Translation (NAT) gateway.
 	//
 	// This parameter is required.
@@ -8225,6 +8517,11 @@ func (s CreateSnatEntryRequest) String() string {
 
 func (s CreateSnatEntryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSnatEntryRequest) SetIdleTimeout(v int32) *CreateSnatEntryRequest {
+	s.IdleTimeout = &v
+	return s
 }
 
 func (s *CreateSnatEntryRequest) SetNatGatewayId(v string) *CreateSnatEntryRequest {
@@ -8811,7 +9108,8 @@ type CreateVSwitchRequest struct {
 	// example:
 	//
 	// n-257gqcdfvx6n****
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkId *string                    `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	Tag       []*CreateVSwitchRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The name of the vSwitch. The name must meet the following requirements:
 	//
 	// 	- The name must be 2 to 128 characters in length.
@@ -8854,8 +9152,36 @@ func (s *CreateVSwitchRequest) SetNetworkId(v string) *CreateVSwitchRequest {
 	return s
 }
 
+func (s *CreateVSwitchRequest) SetTag(v []*CreateVSwitchRequestTag) *CreateVSwitchRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateVSwitchRequest) SetVSwitchName(v string) *CreateVSwitchRequest {
 	s.VSwitchName = &v
+	return s
+}
+
+type CreateVSwitchRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateVSwitchRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVSwitchRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVSwitchRequestTag) SetKey(v string) *CreateVSwitchRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateVSwitchRequestTag) SetValue(v string) *CreateVSwitchRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -11551,9 +11877,7 @@ func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSw
 }
 
 type DeployInstanceSDGRequest struct {
-	// The deployment type of the SDG. Valid values:
-	//
-	// 	- shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
+	// The deployment type of the SDG. shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
 	//
 	// example:
 	//
@@ -11597,9 +11921,7 @@ func (s *DeployInstanceSDGRequest) SetSDGId(v string) *DeployInstanceSDGRequest 
 }
 
 type DeployInstanceSDGShrinkRequest struct {
-	// The deployment type of the SDG. Valid values:
-	//
-	// 	- shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
+	// The deployment type of the SDG. shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
 	//
 	// example:
 	//
@@ -14739,7 +15061,8 @@ type DescribeCloudDiskTypesRequest struct {
 	// example:
 	//
 	// cn-chongqing-cmcc
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCloudDiskTypesRequest) String() string {
@@ -14752,6 +15075,39 @@ func (s DescribeCloudDiskTypesRequest) GoString() string {
 
 func (s *DescribeCloudDiskTypesRequest) SetEnsRegionId(v string) *DescribeCloudDiskTypesRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeCloudDiskTypesRequest) SetEnsRegionIds(v []*string) *DescribeCloudDiskTypesRequest {
+	s.EnsRegionIds = v
+	return s
+}
+
+type DescribeCloudDiskTypesShrinkRequest struct {
+	// The ID of the edge node.
+	//
+	// example:
+	//
+	// cn-chongqing-cmcc
+	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIdsShrink *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
+}
+
+func (s DescribeCloudDiskTypesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDiskTypesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDiskTypesShrinkRequest) SetEnsRegionId(v string) *DescribeCloudDiskTypesShrinkRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeCloudDiskTypesShrinkRequest) SetEnsRegionIdsShrink(v string) *DescribeCloudDiskTypesShrinkRequest {
+	s.EnsRegionIdsShrink = &v
 	return s
 }
 
@@ -14867,6 +15223,256 @@ func (s *DescribeCloudDiskTypesResponse) SetStatusCode(v int32) *DescribeCloudDi
 }
 
 func (s *DescribeCloudDiskTypesResponse) SetBody(v *DescribeCloudDiskTypesResponseBody) *DescribeCloudDiskTypesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClusterRequest struct {
+	// example:
+	//
+	// c8f0377146d104687ac562eef9403****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s DescribeClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterRequest) SetClusterId(v string) *DescribeClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type DescribeClusterResponseBody struct {
+	Clusters []*DescribeClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResponseBody) SetClusters(v []*DescribeClusterResponseBodyClusters) *DescribeClusterResponseBody {
+	s.Clusters = v
+	return s
+}
+
+func (s *DescribeClusterResponseBody) SetRequestId(v string) *DescribeClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeClusterResponseBodyClusters struct {
+	// example:
+	//
+	// c8f0377146d104687ac562eef9403****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1.18.8
+	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// example:
+	//
+	// vc-a622bb**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1.20.8
+	NextVersion *string `json:"NextVersion,omitempty" xml:"NextVersion,omitempty"`
+	// example:
+	//
+	// healthy
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeClusterResponseBodyClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResponseBodyClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResponseBodyClusters) SetClusterId(v string) *DescribeClusterResponseBodyClusters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusters) SetCurrentVersion(v string) *DescribeClusterResponseBodyClusters {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusters) SetName(v string) *DescribeClusterResponseBodyClusters {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusters) SetNextVersion(v string) *DescribeClusterResponseBodyClusters {
+	s.NextVersion = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusters) SetStatus(v string) *DescribeClusterResponseBodyClusters {
+	s.Status = &v
+	return s
+}
+
+type DescribeClusterResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResponse) SetHeaders(v map[string]*string) *DescribeClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterResponse) SetStatusCode(v int32) *DescribeClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClusterResponse) SetBody(v *DescribeClusterResponseBody) *DescribeClusterResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClusterKubeConfigRequest struct {
+	// example:
+	//
+	// c8f0377146d104687ac562eef9403****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s DescribeClusterKubeConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterKubeConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterKubeConfigRequest) SetClusterId(v string) *DescribeClusterKubeConfigRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type DescribeClusterKubeConfigResponseBody struct {
+	// example:
+	//
+	// c8f0377146d104687ac562eef9403****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// apiVersion: v1
+	//
+	// clusters:
+	//
+	// - cluster:
+	//
+	//     certificate-authority-data:***
+	//
+	//     server: https://****:6443
+	//
+	//   name: kubernetes
+	//
+	// contexts:
+	//
+	// - context:
+	//
+	//     cluster: kubernetes
+	//
+	//     user: "2580306074811*****"
+	//
+	//   name: 258*******
+	//
+	// kind: Config
+	//
+	// users:
+	//
+	// - name: "2580306074811*****"
+	//
+	//   user:
+	//
+	//     client-certificate-data:***
+	//
+	//     client-key-data: ***
+	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeClusterKubeConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterKubeConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterKubeConfigResponseBody) SetClusterId(v string) *DescribeClusterKubeConfigResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClusterKubeConfigResponseBody) SetKubeconfig(v string) *DescribeClusterKubeConfigResponseBody {
+	s.Kubeconfig = &v
+	return s
+}
+
+func (s *DescribeClusterKubeConfigResponseBody) SetRequestId(v string) *DescribeClusterKubeConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeClusterKubeConfigResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeClusterKubeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeClusterKubeConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterKubeConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterKubeConfigResponse) SetHeaders(v map[string]*string) *DescribeClusterKubeConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterKubeConfigResponse) SetStatusCode(v int32) *DescribeClusterKubeConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClusterKubeConfigResponse) SetBody(v *DescribeClusterKubeConfigResponseBody) *DescribeClusterKubeConfigResponse {
 	s.Body = v
 	return s
 }
@@ -16801,6 +17407,224 @@ func (s *DescribeDeviceServiceResponse) SetStatusCode(v int32) *DescribeDeviceSe
 }
 
 func (s *DescribeDeviceServiceResponse) SetBody(v *DescribeDeviceServiceResponseBody) *DescribeDeviceServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiskIopsListRequest struct {
+	// The ID of the disk. Format: d-\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d-5tzm9wnhzlhjzcbtxo465****
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss. The time range specified by the StartTime and EndTime parameters cannot exceed one day for a query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-12-14 23:59:59
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-12-14 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDiskIopsListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskIopsListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskIopsListRequest) SetDiskId(v string) *DescribeDiskIopsListRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListRequest) SetEndTime(v string) *DescribeDiskIopsListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListRequest) SetStartTime(v string) *DescribeDiskIopsListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDiskIopsListResponseBody struct {
+	// The IOPS monitoring data of the cloud disk.
+	DiskIopsList []*DescribeDiskIopsListResponseBodyDiskIopsList `json:"DiskIopsList,omitempty" xml:"DiskIopsList,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// A7814CAB-DB4E-140A-9D6F-7C8210C1DAC3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDiskIopsListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskIopsListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskIopsListResponseBody) SetDiskIopsList(v []*DescribeDiskIopsListResponseBodyDiskIopsList) *DescribeDiskIopsListResponseBody {
+	s.DiskIopsList = v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBody) SetRequestId(v string) *DescribeDiskIopsListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDiskIopsListResponseBodyDiskIopsList struct {
+	// The business time . The time is displayed in the yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2023-12-14 00:00:00
+	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// The ID of the disk.
+	//
+	// example:
+	//
+	// d-5tzm9wnhzlhjzcbtxo465****
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The read throughput. Unit: bytes.
+	//
+	// example:
+	//
+	// 10054
+	ReadBytes *int64 `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
+	// The read latency. Unit: ms.
+	//
+	// example:
+	//
+	// 15646532
+	ReadLatency *int64 `json:"ReadLatency,omitempty" xml:"ReadLatency,omitempty"`
+	// The read IOPS.
+	//
+	// example:
+	//
+	// 4
+	ReadOps *int64 `json:"ReadOps,omitempty" xml:"ReadOps,omitempty"`
+	// The ID of the node.
+	//
+	// example:
+	//
+	// cn-hangzhou-3
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The write throughput. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
+	WriteBytes *int64 `json:"WriteBytes,omitempty" xml:"WriteBytes,omitempty"`
+	// The write latency. Unit: microseconds.
+	//
+	// example:
+	//
+	// 0
+	WriteLatency *int64 `json:"WriteLatency,omitempty" xml:"WriteLatency,omitempty"`
+	// The write IOPS.
+	//
+	// example:
+	//
+	// 0
+	WriteOps *int64 `json:"WriteOps,omitempty" xml:"WriteOps,omitempty"`
+}
+
+func (s DescribeDiskIopsListResponseBodyDiskIopsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskIopsListResponseBodyDiskIopsList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetBizTime(v string) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.BizTime = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetDiskId(v string) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetReadBytes(v int64) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.ReadBytes = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetReadLatency(v int64) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.ReadLatency = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetReadOps(v int64) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.ReadOps = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetRegionId(v string) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetWriteBytes(v int64) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.WriteBytes = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetWriteLatency(v int64) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.WriteLatency = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponseBodyDiskIopsList) SetWriteOps(v int64) *DescribeDiskIopsListResponseBodyDiskIopsList {
+	s.WriteOps = &v
+	return s
+}
+
+type DescribeDiskIopsListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiskIopsListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDiskIopsListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskIopsListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskIopsListResponse) SetHeaders(v map[string]*string) *DescribeDiskIopsListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponse) SetStatusCode(v int32) *DescribeDiskIopsListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiskIopsListResponse) SetBody(v *DescribeDiskIopsListResponseBody) *DescribeDiskIopsListResponse {
 	s.Body = v
 	return s
 }
@@ -23748,7 +24572,8 @@ type DescribeImageInfosResponseBodyImagesImage struct {
 	// example:
 	//
 	// centos_6_08_64_20G_alibase_2017****
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	DiskDeviceMappings *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
 	// The ID of the image.
 	//
 	// example:
@@ -23799,6 +24624,11 @@ func (s *DescribeImageInfosResponseBodyImagesImage) SetDescription(v string) *De
 	return s
 }
 
+func (s *DescribeImageInfosResponseBodyImagesImage) SetDiskDeviceMappings(v *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings) *DescribeImageInfosResponseBodyImagesImage {
+	s.DiskDeviceMappings = v
+	return s
+}
+
 func (s *DescribeImageInfosResponseBodyImagesImage) SetImageId(v string) *DescribeImageInfosResponseBodyImagesImage {
 	s.ImageId = &v
 	return s
@@ -23821,6 +24651,58 @@ func (s *DescribeImageInfosResponseBodyImagesImage) SetOSName(v string) *Describ
 
 func (s *DescribeImageInfosResponseBodyImagesImage) SetOSType(v string) *DescribeImageInfosResponseBodyImagesImage {
 	s.OSType = &v
+	return s
+}
+
+type DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings struct {
+	DiskDeviceMapping []*DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings) SetDiskDeviceMapping(v []*DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings {
+	s.DiskDeviceMapping = v
+	return s
+}
+
+type DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {
+	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Size    *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
+}
+
+func (s DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetFormat(v string) *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Format = &v
+	return s
+}
+
+func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetSize(v string) *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetType(v string) *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetImageId(v string) *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.ImageId = &v
 	return s
 }
 
@@ -24231,7 +25113,8 @@ type DescribeImagesResponseBodyImagesImage struct {
 	// example:
 	//
 	// 2017-12-08T12:10:03Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime       *string                                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DiskDeviceMappings *DescribeImagesResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
 	// The ID of the image.
 	//
 	// example:
@@ -24298,6 +25181,11 @@ func (s *DescribeImagesResponseBodyImagesImage) SetCreationTime(v string) *Descr
 	return s
 }
 
+func (s *DescribeImagesResponseBodyImagesImage) SetDiskDeviceMappings(v *DescribeImagesResponseBodyImagesImageDiskDeviceMappings) *DescribeImagesResponseBodyImagesImage {
+	s.DiskDeviceMappings = v
+	return s
+}
+
 func (s *DescribeImagesResponseBodyImagesImage) SetImageId(v string) *DescribeImagesResponseBodyImagesImage {
 	s.ImageId = &v
 	return s
@@ -24325,6 +25213,58 @@ func (s *DescribeImagesResponseBodyImagesImage) SetPlatform(v string) *DescribeI
 
 func (s *DescribeImagesResponseBodyImagesImage) SetSnapshotId(v string) *DescribeImagesResponseBodyImagesImage {
 	s.SnapshotId = &v
+	return s
+}
+
+type DescribeImagesResponseBodyImagesImageDiskDeviceMappings struct {
+	DiskDeviceMapping []*DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImagesResponseBodyImagesImageDiskDeviceMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImagesResponseBodyImagesImageDiskDeviceMappings) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImagesResponseBodyImagesImageDiskDeviceMappings) SetDiskDeviceMapping(v []*DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) *DescribeImagesResponseBodyImagesImageDiskDeviceMappings {
+	s.DiskDeviceMapping = v
+	return s
+}
+
+type DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {
+	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Size    *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
+}
+
+func (s DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetFormat(v string) *DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Format = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetSize(v string) *DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetType(v string) *DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetImageId(v string) *DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.ImageId = &v
 	return s
 }
 
@@ -24517,6 +25457,287 @@ func (s *DescribeInstanceAutoRenewAttributeResponse) SetStatusCode(v int32) *Des
 }
 
 func (s *DescribeInstanceAutoRenewAttributeResponse) SetBody(v *DescribeInstanceAutoRenewAttributeResponseBody) *DescribeInstanceAutoRenewAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceBandwidthDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-01-11 30:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// cn-beijing-cmcc
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// example:
+	//
+	// i-6ecpqvkicnchxccozrpxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// vm
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// vm
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-01-11 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceBandwidthDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceBandwidthDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceBandwidthDetailRequest) SetEndTime(v string) *DescribeInstanceBandwidthDetailRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailRequest) SetEnsRegionId(v string) *DescribeInstanceBandwidthDetailRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailRequest) SetInstanceId(v string) *DescribeInstanceBandwidthDetailRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailRequest) SetInstanceType(v string) *DescribeInstanceBandwidthDetailRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailRequest) SetPageNumber(v int32) *DescribeInstanceBandwidthDetailRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailRequest) SetPageSize(v int32) *DescribeInstanceBandwidthDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailRequest) SetServiceType(v string) *DescribeInstanceBandwidthDetailRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailRequest) SetStartTime(v string) *DescribeInstanceBandwidthDetailRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceBandwidthDetailResponseBody struct {
+	Bandwidths []*DescribeInstanceBandwidthDetailResponseBodyBandwidths `json:"Bandwidths,omitempty" xml:"Bandwidths,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInstanceBandwidthDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceBandwidthDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBody) SetBandwidths(v []*DescribeInstanceBandwidthDetailResponseBodyBandwidths) *DescribeInstanceBandwidthDetailResponseBody {
+	s.Bandwidths = v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBody) SetPageNumber(v int32) *DescribeInstanceBandwidthDetailResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBody) SetPageSize(v int32) *DescribeInstanceBandwidthDetailResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBody) SetRequestId(v string) *DescribeInstanceBandwidthDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBody) SetTotalCount(v int32) *DescribeInstanceBandwidthDetailResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInstanceBandwidthDetailResponseBodyBandwidths struct {
+	// example:
+	//
+	// 1972653484384661
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 2024-01-11 00:00:00
+	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// example:
+	//
+	// cn-yichang-2
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// example:
+	//
+	// 1
+	FlowType *int32 `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
+	// example:
+	//
+	// i-6ecpqvkicnchxccozrpxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// vm
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 203.107.***
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// cmcc
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// example:
+	//
+	// 43795230
+	RxBw *int64 `json:"RxBw,omitempty" xml:"RxBw,omitempty"`
+	// example:
+	//
+	// vm
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// example:
+	//
+	// 25415638
+	TxBw *int64 `json:"TxBw,omitempty" xml:"TxBw,omitempty"`
+}
+
+func (s DescribeInstanceBandwidthDetailResponseBodyBandwidths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceBandwidthDetailResponseBodyBandwidths) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetAliUid(v int64) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetBizTime(v string) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.BizTime = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetEnsRegionId(v string) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetFlowType(v int32) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.FlowType = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetInstanceId(v string) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetInstanceType(v string) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetIp(v string) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetIsp(v string) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetRxBw(v int64) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.RxBw = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetServiceType(v string) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponseBodyBandwidths) SetTxBw(v int64) *DescribeInstanceBandwidthDetailResponseBodyBandwidths {
+	s.TxBw = &v
+	return s
+}
+
+type DescribeInstanceBandwidthDetailResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceBandwidthDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceBandwidthDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceBandwidthDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceBandwidthDetailResponse) SetHeaders(v map[string]*string) *DescribeInstanceBandwidthDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponse) SetStatusCode(v int32) *DescribeInstanceBandwidthDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceBandwidthDetailResponse) SetBody(v *DescribeInstanceBandwidthDetailResponseBody) *DescribeInstanceBandwidthDetailResponse {
 	s.Body = v
 	return s
 }
@@ -25843,6 +27064,7 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// Details of the network.
 	NetworkAttributes *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
+	NetworkInterfaces *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Struct"`
 	// The name of the image.
 	//
 	// example:
@@ -25884,6 +27106,8 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	// Details of the system disk.
 	SystemDisk *DescribeInstancesResponseBodyInstancesInstanceSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	// The tags of the instance.
+	//
+	// >  This operation does not return tag information. You can call this operation in combination with the tag-related operations.
 	Tags *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
@@ -25987,6 +27211,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetMemory(v int32) *Des
 
 func (s *DescribeInstancesResponseBodyInstancesInstance) SetNetworkAttributes(v *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes) *DescribeInstancesResponseBodyInstancesInstance {
 	s.NetworkAttributes = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetNetworkInterfaces(v *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) *DescribeInstancesResponseBodyInstancesInstance {
+	s.NetworkInterfaces = v
 	return s
 }
 
@@ -26275,6 +27504,144 @@ func (s DescribeInstancesResponseBodyInstancesInstanceNetworkAttributesPrivateIp
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributesPrivateIpAddress) SetIpAddress(v []*string) *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributesPrivateIpAddress {
 	s.IpAddress = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces struct {
+	NetworkInterfaces []*DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) SetNetworkInterfaces(v []*DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces {
+	s.NetworkInterfaces = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces struct {
+	Ipv6Sets           *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets      `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
+	MacAddress         *string                                                                                        `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	NetworkInterfaceId *string                                                                                        `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	PrimaryIpAddress   *string                                                                                        `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
+	PrivateIpSets      *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
+	Type               *string                                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetIpv6Sets(v *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
+	s.Ipv6Sets = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetMacAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
+	s.MacAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetNetworkInterfaceId(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetPrimaryIpAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
+	s.PrimaryIpAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetPrivateIpSets(v *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
+	s.PrivateIpSets = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetType(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
+	s.Type = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets struct {
+	Ipv6Set []*DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set `json:"Ipv6Set,omitempty" xml:"Ipv6Set,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets) SetIpv6Set(v []*DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets {
+	s.Ipv6Set = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set struct {
+	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set) SetIpv6Address(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set {
+	s.Ipv6Address = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets struct {
+	PrivateIpSet []*DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet `json:"PrivateIpSet,omitempty" xml:"PrivateIpSet,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets) SetPrivateIpSet(v []*DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets {
+	s.PrivateIpSet = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet struct {
+	Primary          *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet) SetPrimary(v bool) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet {
+	s.Primary = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet) SetPrivateIpAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet {
+	s.PrivateIpAddress = &v
 	return s
 }
 
@@ -28051,6 +29418,549 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetStatusCode(v int
 }
 
 func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) *DescribeLoadBalancerHTTPSListenerAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLoadBalancerListenMonitorRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-01-30 08:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-5q73cv04zeyh43lh74lp4****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// example:
+	//
+	// tcp
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-01-15 16:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
+	VPort *string `json:"VPort,omitempty" xml:"VPort,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenMonitorRequest) SetEndTime(v string) *DescribeLoadBalancerListenMonitorRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorRequest) SetLoadBalancerId(v string) *DescribeLoadBalancerListenMonitorRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorRequest) SetProto(v string) *DescribeLoadBalancerListenMonitorRequest {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorRequest) SetStartTime(v string) *DescribeLoadBalancerListenMonitorRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorRequest) SetVPort(v string) *DescribeLoadBalancerListenMonitorRequest {
+	s.VPort = &v
+	return s
+}
+
+type DescribeLoadBalancerListenMonitorResponseBody struct {
+	LoadBalancerMonitorListenData []*DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData `json:"LoadBalancerMonitorListenData,omitempty" xml:"LoadBalancerMonitorListenData,omitempty" type:"Repeated"`
+	// Id of the request.
+	//
+	// example:
+	//
+	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBody) SetLoadBalancerMonitorListenData(v []*DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) *DescribeLoadBalancerListenMonitorResponseBody {
+	s.LoadBalancerMonitorListenData = v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBody) SetRequestId(v string) *DescribeLoadBalancerListenMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData struct {
+	// example:
+	//
+	// 80285
+	ActConns *string `json:"ActConns,omitempty" xml:"ActConns,omitempty"`
+	// example:
+	//
+	// 2024-01-15 16:03:00
+	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// example:
+	//
+	// 37150
+	Conns *string `json:"Conns,omitempty" xml:"Conns,omitempty"`
+	// example:
+	//
+	// 10
+	DropConns *string `json:"DropConns,omitempty" xml:"DropConns,omitempty"`
+	// example:
+	//
+	// cn-dongguan-9
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// example:
+	//
+	// 16322
+	InActConns *string `json:"InActConns,omitempty" xml:"InActConns,omitempty"`
+	// example:
+	//
+	// 67532
+	InBytes *string `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// example:
+	//
+	// 324
+	InDropBytes *string `json:"InDropBytes,omitempty" xml:"InDropBytes,omitempty"`
+	// example:
+	//
+	// 27
+	InDropPkts *string `json:"InDropPkts,omitempty" xml:"InDropPkts,omitempty"`
+	// example:
+	//
+	// 12
+	InPkts *string `json:"InPkts,omitempty" xml:"InPkts,omitempty"`
+	// example:
+	//
+	// 0
+	InValidRsNum *string `json:"InValidRsNum,omitempty" xml:"InValidRsNum,omitempty"`
+	// example:
+	//
+	// lb-5q73cv04zeyh43lh74lp4****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// example:
+	//
+	// 5155487
+	OutBytes *string `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// example:
+	//
+	// 0
+	OutDropBytes *string `json:"OutDropBytes,omitempty" xml:"OutDropBytes,omitempty"`
+	// example:
+	//
+	// 76
+	OutDropPkts *string `json:"OutDropPkts,omitempty" xml:"OutDropPkts,omitempty"`
+	// example:
+	//
+	// 34
+	OutPkts *string `json:"OutPkts,omitempty" xml:"OutPkts,omitempty"`
+	// example:
+	//
+	// tcp
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// example:
+	//
+	// 80
+	VPort *string `json:"VPort,omitempty" xml:"VPort,omitempty"`
+	// example:
+	//
+	// 2
+	ValidRsNum *string `json:"ValidRsNum,omitempty" xml:"ValidRsNum,omitempty"`
+	// example:
+	//
+	// 10.8.*.*
+	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	// example:
+	//
+	// 53284
+	Vni *string `json:"Vni,omitempty" xml:"Vni,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetActConns(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.ActConns = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetBizTime(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.BizTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetConns(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.Conns = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetDropConns(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.DropConns = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetEnsRegionId(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetInActConns(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.InActConns = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetInBytes(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.InBytes = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetInDropBytes(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.InDropBytes = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetInDropPkts(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.InDropPkts = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetInPkts(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.InPkts = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetInValidRsNum(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.InValidRsNum = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetLoadBalancerId(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetOutBytes(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.OutBytes = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetOutDropBytes(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.OutDropBytes = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetOutDropPkts(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.OutDropPkts = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetOutPkts(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.OutPkts = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetProto(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetVPort(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.VPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetValidRsNum(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.ValidRsNum = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetVip(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.Vip = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData) SetVni(v string) *DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData {
+	s.Vni = &v
+	return s
+}
+
+type DescribeLoadBalancerListenMonitorResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLoadBalancerListenMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerListenMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponse) SetStatusCode(v int32) *DescribeLoadBalancerListenMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenMonitorResponse) SetBody(v *DescribeLoadBalancerListenMonitorResponseBody) *DescribeLoadBalancerListenMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLoadBalancerListenersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-5s7crik3yo3p5****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetLoadBalancerId(v string) *DescribeLoadBalancerListenersRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetPageNumber(v int32) *DescribeLoadBalancerListenersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetPageSize(v int32) *DescribeLoadBalancerListenersRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBody struct {
+	Listeners *DescribeLoadBalancerListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// F3B261DD-3858-4D3C-877D-303ADF374600
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 49
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetListeners(v *DescribeLoadBalancerListenersResponseBodyListeners) *DescribeLoadBalancerListenersResponseBody {
+	s.Listeners = v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetPageNumber(v int32) *DescribeLoadBalancerListenersResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetPageSize(v int32) *DescribeLoadBalancerListenersResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetRequestId(v string) *DescribeLoadBalancerListenersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBody) SetTotalCount(v int32) *DescribeLoadBalancerListenersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBodyListeners struct {
+	Listener []*DescribeLoadBalancerListenersResponseBodyListenersListener `json:"Listener,omitempty" xml:"Listener,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListeners) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListeners) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetListener(v []*DescribeLoadBalancerListenersResponseBodyListenersListener) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.Listener = v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponseBodyListenersListener struct {
+	// example:
+	//
+	// 2022-08-15T08:42:57Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 443
+	ForwardPort *string `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// example:
+	//
+	// off
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// example:
+	//
+	// 8080
+	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// example:
+	//
+	// lb-51a5fhou****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersListener) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponseBodyListenersListener) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetCreateTime(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetDescription(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetForwardPort(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetListenerForward(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.ListenerForward = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetListenerPort(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetLoadBalancerId(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetProtocol(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetStatus(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.Status = &v
+	return s
+}
+
+type DescribeLoadBalancerListenersResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLoadBalancerListenersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLoadBalancerListenersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerListenersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerListenersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponse) SetStatusCode(v int32) *DescribeLoadBalancerListenersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponse) SetBody(v *DescribeLoadBalancerListenersResponseBody) *DescribeLoadBalancerListenersResponse {
 	s.Body = v
 	return s
 }
@@ -31738,13 +33648,13 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// test-01
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number of the returned page. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 50.
 	//
 	// example:
 	//
@@ -31780,11 +33690,11 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the ENI. Valid values:
+	// The type of the ENI. Valid Values:
 	//
-	// 	- Primary
+	// 	- Primary: primary ENI.
 	//
-	// 	- Secondary
+	// 	- Secondary: secondary ENI.
 	//
 	// This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
 	//
@@ -31905,13 +33815,13 @@ type DescribeNetworkInterfacesShrinkRequest struct {
 	//
 	// test-01
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number of the returned page. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 50.
 	//
 	// example:
 	//
@@ -31947,11 +33857,11 @@ type DescribeNetworkInterfacesShrinkRequest struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the ENI. Valid values:
+	// The type of the ENI. Valid Values:
 	//
-	// 	- Primary
+	// 	- Primary: primary ENI.
 	//
-	// 	- Secondary
+	// 	- Secondary: secondary ENI.
 	//
 	// This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
 	//
@@ -36684,6 +38594,289 @@ func (s *DescribeSDGsResponse) SetBody(v *DescribeSDGsResponseBody) *DescribeSDG
 	return s
 }
 
+type DescribeSecondaryPublicIpAddressesRequest struct {
+	// The ID of the edge node.
+	//
+	// example:
+	//
+	// cn-hangzhou-44
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The Internet service provider. Valid values:
+	//
+	// 	- cmcc: China Mobile.
+	//
+	// 	- unicom: China Unicom.
+	//
+	// 	- telecom: China Telecom.
+	//
+	// example:
+	//
+	// unicom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The secondary IP address.
+	//
+	// example:
+	//
+	// 12.XXX.XXX.4
+	SecondaryPublicIpAddress *string `json:"SecondaryPublicIpAddress,omitempty" xml:"SecondaryPublicIpAddress,omitempty"`
+	// The ID of the secondary public IP address.
+	//
+	// example:
+	//
+	// spi-5wys0pio93c9f9ukzj2f2fwyr
+	SecondaryPublicIpId *string `json:"SecondaryPublicIpId,omitempty" xml:"SecondaryPublicIpId,omitempty"`
+}
+
+func (s DescribeSecondaryPublicIpAddressesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecondaryPublicIpAddressesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecondaryPublicIpAddressesRequest) SetEnsRegionId(v string) *DescribeSecondaryPublicIpAddressesRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesRequest) SetIsp(v string) *DescribeSecondaryPublicIpAddressesRequest {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesRequest) SetPageNumber(v int32) *DescribeSecondaryPublicIpAddressesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesRequest) SetPageSize(v int32) *DescribeSecondaryPublicIpAddressesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesRequest) SetSecondaryPublicIpAddress(v string) *DescribeSecondaryPublicIpAddressesRequest {
+	s.SecondaryPublicIpAddress = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesRequest) SetSecondaryPublicIpId(v string) *DescribeSecondaryPublicIpAddressesRequest {
+	s.SecondaryPublicIpId = &v
+	return s
+}
+
+type DescribeSecondaryPublicIpAddressesResponseBody struct {
+	// The page number returned.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of returned secondary IP addresses.
+	SecondaryPublicIpAddresses []*DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses `json:"SecondaryPublicIpAddresses,omitempty" xml:"SecondaryPublicIpAddresses,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 13
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSecondaryPublicIpAddressesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecondaryPublicIpAddressesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBody) SetPageNumber(v int32) *DescribeSecondaryPublicIpAddressesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBody) SetPageSize(v int32) *DescribeSecondaryPublicIpAddressesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBody) SetRequestId(v string) *DescribeSecondaryPublicIpAddressesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBody) SetSecondaryPublicIpAddresses(v []*DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) *DescribeSecondaryPublicIpAddressesResponseBody {
+	s.SecondaryPublicIpAddresses = v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBody) SetTotalCount(v int32) *DescribeSecondaryPublicIpAddressesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses struct {
+	// The subnet mask of the CIDR block.
+	//
+	// example:
+	//
+	// 24
+	CidrMask *int32 `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
+	// The time when the secondary public IP address was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-07-25T09:43:49Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the edge node.
+	//
+	// example:
+	//
+	// cn-beijing-15
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The gateway.
+	//
+	// example:
+	//
+	// 12.XXX.XXX.1
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The version of the IP address. Valid values:
+	//
+	// 	- **ipv4**
+	//
+	// 	- **ipv6**
+	//
+	// example:
+	//
+	// ipv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The Internet service provider. Valid values:
+	//
+	// 	- cmcc: China Mobile.
+	//
+	// 	- unicom: China Unicom.
+	//
+	// 	- telecom: China Telecom.
+	//
+	// example:
+	//
+	// telecom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The secondary public IP address.
+	//
+	// example:
+	//
+	// 12.XXX.XXX.4
+	SecondaryPublicIpAddress *string `json:"SecondaryPublicIpAddress,omitempty" xml:"SecondaryPublicIpAddress,omitempty"`
+	// The ID of the secondary public IP address.
+	//
+	// example:
+	//
+	// spi-5wys0pio93c9f9ukzj2f2fwyr
+	SecondaryPublicIpId *string `json:"SecondaryPublicIpId,omitempty" xml:"SecondaryPublicIpId,omitempty"`
+}
+
+func (s DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) SetCidrMask(v int32) *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses {
+	s.CidrMask = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) SetCreationTime(v string) *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) SetEnsRegionId(v string) *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) SetGateway(v string) *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses {
+	s.Gateway = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) SetIpVersion(v string) *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) SetIsp(v string) *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) SetSecondaryPublicIpAddress(v string) *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses {
+	s.SecondaryPublicIpAddress = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses) SetSecondaryPublicIpId(v string) *DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses {
+	s.SecondaryPublicIpId = &v
+	return s
+}
+
+type DescribeSecondaryPublicIpAddressesResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSecondaryPublicIpAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSecondaryPublicIpAddressesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecondaryPublicIpAddressesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponse) SetHeaders(v map[string]*string) *DescribeSecondaryPublicIpAddressesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponse) SetStatusCode(v int32) *DescribeSecondaryPublicIpAddressesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesResponse) SetBody(v *DescribeSecondaryPublicIpAddressesResponseBody) *DescribeSecondaryPublicIpAddressesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSecurityGroupAttributeRequest struct {
 	// The ID of the security group.
 	//
@@ -37321,7 +39514,8 @@ type DescribeSelfImagesResponseBodyImagesImage struct {
 	// example:
 	//
 	// 2017-12-08T12:10:03Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime       *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DiskDeviceMappings *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
 	// The ID of the image.
 	//
 	// example:
@@ -37349,7 +39543,12 @@ type DescribeSelfImagesResponseBodyImagesImage struct {
 	// example:
 	//
 	// 20
-	ImageSize        *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The size of the image storage.
+	//
+	// example:
+	//
+	// 400
 	ImageStorageSize *string `json:"ImageStorageSize,omitempty" xml:"ImageStorageSize,omitempty"`
 	// The ID of the instance.
 	//
@@ -37434,6 +39633,11 @@ func (s *DescribeSelfImagesResponseBodyImagesImage) SetCreationTime(v string) *D
 	return s
 }
 
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetDiskDeviceMappings(v *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings) *DescribeSelfImagesResponseBodyImagesImage {
+	s.DiskDeviceMappings = v
+	return s
+}
+
 func (s *DescribeSelfImagesResponseBodyImagesImage) SetImageId(v string) *DescribeSelfImagesResponseBodyImagesImage {
 	s.ImageId = &v
 	return s
@@ -37481,6 +39685,58 @@ func (s *DescribeSelfImagesResponseBodyImagesImage) SetSnapshotId(v string) *Des
 
 func (s *DescribeSelfImagesResponseBodyImagesImage) SetStatus(v string) *DescribeSelfImagesResponseBodyImagesImage {
 	s.Status = &v
+	return s
+}
+
+type DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings struct {
+	DiskDeviceMapping []*DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings) SetDiskDeviceMapping(v []*DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings {
+	s.DiskDeviceMapping = v
+	return s
+}
+
+type DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {
+	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Size    *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
+}
+
+func (s DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetFormat(v string) *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Format = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetSize(v string) *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetType(v string) *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping) SetImageId(v string) *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping {
+	s.ImageId = &v
 	return s
 }
 
@@ -37804,6 +40060,500 @@ func (s *DescribeServcieScheduleResponse) SetStatusCode(v int32) *DescribeServci
 }
 
 func (s *DescribeServcieScheduleResponse) SetBody(v *DescribeServcieScheduleResponseBody) *DescribeServcieScheduleResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeServerLoadBalancerListenMonitorRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-05-16 16:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-5rcvo1n1t3hykfhhjwjgqp****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// example:
+	//
+	// tcp
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-05-16 15:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 80
+	VPort *string `json:"VPort,omitempty" xml:"VPort,omitempty"`
+}
+
+func (s DescribeServerLoadBalancerListenMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerLoadBalancerListenMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorRequest) SetEndTime(v string) *DescribeServerLoadBalancerListenMonitorRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorRequest) SetLoadBalancerId(v string) *DescribeServerLoadBalancerListenMonitorRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorRequest) SetProto(v string) *DescribeServerLoadBalancerListenMonitorRequest {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorRequest) SetStartTime(v string) *DescribeServerLoadBalancerListenMonitorRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorRequest) SetVPort(v string) *DescribeServerLoadBalancerListenMonitorRequest {
+	s.VPort = &v
+	return s
+}
+
+type DescribeServerLoadBalancerListenMonitorResponseBody struct {
+	// Id of the request。
+	//
+	// example:
+	//
+	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
+	RequestId                     *string                                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerLoadBalancerMonitorData []*DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData `json:"ServerLoadBalancerMonitorData,omitempty" xml:"ServerLoadBalancerMonitorData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeServerLoadBalancerListenMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerLoadBalancerListenMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBody) SetRequestId(v string) *DescribeServerLoadBalancerListenMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBody) SetServerLoadBalancerMonitorData(v []*DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) *DescribeServerLoadBalancerListenMonitorResponseBody {
+	s.ServerLoadBalancerMonitorData = v
+	return s
+}
+
+type DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData struct {
+	// example:
+	//
+	// 20
+	Acc *int32 `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	// example:
+	//
+	// 2024-05-16 15:00:00
+	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// example:
+	//
+	// cn-fuzhou-7
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// example:
+	//
+	// lb-5rcvo1n1t3hykfhhjwjgqp****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// example:
+	//
+	// esk-edge-service-lb-8377****
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// example:
+	//
+	// elb.s2.medium
+	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	// example:
+	//
+	// tcp
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// example:
+	//
+	// 10
+	Reqs2xx *int32 `json:"Reqs2xx,omitempty" xml:"Reqs2xx,omitempty"`
+	// example:
+	//
+	// 0
+	Reqs3xx *int32 `json:"Reqs3xx,omitempty" xml:"Reqs3xx,omitempty"`
+	// example:
+	//
+	// 0
+	Reqs4xx *int32 `json:"Reqs4xx,omitempty" xml:"Reqs4xx,omitempty"`
+	// example:
+	//
+	// 10
+	Reqs5xx *int32 `json:"Reqs5xx,omitempty" xml:"Reqs5xx,omitempty"`
+	// example:
+	//
+	// 1037
+	RtAvg *int32 `json:"RtAvg,omitempty" xml:"RtAvg,omitempty"`
+	// example:
+	//
+	// 10.0****
+	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	// example:
+	//
+	// 52497
+	Vni *int32 `json:"Vni,omitempty" xml:"Vni,omitempty"`
+	// example:
+	//
+	// 80
+	Vport *int32 `json:"Vport,omitempty" xml:"Vport,omitempty"`
+}
+
+func (s DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetAcc(v int32) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Acc = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetBizTime(v string) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.BizTime = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetEnsRegionId(v string) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetLoadBalancerId(v string) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetLoadBalancerName(v string) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.LoadBalancerName = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetLoadBalancerSpec(v string) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.LoadBalancerSpec = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetProto(v string) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetReqs2xx(v int32) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Reqs2xx = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetReqs3xx(v int32) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Reqs3xx = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetReqs4xx(v int32) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Reqs4xx = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetReqs5xx(v int32) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Reqs5xx = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetRtAvg(v int32) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.RtAvg = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetVip(v string) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Vip = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetVni(v int32) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Vni = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData) SetVport(v int32) *DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Vport = &v
+	return s
+}
+
+type DescribeServerLoadBalancerListenMonitorResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeServerLoadBalancerListenMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeServerLoadBalancerListenMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerLoadBalancerListenMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponse) SetHeaders(v map[string]*string) *DescribeServerLoadBalancerListenMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponse) SetStatusCode(v int32) *DescribeServerLoadBalancerListenMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerListenMonitorResponse) SetBody(v *DescribeServerLoadBalancerListenMonitorResponseBody) *DescribeServerLoadBalancerListenMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeServerLoadBalancerMonitorRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-09-15 17:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-5sc1s9zrui8lpb8u7cl4f****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-09-15 16:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeServerLoadBalancerMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerLoadBalancerMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerLoadBalancerMonitorRequest) SetEndTime(v string) *DescribeServerLoadBalancerMonitorRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorRequest) SetLoadBalancerId(v string) *DescribeServerLoadBalancerMonitorRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorRequest) SetStartTime(v string) *DescribeServerLoadBalancerMonitorRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeServerLoadBalancerMonitorResponseBody struct {
+	// Id of the request。
+	//
+	// example:
+	//
+	// AAE90880-4970-4D81-A534-A6C0F3631F74
+	RequestId                     *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerLoadBalancerMonitorData []*DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData `json:"ServerLoadBalancerMonitorData,omitempty" xml:"ServerLoadBalancerMonitorData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeServerLoadBalancerMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerLoadBalancerMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBody) SetRequestId(v string) *DescribeServerLoadBalancerMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBody) SetServerLoadBalancerMonitorData(v []*DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) *DescribeServerLoadBalancerMonitorResponseBody {
+	s.ServerLoadBalancerMonitorData = v
+	return s
+}
+
+type DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData struct {
+	// example:
+	//
+	// 30
+	Acc *int32 `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	// example:
+	//
+	// 2024-09-15 16:00:00
+	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// example:
+	//
+	// cn-wuxi-10
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// example:
+	//
+	// lb-5sc1s9zrui8lpb8u7cl4f****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// example:
+	//
+	// esk-edge-service-lb-a34****
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// example:
+	//
+	// elb.s2.medium
+	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	// example:
+	//
+	// 25
+	Reqs2xx *int32 `json:"Reqs2xx,omitempty" xml:"Reqs2xx,omitempty"`
+	// example:
+	//
+	// 0
+	Reqs3xx *int32 `json:"Reqs3xx,omitempty" xml:"Reqs3xx,omitempty"`
+	// example:
+	//
+	// 5
+	Reqs4xx *int32 `json:"Reqs4xx,omitempty" xml:"Reqs4xx,omitempty"`
+	// example:
+	//
+	// 0
+	Reqs5xx *int32 `json:"Reqs5xx,omitempty" xml:"Reqs5xx,omitempty"`
+	// example:
+	//
+	// 1404
+	RtAvg *int32 `json:"RtAvg,omitempty" xml:"RtAvg,omitempty"`
+	// example:
+	//
+	// 10.0****
+	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	// example:
+	//
+	// 3018
+	Vni *int32 `json:"Vni,omitempty" xml:"Vni,omitempty"`
+}
+
+func (s DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetAcc(v int32) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Acc = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetBizTime(v string) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.BizTime = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetEnsRegionId(v string) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetLoadBalancerId(v string) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetLoadBalancerName(v string) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.LoadBalancerName = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetLoadBalancerSpec(v string) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.LoadBalancerSpec = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetReqs2xx(v int32) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Reqs2xx = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetReqs3xx(v int32) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Reqs3xx = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetReqs4xx(v int32) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Reqs4xx = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetReqs5xx(v int32) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Reqs5xx = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetRtAvg(v int32) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.RtAvg = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetVip(v string) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Vip = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData) SetVni(v int32) *DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData {
+	s.Vni = &v
+	return s
+}
+
+type DescribeServerLoadBalancerMonitorResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeServerLoadBalancerMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeServerLoadBalancerMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerLoadBalancerMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponse) SetHeaders(v map[string]*string) *DescribeServerLoadBalancerMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponse) SetStatusCode(v int32) *DescribeServerLoadBalancerMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeServerLoadBalancerMonitorResponse) SetBody(v *DescribeServerLoadBalancerMonitorResponseBody) *DescribeServerLoadBalancerMonitorResponse {
 	s.Body = v
 	return s
 }
@@ -38176,7 +40926,7 @@ type DescribeSnatAttributeResponseBody struct {
 	//
 	// 101.10. XX.XX/24
 	DestCIDR *string `json:"DestCIDR,omitempty" xml:"DestCIDR,omitempty"`
-	// Timeout period.
+	// The timeout period. Unit: seconds.
 	//
 	// example:
 	//
@@ -38252,11 +41002,11 @@ type DescribeSnatAttributeResponseBody struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the NAT. Valid values:
+	// The type of the NAT.
 	//
-	// - Empty: symmetric NAT.
+	// 	- Empty: symmetric NAT.
 	//
-	// - FullCone: full cone NAT.
+	// 	- FullCone: full cone NAT.
 	//
 	// example:
 	//
@@ -38538,7 +41288,7 @@ type DescribeSnatTableEntriesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of SNAT entries.
+	// The details of the SNAT entries.
 	SnatTableEntries []*DescribeSnatTableEntriesResponseBodySnatTableEntries `json:"SnatTableEntries,omitempty" xml:"SnatTableEntries,omitempty" type:"Repeated"`
 	// The number of SNAT entries that are returned.
 	//
@@ -38582,6 +41332,7 @@ func (s *DescribeSnatTableEntriesResponseBody) SetTotalCount(v int32) *DescribeS
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the NAT gateway.
 	//
 	// example:
@@ -38654,6 +41405,11 @@ func (s DescribeSnatTableEntriesResponseBodySnatTableEntries) GoString() string 
 	return s.String()
 }
 
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetIdleTimeout(v int32) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.IdleTimeout = &v
+	return s
+}
+
 func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetNatGatewayId(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
 	s.NatGatewayId = &v
 	return s
@@ -38724,26 +41480,38 @@ func (s *DescribeSnatTableEntriesResponse) SetBody(v *DescribeSnatTableEntriesRe
 }
 
 type DescribeStorageGatewayRequest struct {
+	// The ID of the node.
+	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// sgw-****
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The type of the gateway. Set this parameter to **1**. **1*	- indicates iSCSI.
+	//
 	// example:
 	//
 	// 1
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
 	// example:
 	//
 	// n-***
@@ -38789,10 +41557,16 @@ func (s *DescribeStorageGatewayRequest) SetVpcId(v string) *DescribeStorageGatew
 }
 
 type DescribeStorageGatewayResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -38802,8 +41576,11 @@ type DescribeStorageGatewayResponseBody struct {
 	// example:
 	//
 	// 6666C5A5-75ED-422E-A022-7121FA18C968
-	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list information.
 	StorageGateways []*DescribeStorageGatewayResponseBodyStorageGateways `json:"StorageGateways,omitempty" xml:"StorageGateways,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 16
@@ -38844,42 +41621,70 @@ func (s *DescribeStorageGatewayResponseBody) SetTotalCount(v int32) *DescribeSto
 }
 
 type DescribeStorageGatewayResponseBodyStorageGateways struct {
+	// The internal CIDR block.
+	//
 	// example:
 	//
 	// 192.168.2.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the storage gateway was created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-05-14T03:07:47Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the storage gateway.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the node.
+	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The IP address of the service.
+	//
 	// example:
 	//
 	// *.*.*.*
 	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// The status of the storage gateway. Valid values:
+	//
+	// 	- creating
+	//
+	// 	- available
+	//
+	// 	- deleting
+	//
+	// 	- deleted
+	//
 	// example:
 	//
 	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the storage gateway.
+	//
 	// example:
 	//
 	// sgw-***
 	StorageGatewayId *string `json:"StorageGatewayId,omitempty" xml:"StorageGatewayId,omitempty"`
+	// The name of the storage gateway.
+	//
 	// example:
 	//
 	// testGateway
 	StorageGatewayName *string `json:"StorageGatewayName,omitempty" xml:"StorageGatewayName,omitempty"`
+	// The type of the storage gateway. Default value: 1, which indicates iSCSI.
+	//
 	// example:
 	//
 	// 1
 	StorageGatewayType *int32 `json:"StorageGatewayType,omitempty" xml:"StorageGatewayType,omitempty"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// n-***
@@ -38974,30 +41779,48 @@ func (s *DescribeStorageGatewayResponse) SetBody(v *DescribeStorageGatewayRespon
 }
 
 type DescribeStorageVolumeRequest struct {
+	// The ID of the node.
+	//
 	// example:
 	//
 	// cn-shenzhen-3
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// sgw-****
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// Specifies whether to enable the volume. Valid values:
+	//
+	// 	- **1*	- (default): enables the volume.
+	//
+	// 	- **0**: disables the volume.
+	//
 	// example:
 	//
 	// 1
 	IsEnable *int32 `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the storage medium.
+	//
 	// example:
 	//
 	// d-***
 	StorageId *string `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	// The ID of the volume.
+	//
 	// example:
 	//
 	// sv-***
@@ -39048,19 +41871,28 @@ func (s *DescribeStorageVolumeRequest) SetVolumeId(v string) *DescribeStorageVol
 }
 
 type DescribeStorageVolumeResponseBody struct {
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// AAE90880-4970-4D81-A534-A6C0F3631F74
-	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of returned results.
 	StorageVolumes []*DescribeStorageVolumeResponseBodyStorageVolumes `json:"StorageVolumes,omitempty" xml:"StorageVolumes,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 15
@@ -39101,50 +41933,90 @@ func (s *DescribeStorageVolumeResponseBody) SetTotalCount(v string) *DescribeSto
 }
 
 type DescribeStorageVolumeResponseBodyStorageVolumes struct {
+	// The authentication protocol. The value is set to **CHAP**.
+	//
 	// example:
 	//
 	// CHAP
 	AuthProtocol *string `json:"AuthProtocol,omitempty" xml:"AuthProtocol,omitempty"`
+	// The time when the volume was created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-03-14T09:35:32Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the volume.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the node.
+	//
 	// example:
 	//
 	// cn-shenzhen-3
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// Indicates whether authentication is enabled. Valid values:
+	//
+	// 	- **1**: Authentication is enabled.
+	//
+	// 	- **0*	- (default): Authentication is disabled.
+	//
 	// example:
 	//
 	// 0
 	IsAuth *int32 `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
+	// Indicates whether the volume is enabled. Valid values:
+	//
+	// 	- **1*	- (default): The volume is enabled.
+	//
+	// 	- **0**: The volume is disabled.
+	//
 	// example:
 	//
 	// 1
 	IsEnable *int32 `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+	// The status of the volume. Valid values:
+	//
+	// 	- creating
+	//
+	// 	- available
+	//
+	// 	- deleting
+	//
+	// 	- deleted
+	//
 	// example:
 	//
 	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the storage gateway.
+	//
 	// example:
 	//
 	// sgw-***
 	StorageGatewayId *string `json:"StorageGatewayId,omitempty" xml:"StorageGatewayId,omitempty"`
+	// The ID of the storage medium.
+	//
 	// example:
 	//
 	// d-***
 	StorageId *string `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	// The ID of the volume.
+	//
 	// example:
 	//
 	// sv-***
 	StorageVolumeId *string `json:"StorageVolumeId,omitempty" xml:"StorageVolumeId,omitempty"`
+	// The name of the volume.
+	//
 	// example:
 	//
 	// testVolumeName
 	StorageVolumeName *string `json:"StorageVolumeName,omitempty" xml:"StorageVolumeName,omitempty"`
+	// The destination of the volume.
+	//
 	// example:
 	//
 	// iqn.*.*.*:*
@@ -39929,6 +42801,81 @@ func (s *DetachDiskResponse) SetStatusCode(v int32) *DetachDiskResponse {
 }
 
 func (s *DetachDiskResponse) SetBody(v *DetachDiskResponseBody) *DetachDiskResponse {
+	s.Body = v
+	return s
+}
+
+type DetachNetworkInterfaceRequest struct {
+	// The ID of the ENI.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eni-58z57orgmt6d1****
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+}
+
+func (s DetachNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachNetworkInterfaceRequest) SetNetworkInterfaceId(v string) *DetachNetworkInterfaceRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+type DetachNetworkInterfaceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// BE1B8ECF-9507-4C78-B197-5DE9FED344AF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachNetworkInterfaceResponseBody) SetRequestId(v string) *DetachNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachNetworkInterfaceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachNetworkInterfaceResponse) SetHeaders(v map[string]*string) *DetachNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachNetworkInterfaceResponse) SetStatusCode(v int32) *DetachNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachNetworkInterfaceResponse) SetBody(v *DetachNetworkInterfaceResponseBody) *DetachNetworkInterfaceResponse {
 	s.Body = v
 	return s
 }
@@ -42948,9 +45895,7 @@ type ListTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The IDs of resources. Valid values of N: 1 to 50.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Valid values:
-	//
-	// 	- instance
+	// The type of the resource. Set the value to instance.
 	//
 	// This parameter is required.
 	//
@@ -43094,7 +46039,7 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// test_tag_key-2
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -43582,12 +46527,16 @@ func (s *ModifyForwardEntryResponse) SetBody(v *ModifyForwardEntryResponseBody) 
 }
 
 type ModifyHaVipAttributeRequest struct {
+	// The ID of the HAVIP that you want to modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// havip-52y28****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The name of the HAVIP. The name must be 1 to 128 characters in length and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// test
@@ -43613,6 +46562,8 @@ func (s *ModifyHaVipAttributeRequest) SetName(v string) *ModifyHaVipAttributeReq
 }
 
 type ModifyHaVipAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F3B261DD-3858-4D3C-877D-303ADF374600
@@ -44126,6 +47077,108 @@ func (s *ModifyInstanceAutoRenewAttributeResponse) SetBody(v *ModifyInstanceAuto
 	return s
 }
 
+type ModifyInstanceBootConfigurationRequest struct {
+	// example:
+	//
+	// legacy
+	BootSet *string `json:"BootSet,omitempty" xml:"BootSet,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxe
+	BootType *string `json:"BootType,omitempty" xml:"BootType,omitempty"`
+	// example:
+	//
+	// on
+	DiskSet *string `json:"DiskSet,omitempty" xml:"DiskSet,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-instance****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ModifyInstanceBootConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceBootConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceBootConfigurationRequest) SetBootSet(v string) *ModifyInstanceBootConfigurationRequest {
+	s.BootSet = &v
+	return s
+}
+
+func (s *ModifyInstanceBootConfigurationRequest) SetBootType(v string) *ModifyInstanceBootConfigurationRequest {
+	s.BootType = &v
+	return s
+}
+
+func (s *ModifyInstanceBootConfigurationRequest) SetDiskSet(v string) *ModifyInstanceBootConfigurationRequest {
+	s.DiskSet = &v
+	return s
+}
+
+func (s *ModifyInstanceBootConfigurationRequest) SetInstanceId(v string) *ModifyInstanceBootConfigurationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ModifyInstanceBootConfigurationResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 6666C5A5-75ED-422E-A022-7121FA18C968
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceBootConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceBootConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceBootConfigurationResponseBody) SetRequestId(v string) *ModifyInstanceBootConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceBootConfigurationResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceBootConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyInstanceBootConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceBootConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceBootConfigurationResponse) SetHeaders(v map[string]*string) *ModifyInstanceBootConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceBootConfigurationResponse) SetStatusCode(v int32) *ModifyInstanceBootConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceBootConfigurationResponse) SetBody(v *ModifyInstanceBootConfigurationResponseBody) *ModifyInstanceBootConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyInstanceChargeTypeRequest struct {
 	// Specifies whether to enable auto-payment when you change the billing method from pay-as-you-go to subscription. Valid values:
 	//
@@ -44610,6 +47663,103 @@ func (s *ModifyNetworkAttributeResponse) SetStatusCode(v int32) *ModifyNetworkAt
 }
 
 func (s *ModifyNetworkAttributeResponse) SetBody(v *ModifyNetworkAttributeResponseBody) *ModifyNetworkAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyNetworkInterfaceAttributeRequest struct {
+	// The description. The description must be 1 to 256 characters in length and cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the ENI.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eni-5f6533jbifugr5fo***
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The name of the ENI. The name must be 1 to 128 characters in length, The name cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// test-01
+	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
+}
+
+func (s ModifyNetworkInterfaceAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNetworkInterfaceAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNetworkInterfaceAttributeRequest) SetDescription(v string) *ModifyNetworkInterfaceAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyNetworkInterfaceAttributeRequest) SetNetworkInterfaceId(v string) *ModifyNetworkInterfaceAttributeRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *ModifyNetworkInterfaceAttributeRequest) SetNetworkInterfaceName(v string) *ModifyNetworkInterfaceAttributeRequest {
+	s.NetworkInterfaceName = &v
+	return s
+}
+
+type ModifyNetworkInterfaceAttributeResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyNetworkInterfaceAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNetworkInterfaceAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNetworkInterfaceAttributeResponseBody) SetRequestId(v string) *ModifyNetworkInterfaceAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyNetworkInterfaceAttributeResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNetworkInterfaceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyNetworkInterfaceAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNetworkInterfaceAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNetworkInterfaceAttributeResponse) SetHeaders(v map[string]*string) *ModifyNetworkInterfaceAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyNetworkInterfaceAttributeResponse) SetStatusCode(v int32) *ModifyNetworkInterfaceAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyNetworkInterfaceAttributeResponse) SetBody(v *ModifyNetworkInterfaceAttributeResponseBody) *ModifyNetworkInterfaceAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -47194,7 +50344,7 @@ type RemoveBackendServersRequestBackendServers struct {
 	//
 	// 192.XXX.X.X
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The backend port that is used by the ELB instance.
+	// The backend port that is used by the Edge Load Balancer (ELB) instance.
 	//
 	// example:
 	//
@@ -47208,11 +50358,11 @@ type RemoveBackendServersRequestBackendServers struct {
 	//
 	// i-5uf68ts0fqexe1a4n****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of the backend server. Valid values:
+	// The type of backend server. Valid values:
 	//
 	// 	- **ens**: an Edge Node Service (ENS) instance.
 	//
-	// 	- **eni**: an elastic network interface (ENI).
+	// 	- **eni**: an Elastic Network Interface (ENI).
 	//
 	// example:
 	//
@@ -47933,11 +51083,11 @@ func (s *RemoveVSwitchesFromEpnInstanceResponse) SetBody(v *RemoveVSwitchesFromE
 }
 
 type RenewARMServerInstanceRequest struct {
-	// Specifies whether to enable auto-renewal for the subscription. Valid values:
+	// Specifies whether to enable auto-renewal for the premium bandwidth plan. Valid values:
 	//
-	// 	- true
+	// 	- **true**.
 	//
-	// 	- false (default)
+	// 	- **false*	- (default).
 	//
 	// example:
 	//
@@ -49657,7 +52807,7 @@ type RunInstancesRequest struct {
 	//
 	// 1
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The type of the IP address. Valid values:
+	// The type of the IP address. Examples:
 	//
 	// 	- **ipv4*	- (default).
 	//
@@ -50299,7 +53449,7 @@ type RunInstancesShrinkRequest struct {
 	//
 	// 1
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The type of the IP address. Valid values:
+	// The type of the IP address. Examples:
 	//
 	// 	- **ipv4*	- (default).
 	//
@@ -53581,15 +56731,11 @@ func (s *StopSnatIpForSnatEntryResponse) SetBody(v *StopSnatIpForSnatEntryRespon
 }
 
 type TagResourcesRequest struct {
-	// The IDs of the resources. You can add up to 50 resource IDs in a call.
+	// The resource IDs. You can add up to 50 resource IDs in a call.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of resource to query.
-	//
-	// Valid values:
-	//
-	// 	- instance
+	// The type of resource. Set the value to instance.
 	//
 	// This parameter is required.
 	//
@@ -53664,7 +56810,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -53874,12 +57020,16 @@ func (s *UnassignPrivateIpAddressesResponse) SetBody(v *UnassignPrivateIpAddress
 }
 
 type UnassociateHaVipRequest struct {
+	// The ID of the HAVIP that you want to disassociate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// havip-5p14t****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The ID of the ENS instance or ENI that you want to disassociate from the HAVIP.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53907,6 +57057,8 @@ func (s *UnassociateHaVipRequest) SetInstanceId(v string) *UnassociateHaVipReque
 }
 
 type UnassociateHaVipResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
@@ -54336,11 +57488,9 @@ func (s *UnloadRegionSDGResponse) SetBody(v *UnloadRegionSDGResponseBody) *Unloa
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the resource. This parameter takes effect only if you do not specify TagKey.N. Valid values:
 	//
-	// 	- true
+	// 	- **true**
 	//
-	// 	- false
-	//
-	// Default value: false.
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
@@ -54350,11 +57500,7 @@ type UntagResourcesRequest struct {
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type.
-	//
-	// Valid values:
-	//
-	// 	- instance
+	// The type of the resource.
 	//
 	// This parameter is required.
 	//
@@ -54395,7 +57541,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -55684,6 +58830,98 @@ func (client *Client) AttachEnsInstances(request *AttachEnsInstancesRequest) (_r
 
 // Summary:
 //
+// Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
+//
+// Description:
+//
+// When you call this operation, take note of the following limits:
+//
+// 	- The ENI must be in the Available state.
+//
+// 	- An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+//
+// 	- The instance must be in the Stopped state.
+//
+// 	- A maximum of 10 ENIs can be attached to an instance.
+//
+// 	- This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+//
+// @param request - AttachNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachNetworkInterfaceResponse
+func (client *Client) AttachNetworkInterfaceWithOptions(request *AttachNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *AttachNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachNetworkInterface"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
+//
+// Description:
+//
+// When you call this operation, take note of the following limits:
+//
+// 	- The ENI must be in the Available state.
+//
+// 	- An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+//
+// 	- The instance must be in the Stopped state.
+//
+// 	- A maximum of 10 ENIs can be attached to an instance.
+//
+// 	- This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+//
+// @param request - AttachNetworkInterfaceRequest
+//
+// @return AttachNetworkInterfaceResponse
+func (client *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) (_result *AttachNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachNetworkInterfaceResponse{}
+	_body, _err := client.AttachNetworkInterfaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an inbound security group rule. This operation allows or denies the inbound traffic from other devices to instances in the security group.
 //
 // @param request - AuthorizeSecurityGroupRequest
@@ -56324,6 +59562,70 @@ func (client *Client) CreateClassicNetwork(request *CreateClassicNetworkRequest)
 
 // Summary:
 //
+// 创建边缘容器集群
+//
+// @param request - CreateClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClusterResponse
+func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, runtime *util.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterVersion)) {
+		query["ClusterVersion"] = request.ClusterVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCluster"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建边缘容器集群
+//
+// @param request - CreateClusterRequest
+//
+// @return CreateClusterResponse
+func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *CreateClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateClusterResponse{}
+	_body, _err := client.CreateClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a pay-as-you-go or subscription data disk.
 //
 // @param request - CreateDiskRequest
@@ -56367,6 +59669,10 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
 		query["SnapshotId"] = request.SnapshotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -56457,6 +59763,10 @@ func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -58103,6 +61413,10 @@ func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayReque
 		query["NetworkId"] = request.NetworkId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
 	}
@@ -58183,6 +61497,10 @@ func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkName)) {
 		query["NetworkName"] = request.NetworkName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -58619,6 +61937,10 @@ func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
 		query["NatGatewayId"] = request.NatGatewayId
 	}
@@ -58879,6 +62201,10 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
 		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchName)) {
@@ -61406,16 +64732,22 @@ func (client *Client) DescribeCloudDiskAvailableResourceInfo() (_result *Describ
 //
 // Queries the specifications of resources that you can purchase when you create an instance.
 //
-// @param request - DescribeCloudDiskTypesRequest
+// @param tmpReq - DescribeCloudDiskTypesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudDiskTypesResponse
-func (client *Client) DescribeCloudDiskTypesWithOptions(request *DescribeCloudDiskTypesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudDiskTypesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeCloudDiskTypesWithOptions(tmpReq *DescribeCloudDiskTypesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudDiskTypesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribeCloudDiskTypesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EnsRegionIds)) {
+		request.EnsRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnsRegionIds, tea.String("EnsRegionIds"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -61451,6 +64783,126 @@ func (client *Client) DescribeCloudDiskTypes(request *DescribeCloudDiskTypesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudDiskTypesResponse{}
 	_body, _err := client.DescribeCloudDiskTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询边缘容器集群
+//
+// @param request - DescribeClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterResponse
+func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCluster"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询边缘容器集群
+//
+// @param request - DescribeClusterRequest
+//
+// @return DescribeClusterResponse
+func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result *DescribeClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClusterResponse{}
+	_body, _err := client.DescribeClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询边缘容器集群证书
+//
+// @param request - DescribeClusterKubeConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterKubeConfigResponse
+func (client *Client) DescribeClusterKubeConfigWithOptions(request *DescribeClusterKubeConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterKubeConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterKubeConfig"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClusterKubeConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询边缘容器集群证书
+//
+// @param request - DescribeClusterKubeConfigRequest
+//
+// @return DescribeClusterKubeConfigResponse
+func (client *Client) DescribeClusterKubeConfig(request *DescribeClusterKubeConfigRequest) (_result *DescribeClusterKubeConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClusterKubeConfigResponse{}
+	_body, _err := client.DescribeClusterKubeConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -61809,6 +65261,62 @@ func (client *Client) DescribeDeviceService(request *DescribeDeviceServiceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeviceServiceResponse{}
 	_body, _err := client.DescribeDeviceServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the disk IOPS monitoring data.
+//
+// @param request - DescribeDiskIopsListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiskIopsListResponse
+func (client *Client) DescribeDiskIopsListWithOptions(request *DescribeDiskIopsListRequest, runtime *util.RuntimeOptions) (_result *DescribeDiskIopsListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiskIopsList"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiskIopsListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the disk IOPS monitoring data.
+//
+// @param request - DescribeDiskIopsListRequest
+//
+// @return DescribeDiskIopsListResponse
+func (client *Client) DescribeDiskIopsList(request *DescribeDiskIopsListRequest) (_result *DescribeDiskIopsListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiskIopsListResponse{}
+	_body, _err := client.DescribeDiskIopsListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -63944,6 +67452,62 @@ func (client *Client) DescribeInstanceAutoRenewAttribute(request *DescribeInstan
 
 // Summary:
 //
+// 查询实例5分钟粒度带宽明细
+//
+// @param request - DescribeInstanceBandwidthDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceBandwidthDetailResponse
+func (client *Client) DescribeInstanceBandwidthDetailWithOptions(request *DescribeInstanceBandwidthDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceBandwidthDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceBandwidthDetail"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceBandwidthDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例5分钟粒度带宽明细
+//
+// @param request - DescribeInstanceBandwidthDetailRequest
+//
+// @return DescribeInstanceBandwidthDetailResponse
+func (client *Client) DescribeInstanceBandwidthDetail(request *DescribeInstanceBandwidthDetailRequest) (_result *DescribeInstanceBandwidthDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceBandwidthDetailResponse{}
+	_body, _err := client.DescribeInstanceBandwidthDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the vCPU and memory usage of an instance.
 //
 // @param request - DescribeInstanceMonitorDataRequest
@@ -64611,6 +68175,130 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *Descri
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancerHTTPSListenerAttributeResponse{}
 	_body, _err := client.DescribeLoadBalancerHTTPSListenerAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// LB监听级监控数据查询
+//
+// @param request - DescribeLoadBalancerListenMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLoadBalancerListenMonitorResponse
+func (client *Client) DescribeLoadBalancerListenMonitorWithOptions(request *DescribeLoadBalancerListenMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerListenMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLoadBalancerListenMonitor"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLoadBalancerListenMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// LB监听级监控数据查询
+//
+// @param request - DescribeLoadBalancerListenMonitorRequest
+//
+// @return DescribeLoadBalancerListenMonitorResponse
+func (client *Client) DescribeLoadBalancerListenMonitor(request *DescribeLoadBalancerListenMonitorRequest) (_result *DescribeLoadBalancerListenMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerListenMonitorResponse{}
+	_body, _err := client.DescribeLoadBalancerListenMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用DescribeLoadBalancerListeners查询负载均衡实例监听列表。
+//
+// @param request - DescribeLoadBalancerListenersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLoadBalancerListenersResponse
+func (client *Client) DescribeLoadBalancerListenersWithOptions(request *DescribeLoadBalancerListenersRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerListenersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLoadBalancerListeners"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLoadBalancerListenersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用DescribeLoadBalancerListeners查询负载均衡实例监听列表。
+//
+// @param request - DescribeLoadBalancerListenersRequest
+//
+// @return DescribeLoadBalancerListenersResponse
+func (client *Client) DescribeLoadBalancerListeners(request *DescribeLoadBalancerListenersRequest) (_result *DescribeLoadBalancerListenersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerListenersResponse{}
+	_body, _err := client.DescribeLoadBalancerListenersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -66105,6 +69793,86 @@ func (client *Client) DescribeSDGs(request *DescribeSDGsRequest) (_result *Descr
 
 // Summary:
 //
+// Queries created secondary public IP addresses.
+//
+// @param request - DescribeSecondaryPublicIpAddressesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecondaryPublicIpAddressesResponse
+func (client *Client) DescribeSecondaryPublicIpAddressesWithOptions(request *DescribeSecondaryPublicIpAddressesRequest, runtime *util.RuntimeOptions) (_result *DescribeSecondaryPublicIpAddressesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryPublicIpAddress)) {
+		query["SecondaryPublicIpAddress"] = request.SecondaryPublicIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryPublicIpId)) {
+		query["SecondaryPublicIpId"] = request.SecondaryPublicIpId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecondaryPublicIpAddresses"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSecondaryPublicIpAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries created secondary public IP addresses.
+//
+// @param request - DescribeSecondaryPublicIpAddressesRequest
+//
+// @return DescribeSecondaryPublicIpAddressesResponse
+func (client *Client) DescribeSecondaryPublicIpAddresses(request *DescribeSecondaryPublicIpAddressesRequest) (_result *DescribeSecondaryPublicIpAddressesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSecondaryPublicIpAddressesResponse{}
+	_body, _err := client.DescribeSecondaryPublicIpAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the rules of a security group.
 //
 // @param request - DescribeSecurityGroupAttributeRequest
@@ -66381,6 +70149,118 @@ func (client *Client) DescribeServcieSchedule(request *DescribeServcieScheduleRe
 
 // Summary:
 //
+// ESLB实例监听级监控数据
+//
+// @param request - DescribeServerLoadBalancerListenMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServerLoadBalancerListenMonitorResponse
+func (client *Client) DescribeServerLoadBalancerListenMonitorWithOptions(request *DescribeServerLoadBalancerListenMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeServerLoadBalancerListenMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServerLoadBalancerListenMonitor"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServerLoadBalancerListenMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ESLB实例监听级监控数据
+//
+// @param request - DescribeServerLoadBalancerListenMonitorRequest
+//
+// @return DescribeServerLoadBalancerListenMonitorResponse
+func (client *Client) DescribeServerLoadBalancerListenMonitor(request *DescribeServerLoadBalancerListenMonitorRequest) (_result *DescribeServerLoadBalancerListenMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeServerLoadBalancerListenMonitorResponse{}
+	_body, _err := client.DescribeServerLoadBalancerListenMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ESLB实例请求监控数据
+//
+// @param request - DescribeServerLoadBalancerMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServerLoadBalancerMonitorResponse
+func (client *Client) DescribeServerLoadBalancerMonitorWithOptions(request *DescribeServerLoadBalancerMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeServerLoadBalancerMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServerLoadBalancerMonitor"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServerLoadBalancerMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ESLB实例请求监控数据
+//
+// @param request - DescribeServerLoadBalancerMonitorRequest
+//
+// @return DescribeServerLoadBalancerMonitorResponse
+func (client *Client) DescribeServerLoadBalancerMonitor(request *DescribeServerLoadBalancerMonitorRequest) (_result *DescribeServerLoadBalancerMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeServerLoadBalancerMonitorResponse{}
+	_body, _err := client.DescribeServerLoadBalancerMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about snapshots.
 //
 // @param request - DescribeSnapshotsRequest
@@ -66577,7 +70457,7 @@ func (client *Client) DescribeSnatTableEntries(request *DescribeSnatTableEntries
 
 // Summary:
 //
-// 查询存储网关
+// Queries storage gateways.
 //
 // @param request - DescribeStorageGatewayRequest
 //
@@ -66639,7 +70519,7 @@ func (client *Client) DescribeStorageGatewayWithOptions(request *DescribeStorage
 
 // Summary:
 //
-// 查询存储网关
+// Queries storage gateways.
 //
 // @param request - DescribeStorageGatewayRequest
 //
@@ -66657,7 +70537,7 @@ func (client *Client) DescribeStorageGateway(request *DescribeStorageGatewayRequ
 
 // Summary:
 //
-// 查询存储卷
+// Queries volumes.
 //
 // @param request - DescribeStorageVolumeRequest
 //
@@ -66723,7 +70603,7 @@ func (client *Client) DescribeStorageVolumeWithOptions(request *DescribeStorageV
 
 // Summary:
 //
-// 查询存储卷
+// Queries volumes.
 //
 // @param request - DescribeStorageVolumeRequest
 //
@@ -66960,6 +70840,90 @@ func (client *Client) DetachDisk(request *DetachDiskRequest) (_result *DetachDis
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachDiskResponse{}
 	_body, _err := client.DetachDiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Detach an elastic network interface (ENI) from an instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- You cannot detach a primary ENI from an instance.
+//
+// 	- The ENI must be in the InUse state.
+//
+// 	- The instances are in the Stopped state.
+//
+// 	- This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+//
+// @param request - DetachNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachNetworkInterfaceResponse
+func (client *Client) DetachNetworkInterfaceWithOptions(request *DetachNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *DetachNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachNetworkInterface"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Detach an elastic network interface (ENI) from an instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- You cannot detach a primary ENI from an instance.
+//
+// 	- The ENI must be in the InUse state.
+//
+// 	- The instances are in the Stopped state.
+//
+// 	- This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+//
+// @param request - DetachNetworkInterfaceRequest
+//
+// @return DetachNetworkInterfaceResponse
+func (client *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) (_result *DetachNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachNetworkInterfaceResponse{}
+	_body, _err := client.DetachNetworkInterfaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -67253,7 +71217,11 @@ func (client *Client) GetBucketAclWithOptions(request *GetBucketAclRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -67262,7 +71230,7 @@ func (client *Client) GetBucketAclWithOptions(request *GetBucketAclRequest, runt
 		Version:     tea.String("2017-11-10"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -68545,7 +72513,7 @@ func (client *Client) ModifyForwardEntry(request *ModifyForwardEntryRequest) (_r
 
 // Summary:
 //
-// 调用ModifyHaVipAttribute接口更新高可用VIP的名称和描述。
+// Modifies the name of a high-availability virtual IP address (HAVIP).
 //
 // @param request - ModifyHaVipAttributeRequest
 //
@@ -68591,7 +72559,7 @@ func (client *Client) ModifyHaVipAttributeWithOptions(request *ModifyHaVipAttrib
 
 // Summary:
 //
-// 调用ModifyHaVipAttribute接口更新高可用VIP的名称和描述。
+// Modifies the name of a high-availability virtual IP address (HAVIP).
 //
 // @param request - ModifyHaVipAttributeRequest
 //
@@ -68909,6 +72877,62 @@ func (client *Client) ModifyInstanceAutoRenewAttribute(request *ModifyInstanceAu
 
 // Summary:
 //
+// 修改启动配置，只支持异构实例(PCFarm裸金属)。
+//
+// @param request - ModifyInstanceBootConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceBootConfigurationResponse
+func (client *Client) ModifyInstanceBootConfigurationWithOptions(request *ModifyInstanceBootConfigurationRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceBootConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceBootConfiguration"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceBootConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改启动配置，只支持异构实例(PCFarm裸金属)。
+//
+// @param request - ModifyInstanceBootConfigurationRequest
+//
+// @return ModifyInstanceBootConfigurationResponse
+func (client *Client) ModifyInstanceBootConfiguration(request *ModifyInstanceBootConfigurationRequest) (_result *ModifyInstanceBootConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceBootConfigurationResponse{}
+	_body, _err := client.ModifyInstanceBootConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the billing method of Edge Node Service (ENS) instances. You can switch between the pay-as-you-go and subscription billing methods for instances. You can also change the billing method for disks that you created with pay-as-you-go instances to subscription.
 //
 // Description:
@@ -69158,6 +73182,74 @@ func (client *Client) ModifyNetworkAttribute(request *ModifyNetworkAttributeRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyNetworkAttributeResponse{}
 	_body, _err := client.ModifyNetworkAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the attributes of an elastic network interface (ENI), such as its name and description.
+//
+// @param request - ModifyNetworkInterfaceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyNetworkInterfaceAttributeResponse
+func (client *Client) ModifyNetworkInterfaceAttributeWithOptions(request *ModifyNetworkInterfaceAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyNetworkInterfaceAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceName)) {
+		query["NetworkInterfaceName"] = request.NetworkInterfaceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyNetworkInterfaceAttribute"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyNetworkInterfaceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the attributes of an elastic network interface (ENI), such as its name and description.
+//
+// @param request - ModifyNetworkInterfaceAttributeRequest
+//
+// @return ModifyNetworkInterfaceAttributeResponse
+func (client *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterfaceAttributeRequest) (_result *ModifyNetworkInterfaceAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyNetworkInterfaceAttributeResponse{}
+	_body, _err := client.ModifyNetworkInterfaceAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -70833,7 +74925,7 @@ func (client *Client) RemoveBackendServers(request *RemoveBackendServersRequest)
 
 // Summary:
 //
-// Removes a deployed shared data group (SDG) on compute instances.
+// Removes a shared data group (SDG) that is attached to the compute instance.
 //
 // @param tmpReq - RemoveInstanceSDGRequest
 //
@@ -70881,7 +74973,7 @@ func (client *Client) RemoveInstanceSDGWithOptions(tmpReq *RemoveInstanceSDGRequ
 
 // Summary:
 //
-// Removes a deployed shared data group (SDG) on compute instances.
+// Removes a shared data group (SDG) that is attached to the compute instance.
 //
 // @param request - RemoveInstanceSDGRequest
 //
@@ -71979,7 +76071,7 @@ func (client *Client) RollbackApplication(request *RollbackApplicationRequest) (
 
 // Summary:
 //
-// Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+// Purchases instances.
 //
 // @param tmpReq - RunInstancesRequest
 //
@@ -72175,7 +76267,7 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 
 // Summary:
 //
-// Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+// Purchases instances.
 //
 // @param request - RunInstancesRequest
 //
@@ -73919,7 +78011,7 @@ func (client *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddre
 
 // Summary:
 //
-// 调用UnassociateHaVip接口将高可用VIP从云产品实例上解绑。
+// Disassociates a high-availability virtual IP address (HAVIP) from an Edge Node Service (ENS) instance or Elastic Network Interface (ENI).
 //
 // @param request - UnassociateHaVipRequest
 //
@@ -73965,7 +78057,7 @@ func (client *Client) UnassociateHaVipWithOptions(request *UnassociateHaVipReque
 
 // Summary:
 //
-// 调用UnassociateHaVip接口将高可用VIP从云产品实例上解绑。
+// Disassociates a high-availability virtual IP address (HAVIP) from an Edge Node Service (ENS) instance or Elastic Network Interface (ENI).
 //
 // @param request - UnassociateHaVipRequest
 //
