@@ -931,21 +931,21 @@ type CreateAccountRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The permissions that are granted to the account. Valid values:
 	//
-	// 	- **ReadWrite**: read and write permissions
+	// 	- **ReadWrite**: read and write permissions.
 	//
-	// 	- **ReadOnly**: read-only permissions
+	// 	- **ReadOnly**: read-only permissions.
 	//
-	// 	- **DMLOnly**: the permissions to execute only DML statements
+	// 	- **DMLOnly**: the permissions to execute only DML statements.
 	//
-	// 	- **DDLOnly**: the permissions to execute only DDL statements
+	// 	- **DDLOnly**: the permissions to execute only DDL statements.
 	//
-	// 	- **ReadIndex**: the read and index permissions
+	// 	- **ReadIndex**: the read-only and index permissions.
 	//
 	// >
 	//
-	// 	- The `AccountPrivilege` parameter is valid only after you specify the `DBName` parameter.
+	// 	- `AccountPrivilege` is valid only after you specify `DBName`.
 	//
-	// 	- If multiple database names are specified by the `DBName` parameter, you must grant permissions on the databases. Separate multiple permissions with commas (,). For example, if you want to grant the account the read and write permissions on DB1 and the read-only permissions on DB2, set `DBName` to `DB1,DB2`, and set `AccountPrivilege` to `ReadWrite,ReadOnly`.
+	// 	- If multiple database names are specified by the `DBName` parameter, you must grant permissions on the databases. Separate multiple permissions with commas (,), and make sure that the length of the value of `AccountPrivilege` does not exceed 900. For example, if you want to grant the account the read and write permissions on DB1 and the read-only permissions on DB2, set `DBName` to `DB1,DB2` and set `AccountPrivilege` to `ReadWrite,ReadOnly`.
 	//
 	// 	- This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
 	//
@@ -987,14 +987,23 @@ type CreateAccountRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database that can be accessed by the account. To enter multiple database names, separate the names with commas (,).
 	//
-	// > This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
+	// >  This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
 	//
 	// example:
 	//
 	// testdb
-	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBName       *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to grant the specified account required permissions on all existing databases in the current cluster and databases that will be further created for the current cluster. Valid values:
+	//
+	// 	- **0 or unspecified**: does not grant required permissions.
+	//
+	// 	- **1**: grants required permissions.
+	//
+	// example:
+	//
+	// 0
 	PrivForAllDB         *string `json:"PrivForAllDB,omitempty" xml:"PrivForAllDB,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1124,6 +1133,233 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 	return s
 }
 
+type CreateActivationCodeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2233****445566
+	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	// example:
+	//
+	// testCode
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12:34:56:78:98:00
+	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testName
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	SystemIdentifier *string `json:"SystemIdentifier,omitempty" xml:"SystemIdentifier,omitempty"`
+}
+
+func (s CreateActivationCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateActivationCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateActivationCodeRequest) SetAliyunOrderId(v string) *CreateActivationCodeRequest {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *CreateActivationCodeRequest) SetDescription(v string) *CreateActivationCodeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateActivationCodeRequest) SetMacAddress(v string) *CreateActivationCodeRequest {
+	s.MacAddress = &v
+	return s
+}
+
+func (s *CreateActivationCodeRequest) SetName(v string) *CreateActivationCodeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateActivationCodeRequest) SetOwnerAccount(v string) *CreateActivationCodeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateActivationCodeRequest) SetOwnerId(v int64) *CreateActivationCodeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateActivationCodeRequest) SetResourceOwnerAccount(v string) *CreateActivationCodeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateActivationCodeRequest) SetResourceOwnerId(v int64) *CreateActivationCodeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateActivationCodeRequest) SetSystemIdentifier(v string) *CreateActivationCodeRequest {
+	s.SystemIdentifier = &v
+	return s
+}
+
+type CreateActivationCodeResponseBody struct {
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
+	// example:
+	//
+	// AAEAA******AAA=
+	CertContentB64 *string `json:"CertContentB64,omitempty" xml:"CertContentB64,omitempty"`
+	// example:
+	//
+	// testCode
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2054-10-09 16:46:20
+	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 123
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 12:34:56:78:98:00
+	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	// example:
+	//
+	// testName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4CE6DF97-AEA4-484F-906F-C407EE******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	SystemIdentifier *string `json:"SystemIdentifier,omitempty" xml:"SystemIdentifier,omitempty"`
+}
+
+func (s CreateActivationCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateActivationCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateActivationCodeResponseBody) SetActivateAt(v string) *CreateActivationCodeResponseBody {
+	s.ActivateAt = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetCertContentB64(v string) *CreateActivationCodeResponseBody {
+	s.CertContentB64 = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetDescription(v string) *CreateActivationCodeResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetExpireAt(v string) *CreateActivationCodeResponseBody {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetGmtCreated(v string) *CreateActivationCodeResponseBody {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetGmtModified(v string) *CreateActivationCodeResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetId(v int32) *CreateActivationCodeResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetMacAddress(v string) *CreateActivationCodeResponseBody {
+	s.MacAddress = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetName(v string) *CreateActivationCodeResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetRequestId(v string) *CreateActivationCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponseBody) SetSystemIdentifier(v string) *CreateActivationCodeResponseBody {
+	s.SystemIdentifier = &v
+	return s
+}
+
+type CreateActivationCodeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateActivationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateActivationCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateActivationCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateActivationCodeResponse) SetHeaders(v map[string]*string) *CreateActivationCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateActivationCodeResponse) SetStatusCode(v int32) *CreateActivationCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateActivationCodeResponse) SetBody(v *CreateActivationCodeResponseBody) *CreateActivationCodeResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBackupRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
 	//
@@ -1246,14 +1482,20 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 }
 
 type CreateColdStorageInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the cluster. The description cannot exceed 256 characters in length.
+	//
 	// example:
 	//
 	// xxxxxxxxx
 	ColdStorageInstanceDescription *string `json:"ColdStorageInstanceDescription,omitempty" xml:"ColdStorageInstanceDescription,omitempty"`
+	// The cluster ID. > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters within your account, such as cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1262,6 +1504,8 @@ type CreateColdStorageInstanceRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-************
@@ -1319,10 +1563,14 @@ func (s *CreateColdStorageInstanceRequest) SetResourceOwnerId(v int64) *CreateCo
 }
 
 type CreateColdStorageInstanceResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pcs_2zeth2gf4i83e578t
 	ColdStorageInstanceId *string `json:"ColdStorageInstanceId,omitempty" xml:"ColdStorageInstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F6EBB4ED-D12F-5F49-824C-9DD9C0EC4CF2
@@ -1377,195 +1625,215 @@ func (s *CreateColdStorageInstanceResponse) SetBody(v *CreateColdStorageInstance
 }
 
 type CreateDBClusterRequest struct {
-	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values:
+	// Whether to enable idle pause. Values:
 	//
-	// 	- **true**
+	// - **true**: Enabled
 	//
-	// 	- **false**
+	// - **false**: Disabled (default)
 	//
-	// > This parameter is valid only for serverless clusters.
+	// > Only supported by Serverless clusters.
 	//
 	// example:
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
-	// The CPU architecture. Valid values:
+	// CPU architecture. Available values include:
 	//
-	// 	- X86
+	// - X86
 	//
-	// 	- ARM
+	// - ARM
 	//
 	// example:
 	//
 	// X86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Specifies whether to enable automatic renewal. Valid values:
+	// Whether to enable auto-renewal, with available values as follows:
 	//
-	// 	- **true**
+	// - **true**: Auto-renew.
 	//
-	// 	- **false**
+	// - **false**: Do not auto-renew.
 	//
-	// Default value: **false**.
+	// The default is **false**.
 	//
-	// > This parameter is valid only when the **PayType*	- parameter is set to **Prepaid**.
+	// > This parameter takes effect only when **PayType*	- is set to **Prepaid**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The retention policy for the backup sets when you delete the cluster. Valid values:
+	// Backup retention policy upon cluster deletion, with valid values as follows:
 	//
-	// 	- **ALL**: permanently retains all backups.
+	// 	- **ALL**: Permanently retain all backups.
 	//
-	// 	- **LATEST**: permanently retains the last backup. A backup is automatically created before you delete the cluster.
+	// 	- **LATEST**: Permanently retain the latest backup (automatically backed up before deletion).
 	//
-	// 	- **NONE**: No backup sets are retained after the cluster is deleted.
+	// 	- **NONE**: Do not retain backup sets upon cluster deletion.
 	//
-	// The default value is **NONE*	- after you create a cluster.
+	// By default, the value is set to **NONE**, indicating no backup sets are retained upon cluster deletion.
 	//
-	// >
+	// > This parameter applies only when **DBType*	- is **MySQL**.
 	//
-	// 	- This parameter is valid only when the **DBType*	- parameter is set to **MySQL**.
-	//
-	// 	- This parameter is invalid for serverless clusters.
+	// > Serverless clusters do not support this parameter.
 	//
 	// example:
 	//
 	// NONE
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	// Used to ensure idempotency of the request. Generated by the client, ensuring uniqueness across different requests, case-sensitive, and not exceeding 64 ASCII characters.
 	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The point in time when you want to clone data. Valid values:
+	// The point in time to clone data, with the following options:
 	//
-	// 	- **LATEST**: The data of the latest point in time is cloned.
+	// - **LATEST**: Data from the latest time point.
 	//
-	// 	- **BackupID**: You can specify the ID of a backup set. In this case, data is cloned based on the specified backup set.
+	// - **BackupID**: Historical backup set ID, please enter the specific backup set ID.
 	//
-	// 	- **Timestamp**: You can specify a point in time in the past in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// - **Timestamp**: Historical time point, please enter the specific time in the format `YYYY-MM-DDThh:mm:ssZ` (UTC time).
 	//
-	// Default value: **LATEST**.
+	// The default value is **LATEST**.
 	//
-	// > If the **CreationOption*	- parameter is set to **CloneFromRDS**, the value of this parameter must be **LATEST**.
+	// > If **CreationOption*	- is **CloneFromRDS**, this parameter can only be set to **LATEST**.
 	//
 	// example:
 	//
 	// LATEST
 	CloneDataPoint *string `json:"CloneDataPoint,omitempty" xml:"CloneDataPoint,omitempty"`
-	// The network type of the cluster. Only virtual private clouds (VPCs) are supported. Set the value to **VPC**.
+	// Cluster network type, currently only VPC is supported, with a fixed value of **VPC**.
 	//
 	// example:
 	//
 	// VPC
 	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	// The edition of the cluster. Default value: Normal. Valid values:
+	// Product series, with valid values as follows:
 	//
-	// 	- **Normal**: Cluster Edition
+	// 	- **Normal**: Cluster Edition (default)
 	//
-	// 	- **Basic**: Single Node Edition
+	// 	- **Basic**: Single-node
 	//
-	// 	- **ArchiveNormal**: X-Engine Edition
+	// 	- **ArchiveNormal**: High Compression Engine (X-Engine)
 	//
 	// 	- **NormalMultimaster**: Multi-master Cluster Edition
 	//
-	// >
+	// 	- **SENormal**: Standard Edition
 	//
-	// 	- Only when the **DBType*	- parameter is set to **MySQL*	- and **the DBVersion*	- parameter is set to **5.6**, **5.7**, or **8.0**, you can set this parameter to **Basic**.
+	// > 	- **MySQL*	- **5.6**, **5.7**, **8.0**, **PostgreSQL*	- **14**, and **Oracle Syntax Compatible 2.0*	- support **Basic**.
 	//
-	// 	- Only when the **DBType*	- parameter is set to **MySQL*	- and the **DBVersion*	- parameter is set to **8.0**, you can set this parameter to **ArchiveNormal*	- or **NormalMultimaster**.
+	// > 	- **MySQL*	- **8.0*	- supports **ArchiveNormal*	- and **NormalMultimaster**.
 	//
-	// For more information, see [Product editions](https://help.aliyun.com/document_detail/183258.html).
+	// > 	- **MySQL*	- **5.6**, **5.7**, **8.0**, and **PostgreSQL*	- **14*	- support **SENormal**.
+	//
+	// For more information about product series, see [Product Series](https://help.aliyun.com/document_detail/183258.html).
 	//
 	// example:
 	//
 	// Normal
 	CreationCategory *string `json:"CreationCategory,omitempty" xml:"CreationCategory,omitempty"`
-	// The method that is used to create a cluster. Valid values:
+	// Creation method, with the following values supported:
 	//
-	// 	- **Normal**: creates a PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
+	// 	- **Normal**: Creates a brand new PolarDB cluster. For console operations, refer to the following documents:
 	//
-	//     	- [Create a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/58769.html)
+	//     	- [Create a PolarDB MySQL Edition Database Cluster](https://help.aliyun.com/document_detail/58769.html)
 	//
-	//     	- [Create a PolarDB for PostgreSQL cluster](https://help.aliyun.com/document_detail/118063.html)
+	//     	- [Create a PolarDB PostgreSQL Edition Database Cluster](https://help.aliyun.com/document_detail/118063.html)
 	//
-	//     	- [Create a PolarDB for Oracle cluster](https://help.aliyun.com/document_detail/118182.html)
+	//     	- [Create a PolarDB PostgreSQL Edition (Oracle Compatible) Database Cluster](https://help.aliyun.com/document_detail/118182.html)
 	//
-	// 	- **CloneFromPolarDB**: clones data from an existing PolarDB cluster to a new PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
+	// 	- **CloneFromPolarDB**: Clones data from an existing PolarDB cluster to a new PolarDB cluster. For console operations, refer to the following documents:
 	//
-	//     	- [Clone a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/87966.html)
+	//     	- [Clone a PolarDB MySQL Edition Cluster](https://help.aliyun.com/document_detail/87966.html)
 	//
-	//     	- [Clone a PolarDB for PostgreSQL cluster](https://help.aliyun.com/document_detail/118108.html)
+	//     	- [Clone a PolarDB PostgreSQL Edition Cluster](https://help.aliyun.com/document_detail/118108.html)
 	//
-	//     	- [Clone a PolarDB for Oracle cluster](https://help.aliyun.com/document_detail/118221.html)
+	//     	- [Clone a PolarDB PostgreSQL Edition (Oracle Compatible) Cluster](https://help.aliyun.com/document_detail/118221.html)
 	//
-	// 	- **CloneFromRDS**: clones data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster by cloning an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/121812.html).
+	// 	- **RecoverFromRecyclebin**: Recovers data from a released PolarDB cluster to a new PolarDB cluster. For console operations, refer to the following documents:
 	//
-	// 	- **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. By default, the created PolarDB cluster is in read-only mode, and the binary logging feature is enabled. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster from an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/121582.html).
+	//     	- [Restore a Released PolarDB MySQL Edition Cluster](https://help.aliyun.com/document_detail/164880.html)
 	//
-	// 	- **CreateGdnStandby**: creates a secondary cluster. For more information about how to perform this operation in the console, see [Add a secondary cluster](https://help.aliyun.com/document_detail/160381.html).
+	//     	- [Restore a Released PolarDB PostgreSQL Edition Cluster](https://help.aliyun.com/document_detail/432844.html)
 	//
-	// Default value: **Normal**.
+	//     	- [Restore a Released PolarDB PostgreSQL Edition (Oracle Compatible) Cluster](https://help.aliyun.com/document_detail/424632.html)
 	//
-	// >
+	// 	- **CloneFromRDS**: Clones data from an existing RDS instance to a new PolarDB cluster. Console operation guide is available at [One-click Clone from RDS MySQL to PolarDB MySQL Edition](https://help.aliyun.com/document_detail/121812.html).
 	//
-	// 	- If the **DBType*	- parameter is set to **MySQL*	- and the **DBVersion*	- parameter is set to **5.6*	- or **5.7**, this parameter can be set to **CloneFromRDS*	- or **MigrationFromRDS**.
+	// 	- **MigrationFromRDS**: Migrates data from an existing RDS instance to a new PolarDB cluster. The created PolarDB cluster operates in read-only mode with Binlog enabled by default. Console operation guide is at [One-click Upgrade from RDS MySQL to PolarDB MySQL Edition](https://help.aliyun.com/document_detail/121582.html).
 	//
-	// 	- If the **DBType*	- parameter is set to **MySQL*	- and the **DBVersion*	- parameter is set to **8.0**, this parameter can be set to **CreateGdnStandby**.
+	// 	- **CreateGdnStandby**: Creates a standby cluster. Console operation guide can be found at [Add Standby Cluster](https://help.aliyun.com/document_detail/160381.html).
+	//
+	// 	- **UpgradeFromPolarDB**: Upgrades and migrates from PolarDB. Console operation guide is detailed in [Major Version Upgrade](https://help.aliyun.com/document_detail/459712.html).
+	//
+	// The default value is **Normal**.
+	//
+	// > When **DBType*	- is **MySQL*	- and **DBVersion*	- is **8.0**, this parameter can also take the value **CreateGdnStandby**.
 	//
 	// example:
 	//
 	// Normal
 	CreationOption *string `json:"CreationOption,omitempty" xml:"CreationOption,omitempty"`
-	// The name of the cluster. The name must meet the following requirements:
+	// Cluster name, which must meet the following requirements:
 	//
-	// 	- It cannot start with `http://` or `https://`.
+	// 	- Cannot start with `http://` or `https://`.
 	//
-	// 	- It must be 2 to 256 characters in length.
+	// 	- Length should be between 2 and 256 characters.
 	//
 	// example:
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The minor version of the database engine. Valid values:
+	// Database engine minor version number. Valid values include:
 	//
-	// 	- **8.0.2**
+	// - **8.0.2**
 	//
-	// 	- **8.0.1**
+	// - **8.0.1**
 	//
-	// > This parameter is valid only when the **DBType*	- parameter is set to **MySQL*	- and the **DBVersion*	- parameter is set to **8.0**.
+	// > This parameter takes effect only when **DBType*	- is **MySQL*	- and **DBVersion*	- is **8.0**.
 	//
 	// example:
 	//
 	// 8.0.1
 	DBMinorVersion *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
-	// The specifications of the node.
+	// Node specifications. For details, refer to the following documents:
 	//
-	// 	- For more information about specifications supported by PolarDB for MySQL, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
+	// - PolarDB MySQL Edition: [Compute Node Specifications](https://help.aliyun.com/document_detail/102542.html).
 	//
-	// 	- For information about node specifications supported by the Oracle database engine, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html).
+	// - PolarDB PostgreSQL Edition (Oracle Compatible): [Compute Node Specifications](https://help.aliyun.com/document_detail/207921.html).
 	//
-	// 	- For information about node specifications supported by the PostgreSQL database engine, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html).
+	// - PolarDB PostgreSQL Edition: [Compute Node Specifications](https://help.aliyun.com/document_detail/209380.html).
+	//
+	// > - For a Serverless cluster in PolarDB MySQL, enter **polar.mysql.sl.small**.
+	//
+	// <props="china">> - For a Serverless cluster in both PolarDB PostgreSQL (Oracle Compatible) and PolarDB PostgreSQL, enter **polar.pg.sl.small.c**.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// polar.mysql.x2.medium
+	// polar.mysql.x4.medium
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// Number of standard edition nodes. Values are as follows:
+	//
+	// - **1*	- (default): Indicates there is only one read-write node.
+	//
+	// - **2**: Indicates there is one read-only node and one read-write node.
+	//
+	// > - Enterprise edition defaults to 2 nodes, while the standard edition defaults to 1 node.
+	//
+	// > - Only supported by PolarDB MySQL edition.
+	//
 	// example:
 	//
 	// 1
 	DBNodeNum *int32 `json:"DBNodeNum,omitempty" xml:"DBNodeNum,omitempty"`
-	// The type of the database engine. Valid values:
+	// Database engine type, with available values as follows:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
 	// This parameter is required.
 	//
@@ -1573,9 +1841,9 @@ type CreateDBClusterRequest struct {
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// Database engine version number.
 	//
-	// 	- Valid values for the MySQL database engine:
+	// 	- For MySQL, the version numbers are as follows:
 	//
 	//     	- **5.6**
 	//
@@ -1583,13 +1851,29 @@ type CreateDBClusterRequest struct {
 	//
 	//     	- **8.0**
 	//
-	// 	- Valid values for the PostgreSQL database engine:
+	// 	- For PostgreSQL, the version numbers are as follows:
 	//
 	//     	- **11**
 	//
 	//     	- **14**
 	//
-	// 	- Valid value for the Oracle database engine: **11**
+	//     	- **15**
+	//
+	//     <props="china">
+	//
+	//
+	//
+	//       > When creating a Serverless cluster in PolarDB PostgreSQL, only version **14*	- is supported.
+	//
+	//
+	//
+	//
+	//
+	// 	- For Oracle, the version numbers are as follows:
+	//
+	//     	- **11**
+	//
+	//     	- **14**
 	//
 	// This parameter is required.
 	//
@@ -1597,55 +1881,73 @@ type CreateDBClusterRequest struct {
 	//
 	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The time zone of the cluster. The time must be in UTC. You can set the parameter to a value that is on the hour from **-12:00 to +13:00**. Example: 00:00. Default value: **SYSTEM**, which means that the value is the same as the time zone of the region.
+	// Cluster timezone (UTC), with selectable values ranging from **-12:00*	- to **+13:00*	- at whole-hour intervals, e.g., **00:00**. The default value is **SYSTEM**, which matches the Region\\"s timezone.
 	//
-	// > This parameter is valid only when the **DBType*	- parameter is set to **MySQL**.
+	// > This parameter applies only when **DBType*	- is **MySQL**.
 	//
 	// example:
 	//
 	// SYSTEM
 	DefaultTimeZone *string `json:"DefaultTimeZone,omitempty" xml:"DefaultTimeZone,omitempty"`
-	// The ID of the Global Database Network (GDN).
+	// Global Database Network (GDN) ID.
 	//
-	// > This parameter is required only when the **CreationOption*	- parameter is set to **CreateGdnStandby**.
+	// > This parameter is required when **CreationOption*	- is **CreateGdnStandby**.
 	//
 	// example:
 	//
 	// gdn-***********
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	// Whether to enable the hot standby cluster. Values are as follows:
+	//
+	// - **ON*	- (default): Enables the hot standby cluster.
+	//
+	// - **OFF**: Disables the hot standby cluster.
+	//
+	// - **STANDBY**: Enables the hot standby cluster for the standard edition.
+	//
+	// > The default value for standard edition clusters is **STANDBY**.
+	//
 	// example:
 	//
 	// ON
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
+	// Enable Binlog feature, valid values are as follows:
+	//
+	// - **ON**: Cluster enables the Binlog feature. - **OFF**: Cluster disables the Binlog feature. > This parameter takes effect only when the **DBType*	- parameter is set to **MySQL**.
+	//
 	// example:
 	//
 	// ON
 	LoosePolarLogBin *string `json:"LoosePolarLogBin,omitempty" xml:"LoosePolarLogBin,omitempty"`
-	// Specifies whether to enable X-Engine. Valid values:
+	// Enable the X-Engine storage engine feature, with valid values as follows:
 	//
-	// 	- **ON**
+	// - **ON**: The cluster enables the X-Engine engine.
 	//
-	// 	- **OFF**
+	// - **OFF**: The cluster disables the X-Engine engine.
 	//
-	// >  This parameter takes effect only if you do not set **CreationOption*	- to **CreateGdnStandby*	- and you set **DBType*	- to **MySQL*	- and **DBVersion*	- to **8.0**. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+	// > This parameter is effective only when **CreationOption*	- is not **CreateGdnStandby**, **DBType*	- is **MySQL**, and **DBVersion*	- is **8.0**. The memory specification of nodes that enable the X-Engine engine must be at least 8 GB.
 	//
 	// example:
 	//
 	// ON
 	LooseXEngine *string `json:"LooseXEngine,omitempty" xml:"LooseXEngine,omitempty"`
+	// Set the ratio for enabling the X-Engine storage engine, with a range of integers from 10 to 90.
+	//
+	// > This parameter takes effect only when **LooseXEngine*	- is **ON**.
+	//
 	// example:
 	//
 	// 50
 	LooseXEngineUseMemoryPct *string `json:"LooseXEngineUseMemoryPct,omitempty" xml:"LooseXEngineUseMemoryPct,omitempty"`
-	// Specifies whether the table names are case-sensitive. Valid values:
+	// Whether table names are case-sensitive, with valid values as follows:
 	//
-	// 	- **1**: The table names are case-insensitive.
+	// 	- **1**: Case-insensitive
 	//
-	// 	- **0**: The table names are case-sensitive.
+	// 	- **0**: Case-sensitive
 	//
-	// Default value: **1**.
+	// The default value is **1**.
 	//
-	// > This parameter is valid only when the **DBType*	- parameter is set to **MySQL**.
+	// > This parameter applies only when **DBType*	- is **MySQL**.
 	//
 	// example:
 	//
@@ -1653,19 +1955,19 @@ type CreateDBClusterRequest struct {
 	LowerCaseTableNames *string `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the parameter template.
+	// Parameter template ID.
 	//
-	// > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	// > You can view the list of parameter templates in the target region, including the parameter template ID, by calling the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) interface.
 	//
 	// example:
 	//
 	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The billing method. Valid values:
+	// Payment type, with available values as follows:
 	//
-	// 	- **Postpaid**: pay-as-you-go
+	// - **Postpaid**: Pay-as-you-go.
 	//
-	// 	- **Prepaid**: subscription
+	// - **Prepaid**: Subscription (monthly or yearly).
 	//
 	// This parameter is required.
 	//
@@ -1673,37 +1975,65 @@ type CreateDBClusterRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription type of the subscription cluster. This parameter is required only when the PayType parameter is set to **Prepaid**. Valid values:
+	// If the payment type is **Prepaid**, this parameter is required. It specifies whether the prepaid cluster is on a monthly or yearly basis.
 	//
-	// 	- **Year**: annual subscription. Unit: years.
+	// - **Year**: Yearly subscription.
 	//
-	// 	- **Month**: monthly subscription. Unit: months.
+	// - **Month**: Monthly subscription.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
+	// <p id="p_wyg_t4a_glm">The provisioned read and write IOPS for ESSD AutoPL cloud disks. Possible values: 0 to min{50,000, 1000*capacity-Baseline Performance}.</p>
 	//
-	// Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
+	// <p id="p_6de_jxy_k2g">Baseline Performance = min{1,800+50*capacity, 50000}.</p>
 	//
-	// >  This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+	// <note id="note_7kj_j0o_rgs">This parameter is supported only when StorageType is ESSDAUTOPL.</note>
 	//
 	// example:
 	//
 	// 1000
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	// Standard edition database proxy specifications. Values are as follows:
+	//
+	// - **polar.maxscale.g2.medium.c**: 2 cores.
+	//
+	// - **polar.maxscale.g2.large.c**: 4 cores.
+	//
+	// - **polar.maxscale.g2.xlarge.c**: 8 cores.
+	//
+	// - **polar.maxscale.g2.2xlarge.c**: 16 cores.
+	//
+	// - **polar.maxscale.g2.3xlarge.c**: 24 cores.
+	//
+	// - **polar.maxscale.g2.4xlarge.c**: 32 cores.
+	//
+	// - **polar.maxscale.g2.8xlarge.c**: 64 cores.
+	//
 	// example:
 	//
 	// polar.maxscale.g2.medium.c
 	ProxyClass *string `json:"ProxyClass,omitempty" xml:"ProxyClass,omitempty"`
+	// Database proxy type, with values including:
+	//
+	// - **EXCLUSIVE**: Enterprise Exclusive Edition
+	//
+	// - **GENERAL**: Enterprise General Purpose Edition
+	//
+	// > The proxy type must match the type of the cluster\\"s node specifications, i.e.,
+	//
+	// >- If the node specification is general, the proxy type should be Enterprise General Purpose Edition;
+	//
+	// >- If the node specification is dedicated, the proxy type should be Enterprise Exclusive Edition.
+	//
 	// example:
 	//
 	// Exclusive
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The region ID of the cluster.
+	// Region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+	// > You can view available regions through the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -1711,7 +2041,7 @@ type CreateDBClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// Resource group ID.
 	//
 	// example:
 	//
@@ -1719,169 +2049,193 @@ type CreateDBClusterRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	// Maximum scaling limit for a single node. The value range is: 1 PCU~32 PCU.
 	//
-	// > This parameter is valid only for serverless clusters.
+	// > Only supported by Serverless clusters.
 	//
 	// example:
 	//
 	// 3
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	// Minimum scaling limit for a single node. The value range is: 1 PCU~31 PCU.
 	//
-	// > This parameter is valid only for serverless clusters.
+	// > Only supported by Serverless clusters.
 	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// Maximum scaling limit for the number of read-only nodes. The value range is: 0~15.
 	//
-	// > This parameter is valid only for serverless clusters.
+	// > Only supported by Serverless clusters.
 	//
 	// example:
 	//
 	// 4
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
-	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// Minimum scaling limit for the number of read-only nodes. The value range is: 0~15.
 	//
-	// > This parameter is valid only for serverless clusters.
+	// > Only supported by Serverless clusters.
 	//
 	// example:
 	//
 	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
-	// The IP whitelist of the cluster.
+	// PolarDB cluster whitelist IP address.
 	//
-	// > The whitelist can contain multiple IP addresses. Separate multiple IP addresses with commas (,).
+	// > Supports configuring multiple whitelist IP addresses, with English commas separating multiple IP addresses.
 	//
 	// example:
 	//
 	// 10.***.***.***
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The type of the serverless cluster. Set the value to **AgileServerless**.
+	// Serverless type. The current value is fixed to **AgileServerless*	- (sensitive mode).
 	//
-	// > This parameter is valid only for serverless clusters.
+	// > This parameter is only supported by Serverless clusters.
 	//
 	// example:
 	//
 	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The ID of the source ApsaraDB RDS instance or PolarDB cluster. This parameter is required only when the **CreationOption*	- parameter is set to **MigrationFromRDS**, **CloneFromRDS**, or **CloneFromPolarDB**.
+	// Source RDS instance ID or source PolarDB cluster ID. This parameter is mandatory only when **CreationOption*	- is set to **MigrationFromRDS**, **CloneFromRDS**, **CloneFromPolarDB**, or **RecoverFromRecyclebin**.
 	//
-	// 	- If the **CreationOption*	- parameter is set to **MigrationFromRDS*	- or **CloneFromRDS**, you must set this parameter to the ID of the source ApsaraDB RDS instance. The source ApsaraDB RDS instance must use ApsaraDB RDS for MySQL 5.6, 5.7, or 8.0 High-availability Edition.
+	// 	- If **CreationOption*	- is **MigrationFromRDS*	- or **CloneFromRDS**, you need to input the source RDS instance ID. The source RDS instance version must be RDS MySQL 5.6, 5.7, or 8.0 High Availability edition.
 	//
-	// 	- If the **CreationOption*	- parameter is set to **CloneFromPolarDB**, you must set this parameter to the ID of the source PolarDB cluster. By default, the value of DBType of the destination cluster must be the same as that of the source cluster. For example, if a MySQL 8.0 cluster is used as the source cluster, you must set the **DBType*	- parameter to **MySQL*	- and the **DBVersion*	- parameter to **8.0*	- for the destination cluster.
+	// 	- If **CreationOption*	- is **CloneFromPolarDB**, you need to input the source PolarDB cluster ID. The DBType of the cloned cluster will default to match the source cluster. For example, if the source cluster is MySQL 8.0, the cloned cluster must also have **DBType*	- set to **MySQL*	- and **DBVersion*	- to **8.0**.
+	//
+	// 	- If **CreationOption*	- is **RecoverFromRecyclebin**, you need to input the released source PolarDB cluster ID. The DBType of the cluster being recovered from the recycle bin must match the source cluster. For example, if the source cluster was MySQL 8.0, the recovered cluster must also have **DBType*	- set to **MySQL*	- and **DBVersion*	- to **8.0**.
 	//
 	// example:
 	//
 	// rm-*************
 	SourceResourceId *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
+	// The availability zone where the hot standby cluster is stored. Applicable to the standard edition 3AZ scenario.
+	//
+	// > This parameter takes effect only when multi-zone data strong consistency is enabled.
+	//
 	// example:
 	//
 	// cn-hangzhou-g
 	StandbyAZ *string `json:"StandbyAZ,omitempty" xml:"StandbyAZ,omitempty"`
+	// Whether to enable automatic storage expansion for standard edition clusters, with valid values as follows:
+	//
+	// - Enable: Enables automatic storage expansion.
+	//
+	// - Disable: Disables automatic storage expansion.
+	//
 	// example:
 	//
 	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
+	// The storage billing type, with valid values as follows:
+	//
+	// - Postpaid: Pay-as-you-go (hourly).
+	//
+	// - Prepaid: Pay-per-use based on space (subscription).
+	//
 	// example:
 	//
 	// Prepaid
 	StoragePayType *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
-	// The storage space that uses the subscription billing method. Unit: GB.
+	// Storage space for pay-by-space (subscription) billing. Unit: GB.
+	//
+	// > - For PolarDB MySQL Standard Edition, the storage space range is 20 to 32000.
+	//
+	// > - When the Standard Edition storage type is ESSDAUTOPL, the storage space range is 40 to 64000, with a minimum step size of 10, meaning you can only enter values like 40, 50, 60, and so on.
 	//
 	// example:
 	//
 	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type. Valid values for Enterprise Edition:
+	// Enterprise edition storage types include:
 	//
-	// 	- **PSL5**
+	// - **PSL5**
 	//
-	// 	- **PSL4**
+	// - **PSL4**
 	//
-	// Valid values for Standard Edition:
+	// Standard edition storage types include:
 	//
-	// 	- **ESSDPL0**
+	// - **ESSDPL0**
 	//
-	// 	- **ESSDPL1**
+	// - **ESSDPL1**
 	//
-	// 	- **ESSDPL2**
+	// - **ESSDPL2**
 	//
-	// 	- **ESSDPL3**
+	// - **ESSDPL3**
 	//
-	// 	- **ESSDAUTOPL**
-	//
-	// > This parameter is invalid for serverless clusters.
+	// - **ESSDAUTOPL**
 	//
 	// example:
 	//
 	// PSL4
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// Set the upper limit for automatic storage expansion of standard edition clusters, in GB.
+	//
+	// > The maximum value is 32000.
+	//
 	// example:
 	//
 	// 800
 	StorageUpperBound *int64 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
-	// Specifies whether to enable multi-zone data consistency. Valid values:
+	// Whether the cluster has enabled strong data consistency across multiple zones. Values are as follows:
 	//
-	// 	- **ON**: enables multi-zone data consistency. Set this parameter to ON for Standard Edition clusters of Multi-zone Edition.
+	// - **ON**: Indicates strong data consistency across multiple zones is enabled, applicable to the standard edition 3AZ scenario.
 	//
-	// 	- **OFF**: disables multi-zone data consistency.
+	// - **OFF**: Indicates strong data consistency across multiple zones is not enabled.
 	//
 	// example:
 	//
 	// ON
 	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
-	// Specifies whether to enable transparent data encryption (TDE). Default value: false. Valid values:
+	// Enables TDE encryption. Valid values are as follows:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled (default).
 	//
-	// >
+	// > 	- This parameter takes effect only when **DBType*	- is **PostgreSQL*	- or **Oracle**.
 	//
-	// 	- This parameter is valid only when the **DBType*	- parameter is set to **PostgreSQL*	- or **Oracle**.
+	// > 	- You can call the [ModifyDBClusterTDE](https://help.aliyun.com/document_detail/167982.html) interface to enable TDE encryption for a PolarDB MySQL cluster.
 	//
-	// 	- You can call the [ModifyDBClusterTDE](https://help.aliyun.com/document_detail/167982.html) operation to enable TDE for a PolarDB for MySQL cluster.
-	//
-	// 	- TDE cannot be disabled after it is enabled.
+	// > 	- Once the TDE feature is enabled, it cannot be disabled.
 	//
 	// example:
 	//
 	// true
 	TDEStatus *bool `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
-	// 1
+	// List of tags.
 	Tag []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// 	- If the **Period*	- parameter is set to **Month**, the **UsedTime*	- parameter can be set to `1, 2, 3, 4, 5, 6, 7, 8, or 9`.
+	// If the payment type is **Prepaid**, this parameter is required.
 	//
-	// 	- If the **Period*	- parameter is set to **Year**, the **UsedTime*	- parameter can be set to `1, 2, or 3`.
+	// - When **Period*	- is **Month**, **UsedTime*	- should be an integer within `[1-9]`.
+	//
+	// - When **Period*	- is **Year**, **UsedTime*	- should be an integer within `[1-3]`.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The virtual private cloud (VPC) ID of the cluster.
+	// VPC ID.
 	//
 	// example:
 	//
 	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the cluster.
+	// Virtual switch ID.
 	//
-	// > If the VPCId parameter is specified, the VSwitchId parameter is required.
+	// > If VPCId has been selected, VSwitchId is mandatory.
 	//
 	// example:
 	//
 	// vsw-**********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the cluster.
+	// Availability Zone ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
+	// > You can view the available zones through the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) interface.
 	//
 	// example:
 	//
-	// cn-hangzhou-g
+	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2164,17 +2518,17 @@ func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
 }
 
 type CreateDBClusterRequestTag struct {
-	// The key of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+*	- icon.
+	// Tag key. If you need to add multiple tags to the target cluster at once, click **Add*	- to add a tag key.
 	//
-	// > You can create up to 20 key-value pairs of tags at a time. Each value of the `Tag.N.Key` parameter is paired with a value of the `Tag.N.Value` parameter.
+	// > Up to 20 pairs of tags can be added each time, where `Tag.N.Key` corresponds to `Tag.N.Value`.
 	//
 	// example:
 	//
 	// type
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+*	- icon.
+	// Tag value. If you need to add multiple tags to the target cluster at once, click **Add*	- to add tag values.
 	//
-	// > You can create up to 20 key-value pairs of tags at a time. Each value of the `Tag.N.Value` parameter is paired with a value of the `Tag.N.Key` parameter.
+	// > Up to 20 pairs of tags can be added each time, where `Tag.N.Value` corresponds to `Tag.N.Key`.
 	//
 	// example:
 	//
@@ -2201,25 +2555,25 @@ func (s *CreateDBClusterRequestTag) SetValue(v string) *CreateDBClusterRequestTa
 }
 
 type CreateDBClusterResponseBody struct {
-	// The ID of cluster.
+	// Cluster ID.
 	//
 	// example:
 	//
 	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the order.
+	// Order ID.
 	//
 	// example:
 	//
 	// 211454967******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// E56531A4-E552-40BA-9C58-137B80******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// Resource group ID.
 	//
 	// example:
 	//
@@ -2285,13 +2639,11 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 }
 
 type CreateDBClusterEndpointRequest struct {
-	// Specifies whether to automatically associate newly added nodes with the cluster endpoint. Valid values:
+	// Specifies whether to enable automatic association of newly added nodes with the cluster endpoint. Valid values:
 	//
-	// 	- **Enable**: Newly added nodes are automatically associated with the cluster endpoint.
+	// 	- **Enable**: enables automatic association of newly added nodes with the cluster endpoint.
 	//
-	// 	- **Disable**: Newly added nodes are not automatically associated with the cluster endpoint.
-	//
-	// Default value: **Disable**.
+	// 	- **Disable*	- (default): disables automatic association of newly added nodes with the cluster endpoint.
 	//
 	// example:
 	//
@@ -2386,11 +2738,25 @@ type CreateDBClusterEndpointRequest struct {
 	// example:
 	//
 	// pi-**********,pi-*********
-	Nodes                 *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Nodes        *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Global consistency timeout strategy. The value range is as follows:
+	//
+	// - **0**: Send the request to the primary node
+	//
+	// - **2**: Timeout degradation, when a global consistency read times out, the query operation will automatically degrade to an inconsistent read, and the client will not receive an error message
+	//
+	// example:
+	//
+	// 0
 	PolarSccTimeoutAction *string `json:"PolarSccTimeoutAction,omitempty" xml:"PolarSccTimeoutAction,omitempty"`
-	PolarSccWaitTimeout   *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
+	// Global consistency timeout
+	//
+	// example:
+	//
+	// 100
+	PolarSccWaitTimeout *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
 	// The read/write mode. Valid values:
 	//
 	// 	- **ReadWrite**: receives and forwards read and write requests. Automatic read/write splitting is enabled.
@@ -2405,7 +2771,14 @@ type CreateDBClusterEndpointRequest struct {
 	ReadWriteMode        *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SccMode              *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
+	// Whether the node has enabled the global consistency (high-performance mode) feature. The value range is as follows:
+	//
+	// - **ON**: Enabled - **OFF**: Disabled
+	//
+	// example:
+	//
+	// on
+	SccMode *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
 }
 
 func (s CreateDBClusterEndpointRequest) String() string {
@@ -3919,6 +4292,211 @@ func (s *CreateGlobalSecurityIPGroupResponse) SetBody(v *CreateGlobalSecurityIPG
 	return s
 }
 
+type CreateOrGetVirtualLicenseOrderRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PG
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateOrGetVirtualLicenseOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrGetVirtualLicenseOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrGetVirtualLicenseOrderRequest) SetEngine(v string) *CreateOrGetVirtualLicenseOrderRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderRequest) SetOwnerAccount(v string) *CreateOrGetVirtualLicenseOrderRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderRequest) SetOwnerId(v int64) *CreateOrGetVirtualLicenseOrderRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderRequest) SetResourceOwnerAccount(v string) *CreateOrGetVirtualLicenseOrderRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderRequest) SetResourceOwnerId(v int64) *CreateOrGetVirtualLicenseOrderRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateOrGetVirtualLicenseOrderResponseBody struct {
+	// example:
+	//
+	// 1
+	ActivatedCodeCount *int32 `json:"ActivatedCodeCount,omitempty" xml:"ActivatedCodeCount,omitempty"`
+	// example:
+	//
+	// 10
+	ActivationCodeQuota *int32 `json:"ActivationCodeQuota,omitempty" xml:"ActivationCodeQuota,omitempty"`
+	// example:
+	//
+	// 2233****445566
+	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	// example:
+	//
+	// false
+	AllowEmptySystemIdentifier *bool `json:"AllowEmptySystemIdentifier,omitempty" xml:"AllowEmptySystemIdentifier,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// true
+	IsVirtualOrder *bool `json:"IsVirtualOrder,omitempty" xml:"IsVirtualOrder,omitempty"`
+	// example:
+	//
+	// false
+	IsVirtualOrderFrozen *bool `json:"IsVirtualOrderFrozen,omitempty" xml:"IsVirtualOrderFrozen,omitempty"`
+	// example:
+	//
+	// pre_generation_long_term
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// example:
+	//
+	// 30 years
+	PackageValidity *string `json:"PackageValidity,omitempty" xml:"PackageValidity,omitempty"`
+	// example:
+	//
+	// aliyun_market
+	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 45D24263-7E3A-4140-9472-************
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2024********483
+	VirtualOrderId *string `json:"VirtualOrderId,omitempty" xml:"VirtualOrderId,omitempty"`
+}
+
+func (s CreateOrGetVirtualLicenseOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrGetVirtualLicenseOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetActivatedCodeCount(v int32) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.ActivatedCodeCount = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetActivationCodeQuota(v int32) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.ActivationCodeQuota = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetAliyunOrderId(v string) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetAllowEmptySystemIdentifier(v bool) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.AllowEmptySystemIdentifier = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetGmtCreated(v string) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetGmtModified(v string) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetIsVirtualOrder(v bool) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.IsVirtualOrder = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetIsVirtualOrderFrozen(v bool) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.IsVirtualOrderFrozen = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetPackageType(v string) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.PackageType = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetPackageValidity(v string) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.PackageValidity = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetPurchaseChannel(v string) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.PurchaseChannel = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetRequestId(v string) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponseBody) SetVirtualOrderId(v string) *CreateOrGetVirtualLicenseOrderResponseBody {
+	s.VirtualOrderId = &v
+	return s
+}
+
+type CreateOrGetVirtualLicenseOrderResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrGetVirtualLicenseOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateOrGetVirtualLicenseOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrGetVirtualLicenseOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponse) SetHeaders(v map[string]*string) *CreateOrGetVirtualLicenseOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponse) SetStatusCode(v int32) *CreateOrGetVirtualLicenseOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrGetVirtualLicenseOrderResponse) SetBody(v *CreateOrGetVirtualLicenseOrderResponseBody) *CreateOrGetVirtualLicenseOrderResponse {
+	s.Body = v
+	return s
+}
+
 type CreateParameterGroupRequest struct {
 	// The type of the database engine. Only **MySQL*	- is supported.
 	//
@@ -4615,13 +5193,13 @@ func (s *DeleteBackupResponse) SetBody(v *DeleteBackupResponseBody) *DeleteBacku
 }
 
 type DeleteDBClusterRequest struct {
-	// The retention policy for the backup sets when you delete the cluster. Valid values:
+	// The retention policy applied to the backup sets when the cluster is released. Valid values:
 	//
-	// 	- **ALL**: permanently retains all backups.
+	// 	- **ALL**: permanently retains all backup sets.
 	//
-	// 	- **LATEST**: permanently retains the most recent backup. A backup is automatically created before you delete the cluster.
+	// 	- **LATEST**: permanently retains the most recent backup set that is automatically created before the cluster is released.
 	//
-	// 	- **NONE**: No backup sets are retained after you delete the cluster.
+	// 	- **NONE**: does not retain backup sets.
 	//
 	// example:
 	//
@@ -6032,6 +6610,10 @@ type DescribeAITaskStatusResponseBody struct {
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The state description of the PolarDB for AI feature.
+	//
+	// example:
+	//
+	// Closed State
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 }
 
@@ -6388,6 +6970,442 @@ func (s *DescribeAccountsResponse) SetStatusCode(v int32) *DescribeAccountsRespo
 }
 
 func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *DescribeAccountsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeActivationCodeDetailsRequest struct {
+	// example:
+	//
+	// 123
+	ActivationCodeId *int32 `json:"ActivationCodeId,omitempty" xml:"ActivationCodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2233****445566
+	AliyunOrderId        *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeActivationCodeDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActivationCodeDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActivationCodeDetailsRequest) SetActivationCodeId(v int32) *DescribeActivationCodeDetailsRequest {
+	s.ActivationCodeId = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsRequest) SetAliyunOrderId(v string) *DescribeActivationCodeDetailsRequest {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsRequest) SetOwnerAccount(v string) *DescribeActivationCodeDetailsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsRequest) SetOwnerId(v int64) *DescribeActivationCodeDetailsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsRequest) SetResourceOwnerAccount(v string) *DescribeActivationCodeDetailsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsRequest) SetResourceOwnerId(v int64) *DescribeActivationCodeDetailsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeActivationCodeDetailsResponseBody struct {
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
+	// example:
+	//
+	// AAEAA******AAA=
+	CertContentB64 *string `json:"CertContentB64,omitempty" xml:"CertContentB64,omitempty"`
+	// example:
+	//
+	// testCode
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2054-10-09 16:46:20
+	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 123
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 12:34:56:78:98:00
+	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	// example:
+	//
+	// testName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// F2A9EFA7-915F-4572-8299-85A307******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	SystemIdentifier *string `json:"SystemIdentifier,omitempty" xml:"SystemIdentifier,omitempty"`
+}
+
+func (s DescribeActivationCodeDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActivationCodeDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetActivateAt(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.ActivateAt = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetCertContentB64(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.CertContentB64 = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetDescription(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetExpireAt(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetGmtCreated(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetGmtModified(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetId(v int32) *DescribeActivationCodeDetailsResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetMacAddress(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.MacAddress = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetName(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetRequestId(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponseBody) SetSystemIdentifier(v string) *DescribeActivationCodeDetailsResponseBody {
+	s.SystemIdentifier = &v
+	return s
+}
+
+type DescribeActivationCodeDetailsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeActivationCodeDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeActivationCodeDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActivationCodeDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActivationCodeDetailsResponse) SetHeaders(v map[string]*string) *DescribeActivationCodeDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponse) SetStatusCode(v int32) *DescribeActivationCodeDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeActivationCodeDetailsResponse) SetBody(v *DescribeActivationCodeDetailsResponseBody) *DescribeActivationCodeDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeActivationCodesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2233****445566
+	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeActivationCodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActivationCodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActivationCodesRequest) SetAliyunOrderId(v string) *DescribeActivationCodesRequest {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *DescribeActivationCodesRequest) SetOwnerAccount(v string) *DescribeActivationCodesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeActivationCodesRequest) SetOwnerId(v int64) *DescribeActivationCodesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeActivationCodesRequest) SetPageNumber(v int32) *DescribeActivationCodesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeActivationCodesRequest) SetPageSize(v int32) *DescribeActivationCodesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeActivationCodesRequest) SetResourceOwnerAccount(v string) *DescribeActivationCodesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeActivationCodesRequest) SetResourceOwnerId(v int64) *DescribeActivationCodesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeActivationCodesResponseBody struct {
+	Items []*DescribeActivationCodesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 65D7ACE6-4A61-4B6E-B357-8CB24A******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeActivationCodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActivationCodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActivationCodesResponseBody) SetItems(v []*DescribeActivationCodesResponseBodyItems) *DescribeActivationCodesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBody) SetPageNumber(v int32) *DescribeActivationCodesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBody) SetPageRecordCount(v int32) *DescribeActivationCodesResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBody) SetRequestId(v string) *DescribeActivationCodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBody) SetTotalRecordCount(v int32) *DescribeActivationCodesResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeActivationCodesResponseBodyItems struct {
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
+	// example:
+	//
+	// testCode
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2054-10-16 16:46:20
+	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 123
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 12:34:56:78:98:00
+	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	// example:
+	//
+	// testName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	SystemIdentifier *string `json:"SystemIdentifier,omitempty" xml:"SystemIdentifier,omitempty"`
+}
+
+func (s DescribeActivationCodesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActivationCodesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetActivateAt(v string) *DescribeActivationCodesResponseBodyItems {
+	s.ActivateAt = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetDescription(v string) *DescribeActivationCodesResponseBodyItems {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetExpireAt(v string) *DescribeActivationCodesResponseBodyItems {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetGmtCreated(v string) *DescribeActivationCodesResponseBodyItems {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetGmtModified(v string) *DescribeActivationCodesResponseBodyItems {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetId(v int32) *DescribeActivationCodesResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetMacAddress(v string) *DescribeActivationCodesResponseBodyItems {
+	s.MacAddress = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetName(v string) *DescribeActivationCodesResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponseBodyItems) SetSystemIdentifier(v string) *DescribeActivationCodesResponseBodyItems {
+	s.SystemIdentifier = &v
+	return s
+}
+
+type DescribeActivationCodesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeActivationCodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeActivationCodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActivationCodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActivationCodesResponse) SetHeaders(v map[string]*string) *DescribeActivationCodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeActivationCodesResponse) SetStatusCode(v int32) *DescribeActivationCodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeActivationCodesResponse) SetBody(v *DescribeActivationCodesResponseBody) *DescribeActivationCodesResponse {
 	s.Body = v
 	return s
 }
@@ -8867,9 +9885,9 @@ func (s *DescribeDBClusterAccessWhitelistResponse) SetBody(v *DescribeDBClusterA
 }
 
 type DescribeDBClusterAttributeRequest struct {
-	// The ID of cluster.
+	// Cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can view detailed information about all clusters under your account, including the cluster ID, through the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -8877,7 +9895,7 @@ type DescribeDBClusterAttributeRequest struct {
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to query information about AI-related nodes.
+	// Whether to obtain information about AI-related nodes.
 	//
 	// example:
 	//
@@ -8928,91 +9946,109 @@ func (s *DescribeDBClusterAttributeRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeDBClusterAttributeResponseBody struct {
+	// Start time for free AI activation
+	//
 	// example:
 	//
 	// 2024-03-13T01:20:28Z
 	AiCreatingTime *string `json:"AiCreatingTime,omitempty" xml:"AiCreatingTime,omitempty"`
-	// The information status of the AI node. Valid values:
+	// Types of AI nodes. Values include:
 	//
-	// 	- SearchNode: search node.
+	// - **SearchNode**: Search node.
 	//
-	// 	- DLNode: AI node
+	// - **DLNode**: AI node.
 	//
 	// example:
 	//
 	// DLNode
 	AiType *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
+	// CPU architecture. Available options are:
+	//
+	// - **X86**
+	//
+	// - **ARM**
+	//
 	// example:
 	//
 	// X86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Maximum blktags in file system.
+	// Maximum number of blktags in the file system.
 	//
 	// example:
 	//
 	// 7,864,320
 	BlktagTotal *int64 `json:"BlktagTotal,omitempty" xml:"BlktagTotal,omitempty"`
-	// The current blktag usage.
+	// Current blktag usage.
 	//
 	// example:
 	//
 	// 5,242,880
 	BlktagUsed *int64 `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
-	// [The edition of PolarDB](https://help.aliyun.com/document_detail/183258.html). Valid values:
+	// [Product Series](https://help.aliyun.com/document_detail/183258.html), with values as follows:
 	//
-	// 	- **Normal**: Cluster Edition.
+	// 	- **Normal**: Cluster Edition
 	//
-	// 	- **Basic**: Single Node Edition.
+	// 	- **Basic**: Single Node
 	//
-	// 	- **Archive**: X-Engine Edition.
+	// 	- **Archive**: High Compression Engine (X-Engine)
 	//
-	// 	- **NormalMultimaster**: Multi-master Cluster Edition.
+	// 	- **NormalMultimaster**: Multi-Master Cluster Edition
 	//
-	// 	- **SENormal**: Standard Edition.
+	// 	- **SENormal**: Standard Edition
 	//
-	// >-  Only PolarDB for MySQL supports Single Node Edition.
+	// > 	- PolarDB PostgreSQL version 11 does not support single-node.
 	//
-	// >- Only PolarDB for MySQL 8.0.1 supports Standard Edition.
+	// >	- PolarDB MySQL versions 8.0 and 5.7, and PolarDB PostgreSQL version 14 support the Standard Edition.
 	//
-	// >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster Edition.
+	// >	- PolarDB MySQL version 8.0 supports High Compression Engine (X-Engine) and Multi-Master Cluster Edition.
 	//
 	// example:
 	//
 	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Whether storage compression is enabled. Values are as follows:
+	//
+	// - ON: Enabled
+	//
+	// - OFF: Disabled
+	//
 	// example:
 	//
 	// ON
 	CompressStorageMode *string `json:"CompressStorageMode,omitempty" xml:"CompressStorageMode,omitempty"`
+	// Compressed storage data size.
+	//
+	// > This parameter is supported only when the cluster\\"s storage compression feature is enabled.
+	//
 	// example:
 	//
 	// 15529410560
 	CompressStorageUsed *int64 `json:"CompressStorageUsed,omitempty" xml:"CompressStorageUsed,omitempty"`
-	// The time when the cluster was created.
+	// Cluster creation time.
 	//
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the cluster.
+	// Cluster description.
 	//
 	// example:
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of cluster.
+	// Cluster ID.
 	//
 	// example:
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The network type of the cluster.
+	// Network type of the cluster.
 	//
 	// example:
 	//
 	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The status of the cluster. For information about the valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
+	// Cluster status. For the full list of values, refer to [Cluster Status Table](https://help.aliyun.com/document_detail/99286.html).
 	//
 	// example:
 	//
@@ -9020,13 +10056,13 @@ type DescribeDBClusterAttributeResponseBody struct {
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	// The information about the nodes.
 	DBNodes []*DescribeDBClusterAttributeResponseBodyDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
-	// The type of the database engine.
+	// Database engine type.
 	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine.
+	// Database engine version.
 	//
 	// example:
 	//
@@ -9036,315 +10072,370 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 	- **Stable**: The minor version is stable.
 	//
-	// 	- **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+	// 	- **Old**: The minor version is outdated. We recommend that you update it to the latest version.
 	//
-	// 	- **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+	// 	- **HighRisk**: The minor version has critical defects. We recommend that you immediately update it to the latest version.
 	//
-	// > For more information about how to upgrade the minor version, see [Upgrade versions](https://help.aliyun.com/document_detail/158572.html).
+	// 	- **Beta**: The minor version is a Beta version.
+	//
+	// >  For information about how to update the minor version, see [Minor version update](https://help.aliyun.com/document_detail/158572.html).
 	//
 	// example:
 	//
 	// Stable
 	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
-	// The total physical storage of level-1 backups (snapshots). Unit: bytes.
+	// Total size of Level 1 backups (snapshots), in bytes.
 	//
 	// example:
 	//
 	// 74448896
 	DataLevel1BackupChainSize *int64 `json:"DataLevel1BackupChainSize,omitempty" xml:"DataLevel1BackupChainSize,omitempty"`
-	// Indicates the rule of data replication. Valid values: AsyncSync: asynchronous. SemiSync: semi-synchronous.
+	// Data replication relationship mode. Values are as follows:
+	//
+	// - **AsyncSync**: Asynchronous
+	//
+	// - **SemiSync**: Semi-synchronous
 	//
 	// example:
 	//
 	// AsyncSync
 	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
-	// Indicates whether the cluster is locked and can be deleted. Valid values:
+	// Lock status for cluster deletion, with values as follows:
 	//
-	// 	- **0**: The cluster is not locked and can be deleted.
+	// 	- **0**: Unlocked, cluster can be deleted.
 	//
-	// 	- **1**: The cluster is locked and cannot be deleted.
+	// 	- **1**: Locked, cluster cannot be deleted.
 	//
 	// example:
 	//
 	// 0
 	DeletionLock *int32 `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
-	// The database type.
+	// Cluster engine.
 	//
 	// example:
 	//
 	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The time when the cluster expires.
+	// Cluster expiration time.
 	//
-	// > A specific value will be returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string will be returned.
+	// > Only clusters with **Prepaid*	- (subscription) payment methods return specific parameter values; **Postpaid*	- (pay-as-you-go) clusters return empty values.
 	//
 	// example:
 	//
 	// 2020-11-14T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the cluster has expired. Valid values:
+	// Whether the cluster has expired.
 	//
-	// > This parameter is returned only for subscription (**Prepaid**) clusters.
+	// > This parameter is only supported for clusters with **Prepaid*	- (Subscription) payment methods.
 	//
 	// example:
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether to replenish resources for the primary database after a cross-zone switchover. Valid values: true false
+	// Whether to replenish resources for the new primary after cross-AZ switch. Values are as follows:
+	//
+	// - **true**: Yes
+	//
+	// - **false**: No
 	//
 	// example:
 	//
 	// false
 	HasCompleteStandbyRes *bool `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
+	// Whether to enable storage hot backup cluster (and Standby compute nodes). Values are as follows:
+	//
+	// - **StandbyClusterON**: Enable storage hot backup/Enable storage hot backup and Standby compute nodes.
+	//
+	// - **StandbyClusterOFF**: Disable storage hot backup/Disable storage hot backup and Standby compute nodes.
+	//
 	// example:
 	//
 	// StandbyClusterON
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
-	// Maximum inodes in file system.
+	ImciAutoIndex     *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	// Maximum number of inodes in the file system.
 	//
 	// example:
 	//
 	// 6,291,456
 	InodeTotal *int64 `json:"InodeTotal,omitempty" xml:"InodeTotal,omitempty"`
-	// The current inode usage.
+	// Current inode usage.
 	//
 	// example:
 	//
 	// 4,194,304
 	InodeUsed *int64 `json:"InodeUsed,omitempty" xml:"InodeUsed,omitempty"`
-	// Indicates whether the kernel is of the latest version. Valid values:
+	// Indicates whether it is the latest kernel version. Values are as follows:
 	//
-	// 	- **true**
+	// - **true**: Yes
 	//
-	// 	- **false**
+	// - **false**: No
 	//
 	// example:
 	//
 	// false
 	IsLatestVersion *bool `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	// Indicates whether PolarProxy uses the latest version. Valid values:
+	// Indicates whether it is the latest version of the database proxy, with possible values as follows:
 	//
-	// 	- **true**
+	// - **true**: Yes
 	//
-	// 	- **false**
+	// - **false**: No
 	//
 	// example:
 	//
 	// false
 	IsProxyLatestVersion *bool `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
-	// The lock mode. Valid values:
+	// Lock mode. Possible values are as follows:
 	//
-	// 	- **Unlock**: The cluster is not locked.
+	// - **Unlock**: Unlocked.
 	//
-	// 	- **ManualLock**: The cluster is manually locked.
+	// - **ManualLock**: Manually triggered lock.
 	//
-	// 	- **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
+	// - **LockByExpiration**: Automatic cluster lock upon expiration.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maintenance window of the cluster. The format is `HH:mmZ-HH:mmZ`. The time is displayed in UTC. For example, the value `16:00Z-17:00Z` indicates that the cluster can be maintained from 00:00 to 01:00 (UTC+08:00).
+	// The maintenance window for the cluster, formatted as `HH:mmZ-HH:mmZ` (UTC time). For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 0:00 to 1:00 (UTC+08:00).
 	//
 	// example:
 	//
 	// 18:00Z-19:00Z
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
+	// Orca function with possible values as follows:
+	//
+	// - **on**: Enabled
+	//
+	// - **off**: Disabled
+	//
 	// example:
 	//
 	// ON
 	Orca *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
-	// The billing method of the cluster. Valid values:
+	// Payment type. Possible values are:
 	//
-	// 	- **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: Pay-As-You-Go
 	//
-	// 	- **Prepaid**: subscription
+	// - **Prepaid**: Prepaid (Subscription).
 	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Describes the preconfigured read and write IOPS for ESSD AutoPL cloud disks. Possible values: 0 to min{50,000, 1000*capacity - baseline performance}.<br>Baseline performance = min{1,800 + 50*capacity, 50000}.<br	Note: This parameter is supported only when StorageType is ESSDAUTOPL.
+	//
 	// example:
 	//
 	// 2500
 	ProvisionedIops *string `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The number of CPU cores for PolarProxy.
+	// Number of CPU cores for the database proxy.
 	//
 	// example:
 	//
 	// 4
 	ProxyCpuCores *string `json:"ProxyCpuCores,omitempty" xml:"ProxyCpuCores,omitempty"`
-	// The type of the serverless PolarProxy. Valid value: AgileServerless.
+	// Serverless type for the database proxy. Currently, the value is fixed to AgileServerless.
 	//
 	// example:
 	//
 	// AgileServerless
 	ProxyServerlessType *string `json:"ProxyServerlessType,omitempty" xml:"ProxyServerlessType,omitempty"`
-	// The number of CPU cores for PolarProxy Standard Enterprise Edition.
+	// Standard configuration CPU cores for the database proxy.
 	//
 	// example:
 	//
 	// 2
 	ProxyStandardCpuCores *string `json:"ProxyStandardCpuCores,omitempty" xml:"ProxyStandardCpuCores,omitempty"`
-	// The status of PolarProxy. Valid values:
+	// Status of the database proxy. Possible values include:
 	//
-	// 	- **Creating**: PolarProxy is being created.
+	// - **Creating**: Creating
 	//
-	// 	- **Running**: PolarProxy is running.
+	// - **Running**: Running
 	//
-	// 	- **Deleting**: PolarProxy is being released.
+	// - **Deleting**: Releasing
 	//
-	// 	- **Rebooting**: PolarProxy is restarting.
+	// - **Rebooting**: Restarting
 	//
-	// 	- **DBNodeCreating**: PolarProxy is being added.
+	// - **DBNodeCreating**: Adding nodes
 	//
-	// 	- **DBNodeDeleting**: PolarProxy is being deleted.
+	// - **DBNodeDeleting**: Deleting nodes
 	//
-	// 	- **ClassChanging**: The specifications of PolarProxy are being changed.
+	// - **ClassChanging**: Changing node specifications
 	//
-	// 	- **NetAddressCreating**: The network connection is being created.
+	// - **NetAddressCreating**: Creating network connections
 	//
-	// 	- **NetAddressDeleting**: The network connection is being deleted.
+	// - **NetAddressDeleting**: Deleting network connections
 	//
-	// 	- **NetAddressModifying**: The network connection is being modified.
+	// - **NetAddressModifying**: Modifying network connections
 	//
-	// 	- **Deleted**: PolarProxy is released.
+	// - **Deleted**: Released
 	//
 	// example:
 	//
 	// Running
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
-	// The type of PolarProxy. Valid values:
+	// Database proxy types, with the following values:
 	//
-	// 	- **Exclusive**: Dedicated Enterprise Edition
+	// - **Exclusive**: Enterprise Exclusive Edition
 	//
-	// 	- **General**: Standard Enterprise Edition
+	// - **General**: Enterprise General Purpose Edition
 	//
 	// example:
 	//
 	// Exclusive
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The region ID of the security group.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 074467EF-86B9-4C23-ACBF-E9B81A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of your Alibaba Cloud resource group.
+	// Resource group ID.
 	//
 	// example:
 	//
 	// rg-***************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// If RestoreType is **RestoreByTime*	- or **RestoreByTimeOss**, this value represents the recovery time point. If RestoreType is **RestoreByBackupSet*	- or **RestoreByBackupSetOss**, this value indicates the ID of the backup set on which the recovery is based.
+	//
+	// <note>Only clusters restored from a backup set or time point after June 1, 2024, support this parameter.</note>
+	//
 	// example:
 	//
 	// 2179639137
 	RestoreDataPoint *string `json:"RestoreDataPoint,omitempty" xml:"RestoreDataPoint,omitempty"`
+	// Cluster recovery method, with possible values:
+	//
+	// 	- **RestoreByTime**: Restore from a time point based on primary backup. 	- **RestoreByBackupSet**: Restore from a backup set based on primary backup. 	- **RestoreByTimeOss**: Restore from a time point based on secondary backup. 	- **RestoreByBackupSetOss**: Restore from a backup set based on secondary backup. 	- **CloneFromSourceCluster**: Clone from the source cluster.
+	//
+	// <note>This parameter is only supported for clusters restored from a backup set or time point after June 1, 2024.</note>
+	//
 	// example:
 	//
 	// RestoreByTime
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The storage of SQL. Unit: bytes. If the value is -1, no data is stored.
+	// Storage amount of SQL, in bytes. If the value is -1, it indicates no data.
 	//
 	// example:
 	//
 	// 0
 	SQLSize *int64 `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
-	// The type of the serverless cluster. Only **AgileServerless*	- can be returned.
+	// Serverless type. Valid values are as follows:
+	//
+	// - AgileServerless: Agile - SteadyServerless: Stable
 	//
 	// example:
 	//
 	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	// Source cluster ID. <note>Clusters restored from backup sets or specific points in time after June 1, 2024, support this parameter.</note>
+	//
 	// example:
 	//
 	// pc-pz51ziv48317b2880
 	SourceDBCluster *string `json:"SourceDBCluster,omitempty" xml:"SourceDBCluster,omitempty"`
-	SourceRegionId  *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	// Indicates whether the cross-zone disaster recovery feature is enabled. Valid values: ON OFF 0: Customer Drill Mode
+	// The region ID of the source cluster.
+	//
+	// >  This parameter is returned only if the source cluster ID exists.
+	//
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// Cross-AZ disaster recovery mode. Values are as follows:
+	//
+	// - **ON**: Enable cross-AZ disaster recovery mode.
+	//
+	// - **OFF**: Disable cross-AZ disaster recovery mode.
+	//
+	// - **0**: Customer drill mode.
 	//
 	// example:
 	//
 	// OFF
 	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
-	// The maximum storage capacity of the current cluster specification. Unit: bytes.
+	// The maximum storage capacity of the current cluster specification, in bytes.
 	//
 	// example:
 	//
 	// 10995116277760
 	StorageMax *int64 `json:"StorageMax,omitempty" xml:"StorageMax,omitempty"`
-	// The billing method of the storage. Valid values:
+	// Storage billing type. Valid values are as follows:
 	//
-	// 	- **Postpaid**: pay-as-you-go
-	//
-	// 	- **Prepaid**: subscription.
+	// - **Postpaid**：Pay-as-you-go (by capacity). - **Prepaid**：Subscription (by space).
 	//
 	// example:
 	//
 	// Prepaid
 	StoragePayType *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
-	// The storage space that uses the subscription billing method. Unit: bytes.
+	// Storage space for pay-by-space (subscription) billing. Unit: Byte.
 	//
 	// example:
 	//
 	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type. Set the value to **HighPerformance**.
+	// Storage type, with a fixed value of **HighPerformance**.
 	//
 	// example:
 	//
 	// HighPerformance
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The storage space consumed by the cluster. Unit: bytes.
+	// Amount of used storage space, in bytes.
 	//
 	// example:
 	//
 	// 3012558848
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// Indicates whether the multi-zone data consistency feature is enabled for the cluster. Valid values:
+	// Indicates whether multi-AZ data strong consistency is enabled for the cluster. The value ranges are as follows:
 	//
-	// 	- **ON**: Multi-zone data consistency is enabled, which is suitable for Standard Edition clusters that run Multi-zone Edition.
+	// - **ON**: Indicates that multi-AZ data strong consistency is enabled, applicable to the Standard 3AZ scenario.
 	//
-	// 	- **OFF**
+	// - **OFF**: Indicates that multi-AZ data strong consistency is not enabled.
 	//
 	// example:
 	//
 	// ON
 	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
-	// The specification type of the compute node. Valid values:
+	// Specification type of compute nodes, with possible values as follows:
 	//
-	// 	- **Exclusive**: dedicated.
+	// 	- **Exclusive**: Dedicated specification
 	//
-	// 	- **General**: general-purpose.
+	// 	- **General**: General-purpose specification
 	//
-	// > This parameter is supported only for PolarDB for MySQL clusters of Cluster Edition.
+	// > This parameter is supported only for PolarDB MySQL Edition with the product series set to Cluster Edition.
 	//
 	// example:
 	//
 	// Exclusive
-	SubCategory                  *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
+	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
+	// Indicates whether the failover with hot replica feature is supported if the cluster has In-Memory Column Index (IMCI) nodes.
+	//
+	// example:
+	//
+	// ON
 	SupportInstantSwitchWithImci *string `json:"SupportInstantSwitchWithImci,omitempty" xml:"SupportInstantSwitchWithImci,omitempty"`
-	// Details about the tags.
+	// Details of tags.
 	Tags []*DescribeDBClusterAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The VPC ID of the cluster.
+	// VPC ID.
 	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the cluster.
+	// VSwitch ID.
 	//
 	// example:
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the cluster.
+	// Availability Zone IDs.
 	//
 	// example:
 	//
@@ -9482,6 +10573,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetHasCompleteStandbyRes(v bool
 
 func (s *DescribeDBClusterAttributeResponseBody) SetHotStandbyCluster(v string) *DescribeDBClusterAttributeResponseBody {
 	s.HotStandbyCluster = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetImciAutoIndex(v string) *DescribeDBClusterAttributeResponseBody {
+	s.ImciAutoIndex = &v
 	return s
 }
 
@@ -9666,138 +10762,159 @@ func (s *DescribeDBClusterAttributeResponseBody) SetZoneIds(v string) *DescribeD
 }
 
 type DescribeDBClusterAttributeResponseBodyDBNodes struct {
-	// The number of CPU cores for compute node scale-out within seconds.
+	// Number of CPU cores for second-level elastic scaling.
 	//
 	// example:
 	//
 	// 6
 	AddedCpuCores *string `json:"AddedCpuCores,omitempty" xml:"AddedCpuCores,omitempty"`
+	// Number of CPU cores for the node.
+	//
 	// example:
 	//
 	// 2
 	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// The time when the node was created.
+	// Node creation time.
 	//
 	// example:
 	//
 	// 2020-03-23T21:35:43Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The type of the node.
+	// Node specification.
 	//
 	// example:
 	//
 	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The ID of the node.
+	// Node ID.
 	//
 	// example:
 	//
 	// pi-****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The role of the node. Valid values:
+	// Node role, with possible values as follows:
 	//
-	// 	- **Writer**: The node is the primary node.
+	// - **Writer**: Primary node.
 	//
-	// 	- **Reader**: The node is a read-only node.
+	// - **Reader**: Read-only node.
 	//
 	// example:
 	//
 	// Reader
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
-	// The status of the node. Valid values:
+	// Node status, with possible values as follows:
 	//
-	// 	- **Creating**: The cluster is being created.
+	// 	- **Creating**: Creating
 	//
-	// 	- **Running**: The cluster is running.
+	// 	- **Running**: Running
 	//
-	// 	- **Deleting**: The cluster is being deleted.
+	// 	- **Deleting**: Deleting
 	//
-	// 	- **Rebooting**: The cluster is restarting.
+	// 	- **Rebooting**: Rebooting
 	//
-	// 	- **DBNodeCreating**: PolarProxy is being added.
+	// 	- **DBNodeCreating**: Adding node
 	//
-	// 	- **DBNodeDeleting**: PolarProxy is being deleted.
+	// 	- **DBNodeDeleting**: Removing node
 	//
-	// 	- **ClassChanging**: The specification type of PolarProxy are being modified.
+	// 	- **ClassChanging**: Modifying node specification
 	//
-	// 	- **NetAddressCreating**: The network connection is being created.
+	// 	- **NetAddressCreating**: Creating network connection
 	//
-	// 	- **NetAddressDeleting**: The network connection is being deleted.
+	// 	- **NetAddressDeleting**: Deleting network connection
 	//
-	// 	- **NetAddressModifying**: The network connection is being modified.
+	// 	- **NetAddressModifying**: Modifying network connection
 	//
-	// 	- **MinorVersionUpgrading**: The minor version is being updated.
+	// 	- **MinorVersionUpgrading**: Upgrading minor version
 	//
-	// 	- **Maintaining**: The cluster is being maintained.
+	// 	- **Maintaining**: Instance maintenance
 	//
-	// 	- **Switching**: A failover is being performed.
+	// 	- **Switching**: Switching
 	//
 	// example:
 	//
 	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
-	// The failover priority. Each node is assigned a failover priority. If a failover occurs, a node can be selected as a primary node. The priority determines the probability at which a node is selected as a primary node. A larger value indicates a higher priority. Valid values: 1 to 15.
+	// Failover priority. Each node has a failover priority, determining the likelihood of being elected as the primary node during a failover. A higher value indicates a higher priority.
+	//
+	// Range: 1 to 15.
 	//
 	// example:
 	//
 	// 1
 	FailoverPriority *int32 `json:"FailoverPriority,omitempty" xml:"FailoverPriority,omitempty"`
-	// Indicates whether the hot standby feature is enabled. Valid values:
+	// Whether hot standby is enabled. Possible values are:
 	//
-	// 	- **ON**
+	// - **ON**: Enabled
 	//
-	// 	- **OFF**
+	// - **OFF**: Disabled
 	//
 	// example:
 	//
 	// ON
 	HotReplicaMode *string `json:"HotReplicaMode,omitempty" xml:"HotReplicaMode,omitempty"`
-	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
+	// Whether columnar index is enabled. Possible values are:
 	//
-	// 	- **ON**
+	// - **ON**: Enabled
 	//
-	// 	- **OFF**
+	// - **OFF**: Disabled
 	//
 	// example:
 	//
 	// ON
 	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
-	// The ID of the primary node in the cluster that runs Multi-master Cluster Edition.
+	// Primary node ID of the multi-master architecture cluster edition.
 	//
 	// example:
 	//
 	// pi-bp18z52akld3*****
 	MasterId *string `json:"MasterId,omitempty" xml:"MasterId,omitempty"`
-	// The maximum number of concurrent connections in the cluster.
+	// Maximum concurrent connections of the cluster.
 	//
 	// example:
 	//
 	// 8000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum input/output operations per second (IOPS).
+	// Maximum number of I/O requests, that is, IOPS.
 	//
 	// example:
 	//
 	// 32000
 	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	// Node memory size, in MB.
+	//
 	// example:
 	//
 	// 8192
-	MemorySize    *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	MirrorInsName *string `json:"MirrorInsName,omitempty" xml:"MirrorInsName,omitempty"`
+	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The name of the hot standby compute node corresponding to the node when the hot standby storage and compute clusters feature is enabled.
+	//
+	// example:
+	//
+	// pi-bp18z52mirror*****
+	MirrorInsName           *string `json:"MirrorInsName,omitempty" xml:"MirrorInsName,omitempty"`
+	MultiMasterLocalStandby *string `json:"MultiMasterLocalStandby,omitempty" xml:"MultiMasterLocalStandby,omitempty"`
+	MultiMasterPrimaryNode  *string `json:"MultiMasterPrimaryNode,omitempty" xml:"MultiMasterPrimaryNode,omitempty"`
+	// Orca feature, valid values are:
+	//
+	// - on: enabled
+	//
+	// - off: disabled
+	//
 	// example:
 	//
 	// off
 	Orca *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
+	// Remote memory size, in MB.
+	//
 	// example:
 	//
 	// 3072
 	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
-	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
+	// Whether the node has the global consistency (high-performance mode) feature enabled. Possible values are:
 	//
-	// 	- **ON**
+	// - **ON**: Enabled
 	//
-	// 	- **OFF**
+	// - **OFF**: Disabled
 	//
 	// This parameter is required.
 	//
@@ -9805,25 +10922,39 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// ON
 	SccMode *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
-	// The routing weight of the node. Valid values: 1 to 100 Default value: 1.
+	// Routing weight.
+	//
+	// Range: 1~100. Default is 1.
 	//
 	// example:
 	//
 	// 1
 	ServerWeight *string `json:"ServerWeight,omitempty" xml:"ServerWeight,omitempty"`
-	// The type of the serverless node. Only **AgileServerless*	- can be returned.
+	// Serverless type. Possible values include:
 	//
-	// > This parameter is supported only for serverless clusters.
+	// - **AgileServerless**: Agile
+	//
+	// - **SteadyServerless**: Steady
+	//
+	// > This parameter is only supported by Serverless clusters.
 	//
 	// example:
 	//
 	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	// Identifies whether the node is in the primary or standby availability zone, primarily used in resource mirroring scenarios.
+	//
+	// Values include:
+	//
+	// - **Primary**: Primary Availability Zone
+	//
+	// - **Standby**: Standby Availability Zone
+	//
 	// example:
 	//
 	// Primary
 	SubCluster *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
-	// The ID of the zone.
+	// Availability zone ID.
 	//
 	// example:
 	//
@@ -9914,6 +11045,16 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMirrorInsName(v strin
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMultiMasterLocalStandby(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.MultiMasterLocalStandby = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMultiMasterPrimaryNode(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.MultiMasterPrimaryNode = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetOrca(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.Orca = &v
 	return s
@@ -9950,13 +11091,13 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetZoneId(v string) *Des
 }
 
 type DescribeDBClusterAttributeResponseBodyTags struct {
-	// The key of the tag.
+	// Tag key.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// Tag value.
 	//
 	// example:
 	//
@@ -10684,7 +11825,7 @@ func (s *DescribeDBClusterEndpointsRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeDBClusterEndpointsResponseBody struct {
-	// The details of the endpoints.
+	// The information about the endpoints.
 	Items []*DescribeDBClusterEndpointsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -11416,7 +12557,15 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems
 type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
 	// Details about the endpoints.
 	AddressItems []*DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
-	// The type of the source database.
+	// The role of the source database instance.
+	//
+	// example:
+	//
+	// ReadOnly
+	//
+	// Maxscale
+	//
+	// Primary
 	CustinsType *string `json:"CustinsType,omitempty" xml:"CustinsType,omitempty"`
 	// The ID of the endpoint.
 	//
@@ -12320,7 +13469,12 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// 2020-09-23T01:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The Query Type
+	//
+	// example:
+	//
+	// orca
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceRequest) String() string {
@@ -13055,6 +14209,17 @@ func (s *DescribeDBClusterTDERequest) SetResourceOwnerId(v int64) *DescribeDBClu
 }
 
 type DescribeDBClusterTDEResponseBody struct {
+	// Indicates whether automatic key rotation is allowed. Valid values:
+	//
+	// 	- **Enabled**: Automatic key rotation is allowed.
+	//
+	// 	- **Disabled**: Automatic key rotation is not allowed.
+	//
+	// >  This parameter is returned only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+	//
+	// example:
+	//
+	// Enabled
 	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
 	// The ID of the cluster.
 	//
@@ -13067,6 +14232,8 @@ type DescribeDBClusterTDEResponseBody struct {
 	// 	- **ON**
 	//
 	// 	- **OFF**
+	//
+	// >  This parameter is returned only for a PolarDB for MySQL cluster.
 	//
 	// example:
 	//
@@ -13083,7 +14250,16 @@ type DescribeDBClusterTDEResponseBody struct {
 	// example:
 	//
 	// E37D1508-EC3B-4E06-A24A-C7AC31******
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The automatic key rotation period configured in Key Management Service (KMS). If no automatic key rotation period is configured, 0s is returned. Unit: seconds.
+	//
+	// For example, if the rotation period is set to 7 days, 604800s is returned.
+	//
+	// >  This parameter is returned only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster whose AutomaticRotation parameter is set to Enabled.
+	//
+	// example:
+	//
+	// 604800s
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	// The region where the TDE key resides.
 	//
@@ -13279,7 +14455,8 @@ type DescribeDBClusterVersionResponseBody struct {
 	// example:
 	//
 	// 8.0.1.1.7
-	DBRevisionVersion     *string                                                      `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
+	DBRevisionVersion *string `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
+	// The versions to which the cluster can be upgraded.
 	DBRevisionVersionList []*DescribeDBClusterVersionResponseBodyDBRevisionVersionList `json:"DBRevisionVersionList,omitempty" xml:"DBRevisionVersionList,omitempty" type:"Repeated"`
 	// The version of the database engine. Valid values:
 	//
@@ -13669,13 +14846,13 @@ type DescribeDBClustersRequest struct {
 	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	// The page number. The value must be an integer that is greater than 0. Default value: **1**.
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **30**, **50**, or **100**.
+	// The number of entries per page. Valid values: **30**, **50**, and **100**.
 	//
 	// Default value: **30**.
 	//
@@ -14088,7 +15265,16 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// false
-	Expired           *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// Indicates whether the hot standby storage cluster feature is enabled. Valid values:
+	//
+	// 	- ON
+	//
+	// 	- OFF
+	//
+	// example:
+	//
+	// OFF
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
 	// The lock state of the cluster. Valid values:
 	//
@@ -16281,7 +17467,14 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// pe-****************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	DBNodeId     *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// Database instance node ID.
+	//
+	// > It is used to query the metrics of Proxy on different DB nodes, supporting metrics such as PolarProxy_DBConns, PolarProxy_DBQps, and PolarProxy_DBActionOps.
+	//
+	// example:
+	//
+	// pi-******************
+	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
@@ -17677,7 +18870,12 @@ type DescribeGlobalDatabaseNetworkResponseBody struct {
 	// example:
 	//
 	// active
-	GDNStatus        *string `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
+	GDNStatus *string `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
+	// The global domain name.
+	//
+	// example:
+	//
+	// [gdnid].gdn.rds.aliyuncs.com
 	GlobalDomainName *string `json:"GlobalDomainName,omitempty" xml:"GlobalDomainName,omitempty"`
 	// The ID of the request.
 	//
@@ -17806,6 +19004,11 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyConnections) SetPort(v string)
 }
 
 type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
+	// The edition of the cluster.
+	//
+	// example:
+	//
+	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of the cluster.
 	//
@@ -18955,6 +20158,514 @@ func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetStatusCode(v int32) *
 }
 
 func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetBody(v *DescribeGlobalSecurityIPGroupRelationResponseBody) *DescribeGlobalSecurityIPGroupRelationResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLicenseOrderDetailsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 239618016570503
+	AliyunOrderId        *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeLicenseOrderDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLicenseOrderDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLicenseOrderDetailsRequest) SetAliyunOrderId(v string) *DescribeLicenseOrderDetailsRequest {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsRequest) SetOwnerAccount(v string) *DescribeLicenseOrderDetailsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsRequest) SetOwnerId(v int64) *DescribeLicenseOrderDetailsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsRequest) SetResourceOwnerAccount(v string) *DescribeLicenseOrderDetailsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsRequest) SetResourceOwnerId(v int64) *DescribeLicenseOrderDetailsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeLicenseOrderDetailsResponseBody struct {
+	// example:
+	//
+	// 2
+	ActivatedCodeCount *int32 `json:"ActivatedCodeCount,omitempty" xml:"ActivatedCodeCount,omitempty"`
+	// example:
+	//
+	// 8
+	ActivationCodeQuota *int32 `json:"ActivationCodeQuota,omitempty" xml:"ActivationCodeQuota,omitempty"`
+	// example:
+	//
+	// 239618016570503
+	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	// example:
+	//
+	// false
+	AllowEmptySystemIdentifier *bool `json:"AllowEmptySystemIdentifier,omitempty" xml:"AllowEmptySystemIdentifier,omitempty"`
+	// example:
+	//
+	// PG
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2021-10-19 01:13:45
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// false
+	IsVirtualOrder *bool `json:"IsVirtualOrder,omitempty" xml:"IsVirtualOrder,omitempty"`
+	// example:
+	//
+	// false
+	IsVirtualOrderFrozen *bool `json:"IsVirtualOrderFrozen,omitempty" xml:"IsVirtualOrderFrozen,omitempty"`
+	// example:
+	//
+	// pre_generation_long_term
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// example:
+	//
+	// 1 year
+	PackageValidity *string `json:"PackageValidity,omitempty" xml:"PackageValidity,omitempty"`
+	// example:
+	//
+	// aliyun_market
+	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
+	// example:
+	//
+	// 22C0ACF0-DD29-4B67-9190-B7A48C******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 239618016570503
+	VirtualOrderId *string `json:"VirtualOrderId,omitempty" xml:"VirtualOrderId,omitempty"`
+}
+
+func (s DescribeLicenseOrderDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLicenseOrderDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetActivatedCodeCount(v int32) *DescribeLicenseOrderDetailsResponseBody {
+	s.ActivatedCodeCount = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetActivationCodeQuota(v int32) *DescribeLicenseOrderDetailsResponseBody {
+	s.ActivationCodeQuota = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetAliyunOrderId(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetAllowEmptySystemIdentifier(v bool) *DescribeLicenseOrderDetailsResponseBody {
+	s.AllowEmptySystemIdentifier = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetEngine(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetGmtCreated(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetGmtModified(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetIsVirtualOrder(v bool) *DescribeLicenseOrderDetailsResponseBody {
+	s.IsVirtualOrder = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetIsVirtualOrderFrozen(v bool) *DescribeLicenseOrderDetailsResponseBody {
+	s.IsVirtualOrderFrozen = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetPackageType(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.PackageType = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetPackageValidity(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.PackageValidity = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetPurchaseChannel(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.PurchaseChannel = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetRequestId(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponseBody) SetVirtualOrderId(v string) *DescribeLicenseOrderDetailsResponseBody {
+	s.VirtualOrderId = &v
+	return s
+}
+
+type DescribeLicenseOrderDetailsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLicenseOrderDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLicenseOrderDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLicenseOrderDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLicenseOrderDetailsResponse) SetHeaders(v map[string]*string) *DescribeLicenseOrderDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponse) SetStatusCode(v int32) *DescribeLicenseOrderDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLicenseOrderDetailsResponse) SetBody(v *DescribeLicenseOrderDetailsResponseBody) *DescribeLicenseOrderDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLicenseOrdersRequest struct {
+	// example:
+	//
+	// 239618016570503
+	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// single_node_subscribe
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// aliyun_market
+	PurchaseChannel      *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VirtualOrder         *bool   `json:"VirtualOrder,omitempty" xml:"VirtualOrder,omitempty"`
+}
+
+func (s DescribeLicenseOrdersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLicenseOrdersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLicenseOrdersRequest) SetAliyunOrderId(v string) *DescribeLicenseOrdersRequest {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetOwnerAccount(v string) *DescribeLicenseOrdersRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetOwnerId(v int64) *DescribeLicenseOrdersRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetPackageType(v string) *DescribeLicenseOrdersRequest {
+	s.PackageType = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetPageNumber(v int32) *DescribeLicenseOrdersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetPageSize(v int32) *DescribeLicenseOrdersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetPurchaseChannel(v string) *DescribeLicenseOrdersRequest {
+	s.PurchaseChannel = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetResourceOwnerAccount(v string) *DescribeLicenseOrdersRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetResourceOwnerId(v int64) *DescribeLicenseOrdersRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersRequest) SetVirtualOrder(v bool) *DescribeLicenseOrdersRequest {
+	s.VirtualOrder = &v
+	return s
+}
+
+type DescribeLicenseOrdersResponseBody struct {
+	Items []*DescribeLicenseOrdersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 12
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// 34458CD3-33E0-4624-BFEF-840C15******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 50
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeLicenseOrdersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLicenseOrdersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLicenseOrdersResponseBody) SetItems(v []*DescribeLicenseOrdersResponseBodyItems) *DescribeLicenseOrdersResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBody) SetPageNumber(v int32) *DescribeLicenseOrdersResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBody) SetPageRecordCount(v int32) *DescribeLicenseOrdersResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBody) SetRequestId(v string) *DescribeLicenseOrdersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBody) SetTotalRecordCount(v int32) *DescribeLicenseOrdersResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeLicenseOrdersResponseBodyItems struct {
+	// example:
+	//
+	// 10
+	ActivatedCodeCount *int32 `json:"ActivatedCodeCount,omitempty" xml:"ActivatedCodeCount,omitempty"`
+	// example:
+	//
+	// 10
+	ActivationCodeQuota *int32 `json:"ActivationCodeQuota,omitempty" xml:"ActivationCodeQuota,omitempty"`
+	// example:
+	//
+	// 227638319690519
+	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	// example:
+	//
+	// false
+	AllowEmptySystemIdentifier *bool `json:"AllowEmptySystemIdentifier,omitempty" xml:"AllowEmptySystemIdentifier,omitempty"`
+	// example:
+	//
+	// PG
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2022-02-11 03:14:15
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2022-02-11 03:14:15
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// false
+	IsVirtualOrder *bool `json:"IsVirtualOrder,omitempty" xml:"IsVirtualOrder,omitempty"`
+	// example:
+	//
+	// false
+	IsVirtualOrderFrozen *bool `json:"IsVirtualOrderFrozen,omitempty" xml:"IsVirtualOrderFrozen,omitempty"`
+	// example:
+	//
+	// single_node_subscribe
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// example:
+	//
+	// 1 year
+	PackageValidity *string `json:"PackageValidity,omitempty" xml:"PackageValidity,omitempty"`
+	// example:
+	//
+	// aliyun_public
+	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
+	// example:
+	//
+	// 227638319690519
+	VirtualAliyunOrderId *string `json:"VirtualAliyunOrderId,omitempty" xml:"VirtualAliyunOrderId,omitempty"`
+}
+
+func (s DescribeLicenseOrdersResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLicenseOrdersResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetActivatedCodeCount(v int32) *DescribeLicenseOrdersResponseBodyItems {
+	s.ActivatedCodeCount = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetActivationCodeQuota(v int32) *DescribeLicenseOrdersResponseBodyItems {
+	s.ActivationCodeQuota = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetAliyunOrderId(v string) *DescribeLicenseOrdersResponseBodyItems {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetAllowEmptySystemIdentifier(v bool) *DescribeLicenseOrdersResponseBodyItems {
+	s.AllowEmptySystemIdentifier = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetEngine(v string) *DescribeLicenseOrdersResponseBodyItems {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetGmtCreated(v string) *DescribeLicenseOrdersResponseBodyItems {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetGmtModified(v string) *DescribeLicenseOrdersResponseBodyItems {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetIsVirtualOrder(v bool) *DescribeLicenseOrdersResponseBodyItems {
+	s.IsVirtualOrder = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetIsVirtualOrderFrozen(v bool) *DescribeLicenseOrdersResponseBodyItems {
+	s.IsVirtualOrderFrozen = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetPackageType(v string) *DescribeLicenseOrdersResponseBodyItems {
+	s.PackageType = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetPackageValidity(v string) *DescribeLicenseOrdersResponseBodyItems {
+	s.PackageValidity = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetPurchaseChannel(v string) *DescribeLicenseOrdersResponseBodyItems {
+	s.PurchaseChannel = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponseBodyItems) SetVirtualAliyunOrderId(v string) *DescribeLicenseOrdersResponseBodyItems {
+	s.VirtualAliyunOrderId = &v
+	return s
+}
+
+type DescribeLicenseOrdersResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLicenseOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLicenseOrdersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLicenseOrdersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLicenseOrdersResponse) SetHeaders(v map[string]*string) *DescribeLicenseOrdersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponse) SetStatusCode(v int32) *DescribeLicenseOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLicenseOrdersResponse) SetBody(v *DescribeLicenseOrdersResponseBody) *DescribeLicenseOrdersResponse {
 	s.Body = v
 	return s
 }
@@ -21582,7 +23293,7 @@ func (s *DescribeScheduleTasksRequest) SetTaskAction(v string) *DescribeSchedule
 }
 
 type DescribeScheduleTasksResponseBody struct {
-	// The result data that is returned.
+	// The result data.
 	Data *DescribeScheduleTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
@@ -21647,7 +23358,7 @@ type DescribeScheduleTasksResponseBodyData struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details of the scheduled task.
+	// The details of the scheduled tasks.
 	TimerInfos []*DescribeScheduleTasksResponseBodyDataTimerInfos `json:"TimerInfos,omitempty" xml:"TimerInfos,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -21691,7 +23402,12 @@ type DescribeScheduleTasksResponseBodyDataTimerInfos struct {
 	// example:
 	//
 	// CreateDBNodes
-	Action       *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The ID of the scheduled task.
+	//
+	// example:
+	//
+	// 86293c29-a03d-4872-b625-***********
 	CrontabJobId *string `json:"CrontabJobId,omitempty" xml:"CrontabJobId,omitempty"`
 	// The cluster ID.
 	//
@@ -21876,9 +23592,9 @@ func (s *DescribeScheduleTasksResponse) SetBody(v *DescribeScheduleTasksResponse
 }
 
 type DescribeSlowLogRecordsRequest struct {
-	// The ID of cluster.
+	// Cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) interface to view all cluster information in the target region, including the Cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -21886,34 +23602,39 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database.
+	// Database name.
 	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. The interval between the start time and end time must be within 24 hours. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	// End time of the query, which must be later than the start time, and the time interval between the start and end times must not exceed 24 hours. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
 	//
-	// > This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+	// > The input is UTC time (i.e., 0 timezone). If your service is currently in a different timezone, please perform a time conversion. For example, if the current timezone of your service is Beijing Time (UTC+8) at 12:00, and you need to query the slow logs between 08:00-12:00 Beijing Time, you should input 00:00-04:00.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2022-11-16T04:00Z
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Node ID
+	//
+	// example:
+	//
+	// pi-**********
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is larger than 0.
+	// Page number, with a range greater than 0 and not exceeding the maximum value of Integer.
 	//
-	// Default value: **1**.
+	// The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// Number of records per page, with the following options:
 	//
 	// 	- **30**
 	//
@@ -21921,15 +23642,15 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// 	- **100**
 	//
-	// Default value: **30**.
+	// The default value is **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the cluster.
+	// Region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) interface to view the available regions under the target account, including the Region ID.
 	//
 	// This parameter is required.
 	//
@@ -21939,19 +23660,17 @@ type DescribeSlowLogRecordsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
+	// Unique identifier of the SQL statement in the slow log statistics, which can be used to obtain the detailed slow logs for that SQL statement.
 	//
 	// example:
 	//
 	// U2FsdGVk****
 	SQLHASH *string `json:"SQLHASH,omitempty" xml:"SQLHASH,omitempty"`
-	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	// Start time of the query. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
 	//
-	// >
+	// > 	- Supports viewing slow log information up to 30 days.
 	//
-	// 	- You can specify a time range of up to 30 days.
-	//
-	// 	- This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+	// > 	- The input is UTC time (i.e., 0 timezone). If your service is currently in a different timezone, please perform a time conversion. For example, if the current timezone of your service is Beijing Time (UTC+8) at 12:00, and you need to query the slow logs between 08:00-12:00 Beijing Time, you should input 00:00-04:00.
 	//
 	// This parameter is required.
 	//
@@ -22035,39 +23754,39 @@ func (s *DescribeSlowLogRecordsRequest) SetStartTime(v string) *DescribeSlowLogR
 }
 
 type DescribeSlowLogRecordsResponseBody struct {
-	// The ID of cluster.
+	// Cluster ID.
 	//
 	// example:
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The type of the database engine.
+	// Database engine.
 	//
 	// example:
 	//
 	// polardb_mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Details about slow query logs.
+	// List of slow log details.
 	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// Number of records on this page.
 	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// A7E6A8FD-C50B-46B2-BA85-D8B8D3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of SQL statements.
+	// Total number of SQL statements.
 	//
 	// example:
 	//
@@ -22136,62 +23855,67 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) SetSQLSlowRecord(v []*Describe
 }
 
 type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
-	// The name of the database.
+	// Database name.
 	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The ID of the node.
+	// Node ID.
 	//
 	// example:
 	//
 	// pi-*****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The time when the SQL statement was executed. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+	// Time when the SQL starts execution. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
 	//
 	// example:
 	//
 	// 2021-04-07T03:47Z
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
-	// The IP address of the client that is used to connect to the database.
+	// Client address connecting to the database.
 	//
 	// example:
 	//
 	// testdb[testdb] @  [100.**.**.242]
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The period of time during which the SQL statement was locked. Unit: seconds.
+	// SQL lock duration in seconds.
 	//
 	// example:
 	//
 	// 0
 	LockTimes *int64 `json:"LockTimes,omitempty" xml:"LockTimes,omitempty"`
-	// The number of rows parsed by the SQL statement.
+	// Number of rows parsed.
 	//
 	// example:
 	//
 	// 0
 	ParseRowCounts *int64 `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
-	// The time range for the query. Unit: milliseconds.
+	// Query time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 100
 	QueryTimeMS *int64 `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
-	// The amount of time that was consumed to execute the SQL statement. Unit: seconds.
+	// SQL execution duration, in seconds.
 	//
 	// example:
 	//
 	// 20
 	QueryTimes *int64 `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
-	// The number of rows returned by the SQL statement.
+	// Number of rows returned.
 	//
 	// example:
 	//
 	// 0
-	ReturnRowCounts *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SQLHash         *string `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
-	// The SQL statement that is executed in the query.
+	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	// Unique identifier for the SQL statement in slow log statistics.
+	//
+	// example:
+	//
+	// U2FsdGVk****
+	SQLHash *string `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
+	// Query statement.
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 }
 
@@ -22789,7 +24513,7 @@ type DescribeTasksRequest struct {
 	//
 	// 	- **Closed**: The task is closed.
 	//
-	// 	- **Pause**: The task is suspended.
+	// 	- **Pause**: The task is paused.
 	//
 	// 	- **Stop**: The task is interrupted.
 	//
@@ -23930,12 +25654,22 @@ func (s *EnableDBClusterServerlessResponse) SetBody(v *EnableDBClusterServerless
 }
 
 type EnableFirewallRulesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable or disable the specified firewall rules. Valid values:
+	//
+	// 	- **true**: enables the specified firewall rules.
+	//
+	// 	- **false**: disables the specified firewall rules.
+	//
+	// > This parameter is valid only when you specify the **RuleNameList*	- parameter.
+	//
 	// example:
 	//
 	// true
@@ -23944,6 +25678,10 @@ type EnableFirewallRulesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The name of the firewall rule that you want to enable for the cluster. You can specify multiple firewall rules at a time. Separate multiple rules with commas (,).
+	//
+	// > You can call the **DescribeFirewallRules*	- operation to query the details of all firewall rules that are applicable to a cluster, such as rule names.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -23996,6 +25734,10 @@ func (s *EnableFirewallRulesRequest) SetRuleNameList(v string) *EnableFirewallRu
 }
 
 type EnableFirewallRulesResponseBody struct {
+	// The message that is returned for the request.
+	//
+	// > If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
 	// example:
 	//
 	// Message
@@ -24006,6 +25748,12 @@ type EnableFirewallRulesResponseBody struct {
 	//
 	// 99B355CE-526C-478B-B730-AD9D7C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -24396,7 +26144,7 @@ type FailoverDBClusterRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to fail back to the original primary zone after a failover. Valid values:
+	// Specifies whether to switch back services to the original primary zone when the original primary zone recovers.
 	//
 	// 	- true
 	//
@@ -24416,6 +26164,15 @@ type FailoverDBClusterRequest struct {
 	//
 	// pi-***********
 	TargetDBNodeId *string `json:"TargetDBNodeId,omitempty" xml:"TargetDBNodeId,omitempty"`
+	// Whether it is a primary-standby switch within the primary availability zone, with the following values:
+	//
+	// Primary: Primary-standby switch within the primary availability zone.
+	//
+	// Standby: Switch to the storage hot backup cluster.
+	//
+	// example:
+	//
+	// Primary
 	TargetZoneType *string `json:"TargetZoneType,omitempty" xml:"TargetZoneType,omitempty"`
 }
 
@@ -24690,7 +26447,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cluster ID. To query the tags of multiple clusters, click **Add*	- to add cluster IDs.
+	// The IDs of the clusters. To query the tags of multiple clusters, click **Add*	- to add cluster IDs.
 	//
 	// >
 	//
@@ -24770,7 +26527,7 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag. To query the details of clusters to which multiple tags are bound, click **Add*	- to add tags.
+	// The tag key. To query the details of clusters to which multiple tags are added, click **Add*	- to add tags.
 	//
 	// >
 	//
@@ -25537,15 +27294,15 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Normal
 	BackupFrequency *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
-	// Specifies whether to retain backups when you delete a cluster. Valid values:
+	// Specifies whether to retain backups when a cluster is deleted. Valid values:
 	//
 	// 	- **ALL**: permanently retains all backups.
 	//
-	// 	- **LATEST**: permanently retains only the last backup.
+	// 	- **LATEST**: permanently retains the most recent backup.
 	//
 	// 	- **NONE**: does not retain backups.
 	//
-	// > The default value is NONE.
+	// >  The default value of the parameter is NONE.
 	//
 	// example:
 	//
@@ -25635,7 +27392,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **1**: Cross-region level-2 backups are permanently retained.
 	//
-	// > The default value is **0**. By default, the cross-region level-2 backup feature is disabled when you create a cluster.
+	// >  The default value of the parameter is **0**.
 	//
 	// example:
 	//
@@ -25671,11 +27428,11 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **0**: The level-2 backup feature is disabled.
 	//
-	// 	- **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+	// 	- **30 to 7300**: Level-2 backups are retained for 30 to 7,300 days.
 	//
-	// 	- **1**: Cross-region level-2 backups are permanently retained.
+	// 	- **1**: Level-2 backups are permanently retained.
 	//
-	// > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+	// >  The default value of this parameter is **0**.
 	//
 	// example:
 	//
@@ -25862,7 +27619,7 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 }
 
 type ModifyDBClusterRequest struct {
-	// Enable storage compression function. The value of this parameter is ON.
+	// Specifies whether to enable storage compression. Set the value to **ON**.
 	//
 	// example:
 	//
@@ -25877,7 +27634,14 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// pc-*************
-	DBClusterId     *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The list of nodes for the drill.
+	//
+	// >  You can specify only one node for a node-level disaster recovery drill. For a primary zone-level disaster recovery drill, you can either choose not to specify this parameter or specify all nodes.
+	//
+	// example:
+	//
+	// pi-rwxxx
 	DBNodeCrashList *string `json:"DBNodeCrashList,omitempty" xml:"DBNodeCrashList,omitempty"`
 	// The method used to replicate data across zones. Valid values:
 	//
@@ -25888,39 +27652,47 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// AsynSync
-	DataSyncMode       *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
-	FaultInjectionType *string `json:"FaultInjectionType,omitempty" xml:"FaultInjectionType,omitempty"`
-	// The fault scenario that you want to simulate for the cluster.
+	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
+	// The fault injection method. Valid values:
 	//
-	// 	- Set the value to **0**. The value 0 indicates the scenario in which the primary zone of the cluster fails.
+	// 	- CrashSQLInjection: `Crash SQL`-based fault injection.
+	//
+	// example:
+	//
+	// 0
+	FaultInjectionType *string `json:"FaultInjectionType,omitempty" xml:"FaultInjectionType,omitempty"`
+	// The level of the disaster recovery drill. Valid values:
+	//
+	// 	- `0` or `FaultInjection`: The primary zone level.
+	//
+	// 	- `1`: The node level.
 	//
 	// >
 	//
-	// 	- This parameter takes effect only when you set the `StandbyHAMode` parameter to 0.
+	// 	- In **primary zone-level disaster recovery drill*	- scenarios, all compute nodes in the primary zone are unavailable. Data loss occurs during failovers in the scenarios.
 	//
-	// 	- If you set this parameter to 0, all compute nodes deployed in the primary zone are unavailable. In this case, the switchover degrades the cluster performance.
+	// 	- In **node-level disaster recovery drill*	- scenarios, you can specify only one compute node for the disaster recovery drill. You can use the `DBNodeCrashList` parameter to specify the name of the compute node that you want to use for the drill.
 	//
 	// example:
 	//
 	// 0
 	FaultSimulateMode    *string `json:"FaultSimulateMode,omitempty" xml:"FaultSimulateMode,omitempty"`
+	ImciAutoIndex        *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable the cross-zone automatic switchover mode. Valid values:
+	// Specifies whether to enable cross-zone automatic switchover. Valid values:
 	//
-	// 	- **ON**: Enable the cross-zone automatic switchover mode.
+	// 	- **ON**: enables cross-zone automatic switchover.
 	//
-	// 	- **OFF**: Disable the cross-zone automatic switchover mode.
-	//
-	// 	- **0**: Enable the customer drill mode.
+	// 	- **OFF**: disables cross-zone automatic switchover.
 	//
 	// example:
 	//
 	// ON
 	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
-	// Specifies whether to enable automatic storage scaling for the cluster of Standard Edition. Valid values:
+	// Specifies whether to enable automatic storage scaling. This parameter is available only for Standard Edition clusters. Valid values:
 	//
 	// 	- Enable
 	//
@@ -25978,6 +27750,11 @@ func (s *ModifyDBClusterRequest) SetFaultSimulateMode(v string) *ModifyDBCluster
 	return s
 }
 
+func (s *ModifyDBClusterRequest) SetImciAutoIndex(v string) *ModifyDBClusterRequest {
+	s.ImciAutoIndex = &v
+	return s
+}
+
 func (s *ModifyDBClusterRequest) SetOwnerAccount(v string) *ModifyDBClusterRequest {
 	s.OwnerAccount = &v
 	return s
@@ -26020,10 +27797,14 @@ type ModifyDBClusterResponseBody struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******
@@ -27892,12 +29673,16 @@ func (s *ModifyDBClusterPrimaryZoneResponse) SetBody(v *ModifyDBClusterPrimaryZo
 }
 
 type ModifyDBClusterResourceGroupRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the new resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27906,6 +29691,8 @@ type ModifyDBClusterResourceGroupRequest struct {
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the original resource group.
+	//
 	// example:
 	//
 	// rg-**********
@@ -27958,6 +29745,8 @@ func (s *ModifyDBClusterResourceGroupRequest) SetResourceOwnerId(v int64) *Modif
 }
 
 type ModifyDBClusterResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 70656639-1416-479F-AF13-D08197******
@@ -28192,7 +29981,12 @@ type ModifyDBClusterServerlessConfRequest struct {
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
-	CrontabJobId  *string `json:"CrontabJobId,omitempty" xml:"CrontabJobId,omitempty"`
+	// Cycle policy ID.
+	//
+	// example:
+	//
+	// 143f8e9f-2566-4dff-be47-bed79f28fc78
+	CrontabJobId *string `json:"CrontabJobId,omitempty" xml:"CrontabJobId,omitempty"`
 	// The ID of the serverless cluster.
 	//
 	// This parameter is required.
@@ -28276,11 +30070,33 @@ type ModifyDBClusterServerlessConfRequest struct {
 	// example:
 	//
 	// 10
-	SecondsUntilAutoPause             *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	// CPU burst threshold
+	//
+	// example:
+	//
+	// 80
 	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
-	ServerlessRuleCpuShrinkThreshold  *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
-	ServerlessRuleMode                *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
-	TaskId                            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// CPU downscale threshold
+	//
+	// example:
+	//
+	// 50
+	ServerlessRuleCpuShrinkThreshold *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
+	// Elastic sensitivity. Values: - normal: standard - flexible: sensitive
+	//
+	// example:
+	//
+	// normal
+	//
+	// flexible
+	ServerlessRuleMode *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
+	// Asynchronous task ID.
+	//
+	// example:
+	//
+	// 143f8e9f-2566-4dff-be47-bed79f28fc78
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDBClusterServerlessConfRequest) String() string {
@@ -28661,6 +30477,14 @@ type ModifyDBClusterTDERequest struct {
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to allow the TDE key of the cluster to be automatically rotated within the next maintenance window after a lapse of the rotation period when a change in the KMS key version is detected. This parameter is supported only for custom keys. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// >  This parameter is supported only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+	//
 	// example:
 	//
 	// false
@@ -28670,6 +30494,8 @@ type ModifyDBClusterTDERequest struct {
 	// 	- **ON**
 	//
 	// 	- **OFF**
+	//
+	// >  This parameter takes effect only for a PolarDB for MySQL cluster.
 	//
 	// example:
 	//
@@ -29939,22 +31765,27 @@ func (s *ModifyDBNodesParametersResponse) SetBody(v *ModifyDBNodesParametersResp
 }
 
 type ModifyGlobalDatabaseNetworkRequest struct {
+	// Create a global domain
+	//
+	// example:
+	//
+	// false
 	EnableGlobalDomainName *bool `json:"EnableGlobalDomainName,omitempty" xml:"EnableGlobalDomainName,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// 	- It cannot start with `http://` or `https://`.
+	// 	- The description cannot start with http:// or https://.
 	//
-	// 	- It must start with a letter.
+	// 	- The description must start with a letter.
 	//
-	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	// 	- The description can contain letters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- It must be 2 to 126 characters in length.
+	// 	- The description must be 2 to 126 characters in length.
 	//
 	// example:
 	//
 	// GDN-fortest
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
-	// The ID of the GDN.
+	// The GDN ID.
 	//
 	// This parameter is required.
 	//
@@ -29964,7 +31795,7 @@ type ModifyGlobalDatabaseNetworkRequest struct {
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -30029,7 +31860,7 @@ func (s *ModifyGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *ModifyG
 }
 
 type ModifyGlobalDatabaseNetworkResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -31266,6 +33097,12 @@ type OpenAITaskRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The node type. Valid values:
+	//
+	// 	- **DLNode**: This node is an AI node.
+	//
+	// 	- **SearchNode**: This node is a node for which the PolarDB for AI feature is enabled.
+	//
 	// example:
 	//
 	// DLNode
@@ -32580,6 +34417,8 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32596,6 +34435,8 @@ type TagResourcesRequest struct {
 	//
 	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -32649,17 +34490,17 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag. To create multiple tags for a cluster at a time, click **Add*	- to add tag keys.
+	// The key of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click **Add*	- to add tag keys.
 	//
-	// >  You can create up to 20 tags at a time. A tag consists of a key and a value. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+	// >  You can create up to 20 tags for a cluster at a time. The value of `Tag.N.Key` is paired with the value of `Tag.N.Value`.
 	//
 	// example:
 	//
 	// type
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. To create multiple tags for a cluster at a time, click **Add*	- to add tag values.
+	// The value of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click **Add*	- to add tag values.
 	//
-	// >  You can create up to 20 tags at a time. A tag consists of a key and a value. Each value of `Tag.N.Value` is paired with a value of `Tag.N.Key`.
+	// >  You can create up to 20 tags for a cluster at a time. The value of `Tag.N.Key` is paired with the value of `Tag.N.Value`.
 	//
 	// example:
 	//
@@ -32763,9 +34604,9 @@ type TempModifyDBNodeRequest struct {
 	//
 	// TempUpgrade
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	// The type of operation performed on the cluster. Valid values:
+	// The operation type. Valid values:
 	//
-	// 	- **Modify**: temporarily upgrade the configuration of the cluster.
+	// 	- **Modify**: temporarily upgrades the configuration of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -33198,9 +35039,9 @@ func (s *TransformDBClusterPayTypeResponse) SetBody(v *TransformDBClusterPayType
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to unbinds all tags from the cluster. Valid values: **true*	- and **false**. Default value: **false**.
+	// Specifies whether to detach all tags from the cluster. Valid values: **true*	- and **false**. Default value: **false**.
 	//
-	// >  This parameter takes effect only when the value of the `TagKey.n` parameter is empty.
+	// >  This parameter takes effect only if `TagKey.n` is empty.
 	//
 	// example:
 	//
@@ -34342,6 +36183,98 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
+// 生成轻量化版本激活码
+//
+// @param request - CreateActivationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateActivationCodeResponse
+func (client *Client) CreateActivationCodeWithOptions(request *CreateActivationCodeRequest, runtime *util.RuntimeOptions) (_result *CreateActivationCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunOrderId)) {
+		query["AliyunOrderId"] = request.AliyunOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MacAddress)) {
+		query["MacAddress"] = request.MacAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemIdentifier)) {
+		query["SystemIdentifier"] = request.SystemIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateActivationCode"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateActivationCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成轻量化版本激活码
+//
+// @param request - CreateActivationCodeRequest
+//
+// @return CreateActivationCodeResponse
+func (client *Client) CreateActivationCode(request *CreateActivationCodeRequest) (_result *CreateActivationCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateActivationCodeResponse{}
+	_body, _err := client.CreateActivationCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a full snapshot backup for a PolarDB cluster.
 //
 // Description:
@@ -34442,7 +36375,7 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
-// 创建冷存储实例
+// Creates a cluster that is used to store cold data.
 //
 // @param request - CreateColdStorageInstanceRequest
 //
@@ -34512,7 +36445,7 @@ func (client *Client) CreateColdStorageInstanceWithOptions(request *CreateColdSt
 
 // Summary:
 //
-// 创建冷存储实例
+// Creates a cluster that is used to store cold data.
 //
 // @param request - CreateColdStorageInstanceRequest
 //
@@ -34530,7 +36463,7 @@ func (client *Client) CreateColdStorageInstance(request *CreateColdStorageInstan
 
 // Summary:
 //
-// Creates a PolarDB cluster.
+// Create Database Cluster
 //
 // @param request - CreateDBClusterRequest
 //
@@ -34784,7 +36717,7 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 // Summary:
 //
-// Creates a PolarDB cluster.
+// Create Database Cluster
 //
 // @param request - CreateDBClusterRequest
 //
@@ -35581,6 +37514,82 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGlobalSecurityIPGroupResponse{}
 	_body, _err := client.CreateGlobalSecurityIPGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或获取虚拟证书订单
+//
+// @param request - CreateOrGetVirtualLicenseOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrGetVirtualLicenseOrderResponse
+func (client *Client) CreateOrGetVirtualLicenseOrderWithOptions(request *CreateOrGetVirtualLicenseOrderRequest, runtime *util.RuntimeOptions) (_result *CreateOrGetVirtualLicenseOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrGetVirtualLicenseOrder"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrGetVirtualLicenseOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或获取虚拟证书订单
+//
+// @param request - CreateOrGetVirtualLicenseOrderRequest
+//
+// @return CreateOrGetVirtualLicenseOrderResponse
+func (client *Client) CreateOrGetVirtualLicenseOrder(request *CreateOrGetVirtualLicenseOrderRequest) (_result *CreateOrGetVirtualLicenseOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOrGetVirtualLicenseOrderResponse{}
+	_body, _err := client.CreateOrGetVirtualLicenseOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36918,7 +38927,7 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 
 // Summary:
 //
-// Queries the state of the PolarDB for AI feature for a cluster.
+// Queries the status of the PolarDB for AI feature.
 //
 // @param request - DescribeAITaskStatusRequest
 //
@@ -36956,7 +38965,7 @@ func (client *Client) DescribeAITaskStatusWithOptions(request *DescribeAITaskSta
 
 // Summary:
 //
-// Queries the state of the PolarDB for AI feature for a cluster.
+// Queries the status of the PolarDB for AI feature.
 //
 // @param request - DescribeAITaskStatusRequest
 //
@@ -37053,6 +39062,170 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountsResponse{}
 	_body, _err := client.DescribeAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询激活码详情
+//
+// @param request - DescribeActivationCodeDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActivationCodeDetailsResponse
+func (client *Client) DescribeActivationCodeDetailsWithOptions(request *DescribeActivationCodeDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeActivationCodeDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActivationCodeId)) {
+		query["ActivationCodeId"] = request.ActivationCodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunOrderId)) {
+		query["AliyunOrderId"] = request.AliyunOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeActivationCodeDetails"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeActivationCodeDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询激活码详情
+//
+// @param request - DescribeActivationCodeDetailsRequest
+//
+// @return DescribeActivationCodeDetailsResponse
+func (client *Client) DescribeActivationCodeDetails(request *DescribeActivationCodeDetailsRequest) (_result *DescribeActivationCodeDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeActivationCodeDetailsResponse{}
+	_body, _err := client.DescribeActivationCodeDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询激活码列表
+//
+// @param request - DescribeActivationCodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActivationCodesResponse
+func (client *Client) DescribeActivationCodesWithOptions(request *DescribeActivationCodesRequest, runtime *util.RuntimeOptions) (_result *DescribeActivationCodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunOrderId)) {
+		query["AliyunOrderId"] = request.AliyunOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeActivationCodes"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeActivationCodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询激活码列表
+//
+// @param request - DescribeActivationCodesRequest
+//
+// @return DescribeActivationCodesResponse
+func (client *Client) DescribeActivationCodes(request *DescribeActivationCodesRequest) (_result *DescribeActivationCodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeActivationCodesResponse{}
+	_body, _err := client.DescribeActivationCodesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38718,7 +40891,7 @@ func (client *Client) DescribeDBClusterServerlessConf(request *DescribeDBCluster
 
 // Summary:
 //
-// Queries the Transparent Data Encryption (TDE) settings of a PolarDB for MySQL cluster.
+// Queries the transparent data encryption (TDE) settings of a PolarDB cluster.
 //
 // @param request - DescribeDBClusterTDERequest
 //
@@ -38776,7 +40949,7 @@ func (client *Client) DescribeDBClusterTDEWithOptions(request *DescribeDBCluster
 
 // Summary:
 //
-// Queries the Transparent Data Encryption (TDE) settings of a PolarDB for MySQL cluster.
+// Queries the transparent data encryption (TDE) settings of a PolarDB cluster.
 //
 // @param request - DescribeDBClusterTDERequest
 //
@@ -40246,6 +42419,178 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 
 // Summary:
 //
+// 查看License订单详情
+//
+// @param request - DescribeLicenseOrderDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLicenseOrderDetailsResponse
+func (client *Client) DescribeLicenseOrderDetailsWithOptions(request *DescribeLicenseOrderDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeLicenseOrderDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunOrderId)) {
+		query["AliyunOrderId"] = request.AliyunOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLicenseOrderDetails"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLicenseOrderDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看License订单详情
+//
+// @param request - DescribeLicenseOrderDetailsRequest
+//
+// @return DescribeLicenseOrderDetailsResponse
+func (client *Client) DescribeLicenseOrderDetails(request *DescribeLicenseOrderDetailsRequest) (_result *DescribeLicenseOrderDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLicenseOrderDetailsResponse{}
+	_body, _err := client.DescribeLicenseOrderDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询License订单列表
+//
+// @param request - DescribeLicenseOrdersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLicenseOrdersResponse
+func (client *Client) DescribeLicenseOrdersWithOptions(request *DescribeLicenseOrdersRequest, runtime *util.RuntimeOptions) (_result *DescribeLicenseOrdersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunOrderId)) {
+		query["AliyunOrderId"] = request.AliyunOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
+		query["PackageType"] = request.PackageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaseChannel)) {
+		query["PurchaseChannel"] = request.PurchaseChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualOrder)) {
+		query["VirtualOrder"] = request.VirtualOrder
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLicenseOrders"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLicenseOrdersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询License订单列表
+//
+// @param request - DescribeLicenseOrdersRequest
+//
+// @return DescribeLicenseOrdersResponse
+func (client *Client) DescribeLicenseOrders(request *DescribeLicenseOrdersRequest) (_result *DescribeLicenseOrdersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLicenseOrdersResponse{}
+	_body, _err := client.DescribeLicenseOrdersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the retention policy of log backups in a PolarDB cluster.
 //
 // @param request - DescribeLogBackupPolicyRequest
@@ -41206,11 +43551,13 @@ func (client *Client) DescribeScheduleTasks(request *DescribeScheduleTasksReques
 
 // Summary:
 //
-// Queries the details of the slow query logs of a PolarDB cluster.
+// Slow Log Details
 //
 // Description:
 //
-// > This operation is applicable only to PolarDB for MySQL clusters.
+// >- Only PolarDB MySQL Edition clusters support calling this interface.
+//
+// >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, when calling this interface, the value of the SQLHash field will change. For more details, please refer to [Notice] Optimization of Slow SQL Template Algorithm (~~2845725~~).
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -41300,11 +43647,13 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 // Summary:
 //
-// Queries the details of the slow query logs of a PolarDB cluster.
+// Slow Log Details
 //
 // Description:
 //
-// > This operation is applicable only to PolarDB for MySQL clusters.
+// >- Only PolarDB MySQL Edition clusters support calling this interface.
+//
+// >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, when calling this interface, the value of the SQLHash field will change. For more details, please refer to [Notice] Optimization of Slow SQL Template Algorithm (~~2845725~~).
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -41430,11 +43779,11 @@ func (client *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (_resul
 
 // Summary:
 //
-// Queries the details of the tasks that are generated by calling API operations. For example, you can call this operation to view the details of the task when you create a cluster.
+// Queries the status of the tasks that are generated based on API operations, such as the status of instance creation tasks.
 //
 // Description:
 //
-//   You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the console.
+//   You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
 //
 // 	- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
 //
@@ -41518,11 +43867,11 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 
 // Summary:
 //
-// Queries the details of the tasks that are generated by calling API operations. For example, you can call this operation to view the details of the task when you create a cluster.
+// Queries the status of the tasks that are generated based on API operations, such as the status of instance creation tasks.
 //
 // Description:
 //
-//   You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the console.
+//   You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
 //
 // 	- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
 //
@@ -41906,7 +44255,7 @@ func (client *Client) EnableDBClusterServerless(request *EnableDBClusterServerle
 
 // Summary:
 //
-// 修改sql防火墙状态
+// Modifies the status of SQL firewall rules for a cluster.
 //
 // @param request - EnableFirewallRulesRequest
 //
@@ -41972,7 +44321,7 @@ func (client *Client) EnableFirewallRulesWithOptions(request *EnableFirewallRule
 
 // Summary:
 //
-// 修改sql防火墙状态
+// Modifies the status of SQL firewall rules for a cluster.
 //
 // @param request - EnableFirewallRulesRequest
 //
@@ -42306,7 +44655,7 @@ func (client *Client) GrantAccountPrivilege(request *GrantAccountPrivilegeReques
 
 // Summary:
 //
-// Queries the tags that are bound to one or more PolarDB clusters, or queries the PolarDB clusters to which one or more tags are bound.
+// Queries the tags that are added to one or more PolarDB clusters, or the PolarDB clusters to which one or more tags are added.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -42380,7 +44729,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags that are bound to one or more PolarDB clusters, or queries the PolarDB clusters to which one or more tags are bound.
+// Queries the tags that are added to one or more PolarDB clusters, or the PolarDB clusters to which one or more tags are added.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -42913,6 +45262,10 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.FaultSimulateMode)) {
 		query["FaultSimulateMode"] = request.FaultSimulateMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImciAutoIndex)) {
+		query["ImciAutoIndex"] = request.ImciAutoIndex
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -44084,6 +46437,10 @@ func (client *Client) ModifyDBClusterPrimaryZone(request *ModifyDBClusterPrimary
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a resource group for a database cluster.
+//
 // @param request - ModifyDBClusterResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -44146,6 +46503,10 @@ func (client *Client) ModifyDBClusterResourceGroupWithOptions(request *ModifyDBC
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a resource group for a database cluster.
+//
 // @param request - ModifyDBClusterResourceGroupRequest
 //
 // @return ModifyDBClusterResourceGroupResponse
@@ -44490,7 +46851,7 @@ func (client *Client) ModifyDBClusterStorageSpace(request *ModifyDBClusterStorag
 
 // Summary:
 //
-// Enables the TDE feature or changes the encryption method for a specified PolarDB for MySQL cluster.
+// Enables the transparent data encryption (TDE) feature for a PolarDB cluster.
 //
 // Description:
 //
@@ -44574,7 +46935,7 @@ func (client *Client) ModifyDBClusterTDEWithOptions(request *ModifyDBClusterTDER
 
 // Summary:
 //
-// Enables the TDE feature or changes the encryption method for a specified PolarDB for MySQL cluster.
+// Enables the transparent data encryption (TDE) feature for a PolarDB cluster.
 //
 // Description:
 //
@@ -44890,7 +47251,7 @@ func (client *Client) ModifyDBNodeClass(request *ModifyDBNodeClassRequest) (_res
 
 // Summary:
 //
-// Enables or disables a cluster node.
+// Enables or disables the hot standby node in a cluster.
 //
 // @param request - ModifyDBNodeHotReplicaModeRequest
 //
@@ -44956,7 +47317,7 @@ func (client *Client) ModifyDBNodeHotReplicaModeWithOptions(request *ModifyDBNod
 
 // Summary:
 //
-// Enables or disables a cluster node.
+// Enables or disables the hot standby node in a cluster.
 //
 // @param request - ModifyDBNodeHotReplicaModeRequest
 //
@@ -45178,7 +47539,7 @@ func (client *Client) ModifyDBNodesParameters(request *ModifyDBNodesParametersRe
 
 // Summary:
 //
-// Modifies a Global Database Network (GDN).
+// Modifies a global database network (GDN).
 //
 // @param request - ModifyGlobalDatabaseNetworkRequest
 //
@@ -45252,7 +47613,7 @@ func (client *Client) ModifyGlobalDatabaseNetworkWithOptions(request *ModifyGlob
 
 // Summary:
 //
-// Modifies a Global Database Network (GDN).
+// Modifies a global database network (GDN).
 //
 // @param request - ModifyGlobalDatabaseNetworkRequest
 //
@@ -46676,6 +49037,10 @@ func (client *Client) SwitchOverGlobalDatabaseNetwork(request *SwitchOverGlobalD
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates tags for a PolarDB cluster.
+//
 // @param request - TagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -46742,6 +49107,10 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates tags for a PolarDB cluster.
+//
 // @param request - TagResourcesRequest
 //
 // @return TagResourcesResponse
@@ -46758,7 +49127,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Temporarily upgrades the configuration of a PolarDB cluster or adds one or more nodes to a cluster.
+// Temporarily changes the node configurations of a cluster.
 //
 // @param request - TempModifyDBNodeRequest
 //
@@ -46836,7 +49205,7 @@ func (client *Client) TempModifyDBNodeWithOptions(request *TempModifyDBNodeReque
 
 // Summary:
 //
-// Temporarily upgrades the configuration of a PolarDB cluster or adds one or more nodes to a cluster.
+// Temporarily changes the node configurations of a cluster.
 //
 // @param request - TempModifyDBNodeRequest
 //
@@ -46858,11 +49227,13 @@ func (client *Client) TempModifyDBNode(request *TempModifyDBNodeRequest) (_resul
 //
 // Description:
 //
-// > 	- PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+// >
 //
-// >	- You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+// 	- PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// >	- If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+// 	- You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+//
+// 	- If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
@@ -46948,11 +49319,13 @@ func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBC
 //
 // Description:
 //
-// > 	- PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+// >
 //
-// >	- You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+// 	- PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// >	- If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+// 	- You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+//
+// 	- If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
