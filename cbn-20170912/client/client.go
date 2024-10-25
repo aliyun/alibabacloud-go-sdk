@@ -254,6 +254,11 @@ func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRules(
 }
 
 type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {
+	// The address family. You can set the value to IPv4 or IPv6, or leave the value empty.
+	//
+	// example:
+	//
+	// IPv4
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
 	// The destination CIDR block that is used to match packets.
 	//
@@ -269,7 +274,7 @@ type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	//
 	// You can specify at most two port numbers for this parameter. Take note of the following rules:
 	//
-	// 	- If you enter only one port number, such as 1, packets whose destination port is 1 are considered a match.
+	// 	- If you enter only one port number, such as 1, packets whose destination port is 1 are considered a match. A value of -1 specifies all destination ports.
 	//
 	// 	- If you enter two port numbers, such as 1 and 200, packets whose destination ports fall into 1 and 200 are considered a match.
 	//
@@ -333,7 +338,7 @@ type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	//
 	// You can enter at most two port numbers. Take note of the following rules:
 	//
-	// 	- If you enter only one port number, such as 1, packets whose source port is 1 are considered a match.
+	// 	- If you enter only one port number, such as 1, packets whose source port is 1 are considered a match. A value of -1 specifies all source ports.
 	//
 	// 	- If you enter two port numbers, such as 1 and 200, packets whose source ports fall into 1 and 200 are considered a match.
 	//
@@ -349,7 +354,7 @@ type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
 	// The name of the traffic classification rule.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	// The name is optional. If you enter a name, it must be 1 to 128 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -1003,11 +1008,11 @@ type AssociateTransitRouterMulticastDomainRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the API request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: prechecks the request but does not associate the vSwitch with the multicast domain. The system checks the required parameters, the request format, and the service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. The vSwitch is associated with the multicast domain after the request passes the precheck.
+	// 	- **false*	- (default): performs a dry run and sends the request.
 	//
 	// example:
 	//
@@ -1033,9 +1038,7 @@ type AssociateTransitRouterMulticastDomainRequest struct {
 	//
 	// tr-mcast-domain-91wpg6wbhchjeq****
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The vSwitch IDs.
-	//
-	// You can specify at most five vSwitch IDs in each call.
+	// The IDs of vSwitches.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
@@ -2836,7 +2839,9 @@ type CreateCenRouteMapRequest struct {
 	DestinationChildInstanceTypes []*string `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Repeated"`
 	// The prefix list against which routes are matched.
 	//
-	// You must specify the IP addresses in CIDR notation. You can enter at most 32 CIDR blocks.
+	// Specify IP addresses in CIDR notations. You can specify at most 32 CIDR blocks.
+	//
+	// IPv4 and IPv4 addresses are supported.
 	//
 	// example:
 	//
@@ -2871,8 +2876,9 @@ type CreateCenRouteMapRequest struct {
 	// example:
 	//
 	// false
-	DestinationInstanceIdsReverseMatch *bool     `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	DestinationRegionIds               []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
+	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	// The destination region IDs of the route. You can specify at most 32 region IDs.
+	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
 	// The IDs of the destination route tables to which routes are evaluated. You can enter at most 32 route table IDs.
 	//
 	// > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
@@ -3784,8 +3790,13 @@ func (s *CreateTrafficMarkingPolicyRequest) SetTransitRouterId(v string) *Create
 }
 
 type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
+	// The address family. You can set the value to IPv4 or IPv6, or leave the value empty.
+	//
+	// example:
+	//
+	// IPv4
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	// The destination CIDR block that is used to match packets.
+	// The destination CIDR block of packets. IPv4 and IPv6 addresses are supported.
 	//
 	// Packets whose destination IP addresses fall into the specified destination CIDR block meet the traffic classification rule. If you do not specify a destination CIDR block, all packets meet the traffic classification rule.
 	//
@@ -3801,7 +3812,7 @@ type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	//
 	// You can enter up to two port numbers. Take note of the following rules:
 	//
-	// 	- If you enter only one port number, such as 1, packets whose destination port is 1 meet the traffic classification rule.
+	// 	- If you enter only one port number, such as 1, packets whose destination port is 1 meet the traffic classification rule. A value of -1 specifies all destination ports.
 	//
 	// 	- If you enter two port numbers, such as 1 and 200, packets whose destination ports fall into 1 and 200 meet the traffic classification rule.
 	//
@@ -3809,7 +3820,7 @@ type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	//
 	// You can create up to 50 traffic classification rules in each call. You can specify a destination port range for each traffic classification rule.
 	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
-	// The DSCP value that is used to match packets. Valid values: **0*	- to **63**.
+	// The Differentiated Service Code Point (DSCP) value that is used to match packets. Valid values: **0*	- to **63**.
 	//
 	// Packets that carry the specified DSCP value meet the traffic classification rule. If you do not specify a DSCP value, all packets meet the traffic classification rule.
 	//
@@ -3825,7 +3836,7 @@ type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	//
 	// Traffic classification rules support the following protocols: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [CEN console](https://cen.console.aliyun.com/cen/list).
 	//
-	// **Some protocols use a fixed port. Click to view protocols and ports.**
+	// **Some protocols use a fixed port. Click to view the protocols and ports.**
 	//
 	// 	- If the protocol is **ICMP**, the destination port must be **-1**.
 	//
@@ -3857,7 +3868,7 @@ type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	//
 	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block that is used to match packets.
+	// The source CIDR block of packets. IPv6 and IPv4 addresses are supported.
 	//
 	// Packets whose source IP addresses fall into the specified source CIDR block meet the traffic classification rule. If you do not specify a source CIDR block, all packets meet the traffic classification rule.
 	//
@@ -3869,11 +3880,11 @@ type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
 	// The source port range that is used to match packets. Valid values: **-1*	- and **1*	- to **65535**.
 	//
-	// Packets whose source ports fall into the source port range meet the traffic classification rule. If you do not specify a source port range, all packets meet the traffic classification rule.
+	// Packets whose source ports fall within the source port range meet the traffic classification rule. If you do not specify a source port range, all packets meet the traffic classification rule.
 	//
 	// You can enter up to two port numbers. Take note of the following rules:
 	//
-	// 	- If you enter only one port number, such as 1, packets whose source port is 1 meet the traffic classification rule.
+	// 	- If you enter only one port number, such as 1, packets whose source port is 1 meet the traffic classification rule. A value of -1 specifies all source ports.
 	//
 	// 	- If you enter two port numbers, such as 1 and 200, packets whose source ports fall into 1 and 200 meet the traffic classification rule.
 	//
@@ -3885,7 +3896,7 @@ type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	//
 	// You can create up to 50 traffic classification rules in each call. You can specify a description for each traffic classification rule.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -5771,27 +5782,29 @@ func (s *CreateTransitRouterPeerAttachmentResponse) SetBody(v *CreateTransitRout
 type CreateTransitRouterPrefixListAssociationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-4266****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
 	// 	- **false*	- (default): performs a dry run and sends the request.
+	//
+	// >  This parameter is not in use.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the next hop.
+	// The ID of the next hop connection.
 	//
-	// > If **NextHopType*	- is set to **BlackHole**, you must set this parameter to **BlackHole**.
+	// To specify all CIDR blocks in the prefix list as blackhole routes, set this parameter to **BlackHole**.
 	//
 	// This parameter is required.
 	//
@@ -5803,11 +5816,13 @@ type CreateTransitRouterPrefixListAssociationRequest struct {
 	//
 	// 	- **BlackHole**: specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
 	//
-	// 	- **VPC**: specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+	// 	- **VPC**: specifies a virtual private cloud (VPC) connection as the next hop.
 	//
-	// 	- **VBR**: specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+	// 	- **VBR**: specifies a virtual border router (VBR) connection as the next hop.
 	//
-	// 	- **TR**: specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
+	// 	- **TR**: specifies an inter-region connection as the next hop.
+	//
+	// 	- **ECR**: specifies an Express Connect Router (ECR) connection as the next hop.
 	//
 	// example:
 	//
@@ -6016,7 +6031,7 @@ type CreateTransitRouterRouteEntryRequest struct {
 	//
 	// testdesc
 	TransitRouterRouteEntryDescription *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
-	// The destination CIDR block of the route.
+	// The destination CIDR block of the route entry. IPv4 and IPv6 addresses are supported.
 	//
 	// This parameter is required.
 	//
@@ -7460,8 +7475,6 @@ type CreateTransitRouterVpnAttachmentRequest struct {
 	// The ID of the zone in the current region.
 	//
 	// Resources are deployed in the specified zone.
-	//
-	// This parameter is required.
 	Zone []*CreateTransitRouterVpnAttachmentRequestZone `json:"Zone,omitempty" xml:"Zone,omitempty" type:"Repeated"`
 }
 
@@ -7603,8 +7616,6 @@ type CreateTransitRouterVpnAttachmentRequestZone struct {
 	// The zone ID of the read-only instance.
 	//
 	// You can call the [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) operation to query the most recent zone list.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -14857,13 +14868,13 @@ type DescribeCenRouteMapsRequest struct {
 	CenRegionId  *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page. Default value: **10**.
 	//
 	// example:
 	//
@@ -15118,7 +15129,9 @@ type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
 	//
 	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the type of the destination route tables is the same as that of the network instance in the current region.
 	DestinationChildInstanceTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Struct"`
-	// The prefixes of the routes.
+	// The prefix list against which routes are matched.
+	//
+	// IPv4 and IPv6 addresses are supported.
 	DestinationCidrBlocks *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Struct"`
 	// The IDs of the destination network instances to which the routes point.
 	//
@@ -15133,8 +15146,9 @@ type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
 	// example:
 	//
 	// false
-	DestinationInstanceIdsReverseMatch *bool                                                                  `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	DestinationRegionIds               *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Struct"`
+	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	// The IDs of the destination regions for the routing policy.
+	DestinationRegionIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Struct"`
 	// The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
 	//
 	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the destination route table IDs are in the current region.
@@ -17445,7 +17459,16 @@ type DescribeGrantRulesToCenRequest struct {
 	//
 	// 125012345612****
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	EnabledIpv6          *bool  `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
+	// Specifies whether to enable IPv6.
+	//
+	// 1.  This parameter takes effect only if ProductType is set to VPC.
+	//
+	// 2.  true: enables IPv6. false: disables IPv6. If you do not specify a value, network instances are not filtered based on this parameter.
+	//
+	// example:
+	//
+	// true
+	EnabledIpv6 *bool `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
 	// 	- If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults*	- in the response indicates the total number of entries returned.
 	//
 	// 	- If you specify a value for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults*	- indicates the number of entries to return in each batch. Valid values: **1*	- to **100**. The value of **MaxResults*	- in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults*	- to **20**.
@@ -21470,6 +21493,15 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBody) SetTrafficQosPolicies
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies struct {
+	// 带宽保障类型。
+	//
+	// - **byBandwidth**：按带宽绝对值模式配置QoS队列。
+	//
+	// - **byBandwidthPercent**：按带宽百分比模式配置QoS队列。
+	//
+	// example:
+	//
+	// byBandwidthPercent
 	BandwidthGuaranteeMode *string `json:"BandwidthGuaranteeMode,omitempty" xml:"BandwidthGuaranteeMode,omitempty"`
 	// The description of the QoS policy.
 	//
@@ -21568,10 +21600,20 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) Set
 }
 
 type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues struct {
+	// 带宽保障类型为按绝对值模式时，当前队列分配的跨地域带宽的值。
+	//
+	// example:
+	//
+	// 1
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The differentiated services code point (DSCP) value that is used to match packets.
-	Dscps              []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
-	EffectiveBandwidth *string  `json:"EffectiveBandwidth,omitempty" xml:"EffectiveBandwidth,omitempty"`
+	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
+	// 当前队列实际生效的带宽值。
+	//
+	// example:
+	//
+	// 1.35
+	EffectiveBandwidth *string `json:"EffectiveBandwidth,omitempty" xml:"EffectiveBandwidth,omitempty"`
 	// The description of the queue.
 	//
 	// example:
@@ -21671,6 +21713,7 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponse) SetBody(v *ListCenInterRe
 }
 
 type ListCenInterRegionTrafficQosQueuesRequest struct {
+	// 按照实际的生效带宽值进行过滤，只允许输入正整数，单位Mbps。
 	EffectiveBandwidthFilter *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter `json:"EffectiveBandwidthFilter,omitempty" xml:"EffectiveBandwidthFilter,omitempty" type:"Struct"`
 	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
@@ -21808,7 +21851,17 @@ func (s *ListCenInterRegionTrafficQosQueuesRequest) SetTransitRouterId(v string)
 }
 
 type ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter struct {
+	// 实际生效带宽大于或等于指定带宽值。
+	//
+	// example:
+	//
+	// 50
 	Gte *int64 `json:"Gte,omitempty" xml:"Gte,omitempty"`
+	// 实际生效带宽小于或等于指定带宽值。
+	//
+	// example:
+	//
+	// 20
 	Lte *int64 `json:"Lte,omitempty" xml:"Lte,omitempty"`
 }
 
@@ -21875,10 +21928,22 @@ func (s *ListCenInterRegionTrafficQosQueuesResponseBody) SetTrafficQosQueues(v [
 }
 
 type ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues struct {
+	// 带宽保障类型为按绝对值模式时，当前队列分配跨地域带宽的值。
+	//
+	// 例如，**1**表示符合当前队列的流量报文最多只能使用1Mbps的跨地域带宽。
+	//
+	// example:
+	//
+	// 1
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The Differentiated Services Code Point (DSCP) value that matches the current QoS queue.
-	Dscps              []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
-	EffectiveBandwidth *string  `json:"EffectiveBandwidth,omitempty" xml:"EffectiveBandwidth,omitempty"`
+	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
+	// 当前队列实际生效的带宽值。
+	//
+	// example:
+	//
+	// 1.35
+	EffectiveBandwidth *string `json:"EffectiveBandwidth,omitempty" xml:"EffectiveBandwidth,omitempty"`
 	// The percentage of the inter-region bandwidth that can be consumed by the QoS queue.
 	//
 	// A value of **1*	- indicates that the QoS queue can consume at most 1% of the inter-region bandwidth.
@@ -22355,7 +22420,12 @@ type ListGrantVSwitchesToCenRequest struct {
 	// example:
 	//
 	// cen-44m0p68spvlrqq****
-	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// Specifies whether to enable IPv6. true: enables IPv6. false: disables IPv6. If you do not specify a value, vSwitches are not filtered based on this attribute.
+	//
+	// example:
+	//
+	// true
 	EnabledIpv6  *bool   `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -26923,7 +26993,7 @@ type ListTransitRouterRouteEntriesRequest struct {
 	PrefixListId         *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The filter conditions for route CIDR blocks.
+	// The filter conditions.
 	RouteFilter []*ListTransitRouterRouteEntriesRequestRouteFilter `json:"RouteFilter,omitempty" xml:"RouteFilter,omitempty" type:"Repeated"`
 	// Deprecated
 	//
@@ -27154,11 +27224,11 @@ type ListTransitRouterRouteEntriesRequestRouteFilter struct {
 	//
 	// 	- **PrefixExactMatchCidrs**: exact matching.
 	//
-	// 	- **LongestPrefixMatchCidrs**: longest prefix matching. The specified IP address and CIDR block are considered a match.
+	// 	- **LongestPrefixMatchCidrs**: longest prefix matching. You can specify IP addresses and CIDR blocks.
 	//
-	// 	- **SubnetOfMatchCidrs**: subnet matching. The specified CIDR block is considered a match.
+	// 	- **SubnetOfMatchCidrs**: subnet matching. The subnets of the specified CIDR blocks, including the CIDR block, are matches against the match conditions.
 	//
-	// 	- **SupernetOfMatchCidrs**: supernet matching. The specified CIDR block is considered a match.
+	// 	- **SupernetOfMatchCidrs**: supernet matching. The supernets of the CIDR block, including the CIDR block, are matched against the match conditions.
 	//
 	// By default, the logical operator among filter conditions is **AND**. Information about a route entry is returned only if the route entry matches all filter conditions. Filter conditions must be unique.
 	//
@@ -27301,7 +27371,7 @@ type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries struct {
 	//
 	// CidrRoute
 	TransitRouterRouteEntryDescription *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
-	// The destination CIDR block of the route.
+	// The destination CIDR block of the route entry. An IPv4 or IPv6 CIDR block is returned.
 	//
 	// example:
 	//
@@ -33215,7 +33285,9 @@ type RegisterTransitRouterMulticastGroupSourcesRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP address of the multicast group to which the multicast source belongs. Valid values: **224.0.0.1*	- to **239.255.255.254**.
+	// The IP address of the multicast group to which the multicast source belongs. Valid values: **224.0.1.0*	- to **239.255.255.254**.
+	//
+	// > 224.0.0.0 to 224.0.0.255 are reserved by the system and cannot be used by multicast groups.
 	//
 	// If the multicast group does not exist in the multicast domain, the system automatically creates the multicast group in the multicast domain.
 	//
@@ -33980,13 +34052,15 @@ type RevokeInstanceFromTransitRouterRequest struct {
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the network instance. Default values:
+	// The type of the network instance. Valid values:
 	//
 	// 	- **VPC**: VPC
 	//
 	// 	- **ExpressConnect**: VBR
 	//
-	// 	- **VPN**: IPsec connection
+	// 	- **VPN**: IPsec-VPN connection
+	//
+	// 	- **ECR**: ECR
 	//
 	// This parameter is required.
 	//
@@ -35202,6 +35276,13 @@ func (s *UpdateCenInterRegionTrafficQosPolicyAttributeResponse) SetBody(v *Updat
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
+	// 按带宽绝对值模式分配时，当前队列可使用的跨地域带宽的绝对值，单位Mbps。
+	//
+	// 输入数字即可，无需输入单位。
+	//
+	// example:
+	//
+	// 1
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -35501,8 +35582,13 @@ func (s *UpdateTrafficMarkingPolicyAttributeRequest) SetTrafficMarkingPolicyName
 }
 
 type UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules struct {
+	// The address family. Valid values: You can set the value to IPv4 or IPv6, or leave the value empty.
+	//
+	// example:
+	//
+	// IPv4
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	// The destination CIDR block that is used to match packets.
+	// The destination CIDR block of packets. IPv4 and IPv6 addresses are supported.
 	//
 	// Packets whose destination IP addresses fall into the specified destination CIDR block meet the traffic classification rule. If you do not specify a destination CIDR block, all packets meet the traffic classification rule.
 	//
@@ -35574,7 +35660,7 @@ type UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules struct {
 	//
 	// UDP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block that is used to match packets.
+	// The source CIDR block of packets. IPv4 and IPv6 addresses are supported.
 	//
 	// Packets whose source IP addresses fall into the specified source CIDR block meet the traffic classification rule. If you do not specify a source CIDR block, all packets meet the traffic classification rule.
 	//
@@ -35674,8 +35760,13 @@ func (s *UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules) SetTraf
 }
 
 type UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules struct {
+	// The address family. Valid values: You can set the value to IPv4 or IPv6, or leave the value empty.
+	//
+	// example:
+	//
+	// IPv6
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	// The destination CIDR block that is used to match packets.
+	// The destination CIDR block of packets. IPv4 and IPv6 addresses are supported.
 	//
 	// example:
 	//
@@ -35697,7 +35788,7 @@ type UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules struct {
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block that is used to match packets.
+	// The source CIDR block of packets. IPv4 and IPv6 addresses are supported.
 	//
 	// example:
 	//
@@ -35707,7 +35798,7 @@ type UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules struct {
 	SrcPortRange []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
 	// The description of the traffic classification rule.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -36951,7 +37042,10 @@ type UpdateTransitRouterVpcAttachmentAttributeRequest struct {
 	// example:
 	//
 	// testname
-	TransitRouterAttachmentName       *string            `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	// Feature configurations of the VPC connection.
+	//
+	// 	- ipv6Support: specifies whether to enable IPv6. Valid values: true and false. The default value is the status of the VPC connection.
 	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 }
 
@@ -37076,7 +37170,10 @@ type UpdateTransitRouterVpcAttachmentAttributeShrinkRequest struct {
 	// example:
 	//
 	// testname
-	TransitRouterAttachmentName             *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	// Feature configurations of the VPC connection.
+	//
+	// 	- ipv6Support: specifies whether to enable IPv6. Valid values: true and false. The default value is the status of the VPC connection.
 	TransitRouterVPCAttachmentOptionsShrink *string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
 }
 
@@ -40734,19 +40831,13 @@ func (client *Client) CreateTransitRouterPeerAttachment(request *CreateTransitRo
 //
 // Description:
 //
-//   Only the route tables of Enterprise Edition transit routers can be associated with prefix lists.
+// To associate an Enterprise Edition transit router with a route prefix, you must meet the following requirements:
 //
-// 	- A prefix list can be associated only with one route table of an Enterprise Edition.
-//
-// 	- The CIDR blocks in the prefix list cannot overlap with those in the route table of the Enterprise Edition transit router. Otherwise, the prefix list fails to be associated with the route table.
-//
-// 	- If the route table of an Enterprise Edition transit router needs to be associated with multiple prefix lists, make sure that the CIDR blocks in the prefix lists do not overlap. Otherwise, the route table fails to be associated with the prefix lists.
-//
-// ### Prerequisites
+// 	- You are familiar with the limits and route compatibility notes of prefix lists. For more information, see [Prefix lists](https://help.aliyun.com/document_detail/445605.html).
 //
 // 	- A prefix list is created. For more information, see [CreateVpcPrefixList](https://help.aliyun.com/document_detail/437367.html).
 //
-// 	- The prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router if the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts. For more information about how to share a prefix list with another Alibaba Cloud account, see [Resource sharing overview](https://help.aliyun.com/document_detail/160622.html) and [API reference for resource sharing](https://help.aliyun.com/document_detail/193445.html).
+// 	- If the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts, the prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router. For more information, see [Resource sharing](https://help.aliyun.com/document_detail/160622.html) and [API references for resource sharing](https://help.aliyun.com/document_detail/193445.html).
 //
 // @param request - CreateTransitRouterPrefixListAssociationRequest
 //
@@ -40840,19 +40931,13 @@ func (client *Client) CreateTransitRouterPrefixListAssociationWithOptions(reques
 //
 // Description:
 //
-//   Only the route tables of Enterprise Edition transit routers can be associated with prefix lists.
+// To associate an Enterprise Edition transit router with a route prefix, you must meet the following requirements:
 //
-// 	- A prefix list can be associated only with one route table of an Enterprise Edition.
-//
-// 	- The CIDR blocks in the prefix list cannot overlap with those in the route table of the Enterprise Edition transit router. Otherwise, the prefix list fails to be associated with the route table.
-//
-// 	- If the route table of an Enterprise Edition transit router needs to be associated with multiple prefix lists, make sure that the CIDR blocks in the prefix lists do not overlap. Otherwise, the route table fails to be associated with the prefix lists.
-//
-// ### Prerequisites
+// 	- You are familiar with the limits and route compatibility notes of prefix lists. For more information, see [Prefix lists](https://help.aliyun.com/document_detail/445605.html).
 //
 // 	- A prefix list is created. For more information, see [CreateVpcPrefixList](https://help.aliyun.com/document_detail/437367.html).
 //
-// 	- The prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router if the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts. For more information about how to share a prefix list with another Alibaba Cloud account, see [Resource sharing overview](https://help.aliyun.com/document_detail/160622.html) and [API reference for resource sharing](https://help.aliyun.com/document_detail/193445.html).
+// 	- If the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts, the prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router. For more information, see [Resource sharing](https://help.aliyun.com/document_detail/160622.html) and [API references for resource sharing](https://help.aliyun.com/document_detail/193445.html).
 //
 // @param request - CreateTransitRouterPrefixListAssociationRequest
 //
@@ -41712,13 +41797,13 @@ func (client *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) (_result 
 //
 // Description:
 //
-// *DeleteCen*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call the **DescribeCens*	- operation to query the status of a CEN instance.
+// *DeleteCen*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call **DescribeCens*	- to query the status of a CEN instance.
 //
-// 	- If a CEN instance is in the **Deleting*	- state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
+// 	- If the CEN instance is in the **Deleting*	- state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
 //
-// 	- If a CEN instance cannot be found, the CEN instance is deleted.
+// 	- If the CEN instance cannot be found, the CEN instance is deleted.
 //
-// #### Prerequisites
+// ### [](#)Prerequisites
 //
 // The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
 //
@@ -41732,9 +41817,9 @@ func (client *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) (_result 
 //
 //     	- [DeleteTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261227.html)
 //
-//      >For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://help.aliyun.com/document_detail/65915.html).
+//     > For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://help.aliyun.com/document_detail/65915.html).
 //
-// 	- For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://help.aliyun.com/document_detail/261235.html).
+// 	- For more information about how to delete custom route tables from an Enterprise Edition transit router, see [DeleteTransitRouterRouteTable](https://help.aliyun.com/document_detail/261235.html).
 //
 // 	- For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://help.aliyun.com/document_detail/65935.html).
 //
@@ -41798,13 +41883,13 @@ func (client *Client) DeleteCenWithOptions(request *DeleteCenRequest, runtime *u
 //
 // Description:
 //
-// *DeleteCen*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call the **DescribeCens*	- operation to query the status of a CEN instance.
+// *DeleteCen*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call **DescribeCens*	- to query the status of a CEN instance.
 //
-// 	- If a CEN instance is in the **Deleting*	- state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
+// 	- If the CEN instance is in the **Deleting*	- state, the CEN instance is being deleted. In this case, you can query the CEN instance but cannot perform other operations.
 //
-// 	- If a CEN instance cannot be found, the CEN instance is deleted.
+// 	- If the CEN instance cannot be found, the CEN instance is deleted.
 //
-// #### Prerequisites
+// ### [](#)Prerequisites
 //
 // The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
 //
@@ -41818,9 +41903,9 @@ func (client *Client) DeleteCenWithOptions(request *DeleteCenRequest, runtime *u
 //
 //     	- [DeleteTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261227.html)
 //
-//      >For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://help.aliyun.com/document_detail/65915.html).
+//     > For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://help.aliyun.com/document_detail/65915.html).
 //
-// 	- For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://help.aliyun.com/document_detail/261235.html).
+// 	- For more information about how to delete custom route tables from an Enterprise Edition transit router, see [DeleteTransitRouterRouteTable](https://help.aliyun.com/document_detail/261235.html).
 //
 // 	- For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://help.aliyun.com/document_detail/65935.html).
 //
@@ -42348,7 +42433,7 @@ func (client *Client) DeleteCenInterRegionTrafficQosQueue(request *DeleteCenInte
 //
 // 	- If a routing policy is in the **Deleting*	- state, the routing policy is being deleted. You can query the routing policy but cannot perform other operations.
 //
-// 	- If a routing policy cannot be found, it is deleted.``
+// 	- If a routing policy cannot be found, it is deleted.
 //
 // @param request - DeleteCenRouteMapRequest
 //
@@ -42422,7 +42507,7 @@ func (client *Client) DeleteCenRouteMapWithOptions(request *DeleteCenRouteMapReq
 //
 // 	- If a routing policy is in the **Deleting*	- state, the routing policy is being deleted. You can query the routing policy but cannot perform other operations.
 //
-// 	- If a routing policy cannot be found, it is deleted.``
+// 	- If a routing policy cannot be found, it is deleted.
 //
 // @param request - DeleteCenRouteMapRequest
 //
@@ -43554,21 +43639,21 @@ func (client *Client) DeleteTransitRouterPrefixListAssociation(request *DeleteTr
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- If **TransitRouterRouteEntryId*	- is set, you must not set **TransitRouterRouteTableId*	- or **TransitRouterRouteEntryDestinationCidrBlock**. Otherwise, parameter conflicts will occur.
+// 	- If you specify the **TransitRouterRouteEntryId*	- parameter to delete a specific route, you do not need to configure the **TransitRouterRouteTableId*	- or **TransitRouterRouteEntryDestinationCidrBlock**. Otherwise, parameter conflicts occur.
 //
-// 	- If **TransitRouterRouteEntryId*	- is not set, you must specify the set parameters based on the type of the next hop:
+// 	- If you do not specify the **TransitRouterRouteEntryId*	- parameter, configure the following parameters based on the next hop type of the route that you want to delete:
 //
-//     	- To delete a blackhole route, you must set **TransitRouterRouteTableId**, **TransitRouterRouteEntryDestinationCidrBlock**, and **TransitRouterRouteEntryNextHopType**.
+//     	- To delete a blackhole route, configure the following parameters: **TransitRouterRouteTableId**, **TransitRouterRouteEntryDestinationCidrBlock**, and **TransitRouterRouteEntryNextHopType**.
 //
-//     	- If the route that you want to delete is not a blackhole route, you must set **TransitRouterRouteTableId**, **TransitRouterRouteEntryDestinationCidrBlock**, **TransitRouterRouteEntryNextHopType**, and **TransitRouterRouteEntryNextHopId**.
+//     	- To delete routes other than blackhole routes, configure the following parameters: **TransitRouterRouteTableId**, **TransitRouterRouteEntryDestinationCidrBlock**, **TransitRouterRouteEntryNextHopType**, and **TransitRouterRouteEntryNextHopId**.
 //
-// 	- **DeleteTransitRouterRouteEntry*	- is an asynchronous operation. After you send a request, the system returns a **request ID*	- and runs the task in the system background. You can call the **ListTransitRouterRouteEntries*	- operation to query the status of a route entry.
+// 	- **DeleteTransitRouterRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call the **ListTransitRouterRouteEntries*	- operation to query the status of a route entry.
 //
-//     	- If a route entry is in the **Deleting*	- state, the route entry is being deleted. You can query the route entry but cannot perform other operations.
+//     	- If the route entry is in the **Deleting*	- state, the route entry is being deleted. In this case, you can query the route entry but cannot perform other operations.
 //
 //     	- If a route entry cannot be found, it is deleted.
 //
-// ## Limits
+// ### [](#)Limits
 //
 // You can call this operation to delete only static routes. Automatically learned routes are not supported. You can call the [ListTransitRouterRouteEntries](https://help.aliyun.com/document_detail/260941.html) operation to query route types.
 //
@@ -43658,21 +43743,21 @@ func (client *Client) DeleteTransitRouterRouteEntryWithOptions(request *DeleteTr
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- If **TransitRouterRouteEntryId*	- is set, you must not set **TransitRouterRouteTableId*	- or **TransitRouterRouteEntryDestinationCidrBlock**. Otherwise, parameter conflicts will occur.
+// 	- If you specify the **TransitRouterRouteEntryId*	- parameter to delete a specific route, you do not need to configure the **TransitRouterRouteTableId*	- or **TransitRouterRouteEntryDestinationCidrBlock**. Otherwise, parameter conflicts occur.
 //
-// 	- If **TransitRouterRouteEntryId*	- is not set, you must specify the set parameters based on the type of the next hop:
+// 	- If you do not specify the **TransitRouterRouteEntryId*	- parameter, configure the following parameters based on the next hop type of the route that you want to delete:
 //
-//     	- To delete a blackhole route, you must set **TransitRouterRouteTableId**, **TransitRouterRouteEntryDestinationCidrBlock**, and **TransitRouterRouteEntryNextHopType**.
+//     	- To delete a blackhole route, configure the following parameters: **TransitRouterRouteTableId**, **TransitRouterRouteEntryDestinationCidrBlock**, and **TransitRouterRouteEntryNextHopType**.
 //
-//     	- If the route that you want to delete is not a blackhole route, you must set **TransitRouterRouteTableId**, **TransitRouterRouteEntryDestinationCidrBlock**, **TransitRouterRouteEntryNextHopType**, and **TransitRouterRouteEntryNextHopId**.
+//     	- To delete routes other than blackhole routes, configure the following parameters: **TransitRouterRouteTableId**, **TransitRouterRouteEntryDestinationCidrBlock**, **TransitRouterRouteEntryNextHopType**, and **TransitRouterRouteEntryNextHopId**.
 //
-// 	- **DeleteTransitRouterRouteEntry*	- is an asynchronous operation. After you send a request, the system returns a **request ID*	- and runs the task in the system background. You can call the **ListTransitRouterRouteEntries*	- operation to query the status of a route entry.
+// 	- **DeleteTransitRouterRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call the **ListTransitRouterRouteEntries*	- operation to query the status of a route entry.
 //
-//     	- If a route entry is in the **Deleting*	- state, the route entry is being deleted. You can query the route entry but cannot perform other operations.
+//     	- If the route entry is in the **Deleting*	- state, the route entry is being deleted. In this case, you can query the route entry but cannot perform other operations.
 //
 //     	- If a route entry cannot be found, it is deleted.
 //
-// ## Limits
+// ### [](#)Limits
 //
 // You can call this operation to delete only static routes. Automatically learned routes are not supported. You can call the [ListTransitRouterRouteEntries](https://help.aliyun.com/document_detail/260941.html) operation to query route types.
 //
@@ -47402,6 +47487,10 @@ func (client *Client) GrantInstanceToTransitRouter(request *GrantInstanceToTrans
 //
 // Queries routes in route tables of network instances that point to network instance connections on Enterprise Edition transit routers.
 //
+// Description:
+//
+// Before you call the ListCenChildInstanceRouteEntriesToAttachment operation, make sure that all request parameter values are valid. If a parameter is set to an invalid value, a request ID is returned, but the routes to the network instance are not returned.
+//
 // @param request - ListCenChildInstanceRouteEntriesToAttachmentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -47483,6 +47572,10 @@ func (client *Client) ListCenChildInstanceRouteEntriesToAttachmentWithOptions(re
 // Summary:
 //
 // Queries routes in route tables of network instances that point to network instance connections on Enterprise Edition transit routers.
+//
+// Description:
+//
+// Before you call the ListCenChildInstanceRouteEntriesToAttachment operation, make sure that all request parameter values are valid. If a parameter is set to an invalid value, a request ID is returned, but the routes to the network instance are not returned.
 //
 // @param request - ListCenChildInstanceRouteEntriesToAttachmentRequest
 //
@@ -52052,7 +52145,7 @@ func (client *Client) RemoveTrafficMatchRuleFromTrafficMarkingPolicy(request *Re
 //
 // ### [](#)Precautions
 //
-// The **RemoveTraficMatchRuleFromTrafficMarkingPolicy*	- operation is deprecated and will be discontinued soon. If you need to delete traffic classification rules from a traffic marking policy, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://help.aliyun.com/document_detail/452726.html) operation.
+// The **RemoveTraficMatchRuleFromTrafficMarkingPolicy*	- operation is deprecated and will be discontinued soon. To delete a traffic classification rule, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://help.aliyun.com/document_detail/452726.html) operation. Maintenance on this document has stopped.
 //
 // @param request - RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest
 //
@@ -52131,7 +52224,7 @@ func (client *Client) RemoveTraficMatchRuleFromTrafficMarkingPolicyWithOptions(r
 //
 // ### [](#)Precautions
 //
-// The **RemoveTraficMatchRuleFromTrafficMarkingPolicy*	- operation is deprecated and will be discontinued soon. If you need to delete traffic classification rules from a traffic marking policy, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://help.aliyun.com/document_detail/452726.html) operation.
+// The **RemoveTraficMatchRuleFromTrafficMarkingPolicy*	- operation is deprecated and will be discontinued soon. To delete a traffic classification rule, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://help.aliyun.com/document_detail/452726.html) operation. Maintenance on this document has stopped.
 //
 // @param request - RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest
 //
@@ -52242,21 +52335,21 @@ func (client *Client) ReplaceTransitRouterRouteTableAssociation(request *Replace
 //
 // Description:
 //
-// Cloud services refer to Alibaba Cloud services that use the 100.64.0.0/10 CIDR block to provide services. These cloud services include Object Storage Service (OSS), Simple Log Service, and Data Transmission Service (DTS). If your on-premises network needs to access a cloud service, you must attach the virtual border router (VBR) or Cloud Connect Network (CCN) instance that is connected to your on-premises network to a Cloud Enterprise Network (CEN) instance. In addition, you must attach a virtual private cloud (VPC) that is deployed in the same region as the cloud service to the CEN instance. This way, your on-premises network can connect to the VPC that is deployed in the same region as the cloud service and access the cloud service through the VPC.
+// Cloud services refer to Alibaba Cloud services that use the 100.64.0.0/10 CIDR block to provide services. These cloud services include Object Storage Service (OSS), Simple Log Service (SLS), and Data Transmission Service (DTS). If your on-premises network needs to access a cloud service, you must attach the virtual border router (VBR) or Cloud Connect Network (CCN) instance that is connected to your on-premises network to a Cloud Enterprise Network (CEN) instance. In addition, you must attach a virtual private cloud (VPC) that is deployed in the same region as the cloud service to the CEN instance. This way, your on-premises network can connect to the VPC that is deployed in the same region as the cloud service and access the cloud service through the VPC.
 //
-// 	- You can call this operation only for a Basic Edition transit router. An on-premises network associated with a VBR can use CEN to access only a cloud service that is deployed in the same region.
+// 	- This operation is supported only by Basic Edition transit routers. An on-premises network associated with a VBR can use CEN to access only a cloud service that is deployed in the same region.
 //
 //     For example, if cloud services are deployed in the China (Beijing) region, only on-premises networks connected to VBRs in the China (Beijing) region can access the cloud services.
 //
 // 	- **ResolveAndRouteServiceInCen*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call **DescribeRouteServicesInCen*	- to query the status of a cloud service.
 //
-//     	- If a cloud service is in the **Creating*	- state, the connection to the cloud service is being created. In this case, you can query the cloud service but cannot perform other operations.
+//     	- If the cloud service is in the **Creating*	- state, the connection to the cloud service is being created. In this case, you can query the cloud service but cannot perform other operations.
 //
-//     	- If a cloud service is in the **Active*	- state, the connection to the cloud service is created.
+//     	- If the cloud service is in the **Active*	- state, the connection to the cloud service is created.
 //
-//     	- If a cloud service is in the **Failed*	- state, the connection to the cloud service failed.
+//     	- If the cloud service is in the **Failed*	- state, the connection to the cloud service failed.
 //
-// # [](#)Prerequisites
+// ### [](#)Prerequisites
 //
 // Before you call this operation, make sure that the following conditions are met:
 //
@@ -52348,21 +52441,21 @@ func (client *Client) ResolveAndRouteServiceInCenWithOptions(request *ResolveAnd
 //
 // Description:
 //
-// Cloud services refer to Alibaba Cloud services that use the 100.64.0.0/10 CIDR block to provide services. These cloud services include Object Storage Service (OSS), Simple Log Service, and Data Transmission Service (DTS). If your on-premises network needs to access a cloud service, you must attach the virtual border router (VBR) or Cloud Connect Network (CCN) instance that is connected to your on-premises network to a Cloud Enterprise Network (CEN) instance. In addition, you must attach a virtual private cloud (VPC) that is deployed in the same region as the cloud service to the CEN instance. This way, your on-premises network can connect to the VPC that is deployed in the same region as the cloud service and access the cloud service through the VPC.
+// Cloud services refer to Alibaba Cloud services that use the 100.64.0.0/10 CIDR block to provide services. These cloud services include Object Storage Service (OSS), Simple Log Service (SLS), and Data Transmission Service (DTS). If your on-premises network needs to access a cloud service, you must attach the virtual border router (VBR) or Cloud Connect Network (CCN) instance that is connected to your on-premises network to a Cloud Enterprise Network (CEN) instance. In addition, you must attach a virtual private cloud (VPC) that is deployed in the same region as the cloud service to the CEN instance. This way, your on-premises network can connect to the VPC that is deployed in the same region as the cloud service and access the cloud service through the VPC.
 //
-// 	- You can call this operation only for a Basic Edition transit router. An on-premises network associated with a VBR can use CEN to access only a cloud service that is deployed in the same region.
+// 	- This operation is supported only by Basic Edition transit routers. An on-premises network associated with a VBR can use CEN to access only a cloud service that is deployed in the same region.
 //
 //     For example, if cloud services are deployed in the China (Beijing) region, only on-premises networks connected to VBRs in the China (Beijing) region can access the cloud services.
 //
 // 	- **ResolveAndRouteServiceInCen*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call **DescribeRouteServicesInCen*	- to query the status of a cloud service.
 //
-//     	- If a cloud service is in the **Creating*	- state, the connection to the cloud service is being created. In this case, you can query the cloud service but cannot perform other operations.
+//     	- If the cloud service is in the **Creating*	- state, the connection to the cloud service is being created. In this case, you can query the cloud service but cannot perform other operations.
 //
-//     	- If a cloud service is in the **Active*	- state, the connection to the cloud service is created.
+//     	- If the cloud service is in the **Active*	- state, the connection to the cloud service is created.
 //
-//     	- If a cloud service is in the **Failed*	- state, the connection to the cloud service failed.
+//     	- If the cloud service is in the **Failed*	- state, the connection to the cloud service failed.
 //
-// # [](#)Prerequisites
+// ### [](#)Prerequisites
 //
 // Before you call this operation, make sure that the following conditions are met:
 //
@@ -52390,21 +52483,23 @@ func (client *Client) ResolveAndRouteServiceInCen(request *ResolveAndRouteServic
 //
 // Description:
 //
-// `RevokeInstanceFromTransitRouter` disallows transit routers only from connecting to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections.
+// `RevokeInstanceFromTransitRouter` can be used to revoke permissions on virtual private clouds (VPCs), virtual border routers (VBRs), IPsec-VPN connections, and Express Connect Router (ECRs) that belong to another Alibaba Cloud account.
 //
-// If you want to disallow transit routers from connecting to Cloud Connect Network (CCN) instances, call the [RevokeInstanceFromCbn](https://help.aliyun.com/document_detail/126142.html) operation.
+// To revoke permissions on Cloud Connect Network (CCN) instances that belong to another Alibaba Cloud account, call the [RevokeInstanceFromCbn](https://help.aliyun.com/document_detail/126142.html) operation.
 //
-// ## [](#)Prerequisite
+// ### [](#)Prerequisites
 //
 // Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
 //
-// 	- For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261220.html).
+// 	- For more information about how to detach VPCs from Enterprise Edition transit routers, see [DeleteTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261220.html).
 //
-// 	- For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261223.html).
+// 	- For more information about how to detach VBRs from Enterprise Edition transit routers, see [DeleteTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261223.html).
 //
-// 	- For more information about how to detach IPsec-VPN connections from an Enterprise Edition transit router, see [DeleteTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443992.html).
+// 	- For more information about how to detach IPsec-VPN connections from Enterprise Edition transit routers, see [DeleteTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443992.html).
 //
-// 	- For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://help.aliyun.com/document_detail/65915.html).
+// 	- For more information about how to detach ECRs from Enterprise Edition transit routers, see [DeleteTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/443992.html).
+//
+// 	- For more information about how to detach network instances from Basic Edition transit routers, see [DetachCenChildInstance](https://help.aliyun.com/document_detail/65915.html).
 //
 // @param request - RevokeInstanceFromTransitRouterRequest
 //
@@ -52482,21 +52577,23 @@ func (client *Client) RevokeInstanceFromTransitRouterWithOptions(request *Revoke
 //
 // Description:
 //
-// `RevokeInstanceFromTransitRouter` disallows transit routers only from connecting to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections.
+// `RevokeInstanceFromTransitRouter` can be used to revoke permissions on virtual private clouds (VPCs), virtual border routers (VBRs), IPsec-VPN connections, and Express Connect Router (ECRs) that belong to another Alibaba Cloud account.
 //
-// If you want to disallow transit routers from connecting to Cloud Connect Network (CCN) instances, call the [RevokeInstanceFromCbn](https://help.aliyun.com/document_detail/126142.html) operation.
+// To revoke permissions on Cloud Connect Network (CCN) instances that belong to another Alibaba Cloud account, call the [RevokeInstanceFromCbn](https://help.aliyun.com/document_detail/126142.html) operation.
 //
-// ## [](#)Prerequisite
+// ### [](#)Prerequisites
 //
 // Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
 //
-// 	- For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261220.html).
+// 	- For more information about how to detach VPCs from Enterprise Edition transit routers, see [DeleteTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/261220.html).
 //
-// 	- For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261223.html).
+// 	- For more information about how to detach VBRs from Enterprise Edition transit routers, see [DeleteTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261223.html).
 //
-// 	- For more information about how to detach IPsec-VPN connections from an Enterprise Edition transit router, see [DeleteTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443992.html).
+// 	- For more information about how to detach IPsec-VPN connections from Enterprise Edition transit routers, see [DeleteTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443992.html).
 //
-// 	- For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://help.aliyun.com/document_detail/65915.html).
+// 	- For more information about how to detach ECRs from Enterprise Edition transit routers, see [DeleteTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/443992.html).
+//
+// 	- For more information about how to detach network instances from Basic Edition transit routers, see [DetachCenChildInstance](https://help.aliyun.com/document_detail/65915.html).
 //
 // @param request - RevokeInstanceFromTransitRouterRequest
 //
@@ -52658,15 +52755,29 @@ func (client *Client) RoutePrivateZoneInCenToVpc(request *RoutePrivateZoneInCenT
 //
 // Description:
 //
-// ### Prerequisites
+// This operation is used to manage bandwidth of inter-region connections only for Basic Edition transit routers.
 //
-// The Cloud Enterprise Network (CEN) instance is associated with a bandwidth plan. For more information, see the [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html) and [AssociateCenBandwidthPackage](https://help.aliyun.com/document_detail/65934.html) topics.
+// ### [](#)Prerequisites
 //
-// You can call the **SetCenInterRegionBandwidthLimit*	- operation to configure, modify, or remove the maximum bandwidth value of an inter-region connection.
+// The Cloud Enterprise Network (CEN) instance is associated with a bandwidth plan. For more information, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html) and [AssociateCenBandwidthPackage](https://help.aliyun.com/document_detail/65934.html).
 //
-// - If you set **BandwidthLimit*	- to a value other than 0, the maximum bandwidth value of the inter-region connection is set or changed to the specified value.
+// You can call the **SetCenInterRegionBandwidthLimit*	- operation to configure, change, or remove the bandwidth limit of an inter-region connection.
 //
-// - If you set **BandwidthLimit*	- to 0, no bandwidth resource is allocated to the inter-region connection.
+// 	- If you set **BandwidthLimit*	- to a value other than 0, the bandwidth of the inter-region connection is set to the specified value.
+//
+// 	- If you set **BandwidthLimit*	- to 0, the bandwidth of the inter-region connection is no longer limited.
+//
+// ### [](#)Limits
+//
+// 	- The bandwidth limit of an inter-region connection cannot exceed the bandwidth limit of the associated bandwidth plan.
+//
+// 	- The sum of bandwidth limits of all inter-region connections cannot exceed the bandwidth limit of the associated bandwidth plan.
+//
+// 	- If bandwidth multiplexing is enabled for an inter-region connection, you cannot change the bandwidth of the inter-region connection.
+//
+// 	- The **SetCenInterRegionBandwidthLimit*	- operation can be used to configure, modify, or delete the bandwidth of inter-region connections only for Basic Edition transit routers.
+//
+//     To configure, modify, or delete the bandwidth of inter-region connections for Enterprise Edition transit routers, call the [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html), [UpdateTransitRouterPeerAttachmentAttribute](https://help.aliyun.com/document_detail/261229.html), or [DeleteTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261227.html) operation.
 //
 // @param request - SetCenInterRegionBandwidthLimitRequest
 //
@@ -52744,15 +52855,29 @@ func (client *Client) SetCenInterRegionBandwidthLimitWithOptions(request *SetCen
 //
 // Description:
 //
-// ### Prerequisites
+// This operation is used to manage bandwidth of inter-region connections only for Basic Edition transit routers.
 //
-// The Cloud Enterprise Network (CEN) instance is associated with a bandwidth plan. For more information, see the [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html) and [AssociateCenBandwidthPackage](https://help.aliyun.com/document_detail/65934.html) topics.
+// ### [](#)Prerequisites
 //
-// You can call the **SetCenInterRegionBandwidthLimit*	- operation to configure, modify, or remove the maximum bandwidth value of an inter-region connection.
+// The Cloud Enterprise Network (CEN) instance is associated with a bandwidth plan. For more information, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html) and [AssociateCenBandwidthPackage](https://help.aliyun.com/document_detail/65934.html).
 //
-// - If you set **BandwidthLimit*	- to a value other than 0, the maximum bandwidth value of the inter-region connection is set or changed to the specified value.
+// You can call the **SetCenInterRegionBandwidthLimit*	- operation to configure, change, or remove the bandwidth limit of an inter-region connection.
 //
-// - If you set **BandwidthLimit*	- to 0, no bandwidth resource is allocated to the inter-region connection.
+// 	- If you set **BandwidthLimit*	- to a value other than 0, the bandwidth of the inter-region connection is set to the specified value.
+//
+// 	- If you set **BandwidthLimit*	- to 0, the bandwidth of the inter-region connection is no longer limited.
+//
+// ### [](#)Limits
+//
+// 	- The bandwidth limit of an inter-region connection cannot exceed the bandwidth limit of the associated bandwidth plan.
+//
+// 	- The sum of bandwidth limits of all inter-region connections cannot exceed the bandwidth limit of the associated bandwidth plan.
+//
+// 	- If bandwidth multiplexing is enabled for an inter-region connection, you cannot change the bandwidth of the inter-region connection.
+//
+// 	- The **SetCenInterRegionBandwidthLimit*	- operation can be used to configure, modify, or delete the bandwidth of inter-region connections only for Basic Edition transit routers.
+//
+//     To configure, modify, or delete the bandwidth of inter-region connections for Enterprise Edition transit routers, call the [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html), [UpdateTransitRouterPeerAttachmentAttribute](https://help.aliyun.com/document_detail/261229.html), or [DeleteTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261227.html) operation.
 //
 // @param request - SetCenInterRegionBandwidthLimitRequest
 //
