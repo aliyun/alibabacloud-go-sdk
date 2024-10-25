@@ -4338,7 +4338,7 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// 	- GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
 	//
-	// 	- LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// 	- LessThanLastPeriod: less than the metric value in the previous monitoring cycle
 	//
 	// Valid values of N: 1 to 3.
 	//
@@ -4348,7 +4348,7 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The time period during which the alert rule is effective.
+	// The period of time during which the alert rule is effective.
 	//
 	// Valid values of N: 1 to 3.
 	//
@@ -4358,11 +4358,11 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	// The alert level. Valid values:
 	//
-	// 	- critical (default): critical
+	// 	- critical (default)
 	//
-	// 	- warn: warning
+	// 	- warn
 	//
-	// 	- info: information
+	// 	- info
 	//
 	// Valid values of N: 1 to 3.
 	//
@@ -4382,13 +4382,13 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// Valid values of N: 1 to 3.
 	//
-	// >  Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	// >  Only one alert notification is sent during a mute period even if the metric value exceeds the alert threshold during consecutive checks.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The statistical method for alerts.
+	// The statistical aggregation method that is used to calculate the metric values.
 	//
 	// Valid values of N: 1 to 3.
 	//
@@ -4406,8 +4406,6 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// Valid values of N: 1 to 3.
 	//
-	// Unit: cores.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -4418,7 +4416,7 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// Valid values of N: 1 to 3.
 	//
-	// >  An alert is triggered only if the number of times for which the threshold can be consecutively exceeded is reached.
+	// >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
 	//
 	// This parameter is required.
 	//
@@ -4497,15 +4495,15 @@ func (s *CreateGroupMonitoringAgentProcessRequestAlertConfig) SetWebhook(v strin
 type CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
 	// The Alibaba Cloud Resource Name (ARN) of the resource.
 	//
-	// For information about how to obtain the ARN of a resource, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+	// For more information about how to query the ARN of a resource, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
 	//
 	// Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
 	//
-	// 	- {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
+	// 	- {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
 	//
 	// 	- {userId}: the ID of the Alibaba Cloud account.
 	//
-	// 	- {regionId}: the region ID of the message queue or topic.
+	// 	- {regionId}: the region ID of the SMQ queue or topic.
 	//
 	// 	- {Resource type}: the type of the resource that triggers the alert. Valid values:
 	//
@@ -4525,13 +4523,13 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// The ID of the resource for which alerts are triggered.
 	//
-	// For information about how to obtain the ID of a resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+	// For more information about how to obtain the ID of a resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters of the alert callback. Specify the parameters in the JSON format.
+	// The parameters of the alert callback. The parameters are in the JSON format.
 	//
 	// example:
 	//
@@ -21626,7 +21624,7 @@ type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigA
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The resource for which alerts are triggered.
+	// The resources for which alerts are triggered.
 	TargetList *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
 	// The alert threshold.
 	//
@@ -21728,7 +21726,23 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget struct {
 	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message. Example: acs:mns:cn-hangzhou:120886317861\\*\\*\\*\\*:/queues/test123/message. Fields:
 	//
-	// {Service name abbreviation}: the abbreviation of the service name. Valid value: mns. {userId}: the ID of the Alibaba Cloud account. {regionId}: the region ID of the message queue or topic. {Resource type}: the type of the resource that triggers the alert. Valid values: - **queues*	- - **topics*	- - {Resource name}: the resource name. - If the resource type is set to **queues**, the resource name is the name of the message queue. - If the resource type is set to **topics**, the resource name is the name of the topic.
+	// 	- {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
+	//
+	// 	- {userId}: the ID of the Alibaba Cloud account.
+	//
+	// 	- {regionId}: the region ID of the SMQ queue or topic.
+	//
+	// 	- {Resource type}: the type of the resource for which alerts are triggered. Valid values:
+	//
+	//     	- **queues**
+	//
+	//     	- **topics**
+	//
+	// 	- {Resource name}: the resource name.
+	//
+	//     	- If the resource type is **queues**, the resource name is the queue name.
+	//
+	//     	- If the resource type is **topics**, the resource name is the topic name.
 	//
 	// example:
 	//
@@ -21746,9 +21760,13 @@ type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigA
 	//
 	// {"customField1":"value1","customField2":"$.name"}
 	JsonParmas *string `json:"JsonParmas,omitempty" xml:"JsonParmas,omitempty"`
-	// The level of the alert. Valid values:
+	// The alert level. Valid values:
 	//
-	// INFO WARN CRITICAL
+	// 	- INFO
+	//
+	// 	- WARN
+	//
+	// 	- CRITICAL
 	//
 	// example:
 	//
@@ -35774,7 +35792,18 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity struct
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	// The carrier name.
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 探测点网络类型。取值：
+	//
+	// IDC: IDC机房
+	//
+	// LASTMILE: 网民家宽
+	//
+	// MOBILE: 移动蜂窝网
+	//
+	// example:
+	//
+	// IDC
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) String() string {
@@ -36044,7 +36073,13 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// 0
 	RetryDelay *int32 `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
-	ScreenShot *bool  `json:"screen_shot,omitempty" xml:"screen_shot,omitempty"`
+	// 是否开启页面截图
+	//
+	// example:
+	//
+	// false
+	ScreenShot *bool `json:"screen_shot,omitempty" xml:"screen_shot,omitempty"`
+	ScrollEnd  *bool `json:"scroll_end,omitempty" xml:"scroll_end,omitempty"`
 	// example:
 	//
 	// false
@@ -36283,6 +36318,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetRetr
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetScreenShot(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.ScreenShot = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetScrollEnd(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.ScrollEnd = &v
 	return s
 }
 
@@ -36568,10 +36608,24 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHi
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig struct {
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 内网拨测任务的目标站点所在地域。
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// sg-xxxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId       *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// example:
+	//
+	// vpc-xxxxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-xxxxxx
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig) String() string {
