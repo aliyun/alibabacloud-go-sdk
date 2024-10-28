@@ -9667,6 +9667,7 @@ type DescribeDBClusterSSLRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -9691,6 +9692,11 @@ func (s *DescribeDBClusterSSLRequest) SetOwnerAccount(v string) *DescribeDBClust
 
 func (s *DescribeDBClusterSSLRequest) SetOwnerId(v int64) *DescribeDBClusterSSLRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBClusterSSLRequest) SetRegionId(v string) *DescribeDBClusterSSLRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9788,6 +9794,119 @@ func (s *DescribeDBClusterSSLResponse) SetStatusCode(v int32) *DescribeDBCluster
 }
 
 func (s *DescribeDBClusterSSLResponse) SetBody(v *DescribeDBClusterSSLResponseBody) *DescribeDBClusterSSLResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBClusterShardNumberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-uf6g8w25jacm7****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeDBClusterShardNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterShardNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterShardNumberRequest) SetDBClusterId(v string) *DescribeDBClusterShardNumberRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterShardNumberRequest) SetOwnerAccount(v string) *DescribeDBClusterShardNumberRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBClusterShardNumberRequest) SetOwnerId(v int64) *DescribeDBClusterShardNumberRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBClusterShardNumberRequest) SetRegionId(v string) *DescribeDBClusterShardNumberRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBClusterShardNumberRequest) SetResourceOwnerAccount(v string) *DescribeDBClusterShardNumberRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBClusterShardNumberRequest) SetResourceOwnerId(v int64) *DescribeDBClusterShardNumberRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeDBClusterShardNumberResponseBody struct {
+	// example:
+	//
+	// CBE843D8-964D-5EA3-9D31-822125611B6E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 128
+	ShardNumber *int32 `json:"ShardNumber,omitempty" xml:"ShardNumber,omitempty"`
+}
+
+func (s DescribeDBClusterShardNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterShardNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterShardNumberResponseBody) SetRequestId(v string) *DescribeDBClusterShardNumberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBClusterShardNumberResponseBody) SetShardNumber(v int32) *DescribeDBClusterShardNumberResponseBody {
+	s.ShardNumber = &v
+	return s
+}
+
+type DescribeDBClusterShardNumberResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBClusterShardNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBClusterShardNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterShardNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterShardNumberResponse) SetHeaders(v map[string]*string) *DescribeDBClusterShardNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBClusterShardNumberResponse) SetStatusCode(v int32) *DescribeDBClusterShardNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterShardNumberResponse) SetBody(v *DescribeDBClusterShardNumberResponseBody) *DescribeDBClusterShardNumberResponse {
 	s.Body = v
 	return s
 }
@@ -31581,6 +31700,10 @@ func (client *Client) DescribeDBClusterSSLWithOptions(request *DescribeDBCluster
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -31623,6 +31746,86 @@ func (client *Client) DescribeDBClusterSSL(request *DescribeDBClusterSSLRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterSSLResponse{}
 	_body, _err := client.DescribeDBClusterSSLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例分片(Shard)数目
+//
+// @param request - DescribeDBClusterShardNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterShardNumberResponse
+func (client *Client) DescribeDBClusterShardNumberWithOptions(request *DescribeDBClusterShardNumberRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterShardNumberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBClusterShardNumber"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBClusterShardNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例分片(Shard)数目
+//
+// @param request - DescribeDBClusterShardNumberRequest
+//
+// @return DescribeDBClusterShardNumberResponse
+func (client *Client) DescribeDBClusterShardNumber(request *DescribeDBClusterShardNumberRequest) (_result *DescribeDBClusterShardNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBClusterShardNumberResponse{}
+	_body, _err := client.DescribeDBClusterShardNumberWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
