@@ -3298,9 +3298,10 @@ func (s *HostAlias) SetIp(v string) *HostAlias {
 }
 
 type ImageConfig struct {
-	AccelerationType *string `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
-	Image            *string `json:"image,omitempty" xml:"image,omitempty"`
-	InstanceID       *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	AccelerationType *string         `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
+	Image            *string         `json:"image,omitempty" xml:"image,omitempty"`
+	InstanceID       *string         `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	RegistryConfig   *RegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
 }
 
 func (s ImageConfig) String() string {
@@ -3323,6 +3324,11 @@ func (s *ImageConfig) SetImage(v string) *ImageConfig {
 
 func (s *ImageConfig) SetInstanceID(v string) *ImageConfig {
 	s.InstanceID = &v
+	return s
+}
+
+func (s *ImageConfig) SetRegistryConfig(v *RegistryConfig) *ImageConfig {
+	s.RegistryConfig = v
 	return s
 }
 
@@ -5185,6 +5191,90 @@ func (s *PublishWebApplicationRevisionInput) SetEnableArmsMetrics(v bool) *Publi
 
 func (s *PublishWebApplicationRevisionInput) SetTakeEffect(v bool) *PublishWebApplicationRevisionInput {
 	s.TakeEffect = &v
+	return s
+}
+
+type RegistryAuthConfig struct {
+	// example:
+	//
+	// abc***
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// acs:ram::142xxxx:role/xxxxxx
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// admin
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s RegistryAuthConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryAuthConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryAuthConfig) SetPassword(v string) *RegistryAuthConfig {
+	s.Password = &v
+	return s
+}
+
+func (s *RegistryAuthConfig) SetRole(v string) *RegistryAuthConfig {
+	s.Role = &v
+	return s
+}
+
+func (s *RegistryAuthConfig) SetUserName(v string) *RegistryAuthConfig {
+	s.UserName = &v
+	return s
+}
+
+type RegistryCertConfig struct {
+	Insecure         *bool   `json:"insecure,omitempty" xml:"insecure,omitempty"`
+	RootCaCertBase64 *string `json:"rootCaCertBase64,omitempty" xml:"rootCaCertBase64,omitempty"`
+}
+
+func (s RegistryCertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryCertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryCertConfig) SetInsecure(v bool) *RegistryCertConfig {
+	s.Insecure = &v
+	return s
+}
+
+func (s *RegistryCertConfig) SetRootCaCertBase64(v string) *RegistryCertConfig {
+	s.RootCaCertBase64 = &v
+	return s
+}
+
+type RegistryConfig struct {
+	AuthConfig *RegistryAuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	CertConfig *RegistryCertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+}
+
+func (s RegistryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryConfig) SetAuthConfig(v *RegistryAuthConfig) *RegistryConfig {
+	s.AuthConfig = v
+	return s
+}
+
+func (s *RegistryConfig) SetCertConfig(v *RegistryCertConfig) *RegistryConfig {
+	s.CertConfig = v
 	return s
 }
 
@@ -10481,53 +10571,128 @@ func (s *CreateGreyTagRouteResponse) SetBody(v *CreateGreyTagRouteResponseBody) 
 }
 
 type CreateIngressRequest struct {
+	// The ID of the certificate that is associated with the **CLB*	- instance.
+	//
+	// 	- If you set **LoadBalanceType*	- to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
+	//
+	// For more information about how to manage the SSL certificate IDs that are used by CLB instances, see [Overview](https://help.aliyun.com/document_detail/90792.html).
+	//
 	// example:
 	//
 	// 188077086902****_176993d****_181437****_108724****
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The IDs of the certificates that are associated with the **ALB*	- instance.
+	//
+	// 	- If you set **LoadBalanceType*	- to **alb**, you can use CertIds to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with commas (,).
+	//
+	// 	- The ID of the SSL certificate that is used by an ALB instance can be obtained from Certificate Management Service. For example, if you specify `756***-cn-hangzhou`, `756***` is the certificate ID that is obtained from the service page, and `-cn-hangzhou` is the fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
+	//
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
 	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	// Default forwarding rule. Traffic is forwarded to the specified application through a designated port based on the IP address. Parameter descriptions are as follows:
+	//
+	// - **appId**: Application ID. - **containerPort**: Application instance port.
+	//
+	// > All requests that do not match or do not meet the **Rules*	- for forwarding will be directed to this specified application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080}
 	DefaultRule *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
+	// Route rule name.
+	//
 	// example:
 	//
 	// ingress-for-sae-test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IdleTimeout *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60.
+	//
+	// If no request is received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
+	//
+	// example:
+	//
+	// 15
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// SThe frontend port that is used by the ALB instance.
+	//
+	// Valid values: 1 to 65535.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// Request forwarding protocol. The value description is as follows:
+	//
+	// - **HTTP**: Suitable for applications that need to identify data content. - **HTTPS**: Suitable for applications that require encrypted transmission.
+	//
 	// example:
 	//
 	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The type of the SLB instance. The instance type can be specified only when you create a routing rule. You cannot change the instance type when you update the routing rule. Valid values:
+	//
+	// 	- **clb**
+	//
+	// 	- **alb**
+	//
 	// example:
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	// The ID of the namespace where the application is located. Currently, cross-namespace applications are not supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:sae-test
-	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RequestTimeout *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The timeout period of a request. Unit: seconds. Valid values: 1 to 180.
+	//
+	// If no response is received from the backend server within the specified timeout period, ALB returns an HTTP 504 error code to the client.
+	//
+	// example:
+	//
+	// 3
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The forwarding rules. You can specify a port and an application in a forwarding rule to forward traffic based on the specified domain name and request path. The following list describes the involved parameters:
+	//
+	// 	- **appId**: the ID of the application.
+	//
+	// 	- **containerPort**: the container port of the application.
+	//
+	// 	- **domain**: the domain name.
+	//
+	// 	- **path**: the request path.
+	//
+	// 	- **backendProtocol**: the backend service protocol. Valid values: http, https, and grpc. Default value: http.
+	//
+	// 	- **rewritePath**: the rewrite path.
+	//
+	// >  The path rewrite feature is supported only by ALB instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
-	Rules            *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The security policy ID.
+	//
+	// example:
+	//
+	// sp-bp1bpn0kn9****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	// The Server Load Balancer (SLB) instance that is used by the routing rule.
+	//
+	// >  The SLB instance can be a Classic Load Balancer (CLB) instance or an Application Load Balancer (ALB) instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10610,24 +10775,60 @@ func (s *CreateIngressRequest) SetSlbId(v string) *CreateIngressRequest {
 }
 
 type CreateIngressResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The call was successful.
+	//
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response.
+	Data *CreateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned. Take note of the following rules:
+	//
+	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	//
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	//
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information that is returned. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the Secret is successfully deleted. Valid values:
+	//
+	// 	- **true**: The instance was deleted.
+	//
+	// 	- **false**: The instance failed to be deleted.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. It is used to query the details of a request.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -10678,6 +10879,8 @@ func (s *CreateIngressResponseBody) SetTraceId(v string) *CreateIngressResponseB
 }
 
 type CreateIngressResponseBodyData struct {
+	// The ID of the routing rule.
+	//
 	// example:
 	//
 	// 87
@@ -21413,6 +21616,7 @@ type DescribeConfigurationPriceResponseBodyDataBagUsage struct {
 	//
 	// 497570.450009
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cu  *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
 	// example:
 	//
 	// 989802.563546
@@ -21429,6 +21633,11 @@ func (s DescribeConfigurationPriceResponseBodyDataBagUsage) GoString() string {
 
 func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) SetCpu(v float32) *DescribeConfigurationPriceResponseBodyDataBagUsage {
 	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) SetCu(v float32) *DescribeConfigurationPriceResponseBodyDataBagUsage {
+	s.Cu = &v
 	return s
 }
 
@@ -36675,12 +36884,14 @@ func (s *QueryResourceStaticsResponseBodyDataRealTimeRes) SetMemory(v float32) *
 }
 
 type QueryResourceStaticsResponseBodyDataSummary struct {
+	ActiveCpu *float32 `json:"ActiveCpu,omitempty" xml:"ActiveCpu,omitempty"`
 	// The CPU usage. Unit: core per minute.
 	//
 	// example:
 	//
 	// 3354
-	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu     *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	IdleCpu *float32 `json:"IdleCpu,omitempty" xml:"IdleCpu,omitempty"`
 	// The memory usage. Unit: GiB per minute.
 	//
 	// example:
@@ -36697,8 +36908,18 @@ func (s QueryResourceStaticsResponseBodyDataSummary) GoString() string {
 	return s.String()
 }
 
+func (s *QueryResourceStaticsResponseBodyDataSummary) SetActiveCpu(v float32) *QueryResourceStaticsResponseBodyDataSummary {
+	s.ActiveCpu = &v
+	return s
+}
+
 func (s *QueryResourceStaticsResponseBodyDataSummary) SetCpu(v float32) *QueryResourceStaticsResponseBodyDataSummary {
 	s.Cpu = &v
+	return s
+}
+
+func (s *QueryResourceStaticsResponseBodyDataSummary) SetIdleCpu(v float32) *QueryResourceStaticsResponseBodyDataSummary {
+	s.IdleCpu = &v
 	return s
 }
 
@@ -40785,42 +41006,86 @@ func (s *UpdateGreyTagRouteResponse) SetBody(v *UpdateGreyTagRouteResponseBody) 
 }
 
 type UpdateIngressRequest struct {
+	// The ID of the certificate that is associated with the Classic Load Balancer (**CLB**) instance.
+	//
+	// 	- If you set **LoadBalanceType*	- to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
+	//
+	// For more information about how to manage the SSL certificate IDs that are used by CLB instances, see [Overview](https://help.aliyun.com/document_detail/90792.html).
+	//
 	// example:
 	//
 	// 188077086902****_176993d****_181437****_108724****
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The IDs of the certificates that are associated with the Application Load Balancer (**ALB**) instance.
+	//
+	// 	- If you set **LoadBalanceType*	- to **alb**, you can use CertIds to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with commas (,).
+	//
+	// 	- The ID of the SSL certificate that is used by an ALB instance can be obtained from Certificate Management Service. For example, if you specify `756***-cn-hangzhou`, `756***` is the certificate ID that is obtained from the service page, and `-cn-hangzhou` is the fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
+	//
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
 	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	// The default forwarding rule. You can specify a port and an application in the default forwarding rule to forward traffic based on the IP address. The following list describes the involved parameters:
+	//
+	// 	- **appId**: the ID of the application.
+	//
+	// 	- **containerPort**: the container port of the application.
+	//
+	// >  All requests that do not match the forwarding rules specified for Rules are forwarded over the port to the application.
+	//
 	// example:
 	//
 	// {"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080}
 	DefaultRule *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
+	// The name of the routing rule.
+	//
 	// example:
 	//
 	// ingress-sae-test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IdleTimeout *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The ID of the routing rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 87
 	IngressId *int64 `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
+	// The port specified for the Server Load Balancer (SLB) listener. You must specify a vacant port.
+	//
 	// example:
 	//
 	// 443
 	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The protocol that is used to forward requests. Valid values:
+	//
+	// 	- **HTTP**: HTTP is suitable for applications that need to identify the transmitted data.
+	//
+	// 	- **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
+	//
 	// example:
 	//
 	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// This parameter is discontinued.
+	//
 	// example:
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
 	RequestTimeout  *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The forwarding rules. You can specify a port and an application in a forwarding rule to forward traffic based on the specified domain name and request path. The following list describes the involved parameters:
+	//
+	// 	- **appId**: the ID of the application.
+	//
+	// 	- **containerPort**: the container port of the application.
+	//
+	// 	- **domain**: the domain name.
+	//
+	// 	- **path**: the request path.
+	//
 	// example:
 	//
 	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
@@ -40897,24 +41162,56 @@ func (s *UpdateIngressRequest) SetSecurityPolicyId(v string) *UpdateIngressReque
 }
 
 type UpdateIngressResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	Data *UpdateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see the **Error codes*	- section of this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned information.
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the configurations of the routing rule were updated. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -40965,6 +41262,8 @@ func (s *UpdateIngressResponseBody) SetTraceId(v string) *UpdateIngressResponseB
 }
 
 type UpdateIngressResponseBodyData struct {
+	// The ID of the routing rule.
+	//
 	// example:
 	//
 	// 87
@@ -43856,7 +44155,7 @@ func (client *Client) CreateGreyTagRoute(request *CreateGreyTagRouteRequest) (_r
 
 // Summary:
 //
-// {"appId":"395b60e4-0550-458d-9c54-a265d036\\*\\*\\*\\*","containerPort":8080}
+// Creates a routing rule.
 //
 // @param request - CreateIngressRequest
 //
@@ -43951,7 +44250,7 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 
 // Summary:
 //
-// {"appId":"395b60e4-0550-458d-9c54-a265d036\\*\\*\\*\\*","containerPort":8080}
+// Creates a routing rule.
 //
 // @param request - CreateIngressRequest
 //
@@ -51709,6 +52008,10 @@ func (client *Client) UpdateGreyTagRoute(request *UpdateGreyTagRouteRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configurations of a routing rule.
+//
 // @param request - UpdateIngressRequest
 //
 // @param headers - map
@@ -51796,6 +52099,10 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configurations of a routing rule.
+//
 // @param request - UpdateIngressRequest
 //
 // @return UpdateIngressResponse
