@@ -1183,6 +1183,108 @@ func (s *CancelDirQuotaResponse) SetBody(v *CancelDirQuotaResponseBody) *CancelD
 	return s
 }
 
+type CancelFilesetQuotaRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bmcpfs-290w65p03ok64ya****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// Fileset ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fset-1902718ea0ae****
+	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
+}
+
+func (s CancelFilesetQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFilesetQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFilesetQuotaRequest) SetClientToken(v string) *CancelFilesetQuotaRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CancelFilesetQuotaRequest) SetDryRun(v bool) *CancelFilesetQuotaRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CancelFilesetQuotaRequest) SetFileSystemId(v string) *CancelFilesetQuotaRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CancelFilesetQuotaRequest) SetFsetId(v string) *CancelFilesetQuotaRequest {
+	s.FsetId = &v
+	return s
+}
+
+type CancelFilesetQuotaResponseBody struct {
+	// example:
+	//
+	// 98696EF0-1607-4E9D-B01D-F20930B6****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelFilesetQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFilesetQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFilesetQuotaResponseBody) SetRequestId(v string) *CancelFilesetQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelFilesetQuotaResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelFilesetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelFilesetQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFilesetQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFilesetQuotaResponse) SetHeaders(v map[string]*string) *CancelFilesetQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelFilesetQuotaResponse) SetStatusCode(v int32) *CancelFilesetQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelFilesetQuotaResponse) SetBody(v *CancelFilesetQuotaResponseBody) *CancelFilesetQuotaResponse {
+	s.Body = v
+	return s
+}
+
 type CancelLifecycleRetrieveJobRequest struct {
 	// The ID of the data retrieval task.
 	//
@@ -21614,6 +21716,126 @@ func (s *SetDirQuotaResponse) SetBody(v *SetDirQuotaResponseBody) *SetDirQuotaRe
 	return s
 }
 
+type SetFilesetQuotaRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// 10000
+	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bmcpfs-290w65p03ok64ya****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// Fileset ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fset-1902718ea0ae****
+	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
+	// example:
+	//
+	// 10737418240
+	SizeLimit *int64 `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
+}
+
+func (s SetFilesetQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFilesetQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetFilesetQuotaRequest) SetClientToken(v string) *SetFilesetQuotaRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SetFilesetQuotaRequest) SetDryRun(v bool) *SetFilesetQuotaRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *SetFilesetQuotaRequest) SetFileCountLimit(v int64) *SetFilesetQuotaRequest {
+	s.FileCountLimit = &v
+	return s
+}
+
+func (s *SetFilesetQuotaRequest) SetFileSystemId(v string) *SetFilesetQuotaRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *SetFilesetQuotaRequest) SetFsetId(v string) *SetFilesetQuotaRequest {
+	s.FsetId = &v
+	return s
+}
+
+func (s *SetFilesetQuotaRequest) SetSizeLimit(v int64) *SetFilesetQuotaRequest {
+	s.SizeLimit = &v
+	return s
+}
+
+type SetFilesetQuotaResponseBody struct {
+	// example:
+	//
+	// 2D69A58F-345C-4FDE-88E4-BF518948****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetFilesetQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFilesetQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetFilesetQuotaResponseBody) SetRequestId(v string) *SetFilesetQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetFilesetQuotaResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetFilesetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetFilesetQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFilesetQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetFilesetQuotaResponse) SetHeaders(v map[string]*string) *SetFilesetQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetFilesetQuotaResponse) SetStatusCode(v int32) *SetFilesetQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetFilesetQuotaResponse) SetBody(v *SetFilesetQuotaResponseBody) *SetFilesetQuotaResponse {
+	s.Body = v
+	return s
+}
+
 type StartDataFlowRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
 	//
@@ -23249,6 +23471,78 @@ func (client *Client) CancelDirQuota(request *CancelDirQuotaRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelDirQuotaResponse{}
 	_body, _err := client.CancelDirQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消设置智能目录配额
+//
+// @param request - CancelFilesetQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelFilesetQuotaResponse
+func (client *Client) CancelFilesetQuotaWithOptions(request *CancelFilesetQuotaRequest, runtime *util.RuntimeOptions) (_result *CancelFilesetQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsetId)) {
+		query["FsetId"] = request.FsetId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelFilesetQuota"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelFilesetQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消设置智能目录配额
+//
+// @param request - CancelFilesetQuotaRequest
+//
+// @return CancelFilesetQuotaResponse
+func (client *Client) CancelFilesetQuota(request *CancelFilesetQuotaRequest) (_result *CancelFilesetQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelFilesetQuotaResponse{}
+	_body, _err := client.CancelFilesetQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31428,6 +31722,86 @@ func (client *Client) SetDirQuota(request *SetDirQuotaRequest) (_result *SetDirQ
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDirQuotaResponse{}
 	_body, _err := client.SetDirQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置智能目录配额
+//
+// @param request - SetFilesetQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetFilesetQuotaResponse
+func (client *Client) SetFilesetQuotaWithOptions(request *SetFilesetQuotaRequest, runtime *util.RuntimeOptions) (_result *SetFilesetQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileCountLimit)) {
+		query["FileCountLimit"] = request.FileCountLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsetId)) {
+		query["FsetId"] = request.FsetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SizeLimit)) {
+		query["SizeLimit"] = request.SizeLimit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetFilesetQuota"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetFilesetQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置智能目录配额
+//
+// @param request - SetFilesetQuotaRequest
+//
+// @return SetFilesetQuotaResponse
+func (client *Client) SetFilesetQuota(request *SetFilesetQuotaRequest) (_result *SetFilesetQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetFilesetQuotaResponse{}
+	_body, _err := client.SetFilesetQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
