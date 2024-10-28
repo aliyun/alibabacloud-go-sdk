@@ -4071,6 +4071,837 @@ func (s *CreateCustomScenePolicyResponse) SetBody(v *CreateCustomScenePolicyResp
 	return s
 }
 
+type CreateEdgeContainerAppRequest struct {
+	// example:
+	//
+	// 3
+	HealthCheckFailTimes *int32 `json:"HealthCheckFailTimes,omitempty" xml:"HealthCheckFailTimes,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	// example:
+	//
+	// http_2xx
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// example:
+	//
+	// 5
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// example:
+	//
+	// HEAD
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// example:
+	//
+	// 80
+	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	// example:
+	//
+	// 2
+	HealthCheckSuccTimes *int32 `json:"HealthCheckSuccTimes,omitempty" xml:"HealthCheckSuccTimes,omitempty"`
+	// example:
+	//
+	// 5
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// example:
+	//
+	// l7
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// example:
+	//
+	// /health_check
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
+	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+}
+
+func (s CreateEdgeContainerAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckFailTimes(v int32) *CreateEdgeContainerAppRequest {
+	s.HealthCheckFailTimes = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckHost(v string) *CreateEdgeContainerAppRequest {
+	s.HealthCheckHost = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckHttpCode(v string) *CreateEdgeContainerAppRequest {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckInterval(v int32) *CreateEdgeContainerAppRequest {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckMethod(v string) *CreateEdgeContainerAppRequest {
+	s.HealthCheckMethod = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckPort(v int32) *CreateEdgeContainerAppRequest {
+	s.HealthCheckPort = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckSuccTimes(v int32) *CreateEdgeContainerAppRequest {
+	s.HealthCheckSuccTimes = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckTimeout(v int32) *CreateEdgeContainerAppRequest {
+	s.HealthCheckTimeout = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckType(v string) *CreateEdgeContainerAppRequest {
+	s.HealthCheckType = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetHealthCheckURI(v string) *CreateEdgeContainerAppRequest {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetName(v string) *CreateEdgeContainerAppRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetRemarks(v string) *CreateEdgeContainerAppRequest {
+	s.Remarks = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetServicePort(v int32) *CreateEdgeContainerAppRequest {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRequest) SetTargetPort(v int32) *CreateEdgeContainerAppRequest {
+	s.TargetPort = &v
+	return s
+}
+
+type CreateEdgeContainerAppResponseBody struct {
+	// example:
+	//
+	// app-880688675783794688
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEdgeContainerAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppResponseBody) SetAppId(v string) *CreateEdgeContainerAppResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppResponseBody) SetRequestId(v string) *CreateEdgeContainerAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEdgeContainerAppResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEdgeContainerAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEdgeContainerAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppResponse) SetHeaders(v map[string]*string) *CreateEdgeContainerAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEdgeContainerAppResponse) SetStatusCode(v int32) *CreateEdgeContainerAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppResponse) SetBody(v *CreateEdgeContainerAppResponseBody) *CreateEdgeContainerAppResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEdgeContainerAppRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a.example.com
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s CreateEdgeContainerAppRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppRecordRequest) SetAppId(v string) *CreateEdgeContainerAppRecordRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRecordRequest) SetRecordName(v string) *CreateEdgeContainerAppRecordRequest {
+	s.RecordName = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRecordRequest) SetSiteId(v int64) *CreateEdgeContainerAppRecordRequest {
+	s.SiteId = &v
+	return s
+}
+
+type CreateEdgeContainerAppRecordResponseBody struct {
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEdgeContainerAppRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppRecordResponseBody) SetRequestId(v string) *CreateEdgeContainerAppRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEdgeContainerAppRecordResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEdgeContainerAppRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEdgeContainerAppRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppRecordResponse) SetHeaders(v map[string]*string) *CreateEdgeContainerAppRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRecordResponse) SetStatusCode(v int32) *CreateEdgeContainerAppRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppRecordResponse) SetBody(v *CreateEdgeContainerAppRecordResponseBody) *CreateEdgeContainerAppRecordResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEdgeContainerAppVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "Name": "container1",
+	//
+	//             "Image": "image1",
+	//
+	//             "Spec": "1C2G",
+	//
+	//             "Command": "/bin/sh",
+	//
+	//             "Args": "-c hello",
+	//
+	//             "ProbeType": "tcpSocket",
+	//
+	//             "ProbeContent": "{\\"Port\\":8080}"
+	//
+	//       },
+	//
+	//       {
+	//
+	//             "Name": "container2",
+	//
+	//             "Image": "image2",
+	//
+	//             "Spec": "2C4G",
+	//
+	//             "ProbeType": "httpGet",
+	//
+	//             "ProbeContent": "{\\"Path\\":\\"/\\",\\"Port\\":80,\\"InitialDelaySeconds\\":10}"
+	//
+	//       }
+	//
+	// ]
+	Containers []*CreateEdgeContainerAppVersionRequestContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// verson1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+}
+
+func (s CreateEdgeContainerAppVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppVersionRequest) SetAppId(v string) *CreateEdgeContainerAppVersionRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequest) SetContainers(v []*CreateEdgeContainerAppVersionRequestContainers) *CreateEdgeContainerAppVersionRequest {
+	s.Containers = v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequest) SetName(v string) *CreateEdgeContainerAppVersionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequest) SetRemarks(v string) *CreateEdgeContainerAppVersionRequest {
+	s.Remarks = &v
+	return s
+}
+
+type CreateEdgeContainerAppVersionRequestContainers struct {
+	ACRImageInfo *CreateEdgeContainerAppVersionRequestContainersACRImageInfo `json:"ACRImageInfo,omitempty" xml:"ACRImageInfo,omitempty" type:"Struct"`
+	Args         *string                                                     `json:"Args,omitempty" xml:"Args,omitempty"`
+	Command      *string                                                     `json:"Command,omitempty" xml:"Command,omitempty"`
+	EnvVariables *string                                                     `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registry-vpc.cn-shenzhen.aliyuncs.com/lihe****h/ea****ts_serv****am:3.**
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	IsACRImage *bool `json:"IsACRImage,omitempty" xml:"IsACRImage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lxg-demo-er
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop   *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// This parameter is required.
+	ProbeContent *CreateEdgeContainerAppVersionRequestContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
+	// This parameter is required.
+	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
+	// This parameter is required.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// This parameter is required.
+	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+}
+
+func (s CreateEdgeContainerAppVersionRequestContainers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppVersionRequestContainers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetACRImageInfo(v *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) *CreateEdgeContainerAppVersionRequestContainers {
+	s.ACRImageInfo = v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetArgs(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.Args = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetCommand(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.Command = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetEnvVariables(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.EnvVariables = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetImage(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetIsACRImage(v bool) *CreateEdgeContainerAppVersionRequestContainers {
+	s.IsACRImage = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetName(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetPostStart(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.PostStart = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetPreStop(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.PreStop = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetProbeContent(v *CreateEdgeContainerAppVersionRequestContainersProbeContent) *CreateEdgeContainerAppVersionRequestContainers {
+	s.ProbeContent = v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetProbeType(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.ProbeType = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetSpec(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.Spec = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainers) SetStorage(v string) *CreateEdgeContainerAppVersionRequestContainers {
+	s.Storage = &v
+	return s
+}
+
+type CreateEdgeContainerAppVersionRequestContainersACRImageInfo struct {
+	// example:
+	//
+	// 1500.***.net
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// xcdn-9axbo****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// false
+	IsEnterpriseRegistry *bool `json:"IsEnterpriseRegistry,omitempty" xml:"IsEnterpriseRegistry,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// crr-h1ghghu60ct****
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// example:
+	//
+	// test_71
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// safeline
+	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	// example:
+	//
+	// 3.40.2
+	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	TagUrl *string `json:"TagUrl,omitempty" xml:"TagUrl,omitempty"`
+}
+
+func (s CreateEdgeContainerAppVersionRequestContainersACRImageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppVersionRequestContainersACRImageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetDomain(v string) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetInstanceId(v string) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetIsEnterpriseRegistry(v bool) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.IsEnterpriseRegistry = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetRegionId(v string) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetRepoId(v string) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.RepoId = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetRepoName(v string) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.RepoName = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetRepoNamespace(v string) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.RepoNamespace = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetTag(v string) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.Tag = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetTagUrl(v string) *CreateEdgeContainerAppVersionRequestContainersACRImageInfo {
+	s.TagUrl = &v
+	return s
+}
+
+type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
+	// example:
+	//
+	// echo ok
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// example:
+	//
+	// 3
+	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// example:
+	//
+	// www.rewrite.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// [{\\"Content-Type\\":\\"application/json\\"}]
+	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
+	// example:
+	//
+	// 1
+	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// example:
+	//
+	// /
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 1
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// example:
+	//
+	// 9991
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// http
+	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	// example:
+	//
+	// 1
+	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// example:
+	//
+	// 1
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+}
+
+func (s CreateEdgeContainerAppVersionRequestContainersProbeContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppVersionRequestContainersProbeContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetCommand(v string) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.Command = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetFailureThreshold(v int32) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetHost(v string) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.Host = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetHttpHeaders(v string) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.HttpHeaders = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetInitialDelaySeconds(v int32) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetPath(v string) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetPeriodSeconds(v int32) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetPort(v int32) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetScheme(v string) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.Scheme = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetSuccessThreshold(v int32) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetTimeoutSeconds(v int32) *CreateEdgeContainerAppVersionRequestContainersProbeContent {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+type CreateEdgeContainerAppVersionShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "Name": "container1",
+	//
+	//             "Image": "image1",
+	//
+	//             "Spec": "1C2G",
+	//
+	//             "Command": "/bin/sh",
+	//
+	//             "Args": "-c hello",
+	//
+	//             "ProbeType": "tcpSocket",
+	//
+	//             "ProbeContent": "{\\"Port\\":8080}"
+	//
+	//       },
+	//
+	//       {
+	//
+	//             "Name": "container2",
+	//
+	//             "Image": "image2",
+	//
+	//             "Spec": "2C4G",
+	//
+	//             "ProbeType": "httpGet",
+	//
+	//             "ProbeContent": "{\\"Path\\":\\"/\\",\\"Port\\":80,\\"InitialDelaySeconds\\":10}"
+	//
+	//       }
+	//
+	// ]
+	ContainersShrink *string `json:"Containers,omitempty" xml:"Containers,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// verson1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+}
+
+func (s CreateEdgeContainerAppVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppVersionShrinkRequest) SetAppId(v string) *CreateEdgeContainerAppVersionShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionShrinkRequest) SetContainersShrink(v string) *CreateEdgeContainerAppVersionShrinkRequest {
+	s.ContainersShrink = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionShrinkRequest) SetName(v string) *CreateEdgeContainerAppVersionShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionShrinkRequest) SetRemarks(v string) *CreateEdgeContainerAppVersionShrinkRequest {
+	s.Remarks = &v
+	return s
+}
+
+type CreateEdgeContainerAppVersionResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ver-87962637161651****
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s CreateEdgeContainerAppVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppVersionResponseBody) SetRequestId(v string) *CreateEdgeContainerAppVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionResponseBody) SetVersionId(v string) *CreateEdgeContainerAppVersionResponseBody {
+	s.VersionId = &v
+	return s
+}
+
+type CreateEdgeContainerAppVersionResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEdgeContainerAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEdgeContainerAppVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEdgeContainerAppVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEdgeContainerAppVersionResponse) SetHeaders(v map[string]*string) *CreateEdgeContainerAppVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionResponse) SetStatusCode(v int32) *CreateEdgeContainerAppVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEdgeContainerAppVersionResponse) SetBody(v *CreateEdgeContainerAppVersionResponseBody) *CreateEdgeContainerAppVersionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateKvNamespaceRequest struct {
 	// example:
 	//
@@ -8275,6 +9106,261 @@ func (s *DeleteCustomScenePolicyResponse) SetBody(v *DeleteCustomScenePolicyResp
 	return s
 }
 
+type DeleteEdgeContainerAppRequest struct {
+	// example:
+	//
+	// app-1232321454***
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppRequest) SetAppId(v string) *DeleteEdgeContainerAppRequest {
+	s.AppId = &v
+	return s
+}
+
+type DeleteEdgeContainerAppResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ok
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppResponseBody) SetRequestId(v string) *DeleteEdgeContainerAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppResponseBody) SetState(v string) *DeleteEdgeContainerAppResponseBody {
+	s.State = &v
+	return s
+}
+
+type DeleteEdgeContainerAppResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEdgeContainerAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppResponse) SetHeaders(v map[string]*string) *DeleteEdgeContainerAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppResponse) SetStatusCode(v int32) *DeleteEdgeContainerAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppResponse) SetBody(v *DeleteEdgeContainerAppResponseBody) *DeleteEdgeContainerAppResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEdgeContainerAppRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a.example.com
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// example:
+	//
+	// 5407498413****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppRecordRequest) SetAppId(v string) *DeleteEdgeContainerAppRecordRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppRecordRequest) SetRecordName(v string) *DeleteEdgeContainerAppRecordRequest {
+	s.RecordName = &v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppRecordRequest) SetSiteId(v int64) *DeleteEdgeContainerAppRecordRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteEdgeContainerAppRecordResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppRecordResponseBody) SetRequestId(v string) *DeleteEdgeContainerAppRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEdgeContainerAppRecordResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEdgeContainerAppRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppRecordResponse) SetHeaders(v map[string]*string) *DeleteEdgeContainerAppRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppRecordResponse) SetStatusCode(v int32) *DeleteEdgeContainerAppRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppRecordResponse) SetBody(v *DeleteEdgeContainerAppRecordResponseBody) *DeleteEdgeContainerAppRecordResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEdgeContainerAppVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-96253477062511****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ver-89884764010378****
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppVersionRequest) SetAppId(v string) *DeleteEdgeContainerAppVersionRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppVersionRequest) SetVersionId(v string) *DeleteEdgeContainerAppVersionRequest {
+	s.VersionId = &v
+	return s
+}
+
+type DeleteEdgeContainerAppVersionResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// b021e538-9dde-46ed-a1f2-9469da8f3e77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppVersionResponseBody) SetRequestId(v string) *DeleteEdgeContainerAppVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEdgeContainerAppVersionResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEdgeContainerAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEdgeContainerAppVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEdgeContainerAppVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEdgeContainerAppVersionResponse) SetHeaders(v map[string]*string) *DeleteEdgeContainerAppVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppVersionResponse) SetStatusCode(v int32) *DeleteEdgeContainerAppVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEdgeContainerAppVersionResponse) SetBody(v *DeleteEdgeContainerAppVersionResponseBody) *DeleteEdgeContainerAppVersionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteKvRequest struct {
 	// This parameter is required.
 	//
@@ -11489,6 +12575,1490 @@ func (s *GetCacheReserveSpecificationResponse) SetStatusCode(v int32) *GetCacheR
 }
 
 func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecificationResponseBody) *GetCacheReserveSpecificationResponse {
+	s.Body = v
+	return s
+}
+
+type GetEdgeContainerAppRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetEdgeContainerAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppRequest) SetAppId(v string) *GetEdgeContainerAppRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetEdgeContainerAppResponseBody struct {
+	App *GetEdgeContainerAppResponseBodyApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetEdgeContainerAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppResponseBody) SetApp(v *GetEdgeContainerAppResponseBodyApp) *GetEdgeContainerAppResponseBody {
+	s.App = v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBody) SetRequestId(v string) *GetEdgeContainerAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEdgeContainerAppResponseBodyApp struct {
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 2023-07-25T05:58:05Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// www.1feel.cn
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// l7
+	GatewayType *string                                        `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	HealthCheck *GetEdgeContainerAppResponseBodyAppHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
+	// example:
+	//
+	// test-app1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	QuicCid *string `json:"QuicCid,omitempty" xml:"QuicCid,omitempty"`
+	// example:
+	//
+	// test app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// example:
+	//
+	// 80
+	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// example:
+	//
+	// created
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 80
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// example:
+	//
+	// 2023-03-26T02:35:58Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1
+	VersionCount *int32 `json:"VersionCount,omitempty" xml:"VersionCount,omitempty"`
+}
+
+func (s GetEdgeContainerAppResponseBodyApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppResponseBodyApp) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetAppId(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetCreateTime(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetDomainName(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.DomainName = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetGatewayType(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.GatewayType = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetHealthCheck(v *GetEdgeContainerAppResponseBodyAppHealthCheck) *GetEdgeContainerAppResponseBodyApp {
+	s.HealthCheck = v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetName(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.Name = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetQuicCid(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.QuicCid = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetRemarks(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.Remarks = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetServicePort(v int32) *GetEdgeContainerAppResponseBodyApp {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetStatus(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetTargetPort(v int32) *GetEdgeContainerAppResponseBodyApp {
+	s.TargetPort = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetUpdateTime(v string) *GetEdgeContainerAppResponseBodyApp {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyApp) SetVersionCount(v int32) *GetEdgeContainerAppResponseBodyApp {
+	s.VersionCount = &v
+	return s
+}
+
+type GetEdgeContainerAppResponseBodyAppHealthCheck struct {
+	// example:
+	//
+	// 5
+	FailTimes *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// example:
+	//
+	// test.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// http_2xx
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// example:
+	//
+	// 5
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// HEAD
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 3
+	SuccTimes *int32 `json:"SuccTimes,omitempty" xml:"SuccTimes,omitempty"`
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// l7
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// /health_check
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s GetEdgeContainerAppResponseBodyAppHealthCheck) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppResponseBodyAppHealthCheck) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetFailTimes(v int32) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.FailTimes = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetHost(v string) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.Host = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetHttpCode(v string) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetInterval(v int32) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.Interval = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetMethod(v string) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.Method = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetPort(v int32) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.Port = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetSuccTimes(v int32) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.SuccTimes = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetTimeout(v int32) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetType(v string) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.Type = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponseBodyAppHealthCheck) SetUri(v string) *GetEdgeContainerAppResponseBodyAppHealthCheck {
+	s.Uri = &v
+	return s
+}
+
+type GetEdgeContainerAppResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppResponse) SetHeaders(v map[string]*string) *GetEdgeContainerAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponse) SetStatusCode(v int32) *GetEdgeContainerAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResponse) SetBody(v *GetEdgeContainerAppResponseBody) *GetEdgeContainerAppResponse {
+	s.Body = v
+	return s
+}
+
+type GetEdgeContainerAppStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// staging
+	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+}
+
+func (s GetEdgeContainerAppStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppStatusRequest) SetAppId(v string) *GetEdgeContainerAppStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusRequest) SetPublishEnv(v string) *GetEdgeContainerAppStatusRequest {
+	s.PublishEnv = &v
+	return s
+}
+
+type GetEdgeContainerAppStatusResponseBody struct {
+	AppStatus *GetEdgeContainerAppStatusResponseBodyAppStatus `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247B78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetEdgeContainerAppStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppStatusResponseBody) SetAppStatus(v *GetEdgeContainerAppStatusResponseBodyAppStatus) *GetEdgeContainerAppStatusResponseBody {
+	s.AppStatus = v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBody) SetRequestId(v string) *GetEdgeContainerAppStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEdgeContainerAppStatusResponseBodyAppStatus struct {
+	// example:
+	//
+	// ver-123123123123****
+	BaseLineVersion *string `json:"BaseLineVersion,omitempty" xml:"BaseLineVersion,omitempty"`
+	// example:
+	//
+	// undeploy
+	DeployStatus *string `json:"DeployStatus,omitempty" xml:"DeployStatus,omitempty"`
+	// example:
+	//
+	// 2024-07-25T05:58:05Z
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// ver-123123123123****
+	DeployedVersion *string `json:"DeployedVersion,omitempty" xml:"DeployedVersion,omitempty"`
+	// example:
+	//
+	// 50%
+	ExpectPercentage *int32 `json:"ExpectPercentage,omitempty" xml:"ExpectPercentage,omitempty"`
+	FullRelease      *bool  `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	// example:
+	//
+	// prod
+	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+	// example:
+	//
+	// 50%
+	PublishPercentage *int32 `json:"PublishPercentage,omitempty" xml:"PublishPercentage,omitempty"`
+	// example:
+	//
+	// pubishing
+	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// example:
+	//
+	// 2024-07-25T05:58:05Z
+	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	// example:
+	//
+	// ver-123123123123****
+	PublishingVersion *string                                                `json:"PublishingVersion,omitempty" xml:"PublishingVersion,omitempty"`
+	Regions           *GetEdgeContainerAppStatusResponseBodyAppStatusRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-07-25T05:58:05Z
+	RollbackTime *string `json:"RollbackTime,omitempty" xml:"RollbackTime,omitempty"`
+	// example:
+	//
+	// 2024-07-25T05:58:05Z
+	UnDeployTime *string `json:"UnDeployTime,omitempty" xml:"UnDeployTime,omitempty"`
+}
+
+func (s GetEdgeContainerAppStatusResponseBodyAppStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppStatusResponseBodyAppStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetBaseLineVersion(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.BaseLineVersion = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetDeployStatus(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.DeployStatus = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetDeployTime(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.DeployTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetDeployedVersion(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.DeployedVersion = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetExpectPercentage(v int32) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.ExpectPercentage = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetFullRelease(v bool) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.FullRelease = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetPublishEnv(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.PublishEnv = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetPublishPercentage(v int32) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.PublishPercentage = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetPublishStatus(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.PublishStatus = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetPublishTime(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.PublishTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetPublishType(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.PublishType = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetPublishingVersion(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.PublishingVersion = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetRegions(v *GetEdgeContainerAppStatusResponseBodyAppStatusRegions) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.Regions = v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetRollbackTime(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.RollbackTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetUnDeployTime(v string) *GetEdgeContainerAppStatusResponseBodyAppStatus {
+	s.UnDeployTime = &v
+	return s
+}
+
+type GetEdgeContainerAppStatusResponseBodyAppStatusRegions struct {
+	Region []*string `json:"Region,omitempty" xml:"Region,omitempty" type:"Repeated"`
+}
+
+func (s GetEdgeContainerAppStatusResponseBodyAppStatusRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppStatusResponseBodyAppStatusRegions) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppStatusResponseBodyAppStatusRegions) SetRegion(v []*string) *GetEdgeContainerAppStatusResponseBodyAppStatusRegions {
+	s.Region = v
+	return s
+}
+
+type GetEdgeContainerAppStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerAppStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerAppStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppStatusResponse) SetHeaders(v map[string]*string) *GetEdgeContainerAppStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponse) SetStatusCode(v int32) *GetEdgeContainerAppStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppStatusResponse) SetBody(v *GetEdgeContainerAppStatusResponseBody) *GetEdgeContainerAppStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetEdgeContainerAppVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ver-87962637161651****
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s GetEdgeContainerAppVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppVersionRequest) SetAppId(v string) *GetEdgeContainerAppVersionRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionRequest) SetVersionId(v string) *GetEdgeContainerAppVersionRequest {
+	s.VersionId = &v
+	return s
+}
+
+type GetEdgeContainerAppVersionResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Version   *GetEdgeContainerAppVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Struct"`
+}
+
+func (s GetEdgeContainerAppVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppVersionResponseBody) SetRequestId(v string) *GetEdgeContainerAppVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBody) SetVersion(v *GetEdgeContainerAppVersionResponseBodyVersion) *GetEdgeContainerAppVersionResponseBody {
+	s.Version = v
+	return s
+}
+
+type GetEdgeContainerAppVersionResponseBodyVersion struct {
+	// example:
+	//
+	// app-88068867578379****
+	AppId      *string                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Containers []*GetEdgeContainerAppVersionResponseBodyVersionContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-07-01T09:32:33Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-25T04:58:05Z
+	LastPublishTime *string `json:"LastPublishTime,omitempty" xml:"LastPublishTime,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2022-11-14T02:04:03Z
+	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// example:
+	//
+	// aaa
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// example:
+	//
+	// created
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2021-12-03T10:52:52Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// ver-87962637161651****
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s GetEdgeContainerAppVersionResponseBodyVersion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppVersionResponseBodyVersion) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetAppId(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetContainers(v []*GetEdgeContainerAppVersionResponseBodyVersionContainers) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.Containers = v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetCreateTime(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetLastPublishTime(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.LastPublishTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetName(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.Name = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetPublishTime(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.PublishTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetRemarks(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.Remarks = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetStatus(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetUpdateTime(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetVersionId(v string) *GetEdgeContainerAppVersionResponseBodyVersion {
+	s.VersionId = &v
+	return s
+}
+
+type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
+	ACRImageInfo *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo `json:"ACRImageInfo,omitempty" xml:"ACRImageInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// -c /path/config.toml
+	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// sh abc.sh 1 2 3
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// example:
+	//
+	// ENV=prod
+	EnvVariables *string `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
+	// example:
+	//
+	// nginx:1.14.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// false
+	IsACRImage *bool `json:"IsACRImage,omitempty" xml:"IsACRImage,omitempty"`
+	// example:
+	//
+	// version01
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// {\\"exec\\":{\\"command\\":[\\"touch\\",\\"/home/admin/checkpoststartV1\\"]}}
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// example:
+	//
+	// sh prestart.sh "echo hello world"
+	PreStart *string `json:"PreStart,omitempty" xml:"PreStart,omitempty"`
+	// example:
+	//
+	// sh prestop.sh "echo hello world"
+	PreStop      *string                                                              `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProbeContent *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// httpGet
+	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
+	// example:
+	//
+	// 1C2G
+	Spec    *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+}
+
+func (s GetEdgeContainerAppVersionResponseBodyVersionContainers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppVersionResponseBodyVersionContainers) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetACRImageInfo(v *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.ACRImageInfo = v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetArgs(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.Args = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetCommand(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.Command = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetEnvVariables(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.EnvVariables = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetImage(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetIsACRImage(v bool) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.IsACRImage = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetName(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetPostStart(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.PostStart = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetPreStart(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.PreStart = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetPreStop(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.PreStop = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetProbeContent(v *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.ProbeContent = v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetProbeType(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.ProbeType = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetSpec(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.Spec = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetStorage(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
+	s.Storage = &v
+	return s
+}
+
+type GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo struct {
+	// example:
+	//
+	// *.mooc.seewo.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// xcdn-9ak2thl14z5s
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// false
+	IsEnterpriseRegistry *bool `json:"IsEnterpriseRegistry,omitempty" xml:"IsEnterpriseRegistry,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// crr-zeu0xyk28alyxozh
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// example:
+	//
+	// test_1
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// wpy1
+	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	// example:
+	//
+	// test-healthy-100-soa-1710987653
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-shenzhen.aliyuncs.com/lihetech/easywits_server_exam:3.40.2
+	TagUrl *string `json:"TagUrl,omitempty" xml:"TagUrl,omitempty"`
+}
+
+func (s GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetDomain(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetInstanceId(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetIsEnterpriseRegistry(v bool) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.IsEnterpriseRegistry = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetRegionId(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetRepoId(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.RepoId = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetRepoName(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.RepoName = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetRepoNamespace(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.RepoNamespace = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetTag(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.Tag = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) SetTagUrl(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo {
+	s.TagUrl = &v
+	return s
+}
+
+type GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent struct {
+	// example:
+	//
+	// sh test.sh
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// example:
+	//
+	// 3
+	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// example:
+	//
+	// test.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// [{\\"Content-Type\\":\\"application/json
+	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
+	// example:
+	//
+	// 20
+	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// example:
+	//
+	// /health_check
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 5
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// http
+	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	// example:
+	//
+	// 1
+	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// example:
+	//
+	// 5
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+}
+
+func (s GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetCommand(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.Command = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetFailureThreshold(v int32) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetHost(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.Host = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetHttpHeaders(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.HttpHeaders = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetInitialDelaySeconds(v int32) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetPath(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.Path = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetPeriodSeconds(v int32) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetPort(v int32) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.Port = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetScheme(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.Scheme = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetSuccessThreshold(v int32) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent) SetTimeoutSeconds(v int32) *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+type GetEdgeContainerAppVersionResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerAppVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppVersionResponse) SetHeaders(v map[string]*string) *GetEdgeContainerAppVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponse) SetStatusCode(v int32) *GetEdgeContainerAppVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppVersionResponse) SetBody(v *GetEdgeContainerAppVersionResponseBody) *GetEdgeContainerAppVersionResponse {
+	s.Body = v
+	return s
+}
+
+type GetEdgeContainerDeployRegionsRequest struct {
+	// example:
+	//
+	// GetEdgeContainerDeployRegions
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetEdgeContainerDeployRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerDeployRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerDeployRegionsRequest) SetAppId(v string) *GetEdgeContainerDeployRegionsRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetEdgeContainerDeployRegionsResponseBody struct {
+	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetEdgeContainerDeployRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerDeployRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerDeployRegionsResponseBody) SetRegions(v []*string) *GetEdgeContainerDeployRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *GetEdgeContainerDeployRegionsResponseBody) SetRequestId(v string) *GetEdgeContainerDeployRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEdgeContainerDeployRegionsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerDeployRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerDeployRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerDeployRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerDeployRegionsResponse) SetHeaders(v map[string]*string) *GetEdgeContainerDeployRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerDeployRegionsResponse) SetStatusCode(v int32) *GetEdgeContainerDeployRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerDeployRegionsResponse) SetBody(v *GetEdgeContainerDeployRegionsResponseBody) *GetEdgeContainerDeployRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type GetEdgeContainerLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 500
+	Lines *int32 `json:"Lines,omitempty" xml:"Lines,omitempty"`
+}
+
+func (s GetEdgeContainerLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerLogsRequest) SetAppId(v string) *GetEdgeContainerLogsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetEdgeContainerLogsRequest) SetLines(v int32) *GetEdgeContainerLogsRequest {
+	s.Lines = &v
+	return s
+}
+
+type GetEdgeContainerLogsResponseBody struct {
+	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247B78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetEdgeContainerLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerLogsResponseBody) SetItems(v []*string) *GetEdgeContainerLogsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *GetEdgeContainerLogsResponseBody) SetRequestId(v string) *GetEdgeContainerLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEdgeContainerLogsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerLogsResponse) SetHeaders(v map[string]*string) *GetEdgeContainerLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerLogsResponse) SetStatusCode(v int32) *GetEdgeContainerLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerLogsResponse) SetBody(v *GetEdgeContainerLogsResponseBody) *GetEdgeContainerLogsResponse {
+	s.Body = v
+	return s
+}
+
+type GetEdgeContainerStagingDeployStatusRequest struct {
+	// example:
+	//
+	// GetEdgeContainerStagingDeployStatus
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetEdgeContainerStagingDeployStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerStagingDeployStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerStagingDeployStatusRequest) SetAppId(v string) *GetEdgeContainerStagingDeployStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetEdgeContainerStagingDeployStatusResponseBody struct {
+	ContainersReady   *string                                                         `json:"ContainersReady,omitempty" xml:"ContainersReady,omitempty"`
+	CreationTimestamp *string                                                         `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	Initialized       *string                                                         `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
+	Phase             *string                                                         `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	PodRestartState   *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState `json:"PodRestartState,omitempty" xml:"PodRestartState,omitempty" type:"Struct"`
+	Ready             *string                                                         `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	RequestId         *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Scheduled         *string                                                         `json:"Scheduled,omitempty" xml:"Scheduled,omitempty"`
+	VIPs              []*string                                                       `json:"VIPs,omitempty" xml:"VIPs,omitempty" type:"Repeated"`
+}
+
+func (s GetEdgeContainerStagingDeployStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerStagingDeployStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetContainersReady(v string) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.ContainersReady = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetCreationTimestamp(v string) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.CreationTimestamp = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetInitialized(v string) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.Initialized = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetPhase(v string) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.Phase = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetPodRestartState(v *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.PodRestartState = v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetReady(v string) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.Ready = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetRequestId(v string) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetScheduled(v string) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.Scheduled = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetVIPs(v []*string) *GetEdgeContainerStagingDeployStatusResponseBody {
+	s.VIPs = v
+	return s
+}
+
+type GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState struct {
+	LastTerminatedReason *string `json:"LastTerminatedReason,omitempty" xml:"LastTerminatedReason,omitempty"`
+	RestartCount         *int32  `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+}
+
+func (s GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState) SetLastTerminatedReason(v string) *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState {
+	s.LastTerminatedReason = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState) SetRestartCount(v int32) *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState {
+	s.RestartCount = &v
+	return s
+}
+
+type GetEdgeContainerStagingDeployStatusResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerStagingDeployStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerStagingDeployStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerStagingDeployStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponse) SetHeaders(v map[string]*string) *GetEdgeContainerStagingDeployStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponse) SetStatusCode(v int32) *GetEdgeContainerStagingDeployStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerStagingDeployStatusResponse) SetBody(v *GetEdgeContainerStagingDeployStatusResponseBody) *GetEdgeContainerStagingDeployStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetEdgeContainerTerminalRequest struct {
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetEdgeContainerTerminalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerTerminalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerTerminalRequest) SetAppId(v string) *GetEdgeContainerTerminalRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetEdgeContainerTerminalResponseBody struct {
+	// example:
+	//
+	// c497b44c2a59f4ae0bd2826edc40a2c6e
+	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// example:
+	//
+	// worker0
+	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// example:
+	//
+	// ns1
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 1775b9e0-8463-457e-89e8-fb7b6d125b2e
+	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// af22f4xxxxxxxxxxxxxxxxxx
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// af22f4-xxxxx-xxxx-xxxx-xxxx
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetEdgeContainerTerminalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerTerminalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerTerminalResponseBody) SetCluster(v string) *GetEdgeContainerTerminalResponseBody {
+	s.Cluster = &v
+	return s
+}
+
+func (s *GetEdgeContainerTerminalResponseBody) SetContainer(v string) *GetEdgeContainerTerminalResponseBody {
+	s.Container = &v
+	return s
+}
+
+func (s *GetEdgeContainerTerminalResponseBody) SetNamespace(v string) *GetEdgeContainerTerminalResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetEdgeContainerTerminalResponseBody) SetPod(v string) *GetEdgeContainerTerminalResponseBody {
+	s.Pod = &v
+	return s
+}
+
+func (s *GetEdgeContainerTerminalResponseBody) SetRequestId(v string) *GetEdgeContainerTerminalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEdgeContainerTerminalResponseBody) SetSessionId(v string) *GetEdgeContainerTerminalResponseBody {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetEdgeContainerTerminalResponseBody) SetToken(v string) *GetEdgeContainerTerminalResponseBody {
+	s.Token = &v
+	return s
+}
+
+type GetEdgeContainerTerminalResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerTerminalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerTerminalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerTerminalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerTerminalResponse) SetHeaders(v map[string]*string) *GetEdgeContainerTerminalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerTerminalResponse) SetStatusCode(v int32) *GetEdgeContainerTerminalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerTerminalResponse) SetBody(v *GetEdgeContainerTerminalResponseBody) *GetEdgeContainerTerminalResponse {
 	s.Body = v
 	return s
 }
@@ -16370,6 +18940,479 @@ func (s *ListEdgeContainerAppRecordsResponse) SetStatusCode(v int32) *ListEdgeCo
 }
 
 func (s *ListEdgeContainerAppRecordsResponse) SetBody(v *ListEdgeContainerAppRecordsResponseBody) *ListEdgeContainerAppRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEdgeContainerAppVersionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// Name
+	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// example:
+	//
+	// DESC
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ver-100568263967926****
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// VersionId
+	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+}
+
+func (s ListEdgeContainerAppVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppVersionsRequest) SetAppId(v string) *ListEdgeContainerAppVersionsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsRequest) SetOrderKey(v string) *ListEdgeContainerAppVersionsRequest {
+	s.OrderKey = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsRequest) SetOrderType(v string) *ListEdgeContainerAppVersionsRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsRequest) SetPageNumber(v int32) *ListEdgeContainerAppVersionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsRequest) SetPageSize(v int32) *ListEdgeContainerAppVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsRequest) SetSearchKey(v string) *ListEdgeContainerAppVersionsRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsRequest) SetSearchType(v string) *ListEdgeContainerAppVersionsRequest {
+	s.SearchType = &v
+	return s
+}
+
+type ListEdgeContainerAppVersionsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Versions   []*ListEdgeContainerAppVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+}
+
+func (s ListEdgeContainerAppVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBody) SetPageNumber(v int32) *ListEdgeContainerAppVersionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBody) SetPageSize(v int32) *ListEdgeContainerAppVersionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBody) SetRequestId(v string) *ListEdgeContainerAppVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBody) SetTotalCount(v int32) *ListEdgeContainerAppVersionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBody) SetVersions(v []*ListEdgeContainerAppVersionsResponseBodyVersions) *ListEdgeContainerAppVersionsResponseBody {
+	s.Versions = v
+	return s
+}
+
+type ListEdgeContainerAppVersionsResponseBodyVersions struct {
+	// example:
+	//
+	// app-88068867578379****
+	AppId      *string                                                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Containers []*ListEdgeContainerAppVersionsResponseBodyVersionsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-11-10T02:53:16Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2023-02-10T02:48:36Z
+	LastPublishTime *string `json:"LastPublishTime,omitempty" xml:"LastPublishTime,omitempty"`
+	// example:
+	//
+	// version01
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2023-02-10T02:48:36Z
+	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// example:
+	//
+	// test version
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// example:
+	//
+	// created
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2023-04-16 10:51:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// ver-87962637161651****
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s ListEdgeContainerAppVersionsResponseBodyVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppVersionsResponseBodyVersions) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetAppId(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetContainers(v []*ListEdgeContainerAppVersionsResponseBodyVersionsContainers) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.Containers = v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetCreateTime(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetLastPublishTime(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.LastPublishTime = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetName(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetPublishTime(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.PublishTime = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetRemarks(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.Remarks = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetStatus(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetUpdateTime(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetVersionId(v string) *ListEdgeContainerAppVersionsResponseBodyVersions {
+	s.VersionId = &v
+	return s
+}
+
+type ListEdgeContainerAppVersionsResponseBodyVersionsContainers struct {
+	// example:
+	//
+	// -c a=1
+	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// openresty -g \\"daemon off;\\"
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// example:
+	//
+	// ENV=prod
+	EnvVariables *string `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
+	// example:
+	//
+	// nginx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// container1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// {\\"exec\\":{\\"command\\":[\\"bash\\",\\"-c\\",\\"cd /home/admin/
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// example:
+	//
+	// sh start.sh
+	PreStart *string `json:"PreStart,omitempty" xml:"PreStart,omitempty"`
+	// example:
+	//
+	// sh stop.sh
+	PreStop      *string                                                                 `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProbeContent *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// httpGet
+	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
+	// example:
+	//
+	// 1C2G
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s ListEdgeContainerAppVersionsResponseBodyVersionsContainers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppVersionsResponseBodyVersionsContainers) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetArgs(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.Args = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetCommand(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.Command = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetEnvVariables(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.EnvVariables = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetImage(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetName(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetPostStart(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.PostStart = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetPreStart(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.PreStart = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetPreStop(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.PreStop = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetProbeContent(v *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.ProbeContent = v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetProbeType(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.ProbeType = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetSpec(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
+	s.Spec = &v
+	return s
+}
+
+type ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent struct {
+	// example:
+	//
+	// openresty -g  "daemon off;
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// example:
+	//
+	// 3
+	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// example:
+	//
+	// test.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// {\\"Content-Type\\":\\"application/json\\"}
+	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
+	// example:
+	//
+	// 10
+	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// example:
+	//
+	// /health_check
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 5
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// http
+	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	// example:
+	//
+	// 1
+	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// example:
+	//
+	// 30
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+}
+
+func (s ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetCommand(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.Command = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetFailureThreshold(v int32) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetHost(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.Host = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetHttpHeaders(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.HttpHeaders = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetInitialDelaySeconds(v int32) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetPath(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.Path = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetPeriodSeconds(v int32) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetPort(v int32) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.Port = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetScheme(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.Scheme = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetSuccessThreshold(v int32) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent) SetTimeoutSeconds(v int32) *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+type ListEdgeContainerAppVersionsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEdgeContainerAppVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEdgeContainerAppVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEdgeContainerAppVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEdgeContainerAppVersionsResponse) SetHeaders(v map[string]*string) *ListEdgeContainerAppVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponse) SetStatusCode(v int32) *ListEdgeContainerAppVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEdgeContainerAppVersionsResponse) SetBody(v *ListEdgeContainerAppVersionsResponseBody) *ListEdgeContainerAppVersionsResponse {
 	s.Body = v
 	return s
 }
@@ -23666,6 +26709,233 @@ func (s *PreloadCachesResponse) SetBody(v *PreloadCachesResponseBody) *PreloadCa
 	return s
 }
 
+type PublishEdgeContainerAppVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	FullRelease *bool   `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	// example:
+	//
+	// 100
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// prod
+	PublishEnv  *string   `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+	PublishType *string   `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	Regions     []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test publish app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// example:
+	//
+	// 2023-06-05T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ver-87962637161651****
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s PublishEdgeContainerAppVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishEdgeContainerAppVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetAppId(v string) *PublishEdgeContainerAppVersionRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetFullRelease(v bool) *PublishEdgeContainerAppVersionRequest {
+	s.FullRelease = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetPercentage(v int32) *PublishEdgeContainerAppVersionRequest {
+	s.Percentage = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetPublishEnv(v string) *PublishEdgeContainerAppVersionRequest {
+	s.PublishEnv = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetPublishType(v string) *PublishEdgeContainerAppVersionRequest {
+	s.PublishType = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetRegions(v []*string) *PublishEdgeContainerAppVersionRequest {
+	s.Regions = v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetRemarks(v string) *PublishEdgeContainerAppVersionRequest {
+	s.Remarks = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetStartTime(v string) *PublishEdgeContainerAppVersionRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionRequest) SetVersionId(v string) *PublishEdgeContainerAppVersionRequest {
+	s.VersionId = &v
+	return s
+}
+
+type PublishEdgeContainerAppVersionShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	FullRelease *bool   `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	// example:
+	//
+	// 100
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// prod
+	PublishEnv    *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+	PublishType   *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	RegionsShrink *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// example:
+	//
+	// test publish app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// example:
+	//
+	// 2023-06-05T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ver-87962637161651****
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s PublishEdgeContainerAppVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishEdgeContainerAppVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetAppId(v string) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetFullRelease(v bool) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.FullRelease = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetPercentage(v int32) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.Percentage = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetPublishEnv(v string) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.PublishEnv = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetPublishType(v string) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.PublishType = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetRegionsShrink(v string) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.RegionsShrink = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetRemarks(v string) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.Remarks = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetStartTime(v string) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionShrinkRequest) SetVersionId(v string) *PublishEdgeContainerAppVersionShrinkRequest {
+	s.VersionId = &v
+	return s
+}
+
+type PublishEdgeContainerAppVersionResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PublishEdgeContainerAppVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishEdgeContainerAppVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishEdgeContainerAppVersionResponseBody) SetRequestId(v string) *PublishEdgeContainerAppVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PublishEdgeContainerAppVersionResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PublishEdgeContainerAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PublishEdgeContainerAppVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishEdgeContainerAppVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishEdgeContainerAppVersionResponse) SetHeaders(v map[string]*string) *PublishEdgeContainerAppVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionResponse) SetStatusCode(v int32) *PublishEdgeContainerAppVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishEdgeContainerAppVersionResponse) SetBody(v *PublishEdgeContainerAppVersionResponseBody) *PublishEdgeContainerAppVersionResponse {
+	s.Body = v
+	return s
+}
+
 type PublishRoutineCodeVersionRequest struct {
 	CanaryAreaList    []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
 	CanaryCodeVersion *string   `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
@@ -24324,6 +27594,77 @@ func (s *PutKvWithHighCapacityResponse) SetBody(v *PutKvWithHighCapacityResponse
 	return s
 }
 
+type RebuildEdgeContainerAppStagingEnvRequest struct {
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s RebuildEdgeContainerAppStagingEnvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildEdgeContainerAppStagingEnvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildEdgeContainerAppStagingEnvRequest) SetAppId(v string) *RebuildEdgeContainerAppStagingEnvRequest {
+	s.AppId = &v
+	return s
+}
+
+type RebuildEdgeContainerAppStagingEnvResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebuildEdgeContainerAppStagingEnvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildEdgeContainerAppStagingEnvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildEdgeContainerAppStagingEnvResponseBody) SetRequestId(v string) *RebuildEdgeContainerAppStagingEnvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebuildEdgeContainerAppStagingEnvResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebuildEdgeContainerAppStagingEnvResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RebuildEdgeContainerAppStagingEnvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildEdgeContainerAppStagingEnvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildEdgeContainerAppStagingEnvResponse) SetHeaders(v map[string]*string) *RebuildEdgeContainerAppStagingEnvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebuildEdgeContainerAppStagingEnvResponse) SetStatusCode(v int32) *RebuildEdgeContainerAppStagingEnvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebuildEdgeContainerAppStagingEnvResponse) SetBody(v *RebuildEdgeContainerAppStagingEnvResponseBody) *RebuildEdgeContainerAppStagingEnvResponse {
+	s.Body = v
+	return s
+}
+
 type ResetScheduledPreloadJobRequest struct {
 	// example:
 	//
@@ -24471,6 +27812,97 @@ func (s *ResetScheduledPreloadJobResponse) SetStatusCode(v int32) *ResetSchedule
 }
 
 func (s *ResetScheduledPreloadJobResponse) SetBody(v *ResetScheduledPreloadJobResponseBody) *ResetScheduledPreloadJobResponse {
+	s.Body = v
+	return s
+}
+
+type RollbackEdgeContainerAppVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-88068867578379****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// test rollback app
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ver-87962637161651****
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s RollbackEdgeContainerAppVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackEdgeContainerAppVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackEdgeContainerAppVersionRequest) SetAppId(v string) *RollbackEdgeContainerAppVersionRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RollbackEdgeContainerAppVersionRequest) SetRemarks(v string) *RollbackEdgeContainerAppVersionRequest {
+	s.Remarks = &v
+	return s
+}
+
+func (s *RollbackEdgeContainerAppVersionRequest) SetVersionId(v string) *RollbackEdgeContainerAppVersionRequest {
+	s.VersionId = &v
+	return s
+}
+
+type RollbackEdgeContainerAppVersionResponseBody struct {
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D248E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RollbackEdgeContainerAppVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackEdgeContainerAppVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackEdgeContainerAppVersionResponseBody) SetRequestId(v string) *RollbackEdgeContainerAppVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RollbackEdgeContainerAppVersionResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RollbackEdgeContainerAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RollbackEdgeContainerAppVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackEdgeContainerAppVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackEdgeContainerAppVersionResponse) SetHeaders(v map[string]*string) *RollbackEdgeContainerAppVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RollbackEdgeContainerAppVersionResponse) SetStatusCode(v int32) *RollbackEdgeContainerAppVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RollbackEdgeContainerAppVersionResponse) SetBody(v *RollbackEdgeContainerAppVersionResponseBody) *RollbackEdgeContainerAppVersionResponse {
 	s.Body = v
 	return s
 }
@@ -29961,6 +33393,264 @@ func (client *Client) CreateCustomScenePolicy(request *CreateCustomScenePolicyRe
 
 // Summary:
 //
+// 创建边缘容器的应用
+//
+// @param request - CreateEdgeContainerAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEdgeContainerAppResponse
+func (client *Client) CreateEdgeContainerAppWithOptions(request *CreateEdgeContainerAppRequest, runtime *util.RuntimeOptions) (_result *CreateEdgeContainerAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckFailTimes)) {
+		body["HealthCheckFailTimes"] = request.HealthCheckFailTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHost)) {
+		body["HealthCheckHost"] = request.HealthCheckHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpCode)) {
+		body["HealthCheckHttpCode"] = request.HealthCheckHttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		body["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckMethod)) {
+		body["HealthCheckMethod"] = request.HealthCheckMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckPort)) {
+		body["HealthCheckPort"] = request.HealthCheckPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckSuccTimes)) {
+		body["HealthCheckSuccTimes"] = request.HealthCheckSuccTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTimeout)) {
+		body["HealthCheckTimeout"] = request.HealthCheckTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckType)) {
+		body["HealthCheckType"] = request.HealthCheckType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckURI)) {
+		body["HealthCheckURI"] = request.HealthCheckURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remarks)) {
+		body["Remarks"] = request.Remarks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicePort)) {
+		body["ServicePort"] = request.ServicePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetPort)) {
+		body["TargetPort"] = request.TargetPort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEdgeContainerApp"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEdgeContainerAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建边缘容器的应用
+//
+// @param request - CreateEdgeContainerAppRequest
+//
+// @return CreateEdgeContainerAppResponse
+func (client *Client) CreateEdgeContainerApp(request *CreateEdgeContainerAppRequest) (_result *CreateEdgeContainerAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEdgeContainerAppResponse{}
+	_body, _err := client.CreateEdgeContainerAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个边缘容器应用的域名记录
+//
+// @param request - CreateEdgeContainerAppRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEdgeContainerAppRecordResponse
+func (client *Client) CreateEdgeContainerAppRecordWithOptions(request *CreateEdgeContainerAppRecordRequest, runtime *util.RuntimeOptions) (_result *CreateEdgeContainerAppRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordName)) {
+		body["RecordName"] = request.RecordName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		body["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEdgeContainerAppRecord"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEdgeContainerAppRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个边缘容器应用的域名记录
+//
+// @param request - CreateEdgeContainerAppRecordRequest
+//
+// @return CreateEdgeContainerAppRecordResponse
+func (client *Client) CreateEdgeContainerAppRecord(request *CreateEdgeContainerAppRecordRequest) (_result *CreateEdgeContainerAppRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEdgeContainerAppRecordResponse{}
+	_body, _err := client.CreateEdgeContainerAppRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建边缘容器应用的版本
+//
+// @param tmpReq - CreateEdgeContainerAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEdgeContainerAppVersionResponse
+func (client *Client) CreateEdgeContainerAppVersionWithOptions(tmpReq *CreateEdgeContainerAppVersionRequest, runtime *util.RuntimeOptions) (_result *CreateEdgeContainerAppVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateEdgeContainerAppVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Containers)) {
+		request.ContainersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Containers, tea.String("Containers"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainersShrink)) {
+		body["Containers"] = request.ContainersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remarks)) {
+		body["Remarks"] = request.Remarks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEdgeContainerAppVersion"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEdgeContainerAppVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建边缘容器应用的版本
+//
+// @param request - CreateEdgeContainerAppVersionRequest
+//
+// @return CreateEdgeContainerAppVersionResponse
+func (client *Client) CreateEdgeContainerAppVersion(request *CreateEdgeContainerAppVersionRequest) (_result *CreateEdgeContainerAppVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEdgeContainerAppVersionResponse{}
+	_body, _err := client.CreateEdgeContainerAppVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加Namespace
 //
 // @param request - CreateKvNamespaceRequest
@@ -31520,6 +35210,198 @@ func (client *Client) DeleteCustomScenePolicy(request *DeleteCustomScenePolicyRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCustomScenePolicyResponse{}
 	_body, _err := client.DeleteCustomScenePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除边缘容器的应用
+//
+// @param request - DeleteEdgeContainerAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEdgeContainerAppResponse
+func (client *Client) DeleteEdgeContainerAppWithOptions(request *DeleteEdgeContainerAppRequest, runtime *util.RuntimeOptions) (_result *DeleteEdgeContainerAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEdgeContainerApp"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEdgeContainerAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除边缘容器的应用
+//
+// @param request - DeleteEdgeContainerAppRequest
+//
+// @return DeleteEdgeContainerAppResponse
+func (client *Client) DeleteEdgeContainerApp(request *DeleteEdgeContainerAppRequest) (_result *DeleteEdgeContainerAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEdgeContainerAppResponse{}
+	_body, _err := client.DeleteEdgeContainerAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个边缘容器应用的域名记录
+//
+// @param request - DeleteEdgeContainerAppRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEdgeContainerAppRecordResponse
+func (client *Client) DeleteEdgeContainerAppRecordWithOptions(request *DeleteEdgeContainerAppRecordRequest, runtime *util.RuntimeOptions) (_result *DeleteEdgeContainerAppRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordName)) {
+		body["RecordName"] = request.RecordName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		body["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEdgeContainerAppRecord"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEdgeContainerAppRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个边缘容器应用的域名记录
+//
+// @param request - DeleteEdgeContainerAppRecordRequest
+//
+// @return DeleteEdgeContainerAppRecordResponse
+func (client *Client) DeleteEdgeContainerAppRecord(request *DeleteEdgeContainerAppRecordRequest) (_result *DeleteEdgeContainerAppRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEdgeContainerAppRecordResponse{}
+	_body, _err := client.DeleteEdgeContainerAppRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除边缘容器应用的版本
+//
+// @param request - DeleteEdgeContainerAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEdgeContainerAppVersionResponse
+func (client *Client) DeleteEdgeContainerAppVersionWithOptions(request *DeleteEdgeContainerAppVersionRequest, runtime *util.RuntimeOptions) (_result *DeleteEdgeContainerAppVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEdgeContainerAppVersion"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEdgeContainerAppVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除边缘容器应用的版本
+//
+// @param request - DeleteEdgeContainerAppVersionRequest
+//
+// @return DeleteEdgeContainerAppVersionResponse
+func (client *Client) DeleteEdgeContainerAppVersion(request *DeleteEdgeContainerAppVersionRequest) (_result *DeleteEdgeContainerAppVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEdgeContainerAppVersionResponse{}
+	_body, _err := client.DeleteEdgeContainerAppVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33512,6 +37394,414 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 
 // Summary:
 //
+// 获取边缘容器应用信息
+//
+// @param request - GetEdgeContainerAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerAppResponse
+func (client *Client) GetEdgeContainerAppWithOptions(request *GetEdgeContainerAppRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerApp"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEdgeContainerAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用信息
+//
+// @param request - GetEdgeContainerAppRequest
+//
+// @return GetEdgeContainerAppResponse
+func (client *Client) GetEdgeContainerApp(request *GetEdgeContainerAppRequest) (_result *GetEdgeContainerAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerAppResponse{}
+	_body, _err := client.GetEdgeContainerAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用的状态信息
+//
+// @param request - GetEdgeContainerAppStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerAppStatusResponse
+func (client *Client) GetEdgeContainerAppStatusWithOptions(request *GetEdgeContainerAppStatusRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerAppStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublishEnv)) {
+		query["PublishEnv"] = request.PublishEnv
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerAppStatus"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEdgeContainerAppStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用的状态信息
+//
+// @param request - GetEdgeContainerAppStatusRequest
+//
+// @return GetEdgeContainerAppStatusResponse
+func (client *Client) GetEdgeContainerAppStatus(request *GetEdgeContainerAppStatusRequest) (_result *GetEdgeContainerAppStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerAppStatusResponse{}
+	_body, _err := client.GetEdgeContainerAppStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用的某个版本信息
+//
+// @param request - GetEdgeContainerAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerAppVersionResponse
+func (client *Client) GetEdgeContainerAppVersionWithOptions(request *GetEdgeContainerAppVersionRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerAppVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerAppVersion"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEdgeContainerAppVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用的某个版本信息
+//
+// @param request - GetEdgeContainerAppVersionRequest
+//
+// @return GetEdgeContainerAppVersionResponse
+func (client *Client) GetEdgeContainerAppVersion(request *GetEdgeContainerAppVersionRequest) (_result *GetEdgeContainerAppVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerAppVersionResponse{}
+	_body, _err := client.GetEdgeContainerAppVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用部署区域
+//
+// @param request - GetEdgeContainerDeployRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerDeployRegionsResponse
+func (client *Client) GetEdgeContainerDeployRegionsWithOptions(request *GetEdgeContainerDeployRegionsRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerDeployRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerDeployRegions"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEdgeContainerDeployRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用部署区域
+//
+// @param request - GetEdgeContainerDeployRegionsRequest
+//
+// @return GetEdgeContainerDeployRegionsResponse
+func (client *Client) GetEdgeContainerDeployRegions(request *GetEdgeContainerDeployRegionsRequest) (_result *GetEdgeContainerDeployRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerDeployRegionsResponse{}
+	_body, _err := client.GetEdgeContainerDeployRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器日志信息
+//
+// @param request - GetEdgeContainerLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerLogsResponse
+func (client *Client) GetEdgeContainerLogsWithOptions(request *GetEdgeContainerLogsRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerLogs"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEdgeContainerLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器日志信息
+//
+// @param request - GetEdgeContainerLogsRequest
+//
+// @return GetEdgeContainerLogsResponse
+func (client *Client) GetEdgeContainerLogs(request *GetEdgeContainerLogsRequest) (_result *GetEdgeContainerLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerLogsResponse{}
+	_body, _err := client.GetEdgeContainerLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用测试环境部署状态
+//
+// @param request - GetEdgeContainerStagingDeployStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerStagingDeployStatusResponse
+func (client *Client) GetEdgeContainerStagingDeployStatusWithOptions(request *GetEdgeContainerStagingDeployStatusRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerStagingDeployStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerStagingDeployStatus"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEdgeContainerStagingDeployStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用测试环境部署状态
+//
+// @param request - GetEdgeContainerStagingDeployStatusRequest
+//
+// @return GetEdgeContainerStagingDeployStatusResponse
+func (client *Client) GetEdgeContainerStagingDeployStatus(request *GetEdgeContainerStagingDeployStatusRequest) (_result *GetEdgeContainerStagingDeployStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerStagingDeployStatusResponse{}
+	_body, _err := client.GetEdgeContainerStagingDeployStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用终端信息
+//
+// @param request - GetEdgeContainerTerminalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerTerminalResponse
+func (client *Client) GetEdgeContainerTerminalWithOptions(request *GetEdgeContainerTerminalRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerTerminalResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerTerminal"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEdgeContainerTerminalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用终端信息
+//
+// @param request - GetEdgeContainerTerminalRequest
+//
+// @return GetEdgeContainerTerminalResponse
+func (client *Client) GetEdgeContainerTerminal(request *GetEdgeContainerTerminalRequest) (_result *GetEdgeContainerTerminalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerTerminalResponse{}
+	_body, _err := client.GetEdgeContainerTerminalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // GetErService
 //
 // @param request - GetErServiceRequest
@@ -35263,6 +39553,62 @@ func (client *Client) ListEdgeContainerAppRecords(request *ListEdgeContainerAppR
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEdgeContainerAppRecordsResponse{}
 	_body, _err := client.ListEdgeContainerAppRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用的全部版本信息
+//
+// @param request - ListEdgeContainerAppVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEdgeContainerAppVersionsResponse
+func (client *Client) ListEdgeContainerAppVersionsWithOptions(request *ListEdgeContainerAppVersionsRequest, runtime *util.RuntimeOptions) (_result *ListEdgeContainerAppVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEdgeContainerAppVersions"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEdgeContainerAppVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用的全部版本信息
+//
+// @param request - ListEdgeContainerAppVersionsRequest
+//
+// @return ListEdgeContainerAppVersionsResponse
+func (client *Client) ListEdgeContainerAppVersions(request *ListEdgeContainerAppVersionsRequest) (_result *ListEdgeContainerAppVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEdgeContainerAppVersionsResponse{}
+	_body, _err := client.ListEdgeContainerAppVersionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37279,6 +41625,106 @@ func (client *Client) PreloadCaches(request *PreloadCachesRequest) (_result *Pre
 
 // Summary:
 //
+// 发布边缘容器应用的某个版本
+//
+// @param tmpReq - PublishEdgeContainerAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishEdgeContainerAppVersionResponse
+func (client *Client) PublishEdgeContainerAppVersionWithOptions(tmpReq *PublishEdgeContainerAppVersionRequest, runtime *util.RuntimeOptions) (_result *PublishEdgeContainerAppVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PublishEdgeContainerAppVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Regions)) {
+		request.RegionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Regions, tea.String("Regions"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FullRelease)) {
+		query["FullRelease"] = request.FullRelease
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublishType)) {
+		query["PublishType"] = request.PublishType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionsShrink)) {
+		query["Regions"] = request.RegionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Percentage)) {
+		body["Percentage"] = request.Percentage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublishEnv)) {
+		body["PublishEnv"] = request.PublishEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remarks)) {
+		body["Remarks"] = request.Remarks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishEdgeContainerAppVersion"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishEdgeContainerAppVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布边缘容器应用的某个版本
+//
+// @param request - PublishEdgeContainerAppVersionRequest
+//
+// @return PublishEdgeContainerAppVersionResponse
+func (client *Client) PublishEdgeContainerAppVersion(request *PublishEdgeContainerAppVersionRequest) (_result *PublishEdgeContainerAppVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PublishEdgeContainerAppVersionResponse{}
+	_body, _err := client.PublishEdgeContainerAppVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 发布Routine某版本代码
 //
 // @param tmpReq - PublishRoutineCodeVersionRequest
@@ -37704,6 +42150,66 @@ func (client *Client) PutKvWithHighCapacityAdvance(request *PutKvWithHighCapacit
 
 // Summary:
 //
+// 重建边缘容器应用的测试环境
+//
+// @param request - RebuildEdgeContainerAppStagingEnvRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebuildEdgeContainerAppStagingEnvResponse
+func (client *Client) RebuildEdgeContainerAppStagingEnvWithOptions(request *RebuildEdgeContainerAppStagingEnvRequest, runtime *util.RuntimeOptions) (_result *RebuildEdgeContainerAppStagingEnvResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebuildEdgeContainerAppStagingEnv"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebuildEdgeContainerAppStagingEnvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重建边缘容器应用的测试环境
+//
+// @param request - RebuildEdgeContainerAppStagingEnvRequest
+//
+// @return RebuildEdgeContainerAppStagingEnvResponse
+func (client *Client) RebuildEdgeContainerAppStagingEnv(request *RebuildEdgeContainerAppStagingEnvRequest) (_result *RebuildEdgeContainerAppStagingEnvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebuildEdgeContainerAppStagingEnvResponse{}
+	_body, _err := client.RebuildEdgeContainerAppStagingEnvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 重置定时预热任务的进度，从头开始预热
 //
 // @param request - ResetScheduledPreloadJobRequest
@@ -37755,6 +42261,76 @@ func (client *Client) ResetScheduledPreloadJob(request *ResetScheduledPreloadJob
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetScheduledPreloadJobResponse{}
 	_body, _err := client.ResetScheduledPreloadJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚边缘容器应用的某个版本
+//
+// @param request - RollbackEdgeContainerAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackEdgeContainerAppVersionResponse
+func (client *Client) RollbackEdgeContainerAppVersionWithOptions(request *RollbackEdgeContainerAppVersionRequest, runtime *util.RuntimeOptions) (_result *RollbackEdgeContainerAppVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remarks)) {
+		body["Remarks"] = request.Remarks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RollbackEdgeContainerAppVersion"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RollbackEdgeContainerAppVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚边缘容器应用的某个版本
+//
+// @param request - RollbackEdgeContainerAppVersionRequest
+//
+// @return RollbackEdgeContainerAppVersionResponse
+func (client *Client) RollbackEdgeContainerAppVersion(request *RollbackEdgeContainerAppVersionRequest) (_result *RollbackEdgeContainerAppVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RollbackEdgeContainerAppVersionResponse{}
+	_body, _err := client.RollbackEdgeContainerAppVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
