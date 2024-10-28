@@ -3626,6 +3626,7 @@ type BlindTransferRequest struct {
 	QueuingOverflowThreshold *int64  `json:"QueuingOverflowThreshold,omitempty" xml:"QueuingOverflowThreshold,omitempty"`
 	QueuingTimeoutSeconds    *int64  `json:"QueuingTimeoutSeconds,omitempty" xml:"QueuingTimeoutSeconds,omitempty"`
 	RoutingType              *string `json:"RoutingType,omitempty" xml:"RoutingType,omitempty"`
+	SkillGroupId             *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 	StrategyName             *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 	StrategyParams           *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
 	Tags                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -3695,6 +3696,11 @@ func (s *BlindTransferRequest) SetQueuingTimeoutSeconds(v int64) *BlindTransferR
 
 func (s *BlindTransferRequest) SetRoutingType(v string) *BlindTransferRequest {
 	s.RoutingType = &v
+	return s
+}
+
+func (s *BlindTransferRequest) SetSkillGroupId(v string) *BlindTransferRequest {
+	s.SkillGroupId = &v
 	return s
 }
 
@@ -17032,6 +17038,121 @@ func (s *GetInstanceTrendingReportResponse) SetStatusCode(v int32) *GetInstanceT
 }
 
 func (s *GetInstanceTrendingReportResponse) SetBody(v *GetInstanceTrendingReportResponseBody) *GetInstanceTrendingReportResponse {
+	s.Body = v
+	return s
+}
+
+type GetIvrTrackingSummaryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// job-489361145506897920
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0f7ad007-ab50-4b3d-a87a-56864eb40dab
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetIvrTrackingSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIvrTrackingSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIvrTrackingSummaryRequest) SetContactId(v string) *GetIvrTrackingSummaryRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *GetIvrTrackingSummaryRequest) SetInstanceId(v string) *GetIvrTrackingSummaryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetIvrTrackingSummaryResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Unknown error code \\"NoPermission.Recording\\". Reason: null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetIvrTrackingSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIvrTrackingSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIvrTrackingSummaryResponseBody) SetCode(v string) *GetIvrTrackingSummaryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetIvrTrackingSummaryResponseBody) SetData(v string) *GetIvrTrackingSummaryResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetIvrTrackingSummaryResponseBody) SetHttpStatusCode(v int32) *GetIvrTrackingSummaryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetIvrTrackingSummaryResponseBody) SetMessage(v string) *GetIvrTrackingSummaryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetIvrTrackingSummaryResponseBody) SetRequestId(v string) *GetIvrTrackingSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIvrTrackingSummaryResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIvrTrackingSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIvrTrackingSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIvrTrackingSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIvrTrackingSummaryResponse) SetHeaders(v map[string]*string) *GetIvrTrackingSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIvrTrackingSummaryResponse) SetStatusCode(v int32) *GetIvrTrackingSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIvrTrackingSummaryResponse) SetBody(v *GetIvrTrackingSummaryResponseBody) *GetIvrTrackingSummaryResponse {
 	s.Body = v
 	return s
 }
@@ -66220,6 +66341,10 @@ func (client *Client) BlindTransferWithOptions(request *BlindTransferRequest, ru
 		query["RoutingType"] = request.RoutingType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StrategyName)) {
 		query["StrategyName"] = request.StrategyName
 	}
@@ -70020,6 +70145,62 @@ func (client *Client) GetInstanceTrendingReport(request *GetInstanceTrendingRepo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceTrendingReportResponse{}
 	_body, _err := client.GetInstanceTrendingReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetIvrTrackingSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIvrTrackingSummaryResponse
+func (client *Client) GetIvrTrackingSummaryWithOptions(request *GetIvrTrackingSummaryRequest, runtime *util.RuntimeOptions) (_result *GetIvrTrackingSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIvrTrackingSummary"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIvrTrackingSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetIvrTrackingSummaryRequest
+//
+// @return GetIvrTrackingSummaryResponse
+func (client *Client) GetIvrTrackingSummary(request *GetIvrTrackingSummaryRequest) (_result *GetIvrTrackingSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIvrTrackingSummaryResponse{}
+	_body, _err := client.GetIvrTrackingSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
