@@ -1,3 +1,8 @@
+2024-10-28 Version: v5.14.1
+- Update API CreateNacosConfig: update param Content.
+- Update API UpdateNacosConfig: update param Content.
+
+
 2024-10-11 Version: v5.14.0
 - Support API InitializeServiceLinkRole.
 - Update API AddGatewayAuth: update param ExternalAuthZJSON.

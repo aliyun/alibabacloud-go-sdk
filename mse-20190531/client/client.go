@@ -12237,11 +12237,6 @@ type CreateNacosConfigRequest struct {
 	//
 	// 100.117.XX.XX,100.117.XX.XX
 	BetaIps *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
-	// The content of the configuration.
-	//
-	// example:
-	//
-	// asdf
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the data.
 	//
@@ -75410,11 +75405,6 @@ type UpdateNacosConfigRequest struct {
 	//
 	// 196.168.XX.XX
 	BetaIps *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
-	// The content of the configuration.
-	//
-	// example:
-	//
-	// attribute1=1221111\\r\\nattribute2=Chinese\\r\\nattribute3=abc11\\r\\nattribute4=1.00111
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the configuration.
 	//
@@ -80877,10 +80867,6 @@ func (client *Client) CreateNacosConfigWithOptions(request *CreateNacosConfigReq
 		query["BetaIps"] = request.BetaIps
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		query["Content"] = request.Content
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.DataId)) {
 		query["DataId"] = request.DataId
 	}
@@ -80909,8 +80895,14 @@ func (client *Client) CreateNacosConfigWithOptions(request *CreateNacosConfigReq
 		query["Type"] = request.Type
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateNacosConfig"),
@@ -96089,10 +96081,6 @@ func (client *Client) UpdateNacosConfigWithOptions(request *UpdateNacosConfigReq
 		query["BetaIps"] = request.BetaIps
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		query["Content"] = request.Content
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.DataId)) {
 		query["DataId"] = request.DataId
 	}
@@ -96129,8 +96117,14 @@ func (client *Client) UpdateNacosConfigWithOptions(request *UpdateNacosConfigReq
 		query["Type"] = request.Type
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateNacosConfig"),
