@@ -6888,7 +6888,8 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
 	//
 	// 9957175DEDCF49C5ACF7A956B4FD67B2
@@ -6901,6 +6902,7 @@ type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult
 	//
 	// https://www.example.com/aaa.png
 	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	PubTime   *string   `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
 	Source    *string   `json:"Source,omitempty" xml:"Source,omitempty"`
 	Summary   *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	// example:
@@ -6928,6 +6930,11 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 	return s
 }
 
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetCreateTime(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetDocId(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
 	s.DocId = &v
 	return s
@@ -6940,6 +6947,11 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 
 func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetImageUrls(v []*string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
 	s.ImageUrls = v
+	return s
+}
+
+func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) SetPubTime(v string) *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews {
+	s.PubTime = &v
 	return s
 }
 
