@@ -6587,6 +6587,7 @@ func (s *DescribeAITaskStatusRequest) SetResourceOwnerId(v int64) *DescribeAITas
 }
 
 type DescribeAITaskStatusResponseBody struct {
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -6623,6 +6624,11 @@ func (s DescribeAITaskStatusResponseBody) String() string {
 
 func (s DescribeAITaskStatusResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAITaskStatusResponseBody) SetAccountName(v string) *DescribeAITaskStatusResponseBody {
+	s.AccountName = &v
+	return s
 }
 
 func (s *DescribeAITaskStatusResponseBody) SetDBClusterId(v string) *DescribeAITaskStatusResponseBody {
