@@ -1823,6 +1823,7 @@ func (s *CreateWmBaseImageResponse) SetBody(v *CreateWmBaseImageResponseBody) *C
 }
 
 type CreateWmEmbedTaskRequest struct {
+	CsvControl      *CreateWmEmbedTaskRequestCsvControl      `json:"CsvControl,omitempty" xml:"CsvControl,omitempty" type:"Struct"`
 	DocumentControl *CreateWmEmbedTaskRequestDocumentControl `json:"DocumentControl,omitempty" xml:"DocumentControl,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
@@ -1880,6 +1881,11 @@ func (s CreateWmEmbedTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWmEmbedTaskRequest) SetCsvControl(v *CreateWmEmbedTaskRequestCsvControl) *CreateWmEmbedTaskRequest {
+	s.CsvControl = v
+	return s
+}
+
 func (s *CreateWmEmbedTaskRequest) SetDocumentControl(v *CreateWmEmbedTaskRequestDocumentControl) *CreateWmEmbedTaskRequest {
 	s.DocumentControl = v
 	return s
@@ -1932,6 +1938,35 @@ func (s *CreateWmEmbedTaskRequest) SetWmInfoUint(v string) *CreateWmEmbedTaskReq
 
 func (s *CreateWmEmbedTaskRequest) SetWmType(v string) *CreateWmEmbedTaskRequest {
 	s.WmType = &v
+	return s
+}
+
+type CreateWmEmbedTaskRequestCsvControl struct {
+	EmbedColumn    *int64  `json:"EmbedColumn,omitempty" xml:"EmbedColumn,omitempty"`
+	EmbedPrecision *int64  `json:"EmbedPrecision,omitempty" xml:"EmbedPrecision,omitempty"`
+	Method         *string `json:"Method,omitempty" xml:"Method,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestCsvControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestCsvControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestCsvControl) SetEmbedColumn(v int64) *CreateWmEmbedTaskRequestCsvControl {
+	s.EmbedColumn = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestCsvControl) SetEmbedPrecision(v int64) *CreateWmEmbedTaskRequestCsvControl {
+	s.EmbedPrecision = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestCsvControl) SetMethod(v string) *CreateWmEmbedTaskRequestCsvControl {
+	s.Method = &v
 	return s
 }
 
@@ -2133,6 +2168,7 @@ func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleContro
 }
 
 type CreateWmEmbedTaskShrinkRequest struct {
+	CsvControlShrink      *string `json:"CsvControl,omitempty" xml:"CsvControl,omitempty"`
 	DocumentControlShrink *string `json:"DocumentControl,omitempty" xml:"DocumentControl,omitempty"`
 	// This parameter is required.
 	//
@@ -2188,6 +2224,11 @@ func (s CreateWmEmbedTaskShrinkRequest) String() string {
 
 func (s CreateWmEmbedTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetCsvControlShrink(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.CsvControlShrink = &v
+	return s
 }
 
 func (s *CreateWmEmbedTaskShrinkRequest) SetDocumentControlShrink(v string) *CreateWmEmbedTaskShrinkRequest {
@@ -2321,6 +2362,7 @@ func (s *CreateWmEmbedTaskResponse) SetBody(v *CreateWmEmbedTaskResponseBody) *C
 }
 
 type CreateWmExtractTaskRequest struct {
+	CsvControl *CreateWmExtractTaskRequestCsvControl `json:"CsvControl,omitempty" xml:"CsvControl,omitempty" type:"Struct"`
 	// example:
 	//
 	// false
@@ -2365,6 +2407,11 @@ func (s CreateWmExtractTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWmExtractTaskRequest) SetCsvControl(v *CreateWmExtractTaskRequestCsvControl) *CreateWmExtractTaskRequest {
+	s.CsvControl = v
+	return s
+}
+
 func (s *CreateWmExtractTaskRequest) SetDocumentIsCapture(v bool) *CreateWmExtractTaskRequest {
 	s.DocumentIsCapture = &v
 	return s
@@ -2396,6 +2443,121 @@ func (s *CreateWmExtractTaskRequest) SetWmInfoSize(v int64) *CreateWmExtractTask
 }
 
 func (s *CreateWmExtractTaskRequest) SetWmType(v string) *CreateWmExtractTaskRequest {
+	s.WmType = &v
+	return s
+}
+
+type CreateWmExtractTaskRequestCsvControl struct {
+	EmbedColumn    *int64  `json:"EmbedColumn,omitempty" xml:"EmbedColumn,omitempty"`
+	EmbedPrecision *int64  `json:"EmbedPrecision,omitempty" xml:"EmbedPrecision,omitempty"`
+	Method         *string `json:"Method,omitempty" xml:"Method,omitempty"`
+}
+
+func (s CreateWmExtractTaskRequestCsvControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmExtractTaskRequestCsvControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmExtractTaskRequestCsvControl) SetEmbedColumn(v int64) *CreateWmExtractTaskRequestCsvControl {
+	s.EmbedColumn = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequestCsvControl) SetEmbedPrecision(v int64) *CreateWmExtractTaskRequestCsvControl {
+	s.EmbedPrecision = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequestCsvControl) SetMethod(v string) *CreateWmExtractTaskRequestCsvControl {
+	s.Method = &v
+	return s
+}
+
+type CreateWmExtractTaskShrinkRequest struct {
+	CsvControlShrink *string `json:"CsvControl,omitempty" xml:"CsvControl,omitempty"`
+	// example:
+	//
+	// false
+	DocumentIsCapture *bool `json:"DocumentIsCapture,omitempty" xml:"DocumentIsCapture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://example.com/test-****.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-****.pdf
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// example:
+	//
+	// false
+	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
+	// example:
+	//
+	// 1
+	VideoSpeed *string `json:"VideoSpeed,omitempty" xml:"VideoSpeed,omitempty"`
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PureDocument
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s CreateWmExtractTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmExtractTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetCsvControlShrink(v string) *CreateWmExtractTaskShrinkRequest {
+	s.CsvControlShrink = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetDocumentIsCapture(v bool) *CreateWmExtractTaskShrinkRequest {
+	s.DocumentIsCapture = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetFileUrl(v string) *CreateWmExtractTaskShrinkRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetFilename(v string) *CreateWmExtractTaskShrinkRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetVideoIsLong(v bool) *CreateWmExtractTaskShrinkRequest {
+	s.VideoIsLong = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetVideoSpeed(v string) *CreateWmExtractTaskShrinkRequest {
+	s.VideoSpeed = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetWmInfoSize(v int64) *CreateWmExtractTaskShrinkRequest {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetWmType(v string) *CreateWmExtractTaskShrinkRequest {
 	s.WmType = &v
 	return s
 }
@@ -15994,8 +16156,17 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 	}
 	request := &CreateWmEmbedTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CsvControl)) {
+		request.CsvControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CsvControl, tea.String("CsvControl"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentControl)) {
 		request.DocumentControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentControl, tea.String("DocumentControl"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CsvControlShrink)) {
+		query["CsvControl"] = request.CsvControlShrink
 	}
 
 	body := map[string]interface{}{}
@@ -16044,7 +16215,8 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateWmEmbedTask"),
@@ -16088,16 +16260,27 @@ func (client *Client) CreateWmEmbedTask(request *CreateWmEmbedTaskRequest) (_res
 //
 // 创建文件水印提取任务
 //
-// @param request - CreateWmExtractTaskRequest
+// @param tmpReq - CreateWmExtractTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWmExtractTaskResponse
-func (client *Client) CreateWmExtractTaskWithOptions(request *CreateWmExtractTaskRequest, runtime *util.RuntimeOptions) (_result *CreateWmExtractTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateWmExtractTaskWithOptions(tmpReq *CreateWmExtractTaskRequest, runtime *util.RuntimeOptions) (_result *CreateWmExtractTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateWmExtractTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CsvControl)) {
+		request.CsvControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CsvControl, tea.String("CsvControl"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CsvControlShrink)) {
+		query["CsvControl"] = request.CsvControlShrink
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DocumentIsCapture)) {
 		body["DocumentIsCapture"] = request.DocumentIsCapture
@@ -16128,7 +16311,8 @@ func (client *Client) CreateWmExtractTaskWithOptions(request *CreateWmExtractTas
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateWmExtractTask"),
