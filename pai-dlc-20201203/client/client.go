@@ -2166,6 +2166,10 @@ type JobSettings struct {
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	// example:
 	//
+	// false
+	DisableEcsStockCheck *bool `json:"DisableEcsStockCheck,omitempty" xml:"DisableEcsStockCheck,omitempty"`
+	// example:
+	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	// example:
@@ -2235,6 +2239,11 @@ func (s *JobSettings) SetBusinessUserId(v string) *JobSettings {
 
 func (s *JobSettings) SetCaller(v string) *JobSettings {
 	s.Caller = &v
+	return s
+}
+
+func (s *JobSettings) SetDisableEcsStockCheck(v bool) *JobSettings {
+	s.DisableEcsStockCheck = &v
 	return s
 }
 
