@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/vpcipam-20230228
+module github.com/alibabacloud-go/vpcipam-20230228/v2
 
 go 1.14
 

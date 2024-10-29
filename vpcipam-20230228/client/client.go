@@ -725,7 +725,9 @@ type CreateIpamPoolAllocationRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
+	IpamPoolAllocationName        *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -765,6 +767,16 @@ func (s *CreateIpamPoolAllocationRequest) SetClientToken(v string) *CreateIpamPo
 
 func (s *CreateIpamPoolAllocationRequest) SetDryRun(v bool) *CreateIpamPoolAllocationRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *CreateIpamPoolAllocationRequest) SetIpamPoolAllocationDescription(v string) *CreateIpamPoolAllocationRequest {
+	s.IpamPoolAllocationDescription = &v
+	return s
+}
+
+func (s *CreateIpamPoolAllocationRequest) SetIpamPoolAllocationName(v string) *CreateIpamPoolAllocationRequest {
+	s.IpamPoolAllocationName = &v
 	return s
 }
 
@@ -1294,10 +1306,6 @@ func (s *DeleteIpamPoolResponse) SetBody(v *DeleteIpamPoolResponseBody) *DeleteI
 type DeleteIpamPoolAllocationRequest struct {
 	// example:
 	//
-	// 192.168.1.0/32
-	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// example:
-	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// example:
@@ -1310,10 +1318,6 @@ type DeleteIpamPoolAllocationRequest struct {
 	//
 	// ipam-alloc-c4vhvr3b22mmc6****
 	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
-	// example:
-	//
-	// ipam-pool-6rcq3tobayc20t****
-	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1330,11 +1334,6 @@ func (s DeleteIpamPoolAllocationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteIpamPoolAllocationRequest) SetCidr(v string) *DeleteIpamPoolAllocationRequest {
-	s.Cidr = &v
-	return s
-}
-
 func (s *DeleteIpamPoolAllocationRequest) SetClientToken(v string) *DeleteIpamPoolAllocationRequest {
 	s.ClientToken = &v
 	return s
@@ -1347,11 +1346,6 @@ func (s *DeleteIpamPoolAllocationRequest) SetDryRun(v bool) *DeleteIpamPoolAlloc
 
 func (s *DeleteIpamPoolAllocationRequest) SetIpamPoolAllocationId(v string) *DeleteIpamPoolAllocationRequest {
 	s.IpamPoolAllocationId = &v
-	return s
-}
-
-func (s *DeleteIpamPoolAllocationRequest) SetIpamPoolId(v string) *DeleteIpamPoolAllocationRequest {
-	s.IpamPoolId = &v
 	return s
 }
 
@@ -1757,12 +1751,285 @@ func (s *GetVpcIpamServiceStatusResponse) SetBody(v *GetVpcIpamServiceStatusResp
 	return s
 }
 
+type ListIpamDiscoveredResourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// example:
+	//
+	// VPC
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListIpamDiscoveredResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamDiscoveredResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamDiscoveredResourceRequest) SetIpamResourceDiscoveryId(v string) *ListIpamDiscoveredResourceRequest {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceRequest) SetMaxResults(v int32) *ListIpamDiscoveredResourceRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceRequest) SetNextToken(v string) *ListIpamDiscoveredResourceRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceRequest) SetRegionId(v string) *ListIpamDiscoveredResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceRequest) SetResourceRegionId(v string) *ListIpamDiscoveredResourceRequest {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceRequest) SetResourceType(v string) *ListIpamDiscoveredResourceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ListIpamDiscoveredResourceResponseBody struct {
+	// example:
+	//
+	// 10
+	Count                   *int32                                                           `json:"Count,omitempty" xml:"Count,omitempty"`
+	IpamDiscoveredResources []*ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources `json:"IpamDiscoveredResources,omitempty" xml:"IpamDiscoveredResources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 3748DEFF-68BE-5EED-9937-7C1D0C21BAB4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIpamDiscoveredResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamDiscoveredResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamDiscoveredResourceResponseBody) SetCount(v int32) *ListIpamDiscoveredResourceResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBody) SetIpamDiscoveredResources(v []*ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) *ListIpamDiscoveredResourceResponseBody {
+	s.IpamDiscoveredResources = v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBody) SetMaxResults(v int32) *ListIpamDiscoveredResourceResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBody) SetNextToken(v string) *ListIpamDiscoveredResourceResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBody) SetRequestId(v string) *ListIpamDiscoveredResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBody) SetTotalCount(v int64) *ListIpamDiscoveredResourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources struct {
+	// example:
+	//
+	// 132193271328****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 192.168.1.0/32
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	DiscoveryTime *string `json:"DiscoveryTime,omitempty" xml:"DiscoveryTime,omitempty"`
+	// example:
+	//
+	// 0
+	IpUsage *string `json:"IpUsage,omitempty" xml:"IpUsage,omitempty"`
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// example:
+	//
+	// vpc-uf611fp465c7dyb4z****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 132193271328****
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// example:
+	//
+	// VPC
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 192.168.1.0/24
+	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	// example:
+	//
+	// vpc-uf611fp465c7dyb4z****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetAliUid(v int64) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.AliUid = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetCidr(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.Cidr = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetDiscoveryTime(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.DiscoveryTime = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetIpUsage(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.IpUsage = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetIpamResourceDiscoveryId(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetResourceId(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetResourceOwnerId(v int64) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetResourceRegionId(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetResourceType(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetSourceCidr(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.SourceCidr = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetVpcId(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.VpcId = &v
+	return s
+}
+
+type ListIpamDiscoveredResourceResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIpamDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIpamDiscoveredResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamDiscoveredResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamDiscoveredResourceResponse) SetHeaders(v map[string]*string) *ListIpamDiscoveredResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponse) SetStatusCode(v int32) *ListIpamDiscoveredResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponse) SetBody(v *ListIpamDiscoveredResourceResponseBody) *ListIpamDiscoveredResourceResponse {
+	s.Body = v
+	return s
+}
+
 type ListIpamPoolAllocationsRequest struct {
 	// example:
 	//
 	// 192.168.1.0/24
-	Cidr                  *string   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	IpamPoolAllocationIds []*string `json:"IpamPoolAllocationIds,omitempty" xml:"IpamPoolAllocationIds,omitempty" type:"Repeated"`
+	Cidr                   *string   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	IpamPoolAllocationIds  []*string `json:"IpamPoolAllocationIds,omitempty" xml:"IpamPoolAllocationIds,omitempty" type:"Repeated"`
+	IpamPoolAllocationName *string   `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1800,6 +2067,11 @@ func (s *ListIpamPoolAllocationsRequest) SetCidr(v string) *ListIpamPoolAllocati
 
 func (s *ListIpamPoolAllocationsRequest) SetIpamPoolAllocationIds(v []*string) *ListIpamPoolAllocationsRequest {
 	s.IpamPoolAllocationIds = v
+	return s
+}
+
+func (s *ListIpamPoolAllocationsRequest) SetIpamPoolAllocationName(v string) *ListIpamPoolAllocationsRequest {
+	s.IpamPoolAllocationName = &v
 	return s
 }
 
@@ -1890,11 +2162,13 @@ type ListIpamPoolAllocationsResponseBodyIpamPoolAllocations struct {
 	// example:
 	//
 	// 2023-05-19T08:59:18Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime                  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
-	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	IpamPoolAllocationId   *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
@@ -1947,8 +2221,18 @@ func (s *ListIpamPoolAllocationsResponseBodyIpamPoolAllocations) SetCreationTime
 	return s
 }
 
+func (s *ListIpamPoolAllocationsResponseBodyIpamPoolAllocations) SetIpamPoolAllocationDescription(v string) *ListIpamPoolAllocationsResponseBodyIpamPoolAllocations {
+	s.IpamPoolAllocationDescription = &v
+	return s
+}
+
 func (s *ListIpamPoolAllocationsResponseBodyIpamPoolAllocations) SetIpamPoolAllocationId(v string) *ListIpamPoolAllocationsResponseBodyIpamPoolAllocations {
 	s.IpamPoolAllocationId = &v
+	return s
+}
+
+func (s *ListIpamPoolAllocationsResponseBodyIpamPoolAllocations) SetIpamPoolAllocationName(v string) *ListIpamPoolAllocationsResponseBodyIpamPoolAllocations {
+	s.IpamPoolAllocationName = &v
 	return s
 }
 
@@ -3013,6 +3297,362 @@ func (s *ListIpamResourceCidrsResponse) SetStatusCode(v int32) *ListIpamResource
 }
 
 func (s *ListIpamResourceCidrsResponse) SetBody(v *ListIpamResourceCidrsResponseBody) *ListIpamResourceCidrsResponse {
+	s.Body = v
+	return s
+}
+
+type ListIpamResourceDiscoveriesRequest struct {
+	IpamResourceDiscoveryIds []*string `json:"IpamResourceDiscoveryIds,omitempty" xml:"IpamResourceDiscoveryIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aek2sermdd6****
+	ResourceGroupId      *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 []*ListIpamResourceDiscoveriesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// system
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetIpamResourceDiscoveryIds(v []*string) *ListIpamResourceDiscoveriesRequest {
+	s.IpamResourceDiscoveryIds = v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetIpamResourceDiscoveryName(v string) *ListIpamResourceDiscoveriesRequest {
+	s.IpamResourceDiscoveryName = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetMaxResults(v int32) *ListIpamResourceDiscoveriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetNextToken(v string) *ListIpamResourceDiscoveriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetOwnerAccount(v string) *ListIpamResourceDiscoveriesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetOwnerId(v int64) *ListIpamResourceDiscoveriesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetRegionId(v string) *ListIpamResourceDiscoveriesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetResourceGroupId(v string) *ListIpamResourceDiscoveriesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetResourceOwnerAccount(v string) *ListIpamResourceDiscoveriesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetResourceOwnerId(v int64) *ListIpamResourceDiscoveriesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetTags(v []*ListIpamResourceDiscoveriesRequestTags) *ListIpamResourceDiscoveriesRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetType(v string) *ListIpamResourceDiscoveriesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListIpamResourceDiscoveriesRequestTags struct {
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// FinanceJoshua
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveriesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveriesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveriesRequestTags) SetKey(v string) *ListIpamResourceDiscoveriesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequestTags) SetValue(v string) *ListIpamResourceDiscoveriesRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListIpamResourceDiscoveriesResponseBody struct {
+	// example:
+	//
+	// 1
+	Count                   *int32                                                            `json:"Count,omitempty" xml:"Count,omitempty"`
+	IpamResourceDiscoveries []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries `json:"IpamResourceDiscoveries,omitempty" xml:"IpamResourceDiscoveries,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 86137597-443F-5B66-B9B6-8514E0C50B8F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBody) SetCount(v int32) *ListIpamResourceDiscoveriesResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBody) SetIpamResourceDiscoveries(v []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) *ListIpamResourceDiscoveriesResponseBody {
+	s.IpamResourceDiscoveries = v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBody) SetMaxResults(v int32) *ListIpamResourceDiscoveriesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBody) SetNextToken(v string) *ListIpamResourceDiscoveriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBody) SetRequestId(v string) *ListIpamResourceDiscoveriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBody) SetTotalCount(v int64) *ListIpamResourceDiscoveriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries struct {
+	// example:
+	//
+	// 2022-07-01T02:05:23Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test description
+	IpamResourceDiscoveryDescription *string `json:"IpamResourceDiscoveryDescription,omitempty" xml:"IpamResourceDiscoveryDescription,omitempty"`
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// example:
+	//
+	// test
+	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
+	// example:
+	//
+	// Created
+	IpamResourceDiscoveryStatus *string   `json:"IpamResourceDiscoveryStatus,omitempty" xml:"IpamResourceDiscoveryStatus,omitempty"`
+	OperatingRegionList         []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1210123456******
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aek2sermdd6****
+	ResourceGroupId *string                                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// system
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetCreateTime(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetIpamResourceDiscoveryDescription(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.IpamResourceDiscoveryDescription = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetIpamResourceDiscoveryId(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetIpamResourceDiscoveryName(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.IpamResourceDiscoveryName = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetIpamResourceDiscoveryStatus(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.IpamResourceDiscoveryStatus = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetOperatingRegionList(v []*string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.OperatingRegionList = v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetOwnerId(v int64) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetRegionId(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetResourceGroupId(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetTags(v []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.Tags = v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetType(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.Type = &v
+	return s
+}
+
+type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags struct {
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// FinanceJoshua
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags) SetKey(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags) SetValue(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags {
+	s.Value = &v
+	return s
+}
+
+type ListIpamResourceDiscoveriesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIpamResourceDiscoveriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveriesResponse) SetHeaders(v map[string]*string) *ListIpamResourceDiscoveriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponse) SetStatusCode(v int32) *ListIpamResourceDiscoveriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponse) SetBody(v *ListIpamResourceDiscoveriesResponseBody) *ListIpamResourceDiscoveriesResponse {
 	s.Body = v
 	return s
 }
@@ -4735,6 +5375,124 @@ func (s *UpdateIpamPoolResponse) SetBody(v *UpdateIpamPoolResponseBody) *UpdateI
 	return s
 }
 
+type UpdateIpamPoolAllocationRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// test description
+	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-pool-alloc-112za33e4****
+	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// example:
+	//
+	// test name
+	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateIpamPoolAllocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpamPoolAllocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpamPoolAllocationRequest) SetClientToken(v string) *UpdateIpamPoolAllocationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateIpamPoolAllocationRequest) SetDryRun(v bool) *UpdateIpamPoolAllocationRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateIpamPoolAllocationRequest) SetIpamPoolAllocationDescription(v string) *UpdateIpamPoolAllocationRequest {
+	s.IpamPoolAllocationDescription = &v
+	return s
+}
+
+func (s *UpdateIpamPoolAllocationRequest) SetIpamPoolAllocationId(v string) *UpdateIpamPoolAllocationRequest {
+	s.IpamPoolAllocationId = &v
+	return s
+}
+
+func (s *UpdateIpamPoolAllocationRequest) SetIpamPoolAllocationName(v string) *UpdateIpamPoolAllocationRequest {
+	s.IpamPoolAllocationName = &v
+	return s
+}
+
+func (s *UpdateIpamPoolAllocationRequest) SetRegionId(v string) *UpdateIpamPoolAllocationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateIpamPoolAllocationResponseBody struct {
+	// example:
+	//
+	// F4650E33-895C-53F0-9CD5-D1338F322DE8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIpamPoolAllocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpamPoolAllocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpamPoolAllocationResponseBody) SetRequestId(v string) *UpdateIpamPoolAllocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIpamPoolAllocationResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIpamPoolAllocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateIpamPoolAllocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpamPoolAllocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpamPoolAllocationResponse) SetHeaders(v map[string]*string) *UpdateIpamPoolAllocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIpamPoolAllocationResponse) SetStatusCode(v int32) *UpdateIpamPoolAllocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIpamPoolAllocationResponse) SetBody(v *UpdateIpamPoolAllocationResponseBody) *UpdateIpamPoolAllocationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIpamScopeRequest struct {
 	// example:
 	//
@@ -5323,6 +6081,14 @@ func (client *Client) CreateIpamPoolAllocationWithOptions(request *CreateIpamPoo
 		query["DryRun"] = request.DryRun
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IpamPoolAllocationDescription)) {
+		query["IpamPoolAllocationDescription"] = request.IpamPoolAllocationDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamPoolAllocationName)) {
+		query["IpamPoolAllocationName"] = request.IpamPoolAllocationName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IpamPoolId)) {
 		query["IpamPoolId"] = request.IpamPoolId
 	}
@@ -5635,10 +6401,6 @@ func (client *Client) DeleteIpamPoolAllocationWithOptions(request *DeleteIpamPoo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Cidr)) {
-		query["Cidr"] = request.Cidr
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -5649,10 +6411,6 @@ func (client *Client) DeleteIpamPoolAllocationWithOptions(request *DeleteIpamPoo
 
 	if !tea.BoolValue(util.IsUnset(request.IpamPoolAllocationId)) {
 		query["IpamPoolAllocationId"] = request.IpamPoolAllocationId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IpamPoolId)) {
-		query["IpamPoolId"] = request.IpamPoolId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -5924,6 +6682,78 @@ func (client *Client) GetVpcIpamServiceStatus(request *GetVpcIpamServiceStatusRe
 	return _result, _err
 }
 
+// @param request - ListIpamDiscoveredResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIpamDiscoveredResourceResponse
+func (client *Client) ListIpamDiscoveredResourceWithOptions(request *ListIpamDiscoveredResourceRequest, runtime *util.RuntimeOptions) (_result *ListIpamDiscoveredResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryId)) {
+		query["IpamResourceDiscoveryId"] = request.IpamResourceDiscoveryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIpamDiscoveredResource"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIpamDiscoveredResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListIpamDiscoveredResourceRequest
+//
+// @return ListIpamDiscoveredResourceResponse
+func (client *Client) ListIpamDiscoveredResource(request *ListIpamDiscoveredResourceRequest) (_result *ListIpamDiscoveredResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIpamDiscoveredResourceResponse{}
+	_body, _err := client.ListIpamDiscoveredResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ListIpamPoolAllocationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5941,6 +6771,10 @@ func (client *Client) ListIpamPoolAllocationsWithOptions(request *ListIpamPoolAl
 
 	if !tea.BoolValue(util.IsUnset(request.IpamPoolAllocationIds)) {
 		query["IpamPoolAllocationIds"] = request.IpamPoolAllocationIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamPoolAllocationName)) {
+		query["IpamPoolAllocationName"] = request.IpamPoolAllocationName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IpamPoolId)) {
@@ -6249,6 +7083,110 @@ func (client *Client) ListIpamResourceCidrs(request *ListIpamResourceCidrsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIpamResourceCidrsResponse{}
 	_body, _err := client.ListIpamResourceCidrsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询ipam资源发现实例
+//
+// @param request - ListIpamResourceDiscoveriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIpamResourceDiscoveriesResponse
+func (client *Client) ListIpamResourceDiscoveriesWithOptions(request *ListIpamResourceDiscoveriesRequest, runtime *util.RuntimeOptions) (_result *ListIpamResourceDiscoveriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryIds)) {
+		query["IpamResourceDiscoveryIds"] = request.IpamResourceDiscoveryIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryName)) {
+		query["IpamResourceDiscoveryName"] = request.IpamResourceDiscoveryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIpamResourceDiscoveries"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIpamResourceDiscoveriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询ipam资源发现实例
+//
+// @param request - ListIpamResourceDiscoveriesRequest
+//
+// @return ListIpamResourceDiscoveriesResponse
+func (client *Client) ListIpamResourceDiscoveries(request *ListIpamResourceDiscoveriesRequest) (_result *ListIpamResourceDiscoveriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIpamResourceDiscoveriesResponse{}
+	_body, _err := client.ListIpamResourceDiscoveriesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7017,6 +7955,86 @@ func (client *Client) UpdateIpamPool(request *UpdateIpamPoolRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIpamPoolResponse{}
 	_body, _err := client.UpdateIpamPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新IPAM地址池分配信息
+//
+// @param request - UpdateIpamPoolAllocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIpamPoolAllocationResponse
+func (client *Client) UpdateIpamPoolAllocationWithOptions(request *UpdateIpamPoolAllocationRequest, runtime *util.RuntimeOptions) (_result *UpdateIpamPoolAllocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamPoolAllocationDescription)) {
+		query["IpamPoolAllocationDescription"] = request.IpamPoolAllocationDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamPoolAllocationId)) {
+		query["IpamPoolAllocationId"] = request.IpamPoolAllocationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamPoolAllocationName)) {
+		query["IpamPoolAllocationName"] = request.IpamPoolAllocationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIpamPoolAllocation"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIpamPoolAllocationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新IPAM地址池分配信息
+//
+// @param request - UpdateIpamPoolAllocationRequest
+//
+// @return UpdateIpamPoolAllocationResponse
+func (client *Client) UpdateIpamPoolAllocation(request *UpdateIpamPoolAllocationRequest) (_result *UpdateIpamPoolAllocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIpamPoolAllocationResponse{}
+	_body, _err := client.UpdateIpamPoolAllocationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
