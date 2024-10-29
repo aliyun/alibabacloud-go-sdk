@@ -1814,6 +1814,7 @@ type Container struct {
 	//
 	// registry.cn-shanghai.aliyuncs.com/serverless_devsxxxxx
 	Image                *string               `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageRegistryConfig  *ImageRegistryConfig  `json:"ImageRegistryConfig,omitempty" xml:"ImageRegistryConfig,omitempty"`
 	MetricsCollectConfig *MetricsCollectConfig `json:"MetricsCollectConfig,omitempty" xml:"MetricsCollectConfig,omitempty"`
 	// example:
 	//
@@ -1860,6 +1861,11 @@ func (s *Container) SetEnvironmentVariables(v map[string]*string) *Container {
 
 func (s *Container) SetImage(v string) *Container {
 	s.Image = &v
+	return s
+}
+
+func (s *Container) SetImageRegistryConfig(v *ImageRegistryConfig) *Container {
+	s.ImageRegistryConfig = v
 	return s
 }
 
@@ -3329,6 +3335,29 @@ func (s *ImageConfig) SetInstanceID(v string) *ImageConfig {
 
 func (s *ImageConfig) SetRegistryConfig(v *RegistryConfig) *ImageConfig {
 	s.RegistryConfig = v
+	return s
+}
+
+type ImageRegistryConfig struct {
+	AuthConfig *RegistryAuthenticationConfig `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
+	CertConfig *RegistryCertificateConfig    `json:"CertConfig,omitempty" xml:"CertConfig,omitempty"`
+}
+
+func (s ImageRegistryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageRegistryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ImageRegistryConfig) SetAuthConfig(v *RegistryAuthenticationConfig) *ImageRegistryConfig {
+	s.AuthConfig = v
+	return s
+}
+
+func (s *ImageRegistryConfig) SetCertConfig(v *RegistryCertificateConfig) *ImageRegistryConfig {
+	s.CertConfig = v
 	return s
 }
 
@@ -5232,6 +5261,35 @@ func (s *RegistryAuthConfig) SetUserName(v string) *RegistryAuthConfig {
 	return s
 }
 
+type RegistryAuthenticationConfig struct {
+	// example:
+	//
+	// abc***
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// admin
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s RegistryAuthenticationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryAuthenticationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryAuthenticationConfig) SetPassword(v string) *RegistryAuthenticationConfig {
+	s.Password = &v
+	return s
+}
+
+func (s *RegistryAuthenticationConfig) SetUserName(v string) *RegistryAuthenticationConfig {
+	s.UserName = &v
+	return s
+}
+
 type RegistryCertConfig struct {
 	Insecure         *bool   `json:"insecure,omitempty" xml:"insecure,omitempty"`
 	RootCaCertBase64 *string `json:"rootCaCertBase64,omitempty" xml:"rootCaCertBase64,omitempty"`
@@ -5252,6 +5310,35 @@ func (s *RegistryCertConfig) SetInsecure(v bool) *RegistryCertConfig {
 
 func (s *RegistryCertConfig) SetRootCaCertBase64(v string) *RegistryCertConfig {
 	s.RootCaCertBase64 = &v
+	return s
+}
+
+type RegistryCertificateConfig struct {
+	// example:
+	//
+	// LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCmZha2VDZXJ0aWZpY2F0ZQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t
+	CertBase64 *string `json:"CertBase64,omitempty" xml:"CertBase64,omitempty"`
+	// example:
+	//
+	// true
+	Insecure *bool `json:"Insecure,omitempty" xml:"Insecure,omitempty"`
+}
+
+func (s RegistryCertificateConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegistryCertificateConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RegistryCertificateConfig) SetCertBase64(v string) *RegistryCertificateConfig {
+	s.CertBase64 = &v
+	return s
+}
+
+func (s *RegistryCertificateConfig) SetInsecure(v bool) *RegistryCertificateConfig {
+	s.Insecure = &v
 	return s
 }
 
@@ -10608,7 +10695,12 @@ type CreateIngressRequest struct {
 	// example:
 	//
 	// ingress-for-sae-test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableXForwardedFor              *bool   `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
+	EnableXForwardedForClientSrcPort *bool   `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
+	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
+	EnableXForwardedForSlbId         *bool   `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
+	EnableXForwardedForSlbPort       *bool   `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
 	// The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60.
 	//
 	// If no request is received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
@@ -10726,6 +10818,31 @@ func (s *CreateIngressRequest) SetDefaultRule(v string) *CreateIngressRequest {
 
 func (s *CreateIngressRequest) SetDescription(v string) *CreateIngressRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetEnableXForwardedFor(v bool) *CreateIngressRequest {
+	s.EnableXForwardedFor = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetEnableXForwardedForClientSrcPort(v bool) *CreateIngressRequest {
+	s.EnableXForwardedForClientSrcPort = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetEnableXForwardedForProto(v bool) *CreateIngressRequest {
+	s.EnableXForwardedForProto = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetEnableXForwardedForSlbId(v bool) *CreateIngressRequest {
+	s.EnableXForwardedForSlbId = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetEnableXForwardedForSlbPort(v bool) *CreateIngressRequest {
+	s.EnableXForwardedForSlbPort = &v
 	return s
 }
 
@@ -23024,7 +23141,12 @@ type DescribeIngressResponseBodyData struct {
 	// example:
 	//
 	// ingress-sae-test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableXForwardedFor              *bool   `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
+	EnableXForwardedForClientSrcPort *bool   `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
+	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
+	EnableXForwardedForSlbId         *bool   `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
+	EnableXForwardedForSlbPort       *bool   `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
 	// The HTTP status code. Valid values:
 	//
 	// 	- **2xx**: indicates that the request was successful.
@@ -23038,7 +23160,10 @@ type DescribeIngressResponseBodyData struct {
 	// example:
 	//
 	// 87
-	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 3
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The default rule.
 	//
@@ -23071,11 +23196,17 @@ type DescribeIngressResponseBodyData struct {
 	// example:
 	//
 	// cn-beijing:sae-test
-	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RequestTimeout *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// 60
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the application specified in the forwarding rule.
-	Rules            []*DescribeIngressResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SecurityPolicyId *string                                 `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	Rules []*DescribeIngressResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sp-n0kn923****
+	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The type of the SLB instance based on the IP address. Valid values:
 	//
 	// 	- **internet**: the Internet-facing SLB instance.
@@ -23119,6 +23250,31 @@ func (s *DescribeIngressResponseBodyData) SetDefaultRule(v *DescribeIngressRespo
 
 func (s *DescribeIngressResponseBodyData) SetDescription(v string) *DescribeIngressResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetEnableXForwardedFor(v bool) *DescribeIngressResponseBodyData {
+	s.EnableXForwardedFor = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetEnableXForwardedForClientSrcPort(v bool) *DescribeIngressResponseBodyData {
+	s.EnableXForwardedForClientSrcPort = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetEnableXForwardedForProto(v bool) *DescribeIngressResponseBodyData {
+	s.EnableXForwardedForProto = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetEnableXForwardedForSlbId(v bool) *DescribeIngressResponseBodyData {
+	s.EnableXForwardedForSlbId = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetEnableXForwardedForSlbPort(v bool) *DescribeIngressResponseBodyData {
+	s.EnableXForwardedForSlbPort = &v
 	return s
 }
 
@@ -41043,8 +41199,16 @@ type UpdateIngressRequest struct {
 	// example:
 	//
 	// ingress-sae-test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IdleTimeout *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableXForwardedFor              *bool   `json:"EnableXForwardedFor,omitempty" xml:"EnableXForwardedFor,omitempty"`
+	EnableXForwardedForClientSrcPort *bool   `json:"EnableXForwardedForClientSrcPort,omitempty" xml:"EnableXForwardedForClientSrcPort,omitempty"`
+	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
+	EnableXForwardedForSlbId         *bool   `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
+	EnableXForwardedForSlbPort       *bool   `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
+	// example:
+	//
+	// 3
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the routing rule.
 	//
 	// This parameter is required.
@@ -41075,7 +41239,10 @@ type UpdateIngressRequest struct {
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	RequestTimeout  *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// example:
+	//
+	// 60
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The forwarding rules. You can specify a port and an application in a forwarding rule to forward traffic based on the specified domain name and request path. The following list describes the involved parameters:
 	//
 	// 	- **appId**: the ID of the application.
@@ -41089,7 +41256,10 @@ type UpdateIngressRequest struct {
 	// example:
 	//
 	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
-	Rules            *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// example:
+	//
+	// tls_cipher_policy_1_0
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
@@ -41118,6 +41288,31 @@ func (s *UpdateIngressRequest) SetDefaultRule(v string) *UpdateIngressRequest {
 
 func (s *UpdateIngressRequest) SetDescription(v string) *UpdateIngressRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetEnableXForwardedFor(v bool) *UpdateIngressRequest {
+	s.EnableXForwardedFor = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetEnableXForwardedForClientSrcPort(v bool) *UpdateIngressRequest {
+	s.EnableXForwardedForClientSrcPort = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetEnableXForwardedForProto(v bool) *UpdateIngressRequest {
+	s.EnableXForwardedForProto = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetEnableXForwardedForSlbId(v bool) *UpdateIngressRequest {
+	s.EnableXForwardedForSlbId = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetEnableXForwardedForSlbPort(v bool) *UpdateIngressRequest {
+	s.EnableXForwardedForSlbPort = &v
 	return s
 }
 
@@ -44184,6 +44379,26 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedFor)) {
+		query["EnableXForwardedFor"] = request.EnableXForwardedFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedForClientSrcPort)) {
+		query["EnableXForwardedForClientSrcPort"] = request.EnableXForwardedForClientSrcPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedForProto)) {
+		query["EnableXForwardedForProto"] = request.EnableXForwardedForProto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedForSlbId)) {
+		query["EnableXForwardedForSlbId"] = request.EnableXForwardedForSlbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedForSlbPort)) {
+		query["EnableXForwardedForSlbPort"] = request.EnableXForwardedForSlbPort
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
@@ -52039,6 +52254,26 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedFor)) {
+		query["EnableXForwardedFor"] = request.EnableXForwardedFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedForClientSrcPort)) {
+		query["EnableXForwardedForClientSrcPort"] = request.EnableXForwardedForClientSrcPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedForProto)) {
+		query["EnableXForwardedForProto"] = request.EnableXForwardedForProto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedForSlbId)) {
+		query["EnableXForwardedForSlbId"] = request.EnableXForwardedForSlbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXForwardedForSlbPort)) {
+		query["EnableXForwardedForSlbPort"] = request.EnableXForwardedForSlbPort
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
