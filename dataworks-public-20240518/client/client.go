@@ -1508,6 +1508,32 @@ func (s *DataQualityRuleTarget) SetType(v string) *DataQualityRuleTarget {
 	return s
 }
 
+type SuccessInfoValue struct {
+	// example:
+	//
+	// true
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s SuccessInfoValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuccessInfoValue) GoString() string {
+	return s.String()
+}
+
+func (s *SuccessInfoValue) SetSuccess(v bool) *SuccessInfoValue {
+	s.Success = &v
+	return s
+}
+
+func (s *SuccessInfoValue) SetMessage(v string) *SuccessInfoValue {
+	s.Message = &v
+	return s
+}
+
 type AbolishDeploymentRequest struct {
 	// The ID of the process.
 	//
@@ -5679,6 +5705,95 @@ func (s *DeleteRouteResponse) SetBody(v *DeleteRouteResponseBody) *DeleteRouteRe
 	return s
 }
 
+type DeleteTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+}
+
+func (s DeleteTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskRequest) SetId(v int64) *DeleteTaskRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteTaskRequest) SetProjectEnv(v string) *DeleteTaskRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+type DeleteTaskResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskResponseBody) SetRequestId(v string) *DeleteTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTaskResponseBody) SetSuccess(v bool) *DeleteTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteTaskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskResponse) SetHeaders(v map[string]*string) *DeleteTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTaskResponse) SetStatusCode(v int32) *DeleteTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTaskResponse) SetBody(v *DeleteTaskResponseBody) *DeleteTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteWorkflowDefinitionRequest struct {
 	// The ID of the workflow.
 	//
@@ -8044,6 +8159,10 @@ func (s *GetNodeResponse) SetBody(v *GetNodeResponseBody) *GetNodeResponse {
 }
 
 type GetProjectRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8066,7 +8185,10 @@ func (s *GetProjectRequest) SetId(v int64) *GetProjectRequest {
 }
 
 type GetProjectResponseBody struct {
+	// The information about the workspace.
 	Project *GetProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -8092,37 +8214,106 @@ func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody 
 }
 
 type GetProjectResponseBodyProject struct {
+	// The ID of the Alibaba Cloud resource group to which the workspace belongs.
+	//
 	// example:
 	//
 	// rg-acfmzbn7pti3zfa
-	AliyunResourceGroupId *string                                            `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	AliyunResourceTags    []*GetProjectResponseBodyProjectAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	Description           *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	// The tags.
+	AliyunResourceTags []*GetProjectResponseBodyProjectAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	// The description of the workspace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the development environment is enabled. Valid values:
+	//
+	// 	- true: The development environment is enabled. In this case, the development environment is isolated from the production environment in the workspace.
+	//
+	// 	- false: The development environment is disabled. In this case, only the production environment is used in the workspace.
+	//
 	// example:
 	//
 	// true
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// Indicates whether the Develop role is disabled. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// false
-	DevRoleDisabled *bool   `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// The display name of the workspace.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 28477242
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// sora_finance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account to which the workspace belongs.
+	//
 	// example:
 	//
 	// 207947397706614299
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// Indicates whether scheduling of Platform for AI (PAI) tasks is enabled. Valid values:
+	//
+	// 	- true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	//
+	// 	- false: Scheduling of PAI tasks is disabled.
+	//
 	// example:
 	//
 	// true
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// The status of the workspace. Valid values:
+	//
+	// 	- Available
+	//
+	// 	- Initializing
+	//
+	// 	- InitFailed
+	//
+	// 	- Forbidden
+	//
+	// 	- Deleting
+	//
+	// 	- DeleteFailed
+	//
+	// 	- Frozen
+	//
+	// 	- Updating
+	//
+	// 	- UpdateFailed
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// Available
@@ -8193,10 +8384,14 @@ func (s *GetProjectResponseBodyProject) SetStatus(v string) *GetProjectResponseB
 }
 
 type GetProjectResponseBodyProjectAliyunResourceTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// batch
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// blue
@@ -9102,6 +9297,1787 @@ func (s *GetRouteResponse) SetStatusCode(v int32) *GetRouteResponse {
 }
 
 func (s *GetRouteResponse) SetBody(v *GetRouteResponseBody) *GetRouteResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+}
+
+func (s GetTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskRequest) SetId(v int64) *GetTaskRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskRequest) SetProjectEnv(v string) *GetTaskRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+type GetTaskResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Task      *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+}
+
+func (s GetTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBody) SetRequestId(v string) *GetTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskResponseBody {
+	s.Task = v
+	return s
+}
+
+type GetTaskResponseBodyTask struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser   *string                                `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource   *GetTaskResponseBodyTaskDataSource     `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	Dependencies []*GetTaskResponseBodyTaskDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1234
+	Id     *int64                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	Inputs *GetTaskResponseBodyTaskInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string                         `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name       *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs    *GetTaskResponseBodyTaskOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes      *int32                                  `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RuntimeResource *GetTaskResponseBodyTaskRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	Script          *GetTaskResponseBodyTaskScript          `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	SubTasks        *GetTaskResponseBodyTaskSubTasks        `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Struct"`
+	Tags            []*GetTaskResponseBodyTaskTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 3600
+	Timeout *int32                          `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Trigger *GetTaskResponseBodyTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// example:
+	//
+	// ODPS_SQL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s GetTaskResponseBodyTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTask) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTask) SetBaselineId(v int64) *GetTaskResponseBodyTask {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetCreateTime(v int64) *GetTaskResponseBodyTask {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetCreateUser(v string) *GetTaskResponseBodyTask {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetDataSource(v *GetTaskResponseBodyTaskDataSource) *GetTaskResponseBodyTask {
+	s.DataSource = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetDependencies(v []*GetTaskResponseBodyTaskDependencies) *GetTaskResponseBodyTask {
+	s.Dependencies = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetDescription(v string) *GetTaskResponseBodyTask {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetId(v int64) *GetTaskResponseBodyTask {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetInputs(v *GetTaskResponseBodyTaskInputs) *GetTaskResponseBodyTask {
+	s.Inputs = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetModifyTime(v int64) *GetTaskResponseBodyTask {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetModifyUser(v string) *GetTaskResponseBodyTask {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetName(v string) *GetTaskResponseBodyTask {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetOutputs(v *GetTaskResponseBodyTaskOutputs) *GetTaskResponseBodyTask {
+	s.Outputs = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetOwner(v string) *GetTaskResponseBodyTask {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetPriority(v int32) *GetTaskResponseBodyTask {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetProjectEnv(v string) *GetTaskResponseBodyTask {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetProjectId(v int64) *GetTaskResponseBodyTask {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetRerunInterval(v int32) *GetTaskResponseBodyTask {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetRerunMode(v string) *GetTaskResponseBodyTask {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetRerunTimes(v int32) *GetTaskResponseBodyTask {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetRuntimeResource(v *GetTaskResponseBodyTaskRuntimeResource) *GetTaskResponseBodyTask {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetScript(v *GetTaskResponseBodyTaskScript) *GetTaskResponseBodyTask {
+	s.Script = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetSubTasks(v *GetTaskResponseBodyTaskSubTasks) *GetTaskResponseBodyTask {
+	s.SubTasks = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetTags(v []*GetTaskResponseBodyTaskTags) *GetTaskResponseBodyTask {
+	s.Tags = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetTenantId(v int64) *GetTaskResponseBodyTask {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetTimeout(v int32) *GetTaskResponseBodyTask {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetTrigger(v *GetTaskResponseBodyTaskTrigger) *GetTaskResponseBodyTask {
+	s.Trigger = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetType(v string) *GetTaskResponseBodyTask {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetWorkflowId(v int64) *GetTaskResponseBodyTask {
+	s.WorkflowId = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskDataSource) SetName(v string) *GetTaskResponseBodyTaskDataSource {
+	s.Name = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskDependencies struct {
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	Upstream *string `json:"Upstream,omitempty" xml:"Upstream,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskDependencies) SetType(v string) *GetTaskResponseBodyTaskDependencies {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskDependencies) SetUpstream(v string) *GetTaskResponseBodyTaskDependencies {
+	s.Upstream = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskInputs struct {
+	Variables []*GetTaskResponseBodyTaskInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskResponseBodyTaskInputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskInputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskInputs) SetVariables(v []*GetTaskResponseBodyTaskInputsVariables) *GetTaskResponseBodyTaskInputs {
+	s.Variables = v
+	return s
+}
+
+type GetTaskResponseBodyTaskInputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// TaskContext
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskInputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskInputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskInputsVariables) SetName(v string) *GetTaskResponseBodyTaskInputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskInputsVariables) SetScope(v string) *GetTaskResponseBodyTaskInputsVariables {
+	s.Scope = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskInputsVariables) SetType(v string) *GetTaskResponseBodyTaskInputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskInputsVariables) SetValue(v string) *GetTaskResponseBodyTaskInputsVariables {
+	s.Value = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskOutputs struct {
+	TaskOutputs []*GetTaskResponseBodyTaskOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
+	Variables   []*GetTaskResponseBodyTaskOutputsVariables   `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskResponseBodyTaskOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskOutputs) SetTaskOutputs(v []*GetTaskResponseBodyTaskOutputsTaskOutputs) *GetTaskResponseBodyTaskOutputs {
+	s.TaskOutputs = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskOutputs) SetVariables(v []*GetTaskResponseBodyTaskOutputsVariables) *GetTaskResponseBodyTaskOutputs {
+	s.Variables = v
+	return s
+}
+
+type GetTaskResponseBodyTaskOutputsTaskOutputs struct {
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskOutputsTaskOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskOutputsTaskOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskOutputsTaskOutputs) SetOutput(v string) *GetTaskResponseBodyTaskOutputsTaskOutputs {
+	s.Output = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskOutputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// TaskContext
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskOutputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskOutputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskOutputsVariables) SetName(v string) *GetTaskResponseBodyTaskOutputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskOutputsVariables) SetScope(v string) *GetTaskResponseBodyTaskOutputsVariables {
+	s.Scope = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskOutputsVariables) SetType(v string) *GetTaskResponseBodyTaskOutputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskOutputsVariables) SetValue(v string) *GetTaskResponseBodyTaskOutputsVariables {
+	s.Value = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskRuntimeResource) SetCu(v string) *GetTaskResponseBodyTaskRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskRuntimeResource) SetImage(v string) *GetTaskResponseBodyTaskRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskRuntimeResource) SetResourceGroupId(v string) *GetTaskResponseBodyTaskRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskScript struct {
+	// example:
+	//
+	// echo "helloWorld"
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// para1=$bizdate
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskScript) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskScript) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskScript) SetContent(v string) *GetTaskResponseBodyTaskScript {
+	s.Content = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskScript) SetParameters(v string) *GetTaskResponseBodyTaskScript {
+	s.Parameters = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskSubTasks struct {
+	SubTasks []*GetTaskResponseBodyTaskSubTasksSubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Combined
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskSubTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskSubTasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskSubTasks) SetSubTasks(v []*GetTaskResponseBodyTaskSubTasksSubTasks) *GetTaskResponseBodyTaskSubTasks {
+	s.SubTasks = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasks) SetType(v string) *GetTaskResponseBodyTaskSubTasks {
+	s.Type = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskSubTasksSubTasks struct {
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                            `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *GetTaskResponseBodyTaskSubTasksSubTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 180
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes      *int32                                                  `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RuntimeResource *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 3600
+	Timeout *int32                                          `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Trigger *GetTaskResponseBodyTaskSubTasksSubTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// example:
+	//
+	// ODPS_SQL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskSubTasksSubTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskSubTasksSubTasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetBaselineId(v int64) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetCreateTime(v int64) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetCreateUser(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetDataSource(v *GetTaskResponseBodyTaskSubTasksSubTasksDataSource) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.DataSource = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetDescription(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetId(v int64) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetModifyTime(v int64) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetModifyUser(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetName(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetOwner(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetPriority(v int32) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetProjectEnv(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetProjectId(v int64) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetRerunInterval(v int32) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetRerunMode(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetRerunTimes(v int32) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetRuntimeResource(v *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetTenantId(v int64) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetTimeout(v int32) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetTrigger(v *GetTaskResponseBodyTaskSubTasksSubTasksTrigger) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.Trigger = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetType(v string) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetWorkflowId(v int64) *GetTaskResponseBodyTaskSubTasksSubTasks {
+	s.WorkflowId = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskSubTasksSubTasksDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskSubTasksSubTasksDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskSubTasksSubTasksDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksDataSource) SetName(v string) *GetTaskResponseBodyTaskSubTasksSubTasksDataSource {
+	s.Name = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource) SetCu(v string) *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource) SetImage(v string) *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource) SetResourceGroupId(v string) *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskSubTasksSubTasksTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskSubTasksSubTasksTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskSubTasksSubTasksTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksTrigger) SetCron(v string) *GetTaskResponseBodyTaskSubTasksSubTasksTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksTrigger) SetEndTime(v string) *GetTaskResponseBodyTaskSubTasksSubTasksTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksTrigger) SetRecurrence(v string) *GetTaskResponseBodyTaskSubTasksSubTasksTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksTrigger) SetStartTime(v string) *GetTaskResponseBodyTaskSubTasksSubTasksTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskSubTasksSubTasksTrigger) SetType(v string) *GetTaskResponseBodyTaskSubTasksSubTasksTrigger {
+	s.Type = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskTags struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskTags) SetKey(v string) *GetTaskResponseBodyTaskTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskTags) SetValue(v string) *GetTaskResponseBodyTaskTags {
+	s.Value = &v
+	return s
+}
+
+type GetTaskResponseBodyTaskTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetTaskResponseBodyTaskTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTaskTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTaskTrigger) SetCron(v string) *GetTaskResponseBodyTaskTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskTrigger) SetEndTime(v string) *GetTaskResponseBodyTaskTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskTrigger) SetRecurrence(v string) *GetTaskResponseBodyTaskTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskTrigger) SetStartTime(v string) *GetTaskResponseBodyTaskTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskTrigger) SetType(v string) *GetTaskResponseBodyTaskTrigger {
+	s.Type = &v
+	return s
+}
+
+type GetTaskResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponse) SetHeaders(v map[string]*string) *GetTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetTaskInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceRequest) SetId(v int64) *GetTaskInstanceRequest {
+	s.Id = &v
+	return s
+}
+
+type GetTaskInstanceResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskInstance *GetTaskInstanceResponseBodyTaskInstance `json:"TaskInstance,omitempty" xml:"TaskInstance,omitempty" type:"Struct"`
+}
+
+func (s GetTaskInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBody) SetRequestId(v string) *GetTaskInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBody) SetTaskInstance(v *GetTaskInstanceResponseBodyTaskInstance) *GetTaskInstanceResponseBody {
+	s.TaskInstance = v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstance struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                            `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *GetTaskInstanceResponseBodyTaskInstanceDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// example:
+	//
+	// 1234
+	Id     *int64                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	Inputs *GetTaskInstanceResponseBodyTaskInstanceInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string                                         `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Outputs    *GetTaskInstanceResponseBodyTaskInstanceOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 1
+	RunNumber       *int32                                                  `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	Runtime         *GetTaskInstanceResponseBodyTaskInstanceRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RuntimeResource *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	Script          *GetTaskInstanceResponseBodyTaskInstanceScript          `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1710239005403
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*GetTaskInstanceResponseBodyTaskInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1234
+	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// ODPS_SQL
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 1
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// Normal
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// example:
+	//
+	// Normal
+	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
+	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstance) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetBaselineId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetBizdate(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetCreateTime(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetCreateUser(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetDataSource(v *GetTaskInstanceResponseBodyTaskInstanceDataSource) *GetTaskInstanceResponseBodyTaskInstance {
+	s.DataSource = v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetDescription(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetFinishedTime(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetInputs(v *GetTaskInstanceResponseBodyTaskInstanceInputs) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Inputs = v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetModifyTime(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetModifyUser(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetOutputs(v *GetTaskInstanceResponseBodyTaskInstanceOutputs) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Outputs = v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetOwner(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetPriority(v int32) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetProjectEnv(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetProjectId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetRerunMode(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetRunNumber(v int32) *GetTaskInstanceResponseBodyTaskInstance {
+	s.RunNumber = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetRuntime(v *GetTaskInstanceResponseBodyTaskInstanceRuntime) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Runtime = v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetRuntimeResource(v *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource) *GetTaskInstanceResponseBodyTaskInstance {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetScript(v *GetTaskInstanceResponseBodyTaskInstanceScript) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Script = v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetStartedTime(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetStatus(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTags(v []*GetTaskInstanceResponseBodyTaskInstanceTags) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Tags = v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTaskId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTaskName(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.TaskName = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTaskType(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTenantId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTimeout(v int32) *GetTaskInstanceResponseBodyTaskInstance {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTriggerRecurrence(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTriggerTime(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.TriggerTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetTriggerType(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetWorkflowId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetWorkflowInstanceId(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetWorkflowInstanceType(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.WorkflowInstanceType = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetWorkflowName(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.WorkflowName = &v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceDataSource) SetName(v string) *GetTaskInstanceResponseBodyTaskInstanceDataSource {
+	s.Name = &v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceInputs struct {
+	Variables []*GetTaskInstanceResponseBodyTaskInstanceInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceInputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceInputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceInputs) SetVariables(v []*GetTaskInstanceResponseBodyTaskInstanceInputsVariables) *GetTaskInstanceResponseBodyTaskInstanceInputs {
+	s.Variables = v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceInputsVariables struct {
+	// example:
+	//
+	// Key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// TaskContext
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceInputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceInputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) SetName(v string) *GetTaskInstanceResponseBodyTaskInstanceInputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) SetScope(v string) *GetTaskInstanceResponseBodyTaskInstanceInputsVariables {
+	s.Scope = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) SetType(v string) *GetTaskInstanceResponseBodyTaskInstanceInputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) SetValue(v string) *GetTaskInstanceResponseBodyTaskInstanceInputsVariables {
+	s.Value = &v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceOutputs struct {
+	TaskOutputs []*GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
+	Variables   []*GetTaskInstanceResponseBodyTaskInstanceOutputsVariables   `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceOutputs) SetTaskOutputs(v []*GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs) *GetTaskInstanceResponseBodyTaskInstanceOutputs {
+	s.TaskOutputs = v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceOutputs) SetVariables(v []*GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) *GetTaskInstanceResponseBodyTaskInstanceOutputs {
+	s.Variables = v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs struct {
+	// example:
+	//
+	// pre.odps_sql_demo_0
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs) SetOutput(v string) *GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs {
+	s.Output = &v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceOutputsVariables struct {
+	// example:
+	//
+	// key1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// TaskContext
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// Constant
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) SetName(v string) *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) SetScope(v string) *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables {
+	s.Scope = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) SetType(v string) *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) SetValue(v string) *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables {
+	s.Value = &v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceRuntime struct {
+	// example:
+	//
+	// cn-shanghai.1.2
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// example:
+	//
+	// T3_123
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceRuntime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceRuntime) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceRuntime) SetGateway(v string) *GetTaskInstanceResponseBodyTaskInstanceRuntime {
+	s.Gateway = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceRuntime) SetProcessId(v string) *GetTaskInstanceResponseBodyTaskInstanceRuntime {
+	s.ProcessId = &v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource) SetCu(v string) *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource) SetImage(v string) *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource) SetResourceGroupId(v string) *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceScript struct {
+	// example:
+	//
+	// echo "helloWorld"
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// para1=$bizdate
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceScript) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceScript) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceScript) SetContent(v string) *GetTaskInstanceResponseBodyTaskInstanceScript {
+	s.Content = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceScript) SetParameters(v string) *GetTaskInstanceResponseBodyTaskInstanceScript {
+	s.Parameters = &v
+	return s
+}
+
+type GetTaskInstanceResponseBodyTaskInstanceTags struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponseBodyTaskInstanceTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceTags) SetKey(v string) *GetTaskInstanceResponseBodyTaskInstanceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstanceTags) SetValue(v string) *GetTaskInstanceResponseBodyTaskInstanceTags {
+	s.Value = &v
+	return s
+}
+
+type GetTaskInstanceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTaskInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceResponse) SetHeaders(v map[string]*string) *GetTaskInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskInstanceResponse) SetStatusCode(v int32) *GetTaskInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponse) SetBody(v *GetTaskInstanceResponseBody) *GetTaskInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskInstanceLogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	RunNumber *int32 `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+}
+
+func (s GetTaskInstanceLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceLogRequest) SetId(v int64) *GetTaskInstanceLogRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskInstanceLogRequest) SetRunNumber(v int32) *GetTaskInstanceLogRequest {
+	s.RunNumber = &v
+	return s
+}
+
+type GetTaskInstanceLogResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// This is running log
+	TaskInstanceLog *string `json:"TaskInstanceLog,omitempty" xml:"TaskInstanceLog,omitempty"`
+}
+
+func (s GetTaskInstanceLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceLogResponseBody) SetRequestId(v string) *GetTaskInstanceLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskInstanceLogResponseBody) SetTaskInstanceLog(v string) *GetTaskInstanceLogResponseBody {
+	s.TaskInstanceLog = &v
+	return s
+}
+
+type GetTaskInstanceLogResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskInstanceLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTaskInstanceLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceLogResponse) SetHeaders(v map[string]*string) *GetTaskInstanceLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskInstanceLogResponse) SetStatusCode(v int32) *GetTaskInstanceLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskInstanceLogResponse) SetBody(v *GetTaskInstanceLogResponseBody) *GetTaskInstanceLogResponse {
 	s.Body = v
 	return s
 }
@@ -14637,6 +16613,984 @@ func (s *ListDeploymentsResponse) SetBody(v *ListDeploymentsResponseBody) *ListD
 	return s
 }
 
+type ListDownstreamTaskInstancesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesRequest) SetId(v int64) *ListDownstreamTaskInstancesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesRequest) SetPageNumber(v int32) *ListDownstreamTaskInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesRequest) SetPageSize(v int32) *ListDownstreamTaskInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBody struct {
+	PagingInfo *ListDownstreamTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBody) SetPagingInfo(v *ListDownstreamTaskInstancesResponseBodyPagingInfo) *ListDownstreamTaskInstancesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBody) SetRequestId(v string) *ListDownstreamTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize      *int32                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TaskInstances []*ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetPageNumber(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetPageSize(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetTaskInstances(v []*ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) *ListDownstreamTaskInstancesResponseBodyPagingInfo {
+	s.TaskInstances = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                                                   `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 100
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 1
+	RunNumber       *int32                                                                         `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	Runtime         *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RuntimeResource *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1710239005403
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1234
+	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// ODPS_SQL
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 1
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// Normal
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// example:
+	//
+	// Normal
+	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
+	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetBaselineId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetBizdate(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetCreateTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetCreateUser(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetDataSource(v *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetDescription(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetFinishedTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetModifyTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetModifyUser(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetOwner(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetPriority(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetProjectEnv(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetProjectId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetRerunMode(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetRunNumber(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RunNumber = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetRuntime(v *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Runtime = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetRuntimeResource(v *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStartedTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStatus(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskName(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTenantId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTimeout(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerRecurrence(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerTime(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerTime = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowInstanceId(v int64) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowInstanceType(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowInstanceType = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowName(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowName = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) SetName(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime struct {
+	// example:
+	//
+	// cn-shanghai.1.2
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// example:
+	//
+	// T3_123
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) SetGateway(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime {
+	s.Gateway = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) SetProcessId(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime {
+	s.ProcessId = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetCu(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetImage(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetResourceGroupId(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListDownstreamTaskInstancesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDownstreamTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDownstreamTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTaskInstancesResponse) SetHeaders(v map[string]*string) *ListDownstreamTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponse) SetStatusCode(v int32) *ListDownstreamTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponse) SetBody(v *ListDownstreamTaskInstancesResponseBody) *ListDownstreamTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDownstreamTasksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+}
+
+func (s ListDownstreamTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksRequest) SetId(v int64) *ListDownstreamTasksRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDownstreamTasksRequest) SetPageNumber(v int32) *ListDownstreamTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDownstreamTasksRequest) SetPageSize(v int32) *ListDownstreamTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDownstreamTasksRequest) SetProjectEnv(v string) *ListDownstreamTasksRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBody struct {
+	PagingInfo *ListDownstreamTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBody) SetPagingInfo(v *ListDownstreamTasksResponseBodyPagingInfo) *ListDownstreamTasksResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBody) SetRequestId(v string) *ListDownstreamTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tasks    []*ListDownstreamTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfo) SetPageNumber(v int32) *ListDownstreamTasksResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfo) SetPageSize(v int32) *ListDownstreamTasksResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfo) SetTasks(v []*ListDownstreamTasksResponseBodyPagingInfoTasks) *ListDownstreamTasksResponseBodyPagingInfo {
+	s.Tasks = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfo) SetTotalCount(v int32) *ListDownstreamTasksResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                                   `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes      *int32                                                         `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RuntimeResource *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 3600
+	Timeout *int32                                                 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Trigger *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// example:
+	//
+	// ODPS_SQL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetBaselineId(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetCreateTime(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetCreateUser(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetDataSource(v *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetDescription(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetId(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetModifyTime(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetModifyUser(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetName(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetOwner(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetPriority(v int32) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetProjectEnv(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetProjectId(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetRerunInterval(v int32) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetRerunMode(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetRerunTimes(v int32) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetTenantId(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetTimeout(v int32) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetTrigger(v *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.Trigger = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetType(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetWorkflowId(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoTasksDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoTasksDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoTasksDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource) SetName(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) SetCu(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) SetImage(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) SetResourceGroupId(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListDownstreamTasksResponseBodyPagingInfoTasksTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) SetCron(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) SetEndTime(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) SetRecurrence(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) SetStartTime(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) SetTimezone(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger) SetType(v string) *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.Type = &v
+	return s
+}
+
+type ListDownstreamTasksResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDownstreamTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDownstreamTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownstreamTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownstreamTasksResponse) SetHeaders(v map[string]*string) *ListDownstreamTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponse) SetStatusCode(v int32) *ListDownstreamTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDownstreamTasksResponse) SetBody(v *ListDownstreamTasksResponseBody) *ListDownstreamTasksResponse {
+	s.Body = v
+	return s
+}
+
 type ListFunctionsRequest struct {
 	// The ID of the owner of the UDF. This parameter specifies a filter condition.
 	//
@@ -19408,6 +22362,2711 @@ func (s *ListRoutesResponse) SetBody(v *ListRoutesResponseBody) *ListRoutesRespo
 	return s
 }
 
+type ListTaskInstanceOperationLogsRequest struct {
+	// example:
+	//
+	// 1710239005403
+	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListTaskInstanceOperationLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstanceOperationLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstanceOperationLogsRequest) SetDate(v int64) *ListTaskInstanceOperationLogsRequest {
+	s.Date = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsRequest) SetId(v int64) *ListTaskInstanceOperationLogsRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsRequest) SetPageNumber(v int32) *ListTaskInstanceOperationLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsRequest) SetPageSize(v int32) *ListTaskInstanceOperationLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListTaskInstanceOperationLogsResponseBody struct {
+	PagingInfo *ListTaskInstanceOperationLogsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTaskInstanceOperationLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstanceOperationLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBody) SetPagingInfo(v *ListTaskInstanceOperationLogsResponseBodyPagingInfo) *ListTaskInstanceOperationLogsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBody) SetRequestId(v string) *ListTaskInstanceOperationLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTaskInstanceOperationLogsResponseBodyPagingInfo struct {
+	OperationLogs []*ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs `json:"OperationLogs,omitempty" xml:"OperationLogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTaskInstanceOperationLogsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstanceOperationLogsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfo) SetOperationLogs(v []*ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs) *ListTaskInstanceOperationLogsResponseBodyPagingInfo {
+	s.OperationLogs = v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfo) SetPageNumber(v int32) *ListTaskInstanceOperationLogsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfo) SetPageSize(v int32) *ListTaskInstanceOperationLogsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfo) SetTotalCount(v int32) *ListTaskInstanceOperationLogsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs struct {
+	// example:
+	//
+	// 1710239005403
+	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	OperationContent *string `json:"OperationContent,omitempty" xml:"OperationContent,omitempty"`
+	// example:
+	//
+	// 1111
+	OperationSeq *int64 `json:"OperationSeq,omitempty" xml:"OperationSeq,omitempty"`
+	// example:
+	//
+	// 1234
+	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+	// example:
+	//
+	// 1000
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs) SetCreateTime(v int64) *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs) SetOperationContent(v string) *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.OperationContent = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs) SetOperationSeq(v int64) *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.OperationSeq = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs) SetTaskInstanceId(v int64) *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.TaskInstanceId = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs) SetUser(v string) *ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.User = &v
+	return s
+}
+
+type ListTaskInstanceOperationLogsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTaskInstanceOperationLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTaskInstanceOperationLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstanceOperationLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstanceOperationLogsResponse) SetHeaders(v map[string]*string) *ListTaskInstanceOperationLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponse) SetStatusCode(v int32) *ListTaskInstanceOperationLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskInstanceOperationLogsResponse) SetBody(v *ListTaskInstanceOperationLogsResponseBody) *ListTaskInstanceOperationLogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTaskInstancesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1710239005403
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// 1234
+	Id  *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+	// example:
+	//
+	// Id Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 1234
+	TaskId   *int64   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskIds  []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	TaskName *string  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// ODPS_SQL
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// example:
+	//
+	// Normal
+	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
+}
+
+func (s ListTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesRequest) SetBizdate(v int64) *ListTaskInstancesRequest {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetId(v int64) *ListTaskInstancesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetIds(v []*int64) *ListTaskInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetOwner(v string) *ListTaskInstancesRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetPageNumber(v int32) *ListTaskInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetPageSize(v int32) *ListTaskInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetProjectEnv(v string) *ListTaskInstancesRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetProjectId(v int64) *ListTaskInstancesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetRuntimeResource(v string) *ListTaskInstancesRequest {
+	s.RuntimeResource = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetSortBy(v string) *ListTaskInstancesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetTaskId(v int64) *ListTaskInstancesRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetTaskIds(v []*int64) *ListTaskInstancesRequest {
+	s.TaskIds = v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetTaskName(v string) *ListTaskInstancesRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetTaskType(v int32) *ListTaskInstancesRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetWorkflowId(v int64) *ListTaskInstancesRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetWorkflowInstanceId(v int64) *ListTaskInstancesRequest {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetWorkflowInstanceType(v string) *ListTaskInstancesRequest {
+	s.WorkflowInstanceType = &v
+	return s
+}
+
+type ListTaskInstancesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1710239005403
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// 1234
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+	// example:
+	//
+	// Id Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 1234
+	TaskId        *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// ODPS_SQL
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// example:
+	//
+	// Normal
+	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
+}
+
+func (s ListTaskInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetBizdate(v int64) *ListTaskInstancesShrinkRequest {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetId(v int64) *ListTaskInstancesShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetIdsShrink(v string) *ListTaskInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetOwner(v string) *ListTaskInstancesShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetPageNumber(v int32) *ListTaskInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetPageSize(v int32) *ListTaskInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetProjectEnv(v string) *ListTaskInstancesShrinkRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetProjectId(v int64) *ListTaskInstancesShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetRuntimeResource(v string) *ListTaskInstancesShrinkRequest {
+	s.RuntimeResource = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetSortBy(v string) *ListTaskInstancesShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetTaskId(v int64) *ListTaskInstancesShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetTaskIdsShrink(v string) *ListTaskInstancesShrinkRequest {
+	s.TaskIdsShrink = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetTaskName(v string) *ListTaskInstancesShrinkRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetTaskType(v int32) *ListTaskInstancesShrinkRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetWorkflowId(v int64) *ListTaskInstancesShrinkRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetWorkflowInstanceId(v int64) *ListTaskInstancesShrinkRequest {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetWorkflowInstanceType(v string) *ListTaskInstancesShrinkRequest {
+	s.WorkflowInstanceType = &v
+	return s
+}
+
+type ListTaskInstancesResponseBody struct {
+	PagingInfo *ListTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesResponseBody) SetPagingInfo(v *ListTaskInstancesResponseBodyPagingInfo) *ListTaskInstancesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBody) SetRequestId(v string) *ListTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTaskInstancesResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize      *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TaskInstances []*ListTaskInstancesResponseBodyPagingInfoTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfo) SetPageNumber(v int32) *ListTaskInstancesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfo) SetPageSize(v int32) *ListTaskInstancesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfo) SetTaskInstances(v []*ListTaskInstancesResponseBodyPagingInfoTaskInstances) *ListTaskInstancesResponseBodyPagingInfo {
+	s.TaskInstances = v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListTaskInstancesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                                         `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 1
+	RunNumber       *int32                                                               `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	Runtime         *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RuntimeResource *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1710239005403
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1234
+	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// ODPS_SQL
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 1
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// Normal
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// example:
+	//
+	// Normal
+	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
+	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfoTaskInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfoTaskInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetBaselineId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetBizdate(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetCreateTime(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetCreateUser(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetDataSource(v *ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetDescription(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetFinishedTime(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetModifyTime(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetModifyUser(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetOwner(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetPriority(v int32) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetProjectEnv(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetProjectId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetRerunMode(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetRunNumber(v int32) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RunNumber = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetRuntime(v *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Runtime = v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetRuntimeResource(v *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetStartedTime(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetStatus(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskName(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskType(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTenantId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTimeout(v int32) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerRecurrence(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerTime(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerTime = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerType(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowInstanceId(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowInstanceType(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowInstanceType = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowName(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowName = &v
+	return s
+}
+
+type ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) SetName(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime struct {
+	// example:
+	//
+	// cn-shanghai.1.2
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// example:
+	//
+	// T3_123
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) SetGateway(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime {
+	s.Gateway = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) SetProcessId(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime {
+	s.ProcessId = &v
+	return s
+}
+
+type ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetCu(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetImage(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetResourceGroupId(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListTaskInstancesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskInstancesResponse) SetHeaders(v map[string]*string) *ListTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskInstancesResponse) SetStatusCode(v int32) *ListTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponse) SetBody(v *ListTaskInstancesResponseBody) *ListTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTaskOperationLogsRequest struct {
+	// example:
+	//
+	// 1710239005403
+	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+}
+
+func (s ListTaskOperationLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskOperationLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskOperationLogsRequest) SetDate(v int64) *ListTaskOperationLogsRequest {
+	s.Date = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsRequest) SetId(v int64) *ListTaskOperationLogsRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsRequest) SetPageNumber(v int32) *ListTaskOperationLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsRequest) SetPageSize(v int32) *ListTaskOperationLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsRequest) SetProjectEnv(v string) *ListTaskOperationLogsRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+type ListTaskOperationLogsResponseBody struct {
+	PagingInfo *ListTaskOperationLogsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTaskOperationLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskOperationLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskOperationLogsResponseBody) SetPagingInfo(v *ListTaskOperationLogsResponseBodyPagingInfo) *ListTaskOperationLogsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBody) SetRequestId(v string) *ListTaskOperationLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTaskOperationLogsResponseBodyPagingInfo struct {
+	OperationLogs []*ListTaskOperationLogsResponseBodyPagingInfoOperationLogs `json:"OperationLogs,omitempty" xml:"OperationLogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTaskOperationLogsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskOperationLogsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfo) SetOperationLogs(v []*ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) *ListTaskOperationLogsResponseBodyPagingInfo {
+	s.OperationLogs = v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfo) SetPageNumber(v int32) *ListTaskOperationLogsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfo) SetPageSize(v int32) *ListTaskOperationLogsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfo) SetTotalCount(v int32) *ListTaskOperationLogsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTaskOperationLogsResponseBodyPagingInfoOperationLogs struct {
+	// example:
+	//
+	// 1710239005403
+	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	OperationContent *string `json:"OperationContent,omitempty" xml:"OperationContent,omitempty"`
+	// example:
+	//
+	// 1111
+	OperationSeq *int64 `json:"OperationSeq,omitempty" xml:"OperationSeq,omitempty"`
+	// example:
+	//
+	// 1234
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1000
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetCreateTime(v int64) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetOperationContent(v string) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.OperationContent = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetOperationSeq(v int64) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.OperationSeq = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetTaskId(v int64) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetUser(v string) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.User = &v
+	return s
+}
+
+type ListTaskOperationLogsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTaskOperationLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTaskOperationLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskOperationLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskOperationLogsResponse) SetHeaders(v map[string]*string) *ListTaskOperationLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponse) SetStatusCode(v int32) *ListTaskOperationLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponse) SetBody(v *ListTaskOperationLogsResponseBody) *ListTaskOperationLogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTasksRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+	// example:
+	//
+	// Id Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// ODPS_SQL
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// Normal
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// example:
+	//
+	// Scheduler
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksRequest) SetName(v string) *ListTasksRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetOwner(v string) *ListTasksRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetPageNumber(v int32) *ListTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetPageSize(v int32) *ListTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetProjectEnv(v string) *ListTasksRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetProjectId(v int64) *ListTasksRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetRuntimeResource(v string) *ListTasksRequest {
+	s.RuntimeResource = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetSortBy(v string) *ListTasksRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetTaskType(v string) *ListTasksRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetTriggerRecurrence(v string) *ListTasksRequest {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetTriggerType(v string) *ListTasksRequest {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetWorkflowId(v int64) *ListTasksRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListTasksResponseBody struct {
+	PagingInfo *ListTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponseBody) SetPagingInfo(v *ListTasksResponseBodyPagingInfo) *ListTasksResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListTasksResponseBody) SetRequestId(v string) *ListTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTasksResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tasks    []*ListTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTasksResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponseBodyPagingInfo) SetPageNumber(v int32) *ListTasksResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfo) SetPageSize(v int32) *ListTasksResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfo) SetTasks(v []*ListTasksResponseBodyPagingInfoTasks) *ListTasksResponseBodyPagingInfo {
+	s.Tasks = v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfo) SetTotalCount(v int32) *ListTasksResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTasksResponseBodyPagingInfoTasks struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                         `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *ListTasksResponseBodyPagingInfoTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes      *int32                                               `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RuntimeResource *ListTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 3600
+	Timeout *int32                                       `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Trigger *ListTasksResponseBodyPagingInfoTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// example:
+	//
+	// ODPS_SQL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListTasksResponseBodyPagingInfoTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponseBodyPagingInfoTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetBaselineId(v int64) *ListTasksResponseBodyPagingInfoTasks {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetCreateTime(v int64) *ListTasksResponseBodyPagingInfoTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetCreateUser(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetDataSource(v *ListTasksResponseBodyPagingInfoTasksDataSource) *ListTasksResponseBodyPagingInfoTasks {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetDescription(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetId(v int64) *ListTasksResponseBodyPagingInfoTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetModifyTime(v int64) *ListTasksResponseBodyPagingInfoTasks {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetModifyUser(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetName(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetOwner(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetPriority(v int32) *ListTasksResponseBodyPagingInfoTasks {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetProjectEnv(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetProjectId(v int64) *ListTasksResponseBodyPagingInfoTasks {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetRerunInterval(v int32) *ListTasksResponseBodyPagingInfoTasks {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetRerunMode(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetRerunTimes(v int32) *ListTasksResponseBodyPagingInfoTasks {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *ListTasksResponseBodyPagingInfoTasksRuntimeResource) *ListTasksResponseBodyPagingInfoTasks {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetTenantId(v int64) *ListTasksResponseBodyPagingInfoTasks {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetTimeout(v int32) *ListTasksResponseBodyPagingInfoTasks {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetTrigger(v *ListTasksResponseBodyPagingInfoTasksTrigger) *ListTasksResponseBodyPagingInfoTasks {
+	s.Trigger = v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetType(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.Type = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetWorkflowId(v int64) *ListTasksResponseBodyPagingInfoTasks {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListTasksResponseBodyPagingInfoTasksDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListTasksResponseBodyPagingInfoTasksDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponseBodyPagingInfoTasksDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksDataSource) SetName(v string) *ListTasksResponseBodyPagingInfoTasksDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListTasksResponseBodyPagingInfoTasksRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListTasksResponseBodyPagingInfoTasksRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponseBodyPagingInfoTasksRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksRuntimeResource) SetCu(v string) *ListTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksRuntimeResource) SetImage(v string) *ListTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksRuntimeResource) SetResourceGroupId(v string) *ListTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListTasksResponseBodyPagingInfoTasksTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListTasksResponseBodyPagingInfoTasksTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponseBodyPagingInfoTasksTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksTrigger) SetCron(v string) *ListTasksResponseBodyPagingInfoTasksTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksTrigger) SetEndTime(v string) *ListTasksResponseBodyPagingInfoTasksTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksTrigger) SetRecurrence(v string) *ListTasksResponseBodyPagingInfoTasksTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksTrigger) SetStartTime(v string) *ListTasksResponseBodyPagingInfoTasksTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasksTrigger) SetType(v string) *ListTasksResponseBodyPagingInfoTasksTrigger {
+	s.Type = &v
+	return s
+}
+
+type ListTasksResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponse) SetHeaders(v map[string]*string) *ListTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTasksResponse) SetStatusCode(v int32) *ListTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListUpstreamTaskInstancesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesRequest) SetId(v int64) *ListUpstreamTaskInstancesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesRequest) SetPageNumber(v int32) *ListUpstreamTaskInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesRequest) SetPageSize(v int32) *ListUpstreamTaskInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBody struct {
+	PagingInfo *ListUpstreamTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBody) SetPagingInfo(v *ListUpstreamTaskInstancesResponseBodyPagingInfo) *ListUpstreamTaskInstancesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBody) SetRequestId(v string) *ListUpstreamTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize      *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TaskInstances []*ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetPageNumber(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetPageSize(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetTaskInstances(v []*ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) *ListUpstreamTaskInstancesResponseBodyPagingInfo {
+	s.TaskInstances = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                                                 `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 1
+	RunNumber       *int32                                                                       `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	Runtime         *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RuntimeResource *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1710239005403
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1234
+	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// ODPS_SQL
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 1
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// Normal
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	// example:
+	//
+	// Scheduler
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// example:
+	//
+	// Normal
+	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
+	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetBaselineId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetBizdate(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetCreateTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetCreateUser(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetDataSource(v *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetDescription(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Description = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetFinishedTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetModifyTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetModifyUser(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetOwner(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetPriority(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetProjectEnv(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetProjectId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetRerunMode(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetRunNumber(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RunNumber = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetRuntime(v *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Runtime = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetRuntimeResource(v *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStartedTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetStatus(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskName(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTaskType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTenantId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTimeout(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerRecurrence(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerTime(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerTime = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowInstanceId(v int64) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowInstanceType(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowInstanceType = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowName(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WorkflowName = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) SetName(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime struct {
+	// example:
+	//
+	// cn-shanghai.1.2
+	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// example:
+	//
+	// T3_123
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) SetGateway(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime {
+	s.Gateway = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) SetProcessId(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime {
+	s.ProcessId = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetCu(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetImage(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource) SetResourceGroupId(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListUpstreamTaskInstancesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUpstreamTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUpstreamTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTaskInstancesResponse) SetHeaders(v map[string]*string) *ListUpstreamTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponse) SetStatusCode(v int32) *ListUpstreamTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponse) SetBody(v *ListUpstreamTaskInstancesResponseBody) *ListUpstreamTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListUpstreamTasksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+}
+
+func (s ListUpstreamTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksRequest) SetId(v int64) *ListUpstreamTasksRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUpstreamTasksRequest) SetPageNumber(v int32) *ListUpstreamTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUpstreamTasksRequest) SetPageSize(v int32) *ListUpstreamTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUpstreamTasksRequest) SetProjectEnv(v string) *ListUpstreamTasksRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBody struct {
+	PagingInfo *ListUpstreamTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBody) SetPagingInfo(v *ListUpstreamTasksResponseBodyPagingInfo) *ListUpstreamTasksResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBody) SetRequestId(v string) *ListUpstreamTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tasks    []*ListUpstreamTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfo) SetPageNumber(v int32) *ListUpstreamTasksResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfo) SetPageSize(v int32) *ListUpstreamTasksResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfo) SetTasks(v []*ListUpstreamTasksResponseBodyPagingInfoTasks) *ListUpstreamTasksResponseBodyPagingInfo {
+	s.Tasks = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfo) SetTotalCount(v int32) *ListUpstreamTasksResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1000
+	CreateUser *string                                                 `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSource *ListUpstreamTasksResponseBodyPagingInfoTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1000
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Prod
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// example:
+	//
+	// 100
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 60
+	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// example:
+	//
+	// AllAllowed
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 3
+	RerunTimes      *int32                                                       `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RuntimeResource *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 3600
+	Timeout *int32                                               `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Trigger *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// example:
+	//
+	// ODPS_SQL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetBaselineId(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetCreateTime(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetCreateUser(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetDataSource(v *ListUpstreamTasksResponseBodyPagingInfoTasksDataSource) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.DataSource = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetDescription(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetId(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetModifyTime(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetModifyUser(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetName(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetOwner(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetPriority(v int32) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetProjectEnv(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetProjectId(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetRerunInterval(v int32) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.RerunInterval = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetRerunMode(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetRerunTimes(v int32) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.RerunTimes = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetTenantId(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetTimeout(v int32) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetTrigger(v *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.Trigger = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetType(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.Type = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetWorkflowId(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfoTasksDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoTasksDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoTasksDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksDataSource) SetName(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksDataSource {
+	s.Name = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// i-xxxxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource) SetCu(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource) SetImage(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.Image = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource) SetResourceGroupId(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListUpstreamTasksResponseBodyPagingInfoTasksTrigger struct {
+	// example:
+	//
+	// 00 00 00 	- 	- ?
+	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// example:
+	//
+	// 9999-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Normal
+	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// example:
+	//
+	// 1970-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// example:
+	//
+	// Scheduler
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) SetCron(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.Cron = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) SetEndTime(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) SetRecurrence(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.Recurrence = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) SetStartTime(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) SetTimezone(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger) SetType(v string) *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger {
+	s.Type = &v
+	return s
+}
+
+type ListUpstreamTasksResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUpstreamTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUpstreamTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUpstreamTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUpstreamTasksResponse) SetHeaders(v map[string]*string) *ListUpstreamTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponse) SetStatusCode(v int32) *ListUpstreamTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUpstreamTasksResponse) SetBody(v *ListUpstreamTasksResponseBody) *ListUpstreamTasksResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkflowDefinitionsRequest struct {
 	// The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page.
 	//
@@ -20235,6 +25894,138 @@ func (s *MoveWorkflowDefinitionResponse) SetBody(v *MoveWorkflowDefinitionRespon
 	return s
 }
 
+type RemoveTaskInstanceDependenciesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id                      *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	UpstreamTaskInstanceIds []*int64 `json:"UpstreamTaskInstanceIds,omitempty" xml:"UpstreamTaskInstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s RemoveTaskInstanceDependenciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveTaskInstanceDependenciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveTaskInstanceDependenciesRequest) SetComment(v string) *RemoveTaskInstanceDependenciesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *RemoveTaskInstanceDependenciesRequest) SetId(v int64) *RemoveTaskInstanceDependenciesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *RemoveTaskInstanceDependenciesRequest) SetUpstreamTaskInstanceIds(v []*int64) *RemoveTaskInstanceDependenciesRequest {
+	s.UpstreamTaskInstanceIds = v
+	return s
+}
+
+type RemoveTaskInstanceDependenciesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id                            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	UpstreamTaskInstanceIdsShrink *string `json:"UpstreamTaskInstanceIds,omitempty" xml:"UpstreamTaskInstanceIds,omitempty"`
+}
+
+func (s RemoveTaskInstanceDependenciesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveTaskInstanceDependenciesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveTaskInstanceDependenciesShrinkRequest) SetComment(v string) *RemoveTaskInstanceDependenciesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *RemoveTaskInstanceDependenciesShrinkRequest) SetId(v int64) *RemoveTaskInstanceDependenciesShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *RemoveTaskInstanceDependenciesShrinkRequest) SetUpstreamTaskInstanceIdsShrink(v string) *RemoveTaskInstanceDependenciesShrinkRequest {
+	s.UpstreamTaskInstanceIdsShrink = &v
+	return s
+}
+
+type RemoveTaskInstanceDependenciesResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RemoveTaskInstanceDependenciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveTaskInstanceDependenciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveTaskInstanceDependenciesResponseBody) SetRequestId(v string) *RemoveTaskInstanceDependenciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveTaskInstanceDependenciesResponseBody) SetSuccess(v bool) *RemoveTaskInstanceDependenciesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RemoveTaskInstanceDependenciesResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveTaskInstanceDependenciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveTaskInstanceDependenciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveTaskInstanceDependenciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveTaskInstanceDependenciesResponse) SetHeaders(v map[string]*string) *RemoveTaskInstanceDependenciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveTaskInstanceDependenciesResponse) SetStatusCode(v int32) *RemoveTaskInstanceDependenciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveTaskInstanceDependenciesResponse) SetBody(v *RemoveTaskInstanceDependenciesResponseBody) *RemoveTaskInstanceDependenciesResponse {
+	s.Body = v
+	return s
+}
+
 type RenameFunctionRequest struct {
 	// The ID of the UDF.
 	//
@@ -20685,6 +26476,220 @@ func (s *RenameWorkflowDefinitionResponse) SetBody(v *RenameWorkflowDefinitionRe
 	return s
 }
 
+type RerunTaskInstancesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string  `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Ids     []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+}
+
+func (s RerunTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RerunTaskInstancesRequest) SetComment(v string) *RerunTaskInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *RerunTaskInstancesRequest) SetIds(v []*int64) *RerunTaskInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+type RerunTaskInstancesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s RerunTaskInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunTaskInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RerunTaskInstancesShrinkRequest) SetComment(v string) *RerunTaskInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *RerunTaskInstancesShrinkRequest) SetIdsShrink(v string) *RerunTaskInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+type RerunTaskInstancesResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s RerunTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RerunTaskInstancesResponseBody) SetRequestId(v string) *RerunTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RerunTaskInstancesResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *RerunTaskInstancesResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type RerunTaskInstancesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RerunTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RerunTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RerunTaskInstancesResponse) SetHeaders(v map[string]*string) *RerunTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RerunTaskInstancesResponse) SetStatusCode(v int32) *RerunTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RerunTaskInstancesResponse) SetBody(v *RerunTaskInstancesResponseBody) *RerunTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ResumeTaskInstancesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string  `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Ids     []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+}
+
+func (s ResumeTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTaskInstancesRequest) SetComment(v string) *ResumeTaskInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ResumeTaskInstancesRequest) SetIds(v []*int64) *ResumeTaskInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+type ResumeTaskInstancesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s ResumeTaskInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTaskInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTaskInstancesShrinkRequest) SetComment(v string) *ResumeTaskInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ResumeTaskInstancesShrinkRequest) SetIdsShrink(v string) *ResumeTaskInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+type ResumeTaskInstancesResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s ResumeTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTaskInstancesResponseBody) SetRequestId(v string) *ResumeTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResumeTaskInstancesResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *ResumeTaskInstancesResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type ResumeTaskInstancesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResumeTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResumeTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTaskInstancesResponse) SetHeaders(v map[string]*string) *ResumeTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeTaskInstancesResponse) SetStatusCode(v int32) *ResumeTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeTaskInstancesResponse) SetBody(v *ResumeTaskInstancesResponseBody) *ResumeTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type RevokeMemberProjectRolesRequest struct {
 	// This parameter is required.
 	//
@@ -20810,6 +26815,113 @@ func (s *RevokeMemberProjectRolesResponse) SetStatusCode(v int32) *RevokeMemberP
 }
 
 func (s *RevokeMemberProjectRolesResponse) SetBody(v *RevokeMemberProjectRolesResponseBody) *RevokeMemberProjectRolesResponse {
+	s.Body = v
+	return s
+}
+
+type SetSuccessTaskInstancesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string  `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Ids     []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+}
+
+func (s SetSuccessTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSuccessTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSuccessTaskInstancesRequest) SetComment(v string) *SetSuccessTaskInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *SetSuccessTaskInstancesRequest) SetIds(v []*int64) *SetSuccessTaskInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+type SetSuccessTaskInstancesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s SetSuccessTaskInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSuccessTaskInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSuccessTaskInstancesShrinkRequest) SetComment(v string) *SetSuccessTaskInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *SetSuccessTaskInstancesShrinkRequest) SetIdsShrink(v string) *SetSuccessTaskInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+type SetSuccessTaskInstancesResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s SetSuccessTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSuccessTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetSuccessTaskInstancesResponseBody) SetRequestId(v string) *SetSuccessTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetSuccessTaskInstancesResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *SetSuccessTaskInstancesResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type SetSuccessTaskInstancesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetSuccessTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetSuccessTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSuccessTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetSuccessTaskInstancesResponse) SetHeaders(v map[string]*string) *SetSuccessTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetSuccessTaskInstancesResponse) SetStatusCode(v int32) *SetSuccessTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetSuccessTaskInstancesResponse) SetBody(v *SetSuccessTaskInstancesResponseBody) *SetSuccessTaskInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -21096,6 +27208,311 @@ func (s *StopDIJobResponse) SetStatusCode(v int32) *StopDIJobResponse {
 }
 
 func (s *StopDIJobResponse) SetBody(v *StopDIJobResponseBody) *StopDIJobResponse {
+	s.Body = v
+	return s
+}
+
+type StopTaskInstancesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string  `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Ids     []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+}
+
+func (s StopTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskInstancesRequest) SetComment(v string) *StopTaskInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *StopTaskInstancesRequest) SetIds(v []*int64) *StopTaskInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+type StopTaskInstancesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s StopTaskInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskInstancesShrinkRequest) SetComment(v string) *StopTaskInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *StopTaskInstancesShrinkRequest) SetIdsShrink(v string) *StopTaskInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+type StopTaskInstancesResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s StopTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskInstancesResponseBody) SetRequestId(v string) *StopTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopTaskInstancesResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *StopTaskInstancesResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type StopTaskInstancesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskInstancesResponse) SetHeaders(v map[string]*string) *StopTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopTaskInstancesResponse) SetStatusCode(v int32) *StopTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopTaskInstancesResponse) SetBody(v *StopTaskInstancesResponseBody) *StopTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type SuspendTaskInstancesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string  `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Ids     []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+}
+
+func (s SuspendTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTaskInstancesRequest) SetComment(v string) *SuspendTaskInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *SuspendTaskInstancesRequest) SetIds(v []*int64) *SuspendTaskInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+type SuspendTaskInstancesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s SuspendTaskInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTaskInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTaskInstancesShrinkRequest) SetComment(v string) *SuspendTaskInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *SuspendTaskInstancesShrinkRequest) SetIdsShrink(v string) *SuspendTaskInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+type SuspendTaskInstancesResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s SuspendTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTaskInstancesResponseBody) SetRequestId(v string) *SuspendTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SuspendTaskInstancesResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *SuspendTaskInstancesResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type SuspendTaskInstancesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SuspendTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTaskInstancesResponse) SetHeaders(v map[string]*string) *SuspendTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendTaskInstancesResponse) SetStatusCode(v int32) *SuspendTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SuspendTaskInstancesResponse) SetBody(v *SuspendTaskInstancesResponseBody) *SuspendTaskInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type TriggerSchedulerTaskInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1710239005403
+	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+}
+
+func (s TriggerSchedulerTaskInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerSchedulerTaskInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerSchedulerTaskInstanceRequest) SetTaskId(v int64) *TriggerSchedulerTaskInstanceRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *TriggerSchedulerTaskInstanceRequest) SetTriggerTime(v int64) *TriggerSchedulerTaskInstanceRequest {
+	s.TriggerTime = &v
+	return s
+}
+
+type TriggerSchedulerTaskInstanceResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TriggerSchedulerTaskInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerSchedulerTaskInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerSchedulerTaskInstanceResponseBody) SetRequestId(v string) *TriggerSchedulerTaskInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TriggerSchedulerTaskInstanceResponseBody) SetSuccess(v bool) *TriggerSchedulerTaskInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TriggerSchedulerTaskInstanceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TriggerSchedulerTaskInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TriggerSchedulerTaskInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerSchedulerTaskInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerSchedulerTaskInstanceResponse) SetHeaders(v map[string]*string) *TriggerSchedulerTaskInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TriggerSchedulerTaskInstanceResponse) SetStatusCode(v int32) *TriggerSchedulerTaskInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TriggerSchedulerTaskInstanceResponse) SetBody(v *TriggerSchedulerTaskInstanceResponseBody) *TriggerSchedulerTaskInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -22820,6 +29237,179 @@ func (s *UpdateRouteResponse) SetStatusCode(v int32) *UpdateRouteResponse {
 }
 
 func (s *UpdateRouteResponse) SetBody(v *UpdateRouteResponseBody) *UpdateRouteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskInstancesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment       *string                                    `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	TaskInstances []*UpdateTaskInstancesRequestTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTaskInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskInstancesRequest) SetComment(v string) *UpdateTaskInstancesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *UpdateTaskInstancesRequest) SetTaskInstances(v []*UpdateTaskInstancesRequestTaskInstances) *UpdateTaskInstancesRequest {
+	s.TaskInstances = v
+	return s
+}
+
+type UpdateTaskInstancesRequestTaskInstances struct {
+	DataSource *UpdateTaskInstancesRequestTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// S_res_group_524258031846018_1684XXXXXXXXX
+	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+}
+
+func (s UpdateTaskInstancesRequestTaskInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskInstancesRequestTaskInstances) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskInstancesRequestTaskInstances) SetDataSource(v *UpdateTaskInstancesRequestTaskInstancesDataSource) *UpdateTaskInstancesRequestTaskInstances {
+	s.DataSource = v
+	return s
+}
+
+func (s *UpdateTaskInstancesRequestTaskInstances) SetId(v int64) *UpdateTaskInstancesRequestTaskInstances {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTaskInstancesRequestTaskInstances) SetPriority(v int32) *UpdateTaskInstancesRequestTaskInstances {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateTaskInstancesRequestTaskInstances) SetRuntimeResource(v string) *UpdateTaskInstancesRequestTaskInstances {
+	s.RuntimeResource = &v
+	return s
+}
+
+type UpdateTaskInstancesRequestTaskInstancesDataSource struct {
+	// example:
+	//
+	// mysql_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateTaskInstancesRequestTaskInstancesDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskInstancesRequestTaskInstancesDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskInstancesRequestTaskInstancesDataSource) SetName(v string) *UpdateTaskInstancesRequestTaskInstancesDataSource {
+	s.Name = &v
+	return s
+}
+
+type UpdateTaskInstancesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment             *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	TaskInstancesShrink *string `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty"`
+}
+
+func (s UpdateTaskInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskInstancesShrinkRequest) SetComment(v string) *UpdateTaskInstancesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *UpdateTaskInstancesShrinkRequest) SetTaskInstancesShrink(v string) *UpdateTaskInstancesShrinkRequest {
+	s.TaskInstancesShrink = &v
+	return s
+}
+
+type UpdateTaskInstancesResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
+}
+
+func (s UpdateTaskInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskInstancesResponseBody) SetRequestId(v string) *UpdateTaskInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskInstancesResponseBody) SetSuccessInfo(v map[string]*SuccessInfoValue) *UpdateTaskInstancesResponseBody {
+	s.SuccessInfo = v
+	return s
+}
+
+type UpdateTaskInstancesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTaskInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTaskInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskInstancesResponse) SetHeaders(v map[string]*string) *UpdateTaskInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskInstancesResponse) SetStatusCode(v int32) *UpdateTaskInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskInstancesResponse) SetBody(v *UpdateTaskInstancesResponseBody) *UpdateTaskInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -25031,6 +31621,62 @@ func (client *Client) DeleteRoute(request *DeleteRouteRequest) (_result *DeleteR
 	return _result, _err
 }
 
+// @param request - DeleteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTaskResponse
+func (client *Client) DeleteTaskWithOptions(request *DeleteTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		query["ProjectEnv"] = request.ProjectEnv
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteTaskRequest
+//
+// @return DeleteTaskResponse
+func (client *Client) DeleteTask(request *DeleteTaskRequest) (_result *DeleteTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTaskResponse{}
+	_body, _err := client.DeleteTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Deletes a workflow from DataStudio.
@@ -25711,7 +32357,7 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 
 // Summary:
 //
-// 查询工作空间详情
+// Queries the information about a DataWorks workspace.
 //
 // @param request - GetProjectRequest
 //
@@ -25749,7 +32395,7 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 
 // Summary:
 //
-// 查询工作空间详情
+// Queries the information about a DataWorks workspace.
 //
 // @param request - GetProjectRequest
 //
@@ -26054,6 +32700,150 @@ func (client *Client) GetRoute(request *GetRouteRequest) (_result *GetRouteRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRouteResponse{}
 	_body, _err := client.GetRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResponse
+func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetTaskRequest
+//
+// @return GetTaskResponse
+func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskResponse{}
+	_body, _err := client.GetTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetTaskInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskInstanceResponse
+func (client *Client) GetTaskInstanceWithOptions(request *GetTaskInstanceRequest, runtime *util.RuntimeOptions) (_result *GetTaskInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskInstance"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetTaskInstanceRequest
+//
+// @return GetTaskInstanceResponse
+func (client *Client) GetTaskInstance(request *GetTaskInstanceRequest) (_result *GetTaskInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskInstanceResponse{}
+	_body, _err := client.GetTaskInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetTaskInstanceLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskInstanceLogResponse
+func (client *Client) GetTaskInstanceLogWithOptions(request *GetTaskInstanceLogRequest, runtime *util.RuntimeOptions) (_result *GetTaskInstanceLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskInstanceLog"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskInstanceLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetTaskInstanceLogRequest
+//
+// @return GetTaskInstanceLogResponse
+func (client *Client) GetTaskInstanceLog(request *GetTaskInstanceLogRequest) (_result *GetTaskInstanceLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskInstanceLogResponse{}
+	_body, _err := client.GetTaskInstanceLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26923,6 +33713,102 @@ func (client *Client) ListDeployments(request *ListDeploymentsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - ListDownstreamTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDownstreamTaskInstancesResponse
+func (client *Client) ListDownstreamTaskInstancesWithOptions(request *ListDownstreamTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *ListDownstreamTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDownstreamTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDownstreamTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListDownstreamTaskInstancesRequest
+//
+// @return ListDownstreamTaskInstancesResponse
+func (client *Client) ListDownstreamTaskInstances(request *ListDownstreamTaskInstancesRequest) (_result *ListDownstreamTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDownstreamTaskInstancesResponse{}
+	_body, _err := client.ListDownstreamTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListDownstreamTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDownstreamTasksResponse
+func (client *Client) ListDownstreamTasksWithOptions(request *ListDownstreamTasksRequest, runtime *util.RuntimeOptions) (_result *ListDownstreamTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDownstreamTasks"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDownstreamTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListDownstreamTasksRequest
+//
+// @return ListDownstreamTasksResponse
+func (client *Client) ListDownstreamTasks(request *ListDownstreamTasksRequest) (_result *ListDownstreamTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDownstreamTasksResponse{}
+	_body, _err := client.ListDownstreamTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries a list of user-defined functions (UDFs) in DataStudio. You can also specify filter conditions to query specific UDFs.
@@ -27611,6 +34497,420 @@ func (client *Client) ListRoutes(request *ListRoutesRequest) (_result *ListRoute
 	return _result, _err
 }
 
+// @param request - ListTaskInstanceOperationLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskInstanceOperationLogsResponse
+func (client *Client) ListTaskInstanceOperationLogsWithOptions(request *ListTaskInstanceOperationLogsRequest, runtime *util.RuntimeOptions) (_result *ListTaskInstanceOperationLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskInstanceOperationLogs"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskInstanceOperationLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTaskInstanceOperationLogsRequest
+//
+// @return ListTaskInstanceOperationLogsResponse
+func (client *Client) ListTaskInstanceOperationLogs(request *ListTaskInstanceOperationLogsRequest) (_result *ListTaskInstanceOperationLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskInstanceOperationLogsResponse{}
+	_body, _err := client.ListTaskInstanceOperationLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ListTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskInstancesResponse
+func (client *Client) ListTaskInstancesWithOptions(tmpReq *ListTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *ListTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTaskInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskIds)) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, tea.String("TaskIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeResource)) {
+		body["RuntimeResource"] = request.RuntimeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		body["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdsShrink)) {
+		body["TaskIds"] = request.TaskIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		body["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		body["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowInstanceId)) {
+		body["WorkflowInstanceId"] = request.WorkflowInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowInstanceType)) {
+		body["WorkflowInstanceType"] = request.WorkflowInstanceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTaskInstancesRequest
+//
+// @return ListTaskInstancesResponse
+func (client *Client) ListTaskInstances(request *ListTaskInstancesRequest) (_result *ListTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskInstancesResponse{}
+	_body, _err := client.ListTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListTaskOperationLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskOperationLogsResponse
+func (client *Client) ListTaskOperationLogsWithOptions(request *ListTaskOperationLogsRequest, runtime *util.RuntimeOptions) (_result *ListTaskOperationLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskOperationLogs"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskOperationLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTaskOperationLogsRequest
+//
+// @return ListTaskOperationLogsResponse
+func (client *Client) ListTaskOperationLogs(request *ListTaskOperationLogsRequest) (_result *ListTaskOperationLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskOperationLogsResponse{}
+	_body, _err := client.ListTaskOperationLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTasksResponse
+func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeResource)) {
+		body["RuntimeResource"] = request.RuntimeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		body["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		body["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerRecurrence)) {
+		body["TriggerRecurrence"] = request.TriggerRecurrence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerType)) {
+		body["TriggerType"] = request.TriggerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTasks"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTasksRequest
+//
+// @return ListTasksResponse
+func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTasksResponse{}
+	_body, _err := client.ListTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListUpstreamTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUpstreamTaskInstancesResponse
+func (client *Client) ListUpstreamTaskInstancesWithOptions(request *ListUpstreamTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *ListUpstreamTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUpstreamTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUpstreamTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListUpstreamTaskInstancesRequest
+//
+// @return ListUpstreamTaskInstancesResponse
+func (client *Client) ListUpstreamTaskInstances(request *ListUpstreamTaskInstancesRequest) (_result *ListUpstreamTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUpstreamTaskInstancesResponse{}
+	_body, _err := client.ListUpstreamTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListUpstreamTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUpstreamTasksResponse
+func (client *Client) ListUpstreamTasksWithOptions(request *ListUpstreamTasksRequest, runtime *util.RuntimeOptions) (_result *ListUpstreamTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUpstreamTasks"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUpstreamTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListUpstreamTasksRequest
+//
+// @return ListUpstreamTasksResponse
+func (client *Client) ListUpstreamTasks(request *ListUpstreamTasksRequest) (_result *ListUpstreamTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUpstreamTasksResponse{}
+	_body, _err := client.ListUpstreamTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries a list of workflows in DataStudio. You can also specify filter conditions to query specific workflows.
@@ -27939,6 +35239,74 @@ func (client *Client) MoveWorkflowDefinition(request *MoveWorkflowDefinitionRequ
 	return _result, _err
 }
 
+// @param tmpReq - RemoveTaskInstanceDependenciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveTaskInstanceDependenciesResponse
+func (client *Client) RemoveTaskInstanceDependenciesWithOptions(tmpReq *RemoveTaskInstanceDependenciesRequest, runtime *util.RuntimeOptions) (_result *RemoveTaskInstanceDependenciesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RemoveTaskInstanceDependenciesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpstreamTaskInstanceIds)) {
+		request.UpstreamTaskInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpstreamTaskInstanceIds, tea.String("UpstreamTaskInstanceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamTaskInstanceIdsShrink)) {
+		body["UpstreamTaskInstanceIds"] = request.UpstreamTaskInstanceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveTaskInstanceDependencies"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveTaskInstanceDependenciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RemoveTaskInstanceDependenciesRequest
+//
+// @return RemoveTaskInstanceDependenciesResponse
+func (client *Client) RemoveTaskInstanceDependencies(request *RemoveTaskInstanceDependenciesRequest) (_result *RemoveTaskInstanceDependenciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveTaskInstanceDependenciesResponse{}
+	_body, _err := client.RemoveTaskInstanceDependenciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Renames a user-defined function (UDF) in DataStudio.
@@ -28211,6 +35579,130 @@ func (client *Client) RenameWorkflowDefinition(request *RenameWorkflowDefinition
 	return _result, _err
 }
 
+// @param tmpReq - RerunTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RerunTaskInstancesResponse
+func (client *Client) RerunTaskInstancesWithOptions(tmpReq *RerunTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *RerunTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RerunTaskInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RerunTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RerunTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RerunTaskInstancesRequest
+//
+// @return RerunTaskInstancesResponse
+func (client *Client) RerunTaskInstances(request *RerunTaskInstancesRequest) (_result *RerunTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RerunTaskInstancesResponse{}
+	_body, _err := client.RerunTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ResumeTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeTaskInstancesResponse
+func (client *Client) ResumeTaskInstancesWithOptions(tmpReq *ResumeTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *ResumeTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ResumeTaskInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ResumeTaskInstancesRequest
+//
+// @return ResumeTaskInstancesResponse
+func (client *Client) ResumeTaskInstances(request *ResumeTaskInstancesRequest) (_result *ResumeTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeTaskInstancesResponse{}
+	_body, _err := client.ResumeTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 撤销工作空间成员的角色
@@ -28278,6 +35770,68 @@ func (client *Client) RevokeMemberProjectRoles(request *RevokeMemberProjectRoles
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeMemberProjectRolesResponse{}
 	_body, _err := client.RevokeMemberProjectRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - SetSuccessTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSuccessTaskInstancesResponse
+func (client *Client) SetSuccessTaskInstancesWithOptions(tmpReq *SetSuccessTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *SetSuccessTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetSuccessTaskInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetSuccessTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetSuccessTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SetSuccessTaskInstancesRequest
+//
+// @return SetSuccessTaskInstancesResponse
+func (client *Client) SetSuccessTaskInstances(request *SetSuccessTaskInstancesRequest) (_result *SetSuccessTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetSuccessTaskInstancesResponse{}
+	_body, _err := client.SetSuccessTaskInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28396,6 +35950,186 @@ func (client *Client) StopDIJob(request *StopDIJobRequest) (_result *StopDIJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &StopDIJobResponse{}
 	_body, _err := client.StopDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - StopTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTaskInstancesResponse
+func (client *Client) StopTaskInstancesWithOptions(tmpReq *StopTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *StopTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopTaskInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - StopTaskInstancesRequest
+//
+// @return StopTaskInstancesResponse
+func (client *Client) StopTaskInstances(request *StopTaskInstancesRequest) (_result *StopTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopTaskInstancesResponse{}
+	_body, _err := client.StopTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - SuspendTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendTaskInstancesResponse
+func (client *Client) SuspendTaskInstancesWithOptions(tmpReq *SuspendTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *SuspendTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SuspendTaskInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SuspendTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SuspendTaskInstancesRequest
+//
+// @return SuspendTaskInstancesResponse
+func (client *Client) SuspendTaskInstances(request *SuspendTaskInstancesRequest) (_result *SuspendTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SuspendTaskInstancesResponse{}
+	_body, _err := client.SuspendTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - TriggerSchedulerTaskInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TriggerSchedulerTaskInstanceResponse
+func (client *Client) TriggerSchedulerTaskInstanceWithOptions(request *TriggerSchedulerTaskInstanceRequest, runtime *util.RuntimeOptions) (_result *TriggerSchedulerTaskInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerTime)) {
+		body["TriggerTime"] = request.TriggerTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TriggerSchedulerTaskInstance"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TriggerSchedulerTaskInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - TriggerSchedulerTaskInstanceRequest
+//
+// @return TriggerSchedulerTaskInstanceResponse
+func (client *Client) TriggerSchedulerTaskInstance(request *TriggerSchedulerTaskInstanceRequest) (_result *TriggerSchedulerTaskInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TriggerSchedulerTaskInstanceResponse{}
+	_body, _err := client.TriggerSchedulerTaskInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29032,6 +36766,68 @@ func (client *Client) UpdateRoute(request *UpdateRouteRequest) (_result *UpdateR
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRouteResponse{}
 	_body, _err := client.UpdateRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTaskInstancesResponse
+func (client *Client) UpdateTaskInstancesWithOptions(tmpReq *UpdateTaskInstancesRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTaskInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskInstances)) {
+		request.TaskInstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskInstances, tea.String("TaskInstances"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskInstancesShrink)) {
+		body["TaskInstances"] = request.TaskInstancesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateTaskInstancesRequest
+//
+// @return UpdateTaskInstancesResponse
+func (client *Client) UpdateTaskInstances(request *UpdateTaskInstancesRequest) (_result *UpdateTaskInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskInstancesResponse{}
+	_body, _err := client.UpdateTaskInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
