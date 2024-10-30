@@ -19419,7 +19419,8 @@ type DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics struct {
 	// example:
 	//
 	// 1
-	Archive *int32 `json:"Archive,omitempty" xml:"Archive,omitempty"`
+	Archive          *int32 `json:"Archive,omitempty" xml:"Archive,omitempty"`
+	CommonFileSystem *int32 `json:"CommonFileSystem,omitempty" xml:"CommonFileSystem,omitempty"`
 	// The number of backup plans for General-purpose NAS file systems.
 	//
 	// example:
@@ -19510,6 +19511,11 @@ func (s DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) GoString() st
 
 func (s *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) SetArchive(v int32) *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics {
 	s.Archive = &v
+	return s
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) SetCommonFileSystem(v int32) *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics {
+	s.CommonFileSystem = &v
 	return s
 }
 
