@@ -247,8 +247,16 @@ type ChannelProperties struct {
 	ChannelFcm              *string `json:"channelFcm,omitempty" xml:"channelFcm,omitempty"`
 	HuaweiChannelCategory   *string `json:"huaweiChannelCategory,omitempty" xml:"huaweiChannelCategory,omitempty"`
 	HuaweiChannelImportance *string `json:"huaweiChannelImportance,omitempty" xml:"huaweiChannelImportance,omitempty"`
-	MainActivity            *string `json:"mainActivity,omitempty" xml:"mainActivity,omitempty"`
-	OppoChannelId           *string `json:"oppoChannelId,omitempty" xml:"oppoChannelId,omitempty"`
+	// example:
+	//
+	// 取值为"NORMAL"和"HIGH",默认为”NORMAL”
+	HuaweiMessageUrgency *string `json:"huaweiMessageUrgency,omitempty" xml:"huaweiMessageUrgency,omitempty"`
+	MainActivity         *string `json:"mainActivity,omitempty" xml:"mainActivity,omitempty"`
+	OppoChannelId        *string `json:"oppoChannelId,omitempty" xml:"oppoChannelId,omitempty"`
+	// example:
+	//
+	// "true" ,默认为"false"，可不填
+	UseHuaweiMessage *string `json:"useHuaweiMessage,omitempty" xml:"useHuaweiMessage,omitempty"`
 	// example:
 	//
 	// "true",默认"false"
@@ -285,6 +293,11 @@ func (s *ChannelProperties) SetHuaweiChannelImportance(v string) *ChannelPropert
 	return s
 }
 
+func (s *ChannelProperties) SetHuaweiMessageUrgency(v string) *ChannelProperties {
+	s.HuaweiMessageUrgency = &v
+	return s
+}
+
 func (s *ChannelProperties) SetMainActivity(v string) *ChannelProperties {
 	s.MainActivity = &v
 	return s
@@ -292,6 +305,11 @@ func (s *ChannelProperties) SetMainActivity(v string) *ChannelProperties {
 
 func (s *ChannelProperties) SetOppoChannelId(v string) *ChannelProperties {
 	s.OppoChannelId = &v
+	return s
+}
+
+func (s *ChannelProperties) SetUseHuaweiMessage(v string) *ChannelProperties {
+	s.UseHuaweiMessage = &v
 	return s
 }
 
@@ -788,8 +806,9 @@ type SendByAliasRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByAliasRequest) String() string {
@@ -855,6 +874,11 @@ func (s *SendByAliasRequest) SetThirdPartyId(v string) *SendByAliasRequest {
 	return s
 }
 
+func (s *SendByAliasRequest) SetCallbackParams(v string) *SendByAliasRequest {
+	s.CallbackParams = &v
+	return s
+}
+
 type SendByAliasShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -876,8 +900,9 @@ type SendByAliasShrinkRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByAliasShrinkRequest) String() string {
@@ -940,6 +965,11 @@ func (s *SendByAliasShrinkRequest) SetReceiptUrl(v string) *SendByAliasShrinkReq
 
 func (s *SendByAliasShrinkRequest) SetThirdPartyId(v string) *SendByAliasShrinkRequest {
 	s.ThirdPartyId = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetCallbackParams(v string) *SendByAliasShrinkRequest {
+	s.CallbackParams = &v
 	return s
 }
 
@@ -1075,8 +1105,9 @@ type SendByAliasFileIdRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByAliasFileIdRequest) String() string {
@@ -1142,6 +1173,11 @@ func (s *SendByAliasFileIdRequest) SetThirdPartyId(v string) *SendByAliasFileIdR
 	return s
 }
 
+func (s *SendByAliasFileIdRequest) SetCallbackParams(v string) *SendByAliasFileIdRequest {
+	s.CallbackParams = &v
+	return s
+}
+
 type SendByAliasFileIdShrinkRequest struct {
 	AliasType               *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
@@ -1163,8 +1199,9 @@ type SendByAliasFileIdShrinkRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByAliasFileIdShrinkRequest) String() string {
@@ -1227,6 +1264,11 @@ func (s *SendByAliasFileIdShrinkRequest) SetReceiptUrl(v string) *SendByAliasFil
 
 func (s *SendByAliasFileIdShrinkRequest) SetThirdPartyId(v string) *SendByAliasFileIdShrinkRequest {
 	s.ThirdPartyId = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetCallbackParams(v string) *SendByAliasFileIdShrinkRequest {
+	s.CallbackParams = &v
 	return s
 }
 
@@ -1355,8 +1397,9 @@ type SendByAppRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByAppRequest) String() string {
@@ -1412,6 +1455,11 @@ func (s *SendByAppRequest) SetThirdPartyId(v string) *SendByAppRequest {
 	return s
 }
 
+func (s *SendByAppRequest) SetCallbackParams(v string) *SendByAppRequest {
+	s.CallbackParams = &v
+	return s
+}
+
 type SendByAppShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -1426,8 +1474,9 @@ type SendByAppShrinkRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByAppShrinkRequest) String() string {
@@ -1480,6 +1529,11 @@ func (s *SendByAppShrinkRequest) SetReceiptUrl(v string) *SendByAppShrinkRequest
 
 func (s *SendByAppShrinkRequest) SetThirdPartyId(v string) *SendByAppShrinkRequest {
 	s.ThirdPartyId = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetCallbackParams(v string) *SendByAppShrinkRequest {
+	s.CallbackParams = &v
 	return s
 }
 
@@ -1614,8 +1668,9 @@ type SendByDeviceRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByDeviceRequest) String() string {
@@ -1676,6 +1731,11 @@ func (s *SendByDeviceRequest) SetThirdPartyId(v string) *SendByDeviceRequest {
 	return s
 }
 
+func (s *SendByDeviceRequest) SetCallbackParams(v string) *SendByDeviceRequest {
+	s.CallbackParams = &v
+	return s
+}
+
 type SendByDeviceShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -1696,8 +1756,9 @@ type SendByDeviceShrinkRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByDeviceShrinkRequest) String() string {
@@ -1755,6 +1816,11 @@ func (s *SendByDeviceShrinkRequest) SetReceiptUrl(v string) *SendByDeviceShrinkR
 
 func (s *SendByDeviceShrinkRequest) SetThirdPartyId(v string) *SendByDeviceShrinkRequest {
 	s.ThirdPartyId = &v
+	return s
+}
+
+func (s *SendByDeviceShrinkRequest) SetCallbackParams(v string) *SendByDeviceShrinkRequest {
+	s.CallbackParams = &v
 	return s
 }
 
@@ -1889,8 +1955,9 @@ type SendByDeviceFileIdRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByDeviceFileIdRequest) String() string {
@@ -1951,6 +2018,11 @@ func (s *SendByDeviceFileIdRequest) SetThirdPartyId(v string) *SendByDeviceFileI
 	return s
 }
 
+func (s *SendByDeviceFileIdRequest) SetCallbackParams(v string) *SendByDeviceFileIdRequest {
+	s.CallbackParams = &v
+	return s
+}
+
 type SendByDeviceFileIdShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -1971,8 +2043,9 @@ type SendByDeviceFileIdShrinkRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByDeviceFileIdShrinkRequest) String() string {
@@ -2030,6 +2103,11 @@ func (s *SendByDeviceFileIdShrinkRequest) SetReceiptUrl(v string) *SendByDeviceF
 
 func (s *SendByDeviceFileIdShrinkRequest) SetThirdPartyId(v string) *SendByDeviceFileIdShrinkRequest {
 	s.ThirdPartyId = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetCallbackParams(v string) *SendByDeviceFileIdShrinkRequest {
+	s.CallbackParams = &v
 	return s
 }
 
@@ -2162,8 +2240,9 @@ type SendByFilterRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByFilterRequest) String() string {
@@ -2224,6 +2303,11 @@ func (s *SendByFilterRequest) SetThirdPartyId(v string) *SendByFilterRequest {
 	return s
 }
 
+func (s *SendByFilterRequest) SetCallbackParams(v string) *SendByFilterRequest {
+	s.CallbackParams = &v
+	return s
+}
+
 type SendByFilterShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -2242,8 +2326,9 @@ type SendByFilterShrinkRequest struct {
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl   *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByFilterShrinkRequest) String() string {
@@ -2301,6 +2386,11 @@ func (s *SendByFilterShrinkRequest) SetReceiptUrl(v string) *SendByFilterShrinkR
 
 func (s *SendByFilterShrinkRequest) SetThirdPartyId(v string) *SendByFilterShrinkRequest {
 	s.ThirdPartyId = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetCallbackParams(v string) *SendByFilterShrinkRequest {
+	s.CallbackParams = &v
 	return s
 }
 
@@ -2802,6 +2892,10 @@ func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers
 		body["ThirdPartyId"] = request.ThirdPartyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		body["callbackParams"] = request.CallbackParams
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -2924,6 +3018,10 @@ func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequ
 		body["ThirdPartyId"] = request.ThirdPartyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		body["callbackParams"] = request.CallbackParams
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -3036,6 +3134,10 @@ func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdPartyId)) {
 		body["ThirdPartyId"] = request.ThirdPartyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		body["callbackParams"] = request.CallbackParams
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3156,6 +3258,10 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 		body["ThirdPartyId"] = request.ThirdPartyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		body["callbackParams"] = request.CallbackParams
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -3274,6 +3380,10 @@ func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRe
 		body["ThirdPartyId"] = request.ThirdPartyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		body["callbackParams"] = request.CallbackParams
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -3390,6 +3500,10 @@ func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, heade
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdPartyId)) {
 		body["ThirdPartyId"] = request.ThirdPartyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackParams)) {
+		body["callbackParams"] = request.CallbackParams
 	}
 
 	req := &openapi.OpenApiRequest{
