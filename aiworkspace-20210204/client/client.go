@@ -2166,6 +2166,8 @@ type CreateDatasetVersionRequest struct {
 	//
 	// 19000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// OSS
@@ -2180,6 +2182,8 @@ type CreateDatasetVersionRequest struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// DIRECTORY
@@ -2192,6 +2196,8 @@ type CreateDatasetVersionRequest struct {
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/
@@ -2257,14 +2263,11 @@ func (s *CreateDatasetVersionRequest) SetUri(v string) *CreateDatasetVersionRequ
 }
 
 type CreateDatasetVersionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
 	// v1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	// example:
-	//
-	// ADF6D849-*****-7E7030F0CE53
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateDatasetVersionResponseBody) String() string {
@@ -2275,13 +2278,13 @@ func (s CreateDatasetVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDatasetVersionResponseBody) SetVersionName(v string) *CreateDatasetVersionResponseBody {
-	s.VersionName = &v
+func (s *CreateDatasetVersionResponseBody) SetRequestId(v string) *CreateDatasetVersionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *CreateDatasetVersionResponseBody) SetRequestId(v string) *CreateDatasetVersionResponseBody {
-	s.RequestId = &v
+func (s *CreateDatasetVersionResponseBody) SetVersionName(v string) *CreateDatasetVersionResponseBody {
+	s.VersionName = &v
 	return s
 }
 
@@ -2333,10 +2336,7 @@ func (s *CreateDatasetVersionLabelsRequest) SetLabels(v []*Label) *CreateDataset
 }
 
 type CreateDatasetVersionLabelsResponseBody struct {
-	// example:
-	//
-	// ADF6D849-*****-7E7030F0CE53
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDatasetVersionLabelsResponseBody) String() string {
@@ -4018,10 +4018,7 @@ func (s *DeleteDatasetLabelsResponse) SetBody(v *DeleteDatasetLabelsResponseBody
 }
 
 type DeleteDatasetVersionResponseBody struct {
-	// example:
-	//
-	// ADF6D849-*****-7E7030F0CE53
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDatasetVersionResponseBody) String() string {
@@ -4089,10 +4086,7 @@ func (s *DeleteDatasetVersionLabelsRequest) SetKeys(v string) *DeleteDatasetVers
 }
 
 type DeleteDatasetVersionLabelsResponseBody struct {
-	// example:
-	//
-	// ADF6D849-*****-7E7030F0CE53
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDatasetVersionLabelsResponseBody) String() string {
@@ -5228,11 +5222,68 @@ func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetRespo
 }
 
 type GetDatasetVersionResponseBody struct {
-	DatasetVersion *DatasetVersion `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// example:
+	// 数据集的数据量
+	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// 数据集版本的数据大小。
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// 数据源类型。支持以下取值：
 	//
-	// ADF6D849-*****-7E7030F0CE53
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// - OSS：阿里云对象存储（OSS）。
+	//
+	// - NAS：阿里云文件存储（NAS）。
+	//
+	// This parameter is required.
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// 数据集版本的描述信息。
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 创建时间。
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 代表资源标签的资源属性字段
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// 扩展字段，JsonString类型。
+	//
+	// 当DLC使用数据集时，可通过配置mountPath字段指定数据集默认挂载路径。
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// 数据集的属性。支持以下取值：
+	//
+	// - FILE：文件。
+	//
+	// - DIRECTORY：文件夹。
+	//
+	// This parameter is required.
+	Property  *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 数据来源ID。
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// 数据来源类型，默认为USER。支持以下取值：
+	//
+	// - PAI-PUBLIC-DATASET：PAI公共数据集。
+	//
+	// - ITAG：iTAG模块标注结果生成的数据集。
+	//
+	// - USER：用户注册的数据集。
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Uri配置样例如下：
+	//
+	// - 数据源类型为OSS：`oss://bucket.endpoint/object`
+	//
+	// - 数据源类型为NAS：
+	//
+	// 通用型NAS格式为：`nas://<nasfisid>.region/subpath/to/dir/`；
+	//
+	// CPFS1.0：`nas://<cpfs-fsid>.region/subpath/to/dir/`；
+	//
+	// CPFS2.0：`nas://<cpfs-fsid>.region/<protocolserviceid>/`。
+	//
+	// CPFS1.0和CPFS2.0根据fsid的格式来区分：CPFS1.0 格式为cpfs-<8位ascii字符>；CPFS2.0 格式为cpfs-<16为ascii字符>。
+	//
+	// This parameter is required.
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// 代表资源名称的资源属性字段
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s GetDatasetVersionResponseBody) String() string {
@@ -5243,13 +5294,78 @@ func (s GetDatasetVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDatasetVersionResponseBody) SetDatasetVersion(v *DatasetVersion) *GetDatasetVersionResponseBody {
-	s.DatasetVersion = v
+func (s *GetDatasetVersionResponseBody) SetDataCount(v int64) *GetDatasetVersionResponseBody {
+	s.DataCount = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetDataSize(v int64) *GetDatasetVersionResponseBody {
+	s.DataSize = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetDataSourceType(v string) *GetDatasetVersionResponseBody {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetDatasetId(v string) *GetDatasetVersionResponseBody {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetDescription(v string) *GetDatasetVersionResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetGmtCreateTime(v string) *GetDatasetVersionResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetGmtModifiedTime(v string) *GetDatasetVersionResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetLabels(v []*Label) *GetDatasetVersionResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetOptions(v string) *GetDatasetVersionResponseBody {
+	s.Options = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetProperty(v string) *GetDatasetVersionResponseBody {
+	s.Property = &v
 	return s
 }
 
 func (s *GetDatasetVersionResponseBody) SetRequestId(v string) *GetDatasetVersionResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetSourceId(v string) *GetDatasetVersionResponseBody {
+	s.SourceId = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetSourceType(v string) *GetDatasetVersionResponseBody {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetUri(v string) *GetDatasetVersionResponseBody {
+	s.Uri = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetVersionName(v string) *GetDatasetVersionResponseBody {
+	s.VersionName = &v
 	return s
 }
 
@@ -6959,15 +7075,12 @@ type ListDatasetVersionsResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
 	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// example:
-	//
-	// ADF6D849-*****-7E7030F0CE53
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListDatasetVersionsResponseBody) String() string {
@@ -6993,13 +7106,13 @@ func (s *ListDatasetVersionsResponseBody) SetPageSize(v int32) *ListDatasetVersi
 	return s
 }
 
-func (s *ListDatasetVersionsResponseBody) SetTotalCount(v int32) *ListDatasetVersionsResponseBody {
-	s.TotalCount = &v
+func (s *ListDatasetVersionsResponseBody) SetRequestId(v string) *ListDatasetVersionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ListDatasetVersionsResponseBody) SetRequestId(v string) *ListDatasetVersionsResponseBody {
-	s.RequestId = &v
+func (s *ListDatasetVersionsResponseBody) SetTotalCount(v int32) *ListDatasetVersionsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -10838,10 +10951,7 @@ func (s *UpdateDatasetVersionRequest) SetOptions(v string) *UpdateDatasetVersion
 }
 
 type UpdateDatasetVersionResponseBody struct {
-	// example:
-	//
-	// ADF6D849-*****-7E7030F0CE53
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateDatasetVersionResponseBody) String() string {
