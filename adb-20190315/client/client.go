@@ -2204,6 +2204,123 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 	return s
 }
 
+type DeleteBackupsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 766,767
+	BackupIds *string `json:"BackupIds,omitempty" xml:"BackupIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp1ub9grke1****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteBackupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupsRequest) SetBackupIds(v string) *DeleteBackupsRequest {
+	s.BackupIds = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetDBClusterId(v string) *DeleteBackupsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetOwnerAccount(v string) *DeleteBackupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetOwnerId(v int64) *DeleteBackupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetRegionId(v string) *DeleteBackupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetResourceOwnerAccount(v string) *DeleteBackupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetResourceOwnerId(v int64) *DeleteBackupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteBackupsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 771C5FAA-530F-52F7-B84D-EBAD4561D590
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupsResponseBody) SetRequestId(v string) *DeleteBackupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackupsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBackupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupsResponse) SetHeaders(v map[string]*string) *DeleteBackupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupsResponse) SetStatusCode(v int32) *DeleteBackupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBackupsResponse) SetBody(v *DeleteBackupsResponseBody) *DeleteBackupsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDBClusterRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
@@ -29486,6 +29603,62 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
 	_body, _err := client.DeleteAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动删除备份集
+//
+// @param request - DeleteBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupsResponse
+func (client *Client) DeleteBackupsWithOptions(request *DeleteBackupsRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackups"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动删除备份集
+//
+// @param request - DeleteBackupsRequest
+//
+// @return DeleteBackupsResponse
+func (client *Client) DeleteBackups(request *DeleteBackupsRequest) (_result *DeleteBackupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackupsResponse{}
+	_body, _err := client.DeleteBackupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
