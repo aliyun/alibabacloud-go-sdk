@@ -1,3 +1,8 @@
+2024-11-01 Version: v1.6.0
+- Support API RunHotTopicChat.
+- Support API RunHotTopicSummary.
+
+
 2024-09-26 Version: v1.5.0
 - Support API GenerateBroadcastNews.
 - Update API RunVideoAnalysis: add param snapshotInterval.

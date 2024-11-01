@@ -896,6 +896,991 @@ func (s *RunCommentGenerationResponse) SetBody(v *RunCommentGenerationResponseBo
 	return s
 }
 
+type RunHotTopicChatRequest struct {
+	Category        *string   `json:"category,omitempty" xml:"category,omitempty"`
+	GenerateOptions []*string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-09-13_12
+	HotTopicVersion *string   `json:"hotTopicVersion,omitempty" xml:"hotTopicVersion,omitempty"`
+	HotTopics       []*string `json:"hotTopics,omitempty" xml:"hotTopics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	ImageCount *int32 `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	// example:
+	//
+	// xx
+	ModelCustomPromptTemplate *string `json:"modelCustomPromptTemplate,omitempty" xml:"modelCustomPromptTemplate,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5ax
+	OriginalSessionId             *string                                              `json:"originalSessionId,omitempty" xml:"originalSessionId,omitempty"`
+	Prompt                        *string                                              `json:"prompt,omitempty" xml:"prompt,omitempty"`
+	StepForBroadcastContentConfig *RunHotTopicChatRequestStepForBroadcastContentConfig `json:"stepForBroadcastContentConfig,omitempty" xml:"stepForBroadcastContentConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s RunHotTopicChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatRequest) SetCategory(v string) *RunHotTopicChatRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetGenerateOptions(v []*string) *RunHotTopicChatRequest {
+	s.GenerateOptions = v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetHotTopicVersion(v string) *RunHotTopicChatRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetHotTopics(v []*string) *RunHotTopicChatRequest {
+	s.HotTopics = v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetImageCount(v int32) *RunHotTopicChatRequest {
+	s.ImageCount = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetModelCustomPromptTemplate(v string) *RunHotTopicChatRequest {
+	s.ModelCustomPromptTemplate = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetModelId(v string) *RunHotTopicChatRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetOriginalSessionId(v string) *RunHotTopicChatRequest {
+	s.OriginalSessionId = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetPrompt(v string) *RunHotTopicChatRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetStepForBroadcastContentConfig(v *RunHotTopicChatRequestStepForBroadcastContentConfig) *RunHotTopicChatRequest {
+	s.StepForBroadcastContentConfig = v
+	return s
+}
+
+func (s *RunHotTopicChatRequest) SetTaskId(v string) *RunHotTopicChatRequest {
+	s.TaskId = &v
+	return s
+}
+
+type RunHotTopicChatRequestStepForBroadcastContentConfig struct {
+	Categories            []*string                                                                   `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	CustomHotValueWeights []*RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights `json:"customHotValueWeights,omitempty" xml:"customHotValueWeights,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	TopicCount *int32 `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
+}
+
+func (s RunHotTopicChatRequestStepForBroadcastContentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatRequestStepForBroadcastContentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatRequestStepForBroadcastContentConfig) SetCategories(v []*string) *RunHotTopicChatRequestStepForBroadcastContentConfig {
+	s.Categories = v
+	return s
+}
+
+func (s *RunHotTopicChatRequestStepForBroadcastContentConfig) SetCustomHotValueWeights(v []*RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights) *RunHotTopicChatRequestStepForBroadcastContentConfig {
+	s.CustomHotValueWeights = v
+	return s
+}
+
+func (s *RunHotTopicChatRequestStepForBroadcastContentConfig) SetTopicCount(v int32) *RunHotTopicChatRequestStepForBroadcastContentConfig {
+	s.TopicCount = &v
+	return s
+}
+
+type RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights struct {
+	// example:
+	//
+	// comments
+	Dimension *string `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights) SetDimension(v string) *RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights {
+	s.Dimension = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights) SetWeight(v int32) *RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights {
+	s.Weight = &v
+	return s
+}
+
+type RunHotTopicChatShrinkRequest struct {
+	Category              *string `json:"category,omitempty" xml:"category,omitempty"`
+	GenerateOptionsShrink *string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty"`
+	// example:
+	//
+	// 2024-09-13_12
+	HotTopicVersion *string `json:"hotTopicVersion,omitempty" xml:"hotTopicVersion,omitempty"`
+	HotTopicsShrink *string `json:"hotTopics,omitempty" xml:"hotTopics,omitempty"`
+	// example:
+	//
+	// 1
+	ImageCount *int32 `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	// example:
+	//
+	// xx
+	ModelCustomPromptTemplate *string `json:"modelCustomPromptTemplate,omitempty" xml:"modelCustomPromptTemplate,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5ax
+	OriginalSessionId                   *string `json:"originalSessionId,omitempty" xml:"originalSessionId,omitempty"`
+	Prompt                              *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
+	StepForBroadcastContentConfigShrink *string `json:"stepForBroadcastContentConfig,omitempty" xml:"stepForBroadcastContentConfig,omitempty"`
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s RunHotTopicChatShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetCategory(v string) *RunHotTopicChatShrinkRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetGenerateOptionsShrink(v string) *RunHotTopicChatShrinkRequest {
+	s.GenerateOptionsShrink = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetHotTopicVersion(v string) *RunHotTopicChatShrinkRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetHotTopicsShrink(v string) *RunHotTopicChatShrinkRequest {
+	s.HotTopicsShrink = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetImageCount(v int32) *RunHotTopicChatShrinkRequest {
+	s.ImageCount = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetModelCustomPromptTemplate(v string) *RunHotTopicChatShrinkRequest {
+	s.ModelCustomPromptTemplate = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetModelId(v string) *RunHotTopicChatShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetOriginalSessionId(v string) *RunHotTopicChatShrinkRequest {
+	s.OriginalSessionId = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetPrompt(v string) *RunHotTopicChatShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetStepForBroadcastContentConfigShrink(v string) *RunHotTopicChatShrinkRequest {
+	s.StepForBroadcastContentConfigShrink = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetTaskId(v string) *RunHotTopicChatShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+type RunHotTopicChatResponseBody struct {
+	Header  *RunHotTopicChatResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunHotTopicChatResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 04DA1A52-4E51-56CB-BA64-FDDA0B53BAE8
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBody) SetHeader(v *RunHotTopicChatResponseBodyHeader) *RunHotTopicChatResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBody) SetPayload(v *RunHotTopicChatResponseBodyPayload) *RunHotTopicChatResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBody) SetRequestId(v string) *RunHotTopicChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunHotTopicChatResponseBodyHeader struct {
+	// example:
+	//
+	// InvalidParam
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// xx
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// task-finished
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xx
+	EventInfo *string `json:"eventInfo,omitempty" xml:"eventInfo,omitempty"`
+	// example:
+	//
+	// xxx
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyHeader) SetErrorCode(v string) *RunHotTopicChatResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyHeader) SetErrorMessage(v string) *RunHotTopicChatResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyHeader) SetEvent(v string) *RunHotTopicChatResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyHeader) SetEventInfo(v string) *RunHotTopicChatResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyHeader) SetSessionId(v string) *RunHotTopicChatResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyHeader) SetTaskId(v string) *RunHotTopicChatResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyHeader) SetTraceId(v string) *RunHotTopicChatResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunHotTopicChatResponseBodyPayload struct {
+	Output *RunHotTopicChatResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunHotTopicChatResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunHotTopicChatResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyPayload) SetOutput(v *RunHotTopicChatResponseBodyPayloadOutput) *RunHotTopicChatResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayload) SetUsage(v *RunHotTopicChatResponseBodyPayloadUsage) *RunHotTopicChatResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunHotTopicChatResponseBodyPayloadOutput struct {
+	Articles          []*RunHotTopicChatResponseBodyPayloadOutputArticles          `json:"articles,omitempty" xml:"articles,omitempty" type:"Repeated"`
+	HotTopicSummaries []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries `json:"hotTopicSummaries,omitempty" xml:"hotTopicSummaries,omitempty" type:"Repeated"`
+	MultimodalMedias  []*RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias  `json:"multimodalMedias,omitempty" xml:"multimodalMedias,omitempty" type:"Repeated"`
+	RecommendQueries  []*string                                                    `json:"recommendQueries,omitempty" xml:"recommendQueries,omitempty" type:"Repeated"`
+	SearchQuery       *string                                                      `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
+	// example:
+	//
+	// xx
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetArticles(v []*RunHotTopicChatResponseBodyPayloadOutputArticles) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.Articles = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetHotTopicSummaries(v []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.HotTopicSummaries = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetMultimodalMedias(v []*RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.MultimodalMedias = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetRecommendQueries(v []*string) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.RecommendQueries = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetSearchQuery(v string) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.SearchQuery = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetText(v string) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunHotTopicChatResponseBodyPayloadOutputArticles struct {
+	// example:
+	//
+	// xxx
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 2024-09-22 16:45:06
+	PubTime          *string  `json:"pubTime,omitempty" xml:"pubTime,omitempty"`
+	Score            *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	SearchSourceName *string  `json:"searchSourceName,omitempty" xml:"searchSourceName,omitempty"`
+	Select           *bool    `json:"select,omitempty" xml:"select,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// test
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// http://xxx
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputArticles) SetContent(v string) *RunHotTopicChatResponseBodyPayloadOutputArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputArticles) SetPubTime(v string) *RunHotTopicChatResponseBodyPayloadOutputArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputArticles) SetScore(v float64) *RunHotTopicChatResponseBodyPayloadOutputArticles {
+	s.Score = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputArticles) SetSearchSourceName(v string) *RunHotTopicChatResponseBodyPayloadOutputArticles {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputArticles) SetSelect(v bool) *RunHotTopicChatResponseBodyPayloadOutputArticles {
+	s.Select = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputArticles) SetSummary(v string) *RunHotTopicChatResponseBodyPayloadOutputArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputArticles) SetTitle(v string) *RunHotTopicChatResponseBodyPayloadOutputArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputArticles) SetUrl(v string) *RunHotTopicChatResponseBodyPayloadOutputArticles {
+	s.Url = &v
+	return s
+}
+
+type RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries struct {
+	// example:
+	//
+	// 100000
+	CustomHotValue *float64 `json:"customHotValue,omitempty" xml:"customHotValue,omitempty"`
+	// example:
+	//
+	// xx
+	HotTopic *string `json:"hotTopic,omitempty" xml:"hotTopic,omitempty"`
+	// example:
+	//
+	// 2024-09-13_08
+	HotTopicVersion *string `json:"hotTopicVersion,omitempty" xml:"hotTopicVersion,omitempty"`
+	// example:
+	//
+	// 100000
+	HotValue *float64 `json:"hotValue,omitempty" xml:"hotValue,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetCustomHotValue(v float64) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.CustomHotValue = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetHotTopic(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.HotTopic = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetHotTopicVersion(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetHotValue(v float64) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.HotValue = &v
+	return s
+}
+
+type RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias struct {
+	// example:
+	//
+	// http://xxxx
+	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// example:
+	//
+	// image
+	MediaType *string  `json:"mediaType,omitempty" xml:"mediaType,omitempty"`
+	SortScore *float64 `json:"sortScore,omitempty" xml:"sortScore,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias) SetFileUrl(v string) *RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias) SetMediaType(v string) *RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias {
+	s.MediaType = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias) SetSortScore(v float64) *RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias {
+	s.SortScore = &v
+	return s
+}
+
+type RunHotTopicChatResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadUsage) SetInputTokens(v int64) *RunHotTopicChatResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunHotTopicChatResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunHotTopicChatResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunHotTopicChatResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunHotTopicChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunHotTopicChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponse) SetHeaders(v map[string]*string) *RunHotTopicChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunHotTopicChatResponse) SetStatusCode(v int32) *RunHotTopicChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponse) SetBody(v *RunHotTopicChatResponseBody) *RunHotTopicChatResponse {
+	s.Body = v
+	return s
+}
+
+type RunHotTopicSummaryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-10-16_8
+	HotTopicVersion *string `json:"hotTopicVersion,omitempty" xml:"hotTopicVersion,omitempty"`
+	// This parameter is required.
+	StepForCustomSummaryStyleConfig *RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig `json:"stepForCustomSummaryStyleConfig,omitempty" xml:"stepForCustomSummaryStyleConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx
+	TopicIds []*string `json:"topicIds,omitempty" xml:"topicIds,omitempty" type:"Repeated"`
+}
+
+func (s RunHotTopicSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryRequest) SetHotTopicVersion(v string) *RunHotTopicSummaryRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryRequest) SetStepForCustomSummaryStyleConfig(v *RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig) *RunHotTopicSummaryRequest {
+	s.StepForCustomSummaryStyleConfig = v
+	return s
+}
+
+func (s *RunHotTopicSummaryRequest) SetTopicIds(v []*string) *RunHotTopicSummaryRequest {
+	s.TopicIds = v
+	return s
+}
+
+type RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig struct {
+	// example:
+	//
+	// 2
+	SummaryImageCount *int32 `json:"summaryImageCount,omitempty" xml:"summaryImageCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-max
+	SummaryModel *string `json:"summaryModel,omitempty" xml:"summaryModel,omitempty"`
+	// example:
+	//
+	// xxxx
+	SummaryPrompt *string `json:"summaryPrompt,omitempty" xml:"summaryPrompt,omitempty"`
+}
+
+func (s RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig) SetSummaryImageCount(v int32) *RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig {
+	s.SummaryImageCount = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig) SetSummaryModel(v string) *RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig {
+	s.SummaryModel = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig) SetSummaryPrompt(v string) *RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig {
+	s.SummaryPrompt = &v
+	return s
+}
+
+type RunHotTopicSummaryShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-10-16_8
+	HotTopicVersion *string `json:"hotTopicVersion,omitempty" xml:"hotTopicVersion,omitempty"`
+	// This parameter is required.
+	StepForCustomSummaryStyleConfigShrink *string `json:"stepForCustomSummaryStyleConfig,omitempty" xml:"stepForCustomSummaryStyleConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx
+	TopicIdsShrink *string `json:"topicIds,omitempty" xml:"topicIds,omitempty"`
+}
+
+func (s RunHotTopicSummaryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryShrinkRequest) SetHotTopicVersion(v string) *RunHotTopicSummaryShrinkRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryShrinkRequest) SetStepForCustomSummaryStyleConfigShrink(v string) *RunHotTopicSummaryShrinkRequest {
+	s.StepForCustomSummaryStyleConfigShrink = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryShrinkRequest) SetTopicIdsShrink(v string) *RunHotTopicSummaryShrinkRequest {
+	s.TopicIdsShrink = &v
+	return s
+}
+
+type RunHotTopicSummaryResponseBody struct {
+	Header  *RunHotTopicSummaryResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunHotTopicSummaryResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 5D0E915E-655D-59A8-894F-93873F73AAE5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RunHotTopicSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryResponseBody) SetHeader(v *RunHotTopicSummaryResponseBodyHeader) *RunHotTopicSummaryResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBody) SetPayload(v *RunHotTopicSummaryResponseBodyPayload) *RunHotTopicSummaryResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBody) SetRequestId(v string) *RunHotTopicSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunHotTopicSummaryResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbidden
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// task-finished
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// xxxxx
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunHotTopicSummaryResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryResponseBodyHeader) SetErrorCode(v string) *RunHotTopicSummaryResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyHeader) SetErrorMessage(v string) *RunHotTopicSummaryResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyHeader) SetEvent(v string) *RunHotTopicSummaryResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyHeader) SetSessionId(v string) *RunHotTopicSummaryResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyHeader) SetTaskId(v string) *RunHotTopicSummaryResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyHeader) SetTraceId(v string) *RunHotTopicSummaryResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunHotTopicSummaryResponseBodyPayload struct {
+	Output *RunHotTopicSummaryResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunHotTopicSummaryResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunHotTopicSummaryResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryResponseBodyPayload) SetOutput(v *RunHotTopicSummaryResponseBodyPayloadOutput) *RunHotTopicSummaryResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyPayload) SetUsage(v *RunHotTopicSummaryResponseBodyPayloadUsage) *RunHotTopicSummaryResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunHotTopicSummaryResponseBodyPayloadOutput struct {
+	Text    *string `json:"text,omitempty" xml:"text,omitempty"`
+	TopicId *string `json:"topicId,omitempty" xml:"topicId,omitempty"`
+}
+
+func (s RunHotTopicSummaryResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryResponseBodyPayloadOutput) SetText(v string) *RunHotTopicSummaryResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyPayloadOutput) SetTopicId(v string) *RunHotTopicSummaryResponseBodyPayloadOutput {
+	s.TopicId = &v
+	return s
+}
+
+type RunHotTopicSummaryResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunHotTopicSummaryResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryResponseBodyPayloadUsage) SetInputTokens(v int64) *RunHotTopicSummaryResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunHotTopicSummaryResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunHotTopicSummaryResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunHotTopicSummaryResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunHotTopicSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunHotTopicSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicSummaryResponse) SetHeaders(v map[string]*string) *RunHotTopicSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponse) SetStatusCode(v int32) *RunHotTopicSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunHotTopicSummaryResponse) SetBody(v *RunHotTopicSummaryResponseBody) *RunHotTopicSummaryResponse {
+	s.Body = v
+	return s
+}
+
 type RunMarketingInformationExtractRequest struct {
 	CustomPrompt *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
 	ExtractType  *string `json:"extractType,omitempty" xml:"extractType,omitempty"`
@@ -3428,6 +4413,206 @@ func (client *Client) RunCommentGeneration(workspaceId *string, request *RunComm
 	headers := make(map[string]*string)
 	_result = &RunCommentGenerationResponse{}
 	_body, _err := client.RunCommentGenerationWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-热点播报-问答
+//
+// @param tmpReq - RunHotTopicChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunHotTopicChatResponse
+func (client *Client) RunHotTopicChatWithOptions(workspaceId *string, tmpReq *RunHotTopicChatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunHotTopicChatResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunHotTopicChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.GenerateOptions)) {
+		request.GenerateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GenerateOptions, tea.String("generateOptions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotTopics)) {
+		request.HotTopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotTopics, tea.String("hotTopics"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StepForBroadcastContentConfig)) {
+		request.StepForBroadcastContentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StepForBroadcastContentConfig, tea.String("stepForBroadcastContentConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GenerateOptionsShrink)) {
+		body["generateOptions"] = request.GenerateOptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotTopicVersion)) {
+		body["hotTopicVersion"] = request.HotTopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotTopicsShrink)) {
+		body["hotTopics"] = request.HotTopicsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageCount)) {
+		body["imageCount"] = request.ImageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelCustomPromptTemplate)) {
+		body["modelCustomPromptTemplate"] = request.ModelCustomPromptTemplate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalSessionId)) {
+		body["originalSessionId"] = request.OriginalSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StepForBroadcastContentConfigShrink)) {
+		body["stepForBroadcastContentConfig"] = request.StepForBroadcastContentConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunHotTopicChat"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runHotTopicChat"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunHotTopicChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-热点播报-问答
+//
+// @param request - RunHotTopicChatRequest
+//
+// @return RunHotTopicChatResponse
+func (client *Client) RunHotTopicChat(workspaceId *string, request *RunHotTopicChatRequest) (_result *RunHotTopicChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunHotTopicChatResponse{}
+	_body, _err := client.RunHotTopicChatWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-热点播报-热点摘要生成
+//
+// @param tmpReq - RunHotTopicSummaryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunHotTopicSummaryResponse
+func (client *Client) RunHotTopicSummaryWithOptions(workspaceId *string, tmpReq *RunHotTopicSummaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunHotTopicSummaryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunHotTopicSummaryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StepForCustomSummaryStyleConfig)) {
+		request.StepForCustomSummaryStyleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StepForCustomSummaryStyleConfig, tea.String("stepForCustomSummaryStyleConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TopicIds)) {
+		request.TopicIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TopicIds, tea.String("topicIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotTopicVersion)) {
+		body["hotTopicVersion"] = request.HotTopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StepForCustomSummaryStyleConfigShrink)) {
+		body["stepForCustomSummaryStyleConfig"] = request.StepForCustomSummaryStyleConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicIdsShrink)) {
+		body["topicIds"] = request.TopicIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunHotTopicSummary"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runHotTopicSummary"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunHotTopicSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-热点播报-热点摘要生成
+//
+// @param request - RunHotTopicSummaryRequest
+//
+// @return RunHotTopicSummaryResponse
+func (client *Client) RunHotTopicSummary(workspaceId *string, request *RunHotTopicSummaryRequest) (_result *RunHotTopicSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunHotTopicSummaryResponse{}
+	_body, _err := client.RunHotTopicSummaryWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
