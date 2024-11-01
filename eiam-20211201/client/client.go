@@ -4263,7 +4263,8 @@ type GetApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// apt_rpa_tdsxxx
-	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
+	ApplicationTemplateId *string   `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
+	ApplicationVisibility []*string `json:"ApplicationVisibility,omitempty" xml:"ApplicationVisibility,omitempty" type:"Repeated"`
 	// The authorization type of the EIAM application. Valid values:
 	//
 	// 	- authorize_required: Only the user with explicit authorization can access the application.
@@ -4386,6 +4387,11 @@ func (s *GetApplicationResponseBodyApplication) SetApplicationSourceType(v strin
 
 func (s *GetApplicationResponseBodyApplication) SetApplicationTemplateId(v string) *GetApplicationResponseBodyApplication {
 	s.ApplicationTemplateId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetApplicationVisibility(v []*string) *GetApplicationResponseBodyApplication {
+	s.ApplicationVisibility = v
 	return s
 }
 
@@ -19772,7 +19778,7 @@ func (s *SetUserPrimaryOrganizationalUnitResponse) SetBody(v *SetUserPrimaryOrga
 }
 
 type UnlockUserRequest struct {
-	// The instance ID.
+	// IDaaS EIAM实例的ID。
 	//
 	// This parameter is required.
 	//
@@ -19780,13 +19786,13 @@ type UnlockUserRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The account ID.
+	// 账户ID
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// user_d6sbsuumeta4h66ec3il7yxxxx
+	// u_001
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -19809,8 +19815,6 @@ func (s *UnlockUserRequest) SetUserId(v string) *UnlockUserRequest {
 }
 
 type UnlockUserResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -20474,7 +20478,7 @@ type UpdateOrganizationalUnitRequest struct {
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The name of the organization. The name can be up to 64 characters in length and must be unique in the same parent organization.
+	// The name of the organization. The name can be up to 128 characters in length and must be unique in the same parent organization.
 	//
 	// example:
 	//
@@ -28266,7 +28270,7 @@ func (client *Client) SetUserPrimaryOrganizationalUnit(request *SetUserPrimaryOr
 
 // Summary:
 //
-// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+// 解锁账户
 //
 // @param request - UnlockUserRequest
 //
@@ -28312,7 +28316,7 @@ func (client *Client) UnlockUserWithOptions(request *UnlockUserRequest, runtime 
 
 // Summary:
 //
-// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+// 解锁账户
 //
 // @param request - UnlockUserRequest
 //

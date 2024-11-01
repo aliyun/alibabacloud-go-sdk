@@ -1,3 +1,9 @@
+2024-11-01 Version: v1.5.1
+- Update API CreateOrganizationalUnit: update param OrganizationalUnitName.
+- Update API GetApplication: update response param.
+- Update API UpdateOrganizationalUnit: update param OrganizationalUnitName.
+
+
 2024-09-18 Version: v1.5.0
 - Support API DeleteOrganizationalUnitChildren.
 - Update API GetApplicationSsoConfig: update response param.
