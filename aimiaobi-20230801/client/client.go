@@ -3563,6 +3563,168 @@ func (s *GenerateViewPointResponse) SetBody(v *GenerateViewPointResponseBody) *G
 	return s
 }
 
+type GetCustomHotTopicBroadcastJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2e27abb32cb64f80a0c6e829b6c87a09
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetCustomHotTopicBroadcastJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomHotTopicBroadcastJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomHotTopicBroadcastJobRequest) SetTaskId(v string) *GetCustomHotTopicBroadcastJobRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobRequest) SetWorkspaceId(v string) *GetCustomHotTopicBroadcastJobRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetCustomHotTopicBroadcastJobResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetCustomHotTopicBroadcastJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCustomHotTopicBroadcastJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomHotTopicBroadcastJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBody) SetCode(v string) *GetCustomHotTopicBroadcastJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBody) SetData(v *GetCustomHotTopicBroadcastJobResponseBodyData) *GetCustomHotTopicBroadcastJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBody) SetHttpStatusCode(v int32) *GetCustomHotTopicBroadcastJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBody) SetMessage(v string) *GetCustomHotTopicBroadcastJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBody) SetRequestId(v string) *GetCustomHotTopicBroadcastJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBody) SetSuccess(v bool) *GetCustomHotTopicBroadcastJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCustomHotTopicBroadcastJobResponseBodyData struct {
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 热点话题版本号标识
+	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCustomHotTopicBroadcastJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomHotTopicBroadcastJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBodyData) SetErrorMessage(v string) *GetCustomHotTopicBroadcastJobResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBodyData) SetHotTopicVersion(v string) *GetCustomHotTopicBroadcastJobResponseBodyData {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponseBodyData) SetStatus(v string) *GetCustomHotTopicBroadcastJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetCustomHotTopicBroadcastJobResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCustomHotTopicBroadcastJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCustomHotTopicBroadcastJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomHotTopicBroadcastJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponse) SetHeaders(v map[string]*string) *GetCustomHotTopicBroadcastJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponse) SetStatusCode(v int32) *GetCustomHotTopicBroadcastJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCustomHotTopicBroadcastJobResponse) SetBody(v *GetCustomHotTopicBroadcastJobResponseBody) *GetCustomHotTopicBroadcastJobResponse {
+	s.Body = v
+	return s
+}
+
 type GetCustomTextRequest struct {
 	// This parameter is required.
 	//
@@ -4690,6 +4852,848 @@ func (s *GetGeneratedContentResponse) SetStatusCode(v int32) *GetGeneratedConten
 }
 
 func (s *GetGeneratedContentResponse) SetBody(v *GetGeneratedContentResponseBody) *GetGeneratedContentResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotTopicBroadcastRequest struct {
+	// example:
+	//
+	// false
+	CalcTotalToken *bool `json:"CalcTotalToken,omitempty" xml:"CalcTotalToken,omitempty"`
+	// example:
+	//
+	// 分类筛选
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// example:
+	//
+	// 2024-10-11_13
+	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	// example:
+	//
+	// 5
+	Size                              *int32                                                        `json:"Size,omitempty" xml:"Size,omitempty"`
+	StepForCustomSummaryStyleConfig   *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig   `json:"StepForCustomSummaryStyleConfig,omitempty" xml:"StepForCustomSummaryStyleConfig,omitempty" type:"Struct"`
+	StepForNewsBroadcastContentConfig *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig `json:"StepForNewsBroadcastContentConfig,omitempty" xml:"StepForNewsBroadcastContentConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// ["主题1","主题2"]
+	Topics []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetHotTopicBroadcastRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastRequest) SetCalcTotalToken(v bool) *GetHotTopicBroadcastRequest {
+	s.CalcTotalToken = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetCategory(v string) *GetHotTopicBroadcastRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetCurrent(v int32) *GetHotTopicBroadcastRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetHotTopicVersion(v string) *GetHotTopicBroadcastRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetSize(v int32) *GetHotTopicBroadcastRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetStepForCustomSummaryStyleConfig(v *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig) *GetHotTopicBroadcastRequest {
+	s.StepForCustomSummaryStyleConfig = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetStepForNewsBroadcastContentConfig(v *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) *GetHotTopicBroadcastRequest {
+	s.StepForNewsBroadcastContentConfig = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetTopics(v []*string) *GetHotTopicBroadcastRequest {
+	s.Topics = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetWorkspaceId(v string) *GetHotTopicBroadcastRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig struct {
+	// example:
+	//
+	// 90
+	SummaryImageCount *int32 `json:"SummaryImageCount,omitempty" xml:"SummaryImageCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 摘要模型
+	SummaryModel *string `json:"SummaryModel,omitempty" xml:"SummaryModel,omitempty"`
+	// example:
+	//
+	// 摘要-自定义Prompt
+	SummaryPrompt *string `json:"SummaryPrompt,omitempty" xml:"SummaryPrompt,omitempty"`
+}
+
+func (s GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig) SetSummaryImageCount(v int32) *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig {
+	s.SummaryImageCount = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig) SetSummaryModel(v string) *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig {
+	s.SummaryModel = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig) SetSummaryPrompt(v string) *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig {
+	s.SummaryPrompt = &v
+	return s
+}
+
+type GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig struct {
+	// example:
+	//
+	// ["科技","经济","时政","娱乐"]
+	Categories            []*string                                                                            `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	CustomHotValueWeights []*GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights `json:"CustomHotValueWeights,omitempty" xml:"CustomHotValueWeights,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TopicCount *int32 `json:"TopicCount,omitempty" xml:"TopicCount,omitempty"`
+}
+
+func (s GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) SetCategories(v []*string) *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig {
+	s.Categories = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) SetCustomHotValueWeights(v []*GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights) *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig {
+	s.CustomHotValueWeights = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) SetTopicCount(v int32) *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig {
+	s.TopicCount = &v
+	return s
+}
+
+type GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights struct {
+	// example:
+	//
+	// views
+	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights) SetDimension(v string) *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights {
+	s.Dimension = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights) SetWeight(v int32) *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights {
+	s.Weight = &v
+	return s
+}
+
+type GetHotTopicBroadcastShrinkRequest struct {
+	// example:
+	//
+	// false
+	CalcTotalToken *bool `json:"CalcTotalToken,omitempty" xml:"CalcTotalToken,omitempty"`
+	// example:
+	//
+	// 分类筛选
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// example:
+	//
+	// 2024-10-11_13
+	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	// example:
+	//
+	// 5
+	Size                                    *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StepForCustomSummaryStyleConfigShrink   *string `json:"StepForCustomSummaryStyleConfig,omitempty" xml:"StepForCustomSummaryStyleConfig,omitempty"`
+	StepForNewsBroadcastContentConfigShrink *string `json:"StepForNewsBroadcastContentConfig,omitempty" xml:"StepForNewsBroadcastContentConfig,omitempty"`
+	// example:
+	//
+	// ["主题1","主题2"]
+	TopicsShrink *string `json:"Topics,omitempty" xml:"Topics,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetHotTopicBroadcastShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetCalcTotalToken(v bool) *GetHotTopicBroadcastShrinkRequest {
+	s.CalcTotalToken = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetCategory(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetCurrent(v int32) *GetHotTopicBroadcastShrinkRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetHotTopicVersion(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetSize(v int32) *GetHotTopicBroadcastShrinkRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetStepForCustomSummaryStyleConfigShrink(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.StepForCustomSummaryStyleConfigShrink = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetStepForNewsBroadcastContentConfigShrink(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.StepForNewsBroadcastContentConfigShrink = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetTopicsShrink(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.TopicsShrink = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetWorkspaceId(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetHotTopicBroadcastResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetHotTopicBroadcastResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBody) SetCode(v string) *GetHotTopicBroadcastResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBody) SetData(v *GetHotTopicBroadcastResponseBodyData) *GetHotTopicBroadcastResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBody) SetHttpStatusCode(v int32) *GetHotTopicBroadcastResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBody) SetMessage(v string) *GetHotTopicBroadcastResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBody) SetRequestId(v string) *GetHotTopicBroadcastResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBody) SetSuccess(v bool) *GetHotTopicBroadcastResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBodyData struct {
+	Data []*GetHotTopicBroadcastResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount     *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalTokenInfo *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo `json:"TotalTokenInfo,omitempty" xml:"TotalTokenInfo,omitempty" type:"Struct"`
+}
+
+func (s GetHotTopicBroadcastResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBodyData) SetData(v []*GetHotTopicBroadcastResponseBodyDataData) *GetHotTopicBroadcastResponseBodyData {
+	s.Data = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyData) SetTotalCount(v int32) *GetHotTopicBroadcastResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyData) SetTotalTokenInfo(v *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo) *GetHotTopicBroadcastResponseBodyData {
+	s.TotalTokenInfo = v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBodyDataData struct {
+	// example:
+	//
+	// 热点话题分类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 34.7905341705522
+	CustomHotValue *float64 `json:"CustomHotValue,omitempty" xml:"CustomHotValue,omitempty"`
+	// example:
+	//
+	// 自定义热点话题文本摘要
+	CustomTextSummary *string `json:"CustomTextSummary,omitempty" xml:"CustomTextSummary,omitempty"`
+	// example:
+	//
+	// 热点话题名称
+	HotTopic *string `json:"HotTopic,omitempty" xml:"HotTopic,omitempty"`
+	// example:
+	//
+	// 热点话题摘要版本
+	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	// example:
+	//
+	// 1.4120480606282884
+	HotValue *float64 `json:"HotValue,omitempty" xml:"HotValue,omitempty"`
+	// example:
+	//
+	// 热点话题ID
+	Id     *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Images []*GetHotTopicBroadcastResponseBodyDataDataImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 29
+	InputToken *int32                                          `json:"InputToken,omitempty" xml:"InputToken,omitempty"`
+	News       []*GetHotTopicBroadcastResponseBodyDataDataNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 22
+	OutputToken *int32                                           `json:"OutputToken,omitempty" xml:"OutputToken,omitempty"`
+	Summary     *GetHotTopicBroadcastResponseBodyDataDataSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
+	// example:
+	//
+	// 热点话题文本摘要
+	TextSummary *string `json:"TextSummary,omitempty" xml:"TextSummary,omitempty"`
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataData) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetCategory(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.Category = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetCreateTime(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetCustomHotValue(v float64) *GetHotTopicBroadcastResponseBodyDataData {
+	s.CustomHotValue = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetCustomTextSummary(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.CustomTextSummary = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetHotTopic(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.HotTopic = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetHotTopicVersion(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetHotValue(v float64) *GetHotTopicBroadcastResponseBodyDataData {
+	s.HotValue = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetId(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetImages(v []*GetHotTopicBroadcastResponseBodyDataDataImages) *GetHotTopicBroadcastResponseBodyDataData {
+	s.Images = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetInputToken(v int32) *GetHotTopicBroadcastResponseBodyDataData {
+	s.InputToken = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetNews(v []*GetHotTopicBroadcastResponseBodyDataDataNews) *GetHotTopicBroadcastResponseBodyDataData {
+	s.News = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetOutputToken(v int32) *GetHotTopicBroadcastResponseBodyDataData {
+	s.OutputToken = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetSummary(v *GetHotTopicBroadcastResponseBodyDataDataSummary) *GetHotTopicBroadcastResponseBodyDataData {
+	s.Summary = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetTextSummary(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.TextSummary = &v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBodyDataDataImages struct {
+	// example:
+	//
+	// http://www.example.com/a.png
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataImages) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataImages) SetUrl(v string) *GetHotTopicBroadcastResponseBodyDataDataImages {
+	s.Url = &v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBodyDataDataNews struct {
+	AnalysisCategory *string `json:"AnalysisCategory,omitempty" xml:"AnalysisCategory,omitempty"`
+	// example:
+	//
+	// 聚合后热点名称
+	AnalysisTopic *string                                                 `json:"AnalysisTopic,omitempty" xml:"AnalysisTopic,omitempty"`
+	Author        *string                                                 `json:"Author,omitempty" xml:"Author,omitempty"`
+	Category      []*string                                               `json:"Category,omitempty" xml:"Category,omitempty" type:"Repeated"`
+	Comments      []*GetHotTopicBroadcastResponseBodyDataDataNewsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	Content       *string                                                 `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2024-06-13 08:45:05
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 2024111110
+	Dt *string `json:"Dt,omitempty" xml:"Dt,omitempty"`
+	// example:
+	//
+	// 原始热点名称
+	HotTopic *string   `json:"HotTopic,omitempty" xml:"HotTopic,omitempty"`
+	ImgList  []*string `json:"ImgList,omitempty" xml:"ImgList,omitempty" type:"Repeated"`
+	// logo
+	//
+	// example:
+	//
+	// https://www.example.com/a.png
+	Logo *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
+	// example:
+	//
+	// 2024-10-10 12:12:00
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://www.example.com/a.png
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 主键ID
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// 网站
+	Website *string `json:"Website,omitempty" xml:"Website,omitempty"`
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataNews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataNews) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetAnalysisCategory(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.AnalysisCategory = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetAnalysisTopic(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.AnalysisTopic = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetAuthor(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Author = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetCategory(v []*string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Category = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetComments(v []*GetHotTopicBroadcastResponseBodyDataDataNewsComments) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Comments = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetContent(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Content = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetCreateTime(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetDomain(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetDt(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Dt = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetHotTopic(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.HotTopic = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetImgList(v []*string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.ImgList = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetLogo(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Logo = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetPubTime(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.PubTime = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetSummary(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetTitle(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Title = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetUrl(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Url = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetUuid(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Uuid = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNews) SetWebsite(v string) *GetHotTopicBroadcastResponseBodyDataDataNews {
+	s.Website = &v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBodyDataDataNewsComments struct {
+	// example:
+	//
+	// 评论内容
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 评论用户名
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataNewsComments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataNewsComments) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNewsComments) SetText(v string) *GetHotTopicBroadcastResponseBodyDataDataNewsComments {
+	s.Text = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataNewsComments) SetUsername(v string) *GetHotTopicBroadcastResponseBodyDataDataNewsComments {
+	s.Username = &v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBodyDataDataSummary struct {
+	// example:
+	//
+	// 17
+	InputToken *int32 `json:"InputToken,omitempty" xml:"InputToken,omitempty"`
+	// example:
+	//
+	// 41
+	OutputToken *int32                                                      `json:"OutputToken,omitempty" xml:"OutputToken,omitempty"`
+	Summaries   []*GetHotTopicBroadcastResponseBodyDataDataSummarySummaries `json:"Summaries,omitempty" xml:"Summaries,omitempty" type:"Repeated"`
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataSummary) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataSummary) SetInputToken(v int32) *GetHotTopicBroadcastResponseBodyDataDataSummary {
+	s.InputToken = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataSummary) SetOutputToken(v int32) *GetHotTopicBroadcastResponseBodyDataDataSummary {
+	s.OutputToken = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataSummary) SetSummaries(v []*GetHotTopicBroadcastResponseBodyDataDataSummarySummaries) *GetHotTopicBroadcastResponseBodyDataDataSummary {
+	s.Summaries = v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBodyDataDataSummarySummaries struct {
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataSummarySummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataDataSummarySummaries) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataSummarySummaries) SetSummary(v string) *GetHotTopicBroadcastResponseBodyDataDataSummarySummaries {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataDataSummarySummaries) SetTitle(v string) *GetHotTopicBroadcastResponseBodyDataDataSummarySummaries {
+	s.Title = &v
+	return s
+}
+
+type GetHotTopicBroadcastResponseBodyDataTotalTokenInfo struct {
+	// example:
+	//
+	// 100
+	HotTopicCount *int32 `json:"HotTopicCount,omitempty" xml:"HotTopicCount,omitempty"`
+	// example:
+	//
+	// 100
+	InputTokens *int32 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int32 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	WordCount *int32 `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataTotalTokenInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponseBodyDataTotalTokenInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo) SetHotTopicCount(v int32) *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo {
+	s.HotTopicCount = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo) SetInputTokens(v int32) *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo) SetOutputTokens(v int32) *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo) SetWordCount(v int32) *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo {
+	s.WordCount = &v
+	return s
+}
+
+type GetHotTopicBroadcastResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotTopicBroadcastResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHotTopicBroadcastResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotTopicBroadcastResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotTopicBroadcastResponse) SetHeaders(v map[string]*string) *GetHotTopicBroadcastResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponse) SetStatusCode(v int32) *GetHotTopicBroadcastResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponse) SetBody(v *GetHotTopicBroadcastResponseBody) *GetHotTopicBroadcastResponse {
 	s.Body = v
 	return s
 }
@@ -21962,6 +22966,343 @@ func (s *SubmitAsyncTaskResponse) SetBody(v *SubmitAsyncTaskResponseBody) *Submi
 	return s
 }
 
+type SubmitCustomHotTopicBroadcastJobRequest struct {
+	// This parameter is required.
+	HotTopicBroadcastConfig *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig `json:"HotTopicBroadcastConfig,omitempty" xml:"HotTopicBroadcastConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 热点版本
+	HotTopicVersion *string   `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	Topics          []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequest) SetHotTopicBroadcastConfig(v *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig) *SubmitCustomHotTopicBroadcastJobRequest {
+	s.HotTopicBroadcastConfig = v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequest) SetHotTopicVersion(v string) *SubmitCustomHotTopicBroadcastJobRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequest) SetTopics(v []*string) *SubmitCustomHotTopicBroadcastJobRequest {
+	s.Topics = v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequest) SetWorkspaceId(v string) *SubmitCustomHotTopicBroadcastJobRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig struct {
+	// This parameter is required.
+	StepForCustomSummaryStyleConfig *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig `json:"StepForCustomSummaryStyleConfig,omitempty" xml:"StepForCustomSummaryStyleConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	StepForNewsBroadcastContentConfig *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig `json:"StepForNewsBroadcastContentConfig,omitempty" xml:"StepForNewsBroadcastContentConfig,omitempty" type:"Struct"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig) SetStepForCustomSummaryStyleConfig(v *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig {
+	s.StepForCustomSummaryStyleConfig = v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig) SetStepForNewsBroadcastContentConfig(v *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig {
+	s.StepForNewsBroadcastContentConfig = v
+	return s
+}
+
+type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig struct {
+	// example:
+	//
+	// 3
+	SummaryImageCount *int32 `json:"SummaryImageCount,omitempty" xml:"SummaryImageCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-max
+	SummaryModel *string `json:"SummaryModel,omitempty" xml:"SummaryModel,omitempty"`
+	// example:
+	//
+	// xxxx
+	SummaryPrompt *string `json:"SummaryPrompt,omitempty" xml:"SummaryPrompt,omitempty"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig) SetSummaryImageCount(v int32) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig {
+	s.SummaryImageCount = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig) SetSummaryModel(v string) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig {
+	s.SummaryModel = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig) SetSummaryPrompt(v string) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig {
+	s.SummaryPrompt = &v
+	return s
+}
+
+type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig struct {
+	// example:
+	//
+	// ["科技","经济","时政","娱乐"]
+	Categories            []*string                                                                                                               `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	CustomHotValueWeights []*SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights `json:"CustomHotValueWeights,omitempty" xml:"CustomHotValueWeights,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TopicCount *int32 `json:"TopicCount,omitempty" xml:"TopicCount,omitempty"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig) SetCategories(v []*string) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig {
+	s.Categories = v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig) SetCustomHotValueWeights(v []*SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig {
+	s.CustomHotValueWeights = v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig) SetTopicCount(v int32) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig {
+	s.TopicCount = &v
+	return s
+}
+
+type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights struct {
+	// example:
+	//
+	// views
+	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// example:
+	//
+	// 维度名称
+	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights) SetDimension(v string) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights {
+	s.Dimension = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights) SetDimensionName(v string) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights {
+	s.DimensionName = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights) SetWeight(v int32) *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights {
+	s.Weight = &v
+	return s
+}
+
+type SubmitCustomHotTopicBroadcastJobShrinkRequest struct {
+	// This parameter is required.
+	HotTopicBroadcastConfigShrink *string `json:"HotTopicBroadcastConfig,omitempty" xml:"HotTopicBroadcastConfig,omitempty"`
+	// example:
+	//
+	// 热点版本
+	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	TopicsShrink    *string `json:"Topics,omitempty" xml:"Topics,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobShrinkRequest) SetHotTopicBroadcastConfigShrink(v string) *SubmitCustomHotTopicBroadcastJobShrinkRequest {
+	s.HotTopicBroadcastConfigShrink = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobShrinkRequest) SetHotTopicVersion(v string) *SubmitCustomHotTopicBroadcastJobShrinkRequest {
+	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobShrinkRequest) SetTopicsShrink(v string) *SubmitCustomHotTopicBroadcastJobShrinkRequest {
+	s.TopicsShrink = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobShrinkRequest) SetWorkspaceId(v string) *SubmitCustomHotTopicBroadcastJobShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitCustomHotTopicBroadcastJobResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitCustomHotTopicBroadcastJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponseBody) SetCode(v string) *SubmitCustomHotTopicBroadcastJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponseBody) SetData(v *SubmitCustomHotTopicBroadcastJobResponseBodyData) *SubmitCustomHotTopicBroadcastJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponseBody) SetHttpStatusCode(v int32) *SubmitCustomHotTopicBroadcastJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponseBody) SetMessage(v string) *SubmitCustomHotTopicBroadcastJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponseBody) SetRequestId(v string) *SubmitCustomHotTopicBroadcastJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponseBody) SetSuccess(v bool) *SubmitCustomHotTopicBroadcastJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitCustomHotTopicBroadcastJobResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponseBodyData) SetTaskId(v string) *SubmitCustomHotTopicBroadcastJobResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitCustomHotTopicBroadcastJobResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitCustomHotTopicBroadcastJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitCustomHotTopicBroadcastJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomHotTopicBroadcastJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponse) SetHeaders(v map[string]*string) *SubmitCustomHotTopicBroadcastJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponse) SetStatusCode(v int32) *SubmitCustomHotTopicBroadcastJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitCustomHotTopicBroadcastJobResponse) SetBody(v *SubmitCustomHotTopicBroadcastJobResponseBody) *SubmitCustomHotTopicBroadcastJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest struct {
 	// This parameter is required.
 	//
@@ -25080,6 +26421,70 @@ func (client *Client) GenerateViewPoint(request *GenerateViewPointRequest) (_res
 
 // Summary:
 //
+// 获取自定义播报单任务结果
+//
+// @param request - GetCustomHotTopicBroadcastJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomHotTopicBroadcastJobResponse
+func (client *Client) GetCustomHotTopicBroadcastJobWithOptions(request *GetCustomHotTopicBroadcastJobRequest, runtime *util.RuntimeOptions) (_result *GetCustomHotTopicBroadcastJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomHotTopicBroadcastJob"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCustomHotTopicBroadcastJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义播报单任务结果
+//
+// @param request - GetCustomHotTopicBroadcastJobRequest
+//
+// @return GetCustomHotTopicBroadcastJobResponse
+func (client *Client) GetCustomHotTopicBroadcastJob(request *GetCustomHotTopicBroadcastJobRequest) (_result *GetCustomHotTopicBroadcastJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCustomHotTopicBroadcastJobResponse{}
+	_body, _err := client.GetCustomHotTopicBroadcastJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取自定义文本
 //
 // @param request - GetCustomTextRequest
@@ -25405,6 +26810,112 @@ func (client *Client) GetGeneratedContent(request *GetGeneratedContentRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGeneratedContentResponse{}
 	_body, _err := client.GetGeneratedContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询新闻播报单
+//
+// @param tmpReq - GetHotTopicBroadcastRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotTopicBroadcastResponse
+func (client *Client) GetHotTopicBroadcastWithOptions(tmpReq *GetHotTopicBroadcastRequest, runtime *util.RuntimeOptions) (_result *GetHotTopicBroadcastResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetHotTopicBroadcastShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StepForCustomSummaryStyleConfig)) {
+		request.StepForCustomSummaryStyleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StepForCustomSummaryStyleConfig, tea.String("StepForCustomSummaryStyleConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StepForNewsBroadcastContentConfig)) {
+		request.StepForNewsBroadcastContentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StepForNewsBroadcastContentConfig, tea.String("StepForNewsBroadcastContentConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Topics)) {
+		request.TopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Topics, tea.String("Topics"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalcTotalToken)) {
+		body["CalcTotalToken"] = request.CalcTotalToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Current)) {
+		body["Current"] = request.Current
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotTopicVersion)) {
+		body["HotTopicVersion"] = request.HotTopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		body["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StepForCustomSummaryStyleConfigShrink)) {
+		body["StepForCustomSummaryStyleConfig"] = request.StepForCustomSummaryStyleConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StepForNewsBroadcastContentConfigShrink)) {
+		body["StepForNewsBroadcastContentConfig"] = request.StepForNewsBroadcastContentConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicsShrink)) {
+		body["Topics"] = request.TopicsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotTopicBroadcast"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotTopicBroadcastResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询新闻播报单
+//
+// @param request - GetHotTopicBroadcastRequest
+//
+// @return GetHotTopicBroadcastResponse
+func (client *Client) GetHotTopicBroadcast(request *GetHotTopicBroadcastRequest) (_result *GetHotTopicBroadcastResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetHotTopicBroadcastResponse{}
+	_body, _err := client.GetHotTopicBroadcastWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29625,6 +31136,88 @@ func (client *Client) SubmitAsyncTask(request *SubmitAsyncTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAsyncTaskResponse{}
 	_body, _err := client.SubmitAsyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交自定义播报单任务
+//
+// @param tmpReq - SubmitCustomHotTopicBroadcastJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitCustomHotTopicBroadcastJobResponse
+func (client *Client) SubmitCustomHotTopicBroadcastJobWithOptions(tmpReq *SubmitCustomHotTopicBroadcastJobRequest, runtime *util.RuntimeOptions) (_result *SubmitCustomHotTopicBroadcastJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitCustomHotTopicBroadcastJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotTopicBroadcastConfig)) {
+		request.HotTopicBroadcastConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotTopicBroadcastConfig, tea.String("HotTopicBroadcastConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Topics)) {
+		request.TopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Topics, tea.String("Topics"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotTopicBroadcastConfigShrink)) {
+		body["HotTopicBroadcastConfig"] = request.HotTopicBroadcastConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotTopicVersion)) {
+		body["HotTopicVersion"] = request.HotTopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicsShrink)) {
+		body["Topics"] = request.TopicsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitCustomHotTopicBroadcastJob"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitCustomHotTopicBroadcastJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交自定义播报单任务
+//
+// @param request - SubmitCustomHotTopicBroadcastJobRequest
+//
+// @return SubmitCustomHotTopicBroadcastJobResponse
+func (client *Client) SubmitCustomHotTopicBroadcastJob(request *SubmitCustomHotTopicBroadcastJobRequest) (_result *SubmitCustomHotTopicBroadcastJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitCustomHotTopicBroadcastJobResponse{}
+	_body, _err := client.SubmitCustomHotTopicBroadcastJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
