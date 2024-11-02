@@ -1685,7 +1685,7 @@ func (s *DescribeDistinctReleasesRequest) SetTaskflowMd5(v string) *DescribeDist
 }
 
 type DescribeDistinctReleasesResponseBody struct {
-	// The version information.
+	// The information about versions.
 	Records []*DescribeDistinctReleasesResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -1720,12 +1720,21 @@ type DescribeDistinctReleasesResponseBodyRecords struct {
 	//
 	// demo version
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The MD5 value of the playbook XML configuration.
+	// The MD5 value of the version XML configuration.
 	//
 	// example:
 	//
 	// 17cf53049bc8efa941207xxxxx
-	TaskflowMd5  *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
+	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
+	// The format of the playbook. Valid values:
+	//
+	// 	- **xml**: XML format.
+	//
+	// 	- **x6**: JSON format.
+	//
+	// example:
+	//
+	// x6
 	TaskflowType *string `json:"TaskflowType,omitempty" xml:"TaskflowType,omitempty"`
 }
 
@@ -4064,7 +4073,16 @@ type DescribePlaybooksRequest struct {
 	// example:
 	//
 	// demo_playbook
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sorting order. Default value: desc. Valid values:
+	//
+	// 	- desc: descending order
+	//
+	// 	- asc: ascending order
+	//
+	// example:
+	//
+	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The type of the playbook. Valid values:
 	//
@@ -4089,7 +4107,8 @@ type DescribePlaybooksRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParamTypes *string `json:"ParamTypes,omitempty" xml:"ParamTypes,omitempty"`
 	// The playbook UUID.
 	//
 	// >  You can use the UUID to query the information about a specific playbook.
@@ -4100,7 +4119,16 @@ type DescribePlaybooksRequest struct {
 	//
 	// 8baa6cff-319e-4ede-97bc-1xxxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The sorting basis. Default value: 1. Valid values:
+	//
+	// 	- 1: last modification time
+	//
+	// 	- 2: last execution time
+	//
+	// example:
+	//
+	// 1
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The beginning of the time range to query. The value is a 13-digit timestamp.
 	//
 	// example:
@@ -4157,6 +4185,11 @@ func (s *DescribePlaybooksRequest) SetPageSize(v string) *DescribePlaybooksReque
 	return s
 }
 
+func (s *DescribePlaybooksRequest) SetParamTypes(v string) *DescribePlaybooksRequest {
+	s.ParamTypes = &v
+	return s
+}
+
 func (s *DescribePlaybooksRequest) SetPlaybookUuid(v string) *DescribePlaybooksRequest {
 	s.PlaybookUuid = &v
 	return s
@@ -4175,7 +4208,7 @@ func (s *DescribePlaybooksRequest) SetStartMillis(v int64) *DescribePlaybooksReq
 type DescribePlaybooksResponseBody struct {
 	// The pagination information.
 	Page *DescribePlaybooksResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	// The list of playbooks.
+	// The playbooks.
 	Playbooks []*DescribePlaybooksResponseBodyPlaybooks `json:"Playbooks,omitempty" xml:"Playbooks,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -4274,7 +4307,12 @@ type DescribePlaybooksResponseBodyPlaybooks struct {
 	// example:
 	//
 	// 1683526277415
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the playbook was modified.
+	//
+	// example:
+	//
+	// 1681396398000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The time when the playbook was last run. The value is a 13-digit timestamp.
 	//
@@ -4291,7 +4329,8 @@ type DescribePlaybooksResponseBodyPlaybooks struct {
 	// example:
 	//
 	// user
-	OwnType *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	OwnType   *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The UUID of the playbook.
 	//
 	// example:
@@ -4335,6 +4374,11 @@ func (s *DescribePlaybooksResponseBodyPlaybooks) SetLastRuntime(v int64) *Descri
 
 func (s *DescribePlaybooksResponseBodyPlaybooks) SetOwnType(v string) *DescribePlaybooksResponseBodyPlaybooks {
 	s.OwnType = &v
+	return s
+}
+
+func (s *DescribePlaybooksResponseBodyPlaybooks) SetParamType(v string) *DescribePlaybooksResponseBodyPlaybooks {
+	s.ParamType = &v
 	return s
 }
 
@@ -4986,6 +5030,7 @@ type DescribeProcessTasksRequest struct {
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
 	// The field that you use to sort the result.
 	//
 	// >  You can obtain the field from the response result.
@@ -5142,6 +5187,11 @@ func (s *DescribeProcessTasksRequest) SetEntityName(v string) *DescribeProcessTa
 
 func (s *DescribeProcessTasksRequest) SetEntityType(v string) *DescribeProcessTasksRequest {
 	s.EntityType = &v
+	return s
+}
+
+func (s *DescribeProcessTasksRequest) SetEntityUuid(v string) *DescribeProcessTasksRequest {
+	s.EntityUuid = &v
 	return s
 }
 
@@ -5319,6 +5369,7 @@ type DescribeProcessTasksResponseBodyProcessTasks struct {
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
 	// The error code returned if the call failed.
 	//
 	// example:
@@ -5437,6 +5488,11 @@ func (s *DescribeProcessTasksResponseBodyProcessTasks) SetEntityName(v string) *
 
 func (s *DescribeProcessTasksResponseBodyProcessTasks) SetEntityType(v string) *DescribeProcessTasksResponseBodyProcessTasks {
 	s.EntityType = &v
+	return s
+}
+
+func (s *DescribeProcessTasksResponseBodyProcessTasks) SetEntityUuid(v string) *DescribeProcessTasksResponseBodyProcessTasks {
+	s.EntityUuid = &v
 	return s
 }
 
@@ -11509,7 +11565,7 @@ func (client *Client) RevertPlaybookRelease(request *RevertPlaybookReleaseReques
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.4c41281fWhbdPa#/commodity/vm_intl).
 //
 // @param request - RunPython3ScriptRequest
 //
@@ -11567,7 +11623,7 @@ func (client *Client) RunPython3ScriptWithOptions(request *RunPython3ScriptReque
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.4c41281fWhbdPa#/commodity/vm_intl).
 //
 // @param request - RunPython3ScriptRequest
 //
@@ -11589,7 +11645,7 @@ func (client *Client) RunPython3Script(request *RunPython3ScriptRequest) (_resul
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7adab91arMeIx2#/commodity/vm_intl).
 //
 // @param request - TriggerPlaybookRequest
 //
@@ -11639,7 +11695,7 @@ func (client *Client) TriggerPlaybookWithOptions(request *TriggerPlaybookRequest
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7adab91arMeIx2#/commodity/vm_intl).
 //
 // @param request - TriggerPlaybookRequest
 //
@@ -11727,7 +11783,7 @@ func (client *Client) TriggerProcessTask(request *TriggerProcessTaskRequest) (_r
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7adab91arMeIx2#/commodity/vm_intl).
 //
 // @param request - TriggerSophonPlaybookRequest
 //
@@ -11789,7 +11845,7 @@ func (client *Client) TriggerSophonPlaybookWithOptions(request *TriggerSophonPla
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7adab91arMeIx2#/commodity/vm_intl).
 //
 // @param request - TriggerSophonPlaybookRequest
 //
