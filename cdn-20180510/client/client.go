@@ -1782,9 +1782,7 @@ type ChangeCdnDomainToDcdnRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The operation that you want to perform on the check items. Valid values:
-	//
-	// **preCheck**: return the verification result.
+	// The operation to perform. Set the value to preCheck. Precheck is performed, and the result is returned. If the precheck passes, set the value to enforce to perform the transfer.
 	//
 	// example:
 	//
@@ -29453,6 +29451,7 @@ type PushObjectCacheRequest struct {
 	// example.com/image/1.png\\nexample.org/image/2.png
 	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	QueryHashkey  *bool   `json:"QueryHashkey,omitempty" xml:"QueryHashkey,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The custom header for prefetch in the JSON format.
 	//
@@ -29495,6 +29494,11 @@ func (s *PushObjectCacheRequest) SetObjectPath(v string) *PushObjectCacheRequest
 
 func (s *PushObjectCacheRequest) SetOwnerId(v int64) *PushObjectCacheRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *PushObjectCacheRequest) SetQueryHashkey(v bool) *PushObjectCacheRequest {
+	s.QueryHashkey = &v
 	return s
 }
 
@@ -29675,16 +29679,22 @@ func (s *RefreshObjectCacheByCacheTagResponse) SetBody(v *RefreshObjectCacheByCa
 }
 
 type RefreshObjectCachesRequest struct {
-	// Specifies whether to refresh resources in a directory if the resources are different from the resources in the same directory in the origin server. Default value: false.
+	// When the comparison between the source content and the source site resources is consistent, should the resources within the corresponding range be forcibly refreshed. The default is false.
 	//
-	// 	- **true**: refresh all resources in the directory.
+	// 	- **true**: purges all resources in the range that corresponds to the type of the purge task. If you set this parameter to true, when the requested resource matches the resource in the range that corresponds to the type of the purge task, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
 	//
-	// 	- **false**: refresh the changed resources in the directory.
+	// 	- **false**: purges the changed resources in the range that corresponds to the type of the purge task. If you set this parameter to false, when the requested resource matches the resource in the range that corresponds to the type of the purge task, the POP obtains the Last-Modified parameter of the resource from the origin server. If the obtained value of the Last-Modified parameter is the same as that of the cached resource, the cached resource is returned. Otherwise, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
+	//
+	// >  This parameter takes effect only when the ObjectType parameter is not set to File.
 	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// 	- If you submit multiple URLs or directories at a time, separate them with line breaks (\\n) or (\\r\\n).
+	//
+	// 	- The total number of domain names contained all URLs in a submitted task cannot exceed 10.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44489,6 +44499,10 @@ func (client *Client) PushObjectCacheWithOptions(request *PushObjectCacheRequest
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryHashkey)) {
+		query["QueryHashkey"] = request.QueryHashkey
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
