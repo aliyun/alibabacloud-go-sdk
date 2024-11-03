@@ -10,6 +10,7 @@ import (
 )
 
 type FindIdpListByLoginIdentifierRequest struct {
+	AvailableFeatures map[string]*string `json:"AvailableFeatures,omitempty" xml:"AvailableFeatures,omitempty"`
 	// example:
 	//
 	// pc
@@ -51,6 +52,11 @@ func (s FindIdpListByLoginIdentifierRequest) GoString() string {
 	return s.String()
 }
 
+func (s *FindIdpListByLoginIdentifierRequest) SetAvailableFeatures(v map[string]*string) *FindIdpListByLoginIdentifierRequest {
+	s.AvailableFeatures = v
+	return s
+}
+
 func (s *FindIdpListByLoginIdentifierRequest) SetClientChannel(v string) *FindIdpListByLoginIdentifierRequest {
 	s.ClientChannel = &v
 	return s
@@ -87,6 +93,94 @@ func (s *FindIdpListByLoginIdentifierRequest) SetSupportTypes(v []*string) *Find
 }
 
 func (s *FindIdpListByLoginIdentifierRequest) SetUuid(v string) *FindIdpListByLoginIdentifierRequest {
+	s.Uuid = &v
+	return s
+}
+
+type FindIdpListByLoginIdentifierShrinkRequest struct {
+	AvailableFeaturesShrink *string `json:"AvailableFeatures,omitempty" xml:"AvailableFeatures,omitempty"`
+	// example:
+	//
+	// pc
+	ClientChannel *string `json:"ClientChannel,omitempty" xml:"ClientChannel,omitempty"`
+	// example:
+	//
+	// 370b56f8-2812-4b6c-bfa6-2560791c****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 22.21.XX.XX
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_\\"Windows 10 Enterprise\\" 10.0 (Build 14393)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 2.0.1-D-20211008.101607
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun123***
+	LoginIdentifier *string   `json:"LoginIdentifier,omitempty" xml:"LoginIdentifier,omitempty"`
+	SupportTypes    []*string `json:"SupportTypes,omitempty" xml:"SupportTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2943802884B27030B6759F9132B2****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s FindIdpListByLoginIdentifierShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindIdpListByLoginIdentifierShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetAvailableFeaturesShrink(v string) *FindIdpListByLoginIdentifierShrinkRequest {
+	s.AvailableFeaturesShrink = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetClientChannel(v string) *FindIdpListByLoginIdentifierShrinkRequest {
+	s.ClientChannel = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetClientId(v string) *FindIdpListByLoginIdentifierShrinkRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetClientIp(v string) *FindIdpListByLoginIdentifierShrinkRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetClientOS(v string) *FindIdpListByLoginIdentifierShrinkRequest {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetClientVersion(v string) *FindIdpListByLoginIdentifierShrinkRequest {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetLoginIdentifier(v string) *FindIdpListByLoginIdentifierShrinkRequest {
+	s.LoginIdentifier = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetSupportTypes(v []*string) *FindIdpListByLoginIdentifierShrinkRequest {
+	s.SupportTypes = v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierShrinkRequest) SetUuid(v string) *FindIdpListByLoginIdentifierShrinkRequest {
 	s.Uuid = &v
 	return s
 }
@@ -158,6 +252,7 @@ type FindIdpListByLoginIdentifierResponseBodyIdpInfos struct {
 	// idp-hlyexfvwert9m8****
 	IdpId       *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
 	IdpName     *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	IdpNameEN   *string `json:"IdpNameEN,omitempty" xml:"IdpNameEN,omitempty"`
 	IdpProvider *string `json:"IdpProvider,omitempty" xml:"IdpProvider,omitempty"`
 	// example:
 	//
@@ -195,6 +290,11 @@ func (s *FindIdpListByLoginIdentifierResponseBodyIdpInfos) SetIdpId(v string) *F
 
 func (s *FindIdpListByLoginIdentifierResponseBodyIdpInfos) SetIdpName(v string) *FindIdpListByLoginIdentifierResponseBodyIdpInfos {
 	s.IdpName = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierResponseBodyIdpInfos) SetIdpNameEN(v string) *FindIdpListByLoginIdentifierResponseBodyIdpInfos {
+	s.IdpNameEN = &v
 	return s
 }
 
@@ -333,7 +433,8 @@ type GetLoginTokenRequest struct {
 	// example:
 	//
 	// 182901
-	AuthenticationCode *string `json:"AuthenticationCode,omitempty" xml:"AuthenticationCode,omitempty"`
+	AuthenticationCode *string            `json:"AuthenticationCode,omitempty" xml:"AuthenticationCode,omitempty"`
+	AvailableFeatures  map[string]*string `json:"AvailableFeatures,omitempty" xml:"AvailableFeatures,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -404,6 +505,7 @@ type GetLoginTokenRequest struct {
 	//
 	// null
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	MfaType   *string `json:"MfaType,omitempty" xml:"MfaType,omitempty"`
 	// example:
 	//
 	// INTERNET
@@ -472,6 +574,11 @@ func (s GetLoginTokenRequest) GoString() string {
 
 func (s *GetLoginTokenRequest) SetAuthenticationCode(v string) *GetLoginTokenRequest {
 	s.AuthenticationCode = &v
+	return s
+}
+
+func (s *GetLoginTokenRequest) SetAvailableFeatures(v map[string]*string) *GetLoginTokenRequest {
+	s.AvailableFeatures = v
 	return s
 }
 
@@ -560,6 +667,11 @@ func (s *GetLoginTokenRequest) SetLoginName(v string) *GetLoginTokenRequest {
 	return s
 }
 
+func (s *GetLoginTokenRequest) SetMfaType(v string) *GetLoginTokenRequest {
+	s.MfaType = &v
+	return s
+}
+
 func (s *GetLoginTokenRequest) SetNetworkType(v string) *GetLoginTokenRequest {
 	s.NetworkType = &v
 	return s
@@ -630,6 +742,319 @@ func (s *GetLoginTokenRequest) SetUuid(v string) *GetLoginTokenRequest {
 	return s
 }
 
+type GetLoginTokenShrinkRequest struct {
+	// example:
+	//
+	// 182901
+	AuthenticationCode      *string `json:"AuthenticationCode,omitempty" xml:"AuthenticationCode,omitempty"`
+	AvailableFeaturesShrink *string `json:"AvailableFeatures,omitempty" xml:"AvailableFeatures,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05967f80-6f51-46cb-a27c-****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// windows_\\"Windows 10 Pro\\" 10.0 (Build 22631)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// windows
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// 7.3.0-20240619.143924
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// SsoTokenLogin
+	CurrentStage *string `json:"CurrentStage,omitempty" xml:"CurrentStage,omitempty"`
+	// example:
+	//
+	// cn-beijing+dir-j9dd****
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// example:
+	//
+	// null
+	EncryptedFingerPrintData *string `json:"EncryptedFingerPrintData,omitempty" xml:"EncryptedFingerPrintData,omitempty"`
+	// example:
+	//
+	// 4d7****8e90bb0484fc
+	EncryptedKey *string `json:"EncryptedKey,omitempty" xml:"EncryptedKey,omitempty"`
+	// example:
+	//
+	// 04d7****8e90bb0484fc;gJ1GLca1vQRRqQbRvByU0A==;5kOWZE7AtbQhki+4LAo69A==
+	EncryptedPassword *string `json:"EncryptedPassword,omitempty" xml:"EncryptedPassword,omitempty"`
+	// example:
+	//
+	// user01
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// null
+	FingerPrintData *string `json:"FingerPrintData,omitempty" xml:"FingerPrintData,omitempty"`
+	// example:
+	//
+	// idp-iwntrlbb98q7v****
+	IdpId *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// null
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// true
+	KeepAlive *bool `json:"KeepAlive,omitempty" xml:"KeepAlive,omitempty"`
+	// example:
+	//
+	// 00ugamMAoO1+u1MlhmgCeZJ75q094x3H/4kg7ZaTI3f/joVTVPIpJgfv9JFkPLNxnQjblrvsByNas08mc6FtVWvQPOE68fqmt6QMM4UbRtahm8luxEXvicF58qSPXW1hxOtV/Ev6d92VBz2Bck/N4CYyjD0iLocfN8jkBnt231****
+	KeepAliveToken *string `json:"KeepAliveToken,omitempty" xml:"KeepAliveToken,omitempty"`
+	// example:
+	//
+	// Fe04****
+	LoginIdentifier *string `json:"LoginIdentifier,omitempty" xml:"LoginIdentifier,omitempty"`
+	// example:
+	//
+	// null
+	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	MfaType   *string `json:"MfaType,omitempty" xml:"MfaType,omitempty"`
+	// example:
+	//
+	// INTERNET
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// Admin@1234****
+	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	// example:
+	//
+	// cn-beijing+dir-j9dd****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// Admin@1234****
+	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
+	// example:
+	//
+	// Admin@1234****
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// 1822727****
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// example:
+	//
+	// 321123
+	PhoneVerifyCode *string `json:"PhoneVerifyCode,omitempty" xml:"PhoneVerifyCode,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// c6f3cd91-65fc-4c7b-b189-2a73da0****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// null
+	SsoExtendsCookies *string `json:"SsoExtendsCookies,omitempty" xml:"SsoExtendsCookies,omitempty"`
+	// example:
+	//
+	// 04d707a6-fb23-44a7-aae7-8e90****
+	SsoSessionToken *string `json:"SsoSessionToken,omitempty" xml:"SsoSessionToken,omitempty"`
+	// example:
+	//
+	// 1234***
+	TokenCode *string `json:"TokenCode,omitempty" xml:"TokenCode,omitempty"`
+	// example:
+	//
+	// 04d707a6-fb23-44a7-aae7-8e90bb04****
+	UmidToken *string `json:"UmidToken,omitempty" xml:"UmidToken,omitempty"`
+	// example:
+	//
+	// C50973691A6D2BE23F2CDD73B85B****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetLoginTokenShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoginTokenShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoginTokenShrinkRequest) SetAuthenticationCode(v string) *GetLoginTokenShrinkRequest {
+	s.AuthenticationCode = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetAvailableFeaturesShrink(v string) *GetLoginTokenShrinkRequest {
+	s.AvailableFeaturesShrink = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetClientId(v string) *GetLoginTokenShrinkRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetClientOS(v string) *GetLoginTokenShrinkRequest {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetClientType(v string) *GetLoginTokenShrinkRequest {
+	s.ClientType = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetClientVersion(v string) *GetLoginTokenShrinkRequest {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetCurrentStage(v string) *GetLoginTokenShrinkRequest {
+	s.CurrentStage = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetDirectoryId(v string) *GetLoginTokenShrinkRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetEncryptedFingerPrintData(v string) *GetLoginTokenShrinkRequest {
+	s.EncryptedFingerPrintData = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetEncryptedKey(v string) *GetLoginTokenShrinkRequest {
+	s.EncryptedKey = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetEncryptedPassword(v string) *GetLoginTokenShrinkRequest {
+	s.EncryptedPassword = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetEndUserId(v string) *GetLoginTokenShrinkRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetFingerPrintData(v string) *GetLoginTokenShrinkRequest {
+	s.FingerPrintData = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetIdpId(v string) *GetLoginTokenShrinkRequest {
+	s.IdpId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetImageUrl(v string) *GetLoginTokenShrinkRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetKeepAlive(v bool) *GetLoginTokenShrinkRequest {
+	s.KeepAlive = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetKeepAliveToken(v string) *GetLoginTokenShrinkRequest {
+	s.KeepAliveToken = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetLoginIdentifier(v string) *GetLoginTokenShrinkRequest {
+	s.LoginIdentifier = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetLoginName(v string) *GetLoginTokenShrinkRequest {
+	s.LoginName = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetMfaType(v string) *GetLoginTokenShrinkRequest {
+	s.MfaType = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetNetworkType(v string) *GetLoginTokenShrinkRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetNewPassword(v string) *GetLoginTokenShrinkRequest {
+	s.NewPassword = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetOfficeSiteId(v string) *GetLoginTokenShrinkRequest {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetOldPassword(v string) *GetLoginTokenShrinkRequest {
+	s.OldPassword = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetPassword(v string) *GetLoginTokenShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetPhone(v string) *GetLoginTokenShrinkRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetPhoneVerifyCode(v string) *GetLoginTokenShrinkRequest {
+	s.PhoneVerifyCode = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetRegionId(v string) *GetLoginTokenShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetSessionId(v string) *GetLoginTokenShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetSsoExtendsCookies(v string) *GetLoginTokenShrinkRequest {
+	s.SsoExtendsCookies = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetSsoSessionToken(v string) *GetLoginTokenShrinkRequest {
+	s.SsoSessionToken = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetTokenCode(v string) *GetLoginTokenShrinkRequest {
+	s.TokenCode = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetUmidToken(v string) *GetLoginTokenShrinkRequest {
+	s.UmidToken = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetUuid(v string) *GetLoginTokenShrinkRequest {
+	s.Uuid = &v
+	return s
+}
+
 type GetLoginTokenResponseBody struct {
 	// example:
 	//
@@ -670,7 +1095,8 @@ type GetLoginTokenResponseBody struct {
 	// example:
 	//
 	// v185fdd7f6d39fa7861981639366085772e150a390a5bb7b43c4e62440d94fc392b945770e1596cebe90085ce0af4d****
-	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	LoginToken  *string                                 `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	MfaTypeList []*GetLoginTokenResponseBodyMfaTypeList `json:"MfaTypeList,omitempty" xml:"MfaTypeList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// MFABind
@@ -784,6 +1210,11 @@ func (s *GetLoginTokenResponseBody) SetLoginToken(v string) *GetLoginTokenRespon
 	return s
 }
 
+func (s *GetLoginTokenResponseBody) SetMfaTypeList(v []*GetLoginTokenResponseBodyMfaTypeList) *GetLoginTokenResponseBody {
+	s.MfaTypeList = v
+	return s
+}
+
 func (s *GetLoginTokenResponseBody) SetNextStage(v string) *GetLoginTokenResponseBody {
 	s.NextStage = &v
 	return s
@@ -866,6 +1297,29 @@ func (s *GetLoginTokenResponseBody) SetWindowDisplayMode(v string) *GetLoginToke
 
 func (s *GetLoginTokenResponseBody) SetWyId(v string) *GetLoginTokenResponseBody {
 	s.WyId = &v
+	return s
+}
+
+type GetLoginTokenResponseBodyMfaTypeList struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
+}
+
+func (s GetLoginTokenResponseBodyMfaTypeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoginTokenResponseBodyMfaTypeList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoginTokenResponseBodyMfaTypeList) SetName(v string) *GetLoginTokenResponseBodyMfaTypeList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBodyMfaTypeList) SetStage(v string) *GetLoginTokenResponseBodyMfaTypeList {
+	s.Stage = &v
 	return s
 }
 
@@ -1205,16 +1659,27 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // 身份认证查询接口
 //
-// @param request - FindIdpListByLoginIdentifierRequest
+// @param tmpReq - FindIdpListByLoginIdentifierRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FindIdpListByLoginIdentifierResponse
-func (client *Client) FindIdpListByLoginIdentifierWithOptions(request *FindIdpListByLoginIdentifierRequest, runtime *util.RuntimeOptions) (_result *FindIdpListByLoginIdentifierResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) FindIdpListByLoginIdentifierWithOptions(tmpReq *FindIdpListByLoginIdentifierRequest, runtime *util.RuntimeOptions) (_result *FindIdpListByLoginIdentifierResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &FindIdpListByLoginIdentifierShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AvailableFeatures)) {
+		request.AvailableFeaturesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvailableFeatures, tea.String("AvailableFeatures"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvailableFeaturesShrink)) {
+		query["AvailableFeatures"] = request.AvailableFeaturesShrink
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientChannel)) {
 		body["ClientChannel"] = request.ClientChannel
@@ -1249,7 +1714,8 @@ func (client *Client) FindIdpListByLoginIdentifierWithOptions(request *FindIdpLi
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FindIdpListByLoginIdentifier"),
@@ -1293,19 +1759,29 @@ func (client *Client) FindIdpListByLoginIdentifier(request *FindIdpListByLoginId
 //
 // GetLoginToken
 //
-// @param request - GetLoginTokenRequest
+// @param tmpReq - GetLoginTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLoginTokenResponse
-func (client *Client) GetLoginTokenWithOptions(request *GetLoginTokenRequest, runtime *util.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, runtime *util.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetLoginTokenShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AvailableFeatures)) {
+		request.AvailableFeaturesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AvailableFeatures, tea.String("AvailableFeatures"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuthenticationCode)) {
 		query["AuthenticationCode"] = request.AuthenticationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvailableFeaturesShrink)) {
+		query["AvailableFeatures"] = request.AvailableFeaturesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
@@ -1374,6 +1850,10 @@ func (client *Client) GetLoginTokenWithOptions(request *GetLoginTokenRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.LoginName)) {
 		query["LoginName"] = request.LoginName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MfaType)) {
+		query["MfaType"] = request.MfaType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
