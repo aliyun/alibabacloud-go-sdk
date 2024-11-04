@@ -4457,11 +4457,13 @@ type CreateDISyncTaskRequest struct {
 	//
 	// new_di_task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The settings that specify the storage path of the data synchronization task and the resource group used by the task. The following parameters are supported:
+	// The configuration parameters of the data synchronization task. The following parameters are supported:
 	//
 	// 	- FileFolderPath: the storage path of the data synchronization task.
 	//
 	// 	- ResourceGroup: the identifier of the resource group for Data Integration that is used by the data synchronization task. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group.
+	//
+	// 	- Cu: the specifications occupied by the data synchronization task in the serverless resource group. The value of this parameter must be a multiple of 0.5.
 	//
 	// example:
 	//
@@ -8373,8 +8375,6 @@ type CreateProjectRequest struct {
 	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
 	// The description of the workspace.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// test_describe
@@ -8535,8 +8535,6 @@ type CreateProjectShrinkRequest struct {
 	// 1
 	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
 	// The description of the workspace.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -45522,9 +45520,11 @@ type GetRemindResponseBodyData struct {
 	// example:
 	//
 	// 1800
-	AlertInterval *int32    `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
-	AlertMethods  []*string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
-	AlertTargets  []*string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty" type:"Repeated"`
+	AlertInterval *int32 `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
+	// The alert notification method.
+	AlertMethods []*string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
+	// The description of the alert recipient.
+	AlertTargets []*string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty" type:"Repeated"`
 	// The recipient of the alert. Valid values: OWNER and OTHER. The value OWNER indicates the node owner. The value OTHER indicates a specified user.
 	//
 	// example:
@@ -45606,7 +45606,8 @@ type GetRemindResponseBodyData struct {
 	// example:
 	//
 	// true
-	Useflag  *bool     `json:"Useflag,omitempty" xml:"Useflag,omitempty"`
+	Useflag *bool `json:"Useflag,omitempty" xml:"Useflag,omitempty"`
+	// The information about the webhook URL.
 	Webhooks []*string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
 }
 
@@ -45758,7 +45759,7 @@ func (s *GetRemindResponseBodyDataBaselines) SetBaselineName(v string) *GetRemin
 }
 
 type GetRemindResponseBodyDataBizProcesses struct {
-	// The workflow ID.
+	// The ID of the workflow.
 	//
 	// example:
 	//
@@ -45861,7 +45862,10 @@ func (s *GetRemindResponseBodyDataProjects) SetProjectId(v int64) *GetRemindResp
 
 type GetRemindResponseBodyDataReceivers struct {
 	AlertTargets []*string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty" type:"Repeated"`
-	AlertUnit    *string   `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
+	// example:
+	//
+	// OWNER
+	AlertUnit *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
 }
 
 func (s GetRemindResponseBodyDataReceivers) String() string {
@@ -81965,9 +81969,11 @@ type UpdateDISyncTaskRequest struct {
 	//
 	// {"type":"job","version":"2.0","steps":[{"stepType":"mysql","parameter":{"envType":1,"datasource":"mysql_pub","column":["id","name","create_time","age","score","t_01"],"connection":[{"datasource":"mysql_pub","table":["u_pk"]}],"where":"","splitPk":"id","encoding":"UTF-8"},"name":"Reader","category":"reader"},{"stepType":"odps","parameter":{"partition":"pt=${bizdate}","truncate":true,"datasource":"odps_first","envType":1,"column":["id","name","create_time","age","score","t_01"],"emptyAsNull":false,"tableComment":"null","table":"u_pk"},"name":"Writer","category":"writer"}],"setting":{"executeMode":null,"errorLimit":{"record":""},"speed":{"concurrent":2,"throttle":false}},"order":{"hops":[{"from":"Reader","to":"Writer"}]}}
 	TaskContent *string `json:"TaskContent,omitempty" xml:"TaskContent,omitempty"`
-	// The setting based on which the resource group used by the data synchronization task is updated. You must configure this parameter in the JSON format.
+	// The configuration parameters of the data synchronization task. You must configure this parameter in the JSON format.
 	//
-	// Only the ResourceGroup field is supported. This field specifies the identifier of the resource group for Data Integration that is used by the data synchronization task. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group. If you do not need to update the resource group for the data synchronization task, leave this parameter empty.
+	// 	- ResourceGroup: the identifier of the resource group for Data Integration that is used by the data synchronization task. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group.
+	//
+	// 	- Cu: the specifications occupied by the data synchronization task in the serverless resource group. The value of this parameter must be a multiple of 0.5.
 	//
 	// example:
 	//
@@ -84656,7 +84662,7 @@ type UpdateQualityRuleRequest struct {
 	//
 	// 0
 	BlockType *int32 `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	// The checker ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the ID of the checker.
+	// The checker ID. Valid values: 2: indicates that the current value is compared with the average value of the previous 7 days. 3: indicates that the current value is compared with the average value of the previous 30 days. 4: indicates that the current value is compared with the value 1 day earlier. 5: indicates that the current value is compared with the value 7 days earlier. 6: indicates that the current value is compared with the value 30 days earlier. 7: indicates the variance between the current value and the value 7 days earlier. 8: indicates the variance between the current value and the value 30 days earlier. 9: indicates that the current value is compared with a fixed value. 10: indicates that the current value is compared with the value 1, 7, or 30 days earlier. 11: indicates that the current value is compared with the value of the previous cycle. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -84714,6 +84720,8 @@ type UpdateQualityRuleRequest struct {
 	// true
 	OpenSwitch *bool `json:"OpenSwitch,omitempty" xml:"OpenSwitch,omitempty"`
 	// The comparison operator, such as >, >=, =, ≠, <, or <=.
+	//
+	// >  If you set the Checker parameter to 9, you must configure the Operator parameter.
 	//
 	// example:
 	//
@@ -99449,7 +99457,7 @@ func (client *Client) GetQualityRule(request *GetQualityRuleRequest) (_result *G
 
 // Summary:
 //
-// Queries the details of a custom alert rule.
+// Queries the information about a custom alert rule.
 //
 // Description:
 //
@@ -99497,7 +99505,7 @@ func (client *Client) GetRemindWithOptions(request *GetRemindRequest, runtime *u
 
 // Summary:
 //
-// Queries the details of a custom alert rule.
+// Queries the information about a custom alert rule.
 //
 // Description:
 //
@@ -104719,7 +104727,7 @@ func (client *Client) ListTableTheme(request *ListTableThemeRequest) (_result *L
 
 // Summary:
 //
-// 分页获取租户下面的数据源类型粒度的表名称
+// Obtains tables of different data source types within a tenant by page.
 //
 // @param request - ListTablesRequest
 //
@@ -104769,7 +104777,7 @@ func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime 
 
 // Summary:
 //
-// 分页获取租户下面的数据源类型粒度的表名称
+// Obtains tables of different data source types within a tenant by page.
 //
 // @param request - ListTablesRequest
 //
@@ -109468,7 +109476,7 @@ func (client *Client) UpdateMetaCollection(request *UpdateMetaCollectionRequest)
 
 // Summary:
 //
-// Updates the metadata information about a table.
+// Updates the metadata information about a table. Only MaxCompute tables are supported.
 //
 // @param request - UpdateMetaTableRequest
 //
@@ -109552,7 +109560,7 @@ func (client *Client) UpdateMetaTableWithOptions(request *UpdateMetaTableRequest
 
 // Summary:
 //
-// Updates the metadata information about a table.
+// Updates the metadata information about a table. Only MaxCompute tables are supported.
 //
 // @param request - UpdateMetaTableRequest
 //
