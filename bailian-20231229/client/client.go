@@ -7578,6 +7578,155 @@ func (s *UpdateAndPublishAgentResponse) SetBody(v *UpdateAndPublishAgentResponse
 	return s
 }
 
+type UpdateFileTagRequest struct {
+	// This parameter is required.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s UpdateFileTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileTagRequest) SetTags(v []*string) *UpdateFileTagRequest {
+	s.Tags = v
+	return s
+}
+
+type UpdateFileTagShrinkRequest struct {
+	// This parameter is required.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s UpdateFileTagShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileTagShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileTagShrinkRequest) SetTagsShrink(v string) *UpdateFileTagShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type UpdateFileTagResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdateFileTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Requests throttling triggered.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	//
+	// example:
+	//
+	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateFileTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileTagResponseBody) SetCode(v string) *UpdateFileTagResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateFileTagResponseBody) SetData(v *UpdateFileTagResponseBodyData) *UpdateFileTagResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateFileTagResponseBody) SetMessage(v string) *UpdateFileTagResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateFileTagResponseBody) SetRequestId(v string) *UpdateFileTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFileTagResponseBody) SetStatus(v string) *UpdateFileTagResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateFileTagResponseBody) SetSuccess(v bool) *UpdateFileTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateFileTagResponseBodyData struct {
+	// example:
+	//
+	// file_9a65732555b54d5ea10796ca5742ba22_xxxxxxxx
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+}
+
+func (s UpdateFileTagResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileTagResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileTagResponseBodyData) SetFileId(v string) *UpdateFileTagResponseBodyData {
+	s.FileId = &v
+	return s
+}
+
+type UpdateFileTagResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFileTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateFileTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileTagResponse) SetHeaders(v map[string]*string) *UpdateFileTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFileTagResponse) SetStatusCode(v int32) *UpdateFileTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFileTagResponse) SetBody(v *UpdateFileTagResponseBody) *UpdateFileTagResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMemoryRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
@@ -10483,6 +10632,76 @@ func (client *Client) UpdateAndPublishAgent(workspaceId *string, appCode *string
 	headers := make(map[string]*string)
 	_result = &UpdateAndPublishAgentResponse{}
 	_body, _err := client.UpdateAndPublishAgentWithOptions(workspaceId, appCode, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文档Tag
+//
+// @param tmpReq - UpdateFileTagRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFileTagResponse
+func (client *Client) UpdateFileTagWithOptions(WorkspaceId *string, FileId *string, tmpReq *UpdateFileTagRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFileTagResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateFileTagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFileTag"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/datacenter/file/" + tea.StringValue(openapiutil.GetEncodeParam(FileId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFileTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文档Tag
+//
+// @param request - UpdateFileTagRequest
+//
+// @return UpdateFileTagResponse
+func (client *Client) UpdateFileTag(WorkspaceId *string, FileId *string, request *UpdateFileTagRequest) (_result *UpdateFileTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFileTagResponse{}
+	_body, _err := client.UpdateFileTagWithOptions(WorkspaceId, FileId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
