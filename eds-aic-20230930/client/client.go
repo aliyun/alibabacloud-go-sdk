@@ -6231,8 +6231,9 @@ type RunCommandRequest struct {
 	// example:
 	//
 	// ls
-	CommandContent *string   `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	InstanceIds    []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	CommandContent  *string   `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	ContentEncoding *string   `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 60
@@ -6249,6 +6250,11 @@ func (s RunCommandRequest) GoString() string {
 
 func (s *RunCommandRequest) SetCommandContent(v string) *RunCommandRequest {
 	s.CommandContent = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetContentEncoding(v string) *RunCommandRequest {
+	s.ContentEncoding = &v
 	return s
 }
 
@@ -10083,6 +10089,10 @@ func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CommandContent)) {
 		query["CommandContent"] = request.CommandContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentEncoding)) {
+		query["ContentEncoding"] = request.ContentEncoding
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
