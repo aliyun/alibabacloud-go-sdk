@@ -11569,8 +11569,9 @@ type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struc
 	// example:
 	//
 	// 10.0.1.181
-	IntranetAddress         *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	IntranetAddressHcStatus *string `json:"IntranetAddressHcStatus,omitempty" xml:"IntranetAddressHcStatus,omitempty"`
+	IntranetAddress         *string   `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
+	IntranetAddressHcStatus *string   `json:"IntranetAddressHcStatus,omitempty" xml:"IntranetAddressHcStatus,omitempty"`
+	Ipv4LocalAddresses      []*string `json:"Ipv4LocalAddresses,omitempty" xml:"Ipv4LocalAddresses,omitempty" type:"Repeated"`
 	// An IPv6 address.
 	//
 	// This parameter takes effect only when **AddressIPVersion*	- is set to **DualStack**. The network type is determined by the value of **Ipv6AddressType**.
@@ -11578,8 +11579,9 @@ type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struc
 	// example:
 	//
 	// 2408:XXXX:39d:eb00::/56
-	Ipv6Address         *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	Ipv6AddressHcStatus *string `json:"Ipv6AddressHcStatus,omitempty" xml:"Ipv6AddressHcStatus,omitempty"`
+	Ipv6Address         *string   `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	Ipv6AddressHcStatus *string   `json:"Ipv6AddressHcStatus,omitempty" xml:"Ipv6AddressHcStatus,omitempty"`
+	Ipv6LocalAddresses  []*string `json:"Ipv6LocalAddresses,omitempty" xml:"Ipv6LocalAddresses,omitempty" type:"Repeated"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) String() string {
@@ -11615,6 +11617,11 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) 
 	return s
 }
 
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetIpv4LocalAddresses(v []*string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
+	s.Ipv4LocalAddresses = v
+	return s
+}
+
 func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetIpv6Address(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
 	s.Ipv6Address = &v
 	return s
@@ -11622,6 +11629,11 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) 
 
 func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetIpv6AddressHcStatus(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
 	s.Ipv6AddressHcStatus = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetIpv6LocalAddresses(v []*string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
+	s.Ipv6LocalAddresses = v
 	return s
 }
 
