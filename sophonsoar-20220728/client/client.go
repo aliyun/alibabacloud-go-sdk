@@ -5001,6 +5001,135 @@ func (s *DescribePopApiVersionListResponse) SetBody(v *DescribePopApiVersionList
 	return s
 }
 
+type DescribeProcessTaskCountRequest struct {
+	// This parameter is required.
+	EntityUuidList []*string `json:"EntityUuidList,omitempty" xml:"EntityUuidList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 104739******259
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// example:
+	//
+	// 0
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+}
+
+func (s DescribeProcessTaskCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProcessTaskCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProcessTaskCountRequest) SetEntityUuidList(v []*string) *DescribeProcessTaskCountRequest {
+	s.EntityUuidList = v
+	return s
+}
+
+func (s *DescribeProcessTaskCountRequest) SetLang(v string) *DescribeProcessTaskCountRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeProcessTaskCountRequest) SetRoleFor(v int64) *DescribeProcessTaskCountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeProcessTaskCountRequest) SetRoleType(v string) *DescribeProcessTaskCountRequest {
+	s.RoleType = &v
+	return s
+}
+
+type DescribeProcessTaskCountResponseBody struct {
+	Data []*DescribeProcessTaskCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// e866cce0-****-41de-817e-****8d5e2650
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeProcessTaskCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProcessTaskCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProcessTaskCountResponseBody) SetData(v []*DescribeProcessTaskCountResponseBodyData) *DescribeProcessTaskCountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeProcessTaskCountResponseBody) SetRequestId(v string) *DescribeProcessTaskCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeProcessTaskCountResponseBodyData struct {
+	// example:
+	//
+	// 67
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// a680c9ae-****-4c39-****-0302****fc8e
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+}
+
+func (s DescribeProcessTaskCountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProcessTaskCountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProcessTaskCountResponseBodyData) SetCount(v int64) *DescribeProcessTaskCountResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeProcessTaskCountResponseBodyData) SetEntityUuid(v string) *DescribeProcessTaskCountResponseBodyData {
+	s.EntityUuid = &v
+	return s
+}
+
+type DescribeProcessTaskCountResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProcessTaskCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeProcessTaskCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProcessTaskCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProcessTaskCountResponse) SetHeaders(v map[string]*string) *DescribeProcessTaskCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProcessTaskCountResponse) SetStatusCode(v int32) *DescribeProcessTaskCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProcessTaskCountResponse) SetBody(v *DescribeProcessTaskCountResponseBody) *DescribeProcessTaskCountResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeProcessTasksRequest struct {
 	// The sort order. Valid values:
 	//
@@ -10606,6 +10735,62 @@ func (client *Client) DescribePopApiVersionList(request *DescribePopApiVersionLi
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePopApiVersionListResponse{}
 	_body, _err := client.DescribePopApiVersionListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据实体uuid查询关联的处置任务数
+//
+// @param request - DescribeProcessTaskCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProcessTaskCountResponse
+func (client *Client) DescribeProcessTaskCountWithOptions(request *DescribeProcessTaskCountRequest, runtime *util.RuntimeOptions) (_result *DescribeProcessTaskCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProcessTaskCount"),
+		Version:     tea.String("2022-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProcessTaskCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据实体uuid查询关联的处置任务数
+//
+// @param request - DescribeProcessTaskCountRequest
+//
+// @return DescribeProcessTaskCountResponse
+func (client *Client) DescribeProcessTaskCount(request *DescribeProcessTaskCountRequest) (_result *DescribeProcessTaskCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProcessTaskCountResponse{}
+	_body, _err := client.DescribeProcessTaskCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
