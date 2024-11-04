@@ -344,6 +344,215 @@ func (s *AddSecretBlacklistResponse) SetBody(v *AddSecretBlacklistResponseBody) 
 	return s
 }
 
+type BindAXBCallRequest struct {
+	// authId绑定关系BX唯一id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12353
+	AuthId *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	// 绑定关系过期失效时间： 取值必须大于0； 单位：秒，ct_time + expiration = 自动解绑时间
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7200
+	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 客户A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13*******43
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 客户自定义参数回调带回
+	//
+	// example:
+	//
+	// 000
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s BindAXBCallRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAXBCallRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAXBCallRequest) SetAuthId(v string) *BindAXBCallRequest {
+	s.AuthId = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetCallerParentId(v int64) *BindAXBCallRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetCustomerPoolKey(v string) *BindAXBCallRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetExpiration(v int64) *BindAXBCallRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetOwnerId(v int64) *BindAXBCallRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetReqId(v string) *BindAXBCallRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetResourceOwnerAccount(v string) *BindAXBCallRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetResourceOwnerId(v int64) *BindAXBCallRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetTelA(v string) *BindAXBCallRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *BindAXBCallRequest) SetUserData(v string) *BindAXBCallRequest {
+	s.UserData = &v
+	return s
+}
+
+type BindAXBCallResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 绑定关系ID
+	//
+	// example:
+	//
+	// 476567566
+	BindId *string `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BindAXBCallResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAXBCallResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindAXBCallResponseBody) SetAccessDeniedDetail(v string) *BindAXBCallResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *BindAXBCallResponseBody) SetBindId(v string) *BindAXBCallResponseBody {
+	s.BindId = &v
+	return s
+}
+
+func (s *BindAXBCallResponseBody) SetCode(v string) *BindAXBCallResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindAXBCallResponseBody) SetMessage(v string) *BindAXBCallResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindAXBCallResponseBody) SetSuccess(v bool) *BindAXBCallResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BindAXBCallResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAXBCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindAXBCallResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAXBCallResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindAXBCallResponse) SetHeaders(v map[string]*string) *BindAXBCallResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindAXBCallResponse) SetStatusCode(v int32) *BindAXBCallResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindAXBCallResponse) SetBody(v *BindAXBCallResponseBody) *BindAXBCallResponse {
+	s.Body = v
+	return s
+}
+
 type BindAxbRequest struct {
 	// The ID of the ASR model. On the [Automatic Speech Recognition (ASR) Model Management](https://dyplsnext.console.aliyun.com/?spm=5176.12818093.categories-n-products.ddypls.22e616d0a0tEFC#/asr) page, you can view the ID of the ASR model.
 	//
@@ -1178,6 +1387,7 @@ type BindAxnRequest struct {
 	//
 	// 2021-09-05 12:00:00
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	Extend     *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// Specifies whether to record all calls made by the bound phone numbers. Valid values:
 	//
 	// 	- **true**
@@ -1299,6 +1509,11 @@ func (s *BindAxnRequest) SetExpectCity(v string) *BindAxnRequest {
 
 func (s *BindAxnRequest) SetExpiration(v string) *BindAxnRequest {
 	s.Expiration = &v
+	return s
+}
+
+func (s *BindAxnRequest) SetExtend(v string) *BindAxnRequest {
+	s.Extend = &v
 	return s
 }
 
@@ -2252,6 +2467,213 @@ func (s *BindBatchAxgResponse) SetBody(v *BindBatchAxgResponseBody) *BindBatchAx
 	return s
 }
 
+type BindXBRequest struct {
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 员工真实号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18*******22
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17*******22
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 客户自定义参数回调带回
+	//
+	// example:
+	//
+	// 000
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s BindXBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindXBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindXBRequest) SetCallerParentId(v int64) *BindXBRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *BindXBRequest) SetCustomerPoolKey(v string) *BindXBRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *BindXBRequest) SetOwnerId(v int64) *BindXBRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindXBRequest) SetReqId(v string) *BindXBRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *BindXBRequest) SetResourceOwnerAccount(v string) *BindXBRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindXBRequest) SetResourceOwnerId(v int64) *BindXBRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *BindXBRequest) SetTelB(v string) *BindXBRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *BindXBRequest) SetTelX(v string) *BindXBRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *BindXBRequest) SetUserData(v string) *BindXBRequest {
+	s.UserData = &v
+	return s
+}
+
+type BindXBResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 工作号关系绑定的唯一标识
+	//
+	// example:
+	//
+	// 435****456
+	AuthId *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 工作号号码
+	//
+	// example:
+	//
+	// 18*******22
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s BindXBResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindXBResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindXBResponseBody) SetAccessDeniedDetail(v string) *BindXBResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *BindXBResponseBody) SetAuthId(v string) *BindXBResponseBody {
+	s.AuthId = &v
+	return s
+}
+
+func (s *BindXBResponseBody) SetCode(v string) *BindXBResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindXBResponseBody) SetMessage(v string) *BindXBResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindXBResponseBody) SetSuccess(v bool) *BindXBResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *BindXBResponseBody) SetTelX(v string) *BindXBResponseBody {
+	s.TelX = &v
+	return s
+}
+
+type BindXBResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindXBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindXBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindXBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindXBResponse) SetHeaders(v map[string]*string) *BindXBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindXBResponse) SetStatusCode(v int32) *BindXBResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindXBResponse) SetBody(v *BindXBResponseBody) *BindXBResponse {
+	s.Body = v
+	return s
+}
+
 type BuySecretNoRequest struct {
 	// Specifies the home location of the phone number.
 	//
@@ -2654,6 +3076,414 @@ func (s *CancelPickUpWaybillResponse) SetStatusCode(v int32) *CancelPickUpWaybil
 }
 
 func (s *CancelPickUpWaybillResponse) SetBody(v *CancelPickUpWaybillResponseBody) *CancelPickUpWaybillResponse {
+	s.Body = v
+	return s
+}
+
+type ConfigXRequest struct {
+	// 开/关呼叫能力状态‘0’：禁用‘1’：开启
+	//
+	// example:
+	//
+	// 0
+	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
+	// 客户uid
+	//
+	// example:
+	//
+	// 1898871967585852
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	// 是否透传来显为真实主叫：00-非透传：互相拨打时都显示工作号;10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号;默认为 00
+	//
+	// example:
+	//
+	// 0
+	GNFlag  *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 顺振控制参数
+	SequenceCalls []*ConfigXRequestSequenceCalls `json:"SequenceCalls,omitempty" xml:"SequenceCalls,omitempty" type:"Repeated"`
+	// 顺振模式：0-不顺振（默认）1-有条件顺振，先接续calledNo指定被叫，如果该被叫未能接通，再顺振sequenceCalls号码列表2-无条件顺振，不接续calledNo指定被叫，直接顺振sequenceCalls号码列表
+	//
+	// example:
+	//
+	// 0
+	SequenceMode *string `json:"SequenceMode,omitempty" xml:"SequenceMode,omitempty"`
+	// 开/关短信功能状态‘0’：禁用；‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
+	// 是否透传来显为真实用户0：不透传; 1：透传默认：0不透传
+	//
+	// example:
+	//
+	// 0
+	SmsSignMode *string `json:"SmsSignMode,omitempty" xml:"SmsSignMode,omitempty"`
+	// X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17*******22
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s ConfigXRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigXRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigXRequest) SetCallAbility(v string) *ConfigXRequest {
+	s.CallAbility = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetCallerParentId(v int64) *ConfigXRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetCustomerPoolKey(v string) *ConfigXRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetGNFlag(v string) *ConfigXRequest {
+	s.GNFlag = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetOwnerId(v int64) *ConfigXRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetReqId(v string) *ConfigXRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetResourceOwnerAccount(v string) *ConfigXRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetResourceOwnerId(v int64) *ConfigXRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetSequenceCalls(v []*ConfigXRequestSequenceCalls) *ConfigXRequest {
+	s.SequenceCalls = v
+	return s
+}
+
+func (s *ConfigXRequest) SetSequenceMode(v string) *ConfigXRequest {
+	s.SequenceMode = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetSmsAbility(v string) *ConfigXRequest {
+	s.SmsAbility = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetSmsSignMode(v string) *ConfigXRequest {
+	s.SmsSignMode = &v
+	return s
+}
+
+func (s *ConfigXRequest) SetTelX(v string) *ConfigXRequest {
+	s.TelX = &v
+	return s
+}
+
+type ConfigXRequestSequenceCalls struct {
+	// 顺振提示音放音编号，格式如callNoPlayCode
+	//
+	// example:
+	//
+	// 01
+	SequenceCallNoPlayCode *string `json:"SequenceCallNoPlayCode,omitempty" xml:"SequenceCallNoPlayCode,omitempty"`
+	// 顺振被叫号码
+	//
+	// example:
+	//
+	// 18*******33
+	SequenceCalledNo *string `json:"SequenceCalledNo,omitempty" xml:"SequenceCalledNo,omitempty"`
+	// 接通后主被叫放音编号，格式如calledPlayCode
+	//
+	// example:
+	//
+	// 02
+	SequenceCalledPlayCode *string `json:"SequenceCalledPlayCode,omitempty" xml:"SequenceCalledPlayCode,omitempty"`
+}
+
+func (s ConfigXRequestSequenceCalls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigXRequestSequenceCalls) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigXRequestSequenceCalls) SetSequenceCallNoPlayCode(v string) *ConfigXRequestSequenceCalls {
+	s.SequenceCallNoPlayCode = &v
+	return s
+}
+
+func (s *ConfigXRequestSequenceCalls) SetSequenceCalledNo(v string) *ConfigXRequestSequenceCalls {
+	s.SequenceCalledNo = &v
+	return s
+}
+
+func (s *ConfigXRequestSequenceCalls) SetSequenceCalledPlayCode(v string) *ConfigXRequestSequenceCalls {
+	s.SequenceCalledPlayCode = &v
+	return s
+}
+
+type ConfigXShrinkRequest struct {
+	// 开/关呼叫能力状态‘0’：禁用‘1’：开启
+	//
+	// example:
+	//
+	// 0
+	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
+	// 客户uid
+	//
+	// example:
+	//
+	// 1898871967585852
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	// 是否透传来显为真实主叫：00-非透传：互相拨打时都显示工作号;10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号;默认为 00
+	//
+	// example:
+	//
+	// 0
+	GNFlag  *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 顺振控制参数
+	SequenceCallsShrink *string `json:"SequenceCalls,omitempty" xml:"SequenceCalls,omitempty"`
+	// 顺振模式：0-不顺振（默认）1-有条件顺振，先接续calledNo指定被叫，如果该被叫未能接通，再顺振sequenceCalls号码列表2-无条件顺振，不接续calledNo指定被叫，直接顺振sequenceCalls号码列表
+	//
+	// example:
+	//
+	// 0
+	SequenceMode *string `json:"SequenceMode,omitempty" xml:"SequenceMode,omitempty"`
+	// 开/关短信功能状态‘0’：禁用；‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
+	// 是否透传来显为真实用户0：不透传; 1：透传默认：0不透传
+	//
+	// example:
+	//
+	// 0
+	SmsSignMode *string `json:"SmsSignMode,omitempty" xml:"SmsSignMode,omitempty"`
+	// X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17*******22
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s ConfigXShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigXShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigXShrinkRequest) SetCallAbility(v string) *ConfigXShrinkRequest {
+	s.CallAbility = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetCallerParentId(v int64) *ConfigXShrinkRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetCustomerPoolKey(v string) *ConfigXShrinkRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetGNFlag(v string) *ConfigXShrinkRequest {
+	s.GNFlag = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetOwnerId(v int64) *ConfigXShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetReqId(v string) *ConfigXShrinkRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetResourceOwnerAccount(v string) *ConfigXShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetResourceOwnerId(v int64) *ConfigXShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetSequenceCallsShrink(v string) *ConfigXShrinkRequest {
+	s.SequenceCallsShrink = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetSequenceMode(v string) *ConfigXShrinkRequest {
+	s.SequenceMode = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetSmsAbility(v string) *ConfigXShrinkRequest {
+	s.SmsAbility = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetSmsSignMode(v string) *ConfigXShrinkRequest {
+	s.SmsSignMode = &v
+	return s
+}
+
+func (s *ConfigXShrinkRequest) SetTelX(v string) *ConfigXShrinkRequest {
+	s.TelX = &v
+	return s
+}
+
+type ConfigXResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConfigXResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigXResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigXResponseBody) SetAccessDeniedDetail(v string) *ConfigXResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ConfigXResponseBody) SetCode(v string) *ConfigXResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ConfigXResponseBody) SetMessage(v string) *ConfigXResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ConfigXResponseBody) SetSuccess(v bool) *ConfigXResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConfigXResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigXResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ConfigXResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigXResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigXResponse) SetHeaders(v map[string]*string) *ConfigXResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfigXResponse) SetStatusCode(v int32) *ConfigXResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfigXResponse) SetBody(v *ConfigXResponseBody) *ConfigXResponse {
 	s.Body = v
 	return s
 }
@@ -4280,6 +5110,191 @@ func (s *CreatePickUpWaybillPreQueryResponse) SetBody(v *CreatePickUpWaybillPreQ
 	return s
 }
 
+type CreateSmsSignRequest struct {
+	// 收信人号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 178****3614
+	CalledNo *string `json:"CalledNo,omitempty" xml:"CalledNo,omitempty"`
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 发信人号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 150****6539
+	CallingNo *string `json:"CallingNo,omitempty" xml:"CallingNo,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateSmsSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsSignRequest) SetCalledNo(v string) *CreateSmsSignRequest {
+	s.CalledNo = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetCallerParentId(v int64) *CreateSmsSignRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetCallingNo(v string) *CreateSmsSignRequest {
+	s.CallingNo = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetCustomerPoolKey(v string) *CreateSmsSignRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetOwnerId(v int64) *CreateSmsSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetReqId(v string) *CreateSmsSignRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetResourceOwnerAccount(v string) *CreateSmsSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetResourceOwnerId(v int64) *CreateSmsSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateSmsSignResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 短信接收者号码签名串(加到短信内容中供解析真实被叫号码)
+	//
+	// example:
+	//
+	// sign*****466
+	CalledNoSign *string `json:"CalledNoSign,omitempty" xml:"CalledNoSign,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSmsSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsSignResponseBody) SetAccessDeniedDetail(v string) *CreateSmsSignResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateSmsSignResponseBody) SetCalledNoSign(v string) *CreateSmsSignResponseBody {
+	s.CalledNoSign = &v
+	return s
+}
+
+func (s *CreateSmsSignResponseBody) SetCode(v string) *CreateSmsSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSmsSignResponseBody) SetMessage(v string) *CreateSmsSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSmsSignResponseBody) SetSuccess(v bool) *CreateSmsSignResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSmsSignResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSmsSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsSignResponse) SetHeaders(v map[string]*string) *CreateSmsSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSmsSignResponse) SetStatusCode(v int32) *CreateSmsSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSmsSignResponse) SetBody(v *CreateSmsSignResponseBody) *CreateSmsSignResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAxgGroupRequest struct {
 	// This parameter is required.
 	//
@@ -5086,6 +6101,986 @@ func (s *GetTotalPublicUrlResponse) SetStatusCode(v int32) *GetTotalPublicUrlRes
 }
 
 func (s *GetTotalPublicUrlResponse) SetBody(v *GetTotalPublicUrlResponseBody) *GetTotalPublicUrlResponse {
+	s.Body = v
+	return s
+}
+
+type GetXConfigRequest struct {
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17*******22
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s GetXConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetXConfigRequest) SetCallerParentId(v int64) *GetXConfigRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *GetXConfigRequest) SetCustomerPoolKey(v string) *GetXConfigRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *GetXConfigRequest) SetOwnerId(v int64) *GetXConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetXConfigRequest) SetReqId(v string) *GetXConfigRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *GetXConfigRequest) SetResourceOwnerAccount(v string) *GetXConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetXConfigRequest) SetResourceOwnerId(v int64) *GetXConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetXConfigRequest) SetTelX(v string) *GetXConfigRequest {
+	s.TelX = &v
+	return s
+}
+
+type GetXConfigResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+	//
+	// example:
+	//
+	// 10
+	GNFlag *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 顺振控制参数
+	SequenceCalls []*GetXConfigResponseBodySequenceCalls `json:"SequenceCalls,omitempty" xml:"SequenceCalls,omitempty" type:"Repeated"`
+	// 顺振模式： 0-不顺振（默认） 1-有条件顺振，先接续calledNo指定被叫，如果该被叫未能接通，再顺振sequenceCalls号码列表 2-无条件顺振，不接续calledNo指定被叫，直接顺振sequenceCalls号码列表
+	//
+	// example:
+	//
+	// 0
+	SequenceMode *string `json:"SequenceMode,omitempty" xml:"SequenceMode,omitempty"`
+	// 开/关短信功能状态： ‘0’：禁用；‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
+	// 是否透传来显为真实用户 0：不透传; 1：透传 默认：0不透传
+	//
+	// example:
+	//
+	// 0
+	SmsSignMode *string `json:"SmsSignMode,omitempty" xml:"SmsSignMode,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// X号码
+	//
+	// example:
+	//
+	// 17*******22
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s GetXConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetXConfigResponseBody) SetAccessDeniedDetail(v string) *GetXConfigResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetCallAbility(v string) *GetXConfigResponseBody {
+	s.CallAbility = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetCode(v string) *GetXConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetGNFlag(v string) *GetXConfigResponseBody {
+	s.GNFlag = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetMessage(v string) *GetXConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetSequenceCalls(v []*GetXConfigResponseBodySequenceCalls) *GetXConfigResponseBody {
+	s.SequenceCalls = v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetSequenceMode(v string) *GetXConfigResponseBody {
+	s.SequenceMode = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetSmsAbility(v string) *GetXConfigResponseBody {
+	s.SmsAbility = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetSmsSignMode(v string) *GetXConfigResponseBody {
+	s.SmsSignMode = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetSuccess(v bool) *GetXConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetXConfigResponseBody) SetTelX(v string) *GetXConfigResponseBody {
+	s.TelX = &v
+	return s
+}
+
+type GetXConfigResponseBodySequenceCalls struct {
+	// 顺振提示音放音编号，格式如callNoPlayCode
+	//
+	// example:
+	//
+	// 01
+	SequenceCallNoPlayCode *string `json:"SequenceCallNoPlayCode,omitempty" xml:"SequenceCallNoPlayCode,omitempty"`
+	// 顺振被叫号码
+	//
+	// example:
+	//
+	// 18*******33
+	SequenceCalledNo *string `json:"SequenceCalledNo,omitempty" xml:"SequenceCalledNo,omitempty"`
+	// 接通后主被叫放音编号，格式如calledPlayCode
+	//
+	// example:
+	//
+	// 02
+	SequenceCalledPlayCode *string `json:"SequenceCalledPlayCode,omitempty" xml:"SequenceCalledPlayCode,omitempty"`
+}
+
+func (s GetXConfigResponseBodySequenceCalls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXConfigResponseBodySequenceCalls) GoString() string {
+	return s.String()
+}
+
+func (s *GetXConfigResponseBodySequenceCalls) SetSequenceCallNoPlayCode(v string) *GetXConfigResponseBodySequenceCalls {
+	s.SequenceCallNoPlayCode = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodySequenceCalls) SetSequenceCalledNo(v string) *GetXConfigResponseBodySequenceCalls {
+	s.SequenceCalledNo = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodySequenceCalls) SetSequenceCalledPlayCode(v string) *GetXConfigResponseBodySequenceCalls {
+	s.SequenceCalledPlayCode = &v
+	return s
+}
+
+type GetXConfigResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetXConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetXConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetXConfigResponse) SetHeaders(v map[string]*string) *GetXConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetXConfigResponse) SetStatusCode(v int32) *GetXConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetXConfigResponse) SetBody(v *GetXConfigResponseBody) *GetXConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetXDefaultConfigRequest struct {
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17*******22
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s GetXDefaultConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXDefaultConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetXDefaultConfigRequest) SetCallerParentId(v int64) *GetXDefaultConfigRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *GetXDefaultConfigRequest) SetCustomerPoolKey(v string) *GetXDefaultConfigRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *GetXDefaultConfigRequest) SetOwnerId(v int64) *GetXDefaultConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetXDefaultConfigRequest) SetReqId(v string) *GetXDefaultConfigRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *GetXDefaultConfigRequest) SetResourceOwnerAccount(v string) *GetXDefaultConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetXDefaultConfigRequest) SetResourceOwnerId(v int64) *GetXDefaultConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetXDefaultConfigRequest) SetTelX(v string) *GetXDefaultConfigRequest {
+	s.TelX = &v
+	return s
+}
+
+type GetXDefaultConfigResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+	//
+	// example:
+	//
+	// 00
+	GNFlag *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 企业名片规则控制参数
+	ReachJson []*GetXDefaultConfigResponseBodyReachJson `json:"ReachJson,omitempty" xml:"ReachJson,omitempty" type:"Repeated"`
+	// 顺振控制参数
+	SequenceCalls []*GetXDefaultConfigResponseBodySequenceCalls `json:"SequenceCalls,omitempty" xml:"SequenceCalls,omitempty" type:"Repeated"`
+	// 顺振结束时间 格式：HH:mm:ss 18:00:00
+	//
+	// example:
+	//
+	// 09:01:00
+	SequenceEndTime *string `json:"SequenceEndTime,omitempty" xml:"SequenceEndTime,omitempty"`
+	// 顺振开启时间 格式：HH:mm:ss 09:00:00
+	//
+	// example:
+	//
+	// 09:00:00
+	SequenceStartTime *string `json:"SequenceStartTime,omitempty" xml:"SequenceStartTime,omitempty"`
+	// 开/关短信功能状态： ‘0’：禁用； ‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
+	// 是否透传来显为真实用户 0：不透传; 1：透传 默认：0不透传
+	//
+	// example:
+	//
+	// 0
+	SmsSignMode *string `json:"SmsSignMode,omitempty" xml:"SmsSignMode,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetXDefaultConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXDefaultConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetXDefaultConfigResponseBody) SetAccessDeniedDetail(v string) *GetXDefaultConfigResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetCallAbility(v string) *GetXDefaultConfigResponseBody {
+	s.CallAbility = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetCode(v string) *GetXDefaultConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetGNFlag(v string) *GetXDefaultConfigResponseBody {
+	s.GNFlag = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetMessage(v string) *GetXDefaultConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetReachJson(v []*GetXDefaultConfigResponseBodyReachJson) *GetXDefaultConfigResponseBody {
+	s.ReachJson = v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetSequenceCalls(v []*GetXDefaultConfigResponseBodySequenceCalls) *GetXDefaultConfigResponseBody {
+	s.SequenceCalls = v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetSequenceEndTime(v string) *GetXDefaultConfigResponseBody {
+	s.SequenceEndTime = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetSequenceStartTime(v string) *GetXDefaultConfigResponseBody {
+	s.SequenceStartTime = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetSmsAbility(v string) *GetXDefaultConfigResponseBody {
+	s.SmsAbility = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetSmsSignMode(v string) *GetXDefaultConfigResponseBody {
+	s.SmsSignMode = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBody) SetSuccess(v bool) *GetXDefaultConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetXDefaultConfigResponseBodyReachJson struct {
+	// 呼叫方向 1:员工B呼叫客户A 2:客户A呼叫员工B
+	//
+	// example:
+	//
+	// 1
+	CallDir *string `json:"CallDir,omitempty" xml:"CallDir,omitempty"`
+	// 通话状态 1:通话振铃 2:接通前 3:接通后 4:通话结束 5:已接通6:未接通
+	//
+	// example:
+	//
+	// 3
+	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// 接收方向 1:主叫 2:被叫
+	//
+	// example:
+	//
+	// 1
+	ReceiveDir *string `json:"ReceiveDir,omitempty" xml:"ReceiveDir,omitempty"`
+	// 规则ID
+	//
+	// example:
+	//
+	// 345
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// 规则名称
+	//
+	// example:
+	//
+	// 企业名片-短信规则
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// 规则类型： 1：企业名片-短信 2：企业名片-闪信 3：企业名片-视频 4：企业名片-音频
+	//
+	// example:
+	//
+	// 1
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// 模板ID
+	//
+	// example:
+	//
+	// 12345
+	TempId *string `json:"TempId,omitempty" xml:"TempId,omitempty"`
+}
+
+func (s GetXDefaultConfigResponseBodyReachJson) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXDefaultConfigResponseBodyReachJson) GoString() string {
+	return s.String()
+}
+
+func (s *GetXDefaultConfigResponseBodyReachJson) SetCallDir(v string) *GetXDefaultConfigResponseBodyReachJson {
+	s.CallDir = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyReachJson) SetCallStatus(v string) *GetXDefaultConfigResponseBodyReachJson {
+	s.CallStatus = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyReachJson) SetReceiveDir(v string) *GetXDefaultConfigResponseBodyReachJson {
+	s.ReceiveDir = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyReachJson) SetRuleId(v string) *GetXDefaultConfigResponseBodyReachJson {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyReachJson) SetRuleName(v string) *GetXDefaultConfigResponseBodyReachJson {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyReachJson) SetRuleType(v string) *GetXDefaultConfigResponseBodyReachJson {
+	s.RuleType = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyReachJson) SetTempId(v string) *GetXDefaultConfigResponseBodyReachJson {
+	s.TempId = &v
+	return s
+}
+
+type GetXDefaultConfigResponseBodySequenceCalls struct {
+	// 顺振提示音放音编号，格式如callNoPlayCode
+	//
+	// example:
+	//
+	// 01
+	SequenceCallNoPlayCode *string `json:"SequenceCallNoPlayCode,omitempty" xml:"SequenceCallNoPlayCode,omitempty"`
+	// 顺振被叫号码
+	//
+	// example:
+	//
+	// 18*******33
+	SequenceCalledNo *string `json:"SequenceCalledNo,omitempty" xml:"SequenceCalledNo,omitempty"`
+	// 接通后主被叫放音编号，格式如calledPlayCode
+	//
+	// example:
+	//
+	// 02
+	SequenceCalledPlayCode *string `json:"SequenceCalledPlayCode,omitempty" xml:"SequenceCalledPlayCode,omitempty"`
+}
+
+func (s GetXDefaultConfigResponseBodySequenceCalls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXDefaultConfigResponseBodySequenceCalls) GoString() string {
+	return s.String()
+}
+
+func (s *GetXDefaultConfigResponseBodySequenceCalls) SetSequenceCallNoPlayCode(v string) *GetXDefaultConfigResponseBodySequenceCalls {
+	s.SequenceCallNoPlayCode = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodySequenceCalls) SetSequenceCalledNo(v string) *GetXDefaultConfigResponseBodySequenceCalls {
+	s.SequenceCalledNo = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodySequenceCalls) SetSequenceCalledPlayCode(v string) *GetXDefaultConfigResponseBodySequenceCalls {
+	s.SequenceCalledPlayCode = &v
+	return s
+}
+
+type GetXDefaultConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetXDefaultConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetXDefaultConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXDefaultConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetXDefaultConfigResponse) SetHeaders(v map[string]*string) *GetXDefaultConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetXDefaultConfigResponse) SetStatusCode(v int32) *GetXDefaultConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponse) SetBody(v *GetXDefaultConfigResponseBody) *GetXDefaultConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ListXTelephonesRequest struct {
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 页码从1开始
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// 每页条数
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListXTelephonesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListXTelephonesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListXTelephonesRequest) SetCallerParentId(v int64) *ListXTelephonesRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *ListXTelephonesRequest) SetCustomerPoolKey(v string) *ListXTelephonesRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *ListXTelephonesRequest) SetOwnerId(v int64) *ListXTelephonesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListXTelephonesRequest) SetPageNo(v int64) *ListXTelephonesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListXTelephonesRequest) SetPageSize(v int64) *ListXTelephonesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListXTelephonesRequest) SetReqId(v string) *ListXTelephonesRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *ListXTelephonesRequest) SetResourceOwnerAccount(v string) *ListXTelephonesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListXTelephonesRequest) SetResourceOwnerId(v int64) *ListXTelephonesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListXTelephonesResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 数据集合
+	Data []*ListXTelephonesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 页码
+	//
+	// example:
+	//
+	// 6
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// 每页条数
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 符合查询条件的总数量
+	//
+	// example:
+	//
+	// 60
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListXTelephonesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListXTelephonesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListXTelephonesResponseBody) SetAccessDeniedDetail(v string) *ListXTelephonesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBody) SetCode(v string) *ListXTelephonesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBody) SetData(v []*ListXTelephonesResponseBodyData) *ListXTelephonesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListXTelephonesResponseBody) SetMessage(v string) *ListXTelephonesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBody) SetPageNo(v int64) *ListXTelephonesResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBody) SetPageSize(v int64) *ListXTelephonesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBody) SetSuccess(v bool) *ListXTelephonesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBody) SetTotalCount(v int64) *ListXTelephonesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListXTelephonesResponseBodyData struct {
+	// 绑定失败原因
+	//
+	// example:
+	//
+	// 绑定失败用户身份证黑名单
+	AuthMsg *string `json:"AuthMsg,omitempty" xml:"AuthMsg,omitempty"`
+	// 绑定时间
+	//
+	// example:
+	//
+	// 2024-08-29 17:23:58
+	BindTime *string `json:"BindTime,omitempty" xml:"BindTime,omitempty"`
+	// 购买时间
+	//
+	// example:
+	//
+	// 2024-08-29 17:23:58
+	BuyTime *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
+	// 客户号码池key
+	//
+	// example:
+	//
+	// FC5***********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	// 号码池名称
+	//
+	// example:
+	//
+	// 测试号码池
+	CustomerPoolName *string `json:"CustomerPoolName,omitempty" xml:"CustomerPoolName,omitempty"`
+	// 释放时间
+	//
+	// example:
+	//
+	// 2024-08-29 17:23:58
+	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// 短信开通状态：0 未开通 1已开通
+	//
+	// example:
+	//
+	// 0
+	SmsStatus *string `json:"SmsStatus,omitempty" xml:"SmsStatus,omitempty"`
+	// X号码
+	//
+	// example:
+	//
+	// 17*******46
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// 号码状态：0 空闲中 1 调拨完成待购买 2购买完成待认证  3 实名认证中  4 实名认证成功  5 认证失败  6 解绑中 7 解绑失败 8已释放 99 超时释放
+	//
+	// example:
+	//
+	// 0
+	TelephoneStatus *string `json:"TelephoneStatus,omitempty" xml:"TelephoneStatus,omitempty"`
+	// 解绑时间
+	//
+	// example:
+	//
+	// 2024-08-29 17:23:58
+	UnbindTime *string `json:"UnbindTime,omitempty" xml:"UnbindTime,omitempty"`
+}
+
+func (s ListXTelephonesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListXTelephonesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListXTelephonesResponseBodyData) SetAuthMsg(v string) *ListXTelephonesResponseBodyData {
+	s.AuthMsg = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetBindTime(v string) *ListXTelephonesResponseBodyData {
+	s.BindTime = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetBuyTime(v string) *ListXTelephonesResponseBodyData {
+	s.BuyTime = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetCustomerPoolKey(v string) *ListXTelephonesResponseBodyData {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetCustomerPoolName(v string) *ListXTelephonesResponseBodyData {
+	s.CustomerPoolName = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetReleaseTime(v string) *ListXTelephonesResponseBodyData {
+	s.ReleaseTime = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetSmsStatus(v string) *ListXTelephonesResponseBodyData {
+	s.SmsStatus = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetTelephone(v string) *ListXTelephonesResponseBodyData {
+	s.Telephone = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetTelephoneStatus(v string) *ListXTelephonesResponseBodyData {
+	s.TelephoneStatus = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetUnbindTime(v string) *ListXTelephonesResponseBodyData {
+	s.UnbindTime = &v
+	return s
+}
+
+type ListXTelephonesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListXTelephonesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListXTelephonesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListXTelephonesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListXTelephonesResponse) SetHeaders(v map[string]*string) *ListXTelephonesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListXTelephonesResponse) SetStatusCode(v int32) *ListXTelephonesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListXTelephonesResponse) SetBody(v *ListXTelephonesResponseBody) *ListXTelephonesResponse {
 	s.Body = v
 	return s
 }
@@ -6429,6 +8424,178 @@ func (s *QuerySecretNoRemainResponse) SetBody(v *QuerySecretNoRemainResponseBody
 	return s
 }
 
+type QuerySoundRecordRequest struct {
+	// 本次呼叫唯一id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac445343254
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QuerySoundRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundRecordRequest) SetCallId(v string) *QuerySoundRecordRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *QuerySoundRecordRequest) SetCallerParentId(v int64) *QuerySoundRecordRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *QuerySoundRecordRequest) SetCustomerPoolKey(v string) *QuerySoundRecordRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *QuerySoundRecordRequest) SetOwnerId(v int64) *QuerySoundRecordRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySoundRecordRequest) SetReqId(v string) *QuerySoundRecordRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *QuerySoundRecordRequest) SetResourceOwnerAccount(v string) *QuerySoundRecordRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySoundRecordRequest) SetResourceOwnerId(v int64) *QuerySoundRecordRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QuerySoundRecordResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 通话录音url路径，最大长度1000，有效期1小时
+	//
+	// example:
+	//
+	// http://www.***.com/temepl/a.mp3
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySoundRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundRecordResponseBody) SetAccessDeniedDetail(v string) *QuerySoundRecordResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QuerySoundRecordResponseBody) SetCode(v string) *QuerySoundRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySoundRecordResponseBody) SetFileUrl(v string) *QuerySoundRecordResponseBody {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *QuerySoundRecordResponseBody) SetMessage(v string) *QuerySoundRecordResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySoundRecordResponseBody) SetSuccess(v bool) *QuerySoundRecordResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySoundRecordResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySoundRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySoundRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundRecordResponse) SetHeaders(v map[string]*string) *QuerySoundRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySoundRecordResponse) SetStatusCode(v int32) *QuerySoundRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySoundRecordResponse) SetBody(v *QuerySoundRecordResponseBody) *QuerySoundRecordResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySubsIdRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The private number in the binding, that is, phone number X.
@@ -7047,6 +9214,341 @@ func (s *ReleaseSecretNoResponse) SetStatusCode(v int32) *ReleaseSecretNoRespons
 }
 
 func (s *ReleaseSecretNoResponse) SetBody(v *ReleaseSecretNoResponseBody) *ReleaseSecretNoResponse {
+	s.Body = v
+	return s
+}
+
+type UnBindAXBRequest struct {
+	// bindId绑定关系AXB唯一id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4534543
+	BindId *string `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UnBindAXBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnBindAXBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnBindAXBRequest) SetBindId(v string) *UnBindAXBRequest {
+	s.BindId = &v
+	return s
+}
+
+func (s *UnBindAXBRequest) SetCallerParentId(v int64) *UnBindAXBRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *UnBindAXBRequest) SetCustomerPoolKey(v string) *UnBindAXBRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *UnBindAXBRequest) SetOwnerId(v int64) *UnBindAXBRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UnBindAXBRequest) SetReqId(v string) *UnBindAXBRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *UnBindAXBRequest) SetResourceOwnerAccount(v string) *UnBindAXBRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UnBindAXBRequest) SetResourceOwnerId(v int64) *UnBindAXBRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UnBindAXBResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnBindAXBResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnBindAXBResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnBindAXBResponseBody) SetAccessDeniedDetail(v string) *UnBindAXBResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UnBindAXBResponseBody) SetCode(v string) *UnBindAXBResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnBindAXBResponseBody) SetMessage(v string) *UnBindAXBResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UnBindAXBResponseBody) SetSuccess(v bool) *UnBindAXBResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnBindAXBResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnBindAXBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnBindAXBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnBindAXBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnBindAXBResponse) SetHeaders(v map[string]*string) *UnBindAXBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnBindAXBResponse) SetStatusCode(v int32) *UnBindAXBResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnBindAXBResponse) SetBody(v *UnBindAXBResponseBody) *UnBindAXBResponse {
+	s.Body = v
+	return s
+}
+
+type UnBindXBRequest struct {
+	// authId绑定关系BX唯一id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34*****46
+	AuthId *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	// 客户uid
+	//
+	// example:
+	//
+	// -
+	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
+	// 号码池key
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC5**********************a1a
+	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 564**********879
+	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17*******22
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s UnBindXBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnBindXBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnBindXBRequest) SetAuthId(v string) *UnBindXBRequest {
+	s.AuthId = &v
+	return s
+}
+
+func (s *UnBindXBRequest) SetCallerParentId(v int64) *UnBindXBRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *UnBindXBRequest) SetCustomerPoolKey(v string) *UnBindXBRequest {
+	s.CustomerPoolKey = &v
+	return s
+}
+
+func (s *UnBindXBRequest) SetOwnerId(v int64) *UnBindXBRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UnBindXBRequest) SetReqId(v string) *UnBindXBRequest {
+	s.ReqId = &v
+	return s
+}
+
+func (s *UnBindXBRequest) SetResourceOwnerAccount(v string) *UnBindXBRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UnBindXBRequest) SetResourceOwnerId(v int64) *UnBindXBRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UnBindXBRequest) SetTelX(v string) *UnBindXBRequest {
+	s.TelX = &v
+	return s
+}
+
+type UnBindXBResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnBindXBResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnBindXBResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnBindXBResponseBody) SetAccessDeniedDetail(v string) *UnBindXBResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UnBindXBResponseBody) SetCode(v string) *UnBindXBResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnBindXBResponseBody) SetMessage(v string) *UnBindXBResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UnBindXBResponseBody) SetSuccess(v bool) *UnBindXBResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnBindXBResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnBindXBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnBindXBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnBindXBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnBindXBResponse) SetHeaders(v map[string]*string) *UnBindXBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnBindXBResponse) SetStatusCode(v int32) *UnBindXBResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnBindXBResponse) SetBody(v *UnBindXBResponseBody) *UnBindXBResponse {
 	s.Body = v
 	return s
 }
@@ -7972,6 +10474,102 @@ func (client *Client) AddSecretBlacklist(request *AddSecretBlacklistRequest) (_r
 
 // Summary:
 //
+// 调用本接口向工作号平台请求为员工B的工作号X建立呼叫绑定（B，X，A），允许B通过X呼叫客户A
+//
+// @param request - BindAXBCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAXBCallResponse
+func (client *Client) BindAXBCallWithOptions(request *BindAXBCallRequest, runtime *util.RuntimeOptions) (_result *BindAXBCallResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthId)) {
+		query["AuthId"] = request.AuthId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindAXBCall"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindAXBCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用本接口向工作号平台请求为员工B的工作号X建立呼叫绑定（B，X，A），允许B通过X呼叫客户A
+//
+// @param request - BindAXBCallRequest
+//
+// @return BindAXBCallResponse
+func (client *Client) BindAXBCall(request *BindAXBCallRequest) (_result *BindAXBCallResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindAXBCallResponse{}
+	_body, _err := client.BindAXBCallWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds an AXB binding.
 //
 // Description:
@@ -8309,6 +10907,10 @@ func (client *Client) BindAxnWithOptions(request *BindAxnRequest, runtime *util.
 		query["Expiration"] = request.Expiration
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		query["Extend"] = request.Extend
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IsRecordingEnabled)) {
 		query["IsRecordingEnabled"] = request.IsRecordingEnabled
 	}
@@ -8626,6 +11228,98 @@ func (client *Client) BindBatchAxg(request *BindBatchAxgRequest) (_result *BindB
 
 // Summary:
 //
+// 平台指定工作号X 和员工号B建立关联，完成X 实名认证，绑定生效后，所有X 的呼叫都会转接到B
+//
+// @param request - BindXBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindXBResponse
+func (client *Client) BindXBWithOptions(request *BindXBRequest, runtime *util.RuntimeOptions) (_result *BindXBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelB)) {
+		query["TelB"] = request.TelB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindXB"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindXBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 平台指定工作号X 和员工号B建立关联，完成X 实名认证，绑定生效后，所有X 的呼叫都会转接到B
+//
+// @param request - BindXBRequest
+//
+// @return BindXBResponse
+func (client *Client) BindXB(request *BindXBRequest) (_result *BindXBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindXBResponse{}
+	_body, _err := client.BindXBWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Purchases a phone number.
 //
 // Description:
@@ -8813,6 +11507,120 @@ func (client *Client) CancelPickUpWaybill(request *CancelPickUpWaybillRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelPickUpWaybillResponse{}
 	_body, _err := client.CancelPickUpWaybillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置X号码，单独对工作号的话音呼叫、企业名片等通信功能进行配置操作
+//
+// @param tmpReq - ConfigXRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigXResponse
+func (client *Client) ConfigXWithOptions(tmpReq *ConfigXRequest, runtime *util.RuntimeOptions) (_result *ConfigXResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ConfigXShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SequenceCalls)) {
+		request.SequenceCallsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SequenceCalls, tea.String("SequenceCalls"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallAbility)) {
+		query["CallAbility"] = request.CallAbility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GNFlag)) {
+		query["GNFlag"] = request.GNFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceCallsShrink)) {
+		query["SequenceCalls"] = request.SequenceCallsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceMode)) {
+		query["SequenceMode"] = request.SequenceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsAbility)) {
+		query["SmsAbility"] = request.SmsAbility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsSignMode)) {
+		query["SmsSignMode"] = request.SmsSignMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigX"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfigXResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置X号码，单独对工作号的话音呼叫、企业名片等通信功能进行配置操作
+//
+// @param request - ConfigXRequest
+//
+// @return ConfigXResponse
+func (client *Client) ConfigX(request *ConfigXRequest) (_result *ConfigXResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfigXResponse{}
+	_body, _err := client.ConfigXWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9164,6 +11972,94 @@ func (client *Client) CreatePickUpWaybillPreQuery(request *CreatePickUpWaybillPr
 	return _result, _err
 }
 
+// Summary:
+//
+// B向A 发短信，客户端获取“短信标签”，尾部添加“标签”。通过“标签”解析被叫A，发短信到A。
+//
+// @param request - CreateSmsSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSmsSignResponse
+func (client *Client) CreateSmsSignWithOptions(request *CreateSmsSignRequest, runtime *util.RuntimeOptions) (_result *CreateSmsSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalledNo)) {
+		query["CalledNo"] = request.CalledNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNo)) {
+		query["CallingNo"] = request.CallingNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSmsSign"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSmsSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// B向A 发短信，客户端获取“短信标签”，尾部添加“标签”。通过“标签”解析被叫A，发短信到A。
+//
+// @param request - CreateSmsSignRequest
+//
+// @return CreateSmsSignResponse
+func (client *Client) CreateSmsSign(request *CreateSmsSignRequest) (_result *CreateSmsSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSmsSignResponse{}
+	_body, _err := client.CreateSmsSignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteAxgGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9493,6 +12389,262 @@ func (client *Client) GetTotalPublicUrl(request *GetTotalPublicUrlRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTotalPublicUrlResponse{}
 	_body, _err := client.GetTotalPublicUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取X号码配置信息
+//
+// @param request - GetXConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetXConfigResponse
+func (client *Client) GetXConfigWithOptions(request *GetXConfigRequest, runtime *util.RuntimeOptions) (_result *GetXConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetXConfig"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetXConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取X号码配置信息
+//
+// @param request - GetXConfigRequest
+//
+// @return GetXConfigResponse
+func (client *Client) GetXConfig(request *GetXConfigRequest) (_result *GetXConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetXConfigResponse{}
+	_body, _err := client.GetXConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取X号码默认配置信息
+//
+// @param request - GetXDefaultConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetXDefaultConfigResponse
+func (client *Client) GetXDefaultConfigWithOptions(request *GetXDefaultConfigRequest, runtime *util.RuntimeOptions) (_result *GetXDefaultConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetXDefaultConfig"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetXDefaultConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取X号码默认配置信息
+//
+// @param request - GetXDefaultConfigRequest
+//
+// @return GetXDefaultConfigResponse
+func (client *Client) GetXDefaultConfig(request *GetXDefaultConfigRequest) (_result *GetXDefaultConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetXDefaultConfigResponse{}
+	_body, _err := client.GetXDefaultConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询客户名下X号码列表
+//
+// @param request - ListXTelephonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListXTelephonesResponse
+func (client *Client) ListXTelephonesWithOptions(request *ListXTelephonesRequest, runtime *util.RuntimeOptions) (_result *ListXTelephonesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListXTelephones"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListXTelephonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询客户名下X号码列表
+//
+// @param request - ListXTelephonesRequest
+//
+// @return ListXTelephonesResponse
+func (client *Client) ListXTelephones(request *ListXTelephonesRequest) (_result *ListXTelephonesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListXTelephonesResponse{}
+	_body, _err := client.ListXTelephonesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10186,6 +13338,90 @@ func (client *Client) QuerySecretNoRemain(request *QuerySecretNoRemainRequest) (
 
 // Summary:
 //
+// 查询通话录音链接
+//
+// @param request - QuerySoundRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySoundRecordResponse
+func (client *Client) QuerySoundRecordWithOptions(request *QuerySoundRecordRequest, runtime *util.RuntimeOptions) (_result *QuerySoundRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySoundRecord"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySoundRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询通话录音链接
+//
+// @param request - QuerySoundRecordRequest
+//
+// @return QuerySoundRecordResponse
+func (client *Client) QuerySoundRecord(request *QuerySoundRecordRequest) (_result *QuerySoundRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySoundRecordResponse{}
+	_body, _err := client.QuerySoundRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries binding IDs.
 //
 // Description:
@@ -10453,6 +13689,178 @@ func (client *Client) ReleaseSecretNo(request *ReleaseSecretNoRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseSecretNoResponse{}
 	_body, _err := client.ReleaseSecretNoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解除指定的呼叫绑定关系（A，X，B），解决呼叫绑定关系后，员工B不能通过工作号X呼叫到客户A。
+//
+// @param request - UnBindAXBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnBindAXBResponse
+func (client *Client) UnBindAXBWithOptions(request *UnBindAXBRequest, runtime *util.RuntimeOptions) (_result *UnBindAXBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BindId)) {
+		query["BindId"] = request.BindId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnBindAXB"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnBindAXBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解除指定的呼叫绑定关系（A，X，B），解决呼叫绑定关系后，员工B不能通过工作号X呼叫到客户A。
+//
+// @param request - UnBindAXBRequest
+//
+// @return UnBindAXBResponse
+func (client *Client) UnBindAXB(request *UnBindAXBRequest) (_result *UnBindAXBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnBindAXBResponse{}
+	_body, _err := client.UnBindAXBWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用本接口可取消工作号X与员工号码B的绑定。绑定解除后，对X的呼叫都不会转接给B。
+//
+// @param request - UnBindXBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnBindXBResponse
+func (client *Client) UnBindXBWithOptions(request *UnBindXBRequest, runtime *util.RuntimeOptions) (_result *UnBindXBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthId)) {
+		query["AuthId"] = request.AuthId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerParentId)) {
+		query["CallerParentId"] = request.CallerParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerPoolKey)) {
+		query["CustomerPoolKey"] = request.CustomerPoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnBindXB"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnBindXBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用本接口可取消工作号X与员工号码B的绑定。绑定解除后，对X的呼叫都不会转接给B。
+//
+// @param request - UnBindXBRequest
+//
+// @return UnBindXBResponse
+func (client *Client) UnBindXB(request *UnBindXBRequest) (_result *UnBindXBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnBindXBResponse{}
+	_body, _err := client.UnBindXBWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
