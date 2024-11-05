@@ -157,10 +157,16 @@ func (s *AIAgentTemplateConfig) SetVoiceChat(v *AIAgentTemplateConfigVoiceChat) 
 type AIAgentTemplateConfigAvatarChat3D struct {
 	AsrMaxSilence        *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	AvatarId             *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	BailianAppParams     *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	EnablePushToTalk     *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
 	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown     *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
 	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	UseVoiceprint        *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout   *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout    *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
 	VoiceId              *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId         *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 	Volume               *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -182,6 +188,16 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetAvatarId(v string) *AIAgentTempla
 	return s
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetBailianAppParams(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.BailianAppParams = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetEnablePushToTalk(v bool) *AIAgentTemplateConfigAvatarChat3D {
+	s.EnablePushToTalk = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigAvatarChat3D) SetEnableVoiceInterrupt(v bool) *AIAgentTemplateConfigAvatarChat3D {
 	s.EnableVoiceInterrupt = &v
 	return s
@@ -197,8 +213,28 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetGreeting(v string) *AIAgentTempla
 	return s
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetUseVoiceprint(v bool) *AIAgentTemplateConfigAvatarChat3D {
+	s.UseVoiceprint = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetUserOfflineTimeout(v int32) *AIAgentTemplateConfigAvatarChat3D {
+	s.UserOfflineTimeout = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetUserOnlineTimeout(v int32) *AIAgentTemplateConfigAvatarChat3D {
+	s.UserOnlineTimeout = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigAvatarChat3D) SetVoiceId(v string) *AIAgentTemplateConfigAvatarChat3D {
 	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetVoiceprintId(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.VoiceprintId = &v
 	return s
 }
 
@@ -209,11 +245,17 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetVolume(v int64) *AIAgentTemplateC
 
 type AIAgentTemplateConfigVisionChat struct {
 	AsrMaxSilence            *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	BailianAppParams         *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
 	EnableIntelligentSegment *bool   `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	EnablePushToTalk         *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
 	EnableVoiceInterrupt     *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown         *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
 	Greeting                 *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	UseVoiceprint            *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout       *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout        *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
 	VoiceId                  *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId             *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 	Volume                   *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -230,8 +272,18 @@ func (s *AIAgentTemplateConfigVisionChat) SetAsrMaxSilence(v int32) *AIAgentTemp
 	return s
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetBailianAppParams(v string) *AIAgentTemplateConfigVisionChat {
+	s.BailianAppParams = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVisionChat) SetEnableIntelligentSegment(v bool) *AIAgentTemplateConfigVisionChat {
 	s.EnableIntelligentSegment = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetEnablePushToTalk(v bool) *AIAgentTemplateConfigVisionChat {
+	s.EnablePushToTalk = &v
 	return s
 }
 
@@ -250,8 +302,28 @@ func (s *AIAgentTemplateConfigVisionChat) SetGreeting(v string) *AIAgentTemplate
 	return s
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetUseVoiceprint(v bool) *AIAgentTemplateConfigVisionChat {
+	s.UseVoiceprint = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetUserOfflineTimeout(v int32) *AIAgentTemplateConfigVisionChat {
+	s.UserOfflineTimeout = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetUserOnlineTimeout(v int32) *AIAgentTemplateConfigVisionChat {
+	s.UserOnlineTimeout = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVisionChat) SetVoiceId(v string) *AIAgentTemplateConfigVisionChat {
 	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetVoiceprintId(v string) *AIAgentTemplateConfigVisionChat {
+	s.VoiceprintId = &v
 	return s
 }
 
@@ -262,10 +334,16 @@ func (s *AIAgentTemplateConfigVisionChat) SetVolume(v int64) *AIAgentTemplateCon
 
 type AIAgentTemplateConfigVoiceChat struct {
 	AsrMaxSilence        *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	BailianAppParams     *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	EnablePushToTalk     *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
 	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown     *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
 	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	UseVoiceprint        *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout   *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout    *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
 	VoiceId              *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId         *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 	Volume               *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -279,6 +357,16 @@ func (s AIAgentTemplateConfigVoiceChat) GoString() string {
 
 func (s *AIAgentTemplateConfigVoiceChat) SetAsrMaxSilence(v int32) *AIAgentTemplateConfigVoiceChat {
 	s.AsrMaxSilence = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetBailianAppParams(v string) *AIAgentTemplateConfigVoiceChat {
+	s.BailianAppParams = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetEnablePushToTalk(v bool) *AIAgentTemplateConfigVoiceChat {
+	s.EnablePushToTalk = &v
 	return s
 }
 
@@ -297,8 +385,28 @@ func (s *AIAgentTemplateConfigVoiceChat) SetGreeting(v string) *AIAgentTemplateC
 	return s
 }
 
+func (s *AIAgentTemplateConfigVoiceChat) SetUseVoiceprint(v bool) *AIAgentTemplateConfigVoiceChat {
+	s.UseVoiceprint = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetUserOfflineTimeout(v int32) *AIAgentTemplateConfigVoiceChat {
+	s.UserOfflineTimeout = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetUserOnlineTimeout(v int32) *AIAgentTemplateConfigVoiceChat {
+	s.UserOnlineTimeout = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVoiceChat) SetVoiceId(v string) *AIAgentTemplateConfigVoiceChat {
 	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetVoiceprintId(v string) *AIAgentTemplateConfigVoiceChat {
+	s.VoiceprintId = &v
 	return s
 }
 
@@ -3614,7 +3722,7 @@ type CreateEditingProjectResponseBodyProject struct {
 	//
 	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The timeline of the online editing project, in the JSON format. For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662). If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
+	// The timeline of the online editing project, in the JSON format.<props="china">For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662).  If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
 	//
 	// example:
 	//
@@ -44018,15 +44126,20 @@ func (s *StartRtcRobotInstanceRequest) SetUserId(v string) *StartRtcRobotInstanc
 }
 
 type StartRtcRobotInstanceRequestConfig struct {
+	AsrMaxSilence *int32 `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	// example:
 	//
 	// true
 	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	UseVoiceprint        *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout   *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout    *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
 	// example:
 	//
 	// zhixiaoxia
-	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceId      *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 }
 
 func (s StartRtcRobotInstanceRequestConfig) String() string {
@@ -44035,6 +44148,11 @@ func (s StartRtcRobotInstanceRequestConfig) String() string {
 
 func (s StartRtcRobotInstanceRequestConfig) GoString() string {
 	return s.String()
+}
+
+func (s *StartRtcRobotInstanceRequestConfig) SetAsrMaxSilence(v int32) *StartRtcRobotInstanceRequestConfig {
+	s.AsrMaxSilence = &v
+	return s
 }
 
 func (s *StartRtcRobotInstanceRequestConfig) SetEnableVoiceInterrupt(v bool) *StartRtcRobotInstanceRequestConfig {
@@ -44047,8 +44165,28 @@ func (s *StartRtcRobotInstanceRequestConfig) SetGreeting(v string) *StartRtcRobo
 	return s
 }
 
+func (s *StartRtcRobotInstanceRequestConfig) SetUseVoiceprint(v bool) *StartRtcRobotInstanceRequestConfig {
+	s.UseVoiceprint = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequestConfig) SetUserOfflineTimeout(v int32) *StartRtcRobotInstanceRequestConfig {
+	s.UserOfflineTimeout = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequestConfig) SetUserOnlineTimeout(v int32) *StartRtcRobotInstanceRequestConfig {
+	s.UserOnlineTimeout = &v
+	return s
+}
+
 func (s *StartRtcRobotInstanceRequestConfig) SetVoiceId(v string) *StartRtcRobotInstanceRequestConfig {
 	s.VoiceId = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequestConfig) SetVoiceprintId(v string) *StartRtcRobotInstanceRequestConfig {
+	s.VoiceprintId = &v
 	return s
 }
 
@@ -46087,6 +46225,7 @@ type SubmitIProductionJobRequest struct {
 	//
 	// {"Model":"gif"}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
 	Output         *SubmitIProductionJobRequestOutput         `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
@@ -46121,6 +46260,11 @@ func (s *SubmitIProductionJobRequest) SetInput(v *SubmitIProductionJobRequestInp
 
 func (s *SubmitIProductionJobRequest) SetJobParams(v string) *SubmitIProductionJobRequest {
 	s.JobParams = &v
+	return s
+}
+
+func (s *SubmitIProductionJobRequest) SetModelId(v string) *SubmitIProductionJobRequest {
+	s.ModelId = &v
 	return s
 }
 
@@ -46257,6 +46401,7 @@ type SubmitIProductionJobShrinkRequest struct {
 	//
 	// {"Model":"gif"}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
 	OutputShrink         *string `json:"Output,omitempty" xml:"Output,omitempty"`
@@ -46291,6 +46436,11 @@ func (s *SubmitIProductionJobShrinkRequest) SetInputShrink(v string) *SubmitIPro
 
 func (s *SubmitIProductionJobShrinkRequest) SetJobParams(v string) *SubmitIProductionJobShrinkRequest {
 	s.JobParams = &v
+	return s
+}
+
+func (s *SubmitIProductionJobShrinkRequest) SetModelId(v string) *SubmitIProductionJobShrinkRequest {
+	s.ModelId = &v
 	return s
 }
 
@@ -71109,6 +71259,10 @@ func (client *Client) SubmitIProductionJobWithOptions(tmpReq *SubmitIProductionJ
 
 	if !tea.BoolValue(util.IsUnset(request.JobParams)) {
 		query["JobParams"] = request.JobParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		query["ModelId"] = request.ModelId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
