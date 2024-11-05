@@ -2015,13 +2015,15 @@ type GetAccountInfoResponseBodyAccountInfoListAccountInfo struct {
 	// example:
 	//
 	// 61479572
-	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	Cid                 *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	CustomerAccountType *int32 `json:"CustomerAccountType,omitempty" xml:"CustomerAccountType,omitempty"`
 	// customer manager
 	//
 	// example:
 	//
 	// abc
-	CustomerBd *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
+	CustomerBd                  *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
+	CustomerEnterpriseCertified *int32  `json:"CustomerEnterpriseCertified,omitempty" xml:"CustomerEnterpriseCertified,omitempty"`
 	// The account have Shutdown-delay Privilege, After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.
 	//
 	// example:
@@ -2059,7 +2061,8 @@ type GetAccountInfoResponseBodyAccountInfoListAccountInfo struct {
 	// example:
 	//
 	// Normal
-	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
+	NewBuyStatus        *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
+	RegisterCountryCode *string `json:"RegisterCountryCode,omitempty" xml:"RegisterCountryCode,omitempty"`
 	// Valid mobile number of Distribution Customer.
 	//
 	// example:
@@ -2112,8 +2115,18 @@ func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetCid(v int64) *
 	return s
 }
 
+func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetCustomerAccountType(v int32) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
+	s.CustomerAccountType = &v
+	return s
+}
+
 func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetCustomerBd(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
 	s.CustomerBd = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetCustomerEnterpriseCertified(v int32) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
+	s.CustomerEnterpriseCertified = &v
 	return s
 }
 
@@ -2139,6 +2152,11 @@ func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetMobile(v strin
 
 func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetNewBuyStatus(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
 	s.NewBuyStatus = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetRegisterCountryCode(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
+	s.RegisterCountryCode = &v
 	return s
 }
 
