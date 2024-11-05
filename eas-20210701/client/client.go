@@ -965,6 +965,173 @@ func (s *ServiceLabels) SetLabelValue(v string) *ServiceLabels {
 	return s
 }
 
+type AttachGatewayDomainRequest struct {
+	// The custom domain name information.
+	//
+	// This parameter is required.
+	CustomDomain *AttachGatewayDomainRequestCustomDomain `json:"CustomDomain,omitempty" xml:"CustomDomain,omitempty" type:"Struct"`
+}
+
+func (s AttachGatewayDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachGatewayDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachGatewayDomainRequest) SetCustomDomain(v *AttachGatewayDomainRequestCustomDomain) *AttachGatewayDomainRequest {
+	s.CustomDomain = v
+	return s
+}
+
+type AttachGatewayDomainRequestCustomDomain struct {
+	// The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after you upload or purchase a certificate in the [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
+	//
+	// example:
+	//
+	// 1473**25
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The custom domain name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The domain name type.
+	//
+	// Valid value:
+	//
+	// 	- intranet: internal network.
+	//
+	// 	- internet: public network.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// intranet
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AttachGatewayDomainRequestCustomDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachGatewayDomainRequestCustomDomain) GoString() string {
+	return s.String()
+}
+
+func (s *AttachGatewayDomainRequestCustomDomain) SetCertificateId(v string) *AttachGatewayDomainRequestCustomDomain {
+	s.CertificateId = &v
+	return s
+}
+
+func (s *AttachGatewayDomainRequestCustomDomain) SetDomain(v string) *AttachGatewayDomainRequestCustomDomain {
+	s.Domain = &v
+	return s
+}
+
+func (s *AttachGatewayDomainRequestCustomDomain) SetType(v string) *AttachGatewayDomainRequestCustomDomain {
+	s.Type = &v
+	return s
+}
+
+type AttachGatewayDomainShrinkRequest struct {
+	// The custom domain name information.
+	//
+	// This parameter is required.
+	CustomDomainShrink *string `json:"CustomDomain,omitempty" xml:"CustomDomain,omitempty"`
+}
+
+func (s AttachGatewayDomainShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachGatewayDomainShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachGatewayDomainShrinkRequest) SetCustomDomainShrink(v string) *AttachGatewayDomainShrinkRequest {
+	s.CustomDomainShrink = &v
+	return s
+}
+
+type AttachGatewayDomainResponseBody struct {
+	// The ID of the private gateway. To obtain the private gateway ID, see the GatewayId parameter in the response parameters of the [ListGateway](https://apiworkbench.aliyun-inc.com/document/eas/2021-07-01/ListGateway?spm=openapi-amp.newDocPublishment.0.0.765e281fL2IcjJ\\&ampEnv=online) operation.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// Successfully update custom endpoint for gateway gw-1uhcqmsc7x22******
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachGatewayDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachGatewayDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachGatewayDomainResponseBody) SetGatewayId(v string) *AttachGatewayDomainResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *AttachGatewayDomainResponseBody) SetMessage(v string) *AttachGatewayDomainResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AttachGatewayDomainResponseBody) SetRequestId(v string) *AttachGatewayDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachGatewayDomainResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachGatewayDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachGatewayDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachGatewayDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachGatewayDomainResponse) SetHeaders(v map[string]*string) *AttachGatewayDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachGatewayDomainResponse) SetStatusCode(v int32) *AttachGatewayDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachGatewayDomainResponse) SetBody(v *AttachGatewayDomainResponseBody) *AttachGatewayDomainResponse {
+	s.Body = v
+	return s
+}
+
 type CloneServiceRequest struct {
 	// The label of the service to be cloned.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
@@ -1754,8 +1921,22 @@ type CreateGatewayRequest struct {
 	//
 	// eas-r-4gt8twzwllfo******
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	AutoRenewal  *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- PrePaid: subscription.
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// Specifies whether to enable Internet access. Default value: false.
 	//
 	// Valid values:
@@ -2044,6 +2225,154 @@ func (s *CreateGatewayIntranetLinkedVpcResponse) SetStatusCode(v int32) *CreateG
 }
 
 func (s *CreateGatewayIntranetLinkedVpcResponse) SetBody(v *CreateGatewayIntranetLinkedVpcResponseBody) *CreateGatewayIntranetLinkedVpcResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGatewayIntranetLinkedVpcPeerRequest struct {
+	PeerVpcs []*CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-2zetuli9ws0qgjd******
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerRequest) SetPeerVpcs(v []*CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs) *CreateGatewayIntranetLinkedVpcPeerRequest {
+	s.PeerVpcs = v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerRequest) SetVpcId(v string) *CreateGatewayIntranetLinkedVpcPeerRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs struct {
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs) SetRegion(v string) *CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs) SetVpcId(v string) *CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs {
+	s.VpcId = &v
+	return s
+}
+
+type CreateGatewayIntranetLinkedVpcPeerShrinkRequest struct {
+	PeerVpcsShrink *string `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty"`
+	// example:
+	//
+	// vpc-2zetuli9ws0qgjd******
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerShrinkRequest) SetPeerVpcsShrink(v string) *CreateGatewayIntranetLinkedVpcPeerShrinkRequest {
+	s.PeerVpcsShrink = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerShrinkRequest) SetVpcId(v string) *CreateGatewayIntranetLinkedVpcPeerShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateGatewayIntranetLinkedVpcPeerResponseBody struct {
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// Successfully add intranet linked vpc Peer for gateway
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerResponseBody) SetGatewayId(v string) *CreateGatewayIntranetLinkedVpcPeerResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerResponseBody) SetMessage(v string) *CreateGatewayIntranetLinkedVpcPeerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerResponseBody) SetRequestId(v string) *CreateGatewayIntranetLinkedVpcPeerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGatewayIntranetLinkedVpcPeerResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGatewayIntranetLinkedVpcPeerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIntranetLinkedVpcPeerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerResponse) SetHeaders(v map[string]*string) *CreateGatewayIntranetLinkedVpcPeerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerResponse) SetStatusCode(v int32) *CreateGatewayIntranetLinkedVpcPeerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcPeerResponse) SetBody(v *CreateGatewayIntranetLinkedVpcPeerResponseBody) *CreateGatewayIntranetLinkedVpcPeerResponse {
 	s.Body = v
 	return s
 }
@@ -3698,6 +4027,193 @@ func (s *CreateServiceMirrorResponse) SetBody(v *CreateServiceMirrorResponseBody
 	return s
 }
 
+type CreateVirtualResourceRequest struct {
+	// The list of resources in the virtual resource group.
+	Resources []*CreateVirtualResourceRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The name of the virtual resource group. Default value: the ID of the virtual resource group.
+	//
+	// example:
+	//
+	// MyVirtualResource
+	VirtualResourceName *string `json:"VirtualResourceName,omitempty" xml:"VirtualResourceName,omitempty"`
+}
+
+func (s CreateVirtualResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVirtualResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVirtualResourceRequest) SetResources(v []*CreateVirtualResourceRequestResources) *CreateVirtualResourceRequest {
+	s.Resources = v
+	return s
+}
+
+func (s *CreateVirtualResourceRequest) SetVirtualResourceName(v string) *CreateVirtualResourceRequest {
+	s.VirtualResourceName = &v
+	return s
+}
+
+type CreateVirtualResourceRequestResources struct {
+	// The instance type of the public resource group.
+	//
+	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	//
+	// example:
+	//
+	// ecs.s6-c1m2.xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The priority of resource scheduling. A greater number specifies a higher priority.
+	//
+	// example:
+	//
+	// 6
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Lingjun Resource Quota ID.
+	//
+	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	//
+	// example:
+	//
+	// quota185lqxxxxxx
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The region where the resource resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the dedicated resource group. For information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+	//
+	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	//
+	// example:
+	//
+	// eas-r-g55ieatgg3buxxxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The maximum price of preemptible instances in a public resource group.
+	//
+	// >  If you do not set this value, preemptible instances are not used.
+	//
+	// example:
+	//
+	// 10.05
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+}
+
+func (s CreateVirtualResourceRequestResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVirtualResourceRequestResources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVirtualResourceRequestResources) SetInstanceType(v string) *CreateVirtualResourceRequestResources {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateVirtualResourceRequestResources) SetPriority(v int32) *CreateVirtualResourceRequestResources {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateVirtualResourceRequestResources) SetQuotaId(v string) *CreateVirtualResourceRequestResources {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *CreateVirtualResourceRequestResources) SetRegion(v string) *CreateVirtualResourceRequestResources {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateVirtualResourceRequestResources) SetResourceId(v string) *CreateVirtualResourceRequestResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateVirtualResourceRequestResources) SetSpotPriceLimit(v float32) *CreateVirtualResourceRequestResources {
+	s.SpotPriceLimit = &v
+	return s
+}
+
+type CreateVirtualResourceResponseBody struct {
+	// The returned message.
+	//
+	// example:
+	//
+	// Successfully created virtual resource eas-vr-npovr28onap1xxxxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the virtual resource group.
+	//
+	// example:
+	//
+	// eas-vr-npovr28onap1xxxxxx
+	VirtualResourceId *string `json:"VirtualResourceId,omitempty" xml:"VirtualResourceId,omitempty"`
+}
+
+func (s CreateVirtualResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVirtualResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVirtualResourceResponseBody) SetMessage(v string) *CreateVirtualResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateVirtualResourceResponseBody) SetRequestId(v string) *CreateVirtualResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVirtualResourceResponseBody) SetVirtualResourceId(v string) *CreateVirtualResourceResponseBody {
+	s.VirtualResourceId = &v
+	return s
+}
+
+type CreateVirtualResourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVirtualResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVirtualResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVirtualResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVirtualResourceResponse) SetHeaders(v map[string]*string) *CreateVirtualResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVirtualResourceResponse) SetStatusCode(v int32) *CreateVirtualResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVirtualResourceResponse) SetBody(v *CreateVirtualResourceResponseBody) *CreateVirtualResourceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAclPolicyRequest struct {
 	// The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
 	AclPolicyList []*DeleteAclPolicyRequestAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
@@ -4099,6 +4615,154 @@ func (s *DeleteGatewayIntranetLinkedVpcResponse) SetStatusCode(v int32) *DeleteG
 }
 
 func (s *DeleteGatewayIntranetLinkedVpcResponse) SetBody(v *DeleteGatewayIntranetLinkedVpcResponseBody) *DeleteGatewayIntranetLinkedVpcResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGatewayIntranetLinkedVpcPeerRequest struct {
+	PeerVpcs []*DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-2zetuli9ws0qgjd******
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerRequest) SetPeerVpcs(v []*DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs) *DeleteGatewayIntranetLinkedVpcPeerRequest {
+	s.PeerVpcs = v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerRequest) SetVpcId(v string) *DeleteGatewayIntranetLinkedVpcPeerRequest {
+	s.VpcId = &v
+	return s
+}
+
+type DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs struct {
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs) SetRegion(v string) *DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs {
+	s.Region = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs) SetVpcId(v string) *DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs {
+	s.VpcId = &v
+	return s
+}
+
+type DeleteGatewayIntranetLinkedVpcPeerShrinkRequest struct {
+	PeerVpcsShrink *string `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty"`
+	// example:
+	//
+	// vpc-2zetuli9ws0qgjd******
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerShrinkRequest) SetPeerVpcsShrink(v string) *DeleteGatewayIntranetLinkedVpcPeerShrinkRequest {
+	s.PeerVpcsShrink = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerShrinkRequest) SetVpcId(v string) *DeleteGatewayIntranetLinkedVpcPeerShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+type DeleteGatewayIntranetLinkedVpcPeerResponseBody struct {
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// Successfully delete intranet linked vpc Peer for gateway
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerResponseBody) SetGatewayId(v string) *DeleteGatewayIntranetLinkedVpcPeerResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerResponseBody) SetMessage(v string) *DeleteGatewayIntranetLinkedVpcPeerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerResponseBody) SetRequestId(v string) *DeleteGatewayIntranetLinkedVpcPeerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGatewayIntranetLinkedVpcPeerResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGatewayIntranetLinkedVpcPeerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIntranetLinkedVpcPeerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerResponse) SetHeaders(v map[string]*string) *DeleteGatewayIntranetLinkedVpcPeerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerResponse) SetStatusCode(v int32) *DeleteGatewayIntranetLinkedVpcPeerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcPeerResponse) SetBody(v *DeleteGatewayIntranetLinkedVpcPeerResponseBody) *DeleteGatewayIntranetLinkedVpcPeerResponse {
 	s.Body = v
 	return s
 }
@@ -4842,6 +5506,68 @@ func (s *DeleteServiceMirrorResponse) SetStatusCode(v int32) *DeleteServiceMirro
 }
 
 func (s *DeleteServiceMirrorResponse) SetBody(v *DeleteServiceMirrorResponseBody) *DeleteServiceMirrorResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVirtualResourceResponseBody struct {
+	// The information about the operation result.
+	//
+	// example:
+	//
+	// Successfully deleted virtual resource eas-vr-npovr28onap1xxxxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVirtualResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVirtualResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVirtualResourceResponseBody) SetMessage(v string) *DeleteVirtualResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteVirtualResourceResponseBody) SetRequestId(v string) *DeleteVirtualResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVirtualResourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVirtualResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteVirtualResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVirtualResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVirtualResourceResponse) SetHeaders(v map[string]*string) *DeleteVirtualResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVirtualResourceResponse) SetStatusCode(v int32) *DeleteVirtualResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVirtualResourceResponse) SetBody(v *DeleteVirtualResourceResponseBody) *DeleteVirtualResourceResponse {
 	s.Body = v
 	return s
 }
@@ -7250,6 +7976,341 @@ func (s *DescribeSpotDiscountHistoryResponse) SetBody(v *DescribeSpotDiscountHis
 	return s
 }
 
+type DescribeVirtualResourceResponseBody struct {
+	// The time when the virtual resource group was created.
+	//
+	// example:
+	//
+	// 2024-10-16T17:52:49Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources in the virtual resource group.
+	Resources []*DescribeVirtualResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The time when the virtual resource group was last updated.
+	//
+	// example:
+	//
+	// 2024-10-16T19:52:49Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the virtual resource group.
+	//
+	// example:
+	//
+	// eas-vr-npovr28onap1xxxxxx
+	VirtualResourceId *string `json:"VirtualResourceId,omitempty" xml:"VirtualResourceId,omitempty"`
+	// The name of the virtual resource group.
+	//
+	// example:
+	//
+	// MyVirtualResource
+	VirtualResourceName *string `json:"VirtualResourceName,omitempty" xml:"VirtualResourceName,omitempty"`
+}
+
+func (s DescribeVirtualResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVirtualResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVirtualResourceResponseBody) SetCreateTime(v string) *DescribeVirtualResourceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBody) SetRequestId(v string) *DescribeVirtualResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBody) SetResources(v []*DescribeVirtualResourceResponseBodyResources) *DescribeVirtualResourceResponseBody {
+	s.Resources = v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBody) SetUpdateTime(v string) *DescribeVirtualResourceResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBody) SetVirtualResourceId(v string) *DescribeVirtualResourceResponseBody {
+	s.VirtualResourceId = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBody) SetVirtualResourceName(v string) *DescribeVirtualResourceResponseBody {
+	s.VirtualResourceName = &v
+	return s
+}
+
+type DescribeVirtualResourceResponseBodyResources struct {
+	// The instance type of the public resource group.
+	//
+	// example:
+	//
+	// ecs.s6-c1m2.xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The priority of resource scheduling. A greater number specifies a higher priority.
+	//
+	// example:
+	//
+	// 3
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The instance type of the public resource group.
+	//
+	// example:
+	//
+	// quota185lqxxxxxx
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The region where the resource resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the dedicated resource group.
+	//
+	// example:
+	//
+	// eas-r-g55ieatgg3buxxxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The maximum price of preemptible instances in a public resource group.
+	//
+	// example:
+	//
+	// 10.05
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+}
+
+func (s DescribeVirtualResourceResponseBodyResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVirtualResourceResponseBodyResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVirtualResourceResponseBodyResources) SetInstanceType(v string) *DescribeVirtualResourceResponseBodyResources {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBodyResources) SetPriority(v int32) *DescribeVirtualResourceResponseBodyResources {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBodyResources) SetQuotaId(v string) *DescribeVirtualResourceResponseBodyResources {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBodyResources) SetRegion(v string) *DescribeVirtualResourceResponseBodyResources {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBodyResources) SetResourceId(v string) *DescribeVirtualResourceResponseBodyResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBodyResources) SetSpotPriceLimit(v float32) *DescribeVirtualResourceResponseBodyResources {
+	s.SpotPriceLimit = &v
+	return s
+}
+
+type DescribeVirtualResourceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVirtualResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVirtualResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVirtualResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVirtualResourceResponse) SetHeaders(v map[string]*string) *DescribeVirtualResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponse) SetStatusCode(v int32) *DescribeVirtualResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponse) SetBody(v *DescribeVirtualResourceResponseBody) *DescribeVirtualResourceResponse {
+	s.Body = v
+	return s
+}
+
+type DetachGatewayDomainRequest struct {
+	// The custom domain name information.
+	//
+	// This parameter is required.
+	CustomDomain *DetachGatewayDomainRequestCustomDomain `json:"CustomDomain,omitempty" xml:"CustomDomain,omitempty" type:"Struct"`
+}
+
+func (s DetachGatewayDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGatewayDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGatewayDomainRequest) SetCustomDomain(v *DetachGatewayDomainRequestCustomDomain) *DetachGatewayDomainRequest {
+	s.CustomDomain = v
+	return s
+}
+
+type DetachGatewayDomainRequestCustomDomain struct {
+	// The custom domain name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The domain name type.
+	//
+	// Valid value:
+	//
+	// 	- intranet: internal network.
+	//
+	// 	- internet: public network.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// intranet
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DetachGatewayDomainRequestCustomDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGatewayDomainRequestCustomDomain) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGatewayDomainRequestCustomDomain) SetDomain(v string) *DetachGatewayDomainRequestCustomDomain {
+	s.Domain = &v
+	return s
+}
+
+func (s *DetachGatewayDomainRequestCustomDomain) SetType(v string) *DetachGatewayDomainRequestCustomDomain {
+	s.Type = &v
+	return s
+}
+
+type DetachGatewayDomainShrinkRequest struct {
+	// The custom domain name information.
+	//
+	// This parameter is required.
+	CustomDomainShrink *string `json:"CustomDomain,omitempty" xml:"CustomDomain,omitempty"`
+}
+
+func (s DetachGatewayDomainShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGatewayDomainShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGatewayDomainShrinkRequest) SetCustomDomainShrink(v string) *DetachGatewayDomainShrinkRequest {
+	s.CustomDomainShrink = &v
+	return s
+}
+
+type DetachGatewayDomainResponseBody struct {
+	// The ID of the private gateway. To obtain the private gateway ID, see the GatewayId parameter in the response parameters of the [ListGateway](https://apiworkbench.aliyun-inc.com/document/eas/2021-07-01/ListGateway?spm=openapi-amp.newDocPublishment.0.0.765e281fL2IcjJ\\&ampEnv=online) operation.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// Successfully delete custom endpoint for gateway gw-1uhcqmsc7x22******
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachGatewayDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGatewayDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGatewayDomainResponseBody) SetGatewayId(v string) *DetachGatewayDomainResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DetachGatewayDomainResponseBody) SetMessage(v string) *DetachGatewayDomainResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DetachGatewayDomainResponseBody) SetRequestId(v string) *DetachGatewayDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachGatewayDomainResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachGatewayDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachGatewayDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGatewayDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGatewayDomainResponse) SetHeaders(v map[string]*string) *DetachGatewayDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachGatewayDomainResponse) SetStatusCode(v int32) *DetachGatewayDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachGatewayDomainResponse) SetBody(v *DetachGatewayDomainResponseBody) *DetachGatewayDomainResponse {
+	s.Body = v
+	return s
+}
+
 type DevelopServiceRequest struct {
 	// Specifies whether to exit development mode. Valid values:
 	//
@@ -7903,7 +8964,12 @@ type ListGatewayRequest struct {
 	// example:
 	//
 	// 100
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+	//
+	// example:
+	//
+	// eas-r-4gt8twzwllfo******
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
@@ -8003,6 +9069,15 @@ func (s *ListGatewayResponseBody) SetTotalCount(v int64) *ListGatewayResponseBod
 }
 
 type ListGatewayResponseBodyGateways struct {
+	// The billing method. Valid values:
+	//
+	// 	- PrePaid: subscription.
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// example:
+	//
+	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The time when the private gateway was created. The time is displayed in UTC.
 	//
@@ -8185,6 +9260,125 @@ func (s *ListGatewayResponse) SetBody(v *ListGatewayResponseBody) *ListGatewayRe
 	return s
 }
 
+type ListGatewayDomainsResponseBody struct {
+	// The list of custom domain names.
+	CustomDomains []*ListGatewayDomainsResponseBodyCustomDomains `json:"CustomDomains,omitempty" xml:"CustomDomains,omitempty" type:"Repeated"`
+	// The message that is returned.
+	//
+	// example:
+	//
+	// Successfully get custom domains
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListGatewayDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayDomainsResponseBody) SetCustomDomains(v []*ListGatewayDomainsResponseBodyCustomDomains) *ListGatewayDomainsResponseBody {
+	s.CustomDomains = v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBody) SetMessage(v string) *ListGatewayDomainsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBody) SetRequestId(v string) *ListGatewayDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGatewayDomainsResponseBodyCustomDomains struct {
+	// The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after you upload or purchase a certificate in the [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
+	//
+	// example:
+	//
+	// 1473**25
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The custom domain name.
+	//
+	// example:
+	//
+	// test.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The domain name type.
+	//
+	// Valid value:
+	//
+	// 	- intranet: internal network.
+	//
+	// 	- internet: public network.
+	//
+	// example:
+	//
+	// intranet
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListGatewayDomainsResponseBodyCustomDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayDomainsResponseBodyCustomDomains) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetCertificateId(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.CertificateId = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetDomain(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetType(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.Type = &v
+	return s
+}
+
+type ListGatewayDomainsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGatewayDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGatewayDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayDomainsResponse) SetHeaders(v map[string]*string) *ListGatewayDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayDomainsResponse) SetStatusCode(v int32) *ListGatewayDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponse) SetBody(v *ListGatewayDomainsResponseBody) *ListGatewayDomainsResponse {
+	s.Body = v
+	return s
+}
+
 type ListGatewayIntranetLinkedVpcResponseBody struct {
 	// The private gateway ID.
 	//
@@ -8342,6 +9536,145 @@ func (s *ListGatewayIntranetLinkedVpcResponse) SetStatusCode(v int32) *ListGatew
 }
 
 func (s *ListGatewayIntranetLinkedVpcResponse) SetBody(v *ListGatewayIntranetLinkedVpcResponseBody) *ListGatewayIntranetLinkedVpcResponse {
+	s.Body = v
+	return s
+}
+
+type ListGatewayIntranetLinkedVpcPeerRequest struct {
+	// example:
+	//
+	// vpc-2zetuli9ws0qgjd******
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerRequest) SetVpcId(v string) *ListGatewayIntranetLinkedVpcPeerRequest {
+	s.VpcId = &v
+	return s
+}
+
+type ListGatewayIntranetLinkedVpcPeerResponseBody struct {
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId   *string                                                    `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	PeerVpcList []*ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList `json:"PeerVpcList,omitempty" xml:"PeerVpcList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponseBody) SetGatewayId(v string) *ListGatewayIntranetLinkedVpcPeerResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponseBody) SetPeerVpcList(v []*ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) *ListGatewayIntranetLinkedVpcPeerResponseBody {
+	s.PeerVpcList = v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponseBody) SetRequestId(v string) *ListGatewayIntranetLinkedVpcPeerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList struct {
+	PeerVpcs []*ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-2zetuli9ws0qgjd******
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) SetPeerVpcs(v []*ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs) *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList {
+	s.PeerVpcs = v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) SetVpcId(v string) *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList {
+	s.VpcId = &v
+	return s
+}
+
+type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs struct {
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs) SetRegion(v string) *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs {
+	s.Region = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs) SetVpcId(v string) *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs {
+	s.VpcId = &v
+	return s
+}
+
+type ListGatewayIntranetLinkedVpcPeerResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGatewayIntranetLinkedVpcPeerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetLinkedVpcPeerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponse) SetHeaders(v map[string]*string) *ListGatewayIntranetLinkedVpcPeerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponse) SetStatusCode(v int32) *ListGatewayIntranetLinkedVpcPeerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponse) SetBody(v *ListGatewayIntranetLinkedVpcPeerResponseBody) *ListGatewayIntranetLinkedVpcPeerResponse {
 	s.Body = v
 	return s
 }
@@ -10936,6 +12269,207 @@ func (s *ListTenantAddonsResponse) SetBody(v *ListTenantAddonsResponseBody) *Lis
 	return s
 }
 
+type ListVirtualResourceRequest struct {
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the virtual resource group.
+	//
+	// example:
+	//
+	// eas-vr-npovr28onap1xxxxxx
+	VirtualResourceId *string `json:"VirtualResourceId,omitempty" xml:"VirtualResourceId,omitempty"`
+	// The name of the virtual resource group.
+	//
+	// example:
+	//
+	// MyVirtualResource
+	VirtualResourceName *string `json:"VirtualResourceName,omitempty" xml:"VirtualResourceName,omitempty"`
+}
+
+func (s ListVirtualResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVirtualResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVirtualResourceRequest) SetPageNumber(v int32) *ListVirtualResourceRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListVirtualResourceRequest) SetPageSize(v int32) *ListVirtualResourceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVirtualResourceRequest) SetVirtualResourceId(v string) *ListVirtualResourceRequest {
+	s.VirtualResourceId = &v
+	return s
+}
+
+func (s *ListVirtualResourceRequest) SetVirtualResourceName(v string) *ListVirtualResourceRequest {
+	s.VirtualResourceName = &v
+	return s
+}
+
+type ListVirtualResourceResponseBody struct {
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of virtual resource groups.
+	VirtualResources []*ListVirtualResourceResponseBodyVirtualResources `json:"VirtualResources,omitempty" xml:"VirtualResources,omitempty" type:"Repeated"`
+}
+
+func (s ListVirtualResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVirtualResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVirtualResourceResponseBody) SetPageNumber(v int32) *ListVirtualResourceResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListVirtualResourceResponseBody) SetPageSize(v int32) *ListVirtualResourceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVirtualResourceResponseBody) SetRequestId(v string) *ListVirtualResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListVirtualResourceResponseBody) SetTotalCount(v int32) *ListVirtualResourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListVirtualResourceResponseBody) SetVirtualResources(v []*ListVirtualResourceResponseBodyVirtualResources) *ListVirtualResourceResponseBody {
+	s.VirtualResources = v
+	return s
+}
+
+type ListVirtualResourceResponseBodyVirtualResources struct {
+	// The time when the virtual resource group was created.
+	//
+	// example:
+	//
+	// 2024-10-16T17:52:49Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the virtual resource group was last updated.
+	//
+	// example:
+	//
+	// 2024-10-16T19:52:49Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the virtual resource group.
+	//
+	// example:
+	//
+	// eas-vr-npovr28onap1xxxxxx
+	VirtualResourceId *string `json:"VirtualResourceId,omitempty" xml:"VirtualResourceId,omitempty"`
+	// The name of the virtual resource group.
+	//
+	// example:
+	//
+	// MyVirtualResource
+	VirtualResourceName *string `json:"VirtualResourceName,omitempty" xml:"VirtualResourceName,omitempty"`
+}
+
+func (s ListVirtualResourceResponseBodyVirtualResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVirtualResourceResponseBodyVirtualResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListVirtualResourceResponseBodyVirtualResources) SetCreateTime(v string) *ListVirtualResourceResponseBodyVirtualResources {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListVirtualResourceResponseBodyVirtualResources) SetUpdateTime(v string) *ListVirtualResourceResponseBodyVirtualResources {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListVirtualResourceResponseBodyVirtualResources) SetVirtualResourceId(v string) *ListVirtualResourceResponseBodyVirtualResources {
+	s.VirtualResourceId = &v
+	return s
+}
+
+func (s *ListVirtualResourceResponseBodyVirtualResources) SetVirtualResourceName(v string) *ListVirtualResourceResponseBodyVirtualResources {
+	s.VirtualResourceName = &v
+	return s
+}
+
+type ListVirtualResourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVirtualResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVirtualResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVirtualResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVirtualResourceResponse) SetHeaders(v map[string]*string) *ListVirtualResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVirtualResourceResponse) SetStatusCode(v int32) *ListVirtualResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVirtualResourceResponse) SetBody(v *ListVirtualResourceResponseBody) *ListVirtualResourceResponse {
+	s.Body = v
+	return s
+}
+
 type ReinstallTenantAddonResponseBody struct {
 	// The returned message.
 	//
@@ -13214,6 +14748,184 @@ func (s *UpdateServiceVersionResponse) SetBody(v *UpdateServiceVersionResponseBo
 	return s
 }
 
+type UpdateVirtualResourceRequest struct {
+	// The list of resources in the virtual resource group.
+	//
+	// >  If you specify this parameter, previous data are overwritten.
+	Resources []*UpdateVirtualResourceRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The new name for the virtual resource group.
+	//
+	// example:
+	//
+	// NewMyVirtualResource
+	VirtualResourceName *string `json:"VirtualResourceName,omitempty" xml:"VirtualResourceName,omitempty"`
+}
+
+func (s UpdateVirtualResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVirtualResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVirtualResourceRequest) SetResources(v []*UpdateVirtualResourceRequestResources) *UpdateVirtualResourceRequest {
+	s.Resources = v
+	return s
+}
+
+func (s *UpdateVirtualResourceRequest) SetVirtualResourceName(v string) *UpdateVirtualResourceRequest {
+	s.VirtualResourceName = &v
+	return s
+}
+
+type UpdateVirtualResourceRequestResources struct {
+	// The instance type of the public resource group.
+	//
+	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	//
+	// example:
+	//
+	// ecs.s6-c1m2.xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The priority of resource scheduling. A greater number specifies a higher priority.
+	//
+	// example:
+	//
+	// 6
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The Lingjun resource quota ID.
+	//
+	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	//
+	// example:
+	//
+	// quota185lqf994k6
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The region where the resource resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the dedicated resource group. For information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+	//
+	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	//
+	// example:
+	//
+	// eas-r-g55ieatgg3butwrn7a
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The maximum price of preemptible instances in a public resource group.
+	//
+	// >  If you do not specify this parameter, preemptible instances are not used.
+	//
+	// example:
+	//
+	// 10.05
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+}
+
+func (s UpdateVirtualResourceRequestResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVirtualResourceRequestResources) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVirtualResourceRequestResources) SetInstanceType(v string) *UpdateVirtualResourceRequestResources {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateVirtualResourceRequestResources) SetPriority(v int32) *UpdateVirtualResourceRequestResources {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateVirtualResourceRequestResources) SetQuotaId(v string) *UpdateVirtualResourceRequestResources {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *UpdateVirtualResourceRequestResources) SetRegion(v string) *UpdateVirtualResourceRequestResources {
+	s.Region = &v
+	return s
+}
+
+func (s *UpdateVirtualResourceRequestResources) SetResourceId(v string) *UpdateVirtualResourceRequestResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UpdateVirtualResourceRequestResources) SetSpotPriceLimit(v float32) *UpdateVirtualResourceRequestResources {
+	s.SpotPriceLimit = &v
+	return s
+}
+
+type UpdateVirtualResourceResponseBody struct {
+	// The returned message.
+	//
+	// example:
+	//
+	// Successfully updated virtual resource eas-vr-npovr28onap1xxxxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateVirtualResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVirtualResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVirtualResourceResponseBody) SetMessage(v string) *UpdateVirtualResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateVirtualResourceResponseBody) SetRequestId(v string) *UpdateVirtualResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateVirtualResourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVirtualResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateVirtualResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVirtualResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVirtualResourceResponse) SetHeaders(v map[string]*string) *UpdateVirtualResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateVirtualResourceResponse) SetStatusCode(v int32) *UpdateVirtualResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateVirtualResourceResponse) SetBody(v *UpdateVirtualResourceResponseBody) *UpdateVirtualResourceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -13271,6 +14983,76 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Binds a custom domain name to a private gateway.
+//
+// @param tmpReq - AttachGatewayDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachGatewayDomainResponse
+func (client *Client) AttachGatewayDomainWithOptions(ClusterId *string, GatewayId *string, tmpReq *AttachGatewayDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AttachGatewayDomainResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AttachGatewayDomainShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomDomain)) {
+		request.CustomDomainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomDomain, tea.String("CustomDomain"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomDomainShrink)) {
+		query["CustomDomain"] = request.CustomDomainShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachGatewayDomain"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/domain/attach"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachGatewayDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Binds a custom domain name to a private gateway.
+//
+// @param request - AttachGatewayDomainRequest
+//
+// @return AttachGatewayDomainResponse
+func (client *Client) AttachGatewayDomain(ClusterId *string, GatewayId *string, request *AttachGatewayDomainRequest) (_result *AttachGatewayDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AttachGatewayDomainResponse{}
+	_body, _err := client.AttachGatewayDomainWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13628,7 +15410,7 @@ func (client *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (
 
 // Summary:
 //
-// Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+// Creates a gateway.
 //
 // @param request - CreateGatewayRequest
 //
@@ -13703,7 +15485,7 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 
 // Summary:
 //
-// Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+// Creates a gateway.
 //
 // @param request - CreateGatewayRequest
 //
@@ -13781,6 +15563,80 @@ func (client *Client) CreateGatewayIntranetLinkedVpc(ClusterId *string, GatewayI
 	headers := make(map[string]*string)
 	_result = &CreateGatewayIntranetLinkedVpcResponse{}
 	_body, _err := client.CreateGatewayIntranetLinkedVpcWithOptions(ClusterId, GatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网关内网访问端点跨VPC连接
+//
+// @param tmpReq - CreateGatewayIntranetLinkedVpcPeerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGatewayIntranetLinkedVpcPeerResponse
+func (client *Client) CreateGatewayIntranetLinkedVpcPeerWithOptions(ClusterId *string, GatewayId *string, tmpReq *CreateGatewayIntranetLinkedVpcPeerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGatewayIntranetLinkedVpcPeerResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateGatewayIntranetLinkedVpcPeerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PeerVpcs)) {
+		request.PeerVpcsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PeerVpcs, tea.String("PeerVpcs"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PeerVpcsShrink)) {
+		query["PeerVpcs"] = request.PeerVpcsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGatewayIntranetLinkedVpcPeer"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/intranet_endpoint_linked_vpc_peer"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGatewayIntranetLinkedVpcPeerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网关内网访问端点跨VPC连接
+//
+// @param request - CreateGatewayIntranetLinkedVpcPeerRequest
+//
+// @return CreateGatewayIntranetLinkedVpcPeerResponse
+func (client *Client) CreateGatewayIntranetLinkedVpcPeer(ClusterId *string, GatewayId *string, request *CreateGatewayIntranetLinkedVpcPeerRequest) (_result *CreateGatewayIntranetLinkedVpcPeerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGatewayIntranetLinkedVpcPeerResponse{}
+	_body, _err := client.CreateGatewayIntranetLinkedVpcPeerWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14345,6 +16201,74 @@ func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string
 
 // Summary:
 //
+// Creates a virtual resource group.
+//
+// @param request - CreateVirtualResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVirtualResourceResponse
+func (client *Client) CreateVirtualResourceWithOptions(request *CreateVirtualResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVirtualResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		body["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualResourceName)) {
+		body["VirtualResourceName"] = request.VirtualResourceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVirtualResource"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/virtualresources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVirtualResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a virtual resource group.
+//
+// @param request - CreateVirtualResourceRequest
+//
+// @return CreateVirtualResourceResponse
+func (client *Client) CreateVirtualResource(request *CreateVirtualResourceRequest) (_result *CreateVirtualResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVirtualResourceResponse{}
+	_body, _err := client.CreateVirtualResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
 //
 // @param tmpReq - DeleteAclPolicyRequest
@@ -14578,6 +16502,80 @@ func (client *Client) DeleteGatewayIntranetLinkedVpc(ClusterId *string, GatewayI
 	headers := make(map[string]*string)
 	_result = &DeleteGatewayIntranetLinkedVpcResponse{}
 	_body, _err := client.DeleteGatewayIntranetLinkedVpcWithOptions(ClusterId, GatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网关内网访问端点跨VPC连接
+//
+// @param tmpReq - DeleteGatewayIntranetLinkedVpcPeerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayIntranetLinkedVpcPeerResponse
+func (client *Client) DeleteGatewayIntranetLinkedVpcPeerWithOptions(ClusterId *string, GatewayId *string, tmpReq *DeleteGatewayIntranetLinkedVpcPeerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewayIntranetLinkedVpcPeerResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteGatewayIntranetLinkedVpcPeerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PeerVpcs)) {
+		request.PeerVpcsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PeerVpcs, tea.String("PeerVpcs"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PeerVpcsShrink)) {
+		query["PeerVpcs"] = request.PeerVpcsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayIntranetLinkedVpcPeer"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/intranet_endpoint_linked_vpc_peer"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayIntranetLinkedVpcPeerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网关内网访问端点跨VPC连接
+//
+// @param request - DeleteGatewayIntranetLinkedVpcPeerRequest
+//
+// @return DeleteGatewayIntranetLinkedVpcPeerResponse
+func (client *Client) DeleteGatewayIntranetLinkedVpcPeer(ClusterId *string, GatewayId *string, request *DeleteGatewayIntranetLinkedVpcPeerRequest) (_result *DeleteGatewayIntranetLinkedVpcPeerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteGatewayIntranetLinkedVpcPeerResponse{}
+	_body, _err := client.DeleteGatewayIntranetLinkedVpcPeerWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15138,6 +17136,56 @@ func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string
 	headers := make(map[string]*string)
 	_result = &DeleteServiceMirrorResponse{}
 	_body, _err := client.DeleteServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a virtual resource group that contains no resources or instances.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVirtualResourceResponse
+func (client *Client) DeleteVirtualResourceWithOptions(ClusterId *string, VirtualResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVirtualResourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVirtualResource"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/virtualresources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(VirtualResourceId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteVirtualResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a virtual resource group that contains no resources or instances.
+//
+// @return DeleteVirtualResourceResponse
+func (client *Client) DeleteVirtualResource(ClusterId *string, VirtualResourceId *string) (_result *DeleteVirtualResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteVirtualResourceResponse{}
+	_body, _err := client.DeleteVirtualResourceWithOptions(ClusterId, VirtualResourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16059,6 +18107,126 @@ func (client *Client) DescribeSpotDiscountHistory(request *DescribeSpotDiscountH
 
 // Summary:
 //
+// Views the details of a virtual resource group.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVirtualResourceResponse
+func (client *Client) DescribeVirtualResourceWithOptions(ClusterId *string, VirtualResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeVirtualResourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVirtualResource"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/virtualresources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(VirtualResourceId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVirtualResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Views the details of a virtual resource group.
+//
+// @return DescribeVirtualResourceResponse
+func (client *Client) DescribeVirtualResource(ClusterId *string, VirtualResourceId *string) (_result *DescribeVirtualResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeVirtualResourceResponse{}
+	_body, _err := client.DescribeVirtualResourceWithOptions(ClusterId, VirtualResourceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds a custom domain name from a private gateway.
+//
+// @param tmpReq - DetachGatewayDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachGatewayDomainResponse
+func (client *Client) DetachGatewayDomainWithOptions(ClusterId *string, GatewayId *string, tmpReq *DetachGatewayDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DetachGatewayDomainResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetachGatewayDomainShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomDomain)) {
+		request.CustomDomainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomDomain, tea.String("CustomDomain"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomDomainShrink)) {
+		query["CustomDomain"] = request.CustomDomainShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachGatewayDomain"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/domain/detach"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachGatewayDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds a custom domain name from a private gateway.
+//
+// @param request - DetachGatewayDomainRequest
+//
+// @return DetachGatewayDomainResponse
+func (client *Client) DetachGatewayDomain(ClusterId *string, GatewayId *string, request *DetachGatewayDomainRequest) (_result *DetachGatewayDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DetachGatewayDomainResponse{}
+	_body, _err := client.DetachGatewayDomainWithOptions(ClusterId, GatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Switches a container service to development mode or exits development mode.
 //
 // @param request - DevelopServiceRequest
@@ -16343,6 +18511,56 @@ func (client *Client) ListGateway(request *ListGatewayRequest) (_result *ListGat
 
 // Summary:
 //
+// Queries a list of custom domain names of a private gateway.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayDomainsResponse
+func (client *Client) ListGatewayDomainsWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewayDomainsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayDomains"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/domains"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of custom domain names of a private gateway.
+//
+// @return ListGatewayDomainsResponse
+func (client *Client) ListGatewayDomains(ClusterId *string, GatewayId *string) (_result *ListGatewayDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGatewayDomainsResponse{}
+	_body, _err := client.ListGatewayDomainsWithOptions(ClusterId, GatewayId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of the internal endpoints of a private gateway.
 //
 // @param headers - map
@@ -16384,6 +18602,70 @@ func (client *Client) ListGatewayIntranetLinkedVpc(ClusterId *string, GatewayId 
 	headers := make(map[string]*string)
 	_result = &ListGatewayIntranetLinkedVpcResponse{}
 	_body, _err := client.ListGatewayIntranetLinkedVpcWithOptions(ClusterId, GatewayId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关内网访问端点跨VPC连接列表
+//
+// @param request - ListGatewayIntranetLinkedVpcPeerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayIntranetLinkedVpcPeerResponse
+func (client *Client) ListGatewayIntranetLinkedVpcPeerWithOptions(ClusterId *string, GatewayId *string, request *ListGatewayIntranetLinkedVpcPeerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewayIntranetLinkedVpcPeerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayIntranetLinkedVpcPeer"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/intranet_endpoint_linked_vpc_peer"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayIntranetLinkedVpcPeerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关内网访问端点跨VPC连接列表
+//
+// @param request - ListGatewayIntranetLinkedVpcPeerRequest
+//
+// @return ListGatewayIntranetLinkedVpcPeerResponse
+func (client *Client) ListGatewayIntranetLinkedVpcPeer(ClusterId *string, GatewayId *string, request *ListGatewayIntranetLinkedVpcPeerRequest) (_result *ListGatewayIntranetLinkedVpcPeerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGatewayIntranetLinkedVpcPeerResponse{}
+	_body, _err := client.ListGatewayIntranetLinkedVpcPeerWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17205,7 +19487,83 @@ func (client *Client) ListTenantAddons() (_result *ListTenantAddonsResponse, _er
 
 // Summary:
 //
-// Updates the information about a tenant plug-in.
+// Queries a list of virtual resource groups for the current user.
+//
+// @param request - ListVirtualResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirtualResourceResponse
+func (client *Client) ListVirtualResourceWithOptions(request *ListVirtualResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListVirtualResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualResourceId)) {
+		query["VirtualResourceId"] = request.VirtualResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualResourceName)) {
+		query["VirtualResourceName"] = request.VirtualResourceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVirtualResource"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/virtualresources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListVirtualResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of virtual resource groups for the current user.
+//
+// @param request - ListVirtualResourceRequest
+//
+// @return ListVirtualResourceResponse
+func (client *Client) ListVirtualResource(request *ListVirtualResourceRequest) (_result *ListVirtualResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListVirtualResourceResponse{}
+	_body, _err := client.ListVirtualResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets tenant configurations.
 //
 // @param headers - map
 //
@@ -17238,7 +19596,7 @@ func (client *Client) ReinstallTenantAddonWithOptions(ClusterId *string, TenantA
 
 // Summary:
 //
-// Updates the information about a tenant plug-in.
+// Resets tenant configurations.
 //
 // @return ReinstallTenantAddonResponse
 func (client *Client) ReinstallTenantAddon(ClusterId *string, TenantAddonName *string) (_result *ReinstallTenantAddonResponse, _err error) {
@@ -18538,6 +20896,74 @@ func (client *Client) UpdateServiceVersion(ClusterId *string, ServiceName *strin
 	headers := make(map[string]*string)
 	_result = &UpdateServiceVersionResponse{}
 	_body, _err := client.UpdateServiceVersionWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the information about a virtual resource group.
+//
+// @param request - UpdateVirtualResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVirtualResourceResponse
+func (client *Client) UpdateVirtualResourceWithOptions(ClusterId *string, VirtualResourceId *string, request *UpdateVirtualResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateVirtualResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		body["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualResourceName)) {
+		body["VirtualResourceName"] = request.VirtualResourceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVirtualResource"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/virtualresources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(VirtualResourceId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateVirtualResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the information about a virtual resource group.
+//
+// @param request - UpdateVirtualResourceRequest
+//
+// @return UpdateVirtualResourceResponse
+func (client *Client) UpdateVirtualResource(ClusterId *string, VirtualResourceId *string, request *UpdateVirtualResourceRequest) (_result *UpdateVirtualResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateVirtualResourceResponse{}
+	_body, _err := client.UpdateVirtualResourceWithOptions(ClusterId, VirtualResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
