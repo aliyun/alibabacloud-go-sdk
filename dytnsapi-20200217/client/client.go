@@ -14,7 +14,7 @@ type CertNoThreeElementVerificationRequest struct {
 	//
 	// example:
 	//
-	// 示例值
+	// QASDW@#**
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type CertNoThreeElementVerificationRequest struct {
 	//
 	// example:
 	//
-	// 示例值
+	// 3***************0
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// iVBOFMKODOFNDFP123DFSMOO...
 	CertPicture *string `json:"CertPicture,omitempty" xml:"CertPicture,omitempty"`
 	// example:
 	//
@@ -92,11 +92,23 @@ func (s *CertNoThreeElementVerificationRequest) SetResourceOwnerId(v int64) *Cer
 }
 
 type CertNoThreeElementVerificationResponseBody struct {
-	AccessDeniedDetail *string                                         `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *CertNoThreeElementVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message            *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// -
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CertNoThreeElementVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 68A40250-50CD-034C-B728-0BD******177
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CertNoThreeElementVerificationResponseBody) String() string {
@@ -135,7 +147,7 @@ func (s *CertNoThreeElementVerificationResponseBody) SetRequestId(v string) *Cer
 type CertNoThreeElementVerificationResponseBodyData struct {
 	// example:
 	//
-	// 示例值示例值
+	// 1
 	IsConsistent *string `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
 }
 
@@ -1652,6 +1664,7 @@ func (s *DescribePhoneNumberAnalysisRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribePhoneNumberAnalysisResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
 	// OK
@@ -1673,6 +1686,11 @@ func (s DescribePhoneNumberAnalysisResponseBody) String() string {
 
 func (s DescribePhoneNumberAnalysisResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisResponseBody) SetAccessDeniedDetail(v string) *DescribePhoneNumberAnalysisResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DescribePhoneNumberAnalysisResponseBody) SetCode(v string) *DescribePhoneNumberAnalysisResponseBody {
@@ -1974,6 +1992,156 @@ func (s *DescribePhoneNumberAnalysisAIResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribePhoneNumberAnalysisAIResponse) SetBody(v *DescribePhoneNumberAnalysisAIResponseBody) *DescribePhoneNumberAnalysisAIResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePhoneNumberAnalysisPaiRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	ModelConfig *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 16
+	Rate                 *int64  `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisPaiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisPaiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisPaiRequest) SetAuthCode(v string) *DescribePhoneNumberAnalysisPaiRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiRequest) SetInputNumber(v string) *DescribePhoneNumberAnalysisPaiRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiRequest) SetModelConfig(v string) *DescribePhoneNumberAnalysisPaiRequest {
+	s.ModelConfig = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiRequest) SetOwnerId(v int64) *DescribePhoneNumberAnalysisPaiRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiRequest) SetRate(v int64) *DescribePhoneNumberAnalysisPaiRequest {
+	s.Rate = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiRequest) SetResourceOwnerAccount(v string) *DescribePhoneNumberAnalysisPaiRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiRequest) SetResourceOwnerId(v int64) *DescribePhoneNumberAnalysisPaiRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribePhoneNumberAnalysisPaiResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 示例值
+	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisPaiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisPaiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisPaiResponseBody) SetAccessDeniedDetail(v string) *DescribePhoneNumberAnalysisPaiResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiResponseBody) SetCode(v string) *DescribePhoneNumberAnalysisPaiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiResponseBody) SetData(v []*string) *DescribePhoneNumberAnalysisPaiResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiResponseBody) SetMessage(v string) *DescribePhoneNumberAnalysisPaiResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiResponseBody) SetRequestId(v string) *DescribePhoneNumberAnalysisPaiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePhoneNumberAnalysisPaiResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePhoneNumberAnalysisPaiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisPaiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisPaiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisPaiResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberAnalysisPaiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiResponse) SetStatusCode(v int32) *DescribePhoneNumberAnalysisPaiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisPaiResponse) SetBody(v *DescribePhoneNumberAnalysisPaiResponseBody) *DescribePhoneNumberAnalysisPaiResponse {
 	s.Body = v
 	return s
 }
@@ -9392,6 +9560,90 @@ func (client *Client) DescribePhoneNumberAnalysisAI(request *DescribePhoneNumber
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberAnalysisAIResponse{}
 	_body, _err := client.DescribePhoneNumberAnalysisAIWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码分析服务pai供应商批量查询接口
+//
+// @param request - DescribePhoneNumberAnalysisPaiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePhoneNumberAnalysisPaiResponse
+func (client *Client) DescribePhoneNumberAnalysisPaiWithOptions(request *DescribePhoneNumberAnalysisPaiRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberAnalysisPaiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelConfig)) {
+		query["ModelConfig"] = request.ModelConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rate)) {
+		query["Rate"] = request.Rate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePhoneNumberAnalysisPai"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePhoneNumberAnalysisPaiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码分析服务pai供应商批量查询接口
+//
+// @param request - DescribePhoneNumberAnalysisPaiRequest
+//
+// @return DescribePhoneNumberAnalysisPaiResponse
+func (client *Client) DescribePhoneNumberAnalysisPai(request *DescribePhoneNumberAnalysisPaiRequest) (_result *DescribePhoneNumberAnalysisPaiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePhoneNumberAnalysisPaiResponse{}
+	_body, _err := client.DescribePhoneNumberAnalysisPaiWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
