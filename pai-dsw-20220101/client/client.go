@@ -1292,6 +1292,8 @@ func (s *CreateInstanceShutdownTimerResponse) SetBody(v *CreateInstanceShutdownT
 
 type CreateInstanceSnapshotRequest struct {
 	ExcludePaths []*string `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
@@ -1305,6 +1307,8 @@ type CreateInstanceSnapshotRequest struct {
 	//
 	// training_data_env
 	SnapshotDescription *string `json:"SnapshotDescription,omitempty" xml:"SnapshotDescription,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// training_data_env
