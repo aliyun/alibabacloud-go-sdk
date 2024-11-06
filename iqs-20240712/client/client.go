@@ -329,6 +329,7 @@ func (s *BicyclingDirectionNovaResponseBody) SetSuccess(v bool) *BicyclingDirect
 }
 
 type BicyclingDirectionNovaResponseBodyData struct {
+	Count *string `json:"count,omitempty" xml:"count,omitempty"`
 	// example:
 	//
 	// 39.995197
@@ -358,6 +359,11 @@ func (s BicyclingDirectionNovaResponseBodyData) String() string {
 
 func (s BicyclingDirectionNovaResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *BicyclingDirectionNovaResponseBodyData) SetCount(v string) *BicyclingDirectionNovaResponseBodyData {
+	s.Count = &v
+	return s
 }
 
 func (s *BicyclingDirectionNovaResponseBodyData) SetDestinationLatitude(v string) *BicyclingDirectionNovaResponseBodyData {
@@ -503,6 +509,7 @@ type BicyclingDirectionNovaResponseBodyDataPathsSteps struct {
 	Cost        *BicyclingDirectionNovaResponseBodyDataPathsStepsCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
 	Instruction *string                                               `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	Orientation *string                                               `json:"orientation,omitempty" xml:"orientation,omitempty"`
+	Polyline    *string                                               `json:"polyline,omitempty" xml:"polyline,omitempty"`
 	RoadName    *string                                               `json:"roadName,omitempty" xml:"roadName,omitempty"`
 	// example:
 	//
@@ -530,6 +537,11 @@ func (s *BicyclingDirectionNovaResponseBodyDataPathsSteps) SetInstruction(v stri
 
 func (s *BicyclingDirectionNovaResponseBodyDataPathsSteps) SetOrientation(v string) *BicyclingDirectionNovaResponseBodyDataPathsSteps {
 	s.Orientation = &v
+	return s
+}
+
+func (s *BicyclingDirectionNovaResponseBodyDataPathsSteps) SetPolyline(v string) *BicyclingDirectionNovaResponseBodyDataPathsSteps {
+	s.Polyline = &v
 	return s
 }
 
@@ -678,6 +690,7 @@ func (s *CommonQueryBySceneResponse) SetBody(v *QueryResult) *CommonQueryByScene
 }
 
 type DrivingDirectionNovaRequest struct {
+	CarType *string `json:"carType,omitempty" xml:"carType,omitempty"`
 	// example:
 	//
 	// 43.345456
@@ -694,6 +707,7 @@ type DrivingDirectionNovaRequest struct {
 	//
 	// 116.466485
 	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
+	Plate           *string `json:"plate,omitempty" xml:"plate,omitempty"`
 }
 
 func (s DrivingDirectionNovaRequest) String() string {
@@ -702,6 +716,11 @@ func (s DrivingDirectionNovaRequest) String() string {
 
 func (s DrivingDirectionNovaRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DrivingDirectionNovaRequest) SetCarType(v string) *DrivingDirectionNovaRequest {
+	s.CarType = &v
+	return s
 }
 
 func (s *DrivingDirectionNovaRequest) SetDestinationLatitude(v string) *DrivingDirectionNovaRequest {
@@ -721,6 +740,11 @@ func (s *DrivingDirectionNovaRequest) SetOriginLatitude(v string) *DrivingDirect
 
 func (s *DrivingDirectionNovaRequest) SetOriginLongitude(v string) *DrivingDirectionNovaRequest {
 	s.OriginLongitude = &v
+	return s
+}
+
+func (s *DrivingDirectionNovaRequest) SetPlate(v string) *DrivingDirectionNovaRequest {
+	s.Plate = &v
 	return s
 }
 
@@ -769,6 +793,7 @@ func (s *DrivingDirectionNovaResponseBody) SetSuccess(v bool) *DrivingDirectionN
 }
 
 type DrivingDirectionNovaResponseBodyData struct {
+	Count *string `json:"count,omitempty" xml:"count,omitempty"`
 	// example:
 	//
 	// 40.345456
@@ -798,6 +823,11 @@ func (s DrivingDirectionNovaResponseBodyData) String() string {
 
 func (s DrivingDirectionNovaResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DrivingDirectionNovaResponseBodyData) SetCount(v string) *DrivingDirectionNovaResponseBodyData {
+	s.Count = &v
+	return s
 }
 
 func (s *DrivingDirectionNovaResponseBodyData) SetDestinationLatitude(v string) *DrivingDirectionNovaResponseBodyData {
@@ -946,6 +976,7 @@ type DrivingDirectionNovaResponseBodyDataPathsSteps struct {
 	Cost        *DrivingDirectionNovaResponseBodyDataPathsStepsCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
 	Instruction *string                                             `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	Orientation *string                                             `json:"orientation,omitempty" xml:"orientation,omitempty"`
+	Polyline    *string                                             `json:"polyline,omitempty" xml:"polyline,omitempty"`
 	RoadName    *string                                             `json:"roadName,omitempty" xml:"roadName,omitempty"`
 	// example:
 	//
@@ -973,6 +1004,11 @@ func (s *DrivingDirectionNovaResponseBodyDataPathsSteps) SetInstruction(v string
 
 func (s *DrivingDirectionNovaResponseBodyDataPathsSteps) SetOrientation(v string) *DrivingDirectionNovaResponseBodyDataPathsSteps {
 	s.Orientation = &v
+	return s
+}
+
+func (s *DrivingDirectionNovaResponseBodyDataPathsSteps) SetPolyline(v string) *DrivingDirectionNovaResponseBodyDataPathsSteps {
+	s.Polyline = &v
 	return s
 }
 
@@ -1166,6 +1202,7 @@ func (s *ElectrobikeDirectionNovaResponseBody) SetSuccess(v bool) *ElectrobikeDi
 }
 
 type ElectrobikeDirectionNovaResponseBodyData struct {
+	Count *string `json:"count,omitempty" xml:"count,omitempty"`
 	// example:
 	//
 	// 40.345456
@@ -1195,6 +1232,11 @@ func (s ElectrobikeDirectionNovaResponseBodyData) String() string {
 
 func (s ElectrobikeDirectionNovaResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ElectrobikeDirectionNovaResponseBodyData) SetCount(v string) *ElectrobikeDirectionNovaResponseBodyData {
+	s.Count = &v
+	return s
 }
 
 func (s *ElectrobikeDirectionNovaResponseBodyData) SetDestinationLatitude(v string) *ElectrobikeDirectionNovaResponseBodyData {
@@ -1343,6 +1385,7 @@ type ElectrobikeDirectionNovaResponseBodyDataPathsSteps struct {
 	Cost        *ElectrobikeDirectionNovaResponseBodyDataPathsStepsCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
 	Instruction *string                                                 `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	Orientation *string                                                 `json:"orientation,omitempty" xml:"orientation,omitempty"`
+	Polyline    *string                                                 `json:"polyline,omitempty" xml:"polyline,omitempty"`
 	RoadName    *string                                                 `json:"roadName,omitempty" xml:"roadName,omitempty"`
 	// example:
 	//
@@ -1370,6 +1413,11 @@ func (s *ElectrobikeDirectionNovaResponseBodyDataPathsSteps) SetInstruction(v st
 
 func (s *ElectrobikeDirectionNovaResponseBodyDataPathsSteps) SetOrientation(v string) *ElectrobikeDirectionNovaResponseBodyDataPathsSteps {
 	s.Orientation = &v
+	return s
+}
+
+func (s *ElectrobikeDirectionNovaResponseBodyDataPathsSteps) SetPolyline(v string) *ElectrobikeDirectionNovaResponseBodyDataPathsSteps {
+	s.Polyline = &v
 	return s
 }
 
@@ -3601,6 +3649,1340 @@ func (s *RgeoCodeResponse) SetBody(v *RgeoCodeResponseBody) *RgeoCodeResponse {
 	return s
 }
 
+type TransitIntegratedDirectionRequest struct {
+	DestinationCity *string `json:"destinationCity,omitempty" xml:"destinationCity,omitempty"`
+	// example:
+	//
+	// 40.345456
+	DestinationLatitude *string `json:"destinationLatitude,omitempty" xml:"destinationLatitude,omitempty"`
+	// example:
+	//
+	// 116.46424
+	DestinationLongitude *string `json:"destinationLongitude,omitempty" xml:"destinationLongitude,omitempty"`
+	OriginCity           *string `json:"originCity,omitempty" xml:"originCity,omitempty"`
+	// example:
+	//
+	// 39.995197
+	OriginLatitude *string `json:"originLatitude,omitempty" xml:"originLatitude,omitempty"`
+	// example:
+	//
+	// 116.466485
+	OriginLongitude *string `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
+}
+
+func (s TransitIntegratedDirectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionRequest) SetDestinationCity(v string) *TransitIntegratedDirectionRequest {
+	s.DestinationCity = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionRequest) SetDestinationLatitude(v string) *TransitIntegratedDirectionRequest {
+	s.DestinationLatitude = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionRequest) SetDestinationLongitude(v string) *TransitIntegratedDirectionRequest {
+	s.DestinationLongitude = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionRequest) SetOriginCity(v string) *TransitIntegratedDirectionRequest {
+	s.OriginCity = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionRequest) SetOriginLatitude(v string) *TransitIntegratedDirectionRequest {
+	s.OriginLatitude = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionRequest) SetOriginLongitude(v string) *TransitIntegratedDirectionRequest {
+	s.OriginLongitude = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBody struct {
+	Data *TransitIntegratedDirectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 400
+	ErrorCode *int32 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// <title>502 Bad Gateway</title>
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBody) SetData(v *TransitIntegratedDirectionResponseBodyData) *TransitIntegratedDirectionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBody) SetErrorCode(v int32) *TransitIntegratedDirectionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBody) SetErrorMessage(v string) *TransitIntegratedDirectionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBody) SetSuccess(v bool) *TransitIntegratedDirectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyData struct {
+	Cost *TransitIntegratedDirectionResponseBodyDataCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
+	// example:
+	//
+	// 5
+	Count *string `json:"count,omitempty" xml:"count,omitempty"`
+	// example:
+	//
+	// 39.995197
+	DestinationLatitude *string `json:"destinationLatitude,omitempty" xml:"destinationLatitude,omitempty"`
+	// example:
+	//
+	// 116.46424
+	DestinationLongitude *string `json:"destinationLongitude,omitempty" xml:"destinationLongitude,omitempty"`
+	// example:
+	//
+	// 445
+	DistanceMeter *string `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	// example:
+	//
+	// 39.995197
+	OriginLatitude *string `json:"originLatitude,omitempty" xml:"originLatitude,omitempty"`
+	// example:
+	//
+	// 116.466485
+	OriginLongitude *string                                            `json:"originLongitude,omitempty" xml:"originLongitude,omitempty"`
+	Paths           []*TransitIntegratedDirectionResponseBodyDataPaths `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyData) SetCost(v *TransitIntegratedDirectionResponseBodyDataCost) *TransitIntegratedDirectionResponseBodyData {
+	s.Cost = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyData) SetCount(v string) *TransitIntegratedDirectionResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyData) SetDestinationLatitude(v string) *TransitIntegratedDirectionResponseBodyData {
+	s.DestinationLatitude = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyData) SetDestinationLongitude(v string) *TransitIntegratedDirectionResponseBodyData {
+	s.DestinationLongitude = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyData) SetDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyData {
+	s.DistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyData) SetOriginLatitude(v string) *TransitIntegratedDirectionResponseBodyData {
+	s.OriginLatitude = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyData) SetOriginLongitude(v string) *TransitIntegratedDirectionResponseBodyData {
+	s.OriginLongitude = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyData) SetPaths(v []*TransitIntegratedDirectionResponseBodyDataPaths) *TransitIntegratedDirectionResponseBodyData {
+	s.Paths = v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataCost struct {
+	// example:
+	//
+	// 1231
+	DurationSecond *string `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
+	// example:
+	//
+	// 6
+	TaxiFee           *string `json:"taxiFee,omitempty" xml:"taxiFee,omitempty"`
+	TollDistanceMeter *string `json:"tollDistanceMeter,omitempty" xml:"tollDistanceMeter,omitempty"`
+	TollRoads         *string `json:"tollRoads,omitempty" xml:"tollRoads,omitempty"`
+	// example:
+	//
+	// 23
+	Tolls         *string `json:"tolls,omitempty" xml:"tolls,omitempty"`
+	TrafficLights *string `json:"trafficLights,omitempty" xml:"trafficLights,omitempty"`
+	TransitFee    *string `json:"transitFee,omitempty" xml:"transitFee,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataCost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataCost) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataCost) SetDurationSecond(v string) *TransitIntegratedDirectionResponseBodyDataCost {
+	s.DurationSecond = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataCost) SetTaxiFee(v string) *TransitIntegratedDirectionResponseBodyDataCost {
+	s.TaxiFee = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataCost) SetTollDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataCost {
+	s.TollDistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataCost) SetTollRoads(v string) *TransitIntegratedDirectionResponseBodyDataCost {
+	s.TollRoads = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataCost) SetTolls(v string) *TransitIntegratedDirectionResponseBodyDataCost {
+	s.Tolls = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataCost) SetTrafficLights(v string) *TransitIntegratedDirectionResponseBodyDataCost {
+	s.TrafficLights = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataCost) SetTransitFee(v string) *TransitIntegratedDirectionResponseBodyDataCost {
+	s.TransitFee = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPaths struct {
+	Cost *TransitIntegratedDirectionResponseBodyDataPathsCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
+	// example:
+	//
+	// 12000
+	DistanceMeter *string                                                    `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	Nightflag     *string                                                    `json:"nightflag,omitempty" xml:"nightflag,omitempty"`
+	Segments      []*TransitIntegratedDirectionResponseBodyDataPathsSegments `json:"segments,omitempty" xml:"segments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 23435
+	WalkingDistanceMeter *string `json:"walkingDistanceMeter,omitempty" xml:"walkingDistanceMeter,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPaths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPaths) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPaths) SetCost(v *TransitIntegratedDirectionResponseBodyDataPathsCost) *TransitIntegratedDirectionResponseBodyDataPaths {
+	s.Cost = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPaths) SetDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPaths {
+	s.DistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPaths) SetNightflag(v string) *TransitIntegratedDirectionResponseBodyDataPaths {
+	s.Nightflag = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPaths) SetSegments(v []*TransitIntegratedDirectionResponseBodyDataPathsSegments) *TransitIntegratedDirectionResponseBodyDataPaths {
+	s.Segments = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPaths) SetWalkingDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPaths {
+	s.WalkingDistanceMeter = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsCost struct {
+	// example:
+	//
+	// 39233
+	DurationSecond *string `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
+	// example:
+	//
+	// 20
+	TaxiFee *string `json:"taxiFee,omitempty" xml:"taxiFee,omitempty"`
+	// example:
+	//
+	// 2000
+	TollDistanceMeter *string `json:"tollDistanceMeter,omitempty" xml:"tollDistanceMeter,omitempty"`
+	TollRoads         *string `json:"tollRoads,omitempty" xml:"tollRoads,omitempty"`
+	Tolls             *string `json:"tolls,omitempty" xml:"tolls,omitempty"`
+	TrafficLights     *string `json:"trafficLights,omitempty" xml:"trafficLights,omitempty"`
+	// example:
+	//
+	// 4
+	TransitFee *string `json:"transitFee,omitempty" xml:"transitFee,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsCost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsCost) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsCost) SetDurationSecond(v string) *TransitIntegratedDirectionResponseBodyDataPathsCost {
+	s.DurationSecond = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsCost) SetTaxiFee(v string) *TransitIntegratedDirectionResponseBodyDataPathsCost {
+	s.TaxiFee = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsCost) SetTollDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsCost {
+	s.TollDistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsCost) SetTollRoads(v string) *TransitIntegratedDirectionResponseBodyDataPathsCost {
+	s.TollRoads = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsCost) SetTolls(v string) *TransitIntegratedDirectionResponseBodyDataPathsCost {
+	s.Tolls = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsCost) SetTrafficLights(v string) *TransitIntegratedDirectionResponseBodyDataPathsCost {
+	s.TrafficLights = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsCost) SetTransitFee(v string) *TransitIntegratedDirectionResponseBodyDataPathsCost {
+	s.TransitFee = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegments struct {
+	Bus     *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus     `json:"bus,omitempty" xml:"bus,omitempty" type:"Struct"`
+	Railway *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway `json:"railway,omitempty" xml:"railway,omitempty" type:"Struct"`
+	Taxi    *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi    `json:"taxi,omitempty" xml:"taxi,omitempty" type:"Struct"`
+	Walking *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking `json:"walking,omitempty" xml:"walking,omitempty" type:"Struct"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegments) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegments) SetBus(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus) *TransitIntegratedDirectionResponseBodyDataPathsSegments {
+	s.Bus = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegments) SetRailway(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) *TransitIntegratedDirectionResponseBodyDataPathsSegments {
+	s.Railway = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegments) SetTaxi(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) *TransitIntegratedDirectionResponseBodyDataPathsSegments {
+	s.Taxi = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegments) SetWalking(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) *TransitIntegratedDirectionResponseBodyDataPathsSegments {
+	s.Walking = v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus struct {
+	Buslines []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines `json:"buslines,omitempty" xml:"buslines,omitempty" type:"Repeated"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus) SetBuslines(v []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus {
+	s.Buslines = v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines struct {
+	ArrivalStop *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop `json:"arrivalStop,omitempty" xml:"arrivalStop,omitempty" type:"Struct"`
+	BusTimeTips *string                                                                        `json:"busTimeTips,omitempty" xml:"busTimeTips,omitempty"`
+	// example:
+	//
+	// 0
+	Bustimetag    *string                                                                          `json:"bustimetag,omitempty" xml:"bustimetag,omitempty"`
+	Cost          *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost          `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
+	DepartureStop *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop `json:"departureStop,omitempty" xml:"departureStop,omitempty" type:"Struct"`
+	// example:
+	//
+	// 13322
+	DistanceMeter *string `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	// example:
+	//
+	// 2259
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 900000028907
+	Id       *string                                                                     `json:"id,omitempty" xml:"id,omitempty"`
+	Name     *string                                                                     `json:"name,omitempty" xml:"name,omitempty"`
+	Polyline *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesPolyline `json:"polyline,omitempty" xml:"polyline,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0509
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 8
+	ViaNum   *string                                                                       `json:"viaNum,omitempty" xml:"viaNum,omitempty"`
+	ViaStops []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops `json:"viaStops,omitempty" xml:"viaStops,omitempty" type:"Repeated"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetArrivalStop(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.ArrivalStop = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetBusTimeTips(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.BusTimeTips = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetBustimetag(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.Bustimetag = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetCost(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.Cost = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetDepartureStop(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.DepartureStop = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.DistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetEndTime(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.Name = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetPolyline(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesPolyline) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.Polyline = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetStartTime(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetType(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.Type = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetViaNum(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.ViaNum = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) SetViaStops(v []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines {
+	s.ViaStops = v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop struct {
+	Exit *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit `json:"exit,omitempty" xml:"exit,omitempty" type:"Struct"`
+	// example:
+	//
+	// 100935
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 119.82416178385417,30.27139702690972
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop) SetExit(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop {
+	s.Exit = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop) SetLocation(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop {
+	s.Location = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStop {
+	s.Name = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit struct {
+	// example:
+	//
+	// 900000028907015
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 116.468213,39.998876
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit) SetLocation(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit {
+	s.Location = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesArrivalStopExit {
+	s.Name = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost struct {
+	// example:
+	//
+	// 1521
+	DurationSecond    *string `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
+	TaxiFee           *string `json:"taxiFee,omitempty" xml:"taxiFee,omitempty"`
+	TollDistanceMeter *string `json:"tollDistanceMeter,omitempty" xml:"tollDistanceMeter,omitempty"`
+	TollRoads         *string `json:"tollRoads,omitempty" xml:"tollRoads,omitempty"`
+	Tolls             *string `json:"tolls,omitempty" xml:"tolls,omitempty"`
+	TrafficLights     *string `json:"trafficLights,omitempty" xml:"trafficLights,omitempty"`
+	TransitFee        *string `json:"transitFee,omitempty" xml:"transitFee,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) SetDurationSecond(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost {
+	s.DurationSecond = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) SetTaxiFee(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost {
+	s.TaxiFee = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) SetTollDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost {
+	s.TollDistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) SetTollRoads(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost {
+	s.TollRoads = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) SetTolls(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost {
+	s.Tolls = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) SetTrafficLights(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost {
+	s.TrafficLights = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost) SetTransitFee(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesCost {
+	s.TransitFee = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop struct {
+	Entrance *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance `json:"entrance,omitempty" xml:"entrance,omitempty" type:"Struct"`
+	// example:
+	//
+	// 60852
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 116.468213,39.998876
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop) SetEntrance(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop {
+	s.Entrance = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop) SetLocation(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop {
+	s.Location = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStop {
+	s.Name = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance struct {
+	// example:
+	//
+	// 99088345834
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 116.468213,39.998876
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance) SetLocation(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance {
+	s.Location = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesDepartureStopEntrance {
+	s.Name = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesPolyline struct {
+	// example:
+	//
+	// 116.471544,39.991835
+	Polyline *string `json:"polyline,omitempty" xml:"polyline,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesPolyline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesPolyline) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesPolyline) SetPolyline(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesPolyline {
+	s.Polyline = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops struct {
+	Id       *string `json:"id,omitempty" xml:"id,omitempty"`
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops) SetLocation(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops {
+	s.Location = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslinesViaStops {
+	s.Name = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway struct {
+	ArrivalStop   *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop   `json:"arrivalStop,omitempty" xml:"arrivalStop,omitempty" type:"Struct"`
+	DepartureStop *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop `json:"departureStop,omitempty" xml:"departureStop,omitempty" type:"Struct"`
+	// example:
+	//
+	// 398734
+	DistanceMeter *string `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	// example:
+	//
+	// 434508
+	Id     *string                                                                 `json:"id,omitempty" xml:"id,omitempty"`
+	Name   *string                                                                 `json:"name,omitempty" xml:"name,omitempty"`
+	Spaces []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces `json:"spaces,omitempty" xml:"spaces,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-09-28 10:07:22
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	Trip *string `json:"trip,omitempty" xml:"trip,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetArrivalStop(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.ArrivalStop = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetDepartureStop(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.DepartureStop = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.DistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.Name = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetSpaces(v []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.Spaces = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetTime(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.Time = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetTrip(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.Trip = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetType(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.Type = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop struct {
+	// example:
+	//
+	// 023
+	Adcode *string `json:"adcode,omitempty" xml:"adcode,omitempty"`
+	// end
+	//
+	// example:
+	//
+	// 1699410466578
+	End *string `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 8234837534
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 101.45625135633681,25.08939480251736
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 2024-10-28 10:10:32
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) SetAdcode(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop {
+	s.Adcode = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) SetEnd(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop {
+	s.End = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) SetLocation(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop {
+	s.Location = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop {
+	s.Name = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop) SetTime(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayArrivalStop {
+	s.Time = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop struct {
+	// example:
+	//
+	// 029
+	Adcode *string `json:"adcode,omitempty" xml:"adcode,omitempty"`
+	// example:
+	//
+	// 100937
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 101.45625135633681,25.08939480251736
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1729440000000
+	Start *string `json:"start,omitempty" xml:"start,omitempty"`
+	// example:
+	//
+	// 2024-09-30 10:04:13
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) SetAdcode(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop {
+	s.Adcode = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop {
+	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) SetLocation(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop {
+	s.Location = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) SetName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop {
+	s.Name = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) SetStart(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop {
+	s.Start = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop) SetTime(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwayDepartureStop {
+	s.Time = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 150
+	Cost *string `json:"cost,omitempty" xml:"cost,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces) SetCode(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces {
+	s.Code = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces) SetCost(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces {
+	s.Cost = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi struct {
+	// example:
+	//
+	// xxx
+	DestinationName *string `json:"destinationName,omitempty" xml:"destinationName,omitempty"`
+	// example:
+	//
+	// 116.464297,39.896458
+	DestinationPoint *string `json:"destinationPoint,omitempty" xml:"destinationPoint,omitempty"`
+	// example:
+	//
+	// 1772
+	DistanceMeter *string `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	// example:
+	//
+	// 720
+	DriveTimeSecond *string `json:"driveTimeSecond,omitempty" xml:"driveTimeSecond,omitempty"`
+	OriginName      *string `json:"originName,omitempty" xml:"originName,omitempty"`
+	// example:
+	//
+	// 116.476597,39.893420
+	OriginPoint *string `json:"originPoint,omitempty" xml:"originPoint,omitempty"`
+	// example:
+	//
+	// 13.5
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetDestinationName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.DestinationName = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetDestinationPoint(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.DestinationPoint = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.DistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetDriveTimeSecond(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.DriveTimeSecond = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetOriginName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.OriginName = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetOriginPoint(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.OriginPoint = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetPrice(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.Price = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking struct {
+	Cost *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
+	// example:
+	//
+	// 116.468208,39.998875
+	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+	// example:
+	//
+	// 546
+	DistanceMeter *string `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	// example:
+	//
+	// 116.466568,39.995552
+	Origin *string                                                                `json:"origin,omitempty" xml:"origin,omitempty"`
+	Steps  []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) SetCost(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking {
+	s.Cost = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) SetDestination(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking {
+	s.Destination = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) SetDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking {
+	s.DistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) SetOrigin(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking {
+	s.Origin = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) SetSteps(v []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking {
+	s.Steps = v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost struct {
+	// example:
+	//
+	// 468
+	DurationSecond    *string `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
+	TaxiFee           *string `json:"taxiFee,omitempty" xml:"taxiFee,omitempty"`
+	TollDistanceMeter *string `json:"tollDistanceMeter,omitempty" xml:"tollDistanceMeter,omitempty"`
+	TollRoads         *string `json:"tollRoads,omitempty" xml:"tollRoads,omitempty"`
+	Tolls             *string `json:"tolls,omitempty" xml:"tolls,omitempty"`
+	TrafficLights     *string `json:"trafficLights,omitempty" xml:"trafficLights,omitempty"`
+	// example:
+	//
+	// 3
+	TransitFee *string `json:"transitFee,omitempty" xml:"transitFee,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) SetDurationSecond(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost {
+	s.DurationSecond = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) SetTaxiFee(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost {
+	s.TaxiFee = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) SetTollDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost {
+	s.TollDistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) SetTollRoads(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost {
+	s.TollRoads = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) SetTolls(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost {
+	s.Tolls = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) SetTrafficLights(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost {
+	s.TrafficLights = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost) SetTransitFee(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingCost {
+	s.TransitFee = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps struct {
+	Cost              *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost     `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
+	Instruction       *string                                                                      `json:"instruction,omitempty" xml:"instruction,omitempty"`
+	Orientation       *string                                                                      `json:"orientation,omitempty" xml:"orientation,omitempty"`
+	Polyline          *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsPolyline `json:"polyline,omitempty" xml:"polyline,omitempty" type:"Struct"`
+	RoadName          *string                                                                      `json:"roadName,omitempty" xml:"roadName,omitempty"`
+	StepDistanceMeter *string                                                                      `json:"stepDistanceMeter,omitempty" xml:"stepDistanceMeter,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) SetCost(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps {
+	s.Cost = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) SetInstruction(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps {
+	s.Instruction = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) SetOrientation(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps {
+	s.Orientation = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) SetPolyline(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsPolyline) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps {
+	s.Polyline = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) SetRoadName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps {
+	s.RoadName = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps) SetStepDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingSteps {
+	s.StepDistanceMeter = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost struct {
+	// example:
+	//
+	// 435
+	DurationSecond    *string `json:"durationSecond,omitempty" xml:"durationSecond,omitempty"`
+	TaxiFee           *string `json:"taxiFee,omitempty" xml:"taxiFee,omitempty"`
+	TollDistanceMeter *string `json:"tollDistanceMeter,omitempty" xml:"tollDistanceMeter,omitempty"`
+	TollRoads         *string `json:"tollRoads,omitempty" xml:"tollRoads,omitempty"`
+	Tolls             *string `json:"tolls,omitempty" xml:"tolls,omitempty"`
+	TrafficLights     *string `json:"trafficLights,omitempty" xml:"trafficLights,omitempty"`
+	TransitFee        *string `json:"transitFee,omitempty" xml:"transitFee,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) SetDurationSecond(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost {
+	s.DurationSecond = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) SetTaxiFee(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost {
+	s.TaxiFee = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) SetTollDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost {
+	s.TollDistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) SetTollRoads(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost {
+	s.TollRoads = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) SetTolls(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost {
+	s.Tolls = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) SetTrafficLights(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost {
+	s.TrafficLights = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost) SetTransitFee(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsCost {
+	s.TransitFee = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsPolyline struct {
+	// example:
+	//
+	// 116.467751,39.997631;116.467430,39.997631
+	Polyline *string `json:"polyline,omitempty" xml:"polyline,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsPolyline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsPolyline) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsPolyline) SetPolyline(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalkingStepsPolyline {
+	s.Polyline = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransitIntegratedDirectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponse) SetHeaders(v map[string]*string) *TransitIntegratedDirectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponse) SetStatusCode(v int32) *TransitIntegratedDirectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponse) SetBody(v *TransitIntegratedDirectionResponseBody) *TransitIntegratedDirectionResponse {
+	s.Body = v
+	return s
+}
+
 type WalkingDirectionNovaRequest struct {
 	// example:
 	//
@@ -3693,6 +5075,7 @@ func (s *WalkingDirectionNovaResponseBody) SetSuccess(v bool) *WalkingDirectionN
 }
 
 type WalkingDirectionNovaResponseBodyData struct {
+	Count *string `json:"count,omitempty" xml:"count,omitempty"`
 	// example:
 	//
 	// 40.020642
@@ -3722,6 +5105,11 @@ func (s WalkingDirectionNovaResponseBodyData) String() string {
 
 func (s WalkingDirectionNovaResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *WalkingDirectionNovaResponseBodyData) SetCount(v string) *WalkingDirectionNovaResponseBodyData {
+	s.Count = &v
+	return s
 }
 
 func (s *WalkingDirectionNovaResponseBodyData) SetDestinationLatitude(v string) *WalkingDirectionNovaResponseBodyData {
@@ -3870,6 +5258,7 @@ type WalkingDirectionNovaResponseBodyDataPathsSteps struct {
 	Cost        *WalkingDirectionNovaResponseBodyDataPathsStepsCost `json:"cost,omitempty" xml:"cost,omitempty" type:"Struct"`
 	Instruction *string                                             `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	Orientation *string                                             `json:"orientation,omitempty" xml:"orientation,omitempty"`
+	Polyline    *string                                             `json:"polyline,omitempty" xml:"polyline,omitempty"`
 	RoadName    *string                                             `json:"roadName,omitempty" xml:"roadName,omitempty"`
 	// example:
 	//
@@ -3897,6 +5286,11 @@ func (s *WalkingDirectionNovaResponseBodyDataPathsSteps) SetInstruction(v string
 
 func (s *WalkingDirectionNovaResponseBodyDataPathsSteps) SetOrientation(v string) *WalkingDirectionNovaResponseBodyDataPathsSteps {
 	s.Orientation = &v
+	return s
+}
+
+func (s *WalkingDirectionNovaResponseBodyDataPathsSteps) SetPolyline(v string) *WalkingDirectionNovaResponseBodyDataPathsSteps {
+	s.Polyline = &v
 	return s
 }
 
@@ -4197,6 +5591,10 @@ func (client *Client) DrivingDirectionNovaWithOptions(request *DrivingDirectionN
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CarType)) {
+		query["carType"] = request.CarType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationLatitude)) {
 		query["destinationLatitude"] = request.DestinationLatitude
 	}
@@ -4211,6 +5609,10 @@ func (client *Client) DrivingDirectionNovaWithOptions(request *DrivingDirectionN
 
 	if !tea.BoolValue(util.IsUnset(request.OriginLongitude)) {
 		query["originLongitude"] = request.OriginLongitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Plate)) {
+		query["plate"] = request.Plate
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4974,6 +6376,90 @@ func (client *Client) RgeoCode(request *RgeoCodeRequest) (_result *RgeoCodeRespo
 	headers := make(map[string]*string)
 	_result = &RgeoCodeResponse{}
 	_body, _err := client.RgeoCodeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 公共交通路线规划方案
+//
+// @param request - TransitIntegratedDirectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransitIntegratedDirectionResponse
+func (client *Client) TransitIntegratedDirectionWithOptions(request *TransitIntegratedDirectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TransitIntegratedDirectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationCity)) {
+		query["destinationCity"] = request.DestinationCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationLatitude)) {
+		query["destinationLatitude"] = request.DestinationLatitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationLongitude)) {
+		query["destinationLongitude"] = request.DestinationLongitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginCity)) {
+		query["originCity"] = request.OriginCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginLatitude)) {
+		query["originLatitude"] = request.OriginLatitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginLongitude)) {
+		query["originLongitude"] = request.OriginLongitude
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransitIntegratedDirection"),
+		Version:     tea.String("2024-07-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ipaas/v2/direction/transit/integrated"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransitIntegratedDirectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 公共交通路线规划方案
+//
+// @param request - TransitIntegratedDirectionRequest
+//
+// @return TransitIntegratedDirectionResponse
+func (client *Client) TransitIntegratedDirection(request *TransitIntegratedDirectionRequest) (_result *TransitIntegratedDirectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TransitIntegratedDirectionResponse{}
+	_body, _err := client.TransitIntegratedDirectionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
