@@ -2705,6 +2705,153 @@ func (s *ListJobRunsResponse) SetBody(v *ListJobRunsResponseBody) *ListJobRunsRe
 	return s
 }
 
+type ListLogContentsRequest struct {
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// example:
+	//
+	// 9999
+	Length *int32 `json:"length,omitempty" xml:"length,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ListLogContentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogContentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogContentsRequest) SetFileName(v string) *ListLogContentsRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListLogContentsRequest) SetLength(v int32) *ListLogContentsRequest {
+	s.Length = &v
+	return s
+}
+
+func (s *ListLogContentsRequest) SetOffset(v int32) *ListLogContentsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListLogContentsRequest) SetRegionId(v string) *ListLogContentsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListLogContentsResponseBody struct {
+	ListLogContent *ListLogContentsResponseBodyListLogContent `json:"listLogContent,omitempty" xml:"listLogContent,omitempty" type:"Struct"`
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListLogContentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogContentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogContentsResponseBody) SetListLogContent(v *ListLogContentsResponseBodyListLogContent) *ListLogContentsResponseBody {
+	s.ListLogContent = v
+	return s
+}
+
+func (s *ListLogContentsResponseBody) SetRequestId(v string) *ListLogContentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListLogContentsResponseBodyListLogContent struct {
+	Contents []*ListLogContentsResponseBodyListLogContentContents `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalLength *int64 `json:"totalLength,omitempty" xml:"totalLength,omitempty"`
+}
+
+func (s ListLogContentsResponseBodyListLogContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogContentsResponseBodyListLogContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogContentsResponseBodyListLogContent) SetContents(v []*ListLogContentsResponseBodyListLogContentContents) *ListLogContentsResponseBodyListLogContent {
+	s.Contents = v
+	return s
+}
+
+func (s *ListLogContentsResponseBodyListLogContent) SetTotalLength(v int64) *ListLogContentsResponseBodyListLogContent {
+	s.TotalLength = &v
+	return s
+}
+
+type ListLogContentsResponseBodyListLogContentContents struct {
+	// example:
+	//
+	// spark pi is 3.14\\n
+	LineContent *string `json:"LineContent,omitempty" xml:"LineContent,omitempty"`
+}
+
+func (s ListLogContentsResponseBodyListLogContentContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogContentsResponseBodyListLogContentContents) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogContentsResponseBodyListLogContentContents) SetLineContent(v string) *ListLogContentsResponseBodyListLogContentContents {
+	s.LineContent = &v
+	return s
+}
+
+type ListLogContentsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLogContentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLogContentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogContentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogContentsResponse) SetHeaders(v map[string]*string) *ListLogContentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLogContentsResponse) SetStatusCode(v int32) *ListLogContentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLogContentsResponse) SetBody(v *ListLogContentsResponseBody) *ListLogContentsResponse {
+	s.Body = v
+	return s
+}
+
 type ListReleaseVersionsRequest struct {
 	// The region ID.
 	//
@@ -2992,6 +3139,19 @@ func (s *ListReleaseVersionsResponse) SetBody(v *ListReleaseVersionsResponseBody
 }
 
 type ListSessionClustersRequest struct {
+	// The session type.
+	//
+	// Valid values:
+	//
+	// 	- NOTEBOOK
+	//
+	// 	- THRIFT
+	//
+	// 	- SQL
+	//
+	// example:
+	//
+	// SQL
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
 	// The maximum number of entries to return.
 	//
@@ -3082,7 +3242,7 @@ type ListSessionClustersResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The SQL computes.
+	// The list of sessions.
 	SessionClusters []*ListSessionClustersResponseBodySessionClusters `json:"sessionClusters,omitempty" xml:"sessionClusters,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -3126,43 +3286,72 @@ func (s *ListSessionClustersResponseBody) SetTotalCount(v int32) *ListSessionClu
 }
 
 type ListSessionClustersResponseBodySessionClusters struct {
-	// The SQL Compute configurations, which are equivalent to the configurations of the Spark job.
+	// The session configurations, which are equivalent to the configurations of the Spark job.
 	ApplicationConfigs []*ListSessionClustersResponseBodySessionClustersApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
 	// The automatic startup configurations.
 	AutoStartConfiguration *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
-	// The automatic termination configurations.
+	// The configurations of automatic termination.
 	AutoStopConfiguration *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
-	DisplayReleaseVersion *string                                                              `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	Domain                *string                                                              `json:"domain,omitempty" xml:"domain,omitempty"`
-	DraftId               *string                                                              `json:"draftId,omitempty" xml:"draftId,omitempty"`
-	Fusion                *bool                                                                `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	Kind                  *string                                                              `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The name of the SQL Compute.
+	// The version of the Spark engine.
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	Domain                *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The ID of the job that is associated with the session.
+	//
+	// example:
+	//
+	// TSK-xxxxxxxxx
+	DraftId *string `json:"draftId,omitempty" xml:"draftId,omitempty"`
+	// Indicates whether the Fusion engine is used for acceleration.
+	//
+	// example:
+	//
+	// false
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The session type.
+	//
+	// Valid values:
+	//
+	// 	- NOTEBOOK
+	//
+	// 	- THRIFT
+	//
+	// 	- SQL
+	//
+	// example:
+	//
+	// SQL
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The name of the session.
 	//
 	// example:
 	//
 	// adhoc_query
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the queue on which the SQL Compute runs.
+	// The name of the queue that is used to run the session.
 	//
 	// example:
 	//
 	// dev_queue
-	QueueName      *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The version of EMR Serverless Spark.
+	//
+	// example:
+	//
+	// esr-2.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The SQL Compute ID.
+	// The session ID.
 	//
 	// example:
 	//
 	// sc-123131
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
-	// The status of the SQL Compute.
+	// The status of the session.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The details of the last status change of the SQL Compute.
+	// The details of the most recent status change of the session.
 	StateChangeReason *ListSessionClustersResponseBodySessionClustersStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
 	// The user ID.
 	//
@@ -3176,7 +3365,12 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	//
 	// test_user
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	WebUI    *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
+	// The Spark UI of the session.
+	//
+	// example:
+	//
+	// http://spark-ui-xxxx
+	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -3356,7 +3550,7 @@ type ListSessionClustersResponseBodySessionClustersAutoStopConfiguration struct 
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The idle timeout period. The SQL Compute is automatically terminated if the idle timeout period is exceeded.
+	// The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
 	//
 	// example:
 	//
@@ -4461,14 +4655,20 @@ func (s *StartJobRunResponse) SetBody(v *StartJobRunResponseBody) *StartJobRunRe
 }
 
 type StartSessionClusterRequest struct {
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// sc-xxxxxxxxxxx
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -4499,13 +4699,13 @@ func (s *StartSessionClusterRequest) SetRegionId(v string) *StartSessionClusterR
 }
 
 type StartSessionClusterResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Workspace Id。
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -4561,14 +4761,20 @@ func (s *StartSessionClusterResponse) SetBody(v *StartSessionClusterResponseBody
 }
 
 type StopSessionClusterRequest struct {
+	// The queue name.
+	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// sc-xxxxxxxxxxxx
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -4599,13 +4805,13 @@ func (s *StopSessionClusterRequest) SetRegionId(v string) *StopSessionClusterReq
 }
 
 type StopSessionClusterResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Workspace Id。
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -5334,6 +5540,82 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 
 // Summary:
 //
+// 获取日志内容
+//
+// @param request - ListLogContentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLogContentsResponse
+func (client *Client) ListLogContentsWithOptions(workspaceId *string, request *ListLogContentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLogContentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["fileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Length)) {
+		query["length"] = request.Length
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLogContents"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/action/listLogContents"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLogContentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日志内容
+//
+// @param request - ListLogContentsRequest
+//
+// @return ListLogContentsResponse
+func (client *Client) ListLogContents(workspaceId *string, request *ListLogContentsRequest) (_result *ListLogContentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListLogContentsResponse{}
+	_body, _err := client.ListLogContentsWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
 //
 // @param request - ListReleaseVersionsRequest
@@ -5414,7 +5696,7 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 
 // Summary:
 //
-// 查询run列表
+// Queries a list of sessions.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -5479,7 +5761,7 @@ func (client *Client) ListSessionClustersWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// 查询run列表
+// Queries a list of sessions.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -5760,7 +6042,7 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 
 // Summary:
 //
-// 启动session集群
+// Starts a session.
 //
 // @param request - StartSessionClusterRequest
 //
@@ -5815,7 +6097,7 @@ func (client *Client) StartSessionClusterWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// 启动session集群
+// Starts a session.
 //
 // @param request - StartSessionClusterRequest
 //
@@ -5834,7 +6116,7 @@ func (client *Client) StartSessionCluster(workspaceId *string, request *StartSes
 
 // Summary:
 //
-// 启动session集群
+// Stops a session.
 //
 // @param request - StopSessionClusterRequest
 //
@@ -5889,7 +6171,7 @@ func (client *Client) StopSessionClusterWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// 启动session集群
+// Stops a session.
 //
 // @param request - StopSessionClusterRequest
 //
