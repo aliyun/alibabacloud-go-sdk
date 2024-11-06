@@ -470,6 +470,236 @@ func (s *AddRecordTemplateResponse) SetBody(v *AddRecordTemplateResponseBody) *A
 	return s
 }
 
+type CreateAppLayoutRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	Layout *CreateAppLayoutRequestLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
+}
+
+func (s CreateAppLayoutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppLayoutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppLayoutRequest) SetAppId(v string) *CreateAppLayoutRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppLayoutRequest) SetClientToken(v string) *CreateAppLayoutRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAppLayoutRequest) SetLayout(v *CreateAppLayoutRequestLayout) *CreateAppLayoutRequest {
+	s.Layout = v
+	return s
+}
+
+type CreateAppLayoutRequestLayout struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 布局
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	Panes []*CreateAppLayoutRequestLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppLayoutRequestLayout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppLayoutRequestLayout) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppLayoutRequestLayout) SetName(v string) *CreateAppLayoutRequestLayout {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppLayoutRequestLayout) SetPanes(v []*CreateAppLayoutRequestLayoutPanes) *CreateAppLayoutRequestLayout {
+	s.Panes = v
+	return s
+}
+
+type CreateAppLayoutRequestLayoutPanes struct {
+	// example:
+	//
+	// 0.25
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	PaneId *int64 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0.25
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.25
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.25
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+}
+
+func (s CreateAppLayoutRequestLayoutPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppLayoutRequestLayoutPanes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppLayoutRequestLayoutPanes) SetHeight(v float64) *CreateAppLayoutRequestLayoutPanes {
+	s.Height = &v
+	return s
+}
+
+func (s *CreateAppLayoutRequestLayoutPanes) SetPaneId(v int64) *CreateAppLayoutRequestLayoutPanes {
+	s.PaneId = &v
+	return s
+}
+
+func (s *CreateAppLayoutRequestLayoutPanes) SetWidth(v float64) *CreateAppLayoutRequestLayoutPanes {
+	s.Width = &v
+	return s
+}
+
+func (s *CreateAppLayoutRequestLayoutPanes) SetX(v float64) *CreateAppLayoutRequestLayoutPanes {
+	s.X = &v
+	return s
+}
+
+func (s *CreateAppLayoutRequestLayoutPanes) SetY(v float64) *CreateAppLayoutRequestLayoutPanes {
+	s.Y = &v
+	return s
+}
+
+func (s *CreateAppLayoutRequestLayoutPanes) SetZOrder(v int32) *CreateAppLayoutRequestLayoutPanes {
+	s.ZOrder = &v
+	return s
+}
+
+type CreateAppLayoutShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	LayoutShrink *string `json:"Layout,omitempty" xml:"Layout,omitempty"`
+}
+
+func (s CreateAppLayoutShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppLayoutShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppLayoutShrinkRequest) SetAppId(v string) *CreateAppLayoutShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppLayoutShrinkRequest) SetClientToken(v string) *CreateAppLayoutShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAppLayoutShrinkRequest) SetLayoutShrink(v string) *CreateAppLayoutShrinkRequest {
+	s.LayoutShrink = &v
+	return s
+}
+
+type CreateAppLayoutResponseBody struct {
+	// example:
+	//
+	// 167466539798442****
+	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 20A6D1E3-1F5F-5440-A4F1-EC7831646FE4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAppLayoutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppLayoutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppLayoutResponseBody) SetLayoutId(v string) *CreateAppLayoutResponseBody {
+	s.LayoutId = &v
+	return s
+}
+
+func (s *CreateAppLayoutResponseBody) SetRequestId(v string) *CreateAppLayoutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAppLayoutResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppLayoutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAppLayoutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppLayoutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppLayoutResponse) SetHeaders(v map[string]*string) *CreateAppLayoutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppLayoutResponse) SetStatusCode(v int32) *CreateAppLayoutResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppLayoutResponse) SetBody(v *CreateAppLayoutResponseBody) *CreateAppLayoutResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAppRecordTemplateRequest struct {
 	// This parameter is required.
 	//
@@ -1315,6 +1545,153 @@ func (s *CreateMPULayoutResponse) SetStatusCode(v int32) *CreateMPULayoutRespons
 }
 
 func (s *CreateMPULayoutResponse) SetBody(v *CreateMPULayoutResponseBody) *CreateMPULayoutResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAppLayoutRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Layout      *DeleteAppLayoutRequestLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
+}
+
+func (s DeleteAppLayoutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppLayoutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppLayoutRequest) SetAppId(v string) *DeleteAppLayoutRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppLayoutRequest) SetClientToken(v string) *DeleteAppLayoutRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteAppLayoutRequest) SetLayout(v *DeleteAppLayoutRequestLayout) *DeleteAppLayoutRequest {
+	s.Layout = v
+	return s
+}
+
+type DeleteAppLayoutRequestLayout struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 167466539798442****
+	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+}
+
+func (s DeleteAppLayoutRequestLayout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppLayoutRequestLayout) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppLayoutRequestLayout) SetLayoutId(v string) *DeleteAppLayoutRequestLayout {
+	s.LayoutId = &v
+	return s
+}
+
+type DeleteAppLayoutShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	LayoutShrink *string `json:"Layout,omitempty" xml:"Layout,omitempty"`
+}
+
+func (s DeleteAppLayoutShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppLayoutShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppLayoutShrinkRequest) SetAppId(v string) *DeleteAppLayoutShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppLayoutShrinkRequest) SetClientToken(v string) *DeleteAppLayoutShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteAppLayoutShrinkRequest) SetLayoutShrink(v string) *DeleteAppLayoutShrinkRequest {
+	s.LayoutShrink = &v
+	return s
+}
+
+type DeleteAppLayoutResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 2DCE8D7E-BE3B-54AB-8DAC-32F34BED0763
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAppLayoutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppLayoutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppLayoutResponseBody) SetRequestId(v string) *DeleteAppLayoutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAppLayoutResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppLayoutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAppLayoutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppLayoutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppLayoutResponse) SetHeaders(v map[string]*string) *DeleteAppLayoutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppLayoutResponse) SetStatusCode(v int32) *DeleteAppLayoutResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAppLayoutResponse) SetBody(v *DeleteAppLayoutResponseBody) *DeleteAppLayoutResponse {
 	s.Body = v
 	return s
 }
@@ -14109,6 +14486,246 @@ func (s *ModifyAppCallbackStatusResponse) SetBody(v *ModifyAppCallbackStatusResp
 	return s
 }
 
+type ModifyAppLayoutRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	Layout *ModifyAppLayoutRequestLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
+}
+
+func (s ModifyAppLayoutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLayoutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLayoutRequest) SetAppId(v string) *ModifyAppLayoutRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequest) SetClientToken(v string) *ModifyAppLayoutRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequest) SetLayout(v *ModifyAppLayoutRequestLayout) *ModifyAppLayoutRequest {
+	s.Layout = v
+	return s
+}
+
+type ModifyAppLayoutRequestLayout struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123121231313
+	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试
+	Name  *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Panes []*ModifyAppLayoutRequestLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+}
+
+func (s ModifyAppLayoutRequestLayout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLayoutRequestLayout) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLayoutRequestLayout) SetLayoutId(v string) *ModifyAppLayoutRequestLayout {
+	s.LayoutId = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequestLayout) SetName(v string) *ModifyAppLayoutRequestLayout {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequestLayout) SetPanes(v []*ModifyAppLayoutRequestLayoutPanes) *ModifyAppLayoutRequestLayout {
+	s.Panes = v
+	return s
+}
+
+type ModifyAppLayoutRequestLayoutPanes struct {
+	// example:
+	//
+	// 0.25
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	PaneId *int64 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0.25
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.25
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.25
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+}
+
+func (s ModifyAppLayoutRequestLayoutPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLayoutRequestLayoutPanes) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLayoutRequestLayoutPanes) SetHeight(v float64) *ModifyAppLayoutRequestLayoutPanes {
+	s.Height = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequestLayoutPanes) SetPaneId(v int64) *ModifyAppLayoutRequestLayoutPanes {
+	s.PaneId = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequestLayoutPanes) SetWidth(v float64) *ModifyAppLayoutRequestLayoutPanes {
+	s.Width = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequestLayoutPanes) SetX(v float64) *ModifyAppLayoutRequestLayoutPanes {
+	s.X = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequestLayoutPanes) SetY(v float64) *ModifyAppLayoutRequestLayoutPanes {
+	s.Y = &v
+	return s
+}
+
+func (s *ModifyAppLayoutRequestLayoutPanes) SetZOrder(v int32) *ModifyAppLayoutRequestLayoutPanes {
+	s.ZOrder = &v
+	return s
+}
+
+type ModifyAppLayoutShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	LayoutShrink *string `json:"Layout,omitempty" xml:"Layout,omitempty"`
+}
+
+func (s ModifyAppLayoutShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLayoutShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLayoutShrinkRequest) SetAppId(v string) *ModifyAppLayoutShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppLayoutShrinkRequest) SetClientToken(v string) *ModifyAppLayoutShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyAppLayoutShrinkRequest) SetLayoutShrink(v string) *ModifyAppLayoutShrinkRequest {
+	s.LayoutShrink = &v
+	return s
+}
+
+type ModifyAppLayoutResponseBody struct {
+	// example:
+	//
+	// 167466539798442****
+	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppLayoutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLayoutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLayoutResponseBody) SetLayoutId(v string) *ModifyAppLayoutResponseBody {
+	s.LayoutId = &v
+	return s
+}
+
+func (s *ModifyAppLayoutResponseBody) SetRequestId(v string) *ModifyAppLayoutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppLayoutResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppLayoutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppLayoutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLayoutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLayoutResponse) SetHeaders(v map[string]*string) *ModifyAppLayoutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppLayoutResponse) SetStatusCode(v int32) *ModifyAppLayoutResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppLayoutResponse) SetBody(v *ModifyAppLayoutResponseBody) *ModifyAppLayoutResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAppLiveStreamStatusRequest struct {
 	// This parameter is required.
 	//
@@ -15502,7 +16119,8 @@ type StartCloudRecordRequest struct {
 	// example:
 	//
 	// eo85****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string                               `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Backgrounds []*StartCloudRecordRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
 	// channelName
 	//
 	// This parameter is required.
@@ -15518,7 +16136,8 @@ type StartCloudRecordRequest struct {
 	CropMode *int32                           `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
 	Images   []*StartCloudRecordRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// panes
-	Panes []*StartCloudRecordRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	Panes       []*StartCloudRecordRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor *StartCloudRecordRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
 	// storageConfig
 	//
 	// This parameter is required.
@@ -15553,6 +16172,11 @@ func (s *StartCloudRecordRequest) SetAppId(v string) *StartCloudRecordRequest {
 	return s
 }
 
+func (s *StartCloudRecordRequest) SetBackgrounds(v []*StartCloudRecordRequestBackgrounds) *StartCloudRecordRequest {
+	s.Backgrounds = v
+	return s
+}
+
 func (s *StartCloudRecordRequest) SetChannelId(v string) *StartCloudRecordRequest {
 	s.ChannelId = &v
 	return s
@@ -15578,6 +16202,11 @@ func (s *StartCloudRecordRequest) SetPanes(v []*StartCloudRecordRequestPanes) *S
 	return s
 }
 
+func (s *StartCloudRecordRequest) SetRegionColor(v *StartCloudRecordRequestRegionColor) *StartCloudRecordRequest {
+	s.RegionColor = v
+	return s
+}
+
 func (s *StartCloudRecordRequest) SetStorageConfig(v *StartCloudRecordRequestStorageConfig) *StartCloudRecordRequest {
 	s.StorageConfig = v
 	return s
@@ -15595,6 +16224,99 @@ func (s *StartCloudRecordRequest) SetTemplateId(v string) *StartCloudRecordReque
 
 func (s *StartCloudRecordRequest) SetTexts(v []*StartCloudRecordRequestTexts) *StartCloudRecordRequest {
 	s.Texts = v
+	return s
+}
+
+type StartCloudRecordRequestBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 2
+	BackgroundCropMode *int32 `json:"BackgroundCropMode,omitempty" xml:"BackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartCloudRecordRequestBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestBackgrounds) SetAlpha(v float64) *StartCloudRecordRequestBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBackgrounds) SetBackgroundCropMode(v int32) *StartCloudRecordRequestBackgrounds {
+	s.BackgroundCropMode = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBackgrounds) SetHeight(v float64) *StartCloudRecordRequestBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBackgrounds) SetLayer(v int32) *StartCloudRecordRequestBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBackgrounds) SetUrl(v string) *StartCloudRecordRequestBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBackgrounds) SetWidth(v float64) *StartCloudRecordRequestBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBackgrounds) SetX(v float64) *StartCloudRecordRequestBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBackgrounds) SetY(v float64) *StartCloudRecordRequestBackgrounds {
+	s.Y = &v
 	return s
 }
 
@@ -16225,6 +16947,44 @@ func (s *StartCloudRecordRequestPanesTextsFontColor) SetG(v int32) *StartCloudRe
 }
 
 func (s *StartCloudRecordRequestPanesTextsFontColor) SetR(v int32) *StartCloudRecordRequestPanesTextsFontColor {
+	s.R = &v
+	return s
+}
+
+type StartCloudRecordRequestRegionColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordRequestRegionColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestRegionColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestRegionColor) SetB(v int32) *StartCloudRecordRequestRegionColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestRegionColor) SetG(v int32) *StartCloudRecordRequestRegionColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestRegionColor) SetR(v int32) *StartCloudRecordRequestRegionColor {
 	s.R = &v
 	return s
 }
@@ -17865,7 +18625,8 @@ type StartStreamingOutRequest struct {
 	// example:
 	//
 	// eo85****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Backgrounds []*StartStreamingOutRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -17876,9 +18637,10 @@ type StartStreamingOutRequest struct {
 	// example:
 	//
 	// 2
-	CropMode *int32                            `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	Images   []*StartStreamingOutRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	Panes    []*StartStreamingOutRequestPanes  `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	CropMode    *int32                               `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	Images      []*StartStreamingOutRequestImages    `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Panes       []*StartStreamingOutRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor *StartStreamingOutRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
 	// example:
 	//
 	// 123
@@ -17911,6 +18673,11 @@ func (s *StartStreamingOutRequest) SetAppId(v string) *StartStreamingOutRequest 
 	return s
 }
 
+func (s *StartStreamingOutRequest) SetBackgrounds(v []*StartStreamingOutRequestBackgrounds) *StartStreamingOutRequest {
+	s.Backgrounds = v
+	return s
+}
+
 func (s *StartStreamingOutRequest) SetChannelId(v string) *StartStreamingOutRequest {
 	s.ChannelId = &v
 	return s
@@ -17936,6 +18703,11 @@ func (s *StartStreamingOutRequest) SetPanes(v []*StartStreamingOutRequestPanes) 
 	return s
 }
 
+func (s *StartStreamingOutRequest) SetRegionColor(v *StartStreamingOutRequestRegionColor) *StartStreamingOutRequest {
+	s.RegionColor = v
+	return s
+}
+
 func (s *StartStreamingOutRequest) SetTaskId(v string) *StartStreamingOutRequest {
 	s.TaskId = &v
 	return s
@@ -17953,6 +18725,99 @@ func (s *StartStreamingOutRequest) SetTexts(v []*StartStreamingOutRequestTexts) 
 
 func (s *StartStreamingOutRequest) SetUrl(v string) *StartStreamingOutRequest {
 	s.Url = &v
+	return s
+}
+
+type StartStreamingOutRequestBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 2
+	BackgroundCropMode *int32 `json:"BackgroundCropMode,omitempty" xml:"BackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartStreamingOutRequestBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestBackgrounds) SetAlpha(v float64) *StartStreamingOutRequestBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBackgrounds) SetBackgroundCropMode(v int32) *StartStreamingOutRequestBackgrounds {
+	s.BackgroundCropMode = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBackgrounds) SetHeight(v float64) *StartStreamingOutRequestBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBackgrounds) SetLayer(v int32) *StartStreamingOutRequestBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBackgrounds) SetUrl(v string) *StartStreamingOutRequestBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBackgrounds) SetWidth(v float64) *StartStreamingOutRequestBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBackgrounds) SetX(v float64) *StartStreamingOutRequestBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBackgrounds) SetY(v float64) *StartStreamingOutRequestBackgrounds {
+	s.Y = &v
 	return s
 }
 
@@ -18581,6 +19446,44 @@ func (s *StartStreamingOutRequestPanesTextsFontColor) SetG(v int32) *StartStream
 }
 
 func (s *StartStreamingOutRequestPanesTextsFontColor) SetR(v int32) *StartStreamingOutRequestPanesTextsFontColor {
+	s.R = &v
+	return s
+}
+
+type StartStreamingOutRequestRegionColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutRequestRegionColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestRegionColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestRegionColor) SetB(v int32) *StartStreamingOutRequestRegionColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestRegionColor) SetG(v int32) *StartStreamingOutRequestRegionColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestRegionColor) SetR(v int32) *StartStreamingOutRequestRegionColor {
 	s.R = &v
 	return s
 }
@@ -19572,7 +20475,8 @@ type UpdateCloudRecordRequest struct {
 	// example:
 	//
 	// eo85****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Backgrounds []*UpdateCloudRecordRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -19610,6 +20514,11 @@ func (s *UpdateCloudRecordRequest) SetAppId(v string) *UpdateCloudRecordRequest 
 	return s
 }
 
+func (s *UpdateCloudRecordRequest) SetBackgrounds(v []*UpdateCloudRecordRequestBackgrounds) *UpdateCloudRecordRequest {
+	s.Backgrounds = v
+	return s
+}
+
 func (s *UpdateCloudRecordRequest) SetChannelId(v string) *UpdateCloudRecordRequest {
 	s.ChannelId = &v
 	return s
@@ -19642,6 +20551,99 @@ func (s *UpdateCloudRecordRequest) SetTemplateId(v string) *UpdateCloudRecordReq
 
 func (s *UpdateCloudRecordRequest) SetTexts(v []*UpdateCloudRecordRequestTexts) *UpdateCloudRecordRequest {
 	s.Texts = v
+	return s
+}
+
+type UpdateCloudRecordRequestBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 2
+	BackgroundCropMode *int32 `json:"BackgroundCropMode,omitempty" xml:"BackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestBackgrounds) SetAlpha(v float64) *UpdateCloudRecordRequestBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestBackgrounds) SetBackgroundCropMode(v int32) *UpdateCloudRecordRequestBackgrounds {
+	s.BackgroundCropMode = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestBackgrounds) SetHeight(v float64) *UpdateCloudRecordRequestBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestBackgrounds) SetLayer(v int32) *UpdateCloudRecordRequestBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestBackgrounds) SetUrl(v string) *UpdateCloudRecordRequestBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestBackgrounds) SetWidth(v float64) *UpdateCloudRecordRequestBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestBackgrounds) SetX(v float64) *UpdateCloudRecordRequestBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestBackgrounds) SetY(v float64) *UpdateCloudRecordRequestBackgrounds {
+	s.Y = &v
 	return s
 }
 
@@ -22136,7 +23138,8 @@ type UpdateStreamingOutRequest struct {
 	// example:
 	//
 	// eo85****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Backgrounds []*UpdateStreamingOutRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -22174,6 +23177,11 @@ func (s *UpdateStreamingOutRequest) SetAppId(v string) *UpdateStreamingOutReques
 	return s
 }
 
+func (s *UpdateStreamingOutRequest) SetBackgrounds(v []*UpdateStreamingOutRequestBackgrounds) *UpdateStreamingOutRequest {
+	s.Backgrounds = v
+	return s
+}
+
 func (s *UpdateStreamingOutRequest) SetChannelId(v string) *UpdateStreamingOutRequest {
 	s.ChannelId = &v
 	return s
@@ -22206,6 +23214,99 @@ func (s *UpdateStreamingOutRequest) SetTemplateId(v string) *UpdateStreamingOutR
 
 func (s *UpdateStreamingOutRequest) SetTexts(v []*UpdateStreamingOutRequestTexts) *UpdateStreamingOutRequest {
 	s.Texts = v
+	return s
+}
+
+type UpdateStreamingOutRequestBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 2
+	BackgroundCropMode *int32 `json:"BackgroundCropMode,omitempty" xml:"BackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestBackgrounds) SetAlpha(v float64) *UpdateStreamingOutRequestBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBackgrounds) SetBackgroundCropMode(v int32) *UpdateStreamingOutRequestBackgrounds {
+	s.BackgroundCropMode = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBackgrounds) SetHeight(v float64) *UpdateStreamingOutRequestBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBackgrounds) SetLayer(v int32) *UpdateStreamingOutRequestBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBackgrounds) SetUrl(v string) *UpdateStreamingOutRequestBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBackgrounds) SetWidth(v float64) *UpdateStreamingOutRequestBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBackgrounds) SetX(v float64) *UpdateStreamingOutRequestBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBackgrounds) SetY(v float64) *UpdateStreamingOutRequestBackgrounds {
+	s.Y = &v
 	return s
 }
 
@@ -23259,6 +24360,80 @@ func (client *Client) AddRecordTemplate(request *AddRecordTemplateRequest) (_res
 
 // Summary:
 //
+// 新增app自定义布局
+//
+// @param tmpReq - CreateAppLayoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppLayoutResponse
+func (client *Client) CreateAppLayoutWithOptions(tmpReq *CreateAppLayoutRequest, runtime *util.RuntimeOptions) (_result *CreateAppLayoutResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAppLayoutShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Layout)) {
+		request.LayoutShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Layout, tea.String("Layout"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutShrink)) {
+		query["Layout"] = request.LayoutShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppLayout"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppLayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增app自定义布局
+//
+// @param request - CreateAppLayoutRequest
+//
+// @return CreateAppLayoutResponse
+func (client *Client) CreateAppLayout(request *CreateAppLayoutRequest) (_result *CreateAppLayoutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppLayoutResponse{}
+	_body, _err := client.CreateAppLayoutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 增加应用录制模版
 //
 // @param tmpReq - CreateAppRecordTemplateRequest
@@ -23626,6 +24801,80 @@ func (client *Client) CreateMPULayout(request *CreateMPULayoutRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMPULayoutResponse{}
 	_body, _err := client.CreateMPULayoutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除app自定义布局
+//
+// @param tmpReq - DeleteAppLayoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppLayoutResponse
+func (client *Client) DeleteAppLayoutWithOptions(tmpReq *DeleteAppLayoutRequest, runtime *util.RuntimeOptions) (_result *DeleteAppLayoutResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAppLayoutShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Layout)) {
+		request.LayoutShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Layout, tea.String("Layout"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutShrink)) {
+		query["Layout"] = request.LayoutShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppLayout"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAppLayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除app自定义布局
+//
+// @param request - DeleteAppLayoutRequest
+//
+// @return DeleteAppLayoutResponse
+func (client *Client) DeleteAppLayout(request *DeleteAppLayoutRequest) (_result *DeleteAppLayoutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppLayoutResponse{}
+	_body, _err := client.DeleteAppLayoutWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28098,6 +29347,80 @@ func (client *Client) ModifyAppCallbackStatus(request *ModifyAppCallbackStatusRe
 
 // Summary:
 //
+// 修改app自定义布局
+//
+// @param tmpReq - ModifyAppLayoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppLayoutResponse
+func (client *Client) ModifyAppLayoutWithOptions(tmpReq *ModifyAppLayoutRequest, runtime *util.RuntimeOptions) (_result *ModifyAppLayoutResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyAppLayoutShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Layout)) {
+		request.LayoutShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Layout, tea.String("Layout"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutShrink)) {
+		query["Layout"] = request.LayoutShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppLayout"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppLayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改app自定义布局
+//
+// @param request - ModifyAppLayoutRequest
+//
+// @return ModifyAppLayoutResponse
+func (client *Client) ModifyAppLayout(request *ModifyAppLayoutRequest) (_result *ModifyAppLayoutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppLayoutResponse{}
+	_body, _err := client.ModifyAppLayoutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改应用旁路开关
 //
 // @param request - ModifyAppLiveStreamStatusRequest
@@ -28735,6 +30058,10 @@ func (client *Client) StartCloudRecordWithOptions(request *StartCloudRecordReque
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Backgrounds)) {
+		query["Backgrounds"] = request.Backgrounds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
 		query["ChannelId"] = request.ChannelId
 	}
@@ -28753,6 +30080,10 @@ func (client *Client) StartCloudRecordWithOptions(request *StartCloudRecordReque
 
 	if !tea.BoolValue(util.IsUnset(request.Panes)) {
 		query["Panes"] = request.Panes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionColor)) {
+		query["RegionColor"] = request.RegionColor
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageConfig)) {
@@ -29132,6 +30463,10 @@ func (client *Client) StartStreamingOutWithOptions(request *StartStreamingOutReq
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Backgrounds)) {
+		query["Backgrounds"] = request.Backgrounds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
 		query["ChannelId"] = request.ChannelId
 	}
@@ -29150,6 +30485,10 @@ func (client *Client) StartStreamingOutWithOptions(request *StartStreamingOutReq
 
 	if !tea.BoolValue(util.IsUnset(request.Panes)) {
 		query["Panes"] = request.Panes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionColor)) {
+		query["RegionColor"] = request.RegionColor
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
@@ -29702,6 +31041,10 @@ func (client *Client) UpdateCloudRecordWithOptions(request *UpdateCloudRecordReq
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Backgrounds)) {
+		query["Backgrounds"] = request.Backgrounds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
 		query["ChannelId"] = request.ChannelId
 	}
@@ -30164,6 +31507,10 @@ func (client *Client) UpdateStreamingOutWithOptions(request *UpdateStreamingOutR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Backgrounds)) {
+		query["Backgrounds"] = request.Backgrounds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
