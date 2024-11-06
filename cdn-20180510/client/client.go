@@ -9005,6 +9005,136 @@ func (s *DescribeCdnSubListResponse) SetBody(v *DescribeCdnSubListResponseBody) 
 	return s
 }
 
+type DescribeCdnTypesRequest struct {
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeCdnTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnTypesRequest) SetOwnerAccount(v string) *DescribeCdnTypesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeCdnTypesRequest) SetOwnerId(v int64) *DescribeCdnTypesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeCdnTypesRequest) SetSecurityToken(v string) *DescribeCdnTypesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeCdnTypesResponseBody struct {
+	CdnTypes *DescribeCdnTypesResponseBodyCdnTypes `json:"CdnTypes,omitempty" xml:"CdnTypes,omitempty" type:"Struct"`
+	// example:
+	//
+	// BDA62CE4-3477-439A-B52E-D2D7C829D7C1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCdnTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnTypesResponseBody) SetCdnTypes(v *DescribeCdnTypesResponseBodyCdnTypes) *DescribeCdnTypesResponseBody {
+	s.CdnTypes = v
+	return s
+}
+
+func (s *DescribeCdnTypesResponseBody) SetRequestId(v string) *DescribeCdnTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCdnTypesResponseBodyCdnTypes struct {
+	CdnType []*DescribeCdnTypesResponseBodyCdnTypesCdnType `json:"CdnType,omitempty" xml:"CdnType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCdnTypesResponseBodyCdnTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnTypesResponseBodyCdnTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnTypesResponseBodyCdnTypes) SetCdnType(v []*DescribeCdnTypesResponseBodyCdnTypesCdnType) *DescribeCdnTypesResponseBodyCdnTypes {
+	s.CdnType = v
+	return s
+}
+
+type DescribeCdnTypesResponseBodyCdnTypesCdnType struct {
+	// example:
+	//
+	// Download Acceleration
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// example:
+	//
+	// download
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCdnTypesResponseBodyCdnTypesCdnType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnTypesResponseBodyCdnTypesCdnType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnTypesResponseBodyCdnTypesCdnType) SetDesc(v string) *DescribeCdnTypesResponseBodyCdnTypesCdnType {
+	s.Desc = &v
+	return s
+}
+
+func (s *DescribeCdnTypesResponseBodyCdnTypesCdnType) SetType(v string) *DescribeCdnTypesResponseBodyCdnTypesCdnType {
+	s.Type = &v
+	return s
+}
+
+type DescribeCdnTypesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCdnTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCdnTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnTypesResponse) SetHeaders(v map[string]*string) *DescribeCdnTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCdnTypesResponse) SetStatusCode(v int32) *DescribeCdnTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCdnTypesResponse) SetBody(v *DescribeCdnTypesResponseBody) *DescribeCdnTypesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCdnUserBillHistoryRequest struct {
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
@@ -26049,6 +26179,114 @@ func (s *DescribeTopDomainsByFlowResponse) SetBody(v *DescribeTopDomainsByFlowRe
 	return s
 }
 
+type DescribeUserCdnStatusRequest struct {
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeUserCdnStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserCdnStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserCdnStatusRequest) SetOwnerId(v int64) *DescribeUserCdnStatusRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeUserCdnStatusRequest) SetSecurityToken(v string) *DescribeUserCdnStatusRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeUserCdnStatusResponseBody struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// false
+	InDebt *bool `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
+	// example:
+	//
+	// false
+	InDebtOverdue *bool `json:"InDebtOverdue,omitempty" xml:"InDebtOverdue,omitempty"`
+	// example:
+	//
+	// true
+	OnService *bool `json:"OnService,omitempty" xml:"OnService,omitempty"`
+	// example:
+	//
+	// 39B1DC7F-9D25-5D54-8F02-6EE26A7F48CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUserCdnStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserCdnStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserCdnStatusResponseBody) SetEnabled(v bool) *DescribeUserCdnStatusResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeUserCdnStatusResponseBody) SetInDebt(v bool) *DescribeUserCdnStatusResponseBody {
+	s.InDebt = &v
+	return s
+}
+
+func (s *DescribeUserCdnStatusResponseBody) SetInDebtOverdue(v bool) *DescribeUserCdnStatusResponseBody {
+	s.InDebtOverdue = &v
+	return s
+}
+
+func (s *DescribeUserCdnStatusResponseBody) SetOnService(v bool) *DescribeUserCdnStatusResponseBody {
+	s.OnService = &v
+	return s
+}
+
+func (s *DescribeUserCdnStatusResponseBody) SetRequestId(v string) *DescribeUserCdnStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUserCdnStatusResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserCdnStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserCdnStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserCdnStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserCdnStatusResponse) SetHeaders(v map[string]*string) *DescribeUserCdnStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserCdnStatusResponse) SetStatusCode(v int32) *DescribeUserCdnStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserCdnStatusResponse) SetBody(v *DescribeUserCdnStatusResponseBody) *DescribeUserCdnStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeUserCertificateExpireCountResponseBody struct {
 	// The number of domain names whose SSL certificates are about to expires within 30 days.
 	//
@@ -29131,6 +29369,97 @@ func (s *ModifyCdnDomainSchdmByPropertyResponse) SetStatusCode(v int32) *ModifyC
 }
 
 func (s *ModifyCdnDomainSchdmByPropertyResponse) SetBody(v *ModifyCdnDomainSchdmByPropertyResponseBody) *ModifyCdnDomainSchdmByPropertyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyCdnServiceRequest struct {
+	// The new metering method for Alibaba Cloud CDN. Valid values:
+	//
+	// 	- **PayByTraffic**: pay-by-data-transfer
+	//
+	// 	- **PayByBandwidth**: pay-by-bandwidth
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PayByTraffic
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyCdnServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCdnServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCdnServiceRequest) SetInternetChargeType(v string) *ModifyCdnServiceRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *ModifyCdnServiceRequest) SetOwnerId(v int64) *ModifyCdnServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyCdnServiceRequest) SetSecurityToken(v string) *ModifyCdnServiceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyCdnServiceResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCdnServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCdnServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCdnServiceResponseBody) SetRequestId(v string) *ModifyCdnServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCdnServiceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCdnServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCdnServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCdnServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCdnServiceResponse) SetHeaders(v map[string]*string) *ModifyCdnServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCdnServiceResponse) SetStatusCode(v int32) *ModifyCdnServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCdnServiceResponse) SetBody(v *ModifyCdnServiceResponseBody) *ModifyCdnServiceResponse {
 	s.Body = v
 	return s
 }
@@ -36433,6 +36762,66 @@ func (client *Client) DescribeCdnSubList() (_result *DescribeCdnSubListResponse,
 	return _result, _err
 }
 
+// @param request - DescribeCdnTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCdnTypesResponse
+func (client *Client) DescribeCdnTypesWithOptions(request *DescribeCdnTypesRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCdnTypes"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCdnTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCdnTypesRequest
+//
+// @return DescribeCdnTypesResponse
+func (client *Client) DescribeCdnTypes(request *DescribeCdnTypesRequest) (_result *DescribeCdnTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCdnTypesResponse{}
+	_body, _err := client.DescribeCdnTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the billing history under your Alibaba Cloud account.
@@ -42892,6 +43281,62 @@ func (client *Client) DescribeTopDomainsByFlow(request *DescribeTopDomainsByFlow
 	return _result, _err
 }
 
+// @param request - DescribeUserCdnStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserCdnStatusResponse
+func (client *Client) DescribeUserCdnStatusWithOptions(request *DescribeUserCdnStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeUserCdnStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserCdnStatus"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserCdnStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeUserCdnStatusRequest
+//
+// @return DescribeUserCdnStatusResponse
+func (client *Client) DescribeUserCdnStatus(request *DescribeUserCdnStatusRequest) (_result *DescribeUserCdnStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserCdnStatusResponse{}
+	_body, _err := client.DescribeUserCdnStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the number of domain names whose SSL certificates are about to expire or have already expired.
@@ -44227,6 +44672,74 @@ func (client *Client) ModifyCdnDomainSchdmByProperty(request *ModifyCdnDomainSch
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCdnDomainSchdmByPropertyResponse{}
 	_body, _err := client.ModifyCdnDomainSchdmByPropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the metering method of Alibaba Cloud CDN.
+//
+// @param request - ModifyCdnServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCdnServiceResponse
+func (client *Client) ModifyCdnServiceWithOptions(request *ModifyCdnServiceRequest, runtime *util.RuntimeOptions) (_result *ModifyCdnServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCdnService"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCdnServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the metering method of Alibaba Cloud CDN.
+//
+// @param request - ModifyCdnServiceRequest
+//
+// @return ModifyCdnServiceResponse
+func (client *Client) ModifyCdnService(request *ModifyCdnServiceRequest) (_result *ModifyCdnServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCdnServiceResponse{}
+	_body, _err := client.ModifyCdnServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
