@@ -2872,8 +2872,6 @@ type CreateDcdnSLSRealTimeLogDeliveryRequest struct {
 	//
 	// 	- sg: Singapore
 	//
-	// 	- in: India
-	//
 	// 	- eu: Europe
 	//
 	// 	- us: United States
@@ -35036,6 +35034,106 @@ func (s *GetDcdnKvResponse) SetBody(v *GetDcdnKvResponseBody) *GetDcdnKvResponse
 	return s
 }
 
+type GetDcdnKvDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_namespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s GetDcdnKvDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvDetailRequest) SetKey(v string) *GetDcdnKvDetailRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *GetDcdnKvDetailRequest) SetNamespace(v string) *GetDcdnKvDetailRequest {
+	s.Namespace = &v
+	return s
+}
+
+type GetDcdnKvDetailResponseBody struct {
+	// example:
+	//
+	// 3600
+	ExpirationTtl *string `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDcdnKvDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvDetailResponseBody) SetExpirationTtl(v string) *GetDcdnKvDetailResponseBody {
+	s.ExpirationTtl = &v
+	return s
+}
+
+func (s *GetDcdnKvDetailResponseBody) SetRequestId(v string) *GetDcdnKvDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDcdnKvDetailResponseBody) SetValue(v string) *GetDcdnKvDetailResponseBody {
+	s.Value = &v
+	return s
+}
+
+type GetDcdnKvDetailResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDcdnKvDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDcdnKvDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvDetailResponse) SetHeaders(v map[string]*string) *GetDcdnKvDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDcdnKvDetailResponse) SetStatusCode(v int32) *GetDcdnKvDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDcdnKvDetailResponse) SetBody(v *GetDcdnKvDetailResponseBody) *GetDcdnKvDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetDcdnKvStatusRequest struct {
 	// The name of the key that you want to query.
 	//
@@ -36279,6 +36377,7 @@ type PreloadDcdnObjectCachesRequest struct {
 	// example.com/examplefile.txt
 	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	QueryHashkey  *bool   `json:"QueryHashkey,omitempty" xml:"QueryHashkey,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The custom header for prefetch in the JSON format.
 	//
@@ -36321,6 +36420,11 @@ func (s *PreloadDcdnObjectCachesRequest) SetObjectPath(v string) *PreloadDcdnObj
 
 func (s *PreloadDcdnObjectCachesRequest) SetOwnerId(v int64) *PreloadDcdnObjectCachesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *PreloadDcdnObjectCachesRequest) SetQueryHashkey(v bool) *PreloadDcdnObjectCachesRequest {
+	s.QueryHashkey = &v
 	return s
 }
 
@@ -55512,6 +55616,62 @@ func (client *Client) GetDcdnKv(request *GetDcdnKvRequest) (_result *GetDcdnKvRe
 
 // Summary:
 //
+// 查询KV对的值以及TTL信息
+//
+// @param request - GetDcdnKvDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDcdnKvDetailResponse
+func (client *Client) GetDcdnKvDetailWithOptions(request *GetDcdnKvDetailRequest, runtime *util.RuntimeOptions) (_result *GetDcdnKvDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDcdnKvDetail"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDcdnKvDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询KV对的值以及TTL信息
+//
+// @param request - GetDcdnKvDetailRequest
+//
+// @return GetDcdnKvDetailResponse
+func (client *Client) GetDcdnKvDetail(request *GetDcdnKvDetailRequest) (_result *GetDcdnKvDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDcdnKvDetailResponse{}
+	_body, _err := client.GetDcdnKvDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the KV status by key value.
 //
 // @param request - GetDcdnKvStatusRequest
@@ -56245,6 +56405,10 @@ func (client *Client) PreloadDcdnObjectCachesWithOptions(request *PreloadDcdnObj
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryHashkey)) {
+		query["QueryHashkey"] = request.QueryHashkey
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
