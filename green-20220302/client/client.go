@@ -2056,6 +2056,7 @@ type ImageModerationResponseBodyDataExt struct {
 	Recognition []*ImageModerationResponseBodyDataExtRecognition `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
 	// Returns the text information in the hit image.
 	TextInImage *ImageModerationResponseBodyDataExtTextInImage `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
+	VlContent   *ImageModerationResponseBodyDataExtVlContent   `json:"VlContent,omitempty" xml:"VlContent,omitempty" type:"Struct"`
 }
 
 func (s ImageModerationResponseBodyDataExt) String() string {
@@ -2098,6 +2099,11 @@ func (s *ImageModerationResponseBodyDataExt) SetRecognition(v []*ImageModeration
 
 func (s *ImageModerationResponseBodyDataExt) SetTextInImage(v *ImageModerationResponseBodyDataExtTextInImage) *ImageModerationResponseBodyDataExt {
 	s.TextInImage = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExt) SetVlContent(v *ImageModerationResponseBodyDataExtVlContent) *ImageModerationResponseBodyDataExt {
+	s.VlContent = v
 	return s
 }
 
@@ -3093,6 +3099,23 @@ func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) SetX(v 
 
 func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) SetY(v int32) *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation {
 	s.Y = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtVlContent struct {
+	OutputText *string `json:"OutputText,omitempty" xml:"OutputText,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtVlContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtVlContent) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtVlContent) SetOutputText(v string) *ImageModerationResponseBodyDataExtVlContent {
+	s.OutputText = &v
 	return s
 }
 
@@ -5011,13 +5034,15 @@ func (s *VoiceModerationCancelResponse) SetBody(v *VoiceModerationCancelResponse
 }
 
 type VoiceModerationResultRequest struct {
-	// The type of the moderation service.
+	// The type of the moderation service. Valid values: nickname_detection: user nickname
 	//
 	// example:
 	//
 	// nickname_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters required by the moderation service. The value is a JSON string.
+	// The parameters of API requests that are sent from API Gateway to the backend service.
+	//
+	// For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
 	//
 	// example:
 	//
@@ -5058,7 +5083,7 @@ type VoiceModerationResultResponseBody struct {
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -5106,9 +5131,14 @@ type VoiceModerationResultResponseBodyData struct {
 	// example:
 	//
 	// liveId
-	LiveId    *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The details about the audio segments.
+	// The moderation results of audio segments.
 	SliceDetails []*VoiceModerationResultResponseBodyDataSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
 	// The task ID.
 	//
@@ -5116,7 +5146,7 @@ type VoiceModerationResultResponseBodyData struct {
 	//
 	// kw24ihd0WGkdi5nniVZM@qOj-1x5Ibb
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The URL of the moderation object.
+	// The URL of the moderated content.
 	//
 	// example:
 	//
@@ -5163,7 +5193,7 @@ func (s *VoiceModerationResultResponseBodyData) SetUrl(v string) *VoiceModeratio
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetails struct {
-	// The end time of the text after audio-to-text conversion. Unit: seconds.
+	// The end time of the audio segment in seconds.
 	//
 	// example:
 	//
@@ -5175,7 +5205,7 @@ type VoiceModerationResultResponseBodyDataSliceDetails struct {
 	//
 	// 1678854649720
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// A reserved parameter.
+	// Extended fields.
 	//
 	// example:
 	//
@@ -5187,32 +5217,37 @@ type VoiceModerationResultResponseBodyDataSliceDetails struct {
 	//
 	// sexual_sounds
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Reserved field.
+	// Reserved parameter.
 	//
 	// example:
 	//
 	// {}
 	OriginAlgoResult map[string]interface{} `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
-	RiskLevel        *string                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The risk details that are hit.
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The details of the risky content.
 	//
 	// example:
 	//
 	// sexuality_Suggestive
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// The risk words that are hit.
+	// The term hit by the risky content.
 	//
 	// example:
 	//
 	// AAA,BBB,CCC
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	// Risk score, default range 0-99.
+	// The risk score. Default range: 0 to 99.
 	//
 	// example:
 	//
 	// 87.01
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The start time of the text after audio-to-text conversion. Unit: seconds.
+	// The start time of the audio segment in seconds.
 	//
 	// example:
 	//
@@ -5224,13 +5259,13 @@ type VoiceModerationResultResponseBodyDataSliceDetails struct {
 	//
 	// 1678854649720
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The text converted from voice.
+	// The text converted from the audio segment.
 	//
 	// example:
 	//
 	// Disgusting
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The temporary access address of the audio segment. The validity period of the URL is 30 minutes. You must prepare another URL to store the audio segment at the earliest opportunity.
+	// The temporary URL of the audio segment.
 	//
 	// example:
 	//
@@ -6460,7 +6495,7 @@ func (client *Client) VoiceModerationCancel(request *VoiceModerationCancelReques
 
 // Summary:
 //
-// 语音检测结果获取接口
+// Obtains the moderation results of a Voice Moderation 2.0 task.
 //
 // @param request - VoiceModerationResultRequest
 //
@@ -6506,7 +6541,7 @@ func (client *Client) VoiceModerationResultWithOptions(request *VoiceModerationR
 
 // Summary:
 //
-// 语音检测结果获取接口
+// Obtains the moderation results of a Voice Moderation 2.0 task.
 //
 // @param request - VoiceModerationResultRequest
 //
