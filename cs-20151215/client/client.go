@@ -14580,6 +14580,402 @@ func (s *DescribeClustersResponseBodyTags) SetValue(v string) *DescribeClustersR
 	return s
 }
 
+type DescribeClustersForRegionRequest struct {
+	// example:
+	//
+	// c8155823d057948c69a****
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
+	// ack.standard
+	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	// example:
+	//
+	// Kubernetes
+	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	// example:
+	//
+	// test-cluster
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 10
+	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// example:
+	//
+	// 3
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// Serverless
+	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
+}
+
+func (s DescribeClustersForRegionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersForRegionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersForRegionRequest) SetClusterId(v string) *DescribeClustersForRegionRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionRequest) SetClusterSpec(v string) *DescribeClustersForRegionRequest {
+	s.ClusterSpec = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionRequest) SetClusterType(v string) *DescribeClustersForRegionRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionRequest) SetName(v string) *DescribeClustersForRegionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionRequest) SetPageNumber(v int64) *DescribeClustersForRegionRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionRequest) SetPageSize(v int64) *DescribeClustersForRegionRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionRequest) SetProfile(v string) *DescribeClustersForRegionRequest {
+	s.Profile = &v
+	return s
+}
+
+type DescribeClustersForRegionResponseBody struct {
+	Clusters []*DescribeClustersForRegionResponseBodyClusters `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
+	PageInfo *DescribeClustersForRegionResponseBodyPageInfo   `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+}
+
+func (s DescribeClustersForRegionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersForRegionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersForRegionResponseBody) SetClusters(v []*DescribeClustersForRegionResponseBodyClusters) *DescribeClustersForRegionResponseBody {
+	s.Clusters = v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBody) SetPageInfo(v *DescribeClustersForRegionResponseBodyPageInfo) *DescribeClustersForRegionResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+type DescribeClustersForRegionResponseBodyClusters struct {
+	// example:
+	//
+	// cluster.local
+	ClusterDomain *string `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
+	// example:
+	//
+	// c905d1364c2dd4b6284a3f41790c4****
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
+	// ack.standard
+	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	// example:
+	//
+	// ManagedKubernetes
+	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	// example:
+	//
+	// 172.20.0.0/16
+	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
+	// example:
+	//
+	// 2020-12-01T20:40:40+08:00
+	Created *string `json:"created,omitempty" xml:"created,omitempty"`
+	// example:
+	//
+	// 1.16.6-aliyun.1
+	CurrentVersion *string `json:"current_version,omitempty" xml:"current_version,omitempty"`
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
+	// example:
+	//
+	// 1.16.6-aliyun.1
+	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
+	// example:
+	//
+	// ipv4
+	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
+	// example:
+	//
+	// test-cluster
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1.18.8-aliyun.1
+	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	// example:
+	//
+	// Default
+	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	// example:
+	//
+	// ipvs
+	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
+	// example:
+	//
+	// cn-beijing-a
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	// example:
+	//
+	// rg-acfmyvw3wjm****
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// example:
+	//
+	// sg-2zeihch86ooz9io4****
+	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 172.21.0.0/20
+	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
+	// example:
+	//
+	// 2
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// running
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	Tags  []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Asia/Shanghai
+	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// example:
+	//
+	// 2020-12-08T15:37:00+08:00
+	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
+	// example:
+	//
+	// vpc-2zeg8nf1ukc0fcmvq****
+	VpcId      *string   `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
+	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClustersForRegionResponseBodyClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersForRegionResponseBodyClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetClusterDomain(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.ClusterDomain = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetClusterId(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetClusterSpec(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.ClusterSpec = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetClusterType(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetContainerCidr(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.ContainerCidr = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetCreated(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.Created = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetCurrentVersion(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetDeletionProtection(v bool) *DescribeClustersForRegionResponseBodyClusters {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetInitVersion(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.InitVersion = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetIpStack(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.IpStack = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetName(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetNextVersion(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.NextVersion = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetProfile(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.Profile = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetProxyMode(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.ProxyMode = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetRegionId(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetResourceGroupId(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetSecurityGroupId(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetServiceCidr(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.ServiceCidr = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetSize(v int64) *DescribeClustersForRegionResponseBodyClusters {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetState(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetTags(v []*Tag) *DescribeClustersForRegionResponseBodyClusters {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetTimezone(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.Timezone = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetUpdated(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.Updated = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetVpcId(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetVswitchIds(v []*string) *DescribeClustersForRegionResponseBodyClusters {
+	s.VswitchIds = v
+	return s
+}
+
+type DescribeClustersForRegionResponseBodyPageInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"total_count,omitempty" xml:"total_count,omitempty"`
+}
+
+func (s DescribeClustersForRegionResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersForRegionResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersForRegionResponseBodyPageInfo) SetPageNumber(v int32) *DescribeClustersForRegionResponseBodyPageInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyPageInfo) SetPageSize(v int32) *DescribeClustersForRegionResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyPageInfo) SetTotalCount(v int32) *DescribeClustersForRegionResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeClustersForRegionResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeClustersForRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeClustersForRegionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClustersForRegionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClustersForRegionResponse) SetHeaders(v map[string]*string) *DescribeClustersForRegionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponse) SetStatusCode(v int32) *DescribeClustersForRegionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponse) SetBody(v *DescribeClustersForRegionResponseBody) *DescribeClustersForRegionResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeClustersV1Request struct {
 	// The cluster ID.
 	//
@@ -16339,6 +16735,240 @@ func (s *DescribeEventsResponse) SetStatusCode(v int32) *DescribeEventsResponse 
 }
 
 func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *DescribeEventsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEventsForRegionRequest struct {
+	// example:
+	//
+	// cf62854ac2130470897be7a27ed1f****
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s DescribeEventsForRegionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsForRegionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsForRegionRequest) SetClusterId(v string) *DescribeEventsForRegionRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionRequest) SetPageNumber(v int64) *DescribeEventsForRegionRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionRequest) SetPageSize(v int64) *DescribeEventsForRegionRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeEventsForRegionResponseBody struct {
+	Events   []*DescribeEventsForRegionResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	PageInfo *DescribeEventsForRegionResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+}
+
+func (s DescribeEventsForRegionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsForRegionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsForRegionResponseBody) SetEvents(v []*DescribeEventsForRegionResponseBodyEvents) *DescribeEventsForRegionResponseBody {
+	s.Events = v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBody) SetPageInfo(v *DescribeEventsForRegionResponseBodyPageInfo) *DescribeEventsForRegionResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+type DescribeEventsForRegionResponseBodyEvents struct {
+	// example:
+	//
+	// cluster-id
+	ClusterId *string                                        `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	Data      *DescribeEventsForRegionResponseBodyEventsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// A234-1234-1234
+	EventId *string `json:"event_id,omitempty" xml:"event_id,omitempty"`
+	Source  *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// nodePool-id
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// example:
+	//
+	// 2020-12-01T17:31:00Z
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// nodePool_upgrade
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeEventsForRegionResponseBodyEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsForRegionResponseBodyEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsForRegionResponseBodyEvents) SetClusterId(v string) *DescribeEventsForRegionResponseBodyEvents {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyEvents) SetData(v *DescribeEventsForRegionResponseBodyEventsData) *DescribeEventsForRegionResponseBodyEvents {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyEvents) SetEventId(v string) *DescribeEventsForRegionResponseBodyEvents {
+	s.EventId = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyEvents) SetSource(v string) *DescribeEventsForRegionResponseBodyEvents {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyEvents) SetSubject(v string) *DescribeEventsForRegionResponseBodyEvents {
+	s.Subject = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyEvents) SetTime(v string) *DescribeEventsForRegionResponseBodyEvents {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyEvents) SetType(v string) *DescribeEventsForRegionResponseBodyEvents {
+	s.Type = &v
+	return s
+}
+
+type DescribeEventsForRegionResponseBodyEventsData struct {
+	// example:
+	//
+	// info
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// Start to upgrade NodePool nodePool/nodePool-A
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// Started
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s DescribeEventsForRegionResponseBodyEventsData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsForRegionResponseBodyEventsData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsForRegionResponseBodyEventsData) SetLevel(v string) *DescribeEventsForRegionResponseBodyEventsData {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyEventsData) SetMessage(v string) *DescribeEventsForRegionResponseBodyEventsData {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyEventsData) SetReason(v string) *DescribeEventsForRegionResponseBodyEventsData {
+	s.Reason = &v
+	return s
+}
+
+type DescribeEventsForRegionResponseBodyPageInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 3
+	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
+}
+
+func (s DescribeEventsForRegionResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsForRegionResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsForRegionResponseBodyPageInfo) SetPageNumber(v int64) *DescribeEventsForRegionResponseBodyPageInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyPageInfo) SetPageSize(v int64) *DescribeEventsForRegionResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponseBodyPageInfo) SetTotalCount(v int64) *DescribeEventsForRegionResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeEventsForRegionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEventsForRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeEventsForRegionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsForRegionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsForRegionResponse) SetHeaders(v map[string]*string) *DescribeEventsForRegionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponse) SetStatusCode(v int32) *DescribeEventsForRegionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEventsForRegionResponse) SetBody(v *DescribeEventsForRegionResponseBody) *DescribeEventsForRegionResponse {
 	s.Body = v
 	return s
 }
@@ -32224,6 +32854,94 @@ func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_resul
 
 // Summary:
 //
+// 查询指定地域内全部集群列表
+//
+// @param request - DescribeClustersForRegionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClustersForRegionResponse
+func (client *Client) DescribeClustersForRegionWithOptions(regionId *string, request *DescribeClustersForRegionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClustersForRegionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["cluster_id"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
+		query["cluster_spec"] = request.ClusterSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["cluster_type"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["page_number"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Profile)) {
+		query["profile"] = request.Profile
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClustersForRegion"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/regions/" + tea.StringValue(openapiutil.GetEncodeParam(regionId)) + "/clusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClustersForRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定地域内全部集群列表
+//
+// @param request - DescribeClustersForRegionRequest
+//
+// @return DescribeClustersForRegionResponse
+func (client *Client) DescribeClustersForRegion(regionId *string, request *DescribeClustersForRegionRequest) (_result *DescribeClustersForRegionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeClustersForRegionResponse{}
+	_body, _err := client.DescribeClustersForRegionWithOptions(regionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details about Container Service for Kubernetes (ACK) clusters of specified types or specifications within an account.
 //
 // @param request - DescribeClustersV1Request
@@ -32617,6 +33335,78 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 	headers := make(map[string]*string)
 	_result = &DescribeEventsResponse{}
 	_body, _err := client.DescribeEventsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定地域内全部事件列表
+//
+// @param request - DescribeEventsForRegionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEventsForRegionResponse
+func (client *Client) DescribeEventsForRegionWithOptions(regionId *string, request *DescribeEventsForRegionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeEventsForRegionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["cluster_id"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["page_number"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEventsForRegion"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/regions/" + tea.StringValue(openapiutil.GetEncodeParam(regionId)) + "/events"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEventsForRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定地域内全部事件列表
+//
+// @param request - DescribeEventsForRegionRequest
+//
+// @return DescribeEventsForRegionResponse
+func (client *Client) DescribeEventsForRegion(regionId *string, request *DescribeEventsForRegionRequest) (_result *DescribeEventsForRegionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeEventsForRegionResponse{}
+	_body, _err := client.DescribeEventsForRegionWithOptions(regionId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
