@@ -155,6 +155,84 @@ func (s *BatchSetDesktopManagerResponse) SetBody(v *BatchSetDesktopManagerRespon
 	return s
 }
 
+type ChangeUserPasswordRequest struct {
+	// example:
+	//
+	// alice***
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// Admin@12***
+	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+}
+
+func (s ChangeUserPasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeUserPasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeUserPasswordRequest) SetEndUserId(v string) *ChangeUserPasswordRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *ChangeUserPasswordRequest) SetNewPassword(v string) *ChangeUserPasswordRequest {
+	s.NewPassword = &v
+	return s
+}
+
+type ChangeUserPasswordResponseBody struct {
+	// example:
+	//
+	// AA8D67CB-345D-5CDA-986E-FFAC7D0****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeUserPasswordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeUserPasswordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeUserPasswordResponseBody) SetRequestId(v string) *ChangeUserPasswordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeUserPasswordResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeUserPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeUserPasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeUserPasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeUserPasswordResponse) SetHeaders(v map[string]*string) *ChangeUserPasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeUserPasswordResponse) SetStatusCode(v int32) *ChangeUserPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeUserPasswordResponse) SetBody(v *ChangeUserPasswordResponseBody) *ChangeUserPasswordResponse {
+	s.Body = v
+	return s
+}
+
 type CheckUsedPropertyRequest struct {
 	// The ID of the property. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
 	//
@@ -3543,6 +3621,7 @@ func (s *LockMfaDeviceResponse) SetBody(v *LockMfaDeviceResponseBody) *LockMfaDe
 }
 
 type LockUsersRequest struct {
+	LogoutSession *bool `json:"LogoutSession,omitempty" xml:"LogoutSession,omitempty"`
 	// The usernames of the convenience users that you want to lock.
 	//
 	// This parameter is required.
@@ -3559,6 +3638,11 @@ func (s LockUsersRequest) String() string {
 
 func (s LockUsersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *LockUsersRequest) SetLogoutSession(v bool) *LockUsersRequest {
+	s.LogoutSession = &v
+	return s
 }
 
 func (s *LockUsersRequest) SetUsers(v []*string) *LockUsersRequest {
@@ -5300,6 +5384,70 @@ func (client *Client) BatchSetDesktopManager(request *BatchSetDesktopManagerRequ
 
 // Summary:
 //
+// 管理员修改用户密码
+//
+// @param request - ChangeUserPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeUserPasswordResponse
+func (client *Client) ChangeUserPasswordWithOptions(request *ChangeUserPasswordRequest, runtime *util.RuntimeOptions) (_result *ChangeUserPasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewPassword)) {
+		body["NewPassword"] = request.NewPassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeUserPassword"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeUserPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 管理员修改用户密码
+//
+// @param request - ChangeUserPasswordRequest
+//
+// @return ChangeUserPasswordResponse
+func (client *Client) ChangeUserPassword(request *ChangeUserPasswordRequest) (_result *ChangeUserPasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeUserPasswordResponse{}
+	_body, _err := client.ChangeUserPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether a property is associated with one or more convenience users.
 //
 // @param request - CheckUsedPropertyRequest
@@ -6287,13 +6435,19 @@ func (client *Client) LockUsersWithOptions(request *LockUsersRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LogoutSession)) {
+		query["LogoutSession"] = request.LogoutSession
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Users)) {
 		body["Users"] = request.Users
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("LockUsers"),
