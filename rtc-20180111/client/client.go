@@ -3812,7 +3812,7 @@ type DescribeAppRecordingFilesResponseBodyItems struct {
 	// example:
 	//
 	// 1712376012000
-	StartTs *int32 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
 	// example:
 	//
 	// test001
@@ -3866,7 +3866,7 @@ func (s *DescribeAppRecordingFilesResponseBodyItems) SetRegion(v int32) *Describ
 	return s
 }
 
-func (s *DescribeAppRecordingFilesResponseBodyItems) SetStartTs(v int32) *DescribeAppRecordingFilesResponseBodyItems {
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetStartTs(v int64) *DescribeAppRecordingFilesResponseBodyItems {
 	s.StartTs = &v
 	return s
 }
