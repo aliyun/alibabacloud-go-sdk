@@ -51889,7 +51889,8 @@ type QueryGroupLiveInfoResponseBody struct {
 	// example:
 	//
 	// 13414
-	PlaybackDuration *int64 `json:"playbackDuration,omitempty" xml:"playbackDuration,omitempty"`
+	PlaybackDuration *int64  `json:"playbackDuration,omitempty" xml:"playbackDuration,omitempty"`
+	ReplayUrl        *string `json:"replayUrl,omitempty" xml:"replayUrl,omitempty"`
 	// requestId
 	//
 	// example:
@@ -51965,6 +51966,11 @@ func (s *QueryGroupLiveInfoResponseBody) SetLiveStatus(v int32) *QueryGroupLiveI
 
 func (s *QueryGroupLiveInfoResponseBody) SetPlaybackDuration(v int64) *QueryGroupLiveInfoResponseBody {
 	s.PlaybackDuration = &v
+	return s
+}
+
+func (s *QueryGroupLiveInfoResponseBody) SetReplayUrl(v string) *QueryGroupLiveInfoResponseBody {
+	s.ReplayUrl = &v
 	return s
 }
 
