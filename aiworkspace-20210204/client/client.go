@@ -6433,9 +6433,10 @@ type GetPermissionRequest struct {
 	// example:
 	//
 	// 17915******4216
-	Creator  *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Option   *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Creator  *string                `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Labels   map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Option   *string                `json:"Option,omitempty" xml:"Option,omitempty"`
+	Resource *string                `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
 func (s GetPermissionRequest) String() string {
@@ -6456,12 +6457,64 @@ func (s *GetPermissionRequest) SetCreator(v string) *GetPermissionRequest {
 	return s
 }
 
+func (s *GetPermissionRequest) SetLabels(v map[string]interface{}) *GetPermissionRequest {
+	s.Labels = v
+	return s
+}
+
 func (s *GetPermissionRequest) SetOption(v string) *GetPermissionRequest {
 	s.Option = &v
 	return s
 }
 
 func (s *GetPermissionRequest) SetResource(v string) *GetPermissionRequest {
+	s.Resource = &v
+	return s
+}
+
+type GetPermissionShrinkRequest struct {
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// 17915******4216
+	Creator      *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+}
+
+func (s GetPermissionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionShrinkRequest) SetAccessibility(v string) *GetPermissionShrinkRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *GetPermissionShrinkRequest) SetCreator(v string) *GetPermissionShrinkRequest {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetPermissionShrinkRequest) SetLabelsShrink(v string) *GetPermissionShrinkRequest {
+	s.LabelsShrink = &v
+	return s
+}
+
+func (s *GetPermissionShrinkRequest) SetOption(v string) *GetPermissionShrinkRequest {
+	s.Option = &v
+	return s
+}
+
+func (s *GetPermissionShrinkRequest) SetResource(v string) *GetPermissionShrinkRequest {
 	s.Resource = &v
 	return s
 }
@@ -10814,6 +10867,129 @@ func (s *SetExperimentLabelsResponse) SetBody(v *SetExperimentLabelsResponseBody
 	return s
 }
 
+type UpdateCodeSourceRequest struct {
+	// example:
+	//
+	// dev
+	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	CodeCommit          *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
+	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// /root/code/code-source-1
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s UpdateCodeSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCodeSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCodeSourceRequest) SetCodeBranch(v string) *UpdateCodeSourceRequest {
+	s.CodeBranch = &v
+	return s
+}
+
+func (s *UpdateCodeSourceRequest) SetCodeCommit(v string) *UpdateCodeSourceRequest {
+	s.CodeCommit = &v
+	return s
+}
+
+func (s *UpdateCodeSourceRequest) SetCodeRepo(v string) *UpdateCodeSourceRequest {
+	s.CodeRepo = &v
+	return s
+}
+
+func (s *UpdateCodeSourceRequest) SetCodeRepoAccessToken(v string) *UpdateCodeSourceRequest {
+	s.CodeRepoAccessToken = &v
+	return s
+}
+
+func (s *UpdateCodeSourceRequest) SetCodeRepoUserName(v string) *UpdateCodeSourceRequest {
+	s.CodeRepoUserName = &v
+	return s
+}
+
+func (s *UpdateCodeSourceRequest) SetDescription(v string) *UpdateCodeSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateCodeSourceRequest) SetDisplayName(v string) *UpdateCodeSourceRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateCodeSourceRequest) SetMountPath(v string) *UpdateCodeSourceRequest {
+	s.MountPath = &v
+	return s
+}
+
+type UpdateCodeSourceResponseBody struct {
+	// example:
+	//
+	// code-20********
+	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCodeSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCodeSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCodeSourceResponseBody) SetCodeSourceId(v string) *UpdateCodeSourceResponseBody {
+	s.CodeSourceId = &v
+	return s
+}
+
+func (s *UpdateCodeSourceResponseBody) SetRequestId(v string) *UpdateCodeSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCodeSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCodeSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCodeSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCodeSourceResponse) SetHeaders(v map[string]*string) *UpdateCodeSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCodeSourceResponse) SetStatusCode(v int32) *UpdateCodeSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCodeSourceResponse) SetBody(v *UpdateCodeSourceResponseBody) *UpdateCodeSourceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDatasetRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
@@ -14682,18 +14858,24 @@ func (client *Client) GetModelVersion(ModelId *string, VersionName *string) (_re
 //
 // 获取权限，若无权限则返回错误
 //
-// @param request - GetPermissionRequest
+// @param tmpReq - GetPermissionRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPermissionResponse
-func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCode *string, request *GetPermissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPermissionResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCode *string, tmpReq *GetPermissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPermissionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetPermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Labels)) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, tea.String("Labels"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		query["Accessibility"] = request.Accessibility
@@ -14701,6 +14883,10 @@ func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCo
 
 	if !tea.BoolValue(util.IsUnset(request.Creator)) {
 		query["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelsShrink)) {
+		query["Labels"] = request.LabelsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Option)) {
@@ -16855,6 +17041,98 @@ func (client *Client) SetExperimentLabels(ExperimentId *string, request *SetExpe
 	headers := make(map[string]*string)
 	_result = &SetExperimentLabelsResponse{}
 	_body, _err := client.SetExperimentLabelsWithOptions(ExperimentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新代码配置
+//
+// @param request - UpdateCodeSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCodeSourceResponse
+func (client *Client) UpdateCodeSourceWithOptions(CodeSourceId *string, request *UpdateCodeSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCodeSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CodeBranch)) {
+		body["CodeBranch"] = request.CodeBranch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeCommit)) {
+		body["CodeCommit"] = request.CodeCommit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepo)) {
+		body["CodeRepo"] = request.CodeRepo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoAccessToken)) {
+		body["CodeRepoAccessToken"] = request.CodeRepoAccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoUserName)) {
+		body["CodeRepoUserName"] = request.CodeRepoUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountPath)) {
+		body["MountPath"] = request.MountPath
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCodeSource"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources/" + tea.StringValue(openapiutil.GetEncodeParam(CodeSourceId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCodeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新代码配置
+//
+// @param request - UpdateCodeSourceRequest
+//
+// @return UpdateCodeSourceResponse
+func (client *Client) UpdateCodeSource(CodeSourceId *string, request *UpdateCodeSourceRequest) (_result *UpdateCodeSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateCodeSourceResponse{}
+	_body, _err := client.UpdateCodeSourceWithOptions(CodeSourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
