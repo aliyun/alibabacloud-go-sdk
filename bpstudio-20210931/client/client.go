@@ -3455,6 +3455,7 @@ type GetTemplateResponseBodyDataVariables struct {
 	//
 	// cadt-app-01
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Options      *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The value of the variable.
 	//
 	// example:
@@ -3483,6 +3484,11 @@ func (s *GetTemplateResponseBodyDataVariables) SetDataType(v string) *GetTemplat
 
 func (s *GetTemplateResponseBodyDataVariables) SetDefaultValue(v string) *GetTemplateResponseBodyDataVariables {
 	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyDataVariables) SetOptions(v string) *GetTemplateResponseBodyDataVariables {
+	s.Options = &v
 	return s
 }
 
