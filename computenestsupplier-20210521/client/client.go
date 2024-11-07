@@ -487,6 +487,8 @@ func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployService
 }
 
 type CreateArtifactRequest struct {
+	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	ArtifactBuildProperty *CreateArtifactRequestArtifactBuildProperty `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty" type:"Struct"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -553,6 +555,11 @@ func (s CreateArtifactRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateArtifactRequest) SetArtifactBuildProperty(v *CreateArtifactRequestArtifactBuildProperty) *CreateArtifactRequest {
+	s.ArtifactBuildProperty = v
+	return s
+}
+
 func (s *CreateArtifactRequest) SetArtifactId(v string) *CreateArtifactRequest {
 	s.ArtifactId = &v
 	return s
@@ -595,6 +602,83 @@ func (s *CreateArtifactRequest) SetTag(v []*CreateArtifactRequestTag) *CreateArt
 
 func (s *CreateArtifactRequest) SetVersionName(v string) *CreateArtifactRequest {
 	s.VersionName = &v
+	return s
+}
+
+type CreateArtifactRequestArtifactBuildProperty struct {
+	// The command content.
+	//
+	// >  This parameter is available only if the deployment package is a ecs image type.
+	//
+	// example:
+	//
+	// echo "start run command"
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// The command type. Valid values:
+	//
+	// 	- RunBatScript: batch command, applicable to Windows instances.
+	//
+	// 	- RunPowerShellScript: PowerShell command, applicable to Windows instances.
+	//
+	// 	- RunShellScript: shell command, applicable to Linux instances.
+	//
+	// >  This parameter is available only if the deployment package is a ecs image type.
+	//
+	// example:
+	//
+	// RunShellScript
+	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	// The region ID where the source mirror image is located.
+	//
+	// >  This parameter is available only if the deployment package is a ecs image type.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source image id. Supported Types:
+	//
+	// - Image ID: Pass the Image ID of the Ecs image directly.
+	//
+	// - OOS Common Parameter Name: Obtain the corresponding Image ID automatically by using the OOS common parameter name.
+	//
+	// >  This parameter is available only if the deployment package is a ecs image type.
+	//
+	// example:
+	//
+	// Image ID：m-t4nhenrdc38pe4*****
+	//
+	// ubuntu_22_04_x64_20G_alibase_20240926.vhd
+	//
+	// OOS Common Parameter Name：aliyun/services/computenest/images/aliyun_3_2104_python_3_11
+	SourceImageId *string `json:"SourceImageId,omitempty" xml:"SourceImageId,omitempty"`
+}
+
+func (s CreateArtifactRequestArtifactBuildProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactRequestArtifactBuildProperty) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactRequestArtifactBuildProperty) SetCommandContent(v string) *CreateArtifactRequestArtifactBuildProperty {
+	s.CommandContent = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildProperty) SetCommandType(v string) *CreateArtifactRequestArtifactBuildProperty {
+	s.CommandType = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildProperty) SetRegionId(v string) *CreateArtifactRequestArtifactBuildProperty {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildProperty) SetSourceImageId(v string) *CreateArtifactRequestArtifactBuildProperty {
+	s.SourceImageId = &v
 	return s
 }
 
@@ -653,6 +737,7 @@ type CreateArtifactRequestArtifactProperty struct {
 	//
 	// wordpress
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	// The script content.
 	//
 	// >  This parameter is available only if the deployment package is a script.
@@ -720,6 +805,11 @@ func (s *CreateArtifactRequestArtifactProperty) SetRepoName(v string) *CreateArt
 	return s
 }
 
+func (s *CreateArtifactRequestArtifactProperty) SetRepoType(v string) *CreateArtifactRequestArtifactProperty {
+	s.RepoType = &v
+	return s
+}
+
 func (s *CreateArtifactRequestArtifactProperty) SetScriptMetadata(v string) *CreateArtifactRequestArtifactProperty {
 	s.ScriptMetadata = &v
 	return s
@@ -769,6 +859,8 @@ func (s *CreateArtifactRequestTag) SetValue(v string) *CreateArtifactRequestTag 
 }
 
 type CreateArtifactShrinkRequest struct {
+	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	ArtifactBuildPropertyShrink *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -833,6 +925,11 @@ func (s CreateArtifactShrinkRequest) String() string {
 
 func (s CreateArtifactShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateArtifactShrinkRequest) SetArtifactBuildPropertyShrink(v string) *CreateArtifactShrinkRequest {
+	s.ArtifactBuildPropertyShrink = &v
+	return s
 }
 
 func (s *CreateArtifactShrinkRequest) SetArtifactId(v string) *CreateArtifactShrinkRequest {
@@ -914,6 +1011,12 @@ func (s *CreateArtifactShrinkRequestTag) SetValue(v string) *CreateArtifactShrin
 }
 
 type CreateArtifactResponseBody struct {
+	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	//
+	// example:
+	//
+	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
+	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -974,6 +1077,12 @@ type CreateArtifactResponseBody struct {
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the deployment package.
+	//
+	// example:
+	//
+	// "/usr/local/share/aliyun-assist/work/script/t-hz04zm90y6og0sg.sh: line 1: pip: command not found"
+	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
 	// The ID of the region that supports the deployment package.
 	//
 	// example:
@@ -1002,6 +1111,11 @@ func (s CreateArtifactResponseBody) String() string {
 
 func (s CreateArtifactResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateArtifactResponseBody) SetArtifactBuildProperty(v string) *CreateArtifactResponseBody {
+	s.ArtifactBuildProperty = &v
+	return s
 }
 
 func (s *CreateArtifactResponseBody) SetArtifactId(v string) *CreateArtifactResponseBody {
@@ -1051,6 +1165,11 @@ func (s *CreateArtifactResponseBody) SetRequestId(v string) *CreateArtifactRespo
 
 func (s *CreateArtifactResponseBody) SetStatus(v string) *CreateArtifactResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *CreateArtifactResponseBody) SetStatusDetail(v string) *CreateArtifactResponseBody {
+	s.StatusDetail = &v
 	return s
 }
 
@@ -3416,6 +3535,12 @@ func (s *GetArtifactRequest) SetArtifactVersion(v string) *GetArtifactRequest {
 }
 
 type GetArtifactResponseBody struct {
+	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	//
+	// example:
+	//
+	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
+	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -3488,6 +3613,12 @@ type GetArtifactResponseBody struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// "/usr/local/share/aliyun-assist/work/script/t-hz04zm90y6og0sg.sh: line 1: pip: command not found"
+	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
 	// The ID of the region that supports the deployment package.
 	//
 	// example:
@@ -3510,6 +3641,11 @@ func (s GetArtifactResponseBody) String() string {
 
 func (s GetArtifactResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetArtifactResponseBody) SetArtifactBuildProperty(v string) *GetArtifactResponseBody {
+	s.ArtifactBuildProperty = &v
+	return s
 }
 
 func (s *GetArtifactResponseBody) SetArtifactId(v string) *GetArtifactResponseBody {
@@ -3569,6 +3705,11 @@ func (s *GetArtifactResponseBody) SetResourceGroupId(v string) *GetArtifactRespo
 
 func (s *GetArtifactResponseBody) SetStatus(v string) *GetArtifactResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *GetArtifactResponseBody) SetStatusDetail(v string) *GetArtifactResponseBody {
+	s.StatusDetail = &v
 	return s
 }
 
@@ -7849,6 +7990,7 @@ type ListAcrImageRepositoriesResponseBodyRepositories struct {
 	//
 	// wordpress
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 }
 
 func (s ListAcrImageRepositoriesResponseBodyRepositories) String() string {
@@ -7876,6 +8018,11 @@ func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetRepoId(v string) *
 
 func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetRepoName(v string) *ListAcrImageRepositoriesResponseBodyRepositories {
 	s.RepoName = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetRepoType(v string) *ListAcrImageRepositoriesResponseBodyRepositories {
+	s.RepoType = &v
 	return s
 }
 
@@ -8122,6 +8269,8 @@ type ListArtifactVersionsRequest struct {
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The filter.
+	Filters []*ListArtifactVersionsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
@@ -8149,12 +8298,101 @@ func (s *ListArtifactVersionsRequest) SetArtifactId(v string) *ListArtifactVersi
 	return s
 }
 
+func (s *ListArtifactVersionsRequest) SetFilters(v []*ListArtifactVersionsRequestFilters) *ListArtifactVersionsRequest {
+	s.Filters = v
+	return s
+}
+
 func (s *ListArtifactVersionsRequest) SetMaxResults(v int32) *ListArtifactVersionsRequest {
 	s.MaxResults = &v
 	return s
 }
 
 func (s *ListArtifactVersionsRequest) SetNextToken(v string) *ListArtifactVersionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListArtifactVersionsRequestFilters struct {
+	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	//
+	// **Status**：The artifact status
+	//
+	// example:
+	//
+	// Status
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter values of the filter.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListArtifactVersionsRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactVersionsRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactVersionsRequestFilters) SetName(v string) *ListArtifactVersionsRequestFilters {
+	s.Name = &v
+	return s
+}
+
+func (s *ListArtifactVersionsRequestFilters) SetValues(v []*string) *ListArtifactVersionsRequestFilters {
+	s.Values = v
+	return s
+}
+
+type ListArtifactVersionsShrinkRequest struct {
+	// The ID of the deployment package.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// artifact-eea08d1e2d3a43aexxxx
+	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The filter.
+	FiltersShrink *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hRQzE=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListArtifactVersionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactVersionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactVersionsShrinkRequest) SetArtifactId(v string) *ListArtifactVersionsShrinkRequest {
+	s.ArtifactId = &v
+	return s
+}
+
+func (s *ListArtifactVersionsShrinkRequest) SetFiltersShrink(v string) *ListArtifactVersionsShrinkRequest {
+	s.FiltersShrink = &v
+	return s
+}
+
+func (s *ListArtifactVersionsShrinkRequest) SetMaxResults(v int32) *ListArtifactVersionsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListArtifactVersionsShrinkRequest) SetNextToken(v string) *ListArtifactVersionsShrinkRequest {
 	s.NextToken = &v
 	return s
 }
@@ -8222,6 +8460,12 @@ func (s *ListArtifactVersionsResponseBody) SetTotalCount(v int32) *ListArtifactV
 }
 
 type ListArtifactVersionsResponseBodyArtifacts struct {
+	// The build properties of the artifact, utilized for hosting and building the deployment package.
+	//
+	// example:
+	//
+	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
+	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -8302,6 +8546,12 @@ type ListArtifactVersionsResponseBodyArtifacts struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// "/usr/local/share/aliyun-assist/work/script/t-hz04zm90y6og0sg.sh: line 1: pip: command not found"
+	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
 	// The ID of the region that supports the deployment package.
 	//
 	// example:
@@ -8330,6 +8580,11 @@ func (s ListArtifactVersionsResponseBodyArtifacts) String() string {
 
 func (s ListArtifactVersionsResponseBodyArtifacts) GoString() string {
 	return s.String()
+}
+
+func (s *ListArtifactVersionsResponseBodyArtifacts) SetArtifactBuildProperty(v string) *ListArtifactVersionsResponseBodyArtifacts {
+	s.ArtifactBuildProperty = &v
+	return s
 }
 
 func (s *ListArtifactVersionsResponseBodyArtifacts) SetArtifactId(v string) *ListArtifactVersionsResponseBodyArtifacts {
@@ -8384,6 +8639,11 @@ func (s *ListArtifactVersionsResponseBodyArtifacts) SetSecurityAuditResult(v str
 
 func (s *ListArtifactVersionsResponseBodyArtifacts) SetStatus(v string) *ListArtifactVersionsResponseBodyArtifacts {
 	s.Status = &v
+	return s
+}
+
+func (s *ListArtifactVersionsResponseBodyArtifacts) SetStatusDetail(v string) *ListArtifactVersionsResponseBodyArtifacts {
+	s.StatusDetail = &v
 	return s
 }
 
@@ -8790,64 +9050,6 @@ func (s *ListArtifactsResponse) SetStatusCode(v int32) *ListArtifactsResponse {
 }
 
 func (s *ListArtifactsResponse) SetBody(v *ListArtifactsResponseBody) *ListArtifactsResponse {
-	s.Body = v
-	return s
-}
-
-type ListServiceCategoriesResponseBody struct {
-	// The category list of the service.
-	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 9AC8E73E-88DE-52C2-A29B-531FC130000
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListServiceCategoriesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServiceCategoriesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListServiceCategoriesResponseBody) SetCategories(v []*string) *ListServiceCategoriesResponseBody {
-	s.Categories = v
-	return s
-}
-
-func (s *ListServiceCategoriesResponseBody) SetRequestId(v string) *ListServiceCategoriesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListServiceCategoriesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListServiceCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListServiceCategoriesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServiceCategoriesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListServiceCategoriesResponse) SetHeaders(v map[string]*string) *ListServiceCategoriesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListServiceCategoriesResponse) SetStatusCode(v int32) *ListServiceCategoriesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListServiceCategoriesResponse) SetBody(v *ListServiceCategoriesResponseBody) *ListServiceCategoriesResponse {
 	s.Body = v
 	return s
 }
@@ -11584,21 +11786,38 @@ func (s *RegisterServiceResponse) SetBody(v *RegisterServiceResponseBody) *Regis
 }
 
 type RejectServiceUsageRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// Reject comments.
+	//
+	// example:
+	//
+	// Thanks for your application, please add your industry information.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-2117508c874c41xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The share type of the service. Default value: SharedAccount. Valid values:
+	//
+	// 	- SharedAccount: The service is shared by multiple accounts.
+	//
+	// 	- Reseller: The service is distributed.
+	//
 	// example:
 	//
 	// SharedAccount
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// User ali uid.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11641,6 +11860,8 @@ func (s *RejectServiceUsageRequest) SetUserAliUid(v int64) *RejectServiceUsageRe
 }
 
 type RejectServiceUsageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -12291,6 +12512,7 @@ func (s *StopServiceInstanceResponse) SetBody(v *StopServiceInstanceResponseBody
 }
 
 type UpdateArtifactRequest struct {
+	ArtifactBuildProperty *UpdateArtifactRequestArtifactBuildProperty `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty" type:"Struct"`
 	// The ID of the deployment package.
 	//
 	// This parameter is required.
@@ -12329,6 +12551,11 @@ func (s UpdateArtifactRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateArtifactRequest) SetArtifactBuildProperty(v *UpdateArtifactRequestArtifactBuildProperty) *UpdateArtifactRequest {
+	s.ArtifactBuildProperty = v
+	return s
+}
+
 func (s *UpdateArtifactRequest) SetArtifactId(v string) *UpdateArtifactRequest {
 	s.ArtifactId = &v
 	return s
@@ -12351,6 +12578,41 @@ func (s *UpdateArtifactRequest) SetSupportRegionIds(v []*string) *UpdateArtifact
 
 func (s *UpdateArtifactRequest) SetVersionName(v string) *UpdateArtifactRequest {
 	s.VersionName = &v
+	return s
+}
+
+type UpdateArtifactRequestArtifactBuildProperty struct {
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	CommandType    *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceImageId  *string `json:"SourceImageId,omitempty" xml:"SourceImageId,omitempty"`
+}
+
+func (s UpdateArtifactRequestArtifactBuildProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactRequestArtifactBuildProperty) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetCommandContent(v string) *UpdateArtifactRequestArtifactBuildProperty {
+	s.CommandContent = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetCommandType(v string) *UpdateArtifactRequestArtifactBuildProperty {
+	s.CommandType = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetRegionId(v string) *UpdateArtifactRequestArtifactBuildProperty {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetSourceImageId(v string) *UpdateArtifactRequestArtifactBuildProperty {
+	s.SourceImageId = &v
 	return s
 }
 
@@ -12395,6 +12657,9 @@ type UpdateArtifactRequestArtifactProperty struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepoId   *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	// The script content of the deployment package.
 	//
 	// >  This parameter is available only if the deployment package is a script.
@@ -12403,6 +12668,7 @@ type UpdateArtifactRequestArtifactProperty struct {
 	//
 	// {"ScriptMetadata":"{\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"ls\\"}"}
 	ScriptMetadata *string `json:"ScriptMetadata,omitempty" xml:"ScriptMetadata,omitempty"`
+	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The URL of the deployment package object.
 	//
 	//
@@ -12447,8 +12713,28 @@ func (s *UpdateArtifactRequestArtifactProperty) SetRegionId(v string) *UpdateArt
 	return s
 }
 
+func (s *UpdateArtifactRequestArtifactProperty) SetRepoId(v string) *UpdateArtifactRequestArtifactProperty {
+	s.RepoId = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactProperty) SetRepoName(v string) *UpdateArtifactRequestArtifactProperty {
+	s.RepoName = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactProperty) SetRepoType(v string) *UpdateArtifactRequestArtifactProperty {
+	s.RepoType = &v
+	return s
+}
+
 func (s *UpdateArtifactRequestArtifactProperty) SetScriptMetadata(v string) *UpdateArtifactRequestArtifactProperty {
 	s.ScriptMetadata = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactProperty) SetTag(v string) *UpdateArtifactRequestArtifactProperty {
+	s.Tag = &v
 	return s
 }
 
@@ -12458,6 +12744,7 @@ func (s *UpdateArtifactRequestArtifactProperty) SetUrl(v string) *UpdateArtifact
 }
 
 type UpdateArtifactShrinkRequest struct {
+	ArtifactBuildPropertyShrink *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
 	// The ID of the deployment package.
 	//
 	// This parameter is required.
@@ -12496,6 +12783,11 @@ func (s UpdateArtifactShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateArtifactShrinkRequest) SetArtifactBuildPropertyShrink(v string) *UpdateArtifactShrinkRequest {
+	s.ArtifactBuildPropertyShrink = &v
+	return s
+}
+
 func (s *UpdateArtifactShrinkRequest) SetArtifactId(v string) *UpdateArtifactShrinkRequest {
 	s.ArtifactId = &v
 	return s
@@ -12522,6 +12814,7 @@ func (s *UpdateArtifactShrinkRequest) SetVersionName(v string) *UpdateArtifactSh
 }
 
 type UpdateArtifactResponseBody struct {
+	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -12610,6 +12903,11 @@ func (s UpdateArtifactResponseBody) String() string {
 
 func (s UpdateArtifactResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateArtifactResponseBody) SetArtifactBuildProperty(v string) *UpdateArtifactResponseBody {
+	s.ArtifactBuildProperty = &v
+	return s
 }
 
 func (s *UpdateArtifactResponseBody) SetArtifactId(v string) *UpdateArtifactResponseBody {
@@ -15021,11 +15319,19 @@ func (client *Client) CreateArtifactWithOptions(tmpReq *CreateArtifactRequest, r
 	}
 	request := &CreateArtifactShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ArtifactBuildProperty)) {
+		request.ArtifactBuildPropertyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ArtifactBuildProperty, tea.String("ArtifactBuildProperty"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ArtifactProperty)) {
 		request.ArtifactPropertyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ArtifactProperty, tea.String("ArtifactProperty"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArtifactBuildPropertyShrink)) {
+		query["ArtifactBuildProperty"] = request.ArtifactBuildPropertyShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ArtifactId)) {
 		query["ArtifactId"] = request.ArtifactId
 	}
@@ -16493,19 +16799,29 @@ func (client *Client) ListAcrImageTags(request *ListAcrImageTagsRequest) (_resul
 //
 // Queries the version information about a deployment package.
 //
-// @param request - ListArtifactVersionsRequest
+// @param tmpReq - ListArtifactVersionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListArtifactVersionsResponse
-func (client *Client) ListArtifactVersionsWithOptions(request *ListArtifactVersionsRequest, runtime *util.RuntimeOptions) (_result *ListArtifactVersionsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListArtifactVersionsWithOptions(tmpReq *ListArtifactVersionsRequest, runtime *util.RuntimeOptions) (_result *ListArtifactVersionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListArtifactVersionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filters)) {
+		request.FiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filters, tea.String("Filters"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ArtifactId)) {
 		query["ArtifactId"] = request.ArtifactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FiltersShrink)) {
+		query["Filters"] = request.FiltersShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -16626,53 +16942,6 @@ func (client *Client) ListArtifacts(request *ListArtifactsRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListArtifactsResponse{}
 	_body, _err := client.ListArtifactsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询服务分类
-//
-// @param request - ListServiceCategoriesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListServiceCategoriesResponse
-func (client *Client) ListServiceCategoriesWithOptions(runtime *util.RuntimeOptions) (_result *ListServiceCategoriesResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("ListServiceCategories"),
-		Version:     tea.String("2021-05-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListServiceCategoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询服务分类
-//
-// @return ListServiceCategoriesResponse
-func (client *Client) ListServiceCategories() (_result *ListServiceCategoriesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListServiceCategoriesResponse{}
-	_body, _err := client.ListServiceCategoriesWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17262,7 +17531,7 @@ func (client *Client) RegisterService(request *RegisterServiceRequest) (_result 
 
 // Summary:
 //
-// 商家拒绝服务使用请求
+// Reject service usage.
 //
 // @param request - RejectServiceUsageRequest
 //
@@ -17320,7 +17589,7 @@ func (client *Client) RejectServiceUsageWithOptions(request *RejectServiceUsageR
 
 // Summary:
 //
-// 商家拒绝服务使用请求
+// Reject service usage.
 //
 // @param request - RejectServiceUsageRequest
 //
@@ -17692,11 +17961,19 @@ func (client *Client) UpdateArtifactWithOptions(tmpReq *UpdateArtifactRequest, r
 	}
 	request := &UpdateArtifactShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ArtifactBuildProperty)) {
+		request.ArtifactBuildPropertyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ArtifactBuildProperty, tea.String("ArtifactBuildProperty"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ArtifactProperty)) {
 		request.ArtifactPropertyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ArtifactProperty, tea.String("ArtifactProperty"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArtifactBuildPropertyShrink)) {
+		query["ArtifactBuildProperty"] = request.ArtifactBuildPropertyShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ArtifactId)) {
 		query["ArtifactId"] = request.ArtifactId
 	}
