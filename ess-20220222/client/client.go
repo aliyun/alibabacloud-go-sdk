@@ -5245,6 +5245,8 @@ type CreateScalingConfigurationRequest struct {
 	//
 	// hpc-clusterid
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
+	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	//
 	// example:
@@ -5616,6 +5618,16 @@ func (s *CreateScalingConfigurationRequest) SetHostName(v string) *CreateScaling
 
 func (s *CreateScalingConfigurationRequest) SetHpcClusterId(v string) *CreateScalingConfigurationRequest {
 	s.HpcClusterId = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequest) SetHttpEndpoint(v string) *CreateScalingConfigurationRequest {
+	s.HttpEndpoint = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequest) SetHttpTokens(v string) *CreateScalingConfigurationRequest {
+	s.HttpTokens = &v
 	return s
 }
 
@@ -6939,6 +6951,8 @@ type CreateScalingConfigurationShrinkRequest struct {
 	//
 	// hpc-clusterid
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
+	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	//
 	// example:
@@ -7310,6 +7324,16 @@ func (s *CreateScalingConfigurationShrinkRequest) SetHostName(v string) *CreateS
 
 func (s *CreateScalingConfigurationShrinkRequest) SetHpcClusterId(v string) *CreateScalingConfigurationShrinkRequest {
 	s.HpcClusterId = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequest) SetHttpEndpoint(v string) *CreateScalingConfigurationShrinkRequest {
+	s.HttpEndpoint = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequest) SetHttpTokens(v string) *CreateScalingConfigurationShrinkRequest {
+	s.HttpTokens = &v
 	return s
 }
 
@@ -8931,6 +8955,16 @@ type CreateScalingGroupRequest struct {
 	//
 	// true
 	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+	//
+	// >
+	//
+	// 	- This parameter takes effect only if you set ScalingPolicy to release.
+	//
+	// 	- If you specify this parameter, the system will wait for the ECS instance to enter the Stopped state for the specified period of time before continuing with the scale-in operation, regardless of the status of the ECS instance.
+	//
+	// 	- If you do not specify this parameter, the system will wait for the ECS instance to stop before continuing with the scale-in operation. If the ECS instance is not successfully stopped, the scale-in process will be rolled back and considered failed.
+	//
 	// example:
 	//
 	// 60
@@ -9380,7 +9414,7 @@ func (s *CreateScalingGroupRequestLaunchTemplateOverrides) SetWeightedCapacity(v
 type CreateScalingGroupRequestLifecycleHooks struct {
 	// The action that Auto Scaling performs when the lifecycle hook times out. Valid values:
 	//
-	// 	- CONTINUE: Auto Scaling continues to respond to a scale-in or scale-out request.
+	// 	- CONTINUE: Auto Scaling continues to respond to the scaling request.
 	//
 	// 	- ABANDON: Auto Scaling releases ECS instances that are created during scale-out events, or removes ECS instances from the scaling group during scale-in events.
 	//
@@ -9394,7 +9428,7 @@ type CreateScalingGroupRequestLifecycleHooks struct {
 	DefaultResult *string `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
 	// The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. Valid values: 30 to 21600. Unit: seconds.
 	//
-	// After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of scheduled.
+	// After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of schedule.
 	//
 	// Default value: 600.
 	//
@@ -9420,7 +9454,7 @@ type CreateScalingGroupRequestLifecycleHooks struct {
 	//
 	// SCALE_OUT
 	LifecycleTransition *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
-	// The identifier of the notification recipient party when the lifecycle hook takes effect. You can specify a Message Service (MNS) topic or queue as the notification recipient party. Specify the value in the acs:ess:{region}:{account-id}:{resource-relative-id} format.
+	// The Alibaba Cloud Resource Name (ARN) of the notification recipient party. You can specify a Simple Message Queue (SMQ, formerly MNS) topic or queue as the recipient party. The value is in the acs:ess:{region}:{account-id}:{resource-relative-id} format.
 	//
 	// 	- region: the region ID of the scaling group
 	//
@@ -9428,15 +9462,15 @@ type CreateScalingGroupRequestLifecycleHooks struct {
 	//
 	// Examples:
 	//
-	// 	- MNS queue: acs:ess:{region}:{account-id}:queue/{queuename}
+	// 	- SMQ queue: acs:ess:{region}:{account-id}:queue/{queuename}
 	//
-	// 	- MNS topic: acs:ess:{region}:{account-id}:topic/{topicname}
+	// 	- SMQ topic: acs:ess:{region}:{account-id}:topic/{topicname}
 	//
 	// example:
 	//
 	// acs:ess:cn-hangzhou:1111111111:queue/queue2
 	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	// The fixed string that you want to include in a notification. When a lifecycle hook takes effect, Auto Scaling sends a notification. The fixed string can contain up to 4,096 characters in length. When Auto Scaling sends a notification to the recipient party, it includes predefined notification metadata into the notification. This helps in managing and labeling notifications of different categories. notificationmetadata takes effect only if you specify notificationarn.
+	// The fixed string that you want to include in notifications. When a lifecycle hook takes effect, Auto Scaling sends a notification. The fixed string can contain up to 4,096 characters in length. When Auto Scaling sends a notification to the recipient party, it includes predefined notification metadata into the notification. This helps in managing and labeling notifications of different categories. NotificationMetadata takes effect only if you specify NotificationArn.
 	//
 	// example:
 	//
@@ -17104,22 +17138,47 @@ func (s *DescribeEciScalingConfigurationsResponse) SetBody(v *DescribeEciScaling
 }
 
 type DescribeElasticStrengthRequest struct {
+	// The instance types. The instance types specified by this parameter overwrite the instance types specified in the scaling configuration.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// The preemption policy that you want to apply to pay-as-you-go instances. The preemption policy specified by this parameter overwrites the preemption policy specified in the scaling configuration. Valid values:
+	//
+	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
+	//
+	// 	- SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
+	//
+	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
+	//
+	// Default value: NoSpot.
+	//
 	// example:
 	//
 	// NoSpot
 	PriorityStrategy *string `json:"PriorityStrategy,omitempty" xml:"PriorityStrategy,omitempty"`
+	// The region ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the scaling group.
+	//
 	// example:
 	//
 	// asg-bp18p2yfxow2dloq****
-	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	ScalingGroupIds      []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The IDs of the scaling groups that you want to query.
+	ScalingGroupIds []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
+	// The categories of the system disks. The categories of the system disks specified by this parameter overwrite the categories of the system disks specified in the scaling configuration. Valid values:
+	//
+	// 	- cloud: basic disk.
+	//
+	// 	- cloud_efficiency: ultra disk.
+	//
+	// 	- cloud_ssd: standard SSD.
+	//
+	// 	- cloud_essd: Enterprise SSD (ESSD).
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
 }
 
@@ -17162,12 +17221,18 @@ func (s *DescribeElasticStrengthRequest) SetSystemDiskCategories(v []*string) *D
 }
 
 type DescribeElasticStrengthResponseBody struct {
+	// The scaling strength models.
 	ElasticStrengthModels []*DescribeElasticStrengthResponseBodyElasticStrengthModels `json:"ElasticStrengthModels,omitempty" xml:"ElasticStrengthModels,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 73469C7-AA6F-4DC5-B3DB-A3DC0DE3****
-	RequestId     *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource pools.
 	ResourcePools []*DescribeElasticStrengthResponseBodyResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
+	// The scaling strength of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+	//
 	// example:
 	//
 	// 1.5
@@ -17203,8 +17268,16 @@ func (s *DescribeElasticStrengthResponseBody) SetTotalStrength(v float64) *Descr
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModels struct {
-	ResourcePools  []*DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
-	ScalingGroupId *string                                                                  `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The resource pools.
+	ResourcePools []*DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty" type:"Repeated"`
+	// The ID of the scaling group.
+	//
+	// example:
+	//
+	// asg-wz98mnj7nblv9gc****
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The scaling strength of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+	//
 	// example:
 	//
 	// 1.5
@@ -17235,23 +17308,34 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModels) SetTotalStren
 }
 
 type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools struct {
+	// The error code returned when the scaling strength is the weakest.
+	//
 	// example:
 	//
 	// InstanceTypesOrDiskTypesNotSupported
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance type of the resource pool.
+	//
 	// example:
 	//
 	// ecs.r7.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The error message returned when the scaling strength is the weakest.
+	//
 	// example:
 	//
 	// The instanceTypes or diskTypes are not supported.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The scaling strength of the resource pool.
+	//
 	// example:
 	//
 	// 0.6
-	Strength   *float64  `json:"Strength,omitempty" xml:"Strength,omitempty"`
+	Strength *float64 `json:"Strength,omitempty" xml:"Strength,omitempty"`
+	// The IDs of the vSwitches in the zones of the resource pool.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The zone ID of the resource pool.
+	//
 	// example:
 	//
 	// cn-hangzhou-g
@@ -17297,23 +17381,34 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) 
 }
 
 type DescribeElasticStrengthResponseBodyResourcePools struct {
+	// The error code returned when the scaling strength is the weakest.
+	//
 	// example:
 	//
 	// IMG_NOT_SUPPORTED
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance type of the resource pool.
+	//
 	// example:
 	//
 	// ecs.c7t.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The error message returned when the scaling strength is the weakest.
+	//
 	// example:
 	//
 	// The instanceType does not support the image in the configuration.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The scaling strength of the resource pool.
+	//
 	// example:
 	//
 	// 0.6
-	Strength   *float64  `json:"Strength,omitempty" xml:"Strength,omitempty"`
+	Strength *float64 `json:"Strength,omitempty" xml:"Strength,omitempty"`
+	// The IDs of the vSwitches in the zones of the resource pool.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The zone ID of the resource pool.
+	//
 	// example:
 	//
 	// cn-hangzhou-g
@@ -20474,6 +20569,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// hpc-clus****
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
+	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. You can specify this parameter to obtain the latest available images in the current image family for instance creation. If you specify ImageId, you cannot specify `ImageFamily`.
 	//
 	// example:
@@ -20534,7 +20631,7 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// instance****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The information about the intelligent configuration settings, which determine the available instance types.
+	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance types of the ECS instances.
 	//
@@ -20684,7 +20781,7 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The security options.
+	// 安全选项。
 	SecurityOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the preemptible instances. Unit: hours.
 	//
@@ -20923,6 +21020,16 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetHost
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetHpcClusterId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.HpcClusterId = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetHttpEndpoint(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.HttpEndpoint = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetHttpTokens(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.HttpTokens = &v
 	return s
 }
 
@@ -21844,11 +21951,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScheduler
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions struct {
-	// The confidential computing mode. Valid values:
+	// 机密计算模式。可能值：
 	//
-	// 	- Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+	// -  Enclave：表示ECS实例使用Enclave构建机密计算环境。更多信息，请参见[使用Enclave构建机密计算环境](https://help.aliyun.com/document_detail/203433.html)。
 	//
-	// 	- TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
+	// - TDX：表示构建TDX机密计算环境。更多信息，请参见[构建TDX机密计算环境](https://help.aliyun.com/document_detail/479090.html)。
 	//
 	// example:
 	//
@@ -23726,6 +23833,8 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	//
 	// 1
 	StandbyCapacity *int32 `json:"StandbyCapacity,omitempty" xml:"StandbyCapacity,omitempty"`
+	// The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
@@ -32514,6 +32623,8 @@ type ModifyScalingConfigurationRequest struct {
 	//
 	// hpc-clusterid
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
+	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	//
 	// example:
@@ -32565,7 +32676,8 @@ type ModifyScalingConfigurationRequest struct {
 	// example:
 	//
 	// PayByBandwidth
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetChargeType     *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthIn *int32  `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
 	// 	- If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
@@ -32860,6 +32972,16 @@ func (s *ModifyScalingConfigurationRequest) SetHpcClusterId(v string) *ModifySca
 	return s
 }
 
+func (s *ModifyScalingConfigurationRequest) SetHttpEndpoint(v string) *ModifyScalingConfigurationRequest {
+	s.HttpEndpoint = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequest) SetHttpTokens(v string) *ModifyScalingConfigurationRequest {
+	s.HttpTokens = &v
+	return s
+}
+
 func (s *ModifyScalingConfigurationRequest) SetImageFamily(v string) *ModifyScalingConfigurationRequest {
 	s.ImageFamily = &v
 	return s
@@ -32902,6 +33024,11 @@ func (s *ModifyScalingConfigurationRequest) SetInstanceTypes(v []*string) *Modif
 
 func (s *ModifyScalingConfigurationRequest) SetInternetChargeType(v string) *ModifyScalingConfigurationRequest {
 	s.InternetChargeType = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequest) SetInternetMaxBandwidthIn(v int32) *ModifyScalingConfigurationRequest {
+	s.InternetMaxBandwidthIn = &v
 	return s
 }
 
@@ -34179,6 +34306,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	//
 	// hpc-clusterid
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
+	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	//
 	// example:
@@ -34230,7 +34359,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	// example:
 	//
 	// PayByBandwidth
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetChargeType     *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthIn *int32  `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
 	// 	- If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
@@ -34525,6 +34655,16 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetHpcClusterId(v string) *Mod
 	return s
 }
 
+func (s *ModifyScalingConfigurationShrinkRequest) SetHttpEndpoint(v string) *ModifyScalingConfigurationShrinkRequest {
+	s.HttpEndpoint = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequest) SetHttpTokens(v string) *ModifyScalingConfigurationShrinkRequest {
+	s.HttpTokens = &v
+	return s
+}
+
 func (s *ModifyScalingConfigurationShrinkRequest) SetImageFamily(v string) *ModifyScalingConfigurationShrinkRequest {
 	s.ImageFamily = &v
 	return s
@@ -34567,6 +34707,11 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetInstanceTypes(v []*string) 
 
 func (s *ModifyScalingConfigurationShrinkRequest) SetInternetChargeType(v string) *ModifyScalingConfigurationShrinkRequest {
 	s.InternetChargeType = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequest) SetInternetMaxBandwidthIn(v int32) *ModifyScalingConfigurationShrinkRequest {
+	s.InternetMaxBandwidthIn = &v
 	return s
 }
 
@@ -36054,6 +36199,18 @@ type ModifyScalingGroupRequest struct {
 	//
 	// true
 	SpotInstanceRemedy *bool `json:"SpotInstanceRemedy,omitempty" xml:"SpotInstanceRemedy,omitempty"`
+	// The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds. Valid values: 30 to 240.
+	//
+	// >
+	//
+	// 	- This parameter takes effect only if you set ScalingPolicy to release.\\
+	//
+	//     If you specify this parameter, the system proceeds with the scale-in process only after the period of time specified by StopInstanceTimeout ends. In this case, the scale-in operation continues regardless of whether the ECS instance enters the Stopped state or not.\\
+	//
+	//     If you do not specify this parameter, the system proceeds with the scale-in process only after the ECS instance enters the Stopped state. If the ECS instance fails to enter the Stopped state, the scale-in process rolls back, and the scale-in operation is considered as failed.
+	//
+	// 	- When you call the ModifyScalingGroup operation, you can set the value to 0. In this case, the system ignores this parameter.
+	//
 	// example:
 	//
 	// 60
@@ -37478,6 +37635,18 @@ type RemoveInstancesRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds. Valid values: 30 to 240.
+	//
+	// >
+	//
+	// 	- By default, this parameter inherits the value of StopInstanceTimeout specified in the CreateScalingGroup or ModifyScalingGroup operation. You can also specify a different value for this parameter in the RemoveInstances operation.
+	//
+	// 	- This parameter takes effect only if you set RemovePolicy to release.\\
+	//
+	//     If you specify this parameter, the system proceeds with the scale-in process only after the period of time specified by StopInstanceTimeout ends. In this case, the scale-in operation continues regardless of whether the ECS instance enters the Stopped state or not.\\
+	//
+	//     If you do not specify this parameter, the system proceeds with the scale-in process only after the ECS instance enters the Stopped state. If the ECS instance fails to enter the Stopped state, the scale-in process rolls back, and the scale-in operation is considered as failed.
+	//
 	// example:
 	//
 	// 60
@@ -41881,6 +42050,14 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 
 	if !tea.BoolValue(util.IsUnset(request.HpcClusterId)) {
 		query["HpcClusterId"] = request.HpcClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpEndpoint)) {
+		query["HttpEndpoint"] = request.HttpEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpTokens)) {
+		query["HttpTokens"] = request.HttpTokens
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageFamily)) {
@@ -47919,6 +48096,14 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 		query["HpcClusterId"] = request.HpcClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HttpEndpoint)) {
+		query["HttpEndpoint"] = request.HttpEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpTokens)) {
+		query["HttpTokens"] = request.HttpTokens
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageFamily)) {
 		query["ImageFamily"] = request.ImageFamily
 	}
@@ -47953,6 +48138,10 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 
 	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
 		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthIn)) {
+		query["InternetMaxBandwidthIn"] = request.InternetMaxBandwidthIn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
