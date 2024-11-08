@@ -2205,12 +2205,16 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 }
 
 type DeleteBackupsRequest struct {
+	// The ID of the backup set that you want to delete. Separate multiple backup set IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 766,767
 	BackupIds *string `json:"BackupIds,omitempty" xml:"BackupIds,omitempty"`
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2219,6 +2223,8 @@ type DeleteBackupsRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2271,7 +2277,7 @@ func (s *DeleteBackupsRequest) SetResourceOwnerId(v int64) *DeleteBackupsRequest
 }
 
 type DeleteBackupsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -9072,6 +9078,7 @@ func (s *DescribeDBClusterPerformanceRequest) SetStartTime(v string) *DescribeDB
 }
 
 type DescribeDBClusterPerformanceResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -9106,6 +9113,11 @@ func (s DescribeDBClusterPerformanceResponseBody) String() string {
 
 func (s DescribeDBClusterPerformanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBClusterPerformanceResponseBody) SetAccessDeniedDetail(v string) *DescribeDBClusterPerformanceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DescribeDBClusterPerformanceResponseBody) SetDBClusterId(v string) *DescribeDBClusterPerformanceResponseBody {
@@ -9971,6 +9983,7 @@ func (s *DescribeDBClusterShardNumberRequest) SetResourceOwnerId(v int64) *Descr
 }
 
 type DescribeDBClusterShardNumberResponseBody struct {
+	AvailableShardNumbers []*int32 `json:"AvailableShardNumbers,omitempty" xml:"AvailableShardNumbers,omitempty" type:"Repeated"`
 	// example:
 	//
 	// CBE843D8-964D-5EA3-9D31-822125611B6E
@@ -9987,6 +10000,11 @@ func (s DescribeDBClusterShardNumberResponseBody) String() string {
 
 func (s DescribeDBClusterShardNumberResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBClusterShardNumberResponseBody) SetAvailableShardNumbers(v []*int32) *DescribeDBClusterShardNumberResponseBody {
+	s.AvailableShardNumbers = v
+	return s
 }
 
 func (s *DescribeDBClusterShardNumberResponseBody) SetRequestId(v string) *DescribeDBClusterShardNumberResponseBody {
@@ -29612,7 +29630,15 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// 手动删除备份集
+// Manually deletes backup sets.
+//
+// Description:
+//
+//   Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+//
+// 	- You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+//
+// 	- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
 //
 // @param request - DeleteBackupsRequest
 //
@@ -29650,7 +29676,15 @@ func (client *Client) DeleteBackupsWithOptions(request *DeleteBackupsRequest, ru
 
 // Summary:
 //
-// 手动删除备份集
+// Manually deletes backup sets.
+//
+// Description:
+//
+//   Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+//
+// 	- You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+//
+// 	- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
 //
 // @param request - DeleteBackupsRequest
 //
