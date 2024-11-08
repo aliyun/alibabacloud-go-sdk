@@ -4508,7 +4508,12 @@ type DeleteExecutionsRequest struct {
 	//
 	// ["exec-xxx"]
 	ExecutionIds *string `json:"ExecutionIds,omitempty" xml:"ExecutionIds,omitempty"`
-	Force        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Whether to force delete the running task, the default value is false.
+	//
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -12125,6 +12130,7 @@ func (s *ListExecutionsResponse) SetBody(v *ListExecutionsResponseBody) *ListExe
 
 type ListGitRepositoriesRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	// This parameter is required.
 	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
@@ -12145,6 +12151,11 @@ func (s ListGitRepositoriesRequest) GoString() string {
 
 func (s *ListGitRepositoriesRequest) SetClientToken(v string) *ListGitRepositoriesRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ListGitRepositoriesRequest) SetOrgId(v string) *ListGitRepositoriesRequest {
+	s.OrgId = &v
 	return s
 }
 
@@ -12212,6 +12223,7 @@ type ListGitRepositoriesResponseBodyGitRepos struct {
 	FullName    *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
 	HtmlUrl     *string `json:"HtmlUrl,omitempty" xml:"HtmlUrl,omitempty"`
 	IsPrivate   *bool   `json:"IsPrivate,omitempty" xml:"IsPrivate,omitempty"`
+	RepoId      *int64  `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s ListGitRepositoriesResponseBodyGitRepos) String() string {
@@ -12239,6 +12251,11 @@ func (s *ListGitRepositoriesResponseBodyGitRepos) SetHtmlUrl(v string) *ListGitR
 
 func (s *ListGitRepositoriesResponseBodyGitRepos) SetIsPrivate(v bool) *ListGitRepositoriesResponseBodyGitRepos {
 	s.IsPrivate = &v
+	return s
+}
+
+func (s *ListGitRepositoriesResponseBodyGitRepos) SetRepoId(v int64) *ListGitRepositoriesResponseBodyGitRepos {
+	s.RepoId = &v
 	return s
 }
 
@@ -18542,6 +18559,7 @@ type ListTemplatesResponseBodyTemplates struct {
 	//
 	// 2019-05-16T10:26:14Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplates) String() string {
@@ -18654,6 +18672,11 @@ func (s *ListTemplatesResponseBodyTemplates) SetUpdatedBy(v string) *ListTemplat
 
 func (s *ListTemplatesResponseBodyTemplates) SetUpdatedDate(v string) *ListTemplatesResponseBodyTemplates {
 	s.UpdatedDate = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetVersionName(v string) *ListTemplatesResponseBodyTemplates {
+	s.VersionName = &v
 	return s
 }
 
@@ -28262,6 +28285,10 @@ func (client *Client) ListGitRepositoriesWithOptions(request *ListGitRepositorie
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		query["OrgId"] = request.OrgId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
 		query["OrgName"] = request.OrgName
 	}
@@ -30821,7 +30848,7 @@ func (client *Client) UpdateApplicationGroup(request *UpdateApplicationGroupRequ
 
 // Summary:
 //
-// Updates an execution.
+// Update executions that are in Running or Waiting status.
 //
 // @param request - UpdateExecutionRequest
 //
@@ -30887,7 +30914,7 @@ func (client *Client) UpdateExecutionWithOptions(request *UpdateExecutionRequest
 
 // Summary:
 //
-// Updates an execution.
+// Update executions that are in Running or Waiting status.
 //
 // @param request - UpdateExecutionRequest
 //
