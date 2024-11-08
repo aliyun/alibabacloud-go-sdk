@@ -8201,87 +8201,32 @@ func (s *CreateWafRuleResponse) SetBody(v *CreateWafRuleResponseBody) *CreateWaf
 
 type CreateWaitingRoomRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// __aliwaitingroom_example
-	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	// example:
-	//
-	// Hello%20world!
-	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// on
+	CookieName                  *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	CustomPageHtml              *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
+	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// This parameter is required.
-	HostNameAndPath []*CreateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
-	// example:
-	//
-	// on
-	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// example:
-	//
-	// enus
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	HostNameAndPath    []*CreateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
+	JsonResponseEnable *string                                    `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	Language           *string                                    `json:"Language,omitempty" xml:"Language,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// waitingroom_example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// example:
-	//
-	// on
-	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	QueueAllEnable    *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WaitingRoomType *string `json:"WaitingRoomType,omitempty" xml:"WaitingRoomType,omitempty"`
 }
 
@@ -8380,22 +8325,10 @@ func (s *CreateWaitingRoomRequest) SetWaitingRoomType(v string) *CreateWaitingRo
 
 type CreateWaitingRoomRequestHostNameAndPath struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test.
 	Subdomain *string `json:"Subdomain,omitempty" xml:"Subdomain,omitempty"`
 }
 
@@ -8424,87 +8357,32 @@ func (s *CreateWaitingRoomRequestHostNameAndPath) SetSubdomain(v string) *Create
 
 type CreateWaitingRoomShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// __aliwaitingroom_example
-	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	// example:
-	//
-	// Hello%20world!
-	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// on
+	CookieName                  *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	CustomPageHtml              *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
+	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// This parameter is required.
 	HostNameAndPathShrink *string `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty"`
-	// example:
-	//
-	// on
-	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// example:
-	//
-	// enus
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	JsonResponseEnable    *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	Language              *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// waitingroom_example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// example:
-	//
-	// on
-	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	QueueAllEnable    *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// default
 	WaitingRoomType *string `json:"WaitingRoomType,omitempty" xml:"WaitingRoomType,omitempty"`
 }
 
@@ -8602,9 +8480,6 @@ func (s *CreateWaitingRoomShrinkRequest) SetWaitingRoomType(v string) *CreateWai
 }
 
 type CreateWaitingRoomResponseBody struct {
-	// example:
-	//
-	// 85H66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
