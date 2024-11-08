@@ -7044,6 +7044,133 @@ func (s *ReIndexResponse) SetBody(v *ReIndexResponseBody) *ReIndexResponse {
 	return s
 }
 
+type RebuildTaskRequest struct {
+	// This parameter is required.
+	TaskIds []*string `json:"taskIds,omitempty" xml:"taskIds,omitempty" type:"Repeated"`
+}
+
+func (s RebuildTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildTaskRequest) SetTaskIds(v []*string) *RebuildTaskRequest {
+	s.TaskIds = v
+	return s
+}
+
+type RebuildTaskResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                   `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data []map[string]interface{} `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// EF4B5C9B-3BC8-5171-A47B-4C5CF3DC3258
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s RebuildTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildTaskResponseBody) SetCost(v int64) *RebuildTaskResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *RebuildTaskResponseBody) SetData(v []map[string]interface{}) *RebuildTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RebuildTaskResponseBody) SetDataType(v string) *RebuildTaskResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *RebuildTaskResponseBody) SetErrCode(v string) *RebuildTaskResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *RebuildTaskResponseBody) SetMessage(v string) *RebuildTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RebuildTaskResponseBody) SetRequestId(v string) *RebuildTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RebuildTaskResponseBody) SetSuccess(v bool) *RebuildTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RebuildTaskResponseBody) SetTime(v string) *RebuildTaskResponseBody {
+	s.Time = &v
+	return s
+}
+
+type RebuildTaskResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebuildTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RebuildTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebuildTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebuildTaskResponse) SetHeaders(v map[string]*string) *RebuildTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebuildTaskResponse) SetStatusCode(v int32) *RebuildTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebuildTaskResponse) SetBody(v *RebuildTaskResponseBody) *RebuildTaskResponse {
+	s.Body = v
+	return s
+}
+
 type RecallDocumentRequest struct {
 	Filters []*RecallDocumentRequestFilters `json:"filters,omitempty" xml:"filters,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -12149,6 +12276,70 @@ func (client *Client) ReIndex(workspaceId *string, request *ReIndexRequest) (_re
 	headers := make(map[string]*string)
 	_result = &ReIndexResponse{}
 	_body, _err := client.ReIndexWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重建任务
+//
+// @param request - RebuildTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebuildTaskResponse
+func (client *Client) RebuildTaskWithOptions(workspaceId *string, request *RebuildTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RebuildTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		body["taskIds"] = request.TaskIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebuildTask"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/task/rebuild"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebuildTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重建任务
+//
+// @param request - RebuildTaskRequest
+//
+// @return RebuildTaskResponse
+func (client *Client) RebuildTask(workspaceId *string, request *RebuildTaskRequest) (_result *RebuildTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RebuildTaskResponse{}
+	_body, _err := client.RebuildTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
