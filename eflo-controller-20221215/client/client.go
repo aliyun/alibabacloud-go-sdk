@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,13 @@ import (
 )
 
 type ApproveOperationRequest struct {
-	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// e01-cn-zvp2tgykr08
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// RepairMachine
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 }
 
@@ -36,8 +39,14 @@ func (s *ApproveOperationRequest) SetOperationType(v string) *ApproveOperationRe
 }
 
 type ApproveOperationResponseBody struct {
+	// example:
+	//
+	// Resource not found
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8F065DDD-6996-5973-9691-9EC57BD0072E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ApproveOperationResponseBody) String() string {
@@ -88,8 +97,23 @@ func (s *ApproveOperationResponse) SetBody(v *ApproveOperationResponseBody) *App
 }
 
 type ChangeResourceGroupRequest struct {
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aekzyqdwnfabx6q
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i118099391667548921125
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 }
 
@@ -118,6 +142,10 @@ func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResour
 
 type ChangeResourceGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 8F065DDD-6996-5973-9691-9EC57BD0072E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -164,17 +192,30 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateClusterRequest struct {
-	ClusterDescription    *string                           `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	ClusterName           *string                           `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType           *string                           `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Components            []*CreateClusterRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	HpnZone               *string                           `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// example:
+	//
+	// Standard_Cluster
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// Lite
+	ClusterType *string                           `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Components  []*CreateClusterRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	HpnZone     *string                           `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks *bool                             `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	Networks              *CreateClusterRequestNetworks     `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
 	NimizVSwitches        []*string                         `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty" type:"Repeated"`
 	NodeGroups            []*CreateClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	ResourceGroupId       *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                   []*CreateClusterRequestTag        `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OpenEniJumboFrame     *bool                             `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
+	// example:
+	//
+	// rg-aek2xdkc6icwfha
+	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -230,6 +271,11 @@ func (s *CreateClusterRequest) SetNodeGroups(v []*CreateClusterRequestNodeGroups
 	return s
 }
 
+func (s *CreateClusterRequest) SetOpenEniJumboFrame(v bool) *CreateClusterRequest {
+	s.OpenEniJumboFrame = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetResourceGroupId(v string) *CreateClusterRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -242,7 +288,10 @@ func (s *CreateClusterRequest) SetTag(v []*CreateClusterRequestTag) *CreateClust
 
 type CreateClusterRequestComponents struct {
 	ComponentConfig *CreateClusterRequestComponentsComponentConfig `json:"ComponentConfig,omitempty" xml:"ComponentConfig,omitempty" type:"Struct"`
-	ComponentType   *string                                        `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// example:
+	//
+	// ACKEdge
+	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
 }
 
 func (s CreateClusterRequestComponents) String() string {
@@ -264,6 +313,65 @@ func (s *CreateClusterRequestComponents) SetComponentType(v string) *CreateClust
 }
 
 type CreateClusterRequestComponentsComponentConfig struct {
+	// example:
+	//
+	// {
+	//
+	//       "EndpointPublicAccess": false,
+	//
+	//       "ContainerCidr": "10.4.0.0/24",
+	//
+	//       "KeyPair": "test",
+	//
+	//       "NodeCidrMask": "25",
+	//
+	//       "ResourceGroupId": "rg-axsadm3sdzsdvdsndstdisd",
+	//
+	//       "WorkerSystemDiskCategory": "da",
+	//
+	//       "WorkerSystemDiskSize": 40,
+	//
+	//       "DeletionProtection": false,
+	//
+	//       "KubeProxy": "iptables",
+	//
+	//       "Name": "da",
+	//
+	//       "LoadBalancerSpec": "slb.s1.small",
+	//
+	//       "Runtime": {
+	//
+	//             "Version": "19.03.15",
+	//
+	//             "Name": "docker"
+	//
+	//       },
+	//
+	//       "IsEnterpriseSecurityGroup": true,
+	//
+	//       "Vpcid": "192.168.23.0/24",
+	//
+	//       "NumOfNodes": 1,
+	//
+	//       "VswitchIds": [
+	//
+	//             "dad"
+	//
+	//       ],
+	//
+	//       "ServiceCidr": "10.0.0.0/16",
+	//
+	//       "SnatEntry": false,
+	//
+	//       "kubernetesVersion": "1.20.11-aliyunedge.1",
+	//
+	//       "WorkerInstanceTypes": [
+	//
+	//             "da"
+	//
+	//       ]
+	//
+	// }
 	BasicArgs interface{}   `json:"BasicArgs,omitempty" xml:"BasicArgs,omitempty"`
 	NodeUnits []interface{} `json:"NodeUnits,omitempty" xml:"NodeUnits,omitempty" type:"Repeated"`
 }
@@ -514,13 +622,31 @@ func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds) SetSubne
 }
 
 type CreateClusterRequestNetworksNewVpdInfo struct {
-	CenId            *string                                             `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CloudLinkCidr    *string                                             `json:"CloudLinkCidr,omitempty" xml:"CloudLinkCidr,omitempty"`
-	CloudLinkId      *string                                             `json:"CloudLinkId,omitempty" xml:"CloudLinkId,omitempty"`
-	MonitorVpcId     *string                                             `json:"MonitorVpcId,omitempty" xml:"MonitorVpcId,omitempty"`
-	MonitorVswitchId *string                                             `json:"MonitorVswitchId,omitempty" xml:"MonitorVswitchId,omitempty"`
-	VpdCidr          *string                                             `json:"VpdCidr,omitempty" xml:"VpdCidr,omitempty"`
-	VpdSubnets       []*CreateClusterRequestNetworksNewVpdInfoVpdSubnets `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cen-1gb1eftc5qp2ao75fo
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// example:
+	//
+	// 172.16.0.0/24
+	CloudLinkCidr *string `json:"CloudLinkCidr,omitempty" xml:"CloudLinkCidr,omitempty"`
+	// example:
+	//
+	// vcc-cn-c4dtycm5i08
+	CloudLinkId *string `json:"CloudLinkId,omitempty" xml:"CloudLinkId,omitempty"`
+	// example:
+	//
+	// vpc-0jl2x45apm6odc2c10h25
+	MonitorVpcId *string `json:"MonitorVpcId,omitempty" xml:"MonitorVpcId,omitempty"`
+	// example:
+	//
+	// vsw-0jl2w3ffbghkss0x2foff
+	MonitorVswitchId *string `json:"MonitorVswitchId,omitempty" xml:"MonitorVswitchId,omitempty"`
+	// example:
+	//
+	// 192.168.0.0/16
+	VpdCidr    *string                                             `json:"VpdCidr,omitempty" xml:"VpdCidr,omitempty"`
+	VpdSubnets []*CreateClusterRequestNetworksNewVpdInfoVpdSubnets `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterRequestNetworksNewVpdInfo) String() string {
@@ -597,6 +723,10 @@ func (s *CreateClusterRequestNetworksNewVpdInfoVpdSubnets) SetZoneId(v string) *
 
 type CreateClusterRequestNetworksVpdInfo struct {
 	// 专有网络 id
+	//
+	// example:
+	//
+	// vpd-vfuz6ejv
 	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 	// 集群子网id列表
 	VpdSubnets []*string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
@@ -621,13 +751,25 @@ func (s *CreateClusterRequestNetworksVpdInfo) SetVpdSubnets(v []*string) *Create
 }
 
 type CreateClusterRequestNodeGroups struct {
-	ImageId              *string                                `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	MachineType          *string                                `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	NodeGroupDescription *string                                `json:"NodeGroupDescription,omitempty" xml:"NodeGroupDescription,omitempty"`
-	NodeGroupName        *string                                `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	Nodes                []*CreateClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	UserData             *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	ZoneId               *string                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// i190297201634099844192
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// efg1.nvga1
+	MachineType          *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	NodeGroupDescription *string `json:"NodeGroupDescription,omitempty" xml:"NodeGroupDescription,omitempty"`
+	// example:
+	//
+	// emr-default
+	NodeGroupName *string                                `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	Nodes         []*CreateClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	UserData      *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateClusterRequestNodeGroups) String() string {
@@ -674,11 +816,20 @@ func (s *CreateClusterRequestNodeGroups) SetZoneId(v string) *CreateClusterReque
 }
 
 type CreateClusterRequestNodeGroupsNodes struct {
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// 8d13b784-17a9-11ed-bc7b-acde48001122
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// ***
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// e01poc-cn-i7m2wnivf0d
+	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateClusterRequestNodeGroupsNodes) String() string {
@@ -715,7 +866,13 @@ func (s *CreateClusterRequestNodeGroupsNodes) SetVpcId(v string) *CreateClusterR
 }
 
 type CreateClusterRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// env-name
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// dev
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -738,17 +895,30 @@ func (s *CreateClusterRequestTag) SetValue(v string) *CreateClusterRequestTag {
 }
 
 type CreateClusterShrinkRequest struct {
-	ClusterDescription    *string                          `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	ClusterName           *string                          `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType           *string                          `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ComponentsShrink      *string                          `json:"Components,omitempty" xml:"Components,omitempty"`
-	HpnZone               *string                          `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	IgnoreFailedNodeTasks *bool                            `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NetworksShrink        *string                          `json:"Networks,omitempty" xml:"Networks,omitempty"`
-	NimizVSwitchesShrink  *string                          `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty"`
-	NodeGroupsShrink      *string                          `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
-	ResourceGroupId       *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                   []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// example:
+	//
+	// Standard_Cluster
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// Lite
+	ClusterType      *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	HpnZone          *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// False
+	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	NetworksShrink        *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
+	NimizVSwitchesShrink  *string `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty"`
+	NodeGroupsShrink      *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
+	OpenEniJumboFrame     *bool   `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
+	// example:
+	//
+	// rg-aek2xdkc6icwfha
+	ResourceGroupId *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterShrinkRequest) String() string {
@@ -804,6 +974,11 @@ func (s *CreateClusterShrinkRequest) SetNodeGroupsShrink(v string) *CreateCluste
 	return s
 }
 
+func (s *CreateClusterShrinkRequest) SetOpenEniJumboFrame(v bool) *CreateClusterShrinkRequest {
+	s.OpenEniJumboFrame = &v
+	return s
+}
+
 func (s *CreateClusterShrinkRequest) SetResourceGroupId(v string) *CreateClusterShrinkRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -815,7 +990,13 @@ func (s *CreateClusterShrinkRequest) SetTag(v []*CreateClusterShrinkRequestTag) 
 }
 
 type CreateClusterShrinkRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// env-name
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// dev
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -838,9 +1019,18 @@ func (s *CreateClusterShrinkRequestTag) SetValue(v string) *CreateClusterShrinkR
 }
 
 type CreateClusterResponseBody struct {
+	// example:
+	//
+	// i116913051663373010974
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 3C683243-7915-57FB-9570-A2932C1C0F78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// i159809891662373011015
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateClusterResponseBody) String() string {
@@ -896,6 +1086,11 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type DeleteClusterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i116913051662373010974
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -913,6 +1108,9 @@ func (s *DeleteClusterRequest) SetClusterId(v string) *DeleteClusterRequest {
 }
 
 type DeleteClusterResponseBody struct {
+	// example:
+	//
+	// 0FC4A1C7-421C-5EAB-9361-4C0338EFA287
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -959,6 +1157,11 @@ func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClu
 }
 
 type DescribeClusterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i119982311660892626523
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -976,23 +1179,57 @@ func (s *DescribeClusterRequest) SetClusterId(v string) *DescribeClusterRequest 
 }
 
 type DescribeClusterResponseBody struct {
-	ClusterDescription *string                                  `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	ClusterId          *string                                  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName        *string                                  `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// example:
+	//
+	// i116913051662373010974
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// Eflo-YJ-Test-Cluster
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// AckEdgPro
 	ClusterType        *string                                  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	Components         []*DescribeClusterResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	ComputingIpVersion *string                                  `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
-	CreateTime         *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HpnZone            *string                                  `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	Networks           []*DescribeClusterResponseBodyNetworks   `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
-	NodeCount          *int64                                   `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	NodeGroupCount     *int64                                   `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
-	OperatingState     *string                                  `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	RequestId          *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId    *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TaskId             *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	UpdateTime         *string                                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VpcId              *string                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 2022-06-08T07:05:11Z
+	CreateTime *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	HpnZone    *string                                `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	Networks   []*DescribeClusterResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// example:
+	//
+	// 2
+	NodeGroupCount    *int64  `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
+	OpenEniJumboFrame *string `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
+	// example:
+	//
+	// running
+	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// example:
+	//
+	// 887FA855-89F4-5DB3-B305-C5879EC480E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-aek2k3rqlvv6ytq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// i152609221670466904596
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2022-08-23T06:36:17.000Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeClusterResponseBody) String() string {
@@ -1058,6 +1295,11 @@ func (s *DescribeClusterResponseBody) SetNodeGroupCount(v int64) *DescribeCluste
 	return s
 }
 
+func (s *DescribeClusterResponseBody) SetOpenEniJumboFrame(v string) *DescribeClusterResponseBody {
+	s.OpenEniJumboFrame = &v
+	return s
+}
+
 func (s *DescribeClusterResponseBody) SetOperatingState(v string) *DescribeClusterResponseBody {
 	s.OperatingState = &v
 	return s
@@ -1089,7 +1331,13 @@ func (s *DescribeClusterResponseBody) SetVpcId(v string) *DescribeClusterRespons
 }
 
 type DescribeClusterResponseBodyComponents struct {
-	ComponentId   *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// example:
+	//
+	// i149549021660892626529
+	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// example:
+	//
+	// ACKEdge
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
 }
 
@@ -1112,6 +1360,9 @@ func (s *DescribeClusterResponseBodyComponents) SetComponentType(v string) *Desc
 }
 
 type DescribeClusterResponseBodyNetworks struct {
+	// example:
+	//
+	// vpd-iqd7xunc
 	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
@@ -1158,10 +1409,24 @@ func (s *DescribeClusterResponse) SetBody(v *DescribeClusterResponseBody) *Descr
 }
 
 type DescribeInvocationsRequest struct {
+	// example:
+	//
+	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	IncludeOutput   *bool   `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
-	InvokeId        *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// true
+	IncludeOutput *bool `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// t-cd03crwys0lrls0
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// example:
+	//
+	// e01-cn-zvp2tgykr08
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s DescribeInvocationsRequest) String() string {
@@ -1194,7 +1459,10 @@ func (s *DescribeInvocationsRequest) SetNodeId(v string) *DescribeInvocationsReq
 
 type DescribeInvocationsResponseBody struct {
 	Invocations *DescribeInvocationsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Struct"`
-	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInvocationsResponseBody) String() string {
@@ -1233,20 +1501,56 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetInvocation(v []*Describe
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocation struct {
-	CommandContent     *string                                                          `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	CommandDescription *string                                                          `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
-	CommandName        *string                                                          `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
-	CreationTime       *string                                                          `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Frequency          *string                                                          `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	InvocationStatus   *string                                                          `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	InvokeId           *string                                                          `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	InvokeNodes        *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes `json:"InvokeNodes,omitempty" xml:"InvokeNodes,omitempty" type:"Struct"`
-	InvokeStatus       *string                                                          `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	Parameters         *string                                                          `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RepeatMode         *string                                                          `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	Timeout            *int32                                                           `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Username           *string                                                          `json:"Username,omitempty" xml:"Username,omitempty"`
-	WorkingDir         *string                                                          `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// example:
+	//
+	// cnBtIC1xYSB8IGdyZXAgdnNm****
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// example:
+	//
+	// testDescription
+	CommandDescription *string `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
+	// example:
+	//
+	// CommandTestName
+	CommandName *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+	// example:
+	//
+	// 2020-01-19T09:15:46Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Frequency    *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// example:
+	//
+	// Success
+	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	// example:
+	//
+	// t-ind3k9ytvvduoe8
+	InvokeId    *string                                                          `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeNodes *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes `json:"InvokeNodes,omitempty" xml:"InvokeNodes,omitempty" type:"Struct"`
+	// example:
+	//
+	// Running
+	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
+	// example:
+	//
+	// {}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// Once
+	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// root
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// /home
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s DescribeInvocationsResponseBodyInvocationsInvocation) String() string {
@@ -1345,21 +1649,66 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes) SetInv
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode struct {
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Dropped          *int32  `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	ErrorCode        *bool   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorInfo        *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	ExitCode         *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishTime       *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// 2023-02-06T07:12:50Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// 0
+	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
+	// example:
+	//
+	// NodeNotExists：
+	ErrorCode *bool `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// the specified node does not exists
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// example:
+	//
+	// 0
+	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// example:
+	//
+	// 2023-02-06T07:12:50Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// Pending
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	NodeId           *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// e01-cn-lbj36wkp70b
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// Finished
 	NodeInvokeStatus *string `json:"NodeInvokeStatus,omitempty" xml:"NodeInvokeStatus,omitempty"`
-	Output           *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	Repeats          *int32  `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
-	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StopTime         *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	Timed            *string `json:"Timed,omitempty" xml:"Timed,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// OutPutTestmsg
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// 0
+	Repeats *int32 `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
+	// example:
+	//
+	// 2019-12-20T06:15:55Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2019-12-20T06:15:55Z
+	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// example:
+	//
+	// false
+	Timed *string `json:"Timed,omitempty" xml:"Timed,omitempty"`
+	// example:
+	//
+	// 2023-02-06T07:12:50Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) String() string {
@@ -1475,6 +1824,11 @@ func (s *DescribeInvocationsResponse) SetBody(v *DescribeInvocationsResponseBody
 }
 
 type DescribeNodeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mock-sn-2060
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -1492,25 +1846,68 @@ func (s *DescribeNodeRequest) SetNodeId(v string) *DescribeNodeRequest {
 }
 
 type DescribeNodeResponseBody struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i116913051662373010974
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// Standard_Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-09-30T03:35:53Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-06-23T16:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	Hostname    *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// 31d38530-241e-11ed-bc63-acde48001122
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	HpnZone  *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// i190297201634099844192
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// 镜像名称
-	ImageName       *string                             `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	MachineType     *string                             `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	Networks        []*DescribeNodeResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
-	NodeGroupId     *string                             `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	NodeGroupName   *string                             `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	NodeId          *string                             `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	OperatingState  *string                             `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	RequestId       *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Sn              *string                             `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	ZoneId          *string                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	//
+	// example:
+	//
+	// Centos7.9_all_0811
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// efg1.nvga1
+	MachineType *string                             `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	Networks    []*DescribeNodeResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ng-ec3c96ff0aa4c60d
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// example:
+	//
+	// emr-default
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// example:
+	//
+	// e01-cn-zvp2tgykr08
+	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// example:
+	//
+	// AC4F0004-7BCE-52E0-891B-CAC7D64E3368
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// sag42ckf4jx
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeNodeResponseBody) String() string {
@@ -1612,10 +2009,22 @@ func (s *DescribeNodeResponseBody) SetZoneId(v string) *DescribeNodeResponseBody
 }
 
 type DescribeNodeResponseBodyNetworks struct {
+	// example:
+	//
+	// Bond0
 	BondName *string `json:"BondName,omitempty" xml:"BondName,omitempty"`
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 47.254.235.44
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// vsw-uf68v51fldm5egmui5a6k
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	VpdId    *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	// example:
+	//
+	// vpd-xcuhjyrj
+	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
 func (s DescribeNodeResponseBodyNetworks) String() string {
@@ -1676,6 +2085,9 @@ func (s *DescribeNodeResponse) SetBody(v *DescribeNodeResponseBody) *DescribeNod
 }
 
 type DescribeRegionsRequest struct {
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -1693,8 +2105,11 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1D2FBB36-C39B-5EBB-9928-FCC1A236D65D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1717,7 +2132,10 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 
 type DescribeRegionsResponseBodyRegions struct {
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -1768,8 +2186,16 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSendFileResultsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// t-bj038i0d6r8zoqo
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// e01-cn-zvp2tgykr08
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s DescribeSendFileResultsRequest) String() string {
@@ -1793,7 +2219,14 @@ func (s *DescribeSendFileResultsRequest) SetNodeId(v string) *DescribeSendFileRe
 type DescribeSendFileResultsResponseBody struct {
 	Invocations *DescribeSendFileResultsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Struct"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -1838,19 +2271,52 @@ func (s *DescribeSendFileResultsResponseBodyInvocations) SetInvocation(v []*Desc
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocation struct {
-	Content          *string                                                              `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType      *string                                                              `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CreationTime     *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description      *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileGroup        *string                                                              `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
-	FileMode         *string                                                              `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
-	FileOwner        *string                                                              `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	// example:
+	//
+	// Base64
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// PlainText
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// 2023-04-10T10:53:46.156+08:00
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// root
+	FileGroup *string `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	// example:
+	//
+	// 0644
+	FileMode *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	// example:
+	//
+	// root
+	FileOwner *string `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	// example:
+	//
+	// Pending
 	InvocationStatus *string                                                              `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
 	InvokeNodes      *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes `json:"InvokeNodes,omitempty" xml:"InvokeNodes,omitempty" type:"Struct"`
-	Name             *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeCount        *int32                                                               `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	Overwrite        *bool                                                                `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	TargetDir        *string                                                              `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// example:
+	//
+	// true
+	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// example:
+	//
+	// /home/user
+	TargetDir *string `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
 }
 
 func (s DescribeSendFileResultsResponseBodyInvocationsInvocation) String() string {
@@ -1944,14 +2410,38 @@ func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes) Se
 }
 
 type DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode struct {
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorInfo        *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	FinishTime       *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// 2023-02-06T07:12:50Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// AccountNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// the specified instance does not exists
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// example:
+	//
+	// 2023-04-10T10:53:46.156+08:00
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// Success
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	NodeId           *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// e01-cn-9lb3c15m81j
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 2023-03-30T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2023-03-30T16:00:00Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) String() string {
@@ -2032,6 +2522,11 @@ func (s *DescribeSendFileResultsResponse) SetBody(v *DescribeSendFileResultsResp
 }
 
 type DescribeTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i156331731670384438138
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2049,16 +2544,40 @@ func (s *DescribeTaskRequest) SetTaskId(v string) *DescribeTaskRequest {
 }
 
 type DescribeTaskResponseBody struct {
-	ClusterId   *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName *string                          `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CreateTime  *string                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Message     *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	NodeIds     []*string                        `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	RequestId   *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Steps       []*DescribeTaskResponseBodySteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
-	TaskState   *string                          `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	TaskType    *string                          `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UpdateTime  *string                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// i119982311660892626523
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// Standard_Cluster
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// 2022-11-30T02:00:00.852Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// Releasing [prod_main_mid_26e234cf] in region [cn-beijing] with weight [0]
+	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A7FD7411-9395-52E8-AF42-EB3A4A55446D
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Steps     []*DescribeTaskResponseBodySteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// running
+	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// example:
+	//
+	// cut_cluster
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 2022-11-30T03:40:14.852Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeTaskResponseBody) String() string {
@@ -2120,14 +2639,32 @@ func (s *DescribeTaskResponseBody) SetUpdateTime(v string) *DescribeTaskResponse
 }
 
 type DescribeTaskResponseBodySteps struct {
-	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	StageTag   *string                                  `json:"StageTag,omitempty" xml:"StageTag,omitempty"`
-	StartTime  *string                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StepName   *string                                  `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	StepState  *string                                  `json:"StepState,omitempty" xml:"StepState,omitempty"`
-	StepType   *string                                  `json:"StepType,omitempty" xml:"StepType,omitempty"`
-	SubTasks   []*DescribeTaskResponseBodyStepsSubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Repeated"`
-	UpdateTime *string                                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// get taskinfo failed
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	StageTag *string `json:"StageTag,omitempty" xml:"StageTag,omitempty"`
+	// example:
+	//
+	// 2022-11-30T2:00:00.852Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// create_vpd
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// example:
+	//
+	// execution_success
+	StepState *string `json:"StepState,omitempty" xml:"StepState,omitempty"`
+	// example:
+	//
+	// normal
+	StepType *string                                  `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	SubTasks []*DescribeTaskResponseBodyStepsSubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-11-30T02:20:14.852Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeTaskResponseBodySteps) String() string {
@@ -2179,11 +2716,29 @@ func (s *DescribeTaskResponseBodySteps) SetUpdateTime(v string) *DescribeTaskRes
 }
 
 type DescribeTaskResponseBodyStepsSubTasks struct {
+	// example:
+	//
+	// 2022-11-30T2:00:00.852Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskState  *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	TaskType   *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// Releasing [prod_main_mid_26e234cf] in region [cn-beijing] with weight [0]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// i158805051661047928377
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// running
+	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// example:
+	//
+	// cut_node_sub_task
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 2022-11-30T02:20:14.852Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -2255,6 +2810,9 @@ func (s *DescribeTaskResponse) SetBody(v *DescribeTaskResponseBody) *DescribeTas
 }
 
 type DescribeZonesRequest struct {
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -2272,6 +2830,9 @@ func (s *DescribeZonesRequest) SetAcceptLanguage(v string) *DescribeZonesRequest
 }
 
 type DescribeZonesResponseBody struct {
+	// example:
+	//
+	// E9116F2D-82F8-501E-9ADB-2BE0C02B6A84
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Zones     []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
@@ -2296,7 +2857,10 @@ func (s *DescribeZonesResponseBody) SetZones(v []*DescribeZonesResponseBodyZones
 
 type DescribeZonesResponseBodyZones struct {
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZones) String() string {
@@ -2347,7 +2911,13 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type ExtendClusterRequest struct {
-	ClusterId             *string                                   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i15b480fbd2fcdbc2869cd80
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks *bool                                     `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	IpAllocationPolicy    []*ExtendClusterRequestIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
 	NodeGroups            []*ExtendClusterRequestNodeGroups         `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
@@ -2423,6 +2993,9 @@ func (s *ExtendClusterRequestIpAllocationPolicy) SetNodePolicy(v []*ExtendCluste
 }
 
 type ExtendClusterRequestIpAllocationPolicyBondPolicy struct {
+	// example:
+	//
+	// subnet-3od2fe
 	BondDefaultSubnet *string                                                  `json:"BondDefaultSubnet,omitempty" xml:"BondDefaultSubnet,omitempty"`
 	Bonds             []*ExtendClusterRequestIpAllocationPolicyBondPolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
 }
@@ -2446,7 +3019,13 @@ func (s *ExtendClusterRequestIpAllocationPolicyBondPolicy) SetBonds(v []*ExtendC
 }
 
 type ExtendClusterRequestIpAllocationPolicyBondPolicyBonds struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Bond0
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// subnet-3od2fe
 	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
 }
 
@@ -2469,8 +3048,11 @@ func (s *ExtendClusterRequestIpAllocationPolicyBondPolicyBonds) SetSubnet(v stri
 }
 
 type ExtendClusterRequestIpAllocationPolicyMachineTypePolicy struct {
-	Bonds       []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
-	MachineType *string                                                         `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	Bonds []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// efg1.nvga1
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 }
 
 func (s ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) String() string {
@@ -2492,7 +3074,13 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) SetMachineType
 }
 
 type ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Bond0
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// subnet-fdo3dv
 	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
 }
 
@@ -2515,8 +3103,11 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) SetSubnet
 }
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicy struct {
-	Bonds  []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
-	NodeId *string                                                  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Bonds []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// i-3fdodw2
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s ExtendClusterRequestIpAllocationPolicyNodePolicy) String() string {
@@ -2538,7 +3129,13 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) SetNodeId(v string) *
 }
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicyBonds struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Bond0
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// subnet-fdo3dv
 	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
 }
 
@@ -2561,6 +3158,9 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) SetSubnet(v stri
 }
 
 type ExtendClusterRequestNodeGroups struct {
+	// example:
+	//
+	// i16d4883a46cbadeb4bc9
 	NodeGroupId *string                                `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	Nodes       []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	UserData    *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
@@ -2596,11 +3196,20 @@ func (s *ExtendClusterRequestNodeGroups) SetZoneId(v string) *ExtendClusterReque
 }
 
 type ExtendClusterRequestNodeGroupsNodes struct {
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// d044d220-33fd-11ed-86a6
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// ***
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// e01-cn-zvp2zdpy601
+	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ExtendClusterRequestNodeGroupsNodes) String() string {
@@ -2637,7 +3246,13 @@ func (s *ExtendClusterRequestNodeGroupsNodes) SetVpcId(v string) *ExtendClusterR
 }
 
 type ExtendClusterShrinkRequest struct {
-	ClusterId                *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i15b480fbd2fcdbc2869cd80
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks    *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	IpAllocationPolicyShrink *string `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty"`
 	NodeGroupsShrink         *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
@@ -2684,8 +3299,14 @@ func (s *ExtendClusterShrinkRequest) SetVpdSubnetsShrink(v string) *ExtendCluste
 }
 
 type ExtendClusterResponseBody struct {
+	// example:
+	//
+	// 03668372-18FF-5959-98D9-6B36A4643C7A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// i158475611663639202234
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ExtendClusterResponseBody) String() string {
@@ -2736,9 +3357,23 @@ func (s *ExtendClusterResponse) SetBody(v *ExtendClusterResponseBody) *ExtendClu
 }
 
 type ListClusterNodesRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i15b480fbd2fcdbc2869cd80
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdQ3Z+oPlg49gsr2y8jb6wY=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ng-ec3c96ff0aa4c60d
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 }
 
@@ -2771,9 +3406,15 @@ func (s *ListClusterNodesRequest) SetNodeGroupId(v string) *ListClusterNodesRequ
 }
 
 type ListClusterNodesResponseBody struct {
+	// example:
+	//
+	// AAAAAXW/ZB9TBvH+0ZK0phtCibQgQmu1RbqplAI6Velo2OKR
 	NextToken *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Nodes     []*ListClusterNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2BA76272-6608-5AEC-BBA8-B6F0D3D14CDB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListClusterNodesResponseBody) String() string {
@@ -2800,19 +3441,52 @@ func (s *ListClusterNodesResponseBody) SetRequestId(v string) *ListClusterNodesR
 }
 
 type ListClusterNodesResponseBodyNodes struct {
-	CreateTime     *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime    *string                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	Hostname       *string                                      `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	HpnZone        *string                                      `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	ImageId        *string                                      `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	MachineType    *string                                      `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	Networks       []*ListClusterNodesResponseBodyNodesNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
-	NodeGroupId    *string                                      `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	NodeGroupName  *string                                      `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	NodeId         *string                                      `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	OperatingState *string                                      `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	Sn             *string                                      `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	ZoneId         *string                                      `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 1642472468000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1762185600000
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// 72432f80-273e-11ed-b57a-acde48001122
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	HpnZone  *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// i190297201669099844192
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// cn-wulanchabu-b11
+	MachineType *string                                      `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	Networks    []*ListClusterNodesResponseBodyNodesNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ng-e9b74f4d450cf18d
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// example:
+	//
+	// emr_master
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// example:
+	//
+	// e01-cn-2r42tmj4z02
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// Extending
+	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// example:
+	//
+	// sn_tOuUk
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListClusterNodesResponseBodyNodes) String() string {
@@ -2953,8 +3627,17 @@ func (s *ListClusterNodesResponse) SetBody(v *ListClusterNodesResponseBody) *Lis
 }
 
 type ListClustersRequest struct {
-	MaxResults      *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// a3f2224a5ec7224116c4f5246120abe4
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rg-aek2bg6wyoox6jq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2982,9 +3665,15 @@ func (s *ListClustersRequest) SetResourceGroupId(v string) *ListClustersRequest 
 }
 
 type ListClustersResponseBody struct {
-	Clusters  []*ListClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	NextToken *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Clusters []*ListClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// f4f9a292c17072a2
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 2FE2B22C-CF9D-59DE-BF63-DC9B9B33A9D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListClustersResponseBody) String() string {
@@ -3011,21 +3700,54 @@ func (s *ListClustersResponseBody) SetRequestId(v string) *ListClustersResponseB
 }
 
 type ListClustersResponseBodyClusters struct {
-	ClusterDescription *string     `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	ClusterId          *string     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName        *string     `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType        *string     `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// example:
+	//
+	// i137590131672134915401
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// cnp_test_cluster
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// AckEdgPro
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// {}
 	Components         interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
 	ComputingIpVersion *string     `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
-	CreateTime         *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HpnZone            *string     `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	NodeCount          *int64      `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	NodeGroupCount     *int64      `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
-	OperatingState     *string     `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	ResourceGroupId    *string     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TaskId             *string     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	UpdateTime         *string     `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VpcId              *string     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 1672134938
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	HpnZone    *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// 12
+	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// example:
+	//
+	// 2
+	NodeGroupCount *int64 `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
+	// example:
+	//
+	// initializing
+	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	// example:
+	//
+	// rg-aek2ajbjoloa23q
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// i156365121663149566024
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1672134968
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListClustersResponseBodyClusters) String() string {
@@ -3141,9 +3863,18 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListFreeNodesRequest struct {
-	HpnZone         *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	MachineType     *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	MaxResults      *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// mock-machine-type2
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// a3f2224a5ec7224116c4f5246120abe4
 	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -3182,9 +3913,15 @@ func (s *ListFreeNodesRequest) SetResourceGroupId(v string) *ListFreeNodesReques
 }
 
 type ListFreeNodesResponseBody struct {
+	// example:
+	//
+	// a3f2224a5ec7224116c4f5246120abe4
 	NextToken *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Nodes     []*ListFreeNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// AA14CB86-70C4-5CB7-9E7B-6CCA77F3512B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFreeNodesResponseBody) String() string {
@@ -3211,14 +3948,32 @@ func (s *ListFreeNodesResponseBody) SetRequestId(v string) *ListFreeNodesRespons
 }
 
 type ListFreeNodesResponseBodyNodes struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime     *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HpnZone         *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	MachineType     *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// example:
+	//
+	// 1652321554
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1673107200
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// efg1.nvga1
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// example:
+	//
+	// e01-cn-7pp2x193801
 	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Sn              *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// sn_pozkHBgicd
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-j
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListFreeNodesResponseBodyNodes) String() string {
@@ -3299,9 +4054,23 @@ func (s *ListFreeNodesResponse) SetBody(v *ListFreeNodesResponseBody) *ListFreeN
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAAdQ3Z+oPlg49gsr2y8jb6wY=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Node
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -3340,7 +4109,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// PodName
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// WFT-OTC
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3363,7 +4138,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// AAAAAdQ3Z+oPlg49gsr2y8jb6wY=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 8F208B6D-4C42-5FD3-B6BE-E826E92A44DD
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
@@ -3409,10 +4190,22 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// i15azeddnvf7uhw2oij57o0
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// Cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// env
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// dev
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -3473,7 +4266,13 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type RebootNodesRequest struct {
-	ClusterId             *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i15b480fbd2fcdbc2869cd80
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks *bool     `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	Nodes                 []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
@@ -3502,7 +4301,13 @@ func (s *RebootNodesRequest) SetNodes(v []*string) *RebootNodesRequest {
 }
 
 type RebootNodesShrinkRequest struct {
-	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i15b480fbd2fcdbc2869cd80
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	NodesShrink           *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 }
@@ -3531,8 +4336,14 @@ func (s *RebootNodesShrinkRequest) SetNodesShrink(v string) *RebootNodesShrinkRe
 }
 
 type RebootNodesResponseBody struct {
+	// example:
+	//
+	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// i158475611663639202234
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RebootNodesResponseBody) String() string {
@@ -3583,7 +4394,13 @@ func (s *RebootNodesResponse) SetBody(v *RebootNodesResponseBody) *RebootNodesRe
 }
 
 type ReimageNodesRequest struct {
-	ClusterId             *string                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i15dfa12e8f27c44f4a006c2c8bb
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks *bool                       `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	Nodes                 []*ReimageNodesRequestNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	UserData              *string                     `json:"UserData,omitempty" xml:"UserData,omitempty"`
@@ -3618,10 +4435,22 @@ func (s *ReimageNodesRequest) SetUserData(v string) *ReimageNodesRequest {
 }
 
 type ReimageNodesRequestNodes struct {
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// 457db5ca-241d-11ed-9fd7-acde48001122
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// m-8vbf8rpv2nn14y7oybjy
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// ***
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// e01-cn-zvp2tgykr0b
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s ReimageNodesRequestNodes) String() string {
@@ -3653,7 +4482,13 @@ func (s *ReimageNodesRequestNodes) SetNodeId(v string) *ReimageNodesRequestNodes
 }
 
 type ReimageNodesShrinkRequest struct {
-	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i15dfa12e8f27c44f4a006c2c8bb
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	NodesShrink           *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 	UserData              *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
@@ -3688,8 +4523,14 @@ func (s *ReimageNodesShrinkRequest) SetUserData(v string) *ReimageNodesShrinkReq
 }
 
 type ReimageNodesResponseBody struct {
+	// example:
+	//
+	// 15FBCD9B-C93F-54E8-A168-AADE7E66DAD2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// i158782151663841517926
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ReimageNodesResponseBody) String() string {
@@ -3740,19 +4581,54 @@ func (s *ReimageNodesResponse) SetBody(v *ReimageNodesResponseBody) *ReimageNode
 }
 
 type RunCommandRequest struct {
-	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CommandContent  *string                `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	ContentEncoding *string                `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableParameter *bool                  `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	Frequency       *string                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeIdList      []*string              `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
-	Parameters      map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RepeatMode      *string                `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	Timeout         *int32                 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Username        *string                `json:"Username,omitempty" xml:"Username,omitempty"`
-	WorkingDir      *string                `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ZWNobyAxMjM=
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// example:
+	//
+	// Base64
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	EnableParameter *bool   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// example:
+	//
+	// testName
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {"name":"Jack", "accessKey":"LTAIdyvdIqaRY****"}
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// Once
+	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// example:
+	//
+	// 3600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// root
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// /home/user
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s RunCommandRequest) String() string {
@@ -3829,19 +4705,54 @@ func (s *RunCommandRequest) SetWorkingDir(v string) *RunCommandRequest {
 }
 
 type RunCommandShrinkRequest struct {
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CommandContent   *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	ContentEncoding  *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableParameter  *bool   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	Frequency        *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ZWNobyAxMjM=
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// example:
+	//
+	// Base64
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	EnableParameter *bool   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// example:
+	//
+	// testName
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
+	// example:
+	//
+	// {"name":"Jack", "accessKey":"LTAIdyvdIqaRY****"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RepeatMode       *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	Timeout          *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Username         *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	WorkingDir       *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// example:
+	//
+	// Once
+	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// example:
+	//
+	// 3600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// root
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// /home/user
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s RunCommandShrinkRequest) String() string {
@@ -3918,8 +4829,15 @@ func (s *RunCommandShrinkRequest) SetWorkingDir(v string) *RunCommandShrinkReque
 }
 
 type RunCommandResponseBody struct {
+	// example:
+	//
+	// t-7d2a745b412b4601b2d47f6a768d*
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 2FE2B22C-CF9D-59DE-BF63-DC9B9B33A9D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3971,17 +4889,54 @@ func (s *RunCommandResponse) SetBody(v *RunCommandResponseBody) *RunCommandRespo
 }
 
 type SendFileRequest struct {
-	Content     *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType *string   `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileGroup   *string   `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
-	FileMode    *string   `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
-	FileOwner   *string   `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeIdList  []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
-	Overwrite   *bool     `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	TargetDir   *string   `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
-	Timeout     *int32    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// #!/bin/bash echo "Current User is :" echo $(ps | grep "$$" | awk \\"{print $2}\\") -------- oss://bucketName/objectName
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// PlainText
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// This is a test file.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// test
+	FileGroup *string `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	// example:
+	//
+	// 0644
+	FileMode *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	// example:
+	//
+	// root
+	FileOwner *string `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// file.txt
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// True
+	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /home
+	TargetDir *string `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
+	// example:
+	//
+	// 600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s SendFileRequest) String() string {
@@ -4048,17 +5003,54 @@ func (s *SendFileRequest) SetTimeout(v int32) *SendFileRequest {
 }
 
 type SendFileShrinkRequest struct {
-	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType      *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileGroup        *string `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
-	FileMode         *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
-	FileOwner        *string `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// #!/bin/bash echo "Current User is :" echo $(ps | grep "$$" | awk \\"{print $2}\\") -------- oss://bucketName/objectName
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// PlainText
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// This is a test file.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// test
+	FileGroup *string `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	// example:
+	//
+	// 0644
+	FileMode *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	// example:
+	//
+	// root
+	FileOwner *string `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// file.txt
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
-	Overwrite        *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	TargetDir        *string `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
-	Timeout          *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// True
+	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /home
+	TargetDir *string `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
+	// example:
+	//
+	// 600
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s SendFileShrinkRequest) String() string {
@@ -4125,8 +5117,15 @@ func (s *SendFileShrinkRequest) SetTimeout(v int32) *SendFileShrinkRequest {
 }
 
 type SendFileResponseBody struct {
+	// example:
+	//
+	// t-hz03la52z1zkvls
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 3C683243-7915-57FB-9570-A2932C1C0F78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4178,7 +5177,13 @@ func (s *SendFileResponse) SetBody(v *SendFileResponseBody) *SendFileResponse {
 }
 
 type ShrinkClusterRequest struct {
-	ClusterId             *string                           `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i15dfa12e8f27c44f4a006c2c8bb
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks *bool                             `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	NodeGroups            []*ShrinkClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
 }
@@ -4207,6 +5212,9 @@ func (s *ShrinkClusterRequest) SetNodeGroups(v []*ShrinkClusterRequestNodeGroups
 }
 
 type ShrinkClusterRequestNodeGroups struct {
+	// example:
+	//
+	// ng-3b6fbd24b1b845a0
 	NodeGroupId *string                                `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	Nodes       []*ShrinkClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
@@ -4230,6 +5238,9 @@ func (s *ShrinkClusterRequestNodeGroups) SetNodes(v []*ShrinkClusterRequestNodeG
 }
 
 type ShrinkClusterRequestNodeGroupsNodes struct {
+	// example:
+	//
+	// e01poc-cn-zmb2ypjdc01
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -4247,7 +5258,13 @@ func (s *ShrinkClusterRequestNodeGroupsNodes) SetNodeId(v string) *ShrinkCluster
 }
 
 type ShrinkClusterShrinkRequest struct {
-	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i15dfa12e8f27c44f4a006c2c8bb
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// False
 	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	NodeGroupsShrink      *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
 }
@@ -4276,8 +5293,14 @@ func (s *ShrinkClusterShrinkRequest) SetNodeGroupsShrink(v string) *ShrinkCluste
 }
 
 type ShrinkClusterResponseBody struct {
+	// example:
+	//
+	// CC9FEF89-9BE5-5E03-845E-238B48D7599B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// i159136551662516768776
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ShrinkClusterResponseBody) String() string {
@@ -4328,6 +5351,11 @@ func (s *ShrinkClusterResponse) SetBody(v *ShrinkClusterResponseBody) *ShrinkClu
 }
 
 type StopInvocationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-hz044748dzepds0
 	InvokeId   *string   `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
 }
@@ -4351,6 +5379,11 @@ func (s *StopInvocationRequest) SetNodeIdList(v []*string) *StopInvocationReques
 }
 
 type StopInvocationShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-hz044748dzepds0
 	InvokeId         *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
 }
@@ -4375,6 +5408,10 @@ func (s *StopInvocationShrinkRequest) SetNodeIdListShrink(v string) *StopInvocat
 
 type StopInvocationResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A7FD7411-9395-52E8-AF42-EB3A4A55446D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4421,10 +5458,22 @@ func (s *StopInvocationResponse) SetBody(v *StopInvocationResponseBody) *StopInv
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -4456,7 +5505,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// app
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// v3
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4480,6 +5535,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// E7BB53E1-0B08-5C4E-BA66-9225548C3151
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4526,9 +5585,23 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// False
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Cluster
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -4567,6 +5640,9 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// example:
+	//
+	// 81F648D0-5570-5351-AE98-6F501C7E957F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4659,6 +5735,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 审批运维操作
+//
+// @param request - ApproveOperationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApproveOperationResponse
 func (client *Client) ApproveOperationWithOptions(request *ApproveOperationRequest, runtime *util.RuntimeOptions) (_result *ApproveOperationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4696,6 +5781,13 @@ func (client *Client) ApproveOperationWithOptions(request *ApproveOperationReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 审批运维操作
+//
+// @param request - ApproveOperationRequest
+//
+// @return ApproveOperationResponse
 func (client *Client) ApproveOperation(request *ApproveOperationRequest) (_result *ApproveOperationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApproveOperationResponse{}
@@ -4707,6 +5799,15 @@ func (client *Client) ApproveOperation(request *ApproveOperationRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4748,6 +5849,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源转组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -4759,6 +5867,15 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建大计算集群
+//
+// @param tmpReq - CreateClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClusterResponse
 func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, runtime *util.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4824,6 +5941,10 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 		body["NodeGroups"] = request.NodeGroupsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OpenEniJumboFrame)) {
+		body["OpenEniJumboFrame"] = request.OpenEniJumboFrame
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -4852,6 +5973,13 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建大计算集群
+//
+// @param request - CreateClusterRequest
+//
+// @return CreateClusterResponse
 func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *CreateClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateClusterResponse{}
@@ -4863,6 +5991,15 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除集群实例
+//
+// @param request - DeleteClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClusterResponse
 func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4896,6 +6033,13 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除集群实例
+//
+// @param request - DeleteClusterRequest
+//
+// @return DeleteClusterResponse
 func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClusterResponse{}
@@ -4907,6 +6051,15 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 集群详情
+//
+// @param request - DescribeClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterResponse
 func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4940,6 +6093,13 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 集群详情
+//
+// @param request - DescribeClusterRequest
+//
+// @return DescribeClusterResponse
 func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result *DescribeClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClusterResponse{}
@@ -4951,6 +6111,15 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询运维助手命令的执行列表和状态
+//
+// @param request - DescribeInvocationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInvocationsResponse
 func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *util.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4996,6 +6165,13 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询运维助手命令的执行列表和状态
+//
+// @param request - DescribeInvocationsRequest
+//
+// @return DescribeInvocationsResponse
 func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (_result *DescribeInvocationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInvocationsResponse{}
@@ -5007,6 +6183,15 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询节点列表
+//
+// @param request - DescribeNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNodeResponse
 func (client *Client) DescribeNodeWithOptions(request *DescribeNodeRequest, runtime *util.RuntimeOptions) (_result *DescribeNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5040,6 +6225,13 @@ func (client *Client) DescribeNodeWithOptions(request *DescribeNodeRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询节点列表
+//
+// @param request - DescribeNodeRequest
+//
+// @return DescribeNodeResponse
 func (client *Client) DescribeNode(request *DescribeNodeRequest) (_result *DescribeNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNodeResponse{}
@@ -5051,6 +6243,15 @@ func (client *Client) DescribeNode(request *DescribeNodeRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 区域列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5084,6 +6285,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 区域列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -5095,6 +6303,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询运维助手下发文件列表及状态
+//
+// @param request - DescribeSendFileResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSendFileResultsResponse
 func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFileResultsRequest, runtime *util.RuntimeOptions) (_result *DescribeSendFileResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5132,6 +6349,13 @@ func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFi
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询运维助手下发文件列表及状态
+//
+// @param request - DescribeSendFileResultsRequest
+//
+// @return DescribeSendFileResultsResponse
 func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRequest) (_result *DescribeSendFileResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSendFileResultsResponse{}
@@ -5143,6 +6367,15 @@ func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询任务详情
+//
+// @param request - DescribeTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTaskResponse
 func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5176,6 +6409,13 @@ func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询任务详情
+//
+// @param request - DescribeTaskRequest
+//
+// @return DescribeTaskResponse
 func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *DescribeTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTaskResponse{}
@@ -5187,6 +6427,15 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 可用区列表
+//
+// @param request - DescribeZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5220,6 +6469,13 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 可用区列表
+//
+// @param request - DescribeZonesRequest
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
@@ -5231,6 +6487,15 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// 集群扩容
+//
+// @param tmpReq - ExtendClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExtendClusterResponse
 func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, runtime *util.RuntimeOptions) (_result *ExtendClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5298,6 +6563,13 @@ func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 集群扩容
+//
+// @param request - ExtendClusterRequest
+//
+// @return ExtendClusterResponse
 func (client *Client) ExtendCluster(request *ExtendClusterRequest) (_result *ExtendClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExtendClusterResponse{}
@@ -5309,6 +6581,15 @@ func (client *Client) ExtendCluster(request *ExtendClusterRequest) (_result *Ext
 	return _result, _err
 }
 
+// Summary:
+//
+// 集群下的主机分组列表，分组下的主机列表
+//
+// @param request - ListClusterNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClusterNodesResponse
 func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesRequest, runtime *util.RuntimeOptions) (_result *ListClusterNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5354,6 +6635,13 @@ func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 集群下的主机分组列表，分组下的主机列表
+//
+// @param request - ListClusterNodesRequest
+//
+// @return ListClusterNodesResponse
 func (client *Client) ListClusterNodes(request *ListClusterNodesRequest) (_result *ListClusterNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListClusterNodesResponse{}
@@ -5365,6 +6653,15 @@ func (client *Client) ListClusterNodes(request *ListClusterNodesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取集群实例列表
+//
+// @param request - ListClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClustersResponse
 func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runtime *util.RuntimeOptions) (_result *ListClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5406,6 +6703,13 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取集群实例列表
+//
+// @param request - ListClustersRequest
+//
+// @return ListClustersResponse
 func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListClustersResponse{}
@@ -5417,6 +6721,15 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 	return _result, _err
 }
 
+// Summary:
+//
+// 可用物理机列表
+//
+// @param request - ListFreeNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFreeNodesResponse
 func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, runtime *util.RuntimeOptions) (_result *ListFreeNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5466,6 +6779,13 @@ func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 可用物理机列表
+//
+// @param request - ListFreeNodesRequest
+//
+// @return ListFreeNodesResponse
 func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *ListFreeNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFreeNodesResponse{}
@@ -5477,6 +6797,15 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询资源标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5526,6 +6855,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询资源标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -5537,6 +6873,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启机器
+//
+// @param tmpReq - RebootNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebootNodesResponse
 func (client *Client) RebootNodesWithOptions(tmpReq *RebootNodesRequest, runtime *util.RuntimeOptions) (_result *RebootNodesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5584,6 +6929,13 @@ func (client *Client) RebootNodesWithOptions(tmpReq *RebootNodesRequest, runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启机器
+//
+// @param request - RebootNodesRequest
+//
+// @return RebootNodesResponse
 func (client *Client) RebootNodes(request *RebootNodesRequest) (_result *RebootNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RebootNodesResponse{}
@@ -5595,6 +6947,15 @@ func (client *Client) RebootNodes(request *RebootNodesRequest) (_result *RebootN
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器重装
+//
+// @param tmpReq - ReimageNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReimageNodesResponse
 func (client *Client) ReimageNodesWithOptions(tmpReq *ReimageNodesRequest, runtime *util.RuntimeOptions) (_result *ReimageNodesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5646,6 +7007,13 @@ func (client *Client) ReimageNodesWithOptions(tmpReq *ReimageNodesRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器重装
+//
+// @param request - ReimageNodesRequest
+//
+// @return ReimageNodesResponse
 func (client *Client) ReimageNodes(request *ReimageNodesRequest) (_result *ReimageNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReimageNodesResponse{}
@@ -5657,6 +7025,15 @@ func (client *Client) ReimageNodes(request *ReimageNodesRequest) (_result *Reima
 	return _result, _err
 }
 
+// Summary:
+//
+// 一台或多台灵骏机器中执行一段Shell的脚本
+//
+// @param tmpReq - RunCommandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCommandResponse
 func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *util.RuntimeOptions) (_result *RunCommandResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5748,6 +7125,13 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 	return _result, _err
 }
 
+// Summary:
+//
+// 一台或多台灵骏机器中执行一段Shell的脚本
+//
+// @param request - RunCommandRequest
+//
+// @return RunCommandResponse
 func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunCommandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RunCommandResponse{}
@@ -5759,6 +7143,15 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 	return _result, _err
 }
 
+// Summary:
+//
+// 一台或多台灵骏机器下发远程文件
+//
+// @param tmpReq - SendFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendFileResponse
 func (client *Client) SendFileWithOptions(tmpReq *SendFileRequest, runtime *util.RuntimeOptions) (_result *SendFileResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5838,6 +7231,13 @@ func (client *Client) SendFileWithOptions(tmpReq *SendFileRequest, runtime *util
 	return _result, _err
 }
 
+// Summary:
+//
+// 一台或多台灵骏机器下发远程文件
+//
+// @param request - SendFileRequest
+//
+// @return SendFileResponse
 func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendFileResponse{}
@@ -5849,6 +7249,15 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 缩容
+//
+// @param tmpReq - ShrinkClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ShrinkClusterResponse
 func (client *Client) ShrinkClusterWithOptions(tmpReq *ShrinkClusterRequest, runtime *util.RuntimeOptions) (_result *ShrinkClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5896,6 +7305,13 @@ func (client *Client) ShrinkClusterWithOptions(tmpReq *ShrinkClusterRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 缩容
+//
+// @param request - ShrinkClusterRequest
+//
+// @return ShrinkClusterResponse
 func (client *Client) ShrinkCluster(request *ShrinkClusterRequest) (_result *ShrinkClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ShrinkClusterResponse{}
@@ -5907,6 +7323,15 @@ func (client *Client) ShrinkCluster(request *ShrinkClusterRequest) (_result *Shr
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止运维助手命令进程
+//
+// @param tmpReq - StopInvocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopInvocationResponse
 func (client *Client) StopInvocationWithOptions(tmpReq *StopInvocationRequest, runtime *util.RuntimeOptions) (_result *StopInvocationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5950,6 +7375,13 @@ func (client *Client) StopInvocationWithOptions(tmpReq *StopInvocationRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止运维助手命令进程
+//
+// @param request - StopInvocationRequest
+//
+// @return StopInvocationResponse
 func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *StopInvocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopInvocationResponse{}
@@ -5961,6 +7393,15 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源打用户标签
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6006,6 +7447,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源打用户标签
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -6017,6 +7465,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源去除用户标签
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6066,6 +7523,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源去除用户标签
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
