@@ -1,3 +1,6 @@
+2024-11-08 Version: v2.18.0
+- Generated golang 2022-03-02 for Green.
+
 2024-11-07 Version: v2.2.16
 - Update API ImageModeration: update response param.
 - Update API VoiceModerationResult: update response param.
