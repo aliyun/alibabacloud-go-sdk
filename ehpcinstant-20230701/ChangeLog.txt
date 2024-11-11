@@ -10,6 +10,18 @@
 - Update API RemoveImage: add param ImageType.
 
 
+2024-11-11 Version: v1.1.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UnTagResources.
+- Update API AddImage: add param ImageType.
+- Update API CreateJob: update param DeploymentPolicy.
+- Update API ListExecutors: update response param.
+- Update API ListJobExecutors: update response param.
+- Update API ListJobs: update response param.
+- Update API RemoveImage: add param ImageType.
+
+
 2024-09-19 Version: v1.0.6
 - Update API ListExecutors: update param Filter.
 - Update API ListExecutors: update response param.
