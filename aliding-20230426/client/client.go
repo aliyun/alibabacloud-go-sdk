@@ -12508,6 +12508,450 @@ func (s *CreateSubscribedCalendarResponse) SetBody(v *CreateSubscribedCalendarRe
 	return s
 }
 
+type CreateTicketHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreateTicketHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreateTicketHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketHeaders) SetCommonHeaders(v map[string]*string) *CreateTicketHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateTicketHeaders) SetAccountContext(v *CreateTicketHeadersAccountContext) *CreateTicketHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreateTicketHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateTicketHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketHeadersAccountContext) SetAccountId(v string) *CreateTicketHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CreateTicketShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreateTicketShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreateTicketShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateTicketShrinkHeaders) SetAccountContextShrink(v string) *CreateTicketShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreateTicketRequest struct {
+	// example:
+	//
+	// []
+	CustomFields *string                    `json:"CustomFields,omitempty" xml:"CustomFields,omitempty"`
+	Notify       *CreateTicketRequestNotify `json:"Notify,omitempty" xml:"Notify,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// G3IOe205RLciE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	OpenTemplateBizId *string `json:"OpenTemplateBizId,omitempty" xml:"OpenTemplateBizId,omitempty"`
+	// This parameter is required.
+	ProcessorUserIds []*string `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SG
+	Scene         *string                           `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	SceneContext  *CreateTicketRequestSceneContext  `json:"SceneContext,omitempty" xml:"SceneContext,omitempty" type:"Struct"`
+	TenantContext *CreateTicketRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Killer Ball Wo Mouichido
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketRequest) SetCustomFields(v string) *CreateTicketRequest {
+	s.CustomFields = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetNotify(v *CreateTicketRequestNotify) *CreateTicketRequest {
+	s.Notify = v
+	return s
+}
+
+func (s *CreateTicketRequest) SetOpenTeamId(v string) *CreateTicketRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetOpenTemplateBizId(v string) *CreateTicketRequest {
+	s.OpenTemplateBizId = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetProcessorUserIds(v []*string) *CreateTicketRequest {
+	s.ProcessorUserIds = v
+	return s
+}
+
+func (s *CreateTicketRequest) SetScene(v string) *CreateTicketRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetSceneContext(v *CreateTicketRequestSceneContext) *CreateTicketRequest {
+	s.SceneContext = v
+	return s
+}
+
+func (s *CreateTicketRequest) SetTenantContext(v *CreateTicketRequestTenantContext) *CreateTicketRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CreateTicketRequest) SetTitle(v string) *CreateTicketRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateTicketRequestNotify struct {
+	GroupNoticeReceiverUserIds []*string `json:"GroupNoticeReceiverUserIds,omitempty" xml:"GroupNoticeReceiverUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	NoticeAllGroupMember      *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
+	WorkNoticeReceiverUserIds []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateTicketRequestNotify) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketRequestNotify) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketRequestNotify) SetGroupNoticeReceiverUserIds(v []*string) *CreateTicketRequestNotify {
+	s.GroupNoticeReceiverUserIds = v
+	return s
+}
+
+func (s *CreateTicketRequestNotify) SetNoticeAllGroupMember(v bool) *CreateTicketRequestNotify {
+	s.NoticeAllGroupMember = &v
+	return s
+}
+
+func (s *CreateTicketRequestNotify) SetWorkNoticeReceiverUserIds(v []*string) *CreateTicketRequestNotify {
+	s.WorkNoticeReceiverUserIds = v
+	return s
+}
+
+type CreateTicketRequestSceneContext struct {
+	GroupMsgs []*CreateTicketRequestSceneContextGroupMsgs `json:"GroupMsgs,omitempty" xml:"GroupMsgs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cidDKVAOW8yVWPEN+WZfwSSAQ==
+	OpenConversationId *string   `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
+	RelevantorUserIds  []*string `json:"RelevantorUserIds,omitempty" xml:"RelevantorUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 42674892
+	TopicId *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+}
+
+func (s CreateTicketRequestSceneContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketRequestSceneContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketRequestSceneContext) SetGroupMsgs(v []*CreateTicketRequestSceneContextGroupMsgs) *CreateTicketRequestSceneContext {
+	s.GroupMsgs = v
+	return s
+}
+
+func (s *CreateTicketRequestSceneContext) SetOpenConversationId(v string) *CreateTicketRequestSceneContext {
+	s.OpenConversationId = &v
+	return s
+}
+
+func (s *CreateTicketRequestSceneContext) SetRelevantorUserIds(v []*string) *CreateTicketRequestSceneContext {
+	s.RelevantorUserIds = v
+	return s
+}
+
+func (s *CreateTicketRequestSceneContext) SetTopicId(v string) *CreateTicketRequestSceneContext {
+	s.TopicId = &v
+	return s
+}
+
+type CreateTicketRequestSceneContextGroupMsgs struct {
+	// example:
+	//
+	// true
+	Anchor *bool `json:"Anchor,omitempty" xml:"Anchor,omitempty"`
+	// example:
+	//
+	// 1234567
+	OpenMsgId *string `json:"OpenMsgId,omitempty" xml:"OpenMsgId,omitempty"`
+}
+
+func (s CreateTicketRequestSceneContextGroupMsgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketRequestSceneContextGroupMsgs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketRequestSceneContextGroupMsgs) SetAnchor(v bool) *CreateTicketRequestSceneContextGroupMsgs {
+	s.Anchor = &v
+	return s
+}
+
+func (s *CreateTicketRequestSceneContextGroupMsgs) SetOpenMsgId(v string) *CreateTicketRequestSceneContextGroupMsgs {
+	s.OpenMsgId = &v
+	return s
+}
+
+type CreateTicketRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreateTicketRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketRequestTenantContext) SetTenantId(v string) *CreateTicketRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CreateTicketShrinkRequest struct {
+	// example:
+	//
+	// []
+	CustomFields *string `json:"CustomFields,omitempty" xml:"CustomFields,omitempty"`
+	NotifyShrink *string `json:"Notify,omitempty" xml:"Notify,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// G3IOe205RLciE
+	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	OpenTemplateBizId *string `json:"OpenTemplateBizId,omitempty" xml:"OpenTemplateBizId,omitempty"`
+	// This parameter is required.
+	ProcessorUserIdsShrink *string `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SG
+	Scene               *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	SceneContextShrink  *string `json:"SceneContext,omitempty" xml:"SceneContext,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Killer Ball Wo Mouichido
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateTicketShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketShrinkRequest) SetCustomFields(v string) *CreateTicketShrinkRequest {
+	s.CustomFields = &v
+	return s
+}
+
+func (s *CreateTicketShrinkRequest) SetNotifyShrink(v string) *CreateTicketShrinkRequest {
+	s.NotifyShrink = &v
+	return s
+}
+
+func (s *CreateTicketShrinkRequest) SetOpenTeamId(v string) *CreateTicketShrinkRequest {
+	s.OpenTeamId = &v
+	return s
+}
+
+func (s *CreateTicketShrinkRequest) SetOpenTemplateBizId(v string) *CreateTicketShrinkRequest {
+	s.OpenTemplateBizId = &v
+	return s
+}
+
+func (s *CreateTicketShrinkRequest) SetProcessorUserIdsShrink(v string) *CreateTicketShrinkRequest {
+	s.ProcessorUserIdsShrink = &v
+	return s
+}
+
+func (s *CreateTicketShrinkRequest) SetScene(v string) *CreateTicketShrinkRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *CreateTicketShrinkRequest) SetSceneContextShrink(v string) *CreateTicketShrinkRequest {
+	s.SceneContextShrink = &v
+	return s
+}
+
+func (s *CreateTicketShrinkRequest) SetTenantContextShrink(v string) *CreateTicketShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CreateTicketShrinkRequest) SetTitle(v string) *CreateTicketShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateTicketResponseBody struct {
+	// example:
+	//
+	// a8iSxxxxtgiE
+	OpenTicketId *string `json:"openTicketId,omitempty" xml:"openTicketId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreateTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketResponseBody) SetOpenTicketId(v string) *CreateTicketResponseBody {
+	s.OpenTicketId = &v
+	return s
+}
+
+func (s *CreateTicketResponseBody) SetRequestId(v string) *CreateTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTicketResponseBody) SetVendorRequestId(v string) *CreateTicketResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateTicketResponseBody) SetVendorType(v string) *CreateTicketResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CreateTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketResponse) SetHeaders(v map[string]*string) *CreateTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTicketResponse) SetStatusCode(v int32) *CreateTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicketResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTodoTaskHeaders struct {
 	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CreateTodoTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -76160,6 +76604,135 @@ func (client *Client) CreateSubscribedCalendar(request *CreateSubscribedCalendar
 	headers := &CreateSubscribedCalendarHeaders{}
 	_result = &CreateSubscribedCalendarResponse{}
 	_body, _err := client.CreateSubscribedCalendarWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工单
+//
+// @param tmpReq - CreateTicketRequest
+//
+// @param tmpHeader - CreateTicketHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTicketResponse
+func (client *Client) CreateTicketWithOptions(tmpReq *CreateTicketRequest, tmpHeader *CreateTicketHeaders, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateTicketShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CreateTicketShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notify)) {
+		request.NotifyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notify, tea.String("Notify"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ProcessorUserIds)) {
+		request.ProcessorUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProcessorUserIds, tea.String("ProcessorUserIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SceneContext)) {
+		request.SceneContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SceneContext, tea.String("SceneContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomFields)) {
+		body["CustomFields"] = request.CustomFields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyShrink)) {
+		body["Notify"] = request.NotifyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTeamId)) {
+		body["OpenTeamId"] = request.OpenTeamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenTemplateBizId)) {
+		body["OpenTemplateBizId"] = request.OpenTemplateBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessorUserIdsShrink)) {
+		body["ProcessorUserIds"] = request.ProcessorUserIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneContextShrink)) {
+		body["SceneContext"] = request.SceneContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTicket"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ticket/createTicket"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工单
+//
+// @param request - CreateTicketRequest
+//
+// @return CreateTicketResponse
+func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *CreateTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateTicketHeaders{}
+	_result = &CreateTicketResponse{}
+	_body, _err := client.CreateTicketWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
