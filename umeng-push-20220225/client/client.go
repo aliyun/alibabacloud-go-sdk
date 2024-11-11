@@ -73,6 +73,46 @@ func (s *AndroidPayload) SetMessage2ThirdChannel(v *Message2ThirdChannel) *Andro
 	return s
 }
 
+type AndroidShortPayload struct {
+	Body  *AndroidShortPayloadBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	Extra map[string]interface{}   `json:"extra,omitempty" xml:"extra,omitempty"`
+}
+
+func (s AndroidShortPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AndroidShortPayload) GoString() string {
+	return s.String()
+}
+
+func (s *AndroidShortPayload) SetBody(v *AndroidShortPayloadBody) *AndroidShortPayload {
+	s.Body = v
+	return s
+}
+
+func (s *AndroidShortPayload) SetExtra(v map[string]interface{}) *AndroidShortPayload {
+	s.Extra = v
+	return s
+}
+
+type AndroidShortPayloadBody struct {
+	Custom *string `json:"custom,omitempty" xml:"custom,omitempty"`
+}
+
+func (s AndroidShortPayloadBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AndroidShortPayloadBody) GoString() string {
+	return s.String()
+}
+
+func (s *AndroidShortPayloadBody) SetCustom(v string) *AndroidShortPayloadBody {
+	s.Custom = &v
+	return s
+}
+
 type Aps struct {
 	Alert *Alert `json:"alert,omitempty" xml:"alert,omitempty"`
 	// example:
@@ -262,6 +302,7 @@ type ChannelProperties struct {
 	// "true",默认"false"
 	VivoAddBadge    *string `json:"vivoAddBadge,omitempty" xml:"vivoAddBadge,omitempty"`
 	VivoCategory    *string `json:"vivoCategory,omitempty" xml:"vivoCategory,omitempty"`
+	VivoPushMode    *string `json:"vivoPushMode,omitempty" xml:"vivoPushMode,omitempty"`
 	XiaomiChannelId *string `json:"xiaomiChannelId,omitempty" xml:"xiaomiChannelId,omitempty"`
 }
 
@@ -320,6 +361,11 @@ func (s *ChannelProperties) SetVivoAddBadge(v string) *ChannelProperties {
 
 func (s *ChannelProperties) SetVivoCategory(v string) *ChannelProperties {
 	s.VivoCategory = &v
+	return s
+}
+
+func (s *ChannelProperties) SetVivoPushMode(v string) *ChannelProperties {
+	s.VivoPushMode = &v
 	return s
 }
 
@@ -791,13 +837,14 @@ type SendByAliasRequest struct {
 	// example:
 	//
 	// test
-	Alias             *string            `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	AliasType         *string            `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
-	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Alias               *string              `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	AliasType           *string              `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
+	AndroidPayload      *AndroidPayload      `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayload *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
+	IosPayload          *IosPayload          `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy              *Policy              `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -831,6 +878,11 @@ func (s *SendByAliasRequest) SetAliasType(v string) *SendByAliasRequest {
 
 func (s *SendByAliasRequest) SetAndroidPayload(v *AndroidPayload) *SendByAliasRequest {
 	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByAliasRequest) SetAndroidShortPayload(v *AndroidShortPayload) *SendByAliasRequest {
+	s.AndroidShortPayload = v
 	return s
 }
 
@@ -885,13 +937,14 @@ type SendByAliasShrinkRequest struct {
 	// example:
 	//
 	// test
-	Alias                   *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	AliasType               *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
-	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Alias                     *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	AliasType                 *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
+	AndroidPayloadShrink      *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayloadShrink *string `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelPropertiesShrink   *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IosPayloadShrink          *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -925,6 +978,11 @@ func (s *SendByAliasShrinkRequest) SetAliasType(v string) *SendByAliasShrinkRequ
 
 func (s *SendByAliasShrinkRequest) SetAndroidPayloadShrink(v string) *SendByAliasShrinkRequest {
 	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetAndroidShortPayloadShrink(v string) *SendByAliasShrinkRequest {
+	s.AndroidShortPayloadShrink = &v
 	return s
 }
 
@@ -1085,10 +1143,11 @@ func (s *SendByAliasResponse) SetBody(v *SendByAliasResponseBody) *SendByAliasRe
 }
 
 type SendByAliasFileIdRequest struct {
-	AliasType         *string            `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
-	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	AliasType           *string              `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
+	AndroidPayload      *AndroidPayload      `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayload *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1125,6 +1184,11 @@ func (s *SendByAliasFileIdRequest) SetAliasType(v string) *SendByAliasFileIdRequ
 
 func (s *SendByAliasFileIdRequest) SetAndroidPayload(v *AndroidPayload) *SendByAliasFileIdRequest {
 	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetAndroidShortPayload(v *AndroidShortPayload) *SendByAliasFileIdRequest {
+	s.AndroidShortPayload = v
 	return s
 }
 
@@ -1179,10 +1243,11 @@ func (s *SendByAliasFileIdRequest) SetCallbackParams(v string) *SendByAliasFileI
 }
 
 type SendByAliasFileIdShrinkRequest struct {
-	AliasType               *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
-	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	AliasType                 *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
+	AndroidPayloadShrink      *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayloadShrink *string `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelPropertiesShrink   *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1219,6 +1284,11 @@ func (s *SendByAliasFileIdShrinkRequest) SetAliasType(v string) *SendByAliasFile
 
 func (s *SendByAliasFileIdShrinkRequest) SetAndroidPayloadShrink(v string) *SendByAliasFileIdShrinkRequest {
 	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetAndroidShortPayloadShrink(v string) *SendByAliasFileIdShrinkRequest {
+	s.AndroidShortPayloadShrink = &v
 	return s
 }
 
@@ -1384,11 +1454,12 @@ func (s *SendByAliasFileIdResponse) SetBody(v *SendByAliasFileIdResponseBody) *S
 }
 
 type SendByAppRequest struct {
-	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	AndroidPayload      *AndroidPayload      `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayload *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
+	IosPayload          *IosPayload          `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy              *Policy              `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -1412,6 +1483,11 @@ func (s SendByAppRequest) GoString() string {
 
 func (s *SendByAppRequest) SetAndroidPayload(v *AndroidPayload) *SendByAppRequest {
 	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByAppRequest) SetAndroidShortPayload(v *AndroidShortPayload) *SendByAppRequest {
+	s.AndroidShortPayload = v
 	return s
 }
 
@@ -1461,11 +1537,12 @@ func (s *SendByAppRequest) SetCallbackParams(v string) *SendByAppRequest {
 }
 
 type SendByAppShrinkRequest struct {
-	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	AndroidPayloadShrink      *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayloadShrink *string `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelPropertiesShrink   *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IosPayloadShrink          *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -1489,6 +1566,11 @@ func (s SendByAppShrinkRequest) GoString() string {
 
 func (s *SendByAppShrinkRequest) SetAndroidPayloadShrink(v string) *SendByAppShrinkRequest {
 	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetAndroidShortPayloadShrink(v string) *SendByAppShrinkRequest {
+	s.AndroidShortPayloadShrink = &v
 	return s
 }
 
@@ -1649,9 +1731,10 @@ func (s *SendByAppResponse) SetBody(v *SendByAppResponseBody) *SendByAppResponse
 }
 
 type SendByDeviceRequest struct {
-	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	AndroidPayload      *AndroidPayload      `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayload *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1683,6 +1766,11 @@ func (s SendByDeviceRequest) GoString() string {
 
 func (s *SendByDeviceRequest) SetAndroidPayload(v *AndroidPayload) *SendByDeviceRequest {
 	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByDeviceRequest) SetAndroidShortPayload(v *AndroidShortPayload) *SendByDeviceRequest {
+	s.AndroidShortPayload = v
 	return s
 }
 
@@ -1737,9 +1825,10 @@ func (s *SendByDeviceRequest) SetCallbackParams(v string) *SendByDeviceRequest {
 }
 
 type SendByDeviceShrinkRequest struct {
-	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	AndroidPayloadShrink      *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayloadShrink *string `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelPropertiesShrink   *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1771,6 +1860,11 @@ func (s SendByDeviceShrinkRequest) GoString() string {
 
 func (s *SendByDeviceShrinkRequest) SetAndroidPayloadShrink(v string) *SendByDeviceShrinkRequest {
 	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByDeviceShrinkRequest) SetAndroidShortPayloadShrink(v string) *SendByDeviceShrinkRequest {
+	s.AndroidShortPayloadShrink = &v
 	return s
 }
 
@@ -1936,9 +2030,10 @@ func (s *SendByDeviceResponse) SetBody(v *SendByDeviceResponseBody) *SendByDevic
 }
 
 type SendByDeviceFileIdRequest struct {
-	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	AndroidPayload      *AndroidPayload      `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayload *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1970,6 +2065,11 @@ func (s SendByDeviceFileIdRequest) GoString() string {
 
 func (s *SendByDeviceFileIdRequest) SetAndroidPayload(v *AndroidPayload) *SendByDeviceFileIdRequest {
 	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetAndroidShortPayload(v *AndroidShortPayload) *SendByDeviceFileIdRequest {
+	s.AndroidShortPayload = v
 	return s
 }
 
@@ -2024,9 +2124,10 @@ func (s *SendByDeviceFileIdRequest) SetCallbackParams(v string) *SendByDeviceFil
 }
 
 type SendByDeviceFileIdShrinkRequest struct {
-	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	AndroidPayloadShrink      *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayloadShrink *string `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelPropertiesShrink   *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -2058,6 +2159,11 @@ func (s SendByDeviceFileIdShrinkRequest) GoString() string {
 
 func (s *SendByDeviceFileIdShrinkRequest) SetAndroidPayloadShrink(v string) *SendByDeviceFileIdShrinkRequest {
 	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetAndroidShortPayloadShrink(v string) *SendByDeviceFileIdShrinkRequest {
+	s.AndroidShortPayloadShrink = &v
 	return s
 }
 
@@ -2223,9 +2329,10 @@ func (s *SendByDeviceFileIdResponse) SetBody(v *SendByDeviceFileIdResponseBody) 
 }
 
 type SendByFilterRequest struct {
-	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	AndroidPayload      *AndroidPayload      `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayload *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// "where":{"and":[{"or":[{"app_version":">=1.0"}]}]}
@@ -2255,6 +2362,11 @@ func (s SendByFilterRequest) GoString() string {
 
 func (s *SendByFilterRequest) SetAndroidPayload(v *AndroidPayload) *SendByFilterRequest {
 	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByFilterRequest) SetAndroidShortPayload(v *AndroidShortPayload) *SendByFilterRequest {
+	s.AndroidShortPayload = v
 	return s
 }
 
@@ -2309,9 +2421,10 @@ func (s *SendByFilterRequest) SetCallbackParams(v string) *SendByFilterRequest {
 }
 
 type SendByFilterShrinkRequest struct {
-	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
-	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	AndroidPayloadShrink    *string              `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	AndroidShortPayload     *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
+	ChannelPropertiesShrink *string              `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description             *string              `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// "where":{"and":[{"or":[{"app_version":">=1.0"}]}]}
@@ -2341,6 +2454,11 @@ func (s SendByFilterShrinkRequest) GoString() string {
 
 func (s *SendByFilterShrinkRequest) SetAndroidPayloadShrink(v string) *SendByFilterShrinkRequest {
 	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetAndroidShortPayload(v *AndroidShortPayload) *SendByFilterShrinkRequest {
+	s.AndroidShortPayload = v
 	return s
 }
 
@@ -2835,6 +2953,10 @@ func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers
 		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidShortPayload)) {
+		request.AndroidShortPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidShortPayload, tea.String("AndroidShortPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
@@ -2858,6 +2980,10 @@ func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
 		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidShortPayloadShrink)) {
+		body["AndroidShortPayload"] = request.AndroidShortPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
@@ -2961,6 +3087,10 @@ func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequ
 		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidShortPayload)) {
+		request.AndroidShortPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidShortPayload, tea.String("AndroidShortPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
@@ -2980,6 +3110,10 @@ func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequ
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
 		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidShortPayloadShrink)) {
+		body["AndroidShortPayload"] = request.AndroidShortPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
@@ -3087,6 +3221,10 @@ func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map
 		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidShortPayload)) {
+		request.AndroidShortPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidShortPayload, tea.String("AndroidShortPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
@@ -3102,6 +3240,10 @@ func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
 		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidShortPayloadShrink)) {
+		body["AndroidShortPayload"] = request.AndroidShortPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
@@ -3205,6 +3347,10 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidShortPayload)) {
+		request.AndroidShortPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidShortPayload, tea.String("AndroidShortPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
@@ -3220,6 +3366,10 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
 		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidShortPayloadShrink)) {
+		body["AndroidShortPayload"] = request.AndroidShortPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
@@ -3327,6 +3477,10 @@ func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRe
 		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidShortPayload)) {
+		request.AndroidShortPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidShortPayload, tea.String("AndroidShortPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
@@ -3342,6 +3496,10 @@ func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRe
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
 		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidShortPayloadShrink)) {
+		body["AndroidShortPayload"] = request.AndroidShortPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
@@ -3464,6 +3622,10 @@ func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, heade
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
 		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidShortPayload)) {
+		body["AndroidShortPayload"] = request.AndroidShortPayload
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
