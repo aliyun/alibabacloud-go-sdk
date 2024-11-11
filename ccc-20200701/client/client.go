@@ -11197,6 +11197,136 @@ func (s *EndConferenceResponse) SetBody(v *EndConferenceResponseBody) *EndConfer
 	return s
 }
 
+type ExportContactFlowRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lc-uf61xdtm0mf73k
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb3xxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// AF9834D8-6D09-4A1B-BADB-B019D9D444C8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportContactFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportContactFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportContactFlowRequest) SetFlowId(v string) *ExportContactFlowRequest {
+	s.FlowId = &v
+	return s
+}
+
+func (s *ExportContactFlowRequest) SetInstanceId(v string) *ExportContactFlowRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ExportContactFlowRequest) SetRequestId(v string) *ExportContactFlowRequest {
+	s.RequestId = &v
+	return s
+}
+
+type ExportContactFlowResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {}
+	FlowPackageData *string `json:"FlowPackageData,omitempty" xml:"FlowPackageData,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportContactFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportContactFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportContactFlowResponseBody) SetCode(v string) *ExportContactFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportContactFlowResponseBody) SetFlowPackageData(v string) *ExportContactFlowResponseBody {
+	s.FlowPackageData = &v
+	return s
+}
+
+func (s *ExportContactFlowResponseBody) SetHttpStatusCode(v int32) *ExportContactFlowResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportContactFlowResponseBody) SetMessage(v string) *ExportContactFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExportContactFlowResponseBody) SetParams(v []*string) *ExportContactFlowResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ExportContactFlowResponseBody) SetRequestId(v string) *ExportContactFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportContactFlowResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportContactFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportContactFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportContactFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportContactFlowResponse) SetHeaders(v map[string]*string) *ExportContactFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportContactFlowResponse) SetStatusCode(v int32) *ExportContactFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportContactFlowResponse) SetBody(v *ExportContactFlowResponseBody) *ExportContactFlowResponse {
+	s.Body = v
+	return s
+}
+
 type ExportCustomCallTaggingRequest struct {
 	// This parameter is required.
 	//
@@ -21394,6 +21524,127 @@ func (s *ImportAdminsResponse) SetStatusCode(v int32) *ImportAdminsResponse {
 }
 
 func (s *ImportAdminsResponse) SetBody(v *ImportAdminsResponseBody) *ImportAdminsResponse {
+	s.Body = v
+	return s
+}
+
+type ImportContactFlowRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
+	FlowPackageData *string `json:"FlowPackageData,omitempty" xml:"FlowPackageData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportContactFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportContactFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportContactFlowRequest) SetFlowPackageData(v string) *ImportContactFlowRequest {
+	s.FlowPackageData = &v
+	return s
+}
+
+func (s *ImportContactFlowRequest) SetInstanceId(v string) *ImportContactFlowRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ImportContactFlowRequest) SetRequestId(v string) *ImportContactFlowRequest {
+	s.RequestId = &v
+	return s
+}
+
+type ImportContactFlowResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 27DD30C4-CAE2-481A-97CC-D3C54625341D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportContactFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportContactFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportContactFlowResponseBody) SetCode(v string) *ImportContactFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportContactFlowResponseBody) SetHttpStatusCode(v int32) *ImportContactFlowResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ImportContactFlowResponseBody) SetMessage(v string) *ImportContactFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportContactFlowResponseBody) SetParams(v []*string) *ImportContactFlowResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ImportContactFlowResponseBody) SetRequestId(v string) *ImportContactFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportContactFlowResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportContactFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportContactFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportContactFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportContactFlowResponse) SetHeaders(v map[string]*string) *ImportContactFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportContactFlowResponse) SetStatusCode(v int32) *ImportContactFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportContactFlowResponse) SetBody(v *ImportContactFlowResponseBody) *ImportContactFlowResponse {
 	s.Body = v
 	return s
 }
@@ -68766,6 +69017,66 @@ func (client *Client) EndConference(request *EndConferenceRequest) (_result *End
 	return _result, _err
 }
 
+// @param request - ExportContactFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportContactFlowResponse
+func (client *Client) ExportContactFlowWithOptions(request *ExportContactFlowRequest, runtime *util.RuntimeOptions) (_result *ExportContactFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportContactFlow"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportContactFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ExportContactFlowRequest
+//
+// @return ExportContactFlowResponse
+func (client *Client) ExportContactFlow(request *ExportContactFlowRequest) (_result *ExportContactFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportContactFlowResponse{}
+	_body, _err := client.ExportContactFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Deprecated: OpenAPI ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
 //
 // Summary:
@@ -71405,6 +71716,66 @@ func (client *Client) ImportAdmins(request *ImportAdminsRequest) (_result *Impor
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportAdminsResponse{}
 	_body, _err := client.ImportAdminsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ImportContactFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportContactFlowResponse
+func (client *Client) ImportContactFlowWithOptions(request *ImportContactFlowRequest, runtime *util.RuntimeOptions) (_result *ImportContactFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowPackageData)) {
+		body["FlowPackageData"] = request.FlowPackageData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportContactFlow"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportContactFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ImportContactFlowRequest
+//
+// @return ImportContactFlowResponse
+func (client *Client) ImportContactFlow(request *ImportContactFlowRequest) (_result *ImportContactFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportContactFlowResponse{}
+	_body, _err := client.ImportContactFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
