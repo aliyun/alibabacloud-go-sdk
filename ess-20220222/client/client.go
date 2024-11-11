@@ -2540,6 +2540,99 @@ func (s *CreateAlarmResponse) SetBody(v *CreateAlarmResponseBody) *CreateAlarmRe
 	return s
 }
 
+type CreateDiagnoseReportRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// asg-bp1f2f6oxc2*******
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s CreateDiagnoseReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnoseReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnoseReportRequest) SetRegionId(v string) *CreateDiagnoseReportRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDiagnoseReportRequest) SetScalingGroupId(v string) *CreateDiagnoseReportRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type CreateDiagnoseReportResponseBody struct {
+	// example:
+	//
+	// dr-uf6enpbnri1xhcy9qc7s
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0189C6CB-07BA-5AFE-B533-D93892324774
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDiagnoseReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnoseReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnoseReportResponseBody) SetReportId(v string) *CreateDiagnoseReportResponseBody {
+	s.ReportId = &v
+	return s
+}
+
+func (s *CreateDiagnoseReportResponseBody) SetRequestId(v string) *CreateDiagnoseReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDiagnoseReportResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDiagnoseReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDiagnoseReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnoseReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnoseReportResponse) SetHeaders(v map[string]*string) *CreateDiagnoseReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDiagnoseReportResponse) SetStatusCode(v int32) *CreateDiagnoseReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDiagnoseReportResponse) SetBody(v *CreateDiagnoseReportResponseBody) *CreateDiagnoseReportResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEciScalingConfigurationRequest struct {
 	// The Container Registry Enterprise Edition instances.
 	AcrRegistryInfos []*CreateEciScalingConfigurationRequestAcrRegistryInfos `json:"AcrRegistryInfos,omitempty" xml:"AcrRegistryInfos,omitempty" type:"Repeated"`
@@ -12559,6 +12652,274 @@ func (s *DescribeAlertConfigurationResponse) SetStatusCode(v int32) *DescribeAle
 }
 
 func (s *DescribeAlertConfigurationResponse) SetBody(v *DescribeAlertConfigurationResponseBody) *DescribeAlertConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiagnoseReportsRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportIds []*string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// asg-2vcis7yglxtm*****
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s DescribeDiagnoseReportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnoseReportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnoseReportsRequest) SetPageNumber(v int32) *DescribeDiagnoseReportsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsRequest) SetPageSize(v int32) *DescribeDiagnoseReportsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsRequest) SetRegionId(v string) *DescribeDiagnoseReportsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsRequest) SetReportIds(v []*string) *DescribeDiagnoseReportsRequest {
+	s.ReportIds = v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsRequest) SetScalingGroupId(v string) *DescribeDiagnoseReportsRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type DescribeDiagnoseReportsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Reports  []*DescribeDiagnoseReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ECA123C6-107B-5F70-A177-740A7224C996
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDiagnoseReportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnoseReportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnoseReportsResponseBody) SetPageNumber(v int32) *DescribeDiagnoseReportsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBody) SetPageSize(v int32) *DescribeDiagnoseReportsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBody) SetReports(v []*DescribeDiagnoseReportsResponseBodyReports) *DescribeDiagnoseReportsResponseBody {
+	s.Reports = v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBody) SetRequestId(v string) *DescribeDiagnoseReportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBody) SetTotalCount(v int32) *DescribeDiagnoseReportsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDiagnoseReportsResponseBodyReports struct {
+	// example:
+	//
+	// 2024-08-23T02:22:30Z
+	CreationTime *string                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Details      []*DescribeDiagnoseReportsResponseBodyReportsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Normal
+	DiagnoseStatus *string `json:"DiagnoseStatus,omitempty" xml:"DiagnoseStatus,omitempty"`
+	// example:
+	//
+	// Finished
+	ProcessStatus *string `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// example:
+	//
+	// cn-qingdao
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// dr-bp14p0cjp7wvjob5l6hk
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// example:
+	//
+	// asg-bp124uve5iph3*****
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// example:
+	//
+	// 161456884*******
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeDiagnoseReportsResponseBodyReports) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnoseReportsResponseBodyReports) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReports) SetCreationTime(v string) *DescribeDiagnoseReportsResponseBodyReports {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReports) SetDetails(v []*DescribeDiagnoseReportsResponseBodyReportsDetails) *DescribeDiagnoseReportsResponseBodyReports {
+	s.Details = v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReports) SetDiagnoseStatus(v string) *DescribeDiagnoseReportsResponseBodyReports {
+	s.DiagnoseStatus = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReports) SetProcessStatus(v string) *DescribeDiagnoseReportsResponseBodyReports {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReports) SetRegionId(v string) *DescribeDiagnoseReportsResponseBodyReports {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReports) SetReportId(v string) *DescribeDiagnoseReportsResponseBodyReports {
+	s.ReportId = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReports) SetScalingGroupId(v string) *DescribeDiagnoseReportsResponseBodyReports {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReports) SetUserId(v string) *DescribeDiagnoseReportsResponseBodyReports {
+	s.UserId = &v
+	return s
+}
+
+type DescribeDiagnoseReportsResponseBodyReportsDetails struct {
+	// example:
+	//
+	// AccountArrearage
+	DiagnoseType *string `json:"DiagnoseType,omitempty" xml:"DiagnoseType,omitempty"`
+	// example:
+	//
+	// VSwitchIdNotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// sg-280ih****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDiagnoseReportsResponseBodyReportsDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnoseReportsResponseBodyReportsDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReportsDetails) SetDiagnoseType(v string) *DescribeDiagnoseReportsResponseBodyReportsDetails {
+	s.DiagnoseType = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReportsDetails) SetErrorCode(v string) *DescribeDiagnoseReportsResponseBodyReportsDetails {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReportsDetails) SetResourceId(v string) *DescribeDiagnoseReportsResponseBodyReportsDetails {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponseBodyReportsDetails) SetStatus(v string) *DescribeDiagnoseReportsResponseBodyReportsDetails {
+	s.Status = &v
+	return s
+}
+
+type DescribeDiagnoseReportsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiagnoseReportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDiagnoseReportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnoseReportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnoseReportsResponse) SetHeaders(v map[string]*string) *DescribeDiagnoseReportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponse) SetStatusCode(v int32) *DescribeDiagnoseReportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnoseReportsResponse) SetBody(v *DescribeDiagnoseReportsResponseBody) *DescribeDiagnoseReportsResponse {
 	s.Body = v
 	return s
 }
@@ -23249,6 +23610,143 @@ func (s *DescribeScalingGroupDetailResponse) SetStatusCode(v int32) *DescribeSca
 }
 
 func (s *DescribeScalingGroupDetailResponse) SetBody(v *DescribeScalingGroupDetailResponseBody) *DescribeScalingGroupDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeScalingGroupDiagnoseDetailsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-qingdao
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// asg-bp18p2yfxow2dloq****
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s DescribeScalingGroupDiagnoseDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDiagnoseDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsRequest) SetRegionId(v string) *DescribeScalingGroupDiagnoseDetailsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsRequest) SetScalingGroupId(v string) *DescribeScalingGroupDiagnoseDetailsRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type DescribeScalingGroupDiagnoseDetailsResponseBody struct {
+	Details []*DescribeScalingGroupDiagnoseDetailsResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 688B18B8-FB1E-42EB-A1ED-7F55B090****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeScalingGroupDiagnoseDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDiagnoseDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponseBody) SetDetails(v []*DescribeScalingGroupDiagnoseDetailsResponseBodyDetails) *DescribeScalingGroupDiagnoseDetailsResponseBody {
+	s.Details = v
+	return s
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponseBody) SetRequestId(v string) *DescribeScalingGroupDiagnoseDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeScalingGroupDiagnoseDetailsResponseBodyDetails struct {
+	// example:
+	//
+	// SecurityGroup
+	DiagnoseType *string `json:"DiagnoseType,omitempty" xml:"DiagnoseType,omitempty"`
+	// example:
+	//
+	// AccountArrearage
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// sg-280ih****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeScalingGroupDiagnoseDetailsResponseBodyDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDiagnoseDetailsResponseBodyDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponseBodyDetails) SetDiagnoseType(v string) *DescribeScalingGroupDiagnoseDetailsResponseBodyDetails {
+	s.DiagnoseType = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponseBodyDetails) SetErrorCode(v string) *DescribeScalingGroupDiagnoseDetailsResponseBodyDetails {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponseBodyDetails) SetResourceId(v string) *DescribeScalingGroupDiagnoseDetailsResponseBodyDetails {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponseBodyDetails) SetStatus(v string) *DescribeScalingGroupDiagnoseDetailsResponseBodyDetails {
+	s.Status = &v
+	return s
+}
+
+type DescribeScalingGroupDiagnoseDetailsResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScalingGroupDiagnoseDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeScalingGroupDiagnoseDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupDiagnoseDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponse) SetHeaders(v map[string]*string) *DescribeScalingGroupDiagnoseDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponse) SetStatusCode(v int32) *DescribeScalingGroupDiagnoseDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeScalingGroupDiagnoseDetailsResponse) SetBody(v *DescribeScalingGroupDiagnoseDetailsResponseBody) *DescribeScalingGroupDiagnoseDetailsResponse {
 	s.Body = v
 	return s
 }
@@ -41489,6 +41987,62 @@ func (client *Client) CreateAlarm(request *CreateAlarmRequest) (_result *CreateA
 
 // Summary:
 //
+// CreateDiagnoseReport
+//
+// @param request - CreateDiagnoseReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDiagnoseReportResponse
+func (client *Client) CreateDiagnoseReportWithOptions(request *CreateDiagnoseReportRequest, runtime *util.RuntimeOptions) (_result *CreateDiagnoseReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDiagnoseReport"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDiagnoseReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// CreateDiagnoseReport
+//
+// @param request - CreateDiagnoseReportRequest
+//
+// @return CreateDiagnoseReportResponse
+func (client *Client) CreateDiagnoseReport(request *CreateDiagnoseReportRequest) (_result *CreateDiagnoseReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDiagnoseReportResponse{}
+	_body, _err := client.CreateDiagnoseReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-out events.
 //
 // Description:
@@ -43971,6 +44525,62 @@ func (client *Client) DescribeAlertConfiguration(request *DescribeAlertConfigura
 
 // Summary:
 //
+// DescribeDiagnoseReports
+//
+// @param request - DescribeDiagnoseReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiagnoseReportsResponse
+func (client *Client) DescribeDiagnoseReportsWithOptions(request *DescribeDiagnoseReportsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnoseReportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnoseReports"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiagnoseReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeDiagnoseReports
+//
+// @param request - DescribeDiagnoseReportsRequest
+//
+// @return DescribeDiagnoseReportsResponse
+func (client *Client) DescribeDiagnoseReports(request *DescribeDiagnoseReportsRequest) (_result *DescribeDiagnoseReportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnoseReportsResponse{}
+	_body, _err := client.DescribeDiagnoseReportsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a scaling configuration. You can query a scaling configuration by its ID to learn about its details such as the temporary storage size, number of IPv6 addresses, and bandwidth of the elastic IP address (EIP). The scaling configuration details can be obtained as a YAML file.
 //
 // @param request - DescribeEciScalingConfigurationDetailRequest
@@ -45182,6 +45792,62 @@ func (client *Client) DescribeScalingGroupDetail(request *DescribeScalingGroupDe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScalingGroupDetailResponse{}
 	_body, _err := client.DescribeScalingGroupDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeScalingGroupDiagnoseDetails
+//
+// @param request - DescribeScalingGroupDiagnoseDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeScalingGroupDiagnoseDetailsResponse
+func (client *Client) DescribeScalingGroupDiagnoseDetailsWithOptions(request *DescribeScalingGroupDiagnoseDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeScalingGroupDiagnoseDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeScalingGroupDiagnoseDetails"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeScalingGroupDiagnoseDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeScalingGroupDiagnoseDetails
+//
+// @param request - DescribeScalingGroupDiagnoseDetailsRequest
+//
+// @return DescribeScalingGroupDiagnoseDetailsResponse
+func (client *Client) DescribeScalingGroupDiagnoseDetails(request *DescribeScalingGroupDiagnoseDetailsRequest) (_result *DescribeScalingGroupDiagnoseDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeScalingGroupDiagnoseDetailsResponse{}
+	_body, _err := client.DescribeScalingGroupDiagnoseDetailsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
