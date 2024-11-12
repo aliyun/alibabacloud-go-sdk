@@ -19510,6 +19510,7 @@ type DescribePatternTypesRequest struct {
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The IDs of the vSwitches.
 	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
+	ZoneId    []*string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty" type:"Repeated"`
 }
 
 func (s DescribePatternTypesRequest) String() string {
@@ -19662,6 +19663,11 @@ func (s *DescribePatternTypesRequest) SetSpotStrategy(v string) *DescribePattern
 
 func (s *DescribePatternTypesRequest) SetVSwitchId(v []*string) *DescribePatternTypesRequest {
 	s.VSwitchId = v
+	return s
+}
+
+func (s *DescribePatternTypesRequest) SetZoneId(v []*string) *DescribePatternTypesRequest {
+	s.ZoneId = v
 	return s
 }
 
