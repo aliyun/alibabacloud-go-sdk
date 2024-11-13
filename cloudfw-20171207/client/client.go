@@ -5457,6 +5457,7 @@ type DescribeAssetListRequest struct {
 	//
 	// discovered in 1 hour
 	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
+	OutStatistic   *string `json:"OutStatistic,omitempty" xml:"OutStatistic,omitempty"`
 	// The number of entries per page. Valid values: 1 to 50.
 	//
 	// This parameter is required.
@@ -5506,7 +5507,8 @@ type DescribeAssetListRequest struct {
 	// example:
 	//
 	// 192.0.XX.XX
-	SearchItem *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
+	SearchItem      *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
+	SensitiveStatus *string `json:"SensitiveStatus,omitempty" xml:"SensitiveStatus,omitempty"`
 	// The status of the security group policy. Valid values:
 	//
 	// 	- **pass**: delivered
@@ -5588,6 +5590,11 @@ func (s *DescribeAssetListRequest) SetNewResourceTag(v string) *DescribeAssetLis
 	return s
 }
 
+func (s *DescribeAssetListRequest) SetOutStatistic(v string) *DescribeAssetListRequest {
+	s.OutStatistic = &v
+	return s
+}
+
 func (s *DescribeAssetListRequest) SetPageSize(v string) *DescribeAssetListRequest {
 	s.PageSize = &v
 	return s
@@ -5605,6 +5612,11 @@ func (s *DescribeAssetListRequest) SetResourceType(v string) *DescribeAssetListR
 
 func (s *DescribeAssetListRequest) SetSearchItem(v string) *DescribeAssetListRequest {
 	s.SearchItem = &v
+	return s
+}
+
+func (s *DescribeAssetListRequest) SetSensitiveStatus(v string) *DescribeAssetListRequest {
+	s.SensitiveStatus = &v
 	return s
 }
 
@@ -5718,7 +5730,8 @@ type DescribeAssetListResponseBodyAssets struct {
 	// example:
 	//
 	// 4
-	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpVersion               *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Last7DayOutTrafficBytes *int64 `json:"Last7DayOutTrafficBytes,omitempty" xml:"Last7DayOutTrafficBytes,omitempty"`
 	// The UID of the member.
 	//
 	// example:
@@ -5830,7 +5843,8 @@ type DescribeAssetListResponseBodyAssets struct {
 	// example:
 	//
 	// low
-	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel           *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SensitiveDataStatus *string `json:"SensitiveDataStatus,omitempty" xml:"SensitiveDataStatus,omitempty"`
 	// The status of the security group policy. Valid values:
 	//
 	// 	- **pass**: applied
@@ -5910,6 +5924,11 @@ func (s *DescribeAssetListResponseBodyAssets) SetIpVersion(v int32) *DescribeAss
 	return s
 }
 
+func (s *DescribeAssetListResponseBodyAssets) SetLast7DayOutTrafficBytes(v int64) *DescribeAssetListResponseBodyAssets {
+	s.Last7DayOutTrafficBytes = &v
+	return s
+}
+
 func (s *DescribeAssetListResponseBodyAssets) SetMemberUid(v int64) *DescribeAssetListResponseBodyAssets {
 	s.MemberUid = &v
 	return s
@@ -5957,6 +5976,11 @@ func (s *DescribeAssetListResponseBodyAssets) SetResourceType(v string) *Describ
 
 func (s *DescribeAssetListResponseBodyAssets) SetRiskLevel(v string) *DescribeAssetListResponseBodyAssets {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeAssetListResponseBodyAssets) SetSensitiveDataStatus(v string) *DescribeAssetListResponseBodyAssets {
+	s.SensitiveDataStatus = &v
 	return s
 }
 
@@ -6210,6 +6234,158 @@ func (s *DescribeAssetRiskListResponse) SetStatusCode(v int32) *DescribeAssetRis
 }
 
 func (s *DescribeAssetRiskListResponse) SetBody(v *DescribeAssetRiskListResponseBody) *DescribeAssetRiskListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAssetStatisticRequest struct {
+	// example:
+	//
+	// zh
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeAssetStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAssetStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetStatisticRequest) SetLang(v string) *DescribeAssetStatisticRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticRequest) SetSourceIp(v string) *DescribeAssetStatisticRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeAssetStatisticResponseBody struct {
+	// example:
+	//
+	// 850A84******25g4d2
+	RequestId             *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceSpecStatistic *DescribeAssetStatisticResponseBodyResourceSpecStatistic `json:"ResourceSpecStatistic,omitempty" xml:"ResourceSpecStatistic,omitempty" type:"Struct"`
+}
+
+func (s DescribeAssetStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAssetStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetStatisticResponseBody) SetRequestId(v string) *DescribeAssetStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBody) SetResourceSpecStatistic(v *DescribeAssetStatisticResponseBodyResourceSpecStatistic) *DescribeAssetStatisticResponseBody {
+	s.ResourceSpecStatistic = v
+	return s
+}
+
+type DescribeAssetStatisticResponseBodyResourceSpecStatistic struct {
+	// example:
+	//
+	// 20
+	IpNumSpec *int32 `json:"IpNumSpec,omitempty" xml:"IpNumSpec,omitempty"`
+	// example:
+	//
+	// 10
+	IpNumUsed              *int32 `json:"IpNumUsed,omitempty" xml:"IpNumUsed,omitempty"`
+	IsIpNumEnough          *int32 `json:"IsIpNumEnough,omitempty" xml:"IsIpNumEnough,omitempty"`
+	IsRegionNumEnough      *int32 `json:"IsRegionNumEnough,omitempty" xml:"IsRegionNumEnough,omitempty"`
+	IsSuggestUpdate        *int32 `json:"IsSuggestUpdate,omitempty" xml:"IsSuggestUpdate,omitempty"`
+	RegionNumSpec          *int32 `json:"RegionNumSpec,omitempty" xml:"RegionNumSpec,omitempty"`
+	RegionNumUsed          *int32 `json:"RegionNumUsed,omitempty" xml:"RegionNumUsed,omitempty"`
+	SensitiveDataIpNumSpec *int64 `json:"SensitiveDataIpNumSpec,omitempty" xml:"SensitiveDataIpNumSpec,omitempty"`
+	SensitiveDataIpNumUsed *int64 `json:"SensitiveDataIpNumUsed,omitempty" xml:"SensitiveDataIpNumUsed,omitempty"`
+}
+
+func (s DescribeAssetStatisticResponseBodyResourceSpecStatistic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAssetStatisticResponseBodyResourceSpecStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIpNumSpec(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.IpNumSpec = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIpNumUsed(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.IpNumUsed = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIsIpNumEnough(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.IsIpNumEnough = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIsRegionNumEnough(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.IsRegionNumEnough = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetIsSuggestUpdate(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.IsSuggestUpdate = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetRegionNumSpec(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.RegionNumSpec = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetRegionNumUsed(v int32) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.RegionNumUsed = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetSensitiveDataIpNumSpec(v int64) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.SensitiveDataIpNumSpec = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyResourceSpecStatistic) SetSensitiveDataIpNumUsed(v int64) *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
+	s.SensitiveDataIpNumUsed = &v
+	return s
+}
+
+type DescribeAssetStatisticResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAssetStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAssetStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAssetStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetStatisticResponse) SetHeaders(v map[string]*string) *DescribeAssetStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponse) SetStatusCode(v int32) *DescribeAssetStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponse) SetBody(v *DescribeAssetStatisticResponseBody) *DescribeAssetStatisticResponse {
 	s.Body = v
 	return s
 }
@@ -10838,9 +11014,7 @@ type DescribeNatFirewallListRequest struct {
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
 	//
-	// Default value: 10.
-	//
-	//  Maximum value: 50.
+	// Default value: **10**.***	- Maximum value: **50**.
 	//
 	// example:
 	//
@@ -16349,7 +16523,8 @@ type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls struct {
 	// example:
 	//
 	// cen_swas
-	CenName *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	CenName                   *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	CloudFirewallVpcOrderType *string `json:"CloudFirewallVpcOrderType,omitempty" xml:"CloudFirewallVpcOrderType,omitempty"`
 	// The instance ID of the VPC firewall.
 	//
 	// example:
@@ -16467,6 +16642,11 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetCenId(v string)
 
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetCenName(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
 	s.CenName = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetCloudFirewallVpcOrderType(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.CloudFirewallVpcOrderType = &v
 	return s
 }
 
@@ -16603,7 +16783,8 @@ type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource struct
 	// example:
 	//
 	// 1
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count   *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	EcrList []*string `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
 	// The protected peer transit routers.
 	PeerTrList []*string `json:"PeerTrList,omitempty" xml:"PeerTrList,omitempty" type:"Repeated"`
 	// The protected virtual border routers (VBRs).
@@ -16624,6 +16805,11 @@ func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) Go
 
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) SetCount(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource {
 	s.Count = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) SetEcrList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource {
+	s.EcrList = v
 	return s
 }
 
@@ -16653,7 +16839,8 @@ type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource stru
 	// example:
 	//
 	// 1
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count   *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	EcrList []*string `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
 	// The unprotected peer transit routers.
 	PeerTrList []*string `json:"PeerTrList,omitempty" xml:"PeerTrList,omitempty" type:"Repeated"`
 	// The unprotected VBRs.
@@ -16674,6 +16861,11 @@ func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) 
 
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) SetCount(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource {
 	s.Count = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) SetEcrList(v []*string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource {
+	s.EcrList = v
 	return s
 }
 
@@ -30169,6 +30361,10 @@ func (client *Client) DescribeAssetListWithOptions(request *DescribeAssetListReq
 		query["NewResourceTag"] = request.NewResourceTag
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OutStatistic)) {
+		query["OutStatistic"] = request.OutStatistic
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -30183,6 +30379,10 @@ func (client *Client) DescribeAssetListWithOptions(request *DescribeAssetListReq
 
 	if !tea.BoolValue(util.IsUnset(request.SearchItem)) {
 		query["SearchItem"] = request.SearchItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveStatus)) {
+		query["SensitiveStatus"] = request.SensitiveStatus
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SgStatus)) {
@@ -30315,6 +30515,74 @@ func (client *Client) DescribeAssetRiskList(request *DescribeAssetRiskListReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAssetRiskListResponse{}
 	_body, _err := client.DescribeAssetRiskListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取资产统计信息
+//
+// @param request - DescribeAssetStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAssetStatisticResponse
+func (client *Client) DescribeAssetStatisticWithOptions(request *DescribeAssetStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeAssetStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAssetStatistic"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAssetStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取资产统计信息
+//
+// @param request - DescribeAssetStatisticRequest
+//
+// @return DescribeAssetStatisticResponse
+func (client *Client) DescribeAssetStatistic(request *DescribeAssetStatisticRequest) (_result *DescribeAssetStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAssetStatisticResponse{}
+	_body, _err := client.DescribeAssetStatisticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36613,11 +36881,11 @@ func (client *Client) PutEnableAllFwSwitch(request *PutEnableAllFwSwitchRequest)
 //
 // Description:
 //
-// You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+// You can call this operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
 //
-// ## Limits
+// ## [](#qps-)Limits
 //
-// You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+// You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - PutEnableFwSwitchRequest
 //
@@ -36679,11 +36947,11 @@ func (client *Client) PutEnableFwSwitchWithOptions(request *PutEnableFwSwitchReq
 //
 // Description:
 //
-// You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+// You can call this operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
 //
-// ## Limits
+// ## [](#qps-)Limits
 //
-// You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+// You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - PutEnableFwSwitchRequest
 //
