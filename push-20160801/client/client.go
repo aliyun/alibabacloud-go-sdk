@@ -1258,7 +1258,9 @@ type MassPushRequestPushTask struct {
 	// example:
 	//
 	// HIGH
-	AndroidMessageHuaweiUrgency *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMessageHuaweiUrgency   *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMessageOppoCategory    *string `json:"AndroidMessageOppoCategory,omitempty" xml:"AndroidMessageOppoCategory,omitempty"`
+	AndroidMessageOppoNotifyLevel *int32  `json:"AndroidMessageOppoNotifyLevel,omitempty" xml:"AndroidMessageOppoNotifyLevel,omitempty"`
 	// example:
 	//
 	// TODO
@@ -1575,6 +1577,16 @@ func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiCategory(v string) *Mas
 
 func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiUrgency(v string) *MassPushRequestPushTask {
 	s.AndroidMessageHuaweiUrgency = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidMessageOppoCategory(v string) *MassPushRequestPushTask {
+	s.AndroidMessageOppoCategory = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidMessageOppoNotifyLevel(v int32) *MassPushRequestPushTask {
+	s.AndroidMessageOppoNotifyLevel = &v
 	return s
 }
 
@@ -2064,7 +2076,9 @@ type PushRequest struct {
 	// example:
 	//
 	// HIGH
-	AndroidMessageHuaweiUrgency *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMessageHuaweiUrgency   *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMessageOppoCategory    *string `json:"AndroidMessageOppoCategory,omitempty" xml:"AndroidMessageOppoCategory,omitempty"`
+	AndroidMessageOppoNotifyLevel *int32  `json:"AndroidMessageOppoNotifyLevel,omitempty" xml:"AndroidMessageOppoNotifyLevel,omitempty"`
 	// example:
 	//
 	// TODO
@@ -2401,6 +2415,16 @@ func (s *PushRequest) SetAndroidMessageHuaweiCategory(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidMessageHuaweiUrgency(v string) *PushRequest {
 	s.AndroidMessageHuaweiUrgency = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidMessageOppoCategory(v string) *PushRequest {
+	s.AndroidMessageOppoCategory = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidMessageOppoNotifyLevel(v int32) *PushRequest {
+	s.AndroidMessageOppoNotifyLevel = &v
 	return s
 }
 
@@ -6528,6 +6552,14 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidMessageHuaweiUrgency)) {
 		query["AndroidMessageHuaweiUrgency"] = request.AndroidMessageHuaweiUrgency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidMessageOppoCategory)) {
+		query["AndroidMessageOppoCategory"] = request.AndroidMessageOppoCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidMessageOppoNotifyLevel)) {
+		query["AndroidMessageOppoNotifyLevel"] = request.AndroidMessageOppoNotifyLevel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidMessageVivoCategory)) {
