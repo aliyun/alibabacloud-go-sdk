@@ -638,6 +638,7 @@ type CreatePublicTemplateRequest struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is required.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	VersionName  *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s CreatePublicTemplateRequest) String() string {
@@ -680,6 +681,11 @@ func (s *CreatePublicTemplateRequest) SetRegionId(v string) *CreatePublicTemplat
 
 func (s *CreatePublicTemplateRequest) SetTemplateName(v string) *CreatePublicTemplateRequest {
 	s.TemplateName = &v
+	return s
+}
+
+func (s *CreatePublicTemplateRequest) SetVersionName(v string) *CreatePublicTemplateRequest {
+	s.VersionName = &v
 	return s
 }
 
@@ -6257,6 +6263,7 @@ type UpdatePublicTemplateRequest struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is required.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	VersionName  *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s UpdatePublicTemplateRequest) String() string {
@@ -6294,6 +6301,11 @@ func (s *UpdatePublicTemplateRequest) SetRegionId(v string) *UpdatePublicTemplat
 
 func (s *UpdatePublicTemplateRequest) SetTemplateName(v string) *UpdatePublicTemplateRequest {
 	s.TemplateName = &v
+	return s
+}
+
+func (s *UpdatePublicTemplateRequest) SetVersionName(v string) *UpdatePublicTemplateRequest {
+	s.VersionName = &v
 	return s
 }
 
@@ -6964,6 +6976,10 @@ func (client *Client) CreatePublicTemplateWithOptions(request *CreatePublicTempl
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
 		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionName)) {
+		query["VersionName"] = request.VersionName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9595,6 +9611,10 @@ func (client *Client) UpdatePublicTemplateWithOptions(request *UpdatePublicTempl
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
 		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionName)) {
+		query["VersionName"] = request.VersionName
 	}
 
 	req := &openapi.OpenApiRequest{
