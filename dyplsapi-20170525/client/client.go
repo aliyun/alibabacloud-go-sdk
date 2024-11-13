@@ -465,18 +465,13 @@ type BindAXBCallResponseBody struct {
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 绑定关系ID
-	//
-	// example:
-	//
-	// 476567566
-	BindId *string `json:"BindId,omitempty" xml:"BindId,omitempty"`
 	// 返回状态码 0000表示成功 其他表示失败
 	//
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *BindAXBCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 返回信息
 	//
 	// example:
@@ -504,13 +499,13 @@ func (s *BindAXBCallResponseBody) SetAccessDeniedDetail(v string) *BindAXBCallRe
 	return s
 }
 
-func (s *BindAXBCallResponseBody) SetBindId(v string) *BindAXBCallResponseBody {
-	s.BindId = &v
+func (s *BindAXBCallResponseBody) SetCode(v string) *BindAXBCallResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *BindAXBCallResponseBody) SetCode(v string) *BindAXBCallResponseBody {
-	s.Code = &v
+func (s *BindAXBCallResponseBody) SetData(v *BindAXBCallResponseBodyData) *BindAXBCallResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -521,6 +516,28 @@ func (s *BindAXBCallResponseBody) SetMessage(v string) *BindAXBCallResponseBody 
 
 func (s *BindAXBCallResponseBody) SetSuccess(v bool) *BindAXBCallResponseBody {
 	s.Success = &v
+	return s
+}
+
+type BindAXBCallResponseBodyData struct {
+	// 绑定关系ID
+	//
+	// example:
+	//
+	// 476567566
+	BindId *string `json:"BindId,omitempty" xml:"BindId,omitempty"`
+}
+
+func (s BindAXBCallResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAXBCallResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BindAXBCallResponseBodyData) SetBindId(v string) *BindAXBCallResponseBodyData {
+	s.BindId = &v
 	return s
 }
 
@@ -2575,18 +2592,13 @@ type BindXBResponseBody struct {
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 工作号关系绑定的唯一标识
-	//
-	// example:
-	//
-	// 435****456
-	AuthId *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
 	// 返回状态码 0000表示成功 其他表示失败
 	//
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *BindXBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 返回信息
 	//
 	// example:
@@ -2599,12 +2611,6 @@ type BindXBResponseBody struct {
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 工作号号码
-	//
-	// example:
-	//
-	// 18*******22
-	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
 }
 
 func (s BindXBResponseBody) String() string {
@@ -2620,13 +2626,13 @@ func (s *BindXBResponseBody) SetAccessDeniedDetail(v string) *BindXBResponseBody
 	return s
 }
 
-func (s *BindXBResponseBody) SetAuthId(v string) *BindXBResponseBody {
-	s.AuthId = &v
+func (s *BindXBResponseBody) SetCode(v string) *BindXBResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *BindXBResponseBody) SetCode(v string) *BindXBResponseBody {
-	s.Code = &v
+func (s *BindXBResponseBody) SetData(v *BindXBResponseBodyData) *BindXBResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -2640,7 +2646,35 @@ func (s *BindXBResponseBody) SetSuccess(v bool) *BindXBResponseBody {
 	return s
 }
 
-func (s *BindXBResponseBody) SetTelX(v string) *BindXBResponseBody {
+type BindXBResponseBodyData struct {
+	// 工作号关系绑定的唯一标识
+	//
+	// example:
+	//
+	// 4353453456
+	AuthId *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	// X号码
+	//
+	// example:
+	//
+	// 18640577897
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s BindXBResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindXBResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BindXBResponseBodyData) SetAuthId(v string) *BindXBResponseBodyData {
+	s.AuthId = &v
+	return s
+}
+
+func (s *BindXBResponseBodyData) SetTelX(v string) *BindXBResponseBodyData {
 	s.TelX = &v
 	return s
 }
@@ -3411,20 +3445,13 @@ type ConfigXResponseBody struct {
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
-	//
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回信息
-	//
-	// example:
-	//
-	// 成功
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
-	//
+	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ConfigXResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
 	// true
@@ -3449,12 +3476,66 @@ func (s *ConfigXResponseBody) SetCode(v string) *ConfigXResponseBody {
 	return s
 }
 
+func (s *ConfigXResponseBody) SetData(v *ConfigXResponseBodyData) *ConfigXResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *ConfigXResponseBody) SetMessage(v string) *ConfigXResponseBody {
 	s.Message = &v
 	return s
 }
 
+func (s *ConfigXResponseBody) SetRequestId(v string) *ConfigXResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *ConfigXResponseBody) SetSuccess(v bool) *ConfigXResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConfigXResponseBodyData struct {
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConfigXResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigXResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigXResponseBodyData) SetCode(v string) *ConfigXResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *ConfigXResponseBodyData) SetMessage(v string) *ConfigXResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *ConfigXResponseBodyData) SetSuccess(v bool) *ConfigXResponseBodyData {
 	s.Success = &v
 	return s
 }
@@ -5207,18 +5288,13 @@ type CreateSmsSignResponseBody struct {
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 短信接收者号码签名串(加到短信内容中供解析真实被叫号码)
-	//
-	// example:
-	//
-	// sign*****466
-	CalledNoSign *string `json:"CalledNoSign,omitempty" xml:"CalledNoSign,omitempty"`
 	// 返回状态码 0000表示成功 其他表示失败
 	//
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateSmsSignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 返回信息
 	//
 	// example:
@@ -5246,13 +5322,13 @@ func (s *CreateSmsSignResponseBody) SetAccessDeniedDetail(v string) *CreateSmsSi
 	return s
 }
 
-func (s *CreateSmsSignResponseBody) SetCalledNoSign(v string) *CreateSmsSignResponseBody {
-	s.CalledNoSign = &v
+func (s *CreateSmsSignResponseBody) SetCode(v string) *CreateSmsSignResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *CreateSmsSignResponseBody) SetCode(v string) *CreateSmsSignResponseBody {
-	s.Code = &v
+func (s *CreateSmsSignResponseBody) SetData(v *CreateSmsSignResponseBodyData) *CreateSmsSignResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -5263,6 +5339,28 @@ func (s *CreateSmsSignResponseBody) SetMessage(v string) *CreateSmsSignResponseB
 
 func (s *CreateSmsSignResponseBody) SetSuccess(v bool) *CreateSmsSignResponseBody {
 	s.Success = &v
+	return s
+}
+
+type CreateSmsSignResponseBodyData struct {
+	// 短信接收者号码签名串(加到短信内容中供解析真实被叫号码)
+	//
+	// example:
+	//
+	// sign23343466
+	CalledNoSign *string `json:"CalledNoSign,omitempty" xml:"CalledNoSign,omitempty"`
+}
+
+func (s CreateSmsSignResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsSignResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsSignResponseBodyData) SetCalledNoSign(v string) *CreateSmsSignResponseBodyData {
+	s.CalledNoSign = &v
 	return s
 }
 
@@ -6189,62 +6287,25 @@ type GetXConfigResponseBody struct {
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
-	//
-	// example:
-	//
-	// 0
-	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
 	// 返回状态码 0000表示成功 其他表示失败
 	//
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
-	//
-	// example:
-	//
-	// 10
-	GNFlag *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetXConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 返回信息
 	//
 	// example:
 	//
 	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 顺振控制参数
-	SequenceCalls []*GetXConfigResponseBodySequenceCalls `json:"SequenceCalls,omitempty" xml:"SequenceCalls,omitempty" type:"Repeated"`
-	// 顺振模式： 0-不顺振（默认） 1-有条件顺振，先接续calledNo指定被叫，如果该被叫未能接通，再顺振sequenceCalls号码列表 2-无条件顺振，不接续calledNo指定被叫，直接顺振sequenceCalls号码列表
-	//
-	// example:
-	//
-	// 0
-	SequenceMode *string `json:"SequenceMode,omitempty" xml:"SequenceMode,omitempty"`
-	// 开/关短信功能状态： ‘0’：禁用；‘1’：开启；
-	//
-	// example:
-	//
-	// 0
-	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
-	// 是否透传来显为真实用户 0：不透传; 1：透传 默认：0不透传
-	//
-	// example:
-	//
-	// 0
-	SmsSignMode *string `json:"SmsSignMode,omitempty" xml:"SmsSignMode,omitempty"`
 	// 返回是否成功 true  表示成功 false表示失败
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// X号码
-	//
-	// example:
-	//
-	// 17*******22
-	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
 }
 
 func (s GetXConfigResponseBody) String() string {
@@ -6260,18 +6321,13 @@ func (s *GetXConfigResponseBody) SetAccessDeniedDetail(v string) *GetXConfigResp
 	return s
 }
 
-func (s *GetXConfigResponseBody) SetCallAbility(v string) *GetXConfigResponseBody {
-	s.CallAbility = &v
-	return s
-}
-
 func (s *GetXConfigResponseBody) SetCode(v string) *GetXConfigResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetXConfigResponseBody) SetGNFlag(v string) *GetXConfigResponseBody {
-	s.GNFlag = &v
+func (s *GetXConfigResponseBody) SetData(v *GetXConfigResponseBodyData) *GetXConfigResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -6280,76 +6336,230 @@ func (s *GetXConfigResponseBody) SetMessage(v string) *GetXConfigResponseBody {
 	return s
 }
 
-func (s *GetXConfigResponseBody) SetSequenceCalls(v []*GetXConfigResponseBodySequenceCalls) *GetXConfigResponseBody {
-	s.SequenceCalls = v
-	return s
-}
-
-func (s *GetXConfigResponseBody) SetSequenceMode(v string) *GetXConfigResponseBody {
-	s.SequenceMode = &v
-	return s
-}
-
-func (s *GetXConfigResponseBody) SetSmsAbility(v string) *GetXConfigResponseBody {
-	s.SmsAbility = &v
-	return s
-}
-
-func (s *GetXConfigResponseBody) SetSmsSignMode(v string) *GetXConfigResponseBody {
-	s.SmsSignMode = &v
-	return s
-}
-
 func (s *GetXConfigResponseBody) SetSuccess(v bool) *GetXConfigResponseBody {
 	s.Success = &v
 	return s
 }
 
-func (s *GetXConfigResponseBody) SetTelX(v string) *GetXConfigResponseBody {
-	s.TelX = &v
+type GetXConfigResponseBodyData struct {
+	// 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
+	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+	//
+	// example:
+	//
+	// 00
+	GNFlag *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
+	// 企业名片规则控制参数
+	ReachJsons []*GetXConfigResponseBodyDataReachJsons `json:"ReachJsons,omitempty" xml:"ReachJsons,omitempty" type:"Repeated"`
+	// 顺振控制参数
+	SequenceCalls []*GetXConfigResponseBodyDataSequenceCalls `json:"SequenceCalls,omitempty" xml:"SequenceCalls,omitempty" type:"Repeated"`
+	// 顺振结束时间 格式：HH:mm:ss 18:00:00
+	//
+	// example:
+	//
+	// 09:00:00
+	SequenceEndTime *string `json:"SequenceEndTime,omitempty" xml:"SequenceEndTime,omitempty"`
+	// 顺振开启时间 格式：HH:mm:ss 09:00:00
+	//
+	// example:
+	//
+	// 09:00:00
+	SequenceStartTime *string `json:"SequenceStartTime,omitempty" xml:"SequenceStartTime,omitempty"`
+	// 开/关短信功能状态： ‘0’：禁用； ‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
+	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+	//
+	// example:
+	//
+	// 0
+	SmsSignMode *string `json:"SmsSignMode,omitempty" xml:"SmsSignMode,omitempty"`
+}
+
+func (s GetXConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetXConfigResponseBodyData) SetCallAbility(v string) *GetXConfigResponseBodyData {
+	s.CallAbility = &v
 	return s
 }
 
-type GetXConfigResponseBodySequenceCalls struct {
+func (s *GetXConfigResponseBodyData) SetGNFlag(v string) *GetXConfigResponseBodyData {
+	s.GNFlag = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyData) SetReachJsons(v []*GetXConfigResponseBodyDataReachJsons) *GetXConfigResponseBodyData {
+	s.ReachJsons = v
+	return s
+}
+
+func (s *GetXConfigResponseBodyData) SetSequenceCalls(v []*GetXConfigResponseBodyDataSequenceCalls) *GetXConfigResponseBodyData {
+	s.SequenceCalls = v
+	return s
+}
+
+func (s *GetXConfigResponseBodyData) SetSequenceEndTime(v string) *GetXConfigResponseBodyData {
+	s.SequenceEndTime = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyData) SetSequenceStartTime(v string) *GetXConfigResponseBodyData {
+	s.SequenceStartTime = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyData) SetSmsAbility(v string) *GetXConfigResponseBodyData {
+	s.SmsAbility = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyData) SetSmsSignMode(v string) *GetXConfigResponseBodyData {
+	s.SmsSignMode = &v
+	return s
+}
+
+type GetXConfigResponseBodyDataReachJsons struct {
+	// 呼叫方向 1:员工B呼叫客户A 2:客户A呼叫员工B
+	//
+	// example:
+	//
+	// 1
+	CallDir *string `json:"CallDir,omitempty" xml:"CallDir,omitempty"`
+	// 通话状态 1:通话振铃 2:接通前 3:接通后 4:通话结束 5:已接通6:未接通
+	//
+	// example:
+	//
+	// 1
+	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// 接收方向 1:主叫 2:被叫
+	//
+	// example:
+	//
+	// 1
+	ReceiveDir *string `json:"ReceiveDir,omitempty" xml:"ReceiveDir,omitempty"`
+	// 规则ID
+	//
+	// example:
+	//
+	// 345
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// 规则名称
+	//
+	// example:
+	//
+	// 企业名片-短信规则
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// 规则类型： 1：企业名片-短信 2：企业名片-闪信 3：企业名片-视频 4：企业名片-音频
+	//
+	// example:
+	//
+	// 1
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// 模板ID
+	//
+	// example:
+	//
+	// 12345
+	TempId *string `json:"TempId,omitempty" xml:"TempId,omitempty"`
+}
+
+func (s GetXConfigResponseBodyDataReachJsons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXConfigResponseBodyDataReachJsons) GoString() string {
+	return s.String()
+}
+
+func (s *GetXConfigResponseBodyDataReachJsons) SetCallDir(v string) *GetXConfigResponseBodyDataReachJsons {
+	s.CallDir = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyDataReachJsons) SetCallStatus(v string) *GetXConfigResponseBodyDataReachJsons {
+	s.CallStatus = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyDataReachJsons) SetReceiveDir(v string) *GetXConfigResponseBodyDataReachJsons {
+	s.ReceiveDir = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyDataReachJsons) SetRuleId(v string) *GetXConfigResponseBodyDataReachJsons {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyDataReachJsons) SetRuleName(v string) *GetXConfigResponseBodyDataReachJsons {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyDataReachJsons) SetRuleType(v string) *GetXConfigResponseBodyDataReachJsons {
+	s.RuleType = &v
+	return s
+}
+
+func (s *GetXConfigResponseBodyDataReachJsons) SetTempId(v string) *GetXConfigResponseBodyDataReachJsons {
+	s.TempId = &v
+	return s
+}
+
+type GetXConfigResponseBodyDataSequenceCalls struct {
 	// 顺振提示音放音编号，格式如callNoPlayCode
 	//
 	// example:
 	//
-	// 01
+	// 示例值示例值示例值
 	SequenceCallNoPlayCode *string `json:"SequenceCallNoPlayCode,omitempty" xml:"SequenceCallNoPlayCode,omitempty"`
 	// 顺振被叫号码
 	//
 	// example:
 	//
-	// 18*******33
+	// 示例值示例值示例值
 	SequenceCalledNo *string `json:"SequenceCalledNo,omitempty" xml:"SequenceCalledNo,omitempty"`
 	// 接通后主被叫放音编号，格式如calledPlayCode
 	//
 	// example:
 	//
-	// 02
+	// 示例值示例值示例值
 	SequenceCalledPlayCode *string `json:"SequenceCalledPlayCode,omitempty" xml:"SequenceCalledPlayCode,omitempty"`
 }
 
-func (s GetXConfigResponseBodySequenceCalls) String() string {
+func (s GetXConfigResponseBodyDataSequenceCalls) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetXConfigResponseBodySequenceCalls) GoString() string {
+func (s GetXConfigResponseBodyDataSequenceCalls) GoString() string {
 	return s.String()
 }
 
-func (s *GetXConfigResponseBodySequenceCalls) SetSequenceCallNoPlayCode(v string) *GetXConfigResponseBodySequenceCalls {
+func (s *GetXConfigResponseBodyDataSequenceCalls) SetSequenceCallNoPlayCode(v string) *GetXConfigResponseBodyDataSequenceCalls {
 	s.SequenceCallNoPlayCode = &v
 	return s
 }
 
-func (s *GetXConfigResponseBodySequenceCalls) SetSequenceCalledNo(v string) *GetXConfigResponseBodySequenceCalls {
+func (s *GetXConfigResponseBodyDataSequenceCalls) SetSequenceCalledNo(v string) *GetXConfigResponseBodyDataSequenceCalls {
 	s.SequenceCalledNo = &v
 	return s
 }
 
-func (s *GetXConfigResponseBodySequenceCalls) SetSequenceCalledPlayCode(v string) *GetXConfigResponseBodySequenceCalls {
+func (s *GetXConfigResponseBodyDataSequenceCalls) SetSequenceCalledPlayCode(v string) *GetXConfigResponseBodyDataSequenceCalls {
 	s.SequenceCalledPlayCode = &v
 	return s
 }
@@ -6467,58 +6677,19 @@ type GetXDefaultConfigResponseBody struct {
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
-	//
-	// example:
-	//
-	// 0
-	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
 	// 返回状态码 0000表示成功 其他表示失败
 	//
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
-	//
-	// example:
-	//
-	// 00
-	GNFlag *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetXDefaultConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 返回信息
 	//
 	// example:
 	//
 	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 企业名片规则控制参数
-	ReachJson []*GetXDefaultConfigResponseBodyReachJson `json:"ReachJson,omitempty" xml:"ReachJson,omitempty" type:"Repeated"`
-	// 顺振控制参数
-	SequenceCalls []*GetXDefaultConfigResponseBodySequenceCalls `json:"SequenceCalls,omitempty" xml:"SequenceCalls,omitempty" type:"Repeated"`
-	// 顺振结束时间 格式：HH:mm:ss 18:00:00
-	//
-	// example:
-	//
-	// 09:01:00
-	SequenceEndTime *string `json:"SequenceEndTime,omitempty" xml:"SequenceEndTime,omitempty"`
-	// 顺振开启时间 格式：HH:mm:ss 09:00:00
-	//
-	// example:
-	//
-	// 09:00:00
-	SequenceStartTime *string `json:"SequenceStartTime,omitempty" xml:"SequenceStartTime,omitempty"`
-	// 开/关短信功能状态： ‘0’：禁用； ‘1’：开启；
-	//
-	// example:
-	//
-	// 0
-	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
-	// 是否透传来显为真实用户 0：不透传; 1：透传 默认：0不透传
-	//
-	// example:
-	//
-	// 0
-	SmsSignMode *string `json:"SmsSignMode,omitempty" xml:"SmsSignMode,omitempty"`
 	// 返回是否成功 true  表示成功 false表示失败
 	//
 	// example:
@@ -6540,18 +6711,13 @@ func (s *GetXDefaultConfigResponseBody) SetAccessDeniedDetail(v string) *GetXDef
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBody) SetCallAbility(v string) *GetXDefaultConfigResponseBody {
-	s.CallAbility = &v
-	return s
-}
-
 func (s *GetXDefaultConfigResponseBody) SetCode(v string) *GetXDefaultConfigResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBody) SetGNFlag(v string) *GetXDefaultConfigResponseBody {
-	s.GNFlag = &v
+func (s *GetXDefaultConfigResponseBody) SetData(v *GetXDefaultConfigResponseBodyData) *GetXDefaultConfigResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -6560,42 +6726,103 @@ func (s *GetXDefaultConfigResponseBody) SetMessage(v string) *GetXDefaultConfigR
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBody) SetReachJson(v []*GetXDefaultConfigResponseBodyReachJson) *GetXDefaultConfigResponseBody {
-	s.ReachJson = v
-	return s
-}
-
-func (s *GetXDefaultConfigResponseBody) SetSequenceCalls(v []*GetXDefaultConfigResponseBodySequenceCalls) *GetXDefaultConfigResponseBody {
-	s.SequenceCalls = v
-	return s
-}
-
-func (s *GetXDefaultConfigResponseBody) SetSequenceEndTime(v string) *GetXDefaultConfigResponseBody {
-	s.SequenceEndTime = &v
-	return s
-}
-
-func (s *GetXDefaultConfigResponseBody) SetSequenceStartTime(v string) *GetXDefaultConfigResponseBody {
-	s.SequenceStartTime = &v
-	return s
-}
-
-func (s *GetXDefaultConfigResponseBody) SetSmsAbility(v string) *GetXDefaultConfigResponseBody {
-	s.SmsAbility = &v
-	return s
-}
-
-func (s *GetXDefaultConfigResponseBody) SetSmsSignMode(v string) *GetXDefaultConfigResponseBody {
-	s.SmsSignMode = &v
-	return s
-}
-
 func (s *GetXDefaultConfigResponseBody) SetSuccess(v bool) *GetXDefaultConfigResponseBody {
 	s.Success = &v
 	return s
 }
 
-type GetXDefaultConfigResponseBodyReachJson struct {
+type GetXDefaultConfigResponseBodyData struct {
+	// 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
+	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+	//
+	// example:
+	//
+	// 00
+	GNFlag *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
+	// 企业名片规则控制参数
+	ReachJson []*GetXDefaultConfigResponseBodyDataReachJson `json:"ReachJson,omitempty" xml:"ReachJson,omitempty" type:"Repeated"`
+	// 顺振控制参数
+	SequenceCall []*GetXDefaultConfigResponseBodyDataSequenceCall `json:"SequenceCall,omitempty" xml:"SequenceCall,omitempty" type:"Repeated"`
+	// 顺振结束时间 格式：HH:mm:ss 18:00:00
+	//
+	// example:
+	//
+	// 09:00:00
+	SequenceEndTime *string `json:"SequenceEndTime,omitempty" xml:"SequenceEndTime,omitempty"`
+	// 顺振开启时间 格式：HH:mm:ss 09:00:00
+	//
+	// example:
+	//
+	// 09:00:00
+	SequenceStartTime *string `json:"SequenceStartTime,omitempty" xml:"SequenceStartTime,omitempty"`
+	// 开/关短信功能状态： ‘0’：禁用； ‘1’：开启；
+	//
+	// example:
+	//
+	// 0
+	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
+	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+	//
+	// example:
+	//
+	// 0
+	SmsSignMode *string `json:"SmsSignMode,omitempty" xml:"SmsSignMode,omitempty"`
+}
+
+func (s GetXDefaultConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetXDefaultConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetXDefaultConfigResponseBodyData) SetCallAbility(v string) *GetXDefaultConfigResponseBodyData {
+	s.CallAbility = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyData) SetGNFlag(v string) *GetXDefaultConfigResponseBodyData {
+	s.GNFlag = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyData) SetReachJson(v []*GetXDefaultConfigResponseBodyDataReachJson) *GetXDefaultConfigResponseBodyData {
+	s.ReachJson = v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyData) SetSequenceCall(v []*GetXDefaultConfigResponseBodyDataSequenceCall) *GetXDefaultConfigResponseBodyData {
+	s.SequenceCall = v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyData) SetSequenceEndTime(v string) *GetXDefaultConfigResponseBodyData {
+	s.SequenceEndTime = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyData) SetSequenceStartTime(v string) *GetXDefaultConfigResponseBodyData {
+	s.SequenceStartTime = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyData) SetSmsAbility(v string) *GetXDefaultConfigResponseBodyData {
+	s.SmsAbility = &v
+	return s
+}
+
+func (s *GetXDefaultConfigResponseBodyData) SetSmsSignMode(v string) *GetXDefaultConfigResponseBodyData {
+	s.SmsSignMode = &v
+	return s
+}
+
+type GetXDefaultConfigResponseBodyDataReachJson struct {
 	// 呼叫方向 1:员工B呼叫客户A 2:客户A呼叫员工B
 	//
 	// example:
@@ -6606,7 +6833,7 @@ type GetXDefaultConfigResponseBodyReachJson struct {
 	//
 	// example:
 	//
-	// 3
+	// 1
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
 	// 接收方向 1:主叫 2:被叫
 	//
@@ -6640,89 +6867,89 @@ type GetXDefaultConfigResponseBodyReachJson struct {
 	TempId *string `json:"TempId,omitempty" xml:"TempId,omitempty"`
 }
 
-func (s GetXDefaultConfigResponseBodyReachJson) String() string {
+func (s GetXDefaultConfigResponseBodyDataReachJson) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetXDefaultConfigResponseBodyReachJson) GoString() string {
+func (s GetXDefaultConfigResponseBodyDataReachJson) GoString() string {
 	return s.String()
 }
 
-func (s *GetXDefaultConfigResponseBodyReachJson) SetCallDir(v string) *GetXDefaultConfigResponseBodyReachJson {
+func (s *GetXDefaultConfigResponseBodyDataReachJson) SetCallDir(v string) *GetXDefaultConfigResponseBodyDataReachJson {
 	s.CallDir = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBodyReachJson) SetCallStatus(v string) *GetXDefaultConfigResponseBodyReachJson {
+func (s *GetXDefaultConfigResponseBodyDataReachJson) SetCallStatus(v string) *GetXDefaultConfigResponseBodyDataReachJson {
 	s.CallStatus = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBodyReachJson) SetReceiveDir(v string) *GetXDefaultConfigResponseBodyReachJson {
+func (s *GetXDefaultConfigResponseBodyDataReachJson) SetReceiveDir(v string) *GetXDefaultConfigResponseBodyDataReachJson {
 	s.ReceiveDir = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBodyReachJson) SetRuleId(v string) *GetXDefaultConfigResponseBodyReachJson {
+func (s *GetXDefaultConfigResponseBodyDataReachJson) SetRuleId(v string) *GetXDefaultConfigResponseBodyDataReachJson {
 	s.RuleId = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBodyReachJson) SetRuleName(v string) *GetXDefaultConfigResponseBodyReachJson {
+func (s *GetXDefaultConfigResponseBodyDataReachJson) SetRuleName(v string) *GetXDefaultConfigResponseBodyDataReachJson {
 	s.RuleName = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBodyReachJson) SetRuleType(v string) *GetXDefaultConfigResponseBodyReachJson {
+func (s *GetXDefaultConfigResponseBodyDataReachJson) SetRuleType(v string) *GetXDefaultConfigResponseBodyDataReachJson {
 	s.RuleType = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBodyReachJson) SetTempId(v string) *GetXDefaultConfigResponseBodyReachJson {
+func (s *GetXDefaultConfigResponseBodyDataReachJson) SetTempId(v string) *GetXDefaultConfigResponseBodyDataReachJson {
 	s.TempId = &v
 	return s
 }
 
-type GetXDefaultConfigResponseBodySequenceCalls struct {
+type GetXDefaultConfigResponseBodyDataSequenceCall struct {
 	// 顺振提示音放音编号，格式如callNoPlayCode
 	//
 	// example:
 	//
-	// 01
+	// 示例值
 	SequenceCallNoPlayCode *string `json:"SequenceCallNoPlayCode,omitempty" xml:"SequenceCallNoPlayCode,omitempty"`
 	// 顺振被叫号码
 	//
 	// example:
 	//
-	// 18*******33
+	// 示例值示例值示例值
 	SequenceCalledNo *string `json:"SequenceCalledNo,omitempty" xml:"SequenceCalledNo,omitempty"`
 	// 接通后主被叫放音编号，格式如calledPlayCode
 	//
 	// example:
 	//
-	// 02
+	// 示例值示例值示例值
 	SequenceCalledPlayCode *string `json:"SequenceCalledPlayCode,omitempty" xml:"SequenceCalledPlayCode,omitempty"`
 }
 
-func (s GetXDefaultConfigResponseBodySequenceCalls) String() string {
+func (s GetXDefaultConfigResponseBodyDataSequenceCall) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetXDefaultConfigResponseBodySequenceCalls) GoString() string {
+func (s GetXDefaultConfigResponseBodyDataSequenceCall) GoString() string {
 	return s.String()
 }
 
-func (s *GetXDefaultConfigResponseBodySequenceCalls) SetSequenceCallNoPlayCode(v string) *GetXDefaultConfigResponseBodySequenceCalls {
+func (s *GetXDefaultConfigResponseBodyDataSequenceCall) SetSequenceCallNoPlayCode(v string) *GetXDefaultConfigResponseBodyDataSequenceCall {
 	s.SequenceCallNoPlayCode = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBodySequenceCalls) SetSequenceCalledNo(v string) *GetXDefaultConfigResponseBodySequenceCalls {
+func (s *GetXDefaultConfigResponseBodyDataSequenceCall) SetSequenceCalledNo(v string) *GetXDefaultConfigResponseBodyDataSequenceCall {
 	s.SequenceCalledNo = &v
 	return s
 }
 
-func (s *GetXDefaultConfigResponseBodySequenceCalls) SetSequenceCalledPlayCode(v string) *GetXDefaultConfigResponseBodySequenceCalls {
+func (s *GetXDefaultConfigResponseBodyDataSequenceCall) SetSequenceCalledPlayCode(v string) *GetXDefaultConfigResponseBodyDataSequenceCall {
 	s.SequenceCalledPlayCode = &v
 	return s
 }
@@ -6852,39 +7079,20 @@ type ListXTelephonesResponseBody struct {
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 数据集合
-	Data []*ListXTelephonesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListXTelephonesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 返回信息
 	//
 	// example:
 	//
 	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 页码
-	//
-	// example:
-	//
-	// 6
-	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 每页条数
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// 返回是否成功 true  表示成功 false表示失败
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 符合查询条件的总数量
-	//
-	// example:
-	//
-	// 60
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListXTelephonesResponseBody) String() string {
@@ -6905,7 +7113,7 @@ func (s *ListXTelephonesResponseBody) SetCode(v string) *ListXTelephonesResponse
 	return s
 }
 
-func (s *ListXTelephonesResponseBody) SetData(v []*ListXTelephonesResponseBodyData) *ListXTelephonesResponseBody {
+func (s *ListXTelephonesResponseBody) SetData(v *ListXTelephonesResponseBodyData) *ListXTelephonesResponseBody {
 	s.Data = v
 	return s
 }
@@ -6915,27 +7123,63 @@ func (s *ListXTelephonesResponseBody) SetMessage(v string) *ListXTelephonesRespo
 	return s
 }
 
-func (s *ListXTelephonesResponseBody) SetPageNo(v int64) *ListXTelephonesResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListXTelephonesResponseBody) SetPageSize(v int64) *ListXTelephonesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
 func (s *ListXTelephonesResponseBody) SetSuccess(v bool) *ListXTelephonesResponseBody {
 	s.Success = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBody) SetTotalCount(v int64) *ListXTelephonesResponseBody {
-	s.TotalCount = &v
+type ListXTelephonesResponseBodyData struct {
+	// 数据集合
+	List []*ListXTelephonesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// 页码
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// 每页条数
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 符合查询条件的总数量
+	//
+	// example:
+	//
+	// 50
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListXTelephonesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListXTelephonesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListXTelephonesResponseBodyData) SetList(v []*ListXTelephonesResponseBodyDataList) *ListXTelephonesResponseBodyData {
+	s.List = v
 	return s
 }
 
-type ListXTelephonesResponseBodyData struct {
+func (s *ListXTelephonesResponseBodyData) SetPageNo(v int64) *ListXTelephonesResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetPageSize(v int64) *ListXTelephonesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListXTelephonesResponseBodyData) SetTotal(v int64) *ListXTelephonesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListXTelephonesResponseBodyDataList struct {
 	// 绑定失败原因
 	//
 	// example:
@@ -6958,7 +7202,7 @@ type ListXTelephonesResponseBodyData struct {
 	//
 	// example:
 	//
-	// FC5***********************a1a
+	// FC533e6eeb81f4400c87ef3745a21a1a
 	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
 	// 号码池名称
 	//
@@ -6982,7 +7226,7 @@ type ListXTelephonesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 17*******46
+	// 17816876546
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
 	// 号码状态：0 空闲中 1 调拨完成待购买 2购买完成待认证  3 实名认证中  4 实名认证成功  5 认证失败  6 解绑中 7 解绑失败 8已释放 99 超时释放
 	//
@@ -6998,60 +7242,60 @@ type ListXTelephonesResponseBodyData struct {
 	UnbindTime *string `json:"UnbindTime,omitempty" xml:"UnbindTime,omitempty"`
 }
 
-func (s ListXTelephonesResponseBodyData) String() string {
+func (s ListXTelephonesResponseBodyDataList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListXTelephonesResponseBodyData) GoString() string {
+func (s ListXTelephonesResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListXTelephonesResponseBodyData) SetAuthMsg(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetAuthMsg(v string) *ListXTelephonesResponseBodyDataList {
 	s.AuthMsg = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetBindTime(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetBindTime(v string) *ListXTelephonesResponseBodyDataList {
 	s.BindTime = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetBuyTime(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetBuyTime(v string) *ListXTelephonesResponseBodyDataList {
 	s.BuyTime = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetCustomerPoolKey(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetCustomerPoolKey(v string) *ListXTelephonesResponseBodyDataList {
 	s.CustomerPoolKey = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetCustomerPoolName(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetCustomerPoolName(v string) *ListXTelephonesResponseBodyDataList {
 	s.CustomerPoolName = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetReleaseTime(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetReleaseTime(v string) *ListXTelephonesResponseBodyDataList {
 	s.ReleaseTime = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetSmsStatus(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetSmsStatus(v string) *ListXTelephonesResponseBodyDataList {
 	s.SmsStatus = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetTelephone(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetTelephone(v string) *ListXTelephonesResponseBodyDataList {
 	s.Telephone = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetTelephoneStatus(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetTelephoneStatus(v string) *ListXTelephonesResponseBodyDataList {
 	s.TelephoneStatus = &v
 	return s
 }
 
-func (s *ListXTelephonesResponseBodyData) SetUnbindTime(v string) *ListXTelephonesResponseBodyData {
+func (s *ListXTelephonesResponseBodyDataList) SetUnbindTime(v string) *ListXTelephonesResponseBodyDataList {
 	s.UnbindTime = &v
 	return s
 }
@@ -8513,13 +8757,8 @@ type QuerySoundRecordResponseBody struct {
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 通话录音url路径，最大长度1000，有效期1小时
-	//
-	// example:
-	//
-	// http://www.***.com/temepl/a.mp3
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QuerySoundRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 返回信息
 	//
 	// example:
@@ -8552,8 +8791,8 @@ func (s *QuerySoundRecordResponseBody) SetCode(v string) *QuerySoundRecordRespon
 	return s
 }
 
-func (s *QuerySoundRecordResponseBody) SetFileUrl(v string) *QuerySoundRecordResponseBody {
-	s.FileUrl = &v
+func (s *QuerySoundRecordResponseBody) SetData(v *QuerySoundRecordResponseBodyData) *QuerySoundRecordResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -8564,6 +8803,28 @@ func (s *QuerySoundRecordResponseBody) SetMessage(v string) *QuerySoundRecordRes
 
 func (s *QuerySoundRecordResponseBody) SetSuccess(v bool) *QuerySoundRecordResponseBody {
 	s.Success = &v
+	return s
+}
+
+type QuerySoundRecordResponseBodyData struct {
+	// 通话录音url路径，最大长度1000，有效期1小时
+	//
+	// example:
+	//
+	// http://www.oss.com/temepl/a.mp3
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s QuerySoundRecordResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundRecordResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundRecordResponseBodyData) SetFileUrl(v string) *QuerySoundRecordResponseBodyData {
+	s.FileUrl = &v
 	return s
 }
 
@@ -9302,20 +9563,13 @@ type UnBindAXBResponseBody struct {
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
-	//
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回信息
-	//
-	// example:
-	//
-	// 成功
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
-	//
+	Code      *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UnBindAXBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
 	// true
@@ -9340,12 +9594,66 @@ func (s *UnBindAXBResponseBody) SetCode(v string) *UnBindAXBResponseBody {
 	return s
 }
 
+func (s *UnBindAXBResponseBody) SetData(v *UnBindAXBResponseBodyData) *UnBindAXBResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *UnBindAXBResponseBody) SetMessage(v string) *UnBindAXBResponseBody {
 	s.Message = &v
 	return s
 }
 
+func (s *UnBindAXBResponseBody) SetRequestId(v string) *UnBindAXBResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *UnBindAXBResponseBody) SetSuccess(v bool) *UnBindAXBResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnBindAXBResponseBodyData struct {
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnBindAXBResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnBindAXBResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UnBindAXBResponseBodyData) SetCode(v string) *UnBindAXBResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *UnBindAXBResponseBodyData) SetMessage(v string) *UnBindAXBResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *UnBindAXBResponseBodyData) SetSuccess(v bool) *UnBindAXBResponseBodyData {
 	s.Success = &v
 	return s
 }
@@ -9476,20 +9784,13 @@ type UnBindXBResponseBody struct {
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
-	//
 	// example:
 	//
 	// 0000
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回信息
-	//
-	// example:
-	//
-	// 成功
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
-	//
+	Code      *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UnBindXBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
 	// false
@@ -9514,12 +9815,66 @@ func (s *UnBindXBResponseBody) SetCode(v string) *UnBindXBResponseBody {
 	return s
 }
 
+func (s *UnBindXBResponseBody) SetData(v *UnBindXBResponseBodyData) *UnBindXBResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *UnBindXBResponseBody) SetMessage(v string) *UnBindXBResponseBody {
 	s.Message = &v
 	return s
 }
 
+func (s *UnBindXBResponseBody) SetRequestId(v string) *UnBindXBResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *UnBindXBResponseBody) SetSuccess(v bool) *UnBindXBResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnBindXBResponseBodyData struct {
+	// 返回状态码 0000表示成功 其他表示失败
+	//
+	// example:
+	//
+	// 0000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回信息
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回是否成功 true  表示成功 false表示失败
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnBindXBResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnBindXBResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UnBindXBResponseBodyData) SetCode(v string) *UnBindXBResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *UnBindXBResponseBodyData) SetMessage(v string) *UnBindXBResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *UnBindXBResponseBodyData) SetSuccess(v bool) *UnBindXBResponseBodyData {
 	s.Success = &v
 	return s
 }

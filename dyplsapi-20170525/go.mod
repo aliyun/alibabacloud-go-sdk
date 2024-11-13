@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/dyplsapi-20170525/v2
+module github.com/alibabacloud-go/dyplsapi-20170525/v3
 
 go 1.14
 
