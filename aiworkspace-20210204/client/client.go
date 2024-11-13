@@ -1703,6 +1703,7 @@ type CreateCodeSourceRequest struct {
 	//
 	// master
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
 	// example:
 	//
 	// https://code.aliyun.com/******
@@ -1752,6 +1753,11 @@ func (s *CreateCodeSourceRequest) SetAccessibility(v string) *CreateCodeSourceRe
 
 func (s *CreateCodeSourceRequest) SetCodeBranch(v string) *CreateCodeSourceRequest {
 	s.CodeBranch = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetCodeCommit(v string) *CreateCodeSourceRequest {
+	s.CodeCommit = &v
 	return s
 }
 
@@ -12195,6 +12201,10 @@ func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceReque
 
 	if !tea.BoolValue(util.IsUnset(request.CodeBranch)) {
 		body["CodeBranch"] = request.CodeBranch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeCommit)) {
+		body["CodeCommit"] = request.CodeCommit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CodeRepo)) {
