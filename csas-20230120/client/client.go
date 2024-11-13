@@ -11196,6 +11196,213 @@ func (s *ListTagsForPrivateAccessPolicyResponse) SetBody(v *ListTagsForPrivateAc
 	return s
 }
 
+type ListUserApplicationsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// private_access_application_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+}
+
+func (s ListUserApplicationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserApplicationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserApplicationsRequest) SetCurrentPage(v int32) *ListUserApplicationsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListUserApplicationsRequest) SetName(v string) *ListUserApplicationsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserApplicationsRequest) SetPageSize(v int32) *ListUserApplicationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserApplicationsRequest) SetSaseUserId(v string) *ListUserApplicationsRequest {
+	s.SaseUserId = &v
+	return s
+}
+
+type ListUserApplicationsResponseBody struct {
+	Applications []*ListUserApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListUserApplicationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserApplicationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserApplicationsResponseBody) SetApplications(v []*ListUserApplicationsResponseBodyApplications) *ListUserApplicationsResponseBody {
+	s.Applications = v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBody) SetRequestId(v string) *ListUserApplicationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBody) SetTotalNum(v int32) *ListUserApplicationsResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListUserApplicationsResponseBodyApplications struct {
+	// example:
+	//
+	// Block
+	Action    *string   `json:"Action,omitempty" xml:"Action,omitempty"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pa-application-b927baf3e592****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// private_access_application_name
+	Name       *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges []*ListUserApplicationsResponseBodyApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s ListUserApplicationsResponseBodyApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserApplicationsResponseBodyApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserApplicationsResponseBodyApplications) SetAction(v string) *ListUserApplicationsResponseBodyApplications {
+	s.Action = &v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBodyApplications) SetAddresses(v []*string) *ListUserApplicationsResponseBodyApplications {
+	s.Addresses = v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBodyApplications) SetApplicationId(v string) *ListUserApplicationsResponseBodyApplications {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBodyApplications) SetName(v string) *ListUserApplicationsResponseBodyApplications {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBodyApplications) SetPortRanges(v []*ListUserApplicationsResponseBodyApplicationsPortRanges) *ListUserApplicationsResponseBodyApplications {
+	s.PortRanges = v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBodyApplications) SetProtocol(v string) *ListUserApplicationsResponseBodyApplications {
+	s.Protocol = &v
+	return s
+}
+
+type ListUserApplicationsResponseBodyApplicationsPortRanges struct {
+	// example:
+	//
+	// 80
+	Begin *string `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// example:
+	//
+	// 81
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+}
+
+func (s ListUserApplicationsResponseBodyApplicationsPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserApplicationsResponseBodyApplicationsPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserApplicationsResponseBodyApplicationsPortRanges) SetBegin(v string) *ListUserApplicationsResponseBodyApplicationsPortRanges {
+	s.Begin = &v
+	return s
+}
+
+func (s *ListUserApplicationsResponseBodyApplicationsPortRanges) SetEnd(v string) *ListUserApplicationsResponseBodyApplicationsPortRanges {
+	s.End = &v
+	return s
+}
+
+type ListUserApplicationsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserApplicationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserApplicationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserApplicationsResponse) SetHeaders(v map[string]*string) *ListUserApplicationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserApplicationsResponse) SetStatusCode(v int32) *ListUserApplicationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserApplicationsResponse) SetBody(v *ListUserApplicationsResponseBody) *ListUserApplicationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserDevicesRequest struct {
 	AppStatuses []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -12250,6 +12457,249 @@ func (s *ListUserGroupsForRegistrationPolicyResponse) SetStatusCode(v int32) *Li
 }
 
 func (s *ListUserGroupsForRegistrationPolicyResponse) SetBody(v *ListUserGroupsForRegistrationPolicyResponseBody) *ListUserGroupsForRegistrationPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserPrivateAccessPoliciesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+}
+
+func (s ListUserPrivateAccessPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPrivateAccessPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPrivateAccessPoliciesRequest) SetCurrentPage(v int32) *ListUserPrivateAccessPoliciesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesRequest) SetName(v string) *ListUserPrivateAccessPoliciesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesRequest) SetPageSize(v int32) *ListUserPrivateAccessPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesRequest) SetSaseUserId(v string) *ListUserPrivateAccessPoliciesRequest {
+	s.SaseUserId = &v
+	return s
+}
+
+type ListUserPrivateAccessPoliciesResponseBody struct {
+	Polices []*ListUserPrivateAccessPoliciesResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9D852F87-AFB5-51B8-AACD-F7D0EFB8277D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListUserPrivateAccessPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPrivateAccessPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBody) SetPolices(v []*ListUserPrivateAccessPoliciesResponseBodyPolices) *ListUserPrivateAccessPoliciesResponseBody {
+	s.Polices = v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBody) SetRequestId(v string) *ListUserPrivateAccessPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBody) SetTotalNum(v int32) *ListUserPrivateAccessPoliciesResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListUserPrivateAccessPoliciesResponseBodyPolices struct {
+	CustomUserAttributes []*ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// device_attribute_name
+	DeviceAttributeName *string `json:"DeviceAttributeName,omitempty" xml:"DeviceAttributeName,omitempty"`
+	// example:
+	//
+	// user_group_name
+	MatchedUserGroup *string `json:"MatchedUserGroup,omitempty" xml:"MatchedUserGroup,omitempty"`
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Allow
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// example:
+	//
+	// pa-policy-1b0d0e8b4bcf****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Custom
+	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+}
+
+func (s ListUserPrivateAccessPoliciesResponseBodyPolices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPrivateAccessPoliciesResponseBodyPolices) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetCustomUserAttributes(v []*ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.CustomUserAttributes = v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetDeviceAttributeName(v string) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.DeviceAttributeName = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetMatchedUserGroup(v string) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.MatchedUserGroup = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetName(v string) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetPolicyAction(v string) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.PolicyAction = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetPolicyId(v string) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetPriority(v int64) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetUserGroupMode(v string) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.UserGroupMode = &v
+	return s
+}
+
+type ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes struct {
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
+	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes) SetIdpId(v int32) *ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes {
+	s.IdpId = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes) SetRelation(v string) *ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes {
+	s.Relation = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes) SetUserGroupType(v string) *ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes {
+	s.UserGroupType = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes) SetValue(v string) *ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes {
+	s.Value = &v
+	return s
+}
+
+type ListUserPrivateAccessPoliciesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserPrivateAccessPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserPrivateAccessPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPrivateAccessPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPrivateAccessPoliciesResponse) SetHeaders(v map[string]*string) *ListUserPrivateAccessPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponse) SetStatusCode(v int32) *ListUserPrivateAccessPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponse) SetBody(v *ListUserPrivateAccessPoliciesResponseBody) *ListUserPrivateAccessPoliciesResponse {
 	s.Body = v
 	return s
 }
@@ -19135,6 +19585,62 @@ func (client *Client) ListTagsForPrivateAccessPolicy(request *ListTagsForPrivate
 
 // Summary:
 //
+// 列表查询用户应用权限
+//
+// @param request - ListUserApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserApplicationsResponse
+func (client *Client) ListUserApplicationsWithOptions(request *ListUserApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListUserApplicationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserApplications"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表查询用户应用权限
+//
+// @param request - ListUserApplicationsRequest
+//
+// @return ListUserApplicationsResponse
+func (client *Client) ListUserApplications(request *ListUserApplicationsRequest) (_result *ListUserApplicationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserApplicationsResponse{}
+	_body, _err := client.ListUserApplicationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量查询用户设备列表
 //
 // @param request - ListUserDevicesRequest
@@ -19350,6 +19856,62 @@ func (client *Client) ListUserGroupsForRegistrationPolicy(request *ListUserGroup
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserGroupsForRegistrationPolicyResponse{}
 	_body, _err := client.ListUserGroupsForRegistrationPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表查询用户零信任策略
+//
+// @param request - ListUserPrivateAccessPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserPrivateAccessPoliciesResponse
+func (client *Client) ListUserPrivateAccessPoliciesWithOptions(request *ListUserPrivateAccessPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListUserPrivateAccessPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserPrivateAccessPolicies"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserPrivateAccessPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列表查询用户零信任策略
+//
+// @param request - ListUserPrivateAccessPoliciesRequest
+//
+// @return ListUserPrivateAccessPoliciesResponse
+func (client *Client) ListUserPrivateAccessPolicies(request *ListUserPrivateAccessPoliciesRequest) (_result *ListUserPrivateAccessPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserPrivateAccessPoliciesResponse{}
+	_body, _err := client.ListUserPrivateAccessPoliciesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
