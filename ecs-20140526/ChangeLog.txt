@@ -1,3 +1,12 @@
+2024-11-13 Version: v4.26.6
+- Update API CreateNetworkInterface: add param SourceDestCheck.
+- Update API CreateNetworkInterface: update response param.
+- Update API DescribeInstanceHistoryEvents: add param MaxResults.
+- Update API DescribeInstanceHistoryEvents: add param NextToken.
+- Update API DescribeInstanceHistoryEvents: update response param.
+- Update API RunInstances: update param NetworkInterface.
+
+
 2024-11-04 Version: v4.26.5
 - Update API CreateAutoProvisioningGroup: add param ResourcePoolOptions.
 - Update API CreateCommand: add param Launcher.
