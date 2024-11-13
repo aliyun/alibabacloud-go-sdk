@@ -10,9 +10,9 @@ import (
 )
 
 type AddIpRequest struct {
-	// The ID of the Anti-DDoS Origin Enterprise instance.
+	// The ID of the Anti-DDoS Origin instance.
 	//
-	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
 	//
 	// This parameter is required.
 	//
@@ -20,7 +20,7 @@ type AddIpRequest struct {
 	//
 	// ddosbgp-cn-npk1z7t9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of IP addresses that you want to add to the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
+	// The IP addresses that you want to add to the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
 	//
 	// 	- **ip**: required. The IP address that you want to add. Data type: string.
 	//
@@ -34,7 +34,7 @@ type AddIpRequest struct {
 	//
 	// [{"ip":"1.XX.XX.1"},{"ip":"2.XX.XX.2"}]
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	// The region ID of the Anti-DDoS Origin Enterprise instance.
+	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
 	//
@@ -42,9 +42,9 @@ type AddIpRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	// For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -1542,9 +1542,9 @@ func (s *DeleteBlackholeResponse) SetBody(v *DeleteBlackholeResponseBody) *Delet
 }
 
 type DeleteIpRequest struct {
-	// The ID of the Anti-DDoS Origin Enterprise instance.
+	// The ID of the Anti-DDoS Origin instance.
 	//
-	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
 	//
 	// This parameter is required.
 	//
@@ -1552,13 +1552,13 @@ type DeleteIpRequest struct {
 	//
 	// ddosbgp-cn-npk1z7t9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of IP addresses that you want to remove from the Anti-DDoS Origin Enterprise instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+	// The IP addresses that you want to remove from the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
 	// 	- **ip**: required. The IP address that you want to remove. Data type: string.
 	//
 	//     **
 	//
-	//     **Note*	- The IP addresses that you want to remove must be protected by the Anti-DDoS Origin Enterprise instance.
+	//     **Note*	- The IP addresses that you want to remove must be protected by the Anti-DDoS Origin instance.
 	//
 	// This parameter is required.
 	//
@@ -1566,7 +1566,7 @@ type DeleteIpRequest struct {
 	//
 	// [{"ip":"1.XX.XX.1"},{"ip":"2.XX.XX.2"}]
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	// The region ID of the Anti-DDoS Origin Enterprise instance.
+	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
 	//
@@ -1574,9 +1574,9 @@ type DeleteIpRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	// For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -2693,6 +2693,15 @@ func (s *DescribeDdosOriginInstanceBillRequest) SetType(v string) *DescribeDdosO
 }
 
 type DescribeDdosOriginInstanceBillResponseBody struct {
+	// The asset status.
+	//
+	// 	- **0**: No asset is added to the instance for protection.
+	//
+	// 	- **1**: Assets are added to the instance for protection.
+	//
+	// example:
+	//
+	// 0
 	AssetStatus *int32 `json:"AssetStatus,omitempty" xml:"AssetStatus,omitempty"`
 	// The payment status. Valid values:
 	//
@@ -2728,18 +2737,19 @@ type DescribeDdosOriginInstanceBillResponseBody struct {
 	IpCountOrFunctionList []*DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList `json:"IpCountOrFunctionList,omitempty" xml:"IpCountOrFunctionList,omitempty" type:"Repeated"`
 	// The IP address distribution. The JSON struct contains the following fields:
 	//
-	// 	- **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland
+	// 	- **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland.
 	//
-	// 	- **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland
+	// 	- **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland.
 	//
-	// 	- **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland
+	// 	- **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland.
 	//
-	// 	- **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland
+	// 	- **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland.
 	//
 	// example:
 	//
 	// {\\"eipCnIpCount\\":6,\\"eipOvIpCount\\":17,\\"standardAssetsCnIpCount\\":2,\\"standardAssetsOvIpCount\\":0}
-	IpInfo *string `json:"IpInfo,omitempty" xml:"IpInfo,omitempty"`
+	IpInfo             *string                                                         `json:"IpInfo,omitempty" xml:"IpInfo,omitempty"`
+	MonthlySummaryList []*DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList `json:"MonthlySummaryList,omitempty" xml:"MonthlySummaryList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
@@ -2837,6 +2847,11 @@ func (s *DescribeDdosOriginInstanceBillResponseBody) SetIpCountOrFunctionList(v 
 
 func (s *DescribeDdosOriginInstanceBillResponseBody) SetIpInfo(v string) *DescribeDdosOriginInstanceBillResponseBody {
 	s.IpInfo = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetMonthlySummaryList(v []*DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) *DescribeDdosOriginInstanceBillResponseBody {
+	s.MonthlySummaryList = v
 	return s
 }
 
@@ -2958,11 +2973,11 @@ func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetTotalFlow(v int6
 type DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList struct {
 	// The application scope of the instance. Valid values:
 	//
-	// 	- **only_mainland_china**: regions in the Chinese mainland
+	// 	- **only_mainland_china**: regions in the Chinese mainland.
 	//
-	// 	- **global**: all regions
+	// 	- **global**: all regions.
 	//
-	// 	- **international_and_hmt**: regions outside the Chinese mainland
+	// 	- **international_and_hmt**: regions outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -2982,15 +2997,15 @@ type DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList struct {
 	IpCntOv *int64 `json:"IpCntOv,omitempty" xml:"IpCntOv,omitempty"`
 	// The bill distribution by account. The JSON struct contains the following fields:
 	//
-	// 	- **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland
+	// 	- **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland.
 	//
-	// 	- **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland
+	// 	- **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland.
 	//
-	// 	- **memberUid**: the owner account
+	// 	- **memberUid**: the owner account.
 	//
-	// 	- **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland
+	// 	- **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland.
 	//
-	// 	- **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland
+	// 	- **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland.
 	//
 	// >  If the memberUid field in the JSON struct is empty, the information about the current account is returned.
 	//
@@ -3036,6 +3051,71 @@ func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetMem
 
 func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetTime(v int64) *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList {
 	s.Time = &v
+	return s
+}
+
+type DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList struct {
+	EnableDays             *int32  `json:"EnableDays,omitempty" xml:"EnableDays,omitempty"`
+	FlowCn                 *int64  `json:"FlowCn,omitempty" xml:"FlowCn,omitempty"`
+	FlowIntl               *int64  `json:"FlowIntl,omitempty" xml:"FlowIntl,omitempty"`
+	IpCountCn              *int32  `json:"IpCountCn,omitempty" xml:"IpCountCn,omitempty"`
+	IpCountIntl            *int32  `json:"IpCountIntl,omitempty" xml:"IpCountIntl,omitempty"`
+	MemberUid              *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	StandardAssetsFlowCn   *int64  `json:"StandardAssetsFlowCn,omitempty" xml:"StandardAssetsFlowCn,omitempty"`
+	StandardAssetsFlowIntl *int64  `json:"StandardAssetsFlowIntl,omitempty" xml:"StandardAssetsFlowIntl,omitempty"`
+	Uid                    *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetEnableDays(v int32) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.EnableDays = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetFlowCn(v int64) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.FlowCn = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetFlowIntl(v int64) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.FlowIntl = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetIpCountCn(v int32) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.IpCountCn = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetIpCountIntl(v int32) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.IpCountIntl = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetMemberUid(v string) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetStandardAssetsFlowCn(v int64) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.StandardAssetsFlowCn = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetStandardAssetsFlowIntl(v int64) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.StandardAssetsFlowIntl = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) SetUid(v string) *DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList {
+	s.Uid = &v
 	return s
 }
 
@@ -3269,7 +3349,8 @@ type DescribeInstanceListRequest struct {
 	// example:
 	//
 	// 0
-	InstanceType     *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The mitigation plan of the Anti-DDoS Origin instance.
 	InstanceTypeList []*string `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
 	// The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
 	//
@@ -3342,8 +3423,9 @@ type DescribeInstanceListRequest struct {
 	// example:
 	//
 	// rg-acfm2pz25js****
-	ResourceGroupId *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*DescribeInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags that are added to the Anti-DDoS Origin instance.
+	Tag []*DescribeInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceListRequest) String() string {
@@ -3420,13 +3502,13 @@ func (s *DescribeInstanceListRequest) SetTag(v []*DescribeInstanceListRequestTag
 }
 
 type DescribeInstanceListRequestTag struct {
-	// The key of the tag that is added to the Anti-DDoS Origin instance to query.
+	// The key of the tag that is added to the Anti-DDoS Origin instance.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the Anti-DDoS Origin instance to query.
+	// The value of the tag that is added to the Anti-DDoS Origin instance.
 	//
 	// example:
 	//
@@ -3515,9 +3597,13 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	BlackholdingCount *string `json:"BlackholdingCount,omitempty" xml:"BlackholdingCount,omitempty"`
 	// The type of the instance.
 	//
-	// 	- **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the China site (aliyun.com)
+	// 	- **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the China site (aliyun.com).
 	//
-	// 	- **ddos_ddosorigin_public_intl**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the International site (alibabacloud.com)
+	// 	- **ddos_ddosorigin_public_intl**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the International site (alibabacloud.com).
+	//
+	// example:
+	//
+	// ddos_ddosorigin_public_cn
 	CommodityType *string `json:"CommodityType,omitempty" xml:"CommodityType,omitempty"`
 	// The application scope of the instance.
 	//
@@ -3528,6 +3614,10 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	// 	- **3**: The instance supports public IP addresses in regions outside the Chinese mainland.
 	//
 	// 	- **4**: The instance supports public IP addresses in a region in or outside the Chinese mainland.
+	//
+	// example:
+	//
+	// 1
 	CoverageType *int32 `json:"CoverageType,omitempty" xml:"CoverageType,omitempty"`
 	// The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
 	//
@@ -3673,6 +3763,7 @@ func (s *DescribeInstanceListResponseBodyInstanceList) SetStatus(v string) *Desc
 }
 
 type DescribeInstanceListResponseBodyInstanceListAutoProtectCondition struct {
+	// The events that trigger automatic association.
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 }
 
@@ -3719,9 +3810,9 @@ func (s *DescribeInstanceListResponse) SetBody(v *DescribeInstanceListResponseBo
 }
 
 type DescribeInstanceSpecsRequest struct {
-	// The ID of the Anti-DDoS Origin Enterprise instance. This parameter value is a string consisting of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
+	// The ID of the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
 	//
-	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances in a specific region.
 	//
 	// This parameter is required.
 	//
@@ -3729,17 +3820,17 @@ type DescribeInstanceSpecsRequest struct {
 	//
 	// ["ddosbgp-cn-n6w1r7nz****"]
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
-	// The region ID of the Anti-DDoS Origin Enterprise instance. Default value: **cn-hangzhou**, which indicates the China (Hangzhou) region.
+	// The region ID of the Anti-DDoS Origin instance. Default value: **cn-hangzhou**, which indicates the China (Hangzhou) region.
 	//
-	// >  If your instance does not reside in the China (Hangzhou) region, you must specify this parameter to the region ID of your instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+	// >  If your instance does not reside in the China (Hangzhou) region, you must set this parameter to the region ID of your instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the regions of assets that can be protected by Anti-DDoS Origin in a specific region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin Enterprise instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	// For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -3771,7 +3862,7 @@ func (s *DescribeInstanceSpecsRequest) SetResourceGroupId(v string) *DescribeIns
 }
 
 type DescribeInstanceSpecsResponseBody struct {
-	// The specifications of the Anti-DDoS Origin Enterprise instance, including whether best-effort protection is enabled, the number of available best-effort protection sessions, and the number of used best-effort protection sessions.
+	// The specifications of the Anti-DDoS Origin instance, including whether best-effort protection is enabled, the number of available best-effort protection sessions, and the number of used best-effort protection sessions.
 	InstanceSpecs []*DescribeInstanceSpecsResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -3818,8 +3909,15 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	//
 	// 30
 	DefenseTimesPercent *int32 `json:"DefenseTimesPercent,omitempty" xml:"DefenseTimesPercent,omitempty"`
-	DowngradeStatus     *int32 `json:"DowngradeStatus,omitempty" xml:"DowngradeStatus,omitempty"`
-	// The region ID of the Anti-DDoS Origin Enterprise instance.
+	// Indicates whether the instance is downgraded. Valid value:
+	//
+	// 	- **8**: The instance is downgraded due to excessive bandwidth usage.
+	//
+	// example:
+	//
+	// 8
+	DowngradeStatus *int32 `json:"DowngradeStatus,omitempty" xml:"DowngradeStatus,omitempty"`
+	// The ID of the Anti-DDoS Origin instance.
 	//
 	// example:
 	//
@@ -3835,11 +3933,11 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	//
 	// 1
 	IsFullDefenseMode *int32 `json:"IsFullDefenseMode,omitempty" xml:"IsFullDefenseMode,omitempty"`
-	// The configurations of the Anti-DDoS Origin Enterprise instance, including the number of protected IP addresses and protection bandwidth.
+	// The configurations of the Anti-DDoS Origin instance, including the number of protected IP addresses and protection bandwidth.
 	PackConfig *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig `json:"PackConfig,omitempty" xml:"PackConfig,omitempty" type:"Struct"`
-	// The region ID of the Anti-DDoS Origin Enterprise instance.
+	// The region ID of the Anti-DDoS Origin instance.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
 	//
 	// example:
 	//
@@ -3918,8 +4016,22 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig struct {
 	// example:
 	//
 	// 0
-	BindIpCount   *int32  `json:"BindIpCount,omitempty" xml:"BindIpCount,omitempty"`
-	ElasticBwMbps *int32  `json:"ElasticBwMbps,omitempty" xml:"ElasticBwMbps,omitempty"`
+	BindIpCount *int32 `json:"BindIpCount,omitempty" xml:"BindIpCount,omitempty"`
+	// The burstable clean bandwidth. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 100
+	ElasticBwMbps *int32 `json:"ElasticBwMbps,omitempty" xml:"ElasticBwMbps,omitempty"`
+	// The metering method of burstable clean bandwidth. Valid values:
+	//
+	// 	- **month**: the monthly 95th percentile metering method.
+	//
+	// 	- **day**: the daily 95th percentile metering method.
+	//
+	// example:
+	//
+	// day
 	ElasticBwMode *string `json:"ElasticBwMode,omitempty" xml:"ElasticBwMode,omitempty"`
 	// The burstable protection bandwidth of each protected IP address. Unit: Gbit/s.
 	//
@@ -3945,13 +4057,13 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig struct {
 	//
 	// 200
 	NormalBandwidth *int32 `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
-	// The burstable protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
+	// The burstable protection bandwidth of the Anti-DDoS Origin instance. Unit: Gbit/s.
 	//
 	// example:
 	//
 	// 300
 	PackAdvThre *int32 `json:"PackAdvThre,omitempty" xml:"PackAdvThre,omitempty"`
-	// The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
+	// The basic protection bandwidth of the Anti-DDoS Origin instance. Unit: Gbit/s.
 	//
 	// example:
 	//
@@ -5481,17 +5593,17 @@ func (s *DescribeRdStatusResponse) SetBody(v *DescribeRdStatusResponseBody) *Des
 }
 
 type DescribeRegionsRequest struct {
-	// The region ID to query. The default value is **cn-hangzhou**, which indicates that the regions of cloud assets that are supported by an Anti-DDoS Origin instance in the China (Hangzhou) region are queried.
+	// The ID of the region. The default value is **cn-hangzhou**. If the default value is used, the regions of cloud assets that can be protected by Anti-DDoS Origin in the China (Hangzhou) region are queried.
 	//
-	// For more information about the IDs of other regions, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// If you want to specify another value for **RegionId**, see [Regions and Zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	// For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -5524,19 +5636,19 @@ type DescribeRegionsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about regions of the cloud assets that are supported by the Anti-DDoS Origin instance. The information includes region IDs and names.
+	// The information about the regions of cloud assets that can be protected by Anti-DDoS Origin. The information includes region IDs and names.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F7CA8B4E-FB15-4336-A351-8DC29D66EA82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request is successful.
+	// 	- **true**
 	//
-	// 	- **false**: The request failed.
+	// 	- **false**
 	//
 	// example:
 	//
@@ -5573,7 +5685,7 @@ func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsRespons
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The English name of the region where the cloud assets reside.
+	// The English name of the region.
 	//
 	// example:
 	//
@@ -5585,7 +5697,11 @@ type DescribeRegionsResponseBodyRegions struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region where the cloud assets reside.
+	// The Chinese name of the region.
+	//
+	// example:
+	//
+	// 华东1（杭州）
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
@@ -6577,11 +6693,25 @@ type ListPolicyRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The service type. Valid values:
+	//
+	// 	- **ecs**: Elastic Compute Service (ECS).
+	//
+	// 	- **slb**: Server Load Balancer (SLB).
+	//
+	// 	- **eip**: Elastic IP Address (EIP).
+	//
+	// 	- **gf-eip**: EIP with Anti-DDoS (Enhanced) enabled.
+	//
+	// >  This parameter is available only if Type is set to `default`.
+	//
 	// example:
 	//
 	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The type of the policy. Valid values:
+	//
+	// 	- **default**: the default mitigation policy.
 	//
 	// 	- **l3**: IP-specific mitigation policies.
 	//
@@ -6687,11 +6817,15 @@ type ListPolicyResponseBodyPolicyList struct {
 	//
 	// test**
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The remarks of the policy.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the policy. Valid values:
+	//
+	// 	- **default**: the default mitigation policy.
 	//
 	// 	- **l3**: IP-specific mitigation policies.
 	//
@@ -7690,7 +7824,12 @@ type ListPolicyAttachmentResponseBodyAttachmentList struct {
 	// example:
 	//
 	// test**
-	PolicyName   *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// test
 	PolicyRemark *string `json:"PolicyRemark,omitempty" xml:"PolicyRemark,omitempty"`
 	// The type of the policy. Valid values:
 	//
@@ -8316,7 +8455,7 @@ type ModifyPolicyRequest struct {
 	//
 	// 11
 	ActionType *int32 `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The content of the policy.
+	// The policy content.
 	Content *ModifyPolicyRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The ID of the policy.
 	//
@@ -8578,7 +8717,7 @@ type ModifyPolicyRequestContentFingerPrintRuleList struct {
 	//
 	// abcd
 	PayloadBytes *string `json:"PayloadBytes,omitempty" xml:"PayloadBytes,omitempty"`
-	// The type of the protocol. Valid value:
+	// The type of the protocol. Valid values:
 	//
 	// 	- **tcp**
 	//
@@ -8884,7 +9023,7 @@ type ModifyPolicyRequestContentPortRuleList struct {
 	//
 	// c52c2fa6-fdac-40c4-8753-be7c*********
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The action triggered if the rule is matched. Valid value:
+	// The action triggered if the rule is matched. Valid values:
 	//
 	// 	- **drop**: The traffic is discarded.
 	//
@@ -9009,11 +9148,11 @@ type ModifyPolicyRequestContentSourceBlockList struct {
 	ExceedLimitTimes *int32 `json:"ExceedLimitTimes,omitempty" xml:"ExceedLimitTimes,omitempty"`
 	// The type of the source rate limit. Valid values:
 	//
-	// 	- **3**: the PPS limit on source IP addresses.
+	// 	- **3**: the pps limit on source IP addresses.
 	//
 	// 	- **4**: the bandwidth limit on source IP addresses.
 	//
-	// 	- **5**: the PPS limit on source SYN packets.
+	// 	- **5**: the pps limit on source SYN packets.
 	//
 	// 	- **6**: the bandwidth limit on source SYN packets.
 	//
@@ -9060,7 +9199,7 @@ type ModifyPolicyRequestContentSourceLimit struct {
 	//
 	// 2048
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The packets per second (PPS) limit on source IP addresses.
+	// The packets per second (pps) limit on source IP addresses.
 	//
 	// example:
 	//
@@ -9072,7 +9211,7 @@ type ModifyPolicyRequestContentSourceLimit struct {
 	//
 	// 2048
 	SynBps *int32 `json:"SynBps,omitempty" xml:"SynBps,omitempty"`
-	// The PPS limit on source SYN packets.
+	// The pps limit on source SYN packets.
 	//
 	// example:
 	//
@@ -9161,7 +9300,7 @@ type ModifyPolicyShrinkRequest struct {
 	//
 	// 11
 	ActionType *int32 `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The content of the policy.
+	// The policy content.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the policy.
 	//
@@ -9259,7 +9398,7 @@ func (s *ModifyPolicyResponse) SetBody(v *ModifyPolicyResponseBody) *ModifyPolic
 }
 
 type ModifyPolicyContentRequest struct {
-	// The content of the policy.
+	// The policy content.
 	Content *ModifyPolicyContentRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The ID of the policy.
 	//
@@ -9808,7 +9947,7 @@ type ModifyPolicyContentRequestContentPortRuleList struct {
 	//
 	// 412a7312-58ff-4e32-a202-0ab0*******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The action triggered if the rule is matched. Valid value:
+	// The action triggered if the rule is matched. Valid values:
 	//
 	// 	- **drop**: The traffic is discarded.
 	//
@@ -9933,11 +10072,11 @@ type ModifyPolicyContentRequestContentSourceBlockList struct {
 	ExceedLimitTimes *int32 `json:"ExceedLimitTimes,omitempty" xml:"ExceedLimitTimes,omitempty"`
 	// The type of the source rate limit. Valid values:
 	//
-	// 	- **3**: the PPS limit on source IP addresses.
+	// 	- **3**: the pps limit on source IP addresses.
 	//
 	// 	- **4**: the bandwidth limit on source IP addresses.
 	//
-	// 	- **5**: the PPS limit on source SYN packets.
+	// 	- **5**: the pps limit on source SYN packets.
 	//
 	// 	- **6**: the bandwidth limit on source SYN packets.
 	//
@@ -9984,7 +10123,7 @@ type ModifyPolicyContentRequestContentSourceLimit struct {
 	//
 	// 2048
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The packets per second (PPS) limit on source IP addresses.
+	// The packets per second (pps) limit on source IP addresses.
 	//
 	// example:
 	//
@@ -9996,7 +10135,7 @@ type ModifyPolicyContentRequestContentSourceLimit struct {
 	//
 	// 2048
 	SynBps *int32 `json:"SynBps,omitempty" xml:"SynBps,omitempty"`
-	// The PPS limit on source SYN packets.
+	// The pps limit on source SYN packets.
 	//
 	// example:
 	//
@@ -10033,7 +10172,7 @@ func (s *ModifyPolicyContentRequestContentSourceLimit) SetSynPps(v int32) *Modif
 }
 
 type ModifyPolicyContentShrinkRequest struct {
-	// The content of the policy.
+	// The policy content.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the policy.
 	//
@@ -11092,7 +11231,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+// Adds IP addresses to an Anti-DDoS Origin instance.
 //
 // @param request - AddIpRequest
 //
@@ -11146,7 +11285,7 @@ func (client *Client) AddIpWithOptions(request *AddIpRequest, runtime *util.Runt
 
 // Summary:
 //
-// Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+// Adds IP addresses to an Anti-DDoS Origin instance.
 //
 // @param request - AddIpRequest
 //
@@ -11882,7 +12021,7 @@ func (client *Client) DeleteBlackhole(request *DeleteBlackholeRequest) (_result 
 
 // Summary:
 //
-// Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+// Removes specific IP addresses from an Anti-DDoS Origin instance.
 //
 // Description:
 //
@@ -11940,7 +12079,7 @@ func (client *Client) DeleteIpWithOptions(request *DeleteIpRequest, runtime *uti
 
 // Summary:
 //
-// Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+// Removes specific IP addresses from an Anti-DDoS Origin instance.
 //
 // Description:
 //
@@ -12698,6 +12837,10 @@ func (client *Client) DescribeInstanceList(request *DescribeInstanceListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the specifications of a specific Anti-DDoS Origin instance.
+//
 // @param request - DescribeInstanceSpecsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12744,6 +12887,10 @@ func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the specifications of a specific Anti-DDoS Origin instance.
+//
 // @param request - DescribeInstanceSpecsRequest
 //
 // @return DescribeInstanceSpecsResponse
@@ -13255,7 +13402,7 @@ func (client *Client) DescribeRdStatus() (_result *DescribeRdStatusResponse, _er
 
 // Summary:
 //
-// Queries the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+// Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -13301,7 +13448,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+// Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
 //
 // @param request - DescribeRegionsRequest
 //
