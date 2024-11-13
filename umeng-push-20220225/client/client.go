@@ -292,7 +292,9 @@ type ChannelProperties struct {
 	// 取值为"NORMAL"和"HIGH",默认为”NORMAL”
 	HuaweiMessageUrgency *string `json:"huaweiMessageUrgency,omitempty" xml:"huaweiMessageUrgency,omitempty"`
 	MainActivity         *string `json:"mainActivity,omitempty" xml:"mainActivity,omitempty"`
+	OppoCategory         *string `json:"oppoCategory,omitempty" xml:"oppoCategory,omitempty"`
 	OppoChannelId        *string `json:"oppoChannelId,omitempty" xml:"oppoChannelId,omitempty"`
+	OppoNotifyLevel      *string `json:"oppoNotifyLevel,omitempty" xml:"oppoNotifyLevel,omitempty"`
 	// example:
 	//
 	// "true" ,默认为"false"，可不填
@@ -344,8 +346,18 @@ func (s *ChannelProperties) SetMainActivity(v string) *ChannelProperties {
 	return s
 }
 
+func (s *ChannelProperties) SetOppoCategory(v string) *ChannelProperties {
+	s.OppoCategory = &v
+	return s
+}
+
 func (s *ChannelProperties) SetOppoChannelId(v string) *ChannelProperties {
 	s.OppoChannelId = &v
+	return s
+}
+
+func (s *ChannelProperties) SetOppoNotifyLevel(v string) *ChannelProperties {
+	s.OppoNotifyLevel = &v
 	return s
 }
 
