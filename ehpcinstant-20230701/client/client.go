@@ -1880,6 +1880,7 @@ type GetJobResponseBodyJobInfoDeploymentPolicy struct {
 	// Dedicated
 	AllocationSpec *string                                           `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
 	Network        *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	Tags           []*GetJobResponseBodyJobInfoDeploymentPolicyTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetJobResponseBodyJobInfoDeploymentPolicy) String() string {
@@ -1897,6 +1898,11 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetAllocationSpec(v string) 
 
 func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetNetwork(v *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) *GetJobResponseBodyJobInfoDeploymentPolicy {
 	s.Network = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetTags(v []*GetJobResponseBodyJobInfoDeploymentPolicyTags) *GetJobResponseBodyJobInfoDeploymentPolicy {
+	s.Tags = v
 	return s
 }
 
@@ -1920,6 +1926,29 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) SetEnableExternalIpAd
 
 func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) SetVswitch(v []*string) *GetJobResponseBodyJobInfoDeploymentPolicyNetwork {
 	s.Vswitch = v
+	return s
+}
+
+type GetJobResponseBodyJobInfoDeploymentPolicyTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetJobResponseBodyJobInfoDeploymentPolicyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBodyJobInfoDeploymentPolicyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoDeploymentPolicyTags) SetTagKey(v string) *GetJobResponseBodyJobInfoDeploymentPolicyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoDeploymentPolicyTags) SetTagValue(v string) *GetJobResponseBodyJobInfoDeploymentPolicyTags {
+	s.TagValue = &v
 	return s
 }
 
