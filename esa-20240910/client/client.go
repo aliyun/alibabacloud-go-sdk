@@ -302,6 +302,7 @@ func (s *WafRuleConfigActions) SetResponse(v *WafRuleConfigActionsResponse) *Waf
 }
 
 type WafRuleConfigActionsBypass struct {
+	CustomRules  []*int64  `json:"CustomRules,omitempty" xml:"CustomRules,omitempty" type:"Repeated"`
 	RegularRules []*int64  `json:"RegularRules,omitempty" xml:"RegularRules,omitempty" type:"Repeated"`
 	RegularTypes []*string `json:"RegularTypes,omitempty" xml:"RegularTypes,omitempty" type:"Repeated"`
 	Skip         *string   `json:"Skip,omitempty" xml:"Skip,omitempty"`
@@ -314,6 +315,11 @@ func (s WafRuleConfigActionsBypass) String() string {
 
 func (s WafRuleConfigActionsBypass) GoString() string {
 	return s.String()
+}
+
+func (s *WafRuleConfigActionsBypass) SetCustomRules(v []*int64) *WafRuleConfigActionsBypass {
+	s.CustomRules = v
+	return s
 }
 
 func (s *WafRuleConfigActionsBypass) SetRegularRules(v []*int64) *WafRuleConfigActionsBypass {
@@ -1420,6 +1426,7 @@ func (s *BatchCreateRecordsRequest) SetSiteId(v int64) *BatchCreateRecordsReques
 }
 
 type BatchCreateRecordsRequestRecordList struct {
+	AuthConf *BatchCreateRecordsRequestRecordListAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
 	// example:
 	//
 	// web
@@ -1472,6 +1479,11 @@ func (s BatchCreateRecordsRequestRecordList) GoString() string {
 	return s.String()
 }
 
+func (s *BatchCreateRecordsRequestRecordList) SetAuthConf(v *BatchCreateRecordsRequestRecordListAuthConf) *BatchCreateRecordsRequestRecordList {
+	s.AuthConf = v
+	return s
+}
+
 func (s *BatchCreateRecordsRequestRecordList) SetBizName(v string) *BatchCreateRecordsRequestRecordList {
 	s.BizName = &v
 	return s
@@ -1504,6 +1516,47 @@ func (s *BatchCreateRecordsRequestRecordList) SetTtl(v int32) *BatchCreateRecord
 
 func (s *BatchCreateRecordsRequestRecordList) SetType(v string) *BatchCreateRecordsRequestRecordList {
 	s.Type = &v
+	return s
+}
+
+type BatchCreateRecordsRequestRecordListAuthConf struct {
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s BatchCreateRecordsRequestRecordListAuthConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateRecordsRequestRecordListAuthConf) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateRecordsRequestRecordListAuthConf) SetAccessKey(v string) *BatchCreateRecordsRequestRecordListAuthConf {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *BatchCreateRecordsRequestRecordListAuthConf) SetAuthType(v string) *BatchCreateRecordsRequestRecordListAuthConf {
+	s.AuthType = &v
+	return s
+}
+
+func (s *BatchCreateRecordsRequestRecordListAuthConf) SetRegion(v string) *BatchCreateRecordsRequestRecordListAuthConf {
+	s.Region = &v
+	return s
+}
+
+func (s *BatchCreateRecordsRequestRecordListAuthConf) SetSecretKey(v string) *BatchCreateRecordsRequestRecordListAuthConf {
+	s.SecretKey = &v
+	return s
+}
+
+func (s *BatchCreateRecordsRequestRecordListAuthConf) SetVersion(v string) *BatchCreateRecordsRequestRecordListAuthConf {
+	s.Version = &v
 	return s
 }
 
@@ -8201,32 +8254,87 @@ func (s *CreateWafRuleResponse) SetBody(v *CreateWafRuleResponseBody) *CreateWaf
 
 type CreateWaitingRoomRequest struct {
 	// This parameter is required.
-	CookieName                  *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	CustomPageHtml              *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	//
+	// example:
+	//
+	// __aliwaitingroom_example
+	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	// example:
+	//
+	// Hello%20world!
+	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// This parameter is required.
-	HostNameAndPath    []*CreateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
-	JsonResponseEnable *string                                    `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	Language           *string                                    `json:"Language,omitempty" xml:"Language,omitempty"`
+	HostNameAndPath []*CreateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
+	// example:
+	//
+	// on
+	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// example:
+	//
+	// enus
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// waitingroom_example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	QueueAllEnable    *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	// example:
+	//
+	// on
+	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// default
 	WaitingRoomType *string `json:"WaitingRoomType,omitempty" xml:"WaitingRoomType,omitempty"`
 }
 
@@ -8325,10 +8433,22 @@ func (s *CreateWaitingRoomRequest) SetWaitingRoomType(v string) *CreateWaitingRo
 
 type CreateWaitingRoomRequestHostNameAndPath struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test.
 	Subdomain *string `json:"Subdomain,omitempty" xml:"Subdomain,omitempty"`
 }
 
@@ -8357,32 +8477,87 @@ func (s *CreateWaitingRoomRequestHostNameAndPath) SetSubdomain(v string) *Create
 
 type CreateWaitingRoomShrinkRequest struct {
 	// This parameter is required.
-	CookieName                  *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	CustomPageHtml              *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	//
+	// example:
+	//
+	// __aliwaitingroom_example
+	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	// example:
+	//
+	// Hello%20world!
+	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// This parameter is required.
 	HostNameAndPathShrink *string `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty"`
-	JsonResponseEnable    *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	Language              *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// on
+	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// example:
+	//
+	// enus
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// waitingroom_example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	QueueAllEnable    *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	// example:
+	//
+	// on
+	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// default
 	WaitingRoomType *string `json:"WaitingRoomType,omitempty" xml:"WaitingRoomType,omitempty"`
 }
 
@@ -8480,6 +8655,9 @@ func (s *CreateWaitingRoomShrinkRequest) SetWaitingRoomType(v string) *CreateWai
 }
 
 type CreateWaitingRoomResponseBody struct {
+	// example:
+	//
+	// 85H66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13186,10 +13364,6 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	// example:
 	//
-	// sh prestart.sh "echo hello world"
-	PreStart *string `json:"PreStart,omitempty" xml:"PreStart,omitempty"`
-	// example:
-	//
 	// sh prestop.sh "echo hello world"
 	PreStop      *string                                                              `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProbeContent *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
@@ -13249,11 +13423,6 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetName(v stri
 
 func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetPostStart(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
 	s.PostStart = &v
-	return s
-}
-
-func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetPreStart(v string) *GetEdgeContainerAppVersionResponseBodyVersionContainers {
-	s.PreStart = &v
 	return s
 }
 
@@ -19073,10 +19242,6 @@ type ListEdgeContainerAppVersionsResponseBodyVersionsContainers struct {
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	// example:
 	//
-	// sh start.sh
-	PreStart *string `json:"PreStart,omitempty" xml:"PreStart,omitempty"`
-	// example:
-	//
 	// sh stop.sh
 	PreStop      *string                                                                 `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProbeContent *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
@@ -19125,11 +19290,6 @@ func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetName(v s
 
 func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetPostStart(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
 	s.PostStart = &v
-	return s
-}
-
-func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetPreStart(v string) *ListEdgeContainerAppVersionsResponseBodyVersionsContainers {
-	s.PreStart = &v
 	return s
 }
 
@@ -23990,7 +24150,8 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	// example:
 	//
 	// PREPAY
-	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	BillingMode      *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	BotInstanceLevel *string `json:"BotInstanceLevel,omitempty" xml:"BotInstanceLevel,omitempty"`
 	// example:
 	//
 	// domestic,overseas
@@ -23998,11 +24159,17 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	// example:
 	//
 	// YYYY-MM-DDThh:mm:ssZ
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime                      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossborderTraffic              *string `json:"CrossborderTraffic,omitempty" xml:"CrossborderTraffic,omitempty"`
+	DdosBurstableDomesticProtection *string `json:"DdosBurstableDomesticProtection,omitempty" xml:"DdosBurstableDomesticProtection,omitempty"`
+	DdosBurstableOverseasProtection *string `json:"DdosBurstableOverseasProtection,omitempty" xml:"DdosBurstableOverseasProtection,omitempty"`
+	DdosInstanceLevel               *string `json:"DdosInstanceLevel,omitempty" xml:"DdosInstanceLevel,omitempty"`
 	// example:
 	//
 	// 3
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EdgeRoutineRquest *string `json:"EdgeRoutineRquest,omitempty" xml:"EdgeRoutineRquest,omitempty"`
+	EdgeWafRequest    *string `json:"EdgeWafRequest,omitempty" xml:"EdgeWafRequest,omitempty"`
 	// example:
 	//
 	// YYYY-MM-DDThh:mm:ssZ
@@ -24010,11 +24177,14 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	// example:
 	//
 	// sp-xcdn-96wblslz****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Layer4Traffic     *string `json:"Layer4Traffic,omitempty" xml:"Layer4Traffic,omitempty"`
+	Layer4TrafficIntl *string `json:"Layer4TrafficIntl,omitempty" xml:"Layer4TrafficIntl,omitempty"`
 	// example:
 	//
 	// basic
-	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	PlanName    *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	PlanTraffic *string `json:"PlanTraffic,omitempty" xml:"PlanTraffic,omitempty"`
 	// example:
 	//
 	// normal
@@ -24022,8 +24192,10 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	// example:
 	//
 	// 1
-	SiteQuota *string                                                   `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
-	Sites     []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	SiteQuota           *string                                                   `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
+	Sites               []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	SmartRoutingRequest *string                                                   `json:"SmartRoutingRequest,omitempty" xml:"SmartRoutingRequest,omitempty"`
+	StaticRequest       *string                                                   `json:"StaticRequest,omitempty" xml:"StaticRequest,omitempty"`
 	// example:
 	//
 	// online
@@ -24043,6 +24215,11 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetBillingMode(v str
 	return s
 }
 
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetBotInstanceLevel(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.BotInstanceLevel = &v
+	return s
+}
+
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetCoverages(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
 	s.Coverages = &v
 	return s
@@ -24053,8 +24230,38 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetCreateTime(v stri
 	return s
 }
 
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetCrossborderTraffic(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.CrossborderTraffic = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetDdosBurstableDomesticProtection(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.DdosBurstableDomesticProtection = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetDdosBurstableOverseasProtection(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.DdosBurstableOverseasProtection = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetDdosInstanceLevel(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.DdosInstanceLevel = &v
+	return s
+}
+
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetDuration(v int32) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
 	s.Duration = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetEdgeRoutineRquest(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.EdgeRoutineRquest = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetEdgeWafRequest(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.EdgeWafRequest = &v
 	return s
 }
 
@@ -24068,8 +24275,23 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetInstanceId(v stri
 	return s
 }
 
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetLayer4Traffic(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.Layer4Traffic = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetLayer4TrafficIntl(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.Layer4TrafficIntl = &v
+	return s
+}
+
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetPlanName(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
 	s.PlanName = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetPlanTraffic(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.PlanTraffic = &v
 	return s
 }
 
@@ -24085,6 +24307,16 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetSiteQuota(v strin
 
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetSites(v []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
 	s.Sites = v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetSmartRoutingRequest(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.SmartRoutingRequest = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetStaticRequest(v string) *ListUserRatePlanInstancesResponseBodyInstanceInfo {
+	s.StaticRequest = &v
 	return s
 }
 
@@ -24184,8 +24416,9 @@ type ListWafManagedRulesRequest struct {
 	// example:
 	//
 	// 20
-	PageSize  *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryArgs *ListWafManagedRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	PageSize        *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProtectionLevel *int32                               `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	QueryArgs       *ListWafManagedRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -24227,6 +24460,11 @@ func (s *ListWafManagedRulesRequest) SetPageSize(v int32) *ListWafManagedRulesRe
 	return s
 }
 
+func (s *ListWafManagedRulesRequest) SetProtectionLevel(v int32) *ListWafManagedRulesRequest {
+	s.ProtectionLevel = &v
+	return s
+}
+
 func (s *ListWafManagedRulesRequest) SetQueryArgs(v *ListWafManagedRulesRequestQueryArgs) *ListWafManagedRulesRequest {
 	s.QueryArgs = v
 	return s
@@ -24245,11 +24483,7 @@ type ListWafManagedRulesRequestQueryArgs struct {
 	// example:
 	//
 	// example
-	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
-	// example:
-	//
-	// 1
-	ProtectionLevel  *int32   `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	IdNameLike       *string  `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
 	ProtectionLevels []*int32 `json:"ProtectionLevels,omitempty" xml:"ProtectionLevels,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -24272,11 +24506,6 @@ func (s *ListWafManagedRulesRequestQueryArgs) SetAction(v string) *ListWafManage
 
 func (s *ListWafManagedRulesRequestQueryArgs) SetIdNameLike(v string) *ListWafManagedRulesRequestQueryArgs {
 	s.IdNameLike = &v
-	return s
-}
-
-func (s *ListWafManagedRulesRequestQueryArgs) SetProtectionLevel(v int32) *ListWafManagedRulesRequestQueryArgs {
-	s.ProtectionLevel = &v
 	return s
 }
 
@@ -24315,6 +24544,7 @@ type ListWafManagedRulesShrinkRequest struct {
 	//
 	// 20
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProtectionLevel *int32  `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
 	// This parameter is required.
 	//
@@ -24354,6 +24584,11 @@ func (s *ListWafManagedRulesShrinkRequest) SetPageNumber(v int32) *ListWafManage
 
 func (s *ListWafManagedRulesShrinkRequest) SetPageSize(v int32) *ListWafManagedRulesShrinkRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetProtectionLevel(v int32) *ListWafManagedRulesShrinkRequest {
+	s.ProtectionLevel = &v
 	return s
 }
 
@@ -25440,6 +25675,7 @@ type ListWafTemplateRulesRequest struct {
 	// http_anti_scan
 	Phase     *string                               `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	QueryArgs *ListWafTemplateRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	SiteId    *int64                                `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s ListWafTemplateRulesRequest) String() string {
@@ -25457,6 +25693,11 @@ func (s *ListWafTemplateRulesRequest) SetPhase(v string) *ListWafTemplateRulesRe
 
 func (s *ListWafTemplateRulesRequest) SetQueryArgs(v *ListWafTemplateRulesRequestQueryArgs) *ListWafTemplateRulesRequest {
 	s.QueryArgs = v
+	return s
+}
+
+func (s *ListWafTemplateRulesRequest) SetSiteId(v int64) *ListWafTemplateRulesRequest {
+	s.SiteId = &v
 	return s
 }
 
@@ -25486,6 +25727,7 @@ type ListWafTemplateRulesShrinkRequest struct {
 	// http_anti_scan
 	Phase           *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+	SiteId          *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s ListWafTemplateRulesShrinkRequest) String() string {
@@ -25503,6 +25745,11 @@ func (s *ListWafTemplateRulesShrinkRequest) SetPhase(v string) *ListWafTemplateR
 
 func (s *ListWafTemplateRulesShrinkRequest) SetQueryArgsShrink(v string) *ListWafTemplateRulesShrinkRequest {
 	s.QueryArgsShrink = &v
+	return s
+}
+
+func (s *ListWafTemplateRulesShrinkRequest) SetSiteId(v int64) *ListWafTemplateRulesShrinkRequest {
+	s.SiteId = &v
 	return s
 }
 
@@ -28398,234 +28645,6 @@ func (s *StopScheduledPreloadExecutionResponse) SetStatusCode(v int32) *StopSche
 }
 
 func (s *StopScheduledPreloadExecutionResponse) SetBody(v *StopScheduledPreloadExecutionResponseBody) *StopScheduledPreloadExecutionResponse {
-	s.Body = v
-	return s
-}
-
-type TransformExpressionToMatchRequest struct {
-	// example:
-	//
-	// http_bot
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// example:
-	//
-	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-}
-
-func (s TransformExpressionToMatchRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformExpressionToMatchRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TransformExpressionToMatchRequest) SetExpression(v string) *TransformExpressionToMatchRequest {
-	s.Expression = &v
-	return s
-}
-
-func (s *TransformExpressionToMatchRequest) SetPhase(v string) *TransformExpressionToMatchRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *TransformExpressionToMatchRequest) SetSiteId(v int64) *TransformExpressionToMatchRequest {
-	s.SiteId = &v
-	return s
-}
-
-type TransformExpressionToMatchResponseBody struct {
-	Match *WafRuleMatch `json:"Match,omitempty" xml:"Match,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s TransformExpressionToMatchResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformExpressionToMatchResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TransformExpressionToMatchResponseBody) SetMatch(v *WafRuleMatch) *TransformExpressionToMatchResponseBody {
-	s.Match = v
-	return s
-}
-
-func (s *TransformExpressionToMatchResponseBody) SetRequestId(v string) *TransformExpressionToMatchResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type TransformExpressionToMatchResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *TransformExpressionToMatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s TransformExpressionToMatchResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformExpressionToMatchResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TransformExpressionToMatchResponse) SetHeaders(v map[string]*string) *TransformExpressionToMatchResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TransformExpressionToMatchResponse) SetStatusCode(v int32) *TransformExpressionToMatchResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *TransformExpressionToMatchResponse) SetBody(v *TransformExpressionToMatchResponseBody) *TransformExpressionToMatchResponse {
-	s.Body = v
-	return s
-}
-
-type TransformMatchToExpressionRequest struct {
-	// example:
-	//
-	// http_bot
-	Match *WafRuleMatch `json:"Match,omitempty" xml:"Match,omitempty"`
-	// example:
-	//
-	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-}
-
-func (s TransformMatchToExpressionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformMatchToExpressionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TransformMatchToExpressionRequest) SetMatch(v *WafRuleMatch) *TransformMatchToExpressionRequest {
-	s.Match = v
-	return s
-}
-
-func (s *TransformMatchToExpressionRequest) SetPhase(v string) *TransformMatchToExpressionRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *TransformMatchToExpressionRequest) SetSiteId(v int64) *TransformMatchToExpressionRequest {
-	s.SiteId = &v
-	return s
-}
-
-type TransformMatchToExpressionShrinkRequest struct {
-	// example:
-	//
-	// http_bot
-	MatchShrink *string `json:"Match,omitempty" xml:"Match,omitempty"`
-	// example:
-	//
-	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-}
-
-func (s TransformMatchToExpressionShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformMatchToExpressionShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TransformMatchToExpressionShrinkRequest) SetMatchShrink(v string) *TransformMatchToExpressionShrinkRequest {
-	s.MatchShrink = &v
-	return s
-}
-
-func (s *TransformMatchToExpressionShrinkRequest) SetPhase(v string) *TransformMatchToExpressionShrinkRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *TransformMatchToExpressionShrinkRequest) SetSiteId(v int64) *TransformMatchToExpressionShrinkRequest {
-	s.SiteId = &v
-	return s
-}
-
-type TransformMatchToExpressionResponseBody struct {
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s TransformMatchToExpressionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformMatchToExpressionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TransformMatchToExpressionResponseBody) SetExpression(v string) *TransformMatchToExpressionResponseBody {
-	s.Expression = &v
-	return s
-}
-
-func (s *TransformMatchToExpressionResponseBody) SetRequestId(v string) *TransformMatchToExpressionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type TransformMatchToExpressionResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *TransformMatchToExpressionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s TransformMatchToExpressionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransformMatchToExpressionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TransformMatchToExpressionResponse) SetHeaders(v map[string]*string) *TransformMatchToExpressionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TransformMatchToExpressionResponse) SetStatusCode(v int32) *TransformMatchToExpressionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *TransformMatchToExpressionResponse) SetBody(v *TransformMatchToExpressionResponseBody) *TransformMatchToExpressionResponse {
 	s.Body = v
 	return s
 }
@@ -40833,6 +40852,10 @@ func (client *Client) ListWafManagedRulesWithOptions(tmpReq *ListWafManagedRules
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProtectionLevel)) {
+		query["ProtectionLevel"] = request.ProtectionLevel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.QueryArgsShrink)) {
 		query["QueryArgs"] = request.QueryArgsShrink
 	}
@@ -41145,6 +41168,10 @@ func (client *Client) ListWafTemplateRulesWithOptions(tmpReq *ListWafTemplateRul
 
 	if !tea.BoolValue(util.IsUnset(request.QueryArgsShrink)) {
 		query["QueryArgs"] = request.QueryArgsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -42560,152 +42587,6 @@ func (client *Client) StopScheduledPreloadExecution(request *StopScheduledPreloa
 	runtime := &util.RuntimeOptions{}
 	_result = &StopScheduledPreloadExecutionResponse{}
 	_body, _err := client.StopScheduledPreloadExecutionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 将表达式转换为匹配项
-//
-// @param request - TransformExpressionToMatchRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return TransformExpressionToMatchResponse
-func (client *Client) TransformExpressionToMatchWithOptions(request *TransformExpressionToMatchRequest, runtime *util.RuntimeOptions) (_result *TransformExpressionToMatchResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Expression)) {
-		body["Expression"] = request.Expression
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phase)) {
-		body["Phase"] = request.Phase
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TransformExpressionToMatch"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &TransformExpressionToMatchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 将表达式转换为匹配项
-//
-// @param request - TransformExpressionToMatchRequest
-//
-// @return TransformExpressionToMatchResponse
-func (client *Client) TransformExpressionToMatch(request *TransformExpressionToMatchRequest) (_result *TransformExpressionToMatchResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TransformExpressionToMatchResponse{}
-	_body, _err := client.TransformExpressionToMatchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 将匹配项转换为表达式
-//
-// @param tmpReq - TransformMatchToExpressionRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return TransformMatchToExpressionResponse
-func (client *Client) TransformMatchToExpressionWithOptions(tmpReq *TransformMatchToExpressionRequest, runtime *util.RuntimeOptions) (_result *TransformMatchToExpressionResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &TransformMatchToExpressionShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Match)) {
-		request.MatchShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Match, tea.String("Match"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MatchShrink)) {
-		body["Match"] = request.MatchShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phase)) {
-		body["Phase"] = request.Phase
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TransformMatchToExpression"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &TransformMatchToExpressionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 将匹配项转换为表达式
-//
-// @param request - TransformMatchToExpressionRequest
-//
-// @return TransformMatchToExpressionResponse
-func (client *Client) TransformMatchToExpression(request *TransformMatchToExpressionRequest) (_result *TransformMatchToExpressionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TransformMatchToExpressionResponse{}
-	_body, _err := client.TransformMatchToExpressionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
