@@ -2161,94 +2161,6 @@ func (s *CreateEnterpriseSnapshotPolicyResponse) SetBody(v *CreateEnterpriseSnap
 	return s
 }
 
-type DeleteDiskRequest struct {
-	// The ID of the disk.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// d-cd4************
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DeleteDiskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDiskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDiskRequest) SetDiskId(v string) *DeleteDiskRequest {
-	s.DiskId = &v
-	return s
-}
-
-func (s *DeleteDiskRequest) SetRegionId(v string) *DeleteDiskRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DeleteDiskResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// C123F94F-4E38-19AE-942A-A8D6F44F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteDiskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDiskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDiskResponseBody) SetRequestId(v string) *DeleteDiskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteDiskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteDiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteDiskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDiskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDiskResponse) SetHeaders(v map[string]*string) *DeleteDiskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDiskResponse) SetStatusCode(v int32) *DeleteDiskResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteDiskResponse) SetBody(v *DeleteDiskResponseBody) *DeleteDiskResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteDiskReplicaGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
@@ -6006,797 +5918,6 @@ func (s *DescribeDiskReplicaPairsResponse) SetBody(v *DescribeDiskReplicaPairsRe
 	return s
 }
 
-type DescribeDisksRequest struct {
-	// The category of disks.
-	//
-	// example:
-	//
-	// cloud_ssd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The IDs of the disks. The value is a JSON array that contains multiple disk IDs. Separate the IDs with commas (,).
-	//
-	// example:
-	//
-	// iscsi-cluster-id
-	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
-	// The name of the disk.
-	//
-	// example:
-	//
-	// d-xxx
-	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The maximum number of entries per page. Valid values: 1 to 100.
-	//
-	// Default values:
-	//
-	// 	- If this parameter is not specified or is set to a value smaller than 10, the default value is 10.
-	//
-	// 	- If this parameter is set to a value greater than 100, the default value is 100.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
-	//
-	// example:
-	//
-	// AAAAAdDWBF2****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the disk belongs.
-	//
-	// example:
-	//
-	// rg-acfmvs*******
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The states of disk. Valid values:
-	//
-	// 	- In_use
-	//
-	// 	- Available
-	//
-	// 	- Attaching
-	//
-	// 	- Detaching
-	//
-	// 	- Creating
-	//
-	// 	- ReIniting
-	//
-	// example:
-	//
-	// In_use
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The resource tags. You can specify up to 20 tags.
-	Tag []*DescribeDisksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-a
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeDisksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksRequest) SetCategory(v string) *DescribeDisksRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetDiskIds(v string) *DescribeDisksRequest {
-	s.DiskIds = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetDiskName(v string) *DescribeDisksRequest {
-	s.DiskName = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetMaxResults(v int32) *DescribeDisksRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetNextToken(v string) *DescribeDisksRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetPageNumber(v int32) *DescribeDisksRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetPageSize(v int32) *DescribeDisksRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetRegionId(v string) *DescribeDisksRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetResourceGroupId(v string) *DescribeDisksRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetStatus(v string) *DescribeDisksRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetTag(v []*DescribeDisksRequestTag) *DescribeDisksRequest {
-	s.Tag = v
-	return s
-}
-
-func (s *DescribeDisksRequest) SetZoneId(v string) *DescribeDisksRequest {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeDisksRequestTag struct {
-	// The key of the tag.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// tag-key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// tag-value
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeDisksRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksRequestTag) SetKey(v string) *DescribeDisksRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeDisksRequestTag) SetValue(v string) *DescribeDisksRequestTag {
-	s.Value = &v
-	return s
-}
-
-type DescribeDisksResponseBody struct {
-	// The data returned.
-	Data []*DescribeDisksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
-	//
-	// example:
-	//
-	// NextToken
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// C123F94F-4E38-19AE-942A-A8D6F44F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 1
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeDisksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksResponseBody) SetData(v []*DescribeDisksResponseBodyData) *DescribeDisksResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeDisksResponseBody) SetNextToken(v string) *DescribeDisksResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBody) SetPageNumber(v int32) *DescribeDisksResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBody) SetPageSize(v int32) *DescribeDisksResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBody) SetRequestId(v string) *DescribeDisksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBody) SetTotalCount(v int64) *DescribeDisksResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeDisksResponseBodyData struct {
-	// The access authorization information of the disk.
-	AccessAuthorization []*DescribeDisksResponseBodyDataAccessAuthorization `json:"AccessAuthorization,omitempty" xml:"AccessAuthorization,omitempty" type:"Repeated"`
-	// The time when the disk was attached.
-	//
-	// example:
-	//
-	// 2021-06-07T06:08:56Z
-	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	// The attachment information of the disk.
-	Attachments []*DescribeDisksResponseBodyDataAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
-	// Specifies whether to enable the performance burst feature for the disk. Valid values:
-	//
-	// 	- true: enable the performance burst feature.
-	//
-	// 	- false: disable the performance burst feature.
-	//
-	// example:
-	//
-	// true
-	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The category of disk.
-	//
-	// example:
-	//
-	// cloud_essd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the disk was created.
-	//
-	// example:
-	//
-	// 2023-12-30 12:00:00
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-	//
-	// example:
-	//
-	// desc
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the disk was detached.
-	//
-	// example:
-	//
-	// 2021-06-07T21:01:22Z
-	DetachedTime *string `json:"DetachedTime,omitempty" xml:"DetachedTime,omitempty"`
-	// The maximum number of read and write operations per second. Unit: operations/s.
-	//
-	// example:
-	//
-	// 4000
-	DeviceNguid *string `json:"DeviceNguid,omitempty" xml:"DeviceNguid,omitempty"`
-	// The ID of the disk.
-	//
-	// example:
-	//
-	// d-bp10jtnecw0yc6s96p0o
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The name of the disk.
-	//
-	// example:
-	//
-	// disk-name
-	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// Specifies whether to encrypt the disk. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// Default value: false.
-	//
-	// example:
-	//
-	// true
-	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// IOPS.
-	//
-	// example:
-	//
-	// 26800
-	Iops *int64 `json:"Iops,omitempty" xml:"Iops,omitempty"`
-	// The maximum number of read operations per second. Unit: operations/s.
-	//
-	// example:
-	//
-	// 2000
-	IopsRead *int64 `json:"IopsRead,omitempty" xml:"IopsRead,omitempty"`
-	// The maximum number of write operations per second. Unit: operations/s.
-	//
-	// example:
-	//
-	// 2000
-	IopsWrite *int64 `json:"IopsWrite,omitempty" xml:"IopsWrite,omitempty"`
-	// The ID of the KMS key.
-	//
-	// example:
-	//
-	// key-hzz65*********
-	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The time when the disk was modified.
-	//
-	// example:
-	//
-	// 2023-12-30 12:00:00
-	ModifyAt *string `json:"ModifyAt,omitempty" xml:"ModifyAt,omitempty"`
-	// The performance level of the ESSD. Valid values:
-	//
-	// 	- PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	//
-	// 	- PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	//
-	// 	- PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	//
-	// 	- PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-	//
-	// Default value: PL1.
-	//
-	// For more information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
-	//
-	// example:
-	//
-	// PL0
-	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
-	//
-	// Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
-	//
-	// >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
-	//
-	// example:
-	//
-	// 3200
-	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The region ID of the disk.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the disk belongs.
-	//
-	// example:
-	//
-	// rg-aekz********
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The size of the disk. Unit: GB.
-	//
-	// example:
-	//
-	// 40
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The states of disk. Valid values:
-	//
-	// 	- In_use
-	//
-	// 	- Available
-	//
-	// 	- Attaching
-	//
-	// 	- Detaching
-	//
-	// 	- Creating
-	//
-	// 	- ReIniting
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The details of the tags.
-	Tags []*DescribeDisksResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The throughput of the disk.
-	//
-	// Unit: MB/s.
-	//
-	// example:
-	//
-	// 600
-	Throughput *int64 `json:"Throughput,omitempty" xml:"Throughput,omitempty"`
-	// The zone ID of the disk.
-	//
-	// example:
-	//
-	// cn-shenzhen-e
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeDisksResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksResponseBodyData) SetAccessAuthorization(v []*DescribeDisksResponseBodyDataAccessAuthorization) *DescribeDisksResponseBodyData {
-	s.AccessAuthorization = v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetAttachedTime(v string) *DescribeDisksResponseBodyData {
-	s.AttachedTime = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetAttachments(v []*DescribeDisksResponseBodyDataAttachments) *DescribeDisksResponseBodyData {
-	s.Attachments = v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetBurstingEnabled(v bool) *DescribeDisksResponseBodyData {
-	s.BurstingEnabled = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetCategory(v string) *DescribeDisksResponseBodyData {
-	s.Category = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetCreationTime(v string) *DescribeDisksResponseBodyData {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetDescription(v string) *DescribeDisksResponseBodyData {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetDetachedTime(v string) *DescribeDisksResponseBodyData {
-	s.DetachedTime = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetDeviceNguid(v string) *DescribeDisksResponseBodyData {
-	s.DeviceNguid = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetDiskId(v string) *DescribeDisksResponseBodyData {
-	s.DiskId = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetDiskName(v string) *DescribeDisksResponseBodyData {
-	s.DiskName = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetEncrypted(v bool) *DescribeDisksResponseBodyData {
-	s.Encrypted = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetIops(v int64) *DescribeDisksResponseBodyData {
-	s.Iops = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetIopsRead(v int64) *DescribeDisksResponseBodyData {
-	s.IopsRead = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetIopsWrite(v int64) *DescribeDisksResponseBodyData {
-	s.IopsWrite = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetKmsKeyId(v string) *DescribeDisksResponseBodyData {
-	s.KmsKeyId = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetModifyAt(v string) *DescribeDisksResponseBodyData {
-	s.ModifyAt = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetPerformanceLevel(v string) *DescribeDisksResponseBodyData {
-	s.PerformanceLevel = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetProvisionedIops(v int64) *DescribeDisksResponseBodyData {
-	s.ProvisionedIops = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetRegionId(v string) *DescribeDisksResponseBodyData {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetResourceGroupId(v string) *DescribeDisksResponseBodyData {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetSize(v int64) *DescribeDisksResponseBodyData {
-	s.Size = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetStatus(v string) *DescribeDisksResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetTags(v []*DescribeDisksResponseBodyDataTags) *DescribeDisksResponseBodyData {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetThroughput(v int64) *DescribeDisksResponseBodyData {
-	s.Throughput = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyData) SetZoneId(v string) *DescribeDisksResponseBodyData {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeDisksResponseBodyDataAccessAuthorization struct {
-	// The token that is used to access the disk.
-	//
-	// example:
-	//
-	// b34385a***************
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The information of ecs.
-	Ecs *DescribeDisksResponseBodyDataAccessAuthorizationEcs `json:"Ecs,omitempty" xml:"Ecs,omitempty" type:"Struct"`
-	// The information of pod.
-	Pod *DescribeDisksResponseBodyDataAccessAuthorizationPod `json:"Pod,omitempty" xml:"Pod,omitempty" type:"Struct"`
-}
-
-func (s DescribeDisksResponseBodyDataAccessAuthorization) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksResponseBodyDataAccessAuthorization) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksResponseBodyDataAccessAuthorization) SetAccessToken(v string) *DescribeDisksResponseBodyDataAccessAuthorization {
-	s.AccessToken = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyDataAccessAuthorization) SetEcs(v *DescribeDisksResponseBodyDataAccessAuthorizationEcs) *DescribeDisksResponseBodyDataAccessAuthorization {
-	s.Ecs = v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyDataAccessAuthorization) SetPod(v *DescribeDisksResponseBodyDataAccessAuthorizationPod) *DescribeDisksResponseBodyDataAccessAuthorization {
-	s.Pod = v
-	return s
-}
-
-type DescribeDisksResponseBodyDataAccessAuthorizationEcs struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-assd***********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s DescribeDisksResponseBodyDataAccessAuthorizationEcs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksResponseBodyDataAccessAuthorizationEcs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksResponseBodyDataAccessAuthorizationEcs) SetInstanceId(v string) *DescribeDisksResponseBodyDataAccessAuthorizationEcs {
-	s.InstanceId = &v
-	return s
-}
-
-type DescribeDisksResponseBodyDataAccessAuthorizationPod struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// cid*******
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The pod ID.
-	//
-	// example:
-	//
-	// pid******
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-}
-
-func (s DescribeDisksResponseBodyDataAccessAuthorizationPod) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksResponseBodyDataAccessAuthorizationPod) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksResponseBodyDataAccessAuthorizationPod) SetClusterId(v string) *DescribeDisksResponseBodyDataAccessAuthorizationPod {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyDataAccessAuthorizationPod) SetPodId(v string) *DescribeDisksResponseBodyDataAccessAuthorizationPod {
-	s.PodId = &v
-	return s
-}
-
-type DescribeDisksResponseBodyDataAttachments struct {
-	// The time when the disk was attached.
-	//
-	// example:
-	//
-	// 2021-06-07T06:08:56Z
-	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// i-aaaa********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
-	//
-	// example:
-	//
-	// 4c47c411-b9***********
-	NamespaceId *int32 `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-}
-
-func (s DescribeDisksResponseBodyDataAttachments) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksResponseBodyDataAttachments) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksResponseBodyDataAttachments) SetAttachedTime(v string) *DescribeDisksResponseBodyDataAttachments {
-	s.AttachedTime = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyDataAttachments) SetInstanceId(v string) *DescribeDisksResponseBodyDataAttachments {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyDataAttachments) SetNamespaceId(v int32) *DescribeDisksResponseBodyDataAttachments {
-	s.NamespaceId = &v
-	return s
-}
-
-type DescribeDisksResponseBodyDataTags struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// empty-str-0
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// 000098dab001c600
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-}
-
-func (s DescribeDisksResponseBodyDataTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksResponseBodyDataTags) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksResponseBodyDataTags) SetTagKey(v string) *DescribeDisksResponseBodyDataTags {
-	s.TagKey = &v
-	return s
-}
-
-func (s *DescribeDisksResponseBodyDataTags) SetTagValue(v string) *DescribeDisksResponseBodyDataTags {
-	s.TagValue = &v
-	return s
-}
-
-type DescribeDisksResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeDisksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeDisksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDisksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDisksResponse) SetHeaders(v map[string]*string) *DescribeDisksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDisksResponse) SetStatusCode(v int32) *DescribeDisksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDisksResponse) SetBody(v *DescribeDisksResponseBody) *DescribeDisksResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeEnterpriseSnapshotPolicyRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -8387,6 +7508,22 @@ func (s *DescribeLensServiceStatusResponse) SetBody(v *DescribeLensServiceStatus
 }
 
 type DescribeMetricDataRequest struct {
+	// Aggregation method in time dimension. Valid values:
+	//
+	// - SUM
+	//
+	// - COUNT
+	//
+	// - AVG
+	//
+	// - MAX
+	//
+	// - MIN
+	//
+	// example:
+	//
+	// SUM
+	AggreOps *string `json:"AggreOps,omitempty" xml:"AggreOps,omitempty"`
 	// The dimension map in the JSON format. A dimension is a key-value pair. Valid dimension key: diskId.
 	//
 	// example:
@@ -8453,6 +7590,11 @@ func (s DescribeMetricDataRequest) String() string {
 
 func (s DescribeMetricDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMetricDataRequest) SetAggreOps(v string) *DescribeMetricDataRequest {
+	s.AggreOps = &v
+	return s
 }
 
 func (s *DescribeMetricDataRequest) SetDimensions(v string) *DescribeMetricDataRequest {
@@ -9824,603 +8966,27 @@ func (s *FailoverDiskReplicaPairResponse) SetBody(v *FailoverDiskReplicaPairResp
 	return s
 }
 
-type GetDiskRequest struct {
-	// The ID of the disk.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// d-bp67***********
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The region ID of the disk.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s GetDiskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskRequest) SetDiskId(v string) *GetDiskRequest {
-	s.DiskId = &v
-	return s
-}
-
-func (s *GetDiskRequest) SetRegionId(v string) *GetDiskRequest {
-	s.RegionId = &v
-	return s
-}
-
-type GetDiskResponseBody struct {
-	// The information of the disk.
-	Disk *GetDiskResponseBodyDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// B9C4B3B3-0D72-5FB0-9319-F4D3BB9E22AC
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetDiskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskResponseBody) SetDisk(v *GetDiskResponseBodyDisk) *GetDiskResponseBody {
-	s.Disk = v
-	return s
-}
-
-func (s *GetDiskResponseBody) SetRequestId(v string) *GetDiskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetDiskResponseBodyDisk struct {
-	// The access authorization information of the disk.
-	AccessAuthorization []*GetDiskResponseBodyDiskAccessAuthorization `json:"AccessAuthorization,omitempty" xml:"AccessAuthorization,omitempty" type:"Repeated"`
-	// The time when the disk was attached.
-	//
-	// example:
-	//
-	// 2021-11-18T19:30:16+08:00
-	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	// The attachment information of the disk.
-	Attachments []*GetDiskResponseBodyDiskAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
-	// Specifies whether to enable the performance burst feature for the disk. Valid values:
-	//
-	// 	- true: enable the performance burst feature.
-	//
-	// 	- false: disable the performance burst feature.
-	//
-	// example:
-	//
-	// true
-	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The category of the disk.
-	//
-	// example:
-	//
-	// cloud_essd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
-	//
-	// example:
-	//
-	// 2021-11-18T19:30:16+08:00
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the disk.
-	//
-	// example:
-	//
-	// desc
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the disk was detached.
-	//
-	// example:
-	//
-	// 2021-11-18T19:30:16+08:00
-	DetachedTime *string `json:"DetachedTime,omitempty" xml:"DetachedTime,omitempty"`
-	// The maximum number of read and write operations per second. Unit: operations/s.
-	//
-	// example:
-	//
-	// 4cd************
-	DeviceNguid *string `json:"DeviceNguid,omitempty" xml:"DeviceNguid,omitempty"`
-	// The ID of the disk.
-	//
-	// example:
-	//
-	// d-bp19c*********
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The name of the disk.
-	//
-	// example:
-	//
-	// diskName
-	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// Specifies whether to encrypt the disk. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// Default value: false.
-	//
-	// example:
-	//
-	// true
-	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// IOPS.
-	//
-	// example:
-	//
-	// 46800
-	Iops *int64 `json:"Iops,omitempty" xml:"Iops,omitempty"`
-	// The maximum number of read operations per second. Unit: operations/s.
-	//
-	// example:
-	//
-	// 500
-	IopsRead *int64 `json:"IopsRead,omitempty" xml:"IopsRead,omitempty"`
-	// The maximum number of write operations per second. Unit: operations/s.
-	//
-	// example:
-	//
-	// 500
-	IopsWrite *int64 `json:"IopsWrite,omitempty" xml:"IopsWrite,omitempty"`
-	// The ID of the KMS key.
-	//
-	// example:
-	//
-	// key-hz**************
-	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The time when the disk was modfied.
-	//
-	// example:
-	//
-	// 2021-11-18T19:30:16+08:00
-	ModifyAt *string `json:"ModifyAt,omitempty" xml:"ModifyAt,omitempty"`
-	// The performance level of the ESSD. Valid values:
-	//
-	// 	- PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	//
-	// 	- PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	//
-	// 	- PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	//
-	// 	- PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-	//
-	// example:
-	//
-	// PL1
-	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
-	//
-	// Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
-	//
-	// >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
-	//
-	// example:
-	//
-	// 5000
-	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the disk belongs.
-	//
-	// example:
-	//
-	// rg-aek*************
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The size of the disk. Unit: GB.
-	//
-	// example:
-	//
-	// 20
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The states of disk. Valid values:
-	//
-	// 	- In_use
-	//
-	// 	- Available
-	//
-	// 	- Attaching
-	//
-	// 	- Detaching
-	//
-	// 	- Creating
-	//
-	// 	- ReIniting
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The details of the tags.
-	Tags []*GetDiskResponseBodyDiskTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The throughput of the disk.
-	//
-	// Unit: MB/s.
-	//
-	// example:
-	//
-	// 600
-	Throughput *int64 `json:"Throughput,omitempty" xml:"Throughput,omitempty"`
-	// The ID of the zone where the disk resides.
-	//
-	// example:
-	//
-	// cn-hangzhou-k
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s GetDiskResponseBodyDisk) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskResponseBodyDisk) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskResponseBodyDisk) SetAccessAuthorization(v []*GetDiskResponseBodyDiskAccessAuthorization) *GetDiskResponseBodyDisk {
-	s.AccessAuthorization = v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetAttachedTime(v string) *GetDiskResponseBodyDisk {
-	s.AttachedTime = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetAttachments(v []*GetDiskResponseBodyDiskAttachments) *GetDiskResponseBodyDisk {
-	s.Attachments = v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetBurstingEnabled(v bool) *GetDiskResponseBodyDisk {
-	s.BurstingEnabled = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetCategory(v string) *GetDiskResponseBodyDisk {
-	s.Category = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetCreationTime(v string) *GetDiskResponseBodyDisk {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetDescription(v string) *GetDiskResponseBodyDisk {
-	s.Description = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetDetachedTime(v string) *GetDiskResponseBodyDisk {
-	s.DetachedTime = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetDeviceNguid(v string) *GetDiskResponseBodyDisk {
-	s.DeviceNguid = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetDiskId(v string) *GetDiskResponseBodyDisk {
-	s.DiskId = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetDiskName(v string) *GetDiskResponseBodyDisk {
-	s.DiskName = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetEncrypted(v bool) *GetDiskResponseBodyDisk {
-	s.Encrypted = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetIops(v int64) *GetDiskResponseBodyDisk {
-	s.Iops = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetIopsRead(v int64) *GetDiskResponseBodyDisk {
-	s.IopsRead = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetIopsWrite(v int64) *GetDiskResponseBodyDisk {
-	s.IopsWrite = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetKmsKeyId(v string) *GetDiskResponseBodyDisk {
-	s.KmsKeyId = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetModifyAt(v string) *GetDiskResponseBodyDisk {
-	s.ModifyAt = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetPerformanceLevel(v string) *GetDiskResponseBodyDisk {
-	s.PerformanceLevel = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetProvisionedIops(v int64) *GetDiskResponseBodyDisk {
-	s.ProvisionedIops = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetRegionId(v string) *GetDiskResponseBodyDisk {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetResourceGroupId(v string) *GetDiskResponseBodyDisk {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetSize(v int64) *GetDiskResponseBodyDisk {
-	s.Size = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetStatus(v string) *GetDiskResponseBodyDisk {
-	s.Status = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetTags(v []*GetDiskResponseBodyDiskTags) *GetDiskResponseBodyDisk {
-	s.Tags = v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetThroughput(v int64) *GetDiskResponseBodyDisk {
-	s.Throughput = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDisk) SetZoneId(v string) *GetDiskResponseBodyDisk {
-	s.ZoneId = &v
-	return s
-}
-
-type GetDiskResponseBodyDiskAccessAuthorization struct {
-	// The token that is used to access the disk.
-	//
-	// example:
-	//
-	// 4cd9******************
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The information of ecs.
-	Ecs *GetDiskResponseBodyDiskAccessAuthorizationEcs `json:"Ecs,omitempty" xml:"Ecs,omitempty" type:"Struct"`
-	// The information of pod.
-	Pod *GetDiskResponseBodyDiskAccessAuthorizationPod `json:"Pod,omitempty" xml:"Pod,omitempty" type:"Struct"`
-}
-
-func (s GetDiskResponseBodyDiskAccessAuthorization) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskResponseBodyDiskAccessAuthorization) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskResponseBodyDiskAccessAuthorization) SetAccessToken(v string) *GetDiskResponseBodyDiskAccessAuthorization {
-	s.AccessToken = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDiskAccessAuthorization) SetEcs(v *GetDiskResponseBodyDiskAccessAuthorizationEcs) *GetDiskResponseBodyDiskAccessAuthorization {
-	s.Ecs = v
-	return s
-}
-
-func (s *GetDiskResponseBodyDiskAccessAuthorization) SetPod(v *GetDiskResponseBodyDiskAccessAuthorizationPod) *GetDiskResponseBodyDiskAccessAuthorization {
-	s.Pod = v
-	return s
-}
-
-type GetDiskResponseBodyDiskAccessAuthorizationEcs struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-uf6*******************
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s GetDiskResponseBodyDiskAccessAuthorizationEcs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskResponseBodyDiskAccessAuthorizationEcs) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskResponseBodyDiskAccessAuthorizationEcs) SetInstanceId(v string) *GetDiskResponseBodyDiskAccessAuthorizationEcs {
-	s.InstanceId = &v
-	return s
-}
-
-type GetDiskResponseBodyDiskAccessAuthorizationPod struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// ccf9**************
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The pod ID.
-	//
-	// example:
-	//
-	// pid****************
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-}
-
-func (s GetDiskResponseBodyDiskAccessAuthorizationPod) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskResponseBodyDiskAccessAuthorizationPod) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskResponseBodyDiskAccessAuthorizationPod) SetClusterId(v string) *GetDiskResponseBodyDiskAccessAuthorizationPod {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDiskAccessAuthorizationPod) SetPodId(v string) *GetDiskResponseBodyDiskAccessAuthorizationPod {
-	s.PodId = &v
-	return s
-}
-
-type GetDiskResponseBodyDiskAttachments struct {
-	// The time when the disk was attached.
-	//
-	// example:
-	//
-	// 2021-11-18T19:30:16+08:00
-	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// i-cad***********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
-	//
-	// example:
-	//
-	// 308e2*****************
-	NamespaceId *int32 `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-}
-
-func (s GetDiskResponseBodyDiskAttachments) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskResponseBodyDiskAttachments) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskResponseBodyDiskAttachments) SetAttachedTime(v string) *GetDiskResponseBodyDiskAttachments {
-	s.AttachedTime = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDiskAttachments) SetInstanceId(v string) *GetDiskResponseBodyDiskAttachments {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDiskAttachments) SetNamespaceId(v int32) *GetDiskResponseBodyDiskAttachments {
-	s.NamespaceId = &v
-	return s
-}
-
-type GetDiskResponseBodyDiskTags struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// tag_key
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// tag_value
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-}
-
-func (s GetDiskResponseBodyDiskTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskResponseBodyDiskTags) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskResponseBodyDiskTags) SetTagKey(v string) *GetDiskResponseBodyDiskTags {
-	s.TagKey = &v
-	return s
-}
-
-func (s *GetDiskResponseBodyDiskTags) SetTagValue(v string) *GetDiskResponseBodyDiskTags {
-	s.TagValue = &v
-	return s
-}
-
-type GetDiskResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetDiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetDiskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiskResponse) SetHeaders(v map[string]*string) *GetDiskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDiskResponse) SetStatusCode(v int32) *GetDiskResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDiskResponse) SetBody(v *GetDiskResponseBody) *GetDiskResponse {
-	s.Body = v
-	return s
-}
-
 type GetReportRequest struct {
+	// Optional, AppName only takes effect when ReportType=present.
+	//
 	// example:
 	//
 	// App1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Region name.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// When ReportType=history, ReportId is required to query historical reports based on ReportId.
+	//
 	// example:
 	//
 	// report-74fbea80e802xxxx
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// Optional values: history/present.
+	//
 	// example:
 	//
 	// history
@@ -10456,7 +9022,10 @@ func (s *GetReportRequest) SetReportType(v string) *GetReportRequest {
 }
 
 type GetReportResponseBody struct {
+	// Data Details.
 	Datas []*GetReportResponseBodyDatas `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// C123F94F-4E38-19AE-942A-A8D6F44F****
@@ -10482,7 +9051,10 @@ func (s *GetReportResponseBody) SetRequestId(v string) *GetReportResponseBody {
 }
 
 type GetReportResponseBodyDatas struct {
+	// Data.
 	Data []*GetReportResponseBodyDatasData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Data Title.
+	//
 	// example:
 	//
 	// disk_count_percent_by_category
@@ -10508,6 +9080,8 @@ func (s *GetReportResponseBodyDatas) SetTitle(v string) *GetReportResponseBodyDa
 }
 
 type GetReportResponseBodyDatasData struct {
+	// Data Points.
+	//
 	// example:
 	//
 	// {
@@ -10530,6 +9104,8 @@ type GetReportResponseBodyDatasData struct {
 	//
 	// }
 	DataPoints map[string]interface{} `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
+	// Data Labels.
+	//
 	// example:
 	//
 	// {
@@ -10588,28 +9164,40 @@ func (s *GetReportResponse) SetBody(v *GetReportResponseBody) *GetReportResponse
 }
 
 type ListReportsRequest struct {
+	// App name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// App1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Maximum number of items for Token-based pagination.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Query token (Token), the value is the NextToken parameter value returned from the previous API call.
+	//
 	// example:
 	//
 	// a6792e832ff0XXXXX
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Page number for paginated queries.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of rows per page when performing paginated queries.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) to query the list of regions supported by Block Storage Data Insights.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -10655,24 +9243,34 @@ func (s *ListReportsRequest) SetRegionId(v string) *ListReportsRequest {
 }
 
 type ListReportsResponseBody struct {
-	// historyReports
+	// Historical reports.
 	HistoryReports []*ListReportsResponseBodyHistoryReports `json:"HistoryReports,omitempty" xml:"HistoryReports,omitempty" type:"Repeated"`
+	// Query token (Token), the value is the NextToken parameter value returned from the previous API call.
+	//
 	// example:
 	//
 	// a6792e832ff0XXXX
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Page number for paginated queries.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page for paginated queries.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID, an identifier generated by Alibaba Cloud for this request.
+	//
 	// example:
 	//
 	// C123F94F-4E38-19AE-942A-A8D6F44F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -10718,22 +9316,32 @@ func (s *ListReportsResponseBody) SetTotalCount(v int64) *ListReportsResponseBod
 }
 
 type ListReportsResponseBodyHistoryReports struct {
+	// Application name.
+	//
 	// example:
 	//
 	// default
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Report ID.
+	//
 	// example:
 	//
 	// report-e19c7b597f5fXX
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// Report name.
+	//
 	// example:
 	//
 	// default-2024-09-30~2024-10-07-Usage Report
 	ReportName *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	// Report generation time.
+	//
 	// example:
 	//
 	// 2024-10-07T02:09:17Z
 	ReportTime *string `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
+	// Report subscription period.
+	//
 	// example:
 	//
 	// Weekly
@@ -15115,70 +13723,6 @@ func (client *Client) CreateEnterpriseSnapshotPolicy(request *CreateEnterpriseSn
 	return _result, _err
 }
 
-// Description:
-//
-// Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
-//
-// @param request - DeleteDiskRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteDiskResponse
-func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime *util.RuntimeOptions) (_result *DeleteDiskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
-		query["DiskId"] = request.DiskId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteDisk"),
-		Version:     tea.String("2021-07-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-// Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
-//
-// @param request - DeleteDiskRequest
-//
-// @return DeleteDiskResponse
-func (client *Client) DeleteDisk(request *DeleteDiskRequest) (_result *DeleteDiskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDiskResponse{}
-	_body, _err := client.DeleteDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
 // Deletes a replication pair-consistent group.
@@ -16241,102 +14785,6 @@ func (client *Client) DescribeDiskReplicaPairs(request *DescribeDiskReplicaPairs
 	return _result, _err
 }
 
-// @param request - DescribeDisksRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeDisksResponse
-func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, runtime *util.RuntimeOptions) (_result *DescribeDisksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Category)) {
-		query["Category"] = request.Category
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DiskIds)) {
-		query["DiskIds"] = request.DiskIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DiskName)) {
-		query["DiskName"] = request.DiskName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		query["ZoneId"] = request.ZoneId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDisks"),
-		Version:     tea.String("2021-07-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDisksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeDisksRequest
-//
-// @return DescribeDisksResponse
-func (client *Client) DescribeDisks(request *DescribeDisksRequest) (_result *DescribeDisksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDisksResponse{}
-	_body, _err := client.DescribeDisksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
 // Queries the information about enterprise-level snapshot policies. When you call this operation, you can specify parameters, such as PolicyIds, ResourceGroupId, and Tag, in the request.
@@ -16679,6 +15127,10 @@ func (client *Client) DescribeMetricDataWithOptions(request *DescribeMetricDataR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggreOps)) {
+		query["AggreOps"] = request.AggreOps
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Dimensions)) {
 		query["Dimensions"] = request.Dimensions
 	}
@@ -17232,65 +15684,9 @@ func (client *Client) FailoverDiskReplicaPair(request *FailoverDiskReplicaPairRe
 	return _result, _err
 }
 
-// @param request - GetDiskRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetDiskResponse
-func (client *Client) GetDiskWithOptions(request *GetDiskRequest, runtime *util.RuntimeOptions) (_result *GetDiskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
-		query["DiskId"] = request.DiskId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDisk"),
-		Version:     tea.String("2021-07-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetDiskRequest
-//
-// @return GetDiskResponse
-func (client *Client) GetDisk(request *GetDiskRequest) (_result *GetDiskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDiskResponse{}
-	_body, _err := client.GetDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
-// 中心化角色：使用reportId获取用户使用报告
+// Centralized Role: Obtain User Usage Report with reportId
 //
 // @param request - GetReportRequest
 //
@@ -17346,7 +15742,7 @@ func (client *Client) GetReportWithOptions(request *GetReportRequest, runtime *u
 
 // Summary:
 //
-// 中心化角色：使用reportId获取用户使用报告
+// Centralized Role: Obtain User Usage Report with reportId
 //
 // @param request - GetReportRequest
 //
@@ -17364,7 +15760,7 @@ func (client *Client) GetReport(request *GetReportRequest) (_result *GetReportRe
 
 // Summary:
 //
-// 中心化角色：查询历史报告
+// Centralized Role: Query Historical Reports
 //
 // @param request - ListReportsRequest
 //
@@ -17428,7 +15824,7 @@ func (client *Client) ListReportsWithOptions(request *ListReportsRequest, runtim
 
 // Summary:
 //
-// 中心化角色：查询历史报告
+// Centralized Role: Query Historical Reports
 //
 // @param request - ListReportsRequest
 //
