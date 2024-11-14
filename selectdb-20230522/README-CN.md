@@ -10,7 +10,7 @@
 ## 安装
 你可以使用 `go mod` 来管理你的依赖，
 ```sh
-  go get github.com/alibabacloud-go/selectdb-20230522/v3
+  go get github.com/alibabacloud-go/selectdb-20230522/v4
 ```
 
 ## 问题

@@ -10,24 +10,32 @@ import (
 )
 
 type AllocateInstancePublicConnectionRequest struct {
+	// The prefix of the endpoint. Set the parameter to the prefix of the value of **ConnectionString**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-h033cn****-pub-i3
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The network type of the endpoint to be applied for. Set the value to Public.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Public
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -71,11 +79,16 @@ func (s *AllocateInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *A
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
+	// The name of the instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5ED62C81-9948-5612-81E1-EA3853752306
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 498115273
@@ -155,6 +168,22 @@ type CheckCreateDBInstanceRequest struct {
 	//
 	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The specifications of the instance. Valid values:
+	//
+	// 	- **selectdb.xlarge**: 4 CPU cores and 32 GB of memory.
+	//
+	// 	- **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory.
+	//
+	// 	- **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory.
+	//
+	// 	- **selectdb.8xlarge**: 32 CPU cores and 256 GB of memory.
+	//
+	// 	- **selectdb.16xlarge**: 64 CPU cores and 512 GB of memory.
+	//
+	// 	- **selectdb.24xlarge**: 96 CPU cores and 768 GB of memory.
+	//
+	// 	- **selectdb.32xlarge**: 128 CPU cores and 1,024 GB of memory.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -166,6 +195,8 @@ type CheckCreateDBInstanceRequest struct {
 	//
 	// SelectDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -191,6 +222,14 @@ type CheckCreateDBInstanceRequest struct {
 	//
 	// 172.16.XX.XX/12,192.168.XX.XX/22
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The subscription duration of the instance. Valid values:
+	//
+	// 	- If Period is set to Year, valid values of UsedTime are 1, 2, 3, 4, and 5.
+	//
+	// 	- If Period is set to Month, valid values of UsedTime are 1 to 12.
+	//
+	// >  This parameter takes effect and is required only if ChargeType is set to Prepaid.
+	//
 	// example:
 	//
 	// 1
@@ -492,13 +531,7 @@ type CreateDBClusterRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 代表资源组的资源属性字段
-	//
-	// example:
-	//
-	// rg-4690g37929****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
@@ -579,11 +612,6 @@ func (s *CreateDBClusterRequest) SetRegionId(v string) *CreateDBClusterRequest {
 	return s
 }
 
-func (s *CreateDBClusterRequest) SetResourceGroupId(v string) *CreateDBClusterRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
 func (s *CreateDBClusterRequest) SetResourceOwnerId(v int64) *CreateDBClusterRequest {
 	s.ResourceOwnerId = &v
 	return s
@@ -638,6 +666,10 @@ func (s *CreateDBClusterResponseBody) SetRequestId(v string) *CreateDBClusterRes
 type CreateDBClusterResponseBodyData struct {
 	// example:
 	//
+	// selectdb-cn-1ls3sg0po0****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// example:
@@ -652,6 +684,11 @@ func (s CreateDBClusterResponseBodyData) String() string {
 
 func (s CreateDBClusterResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBClusterResponseBodyData) SetClusterId(v string) *CreateDBClusterResponseBodyData {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *CreateDBClusterResponseBodyData) SetDBInstanceId(v string) *CreateDBClusterResponseBodyData {
@@ -721,6 +758,8 @@ type CreateDBInstanceRequest struct {
 	// selectdb.xlarge
 	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The type of the database. Default value: **selectdb**.
+	//
 	// example:
 	//
 	// selectdb
@@ -751,7 +790,8 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// 192.168.1.1
-	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SecurityIPList *string                       `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	Tag            []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -851,6 +891,11 @@ func (s *CreateDBInstanceRequest) SetSecurityIPList(v string) *CreateDBInstanceR
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetTag(v []*CreateDBInstanceRequestTag) *CreateDBInstanceRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetUsedTime(v int32) *CreateDBInstanceRequest {
 	s.UsedTime = &v
 	return s
@@ -867,6 +912,221 @@ func (s *CreateDBInstanceRequest) SetVpcId(v string) *CreateDBInstanceRequest {
 }
 
 func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateDBInstanceRequestTag struct {
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDBInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceRequestTag) SetKey(v string) *CreateDBInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequestTag) SetValue(v string) *CreateDBInstanceRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateDBInstanceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200GB
+	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// AB
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb.xlarge
+	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The type of the database. Default value: **selectdb**.
+	//
+	// example:
+	//
+	// selectdb
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.4
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 代表资源组的资源属性字段
+	//
+	// example:
+	//
+	// rg-aekzt2zaluvuvqa_fake
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 192.168.1.1
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	TagShrink      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 1
+	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1gzt31twhlo0sa5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp175iuvg8nxqraf2****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateDBInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetCacheSize(v int32) *CreateDBInstanceShrinkRequest {
+	s.CacheSize = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetChargeType(v string) *CreateDBInstanceShrinkRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetClientToken(v string) *CreateDBInstanceShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetConnectionString(v string) *CreateDBInstanceShrinkRequest {
+	s.ConnectionString = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDBInstanceClass(v string) *CreateDBInstanceShrinkRequest {
+	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDBInstanceDescription(v string) *CreateDBInstanceShrinkRequest {
+	s.DBInstanceDescription = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetEngine(v string) *CreateDBInstanceShrinkRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetEngineVersion(v string) *CreateDBInstanceShrinkRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetPeriod(v string) *CreateDBInstanceShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetRegionId(v string) *CreateDBInstanceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetResourceGroupId(v string) *CreateDBInstanceShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetResourceOwnerId(v int64) *CreateDBInstanceShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetSecurityIPList(v string) *CreateDBInstanceShrinkRequest {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetTagShrink(v string) *CreateDBInstanceShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetUsedTime(v int32) *CreateDBInstanceShrinkRequest {
+	s.UsedTime = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetVSwitchId(v string) *CreateDBInstanceShrinkRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetVpcId(v string) *CreateDBInstanceShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetZoneId(v string) *CreateDBInstanceShrinkRequest {
 	s.ZoneId = &v
 	return s
 }
@@ -1262,25 +1522,197 @@ func (s *DeleteDBInstanceResponse) SetBody(v *DeleteDBInstanceResponseBody) *Del
 	return s
 }
 
+type DescribeAllDBInstanceClassRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeAllDBInstanceClassRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDBInstanceClassRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDBInstanceClassRequest) SetRegionId(v string) *DescribeAllDBInstanceClassRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassRequest) SetResourceOwnerId(v int64) *DescribeAllDBInstanceClassRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeAllDBInstanceClassResponseBody struct {
+	// The instance specifications.
+	ClassCodeList []*DescribeAllDBInstanceClassResponseBodyClassCodeList `json:"ClassCodeList,omitempty" xml:"ClassCodeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAllDBInstanceClassResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDBInstanceClassResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDBInstanceClassResponseBody) SetClassCodeList(v []*DescribeAllDBInstanceClassResponseBodyClassCodeList) *DescribeAllDBInstanceClassResponseBody {
+	s.ClassCodeList = v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponseBody) SetRequestId(v string) *DescribeAllDBInstanceClassResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAllDBInstanceClassResponseBodyClassCodeList struct {
+	// example:
+	//
+	// selectdb.xlarge
+	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// example:
+	//
+	// 4
+	CpuCores *int64 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	// example:
+	//
+	// 200
+	DefaultStorageInGB *int64 `json:"DefaultStorageInGB,omitempty" xml:"DefaultStorageInGB,omitempty"`
+	// example:
+	//
+	// 2000
+	MaxStorageInGB *int64 `json:"MaxStorageInGB,omitempty" xml:"MaxStorageInGB,omitempty"`
+	// The memory size.
+	//
+	// example:
+	//
+	// 32
+	MemoryInGB *int64 `json:"MemoryInGB,omitempty" xml:"MemoryInGB,omitempty"`
+	// example:
+	//
+	// 100
+	MinStorageInGB *int64 `json:"MinStorageInGB,omitempty" xml:"MinStorageInGB,omitempty"`
+	// example:
+	//
+	// 100
+	StepStorageInGB *int64 `json:"StepStorageInGB,omitempty" xml:"StepStorageInGB,omitempty"`
+}
+
+func (s DescribeAllDBInstanceClassResponseBodyClassCodeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDBInstanceClassResponseBodyClassCodeList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDBInstanceClassResponseBodyClassCodeList) SetClassCode(v string) *DescribeAllDBInstanceClassResponseBodyClassCodeList {
+	s.ClassCode = &v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponseBodyClassCodeList) SetCpuCores(v int64) *DescribeAllDBInstanceClassResponseBodyClassCodeList {
+	s.CpuCores = &v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponseBodyClassCodeList) SetDefaultStorageInGB(v int64) *DescribeAllDBInstanceClassResponseBodyClassCodeList {
+	s.DefaultStorageInGB = &v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponseBodyClassCodeList) SetMaxStorageInGB(v int64) *DescribeAllDBInstanceClassResponseBodyClassCodeList {
+	s.MaxStorageInGB = &v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponseBodyClassCodeList) SetMemoryInGB(v int64) *DescribeAllDBInstanceClassResponseBodyClassCodeList {
+	s.MemoryInGB = &v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponseBodyClassCodeList) SetMinStorageInGB(v int64) *DescribeAllDBInstanceClassResponseBodyClassCodeList {
+	s.MinStorageInGB = &v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponseBodyClassCodeList) SetStepStorageInGB(v int64) *DescribeAllDBInstanceClassResponseBodyClassCodeList {
+	s.StepStorageInGB = &v
+	return s
+}
+
+type DescribeAllDBInstanceClassResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAllDBInstanceClassResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAllDBInstanceClassResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDBInstanceClassResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDBInstanceClassResponse) SetHeaders(v map[string]*string) *DescribeAllDBInstanceClassResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponse) SetStatusCode(v int32) *DescribeAllDBInstanceClassResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAllDBInstanceClassResponse) SetBody(v *DescribeAllDBInstanceClassResponseBody) *DescribeAllDBInstanceClassResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBClusterConfigRequest struct {
+	// The configuration file to be modified.
+	//
+	// 	- For a compute cluster, set the value to be.conf.
+	//
+	// 	- For a frontend (FE) cluster, set the value to fe.conf.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// be.conf
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213c8yvv09-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1316,19 +1748,28 @@ func (s *DescribeDBClusterConfigRequest) SetRegionId(v string) *DescribeDBCluste
 }
 
 type DescribeDBClusterConfigResponseBody struct {
+	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) authentication failed.
+	//
 	// example:
 	//
 	// failed
-	AccessDeniedDetail *string                                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *DescribeDBClusterConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The information returned.
+	Data *DescribeDBClusterConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The dynamic code. This parameter is not returned.
+	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not returned.
+	//
 	// example:
 	//
 	// An error occurred while processing your request.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ADF42B18-43FD-5100-83A9-BE81AB70C863
@@ -1369,19 +1810,28 @@ func (s *DescribeDBClusterConfigResponseBody) SetRequestId(v string) *DescribeDB
 }
 
 type DescribeDBClusterConfigResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-wny3li00g02-be
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// The numeric ID of the instance.
+	//
 	// example:
 	//
 	// 6585
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-wny3li00g02
-	DbInstanceName *string                                          `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	Params         []*DescribeDBClusterConfigResponseBodyDataParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	// The details about each parameter returned.
+	Params []*DescribeDBClusterConfigResponseBodyDataParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 107841167
@@ -1422,28 +1872,42 @@ func (s *DescribeDBClusterConfigResponseBodyData) SetTaskId(v int32) *DescribeDB
 }
 
 type DescribeDBClusterConfigResponseBodyDataParams struct {
+	// The comments on the parameter.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The default value of the parameter.
+	//
 	// example:
 	//
 	// 15
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Indicates whether the parameter immediately takes effect without requiring a restart.
+	//
 	// example:
 	//
 	// true
 	IsDynamic *int32 `json:"IsDynamic,omitempty" xml:"IsDynamic,omitempty"`
+	// Indicates whether the parameter is modifiable.
+	//
 	// example:
 	//
 	// true
 	IsUserModifiable *int32 `json:"IsUserModifiable,omitempty" xml:"IsUserModifiable,omitempty"`
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// doris_scanner_thread_pool_thread_num
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value range of the parameter.
+	//
 	// example:
 	//
 	// [0-20000]
-	Optional      *string `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	Optional *string `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The category of the parameter.
 	ParamCategory *string `json:"ParamCategory,omitempty" xml:"ParamCategory,omitempty"`
+	// The current value of the parameter.
+	//
 	// example:
 	//
 	// 10
@@ -1546,6 +2010,8 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// selectdb-cn-jia3ma3b003
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1558,6 +2024,8 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1608,12 +2076,17 @@ type DescribeDBClusterConfigChangeLogsResponseBody struct {
 	// example:
 	//
 	// failed
-	AccessDeniedDetail *string                                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *DescribeDBClusterConfigChangeLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data *DescribeDBClusterConfigChangeLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The dynamic code. This parameter is not returned.
+	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not returned.
+	//
 	// example:
 	//
 	// An error occurred while processing your request.
@@ -1669,8 +2142,11 @@ type DescribeDBClusterConfigChangeLogsResponseBodyData struct {
 	// example:
 	//
 	// selectdb-cn-wny3li00g02
-	DbInstanceName  *string                                                             `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	// The parameter change logs.
 	ParamChangeLogs []*DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs `json:"ParamChangeLogs,omitempty" xml:"ParamChangeLogs,omitempty" type:"Repeated"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 107841167
@@ -1719,14 +2195,20 @@ type DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs struct {
 	//
 	// 2024-03-08T10:08Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the change log.
+	//
 	// example:
 	//
 	// 617975
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the modification has taken effect.
+	//
 	// example:
 	//
 	// false
 	IsApplied *bool `json:"IsApplied,omitempty" xml:"IsApplied,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// cumulative_compaction_rounds_for_each_base_compaction_round
@@ -1814,12 +2296,16 @@ func (s *DescribeDBClusterConfigChangeLogsResponse) SetBody(v *DescribeDBCluster
 }
 
 type DescribeDBInstanceAttributeRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1853,79 +2339,157 @@ func (s *DescribeDBInstanceAttributeRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
+	// The information returned.
 	CanUpgradeVersions []*string `json:"CanUpgradeVersions,omitempty" xml:"CanUpgradeVersions,omitempty" type:"Repeated"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
 	// example:
 	//
 	// Prepaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2023-08-14T03:00:42Z
-	CreateTime    *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The information about each cluster returned.
 	DBClusterList []*DescribeDBInstanceAttributeResponseBodyDBClusterList `json:"DBClusterList,omitempty" xml:"DBClusterList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The description of the instance.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The database engine of the instance.
+	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The minor kernel version number of the instance.
+	//
 	// example:
 	//
 	// 3.0.1
 	EngineMinorVersion *string `json:"EngineMinorVersion,omitempty" xml:"EngineMinorVersion,omitempty"`
+	// The database engine version of the instance.
+	//
 	// example:
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The time when the instance expires.
+	//
 	// example:
 	//
 	// 2023-09-17T00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The time when the instance was last modified, such as when you restarted the instance or applied for a public endpoint for the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2023-08-17T09:58Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The lock mode of the instance. Set the value to **lock**, which specifies that the instance is locked when it automatically expires or has an overdue payment.
+	//
 	// example:
 	//
 	// lock
 	LockMode *int64 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The reason why the instance is locked.
+	//
 	// example:
 	//
 	// nolock
-	LockReason        *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndtime   *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The end time of the instance maintenance window.
+	MaintainEndtime *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
+	// The start time of the instance maintenance window.
 	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	// The storage capacity of the instance.
+	//
 	// example:
 	//
 	// 0
 	ObjectStoreSize *int64 `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
+	// 地域ID。
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06758CAB-1204-5852-A471-29C87D5C1D0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of CPU cores of the instance.
+	//
 	// example:
 	//
 	// 8
-	ResourceCpu     *int64  `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
+	ResourceCpu *int64 `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-aekzbck4asz3dsa
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The state of the instance. Valid values:
+	//
+	// 	- **CREATING**: The instance is being created.
+	//
+	// 	- **ACTIVATION**: The instance is running.
+	//
+	// 	- **RESOURCE_CHANGING**: The resource configuration of the instance is being changed.
+	//
+	// 	- **ORDER_PREPARING**: The order is being confirmed.
+	//
+	// 	- **READONLY_RESOURCE_CHANGING**: The resource configuration of the instance is being changed and the instance is write-locked.
+	//
+	// 	- **DELETING**: The instance is being deleted.
+	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The cache size.
+	//
 	// example:
 	//
 	// 400
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-h-aliyun
-	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	SubDomain *string                                        `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	Tags      []*DescribeDBInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// VPC ID。
+	//
+	// example:
+	//
+	// vpc-bp175iuvg8nxqraf2****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// 实例可用区ID
+	//
+	// example:
+	//
+	// cn-beijing-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBody) String() string {
@@ -2016,6 +2580,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetObjectStoreSize(v int64) *D
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) SetRegionId(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) SetRequestId(v string) *DescribeDBInstanceAttributeResponseBody {
 	s.RequestId = &v
 	return s
@@ -2046,52 +2615,128 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetSubDomain(v string) *Descri
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) SetTags(v []*DescribeDBInstanceAttributeResponseBodyTags) *DescribeDBInstanceAttributeResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetVpcId(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
 type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
+	// The cache size. Unit: GB.
+	//
 	// example:
 	//
 	// 200
 	CacheStorageSizeGB *string `json:"CacheStorageSizeGB,omitempty" xml:"CacheStorageSizeGB,omitempty"`
+	// The cache type.
+	//
 	// example:
 	//
 	// cloud_essd
 	CacheStorageType *string `json:"CacheStorageType,omitempty" xml:"CacheStorageType,omitempty"`
+	// The billing method of the cluster. Valid values:
+	//
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
 	// example:
 	//
 	// Prepaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 8
 	CpuCores *int64 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	// The time when the cluster was created.
+	//
 	// example:
 	//
 	// 2023-08-14T09:24:13Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The specifications of the cluster. Valid values:
+	//
+	// 	- **selectdb.xlarge**: 4 CPU cores and 32 GB of memory.
+	//
+	// 	- **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory.
+	//
+	// 	- **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory.
+	//
+	// 	- **selectdb.8xlarge**: 32 CPU cores and 256 GB of memory.
+	//
+	// 	- **selectdb.16xlarge**: 64 CPU cores and 512 GB of memory.
+	//
+	// 	- **selectdb.24xlarge**: 96 CPU cores and 768 GB of memory.
+	//
+	// 	- **selectdb.32xlarge**: 128 CPU cores and 1,024 GB of memory.
+	//
 	// example:
 	//
 	// selectdb.2xlarge
 	DbClusterClass *string `json:"DbClusterClass,omitempty" xml:"DbClusterClass,omitempty"`
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// selectdb-cn-h033cjs****-be
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// The name of the cluster.
+	//
 	// example:
 	//
 	// test01
-	DbClusterName  *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
+	DbClusterName *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
+	// The instance name.
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 64
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// 修改时间。
+	//
+	// example:
+	//
+	// 2024-07-02T16:35:44+08:00
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The performance level.
+	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The time when the cluster started.
+	//
 	// example:
 	//
 	// 2023-08-14T09:24:13Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The state of the cluster. Valid values:
+	//
+	// 	- **CREATING**: The cluster is being created.
+	//
+	// 	- **ACTIVATION**: The cluster is running.
+	//
+	// 	- **RESOURCE_CHANGING**: The resource configuration of the cluster is being changed.
+	//
+	// 	- **ORDER_PREPARING**: The order is being confirmed.
+	//
+	// 	- **READONLY_RESOURCE_CHANGING**: The resource configuration of the cluster is being changed and the cluster is write-locked.
+	//
+	// 	- **DELETING**: The cluster is being deleted.
+	//
 	// example:
 	//
 	// ACTIVATION
@@ -2156,6 +2801,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetMemory(v int64
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetModifiedTime(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
+	s.ModifiedTime = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetPerformanceLevel(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
 	s.PerformanceLevel = &v
 	return s
@@ -2168,6 +2818,35 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetStartTime(v st
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetStatus(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
 	s.Status = &v
+	return s
+}
+
+type DescribeDBInstanceAttributeResponseBodyTags struct {
+	// example:
+	//
+	// testKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// testValue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyTags) SetTagKey(v string) *DescribeDBInstanceAttributeResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyTags) SetTagValue(v string) *DescribeDBInstanceAttributeResponseBodyTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -2201,12 +2880,16 @@ func (s *DescribeDBInstanceAttributeResponse) SetBody(v *DescribeDBInstanceAttri
 }
 
 type DescribeDBInstanceNetInfoRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2240,8 +2923,12 @@ func (s *DescribeDBInstanceNetInfoRequest) SetResourceOwnerId(v int64) *Describe
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
+	// The network information about the backend (BE) clusters.
 	DBClustersNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos `json:"DBClustersNetInfos,omitempty" xml:"DBClustersNetInfos,omitempty" type:"Repeated"`
+	// The network information about the instance.
 	DBInstanceNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ADF42B18-43FD-5100-83A9-BE81AB70C863
@@ -2272,15 +2959,55 @@ func (s *DescribeDBInstanceNetInfoResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos struct {
-	ClusterId        *string                                                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ConnectionString *string                                                            `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	Ip               *string                                                            `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	NetType          *string                                                            `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	PortList         []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
-	UserVisible      *bool                                                              `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
-	VpcId            *string                                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcInstanceId    *string                                                            `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	VswitchId        *string                                                            `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// selectdb-cn-****-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The connection string of the BE cluster.
+	//
+	// example:
+	//
+	// selectdb-cn-****-fe.selectdbfe.pre.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The IP address of the BE cluster.
+	//
+	// example:
+	//
+	// 8.131.***.***
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The network type of the BE cluster.
+	//
+	// example:
+	//
+	// VPC/PUBLIC
+	NetType  *string                                                            `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	PortList []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	// Indicates whether the network information is visible to users.
+	//
+	// example:
+	//
+	// true/false
+	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// selectdb-cn-****-fe-20230816101006
+	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-****
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) String() string {
@@ -2337,7 +3064,17 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) SetVswitchId(v
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port that is used to connect to the BE cluster.
+	//
+	// example:
+	//
+	// MySQLPort/HttpPort
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol of the port.
+	//
+	// example:
+	//
+	// 9030/8080
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -2360,34 +3097,60 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList) SetPro
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// selectdb-cn-****-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The connection string of the instance.
+	//
 	// example:
 	//
 	// selectdb-cn-h033cnd****-fe.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The IP address of the instance.
+	//
 	// example:
 	//
 	// 172.16.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The network type of the instance. Valid values:
+	//
+	// 	- **VPC**: indicates a virtual private cloud (VPC)-connected instance.
+	//
+	// 	- **PUBLIC**: indicates an Internet-connected instance.
+	//
 	// example:
 	//
 	// VPC
-	NetType  *string                                                            `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The ports.
 	PortList []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	// Indicates whether the network information is visible to users. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-wz90scxq6ods388ft****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the VPC-connected instance.
+	//
 	// example:
 	//
 	// selectdb-cn-h033cnd****-fe-20230816101006
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-uf6mlqti065rer6m0****
@@ -2448,10 +3211,18 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetVswitchId(v
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList struct {
+	// The port that is used to connect to the instance.
+	//
 	// example:
 	//
 	// MySQLPort
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol of the port. Valid values:
+	//
+	// 	- **HttpPort**: HTTP port.
+	//
+	// 	- **MySQLPort**: MySQL port.
+	//
 	// example:
 	//
 	// 9030
@@ -2506,34 +3277,66 @@ func (s *DescribeDBInstanceNetInfoResponse) SetBody(v *DescribeDBInstanceNetInfo
 }
 
 type DescribeDBInstancesRequest struct {
+	// The description of the instance.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The instance ID. Separate multiple instance IDs with commas (,).
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
+	// The state of the instance. Valid values:
+	//
+	// 	- **CREATING**: The instance is being created.
+	//
+	// 	- **ACTIVATION**: The instance is running.
+	//
+	// 	- **RESOURCE_CHANGING**: The resource configuration of the instance is being changed.
+	//
+	// 	- **ORDER_PREPARING**: The order is being confirmed.
+	//
+	// 	- **READONLY_RESOURCE_CHANGING**: The resource configuration of the instance is being changed and the instance is write-locked.
+	//
+	// 	- **DELETING**: The instance is being deleted.
+	//
 	// example:
 	//
 	// ACTIVATION
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-4690g37929****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceGroupId *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag             []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -2584,20 +3387,185 @@ func (s *DescribeDBInstancesRequest) SetResourceOwnerId(v int64) *DescribeDBInst
 	return s
 }
 
+func (s *DescribeDBInstancesRequest) SetTag(v []*DescribeDBInstancesRequestTag) *DescribeDBInstancesRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeDBInstancesRequestTag struct {
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDBInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancesRequestTag) SetKey(v string) *DescribeDBInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDBInstancesRequestTag) SetValue(v string) *DescribeDBInstancesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeDBInstancesShrinkRequest struct {
+	// The description of the instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The instance ID. Separate multiple instance IDs with commas (,).
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
+	// The state of the instance. Valid values:
+	//
+	// 	- **CREATING**: The instance is being created.
+	//
+	// 	- **ACTIVATION**: The instance is running.
+	//
+	// 	- **RESOURCE_CHANGING**: The resource configuration of the instance is being changed.
+	//
+	// 	- **ORDER_PREPARING**: The order is being confirmed.
+	//
+	// 	- **READONLY_RESOURCE_CHANGING**: The resource configuration of the instance is being changed and the instance is write-locked.
+	//
+	// 	- **DELETING**: The instance is being deleted.
+	//
+	// example:
+	//
+	// ACTIVATION
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-4690g37929****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TagShrink       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s DescribeDBInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetDBInstanceDescription(v string) *DescribeDBInstancesShrinkRequest {
+	s.DBInstanceDescription = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetDBInstanceIds(v string) *DescribeDBInstancesShrinkRequest {
+	s.DBInstanceIds = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetDBInstanceStatus(v string) *DescribeDBInstancesShrinkRequest {
+	s.DBInstanceStatus = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetPageNumber(v int64) *DescribeDBInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetPageSize(v int64) *DescribeDBInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetRegionId(v string) *DescribeDBInstancesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetResourceGroupId(v string) *DescribeDBInstancesShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetResourceOwnerId(v int64) *DescribeDBInstancesShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetTagShrink(v string) *DescribeDBInstancesShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
 type DescribeDBInstancesResponseBody struct {
+	// The details about each instance returned.
 	Items []*DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
 	// example:
 	//
 	// 30
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BC854513-E85E-54F3-9842-B9CCD3308CDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -2638,120 +3606,203 @@ func (s *DescribeDBInstancesResponseBody) SetTotalRecordCount(v int64) *Describe
 }
 
 type DescribeDBInstancesResponseBodyItems struct {
+	// The edition of the instance. Default value: basic.
+	//
 	// example:
 	//
 	// basic
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The total number of clusters.
+	//
 	// example:
 	//
 	// 1
 	ClusterCount *int32 `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The database engine of the instance.
+	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version of the instance.
+	//
 	// example:
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The time when the cluster expires.
+	//
+	// >  A specific value is returned only for subscription clusters whose billing method is **Prepaid**. For pay-as-you-go clusters whose billing method is **Postpaid**, no value is returned.
+	//
 	// example:
 	//
 	// 2024-03-29T03:47:05Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The time when the task was created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-08-12T04:14Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the task was last modified. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-08-12T19:05Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The type of the instance.
+	//
 	// example:
 	//
 	// Instance
 	InstanceUsedType *string `json:"InstanceUsedType,omitempty" xml:"InstanceUsedType,omitempty"`
+	// Indicates whether the instance is deleted. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// The lock mode of the instance.
+	//
 	// example:
 	//
 	// 0
 	LockMode *int64 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The reason why the instance is locked.
+	//
 	// example:
 	//
 	// nolock
-	LockReason           *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTimeStr   *string `json:"MaintainEndTimeStr,omitempty" xml:"MaintainEndTimeStr,omitempty"`
-	MaintainEndtime      *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// The end timestamp of the maintenance window.
+	MaintainEndTimeStr *string `json:"MaintainEndTimeStr,omitempty" xml:"MaintainEndTimeStr,omitempty"`
+	// The end time of the instance maintenance window.
+	MaintainEndtime *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
+	// The start timestamp of the maintenance window.
 	MaintainStartTimeStr *string `json:"MaintainStartTimeStr,omitempty" xml:"MaintainStartTimeStr,omitempty"`
-	MaintainStarttime    *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	// The start time of the instance maintenance window.
+	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	// The storage capacity of the instance. Unit: GB.
+	//
 	// example:
 	//
 	// 200
-	ObjectStoreSize *int64  `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
-	ParentInstance  *string `json:"ParentInstance,omitempty" xml:"ParentInstance,omitempty"`
+	ObjectStoreSize *int64 `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
+	// The time when the instance was created.
+	ParentInstance *string `json:"ParentInstance,omitempty" xml:"ParentInstance,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of CPU cores of the instance.
+	//
 	// example:
 	//
 	// 8
-	ResourceCpu     *int64  `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
+	ResourceCpu *int64 `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The memory capacity of the instance.
+	//
 	// example:
 	//
 	// 64
 	ResourceMemory *int64 `json:"ResourceMemory,omitempty" xml:"ResourceMemory,omitempty"`
+	// The maximum number of RCUs.
+	//
 	// example:
 	//
 	// 0
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// The minimum number of RDS capacity units (RCUs).
+	//
 	// example:
 	//
 	// 0
-	ScaleMin     *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleMin *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// This parameter is not returned.
 	ScaleReplica *int64 `json:"ScaleReplica,omitempty" xml:"ScaleReplica,omitempty"`
+	// The state of the instance. Valid values:
+	//
+	// 	- **CREATING**: The instance is being created.
+	//
+	// 	- **ACTIVATION**: The instance is running.
+	//
+	// 	- **RESOURCE_CHANGING**: The resource configuration of the instance is being changed.
+	//
+	// 	- **ORDER_PREPARING**: The order is being confirmed.
+	//
+	// 	- **READONLY_RESOURCE_CHANGING**: The resource configuration of the instance is being changed and the instance is write-locked.
+	//
+	// 	- **DELETING**: The instance is being deleted.
+	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The cache size.
+	//
 	// example:
 	//
 	// 100
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The storage type of the instance.
+	//
 	// example:
 	//
 	// cloud_essd
-	StorageType     *string                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags            []*DescribeDBInstancesResponseBodyItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantClusterId *string                                     `json:"TenantClusterId,omitempty" xml:"TenantClusterId,omitempty"`
-	TenantToken     *string                                     `json:"TenantToken,omitempty" xml:"TenantToken,omitempty"`
-	TenantUserId    *string                                     `json:"TenantUserId,omitempty" xml:"TenantUserId,omitempty"`
-	// VPC ID。
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The details about each tag returned.
+	Tags []*DescribeDBInstancesResponseBodyItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the cluster that is monitored by Managed Service for Prometheus.
+	TenantClusterId *string `json:"TenantClusterId,omitempty" xml:"TenantClusterId,omitempty"`
+	// The token that is used to access Managed Service for Prometheus.
+	TenantToken *string `json:"TenantToken,omitempty" xml:"TenantToken,omitempty"`
+	// The ID of the account that uses Managed Service for Prometheus.
+	TenantUserId *string `json:"TenantUserId,omitempty" xml:"TenantUserId,omitempty"`
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//
 	// vpc-bp175iuvg8nxqraf2****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
-	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The connection string of the instance.
 	ConnectionString *string `json:"connectionString,omitempty" xml:"connectionString,omitempty"`
 }
 
@@ -2956,12 +4007,12 @@ func (s *DescribeDBInstancesResponseBodyItems) SetConnectionString(v string) *De
 type DescribeDBInstancesResponseBodyItemsTags struct {
 	// example:
 	//
-	// department
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// testKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// example:
 	//
-	// it
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// testValue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyItemsTags) String() string {
@@ -2972,13 +4023,13 @@ func (s DescribeDBInstancesResponseBodyItemsTags) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstancesResponseBodyItemsTags) SetKey(v string) *DescribeDBInstancesResponseBodyItemsTags {
-	s.Key = &v
+func (s *DescribeDBInstancesResponseBodyItemsTags) SetTagKey(v string) *DescribeDBInstancesResponseBodyItemsTags {
+	s.TagKey = &v
 	return s
 }
 
-func (s *DescribeDBInstancesResponseBodyItemsTags) SetValue(v string) *DescribeDBInstancesResponseBodyItemsTags {
-	s.Value = &v
+func (s *DescribeDBInstancesResponseBodyItemsTags) SetTagValue(v string) *DescribeDBInstancesResponseBodyItemsTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -3012,12 +4063,16 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeSecurityIPListRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3051,11 +4106,16 @@ func (s *DescribeSecurityIPListRequest) SetResourceOwnerId(v int64) *DescribeSec
 }
 
 type DescribeSecurityIPListResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
-	DBInstanceName *string                                         `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	GroupItems     []*DescribeSecurityIPListResponseBodyGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The details about each IP address whitelist returned.
+	GroupItems []*DescribeSecurityIPListResponseBodyGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5CBE044D-4594-525D-AC65-E988553D853E
@@ -3086,22 +4146,36 @@ func (s *DescribeSecurityIPListResponseBody) SetRequestId(v string) *DescribeSec
 }
 
 type DescribeSecurityIPListResponseBodyGroupItems struct {
+	// The IP address type. Valid values:
+	//
+	// 	- ipv4
+	//
+	// 	- ipv6 (not supported)
+	//
 	// example:
 	//
 	// ipv4
 	AecurityIPType *string `json:"AecurityIPType,omitempty" xml:"AecurityIPType,omitempty"`
+	// The name of the whitelist.
+	//
 	// example:
 	//
 	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tag of the whitelist.
+	//
 	// example:
 	//
 	// ""
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
+	// The IP addresses in the whitelist. Multiple IP addresses are separated by commas (,).
+	//
 	// example:
 	//
 	// 127.0.XX.XX
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The network type of the whitelist.
+	//
 	// example:
 	//
 	// mix
@@ -3171,50 +4245,98 @@ func (s *DescribeSecurityIPListResponse) SetBody(v *DescribeSecurityIPListRespon
 }
 
 type GetCreateBEClusterInquiryRequest struct {
+	// The size of the elastic cache.
+	//
 	// example:
 	//
 	// 200
 	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PREPAY: subscription
+	//
+	// 	- POSTPAY: pay-as-you-go
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The commodity code.
+	//
+	// Valid values:
+	//
+	// 	- selectdb_pre_public_intl: subscription commodity on the international site (alibabacloud.com)
+	//
+	// 	- selectdb_go_public_cn: pay-as-you-go commodity on the China site (aliyun.com)
+	//
+	// 	- selectdb_go_public_intl: pay-as-you-go commodity on the international site (alibabacloud.com)
+	//
+	// 	- selectdb_pre_public_cn: subscription commodity on the China site (aliyun.com).
+	//
 	// example:
 	//
 	// selectdb_go_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The number of elastic CPU cores.
+	//
 	// example:
 	//
 	// 4
 	ComputeSize *int64 `json:"ComputeSize,omitempty" xml:"ComputeSize,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-xxx
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The size of the reserved cache.
+	//
 	// example:
 	//
 	// 200
 	PreCacheSize *int64 `json:"PreCacheSize,omitempty" xml:"PreCacheSize,omitempty"`
+	// The number of reserved CPU cores.
+	//
 	// example:
 	//
 	// 4
 	PreComputeSize *int64 `json:"PreComputeSize,omitempty" xml:"PreComputeSize,omitempty"`
+	// The billing cycle.
+	//
+	// Valid values:
+	//
+	// 	- Month
+	//
+	// 	- Year
+	//
+	// 	- Minute
+	//
+	// 	- Hour
+	//
+	// 	- Day
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hour
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The number of clusters to be created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3288,7 +4410,10 @@ func (s *GetCreateBEClusterInquiryRequest) SetResourceOwnerId(v int64) *GetCreat
 }
 
 type GetCreateBEClusterInquiryResponseBody struct {
+	// The information returned.
 	Data *GetCreateBEClusterInquiryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06758CAB-1204-5852-A471-29C87D5C1D0F
@@ -3314,10 +4439,14 @@ func (s *GetCreateBEClusterInquiryResponseBody) SetRequestId(v string) *GetCreat
 }
 
 type GetCreateBEClusterInquiryResponseBodyData struct {
+	// The currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The amount of money.
+	//
 	// example:
 	//
 	// 1.76
@@ -3372,56 +4501,106 @@ func (s *GetCreateBEClusterInquiryResponse) SetBody(v *GetCreateBEClusterInquiry
 }
 
 type GetModifyBEClusterInquiryRequest struct {
+	// The size of the elastic cache.
+	//
 	// example:
 	//
 	// 200
 	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PREPAY: subscription
+	//
+	// 	- POSTPAY: pay-as-you-go
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-xxx-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The commodity code.
+	//
+	// Valid values:
+	//
+	// 	- selectdb_pre_public_intl: subscription commodity on the international site (alibabacloud.com)
+	//
+	// 	- selectdb_go_public_cn: pay-as-you-go commodity on the China site (aliyun.com)
+	//
+	// 	- selectdb_go_public_intl: pay-as-you-go commodity on the international site (alibabacloud.com)
+	//
+	// 	- selectdb_pre_public_cn: subscription commodity on the China site (aliyun.com).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb_go_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The number of elastic CPU cores.
+	//
 	// example:
 	//
 	// 4
 	ComputeSize *int64 `json:"ComputeSize,omitempty" xml:"ComputeSize,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-xxx
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The size of the reserved cache.
+	//
 	// example:
 	//
 	// 200
 	PreCacheSize *int64 `json:"PreCacheSize,omitempty" xml:"PreCacheSize,omitempty"`
+	// The number of reserved CPU cores.
+	//
 	// example:
 	//
 	// 4
 	PreComputeSize *int64 `json:"PreComputeSize,omitempty" xml:"PreComputeSize,omitempty"`
+	// The billing cycle.
+	//
+	// Valid values:
+	//
+	// 	- Month
+	//
+	// 	- Year
+	//
+	// 	- Minute
+	//
+	// 	- Hour
+	//
+	// 	- Day
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hour
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The number of clusters whose specifications are to be changed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3500,7 +4679,10 @@ func (s *GetModifyBEClusterInquiryRequest) SetResourceOwnerId(v int64) *GetModif
 }
 
 type GetModifyBEClusterInquiryResponseBody struct {
+	// The information returned.
 	Data *GetModifyBEClusterInquiryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06758CAB-1204-5852-A471-29C87D5C1D0F
@@ -3526,10 +4708,14 @@ func (s *GetModifyBEClusterInquiryResponseBody) SetRequestId(v string) *GetModif
 }
 
 type GetModifyBEClusterInquiryResponseBodyData struct {
+	// The currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The amount of money.
+	//
 	// example:
 	//
 	// 1.76
@@ -3596,6 +4782,16 @@ type ModifyBEClusterAttributeRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The cluster parameter to be modified.
+	//
+	// 	- Valid values:****
+	//
+	// <!---->
+	//
+	// 	- MaintainTime
+	//
+	// 	- DBInstanceDescription
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3609,6 +4805,8 @@ type ModifyBEClusterAttributeRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The modfied cluster name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3705,6 +4903,10 @@ func (s *ModifyBEClusterAttributeResponse) SetBody(v *ModifyBEClusterAttributeRe
 }
 
 type ModifyDBClusterRequest struct {
+	// example:
+	//
+	// 200
+	CacheSize *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -3723,6 +4925,8 @@ type ModifyDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The database engine of the instance. Set the value to selectdb.
+	//
 	// example:
 	//
 	// selectdb
@@ -3742,6 +4946,11 @@ func (s ModifyDBClusterRequest) String() string {
 
 func (s ModifyDBClusterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBClusterRequest) SetCacheSize(v string) *ModifyDBClusterRequest {
+	s.CacheSize = &v
+	return s
 }
 
 func (s *ModifyDBClusterRequest) SetDBClusterClass(v string) *ModifyDBClusterRequest {
@@ -3957,10 +5166,14 @@ type ModifyDBClusterConfigResponseBody struct {
 	// failed
 	AccessDeniedDetail *string                                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	Data               *ModifyDBClusterConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The dynamic code. This parameter is not returned.
+	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not returned.
+	//
 	// example:
 	//
 	// An error occurred while processing your request.
@@ -4081,18 +5294,28 @@ func (s *ModifyDBClusterConfigResponse) SetBody(v *ModifyDBClusterConfigResponse
 }
 
 type ModifyDBInstanceAttributeRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance parameter to be modified. Valid values:
+	//
+	// 	- **MaintainTime**: Modify the maintenance window of the instance in the hh:mm-hh:mm format.
+	//
+	// 	- **DBInstanceDescription**: Modify the description of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DBInstanceDescription
 	InstanceAttributeType *string `json:"InstanceAttributeType,omitempty" xml:"InstanceAttributeType,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4100,6 +5323,12 @@ type ModifyDBInstanceAttributeRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The new value of the instance parameter to be modified. Examples:
+	//
+	// 	- If InstanceAttributeType is set to MaintainTime, you can set Value to 00:00-06:00.
+	//
+	// 	- If InstanceAttributeType is set to DBInstanceDescription, you can set Value to testdb.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4142,6 +5371,8 @@ func (s *ModifyDBInstanceAttributeRequest) SetValue(v string) *ModifyDBInstanceA
 }
 
 type ModifyDBInstanceAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 2DB29DEE-52E4-57EE-BF68-2C95C20E6658
@@ -4191,24 +5422,38 @@ func (s *ModifyDBInstanceAttributeResponse) SetBody(v *ModifyDBInstanceAttribute
 }
 
 type ModifySecurityIPListRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the whitelist. Default value: **Default**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The mode in which you want to modify the whitelist. Valid values:
+	//
+	// 	- **0**: overwrites the IP addresses in the whitelist.
+	//
+	// 	- **1**: adds IP addresses to the whitelist.
+	//
+	// 	- **2**: removes IP addresses from the whitelist.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4216,6 +5461,8 @@ type ModifySecurityIPListRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4263,31 +5510,46 @@ func (s *ModifySecurityIPListRequest) SetSecurityIPList(v string) *ModifySecurit
 }
 
 type ModifySecurityIPListResponseBody struct {
+	// The name of the instance.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the whitelist.
+	//
 	// example:
 	//
 	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tag of the whitelist.
+	//
 	// example:
 	//
 	// grouptag
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 195F64C2-8F11-532B-A436-FC08A221D756
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The IP addresses in the whitelist of the instance. Multiple IP addresses are separated by commas (,).
+	//
 	// example:
 	//
 	// 127.0.XX.XX,127.2.XX.XX
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The IP address type.
+	//
 	// example:
 	//
 	// ipv4
 	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 479095561
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The network type of the whitelist.
+	//
 	// example:
 	//
 	// mix
@@ -4372,18 +5634,24 @@ func (s *ModifySecurityIPListResponse) SetBody(v *ModifySecurityIPListResponseBo
 }
 
 type ReleaseInstancePublicConnectionRequest struct {
+	// The connection string of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4422,6 +5690,8 @@ func (s *ReleaseInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *Re
 }
 
 type ReleaseInstancePublicConnectionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
@@ -4471,24 +5741,38 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 }
 
 type ResetAccountPasswordRequest struct {
+	// The database account of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// admin
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the database account. Requirements:
+	//
+	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	//
+	// 	- The following special characters can be used: ! @ # $ % ^ & \\	- ( ) _ + - =
+	//
+	// 	- The password must be 8 to 32 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a1b2c3d4@
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4532,6 +5816,8 @@ func (s *ResetAccountPasswordRequest) SetResourceOwnerId(v int64) *ResetAccountP
 }
 
 type ResetAccountPasswordResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 58E21E11-90FF-50F8-A615-8DEB193676E0
@@ -4581,13 +5867,15 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type RestartDBClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213c8yvv09-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -4595,7 +5883,7 @@ type RestartDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// 地域
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -4603,7 +5891,7 @@ type RestartDBClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组id
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -4646,7 +5934,10 @@ func (s *RestartDBClusterRequest) SetResourceOwnerId(v int64) *RestartDBClusterR
 }
 
 type RestartDBClusterResponseBody struct {
+	// The information returned.
 	Data *RestartDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BD0D0B17-C145-5B91-BFC2-6791927EE973
@@ -4672,10 +5963,14 @@ func (s *RestartDBClusterResponseBody) SetRequestId(v string) *RestartDBClusterR
 }
 
 type RestartDBClusterResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213c8y****-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
@@ -4928,18 +6223,24 @@ func (s *StopBEClusterResponse) SetBody(v *StopBEClusterResponseBody) *StopBEClu
 }
 
 type UpgradeDBInstanceEngineVersionRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The database engine version of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4947,7 +6248,12 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SwitchTimeMode  *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
+	// The update mode. If you do not specify this parameter, the system immediately updates the database engine version. If you set this parameter to 1, the system updates the database engine version during the maintenance window.
+	//
+	// example:
+	//
+	// 1
+	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 }
 
 func (s UpgradeDBInstanceEngineVersionRequest) String() string {
@@ -4984,6 +6290,8 @@ func (s *UpgradeDBInstanceEngineVersionRequest) SetSwitchTimeMode(v string) *Upg
 }
 
 type UpgradeDBInstanceEngineVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
@@ -5081,7 +6389,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 申请公网地址
+// Applies for a public endpoint for an ApsaraDB for SelectDB instance.
 //
 // @param request - AllocateInstancePublicConnectionRequest
 //
@@ -5139,7 +6447,7 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 
 // Summary:
 //
-// 申请公网地址
+// Applies for a public endpoint for an ApsaraDB for SelectDB instance.
 //
 // @param request - AllocateInstancePublicConnectionRequest
 //
@@ -5345,7 +6653,7 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 
 // Summary:
 //
-// SelectDB实例下创建集群
+// Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -5415,10 +6723,6 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		body["DBInstanceId"] = request.DBInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		body["ResourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 		Body:  openapiutil.ParseToMap(body),
@@ -5445,7 +6749,7 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 // Summary:
 //
-// SelectDB实例下创建集群
+// Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -5465,16 +6769,22 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 //
 // 创建SelectDB实例
 //
-// @param request - CreateDBInstanceRequest
+// @param tmpReq - CreateDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDBInstanceResponse
-func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDBInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CacheSize)) {
 		query["CacheSize"] = request.CacheSize
@@ -5522,6 +6832,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
 		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
@@ -5589,7 +6903,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 创建服务关联角色
+// Creates a service-linked role for ApsaraDB for SelectDB.
 //
 // @param request - CreateServiceLinkedRoleForSelectDBRequest
 //
@@ -5635,7 +6949,7 @@ func (client *Client) CreateServiceLinkedRoleForSelectDBWithOptions(request *Cre
 
 // Summary:
 //
-// 创建服务关联角色
+// Creates a service-linked role for ApsaraDB for SelectDB.
 //
 // @param request - CreateServiceLinkedRoleForSelectDBRequest
 //
@@ -5801,7 +7115,71 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 查看集群配置
+// 获取所有实例规格信息
+//
+// @param request - DescribeAllDBInstanceClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAllDBInstanceClassResponse
+func (client *Client) DescribeAllDBInstanceClassWithOptions(request *DescribeAllDBInstanceClassRequest, runtime *util.RuntimeOptions) (_result *DescribeAllDBInstanceClassResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAllDBInstanceClass"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAllDBInstanceClassResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取所有实例规格信息
+//
+// @param request - DescribeAllDBInstanceClassRequest
+//
+// @return DescribeAllDBInstanceClassResponse
+func (client *Client) DescribeAllDBInstanceClass(request *DescribeAllDBInstanceClassRequest) (_result *DescribeAllDBInstanceClassResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAllDBInstanceClassResponse{}
+	_body, _err := client.DescribeAllDBInstanceClassWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration information about a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBClusterConfigRequest
 //
@@ -5855,7 +7233,7 @@ func (client *Client) DescribeDBClusterConfigWithOptions(request *DescribeDBClus
 
 // Summary:
 //
-// 查看集群配置
+// Queries the configuration information about a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBClusterConfigRequest
 //
@@ -5873,7 +7251,7 @@ func (client *Client) DescribeDBClusterConfig(request *DescribeDBClusterConfigRe
 
 // Summary:
 //
-// 查看集群配置变更记录
+// Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBClusterConfigChangeLogsRequest
 //
@@ -5935,7 +7313,7 @@ func (client *Client) DescribeDBClusterConfigChangeLogsWithOptions(request *Desc
 
 // Summary:
 //
-// 查看集群配置变更记录
+// Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBClusterConfigChangeLogsRequest
 //
@@ -5953,7 +7331,7 @@ func (client *Client) DescribeDBClusterConfigChangeLogs(request *DescribeDBClust
 
 // Summary:
 //
-// 查询实例详情
+// Queries the details about an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -6003,7 +7381,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// 查询实例详情
+// Queries the details about an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -6021,7 +7399,7 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 
 // Summary:
 //
-// 查询实例网络链接
+// Queries the network information about an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -6071,7 +7449,7 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 
 // Summary:
 //
-// 查询实例网络链接
+// Queries the network information about an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -6089,18 +7467,24 @@ func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetIn
 
 // Summary:
 //
-// 查询实例列表
+// Queries the information about ApsaraDB for SelectDB instances.
 //
-// @param request - DescribeDBInstancesRequest
+// @param tmpReq - DescribeDBInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDBInstancesResponse
-func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribeDBInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceDescription)) {
 		query["DBInstanceDescription"] = request.DBInstanceDescription
@@ -6134,6 +7518,10 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6159,7 +7547,7 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 
 // Summary:
 //
-// 查询实例列表
+// Queries the information about ApsaraDB for SelectDB instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -6177,7 +7565,7 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
-// 查看白名单
+// Queries the IP addresses in the whitelists of an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeSecurityIPListRequest
 //
@@ -6227,7 +7615,7 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 
 // Summary:
 //
-// 查看白名单
+// Queries the IP addresses in the whitelists of an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeSecurityIPListRequest
 //
@@ -6245,7 +7633,7 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 
 // Summary:
 //
-// 新建集群询价
+// Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - GetCreateBEClusterInquiryRequest
 //
@@ -6283,7 +7671,7 @@ func (client *Client) GetCreateBEClusterInquiryWithOptions(request *GetCreateBEC
 
 // Summary:
 //
-// 新建集群询价
+// Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - GetCreateBEClusterInquiryRequest
 //
@@ -6301,7 +7689,7 @@ func (client *Client) GetCreateBEClusterInquiry(request *GetCreateBEClusterInqui
 
 // Summary:
 //
-// 集群变配询价
+// Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -6339,7 +7727,7 @@ func (client *Client) GetModifyBEClusterInquiryWithOptions(request *GetModifyBEC
 
 // Summary:
 //
-// 集群变配询价
+// Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -6450,6 +7838,10 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CacheSize)) {
+		query["CacheSize"] = request.CacheSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterClass)) {
 		query["DBClusterClass"] = request.DBClusterClass
 	}
@@ -6517,7 +7909,7 @@ func (client *Client) ModifyDBCluster(request *ModifyDBClusterRequest) (_result 
 
 // Summary:
 //
-// 修改集群配置
+// Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyDBClusterConfigRequest
 //
@@ -6579,7 +7971,7 @@ func (client *Client) ModifyDBClusterConfigWithOptions(request *ModifyDBClusterC
 
 // Summary:
 //
-// 修改集群配置
+// Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyDBClusterConfigRequest
 //
@@ -6597,7 +7989,7 @@ func (client *Client) ModifyDBClusterConfig(request *ModifyDBClusterConfigReques
 
 // Summary:
 //
-// 修改实例属性
+// Modifies the maintenance window or description of an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyDBInstanceAttributeRequest
 //
@@ -6655,7 +8047,7 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 
 // Summary:
 //
-// 修改实例属性
+// Modifies the maintenance window or description of an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyDBInstanceAttributeRequest
 //
@@ -6673,7 +8065,7 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 
 // Summary:
 //
-// 变更白名单
+// Modifies the IP addresses in a whitelist of an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifySecurityIPListRequest
 //
@@ -6685,7 +8077,31 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyMode)) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6694,7 +8110,7 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 		Version:     tea.String("2023-05-22"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -6711,7 +8127,7 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 
 // Summary:
 //
-// 变更白名单
+// Modifies the IP addresses in a whitelist of an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifySecurityIPListRequest
 //
@@ -6729,7 +8145,7 @@ func (client *Client) ModifySecurityIPList(request *ModifySecurityIPListRequest)
 
 // Summary:
 //
-// 释放公网地址
+// Releases the public endpoint of an ApsaraDB for SelectDB instance.
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //
@@ -6783,7 +8199,7 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 
 // Summary:
 //
-// 释放公网地址
+// Releases the public endpoint of an ApsaraDB for SelectDB instance.
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //
@@ -6801,7 +8217,7 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 
 // Summary:
 //
-// 修改 Admin 账号的密码。
+// Resets the password of an account for an ApsaraDB for SelectDB instance.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -6839,7 +8255,7 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 
 // Summary:
 //
-// 修改 Admin 账号的密码。
+// Resets the password of an account for an ApsaraDB for SelectDB instance.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -6857,7 +8273,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
-// 重启BE集群
+// Restarts a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - RestartDBClusterRequest
 //
@@ -6917,7 +8333,7 @@ func (client *Client) RestartDBClusterWithOptions(request *RestartDBClusterReque
 
 // Summary:
 //
-// 重启BE集群
+// Restarts a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - RestartDBClusterRequest
 //
@@ -7019,7 +8435,23 @@ func (client *Client) StopBEClusterWithOptions(request *StopBEClusterRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7028,7 +8460,7 @@ func (client *Client) StopBEClusterWithOptions(request *StopBEClusterRequest, ru
 		Version:     tea.String("2023-05-22"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -7063,7 +8495,7 @@ func (client *Client) StopBECluster(request *StopBEClusterRequest) (_result *Sto
 
 // Summary:
 //
-// 实例内核版本升级
+// Updates the database engine version of an ApsaraDB for SelectDB instance.
 //
 // @param request - UpgradeDBInstanceEngineVersionRequest
 //
@@ -7075,7 +8507,27 @@ func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *Upgrade
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchTimeMode)) {
+		query["SwitchTimeMode"] = request.SwitchTimeMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7084,7 +8536,7 @@ func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *Upgrade
 		Version:     tea.String("2023-05-22"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -7101,7 +8553,7 @@ func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *Upgrade
 
 // Summary:
 //
-// 实例内核版本升级
+// Updates the database engine version of an ApsaraDB for SelectDB instance.
 //
 // @param request - UpgradeDBInstanceEngineVersionRequest
 //
