@@ -10,22 +10,42 @@ import (
 )
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the new resource group. You can view the available resource groups in the Resource Management console.
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rg-aek2mcq***
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the protected object in Web Application Firewall (WAF) that you want to manage.
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demo.aliyun.com-waf
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The resource type. The value is fixed as defenseresource.
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// defenseresource
@@ -66,6 +86,8 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0A916D48-D206-5654-8D37-***
@@ -370,26 +392,229 @@ func (s *CopyDefenseTemplateResponse) SetBody(v *CopyDefenseTemplateResponseBody
 	return s
 }
 
+type CreateApiExportRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 993
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zxu3***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The extended parameters of the data export task. The parameter value is in the JSON format. The following keys are supported:
+	//
+	// 	- **instanceId**: the instance ID
+	//
+	// 	- **clusterId**: the ID of the hybrid cloud cluster
+	//
+	// 	- **orderKey**: the name of the field used to sort exported data
+	//
+	// 	- **orderWay**: the sorting method of the exported data
+	//
+	// example:
+	//
+	// {
+	//
+	//     "orderWay": "asc",
+	//
+	//     "orderKey": "endTs",
+	//
+	//     "instanceId": "waf_v3prepaid_public_cn-****"
+	//
+	// }
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// - **cn*	- (default): Chinese mainland.
+	//
+	// - **cn-hongkong**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the data export task. Valid values:
+	//
+	// 	- **apisec_api**: API tasks
+	//
+	// 	- **apisec_abnormal**: API risk tasks
+	//
+	// 	- **apisec_event**: API security event tasks
+	//
+	// example:
+	//
+	// apisec_api
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the time zone.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateApiExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApiExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApiExportRequest) SetClusterId(v string) *CreateApiExportRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateApiExportRequest) SetInstanceId(v string) *CreateApiExportRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateApiExportRequest) SetParam(v string) *CreateApiExportRequest {
+	s.Param = &v
+	return s
+}
+
+func (s *CreateApiExportRequest) SetRegion(v string) *CreateApiExportRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateApiExportRequest) SetRegionId(v string) *CreateApiExportRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApiExportRequest) SetResourceManagerResourceGroupId(v string) *CreateApiExportRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateApiExportRequest) SetType(v string) *CreateApiExportRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateApiExportRequest) SetZoneId(v string) *CreateApiExportRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateApiExportResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 62382992-F9AA-52B2-9147-66B3B9E51D74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateApiExportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApiExportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApiExportResponseBody) SetRequestId(v string) *CreateApiExportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateApiExportResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApiExportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateApiExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApiExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApiExportResponse) SetHeaders(v map[string]*string) *CreateApiExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApiExportResponse) SetStatusCode(v int32) *CreateApiExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateApiExportResponse) SetBody(v *CreateApiExportResponseBody) *CreateApiExportResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCloudResourceRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations of the listeners.
+	//
 	// This parameter is required.
 	Listen *CreateCloudResourceRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 123
-	OwnerUserId *string                             `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	Redirect    *CreateCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The configurations of the forwarding rule.
+	Redirect *CreateCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -435,12 +660,28 @@ func (s *CreateCloudResourceRequest) SetResourceManagerResourceGroupId(v string)
 }
 
 type CreateCloudResourceRequestListen struct {
+	// An array of certificates.
 	Certificates []*CreateCloudResourceRequestListenCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **1**: all cipher suites.
+	//
+	// 	- **2**: strong cipher suites. You can set the parameter to this value only if you set **TLSVersion*	- to **tlsv1.2**.
+	//
+	// 	- **99**: custom cipher suites.
+	//
 	// example:
 	//
 	// 1
-	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite*	- to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// if can be null:
 	// true
 	//
@@ -448,34 +689,66 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
 	// example:
 	//
 	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// The port of the resource that you want to add to WAF.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// 	- **http**
+	//
+	// 	- **https**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-bp1*****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The cloud service. Valid values:
+	//
+	// 	- **clb4**: Layer 4 CLB.
+	//
+	// 	- **clb7**: Layer 7 CLB.
+	//
+	// 	- **ecs**: ECS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// clb4
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// The Transport Layer Security (TLS) version. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
 	// example:
 	//
 	// tlsv1
@@ -541,7 +814,20 @@ func (s *CreateCloudResourceRequestListen) SetTLSVersion(v string) *CreateCloudR
 }
 
 type CreateCloudResourceRequestListenCertificates struct {
+	// The type of the HTTPS certificate. Valid values:
+	//
+	// 	- **default**: default certificate.
+	//
+	// 	- **extension**: additional certificate.
+	//
+	// example:
+	//
+	// default
 	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
+	// The ID of the certificate that you want to add.
+	//
+	// >  You can call the [DescribeCertificates](https://help.aliyun.com/document_detail/160783.html) operation to query the IDs of all SSL certificates that are associated with a domain name.
+	//
 	// example:
 	//
 	// 123-cn-hangzhou
@@ -567,32 +853,70 @@ func (s *CreateCloudResourceRequestListenCertificates) SetCertificateId(v string
 }
 
 type CreateCloudResourceRequestRedirect struct {
+	// Specifies whether to enable the persistent connection feature. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false:**
+	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+	//
+	// >  This parameter specifies the number of requests that can reuse persistent connections after you enable the persistent connection feature.
+	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// The timeout period for idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
+	//
+	// >  If no new requests are initiated over the idle persistent connection within the specified timeout period, the connection is closed
+	//
 	// example:
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+	//
 	// example:
 	//
 	// 1
-	ReadTimeout    *int32                                              `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	// The custom header fields. Specify the value in the [**{"k":"*key*","v":"*value*"}**] format. ***key**	- specifies the key of the custom header field. ***value**	- specifies the value of the custom header field.
+	//
+	// >  If the request contains the custom header field, WAF overwrites the original value of the field with the specified value.
 	RequestHeaders []*CreateCloudResourceRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+	//
 	// example:
 	//
 	// 1
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// The method that WAF uses to obtain the originating IP address of a client. Valid values:
+	//
+	// 	- **0**: No Layer 7 proxies are deployed in front of WAF.
+	//
+	// 	- **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
+	//
+	// 	- **2**: WAF reads the value of a custom header field as the originating IP address of the client.
+	//
 	// example:
 	//
 	// 1
-	XffHeaderMode *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	XffHeaders    []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	// The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **["header1","header2",...]*	- format.
+	//
+	// >  This parameter is required only if you set **XffHeaderMode*	- to 2.
+	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	// Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -653,10 +977,14 @@ func (s *CreateCloudResourceRequestRedirect) SetXffProto(v bool) *CreateCloudRes
 }
 
 type CreateCloudResourceRequestRedirectRequestHeaders struct {
+	// The key of the custom header field.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the custom header field.
+	//
 	// example:
 	//
 	// value1
@@ -682,25 +1010,42 @@ func (s *CreateCloudResourceRequestRedirectRequestHeaders) SetValue(v string) *C
 }
 
 type CreateCloudResourceShrinkRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations of the listeners.
+	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 123
-	OwnerUserId    *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The configurations of the forwarding rule.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -746,10 +1091,14 @@ func (s *CreateCloudResourceShrinkRequest) SetResourceManagerResourceGroupId(v s
 }
 
 type CreateCloudResourceResponseBody struct {
+	// The ID of the resource that is added to WAF. The ID is automatically generated.
+	//
 	// example:
 	//
 	// lb-***
 	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 66A98669-ER12-WE34-23PO-301469*****E
@@ -996,15 +1345,7 @@ type CreateDefenseRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The configurations of the protection rule. Specify a string that contains multiple parameters in the JSON format.
-	//
-	// >  The parameters vary based on the value of the **DefenseScene*	- parameter.***	- For more information, see the "**Protection rule parameters**" section in this topic.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// For more information, see the following section
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// The ID of the rule template for which you want to create a protection rule.
 	//
@@ -1055,12 +1396,18 @@ func (s *CreateDefenseRuleRequest) SetTemplateId(v int64) *CreateDefenseRuleRequ
 }
 
 type CreateDefenseRuleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 26E46541-7AAB-5565-801D-F14DBDC5F186
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The IDs of the protection rules. Multiple IDs are separated by commas (,).
+	//
+	// example:
+	//
+	// 22215,23354,462165
+	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
 }
 
 func (s CreateDefenseRuleResponseBody) String() string {
@@ -1073,6 +1420,11 @@ func (s CreateDefenseRuleResponseBody) GoString() string {
 
 func (s *CreateDefenseRuleResponseBody) SetRequestId(v string) *CreateDefenseRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDefenseRuleResponseBody) SetRuleIds(v string) *CreateDefenseRuleResponseBody {
+	s.RuleIds = &v
 	return s
 }
 
@@ -2729,6 +3081,8 @@ type CreateSM2CertRequest struct {
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// waf_v2_public_cn-***
@@ -2881,289 +3235,305 @@ func (s *CreateSM2CertResponse) SetBody(v *CreateSM2CertResponseBody) *CreateSM2
 	return s
 }
 
-type DeleteApisecAbnormalRequest struct {
-	// example:
+type DeleteApisecAbnormalsRequest struct {
+	// The risk IDs.
 	//
-	// c0a96***4b9cd303467402a63dcc
-	AbnormalId *string `json:"AbnormalId,omitempty" xml:"AbnormalId,omitempty"`
+	// This parameter is required.
+	AbnormalIds []*string `json:"AbnormalIds,omitempty" xml:"AbnormalIds,omitempty" type:"Repeated"`
+	// The ID of the hybrid cloud cluster.
+	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// waf-cn-n6w***x52m
+	// waf_v3prepaid_public_cn-nwy*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// cn
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
+	// The ID of the Alibaba Cloud resource group.
 	//
-	// rg-acfm2th****v6ay
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-}
-
-func (s DeleteApisecAbnormalRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteApisecAbnormalRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteApisecAbnormalRequest) SetAbnormalId(v string) *DeleteApisecAbnormalRequest {
-	s.AbnormalId = &v
-	return s
-}
-
-func (s *DeleteApisecAbnormalRequest) SetClusterId(v string) *DeleteApisecAbnormalRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DeleteApisecAbnormalRequest) SetInstanceId(v string) *DeleteApisecAbnormalRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteApisecAbnormalRequest) SetRegion(v string) *DeleteApisecAbnormalRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DeleteApisecAbnormalRequest) SetRegionId(v string) *DeleteApisecAbnormalRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DeleteApisecAbnormalRequest) SetResourceManagerResourceGroupId(v string) *DeleteApisecAbnormalRequest {
-	s.ResourceManagerResourceGroupId = &v
-	return s
-}
-
-type DeleteApisecAbnormalResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 66A98669-CC6E-4F3E-80A6-7B***11AE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s DeleteApisecAbnormalResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteApisecAbnormalResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteApisecAbnormalResponseBody) SetRequestId(v string) *DeleteApisecAbnormalResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteApisecAbnormalResponseBody) SetResult(v bool) *DeleteApisecAbnormalResponseBody {
-	s.Result = &v
-	return s
-}
-
-type DeleteApisecAbnormalResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteApisecAbnormalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteApisecAbnormalResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteApisecAbnormalResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteApisecAbnormalResponse) SetHeaders(v map[string]*string) *DeleteApisecAbnormalResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteApisecAbnormalResponse) SetStatusCode(v int32) *DeleteApisecAbnormalResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteApisecAbnormalResponse) SetBody(v *DeleteApisecAbnormalResponseBody) *DeleteApisecAbnormalResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteApisecEventRequest struct {
-	// example:
-	//
-	// 433
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// example:
-	//
-	// 0b7ab137a065aab7656986***11db
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// waf-cn-zz11sr5****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// cn
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
-func (s DeleteApisecEventRequest) String() string {
+func (s DeleteApisecAbnormalsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteApisecEventRequest) GoString() string {
+func (s DeleteApisecAbnormalsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteApisecEventRequest) SetClusterId(v string) *DeleteApisecEventRequest {
+func (s *DeleteApisecAbnormalsRequest) SetAbnormalIds(v []*string) *DeleteApisecAbnormalsRequest {
+	s.AbnormalIds = v
+	return s
+}
+
+func (s *DeleteApisecAbnormalsRequest) SetClusterId(v string) *DeleteApisecAbnormalsRequest {
 	s.ClusterId = &v
 	return s
 }
 
-func (s *DeleteApisecEventRequest) SetEventId(v string) *DeleteApisecEventRequest {
-	s.EventId = &v
-	return s
-}
-
-func (s *DeleteApisecEventRequest) SetInstanceId(v string) *DeleteApisecEventRequest {
+func (s *DeleteApisecAbnormalsRequest) SetInstanceId(v string) *DeleteApisecAbnormalsRequest {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *DeleteApisecEventRequest) SetRegion(v string) *DeleteApisecEventRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DeleteApisecEventRequest) SetRegionId(v string) *DeleteApisecEventRequest {
+func (s *DeleteApisecAbnormalsRequest) SetRegionId(v string) *DeleteApisecAbnormalsRequest {
 	s.RegionId = &v
 	return s
 }
 
-func (s *DeleteApisecEventRequest) SetResourceManagerResourceGroupId(v string) *DeleteApisecEventRequest {
+func (s *DeleteApisecAbnormalsRequest) SetResourceManagerResourceGroupId(v string) *DeleteApisecAbnormalsRequest {
 	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
-type DeleteApisecEventResponseBody struct {
-	// Id of the request
+type DeleteApisecAbnormalsResponseBody struct {
+	// The request ID.
 	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19****5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
-func (s DeleteApisecEventResponseBody) String() string {
+func (s DeleteApisecAbnormalsResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteApisecEventResponseBody) GoString() string {
+func (s DeleteApisecAbnormalsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteApisecEventResponseBody) SetRequestId(v string) *DeleteApisecEventResponseBody {
+func (s *DeleteApisecAbnormalsResponseBody) SetRequestId(v string) *DeleteApisecAbnormalsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DeleteApisecEventResponseBody) SetResult(v bool) *DeleteApisecEventResponseBody {
-	s.Result = &v
-	return s
+type DeleteApisecAbnormalsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApisecAbnormalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
-type DeleteApisecEventResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteApisecEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteApisecEventResponse) String() string {
+func (s DeleteApisecAbnormalsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteApisecEventResponse) GoString() string {
+func (s DeleteApisecAbnormalsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteApisecEventResponse) SetHeaders(v map[string]*string) *DeleteApisecEventResponse {
+func (s *DeleteApisecAbnormalsResponse) SetHeaders(v map[string]*string) *DeleteApisecAbnormalsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeleteApisecEventResponse) SetStatusCode(v int32) *DeleteApisecEventResponse {
+func (s *DeleteApisecAbnormalsResponse) SetStatusCode(v int32) *DeleteApisecAbnormalsResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DeleteApisecEventResponse) SetBody(v *DeleteApisecEventResponseBody) *DeleteApisecEventResponse {
+func (s *DeleteApisecAbnormalsResponse) SetBody(v *DeleteApisecAbnormalsResponseBody) *DeleteApisecAbnormalsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteApisecEventsRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The IDs of the security events.
+	//
+	// This parameter is required.
+	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-g4t*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DeleteApisecEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecEventsRequest) SetClusterId(v string) *DeleteApisecEventsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteApisecEventsRequest) SetEventIds(v []*string) *DeleteApisecEventsRequest {
+	s.EventIds = v
+	return s
+}
+
+func (s *DeleteApisecEventsRequest) SetInstanceId(v string) *DeleteApisecEventsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteApisecEventsRequest) SetRegionId(v string) *DeleteApisecEventsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteApisecEventsRequest) SetResourceManagerResourceGroupId(v string) *DeleteApisecEventsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DeleteApisecEventsResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteApisecEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecEventsResponseBody) SetRequestId(v string) *DeleteApisecEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteApisecEventsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApisecEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteApisecEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecEventsResponse) SetHeaders(v map[string]*string) *DeleteApisecEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteApisecEventsResponse) SetStatusCode(v int32) *DeleteApisecEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteApisecEventsResponse) SetBody(v *DeleteApisecEventsResponseBody) *DeleteApisecEventsResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteCloudResourceRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The port of the resource that is added to WAF.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-bp1*****jqnnqk5uj2p
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The cloud service. Valid values:
+	//
+	// 	- **clb4**: Layer 4 CLB.
+	//
+	// 	- **clb7**: Layer 7 CLB.
+	//
+	// 	- **ecs**: ECS.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3211,6 +3581,8 @@ func (s *DeleteCloudResourceRequest) SetResourceProduct(v string) *DeleteCloudRe
 }
 
 type DeleteCloudResourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-***
@@ -4162,45 +4534,312 @@ func (s *DescribeAccountDelegatedStatusResponse) SetBody(v *DescribeAccountDeleg
 	return s
 }
 
+type DescribeApiExportsRequest struct {
+	// The returned data export tasks.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-p****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned data export task.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the file.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeApiExportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiExportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiExportsRequest) SetInstanceId(v string) *DescribeApiExportsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApiExportsRequest) SetLang(v string) *DescribeApiExportsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeApiExportsRequest) SetPageNumber(v int64) *DescribeApiExportsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApiExportsRequest) SetPageSize(v int64) *DescribeApiExportsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApiExportsRequest) SetRegionId(v string) *DescribeApiExportsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApiExportsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApiExportsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeApiExportsResponseBody struct {
+	// The time when the data export task was created. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	ApiExports []*DescribeApiExportsResponseBodyApiExports `json:"ApiExports,omitempty" xml:"ApiExports,omitempty" type:"Repeated"`
+	// The format of the exported file.
+	//
+	// example:
+	//
+	// D9532525-E885-54E7-A178-D5554D563AFB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the data export task. Valid values:
+	//
+	// 	- **expired**: The file is expired.
+	//
+	// 	- **exporting**: Data is being exported.
+	//
+	// 	- **completed**: Data is exported.
+	//
+	// example:
+	//
+	// 7
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeApiExportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiExportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiExportsResponseBody) SetApiExports(v []*DescribeApiExportsResponseBodyApiExports) *DescribeApiExportsResponseBody {
+	s.ApiExports = v
+	return s
+}
+
+func (s *DescribeApiExportsResponseBody) SetRequestId(v string) *DescribeApiExportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApiExportsResponseBody) SetTotal(v int64) *DescribeApiExportsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type DescribeApiExportsResponseBodyApiExports struct {
+	// The time when the data export task was created. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1725604852
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the file.
+	//
+	// example:
+	//
+	// file_16109541456445334c0f01d9a7444e0e908***.csv
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The download URL of the exported file.
+	//
+	// example:
+	//
+	// https://waf-api-sec-cn.***.aliyuncs.com/file_1610954145***.csv
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The format of the exported file.
+	//
+	// example:
+	//
+	// CSV
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The status of the data export task. Valid values:
+	//
+	// 	- **expired**: The file is expired.
+	//
+	// 	- **exporting**: Data is being exported.
+	//
+	// 	- **completed**: Data is exported.
+	//
+	// example:
+	//
+	// completed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the data export task. Valid values:
+	//
+	// 	- **apisec_api**: API tasks
+	//
+	// 	- **apisec_abnormal**: API risk tasks
+	//
+	// 	- **apisec_event**: API security event tasks
+	//
+	// example:
+	//
+	// apisec_api
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeApiExportsResponseBodyApiExports) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiExportsResponseBodyApiExports) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiExportsResponseBodyApiExports) SetCreateTime(v int64) *DescribeApiExportsResponseBodyApiExports {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApiExportsResponseBodyApiExports) SetFileName(v string) *DescribeApiExportsResponseBodyApiExports {
+	s.FileName = &v
+	return s
+}
+
+func (s *DescribeApiExportsResponseBodyApiExports) SetFileUrl(v string) *DescribeApiExportsResponseBodyApiExports {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *DescribeApiExportsResponseBodyApiExports) SetFormat(v string) *DescribeApiExportsResponseBodyApiExports {
+	s.Format = &v
+	return s
+}
+
+func (s *DescribeApiExportsResponseBodyApiExports) SetStatus(v string) *DescribeApiExportsResponseBodyApiExports {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeApiExportsResponseBodyApiExports) SetType(v string) *DescribeApiExportsResponseBodyApiExports {
+	s.Type = &v
+	return s
+}
+
+type DescribeApiExportsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApiExportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApiExportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiExportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiExportsResponse) SetHeaders(v map[string]*string) *DescribeApiExportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApiExportsResponse) SetStatusCode(v int32) *DescribeApiExportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApiExportsResponse) SetBody(v *DescribeApiExportsResponseBody) *DescribeApiExportsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApisecAbnormalDomainStatisticRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 1687313820
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-45919n***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sorting order.
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// cn
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 1682571600
@@ -4245,11 +4884,6 @@ func (s *DescribeApisecAbnormalDomainStatisticRequest) SetPageSize(v int64) *Des
 	return s
 }
 
-func (s *DescribeApisecAbnormalDomainStatisticRequest) SetRegion(v string) *DescribeApisecAbnormalDomainStatisticRequest {
-	s.Region = &v
-	return s
-}
-
 func (s *DescribeApisecAbnormalDomainStatisticRequest) SetRegionId(v string) *DescribeApisecAbnormalDomainStatisticRequest {
 	s.RegionId = &v
 	return s
@@ -4266,6 +4900,7 @@ func (s *DescribeApisecAbnormalDomainStatisticRequest) SetStartTime(v int64) *De
 }
 
 type DescribeApisecAbnormalDomainStatisticResponseBody struct {
+	// The response parameters.
 	Data []*DescribeApisecAbnormalDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -4273,6 +4908,8 @@ type DescribeApisecAbnormalDomainStatisticResponseBody struct {
 	//
 	// 66A98669-CC6E-4F3E-80A6-3014***B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -4303,22 +4940,32 @@ func (s *DescribeApisecAbnormalDomainStatisticResponseBody) SetTotalCount(v int6
 }
 
 type DescribeApisecAbnormalDomainStatisticResponseBodyData struct {
+	// The number of APIs.
+	//
 	// example:
 	//
 	// 10
 	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// ba.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The number of high-level risks.
+	//
 	// example:
 	//
 	// 12
 	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
+	// The number of low-level risks.
+	//
 	// example:
 	//
 	// 4
 	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
+	// The number of medium-level risks.
+	//
 	// example:
 	//
 	// 9
@@ -4387,33 +5034,1358 @@ func (s *DescribeApisecAbnormalDomainStatisticResponse) SetBody(v *DescribeApise
 	return s
 }
 
+type DescribeApisecAbnormalsRequest struct {
+	// The ID of the risk.
+	//
+	// example:
+	//
+	// 29c6401****99a2bad3943e26d8
+	AbnormalId *string `json:"AbnormalId,omitempty" xml:"AbnormalId,omitempty"`
+	// The level of the risk. Valid values:
+	//
+	// 	- **high**
+	//
+	// 	- **medium**
+	//
+	// 	- **low**
+	//
+	// example:
+	//
+	// medium
+	AbnormalLevel *string `json:"AbnormalLevel,omitempty" xml:"AbnormalLevel,omitempty"`
+	// The type of the risk.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+	//
+	// example:
+	//
+	// LackOfSpeedLimit
+	AbnormalTag *string `json:"AbnormalTag,omitempty" xml:"AbnormalTag,omitempty"`
+	// The risk-related API.
+	//
+	// example:
+	//
+	// /api/users/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the risk-related API.
+	//
+	// example:
+	//
+	// bd9efb8ad******d9ca6
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The business purpose of the API.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purposes of APIs.
+	//
+	// example:
+	//
+	// RegisterAPI
+	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 546
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1684382100
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-z***9g301
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// a.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The name of the sorting field. Valid values:
+	//
+	// 	- **firstTime (default)**: first detection time
+	//
+	// 	- **abnormalLevel**: risk level
+	//
+	// example:
+	//
+	// allCnt
+	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// The sorting method. Valid values:
+	//
+	// 	- **desc (default)**: in descending order
+	//
+	// 	- **asc**: in ascending order
+	//
+	// example:
+	//
+	// desc
+	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// The source of the risk type. Valid values:
+	//
+	// 	- **custom**
+	//
+	// 	- **default**
+	//
+	// example:
+	//
+	// custom
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 2
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-qingdao
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1684252800
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the risk. Valid values:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **toBeFixed**
+	//
+	// 	- **fixed**
+	//
+	// 	- **ignored**
+	//
+	// example:
+	//
+	// Confirmed
+	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+}
+
+func (s DescribeApisecAbnormalsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAbnormalsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetAbnormalId(v string) *DescribeApisecAbnormalsRequest {
+	s.AbnormalId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetAbnormalLevel(v string) *DescribeApisecAbnormalsRequest {
+	s.AbnormalLevel = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetAbnormalTag(v string) *DescribeApisecAbnormalsRequest {
+	s.AbnormalTag = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetApiFormat(v string) *DescribeApisecAbnormalsRequest {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetApiId(v string) *DescribeApisecAbnormalsRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetApiTag(v string) *DescribeApisecAbnormalsRequest {
+	s.ApiTag = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetClusterId(v string) *DescribeApisecAbnormalsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetEndTime(v string) *DescribeApisecAbnormalsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetInstanceId(v string) *DescribeApisecAbnormalsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetMatchedHost(v string) *DescribeApisecAbnormalsRequest {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetOrderKey(v string) *DescribeApisecAbnormalsRequest {
+	s.OrderKey = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetOrderWay(v string) *DescribeApisecAbnormalsRequest {
+	s.OrderWay = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetOrigin(v string) *DescribeApisecAbnormalsRequest {
+	s.Origin = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetPageNumber(v int64) *DescribeApisecAbnormalsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetPageSize(v int64) *DescribeApisecAbnormalsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetRegionId(v string) *DescribeApisecAbnormalsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecAbnormalsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetStartTime(v string) *DescribeApisecAbnormalsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsRequest) SetUserStatus(v string) *DescribeApisecAbnormalsRequest {
+	s.UserStatus = &v
+	return s
+}
+
+type DescribeApisecAbnormalsResponseBody struct {
+	// The risks.
+	Data []*DescribeApisecAbnormalsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9469646C-F2CC-5F0F-8401-C53***4F46
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 35
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecAbnormalsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAbnormalsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAbnormalsResponseBody) SetData(v []*DescribeApisecAbnormalsResponseBodyData) *DescribeApisecAbnormalsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBody) SetRequestId(v string) *DescribeApisecAbnormalsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBody) SetTotalCount(v int64) *DescribeApisecAbnormalsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecAbnormalsResponseBodyData struct {
+	// The number of risk-related security events.
+	//
+	// example:
+	//
+	// 2
+	AbnormalEventNumber *int64 `json:"AbnormalEventNumber,omitempty" xml:"AbnormalEventNumber,omitempty"`
+	// The ID of the risk.
+	//
+	// example:
+	//
+	// 7c1431f27ae7e9c8cc64095***68e
+	AbnormalId *string `json:"AbnormalId,omitempty" xml:"AbnormalId,omitempty"`
+	// The details of the risk. The value is a string that consists of multiple parameters in the JSON format. Valid values:
+	//
+	// 	- **rule**: risk-related rule
+	//
+	// 	- **data_type**: sensitive data type
+	//
+	// 	- **custom_rule_name**: custom rule name
+	//
+	// 	- **rule_name**: built-in rule name
+	//
+	// example:
+	//
+	// { "data_type": ["1005","1004"], "rule": { "parent": "RiskType_Permission", "code": "Risk_UnauthSensitive", "level": "high", "origin": "default", "name": "Risk_UnauthSensitive" } }
+	AbnormalInfo *string `json:"AbnormalInfo,omitempty" xml:"AbnormalInfo,omitempty"`
+	// The level of the risk. Valid values:
+	//
+	// 	- **high**
+	//
+	// 	- **medium**
+	//
+	// 	- **low**
+	//
+	// example:
+	//
+	// high
+	AbnormalLevel *string `json:"AbnormalLevel,omitempty" xml:"AbnormalLevel,omitempty"`
+	// The type of the risk.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+	//
+	// example:
+	//
+	// LackOfSpeedLimit
+	AbnormalTag *string `json:"AbnormalTag,omitempty" xml:"AbnormalTag,omitempty"`
+	// The status of the risk.
+	//
+	// example:
+	//
+	// unresolved
+	AbnromalStatus *string `json:"AbnromalStatus,omitempty" xml:"AbnromalStatus,omitempty"`
+	// The risk-related API.
+	//
+	// example:
+	//
+	// /api/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the risk-related API.
+	//
+	// example:
+	//
+	// 09559c0d71ca2ffc996b81***836d8
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The business purpose of the API.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purposes of APIs.
+	//
+	// example:
+	//
+	// SendMail
+	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
+	// The time at which the risk was detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1684252800
+	DiscoverTime *int64 `json:"DiscoverTime,omitempty" xml:"DiscoverTime,omitempty"`
+	// The risk-related samples.
+	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
+	// The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1701138088
+	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// Indicates whether the API is followed. Valid values:
+	//
+	// 	- **1**: yes
+	//
+	// 	- **0**(default): no
+	//
+	// example:
+	//
+	// 0
+	Follow *int64 `json:"Follow,omitempty" xml:"Follow,omitempty"`
+	// The time at which the risk was marked as ignored. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1684252800
+	IgnoreTime *int64 `json:"IgnoreTime,omitempty" xml:"IgnoreTime,omitempty"`
+	// The time at which the risk was last active. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1684252800
+	LastestTime *int64 `json:"LastestTime,omitempty" xml:"LastestTime,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// a.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// Business side notified
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The source of the risk type. Valid values:
+	//
+	// 	- **custom**
+	//
+	// 	- **default**
+	//
+	// example:
+	//
+	// custom
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The status of the risk. Valid values:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **toBeFixed**
+	//
+	// 	- **fixed**
+	//
+	// 	- **ignored**
+	//
+	// example:
+	//
+	// Confirmed
+	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+}
+
+func (s DescribeApisecAbnormalsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAbnormalsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetAbnormalEventNumber(v int64) *DescribeApisecAbnormalsResponseBodyData {
+	s.AbnormalEventNumber = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetAbnormalId(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.AbnormalId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetAbnormalInfo(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.AbnormalInfo = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetAbnormalLevel(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.AbnormalLevel = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetAbnormalTag(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.AbnormalTag = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetAbnromalStatus(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.AbnromalStatus = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetApiFormat(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetApiId(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetApiTag(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.ApiTag = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetDiscoverTime(v int64) *DescribeApisecAbnormalsResponseBodyData {
+	s.DiscoverTime = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetExamples(v []*string) *DescribeApisecAbnormalsResponseBodyData {
+	s.Examples = v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetFirstTime(v int64) *DescribeApisecAbnormalsResponseBodyData {
+	s.FirstTime = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetFollow(v int64) *DescribeApisecAbnormalsResponseBodyData {
+	s.Follow = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetIgnoreTime(v int64) *DescribeApisecAbnormalsResponseBodyData {
+	s.IgnoreTime = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetLastestTime(v int64) *DescribeApisecAbnormalsResponseBodyData {
+	s.LastestTime = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetMatchedHost(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetNote(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.Note = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetOrigin(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.Origin = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponseBodyData) SetUserStatus(v string) *DescribeApisecAbnormalsResponseBodyData {
+	s.UserStatus = &v
+	return s
+}
+
+type DescribeApisecAbnormalsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecAbnormalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecAbnormalsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAbnormalsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAbnormalsResponse) SetHeaders(v map[string]*string) *DescribeApisecAbnormalsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponse) SetStatusCode(v int32) *DescribeApisecAbnormalsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalsResponse) SetBody(v *DescribeApisecAbnormalsResponseBody) *DescribeApisecAbnormalsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecApiResourcesRequest struct {
+	// The API.
+	//
+	// example:
+	//
+	// /auth/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the API.
+	//
+	// example:
+	//
+	// 867ade***24ee6e205b8da82b8f84
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The request method of the API. Valid values:
+	//
+	// 	- **GET**
+	//
+	// 	- **POST**
+	//
+	// 	- **HEAD**
+	//
+	// 	- **PUT**
+	//
+	// 	- **DELETE**
+	//
+	// 	- **CONNECT**
+	//
+	// 	- **PATCH**
+	//
+	// 	- **OPTIONS**
+	//
+	// example:
+	//
+	// POST
+	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
+	// The API status. Valid values:
+	//
+	// 	- **NewbornInterface**: The API is newly added.
+	//
+	// 	- **OfflineInterface**: The API is inactive.
+	//
+	// 	- **normal**: The API is normal.
+	//
+	// example:
+	//
+	// OfflineInterface
+	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
+	// The business purpose of the API.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+	//
+	// example:
+	//
+	// SendMail
+	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
+	// The service object. Valid values:
+	//
+	// 	- **PublicAPI**: public services
+	//
+	// 	- **ThirdpartAPI**: cooperation with third-party partners
+	//
+	// 	- **InternalAPI**: internal office
+	//
+	// example:
+	//
+	// innerAPI
+	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// Specifies whether authentication is required. Valid values:
+	//
+	// 	- **0**: Authentication is required.
+	//
+	// 	- **1**: Authentication is not required.
+	//
+	// example:
+	//
+	// 0
+	AuthFlag *string `json:"AuthFlag,omitempty" xml:"AuthFlag,omitempty"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 740
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1683388800
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to follow the API. Valid values:
+	//
+	// 	- **1**: follows the API.
+	//
+	// 	- **0**: does not follow the API.
+	//
+	// example:
+	//
+	// 0
+	Follow *int64 `json:"Follow,omitempty" xml:"Follow,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-u***gr20j
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// a.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// API for logon
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The name of the sorting field. Valid values:
+	//
+	// 	- **allCnt**: the total number of calls to the API in the previous 30 days
+	//
+	// 	- **botCnt**: the number of bot-initiated requests in the previous 30 days
+	//
+	// 	- **crossBorderCnt**: the number of cross-border requests in the previous 30 days
+	//
+	// 	- **abnormalNum**: the number of API-related risks
+	//
+	// 	- **eventNum**: the number of API-related security events
+	//
+	// 	- **farthestTs**: the time when the API was first detected
+	//
+	// 	- **lastestTs**: the time of the most recent access to the API
+	//
+	// example:
+	//
+	// allCnt
+	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// The sorting method. Valid values:
+	//
+	// 	- **desc*	- (default): descending order
+	//
+	// 	- **asc**: ascending order
+	//
+	// example:
+	//
+	// desc
+	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The sensitive data type in the request.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported sensitive data types.
+	//
+	// example:
+	//
+	// 1004,1005
+	RequestSensitiveType *string `json:"RequestSensitiveType,omitempty" xml:"RequestSensitiveType,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The sensitivity level of the API. Valid values:
+	//
+	// 	- **L1**: high sensitivity
+	//
+	// 	- **L2**: moderate sensitivity
+	//
+	// 	- **L3**: low sensitivity
+	//
+	// 	- **N**: non-sensitivity
+	//
+	// example:
+	//
+	// L3
+	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	// The sensitive data type in the response.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported sensitive data types.
+	//
+	// example:
+	//
+	// 1004
+	SensitiveType *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1681833600
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeApisecApiResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecApiResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetApiFormat(v string) *DescribeApisecApiResourcesRequest {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetApiId(v string) *DescribeApisecApiResourcesRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetApiMethod(v string) *DescribeApisecApiResourcesRequest {
+	s.ApiMethod = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetApiStatus(v string) *DescribeApisecApiResourcesRequest {
+	s.ApiStatus = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetApiTag(v string) *DescribeApisecApiResourcesRequest {
+	s.ApiTag = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetApiType(v string) *DescribeApisecApiResourcesRequest {
+	s.ApiType = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetAuthFlag(v string) *DescribeApisecApiResourcesRequest {
+	s.AuthFlag = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetClusterId(v string) *DescribeApisecApiResourcesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetEndTime(v string) *DescribeApisecApiResourcesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetFollow(v int64) *DescribeApisecApiResourcesRequest {
+	s.Follow = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetInstanceId(v string) *DescribeApisecApiResourcesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetMatchedHost(v string) *DescribeApisecApiResourcesRequest {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetNote(v string) *DescribeApisecApiResourcesRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetOrderKey(v string) *DescribeApisecApiResourcesRequest {
+	s.OrderKey = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetOrderWay(v string) *DescribeApisecApiResourcesRequest {
+	s.OrderWay = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetPageNumber(v int64) *DescribeApisecApiResourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetPageSize(v int64) *DescribeApisecApiResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetRegionId(v string) *DescribeApisecApiResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetRequestSensitiveType(v string) *DescribeApisecApiResourcesRequest {
+	s.RequestSensitiveType = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecApiResourcesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetSensitiveLevel(v string) *DescribeApisecApiResourcesRequest {
+	s.SensitiveLevel = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetSensitiveType(v string) *DescribeApisecApiResourcesRequest {
+	s.SensitiveType = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetStartTime(v string) *DescribeApisecApiResourcesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeApisecApiResourcesResponseBody struct {
+	// The API assets.
+	Data []*DescribeApisecApiResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2EFCFE18-78F8-5079-B312-07***48B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecApiResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecApiResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecApiResourcesResponseBody) SetData(v []*DescribeApisecApiResourcesResponseBodyData) *DescribeApisecApiResourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBody) SetRequestId(v string) *DescribeApisecApiResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBody) SetTotalCount(v int64) *DescribeApisecApiResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecApiResourcesResponseBodyData struct {
+	// The number of API-related risks.
+	//
+	// example:
+	//
+	// 2
+	AbnormalNum *int64 `json:"AbnormalNum,omitempty" xml:"AbnormalNum,omitempty"`
+	// The total number of calls to this API in the previous 30 days.
+	//
+	// example:
+	//
+	// 10
+	AllCnt *int64 `json:"AllCnt,omitempty" xml:"AllCnt,omitempty"`
+	// The API.
+	//
+	// example:
+	//
+	// /v1/etl/finddatabyvid
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the API.
+	//
+	// example:
+	//
+	// 867ade***24ee6e205b8da82b8f84
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The API-related information. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
+	//
+	// 	- **param_num**: the number of API parameters
+	//
+	// 	- **request_method**: the request method
+	//
+	// 	- **protocol**: the request protocol
+	//
+	// 	- **api_url**: the request URL
+	//
+	// 	- **poc_payload**: the request
+	//
+	// 	- **request**: the sample request
+	//
+	// 	- **response**: the sample response
+	//
+	// 	- **param**: the request parameters
+	ApiInfo *string `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty"`
+	// The request method of the API. Valid values:
+	//
+	// 	- **GET**
+	//
+	// 	- **POST**
+	//
+	// 	- **HEAD**
+	//
+	// 	- **PUT**
+	//
+	// 	- **DELETE**
+	//
+	// 	- **CONNECT**
+	//
+	// 	- **PATCH**
+	//
+	// 	- **OPTIONS**
+	//
+	// example:
+	//
+	// POST
+	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
+	// The API-related sensitive information. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
+	//
+	// 	- **request_sensitive_list**: the sensitive data type in the request
+	//
+	// 	- **response_sensitive_list**: the sensitive data type in the response
+	//
+	// 	- **sensitive_list**: sensitive data types
+	//
+	// 	- **sensitive_level**: sensitivity level
+	//
+	// example:
+	//
+	// {
+	//
+	//     "sensitive_list": ["1003","1005"],
+	//
+	//     "sensitive_level": "L2",
+	//
+	//     "request_sensitive_list": ["1003"],
+	//
+	//     "response_sensitive_list": ["1005"]
+	//
+	// }
+	ApiSensitive *string `json:"ApiSensitive,omitempty" xml:"ApiSensitive,omitempty"`
+	// The sensitive data type in the request.
+	//
+	// example:
+	//
+	// ["1002","1005"]
+	ApiSensitiveRequest *string `json:"ApiSensitiveRequest,omitempty" xml:"ApiSensitiveRequest,omitempty"`
+	// The sensitive data type in the response.
+	//
+	// example:
+	//
+	// ["1002","1005"]
+	ApiSensitiveResponse *string `json:"ApiSensitiveResponse,omitempty" xml:"ApiSensitiveResponse,omitempty"`
+	// The API status. Valid values:
+	//
+	// 	- **NewbornInterface**: The API is newly added.
+	//
+	// 	- **OfflineInterface**: The API is inactive.
+	//
+	// 	- **normal**: The API is normal.
+	//
+	// example:
+	//
+	// NewbornInterface
+	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
+	// The business purpose of the API.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+	//
+	// example:
+	//
+	// SendMail
+	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
+	// The service object. Valid values:
+	//
+	// 	- **PublicAPI**: public services
+	//
+	// 	- **ThirdpartAPI**: cooperation with third-party partners
+	//
+	// 	- **InternalAPI**: internal office
+	//
+	// example:
+	//
+	// PublicAPI
+	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// Indicates whether authentication is required. Valid values:
+	//
+	// 	- **0**: Authentication is required.
+	//
+	// 	- **1**: Authentication is not required.
+	//
+	// example:
+	//
+	// 1
+	AuthFlag *string `json:"AuthFlag,omitempty" xml:"AuthFlag,omitempty"`
+	// The number of bot-initiated requests in the previous 30 days.
+	//
+	// example:
+	//
+	// 2
+	BotCnt *int64 `json:"BotCnt,omitempty" xml:"BotCnt,omitempty"`
+	// The number of the cross-border requests in the previous 30 days.
+	//
+	// example:
+	//
+	// 2
+	CrossBorderCnt *int64 `json:"CrossBorderCnt,omitempty" xml:"CrossBorderCnt,omitempty"`
+	// The number of API-related security events.
+	//
+	// example:
+	//
+	// 2
+	EventNum *int64 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
+	// The sample APIs.
+	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
+	// The time when the API asset was first detected. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1683388800
+	FarthestTs *int64 `json:"FarthestTs,omitempty" xml:"FarthestTs,omitempty"`
+	// Specifies whether to follow the API. Valid values:
+	//
+	// 	- **1**: follows the API.
+	//
+	// 	- **0**: does not follow the API.
+	//
+	// example:
+	//
+	// 1
+	Follow *int32 `json:"Follow,omitempty" xml:"Follow,omitempty"`
+	// The most recent access time of the API. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1683388800
+	LastestTs *int64 `json:"LastestTs,omitempty" xml:"LastestTs,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// a.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// Password changed
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+}
+
+func (s DescribeApisecApiResourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecApiResourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetAbnormalNum(v int64) *DescribeApisecApiResourcesResponseBodyData {
+	s.AbnormalNum = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetAllCnt(v int64) *DescribeApisecApiResourcesResponseBodyData {
+	s.AllCnt = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiFormat(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiId(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiInfo(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiInfo = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiMethod(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiMethod = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiSensitive(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiSensitive = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiSensitiveRequest(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiSensitiveRequest = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiSensitiveResponse(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiSensitiveResponse = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiStatus(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiStatus = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiTag(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiTag = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetApiType(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.ApiType = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetAuthFlag(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.AuthFlag = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetBotCnt(v int64) *DescribeApisecApiResourcesResponseBodyData {
+	s.BotCnt = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetCrossBorderCnt(v int64) *DescribeApisecApiResourcesResponseBodyData {
+	s.CrossBorderCnt = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetEventNum(v int64) *DescribeApisecApiResourcesResponseBodyData {
+	s.EventNum = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetExamples(v []*string) *DescribeApisecApiResourcesResponseBodyData {
+	s.Examples = v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetFarthestTs(v int64) *DescribeApisecApiResourcesResponseBodyData {
+	s.FarthestTs = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetFollow(v int32) *DescribeApisecApiResourcesResponseBodyData {
+	s.Follow = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetLastestTs(v int64) *DescribeApisecApiResourcesResponseBodyData {
+	s.LastestTs = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetMatchedHost(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponseBodyData) SetNote(v string) *DescribeApisecApiResourcesResponseBodyData {
+	s.Note = &v
+	return s
+}
+
+type DescribeApisecApiResourcesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecApiResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecApiResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecApiResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecApiResourcesResponse) SetHeaders(v map[string]*string) *DescribeApisecApiResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponse) SetStatusCode(v int32) *DescribeApisecApiResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesResponse) SetBody(v *DescribeApisecApiResourcesResponseBody) *DescribeApisecApiResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApisecAssetTrendRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
 	// example:
 	//
 	// 590
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1683183599
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-ww**b06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// cn
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-aek**7uq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1668496310
@@ -4443,11 +6415,6 @@ func (s *DescribeApisecAssetTrendRequest) SetInstanceId(v string) *DescribeApise
 	return s
 }
 
-func (s *DescribeApisecAssetTrendRequest) SetRegion(v string) *DescribeApisecAssetTrendRequest {
-	s.Region = &v
-	return s
-}
-
 func (s *DescribeApisecAssetTrendRequest) SetRegionId(v string) *DescribeApisecAssetTrendRequest {
 	s.RegionId = &v
 	return s
@@ -4464,6 +6431,7 @@ func (s *DescribeApisecAssetTrendRequest) SetStartTime(v int64) *DescribeApisecA
 }
 
 type DescribeApisecAssetTrendResponseBody struct {
+	// The data returned.
 	Data []*DescribeApisecAssetTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -4492,18 +6460,26 @@ func (s *DescribeApisecAssetTrendResponseBody) SetRequestId(v string) *DescribeA
 }
 
 type DescribeApisecAssetTrendResponseBodyData struct {
+	// The number of active assets.
+	//
 	// example:
 	//
 	// 60
 	AssetActive *int64 `json:"AssetActive,omitempty" xml:"AssetActive,omitempty"`
+	// The total number of assets.
+	//
 	// example:
 	//
 	// 80
 	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
+	// The number of deactivated assets.
+	//
 	// example:
 	//
 	// 20
 	AssetOffline *int64 `json:"AssetOffline,omitempty" xml:"AssetOffline,omitempty"`
+	// The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1683600042
@@ -4568,44 +6544,68 @@ func (s *DescribeApisecAssetTrendResponse) SetBody(v *DescribeApisecAssetTrendRe
 }
 
 type DescribeApisecEventDomainStatisticRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1686895256
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sorting order.
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// cn
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfmvyknl****fa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1668496310
@@ -4650,11 +6650,6 @@ func (s *DescribeApisecEventDomainStatisticRequest) SetPageSize(v int64) *Descri
 	return s
 }
 
-func (s *DescribeApisecEventDomainStatisticRequest) SetRegion(v string) *DescribeApisecEventDomainStatisticRequest {
-	s.Region = &v
-	return s
-}
-
 func (s *DescribeApisecEventDomainStatisticRequest) SetRegionId(v string) *DescribeApisecEventDomainStatisticRequest {
 	s.RegionId = &v
 	return s
@@ -4671,6 +6666,7 @@ func (s *DescribeApisecEventDomainStatisticRequest) SetStartTime(v int64) *Descr
 }
 
 type DescribeApisecEventDomainStatisticResponseBody struct {
+	// The response parameters.
 	Data []*DescribeApisecEventDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -4678,6 +6674,8 @@ type DescribeApisecEventDomainStatisticResponseBody struct {
 	//
 	// 66A98669-*******-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -4708,22 +6706,32 @@ func (s *DescribeApisecEventDomainStatisticResponseBody) SetTotalCount(v int64) 
 }
 
 type DescribeApisecEventDomainStatisticResponseBodyData struct {
+	// The number of APIs.
+	//
 	// example:
 	//
 	// 10
 	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// a.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The number of high-risk security events.
+	//
 	// example:
 	//
 	// 10
 	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
+	// The number of low-risk security events.
+	//
 	// example:
 	//
 	// 2
 	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
+	// The number of medium-risk security events.
+	//
 	// example:
 	//
 	// 6
@@ -4788,6 +6796,648 @@ func (s *DescribeApisecEventDomainStatisticResponse) SetStatusCode(v int32) *Des
 }
 
 func (s *DescribeApisecEventDomainStatisticResponse) SetBody(v *DescribeApisecEventDomainStatisticResponseBody) *DescribeApisecEventDomainStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecEventsRequest struct {
+	// The API.
+	//
+	// example:
+	//
+	// /apisec/v1/register.php
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the event-related API.
+	//
+	// example:
+	//
+	// 820b860***6205da93b935b28
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The business purpose of the API.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+	//
+	// example:
+	//
+	// SendMail
+	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
+	// The Attack source IP.
+	//
+	// example:
+	//
+	// 42.224.*.*
+	AttackIp *string `json:"AttackIp,omitempty" xml:"AttackIp,omitempty"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1683703260
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The ID of the API security event.
+	//
+	// example:
+	//
+	// 18ba94fea9***e66ba0557b7b91
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The severity level of the event. Valid values:
+	//
+	// 	- **high**
+	//
+	// 	- **medium**
+	//
+	// 	- **low**
+	//
+	// example:
+	//
+	// low
+	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// The type of the event.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported event types.
+	//
+	// example:
+	//
+	// ObtainSensitiveUnauthorized
+	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-5y***d31
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// a.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The name of the sorting field. Valid values:
+	//
+	// 	- **allCnt**: the number of attacks
+	//
+	// 	- **startTs**: the start time of the event
+	//
+	// 	- **endTs**: the end time of the event
+	//
+	// example:
+	//
+	// startTs
+	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// The sorting method. Valid values:
+	//
+	// 	- **desc*	- (default): descending order
+	//
+	// 	- **asc**: ascending order
+	//
+	// example:
+	//
+	// desc
+	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// The source of the event type. Valid values:
+	//
+	// 	- **custom**
+	//
+	// 	- **default**
+	//
+	// example:
+	//
+	// default
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1683648000
+	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// The event status. Valid values:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **ignored**
+	//
+	// example:
+	//
+	// Ignore
+	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+}
+
+func (s DescribeApisecEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecEventsRequest) SetApiFormat(v string) *DescribeApisecEventsRequest {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetApiId(v string) *DescribeApisecEventsRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetApiTag(v string) *DescribeApisecEventsRequest {
+	s.ApiTag = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetAttackIp(v string) *DescribeApisecEventsRequest {
+	s.AttackIp = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetClusterId(v string) *DescribeApisecEventsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetEndTs(v int64) *DescribeApisecEventsRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetEventId(v string) *DescribeApisecEventsRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetEventLevel(v string) *DescribeApisecEventsRequest {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetEventTag(v string) *DescribeApisecEventsRequest {
+	s.EventTag = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetInstanceId(v string) *DescribeApisecEventsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetMatchedHost(v string) *DescribeApisecEventsRequest {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetOrderKey(v string) *DescribeApisecEventsRequest {
+	s.OrderKey = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetOrderWay(v string) *DescribeApisecEventsRequest {
+	s.OrderWay = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetOrigin(v string) *DescribeApisecEventsRequest {
+	s.Origin = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetPageNumber(v int64) *DescribeApisecEventsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetPageSize(v int64) *DescribeApisecEventsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetRegionId(v string) *DescribeApisecEventsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecEventsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetStartTs(v int64) *DescribeApisecEventsRequest {
+	s.StartTs = &v
+	return s
+}
+
+func (s *DescribeApisecEventsRequest) SetUserStatus(v string) *DescribeApisecEventsRequest {
+	s.UserStatus = &v
+	return s
+}
+
+type DescribeApisecEventsResponseBody struct {
+	// The security events.
+	Data []*DescribeApisecEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 12F4CC8F-7E9F-5E4D-BF7C-BD1EDDE0C282
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 3
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecEventsResponseBody) SetData(v []*DescribeApisecEventsResponseBodyData) *DescribeApisecEventsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBody) SetRequestId(v string) *DescribeApisecEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBody) SetTotalCount(v int64) *DescribeApisecEventsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecEventsResponseBodyData struct {
+	// The number of attacks.
+	//
+	// example:
+	//
+	// 10
+	AllCnt *int64 `json:"AllCnt,omitempty" xml:"AllCnt,omitempty"`
+	// The API.
+	//
+	// example:
+	//
+	// /apisec/v1/register.php
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the API that is associated with the security event.
+	//
+	// example:
+	//
+	// 2ecc1cf67b91853bc55545052ccf06a8
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The business purpose of the API.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+	//
+	// example:
+	//
+	// SendMail
+	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
+	// The client that is attacked.
+	//
+	// example:
+	//
+	// Chrome
+	AttackClient *string `json:"AttackClient,omitempty" xml:"AttackClient,omitempty"`
+	// The information about the number of attacks. The value of this parameter is a JSON string that contains multiple parameters. Key indicates the timestamp in seconds, and Value indicates the number of attacks.
+	//
+	// example:
+	//
+	// {\\"1717498320\\":500,\\"1717498380\\":529,\\"1717498440\\":20,\\"1717498260\\":518,\\"1717498200\\":481,\\"1717498140\\":52}
+	AttackCntInfo *string `json:"AttackCntInfo,omitempty" xml:"AttackCntInfo,omitempty"`
+	// The source IP address of the attack.
+	//
+	// example:
+	//
+	// 104.234.140.33
+	AttackIp *string `json:"AttackIp,omitempty" xml:"AttackIp,omitempty"`
+	// The information about the attack source IP address. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
+	//
+	// 	- **ip**: the IP address
+	//
+	// 	- **country_id**: the country ID
+	//
+	// 	- **region_id**: the region ID
+	//
+	// 	- **cnt**: the number of attacks
+	//
+	// example:
+	//
+	// [{\\"ip\\":\\"72.*.*.119\\",\\"country_id\\":\\"US\\",\\"region_id\\":\\"\\",\\"cnt\\":\\"2100\\"}]
+	AttackIpInfo *string `json:"AttackIpInfo,omitempty" xml:"AttackIpInfo,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1683703260
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The ID of the event.
+	//
+	// example:
+	//
+	// c82cb276847e9c96f9597d9f4b0cdcff
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The details of the event. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
+	//
+	// 	- **ip_info**: the information about the attack source IP address. This parameter corresponds to the **AttackIpInfo*	- response parameter.
+	//
+	// 	- **rule_id**: the ID of the rule corresponding to the event.
+	//
+	// 	- **rule_tag**: the information about the rule corresponding to the event.
+	//
+	// example:
+	//
+	// {}
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// The severity level of the event. Valid values:
+	//
+	// 	- **high**
+	//
+	// 	- **medium**
+	//
+	// 	- **low**
+	//
+	// example:
+	//
+	// medium
+	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// The type of the event.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported event types.
+	//
+	// example:
+	//
+	// ObtainSensitiveUnauthorized
+	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
+	// Indicates whether the API is followed. Valid values:
+	//
+	// 	- **1**: The API is followed.
+	//
+	// 	- **0**: The API is not followed.
+	//
+	// example:
+	//
+	// 0
+	Follow *int32 `json:"Follow,omitempty" xml:"Follow,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// a.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// Notified
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The source of the event type. Valid values:
+	//
+	// 	- **custom**
+	//
+	// 	- **default**
+	//
+	// example:
+	//
+	// custom
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The country to which the attack source IP address belongs.
+	//
+	// example:
+	//
+	// US
+	RemoteCountry *string `json:"RemoteCountry,omitempty" xml:"RemoteCountry,omitempty"`
+	// The region to which the attack source IP address belongs.
+	//
+	// example:
+	//
+	// 110000
+	RemoteRegion *string `json:"RemoteRegion,omitempty" xml:"RemoteRegion,omitempty"`
+	// The sample API request. The value of this parameter is a JSON string that contains multiple parameters.
+	//
+	// example:
+	//
+	// {}
+	RequestData *string `json:"RequestData,omitempty" xml:"RequestData,omitempty"`
+	// The sample API response. The value of this parameter is a JSON string that contains multiple parameters.
+	//
+	// example:
+	//
+	// {}
+	ResponseData *string `json:"ResponseData,omitempty" xml:"ResponseData,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1683648000
+	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// The event status. Valid values:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **ignored**
+	//
+	// example:
+	//
+	// Ignore
+	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+}
+
+func (s DescribeApisecEventsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecEventsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetAllCnt(v int64) *DescribeApisecEventsResponseBodyData {
+	s.AllCnt = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetApiFormat(v string) *DescribeApisecEventsResponseBodyData {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetApiId(v string) *DescribeApisecEventsResponseBodyData {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetApiTag(v string) *DescribeApisecEventsResponseBodyData {
+	s.ApiTag = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetAttackClient(v string) *DescribeApisecEventsResponseBodyData {
+	s.AttackClient = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetAttackCntInfo(v string) *DescribeApisecEventsResponseBodyData {
+	s.AttackCntInfo = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetAttackIp(v string) *DescribeApisecEventsResponseBodyData {
+	s.AttackIp = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetAttackIpInfo(v string) *DescribeApisecEventsResponseBodyData {
+	s.AttackIpInfo = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetEndTs(v int64) *DescribeApisecEventsResponseBodyData {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetEventId(v string) *DescribeApisecEventsResponseBodyData {
+	s.EventId = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetEventInfo(v string) *DescribeApisecEventsResponseBodyData {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetEventLevel(v string) *DescribeApisecEventsResponseBodyData {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetEventTag(v string) *DescribeApisecEventsResponseBodyData {
+	s.EventTag = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetFollow(v int32) *DescribeApisecEventsResponseBodyData {
+	s.Follow = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetMatchedHost(v string) *DescribeApisecEventsResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetNote(v string) *DescribeApisecEventsResponseBodyData {
+	s.Note = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetOrigin(v string) *DescribeApisecEventsResponseBodyData {
+	s.Origin = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetRemoteCountry(v string) *DescribeApisecEventsResponseBodyData {
+	s.RemoteCountry = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetRemoteRegion(v string) *DescribeApisecEventsResponseBodyData {
+	s.RemoteRegion = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetRequestData(v string) *DescribeApisecEventsResponseBodyData {
+	s.RequestData = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetResponseData(v string) *DescribeApisecEventsResponseBodyData {
+	s.ResponseData = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetStartTs(v int64) *DescribeApisecEventsResponseBodyData {
+	s.StartTs = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponseBodyData) SetUserStatus(v string) *DescribeApisecEventsResponseBodyData {
+	s.UserStatus = &v
+	return s
+}
+
+type DescribeApisecEventsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecEventsResponse) SetHeaders(v map[string]*string) *DescribeApisecEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecEventsResponse) SetStatusCode(v int32) *DescribeApisecEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecEventsResponse) SetBody(v *DescribeApisecEventsResponseBody) *DescribeApisecEventsResponse {
 	s.Body = v
 	return s
 }
@@ -4978,49 +7628,1082 @@ func (s *DescribeApisecLogDeliveriesResponse) SetBody(v *DescribeApisecLogDelive
 	return s
 }
 
+type DescribeApisecMatchedHostsRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 433
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-x0r37plpl0g
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The domain name or IP address.
+	//
+	// example:
+	//
+	// bc.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 8
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekz5qqo7jthcsa
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The detection type. Valid values:
+	//
+	// 	- **api**: API-related domain names
+	//
+	// 	- **abnormal**: risk-related domain names
+	//
+	// 	- **event**: security event-related domain names
+	//
+	// example:
+	//
+	// event
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeApisecMatchedHostsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecMatchedHostsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecMatchedHostsRequest) SetClusterId(v string) *DescribeApisecMatchedHostsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsRequest) SetInstanceId(v string) *DescribeApisecMatchedHostsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsRequest) SetMatchedHost(v string) *DescribeApisecMatchedHostsRequest {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsRequest) SetPageNumber(v string) *DescribeApisecMatchedHostsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsRequest) SetPageSize(v string) *DescribeApisecMatchedHostsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsRequest) SetRegionId(v string) *DescribeApisecMatchedHostsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecMatchedHostsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsRequest) SetType(v string) *DescribeApisecMatchedHostsRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeApisecMatchedHostsResponseBody struct {
+	// The domain names.
+	Data []*DescribeApisecMatchedHostsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 8D4CA088-F72B-5658-BD5B-ECE8B8F0C7BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecMatchedHostsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecMatchedHostsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecMatchedHostsResponseBody) SetData(v []*DescribeApisecMatchedHostsResponseBodyData) *DescribeApisecMatchedHostsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsResponseBody) SetRequestId(v string) *DescribeApisecMatchedHostsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsResponseBody) SetTotalCount(v string) *DescribeApisecMatchedHostsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecMatchedHostsResponseBodyData struct {
+	// The number of APIs related to the domain name.
+	//
+	// example:
+	//
+	// 31
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name or IP address.
+	//
+	// example:
+	//
+	// bc.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+}
+
+func (s DescribeApisecMatchedHostsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecMatchedHostsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecMatchedHostsResponseBodyData) SetCount(v int64) *DescribeApisecMatchedHostsResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsResponseBodyData) SetMatchedHost(v string) *DescribeApisecMatchedHostsResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+type DescribeApisecMatchedHostsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecMatchedHostsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecMatchedHostsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecMatchedHostsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecMatchedHostsResponse) SetHeaders(v map[string]*string) *DescribeApisecMatchedHostsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsResponse) SetStatusCode(v int32) *DescribeApisecMatchedHostsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecMatchedHostsResponse) SetBody(v *DescribeApisecMatchedHostsResponseBody) *DescribeApisecMatchedHostsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecProtectionGroupsRequest struct {
+	// The switch of the API security module.
+	//
+	// example:
+	//
+	// 1
+	ApisecStatus *int32 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the protected object group to which the protected object belongs.
+	//
+	// example:
+	//
+	// group1
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeApisecProtectionGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecProtectionGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecProtectionGroupsRequest) SetApisecStatus(v int32) *DescribeApisecProtectionGroupsRequest {
+	s.ApisecStatus = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsRequest) SetInstanceId(v string) *DescribeApisecProtectionGroupsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsRequest) SetPageNumber(v int64) *DescribeApisecProtectionGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsRequest) SetPageSize(v int64) *DescribeApisecProtectionGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsRequest) SetRegionId(v string) *DescribeApisecProtectionGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsRequest) SetResourceGroup(v string) *DescribeApisecProtectionGroupsRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecProtectionGroupsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeApisecProtectionGroupsResponseBody struct {
+	// The protected object groups.
+	Data []*DescribeApisecProtectionGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of protected object groups.
+	//
+	// example:
+	//
+	// 8
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecProtectionGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecProtectionGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecProtectionGroupsResponseBody) SetData(v []*DescribeApisecProtectionGroupsResponseBodyData) *DescribeApisecProtectionGroupsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsResponseBody) SetRequestId(v string) *DescribeApisecProtectionGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsResponseBody) SetTotalCount(v int64) *DescribeApisecProtectionGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecProtectionGroupsResponseBodyData struct {
+	// The switch of the API security module.
+	//
+	// example:
+	//
+	// 1
+	ApisecStatus *int64 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
+	// The switch of the compliance check feature.
+	//
+	// example:
+	//
+	// 0
+	ReportStatus *int64 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	// The name of the protected object group.
+	//
+	// example:
+	//
+	// group1
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The switch of the tracing and auditing feature.
+	//
+	// example:
+	//
+	// 0
+	TraceStatus *int64 `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
+}
+
+func (s DescribeApisecProtectionGroupsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecProtectionGroupsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecProtectionGroupsResponseBodyData) SetApisecStatus(v int64) *DescribeApisecProtectionGroupsResponseBodyData {
+	s.ApisecStatus = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsResponseBodyData) SetReportStatus(v int64) *DescribeApisecProtectionGroupsResponseBodyData {
+	s.ReportStatus = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsResponseBodyData) SetResourceGroup(v string) *DescribeApisecProtectionGroupsResponseBodyData {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsResponseBodyData) SetTraceStatus(v int64) *DescribeApisecProtectionGroupsResponseBodyData {
+	s.TraceStatus = &v
+	return s
+}
+
+type DescribeApisecProtectionGroupsResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecProtectionGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecProtectionGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecProtectionGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecProtectionGroupsResponse) SetHeaders(v map[string]*string) *DescribeApisecProtectionGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsResponse) SetStatusCode(v int32) *DescribeApisecProtectionGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionGroupsResponse) SetBody(v *DescribeApisecProtectionGroupsResponseBody) *DescribeApisecProtectionGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecProtectionResourcesRequest struct {
+	// The switch of the API security module.
+	//
+	// example:
+	//
+	// 1
+	ApisecStatus *int32 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the protected object.
+	//
+	// example:
+	//
+	// cwaf-***-waf
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeApisecProtectionResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecProtectionResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecProtectionResourcesRequest) SetApisecStatus(v int32) *DescribeApisecProtectionResourcesRequest {
+	s.ApisecStatus = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesRequest) SetInstanceId(v string) *DescribeApisecProtectionResourcesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesRequest) SetPageNumber(v int64) *DescribeApisecProtectionResourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesRequest) SetPageSize(v int64) *DescribeApisecProtectionResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesRequest) SetRegionId(v string) *DescribeApisecProtectionResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesRequest) SetResource(v string) *DescribeApisecProtectionResourcesRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecProtectionResourcesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeApisecProtectionResourcesResponseBody struct {
+	// The protected objects.
+	Data []*DescribeApisecProtectionResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2EFCFE18-78F8-5079-B312-07***48B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecProtectionResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecProtectionResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecProtectionResourcesResponseBody) SetData(v []*DescribeApisecProtectionResourcesResponseBodyData) *DescribeApisecProtectionResourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesResponseBody) SetRequestId(v string) *DescribeApisecProtectionResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesResponseBody) SetTotalCount(v int64) *DescribeApisecProtectionResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecProtectionResourcesResponseBodyData struct {
+	// The switch of the API security module.
+	//
+	// example:
+	//
+	// 1
+	ApisecStatus *int64 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
+	// The switch of the compliance check feature.
+	//
+	// example:
+	//
+	// 1
+	ReportStatus *int64 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	// The protected object.
+	//
+	// example:
+	//
+	// cwaf-***-waf
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The switch of the tracing and auditing feature.
+	//
+	// example:
+	//
+	// 0
+	TraceStatus *int64 `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
+}
+
+func (s DescribeApisecProtectionResourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecProtectionResourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecProtectionResourcesResponseBodyData) SetApisecStatus(v int64) *DescribeApisecProtectionResourcesResponseBodyData {
+	s.ApisecStatus = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesResponseBodyData) SetReportStatus(v int64) *DescribeApisecProtectionResourcesResponseBodyData {
+	s.ReportStatus = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesResponseBodyData) SetResource(v string) *DescribeApisecProtectionResourcesResponseBodyData {
+	s.Resource = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesResponseBodyData) SetTraceStatus(v int64) *DescribeApisecProtectionResourcesResponseBodyData {
+	s.TraceStatus = &v
+	return s
+}
+
+type DescribeApisecProtectionResourcesResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecProtectionResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecProtectionResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecProtectionResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecProtectionResourcesResponse) SetHeaders(v map[string]*string) *DescribeApisecProtectionResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesResponse) SetStatusCode(v int32) *DescribeApisecProtectionResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecProtectionResourcesResponse) SetBody(v *DescribeApisecProtectionResourcesResponseBody) *DescribeApisecProtectionResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecRulesRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0x***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The level of the policy.
+	//
+	// If Type is set to risk or event, you can set this parameter to one of the following values:
+	//
+	// 	- **high**
+	//
+	// 	- **medium**
+	//
+	// 	- **low**
+	//
+	// If Type is set to sensitive_word, you can set this parameter to one of the following values:
+	//
+	// 	- **S1**
+	//
+	// 	- **S2**
+	//
+	// 	- **S3**
+	//
+	// 	- **S4**
+	//
+	// example:
+	//
+	// high
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// Information Leak
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The source of the policy. Valid values:
+	//
+	// 	- **custom**
+	//
+	// 	- **default**
+	//
+	// example:
+	//
+	// custom
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The status of the policy. Valid values:
+	//
+	// 	- **1**: enabled
+	//
+	// 	- **0**: disabled
+	//
+	// example:
+	//
+	// 1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the policy. Valid values:
+	//
+	// 	- **risk**: risk detection
+	//
+	// 	- **event**: security event
+	//
+	// 	- **sensitive_word**: sensitive data
+	//
+	// 	- **auth_flag**: authentication credential
+	//
+	// 	- **api_tag**: business purpose
+	//
+	// 	- **desensitization**: masking
+	//
+	// 	- **whitelist**: whitelist
+	//
+	// 	- **recognition**: API recognition
+	//
+	// 	- **offline_api**: lifecycle management
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// risk
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeApisecRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecRulesRequest) SetInstanceId(v string) *DescribeApisecRulesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetLevel(v string) *DescribeApisecRulesRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetName(v string) *DescribeApisecRulesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetOrigin(v string) *DescribeApisecRulesRequest {
+	s.Origin = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetPageNumber(v int64) *DescribeApisecRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetPageSize(v int64) *DescribeApisecRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetRegionId(v string) *DescribeApisecRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecRulesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetStatus(v int64) *DescribeApisecRulesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetType(v string) *DescribeApisecRulesRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeApisecRulesResponseBody struct {
+	// The policies.
+	Data []*DescribeApisecRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 6
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecRulesResponseBody) SetData(v []*DescribeApisecRulesResponseBodyData) *DescribeApisecRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecRulesResponseBody) SetRequestId(v string) *DescribeApisecRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecRulesResponseBody) SetTotalCount(v int64) *DescribeApisecRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecRulesResponseBodyData struct {
+	// The ID of the policy.
+	//
+	// example:
+	//
+	// 34933
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The details of the policy. The value is a string that consists of multiple parameters in the JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "ext": "Date",
+	//
+	//     "regex": "-",
+	//
+	//     "code": "2009",
+	//
+	//     "level": "S1",
+	//
+	//     "origin": "default",
+	//
+	//     "name": "2009"
+	//
+	// }
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The status of the policy. Valid values:
+	//
+	// 	- **1**: enabled
+	//
+	// 	- **0**: disabled
+	//
+	// example:
+	//
+	// 1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the policy. Valid values:
+	//
+	// 	- **risk**: risk detection
+	//
+	// 	- **event**: security event
+	//
+	// 	- **sensitive_word**: sensitive data
+	//
+	// 	- **auth_flag**: authentication credential
+	//
+	// 	- **api_tag**: business purpose
+	//
+	// 	- **desensitization**: data masking
+	//
+	// 	- **whitelist**: whitelist
+	//
+	// 	- **recognition**: API recognition
+	//
+	// 	- **offline_api**: lifecycle management
+	//
+	// example:
+	//
+	// risk
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the policy was updated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1721095301
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeApisecRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecRulesResponseBodyData) SetId(v int64) *DescribeApisecRulesResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeApisecRulesResponseBodyData) SetRule(v string) *DescribeApisecRulesResponseBodyData {
+	s.Rule = &v
+	return s
+}
+
+func (s *DescribeApisecRulesResponseBodyData) SetStatus(v int64) *DescribeApisecRulesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeApisecRulesResponseBodyData) SetType(v string) *DescribeApisecRulesResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeApisecRulesResponseBodyData) SetUpdateTime(v int64) *DescribeApisecRulesResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeApisecRulesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecRulesResponse) SetHeaders(v map[string]*string) *DescribeApisecRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecRulesResponse) SetStatusCode(v int32) *DescribeApisecRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecRulesResponse) SetBody(v *DescribeApisecRulesResponseBody) *DescribeApisecRulesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApisecSensitiveDomainStatisticRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1686895256
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sorting order.
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// cn
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1668496310
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The sensitive data type.
+	//
+	// 	- request: sensitive data in requests.
+	//
+	// 	- response: sensitive data in responses.
+	//
 	// example:
 	//
 	// request
@@ -5065,11 +8748,6 @@ func (s *DescribeApisecSensitiveDomainStatisticRequest) SetPageSize(v int64) *De
 	return s
 }
 
-func (s *DescribeApisecSensitiveDomainStatisticRequest) SetRegion(v string) *DescribeApisecSensitiveDomainStatisticRequest {
-	s.Region = &v
-	return s
-}
-
 func (s *DescribeApisecSensitiveDomainStatisticRequest) SetRegionId(v string) *DescribeApisecSensitiveDomainStatisticRequest {
 	s.RegionId = &v
 	return s
@@ -5091,6 +8769,7 @@ func (s *DescribeApisecSensitiveDomainStatisticRequest) SetType(v string) *Descr
 }
 
 type DescribeApisecSensitiveDomainStatisticResponseBody struct {
+	// The response parameters.
 	Data []*DescribeApisecSensitiveDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -5098,6 +8777,8 @@ type DescribeApisecSensitiveDomainStatisticResponseBody struct {
 	//
 	// 56B40D30-4960-4F19-B7D5-2B1F***6CB70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 27
@@ -5128,23 +8809,36 @@ func (s *DescribeApisecSensitiveDomainStatisticResponseBody) SetTotalCount(v int
 }
 
 type DescribeApisecSensitiveDomainStatisticResponseBodyData struct {
+	// The number of APIs that are involved.
+	//
 	// example:
 	//
 	// 10
 	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
+	// The number of sites that are involved.
+	//
 	// example:
 	//
 	// 10
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	// The code of the sensitive data.
+	//
 	// example:
 	//
 	// 10
 	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+	// The sensitivity level of the sensitive data.
+	//
 	// example:
 	//
 	// L3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	SensitiveName  *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
+	// The name of the sensitive data.
+	//
+	// example:
+	//
+	// 1002
+	SensitiveName *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
 }
 
 func (s DescribeApisecSensitiveDomainStatisticResponseBodyData) String() string {
@@ -5468,6 +9162,845 @@ func (s *DescribeApisecSlsProjectsResponse) SetStatusCode(v int32) *DescribeApis
 }
 
 func (s *DescribeApisecSlsProjectsResponse) SetBody(v *DescribeApisecSlsProjectsResponseBody) *DescribeApisecSlsProjectsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecStatisticsRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-uax***b09
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aek2***uwbs5q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of statistics to be detected. Valid values:
+	//
+	// 	- **risk**: risk impact statistics
+	//
+	// 	- **event**: attack impact statistics
+	//
+	// example:
+	//
+	// asset_num
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeApisecStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecStatisticsRequest) SetClusterId(v string) *DescribeApisecStatisticsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsRequest) SetInstanceId(v string) *DescribeApisecStatisticsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsRequest) SetRegionId(v string) *DescribeApisecStatisticsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecStatisticsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsRequest) SetType(v string) *DescribeApisecStatisticsRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeApisecStatisticsResponseBody struct {
+	// The check results.
+	Data *DescribeApisecStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 221F0F14-54C6-59A1-9967-72***81B61A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApisecStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecStatisticsResponseBody) SetData(v *DescribeApisecStatisticsResponseBodyData) *DescribeApisecStatisticsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBody) SetRequestId(v string) *DescribeApisecStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApisecStatisticsResponseBodyData struct {
+	// The number of APIs.
+	//
+	// example:
+	//
+	// /api/v1/login
+	Api *int64 `json:"Api,omitempty" xml:"Api,omitempty"`
+	// The number of confirmed events.
+	//
+	// example:
+	//
+	// 10
+	Confirmed *int64 `json:"Confirmed,omitempty" xml:"Confirmed,omitempty"`
+	// The number of domain names.
+	//
+	// example:
+	//
+	// a.aliyun.com
+	Domain *int64 `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The number of fixed risks.
+	//
+	// example:
+	//
+	// 0
+	Fixed *int64 `json:"Fixed,omitempty" xml:"Fixed,omitempty"`
+	// The number of high-risk events.
+	//
+	// example:
+	//
+	// 10
+	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
+	// The number of ignored risks.
+	//
+	// example:
+	//
+	// 0
+	Ignore *int64 `json:"Ignore,omitempty" xml:"Ignore,omitempty"`
+	// The number of low-risk events.
+	//
+	// example:
+	//
+	// 10
+	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
+	// The number of moderate-risk events.
+	//
+	// example:
+	//
+	// 10
+	Medium *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// The number of events to be confirmed.
+	//
+	// example:
+	//
+	// 10
+	ToBeConfirmed *int64 `json:"ToBeConfirmed,omitempty" xml:"ToBeConfirmed,omitempty"`
+	// The number of risks to be fixed.
+	//
+	// example:
+	//
+	// 10
+	ToBeFixed *int64 `json:"ToBeFixed,omitempty" xml:"ToBeFixed,omitempty"`
+	// The number of new high-risk events today.
+	//
+	// example:
+	//
+	// 10
+	TodayHigh *string `json:"TodayHigh,omitempty" xml:"TodayHigh,omitempty"`
+	// The number of new low-risk events today.
+	//
+	// example:
+	//
+	// 10
+	TodayLow *int64 `json:"TodayLow,omitempty" xml:"TodayLow,omitempty"`
+	// The number of new moderate-risk events today.
+	//
+	// example:
+	//
+	// 10
+	TodayMedium *string `json:"TodayMedium,omitempty" xml:"TodayMedium,omitempty"`
+	// The total number of new events today.
+	//
+	// example:
+	//
+	// 30
+	TodayTotal *string `json:"TodayTotal,omitempty" xml:"TodayTotal,omitempty"`
+	// The total number of events.
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeApisecStatisticsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecStatisticsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetApi(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Api = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetConfirmed(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Confirmed = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetDomain(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetFixed(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Fixed = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetHigh(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.High = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetIgnore(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Ignore = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetLow(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Low = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetMedium(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Medium = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetToBeConfirmed(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.ToBeConfirmed = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetToBeFixed(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.ToBeFixed = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetTodayHigh(v string) *DescribeApisecStatisticsResponseBodyData {
+	s.TodayHigh = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetTodayLow(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.TodayLow = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetTodayMedium(v string) *DescribeApisecStatisticsResponseBodyData {
+	s.TodayMedium = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetTodayTotal(v string) *DescribeApisecStatisticsResponseBodyData {
+	s.TodayTotal = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetTotal(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type DescribeApisecStatisticsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecStatisticsResponse) SetHeaders(v map[string]*string) *DescribeApisecStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponse) SetStatusCode(v int32) *DescribeApisecStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponse) SetBody(v *DescribeApisecStatisticsResponseBody) *DescribeApisecStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecSuggestionsRequest struct {
+	// The ID of the API.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a60fd7e3021fe371c06dc1dcb883def0
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-pe336n43m04
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeApisecSuggestionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSuggestionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSuggestionsRequest) SetApiId(v string) *DescribeApisecSuggestionsRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsRequest) SetClusterId(v string) *DescribeApisecSuggestionsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsRequest) SetInstanceId(v string) *DescribeApisecSuggestionsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsRequest) SetRegionId(v string) *DescribeApisecSuggestionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecSuggestionsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeApisecSuggestionsResponseBody struct {
+	// The protection suggestions.
+	Data []*DescribeApisecSuggestionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApisecSuggestionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSuggestionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSuggestionsResponseBody) SetData(v []*DescribeApisecSuggestionsResponseBodyData) *DescribeApisecSuggestionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsResponseBody) SetRequestId(v string) *DescribeApisecSuggestionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApisecSuggestionsResponseBodyData struct {
+	// The API.
+	//
+	// example:
+	//
+	// /apisec/v1/saveinfo
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// a.aliyun.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The rule ID of the protection suggestion.
+	//
+	// example:
+	//
+	// 15060a1f8fed40130b7c4a7bf8d8733b
+	SuggestId *string `json:"SuggestId,omitempty" xml:"SuggestId,omitempty"`
+	// The rule content of the protection suggestion. The value is a string that consists of multiple parameters in the JSON format. Valid values:
+	//
+	// 	- **event_tags**: event type
+	//
+	// 	- **black_iplist**: IP address blacklist
+	//
+	// 	- **ip_baseline**: IP address
+	//
+	// 	- **freq_baseline**: throttling frequency
+	//
+	// 	- **client_id_baseline**: client information
+	//
+	// 	- **country_baseline**: country information
+	//
+	// 	- **province_baseline**: province information
+	//
+	// 	- **sensitive_type**: sensitive information
+	//
+	// example:
+	//
+	// {
+	//
+	//     "rule": "ClientRule",
+	//
+	//     "client_id_baseline": ["Edge"]
+	//
+	// }
+	SuggestRule *string `json:"SuggestRule,omitempty" xml:"SuggestRule,omitempty"`
+	// The rule type of the protection suggestion. Valid values:
+	//
+	// 	- **BotRule**: bot management rules
+	//
+	// 	- **BlackIPRule**: IP address blacklist rules
+	//
+	// 	- **WhiteIPRule**: IP address whitelist rules
+	//
+	// 	- **RateLimitRule**: throttling rules
+	//
+	// 	- **ClientRule**: client rules
+	//
+	// 	- **GeoRule**: region-related rules
+	//
+	// 	- **SensitiveRule**: sensitive information rules
+	//
+	// 	- **UnauthRule**: authentication rules
+	//
+	// example:
+	//
+	// WhiteIPRule
+	SuggestType *string `json:"SuggestType,omitempty" xml:"SuggestType,omitempty"`
+}
+
+func (s DescribeApisecSuggestionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSuggestionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSuggestionsResponseBodyData) SetApiFormat(v string) *DescribeApisecSuggestionsResponseBodyData {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsResponseBodyData) SetMatchedHost(v string) *DescribeApisecSuggestionsResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsResponseBodyData) SetSuggestId(v string) *DescribeApisecSuggestionsResponseBodyData {
+	s.SuggestId = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsResponseBodyData) SetSuggestRule(v string) *DescribeApisecSuggestionsResponseBodyData {
+	s.SuggestRule = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsResponseBodyData) SetSuggestType(v string) *DescribeApisecSuggestionsResponseBodyData {
+	s.SuggestType = &v
+	return s
+}
+
+type DescribeApisecSuggestionsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecSuggestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecSuggestionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSuggestionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSuggestionsResponse) SetHeaders(v map[string]*string) *DescribeApisecSuggestionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsResponse) SetStatusCode(v int32) *DescribeApisecSuggestionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecSuggestionsResponse) SetBody(v *DescribeApisecSuggestionsResponseBody) *DescribeApisecSuggestionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecUserOperationsRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-wwo36ksck1e
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The object ID of the operation record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fe8723e92e2037245014ab62161bbec8
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aek2ax2y5****pi
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the operation record. Valid values:
+	//
+	// 	- **abnormal**: risk detection
+	//
+	// 	- **event**: security event
+	//
+	// example:
+	//
+	// event
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeApisecUserOperationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecUserOperationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecUserOperationsRequest) SetClusterId(v string) *DescribeApisecUserOperationsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsRequest) SetInstanceId(v string) *DescribeApisecUserOperationsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsRequest) SetObjectId(v string) *DescribeApisecUserOperationsRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsRequest) SetRegionId(v string) *DescribeApisecUserOperationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecUserOperationsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsRequest) SetType(v string) *DescribeApisecUserOperationsRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeApisecUserOperationsResponseBody struct {
+	// The operation records.
+	Data []*DescribeApisecUserOperationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C9825654-327B-5156-A570-847054B4CF10
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApisecUserOperationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecUserOperationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecUserOperationsResponseBody) SetData(v []*DescribeApisecUserOperationsResponseBodyData) *DescribeApisecUserOperationsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponseBody) SetRequestId(v string) *DescribeApisecUserOperationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApisecUserOperationsResponseBodyData struct {
+	// The state before the operation.
+	//
+	// Valid values of the risk state:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **toBeFixed**
+	//
+	// 	- **fixed**
+	//
+	// 	- **ignored**
+	//
+	// Valid values of the event state:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **ignored**
+	//
+	// example:
+	//
+	// ignored
+	FromStatus *string `json:"FromStatus,omitempty" xml:"FromStatus,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// Handled
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The object ID of the operation record.
+	//
+	// example:
+	//
+	// 24d997acc48a67a01e09b9c5ad861287
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The time at which the operation was performed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1685072214
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The state after the operation.
+	//
+	// Valid values of the risk state:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **toBeFixed**
+	//
+	// 	- **fixed**
+	//
+	// 	- **ignored**
+	//
+	// Valid values of the event state:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **ignored**
+	//
+	// example:
+	//
+	// Confirmed
+	ToStatus *string `json:"ToStatus,omitempty" xml:"ToStatus,omitempty"`
+	// The type of the operation record. Valid values:
+	//
+	// 	- **abnormal**: risk detection
+	//
+	// 	- **event**: security event
+	//
+	// example:
+	//
+	// abnormal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 1610954****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeApisecUserOperationsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecUserOperationsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecUserOperationsResponseBodyData) SetFromStatus(v string) *DescribeApisecUserOperationsResponseBodyData {
+	s.FromStatus = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponseBodyData) SetNote(v string) *DescribeApisecUserOperationsResponseBodyData {
+	s.Note = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponseBodyData) SetObjectId(v string) *DescribeApisecUserOperationsResponseBodyData {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponseBodyData) SetTime(v int64) *DescribeApisecUserOperationsResponseBodyData {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponseBodyData) SetToStatus(v string) *DescribeApisecUserOperationsResponseBodyData {
+	s.ToStatus = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponseBodyData) SetType(v string) *DescribeApisecUserOperationsResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponseBodyData) SetUserId(v string) *DescribeApisecUserOperationsResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type DescribeApisecUserOperationsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecUserOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecUserOperationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecUserOperationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecUserOperationsResponse) SetHeaders(v map[string]*string) *DescribeApisecUserOperationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponse) SetStatusCode(v int32) *DescribeApisecUserOperationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponse) SetBody(v *DescribeApisecUserOperationsResponseBody) *DescribeApisecUserOperationsResponse {
 	s.Body = v
 	return s
 }
@@ -5941,42 +10474,76 @@ func (s *DescribeCertsResponse) SetBody(v *DescribeCertsResponseBody) *DescribeC
 }
 
 type DescribeCloudResourceAccessPortDetailsRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The port of the cloud service that is added to WAF.
+	//
 	// example:
 	//
 	// 443
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// 	- **http**
+	//
+	// 	- **https**
+	//
 	// example:
 	//
 	// https
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-2zeugkfj81jvo****4tqm
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The cloud service. Valid values:
+	//
+	// 	- **clb4**: Layer 4 CLB.
+	//
+	// 	- **clb7**: Layer 7 CLB.
+	//
+	// 	- **ecs**: ECS.
+	//
 	// example:
 	//
 	// clb7
@@ -6037,11 +10604,16 @@ func (s *DescribeCloudResourceAccessPortDetailsRequest) SetResourceProduct(v str
 }
 
 type DescribeCloudResourceAccessPortDetailsResponseBody struct {
+	// The details of the ports of cloud services that are added to WAF.
 	AccessPortDetails []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails `json:"AccessPortDetails,omitempty" xml:"AccessPortDetails,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2EFCFE18-78F8-5079-B312-07***48B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -6072,66 +10644,154 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBody) SetTotalCount(v int
 }
 
 type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct {
+	// The certificates that are associated with the ports of cloud services.
 	Certificates []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// The type of the cipher suites. Valid values:
+	//
+	// 	- **1**: all cipher suites.
+	//
+	// 	- **2**: strong cipher suites.
+	//
+	// 	- **99**: custom cipher suites.
+	//
 	// example:
 	//
 	// 1
-	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite*	- to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// Indicates whether to support TLS 1.3. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// Indicates whether to enable HTTP/2. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// Indicates whether to enable the persistent connection feature. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false:**
+	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// The number of reused persistent connections. Valid values: 60 to 1000.
+	//
+	// >  This parameter specifies the number of requests that reuse persistent connections after you enable the persistent connection feature.
+	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// The timeout period for idle persistent connections. Valid values: 10 to 3600. Default value: 15. Unit: seconds.
+	//
+	// >  If no new requests are initiated over the idle persistent connection within the specified timeout period, the connection is closed.
+	//
 	// example:
 	//
 	// 10
-	KeepaliveTimeout *int32                                                                           `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	LogHeaders       []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
+	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// The custom header field that you want to use to label requests that are processed by WAF.
+	//
+	// >  This parameter is returned only when the traffic marking feature is enabled for the domain name.
+	LogHeaders []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 123
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The port of the cloud service that is added to WAF.
+	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// 	- **http**
+	//
+	// 	- **https**
+	//
 	// example:
 	//
 	// https
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+	//
 	// example:
 	//
 	// 5
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	// The status of the domain name. Valid values:
+	//
+	// 	- **1**: indicates that the port is available.
+	//
+	// 	- **2**: indicates that the port is being created.
+	//
+	// 	- **3**: indicates that the port is being modified.
+	//
+	// 	- **4**: indicates that the port is being released.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version of the Transport Layer Security (TLS) protocol. Valid values:
+	//
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
 	// example:
 	//
 	// tlsv1
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+	// The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+	//
 	// example:
 	//
 	// 1
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// The method that WAF uses to obtain the originating IP address of a client. Valid values:
+	//
+	// 	- **0**: No Layer 7 proxies are deployed in front of WAF.
+	//
+	// 	- **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
+	//
+	// 	- **2**: WAF reads the value of a custom header field as the originating IP address of the client.
+	//
 	// example:
 	//
 	// 0
-	XffHeaderMode *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	XffHeaders    []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	// The custom header field that is used to obtain the originating IP address of a client. Specify the value in the ["header1","header2",...] format.
+	//
+	// >  This parameter is required only if you set **XffHeaderMode*	- to 2.
+	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	// Indicates whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -6242,14 +10902,24 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) Se
 }
 
 type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates struct {
+	// The type of the HTTPS certificate. Valid values:
+	//
+	// 	- **default**: default certificate.
+	//
+	// 	- **extension**: additional certificate.
+	//
 	// example:
 	//
 	// default
 	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
+	// The ID of the certificate.
+	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The name of the certificate.
+	//
 	// example:
 	//
 	// cert-name1
@@ -6280,10 +10950,14 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCert
 }
 
 type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders struct {
+	// The key of the custom header field.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the custom header field.
+	//
 	// example:
 	//
 	// value1
@@ -6338,22 +11012,36 @@ func (s *DescribeCloudResourceAccessPortDetailsResponse) SetBody(v *DescribeClou
 }
 
 type DescribeCloudResourceAccessedPortsRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-bp1*****jqnnqk5uj2p
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-aekzwwkpn****5i
@@ -6389,8 +11077,12 @@ func (s *DescribeCloudResourceAccessedPortsRequest) SetResourceManagerResourceGr
 }
 
 type DescribeCloudResourceAccessedPortsResponseBody struct {
-	Http  []*int32 `json:"Http,omitempty" xml:"Http,omitempty" type:"Repeated"`
+	// The HTTP ports.
+	Http []*int32 `json:"Http,omitempty" xml:"Http,omitempty" type:"Repeated"`
+	// The HTTPS ports.
 	Https []*int32 `json:"Https,omitempty" xml:"Https,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C1823E96-EF4B-5BD2-9E02-1D18****3ED8
@@ -6871,14 +11563,28 @@ func (s *DescribeCloudResourcesResponse) SetBody(v *DescribeCloudResourcesRespon
 }
 
 type DescribeCnameCountRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 阿里云资源组ID。
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -6909,7 +11615,10 @@ func (s *DescribeCnameCountRequest) SetResourceManagerResourceGroupId(v string) 
 }
 
 type DescribeCnameCountResponseBody struct {
+	// The information about the number of domain names that are added to WAF in CNAME record mode and hybrid cloud reverse proxy mode.
 	CnameCount *DescribeCnameCountResponseBodyCnameCount `json:"CnameCount,omitempty" xml:"CnameCount,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F35F45B0-5D6B-4238-BE02-A62D****E840
@@ -6935,14 +11644,20 @@ func (s *DescribeCnameCountResponseBody) SetRequestId(v string) *DescribeCnameCo
 }
 
 type DescribeCnameCountResponseBodyCnameCount struct {
+	// The number of domain names that are added to WAF in CNAME record mode.
+	//
 	// example:
 	//
 	// 1
 	Cname *int64 `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The number of domain names that are added to WAF in hybrid cloud reverse proxy mode.
+	//
 	// example:
 	//
 	// 1
 	HybridCloudCname *int64 `json:"HybridCloudCname,omitempty" xml:"HybridCloudCname,omitempty"`
+	// The total number of domain names that are added to WAF in CNAME record mode and hybrid cloud reverse proxy mode.
+	//
 	// example:
 	//
 	// 1
@@ -7151,16 +11866,28 @@ func (s *DescribeDDoSStatusResponse) SetBody(v *DescribeDDoSStatusResponseBody) 
 }
 
 type DescribeDefaultHttpsRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-7pp26f1****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -7191,7 +11918,10 @@ func (s *DescribeDefaultHttpsRequest) SetResourceManagerResourceGroupId(v string
 }
 
 type DescribeDefaultHttpsResponseBody struct {
+	// The default SSL and TLS settings.
 	DefaultHttps *DescribeDefaultHttpsResponseBodyDefaultHttps `json:"DefaultHttps,omitempty" xml:"DefaultHttps,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F35F45B0-5D6B-4238-BE02-A62D****E840
@@ -7217,22 +11947,48 @@ func (s *DescribeDefaultHttpsResponseBody) SetRequestId(v string) *DescribeDefau
 }
 
 type DescribeDefaultHttpsResponseBodyDefaultHttps struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The type of the cipher suites. Valid values:
+	//
+	// 	- **1**: all cipher suites.
+	//
+	// 	- **2**: strong cipher suites.
+	//
+	// 	- **99**: custom cipher suites.
+	//
 	// example:
 	//
 	// 1
 	CipherSuite *string `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// The custom cipher suite.
+	//
 	// example:
 	//
 	// ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384
 	CustomCiphers *string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty"`
+	// Indicates whether TLS 1.3 is supported. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// The version of the TLS protocol. Valid values:
+	//
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
 	// example:
 	//
 	// tlsv1
@@ -12515,6 +17271,663 @@ func (s *DescribeFlowTopUrlResponse) SetBody(v *DescribeFlowTopUrlResponseBody) 
 	return s
 }
 
+type DescribeFreeUserAssetCountRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-cs0*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeFreeUserAssetCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserAssetCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserAssetCountRequest) SetInstanceId(v string) *DescribeFreeUserAssetCountRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeFreeUserAssetCountRequest) SetRegionId(v string) *DescribeFreeUserAssetCountRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFreeUserAssetCountRequest) SetResourceManagerResourceGroupId(v string) *DescribeFreeUserAssetCountRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeFreeUserAssetCountResponseBody struct {
+	// The asset statistics provided by basic detection.
+	Asset *DescribeFreeUserAssetCountResponseBodyAsset `json:"Asset,omitempty" xml:"Asset,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 30488BF0-FD58-52DD-B396-D014549F43A3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeFreeUserAssetCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserAssetCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserAssetCountResponseBody) SetAsset(v *DescribeFreeUserAssetCountResponseBodyAsset) *DescribeFreeUserAssetCountResponseBody {
+	s.Asset = v
+	return s
+}
+
+func (s *DescribeFreeUserAssetCountResponseBody) SetRequestId(v string) *DescribeFreeUserAssetCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeFreeUserAssetCountResponseBodyAsset struct {
+	// The number of active APIs.
+	//
+	// example:
+	//
+	// 34
+	AssetActive *int64 `json:"AssetActive,omitempty" xml:"AssetActive,omitempty"`
+	// The total number of APIs.
+	//
+	// example:
+	//
+	// 15
+	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
+	// The number of deactivated APIs.
+	//
+	// example:
+	//
+	// 13
+	AssetOffline *int64 `json:"AssetOffline,omitempty" xml:"AssetOffline,omitempty"`
+}
+
+func (s DescribeFreeUserAssetCountResponseBodyAsset) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserAssetCountResponseBodyAsset) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserAssetCountResponseBodyAsset) SetAssetActive(v int64) *DescribeFreeUserAssetCountResponseBodyAsset {
+	s.AssetActive = &v
+	return s
+}
+
+func (s *DescribeFreeUserAssetCountResponseBodyAsset) SetAssetCount(v int64) *DescribeFreeUserAssetCountResponseBodyAsset {
+	s.AssetCount = &v
+	return s
+}
+
+func (s *DescribeFreeUserAssetCountResponseBodyAsset) SetAssetOffline(v int64) *DescribeFreeUserAssetCountResponseBodyAsset {
+	s.AssetOffline = &v
+	return s
+}
+
+type DescribeFreeUserAssetCountResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFreeUserAssetCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeFreeUserAssetCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserAssetCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserAssetCountResponse) SetHeaders(v map[string]*string) *DescribeFreeUserAssetCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFreeUserAssetCountResponse) SetStatusCode(v int32) *DescribeFreeUserAssetCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFreeUserAssetCountResponse) SetBody(v *DescribeFreeUserAssetCountResponseBody) *DescribeFreeUserAssetCountResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeFreeUserEventCountRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepay_public_intl-sg-vf***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeFreeUserEventCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventCountRequest) SetInstanceId(v string) *DescribeFreeUserEventCountRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventCountRequest) SetRegionId(v string) *DescribeFreeUserEventCountRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventCountRequest) SetResourceManagerResourceGroupId(v string) *DescribeFreeUserEventCountRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeFreeUserEventCountResponseBody struct {
+	// The information about the security events that are detected by using the basic detection feature.
+	Event *DescribeFreeUserEventCountResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0D9FB3BC-0DE9-58A8-9663-ACE56F24F405
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeFreeUserEventCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventCountResponseBody) SetEvent(v *DescribeFreeUserEventCountResponseBodyEvent) *DescribeFreeUserEventCountResponseBody {
+	s.Event = v
+	return s
+}
+
+func (s *DescribeFreeUserEventCountResponseBody) SetRequestId(v string) *DescribeFreeUserEventCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeFreeUserEventCountResponseBodyEvent struct {
+	// The number of high-risk events.
+	//
+	// example:
+	//
+	// 1
+	EventHigh *int64 `json:"EventHigh,omitempty" xml:"EventHigh,omitempty"`
+	// The number of low-risk events.
+	//
+	// example:
+	//
+	// 12
+	EventLow *int64 `json:"EventLow,omitempty" xml:"EventLow,omitempty"`
+	// The number of medium-risk events.
+	//
+	// example:
+	//
+	// 3
+	EventMedium *int64 `json:"EventMedium,omitempty" xml:"EventMedium,omitempty"`
+	// The total number of security events.
+	//
+	// example:
+	//
+	// 16
+	EventTotal *int64 `json:"EventTotal,omitempty" xml:"EventTotal,omitempty"`
+}
+
+func (s DescribeFreeUserEventCountResponseBodyEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventCountResponseBodyEvent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventCountResponseBodyEvent) SetEventHigh(v int64) *DescribeFreeUserEventCountResponseBodyEvent {
+	s.EventHigh = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventCountResponseBodyEvent) SetEventLow(v int64) *DescribeFreeUserEventCountResponseBodyEvent {
+	s.EventLow = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventCountResponseBodyEvent) SetEventMedium(v int64) *DescribeFreeUserEventCountResponseBodyEvent {
+	s.EventMedium = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventCountResponseBodyEvent) SetEventTotal(v int64) *DescribeFreeUserEventCountResponseBodyEvent {
+	s.EventTotal = &v
+	return s
+}
+
+type DescribeFreeUserEventCountResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFreeUserEventCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeFreeUserEventCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventCountResponse) SetHeaders(v map[string]*string) *DescribeFreeUserEventCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFreeUserEventCountResponse) SetStatusCode(v int32) *DescribeFreeUserEventCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventCountResponse) SetBody(v *DescribeFreeUserEventCountResponseBody) *DescribeFreeUserEventCountResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeFreeUserEventTypesRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-bl0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeFreeUserEventTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventTypesRequest) SetInstanceId(v string) *DescribeFreeUserEventTypesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventTypesRequest) SetRegionId(v string) *DescribeFreeUserEventTypesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventTypesRequest) SetResourceManagerResourceGroupId(v string) *DescribeFreeUserEventTypesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeFreeUserEventTypesResponseBody struct {
+	// The types of security events on which basic detection is performed.
+	Data []*DescribeFreeUserEventTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// B9D6AD11-DD3D-5A27-B1D9-8A37F7777196
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeFreeUserEventTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventTypesResponseBody) SetData(v []*DescribeFreeUserEventTypesResponseBodyData) *DescribeFreeUserEventTypesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeFreeUserEventTypesResponseBody) SetRequestId(v string) *DescribeFreeUserEventTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeFreeUserEventTypesResponseBodyData struct {
+	// The number of security events.
+	//
+	// example:
+	//
+	// 4
+	EventNum *string `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
+	// The type of the security event.
+	//
+	// example:
+	//
+	// SMSInterfaceAbuse
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+}
+
+func (s DescribeFreeUserEventTypesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventTypesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventTypesResponseBodyData) SetEventNum(v string) *DescribeFreeUserEventTypesResponseBodyData {
+	s.EventNum = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventTypesResponseBodyData) SetEventType(v string) *DescribeFreeUserEventTypesResponseBodyData {
+	s.EventType = &v
+	return s
+}
+
+type DescribeFreeUserEventTypesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFreeUserEventTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeFreeUserEventTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventTypesResponse) SetHeaders(v map[string]*string) *DescribeFreeUserEventTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFreeUserEventTypesResponse) SetStatusCode(v int32) *DescribeFreeUserEventTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventTypesResponse) SetBody(v *DescribeFreeUserEventTypesResponseBody) *DescribeFreeUserEventTypesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeFreeUserEventsRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-27a3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeFreeUserEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventsRequest) SetInstanceId(v string) *DescribeFreeUserEventsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventsRequest) SetRegionId(v string) *DescribeFreeUserEventsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventsRequest) SetResourceManagerResourceGroupId(v string) *DescribeFreeUserEventsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeFreeUserEventsResponseBody struct {
+	// The security events on which basic detection is performed.
+	Event []*DescribeFreeUserEventsResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 8A2DF88D-90C2-56E9-B8D5-36BB9646791C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeFreeUserEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventsResponseBody) SetEvent(v []*DescribeFreeUserEventsResponseBodyEvent) *DescribeFreeUserEventsResponseBody {
+	s.Event = v
+	return s
+}
+
+func (s *DescribeFreeUserEventsResponseBody) SetRequestId(v string) *DescribeFreeUserEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeFreeUserEventsResponseBodyEvent struct {
+	// The API.
+	//
+	// example:
+	//
+	// /api/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The attacker IP address.
+	//
+	// example:
+	//
+	// 104.234.140.**
+	AttackIP *string `json:"AttackIP,omitempty" xml:"AttackIP,omitempty"`
+	// The time at which the attack was launched. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1683703260
+	AttackTime *int64 `json:"AttackTime,omitempty" xml:"AttackTime,omitempty"`
+	// The domain name of the API.
+	//
+	// example:
+	//
+	// www.***.cn
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The severity level of the security event. Valid values:
+	//
+	// 	- **high**
+	//
+	// 	- **medium**
+	//
+	// 	- **low**
+	//
+	// example:
+	//
+	// high
+	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// The type of the security event.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of security events.
+	//
+	// example:
+	//
+	// Event_DataTraverse
+	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
+}
+
+func (s DescribeFreeUserEventsResponseBodyEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventsResponseBodyEvent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventsResponseBodyEvent) SetApiFormat(v string) *DescribeFreeUserEventsResponseBodyEvent {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventsResponseBodyEvent) SetAttackIP(v string) *DescribeFreeUserEventsResponseBodyEvent {
+	s.AttackIP = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventsResponseBodyEvent) SetAttackTime(v int64) *DescribeFreeUserEventsResponseBodyEvent {
+	s.AttackTime = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventsResponseBodyEvent) SetDomain(v string) *DescribeFreeUserEventsResponseBodyEvent {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventsResponseBodyEvent) SetEventLevel(v string) *DescribeFreeUserEventsResponseBodyEvent {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventsResponseBodyEvent) SetEventTag(v string) *DescribeFreeUserEventsResponseBodyEvent {
+	s.EventTag = &v
+	return s
+}
+
+type DescribeFreeUserEventsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFreeUserEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeFreeUserEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeUserEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeUserEventsResponse) SetHeaders(v map[string]*string) *DescribeFreeUserEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFreeUserEventsResponse) SetStatusCode(v int32) *DescribeFreeUserEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFreeUserEventsResponse) SetBody(v *DescribeFreeUserEventsResponseBody) *DescribeFreeUserEventsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeHybridCloudClusterRuleRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
@@ -12704,16 +18117,28 @@ func (s *DescribeHybridCloudClusterRuleResponse) SetBody(v *DescribeHybridCloudC
 }
 
 type DescribeHybridCloudClustersRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-uqm35****02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -12744,7 +18169,10 @@ func (s *DescribeHybridCloudClustersRequest) SetResourceManagerResourceGroupId(v
 }
 
 type DescribeHybridCloudClustersResponseBody struct {
+	// The information about the clusters.
 	ClusterInfos []*DescribeHybridCloudClustersResponseBodyClusterInfos `json:"ClusterInfos,omitempty" xml:"ClusterInfos,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 66A98669-ER12-WE34-23PO-301469*****E
@@ -12770,52 +18198,102 @@ func (s *DescribeHybridCloudClustersResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeHybridCloudClustersResponseBodyClusterInfos struct {
+	// The network access mode. Valid values:
+	//
+	// 	- **internet**: Internet access.
+	//
+	// 	- **vpc**: internal network access by using Express Connect circuits.
+	//
 	// example:
 	//
 	// internet
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// The region where the virtual private cloud (VPC) resides. Valid values:
+	//
+	// 	- **cn-hangzhou**: China (Hangzhou).
+	//
+	// 	- **cn-beiijng**: China (Beijing).
+	//
+	// 	- **cn-shanghai**: China (Shanghai).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	AccessRegion *string `json:"AccessRegion,omitempty" xml:"AccessRegion,omitempty"`
-	ClusterName  *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The ID of the hybrid cloud cluster resource.
+	//
 	// example:
 	//
 	// hdbc-cluster-t1****a
 	ClusterResourceId *string `json:"ClusterResourceId,omitempty" xml:"ClusterResourceId,omitempty"`
+	// The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
+	//
 	// example:
 	//
 	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	// The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
+	//
 	// example:
 	//
 	// 443,8443
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// 524**8
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of protection nodes that can be added to the cluster.
+	//
 	// example:
 	//
 	// 1
 	ProtectionServerCount *int32 `json:"ProtectionServerCount,omitempty" xml:"ProtectionServerCount,omitempty"`
+	// The status of the proxy gateway. Valid values:
+	//
+	// 	- **on**: enabled.
+	//
+	// 	- **off**: disabled.
+	//
 	// example:
 	//
 	// off
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// 	- **cname**: reverse proxy cluster.
+	//
+	// 	- **service**: SDK-based traffic mirroring cluster.
+	//
 	// example:
 	//
 	// cname
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	Remark    *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The remarks about the cluster.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The configurations of the rule.
+	//
 	// example:
 	//
 	// {"enable":true,"param":{"breaker":{"duration":1,"failed":1,"recent_failed":1},"disable_protect":false,"max_request_body_len":1,"timeout":1}}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// The status of manual bypass. Valid values:
+	//
+	// 	- **on**: enabled.
+	//
+	// 	- **off**: disabled.
+	//
 	// example:
 	//
 	// off
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// The type of the rule. Valid value:
+	//
+	// 	- **bypass**: Requests are allowed without security checks.
+	//
 	// example:
 	//
 	// bypass
@@ -16311,8 +21789,18 @@ type DescribeProductInstancesRequest struct {
 	// example:
 	//
 	// lb-2zeugkfj81jvo****4tqm
-	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	ResourceInstanceIp   *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The IP address of the instance that is added to WAF.
+	//
+	// example:
+	//
+	// 1.X.X.1
+	ResourceInstanceIp *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	// The name of the instance that is added to WAF.
+	//
+	// example:
+	//
+	// demoInstanceName
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
 	// Deprecated
 	//
@@ -16501,8 +21989,18 @@ type DescribeProductInstancesResponseBodyProductInstances struct {
 	// example:
 	//
 	// i-2ze1tm4pvghp****cluv
-	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	ResourceInstanceIp   *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The IP address of the instance that is added to WAF.
+	//
+	// example:
+	//
+	// 1.X.X.1
+	ResourceInstanceIp *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	// The name of the instance that is added to WAF.
+	//
+	// example:
+	//
+	// demoInstanceName
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
 	// Deprecated
 	//
@@ -17500,6 +22998,7 @@ type DescribeResourceSupportRegionsRequest struct {
 	//
 	// rg-aekzpks****kdjq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	ResourceProduct                *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 }
 
 func (s DescribeResourceSupportRegionsRequest) String() string {
@@ -17522,6 +23021,11 @@ func (s *DescribeResourceSupportRegionsRequest) SetRegionId(v string) *DescribeR
 
 func (s *DescribeResourceSupportRegionsRequest) SetResourceManagerResourceGroupId(v string) *DescribeResourceSupportRegionsRequest {
 	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeResourceSupportRegionsRequest) SetResourceProduct(v string) *DescribeResourceSupportRegionsRequest {
+	s.ResourceProduct = &v
 	return s
 }
 
@@ -18738,6 +24242,12 @@ type DescribeRuleHitsTopTuleTypeRequest struct {
 	//
 	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekzwwkpn****5i
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The start point of the time period for which to query. Unit: seconds.
 	//
 	// This parameter is required.
@@ -18773,6 +24283,11 @@ func (s *DescribeRuleHitsTopTuleTypeRequest) SetRegionId(v string) *DescribeRule
 
 func (s *DescribeRuleHitsTopTuleTypeRequest) SetResource(v string) *DescribeRuleHitsTopTuleTypeRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeRuleHitsTopTuleTypeRequest) SetResourceManagerResourceGroupId(v string) *DescribeRuleHitsTopTuleTypeRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -19265,6 +24780,2316 @@ func (s *DescribeRuleHitsTopUrlResponse) SetStatusCode(v int32) *DescribeRuleHit
 }
 
 func (s *DescribeRuleHitsTopUrlResponse) SetBody(v *DescribeRuleHitsTopUrlResponseBody) *DescribeRuleHitsTopUrlResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSensitiveApiStatisticRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 269
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	//
+	// example:
+	//
+	// 1725966000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// a.***.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	//
+	// example:
+	//
+	// 1672502400
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSensitiveApiStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveApiStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetClusterId(v string) *DescribeSensitiveApiStatisticRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetEndTime(v int64) *DescribeSensitiveApiStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetInstanceId(v string) *DescribeSensitiveApiStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetMatchedHost(v string) *DescribeSensitiveApiStatisticRequest {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetPageNumber(v int64) *DescribeSensitiveApiStatisticRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetPageSize(v int64) *DescribeSensitiveApiStatisticRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetRegionId(v string) *DescribeSensitiveApiStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetResourceManagerResourceGroupId(v string) *DescribeSensitiveApiStatisticRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetStartTime(v int64) *DescribeSensitiveApiStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSensitiveApiStatisticResponseBody struct {
+	// The statistics.
+	Data []*DescribeSensitiveApiStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSensitiveApiStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveApiStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBody) SetData(v []*DescribeSensitiveApiStatisticResponseBodyData) *DescribeSensitiveApiStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBody) SetRequestId(v string) *DescribeSensitiveApiStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBody) SetTotalCount(v int64) *DescribeSensitiveApiStatisticResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSensitiveApiStatisticResponseBodyData struct {
+	// The number of personal information records involved in cross-border data transfer by domain name.
+	//
+	// example:
+	//
+	// 213
+	InfoOutboundCount *int64 `json:"InfoOutboundCount,omitempty" xml:"InfoOutboundCount,omitempty"`
+	// The domain name-related APIs.
+	List []*DescribeSensitiveApiStatisticResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The domain name or IP address.
+	//
+	// example:
+	//
+	// www.***.top
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The number of sensitive personal information records involved in cross-border data transfer by domain name.
+	//
+	// example:
+	//
+	// 127
+	SensitiveOutboundCount *int64 `json:"SensitiveOutboundCount,omitempty" xml:"SensitiveOutboundCount,omitempty"`
+}
+
+func (s DescribeSensitiveApiStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveApiStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyData) SetInfoOutboundCount(v int64) *DescribeSensitiveApiStatisticResponseBodyData {
+	s.InfoOutboundCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyData) SetList(v []*DescribeSensitiveApiStatisticResponseBodyDataList) *DescribeSensitiveApiStatisticResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyData) SetMatchedHost(v string) *DescribeSensitiveApiStatisticResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyData) SetSensitiveOutboundCount(v int64) *DescribeSensitiveApiStatisticResponseBodyData {
+	s.SensitiveOutboundCount = &v
+	return s
+}
+
+type DescribeSensitiveApiStatisticResponseBodyDataList struct {
+	// The API.
+	//
+	// example:
+	//
+	// /api/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the API.
+	//
+	// example:
+	//
+	// d288137009c119a873d4c395****
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The number of personal information records involved in cross-border data transfer by API.
+	//
+	// example:
+	//
+	// 78
+	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
+	// The types of sensitive data.
+	SensitiveCode []*string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty" type:"Repeated"`
+	// The number of sensitive personal information records involved in cross-border data transfer by API.
+	//
+	// example:
+	//
+	// 55
+	SensitiveCount *int64 `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+}
+
+func (s DescribeSensitiveApiStatisticResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveApiStatisticResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyDataList) SetApiFormat(v string) *DescribeSensitiveApiStatisticResponseBodyDataList {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyDataList) SetApiId(v string) *DescribeSensitiveApiStatisticResponseBodyDataList {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyDataList) SetInfoCount(v int64) *DescribeSensitiveApiStatisticResponseBodyDataList {
+	s.InfoCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyDataList) SetSensitiveCode(v []*string) *DescribeSensitiveApiStatisticResponseBodyDataList {
+	s.SensitiveCode = v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponseBodyDataList) SetSensitiveCount(v int64) *DescribeSensitiveApiStatisticResponseBodyDataList {
+	s.SensitiveCount = &v
+	return s
+}
+
+type DescribeSensitiveApiStatisticResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSensitiveApiStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSensitiveApiStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveApiStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveApiStatisticResponse) SetHeaders(v map[string]*string) *DescribeSensitiveApiStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponse) SetStatusCode(v int32) *DescribeSensitiveApiStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticResponse) SetBody(v *DescribeSensitiveApiStatisticResponseBody) *DescribeSensitiveApiStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSensitiveDetectionResultRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1725966000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-7pp26f1****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1672502400
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSensitiveDetectionResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveDetectionResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveDetectionResultRequest) SetClusterId(v string) *DescribeSensitiveDetectionResultRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultRequest) SetEndTime(v int64) *DescribeSensitiveDetectionResultRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultRequest) SetInstanceId(v string) *DescribeSensitiveDetectionResultRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultRequest) SetRegionId(v string) *DescribeSensitiveDetectionResultRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultRequest) SetResourceManagerResourceGroupId(v string) *DescribeSensitiveDetectionResultRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultRequest) SetStartTime(v int64) *DescribeSensitiveDetectionResultRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSensitiveDetectionResultResponseBody struct {
+	// The compliance check results.
+	Data *DescribeSensitiveDetectionResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSensitiveDetectionResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveDetectionResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBody) SetData(v *DescribeSensitiveDetectionResultResponseBodyData) *DescribeSensitiveDetectionResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBody) SetRequestId(v string) *DescribeSensitiveDetectionResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSensitiveDetectionResultResponseBodyData struct {
+	// The compliance checks.
+	Result []*DescribeSensitiveDetectionResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSensitiveDetectionResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveDetectionResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyData) SetResult(v []*DescribeSensitiveDetectionResultResponseBodyDataResult) *DescribeSensitiveDetectionResultResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type DescribeSensitiveDetectionResultResponseBodyDataResult struct {
+	// The compliance check results. Valid values:
+	//
+	// 	- **report**: Risks exist in cross-border data transfer.
+	//
+	// 	- **none**: No risks exist in cross-border data transfer.
+	//
+	// example:
+	//
+	// report
+	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
+	// The sensitive information check results by sensitive data type.
+	List []*DescribeSensitiveDetectionResultResponseBodyDataResultList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The maximum values in the statistics of sensitive data types.
+	Max *DescribeSensitiveDetectionResultResponseBodyDataResultMax `json:"Max,omitempty" xml:"Max,omitempty" type:"Struct"`
+}
+
+func (s DescribeSensitiveDetectionResultResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveDetectionResultResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResult) SetDetectionResult(v string) *DescribeSensitiveDetectionResultResponseBodyDataResult {
+	s.DetectionResult = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResult) SetList(v []*DescribeSensitiveDetectionResultResponseBodyDataResultList) *DescribeSensitiveDetectionResultResponseBodyDataResult {
+	s.List = v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResult) SetMax(v *DescribeSensitiveDetectionResultResponseBodyDataResultMax) *DescribeSensitiveDetectionResultResponseBodyDataResult {
+	s.Max = v
+	return s
+}
+
+type DescribeSensitiveDetectionResultResponseBodyDataResultList struct {
+	// The number of personal information records.
+	//
+	// example:
+	//
+	// 11
+	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
+	// The number of sensitive personal information records that are involved in cross-border data transfer.
+	//
+	// example:
+	//
+	// 6
+	OutboundCount *int64 `json:"OutboundCount,omitempty" xml:"OutboundCount,omitempty"`
+	// The sensitive data type.
+	//
+	// example:
+	//
+	// 1002
+	SensitiveCode *int64 `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+}
+
+func (s DescribeSensitiveDetectionResultResponseBodyDataResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveDetectionResultResponseBodyDataResultList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResultList) SetInfoCount(v int64) *DescribeSensitiveDetectionResultResponseBodyDataResultList {
+	s.InfoCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResultList) SetOutboundCount(v int64) *DescribeSensitiveDetectionResultResponseBodyDataResultList {
+	s.OutboundCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResultList) SetSensitiveCode(v int64) *DescribeSensitiveDetectionResultResponseBodyDataResultList {
+	s.SensitiveCode = &v
+	return s
+}
+
+type DescribeSensitiveDetectionResultResponseBodyDataResultMax struct {
+	// The number of sensitive personal information records that are of the most frequent sensitive data type.
+	//
+	// example:
+	//
+	// 187
+	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
+	// The number of sensitive personal information records that are of the most frequent sensitive data type and are involved in cross-border data transfer.
+	//
+	// example:
+	//
+	// 54
+	OutboundCount *int64 `json:"OutboundCount,omitempty" xml:"OutboundCount,omitempty"`
+	// The most frequent sensitive data type.
+	//
+	// example:
+	//
+	// 1003
+	SensitiveCode *int64 `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+}
+
+func (s DescribeSensitiveDetectionResultResponseBodyDataResultMax) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveDetectionResultResponseBodyDataResultMax) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResultMax) SetInfoCount(v int64) *DescribeSensitiveDetectionResultResponseBodyDataResultMax {
+	s.InfoCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResultMax) SetOutboundCount(v int64) *DescribeSensitiveDetectionResultResponseBodyDataResultMax {
+	s.OutboundCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponseBodyDataResultMax) SetSensitiveCode(v int64) *DescribeSensitiveDetectionResultResponseBodyDataResultMax {
+	s.SensitiveCode = &v
+	return s
+}
+
+type DescribeSensitiveDetectionResultResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSensitiveDetectionResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSensitiveDetectionResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveDetectionResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveDetectionResultResponse) SetHeaders(v map[string]*string) *DescribeSensitiveDetectionResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponse) SetStatusCode(v int32) *DescribeSensitiveDetectionResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveDetectionResultResponse) SetBody(v *DescribeSensitiveDetectionResultResponseBody) *DescribeSensitiveDetectionResultResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSensitiveOutboundDistributionRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 443
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	//
+	// example:
+	//
+	// 1725966000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	//
+	// example:
+	//
+	// 1672502400
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundDistributionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundDistributionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundDistributionRequest) SetClusterId(v string) *DescribeSensitiveOutboundDistributionRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionRequest) SetEndTime(v int64) *DescribeSensitiveOutboundDistributionRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionRequest) SetInstanceId(v string) *DescribeSensitiveOutboundDistributionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionRequest) SetRegionId(v string) *DescribeSensitiveOutboundDistributionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionRequest) SetResourceManagerResourceGroupId(v string) *DescribeSensitiveOutboundDistributionRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionRequest) SetStartTime(v int64) *DescribeSensitiveOutboundDistributionRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSensitiveOutboundDistributionResponseBody struct {
+	// The traffic distribution of personal information records involved in cross-border data transfer.
+	Data []*DescribeSensitiveOutboundDistributionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundDistributionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundDistributionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundDistributionResponseBody) SetData(v []*DescribeSensitiveOutboundDistributionResponseBodyData) *DescribeSensitiveOutboundDistributionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionResponseBody) SetRequestId(v string) *DescribeSensitiveOutboundDistributionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSensitiveOutboundDistributionResponseBodyData struct {
+	// The country to which the data is transferred.
+	//
+	// example:
+	//
+	// US
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The number of personal information records involved in cross-border data transfer.
+	//
+	// example:
+	//
+	// 213
+	InfoOutboundCount *int64 `json:"InfoOutboundCount,omitempty" xml:"InfoOutboundCount,omitempty"`
+	// The number of sensitive information records involved in cross-border data transfer.
+	//
+	// example:
+	//
+	// 144
+	SensitiveOutboundCount *int64 `json:"SensitiveOutboundCount,omitempty" xml:"SensitiveOutboundCount,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundDistributionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundDistributionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundDistributionResponseBodyData) SetCountry(v string) *DescribeSensitiveOutboundDistributionResponseBodyData {
+	s.Country = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionResponseBodyData) SetInfoOutboundCount(v int64) *DescribeSensitiveOutboundDistributionResponseBodyData {
+	s.InfoOutboundCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionResponseBodyData) SetSensitiveOutboundCount(v int64) *DescribeSensitiveOutboundDistributionResponseBodyData {
+	s.SensitiveOutboundCount = &v
+	return s
+}
+
+type DescribeSensitiveOutboundDistributionResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSensitiveOutboundDistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundDistributionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundDistributionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundDistributionResponse) SetHeaders(v map[string]*string) *DescribeSensitiveOutboundDistributionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionResponse) SetStatusCode(v int32) *DescribeSensitiveOutboundDistributionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundDistributionResponse) SetBody(v *DescribeSensitiveOutboundDistributionResponseBody) *DescribeSensitiveOutboundDistributionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSensitiveOutboundStatisticRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The evaluation result. Valid values:
+	//
+	// 	- **report**: Risks exist in cross-border data transfer.
+	//
+	// 	- **none**: No risks exist in cross-border data transfer.
+	//
+	// example:
+	//
+	// report
+	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	//
+	// example:
+	//
+	// 1725966000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the sorting field. Valid values:
+	//
+	// 	- **total_count*	- (default): total number of data entries
+	//
+	// 	- **outbound_count**: total number of data entries that are transferred across borders
+	//
+	// example:
+	//
+	// total_count
+	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// The sorting method. Valid values:
+	//
+	// 	- **desc*	- (default): in descending order
+	//
+	// 	- **asc**: in ascending order
+	//
+	// example:
+	//
+	// desc
+	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the sensitive data. Separate multiple types with commas (,).
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data. Only built-in types of sensitive data are supported for this operation.
+	//
+	// example:
+	//
+	// 1000,1001
+	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+	// The sensitivity level. Valid values:
+	//
+	// 	- **high**
+	//
+	// 	- **medium**
+	//
+	// 	- **low**
+	//
+	// example:
+	//
+	// high
+	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	// The type of the information. Valid values:
+	//
+	// 	- **info*	- (default): full personal information
+	//
+	// 	- **sensitive**: sensitive personal information
+	//
+	// example:
+	//
+	// info
+	SensitiveType *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	//
+	// example:
+	//
+	// 1672502400
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetClusterId(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetDetectionResult(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.DetectionResult = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetEndTime(v int64) *DescribeSensitiveOutboundStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetInstanceId(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetOrderKey(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.OrderKey = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetOrderWay(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.OrderWay = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetPageNumber(v int64) *DescribeSensitiveOutboundStatisticRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetPageSize(v int64) *DescribeSensitiveOutboundStatisticRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetRegionId(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetResourceManagerResourceGroupId(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetSensitiveCode(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.SensitiveCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetSensitiveLevel(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.SensitiveLevel = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetSensitiveType(v string) *DescribeSensitiveOutboundStatisticRequest {
+	s.SensitiveType = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticRequest) SetStartTime(v int64) *DescribeSensitiveOutboundStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSensitiveOutboundStatisticResponseBody struct {
+	// The data types of personal information involved in cross-border data transfer.
+	Data []*DescribeSensitiveOutboundStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2EFCFE18-78F8-5079-B312-07***48B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBody) SetData(v []*DescribeSensitiveOutboundStatisticResponseBodyData) *DescribeSensitiveOutboundStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBody) SetRequestId(v string) *DescribeSensitiveOutboundStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBody) SetTotalCount(v int64) *DescribeSensitiveOutboundStatisticResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSensitiveOutboundStatisticResponseBodyData struct {
+	// The evaluation result. Valid values:
+	//
+	// 	- **report**: Risks exist in cross-border data transfer.
+	//
+	// 	- **none**: No risks exist in cross-border data transfer.
+	//
+	// example:
+	//
+	// report
+	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 546
+	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
+	// The number of data entries that are transferred across borders.
+	//
+	// example:
+	//
+	// 300
+	OutboundCount *int64 `json:"OutboundCount,omitempty" xml:"OutboundCount,omitempty"`
+	// The type of the sensitive data.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+	//
+	// example:
+	//
+	// 1001
+	SensitiveCode *int64 `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+	// The sensitivity level. Valid values:
+	//
+	// 	- **high**
+	//
+	// 	- **medium**
+	//
+	// 	- **low**
+	//
+	// example:
+	//
+	// high
+	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	// The type of the information. Valid values:
+	//
+	// 	- **info**: full personal information
+	//
+	// 	- **sensitive**: sensitive personal information
+	//
+	// example:
+	//
+	// info
+	SensitiveType *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBodyData) SetDetectionResult(v string) *DescribeSensitiveOutboundStatisticResponseBodyData {
+	s.DetectionResult = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBodyData) SetInfoCount(v int64) *DescribeSensitiveOutboundStatisticResponseBodyData {
+	s.InfoCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBodyData) SetOutboundCount(v int64) *DescribeSensitiveOutboundStatisticResponseBodyData {
+	s.OutboundCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBodyData) SetSensitiveCode(v int64) *DescribeSensitiveOutboundStatisticResponseBodyData {
+	s.SensitiveCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBodyData) SetSensitiveLevel(v string) *DescribeSensitiveOutboundStatisticResponseBodyData {
+	s.SensitiveLevel = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponseBodyData) SetSensitiveType(v string) *DescribeSensitiveOutboundStatisticResponseBodyData {
+	s.SensitiveType = &v
+	return s
+}
+
+type DescribeSensitiveOutboundStatisticResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSensitiveOutboundStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponse) SetHeaders(v map[string]*string) *DescribeSensitiveOutboundStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponse) SetStatusCode(v int32) *DescribeSensitiveOutboundStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundStatisticResponse) SetBody(v *DescribeSensitiveOutboundStatisticResponseBody) *DescribeSensitiveOutboundStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSensitiveOutboundTrendRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 433
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	//
+	// example:
+	//
+	// 1725966000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	//
+	// example:
+	//
+	// 1672502400
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundTrendRequest) SetClusterId(v string) *DescribeSensitiveOutboundTrendRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendRequest) SetEndTime(v int64) *DescribeSensitiveOutboundTrendRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendRequest) SetInstanceId(v string) *DescribeSensitiveOutboundTrendRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendRequest) SetRegionId(v string) *DescribeSensitiveOutboundTrendRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendRequest) SetResourceManagerResourceGroupId(v string) *DescribeSensitiveOutboundTrendRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendRequest) SetStartTime(v int64) *DescribeSensitiveOutboundTrendRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSensitiveOutboundTrendResponseBody struct {
+	// The information records involved in cross-border data transfer.
+	Data []*DescribeSensitiveOutboundTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C1823E96-EF4B-5BD2-9E02-1D18****3ED8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 7
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundTrendResponseBody) SetData(v []*DescribeSensitiveOutboundTrendResponseBodyData) *DescribeSensitiveOutboundTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendResponseBody) SetRequestId(v string) *DescribeSensitiveOutboundTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendResponseBody) SetTotalCount(v int64) *DescribeSensitiveOutboundTrendResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSensitiveOutboundTrendResponseBodyData struct {
+	// The total number of personal information records.
+	//
+	// example:
+	//
+	// 672
+	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
+	// The total number of personal information records involved in cross-border data transfer.
+	//
+	// example:
+	//
+	// 541
+	InfoOutboundCount *int64 `json:"InfoOutboundCount,omitempty" xml:"InfoOutboundCount,omitempty"`
+	// The total number of sensitive information records involved in cross-border data transfer.
+	//
+	// example:
+	//
+	// 378
+	SensitiveOutboundCount *int64 `json:"SensitiveOutboundCount,omitempty" xml:"SensitiveOutboundCount,omitempty"`
+	// The time of cross-border data transfer. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1672502400
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundTrendResponseBodyData) SetInfoCount(v int64) *DescribeSensitiveOutboundTrendResponseBodyData {
+	s.InfoCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendResponseBodyData) SetInfoOutboundCount(v int64) *DescribeSensitiveOutboundTrendResponseBodyData {
+	s.InfoOutboundCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendResponseBodyData) SetSensitiveOutboundCount(v int64) *DescribeSensitiveOutboundTrendResponseBodyData {
+	s.SensitiveOutboundCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendResponseBodyData) SetTimestamp(v int64) *DescribeSensitiveOutboundTrendResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type DescribeSensitiveOutboundTrendResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSensitiveOutboundTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSensitiveOutboundTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveOutboundTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveOutboundTrendResponse) SetHeaders(v map[string]*string) *DescribeSensitiveOutboundTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendResponse) SetStatusCode(v int32) *DescribeSensitiveOutboundTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveOutboundTrendResponse) SetBody(v *DescribeSensitiveOutboundTrendResponseBody) *DescribeSensitiveOutboundTrendResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSensitiveRequestLogRequest struct {
+	// The API.
+	//
+	// example:
+	//
+	// /api/users/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The IP address.
+	//
+	// example:
+	//
+	// 103.118.55.**
+	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 433
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1726057800
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The domain name of the API.
+	//
+	// example:
+	//
+	// a.***.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the sensitive data.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+	//
+	// example:
+	//
+	// 1000,1001
+	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+	// The response sensitive data.
+	//
+	// example:
+	//
+	// user
+	SensitiveData *string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723392000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSensitiveRequestLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetApiFormat(v string) *DescribeSensitiveRequestLogRequest {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetClientIP(v string) *DescribeSensitiveRequestLogRequest {
+	s.ClientIP = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetClusterId(v string) *DescribeSensitiveRequestLogRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetEndTime(v int64) *DescribeSensitiveRequestLogRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetInstanceId(v string) *DescribeSensitiveRequestLogRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetMatchedHost(v string) *DescribeSensitiveRequestLogRequest {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetPageNumber(v int64) *DescribeSensitiveRequestLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetPageSize(v int64) *DescribeSensitiveRequestLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetRegionId(v string) *DescribeSensitiveRequestLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetResourceManagerResourceGroupId(v string) *DescribeSensitiveRequestLogRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetSensitiveCode(v string) *DescribeSensitiveRequestLogRequest {
+	s.SensitiveCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetSensitiveData(v string) *DescribeSensitiveRequestLogRequest {
+	s.SensitiveData = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogRequest) SetStartTime(v int64) *DescribeSensitiveRequestLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSensitiveRequestLogResponseBody struct {
+	// The access logs.
+	Data []*DescribeSensitiveRequestLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 26E46541-7AAB-5565-801D-F14DBDC5****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 7
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSensitiveRequestLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestLogResponseBody) SetData(v []*DescribeSensitiveRequestLogResponseBodyData) *DescribeSensitiveRequestLogResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBody) SetRequestId(v string) *DescribeSensitiveRequestLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBody) SetTotalCount(v int64) *DescribeSensitiveRequestLogResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSensitiveRequestLogResponseBodyData struct {
+	// The API.
+	//
+	// example:
+	//
+	// /api/users/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the API.
+	//
+	// example:
+	//
+	// 197b52abcd81d6a8bd4***e477
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The IP address.
+	//
+	// example:
+	//
+	// 103.118.55.**
+	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
+	// The number of sensitive data records involved in cross-border data transfer.
+	//
+	// example:
+	//
+	// 12
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name of the API.
+	//
+	// example:
+	//
+	// a.****.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723392000
+	RequestTime *int64 `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	// The sensitive data.
+	//
+	// example:
+	//
+	// A0Y5MPH3P
+	SensitiveList *string `json:"SensitiveList,omitempty" xml:"SensitiveList,omitempty"`
+	// The trace ID.
+	//
+	// example:
+	//
+	// 0a3d455b17027784870843933dce3d
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeSensitiveRequestLogResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestLogResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetApiFormat(v string) *DescribeSensitiveRequestLogResponseBodyData {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetApiId(v string) *DescribeSensitiveRequestLogResponseBodyData {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetClientIP(v string) *DescribeSensitiveRequestLogResponseBodyData {
+	s.ClientIP = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetCount(v int64) *DescribeSensitiveRequestLogResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetMatchedHost(v string) *DescribeSensitiveRequestLogResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetRequestTime(v int64) *DescribeSensitiveRequestLogResponseBodyData {
+	s.RequestTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetSensitiveList(v string) *DescribeSensitiveRequestLogResponseBodyData {
+	s.SensitiveList = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetTraceId(v string) *DescribeSensitiveRequestLogResponseBodyData {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeSensitiveRequestLogResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSensitiveRequestLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSensitiveRequestLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestLogResponse) SetHeaders(v map[string]*string) *DescribeSensitiveRequestLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponse) SetStatusCode(v int32) *DescribeSensitiveRequestLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponse) SetBody(v *DescribeSensitiveRequestLogResponseBody) *DescribeSensitiveRequestLogResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSensitiveRequestsRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 269
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1725966000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekzwwkpn****5i
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the sensitive data.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+	//
+	// example:
+	//
+	// 1001
+	SensitiveCode *int64 `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+	// The sensitive data.
+	//
+	// example:
+	//
+	// card
+	SensitiveData *string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723392000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSensitiveRequestsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetClusterId(v string) *DescribeSensitiveRequestsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetEndTime(v int64) *DescribeSensitiveRequestsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetInstanceId(v string) *DescribeSensitiveRequestsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetPageNumber(v int64) *DescribeSensitiveRequestsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetPageSize(v int64) *DescribeSensitiveRequestsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetRegionId(v string) *DescribeSensitiveRequestsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetResourceManagerResourceGroupId(v string) *DescribeSensitiveRequestsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetSensitiveCode(v int64) *DescribeSensitiveRequestsRequest {
+	s.SensitiveCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetSensitiveData(v string) *DescribeSensitiveRequestsRequest {
+	s.SensitiveData = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsRequest) SetStartTime(v int64) *DescribeSensitiveRequestsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSensitiveRequestsResponseBody struct {
+	// The tracing results of the data.
+	Data []*DescribeSensitiveRequestsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 26E46541-7AAB-5565-801D-F14DBDC5****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSensitiveRequestsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestsResponseBody) SetData(v []*DescribeSensitiveRequestsResponseBodyData) *DescribeSensitiveRequestsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBody) SetRequestId(v string) *DescribeSensitiveRequestsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBody) SetTotalCount(v int64) *DescribeSensitiveRequestsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSensitiveRequestsResponseBodyData struct {
+	// The number of risks in the previous 30 days.
+	//
+	// example:
+	//
+	// 23
+	AbnormalCount *int64 `json:"AbnormalCount,omitempty" xml:"AbnormalCount,omitempty"`
+	// The API.
+	//
+	// example:
+	//
+	// /api/users/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the API.
+	//
+	// example:
+	//
+	// 09559c0d71ca2ffc996b81***836d8
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The IP address.
+	//
+	// example:
+	//
+	// 103.118.55.**
+	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
+	// The evaluation result. Valid values:
+	//
+	// 	- **leak**: Data leaks may occur.
+	//
+	// 	- **none**: No data leak can occur.
+	//
+	// example:
+	//
+	// leak
+	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
+	// The number of events in the previous 30 days.
+	//
+	// example:
+	//
+	// 679
+	EventCount *int64 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
+	// The statistics of the sensitive data.
+	InfoCount []*DescribeSensitiveRequestsResponseBodyDataInfoCount `json:"InfoCount,omitempty" xml:"InfoCount,omitempty" type:"Repeated"`
+	// The domain name of the API.
+	//
+	// example:
+	//
+	// a.****.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The sensitive data.
+	SensitiveList []*string `json:"SensitiveList,omitempty" xml:"SensitiveList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSensitiveRequestsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetAbnormalCount(v int64) *DescribeSensitiveRequestsResponseBodyData {
+	s.AbnormalCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetApiFormat(v string) *DescribeSensitiveRequestsResponseBodyData {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetApiId(v string) *DescribeSensitiveRequestsResponseBodyData {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetClientIP(v string) *DescribeSensitiveRequestsResponseBodyData {
+	s.ClientIP = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetDetectionResult(v string) *DescribeSensitiveRequestsResponseBodyData {
+	s.DetectionResult = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetEventCount(v int64) *DescribeSensitiveRequestsResponseBodyData {
+	s.EventCount = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetInfoCount(v []*DescribeSensitiveRequestsResponseBodyDataInfoCount) *DescribeSensitiveRequestsResponseBodyData {
+	s.InfoCount = v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetMatchedHost(v string) *DescribeSensitiveRequestsResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyData) SetSensitiveList(v []*string) *DescribeSensitiveRequestsResponseBodyData {
+	s.SensitiveList = v
+	return s
+}
+
+type DescribeSensitiveRequestsResponseBodyDataInfoCount struct {
+	// The type of the sensitive data.
+	//
+	// example:
+	//
+	// 1001
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of sensitive data entries.
+	//
+	// example:
+	//
+	// 23
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DescribeSensitiveRequestsResponseBodyDataInfoCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestsResponseBodyDataInfoCount) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyDataInfoCount) SetCode(v string) *DescribeSensitiveRequestsResponseBodyDataInfoCount {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponseBodyDataInfoCount) SetCount(v int64) *DescribeSensitiveRequestsResponseBodyDataInfoCount {
+	s.Count = &v
+	return s
+}
+
+type DescribeSensitiveRequestsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSensitiveRequestsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSensitiveRequestsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveRequestsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveRequestsResponse) SetHeaders(v map[string]*string) *DescribeSensitiveRequestsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponse) SetStatusCode(v int32) *DescribeSensitiveRequestsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestsResponse) SetBody(v *DescribeSensitiveRequestsResponseBody) *DescribeSensitiveRequestsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSensitiveStatisticRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1725966000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbq****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1672502400
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the statistics. Valid values:
+	//
+	// 	- **ip**: IP address
+	//
+	// 	- **host**: domain name
+	//
+	// 	- **sensitive_code**: sensitive data type
+	//
+	// 	- **api**: sensitive data-related API
+	//
+	// example:
+	//
+	// ip
+	StatisticType *string `json:"StatisticType,omitempty" xml:"StatisticType,omitempty"`
+}
+
+func (s DescribeSensitiveStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetClusterId(v string) *DescribeSensitiveStatisticRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetEndTime(v int64) *DescribeSensitiveStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetInstanceId(v string) *DescribeSensitiveStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetPageNumber(v int64) *DescribeSensitiveStatisticRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetPageSize(v int64) *DescribeSensitiveStatisticRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetRegionId(v string) *DescribeSensitiveStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetResourceManagerResourceGroupId(v string) *DescribeSensitiveStatisticRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetStartTime(v int64) *DescribeSensitiveStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticRequest) SetStatisticType(v string) *DescribeSensitiveStatisticRequest {
+	s.StatisticType = &v
+	return s
+}
+
+type DescribeSensitiveStatisticResponseBody struct {
+	// The statistics of the sensitive data.
+	Data []*DescribeSensitiveStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSensitiveStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveStatisticResponseBody) SetData(v []*DescribeSensitiveStatisticResponseBodyData) *DescribeSensitiveStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticResponseBody) SetRequestId(v string) *DescribeSensitiveStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticResponseBody) SetTotalCount(v int64) *DescribeSensitiveStatisticResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSensitiveStatisticResponseBodyData struct {
+	// The API.
+	//
+	// example:
+	//
+	// /api/login
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The IP address.
+	//
+	// example:
+	//
+	// 10.50.11.**
+	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
+	// The number of entries returned.
+	//
+	// example:
+	//
+	// 169
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// a.****.com
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// The type of the sensitive data.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+	//
+	// example:
+	//
+	// 1003
+	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+}
+
+func (s DescribeSensitiveStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveStatisticResponseBodyData) SetApiFormat(v string) *DescribeSensitiveStatisticResponseBodyData {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticResponseBodyData) SetClientIP(v string) *DescribeSensitiveStatisticResponseBodyData {
+	s.ClientIP = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticResponseBodyData) SetCount(v int64) *DescribeSensitiveStatisticResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticResponseBodyData) SetMatchedHost(v string) *DescribeSensitiveStatisticResponseBodyData {
+	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticResponseBodyData) SetSensitiveCode(v string) *DescribeSensitiveStatisticResponseBodyData {
+	s.SensitiveCode = &v
+	return s
+}
+
+type DescribeSensitiveStatisticResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSensitiveStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSensitiveStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSensitiveStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSensitiveStatisticResponse) SetHeaders(v map[string]*string) *DescribeSensitiveStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticResponse) SetStatusCode(v int32) *DescribeSensitiveStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSensitiveStatisticResponse) SetBody(v *DescribeSensitiveStatisticResponseBody) *DescribeSensitiveStatisticResponse {
 	s.Body = v
 	return s
 }
@@ -19970,6 +27795,1228 @@ func (s *DescribeTemplateResourcesResponse) SetBody(v *DescribeTemplateResources
 	return s
 }
 
+type DescribeUserAbnormalTrendRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-uqm342yj***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeUserAbnormalTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAbnormalTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAbnormalTrendRequest) SetClusterId(v string) *DescribeUserAbnormalTrendRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendRequest) SetInstanceId(v string) *DescribeUserAbnormalTrendRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendRequest) SetRegionId(v string) *DescribeUserAbnormalTrendRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendRequest) SetResourceManagerResourceGroupId(v string) *DescribeUserAbnormalTrendRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeUserAbnormalTrendResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The trends of risks.
+	Trend []*DescribeUserAbnormalTrendResponseBodyTrend `json:"Trend,omitempty" xml:"Trend,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUserAbnormalTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAbnormalTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAbnormalTrendResponseBody) SetRequestId(v string) *DescribeUserAbnormalTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendResponseBody) SetTrend(v []*DescribeUserAbnormalTrendResponseBodyTrend) *DescribeUserAbnormalTrendResponseBody {
+	s.Trend = v
+	return s
+}
+
+type DescribeUserAbnormalTrendResponseBodyTrend struct {
+	// The number of high risks.
+	//
+	// example:
+	//
+	// 12
+	AbnormalHigh *int64 `json:"AbnormalHigh,omitempty" xml:"AbnormalHigh,omitempty"`
+	// The number of low risks.
+	//
+	// example:
+	//
+	// 23
+	AbnormalLow *int64 `json:"AbnormalLow,omitempty" xml:"AbnormalLow,omitempty"`
+	// The number of medium risks.
+	//
+	// example:
+	//
+	// 14
+	AbnormalMedium *int64 `json:"AbnormalMedium,omitempty" xml:"AbnormalMedium,omitempty"`
+	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1722268800
+	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1722268800
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s DescribeUserAbnormalTrendResponseBodyTrend) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAbnormalTrendResponseBodyTrend) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAbnormalTrendResponseBodyTrend) SetAbnormalHigh(v int64) *DescribeUserAbnormalTrendResponseBodyTrend {
+	s.AbnormalHigh = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendResponseBodyTrend) SetAbnormalLow(v int64) *DescribeUserAbnormalTrendResponseBodyTrend {
+	s.AbnormalLow = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendResponseBodyTrend) SetAbnormalMedium(v int64) *DescribeUserAbnormalTrendResponseBodyTrend {
+	s.AbnormalMedium = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendResponseBodyTrend) SetTimeStamp(v int64) *DescribeUserAbnormalTrendResponseBodyTrend {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendResponseBodyTrend) SetTimestamp(v int64) *DescribeUserAbnormalTrendResponseBodyTrend {
+	s.Timestamp = &v
+	return s
+}
+
+type DescribeUserAbnormalTrendResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserAbnormalTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserAbnormalTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAbnormalTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAbnormalTrendResponse) SetHeaders(v map[string]*string) *DescribeUserAbnormalTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendResponse) SetStatusCode(v int32) *DescribeUserAbnormalTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTrendResponse) SetBody(v *DescribeUserAbnormalTrendResponseBody) *DescribeUserAbnormalTrendResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserAbnormalTypeRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 993
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1726113600
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-g4***201
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-ac***lani
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723435200
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeUserAbnormalTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAbnormalTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAbnormalTypeRequest) SetClusterId(v string) *DescribeUserAbnormalTypeRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeRequest) SetEndTime(v int64) *DescribeUserAbnormalTypeRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeRequest) SetInstanceId(v string) *DescribeUserAbnormalTypeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeRequest) SetRegionId(v string) *DescribeUserAbnormalTypeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeRequest) SetResourceManagerResourceGroupId(v string) *DescribeUserAbnormalTypeRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeRequest) SetStartTime(v int64) *DescribeUserAbnormalTypeRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeUserAbnormalTypeResponseBody struct {
+	// The types and statistics of risks.
+	Abnormal []*DescribeUserAbnormalTypeResponseBodyAbnormal `json:"Abnormal,omitempty" xml:"Abnormal,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3E1CB966-1407-5988-9432-7***D784
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUserAbnormalTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAbnormalTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAbnormalTypeResponseBody) SetAbnormal(v []*DescribeUserAbnormalTypeResponseBodyAbnormal) *DescribeUserAbnormalTypeResponseBody {
+	s.Abnormal = v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeResponseBody) SetRequestId(v string) *DescribeUserAbnormalTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUserAbnormalTypeResponseBodyAbnormal struct {
+	// The code of the risk.
+	//
+	// example:
+	//
+	// Risk_InternalWeakPasswd
+	AbnormalCode *string `json:"AbnormalCode,omitempty" xml:"AbnormalCode,omitempty"`
+	// The number of risks.
+	//
+	// example:
+	//
+	// 10
+	AbnormalCount *int64 `json:"AbnormalCount,omitempty" xml:"AbnormalCount,omitempty"`
+	// The parent type of the risk.
+	//
+	// example:
+	//
+	// RiskType_Account
+	AbnormalParentType *string `json:"AbnormalParentType,omitempty" xml:"AbnormalParentType,omitempty"`
+	// The type of the risk.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+	//
+	// example:
+	//
+	// LackOfSpeedLimit
+	AbnormalType *string `json:"AbnormalType,omitempty" xml:"AbnormalType,omitempty"`
+}
+
+func (s DescribeUserAbnormalTypeResponseBodyAbnormal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAbnormalTypeResponseBodyAbnormal) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAbnormalTypeResponseBodyAbnormal) SetAbnormalCode(v string) *DescribeUserAbnormalTypeResponseBodyAbnormal {
+	s.AbnormalCode = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeResponseBodyAbnormal) SetAbnormalCount(v int64) *DescribeUserAbnormalTypeResponseBodyAbnormal {
+	s.AbnormalCount = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeResponseBodyAbnormal) SetAbnormalParentType(v string) *DescribeUserAbnormalTypeResponseBodyAbnormal {
+	s.AbnormalParentType = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeResponseBodyAbnormal) SetAbnormalType(v string) *DescribeUserAbnormalTypeResponseBodyAbnormal {
+	s.AbnormalType = &v
+	return s
+}
+
+type DescribeUserAbnormalTypeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserAbnormalTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserAbnormalTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAbnormalTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAbnormalTypeResponse) SetHeaders(v map[string]*string) *DescribeUserAbnormalTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeResponse) SetStatusCode(v int32) *DescribeUserAbnormalTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeResponse) SetBody(v *DescribeUserAbnormalTypeResponseBody) *DescribeUserAbnormalTypeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserApiRequestRequest struct {
+	// The API.
+	//
+	// example:
+	//
+	// /api/v1/know
+	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
+	// The ID of the API.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3799f0695c0d687f3295d132fe49bc14
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The domain name or IP address of the API.
+	//
+	// example:
+	//
+	// c.***.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-zxu38***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the statistics. Valid values:
+	//
+	// 	- **api_ip**: total traffic
+	//
+	// 	- **api_cross_border_ip**: cross-border traffic
+	//
+	// 	- **api_bot_ip**: bot traffic
+	//
+	// 	- **remote_region**: geographical location
+	//
+	// 	- **client_id**: client type
+	//
+	// 	- **http_referer**: Referer
+	//
+	// 	- **api_cnt**: total number of calls
+	//
+	// 	- **bot_cnt**: number of bot calls
+	//
+	// 	- **cross_border_cnt**: number of cross-border requests
+	//
+	// 	- **api_freq**: call frequency
+	//
+	// example:
+	//
+	// api_ip
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeUserApiRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserApiRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserApiRequestRequest) SetApiFormat(v string) *DescribeUserApiRequestRequest {
+	s.ApiFormat = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestRequest) SetApiId(v string) *DescribeUserApiRequestRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestRequest) SetClusterId(v string) *DescribeUserApiRequestRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestRequest) SetDomain(v string) *DescribeUserApiRequestRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestRequest) SetInstanceId(v string) *DescribeUserApiRequestRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestRequest) SetRegionId(v string) *DescribeUserApiRequestRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestRequest) SetResourceManagerResourceGroupId(v string) *DescribeUserApiRequestRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestRequest) SetType(v string) *DescribeUserApiRequestRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeUserApiRequestResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D13E4540-4432-5AD7-B216-6369512514F4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics.
+	Requests []*DescribeUserApiRequestResponseBodyRequests `json:"Requests,omitempty" xml:"Requests,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUserApiRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserApiRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserApiRequestResponseBody) SetRequestId(v string) *DescribeUserApiRequestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestResponseBody) SetRequests(v []*DescribeUserApiRequestResponseBodyRequests) *DescribeUserApiRequestResponseBody {
+	s.Requests = v
+	return s
+}
+
+type DescribeUserApiRequestResponseBodyRequests struct {
+	// The number of entries returned.
+	//
+	// example:
+	//
+	// 76
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The type of the statistics. Valid values:
+	//
+	// 	- **client_list**: client
+	//
+	// 	- **ip**: IP address
+	//
+	// 	- **region_id*	- region
+	//
+	// 	- **country_id**: country
+	//
+	// example:
+	//
+	// {
+	//
+	//     "client_list": [
+	//
+	//         "Unknown"
+	//
+	//     ],
+	//
+	//     "ip": "47.92.113.***",
+	//
+	//     "region_id": "110000",
+	//
+	//     "country_id": "CN"
+	//
+	// }
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeUserApiRequestResponseBodyRequests) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserApiRequestResponseBodyRequests) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserApiRequestResponseBodyRequests) SetCount(v int64) *DescribeUserApiRequestResponseBodyRequests {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestResponseBodyRequests) SetValue(v string) *DescribeUserApiRequestResponseBodyRequests {
+	s.Value = &v
+	return s
+}
+
+type DescribeUserApiRequestResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserApiRequestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserApiRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserApiRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserApiRequestResponse) SetHeaders(v map[string]*string) *DescribeUserApiRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserApiRequestResponse) SetStatusCode(v int32) *DescribeUserApiRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserApiRequestResponse) SetBody(v *DescribeUserApiRequestResponseBody) *DescribeUserApiRequestResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserAssetRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the statistics. Valid values:
+	//
+	// 	- **asset_num**: total number of APIs
+	//
+	// 	- **asset_active**: number of active APIs
+	//
+	// 	- **asset_newborn**: number of new APIs
+	//
+	// 	- **asset_offline**: number of deactivated APIs
+	//
+	// 	- **asset_bot**: number of APIs that are called by bots
+	//
+	// 	- **asset_cross_border**: number of APIs that are called for cross-border data transfer
+	//
+	// 	- **sensitive_api**: number of response-sensitive APIs
+	//
+	// 	- **sensitive_domain**: number of response-sensitive domain names
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// asset_num
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723435200
+	Days *string `json:"Days,omitempty" xml:"Days,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-uax37ijm***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeUserAssetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetRequest) SetClusterId(v string) *DescribeUserAssetRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeUserAssetRequest) SetDataType(v string) *DescribeUserAssetRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *DescribeUserAssetRequest) SetDays(v string) *DescribeUserAssetRequest {
+	s.Days = &v
+	return s
+}
+
+func (s *DescribeUserAssetRequest) SetInstanceId(v string) *DescribeUserAssetRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUserAssetRequest) SetRegionId(v string) *DescribeUserAssetRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserAssetRequest) SetResourceManagerResourceGroupId(v string) *DescribeUserAssetRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeUserAssetResponseBody struct {
+	// The API statistics.
+	Assets []*DescribeUserAssetResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C1823E96-EF4B-5BD2-9E02-1D18****3ED8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUserAssetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetResponseBody) SetAssets(v []*DescribeUserAssetResponseBodyAssets) *DescribeUserAssetResponseBody {
+	s.Assets = v
+	return s
+}
+
+func (s *DescribeUserAssetResponseBody) SetRequestId(v string) *DescribeUserAssetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUserAssetResponseBodyAssets struct {
+	// The number of APIs returned.
+	//
+	// example:
+	//
+	// 134
+	AssetNum *int64 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
+	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723435200
+	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeUserAssetResponseBodyAssets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetResponseBodyAssets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetResponseBodyAssets) SetAssetNum(v int64) *DescribeUserAssetResponseBodyAssets {
+	s.AssetNum = &v
+	return s
+}
+
+func (s *DescribeUserAssetResponseBodyAssets) SetTimeStamp(v int64) *DescribeUserAssetResponseBodyAssets {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeUserAssetResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserAssetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserAssetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetResponse) SetHeaders(v map[string]*string) *DescribeUserAssetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserAssetResponse) SetStatusCode(v int32) *DescribeUserAssetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserAssetResponse) SetBody(v *DescribeUserAssetResponseBody) *DescribeUserAssetResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserEventTrendRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-7mz2797x***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekzwwk****cv5i
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeUserEventTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEventTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEventTrendRequest) SetClusterId(v string) *DescribeUserEventTrendRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendRequest) SetInstanceId(v string) *DescribeUserEventTrendRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendRequest) SetRegionId(v string) *DescribeUserEventTrendRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendRequest) SetResourceManagerResourceGroupId(v string) *DescribeUserEventTrendRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeUserEventTrendResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// F51E6DD6-B2D2-57C9-90F1-FAFD0A19DE00
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The trends of attacks.
+	Trend []*DescribeUserEventTrendResponseBodyTrend `json:"Trend,omitempty" xml:"Trend,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUserEventTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEventTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEventTrendResponseBody) SetRequestId(v string) *DescribeUserEventTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendResponseBody) SetTrend(v []*DescribeUserEventTrendResponseBodyTrend) *DescribeUserEventTrendResponseBody {
+	s.Trend = v
+	return s
+}
+
+type DescribeUserEventTrendResponseBodyTrend struct {
+	// The number of high-risk events.
+	//
+	// example:
+	//
+	// 9
+	EventHigh *int64 `json:"EventHigh,omitempty" xml:"EventHigh,omitempty"`
+	// The number of low-risk events.
+	//
+	// example:
+	//
+	// 23
+	EventLow *int64 `json:"EventLow,omitempty" xml:"EventLow,omitempty"`
+	// The number of medium-risk events.
+	//
+	// example:
+	//
+	// 17
+	EventMedium *int64 `json:"EventMedium,omitempty" xml:"EventMedium,omitempty"`
+	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723435200
+	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723435200
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s DescribeUserEventTrendResponseBodyTrend) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEventTrendResponseBodyTrend) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEventTrendResponseBodyTrend) SetEventHigh(v int64) *DescribeUserEventTrendResponseBodyTrend {
+	s.EventHigh = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendResponseBodyTrend) SetEventLow(v int64) *DescribeUserEventTrendResponseBodyTrend {
+	s.EventLow = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendResponseBodyTrend) SetEventMedium(v int64) *DescribeUserEventTrendResponseBodyTrend {
+	s.EventMedium = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendResponseBodyTrend) SetTimeStamp(v int64) *DescribeUserEventTrendResponseBodyTrend {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendResponseBodyTrend) SetTimestamp(v int64) *DescribeUserEventTrendResponseBodyTrend {
+	s.Timestamp = &v
+	return s
+}
+
+type DescribeUserEventTrendResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserEventTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserEventTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEventTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEventTrendResponse) SetHeaders(v map[string]*string) *DescribeUserEventTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserEventTrendResponse) SetStatusCode(v int32) *DescribeUserEventTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserEventTrendResponse) SetBody(v *DescribeUserEventTrendResponseBody) *DescribeUserEventTrendResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserEventTypeRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 976
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1726113600
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-5y***h0t
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aek***ktt3y
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 1723435200
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeUserEventTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEventTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEventTypeRequest) SetClusterId(v string) *DescribeUserEventTypeRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeRequest) SetEndTime(v int64) *DescribeUserEventTypeRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeRequest) SetInstanceId(v string) *DescribeUserEventTypeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeRequest) SetRegionId(v string) *DescribeUserEventTypeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeRequest) SetResourceManagerResourceGroupId(v string) *DescribeUserEventTypeRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeRequest) SetStartTime(v int64) *DescribeUserEventTypeRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeUserEventTypeResponseBody struct {
+	// The types and statistics of security events.
+	Event []*DescribeUserEventTypeResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 177BA739-6512-5470-98C6-E***0BAA3D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUserEventTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEventTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEventTypeResponseBody) SetEvent(v []*DescribeUserEventTypeResponseBodyEvent) *DescribeUserEventTypeResponseBody {
+	s.Event = v
+	return s
+}
+
+func (s *DescribeUserEventTypeResponseBody) SetRequestId(v string) *DescribeUserEventTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUserEventTypeResponseBodyEvent struct {
+	// The code of the security event.
+	//
+	// example:
+	//
+	// Event_LoginCollision
+	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	// The number of events.
+	//
+	// example:
+	//
+	// 0
+	EventCount *int64 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
+	// The parent type of the security event.
+	//
+	// example:
+	//
+	// EventType_Account
+	EventParentType *string `json:"EventParentType,omitempty" xml:"EventParentType,omitempty"`
+	// The type of the security event.
+	//
+	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of security events.
+	//
+	// example:
+	//
+	// Event_AbnormalFrequency
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+}
+
+func (s DescribeUserEventTypeResponseBodyEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEventTypeResponseBodyEvent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEventTypeResponseBodyEvent) SetEventCode(v string) *DescribeUserEventTypeResponseBodyEvent {
+	s.EventCode = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeResponseBodyEvent) SetEventCount(v int64) *DescribeUserEventTypeResponseBodyEvent {
+	s.EventCount = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeResponseBodyEvent) SetEventParentType(v string) *DescribeUserEventTypeResponseBodyEvent {
+	s.EventParentType = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeResponseBodyEvent) SetEventType(v string) *DescribeUserEventTypeResponseBodyEvent {
+	s.EventType = &v
+	return s
+}
+
+type DescribeUserEventTypeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserEventTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserEventTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserEventTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserEventTypeResponse) SetHeaders(v map[string]*string) *DescribeUserEventTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserEventTypeResponse) SetStatusCode(v int32) *DescribeUserEventTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeResponse) SetBody(v *DescribeUserEventTypeResponseBody) *DescribeUserEventTypeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeUserSlsLogRegionsRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
@@ -20487,7 +29534,7 @@ type DescribeVisitUasRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
 	//
 	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
 	//
@@ -20500,7 +29547,8 @@ type DescribeVisitUasRequest struct {
 	// example:
 	//
 	// www.aliyundoc.com
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Resource                       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
 	//
 	// This parameter is required.
@@ -20536,6 +29584,11 @@ func (s *DescribeVisitUasRequest) SetRegionId(v string) *DescribeVisitUasRequest
 
 func (s *DescribeVisitUasRequest) SetResource(v string) *DescribeVisitUasRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeVisitUasRequest) SetResourceManagerResourceGroupId(v string) *DescribeVisitUasRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -20774,6 +29827,8 @@ type ListTagKeysRequest struct {
 	// The ID of the WAF instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21165,6 +30220,8 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The tag key.
 	//
 	// This parameter is required.
@@ -21190,7 +30247,8 @@ type ListTagValuesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
 	//
 	// This parameter is required.
@@ -21209,6 +30267,11 @@ func (s ListTagValuesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTagValuesRequest) SetInstanceId(v string) *ListTagValuesRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ListTagValuesRequest) SetKey(v string) *ListTagValuesRequest {
 	s.Key = &v
 	return s
@@ -21221,6 +30284,11 @@ func (s *ListTagValuesRequest) SetNextToken(v string) *ListTagValuesRequest {
 
 func (s *ListTagValuesRequest) SetRegionId(v string) *ListTagValuesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagValuesRequest) SetResourceManagerResourceGroupId(v string) *ListTagValuesRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -21294,6 +30362,471 @@ func (s *ListTagValuesResponse) SetStatusCode(v int32) *ListTagValuesResponse {
 }
 
 func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagValuesResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApisecAbnormalsRequest struct {
+	// The risk IDs.
+	//
+	// This parameter is required.
+	AbnormalIds []*string `json:"AbnormalIds,omitempty" xml:"AbnormalIds,omitempty" type:"Repeated"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// already fixed.
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The risk status. Valid values:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **toBeFixed**
+	//
+	// 	- **fixed**
+	//
+	// 	- **ignored**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fixed
+	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+}
+
+func (s ModifyApisecAbnormalsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecAbnormalsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecAbnormalsRequest) SetAbnormalIds(v []*string) *ModifyApisecAbnormalsRequest {
+	s.AbnormalIds = v
+	return s
+}
+
+func (s *ModifyApisecAbnormalsRequest) SetClusterId(v string) *ModifyApisecAbnormalsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyApisecAbnormalsRequest) SetInstanceId(v string) *ModifyApisecAbnormalsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyApisecAbnormalsRequest) SetNote(v string) *ModifyApisecAbnormalsRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *ModifyApisecAbnormalsRequest) SetRegionId(v string) *ModifyApisecAbnormalsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApisecAbnormalsRequest) SetResourceManagerResourceGroupId(v string) *ModifyApisecAbnormalsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyApisecAbnormalsRequest) SetUserStatus(v string) *ModifyApisecAbnormalsRequest {
+	s.UserStatus = &v
+	return s
+}
+
+type ModifyApisecAbnormalsResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// C1823E96-EF4B-5BD2-9E02-1D18****3ED8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApisecAbnormalsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecAbnormalsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecAbnormalsResponseBody) SetRequestId(v string) *ModifyApisecAbnormalsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApisecAbnormalsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApisecAbnormalsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApisecAbnormalsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecAbnormalsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecAbnormalsResponse) SetHeaders(v map[string]*string) *ModifyApisecAbnormalsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApisecAbnormalsResponse) SetStatusCode(v int32) *ModifyApisecAbnormalsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApisecAbnormalsResponse) SetBody(v *ModifyApisecAbnormalsResponseBody) *ModifyApisecAbnormalsResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApisecApiResourceRequest struct {
+	// The ID of the API.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c68995b89069595c5c0399676f3ca64f
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to follow the API. Valid values:
+	//
+	// 	- **1**: yes
+	//
+	// 	- **0*	- (default): no
+	//
+	// example:
+	//
+	// 0
+	Follow *int64 `json:"Follow,omitempty" xml:"Follow,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// know
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyApisecApiResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecApiResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecApiResourceRequest) SetApiId(v string) *ModifyApisecApiResourceRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *ModifyApisecApiResourceRequest) SetClusterId(v string) *ModifyApisecApiResourceRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyApisecApiResourceRequest) SetFollow(v int64) *ModifyApisecApiResourceRequest {
+	s.Follow = &v
+	return s
+}
+
+func (s *ModifyApisecApiResourceRequest) SetInstanceId(v string) *ModifyApisecApiResourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyApisecApiResourceRequest) SetNote(v string) *ModifyApisecApiResourceRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *ModifyApisecApiResourceRequest) SetRegionId(v string) *ModifyApisecApiResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApisecApiResourceRequest) SetResourceManagerResourceGroupId(v string) *ModifyApisecApiResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyApisecApiResourceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApisecApiResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecApiResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecApiResourceResponseBody) SetRequestId(v string) *ModifyApisecApiResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApisecApiResourceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApisecApiResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApisecApiResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecApiResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecApiResourceResponse) SetHeaders(v map[string]*string) *ModifyApisecApiResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApisecApiResourceResponse) SetStatusCode(v int32) *ModifyApisecApiResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApisecApiResourceResponse) SetBody(v *ModifyApisecApiResourceResponseBody) *ModifyApisecApiResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApisecEventsRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The IDs of the security events.
+	//
+	// This parameter is required.
+	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// already confirmed.
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// 	- **toBeConfirmed**
+	//
+	// 	- **confirmed**
+	//
+	// 	- **ignored**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// confirmed
+	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+}
+
+func (s ModifyApisecEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecEventsRequest) SetClusterId(v string) *ModifyApisecEventsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyApisecEventsRequest) SetEventIds(v []*string) *ModifyApisecEventsRequest {
+	s.EventIds = v
+	return s
+}
+
+func (s *ModifyApisecEventsRequest) SetInstanceId(v string) *ModifyApisecEventsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyApisecEventsRequest) SetNote(v string) *ModifyApisecEventsRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *ModifyApisecEventsRequest) SetRegionId(v string) *ModifyApisecEventsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApisecEventsRequest) SetResourceManagerResourceGroupId(v string) *ModifyApisecEventsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyApisecEventsRequest) SetUserStatus(v string) *ModifyApisecEventsRequest {
+	s.UserStatus = &v
+	return s
+}
+
+type ModifyApisecEventsResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-****-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApisecEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecEventsResponseBody) SetRequestId(v string) *ModifyApisecEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApisecEventsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApisecEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApisecEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecEventsResponse) SetHeaders(v map[string]*string) *ModifyApisecEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApisecEventsResponse) SetStatusCode(v int32) *ModifyApisecEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApisecEventsResponse) SetBody(v *ModifyApisecEventsResponseBody) *ModifyApisecEventsResponse {
 	s.Body = v
 	return s
 }
@@ -21604,22 +31137,334 @@ func (s *ModifyApisecLogDeliveryStatusResponse) SetBody(v *ModifyApisecLogDelive
 	return s
 }
 
+type ModifyApisecModuleStatusRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqtm**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the compliance check feature. Valid values:
+	//
+	// 	- **1**: enabled
+	//
+	// 	- **0**: disabled
+	//
+	// example:
+	//
+	// 1
+	ReportStatus *int64 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	// The name of the protected object group to which the protected object belongs.
+	//
+	// example:
+	//
+	// group1
+	ResourceGroups *string `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The name of the protected object.
+	//
+	// example:
+	//
+	// cwaf-***-waf
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The status of the tracing and auditing feature. Valid values:
+	//
+	// 	- **1**: enabled
+	//
+	// 	- **0**: disabled
+	//
+	// example:
+	//
+	// 1
+	TraceStatus *int32 `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
+}
+
+func (s ModifyApisecModuleStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecModuleStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecModuleStatusRequest) SetInstanceId(v string) *ModifyApisecModuleStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyApisecModuleStatusRequest) SetRegionId(v string) *ModifyApisecModuleStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApisecModuleStatusRequest) SetReportStatus(v int64) *ModifyApisecModuleStatusRequest {
+	s.ReportStatus = &v
+	return s
+}
+
+func (s *ModifyApisecModuleStatusRequest) SetResourceGroups(v string) *ModifyApisecModuleStatusRequest {
+	s.ResourceGroups = &v
+	return s
+}
+
+func (s *ModifyApisecModuleStatusRequest) SetResourceManagerResourceGroupId(v string) *ModifyApisecModuleStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyApisecModuleStatusRequest) SetResources(v string) *ModifyApisecModuleStatusRequest {
+	s.Resources = &v
+	return s
+}
+
+func (s *ModifyApisecModuleStatusRequest) SetTraceStatus(v int32) *ModifyApisecModuleStatusRequest {
+	s.TraceStatus = &v
+	return s
+}
+
+type ModifyApisecModuleStatusResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApisecModuleStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecModuleStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecModuleStatusResponseBody) SetRequestId(v string) *ModifyApisecModuleStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApisecModuleStatusResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApisecModuleStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApisecModuleStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecModuleStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecModuleStatusResponse) SetHeaders(v map[string]*string) *ModifyApisecModuleStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApisecModuleStatusResponse) SetStatusCode(v int32) *ModifyApisecModuleStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApisecModuleStatusResponse) SetBody(v *ModifyApisecModuleStatusResponseBody) *ModifyApisecModuleStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApisecStatusRequest struct {
+	// The status of the API security module. Valid values:
+	//
+	// 	- **1**: enabled
+	//
+	// 	- **0**: disabled
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ApisecStatus *int32 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the protected object group to which the protected object belongs.
+	//
+	// example:
+	//
+	// group
+	ResourceGroups *string `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The name of the protected object.
+	//
+	// example:
+	//
+	// alb-wewbb23dfset***
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+}
+
+func (s ModifyApisecStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecStatusRequest) SetApisecStatus(v int32) *ModifyApisecStatusRequest {
+	s.ApisecStatus = &v
+	return s
+}
+
+func (s *ModifyApisecStatusRequest) SetInstanceId(v string) *ModifyApisecStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyApisecStatusRequest) SetRegionId(v string) *ModifyApisecStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApisecStatusRequest) SetResourceGroups(v string) *ModifyApisecStatusRequest {
+	s.ResourceGroups = &v
+	return s
+}
+
+func (s *ModifyApisecStatusRequest) SetResourceManagerResourceGroupId(v string) *ModifyApisecStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyApisecStatusRequest) SetResources(v string) *ModifyApisecStatusRequest {
+	s.Resources = &v
+	return s
+}
+
+type ModifyApisecStatusResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApisecStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecStatusResponseBody) SetRequestId(v string) *ModifyApisecStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApisecStatusResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApisecStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApisecStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecStatusResponse) SetHeaders(v map[string]*string) *ModifyApisecStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApisecStatusResponse) SetStatusCode(v int32) *ModifyApisecStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApisecStatusResponse) SetBody(v *ModifyApisecStatusResponseBody) *ModifyApisecStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyCloudResourceRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations of the listeners.
+	//
 	// This parameter is required.
-	Listen   *ModifyCloudResourceRequestListen   `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	Listen *ModifyCloudResourceRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	// The configurations of the forwarding rule.
 	Redirect *ModifyCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -21660,12 +31505,28 @@ func (s *ModifyCloudResourceRequest) SetResourceManagerResourceGroupId(v string)
 }
 
 type ModifyCloudResourceRequestListen struct {
+	// An array of certificates.
 	Certificates []*ModifyCloudResourceRequestListenCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **1**: all cipher suites.
+	//
+	// 	- **2**: strong cipher suites. You can set the parameter to this value only if you set **TLSVersion*	- to **tlsv1.2**.
+	//
+	// 	- **99**: custom cipher suites.
+	//
 	// example:
 	//
 	// 1
-	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// An array of custom cipher suites.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// if can be null:
 	// true
 	//
@@ -21673,34 +31534,66 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
 	// example:
 	//
 	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// The port of the resource that you want to add to WAF.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// 	- **http**
+	//
+	// 	- **https**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-***
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The cloud service. Valid values:
+	//
+	// 	- **clb4**: Layer 4 Classic Load Balancer (CLB).
+	//
+	// 	- **clb7**: Layer 7 CLB.
+	//
+	// 	- **ecs**: Elastic Compute Service (ECS).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// clb7
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// The Transport Layer Security (TLS) version. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
 	// example:
 	//
 	// tlsv1.2
@@ -21766,10 +31659,18 @@ func (s *ModifyCloudResourceRequestListen) SetTLSVersion(v string) *ModifyCloudR
 }
 
 type ModifyCloudResourceRequestListenCertificates struct {
+	// The type of the HTTPS certificate. Valid values:
+	//
+	// 	- **default**: default certificate.
+	//
+	// 	- **extension**: additional certificate.
+	//
 	// example:
 	//
 	// default
 	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
+	// The ID of the certificate.
+	//
 	// example:
 	//
 	// 123-cn-hangzhou
@@ -21795,32 +31696,68 @@ func (s *ModifyCloudResourceRequestListenCertificates) SetCertificateId(v string
 }
 
 type ModifyCloudResourceRequestRedirect struct {
+	// Specifies whether to enable the persistent connection feature. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false:**
+	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+	//
+	// >  This parameter specifies the number of requests that can reuse persistent connections after you enable the persistent connection feature.
+	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// The timeout period for idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
+	//
+	// >  If no new requests are initiated over the idle persistent connection within the specified timeout period, the connection is closed.
+	//
 	// example:
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+	//
 	// example:
 	//
 	// 1
-	ReadTimeout    *int32                                              `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	// The custom header field that you want to use to label requests that are processed by WAF.
 	RequestHeaders []*ModifyCloudResourceRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+	//
 	// example:
 	//
 	// 1
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// The method that WAF uses to obtain the originating IP address of a client. Valid values:
+	//
+	// 	- **0**: No Layer 7 proxies are deployed in front of WAF.
+	//
+	// 	- **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
+	//
+	// 	- **2**: WAF reads the value of a custom header field as the originating IP address of the client.
+	//
 	// example:
 	//
 	// 0
-	XffHeaderMode *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	XffHeaders    []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	// The custom header field that is used to obtain the originating IP address of a client. Specify the value in the ["header1","header2",...] format.
+	//
+	// >  This parameter is required only if you set **XffHeaderMode*	- to 2.
+	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	// Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -21881,10 +31818,14 @@ func (s *ModifyCloudResourceRequestRedirect) SetXffProto(v bool) *ModifyCloudRes
 }
 
 type ModifyCloudResourceRequestRedirectRequestHeaders struct {
+	// The key of the custom header field.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the custom header field.
+	//
 	// example:
 	//
 	// value1
@@ -21910,21 +31851,36 @@ func (s *ModifyCloudResourceRequestRedirectRequestHeaders) SetValue(v string) *M
 }
 
 type ModifyCloudResourceShrinkRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations of the listeners.
+	//
 	// This parameter is required.
-	ListenShrink   *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	// The configurations of the forwarding rule.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -21965,10 +31921,14 @@ func (s *ModifyCloudResourceShrinkRequest) SetResourceManagerResourceGroupId(v s
 }
 
 type ModifyCloudResourceResponseBody struct {
+	// The ID of the resource that is added to WAF.
+	//
 	// example:
 	//
 	// lb-xxx-80-clb7
 	CloudResource *string `json:"CloudResource,omitempty" xml:"CloudResource,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-***
@@ -22023,35 +31983,72 @@ func (s *ModifyCloudResourceResponse) SetBody(v *ModifyCloudResourceResponseBody
 }
 
 type ModifyDefaultHttpsRequest struct {
+	// The ID of the certificate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The type of the cipher suites. Valid values:
+	//
+	// 	- **1**: all cipher suites.
+	//
+	// 	- **2**: strong cipher suites.
+	//
+	// 	- **99**: custom cipher suites.
+	//
 	// example:
 	//
 	// 0
-	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite*	- to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// Specifies whether to support TLS 1.3. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The version of the TLS protocol. Valid values:
+	//
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22109,6 +32106,8 @@ func (s *ModifyDefaultHttpsRequest) SetTLSVersion(v string) *ModifyDefaultHttpsR
 }
 
 type ModifyDefaultHttpsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 276D7566-31C9-4192-9DD1-***
@@ -22528,17 +32527,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The details of the protection rule. Specify a string that contains multiple parameters in the JSON format. You must specify the ID and the new configurations of the protection rule.
-	//
-	// 	- **id:*	- The ID of the protection rule. Data type: long. You must specify this parameter.
-	//
-	// 	- The protection rule configurations: The role of this parameter is the same as that of the **Rules*	- parameter in the **CreateDefenseRule*	- topic. For more information, see the "**Protection rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// [{"id":2344,"policyId":1012,"action":"block"}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// The ID of the protection rule template to which the protection rule whose configurations you want to modify belongs.
 	//
@@ -26307,7 +36296,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// ChangeResourceGroup
+// Changes the resource group to which a protected object belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -26365,7 +36354,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// ChangeResourceGroup
+// Changes the resource group to which a protected object belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -26531,7 +36520,95 @@ func (client *Client) CopyDefenseTemplate(request *CopyDefenseTemplateRequest) (
 
 // Summary:
 //
-// 接入云产品资源
+// Creates a data export task in the API security module.
+//
+// @param request - CreateApiExportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApiExportResponse
+func (client *Client) CreateApiExportWithOptions(request *CreateApiExportRequest, runtime *util.RuntimeOptions) (_result *CreateApiExportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Param)) {
+		query["Param"] = request.Param
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApiExport"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateApiExportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a data export task in the API security module.
+//
+// @param request - CreateApiExportRequest
+//
+// @return CreateApiExportResponse
+func (client *Client) CreateApiExport(request *CreateApiExportRequest) (_result *CreateApiExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApiExportResponse{}
+	_body, _err := client.CreateApiExportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a service to Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
 //
 // @param tmpReq - CreateCloudResourceRequest
 //
@@ -26603,7 +36680,7 @@ func (client *Client) CreateCloudResourceWithOptions(tmpReq *CreateCloudResource
 
 // Summary:
 //
-// 接入云产品资源
+// Adds a service to Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
 //
 // @param request - CreateCloudResourceRequest
 //
@@ -26730,16 +36807,18 @@ func (client *Client) CreateDefenseRuleWithOptions(request *CreateDefenseRuleReq
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Rules)) {
-		query["Rules"] = request.Rules
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Rules)) {
+		body["Rules"] = request.Rules
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDefenseRule"),
@@ -27387,21 +37466,21 @@ func (client *Client) CreateSM2Cert(request *CreateSM2CertRequest) (_result *Cre
 
 // Summary:
 //
-// 删除API安全风险
+// Deletes multiple risks detected by the API security module at a time.
 //
-// @param request - DeleteApisecAbnormalRequest
+// @param request - DeleteApisecAbnormalsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return DeleteApisecAbnormalResponse
-func (client *Client) DeleteApisecAbnormalWithOptions(request *DeleteApisecAbnormalRequest, runtime *util.RuntimeOptions) (_result *DeleteApisecAbnormalResponse, _err error) {
+// @return DeleteApisecAbnormalsResponse
+func (client *Client) DeleteApisecAbnormalsWithOptions(request *DeleteApisecAbnormalsRequest, runtime *util.RuntimeOptions) (_result *DeleteApisecAbnormalsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AbnormalId)) {
-		query["AbnormalId"] = request.AbnormalId
+	if !tea.BoolValue(util.IsUnset(request.AbnormalIds)) {
+		query["AbnormalIds"] = request.AbnormalIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
@@ -27410,10 +37489,6 @@ func (client *Client) DeleteApisecAbnormalWithOptions(request *DeleteApisecAbnor
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -27428,7 +37503,7 @@ func (client *Client) DeleteApisecAbnormalWithOptions(request *DeleteApisecAbnor
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeleteApisecAbnormal"),
+		Action:      tea.String("DeleteApisecAbnormals"),
 		Version:     tea.String("2021-10-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -27438,7 +37513,7 @@ func (client *Client) DeleteApisecAbnormalWithOptions(request *DeleteApisecAbnor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteApisecAbnormalResponse{}
+	_result = &DeleteApisecAbnormalsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27449,15 +37524,15 @@ func (client *Client) DeleteApisecAbnormalWithOptions(request *DeleteApisecAbnor
 
 // Summary:
 //
-// 删除API安全风险
+// Deletes multiple risks detected by the API security module at a time.
 //
-// @param request - DeleteApisecAbnormalRequest
+// @param request - DeleteApisecAbnormalsRequest
 //
-// @return DeleteApisecAbnormalResponse
-func (client *Client) DeleteApisecAbnormal(request *DeleteApisecAbnormalRequest) (_result *DeleteApisecAbnormalResponse, _err error) {
+// @return DeleteApisecAbnormalsResponse
+func (client *Client) DeleteApisecAbnormals(request *DeleteApisecAbnormalsRequest) (_result *DeleteApisecAbnormalsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DeleteApisecAbnormalResponse{}
-	_body, _err := client.DeleteApisecAbnormalWithOptions(request, runtime)
+	_result = &DeleteApisecAbnormalsResponse{}
+	_body, _err := client.DeleteApisecAbnormalsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27467,14 +37542,14 @@ func (client *Client) DeleteApisecAbnormal(request *DeleteApisecAbnormalRequest)
 
 // Summary:
 //
-// 删除API安全事件
+// Deletes multiple security events detected by the API security module at a time.
 //
-// @param request - DeleteApisecEventRequest
+// @param request - DeleteApisecEventsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return DeleteApisecEventResponse
-func (client *Client) DeleteApisecEventWithOptions(request *DeleteApisecEventRequest, runtime *util.RuntimeOptions) (_result *DeleteApisecEventResponse, _err error) {
+// @return DeleteApisecEventsResponse
+func (client *Client) DeleteApisecEventsWithOptions(request *DeleteApisecEventsRequest, runtime *util.RuntimeOptions) (_result *DeleteApisecEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -27484,16 +37559,12 @@ func (client *Client) DeleteApisecEventWithOptions(request *DeleteApisecEventReq
 		query["ClusterId"] = request.ClusterId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EventId)) {
-		query["EventId"] = request.EventId
+	if !tea.BoolValue(util.IsUnset(request.EventIds)) {
+		query["EventIds"] = request.EventIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -27508,7 +37579,7 @@ func (client *Client) DeleteApisecEventWithOptions(request *DeleteApisecEventReq
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeleteApisecEvent"),
+		Action:      tea.String("DeleteApisecEvents"),
 		Version:     tea.String("2021-10-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -27518,7 +37589,7 @@ func (client *Client) DeleteApisecEventWithOptions(request *DeleteApisecEventReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteApisecEventResponse{}
+	_result = &DeleteApisecEventsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27529,15 +37600,15 @@ func (client *Client) DeleteApisecEventWithOptions(request *DeleteApisecEventReq
 
 // Summary:
 //
-// 删除API安全事件
+// Deletes multiple security events detected by the API security module at a time.
 //
-// @param request - DeleteApisecEventRequest
+// @param request - DeleteApisecEventsRequest
 //
-// @return DeleteApisecEventResponse
-func (client *Client) DeleteApisecEvent(request *DeleteApisecEventRequest) (_result *DeleteApisecEventResponse, _err error) {
+// @return DeleteApisecEventsResponse
+func (client *Client) DeleteApisecEvents(request *DeleteApisecEventsRequest) (_result *DeleteApisecEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DeleteApisecEventResponse{}
-	_body, _err := client.DeleteApisecEventWithOptions(request, runtime)
+	_result = &DeleteApisecEventsResponse{}
+	_body, _err := client.DeleteApisecEventsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27547,7 +37618,7 @@ func (client *Client) DeleteApisecEvent(request *DeleteApisecEventRequest) (_res
 
 // Summary:
 //
-// 删除云产品资源
+// Removes a service from Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
 //
 // @param request - DeleteCloudResourceRequest
 //
@@ -27609,7 +37680,7 @@ func (client *Client) DeleteCloudResourceWithOptions(request *DeleteCloudResourc
 
 // Summary:
 //
-// 删除云产品资源
+// Removes a service from Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
 //
 // @param request - DeleteCloudResourceRequest
 //
@@ -28147,7 +38218,87 @@ func (client *Client) DescribeAccountDelegatedStatus(request *DescribeAccountDel
 
 // Summary:
 //
-// 查询API安全风险站点统计
+// Queries the list of data export tasks in the API security module.
+//
+// @param request - DescribeApiExportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApiExportsResponse
+func (client *Client) DescribeApiExportsWithOptions(request *DescribeApiExportsRequest, runtime *util.RuntimeOptions) (_result *DescribeApiExportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApiExports"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApiExportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of data export tasks in the API security module.
+//
+// @param request - DescribeApiExportsRequest
+//
+// @return DescribeApiExportsResponse
+func (client *Client) DescribeApiExports(request *DescribeApiExportsRequest) (_result *DescribeApiExportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApiExportsResponse{}
+	_body, _err := client.DescribeApiExportsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the statistics on domain names on which risks are detected by the API security module.
 //
 // @param request - DescribeApisecAbnormalDomainStatisticRequest
 //
@@ -28182,10 +38333,6 @@ func (client *Client) DescribeApisecAbnormalDomainStatisticWithOptions(request *
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -28225,7 +38372,7 @@ func (client *Client) DescribeApisecAbnormalDomainStatisticWithOptions(request *
 
 // Summary:
 //
-// 查询API安全风险站点统计
+// Queries the statistics on domain names on which risks are detected by the API security module.
 //
 // @param request - DescribeApisecAbnormalDomainStatisticRequest
 //
@@ -28243,7 +38390,287 @@ func (client *Client) DescribeApisecAbnormalDomainStatistic(request *DescribeApi
 
 // Summary:
 //
-// 查询API安全资产趋势图
+// Queries the list of API security risks.
+//
+// @param request - DescribeApisecAbnormalsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecAbnormalsResponse
+func (client *Client) DescribeApisecAbnormalsWithOptions(request *DescribeApisecAbnormalsRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecAbnormalsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbnormalId)) {
+		query["AbnormalId"] = request.AbnormalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AbnormalLevel)) {
+		query["AbnormalLevel"] = request.AbnormalLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AbnormalTag)) {
+		query["AbnormalTag"] = request.AbnormalTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiFormat)) {
+		query["ApiFormat"] = request.ApiFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiTag)) {
+		query["ApiTag"] = request.ApiTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchedHost)) {
+		query["MatchedHost"] = request.MatchedHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderKey)) {
+		query["OrderKey"] = request.OrderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderWay)) {
+		query["OrderWay"] = request.OrderWay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		query["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserStatus)) {
+		query["UserStatus"] = request.UserStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecAbnormals"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecAbnormalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of API security risks.
+//
+// @param request - DescribeApisecAbnormalsRequest
+//
+// @return DescribeApisecAbnormalsResponse
+func (client *Client) DescribeApisecAbnormals(request *DescribeApisecAbnormalsRequest) (_result *DescribeApisecAbnormalsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecAbnormalsResponse{}
+	_body, _err := client.DescribeApisecAbnormalsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries API assets in the API security module.
+//
+// @param request - DescribeApisecApiResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecApiResourcesResponse
+func (client *Client) DescribeApisecApiResourcesWithOptions(request *DescribeApisecApiResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecApiResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiFormat)) {
+		query["ApiFormat"] = request.ApiFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiMethod)) {
+		query["ApiMethod"] = request.ApiMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiStatus)) {
+		query["ApiStatus"] = request.ApiStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiTag)) {
+		query["ApiTag"] = request.ApiTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiType)) {
+		query["ApiType"] = request.ApiType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthFlag)) {
+		query["AuthFlag"] = request.AuthFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Follow)) {
+		query["Follow"] = request.Follow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchedHost)) {
+		query["MatchedHost"] = request.MatchedHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		query["Note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderKey)) {
+		query["OrderKey"] = request.OrderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderWay)) {
+		query["OrderWay"] = request.OrderWay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestSensitiveType)) {
+		query["RequestSensitiveType"] = request.RequestSensitiveType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveLevel)) {
+		query["SensitiveLevel"] = request.SensitiveLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveType)) {
+		query["SensitiveType"] = request.SensitiveType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecApiResources"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecApiResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries API assets in the API security module.
+//
+// @param request - DescribeApisecApiResourcesRequest
+//
+// @return DescribeApisecApiResourcesResponse
+func (client *Client) DescribeApisecApiResources(request *DescribeApisecApiResourcesRequest) (_result *DescribeApisecApiResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecApiResourcesResponse{}
+	_body, _err := client.DescribeApisecApiResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the asset trends in the API security module.
 //
 // @param request - DescribeApisecAssetTrendRequest
 //
@@ -28266,10 +38693,6 @@ func (client *Client) DescribeApisecAssetTrendWithOptions(request *DescribeApise
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -28309,7 +38732,7 @@ func (client *Client) DescribeApisecAssetTrendWithOptions(request *DescribeApise
 
 // Summary:
 //
-// 查询API安全资产趋势图
+// Queries the asset trends in the API security module.
 //
 // @param request - DescribeApisecAssetTrendRequest
 //
@@ -28327,7 +38750,7 @@ func (client *Client) DescribeApisecAssetTrend(request *DescribeApisecAssetTrend
 
 // Summary:
 //
-// 查询API安全事件站点统计
+// Queries the statistics on domain names on which security events are detected by the API security module.
 //
 // @param request - DescribeApisecEventDomainStatisticRequest
 //
@@ -28362,10 +38785,6 @@ func (client *Client) DescribeApisecEventDomainStatisticWithOptions(request *Des
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -28405,7 +38824,7 @@ func (client *Client) DescribeApisecEventDomainStatisticWithOptions(request *Des
 
 // Summary:
 //
-// 查询API安全事件站点统计
+// Queries the statistics on domain names on which security events are detected by the API security module.
 //
 // @param request - DescribeApisecEventDomainStatisticRequest
 //
@@ -28414,6 +38833,142 @@ func (client *Client) DescribeApisecEventDomainStatistic(request *DescribeApisec
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApisecEventDomainStatisticResponse{}
 	_body, _err := client.DescribeApisecEventDomainStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries API security events.
+//
+// @param request - DescribeApisecEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecEventsResponse
+func (client *Client) DescribeApisecEventsWithOptions(request *DescribeApisecEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiFormat)) {
+		query["ApiFormat"] = request.ApiFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiTag)) {
+		query["ApiTag"] = request.ApiTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttackIp)) {
+		query["AttackIp"] = request.AttackIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventLevel)) {
+		query["EventLevel"] = request.EventLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventTag)) {
+		query["EventTag"] = request.EventTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchedHost)) {
+		query["MatchedHost"] = request.MatchedHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderKey)) {
+		query["OrderKey"] = request.OrderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderWay)) {
+		query["OrderWay"] = request.OrderWay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		query["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserStatus)) {
+		query["UserStatus"] = request.UserStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecEvents"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries API security events.
+//
+// @param request - DescribeApisecEventsRequest
+//
+// @return DescribeApisecEventsResponse
+func (client *Client) DescribeApisecEvents(request *DescribeApisecEventsRequest) (_result *DescribeApisecEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecEventsResponse{}
+	_body, _err := client.DescribeApisecEventsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28491,7 +39046,359 @@ func (client *Client) DescribeApisecLogDeliveries(request *DescribeApisecLogDeli
 
 // Summary:
 //
-// 查询API安全敏感数据类型统计
+// Queries the list of domain names detected in the API security module.
+//
+// @param request - DescribeApisecMatchedHostsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecMatchedHostsResponse
+func (client *Client) DescribeApisecMatchedHostsWithOptions(request *DescribeApisecMatchedHostsRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecMatchedHostsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchedHost)) {
+		query["MatchedHost"] = request.MatchedHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecMatchedHosts"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecMatchedHostsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of domain names detected in the API security module.
+//
+// @param request - DescribeApisecMatchedHostsRequest
+//
+// @return DescribeApisecMatchedHostsResponse
+func (client *Client) DescribeApisecMatchedHosts(request *DescribeApisecMatchedHostsRequest) (_result *DescribeApisecMatchedHostsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecMatchedHostsResponse{}
+	_body, _err := client.DescribeApisecMatchedHostsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of protected object groups to which API security policies are applied.
+//
+// @param request - DescribeApisecProtectionGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecProtectionGroupsResponse
+func (client *Client) DescribeApisecProtectionGroupsWithOptions(request *DescribeApisecProtectionGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecProtectionGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApisecStatus)) {
+		query["ApisecStatus"] = request.ApisecStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroup)) {
+		query["ResourceGroup"] = request.ResourceGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecProtectionGroups"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecProtectionGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of protected object groups to which API security policies are applied.
+//
+// @param request - DescribeApisecProtectionGroupsRequest
+//
+// @return DescribeApisecProtectionGroupsResponse
+func (client *Client) DescribeApisecProtectionGroups(request *DescribeApisecProtectionGroupsRequest) (_result *DescribeApisecProtectionGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecProtectionGroupsResponse{}
+	_body, _err := client.DescribeApisecProtectionGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of protected objects to which API security policies are applied.
+//
+// @param request - DescribeApisecProtectionResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecProtectionResourcesResponse
+func (client *Client) DescribeApisecProtectionResourcesWithOptions(request *DescribeApisecProtectionResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecProtectionResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApisecStatus)) {
+		query["ApisecStatus"] = request.ApisecStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecProtectionResources"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecProtectionResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of protected objects to which API security policies are applied.
+//
+// @param request - DescribeApisecProtectionResourcesRequest
+//
+// @return DescribeApisecProtectionResourcesResponse
+func (client *Client) DescribeApisecProtectionResources(request *DescribeApisecProtectionResourcesRequest) (_result *DescribeApisecProtectionResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecProtectionResourcesResponse{}
+	_body, _err := client.DescribeApisecProtectionResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the policies configured in the API security module.
+//
+// @param request - DescribeApisecRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecRulesResponse
+func (client *Client) DescribeApisecRulesWithOptions(request *DescribeApisecRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		query["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecRules"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the policies configured in the API security module.
+//
+// @param request - DescribeApisecRulesRequest
+//
+// @return DescribeApisecRulesResponse
+func (client *Client) DescribeApisecRules(request *DescribeApisecRulesRequest) (_result *DescribeApisecRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecRulesResponse{}
+	_body, _err := client.DescribeApisecRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the statistics on domain names on which sensitive data is detected by the API security module.
 //
 // @param request - DescribeApisecSensitiveDomainStatisticRequest
 //
@@ -28526,10 +39433,6 @@ func (client *Client) DescribeApisecSensitiveDomainStatisticWithOptions(request 
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -28573,7 +39476,7 @@ func (client *Client) DescribeApisecSensitiveDomainStatisticWithOptions(request 
 
 // Summary:
 //
-// 查询API安全敏感数据类型统计
+// Queries the statistics on domain names on which sensitive data is detected by the API security module.
 //
 // @param request - DescribeApisecSensitiveDomainStatisticRequest
 //
@@ -28739,6 +39642,238 @@ func (client *Client) DescribeApisecSlsProjects(request *DescribeApisecSlsProjec
 
 // Summary:
 //
+// Queries the statistics of API security-related risks and events.
+//
+// @param request - DescribeApisecStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecStatisticsResponse
+func (client *Client) DescribeApisecStatisticsWithOptions(request *DescribeApisecStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecStatistics"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the statistics of API security-related risks and events.
+//
+// @param request - DescribeApisecStatisticsRequest
+//
+// @return DescribeApisecStatisticsResponse
+func (client *Client) DescribeApisecStatistics(request *DescribeApisecStatisticsRequest) (_result *DescribeApisecStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecStatisticsResponse{}
+	_body, _err := client.DescribeApisecStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the protection suggestions for APIs.
+//
+// @param request - DescribeApisecSuggestionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecSuggestionsResponse
+func (client *Client) DescribeApisecSuggestionsWithOptions(request *DescribeApisecSuggestionsRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecSuggestionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecSuggestions"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecSuggestionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the protection suggestions for APIs.
+//
+// @param request - DescribeApisecSuggestionsRequest
+//
+// @return DescribeApisecSuggestionsResponse
+func (client *Client) DescribeApisecSuggestions(request *DescribeApisecSuggestionsRequest) (_result *DescribeApisecSuggestionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecSuggestionsResponse{}
+	_body, _err := client.DescribeApisecSuggestionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries user operation records in the API security module.
+//
+// @param request - DescribeApisecUserOperationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecUserOperationsResponse
+func (client *Client) DescribeApisecUserOperationsWithOptions(request *DescribeApisecUserOperationsRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecUserOperationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecUserOperations"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecUserOperationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries user operation records in the API security module.
+//
+// @param request - DescribeApisecUserOperationsRequest
+//
+// @return DescribeApisecUserOperationsResponse
+func (client *Client) DescribeApisecUserOperations(request *DescribeApisecUserOperationsRequest) (_result *DescribeApisecUserOperationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecUserOperationsResponse{}
+	_body, _err := client.DescribeApisecUserOperationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a certificate, such as the certificate name, expiration time, issuance time, and associated domain name.
 //
 // @param request - DescribeCertDetailRequest
@@ -28895,7 +40030,7 @@ func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *Des
 
 // Summary:
 //
-// 查询云产品的端口详情
+// Queries a port of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
 //
 // @param request - DescribeCloudResourceAccessPortDetailsRequest
 //
@@ -28969,7 +40104,7 @@ func (client *Client) DescribeCloudResourceAccessPortDetailsWithOptions(request 
 
 // Summary:
 //
-// 查询云产品的端口详情
+// Queries a port of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
 //
 // @param request - DescribeCloudResourceAccessPortDetailsRequest
 //
@@ -28987,7 +40122,7 @@ func (client *Client) DescribeCloudResourceAccessPortDetails(request *DescribeCl
 
 // Summary:
 //
-// 查询已接入云产品的端口列表
+// Queries the ports of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
 //
 // @param request - DescribeCloudResourceAccessedPortsRequest
 //
@@ -29041,7 +40176,7 @@ func (client *Client) DescribeCloudResourceAccessedPortsWithOptions(request *Des
 
 // Summary:
 //
-// 查询已接入云产品的端口列表
+// Queries the ports of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
 //
 // @param request - DescribeCloudResourceAccessedPortsRequest
 //
@@ -29171,7 +40306,7 @@ func (client *Client) DescribeCloudResources(request *DescribeCloudResourcesRequ
 
 // Summary:
 //
-// 查询Cname接入的数量
+// Queries the total number of domain names that are added to Web Application Firewall (WAF) in CNAME record mode and hybrid cloud reverse proxy mode.
 //
 // @param request - DescribeCnameCountRequest
 //
@@ -29221,7 +40356,7 @@ func (client *Client) DescribeCnameCountWithOptions(request *DescribeCnameCountR
 
 // Summary:
 //
-// 查询Cname接入的数量
+// Queries the total number of domain names that are added to Web Application Firewall (WAF) in CNAME record mode and hybrid cloud reverse proxy mode.
 //
 // @param request - DescribeCnameCountRequest
 //
@@ -29307,7 +40442,7 @@ func (client *Client) DescribeDDoSStatus(request *DescribeDDoSStatusRequest) (_r
 
 // Summary:
 //
-// 查询默认HTTPS配置
+// Queries the default SSL and Transport Layer Security (TLS) settings.
 //
 // @param request - DescribeDefaultHttpsRequest
 //
@@ -29357,7 +40492,7 @@ func (client *Client) DescribeDefaultHttpsWithOptions(request *DescribeDefaultHt
 
 // Summary:
 //
-// 查询默认HTTPS配置
+// Queries the default SSL and Transport Layer Security (TLS) settings.
 //
 // @param request - DescribeDefaultHttpsRequest
 //
@@ -30819,6 +41954,278 @@ func (client *Client) DescribeFlowTopUrl(request *DescribeFlowTopUrlRequest) (_r
 
 // Summary:
 //
+// Queries the asset statistics provided by basic detection in the API security module.
+//
+// @param request - DescribeFreeUserAssetCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFreeUserAssetCountResponse
+func (client *Client) DescribeFreeUserAssetCountWithOptions(request *DescribeFreeUserAssetCountRequest, runtime *util.RuntimeOptions) (_result *DescribeFreeUserAssetCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFreeUserAssetCount"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFreeUserAssetCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the asset statistics provided by basic detection in the API security module.
+//
+// @param request - DescribeFreeUserAssetCountRequest
+//
+// @return DescribeFreeUserAssetCountResponse
+func (client *Client) DescribeFreeUserAssetCount(request *DescribeFreeUserAssetCountRequest) (_result *DescribeFreeUserAssetCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFreeUserAssetCountResponse{}
+	_body, _err := client.DescribeFreeUserAssetCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the statistics of security events that are detected by using the basic detection feature of the API security module.
+//
+// @param request - DescribeFreeUserEventCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFreeUserEventCountResponse
+func (client *Client) DescribeFreeUserEventCountWithOptions(request *DescribeFreeUserEventCountRequest, runtime *util.RuntimeOptions) (_result *DescribeFreeUserEventCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFreeUserEventCount"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFreeUserEventCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the statistics of security events that are detected by using the basic detection feature of the API security module.
+//
+// @param request - DescribeFreeUserEventCountRequest
+//
+// @return DescribeFreeUserEventCountResponse
+func (client *Client) DescribeFreeUserEventCount(request *DescribeFreeUserEventCountRequest) (_result *DescribeFreeUserEventCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFreeUserEventCountResponse{}
+	_body, _err := client.DescribeFreeUserEventCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the types of security events on which basic detection is performed in the API security module.
+//
+// @param request - DescribeFreeUserEventTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFreeUserEventTypesResponse
+func (client *Client) DescribeFreeUserEventTypesWithOptions(request *DescribeFreeUserEventTypesRequest, runtime *util.RuntimeOptions) (_result *DescribeFreeUserEventTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFreeUserEventTypes"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFreeUserEventTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the types of security events on which basic detection is performed in the API security module.
+//
+// @param request - DescribeFreeUserEventTypesRequest
+//
+// @return DescribeFreeUserEventTypesResponse
+func (client *Client) DescribeFreeUserEventTypes(request *DescribeFreeUserEventTypesRequest) (_result *DescribeFreeUserEventTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFreeUserEventTypesResponse{}
+	_body, _err := client.DescribeFreeUserEventTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of security events on which basic detection is performed in the API security module.
+//
+// @param request - DescribeFreeUserEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFreeUserEventsResponse
+func (client *Client) DescribeFreeUserEventsWithOptions(request *DescribeFreeUserEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeFreeUserEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFreeUserEvents"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFreeUserEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of security events on which basic detection is performed in the API security module.
+//
+// @param request - DescribeFreeUserEventsRequest
+//
+// @return DescribeFreeUserEventsResponse
+func (client *Client) DescribeFreeUserEvents(request *DescribeFreeUserEventsRequest) (_result *DescribeFreeUserEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFreeUserEventsResponse{}
+	_body, _err := client.DescribeFreeUserEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the rule information about a hybrid cloud cluster.
 //
 // @param request - DescribeHybridCloudClusterRuleRequest
@@ -30875,7 +42282,7 @@ func (client *Client) DescribeHybridCloudClusterRule(request *DescribeHybridClou
 
 // Summary:
 //
-// 查询混合云集群列表
+// Queries a list of hybrid cloud clusters.
 //
 // @param request - DescribeHybridCloudClustersRequest
 //
@@ -30925,7 +42332,7 @@ func (client *Client) DescribeHybridCloudClustersWithOptions(request *DescribeHy
 
 // Summary:
 //
-// 查询混合云集群列表
+// Queries a list of hybrid cloud clusters.
 //
 // @param request - DescribeHybridCloudClustersRequest
 //
@@ -32236,6 +43643,10 @@ func (client *Client) DescribeResourceSupportRegionsWithOptions(request *Describ
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceProduct)) {
+		query["ResourceProduct"] = request.ResourceProduct
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32732,6 +44143,10 @@ func (client *Client) DescribeRuleHitsTopTuleTypeWithOptions(request *DescribeRu
 		query["Resource"] = request.Resource
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
 		query["StartTimestamp"] = request.StartTimestamp
 	}
@@ -32934,6 +44349,746 @@ func (client *Client) DescribeRuleHitsTopUrl(request *DescribeRuleHitsTopUrlRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleHitsTopUrlResponse{}
 	_body, _err := client.DescribeRuleHitsTopUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the personal information-related APIs and domain names.
+//
+// @param request - DescribeSensitiveApiStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveApiStatisticResponse
+func (client *Client) DescribeSensitiveApiStatisticWithOptions(request *DescribeSensitiveApiStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeSensitiveApiStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchedHost)) {
+		query["MatchedHost"] = request.MatchedHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSensitiveApiStatistic"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSensitiveApiStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the personal information-related APIs and domain names.
+//
+// @param request - DescribeSensitiveApiStatisticRequest
+//
+// @return DescribeSensitiveApiStatisticResponse
+func (client *Client) DescribeSensitiveApiStatistic(request *DescribeSensitiveApiStatisticRequest) (_result *DescribeSensitiveApiStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSensitiveApiStatisticResponse{}
+	_body, _err := client.DescribeSensitiveApiStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the compliance check results of API security.
+//
+// @param request - DescribeSensitiveDetectionResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveDetectionResultResponse
+func (client *Client) DescribeSensitiveDetectionResultWithOptions(request *DescribeSensitiveDetectionResultRequest, runtime *util.RuntimeOptions) (_result *DescribeSensitiveDetectionResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSensitiveDetectionResult"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSensitiveDetectionResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the compliance check results of API security.
+//
+// @param request - DescribeSensitiveDetectionResultRequest
+//
+// @return DescribeSensitiveDetectionResultResponse
+func (client *Client) DescribeSensitiveDetectionResult(request *DescribeSensitiveDetectionResultRequest) (_result *DescribeSensitiveDetectionResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSensitiveDetectionResultResponse{}
+	_body, _err := client.DescribeSensitiveDetectionResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the traffic distribution of personal information records involved in cross-border data transfer.
+//
+// @param request - DescribeSensitiveOutboundDistributionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveOutboundDistributionResponse
+func (client *Client) DescribeSensitiveOutboundDistributionWithOptions(request *DescribeSensitiveOutboundDistributionRequest, runtime *util.RuntimeOptions) (_result *DescribeSensitiveOutboundDistributionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSensitiveOutboundDistribution"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSensitiveOutboundDistributionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the traffic distribution of personal information records involved in cross-border data transfer.
+//
+// @param request - DescribeSensitiveOutboundDistributionRequest
+//
+// @return DescribeSensitiveOutboundDistributionResponse
+func (client *Client) DescribeSensitiveOutboundDistribution(request *DescribeSensitiveOutboundDistributionRequest) (_result *DescribeSensitiveOutboundDistributionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSensitiveOutboundDistributionResponse{}
+	_body, _err := client.DescribeSensitiveOutboundDistributionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the data types of personal information involved in cross-border data transfer.
+//
+// @param request - DescribeSensitiveOutboundStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveOutboundStatisticResponse
+func (client *Client) DescribeSensitiveOutboundStatisticWithOptions(request *DescribeSensitiveOutboundStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeSensitiveOutboundStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetectionResult)) {
+		query["DetectionResult"] = request.DetectionResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderKey)) {
+		query["OrderKey"] = request.OrderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderWay)) {
+		query["OrderWay"] = request.OrderWay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveCode)) {
+		query["SensitiveCode"] = request.SensitiveCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveLevel)) {
+		query["SensitiveLevel"] = request.SensitiveLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveType)) {
+		query["SensitiveType"] = request.SensitiveType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSensitiveOutboundStatistic"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSensitiveOutboundStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the data types of personal information involved in cross-border data transfer.
+//
+// @param request - DescribeSensitiveOutboundStatisticRequest
+//
+// @return DescribeSensitiveOutboundStatisticResponse
+func (client *Client) DescribeSensitiveOutboundStatistic(request *DescribeSensitiveOutboundStatisticRequest) (_result *DescribeSensitiveOutboundStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSensitiveOutboundStatisticResponse{}
+	_body, _err := client.DescribeSensitiveOutboundStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the trends of cross-border data transfer of personal information.
+//
+// @param request - DescribeSensitiveOutboundTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveOutboundTrendResponse
+func (client *Client) DescribeSensitiveOutboundTrendWithOptions(request *DescribeSensitiveOutboundTrendRequest, runtime *util.RuntimeOptions) (_result *DescribeSensitiveOutboundTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSensitiveOutboundTrend"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSensitiveOutboundTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the trends of cross-border data transfer of personal information.
+//
+// @param request - DescribeSensitiveOutboundTrendRequest
+//
+// @return DescribeSensitiveOutboundTrendResponse
+func (client *Client) DescribeSensitiveOutboundTrend(request *DescribeSensitiveOutboundTrendRequest) (_result *DescribeSensitiveOutboundTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSensitiveOutboundTrendResponse{}
+	_body, _err := client.DescribeSensitiveOutboundTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the access logs of sensitive data.
+//
+// @param request - DescribeSensitiveRequestLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveRequestLogResponse
+func (client *Client) DescribeSensitiveRequestLogWithOptions(request *DescribeSensitiveRequestLogRequest, runtime *util.RuntimeOptions) (_result *DescribeSensitiveRequestLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiFormat)) {
+		query["ApiFormat"] = request.ApiFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIP)) {
+		query["ClientIP"] = request.ClientIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchedHost)) {
+		query["MatchedHost"] = request.MatchedHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveCode)) {
+		query["SensitiveCode"] = request.SensitiveCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveData)) {
+		query["SensitiveData"] = request.SensitiveData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSensitiveRequestLog"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSensitiveRequestLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the access logs of sensitive data.
+//
+// @param request - DescribeSensitiveRequestLogRequest
+//
+// @return DescribeSensitiveRequestLogResponse
+func (client *Client) DescribeSensitiveRequestLog(request *DescribeSensitiveRequestLogRequest) (_result *DescribeSensitiveRequestLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSensitiveRequestLogResponse{}
+	_body, _err := client.DescribeSensitiveRequestLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tracing results of sensitive data.
+//
+// @param request - DescribeSensitiveRequestsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveRequestsResponse
+func (client *Client) DescribeSensitiveRequestsWithOptions(request *DescribeSensitiveRequestsRequest, runtime *util.RuntimeOptions) (_result *DescribeSensitiveRequestsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveCode)) {
+		query["SensitiveCode"] = request.SensitiveCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveData)) {
+		query["SensitiveData"] = request.SensitiveData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSensitiveRequests"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSensitiveRequestsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tracing results of sensitive data.
+//
+// @param request - DescribeSensitiveRequestsRequest
+//
+// @return DescribeSensitiveRequestsResponse
+func (client *Client) DescribeSensitiveRequests(request *DescribeSensitiveRequestsRequest) (_result *DescribeSensitiveRequestsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSensitiveRequestsResponse{}
+	_body, _err := client.DescribeSensitiveRequestsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the sensitive data statistics of the tracing and auditing feature.
+//
+// @param request - DescribeSensitiveStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSensitiveStatisticResponse
+func (client *Client) DescribeSensitiveStatisticWithOptions(request *DescribeSensitiveStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeSensitiveStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticType)) {
+		query["StatisticType"] = request.StatisticType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSensitiveStatistic"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSensitiveStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the sensitive data statistics of the tracing and auditing feature.
+//
+// @param request - DescribeSensitiveStatisticRequest
+//
+// @return DescribeSensitiveStatisticResponse
+func (client *Client) DescribeSensitiveStatistic(request *DescribeSensitiveStatisticRequest) (_result *DescribeSensitiveStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSensitiveStatisticResponse{}
+	_body, _err := client.DescribeSensitiveStatisticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33295,6 +45450,478 @@ func (client *Client) DescribeTemplateResources(request *DescribeTemplateResourc
 
 // Summary:
 //
+// Queries the trends of API security risks.
+//
+// @param request - DescribeUserAbnormalTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserAbnormalTrendResponse
+func (client *Client) DescribeUserAbnormalTrendWithOptions(request *DescribeUserAbnormalTrendRequest, runtime *util.RuntimeOptions) (_result *DescribeUserAbnormalTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserAbnormalTrend"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserAbnormalTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the trends of API security risks.
+//
+// @param request - DescribeUserAbnormalTrendRequest
+//
+// @return DescribeUserAbnormalTrendResponse
+func (client *Client) DescribeUserAbnormalTrend(request *DescribeUserAbnormalTrendRequest) (_result *DescribeUserAbnormalTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserAbnormalTrendResponse{}
+	_body, _err := client.DescribeUserAbnormalTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the types and statistics of risks in the API security module.
+//
+// @param request - DescribeUserAbnormalTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserAbnormalTypeResponse
+func (client *Client) DescribeUserAbnormalTypeWithOptions(request *DescribeUserAbnormalTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeUserAbnormalTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserAbnormalType"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserAbnormalTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the types and statistics of risks in the API security module.
+//
+// @param request - DescribeUserAbnormalTypeRequest
+//
+// @return DescribeUserAbnormalTypeResponse
+func (client *Client) DescribeUserAbnormalType(request *DescribeUserAbnormalTypeRequest) (_result *DescribeUserAbnormalTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserAbnormalTypeResponse{}
+	_body, _err := client.DescribeUserAbnormalTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the traffic statistics of an API.
+//
+// @param request - DescribeUserApiRequestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserApiRequestResponse
+func (client *Client) DescribeUserApiRequestWithOptions(request *DescribeUserApiRequestRequest, runtime *util.RuntimeOptions) (_result *DescribeUserApiRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiFormat)) {
+		query["ApiFormat"] = request.ApiFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserApiRequest"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserApiRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the traffic statistics of an API.
+//
+// @param request - DescribeUserApiRequestRequest
+//
+// @return DescribeUserApiRequestResponse
+func (client *Client) DescribeUserApiRequest(request *DescribeUserApiRequestRequest) (_result *DescribeUserApiRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserApiRequestResponse{}
+	_body, _err := client.DescribeUserApiRequestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the user asset statistics in the API security module.
+//
+// @param request - DescribeUserAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserAssetResponse
+func (client *Client) DescribeUserAssetWithOptions(request *DescribeUserAssetRequest, runtime *util.RuntimeOptions) (_result *DescribeUserAssetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		query["DataType"] = request.DataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Days)) {
+		query["Days"] = request.Days
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserAsset"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the user asset statistics in the API security module.
+//
+// @param request - DescribeUserAssetRequest
+//
+// @return DescribeUserAssetResponse
+func (client *Client) DescribeUserAsset(request *DescribeUserAssetRequest) (_result *DescribeUserAssetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserAssetResponse{}
+	_body, _err := client.DescribeUserAssetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the trends of attacks detected by the API security module.
+//
+// @param request - DescribeUserEventTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserEventTrendResponse
+func (client *Client) DescribeUserEventTrendWithOptions(request *DescribeUserEventTrendRequest, runtime *util.RuntimeOptions) (_result *DescribeUserEventTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserEventTrend"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserEventTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the trends of attacks detected by the API security module.
+//
+// @param request - DescribeUserEventTrendRequest
+//
+// @return DescribeUserEventTrendResponse
+func (client *Client) DescribeUserEventTrend(request *DescribeUserEventTrendRequest) (_result *DescribeUserEventTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserEventTrendResponse{}
+	_body, _err := client.DescribeUserEventTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the types and statistics of security events in the API security module.
+//
+// @param request - DescribeUserEventTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserEventTypeResponse
+func (client *Client) DescribeUserEventTypeWithOptions(request *DescribeUserEventTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeUserEventTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserEventType"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserEventTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the types and statistics of security events in the API security module.
+//
+// @param request - DescribeUserEventTypeRequest
+//
+// @return DescribeUserEventTypeResponse
+func (client *Client) DescribeUserEventType(request *DescribeUserEventTypeRequest) (_result *DescribeUserEventTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserEventTypeResponse{}
+	_body, _err := client.DescribeUserEventTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries available regions for log storage.
 //
 // @param request - DescribeUserSlsLogRegionsRequest
@@ -33538,6 +46165,10 @@ func (client *Client) DescribeVisitUasWithOptions(request *DescribeVisitUasReque
 
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
@@ -33816,6 +46447,10 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Key)) {
 		query["Key"] = request.Key
 	}
@@ -33826,6 +46461,10 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
@@ -33866,6 +46505,258 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
 	_body, _err := client.ListTagValuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of multiple risks detected by the API security module at a time.
+//
+// @param request - ModifyApisecAbnormalsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApisecAbnormalsResponse
+func (client *Client) ModifyApisecAbnormalsWithOptions(request *ModifyApisecAbnormalsRequest, runtime *util.RuntimeOptions) (_result *ModifyApisecAbnormalsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbnormalIds)) {
+		query["AbnormalIds"] = request.AbnormalIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		query["Note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserStatus)) {
+		query["UserStatus"] = request.UserStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApisecAbnormals"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApisecAbnormalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of multiple risks detected by the API security module at a time.
+//
+// @param request - ModifyApisecAbnormalsRequest
+//
+// @return ModifyApisecAbnormalsResponse
+func (client *Client) ModifyApisecAbnormals(request *ModifyApisecAbnormalsRequest) (_result *ModifyApisecAbnormalsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApisecAbnormalsResponse{}
+	_body, _err := client.ModifyApisecAbnormalsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the annotations of APIs in the API security module.
+//
+// @param request - ModifyApisecApiResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApisecApiResourceResponse
+func (client *Client) ModifyApisecApiResourceWithOptions(request *ModifyApisecApiResourceRequest, runtime *util.RuntimeOptions) (_result *ModifyApisecApiResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Follow)) {
+		query["Follow"] = request.Follow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		query["Note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApisecApiResource"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApisecApiResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the annotations of APIs in the API security module.
+//
+// @param request - ModifyApisecApiResourceRequest
+//
+// @return ModifyApisecApiResourceResponse
+func (client *Client) ModifyApisecApiResource(request *ModifyApisecApiResourceRequest) (_result *ModifyApisecApiResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApisecApiResourceResponse{}
+	_body, _err := client.ModifyApisecApiResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of multiple security events detected by the API security module at a time.
+//
+// @param request - ModifyApisecEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApisecEventsResponse
+func (client *Client) ModifyApisecEventsWithOptions(request *ModifyApisecEventsRequest, runtime *util.RuntimeOptions) (_result *ModifyApisecEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventIds)) {
+		query["EventIds"] = request.EventIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		query["Note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserStatus)) {
+		query["UserStatus"] = request.UserStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApisecEvents"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApisecEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of multiple security events detected by the API security module at a time.
+//
+// @param request - ModifyApisecEventsRequest
+//
+// @return ModifyApisecEventsResponse
+func (client *Client) ModifyApisecEvents(request *ModifyApisecEventsRequest) (_result *ModifyApisecEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApisecEventsResponse{}
+	_body, _err := client.ModifyApisecEventsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34035,7 +46926,171 @@ func (client *Client) ModifyApisecLogDeliveryStatus(request *ModifyApisecLogDeli
 
 // Summary:
 //
-// 修改云产品资源
+// Changes the status of features in the API security module for protected objects or protected object groups.
+//
+// @param request - ModifyApisecModuleStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApisecModuleStatusResponse
+func (client *Client) ModifyApisecModuleStatusWithOptions(request *ModifyApisecModuleStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyApisecModuleStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportStatus)) {
+		query["ReportStatus"] = request.ReportStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroups)) {
+		query["ResourceGroups"] = request.ResourceGroups
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceStatus)) {
+		query["TraceStatus"] = request.TraceStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApisecModuleStatus"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApisecModuleStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the status of features in the API security module for protected objects or protected object groups.
+//
+// @param request - ModifyApisecModuleStatusRequest
+//
+// @return ModifyApisecModuleStatusResponse
+func (client *Client) ModifyApisecModuleStatus(request *ModifyApisecModuleStatusRequest) (_result *ModifyApisecModuleStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApisecModuleStatusResponse{}
+	_body, _err := client.ModifyApisecModuleStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the status of the API security module for protected objects or protected object groups.
+//
+// @param request - ModifyApisecStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApisecStatusResponse
+func (client *Client) ModifyApisecStatusWithOptions(request *ModifyApisecStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyApisecStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApisecStatus)) {
+		query["ApisecStatus"] = request.ApisecStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroups)) {
+		query["ResourceGroups"] = request.ResourceGroups
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["Resources"] = request.Resources
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApisecStatus"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApisecStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the status of the API security module for protected objects or protected object groups.
+//
+// @param request - ModifyApisecStatusRequest
+//
+// @return ModifyApisecStatusResponse
+func (client *Client) ModifyApisecStatus(request *ModifyApisecStatusRequest) (_result *ModifyApisecStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApisecStatusResponse{}
+	_body, _err := client.ModifyApisecStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the configurations of a service that is added to Web Application Firewall (WAF).
 //
 // @param tmpReq - ModifyCloudResourceRequest
 //
@@ -34103,7 +47158,7 @@ func (client *Client) ModifyCloudResourceWithOptions(tmpReq *ModifyCloudResource
 
 // Summary:
 //
-// 修改云产品资源
+// Modifies the configurations of a service that is added to Web Application Firewall (WAF).
 //
 // @param request - ModifyCloudResourceRequest
 //
@@ -34121,7 +47176,7 @@ func (client *Client) ModifyCloudResource(request *ModifyCloudResourceRequest) (
 
 // Summary:
 //
-// 修改默认HTTPS配置
+// Modifies the default SSL and Transport Layer Security (TLS) settings.
 //
 // @param request - ModifyDefaultHttpsRequest
 //
@@ -34191,7 +47246,7 @@ func (client *Client) ModifyDefaultHttpsWithOptions(request *ModifyDefaultHttpsR
 
 // Summary:
 //
-// 修改默认HTTPS配置
+// Modifies the default SSL and Transport Layer Security (TLS) settings.
 //
 // @param request - ModifyDefaultHttpsRequest
 //
@@ -34414,16 +47469,18 @@ func (client *Client) ModifyDefenseRuleWithOptions(request *ModifyDefenseRuleReq
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Rules)) {
-		query["Rules"] = request.Rules
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Rules)) {
+		body["Rules"] = request.Rules
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDefenseRule"),
