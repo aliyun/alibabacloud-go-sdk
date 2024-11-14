@@ -22,6 +22,7 @@ type AnchorResponse struct {
 	Gender             *string `json:"gender,omitempty" xml:"gender,omitempty"`
 	ResourceTypeDesc   *string `json:"resourceTypeDesc,omitempty" xml:"resourceTypeDesc,omitempty"`
 	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
+	SupportBgChange    *int32  `json:"supportBgChange,omitempty" xml:"supportBgChange,omitempty"`
 	UseScene           *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
 }
 
@@ -90,6 +91,11 @@ func (s *AnchorResponse) SetResourceTypeDesc(v string) *AnchorResponse {
 
 func (s *AnchorResponse) SetStatus(v string) *AnchorResponse {
 	s.Status = &v
+	return s
+}
+
+func (s *AnchorResponse) SetSupportBgChange(v int32) *AnchorResponse {
+	s.SupportBgChange = &v
 	return s
 }
 
@@ -350,6 +356,7 @@ type Text struct {
 	//
 	// xxx
 	Desc                   *string  `json:"desc,omitempty" xml:"desc,omitempty"`
+	ErrMsg                 *string  `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
 	GmtCreate              *string  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	GmtModified            *string  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	IllustrationTaskIdList []*int64 `json:"illustrationTaskIdList,omitempty" xml:"illustrationTaskIdList,omitempty" type:"Repeated"`
@@ -418,6 +425,11 @@ func (s *Text) SetAgentName(v string) *Text {
 
 func (s *Text) SetDesc(v string) *Text {
 	s.Desc = &v
+	return s
+}
+
+func (s *Text) SetErrMsg(v string) *Text {
+	s.ErrMsg = &v
 	return s
 }
 
@@ -1377,6 +1389,90 @@ func (s *CheckSessionResponse) SetBody(v *CheckSessionResponseBody) *CheckSessio
 	return s
 }
 
+type CloseAICoachTaskSessionRequest struct {
+	// example:
+	//
+	// 11
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// 273610276967782972
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CloseAICoachTaskSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAICoachTaskSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAICoachTaskSessionRequest) SetSessionId(v string) *CloseAICoachTaskSessionRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CloseAICoachTaskSessionRequest) SetUid(v string) *CloseAICoachTaskSessionRequest {
+	s.Uid = &v
+	return s
+}
+
+type CloseAICoachTaskSessionResponseBody struct {
+	// example:
+	//
+	// 0E06E0AA-D5B6-538C-8CE9-BAB79C68B690
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s CloseAICoachTaskSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAICoachTaskSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAICoachTaskSessionResponseBody) SetRequestId(v string) *CloseAICoachTaskSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloseAICoachTaskSessionResponseBody) SetStatus(v string) *CloseAICoachTaskSessionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CloseAICoachTaskSessionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloseAICoachTaskSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloseAICoachTaskSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAICoachTaskSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAICoachTaskSessionResponse) SetHeaders(v map[string]*string) *CloseAICoachTaskSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloseAICoachTaskSessionResponse) SetStatusCode(v int32) *CloseAICoachTaskSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloseAICoachTaskSessionResponse) SetBody(v *CloseAICoachTaskSessionResponseBody) *CloseAICoachTaskSessionResponse {
+	s.Body = v
+	return s
+}
+
 type CountTextRequest struct {
 	// API
 	//
@@ -1506,6 +1602,171 @@ func (s *CountTextResponse) SetStatusCode(v int32) *CountTextResponse {
 }
 
 func (s *CountTextResponse) SetBody(v *CountTextResponseBody) *CountTextResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAICoachTaskSessionRequest struct {
+	// example:
+	//
+	// 821882330423951360
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 1730530943640489
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateAICoachTaskSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAICoachTaskSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAICoachTaskSessionRequest) SetTaskId(v string) *CreateAICoachTaskSessionRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionRequest) SetUid(v string) *CreateAICoachTaskSessionRequest {
+	s.Uid = &v
+	return s
+}
+
+type CreateAICoachTaskSessionResponseBody struct {
+	// rtctoken
+	//
+	// example:
+	//
+	// 11
+	ChannelToken *string `json:"channelToken,omitempty" xml:"channelToken,omitempty"`
+	// example:
+	//
+	// 4830493A-728F-5F19-BBCC-1443292E9C49
+	RequestId  *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScriptInfo *CreateAICoachTaskSessionResponseBodyScriptInfo `json:"scriptInfo,omitempty" xml:"scriptInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 111
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// Token
+	//
+	// example:
+	//
+	// 11
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// 11
+	WebSocketUrl *string `json:"webSocketUrl,omitempty" xml:"webSocketUrl,omitempty"`
+}
+
+func (s CreateAICoachTaskSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAICoachTaskSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAICoachTaskSessionResponseBody) SetChannelToken(v string) *CreateAICoachTaskSessionResponseBody {
+	s.ChannelToken = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBody) SetRequestId(v string) *CreateAICoachTaskSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBody) SetScriptInfo(v *CreateAICoachTaskSessionResponseBodyScriptInfo) *CreateAICoachTaskSessionResponseBody {
+	s.ScriptInfo = v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBody) SetSessionId(v string) *CreateAICoachTaskSessionResponseBody {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBody) SetToken(v string) *CreateAICoachTaskSessionResponseBody {
+	s.Token = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBody) SetWebSocketUrl(v string) *CreateAICoachTaskSessionResponseBody {
+	s.WebSocketUrl = &v
+	return s
+}
+
+type CreateAICoachTaskSessionResponseBodyScriptInfo struct {
+	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty"`
+	// example:
+	//
+	// 11
+	MaxDuration *int64 `json:"maxDuration,omitempty" xml:"maxDuration,omitempty"`
+	// example:
+	//
+	// test
+	ScriptDesc *string `json:"scriptDesc,omitempty" xml:"scriptDesc,omitempty"`
+	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+}
+
+func (s CreateAICoachTaskSessionResponseBodyScriptInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAICoachTaskSessionResponseBodyScriptInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetInitiator(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.Initiator = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetMaxDuration(v int64) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.MaxDuration = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetScriptDesc(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.ScriptDesc = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponseBodyScriptInfo) SetScriptName(v string) *CreateAICoachTaskSessionResponseBodyScriptInfo {
+	s.ScriptName = &v
+	return s
+}
+
+type CreateAICoachTaskSessionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAICoachTaskSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAICoachTaskSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAICoachTaskSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAICoachTaskSessionResponse) SetHeaders(v map[string]*string) *CreateAICoachTaskSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponse) SetStatusCode(v int32) *CreateAICoachTaskSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAICoachTaskSessionResponse) SetBody(v *CreateAICoachTaskSessionResponseBody) *CreateAICoachTaskSessionResponse {
 	s.Body = v
 	return s
 }
@@ -1786,6 +2047,389 @@ func (s *CreateTextTaskResponse) SetStatusCode(v int32) *CreateTextTaskResponse 
 }
 
 func (s *CreateTextTaskResponse) SetBody(v *TextTaskResult) *CreateTextTaskResponse {
+	s.Body = v
+	return s
+}
+
+type FinishAICoachTaskSessionRequest struct {
+	// example:
+	//
+	// 111
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// 222
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s FinishAICoachTaskSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishAICoachTaskSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FinishAICoachTaskSessionRequest) SetSessionId(v string) *FinishAICoachTaskSessionRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *FinishAICoachTaskSessionRequest) SetUid(v string) *FinishAICoachTaskSessionRequest {
+	s.Uid = &v
+	return s
+}
+
+type FinishAICoachTaskSessionResponseBody struct {
+	// example:
+	//
+	// 14878724-A835-578D-9DD5-4779ADCE9221
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s FinishAICoachTaskSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishAICoachTaskSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FinishAICoachTaskSessionResponseBody) SetRequestId(v string) *FinishAICoachTaskSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FinishAICoachTaskSessionResponseBody) SetStatus(v string) *FinishAICoachTaskSessionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type FinishAICoachTaskSessionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FinishAICoachTaskSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FinishAICoachTaskSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishAICoachTaskSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FinishAICoachTaskSessionResponse) SetHeaders(v map[string]*string) *FinishAICoachTaskSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FinishAICoachTaskSessionResponse) SetStatusCode(v int32) *FinishAICoachTaskSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FinishAICoachTaskSessionResponse) SetBody(v *FinishAICoachTaskSessionResponseBody) *FinishAICoachTaskSessionResponse {
+	s.Body = v
+	return s
+}
+
+type GetAICoachTaskSessionHistoryRequest struct {
+	// example:
+	//
+	// 111
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// 1251317954812712
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetAICoachTaskSessionHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachTaskSessionHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachTaskSessionHistoryRequest) SetSessionId(v string) *GetAICoachTaskSessionHistoryRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryRequest) SetUid(v string) *GetAICoachTaskSessionHistoryRequest {
+	s.Uid = &v
+	return s
+}
+
+type GetAICoachTaskSessionHistoryResponseBody struct {
+	ConversationList []*GetAICoachTaskSessionHistoryResponseBodyConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// 2024-11-08 09:33:21
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// D5798660-1531-5D12-9C20-16FEE9D22351
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	// example:
+	//
+	// 2024-08-21 05:00:01
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1579404690269235
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetAICoachTaskSessionHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachTaskSessionHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetConversationList(v []*GetAICoachTaskSessionHistoryResponseBodyConversationList) *GetAICoachTaskSessionHistoryResponseBody {
+	s.ConversationList = v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetDuration(v int64) *GetAICoachTaskSessionHistoryResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetEndTime(v string) *GetAICoachTaskSessionHistoryResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetRequestId(v string) *GetAICoachTaskSessionHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetScriptName(v string) *GetAICoachTaskSessionHistoryResponseBody {
+	s.ScriptName = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetStartTime(v string) *GetAICoachTaskSessionHistoryResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetStatus(v string) *GetAICoachTaskSessionHistoryResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBody) SetUid(v string) *GetAICoachTaskSessionHistoryResponseBody {
+	s.Uid = &v
+	return s
+}
+
+type GetAICoachTaskSessionHistoryResponseBodyConversationList struct {
+	// example:
+	//
+	// {}
+	EvaluationResult *string `json:"evaluationResult,omitempty" xml:"evaluationResult,omitempty"`
+	Message          *string `json:"message,omitempty" xml:"message,omitempty"`
+	Role             *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s GetAICoachTaskSessionHistoryResponseBodyConversationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachTaskSessionHistoryResponseBodyConversationList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBodyConversationList) SetEvaluationResult(v string) *GetAICoachTaskSessionHistoryResponseBodyConversationList {
+	s.EvaluationResult = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBodyConversationList) SetMessage(v string) *GetAICoachTaskSessionHistoryResponseBodyConversationList {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBodyConversationList) SetRole(v string) *GetAICoachTaskSessionHistoryResponseBodyConversationList {
+	s.Role = &v
+	return s
+}
+
+type GetAICoachTaskSessionHistoryResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAICoachTaskSessionHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAICoachTaskSessionHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachTaskSessionHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachTaskSessionHistoryResponse) SetHeaders(v map[string]*string) *GetAICoachTaskSessionHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponse) SetStatusCode(v int32) *GetAICoachTaskSessionHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponse) SetBody(v *GetAICoachTaskSessionHistoryResponseBody) *GetAICoachTaskSessionHistoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetAICoachTaskSessionReportRequest struct {
+	// example:
+	//
+	// 1111
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// 1707732338016307
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetAICoachTaskSessionReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachTaskSessionReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachTaskSessionReportRequest) SetSessionId(v string) *GetAICoachTaskSessionReportRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportRequest) SetUid(v string) *GetAICoachTaskSessionReportRequest {
+	s.Uid = &v
+	return s
+}
+
+type GetAICoachTaskSessionReportResponseBody struct {
+	// example:
+	//
+	// 0
+	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// 2024-11-08 09:33:21
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// {}
+	EvaluationResult *string `json:"evaluationResult,omitempty" xml:"evaluationResult,omitempty"`
+	// example:
+	//
+	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	// example:
+	//
+	// 2024-10-11 09:58:01
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1276673855116835
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetAICoachTaskSessionReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachTaskSessionReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetDuration(v int64) *GetAICoachTaskSessionReportResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetEndTime(v string) *GetAICoachTaskSessionReportResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetEvaluationResult(v string) *GetAICoachTaskSessionReportResponseBody {
+	s.EvaluationResult = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetRequestId(v string) *GetAICoachTaskSessionReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetScriptName(v string) *GetAICoachTaskSessionReportResponseBody {
+	s.ScriptName = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetStartTime(v string) *GetAICoachTaskSessionReportResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetStatus(v string) *GetAICoachTaskSessionReportResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponseBody) SetUid(v string) *GetAICoachTaskSessionReportResponseBody {
+	s.Uid = &v
+	return s
+}
+
+type GetAICoachTaskSessionReportResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAICoachTaskSessionReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAICoachTaskSessionReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachTaskSessionReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachTaskSessionReportResponse) SetHeaders(v map[string]*string) *GetAICoachTaskSessionReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponse) SetStatusCode(v int32) *GetAICoachTaskSessionReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionReportResponse) SetBody(v *GetAICoachTaskSessionReportResponseBody) *GetAICoachTaskSessionReportResponse {
 	s.Body = v
 	return s
 }
@@ -2387,6 +3031,166 @@ func (s *InteractTextResponse) SetStatusCode(v int32) *InteractTextResponse {
 }
 
 func (s *InteractTextResponse) SetBody(v *InteractTextResponseBody) *InteractTextResponse {
+	s.Body = v
+	return s
+}
+
+type ListAICoachTaskPageRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// FINISHED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 111
+	StudentId *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
+	// example:
+	//
+	// 313123123
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s ListAICoachTaskPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAICoachTaskPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAICoachTaskPageRequest) SetPageNumber(v int32) *ListAICoachTaskPageRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageRequest) SetPageSize(v int32) *ListAICoachTaskPageRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageRequest) SetStatus(v string) *ListAICoachTaskPageRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageRequest) SetStudentId(v string) *ListAICoachTaskPageRequest {
+	s.StudentId = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageRequest) SetTaskId(v string) *ListAICoachTaskPageRequest {
+	s.TaskId = &v
+	return s
+}
+
+type ListAICoachTaskPageResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// D7F2B74F-63F2-5DD6-95E4-F408EAD6617E
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TaskList  []*ListAICoachTaskPageResponseBodyTaskList `json:"taskList,omitempty" xml:"taskList,omitempty" type:"Repeated"`
+}
+
+func (s ListAICoachTaskPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAICoachTaskPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAICoachTaskPageResponseBody) SetRequestId(v string) *ListAICoachTaskPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageResponseBody) SetTaskList(v []*ListAICoachTaskPageResponseBodyTaskList) *ListAICoachTaskPageResponseBody {
+	s.TaskList = v
+	return s
+}
+
+type ListAICoachTaskPageResponseBodyTaskList struct {
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	// example:
+	//
+	// FINISHED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 222
+	StudentId *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
+	// example:
+	//
+	// 11111111111
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s ListAICoachTaskPageResponseBodyTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAICoachTaskPageResponseBodyTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAICoachTaskPageResponseBodyTaskList) SetFinishTime(v string) *ListAICoachTaskPageResponseBodyTaskList {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageResponseBodyTaskList) SetStatus(v string) *ListAICoachTaskPageResponseBodyTaskList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageResponseBodyTaskList) SetStudentId(v string) *ListAICoachTaskPageResponseBodyTaskList {
+	s.StudentId = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageResponseBodyTaskList) SetTaskId(v string) *ListAICoachTaskPageResponseBodyTaskList {
+	s.TaskId = &v
+	return s
+}
+
+type ListAICoachTaskPageResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAICoachTaskPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAICoachTaskPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAICoachTaskPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAICoachTaskPageResponse) SetHeaders(v map[string]*string) *ListAICoachTaskPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAICoachTaskPageResponse) SetStatusCode(v int32) *ListAICoachTaskPageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageResponse) SetBody(v *ListAICoachTaskPageResponseBody) *ListAICoachTaskPageResponse {
 	s.Body = v
 	return s
 }
@@ -5598,6 +6402,74 @@ func (client *Client) CheckSession(request *CheckSessionRequest) (_result *Check
 
 // Summary:
 //
+// 学员关闭会话
+//
+// @param request - CloseAICoachTaskSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseAICoachTaskSessionResponse
+func (client *Client) CloseAICoachTaskSessionWithOptions(request *CloseAICoachTaskSessionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloseAICoachTaskSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		body["uid"] = request.Uid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseAICoachTaskSession"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/closeSession"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloseAICoachTaskSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员关闭会话
+//
+// @param request - CloseAICoachTaskSessionRequest
+//
+// @return CloseAICoachTaskSessionResponse
+func (client *Client) CloseAICoachTaskSession(request *CloseAICoachTaskSessionRequest) (_result *CloseAICoachTaskSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CloseAICoachTaskSessionResponse{}
+	_body, _err := client.CloseAICoachTaskSessionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 文本数量统计
 //
 // @param request - CountTextRequest
@@ -5665,6 +6537,74 @@ func (client *Client) CountText(request *CountTextRequest) (_result *CountTextRe
 	headers := make(map[string]*string)
 	_result = &CountTextResponse{}
 	_body, _err := client.CountTextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员开启对练会话
+//
+// @param request - CreateAICoachTaskSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAICoachTaskSessionResponse
+func (client *Client) CreateAICoachTaskSessionWithOptions(request *CreateAICoachTaskSessionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAICoachTaskSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		body["uid"] = request.Uid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAICoachTaskSession"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/startSession"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAICoachTaskSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员开启对练会话
+//
+// @param request - CreateAICoachTaskSessionRequest
+//
+// @return CreateAICoachTaskSessionResponse
+func (client *Client) CreateAICoachTaskSession(request *CreateAICoachTaskSessionRequest) (_result *CreateAICoachTaskSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAICoachTaskSessionResponse{}
+	_body, _err := client.CreateAICoachTaskSessionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5899,6 +6839,210 @@ func (client *Client) CreateTextTask(request *CreateTextTaskRequest) (_result *C
 	headers := make(map[string]*string)
 	_result = &CreateTextTaskResponse{}
 	_body, _err := client.CreateTextTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员完成会话
+//
+// @param request - FinishAICoachTaskSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishAICoachTaskSessionResponse
+func (client *Client) FinishAICoachTaskSessionWithOptions(request *FinishAICoachTaskSessionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishAICoachTaskSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		body["uid"] = request.Uid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FinishAICoachTaskSession"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/finishSession"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FinishAICoachTaskSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员完成会话
+//
+// @param request - FinishAICoachTaskSessionRequest
+//
+// @return FinishAICoachTaskSessionResponse
+func (client *Client) FinishAICoachTaskSession(request *FinishAICoachTaskSessionRequest) (_result *FinishAICoachTaskSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FinishAICoachTaskSessionResponse{}
+	_body, _err := client.FinishAICoachTaskSessionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员查询会话历史
+//
+// @param request - GetAICoachTaskSessionHistoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAICoachTaskSessionHistoryResponse
+func (client *Client) GetAICoachTaskSessionHistoryWithOptions(request *GetAICoachTaskSessionHistoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAICoachTaskSessionHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["uid"] = request.Uid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAICoachTaskSessionHistory"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/querySessionHistory"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAICoachTaskSessionHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员查询会话历史
+//
+// @param request - GetAICoachTaskSessionHistoryRequest
+//
+// @return GetAICoachTaskSessionHistoryResponse
+func (client *Client) GetAICoachTaskSessionHistory(request *GetAICoachTaskSessionHistoryRequest) (_result *GetAICoachTaskSessionHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAICoachTaskSessionHistoryResponse{}
+	_body, _err := client.GetAICoachTaskSessionHistoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员查询会话评测报告
+//
+// @param request - GetAICoachTaskSessionReportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAICoachTaskSessionReportResponse
+func (client *Client) GetAICoachTaskSessionReportWithOptions(request *GetAICoachTaskSessionReportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAICoachTaskSessionReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["uid"] = request.Uid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAICoachTaskSessionReport"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/queryTaskSessionReport"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAICoachTaskSessionReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 学员查询会话评测报告
+//
+// @param request - GetAICoachTaskSessionReportRequest
+//
+// @return GetAICoachTaskSessionReportResponse
+func (client *Client) GetAICoachTaskSessionReport(request *GetAICoachTaskSessionReportRequest) (_result *GetAICoachTaskSessionReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAICoachTaskSessionReportResponse{}
+	_body, _err := client.GetAICoachTaskSessionReportWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6371,6 +7515,86 @@ func (client *Client) InteractText(request *InteractTextRequest) (_result *Inter
 	headers := make(map[string]*string)
 	_result = &InteractTextResponse{}
 	_body, _err := client.InteractTextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询任务列表
+//
+// @param request - ListAICoachTaskPageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAICoachTaskPageResponse
+func (client *Client) ListAICoachTaskPageWithOptions(request *ListAICoachTaskPageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAICoachTaskPageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StudentId)) {
+		query["studentId"] = request.StudentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAICoachTaskPage"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/listTaskPage"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAICoachTaskPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询任务列表
+//
+// @param request - ListAICoachTaskPageRequest
+//
+// @return ListAICoachTaskPageResponse
+func (client *Client) ListAICoachTaskPage(request *ListAICoachTaskPageRequest) (_result *ListAICoachTaskPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAICoachTaskPageResponse{}
+	_body, _err := client.ListAICoachTaskPageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
