@@ -3470,107 +3470,6 @@ func (s *CreateTaskAssignRuleResponse) SetBody(v *CreateTaskAssignRuleResponseBo
 	return s
 }
 
-type CreateUserRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// This parameter is required.
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s CreateUserRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUserRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUserRequest) SetBaseMeAgentId(v int64) *CreateUserRequest {
-	s.BaseMeAgentId = &v
-	return s
-}
-
-func (s *CreateUserRequest) SetJsonStr(v string) *CreateUserRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type CreateUserResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 82C91484-B2D5-4D2A-A21F-A6D73F4***
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateUserResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUserResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUserResponseBody) SetCode(v string) *CreateUserResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateUserResponseBody) SetMessage(v string) *CreateUserResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateUserResponseBody) SetRequestId(v string) *CreateUserResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateUserResponseBody) SetSuccess(v bool) *CreateUserResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateUserResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUserResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUserResponse) SetHeaders(v map[string]*string) *CreateUserResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateUserResponse) SetStatusCode(v int32) *CreateUserResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserResponse {
-	s.Body = v
-	return s
-}
-
 type CreateWarningConfigRequest struct {
 	// baseMeAgentId
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
@@ -4115,6 +4014,126 @@ func (s *DeleteBusinessCategoryResponse) SetStatusCode(v int32) *DeleteBusinessC
 }
 
 func (s *DeleteBusinessCategoryResponse) SetBody(v *DeleteBusinessCategoryResponseBody) *DeleteBusinessCategoryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCheckTypeToSchemeRequest struct {
+	// example:
+	//
+	// 123456
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// example:
+	//
+	// {"schemeId":"1376","checkType":"4"}
+	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
+}
+
+func (s DeleteCheckTypeToSchemeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCheckTypeToSchemeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCheckTypeToSchemeRequest) SetBaseMeAgentId(v int64) *DeleteCheckTypeToSchemeRequest {
+	s.BaseMeAgentId = &v
+	return s
+}
+
+func (s *DeleteCheckTypeToSchemeRequest) SetJsonStr(v string) *DeleteCheckTypeToSchemeRequest {
+	s.JsonStr = &v
+	return s
+}
+
+type DeleteCheckTypeToSchemeResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 48864
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful
+	Message  *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Messages []*string `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// F190ADE9-619A-447D-84E3-7E241A5C428E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCheckTypeToSchemeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCheckTypeToSchemeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCheckTypeToSchemeResponseBody) SetCode(v string) *DeleteCheckTypeToSchemeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCheckTypeToSchemeResponseBody) SetData(v string) *DeleteCheckTypeToSchemeResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteCheckTypeToSchemeResponseBody) SetMessage(v string) *DeleteCheckTypeToSchemeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCheckTypeToSchemeResponseBody) SetMessages(v []*string) *DeleteCheckTypeToSchemeResponseBody {
+	s.Messages = v
+	return s
+}
+
+func (s *DeleteCheckTypeToSchemeResponseBody) SetRequestId(v string) *DeleteCheckTypeToSchemeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCheckTypeToSchemeResponseBody) SetSuccess(v bool) *DeleteCheckTypeToSchemeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCheckTypeToSchemeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCheckTypeToSchemeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCheckTypeToSchemeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCheckTypeToSchemeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCheckTypeToSchemeResponse) SetHeaders(v map[string]*string) *DeleteCheckTypeToSchemeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCheckTypeToSchemeResponse) SetStatusCode(v int32) *DeleteCheckTypeToSchemeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCheckTypeToSchemeResponse) SetBody(v *DeleteCheckTypeToSchemeResponseBody) *DeleteCheckTypeToSchemeResponse {
 	s.Body = v
 	return s
 }
@@ -5014,107 +5033,6 @@ func (s *DeleteSchemeTaskConfigResponse) SetBody(v *DeleteSchemeTaskConfigRespon
 	return s
 }
 
-type DeleteScoreForApiRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// This parameter is required.
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s DeleteScoreForApiRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteScoreForApiRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteScoreForApiRequest) SetBaseMeAgentId(v int64) *DeleteScoreForApiRequest {
-	s.BaseMeAgentId = &v
-	return s
-}
-
-func (s *DeleteScoreForApiRequest) SetJsonStr(v string) *DeleteScoreForApiRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type DeleteScoreForApiResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 9987D326-83D9-4A42-B9A5-0B27F9B40539
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteScoreForApiResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteScoreForApiResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteScoreForApiResponseBody) SetCode(v string) *DeleteScoreForApiResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteScoreForApiResponseBody) SetMessage(v string) *DeleteScoreForApiResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteScoreForApiResponseBody) SetRequestId(v string) *DeleteScoreForApiResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteScoreForApiResponseBody) SetSuccess(v bool) *DeleteScoreForApiResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteScoreForApiResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteScoreForApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteScoreForApiResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteScoreForApiResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteScoreForApiResponse) SetHeaders(v map[string]*string) *DeleteScoreForApiResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteScoreForApiResponse) SetStatusCode(v int32) *DeleteScoreForApiResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteScoreForApiResponse) SetBody(v *DeleteScoreForApiResponseBody) *DeleteScoreForApiResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteSkillGroupConfigRequest struct {
 	// baseMeAgentId
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
@@ -5216,107 +5134,6 @@ func (s *DeleteSkillGroupConfigResponse) SetStatusCode(v int32) *DeleteSkillGrou
 }
 
 func (s *DeleteSkillGroupConfigResponse) SetBody(v *DeleteSkillGroupConfigResponseBody) *DeleteSkillGroupConfigResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteSubScoreForApiRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// This parameter is required.
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s DeleteSubScoreForApiRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSubScoreForApiRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSubScoreForApiRequest) SetBaseMeAgentId(v int64) *DeleteSubScoreForApiRequest {
-	s.BaseMeAgentId = &v
-	return s
-}
-
-func (s *DeleteSubScoreForApiRequest) SetJsonStr(v string) *DeleteSubScoreForApiRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type DeleteSubScoreForApiResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 9987D326-83D9-4A42-B9A5-0B27F9B43539
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteSubScoreForApiResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSubScoreForApiResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSubScoreForApiResponseBody) SetCode(v string) *DeleteSubScoreForApiResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteSubScoreForApiResponseBody) SetMessage(v string) *DeleteSubScoreForApiResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteSubScoreForApiResponseBody) SetRequestId(v string) *DeleteSubScoreForApiResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteSubScoreForApiResponseBody) SetSuccess(v bool) *DeleteSubScoreForApiResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteSubScoreForApiResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteSubScoreForApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteSubScoreForApiResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSubScoreForApiResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSubScoreForApiResponse) SetHeaders(v map[string]*string) *DeleteSubScoreForApiResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteSubScoreForApiResponse) SetStatusCode(v int32) *DeleteSubScoreForApiResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteSubScoreForApiResponse) SetBody(v *DeleteSubScoreForApiResponseBody) *DeleteSubScoreForApiResponse {
 	s.Body = v
 	return s
 }
@@ -7068,6 +6885,7 @@ type GetQualityCheckSchemeResponseBodyData struct {
 	// 1
 	DataType    *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InitScore   *string `json:"InitScore,omitempty" xml:"InitScore,omitempty"`
 	// example:
 	//
 	// xxx
@@ -7134,6 +6952,11 @@ func (s *GetQualityCheckSchemeResponseBodyData) SetDataType(v int32) *GetQuality
 
 func (s *GetQualityCheckSchemeResponseBodyData) SetDescription(v string) *GetQualityCheckSchemeResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetQualityCheckSchemeResponseBodyData) SetInitScore(v string) *GetQualityCheckSchemeResponseBodyData {
+	s.InitScore = &v
 	return s
 }
 
@@ -8734,7 +8557,8 @@ type GetResultResponseBodyDataResultInfoRecording struct {
 	// example:
 	//
 	// 0108888****
-	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Caller       *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
 	// example:
 	//
 	// XXXX
@@ -8854,6 +8678,11 @@ func (s *GetResultResponseBodyDataResultInfoRecording) SetCallee(v string) *GetR
 
 func (s *GetResultResponseBodyDataResultInfoRecording) SetCaller(v string) *GetResultResponseBodyDataResultInfoRecording {
 	s.Caller = &v
+	return s
+}
+
+func (s *GetResultResponseBodyDataResultInfoRecording) SetCustomerName(v string) *GetResultResponseBodyDataResultInfoRecording {
+	s.CustomerName = &v
 	return s
 }
 
@@ -14105,272 +13934,6 @@ func (s *HandleComplaintResponse) SetStatusCode(v int32) *HandleComplaintRespons
 }
 
 func (s *HandleComplaintResponse) SetBody(v *HandleComplaintResponseBody) *HandleComplaintResponse {
-	s.Body = v
-	return s
-}
-
-type InsertScoreForApiRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// This parameter is required.
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s InsertScoreForApiRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertScoreForApiRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InsertScoreForApiRequest) SetBaseMeAgentId(v int64) *InsertScoreForApiRequest {
-	s.BaseMeAgentId = &v
-	return s
-}
-
-func (s *InsertScoreForApiRequest) SetJsonStr(v string) *InsertScoreForApiRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type InsertScoreForApiResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *InsertScoreForApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 96138D8D-8D26-4E41-BFF4-77AED1088BBD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s InsertScoreForApiResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertScoreForApiResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InsertScoreForApiResponseBody) SetCode(v string) *InsertScoreForApiResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *InsertScoreForApiResponseBody) SetData(v *InsertScoreForApiResponseBodyData) *InsertScoreForApiResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *InsertScoreForApiResponseBody) SetMessage(v string) *InsertScoreForApiResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *InsertScoreForApiResponseBody) SetRequestId(v string) *InsertScoreForApiResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *InsertScoreForApiResponseBody) SetSuccess(v bool) *InsertScoreForApiResponseBody {
-	s.Success = &v
-	return s
-}
-
-type InsertScoreForApiResponseBodyData struct {
-	// example:
-	//
-	// 5728
-	ScoreId   *int64  `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	ScoreName *string `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
-}
-
-func (s InsertScoreForApiResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertScoreForApiResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *InsertScoreForApiResponseBodyData) SetScoreId(v int64) *InsertScoreForApiResponseBodyData {
-	s.ScoreId = &v
-	return s
-}
-
-func (s *InsertScoreForApiResponseBodyData) SetScoreName(v string) *InsertScoreForApiResponseBodyData {
-	s.ScoreName = &v
-	return s
-}
-
-type InsertScoreForApiResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *InsertScoreForApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s InsertScoreForApiResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertScoreForApiResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InsertScoreForApiResponse) SetHeaders(v map[string]*string) *InsertScoreForApiResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InsertScoreForApiResponse) SetStatusCode(v int32) *InsertScoreForApiResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *InsertScoreForApiResponse) SetBody(v *InsertScoreForApiResponseBody) *InsertScoreForApiResponse {
-	s.Body = v
-	return s
-}
-
-type InsertSubScoreForApiRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// This parameter is required.
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s InsertSubScoreForApiRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertSubScoreForApiRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InsertSubScoreForApiRequest) SetBaseMeAgentId(v int64) *InsertSubScoreForApiRequest {
-	s.BaseMeAgentId = &v
-	return s
-}
-
-func (s *InsertSubScoreForApiRequest) SetJsonStr(v string) *InsertSubScoreForApiRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type InsertSubScoreForApiResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *InsertSubScoreForApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// D34079C5-AA2F-490E-ADD8-5BFF08AAE207
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s InsertSubScoreForApiResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertSubScoreForApiResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InsertSubScoreForApiResponseBody) SetCode(v string) *InsertSubScoreForApiResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *InsertSubScoreForApiResponseBody) SetData(v *InsertSubScoreForApiResponseBodyData) *InsertSubScoreForApiResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *InsertSubScoreForApiResponseBody) SetMessage(v string) *InsertSubScoreForApiResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *InsertSubScoreForApiResponseBody) SetRequestId(v string) *InsertSubScoreForApiResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *InsertSubScoreForApiResponseBody) SetSuccess(v bool) *InsertSubScoreForApiResponseBody {
-	s.Success = &v
-	return s
-}
-
-type InsertSubScoreForApiResponseBodyData struct {
-	// example:
-	//
-	// 5730
-	ScoreSubId   *int64  `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	ScoreSubName *string `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
-}
-
-func (s InsertSubScoreForApiResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertSubScoreForApiResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *InsertSubScoreForApiResponseBodyData) SetScoreSubId(v int64) *InsertSubScoreForApiResponseBodyData {
-	s.ScoreSubId = &v
-	return s
-}
-
-func (s *InsertSubScoreForApiResponseBodyData) SetScoreSubName(v string) *InsertSubScoreForApiResponseBodyData {
-	s.ScoreSubName = &v
-	return s
-}
-
-type InsertSubScoreForApiResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *InsertSubScoreForApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s InsertSubScoreForApiResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertSubScoreForApiResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InsertSubScoreForApiResponse) SetHeaders(v map[string]*string) *InsertSubScoreForApiResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InsertSubScoreForApiResponse) SetStatusCode(v int32) *InsertSubScoreForApiResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *InsertSubScoreForApiResponse) SetBody(v *InsertSubScoreForApiResponseBody) *InsertSubScoreForApiResponse {
 	s.Body = v
 	return s
 }
@@ -22396,107 +21959,6 @@ func (s *UpdateSchemeTaskConfigResponse) SetBody(v *UpdateSchemeTaskConfigRespon
 	return s
 }
 
-type UpdateScoreForApiRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// This parameter is required.
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s UpdateScoreForApiRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateScoreForApiRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateScoreForApiRequest) SetBaseMeAgentId(v int64) *UpdateScoreForApiRequest {
-	s.BaseMeAgentId = &v
-	return s
-}
-
-func (s *UpdateScoreForApiRequest) SetJsonStr(v string) *UpdateScoreForApiRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type UpdateScoreForApiResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 6987D326-83D9-4A42-B9A5-0B27F9B40539
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateScoreForApiResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateScoreForApiResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateScoreForApiResponseBody) SetCode(v string) *UpdateScoreForApiResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateScoreForApiResponseBody) SetMessage(v string) *UpdateScoreForApiResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateScoreForApiResponseBody) SetRequestId(v string) *UpdateScoreForApiResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateScoreForApiResponseBody) SetSuccess(v bool) *UpdateScoreForApiResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateScoreForApiResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateScoreForApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateScoreForApiResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateScoreForApiResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateScoreForApiResponse) SetHeaders(v map[string]*string) *UpdateScoreForApiResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateScoreForApiResponse) SetStatusCode(v int32) *UpdateScoreForApiResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateScoreForApiResponse) SetBody(v *UpdateScoreForApiResponseBody) *UpdateScoreForApiResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateSkillGroupConfigRequest struct {
 	// baseMeAgentId
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
@@ -22598,107 +22060,6 @@ func (s *UpdateSkillGroupConfigResponse) SetStatusCode(v int32) *UpdateSkillGrou
 }
 
 func (s *UpdateSkillGroupConfigResponse) SetBody(v *UpdateSkillGroupConfigResponseBody) *UpdateSkillGroupConfigResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateSubScoreForApiRequest struct {
-	// baseMeAgentId
-	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// This parameter is required.
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s UpdateSubScoreForApiRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSubScoreForApiRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSubScoreForApiRequest) SetBaseMeAgentId(v int64) *UpdateSubScoreForApiRequest {
-	s.BaseMeAgentId = &v
-	return s
-}
-
-func (s *UpdateSubScoreForApiRequest) SetJsonStr(v string) *UpdateSubScoreForApiRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type UpdateSubScoreForApiResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 9987D326-83Q9-4A42-B9A5-0B27F9B40539
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateSubScoreForApiResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSubScoreForApiResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSubScoreForApiResponseBody) SetCode(v string) *UpdateSubScoreForApiResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateSubScoreForApiResponseBody) SetMessage(v string) *UpdateSubScoreForApiResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateSubScoreForApiResponseBody) SetRequestId(v string) *UpdateSubScoreForApiResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateSubScoreForApiResponseBody) SetSuccess(v bool) *UpdateSubScoreForApiResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateSubScoreForApiResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateSubScoreForApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateSubScoreForApiResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSubScoreForApiResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSubScoreForApiResponse) SetHeaders(v map[string]*string) *UpdateSubScoreForApiResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateSubScoreForApiResponse) SetStatusCode(v int32) *UpdateSubScoreForApiResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateSubScoreForApiResponse) SetBody(v *UpdateSubScoreForApiResponseBody) *UpdateSubScoreForApiResponse {
 	s.Body = v
 	return s
 }
@@ -24847,6 +24208,8 @@ func (client *Client) AssignReviewer(request *AssignReviewerRequest) (_result *A
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AssignReviewerBySessionGroup is deprecated
+//
 // Summary:
 //
 // 会话组批量分配
@@ -24856,6 +24219,7 @@ func (client *Client) AssignReviewer(request *AssignReviewerRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssignReviewerBySessionGroupResponse
+// Deprecated
 func (client *Client) AssignReviewerBySessionGroupWithOptions(request *AssignReviewerBySessionGroupRequest, runtime *util.RuntimeOptions) (_result *AssignReviewerBySessionGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24893,6 +24257,8 @@ func (client *Client) AssignReviewerBySessionGroupWithOptions(request *AssignRev
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AssignReviewerBySessionGroup is deprecated
+//
 // Summary:
 //
 // 会话组批量分配
@@ -24900,6 +24266,7 @@ func (client *Client) AssignReviewerBySessionGroupWithOptions(request *AssignRev
 // @param request - AssignReviewerBySessionGroupRequest
 //
 // @return AssignReviewerBySessionGroupResponse
+// Deprecated
 func (client *Client) AssignReviewerBySessionGroup(request *AssignReviewerBySessionGroupRequest) (_result *AssignReviewerBySessionGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssignReviewerBySessionGroupResponse{}
@@ -25335,68 +24702,6 @@ func (client *Client) CreateTaskAssignRule(request *CreateTaskAssignRuleRequest)
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CreateUser is deprecated
-//
-// @param request - CreateUserRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateUserResponse
-// Deprecated
-func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateUser"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateUser is deprecated
-//
-// @param request - CreateUserRequest
-//
-// @return CreateUserResponse
-// Deprecated
-func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateUserResponse{}
-	_body, _err := client.CreateUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // @param request - CreateWarningConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25685,6 +24990,70 @@ func (client *Client) DeleteBusinessCategory(request *DeleteBusinessCategoryRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除质检唯独
+//
+// @param request - DeleteCheckTypeToSchemeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCheckTypeToSchemeResponse
+func (client *Client) DeleteCheckTypeToSchemeWithOptions(request *DeleteCheckTypeToSchemeRequest, runtime *util.RuntimeOptions) (_result *DeleteCheckTypeToSchemeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCheckTypeToScheme"),
+		Version:     tea.String("2019-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCheckTypeToSchemeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除质检唯独
+//
+// @param request - DeleteCheckTypeToSchemeRequest
+//
+// @return DeleteCheckTypeToSchemeResponse
+func (client *Client) DeleteCheckTypeToScheme(request *DeleteCheckTypeToSchemeRequest) (_result *DeleteCheckTypeToSchemeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCheckTypeToSchemeResponse{}
+	_body, _err := client.DeleteCheckTypeToSchemeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteCustomizationConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25741,11 +25110,14 @@ func (client *Client) DeleteCustomizationConfig(request *DeleteCustomizationConf
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteDataSet is deprecated
+//
 // @param request - DeleteDataSetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDataSetResponse
+// Deprecated
 func (client *Client) DeleteDataSetWithOptions(request *DeleteDataSetRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25783,9 +25155,12 @@ func (client *Client) DeleteDataSetWithOptions(request *DeleteDataSetRequest, ru
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteDataSet is deprecated
+//
 // @param request - DeleteDataSetRequest
 //
 // @return DeleteDataSetResponse
+// Deprecated
 func (client *Client) DeleteDataSet(request *DeleteDataSetRequest) (_result *DeleteDataSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataSetResponse{}
@@ -26131,68 +25506,6 @@ func (client *Client) DeleteSchemeTaskConfig(request *DeleteSchemeTaskConfigRequ
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteScoreForApi is deprecated
-//
-// @param request - DeleteScoreForApiRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteScoreForApiResponse
-// Deprecated
-func (client *Client) DeleteScoreForApiWithOptions(request *DeleteScoreForApiRequest, runtime *util.RuntimeOptions) (_result *DeleteScoreForApiResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteScoreForApi"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteScoreForApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteScoreForApi is deprecated
-//
-// @param request - DeleteScoreForApiRequest
-//
-// @return DeleteScoreForApiResponse
-// Deprecated
-func (client *Client) DeleteScoreForApi(request *DeleteScoreForApiRequest) (_result *DeleteScoreForApiResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteScoreForApiResponse{}
-	_body, _err := client.DeleteScoreForApiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // @param request - DeleteSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -26242,68 +25555,6 @@ func (client *Client) DeleteSkillGroupConfig(request *DeleteSkillGroupConfigRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSkillGroupConfigResponse{}
 	_body, _err := client.DeleteSkillGroupConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteSubScoreForApi is deprecated
-//
-// @param request - DeleteSubScoreForApiRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteSubScoreForApiResponse
-// Deprecated
-func (client *Client) DeleteSubScoreForApiWithOptions(request *DeleteSubScoreForApiRequest, runtime *util.RuntimeOptions) (_result *DeleteSubScoreForApiResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteSubScoreForApi"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteSubScoreForApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteSubScoreForApi is deprecated
-//
-// @param request - DeleteSubScoreForApiRequest
-//
-// @return DeleteSubScoreForApiResponse
-// Deprecated
-func (client *Client) DeleteSubScoreForApi(request *DeleteSubScoreForApiRequest) (_result *DeleteSubScoreForApiResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteSubScoreForApiResponse{}
-	_body, _err := client.DeleteSubScoreForApiWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27725,130 +26976,6 @@ func (client *Client) HandleComplaint(request *HandleComplaintRequest) (_result 
 	return _result, _err
 }
 
-// Deprecated: OpenAPI InsertScoreForApi is deprecated
-//
-// @param request - InsertScoreForApiRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return InsertScoreForApiResponse
-// Deprecated
-func (client *Client) InsertScoreForApiWithOptions(request *InsertScoreForApiRequest, runtime *util.RuntimeOptions) (_result *InsertScoreForApiResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("InsertScoreForApi"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &InsertScoreForApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI InsertScoreForApi is deprecated
-//
-// @param request - InsertScoreForApiRequest
-//
-// @return InsertScoreForApiResponse
-// Deprecated
-func (client *Client) InsertScoreForApi(request *InsertScoreForApiRequest) (_result *InsertScoreForApiResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InsertScoreForApiResponse{}
-	_body, _err := client.InsertScoreForApiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Deprecated: OpenAPI InsertSubScoreForApi is deprecated
-//
-// @param request - InsertSubScoreForApiRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return InsertSubScoreForApiResponse
-// Deprecated
-func (client *Client) InsertSubScoreForApiWithOptions(request *InsertSubScoreForApiRequest, runtime *util.RuntimeOptions) (_result *InsertSubScoreForApiResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("InsertSubScoreForApi"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &InsertSubScoreForApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI InsertSubScoreForApi is deprecated
-//
-// @param request - InsertSubScoreForApiRequest
-//
-// @return InsertSubScoreForApiResponse
-// Deprecated
-func (client *Client) InsertSubScoreForApi(request *InsertSubScoreForApiRequest) (_result *InsertSubScoreForApiResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InsertSubScoreForApiResponse{}
-	_body, _err := client.InsertSubScoreForApiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Deprecated: OpenAPI InvalidRule is deprecated, please use Qualitycheck::2019-01-15::DeleteRuleV4 instead.
 //
 // @param request - InvalidRuleRequest
@@ -27967,6 +27094,8 @@ func (client *Client) ListAsrVocab(request *ListAsrVocabRequest) (_result *ListA
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataSet is deprecated
+//
 // Summary:
 //
 // 获取数据集列表
@@ -27976,6 +27105,7 @@ func (client *Client) ListAsrVocab(request *ListAsrVocabRequest) (_result *ListA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataSetResponse
+// Deprecated
 func (client *Client) ListDataSetWithOptions(request *ListDataSetRequest, runtime *util.RuntimeOptions) (_result *ListDataSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28013,6 +27143,8 @@ func (client *Client) ListDataSetWithOptions(request *ListDataSetRequest, runtim
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataSet is deprecated
+//
 // Summary:
 //
 // 获取数据集列表
@@ -28020,6 +27152,7 @@ func (client *Client) ListDataSetWithOptions(request *ListDataSetRequest, runtim
 // @param request - ListDataSetRequest
 //
 // @return ListDataSetResponse
+// Deprecated
 func (client *Client) ListDataSet(request *ListDataSetRequest) (_result *ListDataSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataSetResponse{}
@@ -28439,6 +27572,8 @@ func (client *Client) ListSchemeTaskConfig(request *ListSchemeTaskConfigRequest)
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListSessionGroup is deprecated
+//
 // Summary:
 //
 // 获取会话组列表
@@ -28448,6 +27583,7 @@ func (client *Client) ListSchemeTaskConfig(request *ListSchemeTaskConfigRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSessionGroupResponse
+// Deprecated
 func (client *Client) ListSessionGroupWithOptions(request *ListSessionGroupRequest, runtime *util.RuntimeOptions) (_result *ListSessionGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28485,6 +27621,8 @@ func (client *Client) ListSessionGroupWithOptions(request *ListSessionGroupReque
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListSessionGroup is deprecated
+//
 // Summary:
 //
 // 获取会话组列表
@@ -28492,6 +27630,7 @@ func (client *Client) ListSessionGroupWithOptions(request *ListSessionGroupReque
 // @param request - ListSessionGroupRequest
 //
 // @return ListSessionGroupResponse
+// Deprecated
 func (client *Client) ListSessionGroup(request *ListSessionGroupRequest) (_result *ListSessionGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSessionGroupResponse{}
@@ -28855,6 +27994,8 @@ func (client *Client) RevertAssignedSession(request *RevertAssignedSessionReques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI RevertAssignedSessionGroup is deprecated
+//
 // Summary:
 //
 // 会话组批量回收
@@ -28864,6 +28005,7 @@ func (client *Client) RevertAssignedSession(request *RevertAssignedSessionReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevertAssignedSessionGroupResponse
+// Deprecated
 func (client *Client) RevertAssignedSessionGroupWithOptions(request *RevertAssignedSessionGroupRequest, runtime *util.RuntimeOptions) (_result *RevertAssignedSessionGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28901,6 +28043,8 @@ func (client *Client) RevertAssignedSessionGroupWithOptions(request *RevertAssig
 	return _result, _err
 }
 
+// Deprecated: OpenAPI RevertAssignedSessionGroup is deprecated
+//
 // Summary:
 //
 // 会话组批量回收
@@ -28908,6 +28052,7 @@ func (client *Client) RevertAssignedSessionGroupWithOptions(request *RevertAssig
 // @param request - RevertAssignedSessionGroupRequest
 //
 // @return RevertAssignedSessionGroupResponse
+// Deprecated
 func (client *Client) RevertAssignedSessionGroup(request *RevertAssignedSessionGroupRequest) (_result *RevertAssignedSessionGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevertAssignedSessionGroupResponse{}
@@ -28919,11 +28064,14 @@ func (client *Client) RevertAssignedSessionGroup(request *RevertAssignedSessionG
 	return _result, _err
 }
 
+// Deprecated: OpenAPI SaveConfigDataSet is deprecated
+//
 // @param request - SaveConfigDataSetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveConfigDataSetResponse
+// Deprecated
 func (client *Client) SaveConfigDataSetWithOptions(request *SaveConfigDataSetRequest, runtime *util.RuntimeOptions) (_result *SaveConfigDataSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28961,9 +28109,12 @@ func (client *Client) SaveConfigDataSetWithOptions(request *SaveConfigDataSetReq
 	return _result, _err
 }
 
+// Deprecated: OpenAPI SaveConfigDataSet is deprecated
+//
 // @param request - SaveConfigDataSetRequest
 //
 // @return SaveConfigDataSetResponse
+// Deprecated
 func (client *Client) SaveConfigDataSet(request *SaveConfigDataSetRequest) (_result *SaveConfigDataSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveConfigDataSetResponse{}
@@ -29911,68 +29062,6 @@ func (client *Client) UpdateSchemeTaskConfig(request *UpdateSchemeTaskConfigRequ
 	return _result, _err
 }
 
-// Deprecated: OpenAPI UpdateScoreForApi is deprecated
-//
-// @param request - UpdateScoreForApiRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateScoreForApiResponse
-// Deprecated
-func (client *Client) UpdateScoreForApiWithOptions(request *UpdateScoreForApiRequest, runtime *util.RuntimeOptions) (_result *UpdateScoreForApiResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateScoreForApi"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateScoreForApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdateScoreForApi is deprecated
-//
-// @param request - UpdateScoreForApiRequest
-//
-// @return UpdateScoreForApiResponse
-// Deprecated
-func (client *Client) UpdateScoreForApi(request *UpdateScoreForApiRequest) (_result *UpdateScoreForApiResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateScoreForApiResponse{}
-	_body, _err := client.UpdateScoreForApiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // @param request - UpdateSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -30022,68 +29111,6 @@ func (client *Client) UpdateSkillGroupConfig(request *UpdateSkillGroupConfigRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSkillGroupConfigResponse{}
 	_body, _err := client.UpdateSkillGroupConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdateSubScoreForApi is deprecated
-//
-// @param request - UpdateSubScoreForApiRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateSubScoreForApiResponse
-// Deprecated
-func (client *Client) UpdateSubScoreForApiWithOptions(request *UpdateSubScoreForApiRequest, runtime *util.RuntimeOptions) (_result *UpdateSubScoreForApiResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateSubScoreForApi"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateSubScoreForApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdateSubScoreForApi is deprecated
-//
-// @param request - UpdateSubScoreForApiRequest
-//
-// @return UpdateSubScoreForApiResponse
-// Deprecated
-func (client *Client) UpdateSubScoreForApi(request *UpdateSubScoreForApiRequest) (_result *UpdateSubScoreForApiResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateSubScoreForApiResponse{}
-	_body, _err := client.UpdateSubScoreForApiWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
