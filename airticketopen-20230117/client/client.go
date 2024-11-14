@@ -6988,6 +6988,314 @@ func (s *ChangeDetailListOfOrderNumResponse) SetBody(v *ChangeDetailListOfOrderN
 	return s
 }
 
+type CollectFlightLowestPriceHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// access_token
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eyJhbGciOiJSUzI1NiIsImtpZCI6InN1ZXpfa2V5aWQifQ.eyJqdGkiOiJCQldMaWIzN0VxbC0xMjhhR2N5elJ3IiwiaWF0IjoxNjc3MDY2NTAxLCJleHAiOjE2NzcwNzM3MDEsIm5iZiI6MTY3NzA2NjQ0MX0.AF0DxsZK4Edyg0C6ObRQFUo36R1VYrb5IYmak25TmL1OfR5RkIUc3PpqFuQKNLKXf5fOtVQaKjaexzwodVeWZQDKEG_RPt_Ybb99EnEm6vPKs6e3pWFbKiBq71WleLHhVrdFb4YPowRKjc7bG0jyGUxiQ2iXy0RWDj9tIjfI-KEdzNp5oVnX7j4p3H12DwQrRPmd1nz3BciAQNINvDpzqusuIUw8JXyLFCz838Y0NhwB1_bYZyctxRLSzrGZuI5rrWtItgupqMsOlJ3RNy1QrIbQ2g6nPmzl-atOqcQ4Nw0HeDLR8dhM1OsIcFLbKXBUtwXofflhzAQrkDxhwYiXii
+	XAcsAirticketAccessToken *string `json:"x-acs-airticket-access-token,omitempty" xml:"x-acs-airticket-access-token,omitempty"`
+	// example:
+	//
+	// en_US
+	XAcsAirticketLanguage *string `json:"x-acs-airticket-language,omitempty" xml:"x-acs-airticket-language,omitempty"`
+}
+
+func (s CollectFlightLowestPriceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectFlightLowestPriceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CollectFlightLowestPriceHeaders) SetCommonHeaders(v map[string]*string) *CollectFlightLowestPriceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CollectFlightLowestPriceHeaders) SetXAcsAirticketAccessToken(v string) *CollectFlightLowestPriceHeaders {
+	s.XAcsAirticketAccessToken = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceHeaders) SetXAcsAirticketLanguage(v string) *CollectFlightLowestPriceHeaders {
+	s.XAcsAirticketLanguage = &v
+	return s
+}
+
+type CollectFlightLowestPriceRequest struct {
+	// This parameter is required.
+	LowestPriceFlightList []*CollectFlightLowestPriceRequestLowestPriceFlightList `json:"lowestPriceFlightList,omitempty" xml:"lowestPriceFlightList,omitempty" type:"Repeated"`
+}
+
+func (s CollectFlightLowestPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectFlightLowestPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CollectFlightLowestPriceRequest) SetLowestPriceFlightList(v []*CollectFlightLowestPriceRequestLowestPriceFlightList) *CollectFlightLowestPriceRequest {
+	s.LowestPriceFlightList = v
+	return s
+}
+
+type CollectFlightLowestPriceRequestLowestPriceFlightList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MFM
+	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SHA
+	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-11-11
+	DepartureDate *string `json:"departure_date,omitempty" xml:"departure_date,omitempty"`
+	// This parameter is required.
+	FlightNumberInfo *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo `json:"flight_number_info,omitempty" xml:"flight_number_info,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100.0
+	MarketTotalPrice *float64 `json:"market_total_price,omitempty" xml:"market_total_price,omitempty"`
+	// example:
+	//
+	// 123456789dacd
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// example:
+	//
+	// 2024-11-11
+	ReturnDate *string `json:"return_date,omitempty" xml:"return_date,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100.1
+	SuezTotalPrice *float64 `json:"suez_total_price,omitempty" xml:"suez_total_price,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s CollectFlightLowestPriceRequestLowestPriceFlightList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectFlightLowestPriceRequestLowestPriceFlightList) GoString() string {
+	return s.String()
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetArrivalCity(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.ArrivalCity = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetDepartureCity(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.DepartureCity = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetDepartureDate(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.DepartureDate = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetFlightNumberInfo(v *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.FlightNumberInfo = v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetMarketTotalPrice(v float64) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.MarketTotalPrice = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetRequestId(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetReturnDate(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.ReturnDate = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetSuezTotalPrice(v float64) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.SuezTotalPrice = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetTripType(v int32) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+	s.TripType = &v
+	return s
+}
+
+type CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CA123,CA456
+	DepartureFlightNumber *string `json:"departure_flight_number,omitempty" xml:"departure_flight_number,omitempty"`
+	// example:
+	//
+	// CA123,CA456
+	ReturnFlightNumber *string `json:"return_flight_number,omitempty" xml:"return_flight_number,omitempty"`
+}
+
+func (s CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) SetDepartureFlightNumber(v string) *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo {
+	s.DepartureFlightNumber = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) SetReturnFlightNumber(v string) *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo {
+	s.ReturnFlightNumber = &v
+	return s
+}
+
+type CollectFlightLowestPriceShrinkRequest struct {
+	// This parameter is required.
+	LowestPriceFlightListShrink *string `json:"lowestPriceFlightList,omitempty" xml:"lowestPriceFlightList,omitempty"`
+}
+
+func (s CollectFlightLowestPriceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectFlightLowestPriceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CollectFlightLowestPriceShrinkRequest) SetLowestPriceFlightListShrink(v string) *CollectFlightLowestPriceShrinkRequest {
+	s.LowestPriceFlightListShrink = &v
+	return s
+}
+
+type CollectFlightLowestPriceResponseBody struct {
+	// example:
+	//
+	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// example:
+	//
+	// null
+	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
+	// example:
+	//
+	// null
+	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
+	// example:
+	//
+	// 200
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CollectFlightLowestPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectFlightLowestPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CollectFlightLowestPriceResponseBody) SetRequestId(v string) *CollectFlightLowestPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceResponseBody) SetData(v map[string]interface{}) *CollectFlightLowestPriceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CollectFlightLowestPriceResponseBody) SetErrorCode(v string) *CollectFlightLowestPriceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceResponseBody) SetErrorData(v interface{}) *CollectFlightLowestPriceResponseBody {
+	s.ErrorData = v
+	return s
+}
+
+func (s *CollectFlightLowestPriceResponseBody) SetErrorMsg(v string) *CollectFlightLowestPriceResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceResponseBody) SetStatus(v int32) *CollectFlightLowestPriceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceResponseBody) SetSuccess(v bool) *CollectFlightLowestPriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CollectFlightLowestPriceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CollectFlightLowestPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CollectFlightLowestPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectFlightLowestPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CollectFlightLowestPriceResponse) SetHeaders(v map[string]*string) *CollectFlightLowestPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CollectFlightLowestPriceResponse) SetStatusCode(v int32) *CollectFlightLowestPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceResponse) SetBody(v *CollectFlightLowestPriceResponseBody) *CollectFlightLowestPriceResponse {
+	s.Body = v
+	return s
+}
+
 type EnrichHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// access token
@@ -16769,6 +17077,89 @@ func (client *Client) ChangeDetailListOfOrderNum(request *ChangeDetailListOfOrde
 	headers := &ChangeDetailListOfOrderNumHeaders{}
 	_result = &ChangeDetailListOfOrderNumResponse{}
 	_body, _err := client.ChangeDetailListOfOrderNumWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据收集-低价航班信息
+//
+// @param tmpReq - CollectFlightLowestPriceRequest
+//
+// @param headers - CollectFlightLowestPriceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CollectFlightLowestPriceResponse
+func (client *Client) CollectFlightLowestPriceWithOptions(tmpReq *CollectFlightLowestPriceRequest, headers *CollectFlightLowestPriceHeaders, runtime *util.RuntimeOptions) (_result *CollectFlightLowestPriceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CollectFlightLowestPriceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LowestPriceFlightList)) {
+		request.LowestPriceFlightListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LowestPriceFlightList, tea.String("lowestPriceFlightList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LowestPriceFlightListShrink)) {
+		body["lowestPriceFlightList"] = request.LowestPriceFlightListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAirticketAccessToken)) {
+		realHeaders["x-acs-airticket-access-token"] = util.ToJSONString(headers.XAcsAirticketAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAirticketLanguage)) {
+		realHeaders["x-acs-airticket-language"] = util.ToJSONString(headers.XAcsAirticketLanguage)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CollectFlightLowestPrice"),
+		Version:     tea.String("2023-01-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/airticket/v1/data-collect/flight-lowest-price"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CollectFlightLowestPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据收集-低价航班信息
+//
+// @param request - CollectFlightLowestPriceRequest
+//
+// @return CollectFlightLowestPriceResponse
+func (client *Client) CollectFlightLowestPrice(request *CollectFlightLowestPriceRequest) (_result *CollectFlightLowestPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CollectFlightLowestPriceHeaders{}
+	_result = &CollectFlightLowestPriceResponse{}
+	_body, _err := client.CollectFlightLowestPriceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
