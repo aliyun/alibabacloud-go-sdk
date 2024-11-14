@@ -5268,7 +5268,8 @@ type GetParseResultRequest struct {
 	// example:
 	//
 	// sjdgdsfg
-	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	LibraryId    *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	UseUrlResult *bool   `json:"useUrlResult,omitempty" xml:"useUrlResult,omitempty"`
 }
 
 func (s GetParseResultRequest) String() string {
@@ -5286,6 +5287,11 @@ func (s *GetParseResultRequest) SetDocId(v string) *GetParseResultRequest {
 
 func (s *GetParseResultRequest) SetLibraryId(v string) *GetParseResultRequest {
 	s.LibraryId = &v
+	return s
+}
+
+func (s *GetParseResultRequest) SetUseUrlResult(v bool) *GetParseResultRequest {
+	s.UseUrlResult = &v
 	return s
 }
 
@@ -5395,7 +5401,8 @@ type GetParseResultResponseBodyData struct {
 	//           "TaskId": "docmind-20240601-123abc"
 	//
 	//         }
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	ResultUrl *string                `json:"resultUrl,omitempty" xml:"resultUrl,omitempty"`
 	// example:
 	//
 	// WaitRefresh
@@ -5427,6 +5434,11 @@ func (s *GetParseResultResponseBodyData) SetRequestId(v string) *GetParseResultR
 
 func (s *GetParseResultResponseBodyData) SetResult(v map[string]interface{}) *GetParseResultResponseBodyData {
 	s.Result = v
+	return s
+}
+
+func (s *GetParseResultResponseBodyData) SetResultUrl(v string) *GetParseResultResponseBodyData {
+	s.ResultUrl = &v
 	return s
 }
 
@@ -8274,6 +8286,7 @@ type RecognizeIntentionRequest struct {
 	Conversation              *string                                               `json:"conversation,omitempty" xml:"conversation,omitempty"`
 	GlobalIntentionList       []*RecognizeIntentionRequestGlobalIntentionList       `json:"globalIntentionList,omitempty" xml:"globalIntentionList,omitempty" type:"Repeated"`
 	HierarchicalIntentionList []*RecognizeIntentionRequestHierarchicalIntentionList `json:"hierarchicalIntentionList,omitempty" xml:"hierarchicalIntentionList,omitempty" type:"Repeated"`
+	IntentionDomainCode       *string                                               `json:"intentionDomainCode,omitempty" xml:"intentionDomainCode,omitempty"`
 	IntentionList             []*RecognizeIntentionRequestIntentionList             `json:"intentionList,omitempty" xml:"intentionList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -8318,6 +8331,11 @@ func (s *RecognizeIntentionRequest) SetHierarchicalIntentionList(v []*RecognizeI
 	return s
 }
 
+func (s *RecognizeIntentionRequest) SetIntentionDomainCode(v string) *RecognizeIntentionRequest {
+	s.IntentionDomainCode = &v
+	return s
+}
+
 func (s *RecognizeIntentionRequest) SetIntentionList(v []*RecognizeIntentionRequestIntentionList) *RecognizeIntentionRequest {
 	s.IntentionList = v
 	return s
@@ -8339,7 +8357,8 @@ type RecognizeIntentionRequestGlobalIntentionList struct {
 	// example:
 	//
 	// 1810566978021232640
-	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
 }
 
 func (s RecognizeIntentionRequestGlobalIntentionList) String() string {
@@ -8365,13 +8384,19 @@ func (s *RecognizeIntentionRequestGlobalIntentionList) SetIntentionCode(v string
 	return s
 }
 
+func (s *RecognizeIntentionRequestGlobalIntentionList) SetIntentionScript(v string) *RecognizeIntentionRequestGlobalIntentionList {
+	s.IntentionScript = &v
+	return s
+}
+
 type RecognizeIntentionRequestHierarchicalIntentionList struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Intention   *string `json:"intention,omitempty" xml:"intention,omitempty"`
 	// example:
 	//
 	// 1810929291010150400
-	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
 }
 
 func (s RecognizeIntentionRequestHierarchicalIntentionList) String() string {
@@ -8397,13 +8422,19 @@ func (s *RecognizeIntentionRequestHierarchicalIntentionList) SetIntentionCode(v 
 	return s
 }
 
+func (s *RecognizeIntentionRequestHierarchicalIntentionList) SetIntentionScript(v string) *RecognizeIntentionRequestHierarchicalIntentionList {
+	s.IntentionScript = &v
+	return s
+}
+
 type RecognizeIntentionRequestIntentionList struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Intention   *string `json:"intention,omitempty" xml:"intention,omitempty"`
 	// example:
 	//
 	// 1808766224000262144
-	IntentionCode *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
 }
 
 func (s RecognizeIntentionRequestIntentionList) String() string {
@@ -8426,6 +8457,11 @@ func (s *RecognizeIntentionRequestIntentionList) SetIntention(v string) *Recogni
 
 func (s *RecognizeIntentionRequestIntentionList) SetIntentionCode(v string) *RecognizeIntentionRequestIntentionList {
 	s.IntentionCode = &v
+	return s
+}
+
+func (s *RecognizeIntentionRequestIntentionList) SetIntentionScript(v string) *RecognizeIntentionRequestIntentionList {
+	s.IntentionScript = &v
 	return s
 }
 
@@ -8516,6 +8552,7 @@ type RecognizeIntentionResponseBodyData struct {
 	// 1
 	IntentionCode      *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
 	IntentionName      *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	IntentionScript    *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
 	RecommendIntention *string `json:"recommendIntention,omitempty" xml:"recommendIntention,omitempty"`
 	RecommendScript    *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
 }
@@ -8540,6 +8577,11 @@ func (s *RecognizeIntentionResponseBodyData) SetIntentionCode(v string) *Recogni
 
 func (s *RecognizeIntentionResponseBodyData) SetIntentionName(v string) *RecognizeIntentionResponseBodyData {
 	s.IntentionName = &v
+	return s
+}
+
+func (s *RecognizeIntentionResponseBodyData) SetIntentionScript(v string) *RecognizeIntentionResponseBodyData {
+	s.IntentionScript = &v
 	return s
 }
 
@@ -11788,6 +11830,10 @@ func (client *Client) GetParseResultWithOptions(workspaceId *string, request *Ge
 		body["libraryId"] = request.LibraryId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UseUrlResult)) {
+		body["useUrlResult"] = request.UseUrlResult
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -12458,6 +12504,10 @@ func (client *Client) RecognizeIntentionWithOptions(workspaceId *string, request
 
 	if !tea.BoolValue(util.IsUnset(request.HierarchicalIntentionList)) {
 		body["hierarchicalIntentionList"] = request.HierarchicalIntentionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentionDomainCode)) {
+		body["intentionDomainCode"] = request.IntentionDomainCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IntentionList)) {
