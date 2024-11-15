@@ -1743,6 +1743,379 @@ func (s *GetJobRunResponse) SetBody(v *GetJobRunResponseBody) *GetJobRunResponse
 	return s
 }
 
+type GetSessionClusterRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s GetSessionClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterRequest) SetRegionId(v string) *GetSessionClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSessionClusterResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId      *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SessionCluster *GetSessionClusterResponseBodySessionCluster `json:"sessionCluster,omitempty" xml:"sessionCluster,omitempty" type:"Struct"`
+}
+
+func (s GetSessionClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponseBody) SetRequestId(v string) *GetSessionClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBody) SetSessionCluster(v *GetSessionClusterResponseBodySessionCluster) *GetSessionClusterResponseBody {
+	s.SessionCluster = v
+	return s
+}
+
+type GetSessionClusterResponseBodySessionCluster struct {
+	ApplicationConfigs     []*GetSessionClusterResponseBodySessionClusterApplicationConfigs   `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
+	AutoStartConfiguration *GetSessionClusterResponseBodySessionClusterAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
+	AutoStopConfiguration  *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration  `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// esr-2.2(Java Runtime)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// example:
+	//
+	// your.domain.com
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// example:
+	//
+	// TSK-xxxxxxxx
+	DraftId *string `json:"draftId,omitempty" xml:"draftId,omitempty"`
+	// example:
+	//
+	// env-cpv569tlhtgndjl86t40
+	EnvId *string `json:"envId,omitempty" xml:"envId,omitempty"`
+	// example:
+	//
+	// false
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// example:
+	//
+	// SQL
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 作业实例名称。
+	//
+	// example:
+	//
+	// jobName
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// example:
+	//
+	// esr-2.2（Java Runtime）
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// 交互式作业会话id。
+	//
+	// example:
+	//
+	// 1234abcd-12ab-34cd-56ef-1234567890ab
+	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	// 作业状态。
+	//
+	// example:
+	//
+	// Running
+	State             *string                                                       `json:"state,omitempty" xml:"state,omitempty"`
+	StateChangeReason *GetSessionClusterResponseBodySessionClusterStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
+	// 任务实例ID。
+	//
+	// example:
+	//
+	// jr-231231
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// user1
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// example:
+	//
+	// https://spark-ui/link
+	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
+	// 工作空间id。
+	//
+	// example:
+	//
+	// w-1234abcd
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s GetSessionClusterResponseBodySessionCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponseBodySessionCluster) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetApplicationConfigs(v []*GetSessionClusterResponseBodySessionClusterApplicationConfigs) *GetSessionClusterResponseBodySessionCluster {
+	s.ApplicationConfigs = v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetAutoStartConfiguration(v *GetSessionClusterResponseBodySessionClusterAutoStartConfiguration) *GetSessionClusterResponseBodySessionCluster {
+	s.AutoStartConfiguration = v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetAutoStopConfiguration(v *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration) *GetSessionClusterResponseBodySessionCluster {
+	s.AutoStopConfiguration = v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetDisplayReleaseVersion(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetDomain(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetDraftId(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.DraftId = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetEnvId(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.EnvId = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetFusion(v bool) *GetSessionClusterResponseBodySessionCluster {
+	s.Fusion = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetKind(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.Kind = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetName(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetQueueName(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.QueueName = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetReleaseVersion(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetSessionClusterId(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.SessionClusterId = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetState(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.State = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetStateChangeReason(v *GetSessionClusterResponseBodySessionClusterStateChangeReason) *GetSessionClusterResponseBodySessionCluster {
+	s.StateChangeReason = v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetUserId(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetUserName(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.UserName = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetWebUI(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.WebUI = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetWorkspaceId(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetSessionClusterResponseBodySessionClusterApplicationConfigs struct {
+	// example:
+	//
+	// spark-defaults.conf
+	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
+	// example:
+	//
+	// spark.app.name
+	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// example:
+	//
+	// test
+	ConfigItemValue *string `json:"configItemValue,omitempty" xml:"configItemValue,omitempty"`
+}
+
+func (s GetSessionClusterResponseBodySessionClusterApplicationConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponseBodySessionClusterApplicationConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponseBodySessionClusterApplicationConfigs) SetConfigFileName(v string) *GetSessionClusterResponseBodySessionClusterApplicationConfigs {
+	s.ConfigFileName = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionClusterApplicationConfigs) SetConfigItemKey(v string) *GetSessionClusterResponseBodySessionClusterApplicationConfigs {
+	s.ConfigItemKey = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionClusterApplicationConfigs) SetConfigItemValue(v string) *GetSessionClusterResponseBodySessionClusterApplicationConfigs {
+	s.ConfigItemValue = &v
+	return s
+}
+
+type GetSessionClusterResponseBodySessionClusterAutoStartConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s GetSessionClusterResponseBodySessionClusterAutoStartConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponseBodySessionClusterAutoStartConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponseBodySessionClusterAutoStartConfiguration) SetEnable(v bool) *GetSessionClusterResponseBodySessionClusterAutoStartConfiguration {
+	s.Enable = &v
+	return s
+}
+
+type GetSessionClusterResponseBodySessionClusterAutoStopConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 60
+	IdleTimeoutMinutes *int32 `json:"idleTimeoutMinutes,omitempty" xml:"idleTimeoutMinutes,omitempty"`
+}
+
+func (s GetSessionClusterResponseBodySessionClusterAutoStopConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponseBodySessionClusterAutoStopConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration) SetEnable(v bool) *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration) SetIdleTimeoutMinutes(v int32) *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration {
+	s.IdleTimeoutMinutes = &v
+	return s
+}
+
+type GetSessionClusterResponseBodySessionClusterStateChangeReason struct {
+	// example:
+	//
+	// 1000000
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s GetSessionClusterResponseBodySessionClusterStateChangeReason) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponseBodySessionClusterStateChangeReason) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponseBodySessionClusterStateChangeReason) SetCode(v string) *GetSessionClusterResponseBodySessionClusterStateChangeReason {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionClusterStateChangeReason) SetMessage(v string) *GetSessionClusterResponseBodySessionClusterStateChangeReason {
+	s.Message = &v
+	return s
+}
+
+type GetSessionClusterResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSessionClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSessionClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSessionClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSessionClusterResponse) SetHeaders(v map[string]*string) *GetSessionClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSessionClusterResponse) SetStatusCode(v int32) *GetSessionClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSessionClusterResponse) SetBody(v *GetSessionClusterResponseBody) *GetSessionClusterResponse {
+	s.Body = v
+	return s
+}
+
 type GetSqlStatementRequest struct {
 	// The region ID.
 	//
@@ -5267,6 +5640,70 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 	headers := make(map[string]*string)
 	_result = &GetJobRunResponse{}
 	_body, _err := client.GetJobRunWithOptions(workspaceId, jobRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SessionCluster集群
+//
+// @param request - GetSessionClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSessionClusterResponse
+func (client *Client) GetSessionClusterWithOptions(workspaceId *string, sessionClusterId *string, request *GetSessionClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSessionClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSessionCluster"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/sessionClusters/" + tea.StringValue(openapiutil.GetEncodeParam(sessionClusterId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSessionClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SessionCluster集群
+//
+// @param request - GetSessionClusterRequest
+//
+// @return GetSessionClusterResponse
+func (client *Client) GetSessionCluster(workspaceId *string, sessionClusterId *string, request *GetSessionClusterRequest) (_result *GetSessionClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSessionClusterResponse{}
+	_body, _err := client.GetSessionClusterWithOptions(workspaceId, sessionClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
