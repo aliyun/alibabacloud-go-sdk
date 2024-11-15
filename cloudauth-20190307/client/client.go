@@ -2442,6 +2442,175 @@ func (s *DescribeDeviceInfoResponse) SetBody(v *DescribeDeviceInfoResponseBody) 
 	return s
 }
 
+type DescribeFaceGuardRiskRequest struct {
+	// example:
+	//
+	// aba9830f471a4335af4612c8adaa91b0
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
+	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c35xxxx
+	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	// example:
+	//
+	// FACE_GUARD
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s DescribeFaceGuardRiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceGuardRiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceGuardRiskRequest) SetBizId(v string) *DescribeFaceGuardRiskRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskRequest) SetDeviceToken(v string) *DescribeFaceGuardRiskRequest {
+	s.DeviceToken = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskRequest) SetOuterOrderNo(v string) *DescribeFaceGuardRiskRequest {
+	s.OuterOrderNo = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskRequest) SetProductCode(v string) *DescribeFaceGuardRiskRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type DescribeFaceGuardRiskResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *DescribeFaceGuardRiskResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s DescribeFaceGuardRiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceGuardRiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceGuardRiskResponseBody) SetCode(v string) *DescribeFaceGuardRiskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskResponseBody) SetMessage(v string) *DescribeFaceGuardRiskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskResponseBody) SetRequestId(v string) *DescribeFaceGuardRiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskResponseBody) SetResultObject(v *DescribeFaceGuardRiskResponseBodyResultObject) *DescribeFaceGuardRiskResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type DescribeFaceGuardRiskResponseBodyResultObject struct {
+	// example:
+	//
+	// ROOT,VPN,HOOK
+	RiakTags *string `json:"RiakTags,omitempty" xml:"RiakTags,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "code": 200
+	//
+	//   "badNet":false,
+	//
+	//   "umid":"74e37355171ab62230063569350d368e",
+	//
+	//   "fileTags":"basic_root,basic_hook",
+	//
+	//   "queryCount":1,
+	//
+	//   "querySessionCount":1,
+	//
+	//   "queryUmidCount":1
+	//
+	//   "platform":"Android"
+	//
+	// }
+	RiskExtends *string `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
+}
+
+func (s DescribeFaceGuardRiskResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceGuardRiskResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceGuardRiskResponseBodyResultObject) SetRiakTags(v string) *DescribeFaceGuardRiskResponseBodyResultObject {
+	s.RiakTags = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskResponseBodyResultObject) SetRiskExtends(v string) *DescribeFaceGuardRiskResponseBodyResultObject {
+	s.RiskExtends = &v
+	return s
+}
+
+type DescribeFaceGuardRiskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFaceGuardRiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeFaceGuardRiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFaceGuardRiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFaceGuardRiskResponse) SetHeaders(v map[string]*string) *DescribeFaceGuardRiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskResponse) SetStatusCode(v int32) *DescribeFaceGuardRiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskResponse) SetBody(v *DescribeFaceGuardRiskResponseBody) *DescribeFaceGuardRiskResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFaceVerifyRequest struct {
 	// example:
 	//
@@ -8660,6 +8829,78 @@ func (client *Client) DescribeDeviceInfo(request *DescribeDeviceInfoRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeviceInfoResponse{}
 	_body, _err := client.DescribeDeviceInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 金融级人脸保镖服务
+//
+// @param request - DescribeFaceGuardRiskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaceGuardRiskResponse
+func (client *Client) DescribeFaceGuardRiskWithOptions(request *DescribeFaceGuardRiskRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceGuardRiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceToken)) {
+		query["DeviceToken"] = request.DeviceToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterOrderNo)) {
+		query["OuterOrderNo"] = request.OuterOrderNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFaceGuardRisk"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFaceGuardRiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 金融级人脸保镖服务
+//
+// @param request - DescribeFaceGuardRiskRequest
+//
+// @return DescribeFaceGuardRiskResponse
+func (client *Client) DescribeFaceGuardRisk(request *DescribeFaceGuardRiskRequest) (_result *DescribeFaceGuardRiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFaceGuardRiskResponse{}
+	_body, _err := client.DescribeFaceGuardRiskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
