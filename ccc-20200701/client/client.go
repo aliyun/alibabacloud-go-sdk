@@ -927,6 +927,134 @@ func (s *AddCasesResponse) SetBody(v *AddCasesResponseBody) *AddCasesResponse {
 	return s
 }
 
+type AddFeedbackRequest struct {
+	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// thumbsUp
+	Rating *int32 `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	// example:
+	//
+	// f780ade8-****-458b-b067-63077946a570
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// Abstract:fields
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s AddFeedbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFeedbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddFeedbackRequest) SetFeedback(v string) *AddFeedbackRequest {
+	s.Feedback = &v
+	return s
+}
+
+func (s *AddFeedbackRequest) SetInstanceId(v string) *AddFeedbackRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddFeedbackRequest) SetRating(v int32) *AddFeedbackRequest {
+	s.Rating = &v
+	return s
+}
+
+func (s *AddFeedbackRequest) SetTaskId(v string) *AddFeedbackRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AddFeedbackRequest) SetTaskName(v string) *AddFeedbackRequest {
+	s.TaskName = &v
+	return s
+}
+
+type AddFeedbackResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C81FD1A5-4B99-470A-A527-D80150228784
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddFeedbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFeedbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddFeedbackResponseBody) SetCode(v string) *AddFeedbackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddFeedbackResponseBody) SetHttpStatusCode(v int32) *AddFeedbackResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddFeedbackResponseBody) SetMessage(v string) *AddFeedbackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddFeedbackResponseBody) SetRequestId(v string) *AddFeedbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddFeedbackResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddFeedbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddFeedbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFeedbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddFeedbackResponse) SetHeaders(v map[string]*string) *AddFeedbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddFeedbackResponse) SetStatusCode(v int32) *AddFeedbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddFeedbackResponse) SetBody(v *AddFeedbackResponseBody) *AddFeedbackResponse {
+	s.Body = v
+	return s
+}
+
 type AddNumbersToSkillGroupRequest struct {
 	InstNumberGroupIdList *string `json:"InstNumberGroupIdList,omitempty" xml:"InstNumberGroupIdList,omitempty"`
 	// This parameter is required.
@@ -4789,9 +4917,19 @@ func (s *CancelAttendedTransferResponse) SetBody(v *CancelAttendedTransferRespon
 
 type ChangeVisibilityRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// szpczf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Invisible  *bool   `json:"Invisible,omitempty" xml:"Invisible,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// true
+	Invisible *bool `json:"Invisible,omitempty" xml:"Invisible,omitempty"`
+	// example:
+	//
+	// sam@szpczf
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ChangeVisibilityRequest) String() string {
@@ -4818,12 +4956,24 @@ func (s *ChangeVisibilityRequest) SetUserId(v string) *ChangeVisibilityRequest {
 }
 
 type ChangeVisibilityResponseBody struct {
-	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *ChangeVisibilityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string                         `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ChangeVisibilityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Internal service issue. Detail:.
+	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 24BE19E8-BF7D-4992-A35E-15EBA874F2E5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ChangeVisibilityResponseBody) String() string {
@@ -4865,16 +5015,40 @@ func (s *ChangeVisibilityResponseBody) SetRequestId(v string) *ChangeVisibilityR
 }
 
 type ChangeVisibilityResponseBodyData struct {
-	BreakCode              *string   `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
-	DeviceId               *string   `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Extension              *string   `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId                  *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// example:
+	//
+	// Yealink SIP-T23G 44.84.203.6
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// 8001****
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// szpczf
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// job-330557290544431104
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// False
 	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
-	UserId                 *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserState              *string   `json:"UserState,omitempty" xml:"UserState,omitempty"`
-	WorkMode               *string   `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
+	// example:
+	//
+	// sam@szpczf
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// Ready
+	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// example:
+	//
+	// ON_SITE
+	WorkMode *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
 func (s ChangeVisibilityResponseBodyData) String() string {
@@ -9554,6 +9728,116 @@ func (s *DeleteDocumentsResponse) SetStatusCode(v int32) *DeleteDocumentsRespons
 }
 
 func (s *DeleteDocumentsResponse) SetBody(v *DeleteDocumentsResponseBody) *DeleteDocumentsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteInstanceResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// b7feb007-994a-497f-8934-2f0c6f89867c
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceResponseBody) SetCode(v string) *DeleteInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetData(v string) *DeleteInstanceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetHttpStatusCode(v int32) *DeleteInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetMessage(v string) *DeleteInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetParams(v []*string) *DeleteInstanceResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -48544,6 +48828,262 @@ func (s *ListSkillLevelsOfUserResponse) SetBody(v *ListSkillLevelsOfUserResponse
 	return s
 }
 
+type ListSmsMetadataRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ["SATISFACTION_SURVEY","CONTACT_FLOW_NODE"]
+	ScenarioListJson *string `json:"ScenarioListJson,omitempty" xml:"ScenarioListJson,omitempty"`
+}
+
+func (s ListSmsMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmsMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmsMetadataRequest) SetInstanceId(v string) *ListSmsMetadataRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSmsMetadataRequest) SetPageNumber(v int32) *ListSmsMetadataRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSmsMetadataRequest) SetPageSize(v int32) *ListSmsMetadataRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSmsMetadataRequest) SetScenarioListJson(v string) *ListSmsMetadataRequest {
+	s.ScenarioListJson = &v
+	return s
+}
+
+type ListSmsMetadataResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListSmsMetadataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8707EB29-BAED-4302-B999-40BA61877437
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSmsMetadataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmsMetadataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmsMetadataResponseBody) SetCode(v string) *ListSmsMetadataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBody) SetData(v *ListSmsMetadataResponseBodyData) *ListSmsMetadataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBody) SetHttpStatusCode(v int32) *ListSmsMetadataResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBody) SetMessage(v string) *ListSmsMetadataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBody) SetParams(v []*string) *ListSmsMetadataResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBody) SetRequestId(v string) *ListSmsMetadataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSmsMetadataResponseBodyData struct {
+	List []*ListSmsMetadataResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSmsMetadataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmsMetadataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmsMetadataResponseBodyData) SetList(v []*ListSmsMetadataResponseBodyDataList) *ListSmsMetadataResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyData) SetPageNumber(v int32) *ListSmsMetadataResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyData) SetPageSize(v int32) *ListSmsMetadataResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyData) SetTotalCount(v int32) *ListSmsMetadataResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSmsMetadataResponseBodyDataList struct {
+	// example:
+	//
+	// 15772400000****
+	AliyunUid   *int64  `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// MISSED_CALL_NOTIFICATION
+	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// example:
+	//
+	// 5ffc1c9a-4d3d-4019-*****-73255fb01d1c
+	SmsMetadataId *string `json:"SmsMetadataId,omitempty" xml:"SmsMetadataId,omitempty"`
+	// example:
+	//
+	// SMS_468xxxx298
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s ListSmsMetadataResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmsMetadataResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmsMetadataResponseBodyDataList) SetAliyunUid(v int64) *ListSmsMetadataResponseBodyDataList {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyDataList) SetDescription(v string) *ListSmsMetadataResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyDataList) SetInstanceId(v string) *ListSmsMetadataResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyDataList) SetName(v string) *ListSmsMetadataResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyDataList) SetScenario(v string) *ListSmsMetadataResponseBodyDataList {
+	s.Scenario = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyDataList) SetSignName(v string) *ListSmsMetadataResponseBodyDataList {
+	s.SignName = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyDataList) SetSmsMetadataId(v string) *ListSmsMetadataResponseBodyDataList {
+	s.SmsMetadataId = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponseBodyDataList) SetTemplateCode(v string) *ListSmsMetadataResponseBodyDataList {
+	s.TemplateCode = &v
+	return s
+}
+
+type ListSmsMetadataResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSmsMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSmsMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmsMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmsMetadataResponse) SetHeaders(v map[string]*string) *ListSmsMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSmsMetadataResponse) SetStatusCode(v int32) *ListSmsMetadataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSmsMetadataResponse) SetBody(v *ListSmsMetadataResponseBody) *ListSmsMetadataResponse {
+	s.Body = v
+	return s
+}
+
 type ListTicketTasksRequest struct {
 	// This parameter is required.
 	//
@@ -65685,6 +66225,74 @@ func (client *Client) AddCases(request *AddCasesRequest) (_result *AddCasesRespo
 	return _result, _err
 }
 
+// @param request - AddFeedbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddFeedbackResponse
+func (client *Client) AddFeedbackWithOptions(request *AddFeedbackRequest, runtime *util.RuntimeOptions) (_result *AddFeedbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Feedback)) {
+		query["Feedback"] = request.Feedback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rating)) {
+		query["Rating"] = request.Rating
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddFeedback"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddFeedbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - AddFeedbackRequest
+//
+// @return AddFeedbackResponse
+func (client *Client) AddFeedback(request *AddFeedbackRequest) (_result *AddFeedbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddFeedbackResponse{}
+	_body, _err := client.AddFeedbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - AddNumbersToSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -68354,6 +68962,58 @@ func (client *Client) DeleteDocuments(request *DeleteDocumentsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDocumentsResponse{}
 	_body, _err := client.DeleteDocumentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
+func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
+func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -76368,6 +77028,70 @@ func (client *Client) ListSkillLevelsOfUser(request *ListSkillLevelsOfUserReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSkillLevelsOfUserResponse{}
 	_body, _err := client.ListSkillLevelsOfUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListSmsMetadataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSmsMetadataResponse
+func (client *Client) ListSmsMetadataWithOptions(request *ListSmsMetadataRequest, runtime *util.RuntimeOptions) (_result *ListSmsMetadataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScenarioListJson)) {
+		query["ScenarioListJson"] = request.ScenarioListJson
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSmsMetadata"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSmsMetadataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListSmsMetadataRequest
+//
+// @return ListSmsMetadataResponse
+func (client *Client) ListSmsMetadata(request *ListSmsMetadataRequest) (_result *ListSmsMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSmsMetadataResponse{}
+	_body, _err := client.ListSmsMetadataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
