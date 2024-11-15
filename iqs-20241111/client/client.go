@@ -381,8 +381,238 @@ func (s *WeiboItem) SetUsername(v string) *WeiboItem {
 	return s
 }
 
-type GenericSearchRequest struct {
+type AiSearchRequest struct {
+	// example:
+	//
+	// finance
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// example:
+	//
+	// {\\"total_count\\": 6851, \\"page_number\\": 54, \\"page_size\\": 100}
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// This parameter is required.
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// 17dc8bcd-f34a-46d1-a7a3-0fa3d1ce3824
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// OneWeek
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s AiSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AiSearchRequest) SetIndustry(v string) *AiSearchRequest {
+	s.Industry = &v
+	return s
+}
+
+func (s *AiSearchRequest) SetPage(v int32) *AiSearchRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *AiSearchRequest) SetQuery(v string) *AiSearchRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *AiSearchRequest) SetSessionId(v string) *AiSearchRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *AiSearchRequest) SetTimeRange(v string) *AiSearchRequest {
+	s.TimeRange = &v
+	return s
+}
+
+type AiSearchResponseBody struct {
+	Header *AiSearchResponseBodyHeader `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"header":{"eventId":"6f617de0-204f-406f-a9be-34779c06d498","event":"on_common_search_start","responseTime":120},"payload":"","requestId":"715d01a0-de7e-42c3-abca-b901fcd79b39"}
+	Payload *string `json:"payload,omitempty" xml:"payload,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ECB2144C-E277-5434-80E6-12D26678D364
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s AiSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AiSearchResponseBody) SetHeader(v *AiSearchResponseBodyHeader) *AiSearchResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *AiSearchResponseBody) SetPayload(v string) *AiSearchResponseBody {
+	s.Payload = &v
+	return s
+}
+
+func (s *AiSearchResponseBody) SetRequestId(v string) *AiSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AiSearchResponseBodyHeader struct {
+	// example:
+	//
+	// on_common_search_end
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// 988021f0-951a-43d0-ba4d-785359e7e7be
+	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// example:
+	//
+	// 1293
+	ResponseTime *int64 `json:"responseTime,omitempty" xml:"responseTime,omitempty"`
+}
+
+func (s AiSearchResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiSearchResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *AiSearchResponseBodyHeader) SetEvent(v string) *AiSearchResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *AiSearchResponseBodyHeader) SetEventId(v string) *AiSearchResponseBodyHeader {
+	s.EventId = &v
+	return s
+}
+
+func (s *AiSearchResponseBodyHeader) SetResponseTime(v int64) *AiSearchResponseBodyHeader {
+	s.ResponseTime = &v
+	return s
+}
+
+type AiSearchResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AiSearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AiSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AiSearchResponse) SetHeaders(v map[string]*string) *AiSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AiSearchResponse) SetStatusCode(v int32) *AiSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AiSearchResponse) SetBody(v *AiSearchResponseBody) *AiSearchResponse {
+	s.Body = v
+	return s
+}
+
+type GenericAdvancedSearchRequest struct {
+	// This parameter is required.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// job-4065bee3-e7aa-49fc-aad2-a8e3a7fd6acd
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// OneWeek
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s GenericAdvancedSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenericAdvancedSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenericAdvancedSearchRequest) SetQuery(v string) *GenericAdvancedSearchRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *GenericAdvancedSearchRequest) SetSessionId(v string) *GenericAdvancedSearchRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GenericAdvancedSearchRequest) SetTimeRange(v string) *GenericAdvancedSearchRequest {
+	s.TimeRange = &v
+	return s
+}
+
+type GenericAdvancedSearchResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenericSearchResult `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenericAdvancedSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenericAdvancedSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenericAdvancedSearchResponse) SetHeaders(v map[string]*string) *GenericAdvancedSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenericAdvancedSearchResponse) SetStatusCode(v int32) *GenericAdvancedSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenericAdvancedSearchResponse) SetBody(v *GenericSearchResult) *GenericAdvancedSearchResponse {
+	s.Body = v
+	return s
+}
+
+type GenericSearchRequest struct {
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// This parameter is required.
+	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 	// example:
 	//
 	// OneWeek
@@ -397,8 +627,23 @@ func (s GenericSearchRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GenericSearchRequest) SetIndustry(v string) *GenericSearchRequest {
+	s.Industry = &v
+	return s
+}
+
+func (s *GenericSearchRequest) SetPage(v int32) *GenericSearchRequest {
+	s.Page = &v
+	return s
+}
+
 func (s *GenericSearchRequest) SetQuery(v string) *GenericSearchRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *GenericSearchRequest) SetSessionId(v string) *GenericSearchRequest {
+	s.SessionId = &v
 	return s
 }
 
@@ -485,6 +730,158 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// AI搜索流式接口
+//
+// @param request - AiSearchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AiSearchResponse
+func (client *Client) AiSearchWithOptions(request *AiSearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AiSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Industry)) {
+		query["industry"] = request.Industry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		query["timeRange"] = request.TimeRange
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AiSearch"),
+		Version:     tea.String("2024-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AiSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// AI搜索流式接口
+//
+// @param request - AiSearchRequest
+//
+// @return AiSearchResponse
+func (client *Client) AiSearch(request *AiSearchRequest) (_result *AiSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AiSearchResponse{}
+	_body, _err := client.AiSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 增强版通用搜索
+//
+// @param request - GenericAdvancedSearchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenericAdvancedSearchResponse
+func (client *Client) GenericAdvancedSearchWithOptions(request *GenericAdvancedSearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenericAdvancedSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		query["timeRange"] = request.TimeRange
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenericAdvancedSearch"),
+		Version:     tea.String("2024-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericAdvancedSearch"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenericAdvancedSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 增强版通用搜索
+//
+// @param request - GenericAdvancedSearchRequest
+//
+// @return GenericAdvancedSearchResponse
+func (client *Client) GenericAdvancedSearch(request *GenericAdvancedSearchRequest) (_result *GenericAdvancedSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenericAdvancedSearchResponse{}
+	_body, _err := client.GenericAdvancedSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 通用搜索
 //
 // @param request - GenericSearchRequest
@@ -500,8 +897,20 @@ func (client *Client) GenericSearchWithOptions(request *GenericSearchRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Industry)) {
+		query["industry"] = request.Industry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
