@@ -3619,6 +3619,7 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	//
 	// 1
 	CoverageType *int32 `json:"CoverageType,omitempty" xml:"CoverageType,omitempty"`
+	DebtStatus   *int64 `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
 	// The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
@@ -3719,6 +3720,11 @@ func (s *DescribeInstanceListResponseBodyInstanceList) SetCommodityType(v string
 
 func (s *DescribeInstanceListResponseBodyInstanceList) SetCoverageType(v int32) *DescribeInstanceListResponseBodyInstanceList {
 	s.CoverageType = &v
+	return s
+}
+
+func (s *DescribeInstanceListResponseBodyInstanceList) SetDebtStatus(v int64) *DescribeInstanceListResponseBodyInstanceList {
+	s.DebtStatus = &v
 	return s
 }
 
@@ -4649,6 +4655,7 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OpAction   *int32  `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
 	// The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
 	//
 	// example:
@@ -4721,6 +4728,11 @@ func (s *DescribeOpEntitiesRequest) SetEndTime(v int64) *DescribeOpEntitiesReque
 
 func (s *DescribeOpEntitiesRequest) SetInstanceId(v string) *DescribeOpEntitiesRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOpEntitiesRequest) SetOpAction(v int32) *DescribeOpEntitiesRequest {
+	s.OpAction = &v
 	return s
 }
 
@@ -13106,6 +13118,10 @@ func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesR
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpAction)) {
+		query["OpAction"] = request.OpAction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {

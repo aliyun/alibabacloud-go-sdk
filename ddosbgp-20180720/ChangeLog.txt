@@ -1,3 +1,8 @@
+2024-11-15 Version: v3.6.5
+- Update API DescribeInstanceList: update response param.
+- Update API DescribeOpEntities: add param OpAction.
+
+
 2024-11-13 Version: v3.6.4
 - Update API DescribeDdosOriginInstanceBill: update param Type.
 - Update API DescribeDdosOriginInstanceBill: update response param.
