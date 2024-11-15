@@ -10,12 +10,22 @@ import (
 )
 
 type BatchEnrollAccountsRequest struct {
+	// The resource accounts.
 	Accounts []*BatchEnrollAccountsRequestAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// The baseline ID.
+	//
+	// If this parameter is left empty, the default baseline is used.
+	//
 	// example:
 	//
 	// afb-bp1durvn3lgqe28v****
-	BaselineId    *string                                    `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The baseline items.
+	//
+	// If this parameter is specified, the configurations of the baseline items are merged with the baseline applied to the specified account. The configurations of the same baseline items are subject to the configurations of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configurations of the account baseline to the account.
 	BaselineItems []*BatchEnrollAccountsRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -51,6 +61,8 @@ func (s *BatchEnrollAccountsRequest) SetRegionId(v string) *BatchEnrollAccountsR
 }
 
 type BatchEnrollAccountsRequestAccounts struct {
+	// The account ID. This parameter is required.
+	//
 	// example:
 	//
 	// 12868156179****
@@ -71,18 +83,30 @@ func (s *BatchEnrollAccountsRequestAccounts) SetAccountUid(v int64) *BatchEnroll
 }
 
 type BatchEnrollAccountsRequestBaselineItems struct {
+	// The configurations of the baseline item.
+	//
 	// example:
 	//
 	// {\\"Notifications\\":[{\\"GroupKey\\":\\"account_msg\\",\\"Contacts\\":[{\\"Name\\":\\"aa\\"}],\\"PmsgStatus\\":1,\\"EmailStatus\\":1,\\"SmsStatus\\":1}]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The name of the baseline item.
+	//
 	// example:
 	//
 	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to skip the baseline item. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// false
 	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The version of the baseline item.
+	//
 	// example:
 	//
 	// 1.0
@@ -118,6 +142,8 @@ func (s *BatchEnrollAccountsRequestBaselineItems) SetVersion(v string) *BatchEnr
 }
 
 type BatchEnrollAccountsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 16B208DD-86BD-5E7D-AC93-FFD44B6FBDF1
@@ -167,10 +193,23 @@ func (s *BatchEnrollAccountsResponse) SetBody(v *BatchEnrollAccountsResponseBody
 }
 
 type CreateAccountFactoryBaselineRequest struct {
+	// The baseline items.
+	//
+	// You can call the [ListAccountFactoryBaselineItems](~~ListAccountFactoryBaselineItems~~) operation to query a list of baseline items supported by the account factory in Cloud Governance Center.
 	BaselineItems []*CreateAccountFactoryBaselineRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
-	BaselineName  *string                                             `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	Description   *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	// RegionId
+	// The name of the baseline.
+	//
+	// example:
+	//
+	// Default
+	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	// The description of the baseline.
+	//
+	// example:
+	//
+	// Default Baseline.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region ID.
 	//
 	// example:
 	//
@@ -207,14 +246,20 @@ func (s *CreateAccountFactoryBaselineRequest) SetRegionId(v string) *CreateAccou
 }
 
 type CreateAccountFactoryBaselineRequestBaselineItems struct {
+	// The configurations of the baseline item. The value of this parameter is a JSON string.
+	//
 	// example:
 	//
 	// {\\"EnabledServices\\":[\\"CEN_TR\\",\\"CDT\\",\\"CMS\\",\\"KMS\\"]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The name of the baseline item.
+	//
 	// example:
 	//
 	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version of the baseline item.
+	//
 	// example:
 	//
 	// 1.0
@@ -245,7 +290,14 @@ func (s *CreateAccountFactoryBaselineRequestBaselineItems) SetVersion(v string) 
 }
 
 type CreateAccountFactoryBaselineResponseBody struct {
+	// The baseline ID.
+	//
+	// example:
+	//
+	// afb-bp1e6ixtiwupap8m****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A5592E2E-0FC4-557C-B989-DF229B5EBE13
@@ -300,10 +352,14 @@ func (s *CreateAccountFactoryBaselineResponse) SetBody(v *CreateAccountFactoryBa
 }
 
 type DeleteAccountFactoryBaselineRequest struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// afb-bp1durvn3lgqe28v****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -329,6 +385,8 @@ func (s *DeleteAccountFactoryBaselineRequest) SetRegionId(v string) *DeleteAccou
 }
 
 type DeleteAccountFactoryBaselineResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0F45D888-8C4D-55E5-ACA2-D1515159181D
@@ -457,8 +515,9 @@ type EnrollAccountRequest struct {
 	// example:
 	//
 	// resell
-	ResellAccountType *string                    `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
-	Tag               []*EnrollAccountRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResellAccountType *string `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
+	// The tags. You can specify up to 20 tags.
+	Tag []*EnrollAccountRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s EnrollAccountRequest) String() string {
@@ -579,7 +638,17 @@ func (s *EnrollAccountRequestBaselineItems) SetVersion(v string) *EnrollAccountR
 }
 
 type EnrollAccountRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -682,7 +751,8 @@ type EnrollAccountShrinkRequest struct {
 	//
 	// resell
 	ResellAccountType *string `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
-	TagShrink         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags. You can specify up to 20 tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s EnrollAccountShrinkRequest) String() string {
@@ -1630,25 +1700,35 @@ func (s *GetEnrolledAccountResponse) SetBody(v *GetEnrolledAccountResponseBody) 
 }
 
 type ListAccountFactoryBaselineItemsRequest struct {
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 100. Default value: 10
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Names      []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The names of the baseline items.
+	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// AAAAACDGQdAEX3m42z3sQ+f3VTK2Xr2DzYbz/SAfc/zJRqod
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// RegionId
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the baseline items.
+	//
 	// example:
 	//
 	// AccountFactory
-	Type     *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The versions of the baseline items.
 	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -1691,11 +1771,16 @@ func (s *ListAccountFactoryBaselineItemsRequest) SetVersions(v []*string) *ListA
 }
 
 type ListAccountFactoryBaselineItemsResponseBody struct {
+	// The baseline items.
 	BaselineItems []*ListAccountFactoryBaselineItemsResponseBodyBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAACDGQdAEX3m42z3sQ+f3VTK2Xr2DzYbz/SAfc/zJRqod
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B40D73D8-76AC-5D3C-AC63-4FC8AFCE6671
@@ -1726,19 +1811,28 @@ func (s *ListAccountFactoryBaselineItemsResponseBody) SetRequestId(v string) *Li
 }
 
 type ListAccountFactoryBaselineItemsResponseBodyBaselineItems struct {
+	// The dependency of the baseline item.
 	DependsOn []*ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn `json:"DependsOn,omitempty" xml:"DependsOn,omitempty" type:"Repeated"`
+	// The description of the baseline item.
+	//
 	// example:
 	//
 	// Notification.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the baseline item.
+	//
 	// example:
 	//
 	// ACS-BP_ACCOUNT_FACTORY_ACCOUNT_NOTIFICATION
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the baseline item.
+	//
 	// example:
 	//
 	// AccountFactory
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the baseline item.
+	//
 	// example:
 	//
 	// 1.0
@@ -1779,14 +1873,20 @@ func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItems) SetVersion(v 
 }
 
 type ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn struct {
+	// The name of the baseline item.
+	//
 	// example:
 	//
 	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the baseline item.
+	//
 	// example:
 	//
 	// AccountFactory
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the baseline item.
+	//
 	// example:
 	//
 	// 1.0
@@ -1854,13 +1954,15 @@ type ListAccountFactoryBaselinesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// You do not need to specify this parameter for the first request.
 	//
 	// example:
 	//
 	// AAAAALHWGpGoYCcYMxiFfmlhvh62Xr2DzYbz/SAfc*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// RegionId
+	// The region ID.
 	//
 	// example:
 	//
@@ -1892,7 +1994,7 @@ func (s *ListAccountFactoryBaselinesRequest) SetRegionId(v string) *ListAccountF
 }
 
 type ListAccountFactoryBaselinesResponseBody struct {
-	// An array that consists of baselines.
+	// The baselines.
 	Baselines []*ListAccountFactoryBaselinesResponseBodyBaselines `json:"Baselines,omitempty" xml:"Baselines,omitempty" type:"Repeated"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
@@ -1958,9 +2060,9 @@ type ListAccountFactoryBaselinesResponseBodyBaselines struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the baseline. Valid values:
 	//
-	// 	- System: default baseline
+	// 	- System: default baseline.
 	//
-	// 	- Custom: custom baseline
+	// 	- Custom: custom baseline.
 	//
 	// example:
 	//
@@ -2268,10 +2370,18 @@ func (s *ListEnrolledAccountsResponse) SetBody(v *ListEnrolledAccountsResponseBo
 }
 
 type ListEvaluationMetadataRequest struct {
+	// The language. The information is returned in the specified language. Valid values:
+	//
+	// 	- en: English
+	//
+	// 	- zh: Chinese
+	//
 	// example:
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2297,7 +2407,10 @@ func (s *ListEvaluationMetadataRequest) SetRegionId(v string) *ListEvaluationMet
 }
 
 type ListEvaluationMetadataResponseBody struct {
+	// The metadata of a governance maturity check.
 	EvaluationMetadata []*ListEvaluationMetadataResponseBodyEvaluationMetadata `json:"EvaluationMetadata,omitempty" xml:"EvaluationMetadata,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 16B208DD-86BD-5E7D-AC93-FFD44B6FBDF1
@@ -2323,7 +2436,12 @@ func (s *ListEvaluationMetadataResponseBody) SetRequestId(v string) *ListEvaluat
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadata struct {
+	// The metadata objects of a specific metadata type.
 	Metadata []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Repeated"`
+	// The type of the metadata. Valid values:
+	//
+	// 	- Metric: the check item
+	//
 	// example:
 	//
 	// Metric
@@ -2349,26 +2467,48 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadata) SetType(v string)
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata struct {
+	// The category of the check item.
+	//
 	// example:
 	//
 	// Security
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The description of the check item.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the check item.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the metadata.
+	//
 	// example:
 	//
 	// pxgtda****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The governance level of the check item.
+	//
 	// example:
 	//
 	// High
-	RecommendationLevel *string                                                                          `json:"RecommendationLevel,omitempty" xml:"RecommendationLevel,omitempty"`
+	RecommendationLevel *string `json:"RecommendationLevel,omitempty" xml:"RecommendationLevel,omitempty"`
+	// The metadata of the fixing task.
 	RemediationMetadata *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata `json:"RemediationMetadata,omitempty" xml:"RemediationMetadata,omitempty" type:"Struct"`
-	ResourceMetadata    *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata    `json:"ResourceMetadata,omitempty" xml:"ResourceMetadata,omitempty" type:"Struct"`
+	// The metadata of the checked resources.
+	ResourceMetadata *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata `json:"ResourceMetadata,omitempty" xml:"ResourceMetadata,omitempty" type:"Struct"`
+	// The scope of the check item. Valid values:
+	//
+	// 	- Account: the check item in a single-account governance maturity check
+	//
+	// 	- ResourceDirectory: the check item in a multi-account governance maturity check
+	//
 	// example:
 	//
 	// Account
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The status of the check item. Valid values:
+	//
+	// 	- Released: The check item is released.
+	//
+	// 	- Beta: The check item is pre-released.
+	//
 	// example:
 	//
 	// Released
@@ -2429,6 +2569,7 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata) SetStage(
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadata struct {
+	// The fixing items.
 	Remediation []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation `json:"Remediation,omitempty" xml:"Remediation,omitempty" type:"Repeated"`
 }
 
@@ -2446,7 +2587,16 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation struct {
+	// The fixing operations.
 	Actions []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// The type of the fixing method. Valid values:
+	//
+	// 	- Manual: manual fixing
+	//
+	// 	- QuickFix: quick fixing
+	//
+	// 	- Analysis: auxiliary decision-making
+	//
 	// example:
 	//
 	// Manual
@@ -2472,15 +2622,28 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions struct {
+	// The fixing method.
+	//
+	// >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+	//
 	// example:
 	//
 	// UnusedAccessKeyInRamUser
-	Classification  *string                                                                                                      `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	CostDescription *string                                                                                                      `json:"CostDescription,omitempty" xml:"CostDescription,omitempty"`
-	Description     *string                                                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Guidance        []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance `json:"Guidance,omitempty" xml:"Guidance,omitempty" type:"Repeated"`
-	Notice          *string                                                                                                      `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	Suggestion      *string                                                                                                      `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// The fixing cost.
+	CostDescription *string `json:"CostDescription,omitempty" xml:"CostDescription,omitempty"`
+	// The description of the fixing item.
+	//
+	// >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The content of the fixing items.
+	Guidance []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance `json:"Guidance,omitempty" xml:"Guidance,omitempty" type:"Repeated"`
+	// The usage notes of the fixing item.
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// The fixing suggestion.
+	//
+	// >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
 func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions) String() string {
@@ -2522,13 +2685,18 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance struct {
+	// The display name of the fixing button.
 	ButtonName *string `json:"ButtonName,omitempty" xml:"ButtonName,omitempty"`
+	// The navigation URL of the fixing button.
+	//
 	// example:
 	//
 	// https://ram.console.aliyun.com/users
 	ButtonRef *string `json:"ButtonRef,omitempty" xml:"ButtonRef,omitempty"`
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The fixing procedure.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The title of the fixing procedure.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance) String() string {
@@ -2560,6 +2728,7 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadata struct {
+	// The metadata of the resource properties.
 	ResourcePropertyMetadata []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata `json:"ResourcePropertyMetadata,omitempty" xml:"ResourcePropertyMetadata,omitempty" type:"Repeated"`
 }
 
@@ -2577,11 +2746,16 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMet
 }
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata struct {
+	// The display name of the resource property.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The name of the resource property.
+	//
 	// example:
 	//
 	// AkLastUsedTime
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// The type of the resource property.
+	//
 	// example:
 	//
 	// String
@@ -2641,22 +2815,34 @@ func (s *ListEvaluationMetadataResponse) SetBody(v *ListEvaluationMetadataRespon
 }
 
 type ListEvaluationMetricDetailsRequest struct {
+	// The account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	//
 	// example:
 	//
 	// 103144549568****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the check item.
+	//
+	// You can call the [ListEvaluationMetadata](https://help.aliyun.com/document_detail/2841889.html) operation to query the ID of the check item.
+	//
 	// example:
 	//
 	// xfyve5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The maximum number of entries to return for a single request. Default value: 5.
+	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAGEaXR18y1rqykZHIqRuBejOqED4S3Xne33c7zbn****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2697,14 +2883,19 @@ func (s *ListEvaluationMetricDetailsRequest) SetRegionId(v string) *ListEvaluati
 }
 
 type ListEvaluationMetricDetailsResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAGEaXR18y1rqykZHIqRuBejOqED4S3Xne33c7zbn****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AC9BD94C-D20C-4D27-88D4-89E8D75C****
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the non-compliant resources.
 	Resources []*ListEvaluationMetricDetailsResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -2732,25 +2923,52 @@ func (s *ListEvaluationMetricDetailsResponseBody) SetResources(v []*ListEvaluati
 }
 
 type ListEvaluationMetricDetailsResponseBodyResources struct {
+	// 合规状态。取值：
+	//
+	// - NonCompliant：不合规。
+	//
+	// - Excluded：已忽略。
+	//
+	// - PendingExclusion：已忽略未生效。
+	//
+	// - PendingInclusion：已取消忽略未生效。
+	//
+	// example:
+	//
+	// NonCompliant
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The check results further analyzed by auxiliary decision-making.
+	//
+	// >  This parameter is returned only when the check item supports the auxiliary decision-making feature.
+	//
 	// example:
 	//
 	// RecentUnloginRamUser
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// 26435103783237****
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the resource.
+	//
 	// example:
 	//
 	// 176618589410****
-	ResourceOwnerId    *int64                                                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The attributes of the resource.
 	ResourceProperties []*ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty" type:"Repeated"`
+	// The type of the resource.
+	//
 	// example:
 	//
 	// ACS::RAM::User
@@ -2806,10 +3024,13 @@ func (s *ListEvaluationMetricDetailsResponseBodyResources) SetResourceType(v str
 }
 
 type ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties struct {
+	// The name of the resource attribute.
+	//
 	// example:
 	//
 	// DisplayName
-	PropertyName  *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// The value of the resource attribute.
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
 }
 
@@ -3169,15 +3390,30 @@ func (s *ListEvaluationResultsResponse) SetBody(v *ListEvaluationResultsResponse
 }
 
 type ListEvaluationScoreHistoryRequest struct {
+	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	//
+	// example:
+	//
+	// 176618589410****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// By default, the historical scores that were generated in the seven days before the current date are queried.
+	//
 	// example:
 	//
 	// 2024-07-11
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// You can query the historical scores within the previous 180 days.
+	//
 	// example:
 	//
 	// 2024-06-11
@@ -3213,10 +3449,13 @@ func (s *ListEvaluationScoreHistoryRequest) SetStartDate(v string) *ListEvaluati
 }
 
 type ListEvaluationScoreHistoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// AC9BD94C-D20C-4D27-88D4-89E8D75C051B
-	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The historical scores.
 	ScoreHistory *ListEvaluationScoreHistoryResponseBodyScoreHistory `json:"ScoreHistory,omitempty" xml:"ScoreHistory,omitempty" type:"Struct"`
 }
 
@@ -3239,6 +3478,7 @@ func (s *ListEvaluationScoreHistoryResponseBody) SetScoreHistory(v *ListEvaluati
 }
 
 type ListEvaluationScoreHistoryResponseBodyScoreHistory struct {
+	// The historical scores.
 	TotalScoreHistory []*ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory `json:"TotalScoreHistory,omitempty" xml:"TotalScoreHistory,omitempty" type:"Repeated"`
 }
 
@@ -3256,10 +3496,16 @@ func (s *ListEvaluationScoreHistoryResponseBodyScoreHistory) SetTotalScoreHistor
 }
 
 type ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory struct {
+	// The time when the score was generated. The time is in UTC.
+	//
 	// example:
 	//
 	// 2024-06-30T03:34:02Z
 	EvaluationTime *string `json:"EvaluationTime,omitempty" xml:"EvaluationTime,omitempty"`
+	// The score.
+	//
+	// Valid values: 0 to 1.
+	//
 	// example:
 	//
 	// 0.6753
@@ -3314,14 +3560,25 @@ func (s *ListEvaluationScoreHistoryResponse) SetBody(v *ListEvaluationScoreHisto
 }
 
 type RunEvaluationRequest struct {
+	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	//
 	// example:
 	//
 	// 176618589410****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId *int64    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	MetricIds []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The check range of the governance maturity check. Valid values:
+	//
+	// 	- Account (default): A single-account governance maturity check is performed to check only the Alibaba Cloud account that you use to access Cloud Governance Center.
+	//
+	// 	- ResourceDirectory: A multi-account governance maturity check is performed to check all members within a resource directory. Before you perform a multi-account governance maturity check, you must enable the multi-account governance maturity check feature.
+	//
 	// example:
 	//
 	// ResourceDirectory
@@ -3341,6 +3598,11 @@ func (s *RunEvaluationRequest) SetAccountId(v int64) *RunEvaluationRequest {
 	return s
 }
 
+func (s *RunEvaluationRequest) SetMetricIds(v []*string) *RunEvaluationRequest {
+	s.MetricIds = v
+	return s
+}
+
 func (s *RunEvaluationRequest) SetRegionId(v string) *RunEvaluationRequest {
 	s.RegionId = &v
 	return s
@@ -3351,7 +3613,63 @@ func (s *RunEvaluationRequest) SetScope(v string) *RunEvaluationRequest {
 	return s
 }
 
+type RunEvaluationShrinkRequest struct {
+	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	//
+	// example:
+	//
+	// 176618589410****
+	AccountId       *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	MetricIdsShrink *string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The check range of the governance maturity check. Valid values:
+	//
+	// 	- Account (default): A single-account governance maturity check is performed to check only the Alibaba Cloud account that you use to access Cloud Governance Center.
+	//
+	// 	- ResourceDirectory: A multi-account governance maturity check is performed to check all members within a resource directory. Before you perform a multi-account governance maturity check, you must enable the multi-account governance maturity check feature.
+	//
+	// example:
+	//
+	// ResourceDirectory
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s RunEvaluationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEvaluationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunEvaluationShrinkRequest) SetAccountId(v int64) *RunEvaluationShrinkRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *RunEvaluationShrinkRequest) SetMetricIdsShrink(v string) *RunEvaluationShrinkRequest {
+	s.MetricIdsShrink = &v
+	return s
+}
+
+func (s *RunEvaluationShrinkRequest) SetRegionId(v string) *RunEvaluationShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RunEvaluationShrinkRequest) SetScope(v string) *RunEvaluationShrinkRequest {
+	s.Scope = &v
+	return s
+}
+
 type RunEvaluationResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 2D3E2A3A-F2B8-578D-9659-3195F94A****
@@ -3401,11 +3719,21 @@ func (s *RunEvaluationResponse) SetBody(v *RunEvaluationResponseBody) *RunEvalua
 }
 
 type UpdateAccountFactoryBaselineRequest struct {
-	BaselineId    *string                                             `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The baseline ID.
+	//
+	// example:
+	//
+	// afb-bp1pq3emlkt27vsj****
+	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The baseline items.
+	//
+	// You can call the [ListAccountFactoryBaselineItems](~~ListAccountFactoryBaselineItems~~) operation to query a list of baseline items supported by the account factory in Cloud Governance Center.
 	BaselineItems []*UpdateAccountFactoryBaselineRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
-	BaselineName  *string                                             `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	Description   *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	// RegionId
+	// The name of the baseline.
+	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	// The description of the baseline.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region ID.
 	//
 	// example:
 	//
@@ -3447,14 +3775,20 @@ func (s *UpdateAccountFactoryBaselineRequest) SetRegionId(v string) *UpdateAccou
 }
 
 type UpdateAccountFactoryBaselineRequestBaselineItems struct {
+	// The configurations of the baseline item. The value of this parameter is a JSON string.
+	//
 	// example:
 	//
 	// {\\"EnabledServices\\":[\\"CEN_TR\\",\\"CDT\\",\\"CMS\\",\\"KMS\\"]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The name of the baseline item.
+	//
 	// example:
 	//
 	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version of the baseline item.
+	//
 	// example:
 	//
 	// 1.0
@@ -3485,6 +3819,8 @@ func (s *UpdateAccountFactoryBaselineRequestBaselineItems) SetVersion(v string) 
 }
 
 type UpdateAccountFactoryBaselineResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C18A891D-7B04-51A1-AAC6-201727A361CE
@@ -3583,7 +3919,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 账号工厂批量注册账号
+// Applies an account baseline to multiple existing resource accounts at a time.
+//
+// Description:
+//
+// You can call this operation to apply an account baseline to existing resource accounts.
+//
+// Accounts are enrolled in the account factory in asynchronous mode. After a resource account is created, an account baseline is applied to the account. You can call the [GetEnrolledAccount](https://help.aliyun.com/document_detail/609062.html) operation to query the details of the account enrolled in the account factory and check whether the account baseline is applied to the account.
 //
 // @param request - BatchEnrollAccountsRequest
 //
@@ -3637,7 +3979,13 @@ func (client *Client) BatchEnrollAccountsWithOptions(request *BatchEnrollAccount
 
 // Summary:
 //
-// 账号工厂批量注册账号
+// Applies an account baseline to multiple existing resource accounts at a time.
+//
+// Description:
+//
+// You can call this operation to apply an account baseline to existing resource accounts.
+//
+// Accounts are enrolled in the account factory in asynchronous mode. After a resource account is created, an account baseline is applied to the account. You can call the [GetEnrolledAccount](https://help.aliyun.com/document_detail/609062.html) operation to query the details of the account enrolled in the account factory and check whether the account baseline is applied to the account.
 //
 // @param request - BatchEnrollAccountsRequest
 //
@@ -3655,7 +4003,7 @@ func (client *Client) BatchEnrollAccounts(request *BatchEnrollAccountsRequest) (
 
 // Summary:
 //
-// 创建账号工厂基线
+// Creates a baseline of the account factory.
 //
 // @param request - CreateAccountFactoryBaselineRequest
 //
@@ -3709,7 +4057,7 @@ func (client *Client) CreateAccountFactoryBaselineWithOptions(request *CreateAcc
 
 // Summary:
 //
-// 创建账号工厂基线
+// Creates a baseline of the account factory.
 //
 // @param request - CreateAccountFactoryBaselineRequest
 //
@@ -3727,7 +4075,7 @@ func (client *Client) CreateAccountFactoryBaseline(request *CreateAccountFactory
 
 // Summary:
 //
-// 删除账号工厂基线
+// Deletes an account factory baseline.
 //
 // @param request - DeleteAccountFactoryBaselineRequest
 //
@@ -3773,7 +4121,7 @@ func (client *Client) DeleteAccountFactoryBaselineWithOptions(request *DeleteAcc
 
 // Summary:
 //
-// 删除账号工厂基线
+// Deletes an account factory baseline.
 //
 // @param request - DeleteAccountFactoryBaselineRequest
 //
@@ -4033,7 +4381,7 @@ func (client *Client) GetEnrolledAccount(request *GetEnrolledAccountRequest) (_r
 
 // Summary:
 //
-// 获取账号工厂基线元素列表
+// Queries a list of baseline items that are supported by the account factory of Cloud Governance Center (CGC).
 //
 // @param request - ListAccountFactoryBaselineItemsRequest
 //
@@ -4095,7 +4443,7 @@ func (client *Client) ListAccountFactoryBaselineItemsWithOptions(request *ListAc
 
 // Summary:
 //
-// 获取账号工厂基线元素列表
+// Queries a list of baseline items that are supported by the account factory of Cloud Governance Center (CGC).
 //
 // @param request - ListAccountFactoryBaselineItemsRequest
 //
@@ -4249,7 +4597,7 @@ func (client *Client) ListEnrolledAccounts(request *ListEnrolledAccountsRequest)
 
 // Summary:
 //
-// 查看治理检测定义
+// Queries all available information about check items in a governance maturity check, including the name, ID, description, stage, resource metadata, and fixing guide.
 //
 // @param request - ListEvaluationMetadataRequest
 //
@@ -4295,7 +4643,7 @@ func (client *Client) ListEvaluationMetadataWithOptions(request *ListEvaluationM
 
 // Summary:
 //
-// 查看治理检测定义
+// Queries all available information about check items in a governance maturity check, including the name, ID, description, stage, resource metadata, and fixing guide.
 //
 // @param request - ListEvaluationMetadataRequest
 //
@@ -4313,7 +4661,7 @@ func (client *Client) ListEvaluationMetadata(request *ListEvaluationMetadataRequ
 
 // Summary:
 //
-// 获取云治理中心治理检测项结果详情
+// Queries the non-compliant resource information of a check item, including the name, ID, category, type, region, and related metadata of non-compliant resources.
 //
 // @param request - ListEvaluationMetricDetailsRequest
 //
@@ -4371,7 +4719,7 @@ func (client *Client) ListEvaluationMetricDetailsWithOptions(request *ListEvalua
 
 // Summary:
 //
-// 获取云治理中心治理检测项结果详情
+// Queries the non-compliant resource information of a check item, including the name, ID, category, type, region, and related metadata of non-compliant resources.
 //
 // @param request - ListEvaluationMetricDetailsRequest
 //
@@ -4453,7 +4801,7 @@ func (client *Client) ListEvaluationResults(request *ListEvaluationResultsReques
 
 // Summary:
 //
-// 查看治理检测定义
+// Queries the historical scores of a governance maturity check.
 //
 // @param request - ListEvaluationScoreHistoryRequest
 //
@@ -4507,7 +4855,7 @@ func (client *Client) ListEvaluationScoreHistoryWithOptions(request *ListEvaluat
 
 // Summary:
 //
-// 查看治理检测定义
+// Queries the historical scores of a governance maturity check.
 //
 // @param request - ListEvaluationScoreHistoryRequest
 //
@@ -4525,21 +4873,31 @@ func (client *Client) ListEvaluationScoreHistory(request *ListEvaluationScoreHis
 
 // Summary:
 //
-// 运行云治理中心治理检测
+// Performs a governance maturity check.
 //
-// @param request - RunEvaluationRequest
+// @param tmpReq - RunEvaluationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunEvaluationResponse
-func (client *Client) RunEvaluationWithOptions(request *RunEvaluationRequest, runtime *util.RuntimeOptions) (_result *RunEvaluationResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RunEvaluationWithOptions(tmpReq *RunEvaluationRequest, runtime *util.RuntimeOptions) (_result *RunEvaluationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &RunEvaluationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MetricIds)) {
+		request.MetricIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricIds, tea.String("MetricIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
 		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricIdsShrink)) {
+		query["MetricIds"] = request.MetricIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -4575,7 +4933,7 @@ func (client *Client) RunEvaluationWithOptions(request *RunEvaluationRequest, ru
 
 // Summary:
 //
-// 运行云治理中心治理检测
+// Performs a governance maturity check.
 //
 // @param request - RunEvaluationRequest
 //
@@ -4593,7 +4951,7 @@ func (client *Client) RunEvaluation(request *RunEvaluationRequest) (_result *Run
 
 // Summary:
 //
-// 更新账号工厂基线
+// Updates a baseline of the account factory.
 //
 // @param request - UpdateAccountFactoryBaselineRequest
 //
@@ -4651,7 +5009,7 @@ func (client *Client) UpdateAccountFactoryBaselineWithOptions(request *UpdateAcc
 
 // Summary:
 //
-// 更新账号工厂基线
+// Updates a baseline of the account factory.
 //
 // @param request - UpdateAccountFactoryBaselineRequest
 //
