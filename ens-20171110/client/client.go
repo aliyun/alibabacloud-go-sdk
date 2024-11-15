@@ -696,9 +696,9 @@ func (s *AccosicateNetworkAclResponse) SetBody(v *AccosicateNetworkAclResponseBo
 }
 
 type AddBackendServersRequest struct {
-	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	// The list of backend servers that you want to add to the Edge Load Balancer (ELB) instance. You can add up to 20 backend servers at a time.
 	//
-	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
+	// >  Only Edge Node Service (ENS) instances that are in the running state can be added to the ELB instance as backend servers.
 	//
 	// This parameter is required.
 	BackendServers []*AddBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
@@ -735,7 +735,7 @@ type AddBackendServersRequestBackendServers struct {
 	//
 	// example:
 	//
-	// 192.168.0.1
+	// 192.168.X.X
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The backend port that is used by the ELB instance.
 	//
@@ -743,7 +743,7 @@ type AddBackendServersRequestBackendServers struct {
 	//
 	// 3309
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the ENS instance.
+	// The ID of the backend server.
 	//
 	// This parameter is required.
 	//
@@ -753,9 +753,9 @@ type AddBackendServersRequestBackendServers struct {
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The type of the backend server. Valid values:
 	//
-	// 	- **ens**: ENS instance.
+	// 	- **ens**: ENS instance
 	//
-	// 	- **eni**: ENI.
+	// 	- **eni**: elastic network interface (ENI)
 	//
 	// example:
 	//
@@ -805,9 +805,9 @@ func (s *AddBackendServersRequestBackendServers) SetWeight(v int32) *AddBackendS
 }
 
 type AddBackendServersShrinkRequest struct {
-	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	// The list of backend servers that you want to add to the Edge Load Balancer (ELB) instance. You can add up to 20 backend servers at a time.
 	//
-	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
+	// >  Only Edge Node Service (ENS) instances that are in the running state can be added to the ELB instance as backend servers.
 	//
 	// This parameter is required.
 	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
@@ -1579,18 +1579,28 @@ func (s *AssociateEnsEipAddressResponse) SetBody(v *AssociateEnsEipAddressRespon
 }
 
 type AssociateHaVipRequest struct {
+	// The ID of the HAVIP.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// havip-5p14t****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-50c4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the instance to be associated with the HAVIP. Valid values:
+	//
+	// 	- EnsInstance (default): ENS instance.
+	//
+	// 	- NetworkInterface: ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
+	//
 	// example:
 	//
 	// EnsInstance
@@ -1621,6 +1631,8 @@ func (s *AssociateHaVipRequest) SetInstanceType(v string) *AssociateHaVipRequest
 }
 
 type AssociateHaVipResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
@@ -2922,7 +2934,8 @@ type CreateARMServerInstancesRequest struct {
 	// example:
 	//
 	// cn-guiyang-12
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnvironmentVar *string `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty"`
 	// The refresh rate. Unit: Hz. Valid values: 30 and 60.
 	//
 	// example:
@@ -3112,6 +3125,11 @@ func (s *CreateARMServerInstancesRequest) SetAutoUseCoupon(v bool) *CreateARMSer
 
 func (s *CreateARMServerInstancesRequest) SetEnsRegionId(v string) *CreateARMServerInstancesRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetEnvironmentVar(v string) *CreateARMServerInstancesRequest {
+	s.EnvironmentVar = &v
 	return s
 }
 
@@ -3478,10 +3496,14 @@ func (s *CreateClassicNetworkResponse) SetBody(v *CreateClassicNetworkResponseBo
 }
 
 type CreateClusterRequest struct {
+	// The version of the cluster.
+	//
 	// example:
 	//
 	// 1.18.8
 	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
+	// The name of the cluster.
+	//
 	// example:
 	//
 	// mycluster-1
@@ -3507,10 +3529,14 @@ func (s *CreateClusterRequest) SetName(v string) *CreateClusterRequest {
 }
 
 type CreateClusterResponseBody struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// c34b69b095f8241c5a91cc2252dceb976
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
@@ -5044,6 +5070,117 @@ func (s *CreateForwardEntryResponse) SetStatusCode(v int32) *CreateForwardEntryR
 }
 
 func (s *CreateForwardEntryResponse) SetBody(v *CreateForwardEntryResponseBody) *CreateForwardEntryResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHaVipRequest struct {
+	// example:
+	//
+	// 6
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 120.24.243.91
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// example:
+	//
+	// yourName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// vsw-5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateHaVipRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHaVipRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHaVipRequest) SetAmount(v int32) *CreateHaVipRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateHaVipRequest) SetDescription(v string) *CreateHaVipRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateHaVipRequest) SetIpAddress(v string) *CreateHaVipRequest {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *CreateHaVipRequest) SetName(v string) *CreateHaVipRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHaVipRequest) SetVSwitchId(v string) *CreateHaVipRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateHaVipResponseBody struct {
+	HaVipIds []*string `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAE90880-4970-4D81-A534-A6C0F3631F74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHaVipResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHaVipResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHaVipResponseBody) SetHaVipIds(v []*string) *CreateHaVipResponseBody {
+	s.HaVipIds = v
+	return s
+}
+
+func (s *CreateHaVipResponseBody) SetRequestId(v string) *CreateHaVipResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHaVipResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHaVipResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHaVipResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHaVipResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHaVipResponse) SetHeaders(v map[string]*string) *CreateHaVipResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHaVipResponse) SetStatusCode(v int32) *CreateHaVipResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHaVipResponse) SetBody(v *CreateHaVipResponseBody) *CreateHaVipResponse {
 	s.Body = v
 	return s
 }
@@ -8456,6 +8593,11 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type CreateSnatEntryRequest struct {
+	// The timeout period for idle connections. Valid values: **1*	- to **86400**. Unit: seconds.
+	//
+	// example:
+	//
+	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the Network Address Translation (NAT) gateway.
 	//
@@ -10323,6 +10465,91 @@ func (s *DeleteForwardEntryResponse) SetStatusCode(v int32) *DeleteForwardEntryR
 }
 
 func (s *DeleteForwardEntryResponse) SetBody(v *DeleteForwardEntryResponseBody) *DeleteForwardEntryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHaVipsRequest struct {
+	// This parameter is required.
+	HaVipIds []*string `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteHaVipsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHaVipsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHaVipsRequest) SetHaVipIds(v []*string) *DeleteHaVipsRequest {
+	s.HaVipIds = v
+	return s
+}
+
+type DeleteHaVipsShrinkRequest struct {
+	// This parameter is required.
+	HaVipIdsShrink *string `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty"`
+}
+
+func (s DeleteHaVipsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHaVipsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHaVipsShrinkRequest) SetHaVipIdsShrink(v string) *DeleteHaVipsShrinkRequest {
+	s.HaVipIdsShrink = &v
+	return s
+}
+
+type DeleteHaVipsResponseBody struct {
+	// example:
+	//
+	// 6666C5A5-75ED-422E-A022-7121FA18C968
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHaVipsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHaVipsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHaVipsResponseBody) SetRequestId(v string) *DeleteHaVipsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHaVipsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHaVipsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHaVipsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHaVipsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHaVipsResponse) SetHeaders(v map[string]*string) *DeleteHaVipsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHaVipsResponse) SetStatusCode(v int32) *DeleteHaVipsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHaVipsResponse) SetBody(v *DeleteHaVipsResponseBody) *DeleteHaVipsResponse {
 	s.Body = v
 	return s
 }
@@ -15228,6 +15455,8 @@ func (s *DescribeCloudDiskTypesResponse) SetBody(v *DescribeCloudDiskTypesRespon
 }
 
 type DescribeClusterRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c8f0377146d104687ac562eef9403****
@@ -15248,7 +15477,10 @@ func (s *DescribeClusterRequest) SetClusterId(v string) *DescribeClusterRequest 
 }
 
 type DescribeClusterResponseBody struct {
+	// An array that consists of the information about clusters.
 	Clusters []*DescribeClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
@@ -15274,22 +15506,38 @@ func (s *DescribeClusterResponseBody) SetRequestId(v string) *DescribeClusterRes
 }
 
 type DescribeClusterResponseBodyClusters struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c8f0377146d104687ac562eef9403****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The version of the cluster.
+	//
 	// example:
 	//
 	// 1.18.8
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// vc-a622bb**
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The next version of the cluster.
+	//
 	// example:
 	//
 	// 1.20.8
 	NextVersion *string `json:"NextVersion,omitempty" xml:"NextVersion,omitempty"`
+	// The health status of the instance.
+	//
+	// Valid values:
+	//
+	// 	- healthy
+	//
+	// 	- unhealthy
+	//
 	// example:
 	//
 	// healthy
@@ -15359,6 +15607,8 @@ func (s *DescribeClusterResponse) SetBody(v *DescribeClusterResponseBody) *Descr
 }
 
 type DescribeClusterKubeConfigRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c8f0377146d104687ac562eef9403****
@@ -15379,10 +15629,14 @@ func (s *DescribeClusterKubeConfigRequest) SetClusterId(v string) *DescribeClust
 }
 
 type DescribeClusterKubeConfigResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c8f0377146d104687ac562eef9403****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster certificate.
+	//
 	// example:
 	//
 	// apiVersion: v1
@@ -15419,6 +15673,8 @@ type DescribeClusterKubeConfigResponseBody struct {
 	//
 	//     client-key-data: ***
 	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -20725,6 +20981,259 @@ func (s *DescribeEnsRouteEntryListResponse) SetBody(v *DescribeEnsRouteEntryList
 	return s
 }
 
+type DescribeEnsRouteTablesRequest struct {
+	// The ID of the ENS node.
+	//
+	// example:
+	//
+	// cn-xian-unicom
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the network.
+	//
+	// example:
+	//
+	// n-257gqcdfvx6n****
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the route table.
+	//
+	// example:
+	//
+	// vtb-5p1cifr72di****
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+}
+
+func (s DescribeEnsRouteTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteTablesRequest) SetEnsRegionId(v string) *DescribeEnsRouteTablesRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesRequest) SetNetworkId(v string) *DescribeEnsRouteTablesRequest {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesRequest) SetPageNumber(v int32) *DescribeEnsRouteTablesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesRequest) SetPageSize(v int32) *DescribeEnsRouteTablesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesRequest) SetRouteTableId(v string) *DescribeEnsRouteTablesRequest {
+	s.RouteTableId = &v
+	return s
+}
+
+type DescribeEnsRouteTablesResponseBody struct {
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// DC51ACB0-460D-5CA0-BA2D-E1F3B5547AE9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the route tables.
+	RouteTables []*DescribeEnsRouteTablesResponseBodyRouteTables `json:"RouteTables,omitempty" xml:"RouteTables,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeEnsRouteTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteTablesResponseBody) SetPageNumber(v int32) *DescribeEnsRouteTablesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBody) SetPageSize(v int32) *DescribeEnsRouteTablesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBody) SetRequestId(v string) *DescribeEnsRouteTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBody) SetRouteTables(v []*DescribeEnsRouteTablesResponseBodyRouteTables) *DescribeEnsRouteTablesResponseBody {
+	s.RouteTables = v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBody) SetTotalCount(v int32) *DescribeEnsRouteTablesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeEnsRouteTablesResponseBodyRouteTables struct {
+	// The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-03-08T08:35:18Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the edge node.
+	//
+	// example:
+	//
+	// cn-beijing-15
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the network.
+	//
+	// example:
+	//
+	// n-5v9lufsezl4g****
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the route table.
+	//
+	// example:
+	//
+	// rt-5xde2bit9****
+	RouteTableId   *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
+	// The status. Valid values:
+	//
+	// 	- Available: The route table is available.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the route table. Valid values:
+	//
+	// 	- Custom: custom route table.
+	//
+	// 	- System: system route table.
+	//
+	// example:
+	//
+	// System
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The vSwitches that are associated with the route table.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsRouteTablesResponseBodyRouteTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteTablesResponseBodyRouteTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetCreationTime(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetEnsRegionId(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetNetworkId(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetRouteTableId(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.RouteTableId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetRouteTableName(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.RouteTableName = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetStatus(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetType(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetVSwitchIds(v []*string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.VSwitchIds = v
+	return s
+}
+
+type DescribeEnsRouteTablesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEnsRouteTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeEnsRouteTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteTablesResponse) SetHeaders(v map[string]*string) *DescribeEnsRouteTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponse) SetStatusCode(v int32) *DescribeEnsRouteTablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponse) SetBody(v *DescribeEnsRouteTablesResponseBody) *DescribeEnsRouteTablesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEnsSaleControlRequest struct {
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
@@ -24107,38 +24616,64 @@ func (s *DescribeForwardTableEntriesResponse) SetBody(v *DescribeForwardTableEnt
 }
 
 type DescribeHaVipsRequest struct {
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The IP address of the HAVIP.
+	//
 	// example:
 	//
 	// 10.5.XX.XX
 	HaVipAddress *string `json:"HaVipAddress,omitempty" xml:"HaVipAddress,omitempty"`
+	// The ID of the HAVIP.
+	//
 	// example:
 	//
 	// havip-5p14t****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The name of the HAVIP.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the network.
+	//
 	// example:
 	//
 	// n-57gqcdfvx6n****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the HAVIP. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Available
+	//
+	// 	- InUse
+	//
+	// 	- Deleting
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-5****
@@ -24199,19 +24734,28 @@ func (s *DescribeHaVipsRequest) SetVSwitchId(v string) *DescribeHaVipsRequest {
 }
 
 type DescribeHaVipsResponseBody struct {
+	// Details of the HAVIPs.
 	HaVips []*DescribeHaVipsResponseBodyHaVips `json:"HaVips,omitempty" xml:"HaVips,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AAE90880-4970-4D81-A534-A6C0F3631F74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 49
@@ -24252,40 +24796,68 @@ func (s *DescribeHaVipsResponseBody) SetTotalCount(v string) *DescribeHaVipsResp
 }
 
 type DescribeHaVipsResponseBodyHaVips struct {
+	// The elastic IP addresses (EIPs) that are associated with the HAVIP.
 	AssociatedEipAddresses []*DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses `json:"AssociatedEipAddresses,omitempty" xml:"AssociatedEipAddresses,omitempty" type:"Repeated"`
-	AssociatedInstances    []*DescribeHaVipsResponseBodyHaVipsAssociatedInstances    `json:"AssociatedInstances,omitempty" xml:"AssociatedInstances,omitempty" type:"Repeated"`
+	// The information about instances that are associated with the HAVIP.
+	AssociatedInstances []*DescribeHaVipsResponseBodyHaVipsAssociatedInstances `json:"AssociatedInstances,omitempty" xml:"AssociatedInstances,omitempty" type:"Repeated"`
+	// The time when the HAVIP was created.
+	//
 	// example:
 	//
 	// 2023-03-29T11:17:38Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the HAVIP.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-guiyang-14
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the HAVIP.
+	//
 	// example:
 	//
 	// havip-52y28****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
+	// The IP address of the HAVIP.
+	//
 	// example:
 	//
 	// 192.XX.XX.5
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The name of the HAVIP.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the network.
+	//
 	// example:
 	//
 	// n-5wtkyrk****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The status of the HAVIP. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Available
+	//
+	// 	- InUse
+	//
+	// 	- Deleting
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-5yc8d****
@@ -24356,10 +24928,14 @@ func (s *DescribeHaVipsResponseBodyHaVips) SetVSwitchId(v string) *DescribeHaVip
 }
 
 type DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses struct {
+	// The EIP.
+	//
 	// example:
 	//
 	// 47.XX.XX.40
 	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// The ID of the EIP.
+	//
 	// example:
 	//
 	// eip-5p1wz****
@@ -24385,22 +24961,42 @@ func (s *DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses) SetEipId(v stri
 }
 
 type DescribeHaVipsResponseBodyHaVipsAssociatedInstances struct {
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2023-01-05T07:09:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// i-51p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the instance that is associated with the HAVIP. Valid values:
+	//
+	// 	- EnsInstance: ENS instance
+	//
+	// 	- NetworkInterface: elastic network interface (ENI)
+	//
 	// example:
 	//
 	// EnsInstance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The private IP address of the instance that is associated with the HAVIP. Valid values:
+	//
 	// example:
 	//
 	// 192.XX.XX.9
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The association status of the HAVIP. Valid values:
+	//
+	// 	- Associating
+	//
+	// 	- InUse
+	//
+	// 	- Unassociating
+	//
 	// example:
 	//
 	// InUse
@@ -29423,28 +30019,38 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *Describe
 }
 
 type DescribeLoadBalancerListenMonitorRequest struct {
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-01-30 08:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ELB instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-5q73cv04zeyh43lh74lp4****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The network protocol, such as tcp or udp.
+	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-01-15 16:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The virtual IP address (VIP) port of the ELB instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29487,6 +30093,7 @@ func (s *DescribeLoadBalancerListenMonitorRequest) SetVPort(v string) *DescribeL
 }
 
 type DescribeLoadBalancerListenMonitorResponseBody struct {
+	// The TCP/UDP monitoring data of the ELB instance.
 	LoadBalancerMonitorListenData []*DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData `json:"LoadBalancerMonitorListenData,omitempty" xml:"LoadBalancerMonitorListenData,omitempty" type:"Repeated"`
 	// Id of the request.
 	//
@@ -29515,86 +30122,128 @@ func (s *DescribeLoadBalancerListenMonitorResponseBody) SetRequestId(v string) *
 }
 
 type DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData struct {
+	// The number of active connections.
+	//
 	// example:
 	//
 	// 80285
 	ActConns *string `json:"ActConns,omitempty" xml:"ActConns,omitempty"`
+	// The business time.
+	//
 	// example:
 	//
 	// 2024-01-15 16:03:00
 	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// The number of new connections.
+	//
 	// example:
 	//
 	// 37150
 	Conns *string `json:"Conns,omitempty" xml:"Conns,omitempty"`
+	// The number of dropped connections.
+	//
 	// example:
 	//
 	// 10
 	DropConns *string `json:"DropConns,omitempty" xml:"DropConns,omitempty"`
+	// The ID of the node to which the ELB instance belongs.
+	//
 	// example:
 	//
 	// cn-dongguan-9
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The number of inactive connections.
+	//
 	// example:
 	//
 	// 16322
 	InActConns *string `json:"InActConns,omitempty" xml:"InActConns,omitempty"`
+	// The inbound traffic.
+	//
 	// example:
 	//
 	// 67532
 	InBytes *string `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The dropped inbound traffic.
+	//
 	// example:
 	//
 	// 324
 	InDropBytes *string `json:"InDropBytes,omitempty" xml:"InDropBytes,omitempty"`
+	// The number of dropped inbound packets.
+	//
 	// example:
 	//
 	// 27
 	InDropPkts *string `json:"InDropPkts,omitempty" xml:"InDropPkts,omitempty"`
+	// The number of inbound packets.
+	//
 	// example:
 	//
 	// 12
 	InPkts *string `json:"InPkts,omitempty" xml:"InPkts,omitempty"`
+	// The number of unavailable servers that are attached to the monitored ELB instance.
+	//
 	// example:
 	//
 	// 0
 	InValidRsNum *string `json:"InValidRsNum,omitempty" xml:"InValidRsNum,omitempty"`
+	// The ID of the ELB instance.
+	//
 	// example:
 	//
 	// lb-5q73cv04zeyh43lh74lp4****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The outbound traffic.
+	//
 	// example:
 	//
 	// 5155487
 	OutBytes *string `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The dropped outbound traffic.
+	//
 	// example:
 	//
 	// 0
 	OutDropBytes *string `json:"OutDropBytes,omitempty" xml:"OutDropBytes,omitempty"`
+	// The number of dropped outbound packets.
+	//
 	// example:
 	//
 	// 76
 	OutDropPkts *string `json:"OutDropPkts,omitempty" xml:"OutDropPkts,omitempty"`
+	// The number of outbound packets.
+	//
 	// example:
 	//
 	// 34
 	OutPkts *string `json:"OutPkts,omitempty" xml:"OutPkts,omitempty"`
+	// The network protocol.
+	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// The VIP port of the ELB instance.
+	//
 	// example:
 	//
 	// 80
 	VPort *string `json:"VPort,omitempty" xml:"VPort,omitempty"`
+	// The number of available servers that are attached to the monitored ELB instance.
+	//
 	// example:
 	//
 	// 2
 	ValidRsNum *string `json:"ValidRsNum,omitempty" xml:"ValidRsNum,omitempty"`
+	// The VIP of the instance.
+	//
 	// example:
 	//
 	// 10.8.*.*
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	// The ID of the tunnel.
+	//
 	// example:
 	//
 	// 53284
@@ -29744,16 +30393,22 @@ func (s *DescribeLoadBalancerListenMonitorResponse) SetBody(v *DescribeLoadBalan
 }
 
 type DescribeLoadBalancerListenersRequest struct {
+	// The ID of the ELB instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-5s7crik3yo3p5****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
@@ -29784,19 +30439,28 @@ func (s *DescribeLoadBalancerListenersRequest) SetPageSize(v int32) *DescribeLoa
 }
 
 type DescribeLoadBalancerListenersResponseBody struct {
+	// The listeners of the ELB instance.
 	Listeners *DescribeLoadBalancerListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F3B261DD-3858-4D3C-877D-303ADF374600
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 49
@@ -29854,34 +30518,66 @@ func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetListener(v []*De
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersListener struct {
+	// The timestamp when the listener was created.
+	//
 	// example:
 	//
 	// 2022-08-15T08:42:57Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the listener.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The listener port that is used for HTTP-to-HTTPS redirection.
+	//
 	// example:
 	//
 	// 443
 	ForwardPort *string `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Indicates whether HTTP-to-HTTPS redirection is enabled for the listener. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// example:
 	//
 	// off
 	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The listening port.
+	//
 	// example:
 	//
 	// 8080
 	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the ELB instance.
+	//
 	// example:
 	//
 	// lb-51a5fhou****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The network transmission protocol that is used by the listener.
+	//
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// 	- **http**
+	//
+	// 	- **https**
+	//
 	// example:
 	//
 	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// 	- **running**
+	//
+	// 	- **stopped**
+	//
 	// example:
 	//
 	// running
@@ -33628,7 +34324,8 @@ type DescribeNetworkInterfacesRequest struct {
 	// example:
 	//
 	// i-5t7z99n32gplriv
-	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
 	// The ID of the network.
 	//
@@ -33690,7 +34387,7 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the ENI. Valid Values:
+	// The type of the ENI. Valid values:
 	//
 	// 	- Primary: primary ENI.
 	//
@@ -33795,7 +34492,8 @@ type DescribeNetworkInterfacesShrinkRequest struct {
 	// example:
 	//
 	// i-5t7z99n32gplriv
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
 	Ipv6AddressShrink *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	// The ID of the network.
 	//
@@ -33857,7 +34555,7 @@ type DescribeNetworkInterfacesShrinkRequest struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the ENI. Valid Values:
+	// The type of the ENI. Valid values:
 	//
 	// 	- Primary: primary ENI.
 	//
@@ -34053,8 +34751,9 @@ type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSe
 	// example:
 	//
 	// i-5siavnr3
-	InstanceId *string                                                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ipv6Sets   *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6Sets `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IPv6 addresses of the ENIs.
+	Ipv6Sets *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6Sets `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
 	// The MAC address of the ENI.
 	//
 	// example:
@@ -34239,6 +34938,11 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 }
 
 type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set struct {
+	// The IPv6 address of the ENI.
+	//
+	// example:
+	//
+	// 2605:340:cdb1:XXXX:XXXX:XXXX:XXXX:e2d6
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 }
 
@@ -40065,28 +40769,38 @@ func (s *DescribeServcieScheduleResponse) SetBody(v *DescribeServcieScheduleResp
 }
 
 type DescribeServerLoadBalancerListenMonitorRequest struct {
+	// The end of the time range to query. The maximum range between StartTime and EndTime is 24 hours.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-05-16 16:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ELB instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-5rcvo1n1t3hykfhhjwjgqp****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The request protocol, such as http, https, or tcp.
+	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-05-16 15:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The virtual IP address (VIP) port, such as 80, 8080, or 443.
+	//
 	// example:
 	//
 	// 80
@@ -40127,12 +40841,13 @@ func (s *DescribeServerLoadBalancerListenMonitorRequest) SetVPort(v string) *Des
 }
 
 type DescribeServerLoadBalancerListenMonitorResponseBody struct {
-	// Id of the request。
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
-	RequestId                     *string                                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the monitoring data.
 	ServerLoadBalancerMonitorData []*DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData `json:"ServerLoadBalancerMonitorData,omitempty" xml:"ServerLoadBalancerMonitorData,omitempty" type:"Repeated"`
 }
 
@@ -40155,62 +40870,92 @@ func (s *DescribeServerLoadBalancerListenMonitorResponseBody) SetServerLoadBalan
 }
 
 type DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData struct {
+	// The total number of requests.
+	//
 	// example:
 	//
 	// 20
 	Acc *int32 `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	// The business time of the log. Logs are collected every minute.
+	//
 	// example:
 	//
 	// 2024-05-16 15:00:00
 	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// The ID of the node to which the ELB instance belongs.
+	//
 	// example:
 	//
 	// cn-fuzhou-7
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the ELB instance.
+	//
 	// example:
 	//
 	// lb-5rcvo1n1t3hykfhhjwjgqp****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the ELB instance.
+	//
 	// example:
 	//
 	// esk-edge-service-lb-8377****
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The specification of the ELB instance.
+	//
 	// example:
 	//
 	// elb.s2.medium
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	// The request protocol, such as http, https, or tcp.
+	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// The number of requests with HTTP 2xx status code returned.
+	//
 	// example:
 	//
 	// 10
 	Reqs2xx *int32 `json:"Reqs2xx,omitempty" xml:"Reqs2xx,omitempty"`
+	// The number of requests with HTTP 3xx status code returned.
+	//
 	// example:
 	//
 	// 0
 	Reqs3xx *int32 `json:"Reqs3xx,omitempty" xml:"Reqs3xx,omitempty"`
+	// The number of requests with HTTP 4xx status code returned.
+	//
 	// example:
 	//
 	// 0
 	Reqs4xx *int32 `json:"Reqs4xx,omitempty" xml:"Reqs4xx,omitempty"`
+	// The number of requests with HTTP 5xx status code returned.
+	//
 	// example:
 	//
 	// 10
 	Reqs5xx *int32 `json:"Reqs5xx,omitempty" xml:"Reqs5xx,omitempty"`
+	// The average response time. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1037
 	RtAvg *int32 `json:"RtAvg,omitempty" xml:"RtAvg,omitempty"`
+	// The VIP of the instance.
+	//
 	// example:
 	//
 	// 10.0****
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	// The ID of the tunnel.
+	//
 	// example:
 	//
 	// 52497
 	Vni *int32 `json:"Vni,omitempty" xml:"Vni,omitempty"`
+	// The VIP port, such as 80, 8080, or 443.
+	//
 	// example:
 	//
 	// 80
@@ -40330,18 +41075,24 @@ func (s *DescribeServerLoadBalancerListenMonitorResponse) SetBody(v *DescribeSer
 }
 
 type DescribeServerLoadBalancerMonitorRequest struct {
+	// The end of the time range to query. The maximum range between StartTime and EndTime is 24 hours.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-09-15 17:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ELB instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lb-5sc1s9zrui8lpb8u7cl4f****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -40374,12 +41125,13 @@ func (s *DescribeServerLoadBalancerMonitorRequest) SetStartTime(v string) *Descr
 }
 
 type DescribeServerLoadBalancerMonitorResponseBody struct {
-	// Id of the request。
+	// The ID of the request.
 	//
 	// example:
 	//
 	// AAE90880-4970-4D81-A534-A6C0F3631F74
-	RequestId                     *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the monitoring data.
 	ServerLoadBalancerMonitorData []*DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData `json:"ServerLoadBalancerMonitorData,omitempty" xml:"ServerLoadBalancerMonitorData,omitempty" type:"Repeated"`
 }
 
@@ -40402,54 +41154,80 @@ func (s *DescribeServerLoadBalancerMonitorResponseBody) SetServerLoadBalancerMon
 }
 
 type DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData struct {
+	// The total number of requests.
+	//
 	// example:
 	//
 	// 30
 	Acc *int32 `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	// The business time of the log. Logs are collected every minute.
+	//
 	// example:
 	//
 	// 2024-09-15 16:00:00
 	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
+	// The ID of the node to which the ELB instance belongs.
+	//
 	// example:
 	//
 	// cn-wuxi-10
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the ELB instance.
+	//
 	// example:
 	//
 	// lb-5sc1s9zrui8lpb8u7cl4f****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the ELB instance.
+	//
 	// example:
 	//
 	// esk-edge-service-lb-a34****
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The specification of the ELB instance.
+	//
 	// example:
 	//
 	// elb.s2.medium
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	// The number of requests with HTTP 2xx status code returned.
+	//
 	// example:
 	//
 	// 25
 	Reqs2xx *int32 `json:"Reqs2xx,omitempty" xml:"Reqs2xx,omitempty"`
+	// The number of requests with HTTP 3xx status code returned.
+	//
 	// example:
 	//
 	// 0
 	Reqs3xx *int32 `json:"Reqs3xx,omitempty" xml:"Reqs3xx,omitempty"`
+	// The number of requests with HTTP 4xx status code returned.
+	//
 	// example:
 	//
 	// 5
 	Reqs4xx *int32 `json:"Reqs4xx,omitempty" xml:"Reqs4xx,omitempty"`
+	// The number of requests with HTTP 5xx status code returned.
+	//
 	// example:
 	//
 	// 0
 	Reqs5xx *int32 `json:"Reqs5xx,omitempty" xml:"Reqs5xx,omitempty"`
+	// The average response time. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1404
 	RtAvg *int32 `json:"RtAvg,omitempty" xml:"RtAvg,omitempty"`
+	// The virtual IP address (VIP) of the instance.
+	//
 	// example:
 	//
 	// 10.0****
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	// The ID of the tunnel.
+	//
 	// example:
 	//
 	// 3018
@@ -41332,6 +42110,11 @@ func (s *DescribeSnatTableEntriesResponseBody) SetTotalCount(v int32) *DescribeS
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
+	// The timeout period for idle connections. Valid values: **1*	- to **86400**. Unit: seconds.
+	//
+	// example:
+	//
+	// 900
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the NAT gateway.
 	//
@@ -43211,11 +43994,7 @@ type ExportImageRequest struct {
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
 	// The prefix of the object as which you want to store the image in the OSS bucket. The prefix must be 1 to 30 characters in length and can contain digits and letters.
 	OSSPrefix *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
-	// The ID of the region.
-	//
-	// Valid values:
-	//
-	// 	- cn-beijing
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -52203,13 +52982,13 @@ func (s *RestartDeviceInstanceResponse) SetBody(v *RestartDeviceInstanceResponse
 type RevokeSecurityGroupRequest struct {
 	// The transport layer protocol. The value of this parameter is case-sensitive. Valid values:
 	//
-	// 	- tcp: TCP.
+	// 	- tcp
 	//
-	// 	- udp: UDP.
+	// 	- udp
 	//
-	// 	- icmp: ICMP.
+	// 	- icmp
 	//
-	// 	- gre: GRE.
+	// 	- gre
 	//
 	// 	- all: all protocols.
 	//
@@ -52223,7 +53002,7 @@ type RevokeSecurityGroupRequest struct {
 	//
 	// 	- accept: allows access. This is the default value.
 	//
-	// 	- drop: denies access and returns no responses.
+	// 	- drop: denies access and does not return responses.
 	//
 	// example:
 	//
@@ -52245,7 +53024,7 @@ type RevokeSecurityGroupRequest struct {
 	//
 	// 22/22
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of security group rule N. Valid values: **1*	- to **100**. Default value: **1**.
+	// The priority of the security group rule. Valid values: **1*	- to **100**. Default value: **1**.
 	//
 	// example:
 	//
@@ -56735,7 +57514,7 @@ type TagResourcesRequest struct {
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of resource. Set the value to instance.
+	// The type of the resource. Set the value to instance.
 	//
 	// This parameter is required.
 	//
@@ -57501,6 +58280,20 @@ type UntagResourcesRequest struct {
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource.
+	//
+	// Valid values:
+	//
+	// 	- instance
+	//
+	// 	- eip
+	//
+	// 	- disk
+	//
+	// 	- network
+	//
+	// 	- natgateway
+	//
+	// 	- vswitch
 	//
 	// This parameter is required.
 	//
@@ -58610,7 +59403,27 @@ func (client *Client) AssociateEnsEipAddress(request *AssociateEnsEipAddressRequ
 
 // Summary:
 //
-// 调用AssociateHaVip接口将高可用VIP绑定到同地域的云产品实例上。
+// Associates a high-availability virtual IP address (HAVIP) with an Edge Node Service (ENS) instance or elastic network interface (ENI).
+//
+// Description:
+//
+// When you call this operation to associate an HAVIP, take note of the following items:
+//
+// 	- An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
+//
+// 	- The HAVIP and ENS instance must belong to the same vSwitch.
+//
+// 	- The ENS instance must be in the Running or Stopped state.
+//
+// 	- The HAVIP must be in the Available or InUse state.
+//
+// 	- AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
+//
+//     	- If the HAVIP is in the Associating state, the HAVIP is being associated.
+//
+//     <!---->
+//
+//     	- If the HAVIP is in the InUse state, the HAVIP is associated.
 //
 // @param request - AssociateHaVipRequest
 //
@@ -58660,7 +59473,27 @@ func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, 
 
 // Summary:
 //
-// 调用AssociateHaVip接口将高可用VIP绑定到同地域的云产品实例上。
+// Associates a high-availability virtual IP address (HAVIP) with an Edge Node Service (ENS) instance or elastic network interface (ENI).
+//
+// Description:
+//
+// When you call this operation to associate an HAVIP, take note of the following items:
+//
+// 	- An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
+//
+// 	- The HAVIP and ENS instance must belong to the same vSwitch.
+//
+// 	- The ENS instance must be in the Running or Stopped state.
+//
+// 	- The HAVIP must be in the Available or InUse state.
+//
+// 	- AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
+//
+//     	- If the HAVIP is in the Associating state, the HAVIP is being associated.
+//
+//     <!---->
+//
+//     	- If the HAVIP is in the InUse state, the HAVIP is associated.
 //
 // @param request - AssociateHaVipRequest
 //
@@ -59339,6 +60172,10 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentVar)) {
+		query["EnvironmentVar"] = request.EnvironmentVar
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Frequency)) {
 		query["Frequency"] = request.Frequency
 	}
@@ -59562,7 +60399,13 @@ func (client *Client) CreateClassicNetwork(request *CreateClassicNetworkRequest)
 
 // Summary:
 //
-// 创建边缘容器集群
+// Creates a Container Service for Kubernetes (ACK) edge cluster.
+//
+// Description:
+//
+//   You can call this operation up to 10 times per second per account.
+//
+// 	- Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
 //
 // @param request - CreateClusterRequest
 //
@@ -59608,7 +60451,13 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 
 // Summary:
 //
-// 创建边缘容器集群
+// Creates a Container Service for Kubernetes (ACK) edge cluster.
+//
+// Description:
+//
+//   You can call this operation up to 10 times per second per account.
+//
+// 	- Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
 //
 // @param request - CreateClusterRequest
 //
@@ -60261,6 +61110,82 @@ func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateForwardEntryResponse{}
 	_body, _err := client.CreateForwardEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建高可用VIP
+//
+// @param request - CreateHaVipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHaVipResponse
+func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtime *util.RuntimeOptions) (_result *CreateHaVipResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpAddress)) {
+		query["IpAddress"] = request.IpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHaVip"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHaVipResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建高可用VIP
+//
+// @param request - CreateHaVipRequest
+//
+// @return CreateHaVipResponse
+func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateHaVipResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHaVipResponse{}
+	_body, _err := client.CreateHaVipWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62862,7 +63787,7 @@ func (client *Client) DeleteEpnInstance(request *DeleteEpnInstanceRequest) (_res
 
 // Summary:
 //
-// Deletes a Network Attached Storage (NAS) file system.
+// Deletes a File Storage NAS file system.
 //
 // @param request - DeleteFileSystemRequest
 //
@@ -62900,7 +63825,7 @@ func (client *Client) DeleteFileSystemWithOptions(request *DeleteFileSystemReque
 
 // Summary:
 //
-// Deletes a Network Attached Storage (NAS) file system.
+// Deletes a File Storage NAS file system.
 //
 // @param request - DeleteFileSystemRequest
 //
@@ -62969,6 +63894,72 @@ func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteForwardEntryResponse{}
 	_body, _err := client.DeleteForwardEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除高可用VIP实例
+//
+// @param tmpReq - DeleteHaVipsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHaVipsResponse
+func (client *Client) DeleteHaVipsWithOptions(tmpReq *DeleteHaVipsRequest, runtime *util.RuntimeOptions) (_result *DeleteHaVipsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteHaVipsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HaVipIds)) {
+		request.HaVipIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HaVipIds, tea.String("HaVipIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HaVipIdsShrink)) {
+		query["HaVipIds"] = request.HaVipIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHaVips"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHaVipsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除高可用VIP实例
+//
+// @param request - DeleteHaVipsRequest
+//
+// @return DeleteHaVipsResponse
+func (client *Client) DeleteHaVips(request *DeleteHaVipsRequest) (_result *DeleteHaVipsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHaVipsResponse{}
+	_body, _err := client.DeleteHaVipsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -64792,7 +65783,11 @@ func (client *Client) DescribeCloudDiskTypes(request *DescribeCloudDiskTypesRequ
 
 // Summary:
 //
-// 查询边缘容器集群
+// Queries Container Service for Kubernetes (ACK) edge clusters.
+//
+// Description:
+//
+//   You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeClusterRequest
 //
@@ -64834,7 +65829,11 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 
 // Summary:
 //
-// 查询边缘容器集群
+// Queries Container Service for Kubernetes (ACK) edge clusters.
+//
+// Description:
+//
+//   You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeClusterRequest
 //
@@ -64852,7 +65851,11 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 
 // Summary:
 //
-// 查询边缘容器集群证书
+// Queries the certificate of a Container Service for Kubernetes (ACK) edge cluster.
+//
+// Description:
+//
+//   The maximum number of times that each user can call this operation per second is 100.
 //
 // @param request - DescribeClusterKubeConfigRequest
 //
@@ -64894,7 +65897,11 @@ func (client *Client) DescribeClusterKubeConfigWithOptions(request *DescribeClus
 
 // Summary:
 //
-// 查询边缘容器集群证书
+// Queries the certificate of a Container Service for Kubernetes (ACK) edge cluster.
+//
+// Description:
+//
+//   The maximum number of times that each user can call this operation per second is 100.
 //
 // @param request - DescribeClusterKubeConfigRequest
 //
@@ -66236,6 +67243,82 @@ func (client *Client) DescribeEnsRouteEntryList(request *DescribeEnsRouteEntryLi
 
 // Summary:
 //
+// Queries route tables.
+//
+// @param request - DescribeEnsRouteTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEnsRouteTablesResponse
+func (client *Client) DescribeEnsRouteTablesWithOptions(request *DescribeEnsRouteTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsRouteTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnsRouteTables"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnsRouteTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries route tables.
+//
+// @param request - DescribeEnsRouteTablesRequest
+//
+// @return DescribeEnsRouteTablesResponse
+func (client *Client) DescribeEnsRouteTables(request *DescribeEnsRouteTablesRequest) (_result *DescribeEnsRouteTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnsRouteTablesResponse{}
+	_body, _err := client.DescribeEnsRouteTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 展示配置的售卖约束信息
 //
 // @param request - DescribeEnsSaleControlRequest
@@ -67116,7 +68199,7 @@ func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableE
 
 // Summary:
 //
-// 查询高可用VIP
+// Queries high-availability virtual IP addresses (HAVIPs).
 //
 // @param request - DescribeHaVipsRequest
 //
@@ -67154,7 +68237,7 @@ func (client *Client) DescribeHaVipsWithOptions(request *DescribeHaVipsRequest, 
 
 // Summary:
 //
-// 查询高可用VIP
+// Queries high-availability virtual IP addresses (HAVIPs).
 //
 // @param request - DescribeHaVipsRequest
 //
@@ -68184,7 +69267,13 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *Descri
 
 // Summary:
 //
-// LB监听级监控数据查询
+// Queries monitoring data of an edge load balancer (ELB) instance.
+//
+// Description:
+//
+//   You can call this operation up to 100 times per second per account.
+//
+// 	- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerListenMonitorRequest
 //
@@ -68222,7 +69311,13 @@ func (client *Client) DescribeLoadBalancerListenMonitorWithOptions(request *Desc
 
 // Summary:
 //
-// LB监听级监控数据查询
+// Queries monitoring data of an edge load balancer (ELB) instance.
+//
+// Description:
+//
+//   You can call this operation up to 100 times per second per account.
+//
+// 	- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerListenMonitorRequest
 //
@@ -68240,7 +69335,7 @@ func (client *Client) DescribeLoadBalancerListenMonitor(request *DescribeLoadBal
 
 // Summary:
 //
-// 调用DescribeLoadBalancerListeners查询负载均衡实例监听列表。
+// Queries listeners of Edge Load Balancer (ELB) instances.
 //
 // @param request - DescribeLoadBalancerListenersRequest
 //
@@ -68290,7 +69385,7 @@ func (client *Client) DescribeLoadBalancerListenersWithOptions(request *Describe
 
 // Summary:
 //
-// 调用DescribeLoadBalancerListeners查询负载均衡实例监听列表。
+// Queries listeners of Edge Load Balancer (ELB) instances.
 //
 // @param request - DescribeLoadBalancerListenersRequest
 //
@@ -70149,7 +71244,13 @@ func (client *Client) DescribeServcieSchedule(request *DescribeServcieScheduleRe
 
 // Summary:
 //
-// ESLB实例监听级监控数据
+// Queries the monitoring data of an edge load balancer (ELB) instance based on the listener.
+//
+// Description:
+//
+//   You can call this operation up to 100 times per second per account.
+//
+// 	- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeServerLoadBalancerListenMonitorRequest
 //
@@ -70187,7 +71288,13 @@ func (client *Client) DescribeServerLoadBalancerListenMonitorWithOptions(request
 
 // Summary:
 //
-// ESLB实例监听级监控数据
+// Queries the monitoring data of an edge load balancer (ELB) instance based on the listener.
+//
+// Description:
+//
+//   You can call this operation up to 100 times per second per account.
+//
+// 	- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeServerLoadBalancerListenMonitorRequest
 //
@@ -70205,7 +71312,13 @@ func (client *Client) DescribeServerLoadBalancerListenMonitor(request *DescribeS
 
 // Summary:
 //
-// ESLB实例请求监控数据
+// Queries the request monitoring data of an edge load balancer (ELB) instance.
+//
+// Description:
+//
+//   You can call this operation up to 100 times per second per account.
+//
+// 	- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeServerLoadBalancerMonitorRequest
 //
@@ -70243,7 +71356,13 @@ func (client *Client) DescribeServerLoadBalancerMonitorWithOptions(request *Desc
 
 // Summary:
 //
-// ESLB实例请求监控数据
+// Queries the request monitoring data of an edge load balancer (ELB) instance.
+//
+// Description:
+//
+//   You can call this operation up to 100 times per second per account.
+//
+// 	- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeServerLoadBalancerMonitorRequest
 //
@@ -75607,11 +76726,11 @@ func (client *Client) ResetDeviceInstance(request *ResetDeviceInstanceRequest) (
 //
 // 	- The disk must be in the In Use (In_Use) or Unattached (Available) state.
 //
-// 	- The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance*	- operation to stop an instance.
+// 	- The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the [StopInstance](~~StopInstance~~) operation to stop an instance.
 //
-// 	- The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+// 	- The specified snapshot must be created from the disk specified by the DiskId parameter.
 //
-// 	- When you call the **DescribeInstance*	- operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+// 	- If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ENS instance by calling the [DescribeInstances](~~DescribeInstances~~) operation, the instance is locked for security reasons and no operations are allowed on the instance.
 //
 // @param request - ResetDiskRequest
 //
@@ -75665,11 +76784,11 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 //
 // 	- The disk must be in the In Use (In_Use) or Unattached (Available) state.
 //
-// 	- The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance*	- operation to stop an instance.
+// 	- The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the [StopInstance](~~StopInstance~~) operation to stop an instance.
 //
-// 	- The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+// 	- The specified snapshot must be created from the disk specified by the DiskId parameter.
 //
-// 	- When you call the **DescribeInstance*	- operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+// 	- If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ENS instance by calling the [DescribeInstances](~~DescribeInstances~~) operation, the instance is locked for security reasons and no operations are allowed on the instance.
 //
 // @param request - ResetDiskRequest
 //
@@ -78217,7 +79336,7 @@ func (client *Client) UnloadRegionSDG(request *UnloadRegionSDGRequest) (_result 
 
 // Summary:
 //
-// Removes tags from specific Edge Node Service (ENS) resources. After a tag is removed from a resource, the tag is automatically deleted if it is not added to other resources.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -78271,7 +79390,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from specific Edge Node Service (ENS) resources. After a tag is removed from a resource, the tag is automatically deleted if it is not added to other resources.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
