@@ -12,8 +12,6 @@ import (
 type ActiveFlowLogRequest struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cen-7qthudw0ll6jmc****
@@ -3377,7 +3375,8 @@ type CreateFlowlogRequest struct {
 	// example:
 	//
 	// 600
-	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval        *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	LogFormatString *string `json:"LogFormatString,omitempty" xml:"LogFormatString,omitempty"`
 	// The Logstore where the flow log is stored.
 	//
 	// 	- If a Logstore is already created in the selected region, enter the name of the Logstore.
@@ -3446,6 +3445,7 @@ type CreateFlowlogRequest struct {
 	//
 	// tr-attach-r6g0m3epjehw57****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterId           *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s CreateFlowlogRequest) String() string {
@@ -3478,6 +3478,11 @@ func (s *CreateFlowlogRequest) SetFlowLogName(v string) *CreateFlowlogRequest {
 
 func (s *CreateFlowlogRequest) SetInterval(v int64) *CreateFlowlogRequest {
 	s.Interval = &v
+	return s
+}
+
+func (s *CreateFlowlogRequest) SetLogFormatString(v string) *CreateFlowlogRequest {
+	s.LogFormatString = &v
 	return s
 }
 
@@ -3523,6 +3528,11 @@ func (s *CreateFlowlogRequest) SetTag(v []*CreateFlowlogRequestTag) *CreateFlowl
 
 func (s *CreateFlowlogRequest) SetTransitRouterAttachmentId(v string) *CreateFlowlogRequest {
 	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *CreateFlowlogRequest) SetTransitRouterId(v string) *CreateFlowlogRequest {
+	s.TransitRouterId = &v
 	return s
 }
 
@@ -7701,8 +7711,6 @@ func (s *CreateTransitRouterVpnAttachmentResponse) SetBody(v *CreateTransitRoute
 type DeactiveFlowLogRequest struct {
 	// The ID of the CEN instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cen-7qthudw0ll6jmc****
@@ -8791,8 +8799,6 @@ func (s *DeleteCenRouteMapResponse) SetBody(v *DeleteCenRouteMapResponseBody) *D
 
 type DeleteFlowlogRequest struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -16722,7 +16728,9 @@ type DescribeFlowlogsRequest struct {
 	// example:
 	//
 	// myFlowlog
-	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogName    *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogVersion *string `json:"FlowLogVersion,omitempty" xml:"FlowLogVersion,omitempty"`
+	Interval       *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The name of the Logstore where the flow log is stored.
 	//
 	// The name must be 3 to 63 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). It must start or end with a lowercase letter or a digit.
@@ -16783,6 +16791,7 @@ type DescribeFlowlogsRequest struct {
 	//
 	// tr-attach-qieks13jnt1cchy****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterId           *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DescribeFlowlogsRequest) String() string {
@@ -16815,6 +16824,16 @@ func (s *DescribeFlowlogsRequest) SetFlowLogId(v string) *DescribeFlowlogsReques
 
 func (s *DescribeFlowlogsRequest) SetFlowLogName(v string) *DescribeFlowlogsRequest {
 	s.FlowLogName = &v
+	return s
+}
+
+func (s *DescribeFlowlogsRequest) SetFlowLogVersion(v string) *DescribeFlowlogsRequest {
+	s.FlowLogVersion = &v
+	return s
+}
+
+func (s *DescribeFlowlogsRequest) SetInterval(v int32) *DescribeFlowlogsRequest {
+	s.Interval = &v
 	return s
 }
 
@@ -16875,6 +16894,11 @@ func (s *DescribeFlowlogsRequest) SetTag(v []*DescribeFlowlogsRequestTag) *Descr
 
 func (s *DescribeFlowlogsRequest) SetTransitRouterAttachmentId(v string) *DescribeFlowlogsRequest {
 	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *DescribeFlowlogsRequest) SetTransitRouterId(v string) *DescribeFlowlogsRequest {
+	s.TransitRouterId = &v
 	return s
 }
 
@@ -31861,8 +31885,6 @@ func (s *ModifyCenRouteMapResponse) SetBody(v *ModifyCenRouteMapResponseBody) *M
 type ModifyFlowLogAttributeRequest struct {
 	// The ID of the CEN instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cen-7qthudw0ll6jmc****
@@ -31901,6 +31923,7 @@ type ModifyFlowLogAttributeRequest struct {
 	//
 	// myFlowlog
 	FlowLogName  *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	Interval     *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the flow log is deployed.
@@ -31947,6 +31970,11 @@ func (s *ModifyFlowLogAttributeRequest) SetFlowLogId(v string) *ModifyFlowLogAtt
 
 func (s *ModifyFlowLogAttributeRequest) SetFlowLogName(v string) *ModifyFlowLogAttributeRequest {
 	s.FlowLogName = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetInterval(v int64) *ModifyFlowLogAttributeRequest {
+	s.Interval = &v
 	return s
 }
 
@@ -39728,6 +39756,10 @@ func (client *Client) CreateFlowlogWithOptions(request *CreateFlowlogRequest, ru
 		query["Interval"] = request.Interval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogFormatString)) {
+		query["LogFormatString"] = request.LogFormatString
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
 		query["LogStoreName"] = request.LogStoreName
 	}
@@ -39762,6 +39794,10 @@ func (client *Client) CreateFlowlogWithOptions(request *CreateFlowlogRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
 		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -45718,6 +45754,14 @@ func (client *Client) DescribeFlowlogsWithOptions(request *DescribeFlowlogsReque
 		query["FlowLogName"] = request.FlowLogName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FlowLogVersion)) {
+		query["FlowLogVersion"] = request.FlowLogVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
 		query["LogStoreName"] = request.LogStoreName
 	}
@@ -45764,6 +45808,10 @@ func (client *Client) DescribeFlowlogsWithOptions(request *DescribeFlowlogsReque
 
 	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
 		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -50952,6 +51000,10 @@ func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAt
 
 	if !tea.BoolValue(util.IsUnset(request.FlowLogName)) {
 		query["FlowLogName"] = request.FlowLogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
