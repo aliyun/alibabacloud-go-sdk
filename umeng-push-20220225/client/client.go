@@ -301,6 +301,10 @@ type ChannelProperties struct {
 	UseHuaweiMessage *string `json:"useHuaweiMessage,omitempty" xml:"useHuaweiMessage,omitempty"`
 	// example:
 	//
+	// true
+	UseHuaweiPlainMessage *string `json:"useHuaweiPlainMessage,omitempty" xml:"useHuaweiPlainMessage,omitempty"`
+	// example:
+	//
 	// "true",默认"false"
 	VivoAddBadge    *string `json:"vivoAddBadge,omitempty" xml:"vivoAddBadge,omitempty"`
 	VivoCategory    *string `json:"vivoCategory,omitempty" xml:"vivoCategory,omitempty"`
@@ -363,6 +367,11 @@ func (s *ChannelProperties) SetOppoNotifyLevel(v string) *ChannelProperties {
 
 func (s *ChannelProperties) SetUseHuaweiMessage(v string) *ChannelProperties {
 	s.UseHuaweiMessage = &v
+	return s
+}
+
+func (s *ChannelProperties) SetUseHuaweiPlainMessage(v string) *ChannelProperties {
+	s.UseHuaweiPlainMessage = &v
 	return s
 }
 
