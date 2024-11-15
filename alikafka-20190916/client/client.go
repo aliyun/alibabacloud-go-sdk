@@ -6849,7 +6849,9 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// example:
 	//
 	// {\\"enable.vpc_sasl_ssl\\":\\"false\\",\\"kafka.log.retention.hours\\":\\"66\\",\\"enable.acl\\":\\"false\\",\\"kafka.message.max.bytes\\":\\"6291456\\"}
-	AllConfig *string `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
+	AllConfig             *string `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
+	AutoCreateGroupEnable *bool   `json:"AutoCreateGroupEnable,omitempty" xml:"AutoCreateGroupEnable,omitempty"`
+	AutoCreateTopicEnable *bool   `json:"AutoCreateTopicEnable,omitempty" xml:"AutoCreateTopicEnable,omitempty"`
 	// The parameters that are returned for the ApsaraMQ for Confluent instance.
 	ConfluentConfig *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
 	// The time when the instance was created. Unit: milliseconds.
@@ -6857,7 +6859,8 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// example:
 	//
 	// 1577961819000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime          *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultPartitionNum *int32 `json:"DefaultPartitionNum,omitempty" xml:"DefaultPartitionNum,omitempty"`
 	// The type of the network in which the instance is deployed. Valid values:
 	//
 	// 	- **4**: Internet and VPC
@@ -7137,7 +7140,8 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// example:
 	//
 	// vsw-bp1fvuw0ljd7vzmo3****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId  *string                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchIds *GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 	// The instance status. The valid values are consistent with the values displayed in the ApsaraMQ for Kafka console. This parameter is used in the new version of ApsaraMQ for Kafka.
 	//
 	// Valid values:
@@ -7205,6 +7209,16 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetAllConfig(v strin
 	return s
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetAutoCreateGroupEnable(v bool) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.AutoCreateGroupEnable = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetAutoCreateTopicEnable(v bool) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.AutoCreateTopicEnable = &v
+	return s
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetConfluentConfig(v *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.ConfluentConfig = v
 	return s
@@ -7212,6 +7226,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetConfluentConfig(v
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetCreateTime(v int64) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetDefaultPartitionNum(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.DefaultPartitionNum = &v
 	return s
 }
 
@@ -7387,6 +7406,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetUsedTopicCount(v 
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVSwitchId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVSwitchIds(v *GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.VSwitchIds = v
 	return s
 }
 
@@ -7686,6 +7710,23 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailIn
 	return s
 }
 
+type GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds struct {
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds) SetVSwitchIds(v []*string) *GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds {
+	s.VSwitchIds = v
+	return s
+}
+
 type GetInstanceListResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -7711,6 +7752,323 @@ func (s *GetInstanceListResponse) SetStatusCode(v int32) *GetInstanceListRespons
 }
 
 func (s *GetInstanceListResponse) SetBody(v *GetInstanceListResponseBody) *GetInstanceListResponse {
+	s.Body = v
+	return s
+}
+
+type GetKafkaClientIpRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1716343502000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// group_name
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_post-cn-v0h1fgs2****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1716343501000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// topic_name
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// byInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetKafkaClientIpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKafkaClientIpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetKafkaClientIpRequest) SetEndTime(v int64) *GetKafkaClientIpRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetKafkaClientIpRequest) SetGroup(v string) *GetKafkaClientIpRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *GetKafkaClientIpRequest) SetInstanceId(v string) *GetKafkaClientIpRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetKafkaClientIpRequest) SetRegionId(v string) *GetKafkaClientIpRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetKafkaClientIpRequest) SetStartTime(v int64) *GetKafkaClientIpRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetKafkaClientIpRequest) SetTopic(v string) *GetKafkaClientIpRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *GetKafkaClientIpRequest) SetType(v string) *GetKafkaClientIpRequest {
+	s.Type = &v
+	return s
+}
+
+type GetKafkaClientIpResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int64                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetKafkaClientIpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E57A8862-DF68-4055-8E55-B80CB4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetKafkaClientIpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKafkaClientIpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetKafkaClientIpResponseBody) SetCode(v int64) *GetKafkaClientIpResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBody) SetData(v *GetKafkaClientIpResponseBodyData) *GetKafkaClientIpResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBody) SetMessage(v string) *GetKafkaClientIpResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBody) SetRequestId(v string) *GetKafkaClientIpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBody) SetSuccess(v bool) *GetKafkaClientIpResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetKafkaClientIpResponseBodyData struct {
+	// example:
+	//
+	// true
+	Alert *bool                                 `json:"Alert,omitempty" xml:"Alert,omitempty"`
+	Data  *GetKafkaClientIpResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1716343502000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 1
+	SearchTimeRange *int32 `json:"SearchTimeRange,omitempty" xml:"SearchTimeRange,omitempty"`
+	// example:
+	//
+	// 1716343501000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 7
+	TimeLimitDay *int32 `json:"TimeLimitDay,omitempty" xml:"TimeLimitDay,omitempty"`
+}
+
+func (s GetKafkaClientIpResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKafkaClientIpResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetKafkaClientIpResponseBodyData) SetAlert(v bool) *GetKafkaClientIpResponseBodyData {
+	s.Alert = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBodyData) SetData(v *GetKafkaClientIpResponseBodyDataData) *GetKafkaClientIpResponseBodyData {
+	s.Data = v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBodyData) SetEndDate(v int64) *GetKafkaClientIpResponseBodyData {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBodyData) SetSearchTimeRange(v int32) *GetKafkaClientIpResponseBodyData {
+	s.SearchTimeRange = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBodyData) SetStartDate(v int64) *GetKafkaClientIpResponseBodyData {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBodyData) SetTimeLimitDay(v int32) *GetKafkaClientIpResponseBodyData {
+	s.TimeLimitDay = &v
+	return s
+}
+
+type GetKafkaClientIpResponseBodyDataData struct {
+	Data []*GetKafkaClientIpResponseBodyDataDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s GetKafkaClientIpResponseBodyDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKafkaClientIpResponseBodyDataData) GoString() string {
+	return s.String()
+}
+
+func (s *GetKafkaClientIpResponseBodyDataData) SetData(v []*GetKafkaClientIpResponseBodyDataDataData) *GetKafkaClientIpResponseBodyDataData {
+	s.Data = v
+	return s
+}
+
+type GetKafkaClientIpResponseBodyDataDataData struct {
+	Data *GetKafkaClientIpResponseBodyDataDataDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OFFSET_COMMIT
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetKafkaClientIpResponseBodyDataDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKafkaClientIpResponseBodyDataDataData) GoString() string {
+	return s.String()
+}
+
+func (s *GetKafkaClientIpResponseBodyDataDataData) SetData(v *GetKafkaClientIpResponseBodyDataDataDataData) *GetKafkaClientIpResponseBodyDataDataData {
+	s.Data = v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBodyDataDataData) SetName(v string) *GetKafkaClientIpResponseBodyDataDataData {
+	s.Name = &v
+	return s
+}
+
+type GetKafkaClientIpResponseBodyDataDataDataData struct {
+	Data []*GetKafkaClientIpResponseBodyDataDataDataDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s GetKafkaClientIpResponseBodyDataDataDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKafkaClientIpResponseBodyDataDataDataData) GoString() string {
+	return s.String()
+}
+
+func (s *GetKafkaClientIpResponseBodyDataDataDataData) SetData(v []*GetKafkaClientIpResponseBodyDataDataDataDataData) *GetKafkaClientIpResponseBodyDataDataDataData {
+	s.Data = v
+	return s
+}
+
+type GetKafkaClientIpResponseBodyDataDataDataDataData struct {
+	// example:
+	//
+	// 58.210.117.154
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 3
+	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+}
+
+func (s GetKafkaClientIpResponseBodyDataDataDataDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKafkaClientIpResponseBodyDataDataDataDataData) GoString() string {
+	return s.String()
+}
+
+func (s *GetKafkaClientIpResponseBodyDataDataDataDataData) SetIp(v string) *GetKafkaClientIpResponseBodyDataDataDataDataData {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponseBodyDataDataDataDataData) SetNum(v int64) *GetKafkaClientIpResponseBodyDataDataDataDataData {
+	s.Num = &v
+	return s
+}
+
+type GetKafkaClientIpResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetKafkaClientIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetKafkaClientIpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKafkaClientIpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetKafkaClientIpResponse) SetHeaders(v map[string]*string) *GetKafkaClientIpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetKafkaClientIpResponse) SetStatusCode(v int32) *GetKafkaClientIpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetKafkaClientIpResponse) SetBody(v *GetKafkaClientIpResponseBody) *GetKafkaClientIpResponse {
 	s.Body = v
 	return s
 }
@@ -15392,6 +15750,90 @@ func (client *Client) GetInstanceList(request *GetInstanceListRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceListResponse{}
 	_body, _err := client.GetInstanceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取kafka客户端ip
+//
+// @param request - GetKafkaClientIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKafkaClientIpResponse
+func (client *Client) GetKafkaClientIpWithOptions(request *GetKafkaClientIpRequest, runtime *util.RuntimeOptions) (_result *GetKafkaClientIpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		query["Group"] = request.Group
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		query["Topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetKafkaClientIp"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetKafkaClientIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取kafka客户端ip
+//
+// @param request - GetKafkaClientIpRequest
+//
+// @return GetKafkaClientIpResponse
+func (client *Client) GetKafkaClientIp(request *GetKafkaClientIpRequest) (_result *GetKafkaClientIpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetKafkaClientIpResponse{}
+	_body, _err := client.GetKafkaClientIpWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

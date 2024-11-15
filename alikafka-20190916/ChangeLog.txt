@@ -1,3 +1,8 @@
+2024-11-15 Version: v3.9.0
+- Support API GetKafkaClientIp.
+- Update API GetInstanceList: update response param.
+
+
 2024-08-02 Version: v3.8.0
 - Support API CreateScheduledScalingRule.
 - Support API DeleteScheduledScalingRule.
