@@ -10,31 +10,43 @@ import (
 )
 
 type AddChatappPhoneNumberRequest struct {
+	// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86
 	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
+	// Adds a phone number for a WhatsApp Business account (WABA).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 939283893939
+	// 93928389****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// AddChatappPhoneNumber
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 13800000000
+	// 1380000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Deprecated
+	//
+	// cams:ChatappPhoneNumberRegister
+	//
 	// example:
 	//
-	// 10202020
+	// 1020****
 	PreValidateId        *string `json:"PreValidateId,omitempty" xml:"PreValidateId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Private
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -92,30 +104,32 @@ func (s *AddChatappPhoneNumberRequest) SetVerifiedName(v string) *AddChatappPhon
 }
 
 type AddChatappPhoneNumberResponseBody struct {
-	// The details about the access denial.
+	// com.alicom.access.oxs.client.channel.aliyun.flow.AyFlowExecuteService
+	//
+	// example:
+	//
+	// http://pop_access_slb_sgvpc/#vpc
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
-	//
-	// 	- The value OK indicates that the request was successful.
-	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// The phone number.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// com.alicom.access.oxs.client.channel.aliyun.flow.dto.AyCommonApiRequest
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// formData
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 13800000000
+	//
 	// example:
 	//
 	// false
@@ -193,6 +207,8 @@ type BeeBotAssociateRequest struct {
 	//
 	// 1
 	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 293483938849493
@@ -221,7 +237,7 @@ type BeeBotAssociateRequest struct {
 	//
 	// example:
 	//
-	// 你好
+	// hello
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
@@ -277,6 +293,8 @@ type BeeBotAssociateShrinkRequest struct {
 	//
 	// 1
 	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 293483938849493
@@ -305,7 +323,7 @@ type BeeBotAssociateShrinkRequest struct {
 	//
 	// example:
 	//
-	// 你好
+	// hello
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
@@ -353,6 +371,11 @@ func (s *BeeBotAssociateShrinkRequest) SetUtterance(v string) *BeeBotAssociateSh
 }
 
 type BeeBotAssociateResponseBody struct {
+	// The access denied for detailed information.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// If OK is returned, the request is successful.
 	//
@@ -450,13 +473,17 @@ func (s *BeeBotAssociateResponseBodyData) SetSessionId(v string) *BeeBotAssociat
 }
 
 type BeeBotAssociateResponseBodyDataAssociate struct {
-	// The additional information.
+	// The metadata.
 	//
 	// example:
 	//
 	// {}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// The title of the associated question.
+	// The title of the related question.
+	//
+	// example:
+	//
+	// Policy on Withdrawal of Housing Provident Fund
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -508,7 +535,7 @@ func (s *BeeBotAssociateResponse) SetBody(v *BeeBotAssociateResponseBody) *BeeBo
 }
 
 type BeeBotChatRequest struct {
-	// The ID of the bot instance.
+	// Indicates whether the answer is in plain text or rich text.
 	//
 	// This parameter is required.
 	//
@@ -516,49 +543,51 @@ type BeeBotChatRequest struct {
 	//
 	// 1
 	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
+	// The metadata.
+	//
 	// example:
 	//
 	// 293483938849493
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The name of the intent in the dialog flow. When this parameter is specified, the bot conducts a Q\\&A based on the intent.
+	// The source of the answer.
 	//
 	// example:
 	//
 	// intent
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The source of the answer.
 	//
 	// example:
 	//
 	// ksiekdki39ksks93939
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The ID of the knowledge title in the knowledge base.
+	// The hit statement.
 	//
 	// example:
 	//
 	// 1
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The list of codes for answers from different perspectives.
+	// Beijing
 	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
-	// The ID of the visitor, which is used to identify users in the current session.
+	// The information about the slot.
 	//
 	// example:
 	//
 	// 861500000000
 	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// The nickname of the visitor in the current session.
+	// Beijing
 	//
 	// example:
 	//
 	// nick
 	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
-	// The ID of the session, which is used to identify the session and store context information of the session.
+	// The title of the related knowledge.
 	//
 	// example:
 	//
 	// en
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The input of the visitor.
+	// The title of the hit question.
 	//
 	// This parameter is required.
 	//
@@ -566,7 +595,11 @@ type BeeBotChatRequest struct {
 	//
 	// 659216218162179
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	// The user-defined parameter set in JSON format. You can specify user-defined parameters for conversation engines.
+	// The node name. When AnswerSource is set to BotFramework, a value is returned for this parameter.
+	//
+	// example:
+	//
+	// {\\"skills\\":\\"chat_search\\",\\"accessToken\\":\\"73f4d5c8e8c334d9b538890bca68ac9a\\",\\"senderStaffId\\":\\"1697204021326\\",\\"senderCorpId\\":\\"dingee291fb2828058b9\\"}
 	VendorParam map[string]interface{} `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
 }
 
@@ -634,7 +667,7 @@ func (s *BeeBotChatRequest) SetVendorParam(v map[string]interface{}) *BeeBotChat
 }
 
 type BeeBotChatShrinkRequest struct {
-	// The ID of the bot instance.
+	// Indicates whether the answer is in plain text or rich text.
 	//
 	// This parameter is required.
 	//
@@ -642,49 +675,51 @@ type BeeBotChatShrinkRequest struct {
 	//
 	// 1
 	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
+	// The metadata.
+	//
 	// example:
 	//
 	// 293483938849493
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The name of the intent in the dialog flow. When this parameter is specified, the bot conducts a Q\\&A based on the intent.
+	// The source of the answer.
 	//
 	// example:
 	//
 	// intent
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The source of the answer.
 	//
 	// example:
 	//
 	// ksiekdki39ksks93939
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The ID of the knowledge title in the knowledge base.
+	// The hit statement.
 	//
 	// example:
 	//
 	// 1
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The list of codes for answers from different perspectives.
+	// Beijing
 	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
-	// The ID of the visitor, which is used to identify users in the current session.
+	// The information about the slot.
 	//
 	// example:
 	//
 	// 861500000000
 	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// The nickname of the visitor in the current session.
+	// Beijing
 	//
 	// example:
 	//
 	// nick
 	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
-	// The ID of the session, which is used to identify the session and store context information of the session.
+	// The title of the related knowledge.
 	//
 	// example:
 	//
 	// en
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The input of the visitor.
+	// The title of the hit question.
 	//
 	// This parameter is required.
 	//
@@ -692,7 +727,11 @@ type BeeBotChatShrinkRequest struct {
 	//
 	// 659216218162179
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	// The user-defined parameter set in JSON format. You can specify user-defined parameters for conversation engines.
+	// The node name. When AnswerSource is set to BotFramework, a value is returned for this parameter.
+	//
+	// example:
+	//
+	// {\\"skills\\":\\"chat_search\\",\\"accessToken\\":\\"73f4d5c8e8c334d9b538890bca68ac9a\\",\\"senderStaffId\\":\\"1697204021326\\",\\"senderCorpId\\":\\"dingee291fb2828058b9\\"}
 	VendorParamShrink *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
 }
 
@@ -760,22 +799,27 @@ func (s *BeeBotChatShrinkRequest) SetVendorParamShrink(v string) *BeeBotChatShri
 }
 
 type BeeBotChatResponseBody struct {
+	// Access denied for detailed information.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request is successful.
+	// The content of the text message.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The list of the recommended knowledge. When AnswerType is set to Recommend, the list of the recommended knowledge is returned by the bot for this parameter.
 	Data *BeeBotChatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// Indicates whether the answer is in plain text or rich text.
 	//
 	// example:
 	//
 	// none
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The passthrough parameter.
 	//
 	// example:
 	//
@@ -817,15 +861,15 @@ func (s *BeeBotChatResponseBody) SetRequestId(v string) *BeeBotChatResponseBody 
 }
 
 type BeeBotChatResponseBodyData struct {
-	// The ID of the response message.
+	// The ID of the recommended knowledge.
 	//
 	// example:
 	//
 	// ab6be8af-cee4-40c3-9919-2ac7461d7d98
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The list of messages.
+	// The source of the recommended answer. When AnswerType is set to Recommend, a value is returned for this parameter.
 	Messages []*BeeBotChatResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// The ID of the session.
+	// The source of the recommended answer.
 	//
 	// example:
 	//
@@ -857,23 +901,23 @@ func (s *BeeBotChatResponseBodyData) SetSessionId(v string) *BeeBotChatResponseB
 }
 
 type BeeBotChatResponseBodyDataMessages struct {
-	// When the AnswerType parameter is set to Recommend, this parameter indicates the source of the recommended answer.
+	// When AnswerType is Recommended, this field indicates the source of the recommended answer.
 	//
 	// example:
 	//
 	// KNOWLEDGE
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// The type of the answer.
+	// The type of this message.
 	//
 	// example:
 	//
 	// Text
 	AnswerType *string `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	// When the AnswerType parameter is set to Knowledge, this parameter contains the Knowledge object returned by the bot.
+	// When AnswerType is Knowledge, this field contains the Knowledge object returned by the robot.
 	Knowledge *BeeBotChatResponseBodyDataMessagesKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
-	// The list of recommended knowledge. When the AnswerType parameter is set to Recommend, this parameter is returned.
+	// When AnswerType is Recommended, this field contains a list of Recommendations returned by the robot.
 	Recommends []*BeeBotChatResponseBodyDataMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
-	// When the AnswerType parameter is set to Text, this parameter contains the Text object returned by the bot.
+	// When AnswerType is Text, this field contains the Text object returned by the robot.
 	Text *BeeBotChatResponseBodyDataMessagesText `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
 }
 
@@ -911,35 +955,55 @@ func (s *BeeBotChatResponseBodyDataMessages) SetText(v *BeeBotChatResponseBodyDa
 }
 
 type BeeBotChatResponseBodyDataMessagesKnowledge struct {
-	// The source of the answer.
+	// Distinguish answer types.
 	//
 	// example:
 	//
 	// KnowledgeBase
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// The category of the knowledge.
+	// Knowledge category.
+	//
+	// example:
+	//
+	// provident fund.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The content of the hit question.
+	// Hit the content of the problem.
+	//
+	// example:
+	//
+	// Provident fund withdrawal, please search for provident fund withdrawal on the homepage and submit the form for handling the matter.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Indicates whether the answer is in plain text or rich text.
+	// Indication of plain/rich text answers.
 	//
 	// example:
 	//
 	// PLAIN_TEXT
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The hit text.
+	// Hit statement.
+	//
+	// example:
+	//
+	// provident fund
 	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	// The ID of the hit question in the knowledge base.
+	// The ID of the hit problem in the knowledge base.
 	//
 	// example:
 	//
 	// 735898
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The list of the related knowledge.
+	// Related knowledge list.
 	RelatedKnowledges []*BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges `json:"RelatedKnowledges,omitempty" xml:"RelatedKnowledges,omitempty" type:"Repeated"`
-	// The summary to the hit question.
+	// Introduction to hit problems.
+	//
+	// example:
+	//
+	// Withdrawal of housing provident fund
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The title of the hit question.
+	// Hit the title of the problem.
+	//
+	// example:
+	//
+	// Withdrawal of housing provident fund.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -997,13 +1061,17 @@ func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetTitle(v string) *BeeBot
 }
 
 type BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges struct {
-	// The ID of the related knowledge.
+	// The ID of knowledge associated with knowledge.
 	//
 	// example:
 	//
 	// 735899
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The title of the related knowledge.
+	// The title of related knowledge.
+	//
+	// example:
+	//
+	// Withdrawal of housing provident fund.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -1026,19 +1094,23 @@ func (s *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) SetTitle(
 }
 
 type BeeBotChatResponseBodyDataMessagesRecommends struct {
-	// The source of the recommended answer.
+	// Clarify the identification of the source.
 	//
 	// example:
 	//
 	// KNOWLEDGE
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// The ID of the recommended knowledge.
+	// Clarify the knowledge ID.
 	//
 	// example:
 	//
 	// 4548
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The title of the recommended knowledge. Valid values: the entity in graph-based question answering, the knowledge title in knowledge-based question answering, or the column value in table-based question answering.
+	// Clarify the content, which may be the entities of graph Q&A, the knowledge titles of knowledge Q&A, or the column values of table Q&A.
+	//
+	// example:
+	//
+	// Test plain text.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -1066,43 +1138,71 @@ func (s *BeeBotChatResponseBodyDataMessagesRecommends) SetTitle(v string) *BeeBo
 }
 
 type BeeBotChatResponseBodyDataMessagesText struct {
-	// The source of the answer.
+	// Distinguish answer types.
 	//
 	// example:
 	//
 	// BotFramework
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
 	// The content of the text message.
+	//
+	// example:
+	//
+	// May I ask where you want to check the weather?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Indicates whether the answer is in plain text or rich text.
+	// Indication of plain/rich text answers.
 	//
 	// example:
 	//
 	// PLAIN_TEXT
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The name of the dialog. When the AnswerSource parameter is set to BotFramework, the value of this parameter is returned.
+	// When AnswerSource is BotFramework, this field returns the name of the dialogue unit.
+	//
+	// example:
+	//
+	// Example: Checking Weather
 	DialogName *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
-	// The passthrough parameters are returned.
+	// This field returns transparent parameters.
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// When the AnswerSource parameter is set to BotFramework, the value of this parameter is returned.
+	// When AnswerSource is BotFramework, this field returns a transparent parameter.
 	ExternalFlags map[string]interface{} `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
-	// The hit text.
+	// Hit statement.
+	//
+	// example:
+	//
+	// Check the weather.
 	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	// The name of the intent. When the AnswerSource parameter is set to BotFramework, the value of this parameter is returned.
+	// When AnswerSource is BotFramework, this field returns the intent name.
+	//
+	// example:
+	//
+	// Check weather intention.
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// The metadata.
+	// Metadata.
+	//
+	// example:
+	//
+	// [[{\\"columnName\\":\\"name\\",\\"stringValue\\":\\"wangshanshan\\"}]]
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// The ID of the node. When the AnswerSource parameter is set to BotFramework, the value of this parameter is returned.
+	// When AnswerSource is BotFramework, this field returns the node ID.
 	//
 	// example:
 	//
 	// 1410-c7a72a78.__city
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node. When the AnswerSource parameter is set to BotFramework, the value of this parameter is returned.
+	// When AnswerSource is BotFramework, this field returns the node name.
+	//
+	// example:
+	//
+	// Example: Checking Weather Check the weather and fill in the slots__ city
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The list of slots.
+	// Slot information list.
 	Slots []*BeeBotChatResponseBodyDataMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
-	// The title of the chitchat.
+	// Custom Chat Topic Title.
+	//
+	// example:
+	//
+	// greet.
 	UserDefinedChatTitle *string `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
 }
 
@@ -1180,21 +1280,25 @@ func (s *BeeBotChatResponseBodyDataMessagesText) SetUserDefinedChatTitle(v strin
 }
 
 type BeeBotChatResponseBodyDataMessagesTextSlots struct {
-	// Indicates whether the slot is hit.
+	// Whether it hits.
 	//
 	// example:
 	//
 	// false
 	Hit *bool `json:"Hit,omitempty" xml:"Hit,omitempty"`
-	// The name.
+	// Name.
+	//
+	// example:
+	//
+	// Check weather intentions. city
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The original value.
+	// Original value.
 	//
 	// example:
 	//
 	// Beijing
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The specific value.
+	// Specific values.
 	//
 	// example:
 	//
@@ -1300,6 +1404,11 @@ func (s *ChatappBindWabaRequest) SetWabaId(v string) *ChatappBindWabaRequest {
 }
 
 type ChatappBindWabaResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -1311,7 +1420,7 @@ type ChatappBindWabaResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *ChatappBindWabaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
 	//
@@ -1325,6 +1434,12 @@ type ChatappBindWabaResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -1370,13 +1485,13 @@ func (s *ChatappBindWabaResponseBody) SetSuccess(v bool) *ChatappBindWabaRespons
 }
 
 type ChatappBindWabaResponseBodyData struct {
-	// The space ID of the user.
+	// The space ID of the user within the independent software vendor (ISV) account.
 	//
 	// example:
 	//
 	// C02029392939939
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The ID of the WhatsApp Business account.
+	// The ID of the WhatsApp Business Account (WABA).
 	//
 	// example:
 	//
@@ -1617,21 +1732,21 @@ func (s *ChatappEmbedSignUpResponse) SetBody(v *ChatappEmbedSignUpResponseBody) 
 }
 
 type ChatappMigrationRegisterRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// None
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 293483938849493
+	// 29348393884****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The phone number.
+	// phone number.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 86138001234
+	// 8613800****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
@@ -1654,6 +1769,11 @@ func (s *ChatappMigrationRegisterRequest) SetPhoneNumber(v string) *ChatappMigra
 }
 
 type ChatappMigrationRegisterResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -1665,7 +1785,7 @@ type ChatappMigrationRegisterResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -1948,6 +2068,10 @@ func (s *ChatappPhoneNumberDeregisterRequest) SetPhoneNumber(v string) *ChatappP
 
 type ChatappPhoneNumberDeregisterResponseBody struct {
 	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code.
 	//
@@ -1960,6 +2084,10 @@ type ChatappPhoneNumberDeregisterResponseBody struct {
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -2078,6 +2206,11 @@ func (s *ChatappPhoneNumberRegisterRequest) SetResourceOwnerId(v int64) *Chatapp
 }
 
 type ChatappPhoneNumberRegisterResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -2101,6 +2234,12 @@ type ChatappPhoneNumberRegisterResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -2608,18 +2747,24 @@ func (s *ChatappVerifyAndRegisterResponse) SetBody(v *ChatappVerifyAndRegisterRe
 }
 
 type CreateChatappMigrationInitiateRequest struct {
+	// The code of the country or region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The space ID of the user within the ISV account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 293483938849493****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The mobile number without the country code or region code.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2652,16 +2797,32 @@ func (s *CreateChatappMigrationInitiateRequest) SetMobileNumber(v string) *Creat
 }
 
 type CreateChatappMigrationInitiateResponseBody struct {
+	// The information about the request denial..
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	//
+	// 	- A value of OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *CreateChatappMigrationInitiateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
@@ -2702,14 +2863,20 @@ func (s *CreateChatappMigrationInitiateResponseBody) SetRequestId(v string) *Cre
 }
 
 type CreateChatappMigrationInitiateResponseBodyData struct {
+	// The ID of the mobile number.
+	//
 	// example:
 	//
 	// 82828893332
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The mobile number.
+	//
 	// example:
 	//
 	// 8613900001234
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The state of the mobile number. Only MIGRATING may be returned, which indicates that the mobile number is being migrated.
+	//
 	// example:
 	//
 	// MIGRATING
@@ -2943,7 +3110,7 @@ func (s *CreateChatappTemplateRequest) SetTemplateType(v string) *CreateChatappT
 }
 
 type CreateChatappTemplateRequestComponents struct {
-	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid only if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY for a WhatsApp message template.
+	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY for a WhatsApp message template.
 	//
 	// example:
 	//
@@ -2951,24 +3118,25 @@ type CreateChatappTemplateRequestComponents struct {
 	AddSecretRecommendation *bool `json:"AddSecretRecommendation,omitempty" xml:"AddSecretRecommendation,omitempty"`
 	// The buttons. Specify this parameter only if you set the Type sub-parameter of the Components parameter to **BUTTONS**.
 	//
-	// >  The following section describes the limits on the number of buttons in a WhatsApp message.
+	// >  ####
 	//
-	// 	- A marketing or utility WhatsApp message template supports up to 10 buttons.
+	// 	- A marketing or utility WhatsApp message template can contain up to 10 buttons.
 	//
 	// 	- A WhatsApp message template can contain only one phone call button.
 	//
 	// 	- A WhatsApp message template can contain up to two URL buttons.
 	//
-	// 	- In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
+	// 	- In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
 	Buttons []*CreateChatappTemplateRequestComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
 	// The description of the document.
 	//
 	// example:
 	//
 	// This is a video
-	Caption *string                                        `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	Cards   []*CreateChatappTemplateRequestComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
-	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER in a WhatsApp message template. The validity period of the verification code is displayed in the footer.
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The carousel cards of the carousel template.
+	Cards []*CreateChatappTemplateRequestComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
+	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER. The validity period of the verification code is displayed in the footer.
 	//
 	// example:
 	//
@@ -2992,7 +3160,7 @@ type CreateChatappTemplateRequestComponents struct {
 	//
 	// docx
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The type of the media resources that are included in the message. Valid values:
+	// The type of the media resource. Valid values:
 	//
 	// 	- **TEXT**
 	//
@@ -3006,13 +3174,15 @@ type CreateChatappTemplateRequestComponents struct {
 	//
 	// TEXT
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Specifies whether the coupon code has an expiration time. Specify this parameter if the Type sub-parameter of the Components parameter is set to LIMITED_TIME_OFFER.
+	//
 	// example:
 	//
 	// true
 	HasExpiration *bool `json:"HasExpiration,omitempty" xml:"HasExpiration,omitempty"`
 	// The text of the message that you want to send.
 	//
-	// >  If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter is empty.
+	// >  If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter must be empty.
 	//
 	// example:
 	//
@@ -3034,13 +3204,17 @@ type CreateChatappTemplateRequestComponents struct {
 	//
 	// 	- **BUTTONS**
 	//
+	// 	- **CAROUSEL**
+	//
+	// 	- **LIMITED_TIME_OFFER**
+	//
 	// >
 	//
-	// 	- In WhatsApp message templates, a **BODY*	- component cannot exceed 1,024 characters in length, and a **HEADER*	- or **FOOTER*	- component cannot exceed 60 characters in length.
+	// 	- In a WhatsApp message template, a **Body*	- component cannot exceed 1,024 characters in length. A **HEADER*	- or **FOOTER*	- component cannot exceed 60 characters in length.
 	//
-	// 	- **FOOTER*	- components are not supported in Viber message templates.
+	// 	- **FOOTER**, **CAROUSEL**, and **LIMITED_TIME_OFFER*	- components are not supported in Viber message templates.
 	//
-	// 	- In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER*	- component. If a Viber message contains both text and an image, the image is placed below the text in the message received on a device.
+	// 	- In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER*	- component. If a Viber message contains text and an image, the image is placed below the text in the message received on a device.
 	//
 	// This parameter is required.
 	//
@@ -3143,27 +3317,41 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// Autofill
 	AutofillText *string `json:"AutofillText,omitempty" xml:"AutofillText,omitempty"`
+	// The coupon code. It can contain only letters and digits. You can set this parameter to a variable such as $(couponCode). Specify the value of couponCode when you send a message.
+	//
 	// example:
 	//
 	// 120293
 	CouponCode *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
+	// The Flow action.
+	//
+	// Valid values:
+	//
+	// 	- DATA_EXCHANGE
+	//
+	// 	- NAVIGATE
+	//
 	// example:
 	//
 	// NAVIGATE
 	FlowAction *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
+	// The Flow ID.
+	//
 	// example:
 	//
-	// 28383872***
+	// 479884093605183
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY for a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages are not sent to customers if they click this button.
+	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY for a WhatsApp message template. Marketing messages will not be sent to customers if you configure message sending in the Chat App Message Service console and the customers click this button.
 	//
 	// example:
 	//
 	// false
 	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	// The first screen in the Flow. This parameter is required if FlowAction is set to NAVIGATE.
+	//
 	// example:
 	//
-	// SIGN_UP
+	// DETAILS
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
 	// Deprecated
 	//
@@ -3173,7 +3361,7 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// com.demo
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	// The phone number. This parameter is valid only if the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
+	// The phone number. This parameter is valid only when the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
 	//
 	// example:
 	//
@@ -3186,7 +3374,8 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	// example:
 	//
 	// wi299382
-	SignatureHash *string                                                       `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	// List of supported apps.
 	SupportedApps []*CreateChatappTemplateRequestComponentsButtonsSupportedApps `json:"SupportedApps,omitempty" xml:"SupportedApps,omitempty" type:"Repeated"`
 	// The display name of the button.
 	//
@@ -3202,17 +3391,13 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// 	- **QUICK_REPLY**: quick reply button
 	//
-	// 	- **COPY_CODE**: copy code button if Category is set to AUTHENTICATION
+	// 	- **COPY_CODE**: copy code button
 	//
 	// 	- **ONE_TAP**: one-tap autofill button if Category is set to AUTHENTICATION
 	//
 	// >
 	//
-	// 	- In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
-	//
-	// 	- You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a WhatsApp message template.
-	//
-	// 	- If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
+	// 	- If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If Type is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If Type is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
 	//
 	// 	- You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
 	//
@@ -3222,7 +3407,7 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// PHONE_NUMBER
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL to which you are redirected when you click the URL button.
+	// The URL to be accessed when you click the URL button.
 	//
 	// example:
 	//
@@ -3319,13 +3504,17 @@ func (s *CreateChatappTemplateRequestComponentsButtons) SetUrlType(v string) *Cr
 }
 
 type CreateChatappTemplateRequestComponentsButtonsSupportedApps struct {
+	// The name of the Android application package. This parameter is required if you create an Android application.
+	//
 	// example:
 	//
-	// com.aliyun.pack.***
+	// com.kuaidian.waimaistaff
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// WhatsApp template is required when Category is Authoritative and Button Type is ONE_TAP/ZERO-TAP, indicating the signature hash value of the WhatsApp application.
+	//
 	// example:
 	//
-	// kdikie9398k
+	// ieid83kdiek
 	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
 }
 
@@ -3348,6 +3537,8 @@ func (s *CreateChatappTemplateRequestComponentsButtonsSupportedApps) SetSignatur
 }
 
 type CreateChatappTemplateRequestComponentsCards struct {
+	// The components of the carousel card.
+	//
 	// This parameter is required.
 	CardComponents []*CreateChatappTemplateRequestComponentsCardsCardComponents `json:"CardComponents,omitempty" xml:"CardComponents,omitempty" type:"Repeated"`
 }
@@ -3366,21 +3557,40 @@ func (s *CreateChatappTemplateRequestComponentsCards) SetCardComponents(v []*Cre
 }
 
 type CreateChatappTemplateRequestComponentsCardsCardComponents struct {
+	// The buttons. Specify this parameter only if you set the Type sub-parameter of the CardComponents parameter to BUTTONS. A carousel card can contain up to two buttons.
 	Buttons []*CreateChatappTemplateRequestComponentsCardsCardComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
+	// The type of the media resource. This parameter is valid if the Type sub-parameter of the CardComponents parameter is set to HEADER. Valid values:
+	//
+	// 	- **IMAGE**
+	//
+	// 	- **VIDEO**
+	//
 	// example:
 	//
 	// IMAGE
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The body content of the carousel card.
+	//
 	// example:
 	//
 	// Who is the very powerful team
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The type of the component. Valid values:
+	//
+	// 	- **BODY**
+	//
+	// 	- **HEADER**
+	//
+	// 	- **BUTTONS**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BODY
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the media resource.
+	//
 	// example:
 	//
 	// https://alibaba.com/img.png
@@ -3421,24 +3631,44 @@ func (s *CreateChatappTemplateRequestComponentsCardsCardComponents) SetUrl(v str
 }
 
 type CreateChatappTemplateRequestComponentsCardsCardComponentsButtons struct {
+	// The phone number.
+	//
 	// example:
 	//
 	// +8613800
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The text of the button.
+	//
 	// example:
 	//
 	// Call me
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The type of the button. Valid values:
+	//
+	// 	- **PHONE_NUMBER**: phone call button
+	//
+	// 	- **URL**: URL button
+	//
+	// 	- **QUICK_REPLY**: quick reply button
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PHONE_NUMBER
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL to which you are redirected when you click the URL button.
+	//
 	// example:
 	//
 	// https://alibaba.com/xx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The type of the URL. Valid values:
+	//
+	// 	- **static**
+	//
+	// 	- **dynamic**
+	//
 	// example:
 	//
 	// static
@@ -3653,6 +3883,11 @@ func (s *CreateChatappTemplateShrinkRequest) SetTemplateType(v string) *CreateCh
 }
 
 type CreateChatappTemplateResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -3877,6 +4112,10 @@ type CreateFlowResponseBody struct {
 	// The returned data.
 	Data *CreateFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -3984,10 +4223,14 @@ func (s *CreateFlowResponse) SetBody(v *CreateFlowResponseBody) *CreateFlowRespo
 }
 
 type CreatePhoneMessageQrdlRequest struct {
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 838833
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Produce QR code image format.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4002,6 +4245,8 @@ type CreatePhoneMessageQrdlRequest struct {
 	//
 	// 861380000
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Message content.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4039,12 +4284,16 @@ func (s *CreatePhoneMessageQrdlRequest) SetPrefilledMessage(v string) *CreatePho
 }
 
 type CreatePhoneMessageQrdlResponseBody struct {
+	// If OK is returned, the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *CreatePhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// none
@@ -4086,10 +4335,14 @@ func (s *CreatePhoneMessageQrdlResponseBody) SetRequestId(v string) *CreatePhone
 }
 
 type CreatePhoneMessageQrdlResponseBodyData struct {
+	// The URL of the deep link.
+	//
 	// example:
 	//
 	// https://wa.qrdl/
 	DeepLinkUrl *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
+	// The format of the generated image.
+	//
 	// example:
 	//
 	// PNG
@@ -4100,14 +4353,20 @@ type CreatePhoneMessageQrdlResponseBodyData struct {
 	//
 	// 8613800
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The message content.
+	//
 	// example:
 	//
 	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	// The URL of the QR code.
+	//
 	// example:
 	//
 	// http://img.png
 	QrImageUrl *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
+	// The mode of the quick-response (QR) code.
+	//
 	// example:
 	//
 	// D9II3***
@@ -4182,13 +4441,13 @@ func (s *CreatePhoneMessageQrdlResponse) SetBody(v *CreatePhoneMessageQrdlRespon
 }
 
 type DeleteChatappTemplateRequest struct {
-	// The space ID of the user under the ISV account.
+	// The space ID of the RAM user within the ISV account.
 	//
 	// example:
 	//
 	// 28251486512358****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
@@ -4196,12 +4455,14 @@ type DeleteChatappTemplateRequest struct {
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	// The template language.
+	//
 	// example:
 	//
 	// zh_CN
@@ -4209,16 +4470,20 @@ type DeleteChatappTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The code of the message template.
+	// The template code.
 	//
 	// example:
 	//
 	// 744c4b5c79c9432497a075bdfca3****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
-	// test
+	// test_name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The template type. This parameter is required if you delete a template in a language.
+	//
 	// example:
 	//
 	// WHATSAPP
@@ -4284,29 +4549,40 @@ func (s *DeleteChatappTemplateRequest) SetTemplateType(v string) *DeleteChatappT
 }
 
 type DeleteChatappTemplateResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The response code.
 	//
-	// 	- A value of OK indicates that the call is successful.
+	// 	- The value OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// 	- For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -4418,6 +4694,10 @@ type DeleteFlowResponseBody struct {
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -4480,6 +4760,8 @@ func (s *DeleteFlowResponse) SetBody(v *DeleteFlowResponseBody) *DeleteFlowRespo
 }
 
 type DeletePhoneMessageQrdlRequest struct {
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 883873773
@@ -4492,6 +4774,8 @@ type DeletePhoneMessageQrdlRequest struct {
 	//
 	// 861380000
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// QR code encoding.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4524,10 +4808,21 @@ func (s *DeletePhoneMessageQrdlRequest) SetQrdlCode(v string) *DeletePhoneMessag
 }
 
 type DeletePhoneMessageQrdlResponseBody struct {
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -4625,10 +4920,14 @@ func (s *DeprecateFlowRequest) SetFlowId(v string) *DeprecateFlowRequest {
 }
 
 type DeprecateFlowResponseBody struct {
+	// The result returns OK as normal.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error description information.
+	//
 	// example:
 	//
 	// None
@@ -5108,6 +5407,8 @@ type GetChatappTemplateDetailRequest struct {
 	//
 	// ****4b5c79c9432497a075bdfca36bf5
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Name of a template.
+	//
 	// example:
 	//
 	// test_name
@@ -5170,6 +5471,11 @@ func (s *GetChatappTemplateDetailRequest) SetTemplateType(v string) *GetChatappT
 }
 
 type GetChatappTemplateDetailResponseBody struct {
+	// Access denied details.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code.
 	//
@@ -5401,13 +5707,23 @@ func (s *GetChatappTemplateDetailResponseBodyData) SetTemplateType(v string) *Ge
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponents struct {
-	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY in a WhatsApp message template.
+	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY for a WhatsApp message template.
 	//
 	// example:
 	//
 	// false
 	AddSecretRecommendation *bool `json:"AddSecretRecommendation,omitempty" xml:"AddSecretRecommendation,omitempty"`
-	// The buttons. Specify this parameter only if you set the Type sub-parameter of the Components parameter to **BUTTONS**. Before you specify this parameter, the format of the value must be changed from JSON to String.
+	// The buttons. This parameter is returned only if the Type sub-parameter of the Components parameter is set to **BUTTONS**.
+	//
+	// >  ####
+	//
+	// 	- A marketing or utility WhatsApp message template can contain up to 10 buttons.
+	//
+	// 	- A WhatsApp message template can contain only one phone call button.
+	//
+	// 	- A WhatsApp message template can contain up to two URL buttons.
+	//
+	// 	- In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
 	Buttons []*GetChatappTemplateDetailResponseBodyDataComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
 	// The description of the document.
 	//
@@ -5417,13 +5733,13 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The carousel cards.
 	Cards []*GetChatappTemplateDetailResponseBodyDataComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
-	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER in a WhatsApp message template. The validity period of the verification code is displayed in the footer.
+	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER for a WhatsApp message template. The validity period of the verification code is displayed in the footer.
 	//
 	// example:
 	//
 	// 5
 	CodeExpirationMinutes *int32 `json:"CodeExpirationMinutes,omitempty" xml:"CodeExpirationMinutes,omitempty"`
-	// The length of the video in the Viber message template. Valid values: 0 to 600. Unit: seconds.
+	// The length of the video in the Viber message template. Unit: seconds. Valid values: 0 to 600.
 	//
 	// example:
 	//
@@ -5489,7 +5805,7 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	//
 	// https://img.png
 	ThumbUrl *string `json:"ThumbUrl,omitempty" xml:"ThumbUrl,omitempty"`
-	// The type of the component. Valid values:
+	// The component type. Valid values:
 	//
 	// 	- **BODY**
 	//
@@ -5499,13 +5815,17 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	//
 	// 	- **BUTTONS**
 	//
+	// 	- **CAROUSEL**
+	//
+	// 	- **LIMITED_TIME_OFFER**
+	//
 	// >
 	//
-	// 	- The following limits apply to components in WhatsApp message templates: A **BODY*	- component cannot exceed 1,024 characters in length. A **HEADER*	- or **FOOTER*	- component cannot exceed 60 characters in length.
+	// 	- In a WhatsApp message template, a **Body*	- component cannot exceed 1,024 characters in length. A **HEADER*	- or **FOOTER*	- component cannot exceed 60 characters in length.
 	//
-	// 	- **FOOTER*	- components are not supported in Viber message templates.
+	// 	- **FOOTER**, **CAROUSEL**, and **LIMITED_TIME_OFFER*	- components are not supported in Viber message templates.
 	//
-	// 	- In a Viber message template, media resources such as images, videos, and documents are placed in the **HEADER*	- component. If a Viber message contains both text and an image, the image is placed below the text in the message received on a device.
+	// 	- In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER*	- component. If a Viber message contains text and an image, the image is placed below the text in the message received on a device.
 	//
 	// example:
 	//
@@ -5517,7 +5837,7 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	//
 	// https://image.developer.aliyundoc.com
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// Indicates whether the coupon code will expire in the limited-time offer template.
+	// Indicates whether the coupon code has an expiration time in the limited-time offer template.
 	//
 	// example:
 	//
@@ -5643,29 +5963,25 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	CouponCode *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
 	// The extended fields.
 	ExtendAttrs *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs `json:"ExtendAttrs,omitempty" xml:"ExtendAttrs,omitempty" type:"Struct"`
-	// flow 数据事件类型
-	//
-	// 取值范围：NAVIGATE/DATA_EXCHANGE
+	// The Flow action. Valid values: NAVIGATE and DATA_EXCHANGE.
 	//
 	// example:
 	//
 	// NAVIGATE
 	FlowAction *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
-	// Flow ID
+	// The Flow ID.
 	//
 	// example:
 	//
 	// 3838292983
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
+	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY for a WhatsApp message template. Marketing messages will not be sent to customers if you configure message sending in the Chat App Message Service console and the customers click this button.
 	//
 	// example:
 	//
 	// false
 	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
-	// 跳转屏
-	//
-	// 在FlowAction=NAVIGATE时必填
+	// The first screen in the Flow. This parameter is returned if FlowAction is set to NAVIGATE.
 	//
 	// example:
 	//
@@ -5688,7 +6004,8 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	// example:
 	//
 	// 2993839
-	SignatureHash *string                                                                   `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	// The apps that support one-tap authentication and zero-tap authentication.
 	SupportedApps []*GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps `json:"SupportedApps,omitempty" xml:"SupportedApps,omitempty" type:"Repeated"`
 	// The display name of the button.
 	//
@@ -5696,7 +6013,7 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	//
 	// Call
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The type of the button. Valid values:
+	// The button type. Valid values:
 	//
 	// 	- **PHONE_NUMBER**: phone call button
 	//
@@ -5704,11 +6021,13 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	//
 	// 	- **QUICK_REPLY**: quick reply button
 	//
+	// 	- **COPY_CODE**: copy code button
+	//
+	// 	- **ONE_TAP**: one-tap autofill button if Category is set to AUTHENTICATION
+	//
 	// >
 	//
-	// 	- In a message template, a quick reply button cannot be used together with a phone call button or a URL button.
-	//
-	// 	- You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a message template.
+	// 	- If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If Type is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If Type is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
 	//
 	// 	- You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
 	//
@@ -5722,7 +6041,7 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	//
 	// https://example.com
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The type of the URL. Valid values:
+	// The URL type. Valid values:
 	//
 	// 	- **static**
 	//
@@ -5884,7 +6203,17 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs) S
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps struct {
-	PackageName   *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// The app package name.
+	//
+	// example:
+	//
+	// com.test
+	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// The app signing key hash.
+	//
+	// example:
+	//
+	// 29kdkeik939
 	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
 }
 
@@ -5907,7 +6236,7 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps)
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsCards struct {
-	// The card components.
+	// The components of the carousel card.
 	CardComponents []*GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents `json:"CardComponents,omitempty" xml:"CardComponents,omitempty" type:"Repeated"`
 }
 
@@ -5925,27 +6254,27 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsCards) SetCardCompone
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents struct {
-	// The card buttons.
+	// The buttons of the carousel card.
 	Buttons []*GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	// The type of the header in the carousel template. The header can only be an image or a video. The headers of all cards must be the same.
+	// The type of the header in the carousel template. The header can only be an image or a video. The headers of all carousel cards must be the same. The type of the media resources that are included in the message. Valid values: IMGAGE and VIDEO.
 	//
 	// example:
 	//
 	// HEADER
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The card text.
+	// The text of the carousel card.
 	//
 	// example:
 	//
 	// Body
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The type of the component.
+	// The component type.
 	//
 	// example:
 	//
 	// HEADER
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL address.
+	// The URL.
 	//
 	// example:
 	//
@@ -5993,7 +6322,7 @@ type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButton
 	//
 	// +86138000
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The button content.
+	// The button text.
 	//
 	// example:
 	//
@@ -6005,7 +6334,7 @@ type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButton
 	//
 	// URL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL to be accessed when you click the URL button.
+	// The URL to which you are redirected when you click the URL button.
 	//
 	// example:
 	//
@@ -6437,7 +6766,7 @@ func (s *GetChatappTemplateMetricResponse) SetBody(v *GetChatappTemplateMetricRe
 }
 
 type GetChatappUploadAuthorizationRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -6461,6 +6790,11 @@ func (s *GetChatappUploadAuthorizationRequest) SetCustSpaceId(v string) *GetChat
 }
 
 type GetChatappUploadAuthorizationResponseBody struct {
+	// Access denied for detailed information.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -6472,7 +6806,7 @@ type GetChatappUploadAuthorizationResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetChatappUploadAuthorizationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
 	//
@@ -6540,7 +6874,7 @@ type GetChatappUploadAuthorizationResponseBodyData struct {
 	//
 	// oss
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The directory to which a file is uploaded in OSS.
+	// The directory to which the file is uploaded in Object Storage Service (OSS).
 	//
 	// example:
 	//
@@ -6859,6 +7193,11 @@ func (s *GetCommerceSettingRequest) SetResourceOwnerId(v int64) *GetCommerceSett
 }
 
 type GetCommerceSettingResponseBody struct {
+	// Access denied for detailed information.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code.
 	//
@@ -6876,7 +7215,7 @@ type GetCommerceSettingResponseBody struct {
 	//
 	// example:
 	//
-	// OK
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -6884,6 +7223,12 @@ type GetCommerceSettingResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -6929,13 +7274,21 @@ func (s *GetCommerceSettingResponseBody) SetSuccess(v bool) *GetCommerceSettingR
 }
 
 type GetCommerceSettingResponseBodyData struct {
-	// Indicates whether the shopping cart button is displayed.
+	// Indicates whether the shopping cart button is displayed. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
 	// false
 	CartEnable *bool `json:"CartEnable,omitempty" xml:"CartEnable,omitempty"`
-	// Indicates whether the catalog button is displayed.
+	// Indicates whether the catalog button is displayed. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
@@ -6991,6 +7344,8 @@ func (s *GetCommerceSettingResponse) SetBody(v *GetCommerceSettingResponseBody) 
 }
 
 type GetConversationalAutomationRequest struct {
+	// The space ID of the RAM user within the independent software vendor (ISV) account or the instance ID of the customer of Alibaba Cloud.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6998,11 +7353,13 @@ type GetConversationalAutomationRequest struct {
 	// cams-3ie***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number of the enterprise.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 86130000***
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7042,20 +7399,42 @@ func (s *GetConversationalAutomationRequest) SetResourceOwnerId(v int64) *GetCon
 }
 
 type GetConversationalAutomationResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetConversationalAutomationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -7101,16 +7480,22 @@ func (s *GetConversationalAutomationResponseBody) SetSuccess(v bool) *GetConvers
 }
 
 type GetConversationalAutomationResponseBodyData struct {
+	// The commands.
 	Commands []*GetConversationalAutomationResponseBodyDataCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// Indicates whether the welcoming message is enabled.
+	//
 	// example:
 	//
 	// true
 	EnableWelcomeMessage *bool `json:"EnableWelcomeMessage,omitempty" xml:"EnableWelcomeMessage,omitempty"`
+	// The phone number of the enterprise.
+	//
 	// example:
 	//
 	// 86138****
-	PhoneNumber *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	Prompts     []*string `json:"Prompts,omitempty" xml:"Prompts,omitempty" type:"Repeated"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The opening remarks.
+	Prompts []*string `json:"Prompts,omitempty" xml:"Prompts,omitempty" type:"Repeated"`
 }
 
 func (s GetConversationalAutomationResponseBodyData) String() string {
@@ -7142,10 +7527,14 @@ func (s *GetConversationalAutomationResponseBodyData) SetPrompts(v []*string) *G
 }
 
 type GetConversationalAutomationResponseBodyDataCommands struct {
+	// The description of the command.
+	//
 	// example:
 	//
 	// description
 	CommandDescription *string `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
+	// The name of the command.
+	//
 	// example:
 	//
 	// common1
@@ -7244,6 +7633,10 @@ type GetFlowResponseBody struct {
 	// The returned data.
 	Data *GetFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -7467,13 +7860,20 @@ func (s *GetFlowJSONAssestRequest) SetFlowId(v string) *GetFlowJSONAssestRequest
 }
 
 type GetFlowJSONAssestResponseBody struct {
+	// If OK is returned, the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
-	Data    *GetFlowJSONAssestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data *GetFlowJSONAssestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error description information.
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -7732,24 +8132,32 @@ func (s *GetFlowPreviewUrlResponse) SetBody(v *GetFlowPreviewUrlResponseBody) *G
 }
 
 type GetMigrationVerifyCodeRequest struct {
+	// The space ID of the user under the independent software vendor (ISV) account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 293483938849493
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh_CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The method to obtain the verification code. Valid values: SMS and VOICE.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sms
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// Phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7787,16 +8195,32 @@ func (s *GetMigrationVerifyCodeRequest) SetPhoneNumber(v string) *GetMigrationVe
 }
 
 type GetMigrationVerifyCodeResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The HTTP status code returned.
+	//
+	// 	- A value of OK indicates that the call is successful.
+	//
+	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetMigrationVerifyCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
@@ -7837,10 +8261,14 @@ func (s *GetMigrationVerifyCodeResponseBody) SetRequestId(v string) *GetMigratio
 }
 
 type GetMigrationVerifyCodeResponseBodyData struct {
+	// The ID of the number.
+	//
 	// example:
 	//
 	// 82828893332
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Phone number.
+	//
 	// example:
 	//
 	// 8613800001234
@@ -7895,6 +8323,8 @@ func (s *GetMigrationVerifyCodeResponse) SetBody(v *GetMigrationVerifyCodeRespon
 }
 
 type GetPermissionByCodeRequest struct {
+	// Authorize code information.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7935,6 +8365,8 @@ func (s *GetPermissionByCodeRequest) SetPermissions(v []*string) *GetPermissionB
 }
 
 type GetPermissionByCodeShrinkRequest struct {
+	// Authorize code information.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7985,6 +8417,8 @@ type GetPermissionByCodeResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error description information.
+	//
 	// example:
 	//
 	// SUCCESS
@@ -8050,6 +8484,8 @@ func (s *GetPermissionByCodeResponse) SetBody(v *GetPermissionByCodeResponseBody
 }
 
 type GetPhoneEncryptionPublicKeyRequest struct {
+	// The space ID of the user under the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 393838848
@@ -8083,13 +8519,24 @@ func (s *GetPhoneEncryptionPublicKeyRequest) SetPhoneNumber(v string) *GetPhoneE
 }
 
 type GetPhoneEncryptionPublicKeyResponseBody struct {
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
-	Data    *GetPhoneEncryptionPublicKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data *GetPhoneEncryptionPublicKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error description information.
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -8435,6 +8882,10 @@ type GetPreValidatePhoneIdResponseBody struct {
 	// The returned data.
 	Data *GetPreValidatePhoneIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -8702,16 +9153,30 @@ func (s *GetWhatsappConnectionCatalogResponse) SetBody(v *GetWhatsappConnectionC
 }
 
 type GetWhatsappHealthStatusRequest struct {
+	// The space ID of the RAM user within the independent software vendor (ISV) account or the instance ID of the customer of Alibaba Cloud.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2993****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The template language.
+	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The node type.
+	//
+	// Valid values:
+	//
+	// 	- template: message template
+	//
+	// 	- phone: phone number
+	//
+	// 	- waba: WhatsApp Business Account (WABA)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8719,12 +9184,16 @@ type GetWhatsappHealthStatusRequest struct {
 	// waba
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number of the enterprise.
+	//
 	// example:
 	//
 	// 86138***
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The template code.
+	//
 	// example:
 	//
 	// 399299***
@@ -8791,20 +9260,42 @@ func (s *GetWhatsappHealthStatusRequest) SetWabaId(v string) *GetWhatsappHealthS
 }
 
 type GetWhatsappHealthStatusResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetWhatsappHealthStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// DAC72B08-3327-33EF-BEDC-8EC3E83A6575
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -8850,11 +9341,14 @@ func (s *GetWhatsappHealthStatusResponseBody) SetSuccess(v bool) *GetWhatsappHea
 }
 
 type GetWhatsappHealthStatusResponseBodyData struct {
+	// Indicates whether the messages can be sent.
+	//
 	// example:
 	//
 	// AVAILABLE
-	CanSendMessage *string                                            `json:"CanSendMessage,omitempty" xml:"CanSendMessage,omitempty"`
-	Entities       []*GetWhatsappHealthStatusResponseBodyDataEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+	CanSendMessage *string `json:"CanSendMessage,omitempty" xml:"CanSendMessage,omitempty"`
+	// The queried entities.
+	Entities []*GetWhatsappHealthStatusResponseBodyDataEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
 }
 
 func (s GetWhatsappHealthStatusResponseBodyData) String() string {
@@ -8876,31 +9370,46 @@ func (s *GetWhatsappHealthStatusResponseBodyData) SetEntities(v []*GetWhatsappHe
 }
 
 type GetWhatsappHealthStatusResponseBodyDataEntities struct {
+	// The Business Manager ID.
+	//
 	// example:
 	//
 	// 3992****
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// Indicates whether the messages can be sent.
+	//
 	// example:
 	//
 	// AVAILABLE
 	CanSendMessage *string `json:"CanSendMessage,omitempty" xml:"CanSendMessage,omitempty"`
+	// The entity type.
+	//
 	// example:
 	//
 	// PHONE_NUMBER
-	EntityType *string                                                  `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	Errors     []*GetWhatsappHealthStatusResponseBodyDataEntitiesErrors `json:"Errors,omitempty" xml:"Errors,omitempty" type:"Repeated"`
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The reasons why the messages failed to be sent.
+	Errors []*GetWhatsappHealthStatusResponseBodyDataEntitiesErrors `json:"Errors,omitempty" xml:"Errors,omitempty" type:"Repeated"`
+	// The template language.
+	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The phone number to which the messages are sent.
+	//
 	// example:
 	//
 	// 86138****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The template code. This parameter is returned when the NodeType parameter is set to **template**.
+	//
 	// example:
 	//
 	// 939928****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The WABA ID. You can view the WABA ID in the Chat App Message Service console after you create the WABA.
+	//
 	// example:
 	//
 	// 39939***
@@ -8956,14 +9465,20 @@ func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetWabaId(v string) *G
 }
 
 type GetWhatsappHealthStatusResponseBodyDataEntitiesErrors struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 141006
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The description of the error.
+	//
 	// example:
 	//
 	// There is an error with the payment method.
 	ErrorDescription *string `json:"ErrorDescription,omitempty" xml:"ErrorDescription,omitempty"`
+	// The possible solution to the error.
+	//
 	// example:
 	//
 	// There was an error with your payment method. Please add a new payment method to the account.
@@ -9023,9 +9538,21 @@ func (s *GetWhatsappHealthStatusResponse) SetBody(v *GetWhatsappHealthStatusResp
 }
 
 type IsvGetAppIdRequest struct {
-	// 权限
+	// The permission.
+	//
+	// Valid values:
+	//
+	// 	- whatsapp_business_messaging: sending permission on WhatsApp messages
+	//
+	// 	- ads_management: management permission on advertisements
+	//
+	// 	- catalog_management: management permission on catalogs
+	//
+	// example:
+	//
+	// catalog_management
 	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
-	// The type of the application. Set the value to WHATSAPP.
+	// The type of the app. Valid value: WHATSAPP.
 	//
 	// This parameter is required.
 	//
@@ -9054,6 +9581,11 @@ func (s *IsvGetAppIdRequest) SetType(v string) *IsvGetAppIdRequest {
 }
 
 type IsvGetAppIdResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The message ID.
 	//
@@ -9070,7 +9602,12 @@ type IsvGetAppIdResponseBody struct {
 	// example:
 	//
 	// OK
-	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the configuration item.
+	//
+	// example:
+	//
+	// 28972951817****
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The error message returned.
 	//
@@ -9168,6 +9705,8 @@ type ListChatappTemplateRequest struct {
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Template encoding.
+	//
 	// example:
 	//
 	// 838888822*****
@@ -9331,6 +9870,8 @@ type ListChatappTemplateShrinkRequest struct {
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Template encoding.
+	//
 	// example:
 	//
 	// 838888822*****
@@ -9443,6 +9984,11 @@ func (s *ListChatappTemplateShrinkRequest) SetTemplateType(v string) *ListChatap
 }
 
 type ListChatappTemplateResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -9454,7 +10000,7 @@ type ListChatappTemplateResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message templates.
+	// The list of the templates.
 	ListTemplate []*ListChatappTemplateResponseBodyListTemplate `json:"ListTemplate,omitempty" xml:"ListTemplate,omitempty" type:"Repeated"`
 	// The error message returned.
 	//
@@ -9567,6 +10113,8 @@ type ListChatappTemplateResponseBodyListTemplate struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The time when the template was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1711006633000
@@ -9797,6 +10345,10 @@ type ListFlowResponseBody struct {
 	// The returned data.
 	Data []*ListFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -9904,6 +10456,8 @@ func (s *ListFlowResponse) SetBody(v *ListFlowResponseBody) *ListFlowResponse {
 }
 
 type ListPhoneMessageQrdlRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
+	//
 	// example:
 	//
 	// 9383883
@@ -9937,13 +10491,20 @@ func (s *ListPhoneMessageQrdlRequest) SetPhoneNumber(v string) *ListPhoneMessage
 }
 
 type ListPhoneMessageQrdlResponseBody struct {
+	// If OK is returned, the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
-	Data    []*ListPhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data []*ListPhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Error description information.
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -10698,7 +11259,7 @@ type ModifyChatappTemplateRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The components of the message template.
 	//
-	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
+	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, you do not need to set the Text sub-parameter of the Components parameter because the value is automatically generated.
 	//
 	// This parameter is required.
 	Components []*ModifyChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
@@ -10748,6 +11309,8 @@ type ModifyChatappTemplateRequest struct {
 	//
 	// 8472929283883
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Template name.
+	//
 	// example:
 	//
 	// test_name
@@ -10830,7 +11393,7 @@ func (s *ModifyChatappTemplateRequest) SetTemplateType(v string) *ModifyChatappT
 }
 
 type ModifyChatappTemplateRequestComponents struct {
-	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid only if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY for a WhatsApp message template.
+	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY for a WhatsApp message template.
 	//
 	// example:
 	//
@@ -10838,26 +11401,27 @@ type ModifyChatappTemplateRequestComponents struct {
 	AddSecretRecommendation *bool `json:"AddSecretRecommendation,omitempty" xml:"AddSecretRecommendation,omitempty"`
 	// The buttons. Specify this parameter only if you set the Type sub-parameter of the Components parameter to **BUTTONS**.
 	//
-	// >  The following section describes the limits on the number of buttons in a WhatsApp message.
+	// >  ####
 	//
-	// 	- A marketing or utility WhatsApp message template supports up to 10 buttons.
+	// 	- A marketing or utility WhatsApp message template can contain up to 10 buttons.
 	//
 	// 	- A WhatsApp message template can contain only one phone call button.
 	//
 	// 	- A WhatsApp message template can contain up to two URL buttons.
 	//
-	// 	- In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
+	// 	- In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
 	Buttons []*ModifyChatappTemplateRequestComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	// The description.
+	// The description of the media resource.
 	//
-	// >  You can specify this parameter if the Type sub-parameter of the Components parameter is set to **HEADER*	- and the Format sub-parameter of the Components parameter is set to **IMAGE, DOCUMENT, or VIDEO**.
+	// >  If the Type sub-parameter of the Components parameter is set to **HEADER*	- and the Format parameter is set to **IMAGE, DOCUMENT, or VIDEO**, you can specify this parameter.
 	//
 	// example:
 	//
 	// This is a video
-	Caption *string                                        `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	Cards   []*ModifyChatappTemplateRequestComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
-	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER in a WhatsApp message template. The validity period of the verification code is displayed in the footer.
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The carousel cards of the carousel template.
+	Cards []*ModifyChatappTemplateRequestComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
+	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER. The validity period of the verification code is displayed in the footer.
 	//
 	// example:
 	//
@@ -10871,7 +11435,7 @@ type ModifyChatappTemplateRequestComponents struct {
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The name of the document.
 	//
-	// >  You can specify this parameter if the Type sub-parameter of the Components parameter is set to **HEADER*	- and the Format sub-parameter of the Components parameter is set to **DOCUMENT**.
+	// >  If the Type sub-parameter of the Components parameter is set to **HEADER*	- and the Format parameter is set to **DOCUMENT**, you can specify this parameter.
 	//
 	// example:
 	//
@@ -10883,7 +11447,7 @@ type ModifyChatappTemplateRequestComponents struct {
 	//
 	// docx
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The type of the media resources that are included in the message. Valid values:
+	// The type of the media resource. Valid values:
 	//
 	// 	- **TEXT**
 	//
@@ -10897,13 +11461,15 @@ type ModifyChatappTemplateRequestComponents struct {
 	//
 	// TEXT
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Specifies whether the coupon code has an expiration time. Specify this parameter if the Type sub-parameter of the Components parameter is set to LIMITED_TIME_OFFER.
+	//
 	// example:
 	//
 	// true
 	HasExpiration *bool `json:"HasExpiration,omitempty" xml:"HasExpiration,omitempty"`
 	// The text of the message that you want to send.
 	//
-	// >  If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter is empty.
+	// >  If Category is set to AUTHENTICATION, do not specify the Text sub-parameter of the Components parameter.
 	//
 	// example:
 	//
@@ -10915,7 +11481,7 @@ type ModifyChatappTemplateRequestComponents struct {
 	//
 	// https://cdn.multiplymall.mobiapp.cloud/cloudcode/yc-165407506207478-165511576113195/20220905/ec5b9737-1507-4208-bb27-8da3958da961.jpg?x-oss-process=image/resize,w_100
 	ThumbUrl *string `json:"ThumbUrl,omitempty" xml:"ThumbUrl,omitempty"`
-	// The type of the component. Valid values:
+	// The component type. Valid values:
 	//
 	// 	- **BODY**
 	//
@@ -10925,13 +11491,17 @@ type ModifyChatappTemplateRequestComponents struct {
 	//
 	// 	- **BUTTONS**
 	//
+	// 	- **CAROUSEL**
+	//
+	// 	- **LIMITED_TIME_OFFER**
+	//
 	// >
 	//
-	// 	- The following limits apply to components in WhatsApp message templates: A **BODY*	- component cannot exceed 1,024 characters in length. A **HEADER*	- or **FOOTER*	- component cannot exceed 60 characters in length.
+	// 	- In a WhatsApp message template, a **Body*	- component cannot exceed 1,024 characters in length. A **HEADER*	- or **FOOTER*	- component cannot exceed 60 characters in length.
 	//
-	// 	- **FOOTER*	- components are not supported in Viber message templates.
+	// 	- **FOOTER**, **CAROUSEL**, and **LIMITED_TIME_OFFER*	- components are not supported in Viber message templates.
 	//
-	// 	- In a Viber message template, media resources such as images, videos, and documents are placed in the **HEADER*	- component. If a Viber message contains text and images, the images are placed under the text in the message received on a device.
+	// 	- In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER*	- component. If a Viber message contains text and an image, the image is placed below the text in the message received on a device.
 	//
 	// This parameter is required.
 	//
@@ -11032,27 +11602,41 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	//
 	// Autofill
 	AutofillText *string `json:"AutofillText,omitempty" xml:"AutofillText,omitempty"`
+	// The coupon code. It can contain only letters and digits. You can set this parameter to a variable such as $(couponCode). Specify the value of couponCode when you send a message.
+	//
 	// example:
 	//
 	// 120293
 	CouponCode *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
+	// The Flow action.
+	//
+	// Valid values:
+	//
+	// 	- DATA_EXCHANGE
+	//
+	// 	- NAVIGATE
+	//
 	// example:
 	//
 	// NAVIGATE
 	FlowAction *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
+	// The Flow ID.
+	//
 	// example:
 	//
-	// 28383872***
+	// 664597077870605
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY for a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages are not sent to customers if they click this button.
+	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY for a WhatsApp message template. Marketing messages will not be sent to customers if you configure message sending in the Chat App Message Service console and the customers click this button.
 	//
 	// example:
 	//
 	// false
 	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	// The first screen in the Flow. This parameter is required if FlowAction is set to NAVIGATE.
+	//
 	// example:
 	//
-	// SIGN_UP
+	// DETAILS
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
 	// Deprecated
 	//
@@ -11075,7 +11659,8 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	// example:
 	//
 	// 29dkeke
-	SignatureHash *string                                                       `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	// List of supported apps.
 	SupportedApps []*ModifyChatappTemplateRequestComponentsButtonsSupportedApps `json:"SupportedApps,omitempty" xml:"SupportedApps,omitempty" type:"Repeated"`
 	// The text of the button.
 	//
@@ -11083,7 +11668,7 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	//
 	// phone-button-text
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The type of the button. Valid values:
+	// The button type. Valid values:
 	//
 	// 	- **PHONE_NUMBER**: phone call button
 	//
@@ -11091,17 +11676,13 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	//
 	// 	- **QUICK_REPLY**: quick reply button
 	//
-	// 	- **COPY_CODE**: copy code button if Category is set to AUTHENTICATION
+	// 	- **COPY_CODE**: copy code button
 	//
 	// 	- **ONE_TAP**: one-tap autofill button if Category is set to AUTHENTICATION
 	//
 	// >
 	//
-	// 	- In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
-	//
-	// 	- You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a WhatsApp message template.
-	//
-	// 	- If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
+	// 	- If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If Type is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If Type is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
 	//
 	// 	- You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
 	//
@@ -11117,7 +11698,7 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	//
 	// https://www.website.com/
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The type of the URL. Valid values:
+	// The URL type. Valid values:
 	//
 	// 	- **static**
 	//
@@ -11208,13 +11789,17 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrlType(v string) *Mo
 }
 
 type ModifyChatappTemplateRequestComponentsButtonsSupportedApps struct {
+	// The Whatsapp template is required when the Category is\\" Authorisation \\"and the Button Type is\\" ONE_TAP/ZERO-TAP\\", indicating the signature hash value of the Whatsapp call application.
+	//
 	// example:
 	//
-	// com.aliyun.pack.***
+	// com.example.myapplication
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// The Whatsapp template is required when the Category is\\" Authorisation \\"and the Button Type is\\" ONE_TAP/ZERO-TAP\\", indicating the signature hash value of the Whatsapp call application.
+	//
 	// example:
 	//
-	// kdikie9398k
+	// fk39kd93ks9
 	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
 }
 
@@ -11237,6 +11822,8 @@ func (s *ModifyChatappTemplateRequestComponentsButtonsSupportedApps) SetSignatur
 }
 
 type ModifyChatappTemplateRequestComponentsCards struct {
+	// The components of the carousel card.
+	//
 	// This parameter is required.
 	CardComponents []*ModifyChatappTemplateRequestComponentsCardsCardComponents `json:"CardComponents,omitempty" xml:"CardComponents,omitempty" type:"Repeated"`
 }
@@ -11255,21 +11842,40 @@ func (s *ModifyChatappTemplateRequestComponentsCards) SetCardComponents(v []*Mod
 }
 
 type ModifyChatappTemplateRequestComponentsCardsCardComponents struct {
+	// The buttons. Specify this parameter only if you set the Type sub-parameter of the CardComponents parameter to BUTTONS. A carousel card can contain up to two buttons.
 	Buttons []*ModifyChatappTemplateRequestComponentsCardsCardComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
+	// The type of the media resource. This parameter is valid if the Type sub-parameter of the CardComponents parameter is set to HEADER. Valid values:
+	//
+	// 	- **IMAGE**
+	//
+	// 	- **VIDEO**
+	//
 	// example:
 	//
 	// IMAGE
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The body content of the carousel card.
+	//
 	// example:
 	//
 	// Who is the very powerful team
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The component type. Valid values:
+	//
+	// 	- **BODY**
+	//
+	// 	- **HEADER**
+	//
+	// 	- **BUTTONS**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BODY
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the media resource.
+	//
 	// example:
 	//
 	// https://alibaba.com/img.png
@@ -11310,24 +11916,44 @@ func (s *ModifyChatappTemplateRequestComponentsCardsCardComponents) SetUrl(v str
 }
 
 type ModifyChatappTemplateRequestComponentsCardsCardComponentsButtons struct {
+	// The phone number.
+	//
 	// example:
 	//
 	// +8613800
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The text of the button.
+	//
 	// example:
 	//
 	// Call me
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The button type. Valid values:
+	//
+	// 	- **PHONE_NUMBER**: phone call button
+	//
+	// 	- **URL**: URL button
+	//
+	// 	- **QUICK_REPLY**: quick reply button
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PHONE_NUMBER
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL to which you are redirected when you click the URL button.
+	//
 	// example:
 	//
 	// https://alibaba.com/xx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The URL type. Valid values:
+	//
+	// 	- **static**
+	//
+	// 	- **dynamic**
+	//
 	// example:
 	//
 	// static
@@ -11396,7 +12022,7 @@ type ModifyChatappTemplateShrinkRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The components of the message template.
 	//
-	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
+	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, you do not need to set the Text sub-parameter of the Components parameter because the value is automatically generated.
 	//
 	// This parameter is required.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
@@ -11446,6 +12072,8 @@ type ModifyChatappTemplateShrinkRequest struct {
 	//
 	// 8472929283883
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Template name.
+	//
 	// example:
 	//
 	// test_name
@@ -11886,17 +12514,19 @@ func (s *ModifyFlowResponse) SetBody(v *ModifyFlowResponseBody) *ModifyFlowRespo
 }
 
 type ModifyPhoneBusinessProfileRequest struct {
+	// The business information.
+	//
 	// example:
 	//
-	// 关于
+	// business profile
 	About *string `json:"About,omitempty" xml:"About,omitempty"`
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The address.
 	//
 	// example:
 	//
 	// The phone number.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Modifies the business information of the account to which a specified phone number is bound.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -11904,20 +12534,20 @@ type ModifyPhoneBusinessProfileRequest struct {
 	//
 	// 293483938849****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The address.
+	// The description of the phone number.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description.
+	// The email address.
 	//
 	// example:
 	//
 	// aa@aliyun.com
 	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+	// The mobile phone number.
 	//
 	// This parameter is required.
 	//
@@ -11925,9 +12555,7 @@ type ModifyPhoneBusinessProfileRequest struct {
 	//
 	// 8613800001234
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The industry.
-	//
-	// > Enum: {OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, RESTAURANT}
+	// The URL of the profile picture.
 	//
 	// example:
 	//
@@ -11935,13 +12563,15 @@ type ModifyPhoneBusinessProfileRequest struct {
 	ProfilePictureUrl    *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Sichuan
+	// The industry.
+	//
+	// >  Valid values: OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, and RESTAURANT.
 	//
 	// example:
 	//
 	// OTHER
 	Vertical *string `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
-	// The email address.
+	// The URLs of the websites.
 	Websites []*string `json:"Websites,omitempty" xml:"Websites,omitempty" type:"Repeated"`
 }
 
@@ -12014,17 +12644,19 @@ func (s *ModifyPhoneBusinessProfileRequest) SetWebsites(v []*string) *ModifyPhon
 }
 
 type ModifyPhoneBusinessProfileShrinkRequest struct {
+	// The business information.
+	//
 	// example:
 	//
-	// 关于
+	// business profile
 	About *string `json:"About,omitempty" xml:"About,omitempty"`
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The address.
 	//
 	// example:
 	//
 	// The phone number.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Modifies the business information of the account to which a specified phone number is bound.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -12032,20 +12664,20 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	//
 	// 293483938849****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The address.
+	// The description of the phone number.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description.
+	// The email address.
 	//
 	// example:
 	//
 	// aa@aliyun.com
 	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+	// The mobile phone number.
 	//
 	// This parameter is required.
 	//
@@ -12053,9 +12685,7 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	//
 	// 8613800001234
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The industry.
-	//
-	// > Enum: {OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, RESTAURANT}
+	// The URL of the profile picture.
 	//
 	// example:
 	//
@@ -12063,13 +12693,15 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	ProfilePictureUrl    *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Sichuan
+	// The industry.
+	//
+	// >  Valid values: OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, and RESTAURANT.
 	//
 	// example:
 	//
 	// OTHER
 	Vertical *string `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
-	// The email address.
+	// The URLs of the websites.
 	WebsitesShrink *string `json:"Websites,omitempty" xml:"Websites,omitempty"`
 }
 
@@ -12142,6 +12774,11 @@ func (s *ModifyPhoneBusinessProfileShrinkRequest) SetWebsitesShrink(v string) *M
 }
 
 type ModifyPhoneBusinessProfileResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The URL of the website.
 	//
@@ -12161,6 +12798,12 @@ type ModifyPhoneBusinessProfileResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -12272,6 +12915,10 @@ type PublishFlowResponseBody struct {
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -12415,6 +13062,12 @@ type QueryChatappBindWabaResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -12475,12 +13128,17 @@ type QueryChatappBindWabaResponseBodyData struct {
 	// example:
 	//
 	// APPROVED
-	AccountReviewStatus              *string                `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
+	AccountReviewStatus *string `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
+	// WABA related information.
 	AuthInternationalRateEligibility map[string]interface{} `json:"AuthInternationalRateEligibility,omitempty" xml:"AuthInternationalRateEligibility,omitempty"`
+	// The ID of the business platform.
+	//
 	// example:
 	//
 	// 19293988***
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The name of the business platform.
+	//
 	// example:
 	//
 	// Alibaba
@@ -12509,9 +13167,11 @@ type QueryChatappBindWabaResponseBodyData struct {
 	//
 	// Alibaba
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The start time when the authentication-international rate applies.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// "start_time":1721952000
 	PrimaryBusinessLocation *string `json:"PrimaryBusinessLocation,omitempty" xml:"PrimaryBusinessLocation,omitempty"`
 }
 
@@ -12598,18 +13258,20 @@ func (s *QueryChatappBindWabaResponse) SetBody(v *QueryChatappBindWabaResponseBo
 }
 
 type QueryChatappPhoneNumbersRequest struct {
-	// The space ID of the user under the ISV account.
+	// The space ID of the RAM user within the ISV account.
 	//
 	// example:
 	//
 	// 293483938849493
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
 	// aksik93kdkkxmwol93939
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	// The state of the phone number.
+	//
 	// example:
 	//
 	// VERIFIED
@@ -12640,6 +13302,11 @@ func (s *QueryChatappPhoneNumbersRequest) SetStatus(v string) *QueryChatappPhone
 }
 
 type QueryChatappPhoneNumbersResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -12657,7 +13324,7 @@ type QueryChatappPhoneNumbersResponseBody struct {
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of phone numbers.
+	// The phone numbers.
 	PhoneNumbers []*QueryChatappPhoneNumbersResponseBodyPhoneNumbers `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -12707,7 +13374,21 @@ type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
 	//
 	// VERIFIED
 	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
-	// The maximum number of messages that can be sent to users by using the phone number.
+	// The number of phone numbers to which messages can be sent in a day.
+	//
+	// Valid values:
+	//
+	// 	- TIER_100K: 100,000
+	//
+	// 	- TIER_UNLIMITED: unlimited
+	//
+	// 	- TIER_250: 250
+	//
+	// 	- TIER_1K: 1,000
+	//
+	// 	- TIER_50: 50
+	//
+	// 	- TIER_10K: 10,000
 	//
 	// example:
 	//
@@ -12731,43 +13412,47 @@ type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
 	//
 	// 8613800000
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The quality rating of the phone number. Valid values:
+	// The quality rating of the phone number.
 	//
-	// 	- **GREEN**
+	// Valid values:
 	//
-	// 	- **YELLOW**
+	// 	- RED
 	//
-	// 	- **RED**
+	// 	- YELLOW
 	//
-	// 	- **UNKNOWN**
+	// 	- UNKNOWN
+	//
+	// 	- GREEN
 	//
 	// example:
 	//
 	// GREEN
 	QualityRating *string `json:"QualityRating,omitempty" xml:"QualityRating,omitempty"`
-	// The status of the phone number.
+	// The state of the phone number.
 	//
-	// 	- PENDING
-	//
-	// 	- DELETED
+	// Valid values:
 	//
 	// 	- MIGRATED
 	//
-	// 	- BANNED
-	//
-	// 	- RESTRICTED
-	//
-	// 	- RATE_LIMITED
-	//
 	// 	- FLAGGED
-	//
-	// 	- CONNECTED
 	//
 	// 	- DISCONNECTED
 	//
+	// 	- UNVERIFIED
+	//
+	// 	- BANNED
+	//
+	// 	- RATE_LIMITED
+	//
+	// 	- PENDING
+	//
+	// 	- CONNECTED
+	//
 	// 	- UNKNOWN
 	//
-	// 	- UNVERIFIED
+	// 	- DELETED
+	//
+	// 	- RESTRICTED
 	//
 	// example:
 	//
@@ -12779,7 +13464,7 @@ type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
 	//
 	// https://ali.com/status
 	StatusCallbackUrl *string `json:"StatusCallbackUrl,omitempty" xml:"StatusCallbackUrl,omitempty"`
-	// The status report notification queue.
+	// The status report queue.
 	//
 	// example:
 	//
@@ -12903,7 +13588,7 @@ func (s *QueryChatappPhoneNumbersResponse) SetBody(v *QueryChatappPhoneNumbersRe
 }
 
 type QueryPhoneBusinessProfileRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The space ID of the user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -12958,6 +13643,11 @@ func (s *QueryPhoneBusinessProfileRequest) SetResourceOwnerId(v int64) *QueryPho
 }
 
 type QueryPhoneBusinessProfileResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -12969,7 +13659,7 @@ type QueryPhoneBusinessProfileResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryPhoneBusinessProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
 	//
@@ -12983,6 +13673,12 @@ type QueryPhoneBusinessProfileResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -13028,9 +13724,11 @@ func (s *QueryPhoneBusinessProfileResponseBody) SetSuccess(v bool) *QueryPhoneBu
 }
 
 type QueryPhoneBusinessProfileResponseBodyData struct {
+	// Regarding.
+	//
 	// example:
 	//
-	// 关于
+	// business profile
 	About *string `json:"About,omitempty" xml:"About,omitempty"`
 	// The address.
 	//
@@ -13050,7 +13748,7 @@ type QueryPhoneBusinessProfileResponseBodyData struct {
 	//
 	// aa@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The URL of the profile picture.
+	// The profile picture.
 	//
 	// example:
 	//
@@ -13062,7 +13760,7 @@ type QueryPhoneBusinessProfileResponseBodyData struct {
 	//
 	// Retail
 	Vertical *string `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
-	// The websites.
+	// The website.
 	Websites []*string `json:"Websites,omitempty" xml:"Websites,omitempty" type:"Repeated"`
 }
 
@@ -13139,7 +13837,7 @@ func (s *QueryPhoneBusinessProfileResponse) SetBody(v *QueryPhoneBusinessProfile
 }
 
 type QueryWabaBusinessInfoRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -13150,7 +13848,7 @@ type QueryWabaBusinessInfoRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the WABA.
+	// The ID of the WhatsApp Business Account (WABA).
 	//
 	// This parameter is required.
 	//
@@ -13194,6 +13892,11 @@ func (s *QueryWabaBusinessInfoRequest) SetWabaId(v string) *QueryWabaBusinessInf
 }
 
 type QueryWabaBusinessInfoResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -13219,6 +13922,12 @@ type QueryWabaBusinessInfoResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
@@ -13264,13 +13973,13 @@ func (s *QueryWabaBusinessInfoResponseBody) SetSuccess(v bool) *QueryWabaBusines
 }
 
 type QueryWabaBusinessInfoResponseBodyData struct {
-	// The ID of the business platform.
+	// The Business Manager ID.
 	//
 	// example:
 	//
 	// 192882828733
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The name of the business platform.
+	// The Business Manager name.
 	//
 	// example:
 	//
@@ -13348,7 +14057,13 @@ func (s *QueryWabaBusinessInfoResponse) SetBody(v *QueryWabaBusinessInfoResponse
 }
 
 type SendChatappMassMessageRequest struct {
-	// The channel type. Valid values: whatsapp, viber, and line.
+	// The type of the channel. Valid values:
+	//
+	// 	- **whatsapp**
+	//
+	// 	- **viber**
+	//
+	// 	- **line*	- (under development)
 	//
 	// This parameter is required.
 	//
@@ -13364,41 +14079,43 @@ type SendChatappMassMessageRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The ID of the WhatsApp Business account under the ISV account.
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The fallback content.
+	// The content of the fallback message.
 	//
 	// example:
 	//
 	// Fallback message
 	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	// Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the message fails to be sent or the message receipt that indicates the message is not delivered to clients is received. Unit: seconds. Valid values: 60 to 43200.
+	//
 	// example:
 	//
 	// 120
 	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
-	// The ID of the fallback strategy.
+	// The ID of the fallback policy.
 	//
 	// example:
 	//
 	// S00001
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	// The fallback rule.
+	// The fallback rule. Valid values:
 	//
-	// >  Valid values:
+	// 	- **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
 	//
-	// 	- undelivered: A fallback is triggered if the WhatsApp message is not delivered to clients. When the WhatsApp message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
-	//
-	// 	- sentfailed: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
+	// 	- **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
 	//
 	// example:
 	//
 	// undelivered
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
-	// The phone number of the message sender.
+	// The mobile phone number of the message sender.
 	//
 	// This parameter is required.
 	//
@@ -13406,13 +14123,17 @@ type SendChatappMassMessageRequest struct {
 	//
 	// 861387777****
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The message type when the ChannelType parameter is set to viber. Valid values: promotion and transaction.
+	// The type of the Viber message. Valid values:
+	//
+	// 	- **promotion**
+	//
+	// 	- **transaction**
 	//
 	// example:
 	//
@@ -13426,7 +14147,7 @@ type SendChatappMassMessageRequest struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The phone numbers to which the message is sent.
+	// The mobile phone numbers of the message receivers.
 	//
 	// This parameter is required.
 	SenderList []*SendChatappMassMessageRequestSenderList `json:"SenderList,omitempty" xml:"SenderList,omitempty" type:"Repeated"`
@@ -13436,18 +14157,20 @@ type SendChatappMassMessageRequest struct {
 	//
 	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 100000001
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The encoding of the message template.
+	// The template code.
 	//
 	// example:
 	//
 	// 744c4b5c79c9432497a075bdfca36bf5
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The name of the message template.
+	//
 	// example:
 	//
 	// test_name
@@ -13554,14 +14277,15 @@ func (s *SendChatappMassMessageRequest) SetTtl(v int64) *SendChatappMassMessageR
 }
 
 type SendChatappMassMessageRequestSenderList struct {
+	// The Flow action.
 	FlowAction *SendChatappMassMessageRequestSenderListFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
-	// The payload.
+	// The payload of the button.
 	Payload []*string `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
 	// The information about the product.
 	ProductAction *SendChatappMassMessageRequestSenderListProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
 	// The parameters of the template.
 	TemplateParams map[string]*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
-	// The phone number to which the message is sent.
+	// The mobile phone number of the message receiver.
 	//
 	// This parameter is required.
 	//
@@ -13605,10 +14329,13 @@ func (s *SendChatappMassMessageRequestSenderList) SetTo(v string) *SendChatappMa
 }
 
 type SendChatappMassMessageRequestSenderListFlowAction struct {
+	// The default parameter of the Flow.
 	FlowActionData map[string]*string `json:"FlowActionData,omitempty" xml:"FlowActionData,omitempty"`
+	// The information about the Flow token.
+	//
 	// example:
 	//
-	// 1122***
+	// kde****
 	FlowToken *string `json:"FlowToken,omitempty" xml:"FlowToken,omitempty"`
 }
 
@@ -13711,7 +14438,13 @@ func (s *SendChatappMassMessageRequestSenderListProductActionSectionsProductItem
 }
 
 type SendChatappMassMessageShrinkRequest struct {
-	// The channel type. Valid values: whatsapp, viber, and line.
+	// The type of the channel. Valid values:
+	//
+	// 	- **whatsapp**
+	//
+	// 	- **viber**
+	//
+	// 	- **line*	- (under development)
 	//
 	// This parameter is required.
 	//
@@ -13727,41 +14460,43 @@ type SendChatappMassMessageShrinkRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The ID of the WhatsApp Business account under the ISV account.
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The fallback content.
+	// The content of the fallback message.
 	//
 	// example:
 	//
 	// Fallback message
 	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	// Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the message fails to be sent or the message receipt that indicates the message is not delivered to clients is received. Unit: seconds. Valid values: 60 to 43200.
+	//
 	// example:
 	//
 	// 120
 	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
-	// The ID of the fallback strategy.
+	// The ID of the fallback policy.
 	//
 	// example:
 	//
 	// S00001
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	// The fallback rule.
+	// The fallback rule. Valid values:
 	//
-	// >  Valid values:
+	// 	- **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
 	//
-	// 	- undelivered: A fallback is triggered if the WhatsApp message is not delivered to clients. When the WhatsApp message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
-	//
-	// 	- sentfailed: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
+	// 	- **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
 	//
 	// example:
 	//
 	// undelivered
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
-	// The phone number of the message sender.
+	// The mobile phone number of the message sender.
 	//
 	// This parameter is required.
 	//
@@ -13769,13 +14504,17 @@ type SendChatappMassMessageShrinkRequest struct {
 	//
 	// 861387777****
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The message type when the ChannelType parameter is set to viber. Valid values: promotion and transaction.
+	// The type of the Viber message. Valid values:
+	//
+	// 	- **promotion**
+	//
+	// 	- **transaction**
 	//
 	// example:
 	//
@@ -13789,7 +14528,7 @@ type SendChatappMassMessageShrinkRequest struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The phone numbers to which the message is sent.
+	// The mobile phone numbers of the message receivers.
 	//
 	// This parameter is required.
 	SenderListShrink *string `json:"SenderList,omitempty" xml:"SenderList,omitempty"`
@@ -13799,18 +14538,20 @@ type SendChatappMassMessageShrinkRequest struct {
 	//
 	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 100000001
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The encoding of the message template.
+	// The template code.
 	//
 	// example:
 	//
 	// 744c4b5c79c9432497a075bdfca36bf5
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The name of the message template.
+	//
 	// example:
 	//
 	// test_name
@@ -13917,6 +14658,11 @@ func (s *SendChatappMassMessageShrinkRequest) SetTtl(v int64) *SendChatappMassMe
 }
 
 type SendChatappMassMessageResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -13928,7 +14674,7 @@ type SendChatappMassMessageResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the group of messages.
+	// The ID of the message group.
 	//
 	// example:
 	//
@@ -14011,13 +14757,13 @@ func (s *SendChatappMassMessageResponse) SetBody(v *SendChatappMassMessageRespon
 }
 
 type SendChatappMessageRequest struct {
-	// The type of the message channel. Valid values:
+	// The channel type. Valid values:
 	//
 	// 	- **whatsapp**
 	//
 	// 	- **viber**
 	//
-	// 	- line. The feature that ChatAPP sends messages by using Line is under development.
+	// 	- **line*	- (under development)
 	//
 	// This parameter is required.
 	//
@@ -14025,53 +14771,53 @@ type SendChatappMessageRequest struct {
 	//
 	// whatsapp
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The content of the message.
+	// The message content.
 	//
-	// **Usage notes when you set the ChannelType parameter to whatsapp:**
+	// **Notes on WhatsApp messages:**
 	//
-	// 	- When you set the **MessageType*	- parameter to **text**, the **text*	- parameter is required and the **caption*	- parameter cannot be specified.
+	// 	- If you set **messageType*	- to **text**, you must specify **text*	- and must not specify **Caption**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **image**, the **link*	- parameter is required.
+	// 	- If you set **messageType*	- to **image**, you must specify **Link**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **video**, the **link*	- parameter is required.
+	// 	- If you set **messageType*	- to **video**, you must specify **Link**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **audio**, the **link*	- parameter is required and the **caption*	- parameter is invalid.
+	// 	- If you set **messageType*	- to **audio**, **Link*	- is required and **Caption*	- is invalid.
 	//
-	// 	- When you set the **MessageType*	- parameter to **document**, the **link*	- and **fileName*	- parameters are required and the **caption*	- parameter is invalid.
+	// 	- If you set **messageType*	- to **document**, **Link*	- and **FileName*	- are required and **Caption*	- is invalid.
 	//
-	// 	- When you set the **MessageType*	- parameter to **interactive**, the **type*	- and **action*	- parameters are required.
+	// 	- If you set **messageType*	- to **interactive**, you must specify **type*	- and **action**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **contacts**, the **name*	- parameter is required.
+	// 	- If you set **messageType*	- to **contacts**, you must specify **name**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **location**, the **longitude*	- and **latitude*	- parameters are required.
+	// 	- If you set **messageType*	- to **location**, you must specify **longitude*	- and **latitude**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **sticker**, the **link*	- parameter is required, and the **caption*	- and **fileName*	- parameters are invalid.
+	// 	- If you set **messageType*	- to **sticker**, you must specify **Link**, and **Caption*	- and **FileName*	- are invalid.
 	//
-	// 	- When you set the **MessageType*	- parameter to **reaction**, the **messageId*	- and **emoji*	- parameters are required.
+	// 	- If you set **messageType*	- to **reaction**, you must specify **messageId*	- and **emoji**.
 	//
-	// **Usage notes when you set the ChannelType parameter to viber:**
+	// **Notes on Viber messages:**
 	//
-	// 	- When you set the **MessageType*	- parameter to **text**, the **text*	- parameter is required.
+	// 	- If you set **messageType*	- to **text**, you must specify **text**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **image**, the **link*	- parameter is required.
+	// 	- If you set **messageType*	- to **image**, you must specify **link**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **video**, the **link**, **thumbnail**, **fileSize**, and **duration*	- parameters are required.
+	// 	- If you set **messageType*	- to **video**, you must specify **link**, **thumbnail**, **fileSize**, and **duration**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **document**, the **link**, **fileName**, and **fileType*	- parameters are required.
+	// 	- If you set **messageType*	- to **document**, you must specify **link**, **fileName**, and **fileType**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **text_button**, the **text**, **caption**, and **action*	- parameters are required.
+	// 	- If you set **messageType*	- to **text_button**, you must specify **text**, **caption**, and **action**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **text_image_button**, the **text**, **link**, **caption**, and **action*	- parameters are required.
+	// 	- If you set **messageType*	- to **text_image_button**, you must specify **text**, **link**, **caption**, and **action**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **text_video**, the **text**, **link**, **thumbnail**, **fileSize**, and **duration*	- parameters are required.
+	// 	- If you set **messageType*	- to **text_video**, you must specify **text**, **link**, **thumbnail**, **fileSize**, and **duration**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **text_video_button**, the **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption*	- parameters are required. The **action*	- parameter is invalid.
+	// 	- If you set **messageType*	- to **text_video_button**, you must specify **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption**. In addition, you must not specify **action**.
 	//
 	// example:
 	//
 	// {\\"text\\": \\"hello whatsapp\\", \\"link\\": \\"\\", \\"caption\\": \\"\\", \\"fileName\\": \\"\\" }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the message to reply to.
+	// The ID of the reply message.
 	//
 	// example:
 	//
@@ -14085,7 +14831,9 @@ type SendChatappMessageRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The ID of the WhatsApp account that you register.
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
@@ -14097,39 +14845,33 @@ type SendChatappMessageRequest struct {
 	//
 	// This is a fallback message.
 	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// Specifies the period of time after which the fallback Short Message Service (SMS) message is sent if the message receipt that indicates the message is delivered to customers is not received. If this parameter is left empty, the fallback SMS message is sent only when the **message fails to be sent*	- or **the message receipt that indicates the message is not delivered to customers*	- is received. Valid values: 60 to 43200. Unit: seconds.
+	// Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the **message fails to be sent*	- or **the message receipt that indicates the message is not delivered to clients*	- is received. Unit: seconds. Valid values: 60 to 43200.
 	//
 	// example:
 	//
 	// 120
 	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
-	// The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
+	// The ID of the fallback policy. You can create a fallback policy and view the information in the Chat App Message Service console.
 	//
 	// example:
 	//
 	// S_000001
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	// 回落规则。
+	// The fallback rule. Valid values:
 	//
-	// > 取值范围
+	// 	- **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
 	//
-	// > - undelivered  消息不能发送到端时回落（在发送状态时模板、参数需要校验通过，模板被封、号码被封等不做校验）。参数值为空时默认使用此规则
-	//
-	// > - sentFailed  消息在校验模板、模板变量等参数时，校验不通过也会回落。只会强校验channelType, type, messageType, to, from(是否存在) 几个参数。
-	//
-	// <props="china">
-	//
-	// > 中国站此字段无效
+	// 	- **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
 	//
 	// example:
 	//
 	// undelivered
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
-	// Flow发送数据
+	// The Flow action.
 	FlowAction *SendChatappMessageRequestFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
-	// The phone number of the message sender.
+	// The mobile phone number of the message sender.
 	//
-	// > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
+	// >  You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the Chat App Message Service console.
 	//
 	// This parameter is required.
 	//
@@ -14137,13 +14879,17 @@ type SendChatappMessageRequest struct {
 	//
 	// 1360000****
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The type of the Viber message. This parameter is required if you set the ChannelType parameter to viber. Valid values: promotion and transaction.
+	// The type of the Viber message. This parameter is required if ChannelType is set to viber. Valid values:
+	//
+	// 	- **promotion**
+	//
+	// 	- **transaction**
 	//
 	// example:
 	//
@@ -14219,7 +14965,7 @@ type SendChatappMessageRequest struct {
 	//
 	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
@@ -14231,13 +14977,15 @@ type SendChatappMessageRequest struct {
 	//
 	// 744c4b5c79c9432497a075bdfca3****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The name of the message template.
+	//
 	// example:
 	//
 	// test_name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The variables of the message template.
 	TemplateParams map[string]*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
-	// The phone number that receives the message.
+	// The mobile phone number of the message receiver.
 	//
 	// This parameter is required.
 	//
@@ -14245,7 +14993,7 @@ type SendChatappMessageRequest struct {
 	//
 	// 1390000****
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
-	// The tracking ID of the Viber message.
+	// The tracking data of the Viber message.
 	//
 	// example:
 	//
@@ -14257,11 +15005,11 @@ type SendChatappMessageRequest struct {
 	//
 	// 50
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The type of the message. Valid values:
+	// The message type. Valid values:
 	//
-	// 	- **template**: a template message. A template message is sent based on a template that is created in the ChatAPP console and is approved. You can send template messages at any time based on your business requirements.
+	// 	- **template**: the template message. A template message is sent based on a template that is created and approved in the Chat App Message Service console. You can send template messages based on your business requirements.
 	//
-	// 	- **message**: a custom message. You can send a custom message to a user only within 24 hours after you receive the last message from the user.
+	// 	- **message**: the custom message. You can send a custom WhatsApp message to a user only within 24 hours after you receive the last message from the user. This limit does not apply to custom Viber messages.
 	//
 	// This parameter is required.
 	//
@@ -14410,9 +15158,9 @@ func (s *SendChatappMessageRequest) SetType(v string) *SendChatappMessageRequest
 }
 
 type SendChatappMessageRequestFlowAction struct {
-	// flow默认参数
+	// The default parameter of the Flow.
 	FlowActionData map[string]*string `json:"FlowActionData,omitempty" xml:"FlowActionData,omitempty"`
-	// flow token信息
+	// The Flow token.
 	//
 	// example:
 	//
@@ -14439,7 +15187,7 @@ func (s *SendChatappMessageRequestFlowAction) SetFlowToken(v string) *SendChatap
 }
 
 type SendChatappMessageRequestProductAction struct {
-	// The products. Up to 30 products can be added. The products can be divided into up to 10 categories.
+	// The products. Up to 30 products and 10 categories can be added.
 	Sections []*SendChatappMessageRequestProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
 	// The retailer ID of the product.
 	//
@@ -14519,13 +15267,13 @@ func (s *SendChatappMessageRequestProductActionSectionsProductItems) SetProductR
 }
 
 type SendChatappMessageShrinkRequest struct {
-	// The type of the message channel. Valid values:
+	// The channel type. Valid values:
 	//
 	// 	- **whatsapp**
 	//
 	// 	- **viber**
 	//
-	// 	- line. The feature that ChatAPP sends messages by using Line is under development.
+	// 	- **line*	- (under development)
 	//
 	// This parameter is required.
 	//
@@ -14533,53 +15281,53 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// whatsapp
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The content of the message.
+	// The message content.
 	//
-	// **Usage notes when you set the ChannelType parameter to whatsapp:**
+	// **Notes on WhatsApp messages:**
 	//
-	// 	- When you set the **MessageType*	- parameter to **text**, the **text*	- parameter is required and the **caption*	- parameter cannot be specified.
+	// 	- If you set **messageType*	- to **text**, you must specify **text*	- and must not specify **Caption**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **image**, the **link*	- parameter is required.
+	// 	- If you set **messageType*	- to **image**, you must specify **Link**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **video**, the **link*	- parameter is required.
+	// 	- If you set **messageType*	- to **video**, you must specify **Link**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **audio**, the **link*	- parameter is required and the **caption*	- parameter is invalid.
+	// 	- If you set **messageType*	- to **audio**, **Link*	- is required and **Caption*	- is invalid.
 	//
-	// 	- When you set the **MessageType*	- parameter to **document**, the **link*	- and **fileName*	- parameters are required and the **caption*	- parameter is invalid.
+	// 	- If you set **messageType*	- to **document**, **Link*	- and **FileName*	- are required and **Caption*	- is invalid.
 	//
-	// 	- When you set the **MessageType*	- parameter to **interactive**, the **type*	- and **action*	- parameters are required.
+	// 	- If you set **messageType*	- to **interactive**, you must specify **type*	- and **action**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **contacts**, the **name*	- parameter is required.
+	// 	- If you set **messageType*	- to **contacts**, you must specify **name**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **location**, the **longitude*	- and **latitude*	- parameters are required.
+	// 	- If you set **messageType*	- to **location**, you must specify **longitude*	- and **latitude**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **sticker**, the **link*	- parameter is required, and the **caption*	- and **fileName*	- parameters are invalid.
+	// 	- If you set **messageType*	- to **sticker**, you must specify **Link**, and **Caption*	- and **FileName*	- are invalid.
 	//
-	// 	- When you set the **MessageType*	- parameter to **reaction**, the **messageId*	- and **emoji*	- parameters are required.
+	// 	- If you set **messageType*	- to **reaction**, you must specify **messageId*	- and **emoji**.
 	//
-	// **Usage notes when you set the ChannelType parameter to viber:**
+	// **Notes on Viber messages:**
 	//
-	// 	- When you set the **MessageType*	- parameter to **text**, the **text*	- parameter is required.
+	// 	- If you set **messageType*	- to **text**, you must specify **text**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **image**, the **link*	- parameter is required.
+	// 	- If you set **messageType*	- to **image**, you must specify **link**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **video**, the **link**, **thumbnail**, **fileSize**, and **duration*	- parameters are required.
+	// 	- If you set **messageType*	- to **video**, you must specify **link**, **thumbnail**, **fileSize**, and **duration**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **document**, the **link**, **fileName**, and **fileType*	- parameters are required.
+	// 	- If you set **messageType*	- to **document**, you must specify **link**, **fileName**, and **fileType**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **text_button**, the **text**, **caption**, and **action*	- parameters are required.
+	// 	- If you set **messageType*	- to **text_button**, you must specify **text**, **caption**, and **action**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **text_image_button**, the **text**, **link**, **caption**, and **action*	- parameters are required.
+	// 	- If you set **messageType*	- to **text_image_button**, you must specify **text**, **link**, **caption**, and **action**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **text_video**, the **text**, **link**, **thumbnail**, **fileSize**, and **duration*	- parameters are required.
+	// 	- If you set **messageType*	- to **text_video**, you must specify **text**, **link**, **thumbnail**, **fileSize**, and **duration**.
 	//
-	// 	- When you set the **MessageType*	- parameter to **text_video_button**, the **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption*	- parameters are required. The **action*	- parameter is invalid.
+	// 	- If you set **messageType*	- to **text_video_button**, you must specify **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption**. In addition, you must not specify **action**.
 	//
 	// example:
 	//
 	// {\\"text\\": \\"hello whatsapp\\", \\"link\\": \\"\\", \\"caption\\": \\"\\", \\"fileName\\": \\"\\" }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the message to reply to.
+	// The ID of the reply message.
 	//
 	// example:
 	//
@@ -14593,7 +15341,9 @@ type SendChatappMessageShrinkRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The ID of the WhatsApp account that you register.
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
@@ -14605,39 +15355,33 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// This is a fallback message.
 	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// Specifies the period of time after which the fallback Short Message Service (SMS) message is sent if the message receipt that indicates the message is delivered to customers is not received. If this parameter is left empty, the fallback SMS message is sent only when the **message fails to be sent*	- or **the message receipt that indicates the message is not delivered to customers*	- is received. Valid values: 60 to 43200. Unit: seconds.
+	// Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the **message fails to be sent*	- or **the message receipt that indicates the message is not delivered to clients*	- is received. Unit: seconds. Valid values: 60 to 43200.
 	//
 	// example:
 	//
 	// 120
 	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
-	// The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
+	// The ID of the fallback policy. You can create a fallback policy and view the information in the Chat App Message Service console.
 	//
 	// example:
 	//
 	// S_000001
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	// 回落规则。
+	// The fallback rule. Valid values:
 	//
-	// > 取值范围
+	// 	- **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
 	//
-	// > - undelivered  消息不能发送到端时回落（在发送状态时模板、参数需要校验通过，模板被封、号码被封等不做校验）。参数值为空时默认使用此规则
-	//
-	// > - sentFailed  消息在校验模板、模板变量等参数时，校验不通过也会回落。只会强校验channelType, type, messageType, to, from(是否存在) 几个参数。
-	//
-	// <props="china">
-	//
-	// > 中国站此字段无效
+	// 	- **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
 	//
 	// example:
 	//
 	// undelivered
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
-	// Flow发送数据
+	// The Flow action.
 	FlowActionShrink *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
-	// The phone number of the message sender.
+	// The mobile phone number of the message sender.
 	//
-	// > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
+	// >  You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the Chat App Message Service console.
 	//
 	// This parameter is required.
 	//
@@ -14645,13 +15389,17 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// 1360000****
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The type of the Viber message. This parameter is required if you set the ChannelType parameter to viber. Valid values: promotion and transaction.
+	// The type of the Viber message. This parameter is required if ChannelType is set to viber. Valid values:
+	//
+	// 	- **promotion**
+	//
+	// 	- **transaction**
 	//
 	// example:
 	//
@@ -14727,7 +15475,7 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
@@ -14739,13 +15487,15 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// 744c4b5c79c9432497a075bdfca3****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The name of the message template.
+	//
 	// example:
 	//
 	// test_name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The variables of the message template.
 	TemplateParamsShrink *string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
-	// The phone number that receives the message.
+	// The mobile phone number of the message receiver.
 	//
 	// This parameter is required.
 	//
@@ -14753,7 +15503,7 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// 1390000****
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
-	// The tracking ID of the Viber message.
+	// The tracking data of the Viber message.
 	//
 	// example:
 	//
@@ -14765,11 +15515,11 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// 50
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The type of the message. Valid values:
+	// The message type. Valid values:
 	//
-	// 	- **template**: a template message. A template message is sent based on a template that is created in the ChatAPP console and is approved. You can send template messages at any time based on your business requirements.
+	// 	- **template**: the template message. A template message is sent based on a template that is created and approved in the Chat App Message Service console. You can send template messages based on your business requirements.
 	//
-	// 	- **message**: a custom message. You can send a custom message to a user only within 24 hours after you receive the last message from the user.
+	// 	- **message**: the custom message. You can send a custom WhatsApp message to a user only within 24 hours after you receive the last message from the user. This limit does not apply to custom Viber messages.
 	//
 	// This parameter is required.
 	//
@@ -15006,7 +15756,7 @@ func (s *SendChatappMessageResponse) SetBody(v *SendChatappMessageResponseBody) 
 }
 
 type SubmitIsvCustomerTermsRequest struct {
-	// The use scenario.
+	// The business scenario.
 	//
 	// This parameter is required.
 	//
@@ -15014,7 +15764,7 @@ type SubmitIsvCustomerTermsRequest struct {
 	//
 	// Marketing products
 	BusinessDesc *string `json:"BusinessDesc,omitempty" xml:"BusinessDesc,omitempty"`
-	// The email address of your business.
+	// The enterprise mail.
 	//
 	// This parameter is required.
 	//
@@ -15024,13 +15774,15 @@ type SubmitIsvCustomerTermsRequest struct {
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
 	// The country code.
 	//
+	// >  For more information about country codes, see [Country codes](https://help.aliyun.com/document_detail/608210.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CN
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
-	// The display name of your business.
+	// The enterprise name.
 	//
 	// This parameter is required.
 	//
@@ -15038,7 +15790,7 @@ type SubmitIsvCustomerTermsRequest struct {
 	//
 	// Aliyun
 	CustName *string `json:"CustName,omitempty" xml:"CustName,omitempty"`
-	// The space ID of the user under the ISV account.
+	// The space ID of the user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -15046,11 +15798,7 @@ type SubmitIsvCustomerTermsRequest struct {
 	//
 	// 293483938849493
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The ISV or Client Agreement.
-	//
-	// > Before you upload files to Object Storage Service (OSS) servers, you must call the GetChatappUploadAuthorization operation to obtain the authentication information required to upload files. You can use the SDK provided by OSS to upload files. When you upload a file, you must set the key parameter value. To set the value for the key parameter, concatenate the value of the Dir parameter and the file name by using a forward slash (/). You can obtain the value of the Dir parameter by calling the GetChatappUploadAuthorization operation.
-	//
-	// > The value of this parameter is the name of the uploaded file.
+	// The ISV or Client agreement.
 	//
 	// This parameter is required.
 	//
@@ -15058,7 +15806,7 @@ type SubmitIsvCustomerTermsRequest struct {
 	//
 	// isvTerms.pdf
 	IsvTerms *string `json:"IsvTerms,omitempty" xml:"IsvTerms,omitempty"`
-	// The address of your business.
+	// The enterprise address.
 	//
 	// This parameter is required.
 	//
@@ -15112,6 +15860,11 @@ func (s *SubmitIsvCustomerTermsRequest) SetOfficeAddress(v string) *SubmitIsvCus
 }
 
 type SubmitIsvCustomerTermsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// /
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -15194,8 +15947,312 @@ func (s *SubmitIsvCustomerTermsResponse) SetBody(v *SubmitIsvCustomerTermsRespon
 	return s
 }
 
+type TriggerChatFlowRequest struct {
+	// The declared occurrence time of the event, usually the time when the request was constructed, in milliseconds timestamp.
+	//
+	// example:
+	//
+	// 1731502129000
+	ClaimTimeMillis *int64 `json:"ClaimTimeMillis,omitempty" xml:"ClaimTimeMillis,omitempty"`
+	// Input parameters in Key-Value format. The Key must match the input strategy configured at the start node of your flow.
+	//
+	// example:
+	//
+	// {"my_biz_data_0": "hi", "my_biz_data_1": "1024"}
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The time when the event should be discarded, i.e., the expiration time. If this field is specified, the message will be discarded if it exceeds this time, in milliseconds timestamp.
+	//
+	// example:
+	//
+	// 1731502729000
+	DiscardTimeMillis *int64 `json:"DiscardTimeMillis,omitempty" xml:"DiscardTimeMillis,omitempty"`
+	// Flow code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf8c70
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// External system transaction number, used to associate with external business system transactions. You can retrieve this parameter within the flow after triggering.
+	//
+	// example:
+	//
+	// 8d4acf7e-e360-eb83-6d74-fcf9c4538fda
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Unique event ID used for idempotent triggers. Do not include any business semantics; you can retrieve this parameter within the flow after triggering.
+	//
+	// example:
+	//
+	// c68622e6-5f0d-c8a4-af41-e949c2a7580e
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s TriggerChatFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerChatFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerChatFlowRequest) SetClaimTimeMillis(v int64) *TriggerChatFlowRequest {
+	s.ClaimTimeMillis = &v
+	return s
+}
+
+func (s *TriggerChatFlowRequest) SetData(v map[string]interface{}) *TriggerChatFlowRequest {
+	s.Data = v
+	return s
+}
+
+func (s *TriggerChatFlowRequest) SetDiscardTimeMillis(v int64) *TriggerChatFlowRequest {
+	s.DiscardTimeMillis = &v
+	return s
+}
+
+func (s *TriggerChatFlowRequest) SetFlowCode(v string) *TriggerChatFlowRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *TriggerChatFlowRequest) SetOutId(v string) *TriggerChatFlowRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *TriggerChatFlowRequest) SetOwnerId(v int64) *TriggerChatFlowRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TriggerChatFlowRequest) SetResourceOwnerAccount(v string) *TriggerChatFlowRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *TriggerChatFlowRequest) SetResourceOwnerId(v int64) *TriggerChatFlowRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *TriggerChatFlowRequest) SetUuid(v string) *TriggerChatFlowRequest {
+	s.Uuid = &v
+	return s
+}
+
+type TriggerChatFlowShrinkRequest struct {
+	// The declared occurrence time of the event, usually the time when the request was constructed, in milliseconds timestamp.
+	//
+	// example:
+	//
+	// 1731502129000
+	ClaimTimeMillis *int64 `json:"ClaimTimeMillis,omitempty" xml:"ClaimTimeMillis,omitempty"`
+	// Input parameters in Key-Value format. The Key must match the input strategy configured at the start node of your flow.
+	//
+	// example:
+	//
+	// {"my_biz_data_0": "hi", "my_biz_data_1": "1024"}
+	DataShrink *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The time when the event should be discarded, i.e., the expiration time. If this field is specified, the message will be discarded if it exceeds this time, in milliseconds timestamp.
+	//
+	// example:
+	//
+	// 1731502729000
+	DiscardTimeMillis *int64 `json:"DiscardTimeMillis,omitempty" xml:"DiscardTimeMillis,omitempty"`
+	// Flow code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf8c70
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// External system transaction number, used to associate with external business system transactions. You can retrieve this parameter within the flow after triggering.
+	//
+	// example:
+	//
+	// 8d4acf7e-e360-eb83-6d74-fcf9c4538fda
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Unique event ID used for idempotent triggers. Do not include any business semantics; you can retrieve this parameter within the flow after triggering.
+	//
+	// example:
+	//
+	// c68622e6-5f0d-c8a4-af41-e949c2a7580e
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s TriggerChatFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerChatFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetClaimTimeMillis(v int64) *TriggerChatFlowShrinkRequest {
+	s.ClaimTimeMillis = &v
+	return s
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetDataShrink(v string) *TriggerChatFlowShrinkRequest {
+	s.DataShrink = &v
+	return s
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetDiscardTimeMillis(v int64) *TriggerChatFlowShrinkRequest {
+	s.DiscardTimeMillis = &v
+	return s
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetFlowCode(v string) *TriggerChatFlowShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetOutId(v string) *TriggerChatFlowShrinkRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetOwnerId(v int64) *TriggerChatFlowShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetResourceOwnerAccount(v string) *TriggerChatFlowShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetResourceOwnerId(v int64) *TriggerChatFlowShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *TriggerChatFlowShrinkRequest) SetUuid(v string) *TriggerChatFlowShrinkRequest {
+	s.Uuid = &v
+	return s
+}
+
+type TriggerChatFlowResponseBody struct {
+	// Details of access denial
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 无
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
+	//
+	// example:
+	//
+	// {}
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error description message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 无
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TriggerChatFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerChatFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerChatFlowResponseBody) SetAccessDeniedDetail(v string) *TriggerChatFlowResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *TriggerChatFlowResponseBody) SetCode(v string) *TriggerChatFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TriggerChatFlowResponseBody) SetData(v map[string]interface{}) *TriggerChatFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TriggerChatFlowResponseBody) SetMessage(v string) *TriggerChatFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TriggerChatFlowResponseBody) SetRequestId(v string) *TriggerChatFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TriggerChatFlowResponseBody) SetSuccess(v bool) *TriggerChatFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TriggerChatFlowResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TriggerChatFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TriggerChatFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerChatFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerChatFlowResponse) SetHeaders(v map[string]*string) *TriggerChatFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TriggerChatFlowResponse) SetStatusCode(v int32) *TriggerChatFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TriggerChatFlowResponse) SetBody(v *TriggerChatFlowResponseBody) *TriggerChatFlowResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAccountWebhookRequest struct {
-	// The space ID of the user under the ISV account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -15260,6 +16317,11 @@ func (s *UpdateAccountWebhookRequest) SetStatusCallbackUrl(v string) *UpdateAcco
 }
 
 type UpdateAccountWebhookResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -15343,7 +16405,11 @@ func (s *UpdateAccountWebhookResponse) SetBody(v *UpdateAccountWebhookResponseBo
 }
 
 type UpdateCommerceSettingRequest struct {
-	// Specifies whether to display the shopping cart button.
+	// Specifies whether to display the shopping cart button. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// This parameter is required.
 	//
@@ -15351,7 +16417,11 @@ type UpdateCommerceSettingRequest struct {
 	//
 	// true
 	CartEnable *bool `json:"CartEnable,omitempty" xml:"CartEnable,omitempty"`
-	// Specifies whether to display the catalog button.
+	// Specifies whether to display the catalog button. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// This parameter is required.
 	//
@@ -15424,6 +16494,11 @@ func (s *UpdateCommerceSettingRequest) SetResourceOwnerId(v int64) *UpdateCommer
 }
 
 type UpdateCommerceSettingResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code.
 	//
@@ -15447,6 +16522,12 @@ type UpdateCommerceSettingResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -15516,24 +16597,32 @@ func (s *UpdateCommerceSettingResponse) SetBody(v *UpdateCommerceSettingResponse
 }
 
 type UpdateConversationalAutomationRequest struct {
+	// The commands.
 	Commands []*UpdateConversationalAutomationRequestCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// The space ID of the RAM user within the independent software vendor (ISV) account or the instance ID of the customer of Alibaba Cloud.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 2993****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Specifies whether to enable the welcoming message.
+	//
 	// example:
 	//
 	// true
 	EnableWelcomeMessage *bool  `json:"EnableWelcomeMessage,omitempty" xml:"EnableWelcomeMessage,omitempty"`
 	OwnerId              *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number of the enterprise.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86130000***
-	PhoneNumber          *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The opening remarks.
 	Prompts              []*string `json:"Prompts,omitempty" xml:"Prompts,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15588,10 +16677,14 @@ func (s *UpdateConversationalAutomationRequest) SetResourceOwnerId(v int64) *Upd
 }
 
 type UpdateConversationalAutomationRequestCommands struct {
+	// The description of the command.
+	//
 	// example:
 	//
-	// 命令1
+	// Command 1.
 	CommandDescription *string `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
+	// The command name.
+	//
 	// example:
 	//
 	// test
@@ -15617,24 +16710,32 @@ func (s *UpdateConversationalAutomationRequestCommands) SetCommandName(v string)
 }
 
 type UpdateConversationalAutomationShrinkRequest struct {
+	// The commands.
 	CommandsShrink *string `json:"Commands,omitempty" xml:"Commands,omitempty"`
+	// The space ID of the RAM user within the independent software vendor (ISV) account or the instance ID of the customer of Alibaba Cloud.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 2993****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Specifies whether to enable the welcoming message.
+	//
 	// example:
 	//
 	// true
 	EnableWelcomeMessage *bool  `json:"EnableWelcomeMessage,omitempty" xml:"EnableWelcomeMessage,omitempty"`
 	OwnerId              *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number of the enterprise.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86130000***
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The opening remarks.
 	PromptsShrink        *string `json:"Prompts,omitempty" xml:"Prompts,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15689,19 +16790,40 @@ func (s *UpdateConversationalAutomationShrinkRequest) SetResourceOwnerId(v int64
 }
 
 type UpdateConversationalAutomationResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -15771,10 +16893,14 @@ func (s *UpdateConversationalAutomationResponse) SetBody(v *UpdateConversational
 }
 
 type UpdateFlowJSONAssetRequest struct {
+	// SpaceId/instance ID of ISV sub customer.
+	//
 	// example:
 	//
 	// 9399393
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// JSON file generated according to Facebook flow rules.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15815,13 +16941,20 @@ func (s *UpdateFlowJSONAssetRequest) SetFlowId(v string) *UpdateFlowJSONAssetReq
 }
 
 type UpdateFlowJSONAssetResponseBody struct {
+	// The result returns OK as normal.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
-	Data    *UpdateFlowJSONAssetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data *UpdateFlowJSONAssetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error description information.
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -15910,10 +17043,14 @@ func (s *UpdateFlowJSONAssetResponse) SetBody(v *UpdateFlowJSONAssetResponseBody
 }
 
 type UpdatePhoneEncryptionPublicKeyRequest struct {
+	// SpaceId/instanceId of ISV sub clients.
+	//
 	// example:
 	//
 	// 399382882
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Encrypt the public key.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15970,10 +17107,17 @@ func (s *UpdatePhoneEncryptionPublicKeyRequest) SetPhoneNumber(v string) *Update
 }
 
 type UpdatePhoneEncryptionPublicKeyResponseBody struct {
+	// The result returns OK as normal.
+	//
 	// example:
 	//
 	// OK
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error description information.
+	//
+	// example:
+	//
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -16036,28 +17180,38 @@ func (s *UpdatePhoneEncryptionPublicKeyResponse) SetBody(v *UpdatePhoneEncryptio
 }
 
 type UpdatePhoneMessageQrdlRequest struct {
+	// SpaceId/instance ID of ISV sub customer.
+	//
 	// example:
 	//
 	// 9383884
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Produce QR code image format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PNG
 	GenerateQrImage *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	// Number, enter the country/region code+number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 861380000
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Message content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	// QR code encoding.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16100,12 +17254,20 @@ func (s *UpdatePhoneMessageQrdlRequest) SetQrdlCode(v string) *UpdatePhoneMessag
 }
 
 type UpdatePhoneMessageQrdlResponseBody struct {
+	// The result returns OK as normal.
+	//
 	// example:
 	//
 	// OK
-	Code    *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *UpdatePhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *UpdatePhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error description information.
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -16143,26 +17305,38 @@ func (s *UpdatePhoneMessageQrdlResponseBody) SetRequestId(v string) *UpdatePhone
 }
 
 type UpdatePhoneMessageQrdlResponseBodyData struct {
+	// Deep link address.
+	//
 	// example:
 	//
 	// https://wa.msg/
 	DeepLinkUrl *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
+	// Generate image types.
+	//
 	// example:
 	//
 	// PNG
 	GenerateQrImage *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	// Number.
+	//
 	// example:
 	//
 	// 8613800
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Message content.
+	//
 	// example:
 	//
 	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	// QR code address.
+	//
 	// example:
 	//
 	// https://img.png
 	QrImageUrl *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
+	// QR code encoding.
+	//
 	// example:
 	//
 	// DEDEE998
@@ -16237,30 +17411,50 @@ func (s *UpdatePhoneMessageQrdlResponse) SetBody(v *UpdatePhoneMessageQrdlRespon
 }
 
 type UpdatePhoneWebhookRequest struct {
+	// SpaceId for ISV sub clients.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 293483938849493****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Whether to use HTTP to receive receipts. Value:
+	//
+	// 	- Y: Yes.
+	//
+	// 	- N: No.
+	//
 	// example:
 	//
 	// Y
 	HttpFlag *string `json:"HttpFlag,omitempty" xml:"HttpFlag,omitempty"`
+	// phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800001234
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Whether to use queue method to receive receipts. Value:
+	//
+	// 	- Y: Yes.
+	//
+	// 	- N: No.
+	//
 	// example:
 	//
 	// N
 	QueueFlag *string `json:"QueueFlag,omitempty" xml:"QueueFlag,omitempty"`
+	// HTTP status report interface callback address.
+	//
 	// example:
 	//
 	// http://www.aliyun.com
 	StatusCallbackUrl *string `json:"StatusCallbackUrl,omitempty" xml:"StatusCallbackUrl,omitempty"`
+	// HTTP upstream message interface callback address.
+	//
 	// example:
 	//
 	// http://aliyun.com
@@ -16306,15 +17500,30 @@ func (s *UpdatePhoneWebhookRequest) SetUpCallbackUrl(v string) *UpdatePhoneWebho
 }
 
 type UpdatePhoneWebhookResponseBody struct {
+	// Access denied for detailed information.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The HTTP status code returned.
+	//
+	// 	- A value of OK indicates that the call is successful.
+	//
+	// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Prompt message, there is a value when an exception is returned.
+	//
 	// example:
 	//
 	// null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
@@ -16429,10 +17638,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Adds a phone number for a WhatsApp Business account (WABA).
 //
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
 // @param request - AddChatappPhoneNumberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16502,10 +17707,6 @@ func (client *Client) AddChatappPhoneNumberWithOptions(request *AddChatappPhoneN
 // Summary:
 //
 // Adds a phone number for a WhatsApp Business account (WABA).
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - AddChatappPhoneNumberRequest
 //
@@ -16625,7 +17826,7 @@ func (client *Client) BeeBotAssociate(request *BeeBotAssociateRequest) (_result 
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The ID of the session.
 //
 // @param tmpReq - BeeBotChatRequest
 //
@@ -16721,7 +17922,7 @@ func (client *Client) BeeBotChatWithOptions(tmpReq *BeeBotChatRequest, runtime *
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The ID of the session.
 //
 // @param request - BeeBotChatRequest
 //
@@ -16891,7 +18092,7 @@ func (client *Client) ChatappEmbedSignUp(request *ChatappEmbedSignUpRequest) (_r
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The space ID of the RAM user within the independent software vendor (ISV) account.
 //
 // @param request - ChatappMigrationRegisterRequest
 //
@@ -16941,7 +18142,7 @@ func (client *Client) ChatappMigrationRegisterWithOptions(request *ChatappMigrat
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The space ID of the RAM user within the independent software vendor (ISV) account.
 //
 // @param request - ChatappMigrationRegisterRequest
 //
@@ -17437,13 +18638,15 @@ func (client *Client) CreateChatappMigrationInitiate(request *CreateChatappMigra
 //
 // The HTTP status code.
 //
-// \\\\	- Example: OK. This parameter indicates that the request is successful.
+// \\\\\\\\	- Example: OK. This parameter indicates that the request is successful.
 //
-// \\\\	- Other values indicate that the request fails. For more information, see \\[Error codes]\\\\(https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+// \\\\\\\\	- Other values indicate that the request fails. For more information, see \\\\\\[Error codes]\\\\\\(https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
 //
 // Description:
 //
-// The error message.
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param tmpReq - CreateChatappTemplateRequest
 //
@@ -17537,13 +18740,15 @@ func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemp
 //
 // The HTTP status code.
 //
-// \\\\	- Example: OK. This parameter indicates that the request is successful.
+// \\\\\\\\	- Example: OK. This parameter indicates that the request is successful.
 //
-// \\\\	- Other values indicate that the request fails. For more information, see \\[Error codes]\\\\(https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+// \\\\\\\\	- Other values indicate that the request fails. For more information, see \\\\\\[Error codes]\\\\\\(https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
 //
 // Description:
 //
-// The error message.
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - CreateChatappTemplateRequest
 //
@@ -17643,7 +18848,7 @@ func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlo
 
 // Summary:
 //
-// 创建消息发送二维码
+// Creates a quick-response (QR) code that contains a message.
 //
 // @param request - CreatePhoneMessageQrdlRequest
 //
@@ -17697,7 +18902,7 @@ func (client *Client) CreatePhoneMessageQrdlWithOptions(request *CreatePhoneMess
 
 // Summary:
 //
-// 创建消息发送二维码
+// Creates a quick-response (QR) code that contains a message.
 //
 // @param request - CreatePhoneMessageQrdlRequest
 //
@@ -17895,7 +19100,7 @@ func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlo
 
 // Summary:
 //
-// 删除消息发送二维码
+// Deletes a quick-response (QR) code that contains a message.
 //
 // @param request - DeletePhoneMessageQrdlRequest
 //
@@ -17945,7 +19150,7 @@ func (client *Client) DeletePhoneMessageQrdlWithOptions(request *DeletePhoneMess
 
 // Summary:
 //
-// 删除消息发送二维码
+// Deletes a quick-response (QR) code that contains a message.
 //
 // @param request - DeletePhoneMessageQrdlRequest
 //
@@ -17963,7 +19168,7 @@ func (client *Client) DeletePhoneMessageQrdl(request *DeletePhoneMessageQrdlRequ
 
 // Summary:
 //
-// 弃用Flow
+// Deprecates a Flow.
 //
 // @param request - DeprecateFlowRequest
 //
@@ -18009,7 +19214,7 @@ func (client *Client) DeprecateFlowWithOptions(request *DeprecateFlowRequest, ru
 
 // Summary:
 //
-// 弃用Flow
+// Deprecates a Flow.
 //
 // @param request - DeprecateFlowRequest
 //
@@ -18623,7 +19828,15 @@ func (client *Client) GetCommerceSetting(request *GetCommerceSettingRequest) (_r
 
 // Summary:
 //
-// 获取号码欢迎消息设置信息
+// Configures welcoming messages, opening remarks, and commands.
+//
+// Description:
+//
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - GetConversationalAutomationRequest
 //
@@ -18681,7 +19894,15 @@ func (client *Client) GetConversationalAutomationWithOptions(request *GetConvers
 
 // Summary:
 //
-// 获取号码欢迎消息设置信息
+// Configures welcoming messages, opening remarks, and commands.
+//
+// Description:
+//
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - GetConversationalAutomationRequest
 //
@@ -18771,7 +19992,7 @@ func (client *Client) GetFlow(request *GetFlowRequest) (_result *GetFlowResponse
 
 // Summary:
 //
-// 获取flow的JSON文件
+// Queries the JSON content of a Flow.
 //
 // @param request - GetFlowJSONAssestRequest
 //
@@ -18817,7 +20038,7 @@ func (client *Client) GetFlowJSONAssestWithOptions(request *GetFlowJSONAssestReq
 
 // Summary:
 //
-// 获取flow的JSON文件
+// Queries the JSON content of a Flow.
 //
 // @param request - GetFlowJSONAssestRequest
 //
@@ -18907,11 +20128,11 @@ func (client *Client) GetFlowPreviewUrl(request *GetFlowPreviewUrlRequest) (_res
 
 // Summary:
 //
-// The phone number.
+// Obtain the verification code for the migration number.
 //
 // Description:
 //
-// The ID of the phone number.
+// The single user QPS limit for this interface is 10 times per second. Exceeding the limit may result in restricted API calls, which may affect your business. Please make reasonable calls.
 //
 // @param request - GetMigrationVerifyCodeRequest
 //
@@ -18965,11 +20186,11 @@ func (client *Client) GetMigrationVerifyCodeWithOptions(request *GetMigrationVer
 
 // Summary:
 //
-// The phone number.
+// Obtain the verification code for the migration number.
 //
 // Description:
 //
-// The ID of the phone number.
+// The single user QPS limit for this interface is 10 times per second. Exceeding the limit may result in restricted API calls, which may affect your business. Please make reasonable calls.
 //
 // @param request - GetMigrationVerifyCodeRequest
 //
@@ -18987,7 +20208,7 @@ func (client *Client) GetMigrationVerifyCode(request *GetMigrationVerifyCodeRequ
 
 // Summary:
 //
-// 根据Code获取权限
+// Obtains permissions based on the authorization code obtained from embedded signup.
 //
 // @param tmpReq - GetPermissionByCodeRequest
 //
@@ -19043,7 +20264,7 @@ func (client *Client) GetPermissionByCodeWithOptions(tmpReq *GetPermissionByCode
 
 // Summary:
 //
-// 根据Code获取权限
+// Obtains permissions based on the authorization code obtained from embedded signup.
 //
 // @param request - GetPermissionByCodeRequest
 //
@@ -19061,7 +20282,7 @@ func (client *Client) GetPermissionByCode(request *GetPermissionByCodeRequest) (
 
 // Summary:
 //
-// 获取号码的公钥
+// Queries the encryption public key of a phone number.
 //
 // @param request - GetPhoneEncryptionPublicKeyRequest
 //
@@ -19107,7 +20328,7 @@ func (client *Client) GetPhoneEncryptionPublicKeyWithOptions(request *GetPhoneEn
 
 // Summary:
 //
-// 获取号码的公钥
+// Queries the encryption public key of a phone number.
 //
 // @param request - GetPhoneEncryptionPublicKeyRequest
 //
@@ -19353,7 +20574,15 @@ func (client *Client) GetWhatsappConnectionCatalog(request *GetWhatsappConnectio
 
 // Summary:
 //
-// 获取whatsapp节点信息发送消息健康度
+// Queries the messaging health status of different types of nodes.
+//
+// Description:
+//
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - GetWhatsappHealthStatusRequest
 //
@@ -19427,7 +20656,15 @@ func (client *Client) GetWhatsappHealthStatusWithOptions(request *GetWhatsappHea
 
 // Summary:
 //
-// 获取whatsapp节点信息发送消息健康度
+// Queries the messaging health status of different types of nodes.
+//
+// Description:
+//
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - GetWhatsappHealthStatusRequest
 //
@@ -19709,7 +20946,7 @@ func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowRespo
 
 // Summary:
 //
-// 查询消息发送二维码
+// Queries the information about a list of quick-response (QR) codes that contain messages.
 //
 // @param request - ListPhoneMessageQrdlRequest
 //
@@ -19755,7 +20992,7 @@ func (client *Client) ListPhoneMessageQrdlWithOptions(request *ListPhoneMessageQ
 
 // Summary:
 //
-// 查询消息发送二维码
+// Queries the information about a list of quick-response (QR) codes that contain messages.
 //
 // @param request - ListPhoneMessageQrdlRequest
 //
@@ -21033,7 +22270,9 @@ func (client *Client) SendChatappMessage(request *SendChatappMessageRequest) (_r
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//   You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// 	- After you call the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation to obtain the authentication information for uploading the file to Object Storage Service (OSS), you can use the authentication information to upload the file to the OSS server. To upload the file, you can call the SDK provided by OSS. When you upload the file, set the value of the key to the value of `Dir + "/" + file name`, such as C200293990209/isvTerms.pdf. The value of Dir is obtained from the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation. The value of IsvTerms is obtained from the PutObject operation.
 //
 // @param request - SubmitIsvCustomerTermsRequest
 //
@@ -21103,7 +22342,9 @@ func (client *Client) SubmitIsvCustomerTermsWithOptions(request *SubmitIsvCustom
 //
 // Description:
 //
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//   You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// 	- After you call the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation to obtain the authentication information for uploading the file to Object Storage Service (OSS), you can use the authentication information to upload the file to the OSS server. To upload the file, you can call the SDK provided by OSS. When you upload the file, set the value of the key to the value of `Dir + "/" + file name`, such as C200293990209/isvTerms.pdf. The value of Dir is obtained from the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation. The value of IsvTerms is obtained from the PutObject operation.
 //
 // @param request - SubmitIsvCustomerTermsRequest
 //
@@ -21112,6 +22353,112 @@ func (client *Client) SubmitIsvCustomerTerms(request *SubmitIsvCustomerTermsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitIsvCustomerTermsResponse{}
 	_body, _err := client.SubmitIsvCustomerTermsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Trigger an Online ChatFlow
+//
+// Description:
+//
+// After triggering an online flow, if your flow contains components that incur costs for cloud products, such as message sending or function calls, please ensure you fully understand the billing methods and prices of the related products before using this interface.
+//
+// @param tmpReq - TriggerChatFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TriggerChatFlowResponse
+func (client *Client) TriggerChatFlowWithOptions(tmpReq *TriggerChatFlowRequest, runtime *util.RuntimeOptions) (_result *TriggerChatFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TriggerChatFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Data)) {
+		request.DataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Data, tea.String("Data"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClaimTimeMillis)) {
+		query["ClaimTimeMillis"] = request.ClaimTimeMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataShrink)) {
+		query["Data"] = request.DataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiscardTimeMillis)) {
+		query["DiscardTimeMillis"] = request.DiscardTimeMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TriggerChatFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TriggerChatFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Trigger an Online ChatFlow
+//
+// Description:
+//
+// After triggering an online flow, if your flow contains components that incur costs for cloud products, such as message sending or function calls, please ensure you fully understand the billing methods and prices of the related products before using this interface.
+//
+// @param request - TriggerChatFlowRequest
+//
+// @return TriggerChatFlowResponse
+func (client *Client) TriggerChatFlow(request *TriggerChatFlowRequest) (_result *TriggerChatFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TriggerChatFlowResponse{}
+	_body, _err := client.TriggerChatFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21293,7 +22640,15 @@ func (client *Client) UpdateCommerceSetting(request *UpdateCommerceSettingReques
 
 // Summary:
 //
-// 更新号码欢迎消息、命令等属性
+// Modifies welcoming messages, opening remarks, and commands for a phone number.
+//
+// Description:
+//
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
 //
 // @param tmpReq - UpdateConversationalAutomationRequest
 //
@@ -21373,7 +22728,15 @@ func (client *Client) UpdateConversationalAutomationWithOptions(tmpReq *UpdateCo
 
 // Summary:
 //
-// 更新号码欢迎消息、命令等属性
+// Modifies welcoming messages, opening remarks, and commands for a phone number.
+//
+// Description:
+//
+// ### [](#qps-)QPS limit
+//
+// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - UpdateConversationalAutomationRequest
 //
@@ -21391,7 +22754,7 @@ func (client *Client) UpdateConversationalAutomation(request *UpdateConversation
 
 // Summary:
 //
-// 更新flow的表单内容
+// Updates a Flow by using JSON content.
 //
 // @param request - UpdateFlowJSONAssetRequest
 //
@@ -21441,7 +22804,7 @@ func (client *Client) UpdateFlowJSONAssetWithOptions(request *UpdateFlowJSONAsse
 
 // Summary:
 //
-// 更新flow的表单内容
+// Updates a Flow by using JSON content.
 //
 // @param request - UpdateFlowJSONAssetRequest
 //
@@ -21459,7 +22822,7 @@ func (client *Client) UpdateFlowJSONAsset(request *UpdateFlowJSONAssetRequest) (
 
 // Summary:
 //
-// 更新号码的公钥
+// Updates the encryption public key of a phone number.
 //
 // @param request - UpdatePhoneEncryptionPublicKeyRequest
 //
@@ -21509,7 +22872,7 @@ func (client *Client) UpdatePhoneEncryptionPublicKeyWithOptions(request *UpdateP
 
 // Summary:
 //
-// 更新号码的公钥
+// Updates the encryption public key of a phone number.
 //
 // @param request - UpdatePhoneEncryptionPublicKeyRequest
 //
@@ -21527,7 +22890,7 @@ func (client *Client) UpdatePhoneEncryptionPublicKey(request *UpdatePhoneEncrypt
 
 // Summary:
 //
-// 修改消息发送二维码
+// Modifies a quick-response (QR) code that contains a message.
 //
 // @param request - UpdatePhoneMessageQrdlRequest
 //
@@ -21585,7 +22948,7 @@ func (client *Client) UpdatePhoneMessageQrdlWithOptions(request *UpdatePhoneMess
 
 // Summary:
 //
-// 修改消息发送二维码
+// Modifies a quick-response (QR) code that contains a message.
 //
 // @param request - UpdatePhoneMessageQrdlRequest
 //
@@ -21605,9 +22968,9 @@ func (client *Client) UpdatePhoneMessageQrdl(request *UpdatePhoneMessageQrdlRequ
 //
 // The HTTP status code returned.
 //
-// 	- A value of OK indicates that the call is successful.
+// \\	- A value of OK indicates that the call is successful.
 //
-// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+// \\	- Other values indicate that the call fails. For more information, see [Error codes]\\(~~196974~~).
 //
 // Description:
 //
@@ -21675,9 +23038,9 @@ func (client *Client) UpdatePhoneWebhookWithOptions(request *UpdatePhoneWebhookR
 //
 // The HTTP status code returned.
 //
-// 	- A value of OK indicates that the call is successful.
+// \\	- A value of OK indicates that the call is successful.
 //
-// 	- Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+// \\	- Other values indicate that the call fails. For more information, see [Error codes]\\(~~196974~~).
 //
 // Description:
 //
