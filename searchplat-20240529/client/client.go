@@ -874,6 +874,127 @@ func (s *GetDocumentSplitResponse) SetBody(v *GetDocumentSplitResponseBody) *Get
 	return s
 }
 
+type GetEmbeddingTuningRequest struct {
+	Input      [][]*float32           `json:"input,omitempty" xml:"input,omitempty" type:"Repeated"`
+	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+}
+
+func (s GetEmbeddingTuningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmbeddingTuningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbeddingTuningRequest) SetInput(v [][]*float32) *GetEmbeddingTuningRequest {
+	s.Input = v
+	return s
+}
+
+func (s *GetEmbeddingTuningRequest) SetParameters(v map[string]interface{}) *GetEmbeddingTuningRequest {
+	s.Parameters = v
+	return s
+}
+
+type GetEmbeddingTuningResponseBody struct {
+	Latency   *int32                                `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                               `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *GetEmbeddingTuningResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Usage     *GetEmbeddingTuningResponseBodyUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetEmbeddingTuningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmbeddingTuningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbeddingTuningResponseBody) SetLatency(v int32) *GetEmbeddingTuningResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetEmbeddingTuningResponseBody) SetRequestId(v string) *GetEmbeddingTuningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEmbeddingTuningResponseBody) SetResult(v *GetEmbeddingTuningResponseBodyResult) *GetEmbeddingTuningResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetEmbeddingTuningResponseBody) SetUsage(v *GetEmbeddingTuningResponseBodyUsage) *GetEmbeddingTuningResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetEmbeddingTuningResponseBodyResult struct {
+	Output [][]*float32 `json:"output,omitempty" xml:"output,omitempty" type:"Repeated"`
+}
+
+func (s GetEmbeddingTuningResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmbeddingTuningResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbeddingTuningResponseBodyResult) SetOutput(v [][]*float32) *GetEmbeddingTuningResponseBodyResult {
+	s.Output = v
+	return s
+}
+
+type GetEmbeddingTuningResponseBodyUsage struct {
+	DocCount *int32 `json:"doc_count,omitempty" xml:"doc_count,omitempty"`
+}
+
+func (s GetEmbeddingTuningResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmbeddingTuningResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbeddingTuningResponseBodyUsage) SetDocCount(v int32) *GetEmbeddingTuningResponseBodyUsage {
+	s.DocCount = &v
+	return s
+}
+
+type GetEmbeddingTuningResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEmbeddingTuningResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEmbeddingTuningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmbeddingTuningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbeddingTuningResponse) SetHeaders(v map[string]*string) *GetEmbeddingTuningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEmbeddingTuningResponse) SetStatusCode(v int32) *GetEmbeddingTuningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEmbeddingTuningResponse) SetBody(v *GetEmbeddingTuningResponseBody) *GetEmbeddingTuningResponse {
+	s.Body = v
+	return s
+}
+
 type GetImageAnalyzeTaskStatusRequest struct {
 	// This parameter is required.
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
@@ -2097,6 +2218,74 @@ func (client *Client) GetDocumentSplit(workspaceName *string, serviceId *string,
 	headers := make(map[string]*string)
 	_result = &GetDocumentSplitResponse{}
 	_body, _err := client.GetDocumentSplitWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 向量微调
+//
+// @param request - GetEmbeddingTuningRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEmbeddingTuningResponse
+func (client *Client) GetEmbeddingTuningWithOptions(workspaceName *string, serviceId *string, request *GetEmbeddingTuningRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEmbeddingTuningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		body["input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["parameters"] = request.Parameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEmbeddingTuning"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/embedding-tuning/" + tea.StringValue(serviceId)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEmbeddingTuningResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 向量微调
+//
+// @param request - GetEmbeddingTuningRequest
+//
+// @return GetEmbeddingTuningResponse
+func (client *Client) GetEmbeddingTuning(workspaceName *string, serviceId *string, request *GetEmbeddingTuningRequest) (_result *GetEmbeddingTuningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEmbeddingTuningResponse{}
+	_body, _err := client.GetEmbeddingTuningWithOptions(workspaceName, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
