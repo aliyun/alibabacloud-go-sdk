@@ -1,3 +1,7 @@
+2024-11-15 Version: v4.26.7
+- Update API ImportImage: add param ClientToken.
+
+
 2024-11-13 Version: v4.26.6
 - Update API CreateNetworkInterface: add param SourceDestCheck.
 - Update API CreateNetworkInterface: update response param.
