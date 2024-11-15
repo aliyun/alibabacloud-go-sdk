@@ -1,3 +1,26 @@
+2024-11-15 Version: v1.3.0
+- Support API AddAnswerSample.
+- Support API CreateAnswerLib.
+- Support API CreateCallback.
+- Support API DeleteAnswerLib.
+- Support API DeleteAnswerSample.
+- Support API DeleteCallback.
+- Support API ExportAnswerSample.
+- Support API ExportOssCheckStat.
+- Support API GetAnswerImportProgress.
+- Support API GetImageSceneLabelConf.
+- Support API GetKeywordLib.
+- Support API GetOssCheckStat.
+- Support API ListAnswerLib.
+- Support API ListCallback.
+- Support API ModifyAnswerLib.
+- Support API ModifyCallback.
+- Support API QueryAnswerSampleByPage.
+- Support API QueryCallback.
+- Support API QueryCallbackByPage.
+- Update API DeleteKeyword: add param KeywordIdList.
+
+
 2024-10-22 Version: v1.2.0
 - Support API ExportOssCheckStat.
 - Support API GetOssCheckStat.

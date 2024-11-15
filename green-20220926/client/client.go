@@ -9,6 +9,218 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddAnswerSampleRequest struct {
+	// example:
+	//
+	// alxxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// data/xxx.xlsx
+	SampleObject *string `json:"SampleObject,omitempty" xml:"SampleObject,omitempty"`
+	Samples      *string `json:"Samples,omitempty" xml:"Samples,omitempty"`
+}
+
+func (s AddAnswerSampleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAnswerSampleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAnswerSampleRequest) SetLibId(v string) *AddAnswerSampleRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *AddAnswerSampleRequest) SetRegionId(v string) *AddAnswerSampleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AddAnswerSampleRequest) SetSampleObject(v string) *AddAnswerSampleRequest {
+	s.SampleObject = &v
+	return s
+}
+
+func (s *AddAnswerSampleRequest) SetSamples(v string) *AddAnswerSampleRequest {
+	s.Samples = &v
+	return s
+}
+
+type AddAnswerSampleResponseBody struct {
+	// example:
+	//
+	// alxxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *AddAnswerSampleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// alAxbbxxxx-xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s AddAnswerSampleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAnswerSampleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddAnswerSampleResponseBody) SetLibId(v string) *AddAnswerSampleResponseBody {
+	s.LibId = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBody) SetRequestId(v string) *AddAnswerSampleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBody) SetResult(v *AddAnswerSampleResponseBodyResult) *AddAnswerSampleResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBody) SetTaskId(v string) *AddAnswerSampleResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type AddAnswerSampleResponseBodyResult struct {
+	// example:
+	//
+	// xxx
+	I18nKey              *string   `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	IllegalLengthSamples []*string `json:"IllegalLengthSamples,omitempty" xml:"IllegalLengthSamples,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 118
+	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
+	// example:
+	//
+	// alxxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// 100
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 98
+	RepeatCount   *int32    `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	RepeatSamples []*string `json:"RepeatSamples,omitempty" xml:"RepeatSamples,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 318
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// example:
+	//
+	// alAxbbxxxx-xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 534
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s AddAnswerSampleResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAnswerSampleResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetI18nKey(v string) *AddAnswerSampleResponseBodyResult {
+	s.I18nKey = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetIllegalLengthSamples(v []*string) *AddAnswerSampleResponseBodyResult {
+	s.IllegalLengthSamples = v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetInvalidCount(v int32) *AddAnswerSampleResponseBodyResult {
+	s.InvalidCount = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetLibId(v string) *AddAnswerSampleResponseBodyResult {
+	s.LibId = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetProgress(v int32) *AddAnswerSampleResponseBodyResult {
+	s.Progress = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetRepeatCount(v int32) *AddAnswerSampleResponseBodyResult {
+	s.RepeatCount = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetRepeatSamples(v []*string) *AddAnswerSampleResponseBodyResult {
+	s.RepeatSamples = v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetSuccessCount(v int32) *AddAnswerSampleResponseBodyResult {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetTaskId(v string) *AddAnswerSampleResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponseBodyResult) SetTotalCount(v int32) *AddAnswerSampleResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+type AddAnswerSampleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddAnswerSampleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddAnswerSampleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAnswerSampleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddAnswerSampleResponse) SetHeaders(v map[string]*string) *AddAnswerSampleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddAnswerSampleResponse) SetStatusCode(v int32) *AddAnswerSampleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddAnswerSampleResponse) SetBody(v *AddAnswerSampleResponseBody) *AddAnswerSampleResponse {
+	s.Body = v
+	return s
+}
+
 type AddImageLibRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
@@ -1499,6 +1711,335 @@ func (s *CreatStockOssCheckTaskResponse) SetBody(v *CreatStockOssCheckTaskRespon
 	return s
 }
 
+type CreateAnswerLibRequest struct {
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// oss-cip-shanghai
+	SampleBucket *string `json:"SampleBucket,omitempty" xml:"SampleBucket,omitempty"`
+	// example:
+	//
+	// data/xxx.xlsx
+	SampleObject *string `json:"SampleObject,omitempty" xml:"SampleObject,omitempty"`
+	Samples      *string `json:"Samples,omitempty" xml:"Samples,omitempty"`
+}
+
+func (s CreateAnswerLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnswerLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnswerLibRequest) SetLibName(v string) *CreateAnswerLibRequest {
+	s.LibName = &v
+	return s
+}
+
+func (s *CreateAnswerLibRequest) SetRegionId(v string) *CreateAnswerLibRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAnswerLibRequest) SetSampleBucket(v string) *CreateAnswerLibRequest {
+	s.SampleBucket = &v
+	return s
+}
+
+func (s *CreateAnswerLibRequest) SetSampleObject(v string) *CreateAnswerLibRequest {
+	s.SampleObject = &v
+	return s
+}
+
+func (s *CreateAnswerLibRequest) SetSamples(v string) *CreateAnswerLibRequest {
+	s.Samples = &v
+	return s
+}
+
+type CreateAnswerLibResponseBody struct {
+	// example:
+	//
+	// alxxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateAnswerLibResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// alAxbbxxxx-xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateAnswerLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnswerLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnswerLibResponseBody) SetLibId(v string) *CreateAnswerLibResponseBody {
+	s.LibId = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBody) SetRequestId(v string) *CreateAnswerLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBody) SetResult(v *CreateAnswerLibResponseBodyResult) *CreateAnswerLibResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBody) SetTaskId(v string) *CreateAnswerLibResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateAnswerLibResponseBodyResult struct {
+	// example:
+	//
+	// xxx
+	I18nKey              *string   `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	IllegalLengthSamples []*string `json:"IllegalLengthSamples,omitempty" xml:"IllegalLengthSamples,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
+	// example:
+	//
+	// alxxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// 100
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 1
+	RepeatCount   *int32    `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	RepeatSamples []*string `json:"RepeatSamples,omitempty" xml:"RepeatSamples,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// example:
+	//
+	// alAaaaxxx-xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateAnswerLibResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnswerLibResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetI18nKey(v string) *CreateAnswerLibResponseBodyResult {
+	s.I18nKey = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetIllegalLengthSamples(v []*string) *CreateAnswerLibResponseBodyResult {
+	s.IllegalLengthSamples = v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetInvalidCount(v int32) *CreateAnswerLibResponseBodyResult {
+	s.InvalidCount = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetLibId(v string) *CreateAnswerLibResponseBodyResult {
+	s.LibId = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetProgress(v int32) *CreateAnswerLibResponseBodyResult {
+	s.Progress = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetRepeatCount(v int32) *CreateAnswerLibResponseBodyResult {
+	s.RepeatCount = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetRepeatSamples(v []*string) *CreateAnswerLibResponseBodyResult {
+	s.RepeatSamples = v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetSuccessCount(v int32) *CreateAnswerLibResponseBodyResult {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetTaskId(v string) *CreateAnswerLibResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponseBodyResult) SetTotalCount(v int32) *CreateAnswerLibResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateAnswerLibResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAnswerLibResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAnswerLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnswerLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnswerLibResponse) SetHeaders(v map[string]*string) *CreateAnswerLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAnswerLibResponse) SetStatusCode(v int32) *CreateAnswerLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAnswerLibResponse) SetBody(v *CreateAnswerLibResponseBody) *CreateAnswerLibResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCallbackRequest struct {
+	// example:
+	//
+	// SHA256
+	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// all
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// https://console.aliyun.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCallbackRequest) SetCryptType(v string) *CreateCallbackRequest {
+	s.CryptType = &v
+	return s
+}
+
+func (s *CreateCallbackRequest) SetName(v string) *CreateCallbackRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCallbackRequest) SetRegionId(v string) *CreateCallbackRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCallbackRequest) SetScope(v string) *CreateCallbackRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateCallbackRequest) SetUrl(v string) *CreateCallbackRequest {
+	s.Url = &v
+	return s
+}
+
+type CreateCallbackResponseBody struct {
+	// example:
+	//
+	// True
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCallbackResponseBody) SetData(v int64) *CreateCallbackResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateCallbackResponseBody) SetRequestId(v string) *CreateCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCallbackResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCallbackResponse) SetHeaders(v map[string]*string) *CreateCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCallbackResponse) SetStatusCode(v int32) *CreateCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCallbackResponse) SetBody(v *CreateCallbackResponseBody) *CreateCallbackResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePreCheckRequest struct {
 	// example:
 	//
@@ -1684,6 +2225,278 @@ func (s *CreatePreCheckResponse) SetStatusCode(v int32) *CreatePreCheckResponse 
 }
 
 func (s *CreatePreCheckResponse) SetBody(v *CreatePreCheckResponseBody) *CreatePreCheckResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAnswerLibRequest struct {
+	// example:
+	//
+	// alxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteAnswerLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnswerLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnswerLibRequest) SetLibId(v string) *DeleteAnswerLibRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *DeleteAnswerLibRequest) SetRegionId(v string) *DeleteAnswerLibRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteAnswerLibResponseBody struct {
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAnswerLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnswerLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnswerLibResponseBody) SetData(v bool) *DeleteAnswerLibResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteAnswerLibResponseBody) SetRequestId(v string) *DeleteAnswerLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAnswerLibResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAnswerLibResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAnswerLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnswerLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnswerLibResponse) SetHeaders(v map[string]*string) *DeleteAnswerLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAnswerLibResponse) SetStatusCode(v int32) *DeleteAnswerLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAnswerLibResponse) SetBody(v *DeleteAnswerLibResponseBody) *DeleteAnswerLibResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAnswerSampleRequest struct {
+	// example:
+	//
+	// [15463605]
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// alxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteAnswerSampleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnswerSampleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnswerSampleRequest) SetIds(v string) *DeleteAnswerSampleRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *DeleteAnswerSampleRequest) SetLibId(v string) *DeleteAnswerSampleRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *DeleteAnswerSampleRequest) SetRegionId(v string) *DeleteAnswerSampleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteAnswerSampleResponseBody struct {
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAnswerSampleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnswerSampleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnswerSampleResponseBody) SetData(v bool) *DeleteAnswerSampleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteAnswerSampleResponseBody) SetRequestId(v string) *DeleteAnswerSampleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAnswerSampleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAnswerSampleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAnswerSampleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnswerSampleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnswerSampleResponse) SetHeaders(v map[string]*string) *DeleteAnswerSampleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAnswerSampleResponse) SetStatusCode(v int32) *DeleteAnswerSampleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAnswerSampleResponse) SetBody(v *DeleteAnswerSampleResponseBody) *DeleteAnswerSampleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCallbackRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1480
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCallbackRequest) SetId(v int64) *DeleteCallbackRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteCallbackRequest) SetRegionId(v string) *DeleteCallbackRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteCallbackResponseBody struct {
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCallbackResponseBody) SetData(v bool) *DeleteCallbackResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteCallbackResponseBody) SetRequestId(v string) *DeleteCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCallbackResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCallbackResponse) SetHeaders(v map[string]*string) *DeleteCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCallbackResponse) SetStatusCode(v int32) *DeleteCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCallbackResponse) SetBody(v *DeleteCallbackResponseBody) *DeleteCallbackResponse {
 	s.Body = v
 	return s
 }
@@ -2059,6 +2872,93 @@ func (s *DeleteKeywordLibResponse) SetStatusCode(v int32) *DeleteKeywordLibRespo
 }
 
 func (s *DeleteKeywordLibResponse) SetBody(v *DeleteKeywordLibResponseBody) *DeleteKeywordLibResponse {
+	s.Body = v
+	return s
+}
+
+type ExportAnswerSampleRequest struct {
+	// example:
+	//
+	// alxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ExportAnswerSampleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnswerSampleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnswerSampleRequest) SetLibId(v string) *ExportAnswerSampleRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *ExportAnswerSampleRequest) SetRegionId(v string) *ExportAnswerSampleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ExportAnswerSampleResponseBody struct {
+	// example:
+	//
+	// True
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportAnswerSampleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnswerSampleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnswerSampleResponseBody) SetData(v string) *ExportAnswerSampleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExportAnswerSampleResponseBody) SetRequestId(v string) *ExportAnswerSampleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportAnswerSampleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportAnswerSampleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportAnswerSampleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnswerSampleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnswerSampleResponse) SetHeaders(v map[string]*string) *ExportAnswerSampleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportAnswerSampleResponse) SetStatusCode(v int32) *ExportAnswerSampleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportAnswerSampleResponse) SetBody(v *ExportAnswerSampleResponseBody) *ExportAnswerSampleResponse {
 	s.Body = v
 	return s
 }
@@ -3107,6 +4007,177 @@ func (s *ExportTextScanResultResponse) SetBody(v *ExportTextScanResultResponseBo
 	return s
 }
 
+type GetAnswerImportProgressRequest struct {
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// alAxbbxxxx-xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetAnswerImportProgressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAnswerImportProgressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAnswerImportProgressRequest) SetRegionId(v string) *GetAnswerImportProgressRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressRequest) SetTaskId(v string) *GetAnswerImportProgressRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetAnswerImportProgressResponseBody struct {
+	// example:
+	//
+	// xxx
+	I18nKey              *string   `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	IllegalLengthSamples []*string `json:"IllegalLengthSamples,omitempty" xml:"IllegalLengthSamples,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
+	// example:
+	//
+	// alxxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// 100
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 1
+	RepeatCount   *int32    `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	RepeatSamples []*string `json:"RepeatSamples,omitempty" xml:"RepeatSamples,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// example:
+	//
+	// alAxbbxxxx-xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// xxxxx
+	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetAnswerImportProgressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAnswerImportProgressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetI18nKey(v string) *GetAnswerImportProgressResponseBody {
+	s.I18nKey = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetIllegalLengthSamples(v []*string) *GetAnswerImportProgressResponseBody {
+	s.IllegalLengthSamples = v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetInvalidCount(v int32) *GetAnswerImportProgressResponseBody {
+	s.InvalidCount = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetLibId(v string) *GetAnswerImportProgressResponseBody {
+	s.LibId = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetProgress(v int32) *GetAnswerImportProgressResponseBody {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetRepeatCount(v int32) *GetAnswerImportProgressResponseBody {
+	s.RepeatCount = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetRepeatSamples(v []*string) *GetAnswerImportProgressResponseBody {
+	s.RepeatSamples = v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetRequestId(v string) *GetAnswerImportProgressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetSuccessCount(v int32) *GetAnswerImportProgressResponseBody {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetTaskId(v string) *GetAnswerImportProgressResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetTips(v string) *GetAnswerImportProgressResponseBody {
+	s.Tips = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponseBody) SetTotalCount(v int32) *GetAnswerImportProgressResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetAnswerImportProgressResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAnswerImportProgressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAnswerImportProgressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAnswerImportProgressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAnswerImportProgressResponse) SetHeaders(v map[string]*string) *GetAnswerImportProgressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponse) SetStatusCode(v int32) *GetAnswerImportProgressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAnswerImportProgressResponse) SetBody(v *GetAnswerImportProgressResponseBody) *GetAnswerImportProgressResponse {
+	s.Body = v
+	return s
+}
+
 type GetBackupBucketsListRequest struct {
 	// example:
 	//
@@ -4063,6 +5134,117 @@ func (s *GetExecuteTimeResponse) SetBody(v *GetExecuteTimeResponseBody) *GetExec
 	return s
 }
 
+type GetImageSceneLabelConfRequest struct {
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetImageSceneLabelConfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageSceneLabelConfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageSceneLabelConfRequest) SetRegionId(v string) *GetImageSceneLabelConfRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetImageSceneLabelConfResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetImageSceneLabelConfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageSceneLabelConfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageSceneLabelConfResponseBody) SetCode(v int32) *GetImageSceneLabelConfResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetImageSceneLabelConfResponseBody) SetData(v []map[string]interface{}) *GetImageSceneLabelConfResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetImageSceneLabelConfResponseBody) SetHttpStatusCode(v int32) *GetImageSceneLabelConfResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetImageSceneLabelConfResponseBody) SetMsg(v string) *GetImageSceneLabelConfResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetImageSceneLabelConfResponseBody) SetRequestId(v string) *GetImageSceneLabelConfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetImageSceneLabelConfResponseBody) SetSuccess(v bool) *GetImageSceneLabelConfResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetImageSceneLabelConfResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetImageSceneLabelConfResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetImageSceneLabelConfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageSceneLabelConfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageSceneLabelConfResponse) SetHeaders(v map[string]*string) *GetImageSceneLabelConfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetImageSceneLabelConfResponse) SetStatusCode(v int32) *GetImageSceneLabelConfResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetImageSceneLabelConfResponse) SetBody(v *GetImageSceneLabelConfResponseBody) *GetImageSceneLabelConfResponse {
+	s.Body = v
+	return s
+}
+
 type GetImageSceneLabelListConfRequest struct {
 	// example:
 	//
@@ -4516,6 +5698,170 @@ func (s *GetKeywordImportResultResponse) SetStatusCode(v int32) *GetKeywordImpor
 }
 
 func (s *GetKeywordImportResultResponse) SetBody(v *GetKeywordImportResultResponseBody) *GetKeywordImportResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetKeywordLibRequest struct {
+	// example:
+	//
+	// customxx_xxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetKeywordLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKeywordLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetKeywordLibRequest) SetLibId(v string) *GetKeywordLibRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *GetKeywordLibRequest) SetRegionId(v string) *GetKeywordLibRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetKeywordLibResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetKeywordLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetKeywordLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKeywordLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetKeywordLibResponseBody) SetCode(v int32) *GetKeywordLibResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetKeywordLibResponseBody) SetData(v *GetKeywordLibResponseBodyData) *GetKeywordLibResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetKeywordLibResponseBody) SetMsg(v string) *GetKeywordLibResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetKeywordLibResponseBody) SetRequestId(v string) *GetKeywordLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetKeywordLibResponseBody) SetSuccess(v bool) *GetKeywordLibResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetKeywordLibResponseBodyData struct {
+	// example:
+	//
+	// 2024-01-29 10:26:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 100
+	KeywordCount *string `json:"KeywordCount,omitempty" xml:"KeywordCount,omitempty"`
+	// example:
+	//
+	// customxx_xxx
+	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// example:
+	//
+	// 1825457112123838
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s GetKeywordLibResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKeywordLibResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetKeywordLibResponseBodyData) SetGmtModified(v string) *GetKeywordLibResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetKeywordLibResponseBodyData) SetKeywordCount(v string) *GetKeywordLibResponseBodyData {
+	s.KeywordCount = &v
+	return s
+}
+
+func (s *GetKeywordLibResponseBodyData) SetLibId(v string) *GetKeywordLibResponseBodyData {
+	s.LibId = &v
+	return s
+}
+
+func (s *GetKeywordLibResponseBodyData) SetLibName(v string) *GetKeywordLibResponseBodyData {
+	s.LibName = &v
+	return s
+}
+
+func (s *GetKeywordLibResponseBodyData) SetUid(v string) *GetKeywordLibResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type GetKeywordLibResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetKeywordLibResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetKeywordLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKeywordLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetKeywordLibResponse) SetHeaders(v map[string]*string) *GetKeywordLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetKeywordLibResponse) SetStatusCode(v int32) *GetKeywordLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetKeywordLibResponse) SetBody(v *GetKeywordLibResponseBody) *GetKeywordLibResponse {
 	s.Body = v
 	return s
 }
@@ -7371,6 +8717,304 @@ func (s *GetUserBuyStatusResponse) SetBody(v *GetUserBuyStatusResponseBody) *Get
 	return s
 }
 
+type ListAnswerLibRequest struct {
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAnswerLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnswerLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnswerLibRequest) SetRegionId(v string) *ListAnswerLibRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAnswerLibResponseBody struct {
+	Data []*ListAnswerLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAnswerLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnswerLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnswerLibResponseBody) SetData(v []*ListAnswerLibResponseBodyData) *ListAnswerLibResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAnswerLibResponseBody) SetRequestId(v string) *ListAnswerLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAnswerLibResponseBodyData struct {
+	// example:
+	//
+	// 100
+	AnswerCount *int32 `json:"AnswerCount,omitempty" xml:"AnswerCount,omitempty"`
+	// example:
+	//
+	// 2024-06-03 18:15:01
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// alxxx
+	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// UID。
+	//
+	// example:
+	//
+	// 1643953****74290
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s ListAnswerLibResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnswerLibResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnswerLibResponseBodyData) SetAnswerCount(v int32) *ListAnswerLibResponseBodyData {
+	s.AnswerCount = &v
+	return s
+}
+
+func (s *ListAnswerLibResponseBodyData) SetGmtModified(v string) *ListAnswerLibResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListAnswerLibResponseBodyData) SetLibId(v string) *ListAnswerLibResponseBodyData {
+	s.LibId = &v
+	return s
+}
+
+func (s *ListAnswerLibResponseBodyData) SetLibName(v string) *ListAnswerLibResponseBodyData {
+	s.LibName = &v
+	return s
+}
+
+func (s *ListAnswerLibResponseBodyData) SetUid(v string) *ListAnswerLibResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type ListAnswerLibResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAnswerLibResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAnswerLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnswerLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnswerLibResponse) SetHeaders(v map[string]*string) *ListAnswerLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAnswerLibResponse) SetStatusCode(v int32) *ListAnswerLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAnswerLibResponse) SetBody(v *ListAnswerLibResponseBody) *ListAnswerLibResponse {
+	s.Body = v
+	return s
+}
+
+type ListCallbackRequest struct {
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallbackRequest) SetRegionId(v string) *ListCallbackRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListCallbackResponseBody struct {
+	Data []*ListCallbackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallbackResponseBody) SetData(v []*ListCallbackResponseBodyData) *ListCallbackResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCallbackResponseBody) SetRequestId(v string) *ListCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCallbackResponseBodyData struct {
+	// example:
+	//
+	// SHA256
+	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
+	// example:
+	//
+	// 2024-06-03 15:20:14
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-06-03 15:20:14
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 11234
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// all
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Seed。
+	//
+	// example:
+	//
+	// cbupVnpBjkgjFxfINMHKkrHS-1zZPUm
+	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
+	// UID。
+	//
+	// example:
+	//
+	// 16537*****831937
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// https://console.aliyun.com/
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListCallbackResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallbackResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallbackResponseBodyData) SetCryptType(v string) *ListCallbackResponseBodyData {
+	s.CryptType = &v
+	return s
+}
+
+func (s *ListCallbackResponseBodyData) SetGmtCreate(v string) *ListCallbackResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListCallbackResponseBodyData) SetGmtModified(v string) *ListCallbackResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListCallbackResponseBodyData) SetId(v int64) *ListCallbackResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCallbackResponseBodyData) SetName(v string) *ListCallbackResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCallbackResponseBodyData) SetScope(v string) *ListCallbackResponseBodyData {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListCallbackResponseBodyData) SetSeed(v string) *ListCallbackResponseBodyData {
+	s.Seed = &v
+	return s
+}
+
+func (s *ListCallbackResponseBodyData) SetUid(v string) *ListCallbackResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *ListCallbackResponseBodyData) SetUrl(v string) *ListCallbackResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type ListCallbackResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallbackResponse) SetHeaders(v map[string]*string) *ListCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCallbackResponse) SetStatusCode(v int32) *ListCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCallbackResponse) SetBody(v *ListCallbackResponseBody) *ListCallbackResponse {
+	s.Body = v
+	return s
+}
+
 type ListImageLibRequest struct {
 	// example:
 	//
@@ -9128,6 +10772,221 @@ func (s *ListServiceConfigsResponse) SetBody(v *ListServiceConfigsResponseBody) 
 	return s
 }
 
+type ModifyAnswerLibRequest struct {
+	// example:
+	//
+	// custom_xxxx
+	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyAnswerLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAnswerLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAnswerLibRequest) SetLibId(v string) *ModifyAnswerLibRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *ModifyAnswerLibRequest) SetLibName(v string) *ModifyAnswerLibRequest {
+	s.LibName = &v
+	return s
+}
+
+func (s *ModifyAnswerLibRequest) SetRegionId(v string) *ModifyAnswerLibRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyAnswerLibResponseBody struct {
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAnswerLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAnswerLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAnswerLibResponseBody) SetData(v bool) *ModifyAnswerLibResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyAnswerLibResponseBody) SetRequestId(v string) *ModifyAnswerLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAnswerLibResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAnswerLibResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAnswerLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAnswerLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAnswerLibResponse) SetHeaders(v map[string]*string) *ModifyAnswerLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAnswerLibResponse) SetStatusCode(v int32) *ModifyAnswerLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAnswerLibResponse) SetBody(v *ModifyAnswerLibResponseBody) *ModifyAnswerLibResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyCallbackRequest struct {
+	// example:
+	//
+	// SHA256
+	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 112
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// all
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// https://www.aliyuncs.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ModifyCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCallbackRequest) SetCryptType(v string) *ModifyCallbackRequest {
+	s.CryptType = &v
+	return s
+}
+
+func (s *ModifyCallbackRequest) SetId(v int64) *ModifyCallbackRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyCallbackRequest) SetName(v string) *ModifyCallbackRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyCallbackRequest) SetRegionId(v string) *ModifyCallbackRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyCallbackRequest) SetScope(v string) *ModifyCallbackRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *ModifyCallbackRequest) SetUrl(v string) *ModifyCallbackRequest {
+	s.Url = &v
+	return s
+}
+
+type ModifyCallbackResponseBody struct {
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCallbackResponseBody) SetData(v bool) *ModifyCallbackResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyCallbackResponseBody) SetRequestId(v string) *ModifyCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCallbackResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCallbackResponse) SetHeaders(v map[string]*string) *ModifyCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCallbackResponse) SetStatusCode(v int32) *ModifyCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCallbackResponse) SetBody(v *ModifyCallbackResponseBody) *ModifyCallbackResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyServiceInfoRequest struct {
 	// example:
 	//
@@ -9232,6 +11091,654 @@ func (s *ModifyServiceInfoResponse) SetStatusCode(v int32) *ModifyServiceInfoRes
 }
 
 func (s *ModifyServiceInfoResponse) SetBody(v *ModifyServiceInfoResponseBody) *ModifyServiceInfoResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAnswerSampleByPageRequest struct {
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// custom_xxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Sort     map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+}
+
+func (s QueryAnswerSampleByPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAnswerSampleByPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAnswerSampleByPageRequest) SetAnswer(v string) *QueryAnswerSampleByPageRequest {
+	s.Answer = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageRequest) SetCurrentPage(v int32) *QueryAnswerSampleByPageRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageRequest) SetLibId(v string) *QueryAnswerSampleByPageRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageRequest) SetPageSize(v int32) *QueryAnswerSampleByPageRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageRequest) SetRegionId(v string) *QueryAnswerSampleByPageRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageRequest) SetSort(v map[string]*string) *QueryAnswerSampleByPageRequest {
+	s.Sort = v
+	return s
+}
+
+type QueryAnswerSampleByPageShrinkRequest struct {
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// custom_xxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+}
+
+func (s QueryAnswerSampleByPageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAnswerSampleByPageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAnswerSampleByPageShrinkRequest) SetAnswer(v string) *QueryAnswerSampleByPageShrinkRequest {
+	s.Answer = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageShrinkRequest) SetCurrentPage(v int32) *QueryAnswerSampleByPageShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageShrinkRequest) SetLibId(v string) *QueryAnswerSampleByPageShrinkRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageShrinkRequest) SetPageSize(v int32) *QueryAnswerSampleByPageShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageShrinkRequest) SetRegionId(v string) *QueryAnswerSampleByPageShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageShrinkRequest) SetSortShrink(v string) *QueryAnswerSampleByPageShrinkRequest {
+	s.SortShrink = &v
+	return s
+}
+
+type QueryAnswerSampleByPageResponseBody struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*QueryAnswerSampleByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 58
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryAnswerSampleByPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAnswerSampleByPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAnswerSampleByPageResponseBody) SetCurrentPage(v int32) *QueryAnswerSampleByPageResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponseBody) SetItems(v []*QueryAnswerSampleByPageResponseBodyItems) *QueryAnswerSampleByPageResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponseBody) SetPageSize(v int32) *QueryAnswerSampleByPageResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponseBody) SetRequestId(v string) *QueryAnswerSampleByPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponseBody) SetTotalCount(v int64) *QueryAnswerSampleByPageResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryAnswerSampleByPageResponseBodyItems struct {
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// example:
+	//
+	// 2023-07-31 06:16:06
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1666
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// custom_xxxx
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// UID。
+	//
+	// example:
+	//
+	// 104813*****2399
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s QueryAnswerSampleByPageResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAnswerSampleByPageResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAnswerSampleByPageResponseBodyItems) SetAnswer(v string) *QueryAnswerSampleByPageResponseBodyItems {
+	s.Answer = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponseBodyItems) SetGmtCreate(v string) *QueryAnswerSampleByPageResponseBodyItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponseBodyItems) SetId(v int64) *QueryAnswerSampleByPageResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponseBodyItems) SetLibId(v string) *QueryAnswerSampleByPageResponseBodyItems {
+	s.LibId = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponseBodyItems) SetUid(v string) *QueryAnswerSampleByPageResponseBodyItems {
+	s.Uid = &v
+	return s
+}
+
+type QueryAnswerSampleByPageResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAnswerSampleByPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAnswerSampleByPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAnswerSampleByPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAnswerSampleByPageResponse) SetHeaders(v map[string]*string) *QueryAnswerSampleByPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponse) SetStatusCode(v int32) *QueryAnswerSampleByPageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAnswerSampleByPageResponse) SetBody(v *QueryAnswerSampleByPageResponseBody) *QueryAnswerSampleByPageResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCallbackRequest struct {
+	// example:
+	//
+	// true
+	CheckForOss *bool `json:"CheckForOss,omitempty" xml:"CheckForOss,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11234
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s QueryCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallbackRequest) SetCheckForOss(v bool) *QueryCallbackRequest {
+	s.CheckForOss = &v
+	return s
+}
+
+func (s *QueryCallbackRequest) SetId(v int64) *QueryCallbackRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryCallbackRequest) SetRegionId(v string) *QueryCallbackRequest {
+	s.RegionId = &v
+	return s
+}
+
+type QueryCallbackResponseBody struct {
+	// example:
+	//
+	// SHA256
+	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
+	// example:
+	//
+	// false
+	ExistsOssCheckTask *bool `json:"ExistsOssCheckTask,omitempty" xml:"ExistsOssCheckTask,omitempty"`
+	// example:
+	//
+	// 2022-11-30 16:30:29
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-06-03 15:20:14
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 11234
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// all
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Seed。
+	//
+	// example:
+	//
+	// cb2MysbJTAAIf6gB3u4vpIEU-1ySnnf
+	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
+	// UID。
+	//
+	// example:
+	//
+	// 19964*****086772
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// https://www.aliyuncs.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s QueryCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallbackResponseBody) SetCryptType(v string) *QueryCallbackResponseBody {
+	s.CryptType = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetExistsOssCheckTask(v bool) *QueryCallbackResponseBody {
+	s.ExistsOssCheckTask = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetGmtCreate(v string) *QueryCallbackResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetGmtModified(v string) *QueryCallbackResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetId(v int64) *QueryCallbackResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetName(v string) *QueryCallbackResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetRequestId(v string) *QueryCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetScope(v string) *QueryCallbackResponseBody {
+	s.Scope = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetSeed(v string) *QueryCallbackResponseBody {
+	s.Seed = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetUid(v string) *QueryCallbackResponseBody {
+	s.Uid = &v
+	return s
+}
+
+func (s *QueryCallbackResponseBody) SetUrl(v string) *QueryCallbackResponseBody {
+	s.Url = &v
+	return s
+}
+
+type QueryCallbackResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallbackResponse) SetHeaders(v map[string]*string) *QueryCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCallbackResponse) SetStatusCode(v int32) *QueryCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCallbackResponse) SetBody(v *QueryCallbackResponseBody) *QueryCallbackResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCallbackByPageRequest struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s QueryCallbackByPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallbackByPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallbackByPageRequest) SetCurrentPage(v int32) *QueryCallbackByPageRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryCallbackByPageRequest) SetPageSize(v int32) *QueryCallbackByPageRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryCallbackByPageRequest) SetRegionId(v string) *QueryCallbackByPageRequest {
+	s.RegionId = &v
+	return s
+}
+
+type QueryCallbackByPageResponseBody struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*QueryCallbackByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryCallbackByPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallbackByPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallbackByPageResponseBody) SetCurrentPage(v int32) *QueryCallbackByPageResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBody) SetItems(v []*QueryCallbackByPageResponseBodyItems) *QueryCallbackByPageResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBody) SetPageSize(v int32) *QueryCallbackByPageResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBody) SetRequestId(v string) *QueryCallbackByPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBody) SetTotalCount(v int64) *QueryCallbackByPageResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryCallbackByPageResponseBodyItems struct {
+	// example:
+	//
+	// SHA256
+	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
+	// example:
+	//
+	// 2024-06-03 15:20:14
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-06-03 15:20:14
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 1697
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// all
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Seed。
+	//
+	// example:
+	//
+	// cb6gYS8GXj4Vn4Y4FN0Y8R5M-1x46Mq
+	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
+	// UID。
+	//
+	// example:
+	//
+	// 12161*****398900
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// https://console.aliyun.com/
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s QueryCallbackByPageResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallbackByPageResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetCryptType(v string) *QueryCallbackByPageResponseBodyItems {
+	s.CryptType = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetGmtCreate(v string) *QueryCallbackByPageResponseBodyItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetGmtModified(v string) *QueryCallbackByPageResponseBodyItems {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetId(v int64) *QueryCallbackByPageResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetName(v string) *QueryCallbackByPageResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetScope(v string) *QueryCallbackByPageResponseBodyItems {
+	s.Scope = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetSeed(v string) *QueryCallbackByPageResponseBodyItems {
+	s.Seed = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetUid(v string) *QueryCallbackByPageResponseBodyItems {
+	s.Uid = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponseBodyItems) SetUrl(v string) *QueryCallbackByPageResponseBodyItems {
+	s.Url = &v
+	return s
+}
+
+type QueryCallbackByPageResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCallbackByPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCallbackByPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallbackByPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallbackByPageResponse) SetHeaders(v map[string]*string) *QueryCallbackByPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCallbackByPageResponse) SetStatusCode(v int32) *QueryCallbackByPageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCallbackByPageResponse) SetBody(v *QueryCallbackByPageResponseBody) *QueryCallbackByPageResponse {
 	s.Body = v
 	return s
 }
@@ -10111,6 +12618,78 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加代答样本
+//
+// @param request - AddAnswerSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAnswerSampleResponse
+func (client *Client) AddAnswerSampleWithOptions(request *AddAnswerSampleRequest, runtime *util.RuntimeOptions) (_result *AddAnswerSampleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SampleObject)) {
+		query["SampleObject"] = request.SampleObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Samples)) {
+		query["Samples"] = request.Samples
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAnswerSample"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddAnswerSampleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加代答样本
+//
+// @param request - AddAnswerSampleRequest
+//
+// @return AddAnswerSampleResponse
+func (client *Client) AddAnswerSample(request *AddAnswerSampleRequest) (_result *AddAnswerSampleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddAnswerSampleResponse{}
+	_body, _err := client.AddAnswerSampleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建图库
 //
 // @param request - AddImageLibRequest
@@ -10775,6 +13354,162 @@ func (client *Client) CreatStockOssCheckTask(request *CreatStockOssCheckTaskRequ
 
 // Summary:
 //
+// 创建代答库
+//
+// @param request - CreateAnswerLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAnswerLibResponse
+func (client *Client) CreateAnswerLibWithOptions(request *CreateAnswerLibRequest, runtime *util.RuntimeOptions) (_result *CreateAnswerLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LibName)) {
+		body["LibName"] = request.LibName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SampleBucket)) {
+		body["SampleBucket"] = request.SampleBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SampleObject)) {
+		body["SampleObject"] = request.SampleObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Samples)) {
+		body["Samples"] = request.Samples
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAnswerLib"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAnswerLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建代答库
+//
+// @param request - CreateAnswerLibRequest
+//
+// @return CreateAnswerLibResponse
+func (client *Client) CreateAnswerLib(request *CreateAnswerLibRequest) (_result *CreateAnswerLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAnswerLibResponse{}
+	_body, _err := client.CreateAnswerLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建消息通知
+//
+// @param request - CreateCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCallbackResponse
+func (client *Client) CreateCallbackWithOptions(request *CreateCallbackRequest, runtime *util.RuntimeOptions) (_result *CreateCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CryptType)) {
+		body["CryptType"] = request.CryptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCallback"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建消息通知
+//
+// @param request - CreateCallbackRequest
+//
+// @return CreateCallbackResponse
+func (client *Client) CreateCallback(request *CreateCallbackRequest) (_result *CreateCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCallbackResponse{}
+	_body, _err := client.CreateCallbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建oss扫描任务前检查
 //
 // @param request - CreatePreCheckRequest
@@ -10880,6 +13615,206 @@ func (client *Client) CreatePreCheck(request *CreatePreCheckRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePreCheckResponse{}
 	_body, _err := client.CreatePreCheckWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除代答库
+//
+// @param request - DeleteAnswerLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAnswerLibResponse
+func (client *Client) DeleteAnswerLibWithOptions(request *DeleteAnswerLibRequest, runtime *util.RuntimeOptions) (_result *DeleteAnswerLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAnswerLib"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAnswerLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除代答库
+//
+// @param request - DeleteAnswerLibRequest
+//
+// @return DeleteAnswerLibResponse
+func (client *Client) DeleteAnswerLib(request *DeleteAnswerLibRequest) (_result *DeleteAnswerLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAnswerLibResponse{}
+	_body, _err := client.DeleteAnswerLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除代答答案
+//
+// @param request - DeleteAnswerSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAnswerSampleResponse
+func (client *Client) DeleteAnswerSampleWithOptions(request *DeleteAnswerSampleRequest, runtime *util.RuntimeOptions) (_result *DeleteAnswerSampleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		body["Ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		body["LibId"] = request.LibId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAnswerSample"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAnswerSampleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除代答答案
+//
+// @param request - DeleteAnswerSampleRequest
+//
+// @return DeleteAnswerSampleResponse
+func (client *Client) DeleteAnswerSample(request *DeleteAnswerSampleRequest) (_result *DeleteAnswerSampleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAnswerSampleResponse{}
+	_body, _err := client.DeleteAnswerSampleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消息通知
+//
+// @param request - DeleteCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCallbackResponse
+func (client *Client) DeleteCallbackWithOptions(request *DeleteCallbackRequest, runtime *util.RuntimeOptions) (_result *DeleteCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCallback"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消息通知
+//
+// @param request - DeleteCallbackRequest
+//
+// @return DeleteCallbackResponse
+func (client *Client) DeleteCallback(request *DeleteCallbackRequest) (_result *DeleteCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCallbackResponse{}
+	_body, _err := client.DeleteCallbackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11090,6 +14025,72 @@ func (client *Client) DeleteKeywordLib(request *DeleteKeywordLibRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteKeywordLibResponse{}
 	_body, _err := client.DeleteKeywordLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出代答答案
+//
+// @param request - ExportAnswerSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportAnswerSampleResponse
+func (client *Client) ExportAnswerSampleWithOptions(request *ExportAnswerSampleRequest, runtime *util.RuntimeOptions) (_result *ExportAnswerSampleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		body["LibId"] = request.LibId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportAnswerSample"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportAnswerSampleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出代答答案
+//
+// @param request - ExportAnswerSampleRequest
+//
+// @return ExportAnswerSampleResponse
+func (client *Client) ExportAnswerSample(request *ExportAnswerSampleRequest) (_result *ExportAnswerSampleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportAnswerSampleResponse{}
+	_body, _err := client.ExportAnswerSampleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11601,6 +14602,70 @@ func (client *Client) ExportTextScanResult(request *ExportTextScanResultRequest)
 
 // Summary:
 //
+// 获取代答样本导入进度
+//
+// @param request - GetAnswerImportProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAnswerImportProgressResponse
+func (client *Client) GetAnswerImportProgressWithOptions(request *GetAnswerImportProgressRequest, runtime *util.RuntimeOptions) (_result *GetAnswerImportProgressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAnswerImportProgress"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAnswerImportProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取代答样本导入进度
+//
+// @param request - GetAnswerImportProgressRequest
+//
+// @return GetAnswerImportProgressResponse
+func (client *Client) GetAnswerImportProgress(request *GetAnswerImportProgressRequest) (_result *GetAnswerImportProgressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAnswerImportProgressResponse{}
+	_body, _err := client.GetAnswerImportProgressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 证据转存获取用户bucket列表
 //
 // @param request - GetBackupBucketsListRequest
@@ -11997,6 +15062,66 @@ func (client *Client) GetExecuteTime(request *GetExecuteTimeRequest) (_result *G
 //
 // 获取图片规则标签信息
 //
+// @param request - GetImageSceneLabelConfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageSceneLabelConfResponse
+func (client *Client) GetImageSceneLabelConfWithOptions(request *GetImageSceneLabelConfRequest, runtime *util.RuntimeOptions) (_result *GetImageSceneLabelConfResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageSceneLabelConf"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetImageSceneLabelConfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取图片规则标签信息
+//
+// @param request - GetImageSceneLabelConfRequest
+//
+// @return GetImageSceneLabelConfResponse
+func (client *Client) GetImageSceneLabelConf(request *GetImageSceneLabelConfRequest) (_result *GetImageSceneLabelConfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetImageSceneLabelConfResponse{}
+	_body, _err := client.GetImageSceneLabelConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取图片规则标签信息
+//
 // @param request - GetImageSceneLabelListConfRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12198,6 +15323,72 @@ func (client *Client) GetKeywordImportResult(request *GetKeywordImportResultRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetKeywordImportResultResponse{}
 	_body, _err := client.GetKeywordImportResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关键词库信息
+//
+// @param request - GetKeywordLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKeywordLibResponse
+func (client *Client) GetKeywordLibWithOptions(request *GetKeywordLibRequest, runtime *util.RuntimeOptions) (_result *GetKeywordLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		body["LibId"] = request.LibId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetKeywordLib"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetKeywordLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关键词库信息
+//
+// @param request - GetKeywordLibRequest
+//
+// @return GetKeywordLibResponse
+func (client *Client) GetKeywordLib(request *GetKeywordLibRequest) (_result *GetKeywordLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetKeywordLibResponse{}
+	_body, _err := client.GetKeywordLibWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13057,6 +16248,126 @@ func (client *Client) GetUserBuyStatus(request *GetUserBuyStatusRequest) (_resul
 
 // Summary:
 //
+// 代答库列表
+//
+// @param request - ListAnswerLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAnswerLibResponse
+func (client *Client) ListAnswerLibWithOptions(request *ListAnswerLibRequest, runtime *util.RuntimeOptions) (_result *ListAnswerLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAnswerLib"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAnswerLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 代答库列表
+//
+// @param request - ListAnswerLibRequest
+//
+// @return ListAnswerLibResponse
+func (client *Client) ListAnswerLib(request *ListAnswerLibRequest) (_result *ListAnswerLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAnswerLibResponse{}
+	_body, _err := client.ListAnswerLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 消息通知列表
+//
+// @param request - ListCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCallbackResponse
+func (client *Client) ListCallbackWithOptions(request *ListCallbackRequest, runtime *util.RuntimeOptions) (_result *ListCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCallback"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 消息通知列表
+//
+// @param request - ListCallbackRequest
+//
+// @return ListCallbackResponse
+func (client *Client) ListCallback(request *ListCallbackRequest) (_result *ListCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCallbackResponse{}
+	_body, _err := client.ListCallbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 图库列表
 //
 // @param request - ListImageLibRequest
@@ -13533,6 +16844,156 @@ func (client *Client) ListServiceConfigs(request *ListServiceConfigsRequest) (_r
 
 // Summary:
 //
+// 更新代答库
+//
+// @param request - ModifyAnswerLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAnswerLibResponse
+func (client *Client) ModifyAnswerLibWithOptions(request *ModifyAnswerLibRequest, runtime *util.RuntimeOptions) (_result *ModifyAnswerLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibName)) {
+		query["LibName"] = request.LibName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAnswerLib"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAnswerLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新代答库
+//
+// @param request - ModifyAnswerLibRequest
+//
+// @return ModifyAnswerLibResponse
+func (client *Client) ModifyAnswerLib(request *ModifyAnswerLibRequest) (_result *ModifyAnswerLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAnswerLibResponse{}
+	_body, _err := client.ModifyAnswerLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改消息通知
+//
+// @param request - ModifyCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCallbackResponse
+func (client *Client) ModifyCallbackWithOptions(request *ModifyCallbackRequest, runtime *util.RuntimeOptions) (_result *ModifyCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CryptType)) {
+		body["CryptType"] = request.CryptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCallback"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改消息通知
+//
+// @param request - ModifyCallbackRequest
+//
+// @return ModifyCallbackResponse
+func (client *Client) ModifyCallback(request *ModifyCallbackRequest) (_result *ModifyCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCallbackResponse{}
+	_body, _err := client.ModifyCallbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑服务
 //
 // @param request - ModifyServiceInfoRequest
@@ -13602,6 +17063,232 @@ func (client *Client) ModifyServiceInfo(request *ModifyServiceInfoRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyServiceInfoResponse{}
 	_body, _err := client.ModifyServiceInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询代答样本
+//
+// @param tmpReq - QueryAnswerSampleByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAnswerSampleByPageResponse
+func (client *Client) QueryAnswerSampleByPageWithOptions(tmpReq *QueryAnswerSampleByPageRequest, runtime *util.RuntimeOptions) (_result *QueryAnswerSampleByPageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryAnswerSampleByPageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sort)) {
+		request.SortShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sort, tea.String("Sort"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Answer)) {
+		query["Answer"] = request.Answer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortShrink)) {
+		query["Sort"] = request.SortShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAnswerSampleByPage"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAnswerSampleByPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询代答样本
+//
+// @param request - QueryAnswerSampleByPageRequest
+//
+// @return QueryAnswerSampleByPageResponse
+func (client *Client) QueryAnswerSampleByPage(request *QueryAnswerSampleByPageRequest) (_result *QueryAnswerSampleByPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAnswerSampleByPageResponse{}
+	_body, _err := client.QueryAnswerSampleByPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单个回调配置
+//
+// @param request - QueryCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCallbackResponse
+func (client *Client) QueryCallbackWithOptions(request *QueryCallbackRequest, runtime *util.RuntimeOptions) (_result *QueryCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckForOss)) {
+		body["CheckForOss"] = request.CheckForOss
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCallback"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单个回调配置
+//
+// @param request - QueryCallbackRequest
+//
+// @return QueryCallbackResponse
+func (client *Client) QueryCallback(request *QueryCallbackRequest) (_result *QueryCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCallbackResponse{}
+	_body, _err := client.QueryCallbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 消息通知
+//
+// @param request - QueryCallbackByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCallbackByPageResponse
+func (client *Client) QueryCallbackByPageWithOptions(request *QueryCallbackByPageRequest, runtime *util.RuntimeOptions) (_result *QueryCallbackByPageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCallbackByPage"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCallbackByPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 消息通知
+//
+// @param request - QueryCallbackByPageRequest
+//
+// @return QueryCallbackByPageResponse
+func (client *Client) QueryCallbackByPage(request *QueryCallbackByPageRequest) (_result *QueryCallbackByPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCallbackByPageResponse{}
+	_body, _err := client.QueryCallbackByPageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
