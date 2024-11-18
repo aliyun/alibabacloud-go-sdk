@@ -99,12 +99,16 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateHoloWarehouseRequest struct {
+	// The specifications of the virtual warehouse. The number of vCPUs must be an integer multiple of 16 CPUs. Minimum value: 16.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 32
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -132,6 +136,8 @@ func (s *CreateHoloWarehouseRequest) SetName(v string) *CreateHoloWarehouseReque
 }
 
 type CreateHoloWarehouseResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -653,6 +659,8 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type DeleteHoloWarehouseRequest struct {
+	// The name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -675,11 +683,13 @@ func (s *DeleteHoloWarehouseRequest) SetName(v string) *DeleteHoloWarehouseReque
 }
 
 type DeleteHoloWarehouseResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -881,6 +891,8 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DisableHiveAccessRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -901,28 +913,74 @@ func (s *DisableHiveAccessRequest) SetRegionId(v string) *DisableHiveAccessReque
 }
 
 type DisableHiveAccessResponseBody struct {
+	// The returned result.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 82B7A554-4D00-50DF-95D9-B59E7B4D5489
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// example:
 	//
 	// true
@@ -997,6 +1055,8 @@ func (s *DisableHiveAccessResponse) SetBody(v *DisableHiveAccessResponseBody) *D
 }
 
 type EnableHiveAccessRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1017,28 +1077,56 @@ func (s *EnableHiveAccessRequest) SetRegionId(v string) *EnableHiveAccessRequest
 }
 
 type EnableHiveAccessResponseBody struct {
+	// The returned data.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EA8F0084-5831-5907-BB31-BD05D2617844
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2228,7 +2316,267 @@ func (s *GetWarehouseDetailResponse) SetBody(v *GetWarehouseDetailResponseBody) 
 	return s
 }
 
+type ListBackupDataRequest struct {
+	// example:
+	//
+	// redundant
+	BackupType *string `json:"backupType,omitempty" xml:"backupType,omitempty"`
+	// example:
+	//
+	// hgprecn-cn-wwoxxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+}
+
+func (s ListBackupDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupDataRequest) SetBackupType(v string) *ListBackupDataRequest {
+	s.BackupType = &v
+	return s
+}
+
+func (s *ListBackupDataRequest) SetInstanceId(v string) *ListBackupDataRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListBackupDataResponseBody struct {
+	BackupDataList []*ListBackupDataResponseBodyBackupDataList `json:"BackupDataList,omitempty" xml:"BackupDataList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4AA0C48F-B5BB-5FF9-A43B-6B91E0715D46
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListBackupDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupDataResponseBody) SetBackupDataList(v []*ListBackupDataResponseBodyBackupDataList) *ListBackupDataResponseBody {
+	s.BackupDataList = v
+	return s
+}
+
+func (s *ListBackupDataResponseBody) SetRequestId(v string) *ListBackupDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListBackupDataResponseBodyBackupDataList struct {
+	// example:
+	//
+	// redundant
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// example:
+	//
+	// 32413521
+	ColdDataSize *int64 `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty"`
+	// example:
+	//
+	// demo
+	DataDesc *string `json:"DataDesc,omitempty" xml:"DataDesc,omitempty"`
+	// example:
+	//
+	// instance
+	DataGran *string `json:"DataGran,omitempty" xml:"DataGran,omitempty"`
+	// example:
+	//
+	// 76085723136
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 2024-10-28T12:23:37.000+00:00
+	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// example:
+	//
+	// 2024-10-28T12:27:34.000+00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1780805690994479105
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// hgpostcn-cn-pe33jdxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// my-hologres-dw
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	InstanceRegion *string `json:"InstanceRegion,omitempty" xml:"InstanceRegion,omitempty"`
+	// example:
+	//
+	// Warehouse
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-j
+	InstanceZoneId *string `json:"InstanceZoneId,omitempty" xml:"InstanceZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	SnapshotRegion *string `json:"SnapshotRegion,omitempty" xml:"SnapshotRegion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-j
+	SnapshotZoneId *string `json:"SnapshotZoneId,omitempty" xml:"SnapshotZoneId,omitempty"`
+	// example:
+	//
+	// 2024-10-28T11:19:56.000+00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// completed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// scheduled
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s ListBackupDataResponseBodyBackupDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupDataResponseBodyBackupDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetBackupType(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.BackupType = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetColdDataSize(v int64) *ListBackupDataResponseBodyBackupDataList {
+	s.ColdDataSize = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetDataDesc(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.DataDesc = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetDataGran(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.DataGran = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetDataSize(v int64) *ListBackupDataResponseBodyBackupDataList {
+	s.DataSize = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetDataTime(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.DataTime = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetEndTime(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetId(v int64) *ListBackupDataResponseBodyBackupDataList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetInstanceId(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetInstanceName(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetInstanceRegion(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.InstanceRegion = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetInstanceType(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetInstanceZoneId(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.InstanceZoneId = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetSnapshotRegion(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.SnapshotRegion = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetSnapshotZoneId(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.SnapshotZoneId = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetStartTime(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetStatus(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListBackupDataResponseBodyBackupDataList) SetTriggerType(v string) *ListBackupDataResponseBodyBackupDataList {
+	s.TriggerType = &v
+	return s
+}
+
+type ListBackupDataResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBackupDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBackupDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBackupDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBackupDataResponse) SetHeaders(v map[string]*string) *ListBackupDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBackupDataResponse) SetStatusCode(v int32) *ListBackupDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBackupDataResponse) SetBody(v *ListBackupDataResponseBody) *ListBackupDataResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstancesRequest struct {
+	// example:
+	//
+	// standard
 	CmsInstanceType *string `json:"cmsInstanceType,omitempty" xml:"cmsInstanceType,omitempty"`
 	// The ID of the resource group.
 	//
@@ -2544,7 +2892,10 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// hgprecn-cn-2r42sqvxm006
 	LeaderInstanceId *string `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -2565,7 +2916,10 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// 1.3.37
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstanceList) String() string {
@@ -3050,6 +3404,8 @@ func (s *ListWarehousesResponse) SetBody(v *ListWarehousesResponseBody) *ListWar
 }
 
 type RebalanceHoloWarehouseRequest struct {
+	// The name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3072,6 +3428,8 @@ func (s *RebalanceHoloWarehouseRequest) SetName(v string) *RebalanceHoloWarehous
 }
 
 type RebalanceHoloWarehouseResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -3132,12 +3490,16 @@ func (s *RebalanceHoloWarehouseResponse) SetBody(v *RebalanceHoloWarehouseRespon
 }
 
 type RenameHoloWarehouseRequest struct {
+	// The original name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my_warehouse
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The new name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3165,6 +3527,8 @@ func (s *RenameHoloWarehouseRequest) SetNewWarehouseName(v string) *RenameHoloWa
 }
 
 type RenameHoloWarehouseResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -3423,6 +3787,8 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type RestartHoloWarehouseRequest struct {
+	// The name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3445,6 +3811,8 @@ func (s *RestartHoloWarehouseRequest) SetName(v string) *RestartHoloWarehouseReq
 }
 
 type RestartHoloWarehouseResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -3629,6 +3997,8 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 }
 
 type ResumeHoloWarehouseRequest struct {
+	// The name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3651,6 +4021,8 @@ func (s *ResumeHoloWarehouseRequest) SetName(v string) *ResumeHoloWarehouseReque
 }
 
 type ResumeHoloWarehouseResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -3817,12 +4189,16 @@ func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeI
 }
 
 type ScaleHoloWarehouseRequest struct {
+	// The specifications of the virtual warehouse. The number of vCPUs must be an integer multiple of 16.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 64
 	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3850,6 +4226,8 @@ func (s *ScaleHoloWarehouseRequest) SetName(v string) *ScaleHoloWarehouseRequest
 }
 
 type ScaleHoloWarehouseResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -4330,6 +4708,8 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type SuspendHoloWarehouseRequest struct {
+	// The name of the virtual warehouse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4352,6 +4732,8 @@ func (s *SuspendHoloWarehouseRequest) SetName(v string) *SuspendHoloWarehouseReq
 }
 
 type SuspendHoloWarehouseResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -4861,7 +5243,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 更改资源组
+// Updates a resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -4910,7 +5292,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 更改资源组
+// Updates a resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -4929,7 +5311,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 创建计算组
+// Creates a virtual warehouse.
 //
 // @param request - CreateHoloWarehouseRequest
 //
@@ -4978,7 +5360,7 @@ func (client *Client) CreateHoloWarehouseWithOptions(instanceId *string, request
 
 // Summary:
 //
-// 创建计算组
+// Creates a virtual warehouse.
 //
 // @param request - CreateHoloWarehouseRequest
 //
@@ -5213,7 +5595,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 删除计算组
+// Deletes a virtual warehouse.
 //
 // @param request - DeleteHoloWarehouseRequest
 //
@@ -5258,7 +5640,7 @@ func (client *Client) DeleteHoloWarehouseWithOptions(instanceId *string, request
 
 // Summary:
 //
-// 删除计算组
+// Deletes a virtual warehouse.
 //
 // @param request - DeleteHoloWarehouseRequest
 //
@@ -5361,7 +5743,7 @@ func (client *Client) DeleteInstance(instanceId *string, request *DeleteInstance
 
 // Summary:
 //
-// 关闭数据湖加速
+// Disables data lake acceleration.
 //
 // @param request - DisableHiveAccessRequest
 //
@@ -5406,7 +5788,7 @@ func (client *Client) DisableHiveAccessWithOptions(instanceId *string, request *
 
 // Summary:
 //
-// 关闭数据湖加速
+// Disables data lake acceleration.
 //
 // @param request - DisableHiveAccessRequest
 //
@@ -5425,7 +5807,7 @@ func (client *Client) DisableHiveAccess(instanceId *string, request *DisableHive
 
 // Summary:
 //
-// 打开数据湖加速
+// Enables data lake acceleration.
 //
 // @param request - EnableHiveAccessRequest
 //
@@ -5470,7 +5852,7 @@ func (client *Client) EnableHiveAccessWithOptions(instanceId *string, request *E
 
 // Summary:
 //
-// 打开数据湖加速
+// Enables data lake acceleration.
 //
 // @param request - EnableHiveAccessRequest
 //
@@ -5580,6 +5962,74 @@ func (client *Client) GetWarehouseDetail(instanceId *string) (_result *GetWareho
 	headers := make(map[string]*string)
 	_result = &GetWarehouseDetailResponse{}
 	_body, _err := client.GetWarehouseDetailWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取备份列表
+//
+// @param request - ListBackupDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBackupDataResponse
+func (client *Client) ListBackupDataWithOptions(request *ListBackupDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListBackupDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupType)) {
+		query["backupType"] = request.BackupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBackupData"),
+		Version:     tea.String("2022-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/backups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBackupDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取备份列表
+//
+// @param request - ListBackupDataRequest
+//
+// @return ListBackupDataResponse
+func (client *Client) ListBackupData(request *ListBackupDataRequest) (_result *ListBackupDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListBackupDataResponse{}
+	_body, _err := client.ListBackupDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5711,7 +6161,7 @@ func (client *Client) ListWarehouses(instanceId *string) (_result *ListWarehouse
 
 // Summary:
 //
-// 停止计算组
+// Triggers shard rebalancing for a virtual warehouse.
 //
 // @param request - RebalanceHoloWarehouseRequest
 //
@@ -5756,7 +6206,7 @@ func (client *Client) RebalanceHoloWarehouseWithOptions(instanceId *string, requ
 
 // Summary:
 //
-// 停止计算组
+// Triggers shard rebalancing for a virtual warehouse.
 //
 // @param request - RebalanceHoloWarehouseRequest
 //
@@ -5775,7 +6225,7 @@ func (client *Client) RebalanceHoloWarehouse(instanceId *string, request *Rebala
 
 // Summary:
 //
-// 停止计算组
+// Renames a virtual warehouse.
 //
 // @param request - RenameHoloWarehouseRequest
 //
@@ -5824,7 +6274,7 @@ func (client *Client) RenameHoloWarehouseWithOptions(instanceId *string, request
 
 // Summary:
 //
-// 停止计算组
+// Renames a virtual warehouse.
 //
 // @param request - RenameHoloWarehouseRequest
 //
@@ -5931,7 +6381,7 @@ func (client *Client) RenewInstance(instanceId *string, request *RenewInstanceRe
 
 // Summary:
 //
-// 停止计算组
+// Restarts a virtual warehouse.
 //
 // @param request - RestartHoloWarehouseRequest
 //
@@ -5976,7 +6426,7 @@ func (client *Client) RestartHoloWarehouseWithOptions(instanceId *string, reques
 
 // Summary:
 //
-// 停止计算组
+// Restarts a virtual warehouse.
 //
 // @param request - RestartHoloWarehouseRequest
 //
@@ -6045,7 +6495,7 @@ func (client *Client) RestartInstance(instanceId *string) (_result *RestartInsta
 
 // Summary:
 //
-// 停止计算组
+// Resumes a virtual warehouse.
 //
 // @param request - ResumeHoloWarehouseRequest
 //
@@ -6090,7 +6540,7 @@ func (client *Client) ResumeHoloWarehouseWithOptions(instanceId *string, request
 
 // Summary:
 //
-// 停止计算组
+// Resumes a virtual warehouse.
 //
 // @param request - ResumeHoloWarehouseRequest
 //
@@ -6159,7 +6609,7 @@ func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanc
 
 // Summary:
 //
-// 停止计算组
+// Scales in or out a virtual warehouse.
 //
 // @param request - ScaleHoloWarehouseRequest
 //
@@ -6208,7 +6658,7 @@ func (client *Client) ScaleHoloWarehouseWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// 停止计算组
+// Scales in or out a virtual warehouse.
 //
 // @param request - ScaleHoloWarehouseRequest
 //
@@ -6377,7 +6827,7 @@ func (client *Client) StopInstance(instanceId *string) (_result *StopInstanceRes
 
 // Summary:
 //
-// 停止计算组
+// Suspends a virtual warehouse.
 //
 // @param request - SuspendHoloWarehouseRequest
 //
@@ -6422,7 +6872,7 @@ func (client *Client) SuspendHoloWarehouseWithOptions(instanceId *string, reques
 
 // Summary:
 //
-// 停止计算组
+// Suspends a virtual warehouse.
 //
 // @param request - SuspendHoloWarehouseRequest
 //
