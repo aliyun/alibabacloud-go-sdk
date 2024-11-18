@@ -3321,10 +3321,12 @@ func (s *StatusTransitionItem) SetStatus(v string) *StatusTransitionItem {
 
 type Tensorboard struct {
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Cpu           *int64  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// example:
 	//
 	// datasource-test
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// example:
 	//
 	// test
@@ -3348,10 +3350,13 @@ type Tensorboard struct {
 	// example:
 	//
 	// dlc-20210114104214-vf9lowjt3pso
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Priority  *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	QuotaId   *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	JobId                 *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	Memory                *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Options               *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Priority              *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	QuotaId               *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaName             *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
 	// example:
 	//
 	// Delete by user
@@ -3372,6 +3377,7 @@ type Tensorboard struct {
 	//
 	// /root/data
 	SummaryPath            *string                      `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	SummaryRelativePath    *string                      `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -3382,6 +3388,7 @@ type Tensorboard struct {
 	//
 	// http://xxxxxx
 	TensorboardUrl *string `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
+	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// example:
 	//
 	// lycxxxxx
@@ -3389,7 +3396,8 @@ type Tensorboard struct {
 	// example:
 	//
 	// tensorboard.pai
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Workspaceid *string `json:"Workspaceid,omitempty" xml:"Workspaceid,omitempty"`
 }
 
 func (s Tensorboard) String() string {
@@ -3405,8 +3413,18 @@ func (s *Tensorboard) SetAccessibility(v string) *Tensorboard {
 	return s
 }
 
+func (s *Tensorboard) SetCpu(v int64) *Tensorboard {
+	s.Cpu = &v
+	return s
+}
+
 func (s *Tensorboard) SetDataSourceId(v string) *Tensorboard {
 	s.DataSourceId = &v
+	return s
+}
+
+func (s *Tensorboard) SetDataSourceType(v string) *Tensorboard {
+	s.DataSourceType = &v
 	return s
 }
 
@@ -3437,6 +3455,21 @@ func (s *Tensorboard) SetGmtModifyTime(v string) *Tensorboard {
 
 func (s *Tensorboard) SetJobId(v string) *Tensorboard {
 	s.JobId = &v
+	return s
+}
+
+func (s *Tensorboard) SetMaxRunningTimeMinutes(v int64) *Tensorboard {
+	s.MaxRunningTimeMinutes = &v
+	return s
+}
+
+func (s *Tensorboard) SetMemory(v int64) *Tensorboard {
+	s.Memory = &v
+	return s
+}
+
+func (s *Tensorboard) SetOptions(v string) *Tensorboard {
+	s.Options = &v
 	return s
 }
 
@@ -3480,6 +3513,11 @@ func (s *Tensorboard) SetSummaryPath(v string) *Tensorboard {
 	return s
 }
 
+func (s *Tensorboard) SetSummaryRelativePath(v string) *Tensorboard {
+	s.SummaryRelativePath = &v
+	return s
+}
+
 func (s *Tensorboard) SetTensorboardDataSources(v []*TensorboardDataSourceSpec) *Tensorboard {
 	s.TensorboardDataSources = v
 	return s
@@ -3500,6 +3538,11 @@ func (s *Tensorboard) SetTensorboardUrl(v string) *Tensorboard {
 	return s
 }
 
+func (s *Tensorboard) SetToken(v string) *Tensorboard {
+	s.Token = &v
+	return s
+}
+
 func (s *Tensorboard) SetUserId(v string) *Tensorboard {
 	s.UserId = &v
 	return s
@@ -3507,6 +3550,11 @@ func (s *Tensorboard) SetUserId(v string) *Tensorboard {
 
 func (s *Tensorboard) SetUsername(v string) *Tensorboard {
 	s.Username = &v
+	return s
+}
+
+func (s *Tensorboard) SetWorkspaceid(v string) *Tensorboard {
+	s.Workspaceid = &v
 	return s
 }
 
@@ -7281,7 +7329,8 @@ type UpdateTensorboardRequest struct {
 	// example:
 	//
 	// MaxRunningTimeMinutes
-	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	Priority              *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// example:
 	//
 	// 380
@@ -7303,6 +7352,11 @@ func (s *UpdateTensorboardRequest) SetAccessibility(v string) *UpdateTensorboard
 
 func (s *UpdateTensorboardRequest) SetMaxRunningTimeMinutes(v int64) *UpdateTensorboardRequest {
 	s.MaxRunningTimeMinutes = &v
+	return s
+}
+
+func (s *UpdateTensorboardRequest) SetPriority(v string) *UpdateTensorboardRequest {
+	s.Priority = &v
 	return s
 }
 
@@ -9301,6 +9355,10 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 
 	if !tea.BoolValue(util.IsUnset(request.MaxRunningTimeMinutes)) {
 		query["MaxRunningTimeMinutes"] = request.MaxRunningTimeMinutes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
