@@ -2925,7 +2925,8 @@ type ListImagesResponseBodyImages struct {
 	// example:
 	//
 	// app-image
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
 	// example:
 	//
 	// v1.0
@@ -2967,6 +2968,11 @@ func (s *ListImagesResponseBodyImages) SetImageType(v string) *ListImagesRespons
 
 func (s *ListImagesResponseBodyImages) SetName(v string) *ListImagesResponseBodyImages {
 	s.Name = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetOsTag(v string) *ListImagesResponseBodyImages {
+	s.OsTag = &v
 	return s
 }
 
