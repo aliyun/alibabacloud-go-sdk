@@ -186,17 +186,40 @@ func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitation) SetSt
 }
 
 type AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails struct {
-	// The type of the sharing operation. Valid values:
+	// This parameter is deprecated. The OperationType parameter is used instead.
+	//
+	// example:
+	//
+	// Associate
+	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	// The failure description.
+	//
+	// example:
+	//
+	// You cannot access the specified resource at this time.
+	FailureDescription *string `json:"FailureDescription,omitempty" xml:"FailureDescription,omitempty"`
+	// The failure cause. Valid values:
+	//
+	// 	- Unavailable: The resource cannot be shared.
+	//
+	// 	- LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
+	//
+	// 	- ZonalResourceInaccessible: The resource is unavailable in this region.
+	//
+	// 	- InternalError: An internal error occurred during the check.
+	//
+	// example:
+	//
+	// Unavailable
+	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// The operation type. Valid values:
 	//
 	// 	- Associate
 	//
 	// example:
 	//
 	// Associate
-	AssociateType      *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	FailureDescription *string `json:"FailureDescription,omitempty" xml:"FailureDescription,omitempty"`
-	FailureReason      *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The ID of the shared resource.
 	//
 	// example:
@@ -211,21 +234,13 @@ type AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvit
 	//
 	// Snapshot
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The failure status. Valid values:
-	//
-	// 	- Unavailable: The resource cannot be shared.
-	//
-	// 	- LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
-	//
-	// 	- ZonalResourceInaccessible: The resource is unavailable in this region.
-	//
-	// 	- InternalError: An internal error occurred during the check.
+	// This parameter is deprecated. The FailureReason parameter is used instead.
 	//
 	// example:
 	//
 	// Unavailable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The failure cause.
+	// This parameter is deprecated. The FailureDescription parameter is used instead.
 	//
 	// example:
 	//
@@ -2673,7 +2688,7 @@ type ListResourceShareAssociationsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	// The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
 	//
 	// example:
 	//
@@ -2688,6 +2703,8 @@ type ListResourceShareAssociationsRequest struct {
 	// vsw-bp183p93qs667muql****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The IDs of the resource shares.
+	//
+	// Valid values of N: 1 to 5. This indicates that a maximum of five resource shares can be specified at a time.
 	//
 	// example:
 	//
@@ -2747,13 +2764,13 @@ func (s *ListResourceShareAssociationsRequest) SetTarget(v string) *ListResource
 }
 
 type ListResourceShareAssociationsResponseBody struct {
-	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	// The `token` that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
 	//
 	// example:
 	//
 	// TGlzdFJlc291cm****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2787,6 +2804,7 @@ func (s *ListResourceShareAssociationsResponseBody) SetResourceShareAssociations
 }
 
 type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
+	// The information about the failure.
 	AssociationFailedDetails []*ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails `json:"AssociationFailedDetails,omitempty" xml:"AssociationFailedDetails,omitempty" type:"Repeated"`
 	// The association status. Valid values:
 	//
@@ -2834,7 +2852,7 @@ type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the entity. The value of this parameter depends on the value of the AssociationType parameter:
 	//
-	// 	- If the value of `AssociationType` is `Resource`, the value of this parameter is the ID of the shared resource.
+	// 	- If the value of `AssociationType` is `Resource`, the value of this parameter is the ID of the resource.
 	//
 	// 	- If the value of `AssociationType` is `Target`, the value of this parameter is the ID of the principal.
 	//
@@ -2844,7 +2862,7 @@ type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
 	//
-	// 	- If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
+	// 	- If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/document_detail/450526.html).
 	//
 	// 	- If the value of AssociationType is Target, the value of this parameter is `Account`.
 	//
@@ -2854,9 +2872,9 @@ type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// Indicates whether the principal is outside the resource directory. Valid values:
 	//
-	// 	- true: The principal is outside the resource directory.
+	// 	- true
 	//
-	// 	- false: The principal is in the resource directory.
+	// 	- false
 	//
 	// example:
 	//
@@ -2874,7 +2892,32 @@ type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
 	//
 	// example
 	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	TargetProperty    *string `json:"TargetProperty,omitempty" xml:"TargetProperty,omitempty"`
+	// The properties of the principal, such as the time range within which the resource is shared. Valid values of `timeRangeType`:
+	//
+	// 	- timeRange: a specific time range
+	//
+	// 	- day: all day
+	//
+	// >  This parameter is returned only if the principal is an Alibaba Cloud service.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "timeRange":{
+	//
+	//         "timeRangeType":"timeRange",
+	//
+	//         "beginAtTime":"00:00",
+	//
+	//         "timezone":"UTC+8",
+	//
+	//         "endAtTime":"19:59"
+	//
+	//     }
+	//
+	// }
+	TargetProperty *string `json:"TargetProperty,omitempty" xml:"TargetProperty,omitempty"`
 	// The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
 	//
 	// 	- If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the association of the shared resource was updated.
@@ -2956,14 +2999,76 @@ func (s *ListResourceShareAssociationsResponseBodyResourceShareAssociations) Set
 }
 
 type ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails struct {
-	AssociateType      *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	EntityId           *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityType         *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// This parameter is deprecated. The OperationType parameter is used instead.
+	//
+	// example:
+	//
+	// None
+	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	// The ID of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// 	- If the value of AssociationType is Resource, the value of this parameter is the ID of the principal.
+	//
+	// 	- If the value of AssociationType is Target, the value of this parameter is the ID of the resource.
+	//
+	// example:
+	//
+	// 172050525300****
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// 	- If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For information about the types of resources that can be shared, see Services that work with Resource Sharing.
+	//
+	// 	- If the value of AssociationType is Target, the value of this parameter is `ResourceDirectory`, `Folder`, `Account`, or `Service`.
+	//
+	// example:
+	//
+	// Account
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The failure description.
+	//
+	// example:
+	//
+	// You cannot access the specified resource at this time.
 	FailureDescription *string `json:"FailureDescription,omitempty" xml:"FailureDescription,omitempty"`
-	FailureReason      *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusMessage      *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// The failure cause. Valid values:
+	//
+	// 	- Unavailable: The resource does not exist.
+	//
+	// 	- LimitExceeded: The number of principals for the resource exceeds the upper limit.
+	//
+	// 	- ZonalResourceInaccessible: The resource is unavailable in this region.
+	//
+	// 	- InternalError: An internal error occurred.
+	//
+	// 	- UnsupportedOperation: You cannot perform this operation.
+	//
+	// example:
+	//
+	// Unavailable
+	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// The operation type. Valid values:
+	//
+	// 	- Associate
+	//
+	// 	- Disassociate
+	//
+	// example:
+	//
+	// Associate
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// This parameter is deprecated. The FailureReason parameter is used instead.
+	//
+	// example:
+	//
+	// None
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is deprecated. The FailureDescription parameter is used instead.
+	//
+	// example:
+	//
+	// None
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 }
 
 func (s ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails) String() string {
@@ -3240,7 +3345,35 @@ func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) SetSt
 }
 
 type ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails struct {
-	// The type of the sharing operation. Valid values:
+	// This parameter is deprecated. The OperationType parameter is used instead.
+	//
+	// example:
+	//
+	// Associate
+	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	// The failure description.
+	//
+	// example:
+	//
+	// You cannot access the specified resource at this time.
+	FailureDescription *string `json:"FailureDescription,omitempty" xml:"FailureDescription,omitempty"`
+	// The failure cause. Valid values:
+	//
+	// 	- Unavailable: The resource cannot be shared.
+	//
+	// 	- LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
+	//
+	// 	- ZonalResourceInaccessible: The resource is unavailable in this region.
+	//
+	// 	- InternalError: An internal error occurred during the check.
+	//
+	// 	- UnsupportedOperation: You cannot perform this operation.
+	//
+	// example:
+	//
+	// Unavailable
+	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// The operation type. Valid values:
 	//
 	// 	- Associate
 	//
@@ -3249,10 +3382,7 @@ type ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationF
 	// example:
 	//
 	// Associate
-	AssociateType      *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
-	FailureDescription *string `json:"FailureDescription,omitempty" xml:"FailureDescription,omitempty"`
-	FailureReason      *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The ID of the shared resource.
 	//
 	// example:
@@ -3267,23 +3397,13 @@ type ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationF
 	//
 	// Snapshot
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The failure status. Valid values:
-	//
-	// 	- Unavailable: The resource cannot be shared.
-	//
-	// 	- LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
-	//
-	// 	- ZonalResourceInaccessible: The resource is unavailable in this region.
-	//
-	// 	- UnsupportedOperation: The operation is not allowed because another association exists.
-	//
-	// 	- InternalError: An internal error occurred during the check.
+	// This parameter is deprecated. The FailureReason parameter is used instead.
 	//
 	// example:
 	//
 	// Unavailable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The failure cause.
+	// This parameter is deprecated. The FailureDescription parameter is used instead.
 	//
 	// example:
 	//
@@ -4488,6 +4608,217 @@ func (s *ListSharedTargetsResponse) SetBody(v *ListSharedTargetsResponseBody) *L
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ResourceShare
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// example:
+	//
+	// k1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// v1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 8054B059-6B36-53BF-AA45-B8C9A0ED05AB
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	// example:
+	//
+	// rs-PqysnzIj****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ResourceShare
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// k1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// v1
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type RejectResourceShareInvitationRequest struct {
 	// The ID of the resource sharing invitation.
 	//
@@ -4680,6 +5011,234 @@ func (s *RejectResourceShareInvitationResponse) SetStatusCode(v int32) *RejectRe
 }
 
 func (s *RejectResourceShareInvitationResponse) SetBody(v *RejectResourceShareInvitationResponseBody) *RejectResourceShareInvitationResponse {
+	s.Body = v
+	return s
+}
+
+type TagResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ResourceShare
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	// example:
+	//
+	// k1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// v1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// example:
+	//
+	// E7747EDF-EDDC-5B38-9B6A-6392B9C92B1C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	// example:
+	//
+	// false
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ResourceShare
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	// example:
+	//
+	// E7747EDF-EDDC-5B38-9B6A-6392B9C92B1C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -6543,6 +7102,82 @@ func (client *Client) ListSharedTargets(request *ListSharedTargetsRequest) (_res
 
 // Summary:
 //
+// 查询资源标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资源标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 拒绝组织外共享邀请
 //
 // Description:
@@ -6602,6 +7237,154 @@ func (client *Client) RejectResourceShareInvitation(request *RejectResourceShare
 	runtime := &util.RuntimeOptions{}
 	_result = &RejectResourceShareInvitationResponse{}
 	_body, _err := client.RejectResourceShareInvitationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源打用户标签
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源打用户标签
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源去除用户标签
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源去除用户标签
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
