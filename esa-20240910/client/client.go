@@ -4417,12 +4417,18 @@ func (s *CreateEdgeContainerAppRecordResponse) SetBody(v *CreateEdgeContainerApp
 }
 
 type CreateEdgeContainerAppVersionRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The container group to be deployed for this version, which contains information about images.\\
+	//
+	// The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4463,12 +4469,16 @@ type CreateEdgeContainerAppVersionRequest struct {
 	//
 	// ]
 	Containers []*CreateEdgeContainerAppVersionRequestContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// The version name, which must be 6 to 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// verson1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the version.
+	//
 	// example:
 	//
 	// test app
@@ -4504,37 +4514,95 @@ func (s *CreateEdgeContainerAppVersionRequest) SetRemarks(v string) *CreateEdgeC
 }
 
 type CreateEdgeContainerAppVersionRequestContainers struct {
+	// The information about the Container Registry image.
 	ACRImageInfo *CreateEdgeContainerAppVersionRequestContainersACRImageInfo `json:"ACRImageInfo,omitempty" xml:"ACRImageInfo,omitempty" type:"Struct"`
-	Args         *string                                                     `json:"Args,omitempty" xml:"Args,omitempty"`
-	Command      *string                                                     `json:"Command,omitempty" xml:"Command,omitempty"`
-	EnvVariables *string                                                     `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
+	// The arguments that are passed to the container startup command. Separate the parameters with spaces.
+	//
+	// example:
+	//
+	// -a
+	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// The command that is used to start the container. Separate the arguments with spaces.
+	//
+	// example:
+	//
+	// nginx
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The environment variables. Separate the environment variables with commas (,).
+	//
+	// example:
+	//
+	// VITE_APP_TITLE=My App
+	EnvVariables *string `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
+	// The address of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// registry-vpc.cn-shenzhen.aliyuncs.com/lihe****h/ea****ts_serv****am:3.**
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// Specifies whether the image is a Container Registry image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	IsACRImage *bool `json:"IsACRImage,omitempty" xml:"IsACRImage,omitempty"`
+	// The name of the container. The name must be unique in the same container group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lxg-demo-er
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The command that is run before the container is started. Separate the arguments with spaces.
+	//
+	// example:
+	//
+	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop   *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The command that is run before the container is stopped. Separate the arguments with spaces.
+	//
+	// example:
+	//
+	// sh prestop.sh "echo hello world"
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The content of the container health probe.
+	//
 	// This parameter is required.
 	ProbeContent *CreateEdgeContainerAppVersionRequestContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
+	// The type of the probe. Valid values:
+	//
+	// 	- exec: the command type.
+	//
+	// 	- tcpSocket: the TCP probe type.
+	//
+	// 	- httpGet: the HTTP access type.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// exec
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
+	// The compute specification of the container. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1C2G
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The storage capacity. Valid values: 0.5G, 10G, 20G, and 30G.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.5G
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
 }
 
@@ -4612,38 +4680,55 @@ func (s *CreateEdgeContainerAppVersionRequestContainers) SetStorage(v string) *C
 }
 
 type CreateEdgeContainerAppVersionRequestContainersACRImageInfo struct {
+	// The domain name of the Container Registry image.
+	//
 	// example:
 	//
 	// 1500.***.net
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the Container Registry instance.
+	//
 	// example:
 	//
 	// xcdn-9axbo****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the image is an enterprise-level Container Registry image.
+	//
 	// example:
 	//
 	// false
 	IsEnterpriseRegistry *bool `json:"IsEnterpriseRegistry,omitempty" xml:"IsEnterpriseRegistry,omitempty"`
+	// The regions in which the Container Registry instance resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the image repository.
+	//
 	// example:
 	//
 	// crr-h1ghghu60ct****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the image repository.
+	//
 	// example:
 	//
 	// test_71
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The namespace to which the image repository belongs.
+	//
 	// example:
 	//
 	// safeline
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	// The tag of the Container Registry image.
+	//
 	// example:
 	//
 	// 3.40.2
-	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The URL of the Container Registry image tag.
 	TagUrl *string `json:"TagUrl,omitempty" xml:"TagUrl,omitempty"`
 }
 
@@ -4701,46 +4786,68 @@ func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) SetTagUrl(v
 }
 
 type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
+	// The command of the exec type probe.
+	//
 	// example:
 	//
 	// echo ok
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The number of consecutive failed health checks required for a container to be considered as unhealthy.
+	//
 	// example:
 	//
 	// 3
 	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// The domain name that is used for health checks.
+	//
 	// example:
 	//
 	// www.rewrite.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The request headers that are included in the container health check request.
+	//
 	// example:
 	//
 	// [{\\"Content-Type\\":\\"application/json\\"}]
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
+	// The latency for container probe initialization.
+	//
 	// example:
 	//
 	// 1
 	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// The health check path.
+	//
 	// example:
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The interval between container health checks.
+	//
 	// example:
 	//
 	// 1
 	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The health check port.
+	//
 	// example:
 	//
 	// 9991
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol that the container health check request uses.
+	//
 	// example:
 	//
 	// http
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	// The number of consecutive successful health checks required for a container to be considered as healthy.
+	//
 	// example:
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// The timeout period of the container health check.
+	//
 	// example:
 	//
 	// 1
@@ -4811,12 +4918,18 @@ func (s *CreateEdgeContainerAppVersionRequestContainersProbeContent) SetTimeoutS
 }
 
 type CreateEdgeContainerAppVersionShrinkRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The container group to be deployed for this version, which contains information about images.\\
+	//
+	// The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4857,12 +4970,16 @@ type CreateEdgeContainerAppVersionShrinkRequest struct {
 	//
 	// ]
 	ContainersShrink *string `json:"Containers,omitempty" xml:"Containers,omitempty"`
+	// The version name, which must be 6 to 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// verson1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the version.
+	//
 	// example:
 	//
 	// test app
@@ -4898,10 +5015,14 @@ func (s *CreateEdgeContainerAppVersionShrinkRequest) SetRemarks(v string) *Creat
 }
 
 type CreateEdgeContainerAppVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the created version.
+	//
 	// example:
 	//
 	// ver-87962637161651****
@@ -11608,90 +11729,6 @@ func (s *DescribeHttpDDoSAttackProtectionResponse) SetStatusCode(v int32) *Descr
 }
 
 func (s *DescribeHttpDDoSAttackProtectionResponse) SetBody(v *DescribeHttpDDoSAttackProtectionResponseBody) *DescribeHttpDDoSAttackProtectionResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeIPRangeListResponseBody struct {
-	Content []*DescribeIPRangeListResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// example:
-	//
-	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeIPRangeListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIPRangeListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIPRangeListResponseBody) SetContent(v []*DescribeIPRangeListResponseBodyContent) *DescribeIPRangeListResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *DescribeIPRangeListResponseBody) SetRequestId(v string) *DescribeIPRangeListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeIPRangeListResponseBodyContent struct {
-	// example:
-	//
-	// 172.16.0.0/12
-	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// example:
-	//
-	// IPv4
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-}
-
-func (s DescribeIPRangeListResponseBodyContent) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIPRangeListResponseBodyContent) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIPRangeListResponseBodyContent) SetCidr(v string) *DescribeIPRangeListResponseBodyContent {
-	s.Cidr = &v
-	return s
-}
-
-func (s *DescribeIPRangeListResponseBodyContent) SetIpType(v string) *DescribeIPRangeListResponseBodyContent {
-	s.IpType = &v
-	return s
-}
-
-type DescribeIPRangeListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeIPRangeListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeIPRangeListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIPRangeListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIPRangeListResponse) SetHeaders(v map[string]*string) *DescribeIPRangeListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeIPRangeListResponse) SetStatusCode(v int32) *DescribeIPRangeListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeIPRangeListResponse) SetBody(v *DescribeIPRangeListResponseBody) *DescribeIPRangeListResponse {
 	s.Body = v
 	return s
 }
@@ -18471,14 +18508,20 @@ func (s *ListCacheReserveInstancesResponse) SetBody(v *ListCacheReserveInstances
 }
 
 type ListClientCertificatesRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18511,27 +18554,40 @@ func (s *ListClientCertificatesRequest) SetSiteId(v int64) *ListClientCertificat
 }
 
 type ListClientCertificatesResponseBody struct {
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListClientCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The client certificates.
+	Result []*ListClientCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 5
@@ -18582,58 +18638,86 @@ func (s *ListClientCertificatesResponseBody) SetTotalCount(v int64) *ListClientC
 }
 
 type ListClientCertificatesResponseBodyResult struct {
+	// The ID of the CA certificate.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The Common Name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
 	// example:
 	//
 	// 2024-06-24 07:48:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b50d66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
 	// example:
 	//
 	// 2023-03-31 02:08:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public key algorithm of the certificate.
+	//
 	// example:
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The signature algorithm of the certificate.
+	//
 	// example:
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The certificate status.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
 	// example:
 	//
 	// dcdn
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
 	// example:
 	//
 	// 2024-07-20 06:18:42
@@ -21797,7 +21881,7 @@ type ListRecordsRequest struct {
 	// example:
 	//
 	// true
-	Proxied *string `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
 	// example:
 	//
 	// fuzzy
@@ -21845,7 +21929,7 @@ func (s *ListRecordsRequest) SetPageSize(v int32) *ListRecordsRequest {
 	return s
 }
 
-func (s *ListRecordsRequest) SetProxied(v string) *ListRecordsRequest {
+func (s *ListRecordsRequest) SetProxied(v bool) *ListRecordsRequest {
 	s.Proxied = &v
 	return s
 }
@@ -33467,7 +33551,7 @@ func (client *Client) CreateEdgeContainerAppRecord(request *CreateEdgeContainerA
 
 // Summary:
 //
-// 创建边缘容器应用的版本
+// Creates a version for a containerized application. You can iterate the application based on the version.
 //
 // @param tmpReq - CreateEdgeContainerAppVersionRequest
 //
@@ -33527,7 +33611,7 @@ func (client *Client) CreateEdgeContainerAppVersionWithOptions(tmpReq *CreateEdg
 
 // Summary:
 //
-// 创建边缘容器应用的版本
+// Creates a version for a containerized application. You can iterate the application based on the version.
 //
 // @param request - CreateEdgeContainerAppVersionRequest
 //
@@ -36783,53 +36867,6 @@ func (client *Client) DescribeHttpDDoSAttackProtection(request *DescribeHttpDDoS
 
 // Summary:
 //
-// 查询加速服务节点IP段列表
-//
-// @param request - DescribeIPRangeListRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeIPRangeListResponse
-func (client *Client) DescribeIPRangeListWithOptions(runtime *util.RuntimeOptions) (_result *DescribeIPRangeListResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeIPRangeList"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeIPRangeListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询加速服务节点IP段列表
-//
-// @return DescribeIPRangeListResponse
-func (client *Client) DescribeIPRangeList() (_result *DescribeIPRangeListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeIPRangeListResponse{}
-	_body, _err := client.DescribeIPRangeListWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 查询账户的KV状态信
 //
 // @param request - DescribeKvAccountStatusRequest
@@ -39344,7 +39381,7 @@ func (client *Client) ListCacheReserveInstances(request *ListCacheReserveInstanc
 
 // Summary:
 //
-// 查询站点下客户端证书列表
+// Queries client certificates configured for a website.
 //
 // @param request - ListClientCertificatesRequest
 //
@@ -39382,7 +39419,7 @@ func (client *Client) ListClientCertificatesWithOptions(request *ListClientCerti
 
 // Summary:
 //
-// 查询站点下客户端证书列表
+// Queries client certificates configured for a website.
 //
 // @param request - ListClientCertificatesRequest
 //
