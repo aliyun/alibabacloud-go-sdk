@@ -5807,6 +5807,7 @@ func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) 
 }
 
 type GetQualityCheckTaskResultResponseBodyDataQualityCheckList struct {
+	BizType          *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
 	CheckExplanation *string `json:"checkExplanation,omitempty" xml:"checkExplanation,omitempty"`
 	// example:
 	//
@@ -5838,7 +5839,8 @@ type GetQualityCheckTaskResultResponseBodyDataQualityCheckList struct {
 	// example:
 	//
 	// wcm_start
-	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+	RuleId   *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+	RuleType *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
 }
 
 func (s GetQualityCheckTaskResultResponseBodyDataQualityCheckList) String() string {
@@ -5847,6 +5849,11 @@ func (s GetQualityCheckTaskResultResponseBodyDataQualityCheckList) String() stri
 
 func (s GetQualityCheckTaskResultResponseBodyDataQualityCheckList) GoString() string {
 	return s.String()
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetBizType(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.BizType = &v
+	return s
 }
 
 func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetCheckExplanation(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
@@ -5901,6 +5908,11 @@ func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetRuleDescr
 
 func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetRuleId(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
 	s.RuleId = &v
+	return s
+}
+
+func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetRuleType(v string) *GetQualityCheckTaskResultResponseBodyDataQualityCheckList {
+	s.RuleType = &v
 	return s
 }
 
