@@ -6808,6 +6808,1134 @@ func (s *CommitFileResponse) SetBody(v *CommitFileResponseBody) *CommitFileRespo
 	return s
 }
 
+type CopyDentryHeaders struct {
+	CommonHeaders  map[string]*string               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CopyDentryHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CopyDentryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryHeaders) SetCommonHeaders(v map[string]*string) *CopyDentryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CopyDentryHeaders) SetAccountContext(v *CopyDentryHeadersAccountContext) *CopyDentryHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CopyDentryHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CopyDentryHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryHeadersAccountContext) SetAccountId(v string) *CopyDentryHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CopyDentryShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CopyDentryShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryShrinkHeaders) SetCommonHeaders(v map[string]*string) *CopyDentryShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CopyDentryShrinkHeaders) SetAccountContextShrink(v string) *CopyDentryShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CopyDentryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b9XJljElJv6RPGyA
+	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24458420428
+	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b9XJljElJv6RPG
+	TargetSpaceId *string                         `json:"TargetSpaceId,omitempty" xml:"TargetSpaceId,omitempty"`
+	TenantContext *CopyDentryRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// b9XJljElJv6RPGyA2
+	ToNextDentryId *string `json:"ToNextDentryId,omitempty" xml:"ToNextDentryId,omitempty"`
+	// example:
+	//
+	// b9XJljElJv6RPGyA4
+	ToParentDentryId *string `json:"ToParentDentryId,omitempty" xml:"ToParentDentryId,omitempty"`
+	// example:
+	//
+	// b9XJljElJv6RPGyA3
+	ToPrevDentryId *string `json:"ToPrevDentryId,omitempty" xml:"ToPrevDentryId,omitempty"`
+}
+
+func (s CopyDentryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryRequest) SetDentryId(v string) *CopyDentryRequest {
+	s.DentryId = &v
+	return s
+}
+
+func (s *CopyDentryRequest) SetName(v string) *CopyDentryRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CopyDentryRequest) SetSpaceId(v string) *CopyDentryRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *CopyDentryRequest) SetTargetSpaceId(v string) *CopyDentryRequest {
+	s.TargetSpaceId = &v
+	return s
+}
+
+func (s *CopyDentryRequest) SetTenantContext(v *CopyDentryRequestTenantContext) *CopyDentryRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CopyDentryRequest) SetToNextDentryId(v string) *CopyDentryRequest {
+	s.ToNextDentryId = &v
+	return s
+}
+
+func (s *CopyDentryRequest) SetToParentDentryId(v string) *CopyDentryRequest {
+	s.ToParentDentryId = &v
+	return s
+}
+
+func (s *CopyDentryRequest) SetToPrevDentryId(v string) *CopyDentryRequest {
+	s.ToPrevDentryId = &v
+	return s
+}
+
+type CopyDentryRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CopyDentryRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryRequestTenantContext) SetTenantId(v string) *CopyDentryRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CopyDentryShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b9XJljElJv6RPGyA
+	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24458420428
+	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b9XJljElJv6RPG
+	TargetSpaceId       *string `json:"TargetSpaceId,omitempty" xml:"TargetSpaceId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// example:
+	//
+	// b9XJljElJv6RPGyA2
+	ToNextDentryId *string `json:"ToNextDentryId,omitempty" xml:"ToNextDentryId,omitempty"`
+	// example:
+	//
+	// b9XJljElJv6RPGyA4
+	ToParentDentryId *string `json:"ToParentDentryId,omitempty" xml:"ToParentDentryId,omitempty"`
+	// example:
+	//
+	// b9XJljElJv6RPGyA3
+	ToPrevDentryId *string `json:"ToPrevDentryId,omitempty" xml:"ToPrevDentryId,omitempty"`
+}
+
+func (s CopyDentryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryShrinkRequest) SetDentryId(v string) *CopyDentryShrinkRequest {
+	s.DentryId = &v
+	return s
+}
+
+func (s *CopyDentryShrinkRequest) SetName(v string) *CopyDentryShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CopyDentryShrinkRequest) SetSpaceId(v string) *CopyDentryShrinkRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *CopyDentryShrinkRequest) SetTargetSpaceId(v string) *CopyDentryShrinkRequest {
+	s.TargetSpaceId = &v
+	return s
+}
+
+func (s *CopyDentryShrinkRequest) SetTenantContextShrink(v string) *CopyDentryShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CopyDentryShrinkRequest) SetToNextDentryId(v string) *CopyDentryShrinkRequest {
+	s.ToNextDentryId = &v
+	return s
+}
+
+func (s *CopyDentryShrinkRequest) SetToParentDentryId(v string) *CopyDentryShrinkRequest {
+	s.ToParentDentryId = &v
+	return s
+}
+
+func (s *CopyDentryShrinkRequest) SetToPrevDentryId(v string) *CopyDentryShrinkRequest {
+	s.ToPrevDentryId = &v
+	return s
+}
+
+type CopyDentryResponseBody struct {
+	// example:
+	//
+	// alidoc
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// 12345678
+	CreatedTime *int64                 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Creator     map[string]interface{} `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// abc
+	DentryId *string `json:"dentryId,omitempty" xml:"dentryId,omitempty"`
+	// example:
+	//
+	// file
+	DentryType *string `json:"dentryType,omitempty" xml:"dentryType,omitempty"`
+	// example:
+	//
+	// cdefg
+	DentryUuid *string `json:"dentryUuid,omitempty" xml:"dentryUuid,omitempty"`
+	// example:
+	//
+	// aabbcc
+	DocKey *string `json:"docKey,omitempty" xml:"docKey,omitempty"`
+	// example:
+	//
+	// alidoc
+	Extension *string `json:"extension,omitempty" xml:"extension,omitempty"`
+	// example:
+	//
+	// false
+	HasChildren    *bool                                 `json:"hasChildren,omitempty" xml:"hasChildren,omitempty"`
+	LinkSourceInfo *CopyDentryResponseBodyLinkSourceInfo `json:"linkSourceInfo,omitempty" xml:"linkSourceInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// hello
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 测试组织/测试知识库/abc
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Space     *CopyDentryResponseBodySpace `json:"space,omitempty" xml:"space,omitempty" type:"Struct"`
+	// example:
+	//
+	// bcd
+	SpaceId *string `json:"spaceId,omitempty" xml:"spaceId,omitempty"`
+	// example:
+	//
+	// 12345678
+	UpdatedTime *int64 `json:"updatedTime,omitempty" xml:"updatedTime,omitempty"`
+	// example:
+	//
+	// {\\"UserId\\": \\"353851\\", \\"Name\\": u\\"\\u848b\\u7fbd\\u4e2d\\"}
+	Updater map[string]interface{} `json:"updater,omitempty" xml:"updater,omitempty"`
+	// example:
+	//
+	// https://xxx.yy
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType  *string                `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+	VisitorInfo map[string]interface{} `json:"visitorInfo,omitempty" xml:"visitorInfo,omitempty"`
+}
+
+func (s CopyDentryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBody) SetContentType(v string) *CopyDentryResponseBody {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetCreatedTime(v int64) *CopyDentryResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetCreator(v map[string]interface{}) *CopyDentryResponseBody {
+	s.Creator = v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetDentryId(v string) *CopyDentryResponseBody {
+	s.DentryId = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetDentryType(v string) *CopyDentryResponseBody {
+	s.DentryType = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetDentryUuid(v string) *CopyDentryResponseBody {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetDocKey(v string) *CopyDentryResponseBody {
+	s.DocKey = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetExtension(v string) *CopyDentryResponseBody {
+	s.Extension = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetHasChildren(v bool) *CopyDentryResponseBody {
+	s.HasChildren = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetLinkSourceInfo(v *CopyDentryResponseBodyLinkSourceInfo) *CopyDentryResponseBody {
+	s.LinkSourceInfo = v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetName(v string) *CopyDentryResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetPath(v string) *CopyDentryResponseBody {
+	s.Path = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetRequestId(v string) *CopyDentryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetSpace(v *CopyDentryResponseBodySpace) *CopyDentryResponseBody {
+	s.Space = v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetSpaceId(v string) *CopyDentryResponseBody {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetUpdatedTime(v int64) *CopyDentryResponseBody {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetUpdater(v map[string]interface{}) *CopyDentryResponseBody {
+	s.Updater = v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetUrl(v string) *CopyDentryResponseBody {
+	s.Url = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetVendorRequestId(v string) *CopyDentryResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetVendorType(v string) *CopyDentryResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+func (s *CopyDentryResponseBody) SetVisitorInfo(v map[string]interface{}) *CopyDentryResponseBody {
+	s.VisitorInfo = v
+	return s
+}
+
+type CopyDentryResponseBodyLinkSourceInfo struct {
+	// example:
+	//
+	// docx
+	Extension *string                                      `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	IconUrl   *CopyDentryResponseBodyLinkSourceInfoIconUrl `json:"IconUrl,omitempty" xml:"IconUrl,omitempty" type:"Struct"`
+	// example:
+	//
+	// def
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 0
+	LinkType *int64 `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
+	// example:
+	//
+	// def
+	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+}
+
+func (s CopyDentryResponseBodyLinkSourceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodyLinkSourceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodyLinkSourceInfo) SetExtension(v string) *CopyDentryResponseBodyLinkSourceInfo {
+	s.Extension = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodyLinkSourceInfo) SetIconUrl(v *CopyDentryResponseBodyLinkSourceInfoIconUrl) *CopyDentryResponseBodyLinkSourceInfo {
+	s.IconUrl = v
+	return s
+}
+
+func (s *CopyDentryResponseBodyLinkSourceInfo) SetId(v string) *CopyDentryResponseBodyLinkSourceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodyLinkSourceInfo) SetLinkType(v int64) *CopyDentryResponseBodyLinkSourceInfo {
+	s.LinkType = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodyLinkSourceInfo) SetSpaceId(v string) *CopyDentryResponseBodyLinkSourceInfo {
+	s.SpaceId = &v
+	return s
+}
+
+type CopyDentryResponseBodyLinkSourceInfoIconUrl struct {
+	// example:
+	//
+	// gh
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// example:
+	//
+	// def
+	Small *string `json:"Small,omitempty" xml:"Small,omitempty"`
+}
+
+func (s CopyDentryResponseBodyLinkSourceInfoIconUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodyLinkSourceInfoIconUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodyLinkSourceInfoIconUrl) SetLine(v string) *CopyDentryResponseBodyLinkSourceInfoIconUrl {
+	s.Line = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodyLinkSourceInfoIconUrl) SetSmall(v string) *CopyDentryResponseBodyLinkSourceInfoIconUrl {
+	s.Small = &v
+	return s
+}
+
+type CopyDentryResponseBodySpace struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i1/O1xxxxx.png
+	Cover *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// example:
+	//
+	// 这是简介
+	Description *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	HdIconVO    *CopyDentryResponseBodySpaceHdIconVO `json:"HdIconVO,omitempty" xml:"HdIconVO,omitempty" type:"Struct"`
+	IconVO      *CopyDentryResponseBodySpaceIconVO   `json:"IconVO,omitempty" xml:"IconVO,omitempty" type:"Struct"`
+	// example:
+	//
+	// n9XJxxxxx
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 测试知识库
+	Owner      *CopyDentryResponseBodySpaceOwner        `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	RecentList []*CopyDentryResponseBodySpaceRecentList `json:"RecentList,omitempty" xml:"RecentList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// https://alidocs.dingtalk.com/i/spaces/n9XJ*******Xy/overview
+	Url         *string                                 `json:"Url,omitempty" xml:"Url,omitempty"`
+	VisitorInfo *CopyDentryResponseBodySpaceVisitorInfo `json:"VisitorInfo,omitempty" xml:"VisitorInfo,omitempty" type:"Struct"`
+}
+
+func (s CopyDentryResponseBodySpace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpace) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpace) SetCover(v string) *CopyDentryResponseBodySpace {
+	s.Cover = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetDescription(v string) *CopyDentryResponseBodySpace {
+	s.Description = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetHdIconVO(v *CopyDentryResponseBodySpaceHdIconVO) *CopyDentryResponseBodySpace {
+	s.HdIconVO = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetIconVO(v *CopyDentryResponseBodySpaceIconVO) *CopyDentryResponseBodySpace {
+	s.IconVO = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetId(v string) *CopyDentryResponseBodySpace {
+	s.Id = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetName(v string) *CopyDentryResponseBodySpace {
+	s.Name = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetOwner(v *CopyDentryResponseBodySpaceOwner) *CopyDentryResponseBodySpace {
+	s.Owner = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetRecentList(v []*CopyDentryResponseBodySpaceRecentList) *CopyDentryResponseBodySpace {
+	s.RecentList = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetType(v int32) *CopyDentryResponseBodySpace {
+	s.Type = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetUrl(v string) *CopyDentryResponseBodySpace {
+	s.Url = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpace) SetVisitorInfo(v *CopyDentryResponseBodySpaceVisitorInfo) *CopyDentryResponseBodySpace {
+	s.VisitorInfo = v
+	return s
+}
+
+type CopyDentryResponseBodySpaceHdIconVO struct {
+	// example:
+	//
+	// http://
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CopyDentryResponseBodySpaceHdIconVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceHdIconVO) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceHdIconVO) SetIcon(v string) *CopyDentryResponseBodySpaceHdIconVO {
+	s.Icon = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceHdIconVO) SetType(v string) *CopyDentryResponseBodySpaceHdIconVO {
+	s.Type = &v
+	return s
+}
+
+type CopyDentryResponseBodySpaceIconVO struct {
+	// example:
+	//
+	// http://
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// example:
+	//
+	// type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CopyDentryResponseBodySpaceIconVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceIconVO) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceIconVO) SetIcon(v string) *CopyDentryResponseBodySpaceIconVO {
+	s.Icon = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceIconVO) SetType(v string) *CopyDentryResponseBodySpaceIconVO {
+	s.Type = &v
+	return s
+}
+
+type CopyDentryResponseBodySpaceOwner struct {
+	// example:
+	//
+	// 小钉
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CopyDentryResponseBodySpaceOwner) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceOwner) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceOwner) SetName(v string) *CopyDentryResponseBodySpaceOwner {
+	s.Name = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceOwner) SetUserId(v string) *CopyDentryResponseBodySpaceOwner {
+	s.UserId = &v
+	return s
+}
+
+type CopyDentryResponseBodySpaceRecentList struct {
+	// example:
+	//
+	// alidoc
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// 12345678
+	CreatedTime *int64                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Creator     *CopyDentryResponseBodySpaceRecentListCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
+	// example:
+	//
+	// abc
+	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	// example:
+	//
+	// file
+	DentryType *string `json:"DentryType,omitempty" xml:"DentryType,omitempty"`
+	// example:
+	//
+	// cdefg
+	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	// example:
+	//
+	// aabbcc
+	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
+	// example:
+	//
+	// alidoc
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// false
+	HasChildren    *bool                                                `json:"HasChildren,omitempty" xml:"HasChildren,omitempty"`
+	LinkSourceInfo *CopyDentryResponseBodySpaceRecentListLinkSourceInfo `json:"LinkSourceInfo,omitempty" xml:"LinkSourceInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// hello
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 测试组织/测试知识库/abc
+	Path  *string     `json:"Path,omitempty" xml:"Path,omitempty"`
+	Space interface{} `json:"Space,omitempty" xml:"Space,omitempty"`
+	// example:
+	//
+	// bcd
+	SpaceId         *string                                               `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	StatisticalInfo *CopyDentryResponseBodySpaceRecentListStatisticalInfo `json:"StatisticalInfo,omitempty" xml:"StatisticalInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 12345678
+	UpdatedTime *int64                                        `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Updater     *CopyDentryResponseBodySpaceRecentListUpdater `json:"Updater,omitempty" xml:"Updater,omitempty" type:"Struct"`
+	// example:
+	//
+	// https://xxx.yy
+	Url         *string                                           `json:"Url,omitempty" xml:"Url,omitempty"`
+	VisitorInfo *CopyDentryResponseBodySpaceRecentListVisitorInfo `json:"VisitorInfo,omitempty" xml:"VisitorInfo,omitempty" type:"Struct"`
+}
+
+func (s CopyDentryResponseBodySpaceRecentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceRecentList) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetContentType(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetCreatedTime(v int64) *CopyDentryResponseBodySpaceRecentList {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetCreator(v *CopyDentryResponseBodySpaceRecentListCreator) *CopyDentryResponseBodySpaceRecentList {
+	s.Creator = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetDentryId(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.DentryId = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetDentryType(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.DentryType = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetDentryUuid(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetDocKey(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.DocKey = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetExtension(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.Extension = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetHasChildren(v bool) *CopyDentryResponseBodySpaceRecentList {
+	s.HasChildren = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetLinkSourceInfo(v *CopyDentryResponseBodySpaceRecentListLinkSourceInfo) *CopyDentryResponseBodySpaceRecentList {
+	s.LinkSourceInfo = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetName(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.Name = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetPath(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.Path = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetSpace(v interface{}) *CopyDentryResponseBodySpaceRecentList {
+	s.Space = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetSpaceId(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetStatisticalInfo(v *CopyDentryResponseBodySpaceRecentListStatisticalInfo) *CopyDentryResponseBodySpaceRecentList {
+	s.StatisticalInfo = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetUpdatedTime(v int64) *CopyDentryResponseBodySpaceRecentList {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetUpdater(v *CopyDentryResponseBodySpaceRecentListUpdater) *CopyDentryResponseBodySpaceRecentList {
+	s.Updater = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetUrl(v string) *CopyDentryResponseBodySpaceRecentList {
+	s.Url = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentList) SetVisitorInfo(v *CopyDentryResponseBodySpaceRecentListVisitorInfo) *CopyDentryResponseBodySpaceRecentList {
+	s.VisitorInfo = v
+	return s
+}
+
+type CopyDentryResponseBodySpaceRecentListCreator struct {
+	// example:
+	//
+	// hello
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CopyDentryResponseBodySpaceRecentListCreator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceRecentListCreator) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListCreator) SetName(v string) *CopyDentryResponseBodySpaceRecentListCreator {
+	s.Name = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListCreator) SetUserId(v string) *CopyDentryResponseBodySpaceRecentListCreator {
+	s.UserId = &v
+	return s
+}
+
+type CopyDentryResponseBodySpaceRecentListLinkSourceInfo struct {
+	// example:
+	//
+	// docx
+	Extension *string                                                     `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	IconUrl   *CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl `json:"IconUrl,omitempty" xml:"IconUrl,omitempty" type:"Struct"`
+	// example:
+	//
+	// def
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 0
+	LinkType *int64 `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
+	// example:
+	//
+	// def
+	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+}
+
+func (s CopyDentryResponseBodySpaceRecentListLinkSourceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceRecentListLinkSourceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfo) SetExtension(v string) *CopyDentryResponseBodySpaceRecentListLinkSourceInfo {
+	s.Extension = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfo) SetIconUrl(v *CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl) *CopyDentryResponseBodySpaceRecentListLinkSourceInfo {
+	s.IconUrl = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfo) SetId(v string) *CopyDentryResponseBodySpaceRecentListLinkSourceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfo) SetLinkType(v int64) *CopyDentryResponseBodySpaceRecentListLinkSourceInfo {
+	s.LinkType = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfo) SetSpaceId(v string) *CopyDentryResponseBodySpaceRecentListLinkSourceInfo {
+	s.SpaceId = &v
+	return s
+}
+
+type CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl struct {
+	// example:
+	//
+	// gh
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// example:
+	//
+	// def
+	Small *string `json:"Small,omitempty" xml:"Small,omitempty"`
+}
+
+func (s CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl) SetLine(v string) *CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl {
+	s.Line = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl) SetSmall(v string) *CopyDentryResponseBodySpaceRecentListLinkSourceInfoIconUrl {
+	s.Small = &v
+	return s
+}
+
+type CopyDentryResponseBodySpaceRecentListStatisticalInfo struct {
+	WordCount *int64 `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+}
+
+func (s CopyDentryResponseBodySpaceRecentListStatisticalInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceRecentListStatisticalInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListStatisticalInfo) SetWordCount(v int64) *CopyDentryResponseBodySpaceRecentListStatisticalInfo {
+	s.WordCount = &v
+	return s
+}
+
+type CopyDentryResponseBodySpaceRecentListUpdater struct {
+	// example:
+	//
+	// hello
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CopyDentryResponseBodySpaceRecentListUpdater) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceRecentListUpdater) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListUpdater) SetName(v string) *CopyDentryResponseBodySpaceRecentListUpdater {
+	s.Name = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListUpdater) SetUserId(v string) *CopyDentryResponseBodySpaceRecentListUpdater {
+	s.UserId = &v
+	return s
+}
+
+type CopyDentryResponseBodySpaceRecentListVisitorInfo struct {
+	DentryActions []*string `json:"DentryActions,omitempty" xml:"DentryActions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	RoleCode     *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	SpaceActions []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
+}
+
+func (s CopyDentryResponseBodySpaceRecentListVisitorInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceRecentListVisitorInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListVisitorInfo) SetDentryActions(v []*string) *CopyDentryResponseBodySpaceRecentListVisitorInfo {
+	s.DentryActions = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListVisitorInfo) SetRoleCode(v string) *CopyDentryResponseBodySpaceRecentListVisitorInfo {
+	s.RoleCode = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceRecentListVisitorInfo) SetSpaceActions(v []*string) *CopyDentryResponseBodySpaceRecentListVisitorInfo {
+	s.SpaceActions = v
+	return s
+}
+
+type CopyDentryResponseBodySpaceVisitorInfo struct {
+	// example:
+	//
+	// GET_DENTRY
+	DentryActions []*string `json:"DentryActions,omitempty" xml:"DentryActions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3
+	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	// example:
+	//
+	// GET_SPACE
+	SpaceActions []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
+}
+
+func (s CopyDentryResponseBodySpaceVisitorInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponseBodySpaceVisitorInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponseBodySpaceVisitorInfo) SetDentryActions(v []*string) *CopyDentryResponseBodySpaceVisitorInfo {
+	s.DentryActions = v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceVisitorInfo) SetRoleCode(v string) *CopyDentryResponseBodySpaceVisitorInfo {
+	s.RoleCode = &v
+	return s
+}
+
+func (s *CopyDentryResponseBodySpaceVisitorInfo) SetSpaceActions(v []*string) *CopyDentryResponseBodySpaceVisitorInfo {
+	s.SpaceActions = v
+	return s
+}
+
+type CopyDentryResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CopyDentryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CopyDentryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyDentryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CopyDentryResponse) SetHeaders(v map[string]*string) *CopyDentryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CopyDentryResponse) SetStatusCode(v int32) *CopyDentryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CopyDentryResponse) SetBody(v *CopyDentryResponseBody) *CopyDentryResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDeliveryPlanHeaders struct {
 	CommonHeaders  map[string]*string                       `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CreateDeliveryPlanHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -20530,6 +21658,226 @@ func (s *GetCorpTasksResponse) SetBody(v *GetCorpTasksResponseBody) *GetCorpTask
 	return s
 }
 
+type GetDeptNoHeaders struct {
+	CommonHeaders  map[string]*string              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetDeptNoHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetDeptNoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeptNoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeptNoHeaders) SetCommonHeaders(v map[string]*string) *GetDeptNoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDeptNoHeaders) SetAccountContext(v *GetDeptNoHeadersAccountContext) *GetDeptNoHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetDeptNoHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetDeptNoHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeptNoHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeptNoHeadersAccountContext) SetAccountId(v string) *GetDeptNoHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetDeptNoShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetDeptNoShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeptNoShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeptNoShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetDeptNoShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDeptNoShrinkHeaders) SetAccountContextShrink(v string) *GetDeptNoShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetDeptNoRequest struct {
+	TenantContext *GetDeptNoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	DeptId *string `json:"deptId,omitempty" xml:"deptId,omitempty"`
+}
+
+func (s GetDeptNoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeptNoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeptNoRequest) SetTenantContext(v *GetDeptNoRequestTenantContext) *GetDeptNoRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *GetDeptNoRequest) SetDeptId(v string) *GetDeptNoRequest {
+	s.DeptId = &v
+	return s
+}
+
+type GetDeptNoRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetDeptNoRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeptNoRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeptNoRequestTenantContext) SetTenantId(v string) *GetDeptNoRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetDeptNoShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	DeptId *string `json:"deptId,omitempty" xml:"deptId,omitempty"`
+}
+
+func (s GetDeptNoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeptNoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeptNoShrinkRequest) SetTenantContextShrink(v string) *GetDeptNoShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *GetDeptNoShrinkRequest) SetDeptId(v string) *GetDeptNoShrinkRequest {
+	s.DeptId = &v
+	return s
+}
+
+type GetDeptNoResponseBody struct {
+	// example:
+	//
+	// 12345
+	DeptNo *string `json:"deptNo,omitempty" xml:"deptNo,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetDeptNoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeptNoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeptNoResponseBody) SetDeptNo(v string) *GetDeptNoResponseBody {
+	s.DeptNo = &v
+	return s
+}
+
+func (s *GetDeptNoResponseBody) SetRequestId(v string) *GetDeptNoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeptNoResponseBody) SetVendorRequestId(v string) *GetDeptNoResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetDeptNoResponseBody) SetVendorType(v string) *GetDeptNoResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetDeptNoResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeptNoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDeptNoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeptNoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeptNoResponse) SetHeaders(v map[string]*string) *GetDeptNoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeptNoResponse) SetStatusCode(v int32) *GetDeptNoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeptNoResponse) SetBody(v *GetDeptNoResponseBody) *GetDeptNoResponse {
+	s.Body = v
+	return s
+}
+
 type GetDocContentHeaders struct {
 	CommonHeaders  map[string]*string                  `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetDocContentHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -31567,6 +32915,601 @@ func (s *GetOperationRecordsResponse) SetBody(v *GetOperationRecordsResponseBody
 	return s
 }
 
+type GetOrgLiveListHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetOrgLiveListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetOrgLiveListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListHeaders) SetCommonHeaders(v map[string]*string) *GetOrgLiveListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetOrgLiveListHeaders) SetAccountContext(v *GetOrgLiveListHeadersAccountContext) *GetOrgLiveListHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetOrgLiveListHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetOrgLiveListHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListHeadersAccountContext) SetAccountId(v string) *GetOrgLiveListHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetOrgLiveListShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetOrgLiveListShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetOrgLiveListShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetOrgLiveListShrinkHeaders) SetAccountContextShrink(v string) *GetOrgLiveListShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetOrgLiveListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// db4d318xxxxx
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// example:
+	//
+	// 1720211800000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1719211800000
+	StartTime     *int64                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *GetOrgLiveListRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetOrgLiveListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListRequest) SetCorpId(v string) *GetOrgLiveListRequest {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetOrgLiveListRequest) SetEndTime(v int64) *GetOrgLiveListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetOrgLiveListRequest) SetPageNumber(v int64) *GetOrgLiveListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetOrgLiveListRequest) SetPageSize(v int64) *GetOrgLiveListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetOrgLiveListRequest) SetStartTime(v int64) *GetOrgLiveListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetOrgLiveListRequest) SetTenantContext(v *GetOrgLiveListRequestTenantContext) *GetOrgLiveListRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *GetOrgLiveListRequest) SetUserId(v string) *GetOrgLiveListRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetOrgLiveListRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetOrgLiveListRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListRequestTenantContext) SetTenantId(v string) *GetOrgLiveListRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetOrgLiveListShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// db4d318xxxxx
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// example:
+	//
+	// 1720211800000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1719211800000
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetOrgLiveListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListShrinkRequest) SetCorpId(v string) *GetOrgLiveListShrinkRequest {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetOrgLiveListShrinkRequest) SetEndTime(v int64) *GetOrgLiveListShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetOrgLiveListShrinkRequest) SetPageNumber(v int64) *GetOrgLiveListShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetOrgLiveListShrinkRequest) SetPageSize(v int64) *GetOrgLiveListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetOrgLiveListShrinkRequest) SetStartTime(v int64) *GetOrgLiveListShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetOrgLiveListShrinkRequest) SetTenantContextShrink(v string) *GetOrgLiveListShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *GetOrgLiveListShrinkRequest) SetUserId(v string) *GetOrgLiveListShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetOrgLiveListResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *GetOrgLiveListResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetOrgLiveListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListResponseBody) SetRequestId(v string) *GetOrgLiveListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBody) SetResult(v *GetOrgLiveListResponseBodyResult) *GetOrgLiveListResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBody) SetVendorRequestId(v string) *GetOrgLiveListResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBody) SetVendorType(v string) *GetOrgLiveListResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetOrgLiveListResponseBodyResult struct {
+	// example:
+	//
+	// 新建的直播列表
+	NewLive *GetOrgLiveListResponseBodyResultNewLive `json:"NewLive,omitempty" xml:"NewLive,omitempty" type:"Struct"`
+	// example:
+	//
+	// 修改的直播列表
+	UpdateLive *GetOrgLiveListResponseBodyResultUpdateLive `json:"UpdateLive,omitempty" xml:"UpdateLive,omitempty" type:"Struct"`
+}
+
+func (s GetOrgLiveListResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListResponseBodyResult) SetNewLive(v *GetOrgLiveListResponseBodyResultNewLive) *GetOrgLiveListResponseBodyResult {
+	s.NewLive = v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResult) SetUpdateLive(v *GetOrgLiveListResponseBodyResultUpdateLive) *GetOrgLiveListResponseBodyResult {
+	s.UpdateLive = v
+	return s
+}
+
+type GetOrgLiveListResponseBodyResultNewLive struct {
+	// example:
+	//
+	// true
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// example:
+	//
+	// []
+	LiveList []*GetOrgLiveListResponseBodyResultNewLiveLiveList `json:"LiveList,omitempty" xml:"LiveList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetOrgLiveListResponseBodyResultNewLive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListResponseBodyResultNewLive) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLive) SetHasMore(v bool) *GetOrgLiveListResponseBodyResultNewLive {
+	s.HasMore = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLive) SetLiveList(v []*GetOrgLiveListResponseBodyResultNewLiveLiveList) *GetOrgLiveListResponseBodyResultNewLive {
+	s.LiveList = v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLive) SetPageNumber(v int64) *GetOrgLiveListResponseBodyResultNewLive {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLive) SetPageSize(v int64) *GetOrgLiveListResponseBodyResultNewLive {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLive) SetTotalCount(v int64) *GetOrgLiveListResponseBodyResultNewLive {
+	s.TotalCount = &v
+	return s
+}
+
+type GetOrgLiveListResponseBodyResultNewLiveLiveList struct {
+	// example:
+	//
+	// nickName
+	AnchorNickname *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
+	// example:
+	//
+	// ersqqdddf
+	AnchorUserId *string `json:"AnchorUserId,omitempty" xml:"AnchorUserId,omitempty"`
+	// example:
+	//
+	// 1398324600000
+	LiveEndTime *int64 `json:"LiveEndTime,omitempty" xml:"LiveEndTime,omitempty"`
+	// example:
+	//
+	// 1398321600000
+	LiveStartTime *int64 `json:"LiveStartTime,omitempty" xml:"LiveStartTime,omitempty"`
+	// example:
+	//
+	// 4d38xxxxx
+	LiveUuid *string `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
+	// example:
+	//
+	// 群OpenConversationId
+	ShareOpenConversationIds []*string `json:"ShareOpenConversationIds,omitempty" xml:"ShareOpenConversationIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 直播标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetOrgLiveListResponseBodyResultNewLiveLiveList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListResponseBodyResultNewLiveLiveList) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetAnchorNickname(v string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.AnchorNickname = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetAnchorUserId(v string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.AnchorUserId = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetLiveEndTime(v int64) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.LiveEndTime = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetLiveStartTime(v int64) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.LiveStartTime = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetLiveUuid(v string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.LiveUuid = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetShareOpenConversationIds(v []*string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.ShareOpenConversationIds = v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetTitle(v string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.Title = &v
+	return s
+}
+
+type GetOrgLiveListResponseBodyResultUpdateLive struct {
+	// example:
+	//
+	// true
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// example:
+	//
+	// []
+	LiveList []*GetOrgLiveListResponseBodyResultUpdateLiveLiveList `json:"LiveList,omitempty" xml:"LiveList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetOrgLiveListResponseBodyResultUpdateLive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListResponseBodyResultUpdateLive) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLive) SetHasMore(v bool) *GetOrgLiveListResponseBodyResultUpdateLive {
+	s.HasMore = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLive) SetLiveList(v []*GetOrgLiveListResponseBodyResultUpdateLiveLiveList) *GetOrgLiveListResponseBodyResultUpdateLive {
+	s.LiveList = v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLive) SetPageNumber(v int64) *GetOrgLiveListResponseBodyResultUpdateLive {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLive) SetPageSize(v int64) *GetOrgLiveListResponseBodyResultUpdateLive {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLive) SetTotalCount(v int64) *GetOrgLiveListResponseBodyResultUpdateLive {
+	s.TotalCount = &v
+	return s
+}
+
+type GetOrgLiveListResponseBodyResultUpdateLiveLiveList struct {
+	// example:
+	//
+	// nickName
+	AnchorNickname *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
+	// example:
+	//
+	// 012345
+	AnchorUserId *string `json:"AnchorUserId,omitempty" xml:"AnchorUserId,omitempty"`
+	// example:
+	//
+	// 1398324600000
+	LiveEndTime *int64 `json:"LiveEndTime,omitempty" xml:"LiveEndTime,omitempty"`
+	// example:
+	//
+	// 1398321600000
+	LiveStartTime *int64 `json:"LiveStartTime,omitempty" xml:"LiveStartTime,omitempty"`
+	// example:
+	//
+	// 4d38xxxxx
+	LiveUuid *string `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
+	// example:
+	//
+	// 直播标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetOrgLiveListResponseBodyResultUpdateLiveLiveList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListResponseBodyResultUpdateLiveLiveList) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetAnchorNickname(v string) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
+	s.AnchorNickname = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetAnchorUserId(v string) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
+	s.AnchorUserId = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetLiveEndTime(v int64) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
+	s.LiveEndTime = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetLiveStartTime(v int64) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
+	s.LiveStartTime = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetLiveUuid(v string) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
+	s.LiveUuid = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetTitle(v string) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
+	s.Title = &v
+	return s
+}
+
+type GetOrgLiveListResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOrgLiveListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOrgLiveListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgLiveListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgLiveListResponse) SetHeaders(v map[string]*string) *GetOrgLiveListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrgLiveListResponse) SetStatusCode(v int32) *GetOrgLiveListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponse) SetBody(v *GetOrgLiveListResponseBody) *GetOrgLiveListResponse {
+	s.Body = v
+	return s
+}
+
 type GetProcessDefinitionHeaders struct {
 	CommonHeaders  map[string]*string                         `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetProcessDefinitionHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -37835,6 +39778,7 @@ type GetUserResponseBody struct {
 	// 技术总监
 	Title       *string                         `json:"title,omitempty" xml:"title,omitempty"`
 	UnionEmpExt *GetUserResponseBodyUnionEmpExt `json:"unionEmpExt,omitempty" xml:"unionEmpExt,omitempty" type:"Struct"`
+	Unionid     *string                         `json:"unionid,omitempty" xml:"unionid,omitempty"`
 	// example:
 	//
 	// zhangsan
@@ -38005,6 +39949,11 @@ func (s *GetUserResponseBody) SetTitle(v string) *GetUserResponseBody {
 
 func (s *GetUserResponseBody) SetUnionEmpExt(v *GetUserResponseBodyUnionEmpExt) *GetUserResponseBody {
 	s.UnionEmpExt = v
+	return s
+}
+
+func (s *GetUserResponseBody) SetUnionid(v string) *GetUserResponseBody {
+	s.Unionid = &v
 	return s
 }
 
@@ -53632,7 +55581,8 @@ type QueryMeetingRoomResponseBodyResult struct {
 	// example:
 	//
 	// 0
-	RoomStatus *int32 `json:"RoomStatus,omitempty" xml:"RoomStatus,omitempty"`
+	RoomStatus  *int32  `json:"RoomStatus,omitempty" xml:"RoomStatus,omitempty"`
+	RoomUnionId *string `json:"RoomUnionId,omitempty" xml:"RoomUnionId,omitempty"`
 }
 
 func (s QueryMeetingRoomResponseBodyResult) String() string {
@@ -53710,6 +55660,11 @@ func (s *QueryMeetingRoomResponseBodyResult) SetRoomStaffId(v string) *QueryMeet
 
 func (s *QueryMeetingRoomResponseBodyResult) SetRoomStatus(v int32) *QueryMeetingRoomResponseBodyResult {
 	s.RoomStatus = &v
+	return s
+}
+
+func (s *QueryMeetingRoomResponseBodyResult) SetRoomUnionId(v string) *QueryMeetingRoomResponseBodyResult {
+	s.RoomUnionId = &v
 	return s
 }
 
@@ -63929,6 +65884,267 @@ func (s *SetColumnsVisibilityResponse) SetStatusCode(v int32) *SetColumnsVisibil
 }
 
 func (s *SetColumnsVisibilityResponse) SetBody(v *SetColumnsVisibilityResponseBody) *SetColumnsVisibilityResponse {
+	s.Body = v
+	return s
+}
+
+type SetConferenceHostsHeaders struct {
+	CommonHeaders  map[string]*string                       `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SetConferenceHostsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SetConferenceHostsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConferenceHostsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SetConferenceHostsHeaders) SetCommonHeaders(v map[string]*string) *SetConferenceHostsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SetConferenceHostsHeaders) SetAccountContext(v *SetConferenceHostsHeadersAccountContext) *SetConferenceHostsHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SetConferenceHostsHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SetConferenceHostsHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConferenceHostsHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SetConferenceHostsHeadersAccountContext) SetAccountId(v string) *SetConferenceHostsHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SetConferenceHostsShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SetConferenceHostsShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConferenceHostsShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SetConferenceHostsShrinkHeaders) SetCommonHeaders(v map[string]*string) *SetConferenceHostsShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SetConferenceHostsShrinkHeaders) SetAccountContextShrink(v string) *SetConferenceHostsShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SetConferenceHostsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// add
+	OperationType *string                                 `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	TenantContext *SetConferenceHostsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ "012345"]
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 607452e01401526ee39609e1
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+}
+
+func (s SetConferenceHostsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConferenceHostsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetConferenceHostsRequest) SetOperationType(v string) *SetConferenceHostsRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *SetConferenceHostsRequest) SetTenantContext(v *SetConferenceHostsRequestTenantContext) *SetConferenceHostsRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *SetConferenceHostsRequest) SetUserIds(v []*string) *SetConferenceHostsRequest {
+	s.UserIds = v
+	return s
+}
+
+func (s *SetConferenceHostsRequest) SetConferenceId(v string) *SetConferenceHostsRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type SetConferenceHostsRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s SetConferenceHostsRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConferenceHostsRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *SetConferenceHostsRequestTenantContext) SetTenantId(v string) *SetConferenceHostsRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type SetConferenceHostsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// add
+	OperationType       *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ "012345"]
+	UserIdsShrink *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 607452e01401526ee39609e1
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+}
+
+func (s SetConferenceHostsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConferenceHostsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetConferenceHostsShrinkRequest) SetOperationType(v string) *SetConferenceHostsShrinkRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *SetConferenceHostsShrinkRequest) SetTenantContextShrink(v string) *SetConferenceHostsShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *SetConferenceHostsShrinkRequest) SetUserIdsShrink(v string) *SetConferenceHostsShrinkRequest {
+	s.UserIdsShrink = &v
+	return s
+}
+
+func (s *SetConferenceHostsShrinkRequest) SetConferenceId(v string) *SetConferenceHostsShrinkRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type SetConferenceHostsResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SetConferenceHostsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConferenceHostsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetConferenceHostsResponseBody) SetRequestId(v string) *SetConferenceHostsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetConferenceHostsResponseBody) SetSuccess(v bool) *SetConferenceHostsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SetConferenceHostsResponseBody) SetVendorRequestId(v string) *SetConferenceHostsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SetConferenceHostsResponseBody) SetVendorType(v string) *SetConferenceHostsResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SetConferenceHostsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetConferenceHostsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetConferenceHostsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConferenceHostsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetConferenceHostsResponse) SetHeaders(v map[string]*string) *SetConferenceHostsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetConferenceHostsResponse) SetStatusCode(v int32) *SetConferenceHostsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetConferenceHostsResponse) SetBody(v *SetConferenceHostsResponseBody) *SetConferenceHostsResponse {
 	s.Body = v
 	return s
 }
@@ -74733,6 +76949,119 @@ func (client *Client) CommitFile(request *CommitFileRequest) (_result *CommitFil
 
 // Summary:
 //
+// 创建知识库节点副本
+//
+// @param tmpReq - CopyDentryRequest
+//
+// @param tmpHeader - CopyDentryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CopyDentryResponse
+func (client *Client) CopyDentryWithOptions(tmpReq *CopyDentryRequest, tmpHeader *CopyDentryHeaders, runtime *util.RuntimeOptions) (_result *CopyDentryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CopyDentryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CopyDentryShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DentryId)) {
+		body["DentryId"] = request.DentryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
+		body["SpaceId"] = request.SpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetSpaceId)) {
+		body["TargetSpaceId"] = request.TargetSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToNextDentryId)) {
+		body["ToNextDentryId"] = request.ToNextDentryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToParentDentryId)) {
+		body["ToParentDentryId"] = request.ToParentDentryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToPrevDentryId)) {
+		body["ToPrevDentryId"] = request.ToPrevDentryId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CopyDentry"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v2/documents/copyDentry"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CopyDentryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建知识库节点副本
+//
+// @param request - CopyDentryRequest
+//
+// @return CopyDentryResponse
+func (client *Client) CopyDentry(request *CopyDentryRequest) (_result *CopyDentryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CopyDentryHeaders{}
+	_result = &CopyDentryResponse{}
+	_body, _err := client.CopyDentryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 发布钉钉投放活动
 //
 // @param tmpReq - CreateDeliveryPlanRequest
@@ -79573,6 +81902,87 @@ func (client *Client) GetCorpTasks(request *GetCorpTasksRequest) (_result *GetCo
 	return _result, _err
 }
 
+// @param tmpReq - GetDeptNoRequest
+//
+// @param tmpHeader - GetDeptNoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeptNoResponse
+func (client *Client) GetDeptNoWithOptions(tmpReq *GetDeptNoRequest, tmpHeader *GetDeptNoHeaders, runtime *util.RuntimeOptions) (_result *GetDeptNoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetDeptNoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDeptNoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeptId)) {
+		body["deptId"] = request.DeptId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeptNo"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/aliding/v1/dept/getDeptNo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeptNoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetDeptNoRequest
+//
+// @return GetDeptNoResponse
+func (client *Client) GetDeptNo(request *GetDeptNoRequest) (_result *GetDeptNoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetDeptNoHeaders{}
+	_result = &GetDeptNoResponse{}
+	_body, _err := client.GetDeptNoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 委托权限获取文档内容
@@ -82611,6 +85021,107 @@ func (client *Client) GetOperationRecords(request *GetOperationRecordsRequest) (
 	headers := &GetOperationRecordsHeaders{}
 	_result = &GetOperationRecordsResponse{}
 	_body, _err := client.GetOperationRecordsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - GetOrgLiveListRequest
+//
+// @param tmpHeader - GetOrgLiveListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrgLiveListResponse
+func (client *Client) GetOrgLiveListWithOptions(tmpReq *GetOrgLiveListRequest, tmpHeader *GetOrgLiveListHeaders, runtime *util.RuntimeOptions) (_result *GetOrgLiveListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetOrgLiveListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetOrgLiveListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
+		body["CorpId"] = request.CorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrgLiveList"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/getOrgLiveList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOrgLiveListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetOrgLiveListRequest
+//
+// @return GetOrgLiveListResponse
+func (client *Client) GetOrgLiveList(request *GetOrgLiveListRequest) (_result *GetOrgLiveListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetOrgLiveListHeaders{}
+	_result = &GetOrgLiveListResponse{}
+	_body, _err := client.GetOrgLiveListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -91127,6 +93638,107 @@ func (client *Client) SetColumnsVisibility(request *SetColumnsVisibilityRequest)
 	headers := &SetColumnsVisibilityHeaders{}
 	_result = &SetColumnsVisibilityResponse{}
 	_body, _err := client.SetColumnsVisibilityWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置联席主持人
+//
+// @param tmpReq - SetConferenceHostsRequest
+//
+// @param tmpHeader - SetConferenceHostsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetConferenceHostsResponse
+func (client *Client) SetConferenceHostsWithOptions(tmpReq *SetConferenceHostsRequest, tmpHeader *SetConferenceHostsHeaders, runtime *util.RuntimeOptions) (_result *SetConferenceHostsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetConferenceHostsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &SetConferenceHostsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserIds)) {
+		request.UserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIds, tea.String("UserIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		body["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdsShrink)) {
+		body["UserIds"] = request.UserIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConferenceId)) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetConferenceHosts"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/setConferenceHosts"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetConferenceHostsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置联席主持人
+//
+// @param request - SetConferenceHostsRequest
+//
+// @return SetConferenceHostsResponse
+func (client *Client) SetConferenceHosts(request *SetConferenceHostsRequest) (_result *SetConferenceHostsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SetConferenceHostsHeaders{}
+	_result = &SetConferenceHostsResponse{}
+	_body, _err := client.SetConferenceHostsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
