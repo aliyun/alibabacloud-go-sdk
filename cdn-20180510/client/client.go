@@ -6811,6 +6811,8 @@ func (s *DescribeCdnDomainStagingConfigResponse) SetBody(v *DescribeCdnDomainSta
 }
 
 type DescribeCdnFullDomainsBlockIPConfigRequest struct {
+	// The IP address or CIDR block to query. Separate multiple values with commas (,). You can specify up to 50 IP addresses or CIDR blocks.
+	//
 	// example:
 	//
 	// 1.XXX.XXX.1,2.XXX.XXX.2
@@ -6831,14 +6833,28 @@ func (s *DescribeCdnFullDomainsBlockIPConfigRequest) SetIPList(v string) *Descri
 }
 
 type DescribeCdnFullDomainsBlockIPConfigResponseBody struct {
+	// The response code.
+	//
+	// The value of Code is not 0 in the following scenarios:
+	//
+	// 	- The format of the IP address is invalid.
+	//
+	// 	- The number of IP addresses exceeds the upper limit.
+	//
+	// 	- Other abnormal scenarios.
+	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned results. If the operation is successful, URLs of OSS objects are returned. If the operation fails, an error message is returned.
+	//
 	// example:
 	//
 	// http://xxxx-api.oss-cn-hangzhou.aliyuncs.com/blocklist%2Fxxxxxxxxxxxx.txt?Expires=1682663947&OSSAccessKeyId=xxxxxxxxxx&Signature=xxxxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 95994621-8382-464B-8762-C708E73568D1
@@ -6898,18 +6914,24 @@ func (s *DescribeCdnFullDomainsBlockIPConfigResponse) SetBody(v *DescribeCdnFull
 }
 
 type DescribeCdnFullDomainsBlockIPHistoryRequest struct {
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The end time must be later than the start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2023-04-24T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The IP address or CIDR blocks to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1.XXX.XXX.1,2.XXX.XXX.2
 	IPList *string `json:"IPList,omitempty" xml:"IPList,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6942,15 +6964,30 @@ func (s *DescribeCdnFullDomainsBlockIPHistoryRequest) SetStartTime(v string) *De
 }
 
 type DescribeCdnFullDomainsBlockIPHistoryResponseBody struct {
+	// The response code.
+	//
+	// The value of Code is not 0 in the following scenarios:
+	//
+	// 	- The format of the IP address is invalid.
+	//
+	// 	- The format of the time is invalid.
+	//
+	// 	- Other abnormal scenarios.
+	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description of the status returned.
+	//
 	// example:
 	//
 	// OK
-	Description *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The result of the operation.
 	IPBlockInfo []*DescribeCdnFullDomainsBlockIPHistoryResponseBodyIPBlockInfo `json:"IPBlockInfo,omitempty" xml:"IPBlockInfo,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BCD7D917-76F1-442F-BB75-C810DE34C761
@@ -6986,14 +7023,24 @@ func (s *DescribeCdnFullDomainsBlockIPHistoryResponseBody) SetRequestId(v string
 }
 
 type DescribeCdnFullDomainsBlockIPHistoryResponseBodyIPBlockInfo struct {
+	// The blocked IP address or CIDR block.
+	//
 	// example:
 	//
 	// 1.XXX.XXX.0~1.XXX.XXX.255
 	BlockIP *string `json:"BlockIP,omitempty" xml:"BlockIP,omitempty"`
+	// The delivery time.
+	//
 	// example:
 	//
 	// 2023-04-24 18:49:37
 	DeliverTime *string `json:"DeliverTime,omitempty" xml:"DeliverTime,omitempty"`
+	// The delivery status.
+	//
+	// 	- Success
+	//
+	// 	- Failed
+	//
 	// example:
 	//
 	// Success
@@ -9035,7 +9082,10 @@ func (s *DescribeCdnTypesRequest) SetSecurityToken(v string) *DescribeCdnTypesRe
 }
 
 type DescribeCdnTypesResponseBody struct {
+	// The types of the domain names.
 	CdnTypes *DescribeCdnTypesResponseBodyCdnTypes `json:"CdnTypes,omitempty" xml:"CdnTypes,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BDA62CE4-3477-439A-B52E-D2D7C829D7C1
@@ -9078,10 +9128,14 @@ func (s *DescribeCdnTypesResponseBodyCdnTypes) SetCdnType(v []*DescribeCdnTypesR
 }
 
 type DescribeCdnTypesResponseBodyCdnTypesCdnType struct {
+	// The description of the domain name type.
+	//
 	// example:
 	//
 	// Download Acceleration
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The type of the domain name.
+	//
 	// example:
 	//
 	// download
@@ -11272,6 +11326,115 @@ func (s *DescribeCertificateInfoByIDResponse) SetStatusCode(v int32) *DescribeCe
 }
 
 func (s *DescribeCertificateInfoByIDResponse) SetBody(v *DescribeCertificateInfoByIDResponseBody) *DescribeCertificateInfoByIDResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCustomDomainSampleRateRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DescribeCustomDomainSampleRateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomDomainSampleRateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomDomainSampleRateRequest) SetDomainName(v string) *DescribeCustomDomainSampleRateRequest {
+	s.DomainName = &v
+	return s
+}
+
+type DescribeCustomDomainSampleRateResponseBody struct {
+	Content   *DescribeCustomDomainSampleRateResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCustomDomainSampleRateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomDomainSampleRateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomDomainSampleRateResponseBody) SetContent(v *DescribeCustomDomainSampleRateResponseBodyContent) *DescribeCustomDomainSampleRateResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateResponseBody) SetRequestId(v string) *DescribeCustomDomainSampleRateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCustomDomainSampleRateResponseBodyContent struct {
+	DomainContent []*DescribeCustomDomainSampleRateResponseBodyContentDomainContent `json:"DomainContent,omitempty" xml:"DomainContent,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCustomDomainSampleRateResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomDomainSampleRateResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomDomainSampleRateResponseBodyContent) SetDomainContent(v []*DescribeCustomDomainSampleRateResponseBodyContentDomainContent) *DescribeCustomDomainSampleRateResponseBodyContent {
+	s.DomainContent = v
+	return s
+}
+
+type DescribeCustomDomainSampleRateResponseBodyContentDomainContent struct {
+	DomainName *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	SampleRate *float32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s DescribeCustomDomainSampleRateResponseBodyContentDomainContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomDomainSampleRateResponseBodyContentDomainContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomDomainSampleRateResponseBodyContentDomainContent) SetDomainName(v string) *DescribeCustomDomainSampleRateResponseBodyContentDomainContent {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateResponseBodyContentDomainContent) SetSampleRate(v float32) *DescribeCustomDomainSampleRateResponseBodyContentDomainContent {
+	s.SampleRate = &v
+	return s
+}
+
+type DescribeCustomDomainSampleRateResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCustomDomainSampleRateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCustomDomainSampleRateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomDomainSampleRateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomDomainSampleRateResponse) SetHeaders(v map[string]*string) *DescribeCustomDomainSampleRateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateResponse) SetStatusCode(v int32) *DescribeCustomDomainSampleRateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateResponse) SetBody(v *DescribeCustomDomainSampleRateResponseBody) *DescribeCustomDomainSampleRateResponse {
 	s.Body = v
 	return s
 }
@@ -26203,22 +26366,36 @@ func (s *DescribeUserCdnStatusRequest) SetSecurityToken(v string) *DescribeUserC
 }
 
 type DescribeUserCdnStatusResponseBody struct {
+	// Indicates whetherAlibaba Cloud CDN is activated.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Indicates whether your account has overdue payments.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	InDebt *bool `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
+	// Indicates whether the grace period for your overdue payments expired.
+	//
 	// example:
 	//
 	// false
 	InDebtOverdue *bool `json:"InDebtOverdue,omitempty" xml:"InDebtOverdue,omitempty"`
+	// Indicates whether the service is available.
+	//
 	// example:
 	//
 	// true
 	OnService *bool `json:"OnService,omitempty" xml:"OnService,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 39B1DC7F-9D25-5D54-8F02-6EE26A7F48CA
@@ -28446,6 +28623,158 @@ func (s *ListFCTriggerResponse) SetBody(v *ListFCTriggerResponseBody) *ListFCTri
 	return s
 }
 
+type ListRealtimeLogDeliveryResponseBody struct {
+	// The logging information.
+	Content *ListRealtimeLogDeliveryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 30559C03-86C9-4EEC-B840-0DC5F5A2189B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListRealtimeLogDeliveryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRealtimeLogDeliveryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRealtimeLogDeliveryResponseBody) SetContent(v *ListRealtimeLogDeliveryResponseBodyContent) *ListRealtimeLogDeliveryResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *ListRealtimeLogDeliveryResponseBody) SetRequestId(v string) *ListRealtimeLogDeliveryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRealtimeLogDeliveryResponseBodyContent struct {
+	RealtimeLogDeliveryInfo []*ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo `json:"RealtimeLogDeliveryInfo,omitempty" xml:"RealtimeLogDeliveryInfo,omitempty" type:"Repeated"`
+}
+
+func (s ListRealtimeLogDeliveryResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRealtimeLogDeliveryResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListRealtimeLogDeliveryResponseBodyContent) SetRealtimeLogDeliveryInfo(v []*ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) *ListRealtimeLogDeliveryResponseBodyContent {
+	s.RealtimeLogDeliveryInfo = v
+	return s
+}
+
+type ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo struct {
+	// The domain ID.
+	//
+	// example:
+	//
+	// 1001010
+	DmId *int32 `json:"DmId,omitempty" xml:"DmId,omitempty"`
+	// The accelerated domain name.
+	//
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The name of the Logstore where log entries are stored.
+	//
+	// example:
+	//
+	// test
+	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	// The name of the Log Service project that is used for real-time log delivery.
+	//
+	// example:
+	//
+	// test
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The ID of the region where the Log Service project is deployed.
+	//
+	// example:
+	//
+	// cn-hangzhou-corp
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The status of real-time log delivery.
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetDmId(v int32) *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.DmId = &v
+	return s
+}
+
+func (s *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetDomain(v string) *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetLogstore(v string) *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetProject(v string) *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Project = &v
+	return s
+}
+
+func (s *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetRegion(v string) *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) SetStatus(v string) *ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo {
+	s.Status = &v
+	return s
+}
+
+type ListRealtimeLogDeliveryResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRealtimeLogDeliveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRealtimeLogDeliveryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRealtimeLogDeliveryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRealtimeLogDeliveryResponse) SetHeaders(v map[string]*string) *ListRealtimeLogDeliveryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRealtimeLogDeliveryResponse) SetStatusCode(v int32) *ListRealtimeLogDeliveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRealtimeLogDeliveryResponse) SetBody(v *ListRealtimeLogDeliveryResponseBody) *ListRealtimeLogDeliveryResponse {
+	s.Body = v
+	return s
+}
+
 type ListRealtimeLogDeliveryDomainsRequest struct {
 	// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
 	//
@@ -29464,6 +29793,89 @@ func (s *ModifyCdnServiceResponse) SetBody(v *ModifyCdnServiceResponseBody) *Mod
 	return s
 }
 
+type ModifyCustomDomainSampleRateRequest struct {
+	BaseConfigID *string `json:"BaseConfigID,omitempty" xml:"BaseConfigID,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	SampleRate *float32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	SinkID     *int64   `json:"SinkID,omitempty" xml:"SinkID,omitempty"`
+}
+
+func (s ModifyCustomDomainSampleRateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCustomDomainSampleRateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCustomDomainSampleRateRequest) SetBaseConfigID(v string) *ModifyCustomDomainSampleRateRequest {
+	s.BaseConfigID = &v
+	return s
+}
+
+func (s *ModifyCustomDomainSampleRateRequest) SetDomainName(v string) *ModifyCustomDomainSampleRateRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *ModifyCustomDomainSampleRateRequest) SetSampleRate(v float32) *ModifyCustomDomainSampleRateRequest {
+	s.SampleRate = &v
+	return s
+}
+
+func (s *ModifyCustomDomainSampleRateRequest) SetSinkID(v int64) *ModifyCustomDomainSampleRateRequest {
+	s.SinkID = &v
+	return s
+}
+
+type ModifyCustomDomainSampleRateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCustomDomainSampleRateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCustomDomainSampleRateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCustomDomainSampleRateResponseBody) SetRequestId(v string) *ModifyCustomDomainSampleRateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCustomDomainSampleRateResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCustomDomainSampleRateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCustomDomainSampleRateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCustomDomainSampleRateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCustomDomainSampleRateResponse) SetHeaders(v map[string]*string) *ModifyCustomDomainSampleRateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCustomDomainSampleRateResponse) SetStatusCode(v int32) *ModifyCustomDomainSampleRateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCustomDomainSampleRateResponse) SetBody(v *ModifyCustomDomainSampleRateResponseBody) *ModifyCustomDomainSampleRateResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyRealtimeLogDeliveryRequest struct {
 	// The accelerated domain name for which you want to modify the configurations of real-time log delivery. Only one domain name is supported.
 	//
@@ -29914,12 +30326,20 @@ type RefreshObjectCacheByCacheTagRequest struct {
 	//
 	// tag1,tag2
 	CacheTag *string `json:"CacheTag,omitempty" xml:"CacheTag,omitempty"`
+	// The accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Specifies whether to purge all resources that you submit if the requested content is one of the resources that you submit to purge. Default value: false.
+	//
+	// 	- **true**: The nearest POP fetches all resources from the origin server, delivers them to the client, and updates the cache with the new version.
+	//
+	// 	- **false**: The nearest POP checks the Last-Modified parameter of the resource on the origin server. If the parameter value is the same as that of the cached resource, the POP serves the cached resource. If the parameter value is not the same as that of the cached resource, the POP fetches the latest version from the origin server, delivers it to the client, and updates the cache with the new version.
+	//
 	// example:
 	//
 	// true
@@ -29950,10 +30370,18 @@ func (s *RefreshObjectCacheByCacheTagRequest) SetForce(v bool) *RefreshObjectCac
 }
 
 type RefreshObjectCacheByCacheTagResponseBody struct {
+	// The ID of the refresh task. If multiple tasks are returned, the task IDs are separated by commas (,). The task IDs are merged based on the following rules:
+	//
+	// 	- If the tasks are specified for the same accelerated domain name, submitted within the same second, and run to refresh content based on URLs instead of directories, the task IDs are merged into one task ID (RefreshTaskId).
+	//
+	// 	- If the number of tasks that are specified for the same accelerated domain name, submitted within the same second, and run to refresh content based on URLs instead of directories exceeds 2,000, every 2,000 task IDs are merged into one task ID (RefreshTaskId).
+	//
 	// example:
 	//
 	// 17772470184
 	RefreshTaskId *string `json:"RefreshTaskId,omitempty" xml:"RefreshTaskId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 2E5AD83F-BD7B-462E-8319-2E30E305519A
@@ -30008,45 +30436,9 @@ func (s *RefreshObjectCacheByCacheTagResponse) SetBody(v *RefreshObjectCacheByCa
 }
 
 type RefreshObjectCachesRequest struct {
-	// When the comparison between the source content and the source site resources is consistent, should the resources within the corresponding range be forcibly refreshed. The default is false.
-	//
-	// 	- **true**: purges all resources in the range that corresponds to the type of the purge task. If you set this parameter to true, when the requested resource matches the resource in the range that corresponds to the type of the purge task, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
-	//
-	// 	- **false**: purges the changed resources in the range that corresponds to the type of the purge task. If you set this parameter to false, when the requested resource matches the resource in the range that corresponds to the type of the purge task, the POP obtains the Last-Modified parameter of the resource from the origin server. If the obtained value of the Last-Modified parameter is the same as that of the cached resource, the cached resource is returned. Otherwise, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
-	//
-	// >  This parameter takes effect only when the ObjectType parameter is not set to File.
-	//
-	// example:
-	//
-	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// 	- If you submit multiple URLs or directories at a time, separate them with line breaks (\\n) or (\\r\\n).
-	//
-	// 	- The total number of domain names contained all URLs in a submitted task cannot exceed 10.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// http://example.com/image/1.png\\nhttp://aliyundoc.com/image/2.png
-	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
-	// The type of the object that you want to refresh. Valid values:
-	//
-	// 	- **File*	- (default): refreshes one or more files.
-	//
-	// 	- **Directory**: refreshes the files in one or more directories.
-	//
-	// 	- **Regex**: refreshes content based on regular expressions.
-	//
-	// 	- **ExQuery**: omits parameters after the question mark in the URL and refreshes content.
-	//
-	// If you set the ObjectType parameter to File or Directory, you can view [Refresh and prefetch resources](https://help.aliyun.com/document_detail/27140.html) to obtain more information. If you set the ObjectType parameter to Regex, you can view [Configure URL refresh rules that contain regular expressions](https://help.aliyun.com/document_detail/146195.html) to obtain more information.
-	//
-	// If you set the ObjectType parameter to Directory, the resources in the directory that you want to refresh are marked as expired. You cannot delete the directory. If clients request resources on POPs that are marked as expired, Alibaba Cloud CDN checks whether the resources on your origin server are updated. If resources are updated, Alibaba Cloud CDN retrieves the latest version of the resources and returns the resources to the clients. Otherwise, the origin server returns the 304 status code.
-	//
-	// example:
-	//
-	// File
+	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	ObjectType    *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -30794,22 +31186,40 @@ func (s *SetCdnDomainStagingConfigResponse) SetBody(v *SetCdnDomainStagingConfig
 }
 
 type SetCdnFullDomainsBlockIPRequest struct {
+	// The duration for which IP addresses or CIDR blocks are blocked. Unit: seconds. The value **0*	- specifies that IP addresses or CIDR blocks are permanently blocked. This parameter is available only if you set **OperationType*	- to **block**.
+	//
 	// example:
 	//
 	// 3000
 	BlockInterval *int32 `json:"BlockInterval,omitempty" xml:"BlockInterval,omitempty"`
+	// The IP addresses that you want to block or unblock. Separate multiple IP addresses with commas (,). You can specify up to 1,000 IP addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1.XXX.XXX.1,2.XXX.XXX.2
 	IPList *string `json:"IPList,omitempty" xml:"IPList,omitempty"`
+	// The type of the operation.
+	//
+	// 	- block
+	//
+	// 	- unblock
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// block
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The type of the blocking duration. This parameter is available only if you set **OperationType*	- to **block**. Valid values:
+	//
+	// 	- **cover**: The blocking duration that is specified in the request takes effect.
+	//
+	// 	- **uncover**: The longer one of the blocking duration that is specified in the request and the remaining blocking duration takes effect.
+	//
+	// 	- Default value: cover.
+	//
 	// example:
 	//
 	// cover
@@ -30845,14 +31255,20 @@ func (s *SetCdnFullDomainsBlockIPRequest) SetUpdateType(v string) *SetCdnFullDom
 }
 
 type SetCdnFullDomainsBlockIPResponseBody struct {
+	// The status code. The status code 0 indicates that the call is successful. If another status code is returned, the call fails.
+	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information returned. If the request was successful, OK is returned. If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 23ACE7E2-2302-42E3-98F8-E5E697FD86C3
@@ -35757,7 +36173,19 @@ func (client *Client) DescribeCdnDomainStagingConfig(request *DescribeCdnDomainS
 
 // Summary:
 //
-// 获取海量封禁全量配置
+// You can call the DescribeCdnFullDomainsBlockIPConfig operation to query the configurations of full blocking.
+//
+// Description:
+//
+// >
+//
+// 	- To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//
+// 	- If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
+//
+// 	- The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
+//
+// 	- You can share OSS URLs with others. The shared URLs are valid for three days.
 //
 // @param request - DescribeCdnFullDomainsBlockIPConfigRequest
 //
@@ -35799,7 +36227,19 @@ func (client *Client) DescribeCdnFullDomainsBlockIPConfigWithOptions(request *De
 
 // Summary:
 //
-// 获取海量封禁全量配置
+// You can call the DescribeCdnFullDomainsBlockIPConfig operation to query the configurations of full blocking.
+//
+// Description:
+//
+// >
+//
+// 	- To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//
+// 	- If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
+//
+// 	- The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
+//
+// 	- You can share OSS URLs with others. The shared URLs are valid for three days.
 //
 // @param request - DescribeCdnFullDomainsBlockIPConfigRequest
 //
@@ -35817,7 +36257,21 @@ func (client *Client) DescribeCdnFullDomainsBlockIPConfig(request *DescribeCdnFu
 
 // Summary:
 //
-// 查询用户海量封禁历史
+// Queries the blocking history.
+//
+// Description:
+//
+// >
+//
+// 	- To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//
+// 	- For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
+//
+// 	- If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
+//
+// 	- The maximum time range to query is 90 days.
+//
+// 	- If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
 //
 // @param request - DescribeCdnFullDomainsBlockIPHistoryRequest
 //
@@ -35867,7 +36321,21 @@ func (client *Client) DescribeCdnFullDomainsBlockIPHistoryWithOptions(request *D
 
 // Summary:
 //
-// 查询用户海量封禁历史
+// Queries the blocking history.
+//
+// Description:
+//
+// >
+//
+// 	- To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//
+// 	- For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
+//
+// 	- If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
+//
+// 	- The maximum time range to query is 90 days.
+//
+// 	- If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
 //
 // @param request - DescribeCdnFullDomainsBlockIPHistoryRequest
 //
@@ -36762,6 +37230,10 @@ func (client *Client) DescribeCdnSubList() (_result *DescribeCdnSubListResponse,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the types of domain names.
+//
 // @param request - DescribeCdnTypesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -36808,6 +37280,10 @@ func (client *Client) DescribeCdnTypesWithOptions(request *DescribeCdnTypesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the types of domain names.
+//
 // @param request - DescribeCdnTypesRequest
 //
 // @return DescribeCdnTypesResponse
@@ -37507,6 +37983,62 @@ func (client *Client) DescribeCertificateInfoByID(request *DescribeCertificateIn
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertificateInfoByIDResponse{}
 	_body, _err := client.DescribeCertificateInfoByIDWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// A客户定制查询域名采样率
+//
+// @param request - DescribeCustomDomainSampleRateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomDomainSampleRateResponse
+func (client *Client) DescribeCustomDomainSampleRateWithOptions(request *DescribeCustomDomainSampleRateRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomDomainSampleRateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCustomDomainSampleRate"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCustomDomainSampleRateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// A客户定制查询域名采样率
+//
+// @param request - DescribeCustomDomainSampleRateRequest
+//
+// @return DescribeCustomDomainSampleRateResponse
+func (client *Client) DescribeCustomDomainSampleRate(request *DescribeCustomDomainSampleRateRequest) (_result *DescribeCustomDomainSampleRateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCustomDomainSampleRateResponse{}
+	_body, _err := client.DescribeCustomDomainSampleRateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43281,6 +43813,10 @@ func (client *Client) DescribeTopDomainsByFlow(request *DescribeTopDomainsByFlow
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a user.
+//
 // @param request - DescribeUserCdnStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -43323,6 +43859,10 @@ func (client *Client) DescribeUserCdnStatusWithOptions(request *DescribeUserCdnS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a user.
+//
 // @param request - DescribeUserCdnStatusRequest
 //
 // @return DescribeUserCdnStatusResponse
@@ -44179,6 +44719,61 @@ func (client *Client) ListFCTrigger(request *ListFCTriggerRequest) (_result *Lis
 
 // Summary:
 //
+// Queries all real-time log delivery tasks within your Alibaba Cloud account.
+//
+// Description:
+//
+// \\*\\	- \\*\\*
+//
+// @param request - ListRealtimeLogDeliveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRealtimeLogDeliveryResponse
+func (client *Client) ListRealtimeLogDeliveryWithOptions(runtime *util.RuntimeOptions) (_result *ListRealtimeLogDeliveryResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListRealtimeLogDelivery"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRealtimeLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries all real-time log delivery tasks within your Alibaba Cloud account.
+//
+// Description:
+//
+// \\*\\	- \\*\\*
+//
+// @return ListRealtimeLogDeliveryResponse
+func (client *Client) ListRealtimeLogDelivery() (_result *ListRealtimeLogDeliveryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRealtimeLogDeliveryResponse{}
+	_body, _err := client.ListRealtimeLogDeliveryWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all domain names that are associated with a specific real-time log delivery configuration record.
 //
 // Description:
@@ -44749,6 +45344,78 @@ func (client *Client) ModifyCdnService(request *ModifyCdnServiceRequest) (_resul
 
 // Summary:
 //
+// A客户定制修改域名采样率接口
+//
+// @param request - ModifyCustomDomainSampleRateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCustomDomainSampleRateResponse
+func (client *Client) ModifyCustomDomainSampleRateWithOptions(request *ModifyCustomDomainSampleRateRequest, runtime *util.RuntimeOptions) (_result *ModifyCustomDomainSampleRateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseConfigID)) {
+		body["BaseConfigID"] = request.BaseConfigID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SampleRate)) {
+		body["SampleRate"] = request.SampleRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SinkID)) {
+		body["SinkID"] = request.SinkID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCustomDomainSampleRate"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCustomDomainSampleRateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// A客户定制修改域名采样率接口
+//
+// @param request - ModifyCustomDomainSampleRateRequest
+//
+// @return ModifyCustomDomainSampleRateResponse
+func (client *Client) ModifyCustomDomainSampleRate(request *ModifyCustomDomainSampleRateRequest) (_result *ModifyCustomDomainSampleRateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCustomDomainSampleRateResponse{}
+	_body, _err := client.ModifyCustomDomainSampleRateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of real-time log delivery for a specific domain name. Each domain name supports only one Logstore.
 //
 // Description:
@@ -45093,7 +45760,7 @@ func (client *Client) PushObjectCache(request *PushObjectCacheRequest) (_result 
 
 // Summary:
 //
-// 指定缓存tag刷新节点上的文件内容
+// Refreshes the cache based on cache tags that you configured.
 //
 // @param request - RefreshObjectCacheByCacheTagRequest
 //
@@ -45143,7 +45810,7 @@ func (client *Client) RefreshObjectCacheByCacheTagWithOptions(request *RefreshOb
 
 // Summary:
 //
-// 指定缓存tag刷新节点上的文件内容
+// Refreshes the cache based on cache tags that you configured.
 //
 // @param request - RefreshObjectCacheByCacheTagRequest
 //
@@ -45202,18 +45869,6 @@ func (client *Client) RefreshObjectCachesWithOptions(request *RefreshObjectCache
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Force)) {
-		query["Force"] = request.Force
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
-		query["ObjectPath"] = request.ObjectPath
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
-		query["ObjectType"] = request.ObjectType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -45222,8 +45877,22 @@ func (client *Client) RefreshObjectCachesWithOptions(request *RefreshObjectCache
 		query["SecurityToken"] = request.SecurityToken
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		body["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		body["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		body["ObjectType"] = request.ObjectType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RefreshObjectCaches"),
@@ -45701,7 +46370,15 @@ func (client *Client) SetCdnDomainStagingConfig(request *SetCdnDomainStagingConf
 
 // Summary:
 //
-// 配置CDN上的海量封禁功能
+// Blocks or unblocks IP addresses from accessing domain names.
+//
+// Description:
+//
+// >
+//
+// 	- To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//
+// 	- This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
 //
 // @param request - SetCdnFullDomainsBlockIPRequest
 //
@@ -45755,7 +46432,15 @@ func (client *Client) SetCdnFullDomainsBlockIPWithOptions(request *SetCdnFullDom
 
 // Summary:
 //
-// 配置CDN上的海量封禁功能
+// Blocks or unblocks IP addresses from accessing domain names.
+//
+// Description:
+//
+// >
+//
+// 	- To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//
+// 	- This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
 //
 // @param request - SetCdnFullDomainsBlockIPRequest
 //
