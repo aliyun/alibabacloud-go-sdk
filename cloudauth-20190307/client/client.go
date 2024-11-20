@@ -2536,10 +2536,7 @@ func (s *DescribeFaceGuardRiskResponseBody) SetResultObject(v *DescribeFaceGuard
 }
 
 type DescribeFaceGuardRiskResponseBodyResultObject struct {
-	// example:
-	//
-	// ROOT,VPN,HOOK
-	RiakTags *string `json:"RiakTags,omitempty" xml:"RiakTags,omitempty"`
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	// example:
 	//
 	// {
@@ -2562,6 +2559,7 @@ type DescribeFaceGuardRiskResponseBodyResultObject struct {
 	//
 	// }
 	RiskExtends *string `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
+	RiskTags    *string `json:"RiskTags,omitempty" xml:"RiskTags,omitempty"`
 }
 
 func (s DescribeFaceGuardRiskResponseBodyResultObject) String() string {
@@ -2572,13 +2570,18 @@ func (s DescribeFaceGuardRiskResponseBodyResultObject) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeFaceGuardRiskResponseBodyResultObject) SetRiakTags(v string) *DescribeFaceGuardRiskResponseBodyResultObject {
-	s.RiakTags = &v
+func (s *DescribeFaceGuardRiskResponseBodyResultObject) SetCertifyId(v string) *DescribeFaceGuardRiskResponseBodyResultObject {
+	s.CertifyId = &v
 	return s
 }
 
 func (s *DescribeFaceGuardRiskResponseBodyResultObject) SetRiskExtends(v string) *DescribeFaceGuardRiskResponseBodyResultObject {
 	s.RiskExtends = &v
+	return s
+}
+
+func (s *DescribeFaceGuardRiskResponseBodyResultObject) SetRiskTags(v string) *DescribeFaceGuardRiskResponseBodyResultObject {
+	s.RiskTags = &v
 	return s
 }
 
@@ -4448,15 +4451,9 @@ func (s *DetectFaceAttributesResponse) SetBody(v *DetectFaceAttributesResponseBo
 }
 
 type Id2MetaVerifyRequest struct {
-	// example:
-	//
-	// 412722198610274919
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// example:
-	//
-	// normal
-	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Id2MetaVerifyRequest) String() string {
@@ -5293,19 +5290,10 @@ func (s *LivenessFaceVerifyResponse) SetBody(v *LivenessFaceVerifyResponseBody) 
 }
 
 type Mobile3MetaDetailVerifyRequest struct {
-	// example:
-	//
-	// 520181199902104631
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// example:
-	//
-	// 150000xxxx
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// example:
-	//
-	// normal
-	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Mobile3MetaDetailVerifyRequest) String() string {
@@ -5448,19 +5436,10 @@ func (s *Mobile3MetaDetailVerifyResponse) SetBody(v *Mobile3MetaDetailVerifyResp
 }
 
 type Mobile3MetaSimpleVerifyRequest struct {
-	// example:
-	//
-	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// example:
-	//
-	// 150000****
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// example:
-	//
-	// normal
-	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Mobile3MetaSimpleVerifyRequest) String() string {
@@ -5594,13 +5573,7 @@ func (s *Mobile3MetaSimpleVerifyResponse) SetBody(v *Mobile3MetaSimpleVerifyResp
 }
 
 type MobileDetectRequest struct {
-	// example:
-	//
-	// 138********,156********
-	Mobiles *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
-	// example:
-	//
-	// normal
+	Mobiles   *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
@@ -5775,13 +5748,7 @@ func (s *MobileDetectResponse) SetBody(v *MobileDetectResponseBody) *MobileDetec
 }
 
 type MobileOnlineStatusRequest struct {
-	// example:
-	//
-	// 130********
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// example:
-	//
-	// normal
+	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
@@ -5915,13 +5882,7 @@ func (s *MobileOnlineStatusResponse) SetBody(v *MobileOnlineStatusResponseBody) 
 }
 
 type MobileOnlineTimeRequest struct {
-	// example:
-	//
-	// 130********
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// example:
-	//
-	// normal
+	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
@@ -9445,21 +9406,21 @@ func (client *Client) Id2MetaVerifyWithOptions(request *Id2MetaVerifyRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
-		query["IdentifyNum"] = request.IdentifyNum
+		body["IdentifyNum"] = request.IdentifyNum
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
-		query["ParamType"] = request.ParamType
+		body["ParamType"] = request.ParamType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
-		query["UserName"] = request.UserName
+		body["UserName"] = request.UserName
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("Id2MetaVerify"),
@@ -9893,25 +9854,25 @@ func (client *Client) Mobile3MetaDetailVerifyWithOptions(request *Mobile3MetaDet
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
-		query["IdentifyNum"] = request.IdentifyNum
+		body["IdentifyNum"] = request.IdentifyNum
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
-		query["Mobile"] = request.Mobile
+		body["Mobile"] = request.Mobile
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
-		query["ParamType"] = request.ParamType
+		body["ParamType"] = request.ParamType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
-		query["UserName"] = request.UserName
+		body["UserName"] = request.UserName
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("Mobile3MetaDetailVerify"),
@@ -9965,25 +9926,25 @@ func (client *Client) Mobile3MetaSimpleVerifyWithOptions(request *Mobile3MetaSim
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
-		query["IdentifyNum"] = request.IdentifyNum
+		body["IdentifyNum"] = request.IdentifyNum
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
-		query["Mobile"] = request.Mobile
+		body["Mobile"] = request.Mobile
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
-		query["ParamType"] = request.ParamType
+		body["ParamType"] = request.ParamType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
-		query["UserName"] = request.UserName
+		body["UserName"] = request.UserName
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("Mobile3MetaSimpleVerify"),
@@ -10037,17 +9998,17 @@ func (client *Client) MobileDetectWithOptions(request *MobileDetectRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Mobiles)) {
-		query["Mobiles"] = request.Mobiles
+		body["Mobiles"] = request.Mobiles
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
-		query["ParamType"] = request.ParamType
+		body["ParamType"] = request.ParamType
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MobileDetect"),
@@ -10101,17 +10062,17 @@ func (client *Client) MobileOnlineStatusWithOptions(request *MobileOnlineStatusR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
-		query["Mobile"] = request.Mobile
+		body["Mobile"] = request.Mobile
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
-		query["ParamType"] = request.ParamType
+		body["ParamType"] = request.ParamType
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MobileOnlineStatus"),
@@ -10165,17 +10126,17 @@ func (client *Client) MobileOnlineTimeWithOptions(request *MobileOnlineTimeReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
-		query["Mobile"] = request.Mobile
+		body["Mobile"] = request.Mobile
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
-		query["ParamType"] = request.ParamType
+		body["ParamType"] = request.ParamType
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MobileOnlineTime"),
