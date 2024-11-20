@@ -1,3 +1,6 @@
+2024-11-20 Version: v1.7.3
+- Generated golang 2024-06-28 for DianJin.
+
 2024-11-19 Version: v1.7.2
 - Update API GetQualityCheckTaskResult: update response param.
 
