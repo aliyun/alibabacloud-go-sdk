@@ -1,3 +1,6 @@
+2024-11-20 Version: v4.3.1
+- Generated golang 2019-09-10 for ROS.
+
 2024-09-24 Version: v4.3.0
 - Support API ImportStacksToStackGroup.
 
