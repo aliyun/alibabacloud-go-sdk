@@ -155,19 +155,21 @@ func (s *AIAgentTemplateConfig) SetVoiceChat(v *AIAgentTemplateConfigVoiceChat) 
 }
 
 type AIAgentTemplateConfigAvatarChat3D struct {
-	AsrMaxSilence        *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	AvatarId             *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
-	BailianAppParams     *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	EnablePushToTalk     *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	GracefulShutdown     *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	UseVoiceprint        *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout   *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout    *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VoiceId              *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceprintId         *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
-	Volume               *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	AsrMaxSilence          *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	AvatarId               *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	BailianAppParams       *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	EnablePushToTalk       *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	EnableVoiceInterrupt   *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	GracefulShutdown       *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting               *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	MaxIdleTime            *int32  `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	UseVoiceprint          *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout     *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout      *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VoiceId                *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId           *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	Volume                 *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WorkflowOverrideParams *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigAvatarChat3D) String() string {
@@ -213,6 +215,11 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetGreeting(v string) *AIAgentTempla
 	return s
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetMaxIdleTime(v int32) *AIAgentTemplateConfigAvatarChat3D {
+	s.MaxIdleTime = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigAvatarChat3D) SetUseVoiceprint(v bool) *AIAgentTemplateConfigAvatarChat3D {
 	s.UseVoiceprint = &v
 	return s
@@ -243,6 +250,11 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetVolume(v int64) *AIAgentTemplateC
 	return s
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetWorkflowOverrideParams(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.WorkflowOverrideParams = &v
+	return s
+}
+
 type AIAgentTemplateConfigVisionChat struct {
 	AsrMaxSilence            *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	BailianAppParams         *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
@@ -251,12 +263,14 @@ type AIAgentTemplateConfigVisionChat struct {
 	EnableVoiceInterrupt     *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown         *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
 	Greeting                 *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	MaxIdleTime              *int32  `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
 	UseVoiceprint            *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
 	UserOfflineTimeout       *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
 	UserOnlineTimeout        *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
 	VoiceId                  *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
 	VoiceprintId             *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
 	Volume                   *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WorkflowOverrideParams   *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigVisionChat) String() string {
@@ -302,6 +316,11 @@ func (s *AIAgentTemplateConfigVisionChat) SetGreeting(v string) *AIAgentTemplate
 	return s
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetMaxIdleTime(v int32) *AIAgentTemplateConfigVisionChat {
+	s.MaxIdleTime = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVisionChat) SetUseVoiceprint(v bool) *AIAgentTemplateConfigVisionChat {
 	s.UseVoiceprint = &v
 	return s
@@ -332,19 +351,28 @@ func (s *AIAgentTemplateConfigVisionChat) SetVolume(v int64) *AIAgentTemplateCon
 	return s
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetWorkflowOverrideParams(v string) *AIAgentTemplateConfigVisionChat {
+	s.WorkflowOverrideParams = &v
+	return s
+}
+
 type AIAgentTemplateConfigVoiceChat struct {
-	AsrMaxSilence        *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	BailianAppParams     *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	EnablePushToTalk     *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	GracefulShutdown     *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	UseVoiceprint        *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout   *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout    *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VoiceId              *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceprintId         *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
-	Volume               *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	AsrMaxSilence          *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	AvatarUrl              *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	AvatarUrlType          *string `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
+	BailianAppParams       *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	EnablePushToTalk       *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	EnableVoiceInterrupt   *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	GracefulShutdown       *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting               *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	MaxIdleTime            *int32  `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	UseVoiceprint          *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout     *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout      *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VoiceId                *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId           *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	Volume                 *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WorkflowOverrideParams *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigVoiceChat) String() string {
@@ -357,6 +385,16 @@ func (s AIAgentTemplateConfigVoiceChat) GoString() string {
 
 func (s *AIAgentTemplateConfigVoiceChat) SetAsrMaxSilence(v int32) *AIAgentTemplateConfigVoiceChat {
 	s.AsrMaxSilence = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetAvatarUrl(v string) *AIAgentTemplateConfigVoiceChat {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetAvatarUrlType(v string) *AIAgentTemplateConfigVoiceChat {
+	s.AvatarUrlType = &v
 	return s
 }
 
@@ -382,6 +420,11 @@ func (s *AIAgentTemplateConfigVoiceChat) SetGracefulShutdown(v bool) *AIAgentTem
 
 func (s *AIAgentTemplateConfigVoiceChat) SetGreeting(v string) *AIAgentTemplateConfigVoiceChat {
 	s.Greeting = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetMaxIdleTime(v int32) *AIAgentTemplateConfigVoiceChat {
+	s.MaxIdleTime = &v
 	return s
 }
 
@@ -412,6 +455,11 @@ func (s *AIAgentTemplateConfigVoiceChat) SetVoiceprintId(v string) *AIAgentTempl
 
 func (s *AIAgentTemplateConfigVoiceChat) SetVolume(v int64) *AIAgentTemplateConfigVoiceChat {
 	s.Volume = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetWorkflowOverrideParams(v string) *AIAgentTemplateConfigVoiceChat {
+	s.WorkflowOverrideParams = &v
 	return s
 }
 
@@ -1604,30 +1652,94 @@ type AddTemplateRequest struct {
 	//
 	// 参见Timeline模板Config文档
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The URL of the template thumbnail.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/cover.jpg
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The name of the custom template.
+	//
 	// example:
 	//
 	// 视频添加水印模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the template preview video.
+	//
 	// example:
 	//
 	// ****01bf24bf41c78b2754cb3187****
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// The IDs of the materials associated with the template for use by the regular template editor.
+	//
 	// example:
 	//
 	// {"video":["1805a0c6ca544fb395a06ca683619655"]}
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
+	// The source from which the template is created. Valid values:
+	//
+	// 	- OpenAPI
+	//
+	// 	- AliyunConsole
+	//
+	// 	- WebSDK
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// OpenAPI
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The template state. Valid values:
+	//
+	// 	- Available: The template is available.
+	//
+	// 	- Created: The template is created but not ready for use.
+	//
+	// 	- Uploading: The video is being uploaded.
+	//
+	// 	- Processing: The advanced template is being processed.
+	//
+	// 	- UploadFailed: Failed to upload the video.
+	//
+	// 	- ProcessFailed: Failed to process the advanced template.
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template type. Valid values:
+	//
+	// 	- Timeline: a regular template created based on the timeline of a video editing project, in which multiple materials are arranged in sequence across multiple layers. It can be used to convert text and images into videos, create photo albums, add opening and closing parts, and apply the default watermark.
+	//
+	// 	- VETemplate: an advanced template created using effects of Adobe After Effects (AE). It can be used to produce complex animations and advanced media effects.
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// Timeline
@@ -1683,13 +1795,14 @@ func (s *AddTemplateRequest) SetType(v string) *AddTemplateRequest {
 }
 
 type AddTemplateResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// ****2876-6263-4B75-8F2C-CD0F7FCF****
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Template  *AddTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The template information.
+	Template *AddTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
 
 func (s AddTemplateResponseBody) String() string {
@@ -1711,38 +1824,92 @@ func (s *AddTemplateResponseBody) SetTemplate(v *AddTemplateResponseBodyTemplate
 }
 
 type AddTemplateResponseBodyTemplate struct {
+	// The template configurations.
+	//
 	// example:
 	//
 	// 参见Timeline模板Config文档
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The URL of the template thumbnail.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/cover.jpg
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The source from which the template was created.
+	//
+	// Valid values:
+	//
+	// 	- AliyunConsole
+	//
+	// 	- WebSDK
+	//
+	// 	- OpenAPI
+	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The source from which the template was modified.
+	//
+	// Valid values:
+	//
+	// 	- AliyunConsole
+	//
+	// 	- WebSDK
+	//
+	// 	- OpenAPI
+	//
 	// example:
 	//
 	// OpenAPI
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// 视频添加水印模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the preview video.
+	//
 	// example:
 	//
 	// ****01bf24bf41c78b2754cb3187****
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// The template state.
+	//
+	// Valid values:
+	//
+	// 	- UploadFailed: Failed to upload the video.
+	//
+	// 	- ProcessFailed: Failed to process the advanced template.
+	//
+	// 	- Available: The template is available.
+	//
+	// 	- Uploading: The video is being uploaded.
+	//
+	// 	- Created: The template is created but not ready for use.
+	//
+	// 	- Processing: The advanced template is being processed.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****01bf24bf41c78b2754cb3187****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type.
+	//
+	// Valid values:
+	//
+	// 	- Timeline: regular template.
+	//
+	// 	- VETemplate: advanced template.
+	//
 	// example:
 	//
 	// Timeline
@@ -2470,6 +2637,8 @@ func (s *BatchGetMediaInfosResponse) SetBody(v *BatchGetMediaInfosResponseBody) 
 }
 
 type CancelDNAJobRequest struct {
+	// The ID of the media fingerprint analysis job that you want to cancel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2516,10 +2685,14 @@ func (s *CancelDNAJobRequest) SetResourceOwnerId(v int64) *CancelDNAJobRequest {
 }
 
 type CancelDNAJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D7393642CA58
@@ -2649,6 +2822,8 @@ func (s *CancelFavoritePublicMediaResponse) SetBody(v *CancelFavoritePublicMedia
 }
 
 type CreateAuditRequest struct {
+	// The review results. You can specify the results for a maximum of 20 videos at a time. The value must be converted to a string. For more information about the parameters in AuditContent, see the "AuditContent" section of this topic.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2693,6 +2868,8 @@ func (s *CreateAuditRequest) SetAuditContent(v string) *CreateAuditRequest {
 }
 
 type CreateAuditResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -2742,25 +2919,62 @@ func (s *CreateAuditResponse) SetBody(v *CreateAuditResponseBody) *CreateAuditRe
 }
 
 type CreateAvatarTrainingJobRequest struct {
+	// 	- The description of the digital human.
+	//
+	// 	- The description can be up to 1,000 characters in length.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	// 	- The name of the digital human.
+	//
+	// 	- The name can be up to seven characters in length.
+	//
 	// This parameter is required.
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	// The type of the digital human.
+	//
 	// example:
 	//
 	// 2DAvatar
 	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	// 	- The media asset ID of the portrait image.
+	//
+	// 	- The value must be 32 characters in length.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
 	Portrait *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	// 	- The thumbnail URL.
+	//
+	// 	- After the digital human is trained, the thumbnail is uploaded to this URL.
+	//
+	// 	- The URL must be a valid public Object Storage Service (OSS) URL.
+	//
+	// 	- The URL can be up to 512 characters in length.
+	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-hangzhou.aliyuncs.com/thumbnail.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// 	- Specifies whether the training video supports alpha channels.
+	//
+	//     **
+	//
+	//     **Note**: Make sure that the current settings are consistent with those of the submitted training video. Otherwise, the digital human may malfunction.
+	//
 	// example:
 	//
 	// True
 	Transparent *bool `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	// 	- The ID of the video used for training.
+	//
+	// 	- The value must be 32 characters in length.
+	//
+	// 	- Supported formats: MP4, MOV, and WebM.
+	//
+	// 	- The duration of the video must be 5 to 15 minutes.
+	//
+	// 	- The resolution of the video must be 1920×1080 or 1080×1920.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
@@ -2811,11 +3025,16 @@ func (s *CreateAvatarTrainingJobRequest) SetVideo(v string) *CreateAvatarTrainin
 }
 
 type CreateAvatarTrainingJobResponseBody struct {
+	// The data returned.
 	Data *CreateAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2846,6 +3065,8 @@ func (s *CreateAvatarTrainingJobResponseBody) SetSuccess(v bool) *CreateAvatarTr
 }
 
 type CreateAvatarTrainingJobResponseBodyData struct {
+	// The ID of the digital human training job.
+	//
 	// example:
 	//
 	// ****d718e2ff4f018ccf419a7b71****
@@ -2895,22 +3116,86 @@ func (s *CreateAvatarTrainingJobResponse) SetBody(v *CreateAvatarTrainingJobResp
 }
 
 type CreateCustomTemplateRequest struct {
+	// The template name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template subtype.
+	//
+	// Valid values for transcoding templates:
+	//
+	// 	- 1 (Normal): regular template.
+	//
+	// 	- 2 (AudioTranscode): audio transcoding template.
+	//
+	// 	- 3 (Remux): container format conversion template.
+	//
+	// 	- 4 (NarrowBandV1): Narrowband HD 1.0 template.
+	//
+	// 	- 5 (NarrowBandV2): Narrowband HD 2.0 template.
+	//
+	// Valid values for snapshot templates:
+	//
+	// 	- 1 (Normal): regular template.
+	//
+	// 	- 2 (Sprite): sprite template.
+	//
+	// 	- 3 (WebVtt): WebVTT template.
+	//
+	// Valid values for AI-assisted content moderation templates:
+	//
+	// 	- 1 (Video): video moderation template.
+	//
+	// 	- 2 (Audio): audio moderation template.
+	//
+	// 	- 3 (Image): image moderation template.
+	//
+	// Valid values for AI-assisted intelligent erasure templates.
+	//
+	// 	- 1 (VideoDelogo): logo erasure template.
+	//
+	// 	- 2 (VideoDetext): subtitle erasure template.
+	//
 	// example:
 	//
 	// 1
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The template configurations. For more information, see [Template parameters](https://help.aliyun.com/document_detail/448291.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"Container":{"Format":"flv"},"Video":{},"Audio":{}}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template type. Valid values:
+	//
+	// 	- 1: transcoding template.
+	//
+	// 	- 2: snapshot template.
+	//
+	// 	- 3: animated image template.
+	//
+	// 	- 4\\. image watermark template.
+	//
+	// 	- 5: text watermark template.
+	//
+	// 	- 6: subtitle template.
+	//
+	// 	- 7: AI-assisted content moderation template.
+	//
+	// 	- 8: AI-assisted intelligent thumbnail template.
+	//
+	// 	- 9: AI-assisted intelligent erasure template.
+	//
+	// 	- 10: AI-assisted media fingerprint analysis template.
+	//
+	// 	- 11: AI-assisted smart tagging template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2948,7 +3233,10 @@ func (s *CreateCustomTemplateRequest) SetType(v int32) *CreateCustomTemplateRequ
 }
 
 type CreateCustomTemplateResponseBody struct {
+	// The template information.
 	CustomTemplate *CreateCustomTemplateResponseBodyCustomTemplate `json:"CustomTemplate,omitempty" xml:"CustomTemplate,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -2974,42 +3262,62 @@ func (s *CreateCustomTemplateResponseBody) SetRequestId(v string) *CreateCustomT
 }
 
 type CreateCustomTemplateResponseBodyCustomTemplate struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-04-19T02:04:31Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the template is the default template.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The time when the template was last modified.
+	//
 	// example:
 	//
 	// 2022-04-19T02:04:31Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The template state.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subtype name of the template.
+	//
 	// example:
 	//
 	// Remux
 	Subtype *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The template configurations.
+	//
 	// example:
 	//
 	// {"Container":{"Format":"flv"},"Video":{},"Audio":{}}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// test-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type ID of the template.
+	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type name of the template.
+	//
 	// example:
 	//
 	// TranscodeTemplate
@@ -3104,25 +3412,53 @@ func (s *CreateCustomTemplateResponse) SetBody(v *CreateCustomTemplateResponseBo
 }
 
 type CreateCustomizedVoiceJobRequest struct {
+	// The gender. Valid values:
+	//
+	// 	- female
+	//
+	// 	- male
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// female
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The scenario. Valid values:
+	//
+	// 	- story
+	//
+	// 	- interaction
+	//
+	// 	- navigation
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// story
-	Scenario  *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// The voice description.
+	//
+	// 	- The description can be up to 256 characters in length.
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	// The voice ID. It can be the English name or Chinese Pinyin of the voice.
+	//
+	// 	- The value must be a unique ID that is not used by other custom voices.
+	//
+	// 	- The ID can be up to 32 characters in length.
+	//
+	// 	- Only letters and digits are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xiaozhuan
-	VoiceId   *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	// The voice name.
+	//
+	// 	- The name can be up to 32 characters in length.
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 
@@ -3160,11 +3496,16 @@ func (s *CreateCustomizedVoiceJobRequest) SetVoiceName(v string) *CreateCustomiz
 }
 
 type CreateCustomizedVoiceJobResponseBody struct {
+	// The data returned.
 	Data *CreateCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true false
+	//
 	// example:
 	//
 	// true
@@ -3195,10 +3536,14 @@ func (s *CreateCustomizedVoiceJobResponseBody) SetSuccess(v bool) *CreateCustomi
 }
 
 type CreateCustomizedVoiceJobResponseBodyData struct {
+	// The ID of the human voice cloning job.
+	//
 	// example:
 	//
 	// ****29faef8144638ba42eb8e037****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The voice ID.
+	//
 	// example:
 	//
 	// xiaozhuan
@@ -3253,11 +3598,24 @@ func (s *CreateCustomizedVoiceJobResponse) SetBody(v *CreateCustomizedVoiceJobRe
 }
 
 type CreateDNADBRequest struct {
+	// The description of the media fingerprint library.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The model of the media fingerprint library. Valid values:
+	//
+	// 	- **Video**
+	//
+	// 	- **Audio**
+	//
+	// 	- **Image**
+	//
+	// 	- **Text*	- (supported only in the China (Shanghai) region)
+	//
 	// example:
 	//
 	// Video
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The name of the media fingerprint library.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3314,7 +3672,10 @@ func (s *CreateDNADBRequest) SetResourceOwnerId(v int64) *CreateDNADBRequest {
 }
 
 type CreateDNADBResponseBody struct {
+	// The details of the media fingerprint library.
 	DBInfo *CreateDNADBResponseBodyDBInfo `json:"DBInfo,omitempty" xml:"DBInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D7393642CA58
@@ -3340,19 +3701,28 @@ func (s *CreateDNADBResponseBody) SetRequestId(v string) *CreateDNADBResponseBod
 }
 
 type CreateDNADBResponseBodyDBInfo struct {
+	// The ID of the media fingerprint library. We recommend that you save this ID for subsequent calls of other operations.
+	//
 	// example:
 	//
 	// 88c6ca184c0e47098a5b665e2a12****
-	DBId        *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	// The description of the media fingerprint library.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The model of the media fingerprint library.
+	//
 	// example:
 	//
 	// Video
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The name of the media fingerprint library.
+	//
 	// example:
 	//
 	// example name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The state of the media fingerprint library. After a media fingerprint library is created, it enters the offline state. After the media fingerprint library is processed at the backend, it enters the active state.
+	//
 	// example:
 	//
 	// offline
@@ -4442,16 +4812,28 @@ func (s *CreateLiveTranscodeTemplateResponse) SetBody(v *CreateLiveTranscodeTemp
 }
 
 type CreatePipelineRequest struct {
+	// The name of the MPS queue.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-pipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The priority. Default value: 6. Valid values: 1 to 10. A greater value specifies a higher priority.
+	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of the MPS queue. Valid values:
+	//
+	// 1.  Standard: standard MPS queue.
+	//
+	// 2.  Boost: MPS queue with transcoding speed boosted.
+	//
+	// 3.  NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4484,7 +4866,10 @@ func (s *CreatePipelineRequest) SetSpeed(v string) *CreatePipelineRequest {
 }
 
 type CreatePipelineResponseBody struct {
+	// The information about the MPS queue.
 	Pipeline *CreatePipelineResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -4510,30 +4895,58 @@ func (s *CreatePipelineResponseBody) SetRequestId(v string) *CreatePipelineRespo
 }
 
 type CreatePipelineResponseBodyPipeline struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the template was last modified.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the MPS queue.
+	//
 	// example:
 	//
 	// test-pipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the MPS queue.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the MPS queue.
+	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of the MPS queue.
+	//
+	// Valid values:
+	//
+	// 	- Boost: MPS queue with transcoding speed boosted.
+	//
+	// 	- Standard: standard MPS queue.
+	//
+	// 	- NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+	//
 	// example:
 	//
 	// Standard
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The state of the MPS queue.
+	//
+	// Valid values:
+	//
+	// 	- Active
+	//
+	// 	- Paused
+	//
 	// example:
 	//
 	// Active
@@ -5296,6 +5709,8 @@ func (s *CreateUploadStreamResponse) SetBody(v *CreateUploadStreamResponseBody) 
 }
 
 type DecryptKMSDataKeyRequest struct {
+	// The ciphertext that you want to decrypt.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5318,7 +5733,10 @@ func (s *DecryptKMSDataKeyRequest) SetCiphertextBlob(v string) *DecryptKMSDataKe
 }
 
 type DecryptKMSDataKeyResponseBody struct {
+	// The information about the decryption result.
 	DataKey *DecryptKMSDataKeyResponseBodyDataKey `json:"DataKey,omitempty" xml:"DataKey,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -5344,10 +5762,14 @@ func (s *DecryptKMSDataKeyResponseBody) SetRequestId(v string) *DecryptKMSDataKe
 }
 
 type DecryptKMSDataKeyResponseBodyDataKey struct {
+	// The ID of the customer master key (CMK) that was used to decrypt the ciphertext.
+	//
 	// example:
 	//
 	// 202b9877-5a25-46e3-a763-e20791b5****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The plaintext that is generated after decryption.
+	//
 	// example:
 	//
 	// tRYXuCwgja12xxO1N/gZERDDCLw9doZEQiPDk/Bv****
@@ -5402,6 +5824,8 @@ func (s *DecryptKMSDataKeyResponse) SetBody(v *DecryptKMSDataKeyResponseBody) *D
 }
 
 type DeleteAvatarTrainingJobRequest struct {
+	// The ID of the digital human training job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5424,11 +5848,20 @@ func (s *DeleteAvatarTrainingJobRequest) SetJobId(v string) *DeleteAvatarTrainin
 }
 
 type DeleteAvatarTrainingJobResponseBody struct {
+	// The data returned.
 	Data *DeleteAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -5459,6 +5892,8 @@ func (s *DeleteAvatarTrainingJobResponseBody) SetSuccess(v bool) *DeleteAvatarTr
 }
 
 type DeleteAvatarTrainingJobResponseBodyData struct {
+	// The ID of the digital human training job.
+	//
 	// example:
 	//
 	// ****d718e2ff4f018ccf419a7b71****
@@ -5589,6 +6024,8 @@ func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteC
 }
 
 type DeleteCustomTemplateRequest struct {
+	// The ID of the custom template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5611,10 +6048,14 @@ func (s *DeleteCustomTemplateRequest) SetTemplateId(v string) *DeleteCustomTempl
 }
 
 type DeleteCustomTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5669,6 +6110,8 @@ func (s *DeleteCustomTemplateResponse) SetBody(v *DeleteCustomTemplateResponseBo
 }
 
 type DeleteCustomizedVoiceJobRequest struct {
+	// The ID of the human voice cloning job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5691,10 +6134,18 @@ func (s *DeleteCustomizedVoiceJobRequest) SetJobId(v string) *DeleteCustomizedVo
 }
 
 type DeleteCustomizedVoiceJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -5749,6 +6200,8 @@ func (s *DeleteCustomizedVoiceJobResponse) SetBody(v *DeleteCustomizedVoiceJobRe
 }
 
 type DeleteDNADBRequest struct {
+	// The ID of the media fingerprint library that you want to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5795,6 +6248,8 @@ func (s *DeleteDNADBRequest) SetResourceOwnerId(v int64) *DeleteDNADBRequest {
 }
 
 type DeleteDNADBResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D7393642CA58
@@ -5844,6 +6299,8 @@ func (s *DeleteDNADBResponse) SetBody(v *DeleteDNADBResponseBody) *DeleteDNADBRe
 }
 
 type DeleteDNAFilesRequest struct {
+	// The ID of the media fingerprint library from which you want to delete files.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5852,6 +6309,8 @@ type DeleteDNAFilesRequest struct {
 	DBId         *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The primary key values of the files that you want to delete. Separate multiple values with commas (,). You can delete up to 50 files at a time.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5901,6 +6360,8 @@ func (s *DeleteDNAFilesRequest) SetResourceOwnerId(v int64) *DeleteDNAFilesReque
 }
 
 type DeleteDNAFilesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -7070,6 +7531,8 @@ func (s *DeleteMediaMarksResponse) SetBody(v *DeleteMediaMarksResponseBody) *Del
 }
 
 type DeletePipelineRequest struct {
+	// The ID of the MPS queue.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7092,10 +7555,14 @@ func (s *DeletePipelineRequest) SetPipelineId(v string) *DeletePipelineRequest {
 }
 
 type DeletePipelineResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -7263,6 +7730,8 @@ func (s *DeletePlayInfoResponse) SetBody(v *DeletePlayInfoResponseBody) *DeleteP
 }
 
 type DeleteSmartJobRequest struct {
+	// The IDs of the jobs to delete. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******,******042d5e4db6866f6289d1******
@@ -7283,7 +7752,7 @@ func (s *DeleteSmartJobRequest) SetJobId(v string) *DeleteSmartJobRequest {
 }
 
 type DeleteSmartJobResponseBody struct {
-	// RequestId
+	// The request ID.
 	//
 	// example:
 	//
@@ -7334,6 +7803,8 @@ func (s *DeleteSmartJobResponse) SetBody(v *DeleteSmartJobResponseBody) *DeleteS
 }
 
 type DeleteTemplateRequest struct {
+	// The IDs of the templates that you want to delete. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****,****20b48fb04483915d4f2cd8ac****
@@ -7354,6 +7825,8 @@ func (s *DeleteTemplateRequest) SetTemplateIds(v string) *DeleteTemplateRequest 
 }
 
 type DeleteTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -7536,22 +8009,30 @@ func (s *DescribeAIAgentInstanceResponse) SetBody(v *DescribeAIAgentInstanceResp
 }
 
 type DescribeMeterImsEditUsageRequest struct {
+	// The end of the time range to query. The value is a 10-digit timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1656995036
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The time granularity of the query. Valid values: 3600 (hour) and 86400 (day).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86400
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter does not take effect. By default, the usage data of all regions is returned.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The beginning of the time range to query. The value is a 10-digit timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7589,7 +8070,10 @@ func (s *DescribeMeterImsEditUsageRequest) SetStartTs(v int64) *DescribeMeterIms
 }
 
 type DescribeMeterImsEditUsageResponseBody struct {
+	// The usage statistics of IMS on VOD editing.
 	Data []*DescribeMeterImsEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F3AE2C6-5CC6-5712-BAC5-5A735A157687
@@ -7615,14 +8099,20 @@ func (s *DescribeMeterImsEditUsageResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeMeterImsEditUsageResponseBodyData struct {
+	// The usage duration, in minutes.
+	//
 	// example:
 	//
 	// 1.23
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The video profile.
+	//
 	// example:
 	//
 	// 1080P
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The beginning time of usage. The value is a 10-digit timestamp.
+	//
 	// example:
 	//
 	// 1656950400
@@ -7682,22 +8172,30 @@ func (s *DescribeMeterImsEditUsageResponse) SetBody(v *DescribeMeterImsEditUsage
 }
 
 type DescribeMeterImsMediaConvertUHDUsageRequest struct {
+	// The end of the time range to query. The value is a 10-digit timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1656995036
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The time granularity of the query. Valid values: 3600 (hour) and 86400 (day).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3600
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter does not take effect. By default, the usage data of all regions is returned.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. The value is a 10-digit timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7735,7 +8233,10 @@ func (s *DescribeMeterImsMediaConvertUHDUsageRequest) SetStartTs(v int64) *Descr
 }
 
 type DescribeMeterImsMediaConvertUHDUsageResponseBody struct {
+	// The usage statistics of IMS on UHD transcoding of MPS.
 	Data []*DescribeMeterImsMediaConvertUHDUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA98A0C-7870-15FE-B96F-8880BB600A2C
@@ -7761,14 +8262,20 @@ func (s *DescribeMeterImsMediaConvertUHDUsageResponseBody) SetRequestId(v string
 }
 
 type DescribeMeterImsMediaConvertUHDUsageResponseBodyData struct {
+	// The usage duration, in minutes.
+	//
 	// example:
 	//
 	// 308028
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The transcoding specifications.
+	//
 	// example:
 	//
 	// SuperResolution.Standard.1080P
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The beginning time of usage. The value is a 10-digit timestamp.
+	//
 	// example:
 	//
 	// 1656950400
@@ -7828,22 +8335,30 @@ func (s *DescribeMeterImsMediaConvertUHDUsageResponse) SetBody(v *DescribeMeterI
 }
 
 type DescribeMeterImsMediaConvertUsageRequest struct {
+	// The end of the time range to query. The value is a 10-digit timestamp. The maximum query range is 31 days. The duration between StartTs and EndTs cannot exceed 31 days.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1656995036
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The time granularity of the query. Valid values: 3600 (hour) and 86400 (day).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86400
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter does not take effect. By default, the usage data of all regions is returned.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The beginning of the time range to query. The value is a 10-digit timestamp. You can query data within the last 90 days.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7881,7 +8396,10 @@ func (s *DescribeMeterImsMediaConvertUsageRequest) SetStartTs(v int64) *Describe
 }
 
 type DescribeMeterImsMediaConvertUsageResponseBody struct {
+	// The usage statistics of IMS on VOD transcoding.
 	Data []*DescribeMeterImsMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FBBB5210-2B78-58FB-A6FE-9DD887BB2C61
@@ -7907,14 +8425,20 @@ func (s *DescribeMeterImsMediaConvertUsageResponseBody) SetRequestId(v string) *
 }
 
 type DescribeMeterImsMediaConvertUsageResponseBodyData struct {
+	// The usage duration, in minutes.
+	//
 	// example:
 	//
 	// 20
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The transcoding specifications.
+	//
 	// example:
 	//
 	// H264.HD
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The beginning time of usage. The value is a 10-digit timestamp.
+	//
 	// example:
 	//
 	// 1656950400
@@ -7974,22 +8498,30 @@ func (s *DescribeMeterImsMediaConvertUsageResponse) SetBody(v *DescribeMeterImsM
 }
 
 type DescribeMeterImsMpsAiUsageRequest struct {
+	// The end of the time range to query. The value is a 10-digit timestamp. The maximum query range is 31 days. The duration between StartTs and EndTs cannot exceed 31 days.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1656995036
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The time granularity of the query. Valid values: 3600 (hour) and 86400 (day).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86400
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter does not take effect. By default, the usage data of all regions is returned.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The beginning of the time range to query. The value is a 10-digit timestamp. You can query data within the last 90 days.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8027,7 +8559,10 @@ func (s *DescribeMeterImsMpsAiUsageRequest) SetStartTs(v int64) *DescribeMeterIm
 }
 
 type DescribeMeterImsMpsAiUsageResponseBody struct {
+	// The usage statistics of IMS on AI processing of MPS.
 	Data []*DescribeMeterImsMpsAiUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0622C702-41BE-467E-AF2E-883D4517962E
@@ -8053,14 +8588,19 @@ func (s *DescribeMeterImsMpsAiUsageResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeMeterImsMpsAiUsageResponseBodyData struct {
+	// The usage duration, in minutes.
+	//
 	// example:
 	//
 	// 644
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The beginning time of usage. The value is a 10-digit timestamp.
+	//
 	// example:
 	//
 	// 1656950400
-	Time *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The AI type. Valid values:
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -8117,16 +8657,22 @@ func (s *DescribeMeterImsMpsAiUsageResponse) SetBody(v *DescribeMeterImsMpsAiUsa
 }
 
 type DescribeMeterImsSummaryRequest struct {
+	// The end of the time range to query. The value is a 10-digit timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1656995036
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// This parameter does not take effect. By default, the usage data of all regions is returned.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The beginning of the time range to query. The value is a 10-digit timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8159,7 +8705,10 @@ func (s *DescribeMeterImsSummaryRequest) SetStartTs(v int64) *DescribeMeterImsSu
 }
 
 type DescribeMeterImsSummaryResponseBody struct {
+	// The usage statistics of IMS.
 	Data []*DescribeMeterImsSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA98A0C-7870-15FE-B96F-8880BB600A2C
@@ -8185,25 +8734,50 @@ func (s *DescribeMeterImsSummaryResponseBody) SetRequestId(v string) *DescribeMe
 }
 
 type DescribeMeterImsSummaryResponseBodyData struct {
+	// The duration of video editing.
+	//
 	// example:
 	//
 	// 8722
-	EditingDuration    *string `json:"EditingDuration,omitempty" xml:"EditingDuration,omitempty"`
-	LiveEditDuration   *string `json:"LiveEditDuration,omitempty" xml:"LiveEditDuration,omitempty"`
+	EditingDuration *string `json:"EditingDuration,omitempty" xml:"EditingDuration,omitempty"`
+	// The duration of live editing.
+	//
+	// example:
+	//
+	// 2000
+	LiveEditDuration *string `json:"LiveEditDuration,omitempty" xml:"LiveEditDuration,omitempty"`
+	// The duration of live stream recording.
+	//
+	// example:
+	//
+	// 100
 	LiveRecordDuration *string `json:"LiveRecordDuration,omitempty" xml:"LiveRecordDuration,omitempty"`
-	LiveSnapshotCount  *string `json:"LiveSnapshotCount,omitempty" xml:"LiveSnapshotCount,omitempty"`
+	// The number of live stream snapshots.
+	//
+	// example:
+	//
+	// 100
+	LiveSnapshotCount *string `json:"LiveSnapshotCount,omitempty" xml:"LiveSnapshotCount,omitempty"`
+	// The duration of live stream transcoding.
+	//
 	// example:
 	//
 	// 12356
 	LiveTranscodeDuration *int64 `json:"LiveTranscodeDuration,omitempty" xml:"LiveTranscodeDuration,omitempty"`
+	// The duration of AI processing.
+	//
 	// example:
 	//
 	// 0
 	MpsAiDuration *int64 `json:"MpsAiDuration,omitempty" xml:"MpsAiDuration,omitempty"`
+	// The duration of video-on-demand (VOD) transcoding.
+	//
 	// example:
 	//
 	// 17337
 	MpsTranscodeDuration *int64 `json:"MpsTranscodeDuration,omitempty" xml:"MpsTranscodeDuration,omitempty"`
+	// The duration of audio and video enhancement.
+	//
 	// example:
 	//
 	// 300
@@ -8837,18 +9411,28 @@ func (s *DescribeRtcRobotInstanceResponse) SetBody(v *DescribeRtcRobotInstanceRe
 }
 
 type DetectAudioForCustomizedVoiceJobRequest struct {
+	// The sequence number of the recording file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AudioRecordId *int32 `json:"AudioRecordId,omitempty" xml:"AudioRecordId,omitempty"`
+	// The URL of the recording file.
+	//
+	// > : The URL must be an Object Storage Service (OSS) URL within your Alibaba Cloud account. The OSS bucket must be in the same region in which IMS is activated.
+	//
+	// > : The audio file must be in the WAV or PCM format and must be a 16-bit mono audio file at 48000 Hz.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-hangzhou.aliyuncs.com/record1.wav
 	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	// The voice ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8881,11 +9465,16 @@ func (s *DetectAudioForCustomizedVoiceJobRequest) SetVoiceId(v string) *DetectAu
 }
 
 type DetectAudioForCustomizedVoiceJobResponseBody struct {
+	// The data returned.
 	Data *DetectAudioForCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true false
+	//
 	// example:
 	//
 	// true
@@ -8916,10 +9505,17 @@ func (s *DetectAudioForCustomizedVoiceJobResponseBody) SetSuccess(v bool) *Detec
 }
 
 type DetectAudioForCustomizedVoiceJobResponseBodyData struct {
+	// Indicates whether the audio file passes the check. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
-	Pass   *bool   `json:"Pass,omitempty" xml:"Pass,omitempty"`
+	Pass *bool `json:"Pass,omitempty" xml:"Pass,omitempty"`
+	// The reason returned if the audio file failed to pass the check.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -9205,6 +9801,7 @@ type GenerateAIAgentCallRequest struct {
 	// 3600
 	Expire         *int64                 `json:"Expire,omitempty" xml:"Expire,omitempty"`
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	UserData       *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// example:
 	//
 	// 877ae632caae49b1afc81c2e8194ffb4
@@ -9234,6 +9831,11 @@ func (s *GenerateAIAgentCallRequest) SetTemplateConfig(v *AIAgentTemplateConfig)
 	return s
 }
 
+func (s *GenerateAIAgentCallRequest) SetUserData(v string) *GenerateAIAgentCallRequest {
+	s.UserData = &v
+	return s
+}
+
 func (s *GenerateAIAgentCallRequest) SetUserId(v string) *GenerateAIAgentCallRequest {
 	s.UserId = &v
 	return s
@@ -9251,6 +9853,7 @@ type GenerateAIAgentCallShrinkRequest struct {
 	// 3600
 	Expire               *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// example:
 	//
 	// 877ae632caae49b1afc81c2e8194ffb4
@@ -9277,6 +9880,11 @@ func (s *GenerateAIAgentCallShrinkRequest) SetExpire(v int64) *GenerateAIAgentCa
 
 func (s *GenerateAIAgentCallShrinkRequest) SetTemplateConfigShrink(v string) *GenerateAIAgentCallShrinkRequest {
 	s.TemplateConfigShrink = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallShrinkRequest) SetUserData(v string) *GenerateAIAgentCallShrinkRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -9380,7 +9988,10 @@ func (s *GenerateAIAgentCallResponse) SetBody(v *GenerateAIAgentCallResponseBody
 }
 
 type GenerateKMSDataKeyResponseBody struct {
+	// The information about the data key.
 	DataKey *GenerateKMSDataKeyResponseBodyDataKey `json:"DataKey,omitempty" xml:"DataKey,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -9406,14 +10017,20 @@ func (s *GenerateKMSDataKeyResponseBody) SetRequestId(v string) *GenerateKMSData
 }
 
 type GenerateKMSDataKeyResponseBodyDataKey struct {
+	// The ciphertext of the encrypted data key. This parameter is used as CipherText when you create a transcoding job.
+	//
 	// example:
 	//
 	// ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901qOjop4bTS****
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	// The ID of the customer master key (CMK). The ID must be globally unique.
+	//
 	// example:
 	//
 	// 7906979c-8e06-46a2-be2d-68e3ccbc****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The Base64-encoded plaintext of the data key.
+	//
 	// example:
 	//
 	// QmFzZTY0IGVuY29kZWQgcGxhaW50****
@@ -9473,6 +10090,8 @@ func (s *GenerateKMSDataKeyResponse) SetBody(v *GenerateKMSDataKeyResponseBody) 
 }
 
 type GetAvatarRequest struct {
+	// 	- The ID of the digital human.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9495,11 +10114,20 @@ func (s *GetAvatarRequest) SetAvatarId(v string) *GetAvatarRequest {
 }
 
 type GetAvatarResponseBody struct {
+	// The data returned.
 	Data *GetAvatarResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -9530,6 +10158,7 @@ func (s *GetAvatarResponseBody) SetSuccess(v bool) *GetAvatarResponseBody {
 }
 
 type GetAvatarResponseBodyData struct {
+	// The information about the digital human.
 	Avatar *GetAvatarResponseBodyDataAvatar `json:"Avatar,omitempty" xml:"Avatar,omitempty" type:"Struct"`
 }
 
@@ -9547,30 +10176,52 @@ func (s *GetAvatarResponseBodyData) SetAvatar(v *GetAvatarResponseBodyDataAvatar
 }
 
 type GetAvatarResponseBodyDataAvatar struct {
+	// The description of the digital human.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	// The ID of the digital human.
+	//
 	// example:
 	//
 	// Avatar-XXXX
-	AvatarId   *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The name of the digital human.
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	// The type of the digital human.
+	//
 	// example:
 	//
 	// 2DAvatar
 	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
-	Height     *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The height of the digital human image in pixels.
+	//
+	// example:
+	//
+	// 1920
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The media asset ID of the portrait image.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
 	Portrait *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	// The thumbnail URL.
+	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-hangzhou.aliyuncs.com/thumbnail.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// Indicates whether the digital human supports alpha channels.
+	//
 	// example:
 	//
 	// true
-	Transparent *bool  `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
-	Width       *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Transparent *bool `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	// The width of the digital human image in pixels.
+	//
+	// example:
+	//
+	// 1080
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetAvatarResponseBodyDataAvatar) String() string {
@@ -9656,6 +10307,8 @@ func (s *GetAvatarResponse) SetBody(v *GetAvatarResponseBody) *GetAvatarResponse
 }
 
 type GetAvatarTrainingJobRequest struct {
+	// The ID of the digital human training job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9678,11 +10331,16 @@ func (s *GetAvatarTrainingJobRequest) SetJobId(v string) *GetAvatarTrainingJobRe
 }
 
 type GetAvatarTrainingJobResponseBody struct {
+	// The data returned if the request was successful.
 	Data *GetAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -9713,6 +10371,7 @@ func (s *GetAvatarTrainingJobResponseBody) SetSuccess(v bool) *GetAvatarTraining
 }
 
 type GetAvatarTrainingJobResponseBodyData struct {
+	// The information about the digital human training job.
 	AvatarTrainingJob *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob `json:"AvatarTrainingJob,omitempty" xml:"AvatarTrainingJob,omitempty" type:"Struct"`
 }
 
@@ -9730,45 +10389,74 @@ func (s *GetAvatarTrainingJobResponseBodyData) SetAvatarTrainingJob(v *GetAvatar
 }
 
 type GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob struct {
+	// The description of the digital human.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	// The ID of the digital human.
+	//
 	// example:
 	//
 	// Avatar-XXXX
-	AvatarId   *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The name of the digital human.
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	// The type of the digital human.
+	//
 	// example:
 	//
 	// 2DAvatar
 	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	// 	- The time when the first training was initiated.
+	//
+	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	FirstTrainingTime *string `json:"FirstTrainingTime,omitempty" xml:"FirstTrainingTime,omitempty"`
+	// The ID of the digital human training job.
+	//
 	// example:
 	//
 	// ****55d86f7f4587943ce7734d6b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 	- The time when the last training was initiated.
+	//
+	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	LastTrainingTime *string `json:"LastTrainingTime,omitempty" xml:"LastTrainingTime,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status description.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The media asset ID of the portrait image.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
 	Portrait *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	// 	- The state of the digital human training job.
+	//
+	// 	- Valid values: Init, Queuing, Training, Success, and Fail.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The thumbnail URL.
+	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-hangzhou.aliyuncs.com/thumbnail.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// Indicates whether the input video supports alpha channels.
+	//
 	// example:
 	//
 	// true
 	Transparent *bool `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	// The ID of the video used for training.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
@@ -9878,6 +10566,8 @@ func (s *GetAvatarTrainingJobResponse) SetBody(v *GetAvatarTrainingJobResponseBo
 }
 
 type GetBatchMediaProducingJobRequest struct {
+	// The ID of the quick video production job.
+	//
 	// example:
 	//
 	// ****b4549d46c88681030f6e****
@@ -9898,7 +10588,10 @@ func (s *GetBatchMediaProducingJobRequest) SetJobId(v string) *GetBatchMediaProd
 }
 
 type GetBatchMediaProducingJobResponseBody struct {
+	// The information about the quick video production job.
 	EditingBatchJob *GetBatchMediaProducingJobResponseBodyEditingBatchJob `json:"EditingBatchJob,omitempty" xml:"EditingBatchJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
@@ -9924,8 +10617,22 @@ func (s *GetBatchMediaProducingJobResponseBody) SetRequestId(v string) *GetBatch
 }
 
 type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
+	// The time when the job was complete.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-06-13T08:57:07Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-06-13T08:47:07Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The editing configurations. For more information, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
+	//
 	// example:
 	//
 	// {
@@ -9950,6 +10657,12 @@ type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
 	//
 	// }
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	// The extended information. This parameter contains the following fields:
+	//
+	// ErrorCode: the error code of the main job.
+	//
+	// ErrorMessage: the error message of the main job.
+	//
 	// example:
 	//
 	// {
@@ -9959,14 +10672,26 @@ type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
 	// 	"ErrorMessage": "The specified clips id not found:[\\"****30d0b5e871eebb2ff7f6c75a****\\"]"
 	//
 	// }
-	Extend      *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****b6b2750d4308892ac3330238****
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobType      *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The time when the job was last modified.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-06-13T08:57:07Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
+	//
 	// example:
 	//
 	// {
@@ -9985,11 +10710,22 @@ type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// The job state. Valid values:
+	//
+	// Init: The job is initialized.
+	//
+	// Processing: The job is in progress.
+	//
+	// Finished: The job is complete.
+	//
 	// example:
 	//
 	// Finished
-	Status     *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The quick video production subjobs.
 	SubJobList []*GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList `json:"SubJobList,omitempty" xml:"SubJobList,omitempty" type:"Repeated"`
+	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.439285.0.i1#section-urj-v3f-0s1).
+	//
 	// example:
 	//
 	// {"NotifyAddress":"http://xx.xx.xxx"}
@@ -10065,27 +10801,52 @@ func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetUserData(v str
 }
 
 type GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList struct {
+	// The error code that is returned if the subjob failed. This parameter is not returned if the subjob is successful.
+	//
 	// example:
 	//
 	// InvalidMaterial.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned if the subjob failed. This parameter is not returned if the subjob is successful.
+	//
 	// example:
 	//
 	// The specified clips id not found:["****30d0b5e871eebb2ff7f6c75a****"]
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The subjob ID.
+	//
 	// example:
 	//
 	// ****8e81933d44e3ae69e2f81485****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the output media asset.
+	//
 	// example:
 	//
 	// ****1470b11171ee9d19e7e6c66a****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The URL of the output file.
+	//
 	// example:
 	//
 	// http:/xxx.oss-cn-shanghai.aliyuncs.com/xxx_0.mp4
-	MediaURL  *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	// The ID of the online editing project.
+	//
+	// example:
+	//
+	// ****7cc47fe04eaa81bd853acb6a****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The subjob state. Valid values:
+	//
+	// Init: The subjob is initialized.
+	//
+	// Processing: The subjob is in progress.
+	//
+	// Success: The subjob is successful.
+	//
+	// Failed: The subjob failed.
+	//
 	// example:
 	//
 	// Success
@@ -10574,14 +11335,20 @@ func (s *GetContentAnalyzeConfigResponse) SetBody(v *GetContentAnalyzeConfigResp
 }
 
 type GetCustomTemplateRequest struct {
+	// The template subtype.
+	//
 	// example:
 	//
 	// 1
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the template type that is used to query the default template. This parameter is required if TemplateId is not specified.
+	//
 	// example:
 	//
 	// 1
@@ -10612,7 +11379,10 @@ func (s *GetCustomTemplateRequest) SetType(v int32) *GetCustomTemplateRequest {
 }
 
 type GetCustomTemplateResponseBody struct {
+	// The template information.
 	CustomTemplate *GetCustomTemplateResponseBodyCustomTemplate `json:"CustomTemplate,omitempty" xml:"CustomTemplate,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -10638,47 +11408,69 @@ func (s *GetCustomTemplateResponseBody) SetRequestId(v string) *GetCustomTemplat
 }
 
 type GetCustomTemplateResponseBodyCustomTemplate struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-01-01T10:00:00Z
 	CreateTime   *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	FrontendHint *GetCustomTemplateResponseBodyCustomTemplateFrontendHint `json:"FrontendHint,omitempty" xml:"FrontendHint,omitempty" type:"Struct"`
+	// Indicates whether the template is the default template.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The time when the template was last modified.
+	//
 	// example:
 	//
 	// 2022-01-01T11:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The template state.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subtype ID of the template.
+	//
 	// example:
 	//
 	// 1
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The subtype name of the template.
+	//
 	// example:
 	//
 	// Normal
 	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
+	// The template parameters.
+	//
 	// example:
 	//
 	// {"Type":"Normal","FrameType":"normal","Time":0,"Count":10}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// 测试转码模板
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type ID of the template.
+	//
 	// example:
 	//
 	// 2
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type name of the template.
+	//
 	// example:
 	//
 	// SnapshotTemplate
@@ -10817,6 +11609,8 @@ func (s *GetCustomTemplateResponse) SetBody(v *GetCustomTemplateResponseBody) *G
 }
 
 type GetCustomizedVoiceRequest struct {
+	// The voice ID.
+	//
 	// example:
 	//
 	// xiaozhuan
@@ -10837,11 +11631,20 @@ func (s *GetCustomizedVoiceRequest) SetVoiceId(v string) *GetCustomizedVoiceRequ
 }
 
 type GetCustomizedVoiceResponseBody struct {
+	// The data returned.
 	Data *GetCustomizedVoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -10872,6 +11675,7 @@ func (s *GetCustomizedVoiceResponseBody) SetSuccess(v bool) *GetCustomizedVoiceR
 }
 
 type GetCustomizedVoiceResponseBodyData struct {
+	// The personalized human voice.
 	CustomizedVoice *GetCustomizedVoiceResponseBodyDataCustomizedVoice `json:"CustomizedVoice,omitempty" xml:"CustomizedVoice,omitempty" type:"Struct"`
 }
 
@@ -10889,23 +11693,45 @@ func (s *GetCustomizedVoiceResponseBodyData) SetCustomizedVoice(v *GetCustomized
 }
 
 type GetCustomizedVoiceResponseBodyDataCustomizedVoice struct {
+	// The media asset ID of the sample audio file.
+	//
 	// example:
 	//
 	// ****42d3c312402982be65975f5b****
 	DemoAudioMediaId *string `json:"DemoAudioMediaId,omitempty" xml:"DemoAudioMediaId,omitempty"`
+	// The gender. Valid values:
+	//
+	// 	- female
+	//
+	// 	- male
+	//
 	// example:
 	//
 	// female
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The demonstration scenario.
+	//
+	// Valid values:
+	//
+	// 	- **story**
+	//
+	// 	- **interaction**
+	//
+	// 	- **navigation**
+	//
 	// example:
 	//
 	// interaction
-	Scenario  *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// The voice description.
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	// The voice ID.
+	//
 	// example:
 	//
 	// xiaozhuan
-	VoiceId   *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	// The voice name.
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 
@@ -10977,6 +11803,8 @@ func (s *GetCustomizedVoiceResponse) SetBody(v *GetCustomizedVoiceResponseBody) 
 }
 
 type GetCustomizedVoiceJobRequest struct {
+	// The ID of the human voice cloning job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10999,11 +11827,20 @@ func (s *GetCustomizedVoiceJobRequest) SetJobId(v string) *GetCustomizedVoiceJob
 }
 
 type GetCustomizedVoiceJobResponseBody struct {
+	// The data returned if the request was successful.
 	Data *GetCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -11034,6 +11871,7 @@ func (s *GetCustomizedVoiceJobResponseBody) SetSuccess(v bool) *GetCustomizedVoi
 }
 
 type GetCustomizedVoiceJobResponseBodyData struct {
+	// The information about the human voice cloning job.
 	CustomizedVoiceJob *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob `json:"CustomizedVoiceJob,omitempty" xml:"CustomizedVoiceJob,omitempty" type:"Struct"`
 }
 
@@ -11051,24 +11889,87 @@ func (s *GetCustomizedVoiceJobResponseBodyData) SetCustomizedVoiceJob(v *GetCust
 }
 
 type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-06-07T02:27:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Gender     *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The gender. Valid values:
+	//
+	// 	- female
+	//
+	// 	- male
+	//
+	// example:
+	//
+	// female
+	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The ID of the human voice cloning job.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
-	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The status description.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The scenario. Valid values:
+	//
+	// 	- story
+	//
+	// 	- interaction
+	//
+	// 	- navigation
+	//
+	// example:
+	//
+	// story
 	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// The job state. Valid values:
+	//
+	// 	- Initialization
+	//
+	// 	- AudioDetecting
+	//
+	// 	- PreTraining
+	//
+	// 	- Training
+	//
+	// 	- Success
+	//
+	// 	- Fail
+	//
 	// example:
 	//
 	// Fail
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the human voice cloning job. Valid values:
+	//
+	// 	- Basic
+	//
+	// 	- Standard
+	//
+	// example:
+	//
+	// Standard
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The voice description.
+	//
+	// example:
+	//
+	// This is an exclusive voice
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	// The voice ID.
+	//
 	// example:
 	//
 	// xiaozhuan
-	VoiceId   *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	// The voice name.
+	//
+	// example:
+	//
+	// Xiaozhuan
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 
@@ -11245,6 +12146,16 @@ func (s *GetDefaultStorageLocationResponse) SetBody(v *GetDefaultStorageLocation
 }
 
 type GetDemonstrationForCustomizedVoiceJobRequest struct {
+	// The demonstration scenario.
+	//
+	// Valid values:
+	//
+	// 	- **story**
+	//
+	// 	- **interaction**
+	//
+	// 	- **navigation**
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11267,11 +12178,20 @@ func (s *GetDemonstrationForCustomizedVoiceJobRequest) SetScenario(v string) *Ge
 }
 
 type GetDemonstrationForCustomizedVoiceJobResponseBody struct {
+	// The data returned.
 	Data *GetDemonstrationForCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -11302,6 +12222,7 @@ func (s *GetDemonstrationForCustomizedVoiceJobResponseBody) SetSuccess(v bool) *
 }
 
 type GetDemonstrationForCustomizedVoiceJobResponseBodyData struct {
+	// A list of 20 text entries to be read and the corresponding sample audio.
 	DemonstrationList []*GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList `json:"DemonstrationList,omitempty" xml:"DemonstrationList,omitempty" type:"Repeated"`
 }
 
@@ -11319,15 +12240,26 @@ func (s *GetDemonstrationForCustomizedVoiceJobResponseBodyData) SetDemonstration
 }
 
 type GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList struct {
+	// The sequence number of the text, which corresponds to the AduioRecordId parameter to be passed during audio check.
+	//
 	// example:
 	//
 	// 2
 	AudioId *int32 `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
+	// The URL of the sample audio.
+	//
+	// 	- The value is an Object Storage Service (OSS) URL.
+	//
+	//     **
+	//
+	//     **Note**: The URL expires in 12 hours.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/1.wav
 	DemoAudio *string `json:"DemoAudio,omitempty" xml:"DemoAudio,omitempty"`
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The text content to be read.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList) String() string {
@@ -11383,6 +12315,8 @@ func (s *GetDemonstrationForCustomizedVoiceJobResponse) SetBody(v *GetDemonstrat
 }
 
 type GetDynamicImageJobRequest struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
@@ -11403,7 +12337,10 @@ func (s *GetDynamicImageJobRequest) SetJobId(v string) *GetDynamicImageJobReques
 }
 
 type GetDynamicImageJobResponseBody struct {
+	// The information about the snapshot job.
 	DynamicImageJob *GetDynamicImageJobResponseBodyDynamicImageJob `json:"DynamicImageJob,omitempty" xml:"DynamicImageJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******36-3C1E-4417-BDB2-1E034F******
@@ -11429,64 +12366,112 @@ func (s *GetDynamicImageJobResponseBody) SetRequestId(v string) *GetDynamicImage
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJob struct {
+	// Error codes
+	//
 	// example:
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-07-12T16:30:54Z
-	FinishTime *string                                             `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *GetDynamicImageJobResponseBodyDynamicImageJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Input *GetDynamicImageJobResponseBodyDynamicImageJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message that is returned.
+	//
 	// example:
 	//
 	// The specified resource for "CustomTemplate" could not be found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2022-07-12T16:30:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// SampleJob
-	Name   *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
 	Output *GetDynamicImageJobResponseBodyDynamicImageJobOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The URL of the output animated image.
+	//
 	// example:
 	//
 	// http://test-bucket.oss-cn-shanghai.aliyuncs.com/output.gif
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The state of the job.
+	//
+	// Valid values:
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The animation template configuration.
+	//
 	// example:
 	//
 	// {"Format":"gif","Fps":5,"Height":1080,"Width":1920}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The request trigger source.
+	//
+	// Valid values:
+	//
+	// 	- Console
+	//
+	// 	- Workflow
+	//
+	// 	- API
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"sampleParam": "sampleValue"}
@@ -11587,11 +12572,26 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJob) SetUserData(v string) *G
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobInput struct {
+	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  OSS://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	//
+	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
 	// example:
 	//
 	// oss://test-bucket/sample-input.mp4
-	Media   *string                                                    `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The three key elements of OSS.
 	OssFile *GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: an Object Storage Service (OSS) object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -11622,19 +12622,19 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobInput) SetType(v string) *
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile struct {
-	// OSS Bucket
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// test-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS Location
+	// The OSS location.
 	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// OSS Object
+	// The OSS object.
 	//
 	// example:
 	//
@@ -11666,11 +12666,20 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile) SetObject(v 
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobOutput struct {
+	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  OSS://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
-	Media   *string                                                     `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The three key elements of OSS.
 	OssFile *GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
+	// The type of the input file. Valid values: OSS: an OSS object. Media: a media asset.
+	//
 	// example:
 	//
 	// Media
@@ -11701,19 +12710,19 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobOutput) SetType(v string) 
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile struct {
-	// OSS Bucket
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// sample-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS Location
+	// The OSS location.
 	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// OSS Object
+	// The OSS object.
 	//
 	// example:
 	//
@@ -12920,6 +13929,8 @@ func (s *GetLiveEditingIndexFileResponse) SetBody(v *GetLiveEditingIndexFileResp
 }
 
 type GetLiveEditingJobRequest struct {
+	// The ID of the live editing job.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
@@ -12940,7 +13951,10 @@ func (s *GetLiveEditingJobRequest) SetJobId(v string) *GetLiveEditingJobRequest 
 }
 
 type GetLiveEditingJobResponseBody struct {
+	// The information about the live editing job.
 	LiveEditingJob *GetLiveEditingJobResponseBodyLiveEditingJob `json:"LiveEditingJob,omitempty" xml:"LiveEditingJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
@@ -12966,53 +13980,80 @@ func (s *GetLiveEditingJobResponseBody) SetRequestId(v string) *GetLiveEditingJo
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJob struct {
+	// The clips.
+	//
 	// example:
 	//
 	// [{\\"StartTime\\": \\" 2021-06-21T08:01:00Z\\",  \\"EndTime\\": \\" 2021-06-21T08:03:00Z\\" }]
 	Clips *string `json:"Clips,omitempty" xml:"Clips,omitempty"`
+	// The response code. Note: Pay attention to this parameter if the job failed.
+	//
 	// example:
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the live editing job was completed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:52Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the live editing job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the live editing job.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
-	JobId            *string                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The live editing configurations.
 	LiveStreamConfig *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig `json:"LiveStreamConfig,omitempty" xml:"LiveStreamConfig,omitempty" type:"Struct"`
+	// The media asset ID of the output file.
+	//
 	// example:
 	//
 	// ****0cc6ba49eab379332c5b****
-	MediaId            *string                                                        `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The production configurations.
 	MediaProduceConfig *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig `json:"MediaProduceConfig,omitempty" xml:"MediaProduceConfig,omitempty" type:"Struct"`
+	// The URL of the output file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example2.mp4
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	// The returned message. Note: Pay attention to this parameter if the job failed.
+	//
 	// example:
 	//
 	// The specific parameter LiveStreamConfig is not valid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the live editing job was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:49Z
-	ModifiedTime      *string                                                       `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The storage configurations of the output file.
 	OutputMediaConfig *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty" type:"Struct"`
+	// The ID of the live editing project.
+	//
 	// example:
 	//
 	// ****fddd7748b58bf1d47e95****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The state of the live editing job. Valid values: Init, Queuing, Processing, Success, and Failed.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"key": "value\\"}
@@ -13103,14 +14144,20 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetUserData(v string) *Get
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig struct {
+	// The name of the application to which the live stream belongs.
+	//
 	// example:
 	//
 	// app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The domain name of the live stream.
+	//
 	// example:
 	//
 	// domain.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The name of the live stream.
+	//
 	// example:
 	//
 	// streamName
@@ -13141,6 +14188,8 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) SetStreamN
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig struct {
+	// The editing mode. Default value: Accurate.
+	//
 	// example:
 	//
 	// Accurate
@@ -13161,30 +14210,44 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig) SetMode(
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig struct {
+	// The bitrate of the output file. Unit: Kbit/s. You can leave this parameter empty. The default value is the maximum bitrate of the input materials.
+	//
 	// example:
 	//
 	// 1000
 	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// If OutputMediaTarget is set to vod-media, this parameter indicates the file name of the output file. The value contains the file name extension but not the path.
+	//
 	// example:
 	//
 	// test.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The height of the output file. You can leave this parameter empty. The default value is the maximum height of the input materials.
+	//
 	// example:
 	//
 	// 480
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The URL of the output file.
+	//
 	// example:
 	//
 	// https://testice-testbucket.oss-cn-shanghai.aliyuncs.com/test.mp4
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	// If OutputMediaTarget is set to vod-media, this parameter indicates the storage location of the media asset in ApsaraVideo VOD. The storage location is the path of the file in ApsaraVideo VOD, excluding the prefix http://. Example: outin-xxxxxx.oss-cn-shanghai.aliyuncs.com.
+	//
 	// example:
 	//
 	// outin-xxxxxx.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The ID of the VOD transcoding template group. If VOD transcoding is not required, set the value to VOD_NO_TRANSCODE.
+	//
 	// example:
 	//
 	// VOD_NO_TRANSCODE
 	VodTemplateGroupId *string `json:"VodTemplateGroupId,omitempty" xml:"VodTemplateGroupId,omitempty"`
+	// The width of the output file. You can leave this parameter empty. The default value is the maximum width of the input materials.
+	//
 	// example:
 	//
 	// 640
@@ -16063,6 +17126,8 @@ func (s *GetMediaInfoResponse) SetBody(v *GetMediaInfoResponseBody) *GetMediaInf
 }
 
 type GetMediaInfoJobRequest struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
@@ -16085,6 +17150,8 @@ func (s *GetMediaInfoJobRequest) SetJobId(v string) *GetMediaInfoJobRequest {
 type GetMediaInfoJobResponseBody struct {
 	// MediaInfoJobDTO
 	MediaInfoJob *GetMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -16110,42 +17177,64 @@ func (s *GetMediaInfoJobResponseBody) SetRequestId(v string) *GetMediaInfoJobRes
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJob struct {
+	// Indicates whether asynchronous processing was performed.
+	//
 	// example:
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                       `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *GetMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Input *GetMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
-	JobId             *string                                                   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The details of the media information.
 	MediaInfoProperty *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4879B9DE-E4B6-19DC-91F5-9D5F4DCE4168
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling information.
 	ScheduleConfig *GetMediaInfoJobResponseBodyMediaInfoJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the job. Valid values: Init (the job is submitted), Success (the job is successful), and Fail (the job failed).
+	//
 	// example:
 	//
 	// Init
-	Status           *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job submission information.
 	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The source of the job. Valid values: API, WorkFlow, and Console.
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -16226,10 +17315,18 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJob) SetUserData(v string) *GetMedi
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobInput struct {
+	// The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -16255,8 +17352,11 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobInput) SetType(v string) *GetMed
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty struct {
+	// The information about the audio stream.
 	AudioStreamInfoList []*GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo       *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The basic file information.
+	FileBasicInfo *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The information about the video stream.
 	VideoStreamInfoList []*GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -16284,62 +17384,92 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty) SetVideoStrea
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 0.f
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The sound channel layout.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The encoder tag.
+	//
 	// example:
 	//
 	// 0x000f
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The name of the encoder tag.
+	//
 	// example:
 	//
 	// [15][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// us
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sample format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sampling rate. Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
@@ -16430,50 +17560,74 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfo
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo struct {
+	// The video bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration of the video. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// file.m3u8
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size.
+	//
 	// example:
 	//
 	// 31737
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The state of the file.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The URL of the file.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The name of the video format.
+	//
 	// example:
 	//
 	// hls,applehttp
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// e520090207114cc7a392d44f0b211574
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -16549,94 +17703,146 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo) 
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	AvgFps *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	// The tag of the encoding format.
+	//
 	// example:
 	//
 	// 0x001b
 	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
+	// The tag string of the encoding format.
+	//
 	// example:
 	//
 	// [27][0][0][0]
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/50
 	CodecTimeBase *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// The display aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration of the file.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+	//
+	// 	- 0: The stream contains no B-frames.
+	//
+	// 	- 1: The stream contains one B-frame.
+	//
+	// 	- 2: The stream contains multiple consecutive B-frames.
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 31
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 10040
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The encoder profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle of the video image.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The aspect ratio of the area from which the sampling points are collected.
+	//
 	// example:
 	//
 	// 478:477
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
 	TimeBase *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -16767,10 +17973,14 @@ func (s *GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfo
 }
 
 type GetMediaInfoJobResponseBodyMediaInfoJobScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -16929,6 +18139,8 @@ func (s *GetMediaMarksResponse) SetBody(v *GetMediaMarksResponseBody) *GetMediaM
 }
 
 type GetMediaProducingJobRequest struct {
+	// The ID of the media editing and production job.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
@@ -16949,7 +18161,10 @@ func (s *GetMediaProducingJobRequest) SetJobId(v string) *GetMediaProducingJobRe
 }
 
 type GetMediaProducingJobResponseBody struct {
+	// The information about the online editing project.
 	MediaProducingJob *GetMediaProducingJobResponseBodyMediaProducingJob `json:"MediaProducingJob,omitempty" xml:"MediaProducingJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****83B7-7F87-4792-BFE9-63CD2137****
@@ -16975,64 +18190,126 @@ func (s *GetMediaProducingJobResponseBody) SetRequestId(v string) *GetMediaProdu
 }
 
 type GetMediaProducingJobResponseBodyMediaProducingJob struct {
+	// The template parameters of the media editing and production job.
+	//
 	// example:
 	//
 	// {"VideoArray":["****05512043f49f697f7425****","****05512043f49f697f7425****","****05512043f49f697f7425****"]}
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The response code
+	//
+	// Note: Pay attention to this parameter if the job failed.
+	//
 	// example:
 	//
 	// ExceededMaximumValue
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the media editing and production job was complete.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:52Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the media editing and production job was created.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The duration of the output file.
+	//
+	// Note: This parameter has a value if the job is successful and the output file is an audio or video file.
+	//
 	// example:
 	//
 	// 30.500000
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the media editing and production job.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The media asset ID of the output file.
+	//
 	// example:
 	//
 	// ****0cc6ba49eab379332c5b****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The URL of the output file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example2.mp4
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	// The returned message.
+	//
+	// Note: Pay attention to this parameter if the job failed.
+	//
 	// example:
 	//
 	// The specified "Width_Height" has exceeded maximum value.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the media editing and production job was last modified.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:49Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// ****fddd7748b58bf1d47e95****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The state of the media editing and production job. Valid values:
+	//
+	// Init
+	//
+	// Queuing
+	//
+	// Processing
+	//
+	// Success
+	//
+	// Failed
+	//
 	// example:
 	//
 	// Failed
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The materials of the media editing and production job if the job is a subjob of a quick video production job, including the broadcast text and title.
+	//
+	// example:
+	//
+	// {"Title": "Title", "SpeechText": "Broadcast text of a quick video production job"}
 	SubJobMaterials *string `json:"SubJobMaterials,omitempty" xml:"SubJobMaterials,omitempty"`
+	// The ID of the template used by the media editing and production job.
+	//
 	// example:
 	//
 	// ****6e76134d739cc3e85d3e****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The timeline of the media editing and production job.
+	//
 	// example:
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****4d7cf14dc7b83b0e801c****"},{"MediaId":"****4d7cf14dc7b83b0e801c****"}]}]}
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// The user-defined data in the JSON format.
+	//
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx","Key":"Valuexxx"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
+	//
 	// example:
 	//
 	// ****332c5b0cc6ba49eab379****
@@ -17162,6 +18439,8 @@ func (s *GetMediaProducingJobResponse) SetBody(v *GetMediaProducingJobResponseBo
 }
 
 type GetPackageJobRequest struct {
+	// The job ID. You can obtain the job ID from the response parameters of the [SubmitPackageJob](https://help.aliyun.com/document_detail/461964.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17184,7 +18463,10 @@ func (s *GetPackageJobRequest) SetJobId(v string) *GetPackageJobRequest {
 }
 
 type GetPackageJobResponseBody struct {
+	// The information about the packaging job.
 	PackageJob *GetPackageJobResponseBodyPackageJob `json:"PackageJob,omitempty" xml:"PackageJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -17210,57 +18492,96 @@ func (s *GetPackageJobResponseBody) SetRequestId(v string) *GetPackageJobRespons
 }
 
 type GetPackageJobResponseBodyPackageJob struct {
+	// The error code returned if the job fails.
+	//
 	// example:
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-09-08T11:34:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-09-08T11:44:05Z
-	FinishTime *string                                      `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Inputs     []*GetPackageJobResponseBodyPackageJobInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Inputs []*GetPackageJobResponseBodyPackageJobInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message that is returned.
+	//
 	// example:
 	//
 	// Resource content bad.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the job was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-09-08T11:44:05Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// job-name
-	Name   *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
 	Output *GetPackageJobResponseBodyPackageJobOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The URL of the output file.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/output.m3u8
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// 36f3fee40aa047c0b067d0fb85edc12b
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The state of the job.
+	//
 	// example:
 	//
 	// Init
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-09-08T11:34:05Z
-	SubmitTime    *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The source of the job. Valid values:
+	//
+	// 	- API
+	//
+	// 	- WorkFlow
+	//
+	// 	- Console
+	//
+	// example:
+	//
+	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"param": "value"}
@@ -17356,6 +18677,7 @@ func (s *GetPackageJobResponseBodyPackageJob) SetUserData(v string) *GetPackageJ
 }
 
 type GetPackageJobResponseBodyPackageJobInputs struct {
+	// The information about the input stream file.
 	Input *GetPackageJobResponseBodyPackageJobInputsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 }
 
@@ -17373,10 +18695,22 @@ func (s *GetPackageJobResponseBodyPackageJobInputs) SetInput(v *GetPackageJobRes
 }
 
 type GetPackageJobResponseBodyPackageJobInputsInput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -17402,10 +18736,22 @@ func (s *GetPackageJobResponseBodyPackageJobInputsInput) SetType(v string) *GetP
 }
 
 type GetPackageJobResponseBodyPackageJobOutput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.m3u8
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -17460,6 +18806,8 @@ func (s *GetPackageJobResponse) SetBody(v *GetPackageJobResponseBody) *GetPackag
 }
 
 type GetPipelineRequest struct {
+	// The ID of the MPS queue.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17482,7 +18830,10 @@ func (s *GetPipelineRequest) SetPipelineId(v string) *GetPipelineRequest {
 }
 
 type GetPipelineResponseBody struct {
+	// The information about the MPS queue.
 	Pipeline *GetPipelineResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -17508,30 +18859,58 @@ func (s *GetPipelineResponseBody) SetRequestId(v string) *GetPipelineResponseBod
 }
 
 type GetPipelineResponseBodyPipeline struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the template was last modified.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the MPS queue.
+	//
 	// example:
 	//
 	// test-pipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the MPS queue.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the MPS queue. Valid values: 1 to 10.
+	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of the MPS queue.
+	//
+	// Valid values:
+	//
+	// 	- Standard: standard MPS queue.
+	//
+	// 	- Boost: MPS queue with transcoding speed boosted.
+	//
+	// 	- NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+	//
 	// example:
 	//
 	// Standard
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The state of the MPS queue.
+	//
+	// Valid values:
+	//
+	// 	- Active
+	//
+	// 	- Paused
+	//
 	// example:
 	//
 	// Active
@@ -19114,6 +20493,8 @@ func (s *GetPublicMediaInfoResponse) SetBody(v *GetPublicMediaInfoResponseBody) 
 }
 
 type GetSmartHandleJobRequest struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
@@ -19134,24 +20515,46 @@ func (s *GetSmartHandleJobRequest) SetJobId(v string) *GetSmartHandleJobRequest 
 }
 
 type GetSmartHandleJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
-	JobId     *string                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job results.
 	JobResult *GetSmartHandleJobResponseBodyJobResult `json:"JobResult,omitempty" xml:"JobResult,omitempty" type:"Struct"`
+	// The job results.
+	//
 	// example:
 	//
 	// {}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the intelligent job.
 	SmartJobInfo *GetSmartHandleJobResponseBodySmartJobInfo `json:"SmartJobInfo,omitempty" xml:"SmartJobInfo,omitempty" type:"Struct"`
+	// The job state.
+	//
+	// Valid values:
+	//
+	// 	- Finished
+	//
+	// 	- Failed
+	//
+	// 	- Executing
+	//
+	// 	- Created
+	//
 	// example:
 	//
 	// Finished
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The user-defined data in the JSON format.
+	//
 	// example:
 	//
 	// {"user":"data"}
@@ -19202,19 +20605,24 @@ func (s *GetSmartHandleJobResponseBody) SetUserData(v string) *GetSmartHandleJob
 }
 
 type GetSmartHandleJobResponseBodyJobResult struct {
-	// 智能分析结果
+	// The AI analysis result.
 	//
 	// example:
 	//
-	// 拆条或智能标签信息
+	// Intelligent segmentation or tagging information
 	AiResult *string `json:"AiResult,omitempty" xml:"AiResult,omitempty"`
-	// 媒资Id
+	// The ID of the media asset.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	Usage   *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The token usage. This parameter is returned only for keyword-based text generation jobs.
+	//
+	// example:
+	//
+	// {"total_tokens":100}
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBodyJobResult) String() string {
@@ -19241,29 +20649,41 @@ func (s *GetSmartHandleJobResponseBodyJobResult) SetUsage(v string) *GetSmartHan
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfo struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The job description.
+	//
 	// example:
 	//
 	// 测试描述
-	Description *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The input configurations.
 	InputConfig *GetSmartHandleJobResponseBodySmartJobInfoInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	// The job type.
+	//
 	// example:
 	//
 	// ASR
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
-	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The output configurations.
 	OutputConfig *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
+	// The job title.
+	//
 	// example:
 	//
 	// 测试标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// userid。
+	// The user ID.
 	//
 	// example:
 	//
@@ -19320,6 +20740,8 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetUserId(v string) *GetSmar
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfoInputConfig struct {
+	// The OSS URL or the ID of the material in the media asset library.
+	//
 	// example:
 	//
 	// oss://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4 或 ******11-DB8D-4A9A-875B-275798******
@@ -19340,13 +20762,13 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfoInputConfig) SetInputFile(v st
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfoOutputConfig struct {
-	// OSS Bucket
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// test-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS Object
+	// The OSS object.
 	//
 	// example:
 	//
@@ -19402,6 +20824,8 @@ func (s *GetSmartHandleJobResponse) SetBody(v *GetSmartHandleJobResponseBody) *G
 }
 
 type GetSnapshotJobRequest struct {
+	// The ID of the snapshot job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19424,10 +20848,13 @@ func (s *GetSnapshotJobRequest) SetJobId(v string) *GetSnapshotJobRequest {
 }
 
 type GetSnapshotJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the snapshot job.
 	SnapshotJob *GetSnapshotJobResponseBodySnapshotJob `json:"SnapshotJob,omitempty" xml:"SnapshotJob,omitempty" type:"Struct"`
 }
 
@@ -19450,69 +20877,128 @@ func (s *GetSnapshotJobResponseBody) SetSnapshotJob(v *GetSnapshotJobResponseBod
 }
 
 type GetSnapshotJobResponseBodySnapshotJob struct {
+	// Indicates whether the snapshots were captured in asynchronous mode. Default value: true.
+	//
 	// example:
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// Error codes
+	//
 	// example:
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of snapshots.
+	//
 	// example:
 	//
 	// 8
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-07-12T16:30:54Z
-	FinishTime *string                                     `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *GetSnapshotJobResponseBodySnapshotJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Input *GetSnapshotJobResponseBodySnapshotJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message that is returned.
+	//
 	// example:
 	//
 	// The specified resource for "Pipeline" could not be found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2022-07-12T16:30:54Z
-	ModifiedTime *string                                      `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Name         *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Output       *GetSnapshotJobResponseBodySnapshotJobOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the job.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
+	Output *GetSnapshotJobResponseBodySnapshotJobOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The state of the job.
+	//
+	// Valid values:
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The snapshot template configuration.
+	//
 	// example:
 	//
 	// {"Type":"Normal","FrameType":"normal","Time":0,"Count":10}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The request trigger source.
+	//
+	// Valid values:
+	//
+	// 	- Console
+	//
+	// 	- Workflow
+	//
+	// 	- API
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// Snapshot types
+	//
+	// Valid values:
+	//
+	// 	- WebVtt
+	//
+	// 	- Sprite
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Sprite
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user-defined parameters.
+	//
 	// example:
 	//
 	// {"test parameter": "test value"}
@@ -19623,11 +21109,24 @@ func (s *GetSnapshotJobResponseBodySnapshotJob) SetUserData(v string) *GetSnapsh
 }
 
 type GetSnapshotJobResponseBodySnapshotJobInput struct {
+	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
 	// example:
 	//
 	// oss://test-bucket/object.mp4
-	Media   *string                                            `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The three key elements of OSS.
 	OssFile *GetSnapshotJobResponseBodySnapshotJobInputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: an Object Storage Service (OSS) object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -19658,19 +21157,19 @@ func (s *GetSnapshotJobResponseBodySnapshotJobInput) SetType(v string) *GetSnaps
 }
 
 type GetSnapshotJobResponseBodySnapshotJobInputOssFile struct {
-	// OSS Bucket
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// test-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS Location
+	// The OSS location.
 	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// OSS Object
+	// The OSS object.
 	//
 	// example:
 	//
@@ -19702,11 +21201,26 @@ func (s *GetSnapshotJobResponseBodySnapshotJobInputOssFile) SetObject(v string) 
 }
 
 type GetSnapshotJobResponseBodySnapshotJobOutput struct {
+	// The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	//
+	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
+	//
 	// example:
 	//
 	// http://test-bucket.oss-cn-shanghai.aliyuncs.com/output-{Count}.jpg
-	Media   *string                                             `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The three key elements of OSS.
 	OssFile *GetSnapshotJobResponseBodySnapshotJobOutputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
+	// The type of the output file. Valid values:
+	//
+	// 1.  OSS: an OSS object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -19737,19 +21251,19 @@ func (s *GetSnapshotJobResponseBodySnapshotJobOutput) SetType(v string) *GetSnap
 }
 
 type GetSnapshotJobResponseBodySnapshotJobOutputOssFile struct {
-	// OSS Bucket
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// test-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS Location
+	// The OSS location.
 	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// OSS Object
+	// The OSS object.
 	//
 	// example:
 	//
@@ -19810,22 +21324,36 @@ func (s *GetSnapshotJobResponse) SetBody(v *GetSnapshotJobResponseBody) *GetSnap
 }
 
 type GetSnapshotUrlsRequest struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The order that you use to sort the query results. Valid values: Asc and Desc.
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// Asc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 30. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The authentication timeout period. Unit: seconds Default value: 3600. Maximum value: 129600 (36 hours).
+	//
 	// example:
 	//
 	// 3600
@@ -19866,15 +21394,22 @@ func (s *GetSnapshotUrlsRequest) SetTimeout(v int64) *GetSnapshotUrlsRequest {
 }
 
 type GetSnapshotUrlsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of snapshot URLs.
 	SnapshotUrls []*string `json:"SnapshotUrls,omitempty" xml:"SnapshotUrls,omitempty" type:"Repeated"`
+	// The total number of snapshots.
+	//
 	// example:
 	//
 	// 30
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The URL of the WebVTT file.
+	//
 	// example:
 	//
 	// http://test-bucket.oss-cn-shanghai.aliyuncs.com/ouoput.vtt
@@ -20126,6 +21661,8 @@ func (s *GetStorageListResponse) SetBody(v *GetStorageListResponseBody) *GetStor
 }
 
 type GetSystemTemplateRequest struct {
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20148,10 +21685,13 @@ func (s *GetSystemTemplateRequest) SetTemplateId(v string) *GetSystemTemplateReq
 }
 
 type GetSystemTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The template information.
 	SystemTemplate *GetSystemTemplateResponseBodySystemTemplate `json:"SystemTemplate,omitempty" xml:"SystemTemplate,omitempty" type:"Struct"`
 }
 
@@ -20174,34 +21714,50 @@ func (s *GetSystemTemplateResponseBody) SetSystemTemplate(v *GetSystemTemplateRe
 }
 
 type GetSystemTemplateResponseBodySystemTemplate struct {
+	// The template state.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subtype ID of the template.
+	//
 	// example:
 	//
 	// 1
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The subtype name of the template.
+	//
 	// example:
 	//
 	// Normal
 	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
+	// The template parameters.
+	//
 	// example:
 	//
 	// {"Container":{"Format":"m3u8"},"TransConfig":{"TransMode":"onepass"},"Video":{"Codec":"H.264","Maxrate":8000,"Preset":"medium","PixFmt":"yuv420p","Width":2048,"Bitrate":3500},"Audio":{"Codec":"aac","Bitrate":160,"Samplerate":44100,"Channels":2}}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// S00000001-100060
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// M3U8-2K
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type ID of the template.
+	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type name of the template.
+	//
 	// example:
 	//
 	// TranscodeTemplate
@@ -20286,10 +21842,14 @@ func (s *GetSystemTemplateResponse) SetBody(v *GetSystemTemplateResponseBody) *G
 }
 
 type GetTemplateRequest struct {
+	// Specifies whether to return the information about the associated materials. Default value: 0. Valid values: 0 and 1. A value of 1 specifies that the information about the associated materials is returned. This parameter is valid only for regular templates.
+	//
 	// example:
 	//
 	// 0
 	RelatedMediaidFlag *string `json:"RelatedMediaidFlag,omitempty" xml:"RelatedMediaidFlag,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
@@ -20315,11 +21875,14 @@ func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Template  *GetTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The template information.
+	Template *GetTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -20341,58 +21904,130 @@ func (s *GetTemplateResponseBody) SetTemplate(v *GetTemplateResponseBodyTemplate
 }
 
 type GetTemplateResponseBodyTemplate struct {
+	// The clip parameters for submitting a video production job. You can replace mediaId and text with real values to submit a job. References:
+	//
+	// 	- [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html)
+	//
+	// 	- [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html)
+	//
 	// example:
 	//
 	// {"Media1":"mediaId","Text1":"text"}
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The template configurations.
+	//
+	// 	- For more information about the configurations of a regular template, see [Config object of a regular template](https://help.aliyun.com/document_detail/277430.html).
+	//
+	// 	- For more information about the configurations of an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html#title-3tf-skt-eoi).
+	//
 	// example:
 	//
 	// 参考Timeline模板配置详解
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The thumbnail URL.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/cover.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The source from which the template was created. Valid values:
+	//
+	// 	- AliyunConsole
+	//
+	// 	- OpenAPI
+	//
+	// 	- WebSDK
+	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The source from which the template was modified. Valid values:
+	//
+	// 	- AliyunConsole
+	//
+	// 	- OpenAPI
+	//
+	// 	- WebSDK
+	//
 	// example:
 	//
 	// OpenAPI
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// The time when the template was last modified.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// 视频添加水印模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The preview media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// The state of the preview media asset. Valid values:
+	//
+	// 	- Init: the initial state, which indicates that the source file is not ready.
+	//
+	// 	- Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+	//
+	// 	- PrepareFail: The source file failed to be prepared. For example, the information about the source file failed to be obtained.
+	//
+	// 	- Normal: The source file is ready.
+	//
 	// example:
 	//
 	// Normal
 	PreviewMediaStatus *string `json:"PreviewMediaStatus,omitempty" xml:"PreviewMediaStatus,omitempty"`
+	// The IDs of the materials associated with the template for use by the regular template editor.
+	//
 	// example:
 	//
 	// {"video":["******c04f1d4a06996144cc1a******"],"audio":["******c04f1d4a06996144cc1a******"],"image":["******c04f1d4a06996144cc1a******"]}
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
+	// The template state. Valid values:
+	//
+	// 	- Available
+	//
+	// 	- Created
+	//
+	// 	- Uploading
+	//
+	// 	- Processing
+	//
+	// 	- UploadFailed
+	//
+	// 	- ProcessFailed
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type. Valid values:
+	//
+	// 	- Timeline
+	//
+	// 	- VETemplate
+	//
 	// example:
 	//
 	// Timeline
@@ -20507,10 +22142,14 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTemplateMaterialsRequest struct {
+	// The materials that you want to query.
+	//
 	// example:
 	//
 	// ["music.mp3","config.json","assets/1.jpg"]
 	FileList *string `json:"FileList,omitempty" xml:"FileList,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20538,11 +22177,13 @@ func (s *GetTemplateMaterialsRequest) SetTemplateId(v string) *GetTemplateMateri
 }
 
 type GetTemplateMaterialsResponseBody struct {
+	// The URLs of the associated materials.
+	//
 	// example:
 	//
 	// {"music.mp3":"https://bucket.oss-cn-shanghai.aliyuncs.com/music.mp3?sign=xxx","config.json":"https://bucket.oss-cn-shanghai.aliyuncs.com/config.json?sign=xxx","assets/1.jpg":"https://bucket.oss-cn-shanghai.aliyuncs.com/assets/1.jpg?sign=xxx"}
 	MaterialUrls *string `json:"MaterialUrls,omitempty" xml:"MaterialUrls,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -20598,6 +22239,8 @@ func (s *GetTemplateMaterialsResponse) SetBody(v *GetTemplateMaterialsResponseBo
 }
 
 type GetTemplateParamsRequest struct {
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
@@ -20618,13 +22261,16 @@ func (s *GetTemplateParamsRequest) SetTemplateId(v string) *GetTemplateParamsReq
 }
 
 type GetTemplateParamsResponseBody struct {
+	// The queried parameters.
 	ParamList []*GetTemplateParamsResponseBodyParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// ****2876-6263-4B75-8F2C-CD0F7FCF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ******419c8741c1b4325f035b******
@@ -20655,13 +22301,28 @@ func (s *GetTemplateParamsResponseBody) SetTemplateId(v string) *GetTemplatePara
 }
 
 type GetTemplateParamsResponseBodyParamList struct {
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The original subtitle content.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The thumbnail URL of the original material.
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// video1
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The URL of the original material.
 	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	// The material type.
+	//
+	// Valid values:
+	//
+	// 	- Video
+	//
+	// 	- Text
+	//
+	// 	- Image
+	//
 	// example:
 	//
 	// Image
@@ -20731,6 +22392,8 @@ func (s *GetTemplateParamsResponse) SetBody(v *GetTemplateParamsResponseBody) *G
 }
 
 type GetTranscodeJobRequest struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
@@ -20751,6 +22414,8 @@ func (s *GetTranscodeJobRequest) SetParentJobId(v string) *GetTranscodeJobReques
 }
 
 type GetTranscodeJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9EDC30DC-0050-5459-B788-F761B2BE359B
@@ -20778,50 +22443,86 @@ func (s *GetTranscodeJobResponseBody) SetTranscodeParentJob(v *GetTranscodeJobRe
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJob struct {
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                                    `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
 	InputGroup []*GetTranscodeJobResponseBodyTranscodeParentJobInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	// The number of subjobs.
+	//
 	// example:
 	//
 	// 1
 	JobCount *int32 `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// transcode-job
-	Name        *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output group of the job.
 	OutputGroup []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
+	// The main job ID.
+	//
 	// example:
 	//
 	// 8b2198504dd340b7b3c9842a74fc9baa
 	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	// The completion percentage of the job.
+	//
 	// example:
 	//
 	// 0
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The ID of the request that submitted the job.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
-	RequestId      *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling configuration of the job.
 	ScheduleConfig *GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the job.
+	//
+	// 	- Success: At least one of the subjobs is successful.
+	//
+	// 	- Fail: All subjobs failed.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	SubmitTime       *string                                                          `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The list of subjobs.
 	TranscodeJobList []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList `json:"TranscodeJobList,omitempty" xml:"TranscodeJobList,omitempty" type:"Repeated"`
+	// The source of the job. Valid values:
+	//
+	// 	- API
+	//
+	// 	- WorkFlow
+	//
+	// 	- Console
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -20912,10 +22613,22 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJob) SetUserData(v string) *G
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobInputGroup struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -20941,7 +22654,9 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobInputGroup) SetType(v stri
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup struct {
-	Output        *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput        `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The output file configuration.
+	Output *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The job processing configuration.
 	ProcessConfig *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
 }
 
@@ -20964,11 +22679,28 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup) SetProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
-	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The URL of the output stream.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/video.mp4
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -20999,12 +22731,18 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) SetType
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig struct {
-	CombineConfigs  []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
-	Encryption      *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The multi-input stream merge configuration.
+	CombineConfigs []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCombineConfigs `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
+	// The encryption settings.
+	Encryption *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The watermark configuration of an image.
 	ImageWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	Subtitles       []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	TextWatermarks  []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	Transcode       *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	// The subtitle configuration.
+	Subtitles []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The configurations of the text watermark.
+	TextWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	// The transcoding configuration.
+	Transcode *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig) String() string {
@@ -21046,20 +22784,28 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig) 
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCombineConfigs struct {
+	// The audio stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 或 exclude
 	AudioIndex *string `json:"AudioIndex,omitempty" xml:"AudioIndex,omitempty"`
+	// The duration of the input stream. The default value is the duration of the video.
+	//
 	// example:
 	//
 	// 20.0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the input stream. Default value: 0.
+	//
 	// example:
 	//
 	// 0.0
 	Start *float64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The video stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21097,18 +22843,26 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCo
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption struct {
+	// The ciphertext of HLS encryption.
+	//
 	// example:
 	//
 	// MTYi00NDU0LTg5O****
 	CipherText *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	// The endpoint of the decryption service for HLS encryption.
+	//
 	// example:
 	//
 	// https://sample.com/path?CipherText=MTYi00NDU0LTg5O****
 	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	// The encryption type.
+	//
 	// example:
 	//
 	// PrivateEncryption
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The type of the key service. Valid values: KMS and Base64.
+	//
 	// example:
 	//
 	// KMS
@@ -21144,7 +22898,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEn
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -21170,24 +22927,36 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
+	// The position of the watermark on the x-axis.
+	//
 	// example:
 	//
 	// 10
 	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	// The position of the watermark on the y-axis.
+	//
 	// example:
 	//
 	// 10
-	Dy   *string                                                                                                  `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	// The watermark image file.
 	File *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 32
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The reference position of the watermark. Valid values: TopLeft, TopRight, BottomLeft, and BottomRight. Default value: TopLeft.
+	//
 	// example:
 	//
 	// TopLeft
-	ReferPos *string                                                                                                      `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	// The timeline settings.
 	Timeline *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 32
@@ -21238,10 +23007,22 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -21267,10 +23048,14 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
+	// The duration of the stream. Valid values: the number of seconds or "ToEND".
+	//
 	// example:
 	//
 	// ToEND
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 00:00:05
@@ -21296,7 +23081,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigIm
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -21322,11 +23110,16 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams struct {
+	// The file encoding format.
+	//
 	// example:
 	//
 	// UTF-8
-	CharEnc *string                                                                                            `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	File    *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	// The subtitle file.
+	File *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The format of the subtitle file.
+	//
 	// example:
 	//
 	// vtt
@@ -21357,10 +23150,22 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -21386,7 +23191,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSu
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -21412,42 +23220,62 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTe
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
+	// Indicates whether the text size was adjusted based on the output video dimensions. Valid values: true and false. Default value: false.
+	//
 	// example:
 	//
 	// false
 	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
+	// The border color.
+	//
 	// example:
 	//
 	// #006400
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// The border width.
+	//
 	// example:
 	//
 	// 0
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// 测试水印
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The transparency of the watermark.
+	//
 	// example:
 	//
 	// 1.0
 	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	// The color of the text.
+	//
 	// example:
 	//
 	// #006400
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font of the text.
+	//
 	// example:
 	//
 	// SimSun
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	// The size of the text.
+	//
 	// example:
 	//
 	// 16
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The distance of the watermark from the left edge.
+	//
 	// example:
 	//
 	// 10
 	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	// The distance of the watermark from the top edge.
+	//
 	// example:
 	//
 	// 10
@@ -21513,7 +23341,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTe
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -21539,11 +23370,16 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	Audio       *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container   *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig   *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	// The audio settings.
+	Audio *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	// The encapsulation format settings.
+	Container *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	// The encapsulation settings.
+	MuxConfig *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	// The conditional transcoding configurations.
 	TransConfig *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	Video       *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	// The video settings.
+	Video *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -21580,31 +23416,56 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
+	// The audio bitrate of the output file.
+	//
+	// 	- Valid values: [8,1000].
+	//
+	// 	- Unit: Kbit/s.
+	//
+	// 	- Default value: 128.
+	//
 	// example:
 	//
 	// 128
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels. Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Indicates whether the audio stream is deleted.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The sampling rate.
+	//
+	// 	- Default value: 44100.
+	//
+	// 	- Valid values: 22050, 32000, 44100, 48000, and 96000.
+	//
+	// 	- Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
-	Samplerate *string                                                                                                   `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Volume     *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	// The volume configurations.
+	Volume *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -21651,18 +23512,26 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
+	// The output volume.
+	//
 	// example:
 	//
 	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
+	// The volume range.
+	//
 	// example:
 	//
 	// 8
 	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	// The volume adjustment method. Valid values:
+	//
 	// example:
 	//
 	// auto
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The peak volume.
+	//
 	// example:
 	//
 	// -1
@@ -21698,6 +23567,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer struct {
+	// The container format.
+	//
 	// example:
 	//
 	// mp4
@@ -21718,6 +23589,7 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig struct {
+	// The segment settings.
 	Segment *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -21735,10 +23607,14 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
+	// The segment length.
+	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The forced segmentation point in time.
+	//
 	// example:
 	//
 	// 2,3
@@ -21764,14 +23640,106 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig struct {
-	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+	//
+	// Valid values: rescale, crop, pad, and none.
+	//
+	// Default value: none.
+	//
+	// example:
+	//
+	// none
+	AdjDarMethod *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	// Indicates whether the audio bitrate was checked. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+	//
+	// 	- false
+	//
+	// Default value:
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
+	//
+	// example:
+	//
+	// true
+	IsCheckAudioBitrate *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// Indicates whether the audio bitrate was checked. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Indicates whether the video resolution was checked. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckReso *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	// Indicates whether the video resolution was checked. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true If the width or height of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckResoFail *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	// Indicates whether the video bitrate was checked. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckVideoBitrate *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Indicates whether the video bitrate was checked. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	// The video transcoding mode. Valid values:
+	//
+	// 	- onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+	//
+	// 	- twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+	//
+	// 	- CBR: the constant bitrate mode.
+	//
+	// Default value: onepass.
+	//
+	// example:
+	//
+	// onepass
+	TransMode *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
@@ -21823,74 +23791,168 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
+	// The maximum ABR. This parameter takes effect only for Narrowband HD 1.0.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 6000
 	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	// The average bitrate of the video.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 3000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The buffer size.
+	//
+	// 	- Valid values: [1000,128000].
+	//
+	// 	- Default value: 6000.
+	//
+	// 	- Unit: KB.
+	//
 	// example:
 	//
 	// 6000
 	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The constant rate factor.
+	//
+	// 	- Valid values: [0,51].
+	//
+	// 	- Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+	//
+	// 	- If this parameter is specified, the value of Bitrate becomes invalid.
+	//
 	// example:
 	//
 	// 23
 	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	// The method of video cropping. Valid values: border: automatically detects and removes black bars. A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The frame rate.
+	//
+	// 	- Valid values: (0,60].
+	//
+	// 	- The value is 60 if the frame rate of the input video exceeds 60.
+	//
+	// 	- Default value: the frame rate of the input video.
+	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The maximum number of frames between two keyframes.
+	//
+	// 	- Valid values: [1,1080000].
+	//
+	// 	- Default value: 250.
+	//
 	// example:
 	//
 	// 250
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Default value: the height of the input video.
+	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Indicates whether the auto-rotate screen feature is enabled.
+	//
 	// example:
 	//
 	// false
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	// The maximum bitrate of the output video.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 9000
 	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	// The black bars added to the video.
+	//
+	// 	- Format: width:height:left:top.
+	//
+	// 	- Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+	//
 	// example:
 	//
 	// medium
 	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	// The encoding profile. Valid values: baseline, main, and high.
+	//
+	// 	- baseline: applicable to mobile devices.
+	//
+	// 	- main: applicable to standard-definition devices.
+	//
+	// 	- high: applicable to high-definition devices.
+	//
+	// Default value: high.
+	//
 	// example:
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Indicates whether the video was removed.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The scan mode. Valid values: interlaced and progressive.
+	//
 	// example:
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The width of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Default value: the width of the input video.
+	//
 	// example:
 	//
 	// 1920
@@ -21996,10 +24058,14 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the snapshot job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -22025,51 +24091,78 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobScheduleConfig) SetPriorit
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                                                    `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
 	InputGroup []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	// The subjob ID.
+	//
 	// example:
 	//
 	// 7d6a7e0d4db2457a8d45ff5d43e1bf0a
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The index number of the subjob in the entire job.
+	//
 	// example:
 	//
 	// 0
 	JobIndex *int32 `json:"JobIndex,omitempty" xml:"JobIndex,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// transcode-job
-	Name        *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The media information about the video generated by the job.
 	OutFileMeta *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty" type:"Struct"`
-	Output      *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput      `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The output file configuration.
+	Output *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The main job ID.
+	//
 	// example:
 	//
 	// 8b2198504dd340b7b3c9842a74fc9baa
-	ParentJobId   *string                                                                     `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	// The transcoding configuration.
 	ProcessConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
+	// The ID of the request that submitted the job.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
-	RequestId      *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling information about the job.
 	ScheduleConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the transcoding job. Valid values: Init (the job is submitted), Success (the job is successful), Fail (the job failed), and Deleted (the job is deleted).
+	//
 	// example:
 	//
 	// Init
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job submission result.
+	//
 	// example:
 	//
 	// {}
 	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -22165,11 +24258,28 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList) SetUserD
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup struct {
+	// The URL of the media asset. This parameter is specified only when the media asset is transcoded.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/video.mp4
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -22200,8 +24310,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta struct {
+	// The information about the audio stream.
 	AudioStreamInfoList []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The basic file information.
+	FileBasicInfo *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The information about the video stream.
 	VideoStreamInfoList []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -22229,62 +24342,92 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 0.f
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The sound channel layout.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The encoder tag.
+	//
 	// example:
 	//
 	// 0x000f
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The name of the encoder tag.
+	//
 	// example:
 	//
 	// [15][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sample format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sampling rate. Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
@@ -22375,50 +24518,74 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo struct {
+	// The video bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration of the video. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// file.m3u8
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 31737
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The state of the file.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type. Valid values: source_file and transcode_file.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The URL of the file.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The name of the video format.
+	//
 	// example:
 	//
 	// hls,applehttp
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 486c2890096871edba6f81848c016303
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -22494,94 +24661,146 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	AvgFps *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	// The tag of the encoding format.
+	//
 	// example:
 	//
 	// 0x001b
 	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
+	// The tag string of the encoding format.
+	//
 	// example:
 	//
 	// [27][0][0][0]
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/50
 	CodecTimeBase *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// The display aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+	//
+	// 	- 0: The stream contains no B-frames.
+	//
+	// 	- 1: The stream contains one B-frame.
+	//
+	// 	- 2: The stream contains multiple consecutive B-frames.
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 31
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 10040
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The encoder profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle of the video image. Valid values: 0, 90, 180, and 270. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The aspect ratio of the area from which the sampling points are collected.
+	//
 	// example:
 	//
 	// 478:477
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
 	TimeBase *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -22712,11 +24931,28 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
-	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The path of the transcoded output stream. This parameter is required only when the output is a media asset.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/{MediaId}/{JobId}.mp4
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -22747,13 +24983,24 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) Se
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig struct {
-	CombineConfigs  []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
-	Encryption      *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The multi-input stream merge configuration.
+	CombineConfigs []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
+	// The encryption settings.
+	Encryption *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The watermark configuration of an image.
 	ImageWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	IsInheritTags   *bool                                                                                        `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
-	Subtitles       []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	TextWatermarks  []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	Transcode       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	// Indicates whether the tags of the input stream are inherited in the output stream. This parameter does not take effect when the input is not a media asset. Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsInheritTags *bool `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
+	// The subtitle configuration.
+	Subtitles []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The configurations of the text watermark.
+	TextWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	// The transcoding configuration.
+	Transcode *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) String() string {
@@ -22800,20 +25047,28 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs struct {
+	// The audio stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 或 exclude
 	AudioIndex *string `json:"AudioIndex,omitempty" xml:"AudioIndex,omitempty"`
+	// The duration of the input stream. The default value is the duration of the video.
+	//
 	// example:
 	//
 	// 20.0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the input stream. Default value: 0.
+	//
 	// example:
 	//
 	// 0.0
 	Start *float64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The video stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22851,18 +25106,26 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption struct {
+	// The ciphertext of HTTP Live Streaming (HLS) encryption.
+	//
 	// example:
 	//
 	// MTYi00NDU0LTg5O****
 	CipherText *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	// The endpoint of the decryption service for HLS encryption.
+	//
 	// example:
 	//
 	// https://sample.com/path?CipherText=MTYi00NDU0LTg5O****
 	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	// The encryption type.
+	//
 	// example:
 	//
 	// PrivateEncryption
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The type of the key service. Valid values: KMS and Base64.
+	//
 	// example:
 	//
 	// KMS
@@ -22898,7 +25161,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -22924,24 +25190,36 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams struct {
+	// The position of the watermark on the x-axis.
+	//
 	// example:
 	//
 	// 10
 	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	// The position of the watermark on the y-axis.
+	//
 	// example:
 	//
 	// 10
-	Dy   *string                                                                                                       `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	// The watermark image file.
 	File *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 32
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The reference position of the watermark. Valid values: TopLeft, TopRight, BottomLeft, and BottomRight. Default value: TopLeft.
+	//
 	// example:
 	//
 	// TopLeft
-	ReferPos *string                                                                                                           `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	// The timeline settings.
 	Timeline *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 32
@@ -22992,10 +25270,22 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -23021,10 +25311,14 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline struct {
+	// The duration of the stream. Valid values: the number of seconds or "ToEND".
+	//
 	// example:
 	//
 	// ToEND
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 00:00:05
@@ -23050,7 +25344,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -23076,11 +25373,16 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams struct {
+	// The file encoding format.
+	//
 	// example:
 	//
 	// UTF-8
-	CharEnc *string                                                                                                 `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	File    *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	// The subtitle file.
+	File *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The format of the subtitle file.
+	//
 	// example:
 	//
 	// vtt
@@ -23111,10 +25413,22 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -23140,7 +25454,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -23166,42 +25483,62 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams struct {
+	// Indicates whether the text size was adjusted based on the output video dimensions. Valid values: true and false. Default value: false.
+	//
 	// example:
 	//
 	// false
 	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
+	// The border color.
+	//
 	// example:
 	//
 	// #006400
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// The border width.
+	//
 	// example:
 	//
 	// 0
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// 测试水印
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The transparency of the watermark.
+	//
 	// example:
 	//
 	// 1.0
 	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	// The color of the text.
+	//
 	// example:
 	//
 	// #006400
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font of the text.
+	//
 	// example:
 	//
 	// SimSun
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	// The size of the text.
+	//
 	// example:
 	//
 	// 16
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The distance of the watermark from the left edge.
+	//
 	// example:
 	//
 	// 10
 	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	// The distance of the watermark from the top edge.
+	//
 	// example:
 	//
 	// 10
@@ -23267,7 +25604,10 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -23293,12 +25633,17 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams struct {
-	Audio       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container   *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig   *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Tags        map[string]*string                                                                                             `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The audio settings.
+	Audio *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	// The encapsulation format settings.
+	Container *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	// The encapsulation settings.
+	MuxConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Tags      map[string]*string                                                                                           `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The conditional transcoding configurations.
 	TransConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	Video       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	// The video settings.
+	Video *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) String() string {
@@ -23340,31 +25685,54 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio struct {
+	// The audio bitrate of the output file.
+	//
+	// 	- Valid values: [8,1000].
+	//
+	// 	- Unit: Kbit/s.
+	//
+	// 	- Default value: 128.
+	//
 	// example:
 	//
 	// 128
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels. Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Indicates whether the audio stream is deleted.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The sampling rate.
+	//
+	// 	- Default value: 44100. Valid values: 22050, 32000, 44100, 48000, and 96000.
+	//
+	// 	- Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
-	Samplerate *string                                                                                                        `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Volume     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	// The volume configurations.
+	Volume *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -23411,18 +25779,26 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume struct {
+	// The output volume.
+	//
 	// example:
 	//
 	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
+	// The volume range.
+	//
 	// example:
 	//
 	// 8
 	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	// The volume adjustment method. Valid values:
+	//
 	// example:
 	//
 	// auto
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The peak volume.
+	//
 	// example:
 	//
 	// -1
@@ -23458,6 +25834,8 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer struct {
+	// The container format.
+	//
 	// example:
 	//
 	// mp4
@@ -23478,6 +25856,7 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig struct {
+	// The segment settings.
 	Segment *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -23495,10 +25874,14 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
+	// The segment length.
+	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The forced segmentation point in time.
+	//
 	// example:
 	//
 	// 2,3
@@ -23524,14 +25907,108 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig struct {
-	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+	//
+	// Valid values: rescale, crop, pad, and none.
+	//
+	// Default value: none.
+	//
+	// For more information about examples, see How do I set the resolution for an output video?
+	//
+	// example:
+	//
+	// none
+	AdjDarMethod *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	// Indicates whether the audio bitrate was checked. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+	//
+	// 	- false
+	//
+	// Default value:
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
+	//
+	// example:
+	//
+	// true
+	IsCheckAudioBitrate *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// Indicates whether the audio bitrate was checked. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Indicates whether the video resolution was checked. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckReso *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	// Indicates whether the video resolution was checked. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true If the width or height of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckResoFail *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	// Indicates whether the video bitrate was checked. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckVideoBitrate *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Indicates whether the video bitrate was checked. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	// The video transcoding mode. Valid values:
+	//
+	// 	- onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+	//
+	// 	- twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+	//
+	// 	- CBR: the constant bitrate mode.
+	//
+	// Default value: onepass.
+	//
+	// example:
+	//
+	// onepass
+	TransMode *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
@@ -23583,74 +26060,166 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo struct {
+	// The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 6000
 	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	// The average bitrate of the video.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 3000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The buffer size.
+	//
+	// 	- Valid values: [1000,128000].
+	//
+	// 	- Default value: 6000.
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 6000
 	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The constant rate factor.
+	//
+	// 	- Valid values: [0,51].
+	//
+	// 	- Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+	//
+	// If this parameter is specified, the value of Bitrate becomes invalid.
+	//
 	// example:
 	//
 	// 23
 	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	// The method of video cropping. Valid values:
+	//
+	// 	- border: automatically detects and removes black bars.
+	//
+	// 	- A value in the width:height:left:top format: crops the videos based on the custom settings.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The frame rate.
+	//
+	// 	- Valid values: (0,60]. The value is 60 if the frame rate of the input video exceeds 60.
+	//
+	// 	- Default value: the frame rate of the input video.
+	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The maximum number of frames between two keyframes.
+	//
+	// 	- Valid values: [1,1080000].
+	//
+	// 	- Default value: 250.
+	//
 	// example:
 	//
 	// 250
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// Default value: the height of the input video.
+	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Indicates whether the auto-rotate screen feature is enabled.
+	//
 	// example:
 	//
 	// false
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	// The maximum bitrate of the output video.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 9000
 	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	// The black bars added to the video. Format: width:height:left:top.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+	//
 	// example:
 	//
 	// medium
 	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	// The encoding profile. Valid values: baseline, main, and high.
+	//
+	// 	- baseline: applicable to mobile devices.
+	//
+	// 	- main: applicable to standard-definition devices.
+	//
+	// 	- high: applicable to high-definition devices.
+	//
+	// Default value: high.
+	//
 	// example:
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Indicates whether the video was removed.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The scan mode. Valid values: interlaced and progressive.
+	//
 	// example:
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The width of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// Default value: the width of the input video.
+	//
 	// example:
 	//
 	// 1920
@@ -23756,10 +26325,14 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the snapshot job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -24440,6 +27013,8 @@ func (s *GetVideoListResponse) SetBody(v *GetVideoListResponseBody) *GetVideoLis
 }
 
 type GetWorkflowTaskRequest struct {
+	// The ID of the workflow task.
+	//
 	// example:
 	//
 	// ******4215e042b3966ca5441e******
@@ -24460,12 +27035,13 @@ func (s *GetWorkflowTaskRequest) SetTaskId(v string) *GetWorkflowTaskRequest {
 }
 
 type GetWorkflowTaskResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// ******0C-7870-15FE-B96F-8880BB******
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the workflow task.
 	WorkflowTask *GetWorkflowTaskResponseBodyWorkflowTask `json:"WorkflowTask,omitempty" xml:"WorkflowTask,omitempty" type:"Struct"`
 }
 
@@ -24488,23 +27064,46 @@ func (s *GetWorkflowTaskResponseBody) SetWorkflowTask(v *GetWorkflowTaskResponse
 }
 
 type GetWorkflowTaskResponseBodyWorkflowTask struct {
+	// The results for all nodes of the workflow task.
 	ActivityResults *string `json:"ActivityResults,omitempty" xml:"ActivityResults,omitempty"`
+	// The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-01-04T02:05:17Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the task was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-01-04T02:06:19Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The task state.
+	//
+	// Valid values:
+	//
+	// 	- Init: The task is being initialized.
+	//
+	// 	- Failed: The task failed.
+	//
+	// 	- Canceled: The task is canceled.
+	//
+	// 	- Processing: The task is in progress.
+	//
+	// 	- Succeed: The task is successful.
+	//
 	// example:
 	//
 	// Succeed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the workflow task.
+	//
 	// example:
 	//
 	// ******4215e042b3966ca5441e******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The input of the workflow task.
+	//
 	// example:
 	//
 	// {
@@ -24515,10 +27114,13 @@ type GetWorkflowTaskResponseBodyWorkflowTask struct {
 	//
 	// }
 	TaskInput *string `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
+	// The user-defined field that was specified when the workflow task was submitted.
+	//
 	// example:
 	//
 	// {"NotifyAddress":"http://xx.xx.xxx"}
-	UserData *string                                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The workflow Information.
 	Workflow *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow `json:"Workflow,omitempty" xml:"Workflow,omitempty" type:"Struct"`
 }
 
@@ -24571,23 +27173,48 @@ func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetWorkflow(v *GetWorkflowTask
 }
 
 type GetWorkflowTaskResponseBodyWorkflowTaskWorkflow struct {
+	// The time when the workflow was created.
+	//
 	// example:
 	//
 	// 2022-11-27T10:02:12Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the workflow was last modified.
+	//
 	// example:
 	//
 	// 2022-11-29T02:06:19Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workflow name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workflow state.
+	//
+	// Valid values:
+	//
+	// 	- Active
+	//
+	// 	- Inactive
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workflow type.
+	//
+	// Valid values:
+	//
+	// 	- Customize: custom workflow.
+	//
+	// 	- System: system workflow.
+	//
+	// 	- Common: user-created workflow.
+	//
 	// example:
 	//
 	// Common
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// ******63dca94c609de02ac0d1******
@@ -25179,14 +27806,28 @@ func (s *ListAllPublicMediaTagsResponse) SetBody(v *ListAllPublicMediaTagsRespon
 }
 
 type ListAvatarTrainingJobsRequest struct {
+	// 	- The page number.
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// 	- The number of entries per page.
+	//
+	// 	- Default value: 10.
+	//
+	// 	- Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 	- The job state.
+	//
+	// 	- Valid values: Init, Queuing, Training, Success, and Fail.
+	//
 	// example:
 	//
 	// Success
@@ -25217,11 +27858,20 @@ func (s *ListAvatarTrainingJobsRequest) SetStatus(v string) *ListAvatarTrainingJ
 }
 
 type ListAvatarTrainingJobsResponseBody struct {
+	// The data returned.
 	Data *ListAvatarTrainingJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -25252,7 +27902,10 @@ func (s *ListAvatarTrainingJobsResponseBody) SetSuccess(v bool) *ListAvatarTrain
 }
 
 type ListAvatarTrainingJobsResponseBodyData struct {
+	// The list of digital human training jobs.
 	AvatarTrainingJobList []*ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList `json:"AvatarTrainingJobList,omitempty" xml:"AvatarTrainingJobList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 3
@@ -25278,37 +27931,62 @@ func (s *ListAvatarTrainingJobsResponseBodyData) SetTotalCount(v int64) *ListAva
 }
 
 type ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList struct {
+	// The description of the digital human.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	// The ID of the digital human.
+	//
 	// example:
 	//
 	// Avatar-XXX
-	AvatarId   *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The name of the digital human.
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	// The type of the digital human.
+	//
 	// example:
 	//
 	// 2DAvatar
 	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	// 	- The time when the job was created.
+	//
+	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 	- The time when the first training was initiated.
+	//
+	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	FirstTrainingTime *string `json:"FirstTrainingTime,omitempty" xml:"FirstTrainingTime,omitempty"`
+	// The ID of the digital human training job.
+	//
 	// example:
 	//
 	// *****aded114489ea02e0addf93*****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 	- The time when the last training was initiated.
+	//
+	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	LastTrainingTime *string `json:"LastTrainingTime,omitempty" xml:"LastTrainingTime,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status description.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The media asset ID of the portrait image.
+	//
 	// example:
 	//
 	// *****aded114489ea02e0addf93*****
 	Portrait *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	// The state of the digital human training job.
+	//
 	// example:
 	//
 	// Normal
@@ -25408,14 +28086,26 @@ func (s *ListAvatarTrainingJobsResponse) SetBody(v *ListAvatarTrainingJobsRespon
 }
 
 type ListAvatarsRequest struct {
+	// 	- The type of the digital human.
+	//
+	// 	- 2DAvatar
+	//
 	// example:
 	//
 	// 2DAvatar
 	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	// 	- The page number.
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// 	- The number of entries per page.
+	//
+	// 	- Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -25446,11 +28136,20 @@ func (s *ListAvatarsRequest) SetPageSize(v int32) *ListAvatarsRequest {
 }
 
 type ListAvatarsResponseBody struct {
+	// The data returned.
 	Data *ListAvatarsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -25481,7 +28180,10 @@ func (s *ListAvatarsResponseBody) SetSuccess(v bool) *ListAvatarsResponseBody {
 }
 
 type ListAvatarsResponseBodyData struct {
+	// The queried digital humans.
 	AvatarList []*ListAvatarsResponseBodyDataAvatarList `json:"AvatarList,omitempty" xml:"AvatarList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -25507,25 +28209,40 @@ func (s *ListAvatarsResponseBodyData) SetTotalCount(v int64) *ListAvatarsRespons
 }
 
 type ListAvatarsResponseBodyDataAvatarList struct {
+	// The description of the digital human.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	// The ID of the digital human.
+	//
 	// example:
 	//
 	// Avatar-XXX
-	AvatarId   *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The name of the digital human.
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	// The type of the digital human.
+	//
 	// example:
 	//
 	// 2DAvatar
 	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	// The media asset ID of the portrait image.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
 	Portrait *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	// The thumbnail URL.
+	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-hangzhou.aliyuncs.com/thumbnail.png
-	Thumbnail   *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
-	Transparent *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// Indicates whether the digital human image supports the alpha channels.
+	//
+	// example:
+	//
+	// true
+	Transparent *bool `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
 }
 
 func (s ListAvatarsResponseBodyDataAvatarList) String() string {
@@ -25601,34 +28318,76 @@ func (s *ListAvatarsResponse) SetBody(v *ListAvatarsResponseBody) *ListAvatarsRe
 }
 
 type ListBatchMediaProducingJobsRequest struct {
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2023-06-05T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the quick video production job.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job type.
+	//
+	// Valid values:
+	//
+	// 	- Script: script-based editing job that mixes media assets.
+	//
+	// 	- Smart_Mix: intelligent editing job that mixes media assets.
+	//
 	// example:
 	//
 	// Script
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The maximum number of entries to return.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// mRZkKAovub0xWVfH14he4Q==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sorting parameter. Valid values:
+	//
+	// 	- desc (default): sorted by creation time in descending order.
+	//
+	// 	- asc: sorted by creation time in ascending order.
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-02-02T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job state.
+	//
+	// Valid values:
+	//
+	// 	- Finished
+	//
+	// 	- Init
+	//
+	// 	- Failed
+	//
+	// 	- Processing
+	//
 	// example:
 	//
 	// Finished
@@ -25684,16 +28443,23 @@ func (s *ListBatchMediaProducingJobsRequest) SetStatus(v string) *ListBatchMedia
 }
 
 type ListBatchMediaProducingJobsResponseBody struct {
+	// The queried quick video production jobs.
 	EditingBatchJobList []*ListBatchMediaProducingJobsResponseBodyEditingBatchJobList `json:"EditingBatchJobList,omitempty" xml:"EditingBatchJobList,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// 8EqYpQbZ6Eh7+Zz8DxVYoQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -25730,14 +28496,20 @@ func (s *ListBatchMediaProducingJobsResponseBody) SetRequestId(v string) *ListBa
 }
 
 type ListBatchMediaProducingJobsResponseBodyEditingBatchJobList struct {
+	// The time when the job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-06-09T06:38:09Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-06-09T06:36:48Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The editing configurations. For more information, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
+	//
 	// example:
 	//
 	// {
@@ -25762,20 +28534,40 @@ type ListBatchMediaProducingJobsResponseBodyEditingBatchJobList struct {
 	//
 	// }
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	Extend        *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The extended information of the job.
+	//
+	// example:
+	//
+	// {}
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The input configurations.
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The ID of the quick video production job.
+	//
 	// example:
 	//
 	// ******7ecbee4c6d9b8474498e******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job type.
+	//
+	// Valid values:
+	//
+	// 	- Script: script-based editing job that mixes media assets.
+	//
+	// 	- Smart_Mix: intelligent editing job that mixes media assets.
+	//
 	// example:
 	//
 	// Script
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2023-06-09T06:37:58Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
+	//
 	// example:
 	//
 	// {
@@ -25794,10 +28586,23 @@ type ListBatchMediaProducingJobsResponseBodyEditingBatchJobList struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// The job state.
+	//
+	// Valid values:
+	//
+	// 	- Finished
+	//
+	// 	- Init
+	//
+	// 	- Failed
+	//
+	// 	- Processing
+	//
 	// example:
 	//
 	// Finished
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/zh/ims/use-cases/to-configure-a-callback-when-a-clip-completes).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -25894,30 +28699,100 @@ func (s *ListBatchMediaProducingJobsResponse) SetBody(v *ListBatchMediaProducing
 }
 
 type ListCustomTemplatesRequest struct {
+	// The template name.
+	//
 	// example:
 	//
 	// test-template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order in which the entries are sorted. Valid values:
+	//
+	// 	- CreateTimeDesc: sorted by creation time in descending order.
+	//
+	// 	- CreateTimeAsc: sorted by creation time in ascending order.
+	//
 	// example:
 	//
 	// CreateTimeDesc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The subtype ID of the template.
+	//
+	// 	- Valid values for transcoding templates:
+	//
+	//     	- 1 (Normal): regular template.
+	//
+	//     	- 2 (AudioTranscode): audio transcoding template.
+	//
+	//     	- 3 (Remux): container format conversion template.
+	//
+	//     	- 4 (NarrowBandV1): Narrowband HD 1.0 template.
+	//
+	//     	- 5 (NarrowBandV2): Narrowband HD 2.0 template.
+	//
+	// 	- Valid values for snapshot templates:
+	//
+	//     	- 1 (Normal): regular template.
+	//
+	//     	- 2 (Sprite): sprite template.
+	//
+	//     	- 3 (WebVtt): WebVTT template.
+	//
+	// 	- Valid values for AI-assisted content moderation templates:
+	//
+	//     	- 1 (Video): video moderation template.
+	//
+	//     	- 2 (Audio): audio moderation template.
+	//
+	//     	- 3 (Image): image moderation template.
+	//
+	// 	- Valid values for AI-assisted intelligent erasure templates:
+	//
+	//     	- 1 (VideoDelogo): logo erasure template.
+	//
+	//     	- 2 (VideoDetext): subtitle erasure template.
+	//
 	// example:
 	//
 	// 2
 	Subtype *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type. Valid values:
+	//
+	// 	- 1: transcoding template.
+	//
+	// 	- 2: snapshot template.
+	//
+	// 	- 3: animated image template.
+	//
+	// 	- 4\\. image watermark template.
+	//
+	// 	- 5: text watermark template.
+	//
+	// 	- 6: subtitle template.
+	//
+	// 	- 7: AI-assisted content moderation template.
+	//
+	// 	- 8: AI-assisted intelligent thumbnail template.
+	//
+	// 	- 9: AI-assisted intelligent erasure template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25970,11 +28845,16 @@ func (s *ListCustomTemplatesRequest) SetType(v string) *ListCustomTemplatesReque
 }
 
 type ListCustomTemplatesResponseBody struct {
+	// The queried templates.
 	CustomTemplateList []*ListCustomTemplatesResponseBodyCustomTemplateList `json:"CustomTemplateList,omitempty" xml:"CustomTemplateList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of templates.
+	//
 	// example:
 	//
 	// 20
@@ -26005,47 +28885,79 @@ func (s *ListCustomTemplatesResponseBody) SetTotal(v int32) *ListCustomTemplates
 }
 
 type ListCustomTemplatesResponseBodyCustomTemplateList struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime   *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	FrontendHint *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint `json:"FrontendHint,omitempty" xml:"FrontendHint,omitempty" type:"Struct"`
+	// Indicates whether the template is the default template.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The time when the template was last modified.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The template state.
+	//
+	// Valid values:
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subtype ID of the template.
+	//
 	// example:
 	//
 	// 2
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The subtype name of the template.
+	//
 	// example:
 	//
 	// AudioTranscode
 	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
+	// The template parameters.
+	//
 	// example:
 	//
 	// {"Container":{"Format":"mp3"},"Audio":{"Codec":"mp3","Bitrate":"64","Samplerate":"22050","Channels":"2"}}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// test-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type ID of the template.
+	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type name of the template.
+	//
 	// example:
 	//
 	// TranscodeTemplate
@@ -26184,15 +29096,30 @@ func (s *ListCustomTemplatesResponse) SetBody(v *ListCustomTemplatesResponseBody
 }
 
 type ListCustomizedVoiceJobsRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the human voice cloning job. Valid values:
+	//
+	// 	- Basic
+	//
+	// 	- Standard
+	//
+	// > : If you do not specify this parameter, the default value Basic is used.
+	//
+	// example:
+	//
+	// Standard
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListCustomizedVoiceJobsRequest) String() string {
@@ -26219,11 +29146,16 @@ func (s *ListCustomizedVoiceJobsRequest) SetType(v string) *ListCustomizedVoiceJ
 }
 
 type ListCustomizedVoiceJobsResponseBody struct {
+	// The data returned.
 	Data *ListCustomizedVoiceJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true false
+	//
 	// example:
 	//
 	// true
@@ -26254,7 +29186,10 @@ func (s *ListCustomizedVoiceJobsResponseBody) SetSuccess(v bool) *ListCustomized
 }
 
 type ListCustomizedVoiceJobsResponseBodyData struct {
+	// The queried human voice cloning jobs.
 	CustomizedVoiceJobList []*ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList `json:"CustomizedVoiceJobList,omitempty" xml:"CustomizedVoiceJobList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 271
@@ -26280,34 +29215,91 @@ func (s *ListCustomizedVoiceJobsResponseBodyData) SetTotalCount(v int32) *ListCu
 }
 
 type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
+	// 	- The time when the job was created.
+	//
+	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-04-01T06:23:59Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The gender. Valid values:
+	//
+	// 	- female
+	//
+	// 	- male
+	//
 	// example:
 	//
 	// female
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-06-27T02:42:28Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the human voice cloning job.
+	//
 	// example:
 	//
 	// 2245ab99a7fd4116a4fd3f499b7a56c5
-	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The scenario. Valid values:
+	//
+	// 	- story
+	//
+	// 	- interaction
+	//
+	// 	- navigation
+	//
 	// example:
 	//
 	// story
 	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// The job state. Valid values:
+	//
+	// 	- Initialization
+	//
+	// 	- AudioDetecting
+	//
+	// 	- PreTraining
+	//
+	// 	- Training
+	//
+	// 	- Success
+	//
+	// 	- Fail
+	//
 	// example:
 	//
 	// Success
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 	- The voice type. Valid values:
+	//
+	//     	- Basic
+	//
+	//     	- Standard
+	//
+	// example:
+	//
+	// Standard
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The voice description.
+	//
+	// 	- The description can be up to 256 characters in length.
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	// The voice ID.
+	//
 	// example:
 	//
 	// xiaozhuan
-	VoiceId   *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	// The voice name.
+	//
+	// 	- The name can be up to 32 characters in length.
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 
@@ -26404,15 +29396,30 @@ func (s *ListCustomizedVoiceJobsResponse) SetBody(v *ListCustomizedVoiceJobsResp
 }
 
 type ListCustomizedVoicesRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 	- The voice type. Valid values:
+	//
+	//     	- Basic
+	//
+	//     	- Standard
+	//
+	// 	- If you do not specify this parameter, the default value Basic is used.
+	//
+	// example:
+	//
+	// Standard
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListCustomizedVoicesRequest) String() string {
@@ -26439,11 +29446,20 @@ func (s *ListCustomizedVoicesRequest) SetType(v string) *ListCustomizedVoicesReq
 }
 
 type ListCustomizedVoicesResponseBody struct {
+	// The data returned.
 	Data *ListCustomizedVoicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -26474,7 +29490,10 @@ func (s *ListCustomizedVoicesResponseBody) SetSuccess(v bool) *ListCustomizedVoi
 }
 
 type ListCustomizedVoicesResponseBodyData struct {
+	// The queried personalized human voices.
 	CustomizedVoiceList []*ListCustomizedVoicesResponseBodyDataCustomizedVoiceList `json:"CustomizedVoiceList,omitempty" xml:"CustomizedVoiceList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 41
@@ -26500,24 +29519,53 @@ func (s *ListCustomizedVoicesResponseBodyData) SetTotalCount(v int32) *ListCusto
 }
 
 type ListCustomizedVoicesResponseBodyDataCustomizedVoiceList struct {
+	// The media asset ID of the sample audio file.
+	//
 	// example:
 	//
 	// ****4d5e829d498aaf966b119348****
 	DemoAudioMediaId *string `json:"DemoAudioMediaId,omitempty" xml:"DemoAudioMediaId,omitempty"`
+	// The gender. Valid values:
+	//
+	// 	- female
+	//
+	// 	- male
+	//
 	// example:
 	//
 	// male
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The scenario. Valid values:
+	//
+	// 	- story
+	//
+	// 	- interaction
+	//
+	// 	- navigation
+	//
 	// example:
 	//
 	// story
-	Scenario  *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// 	- The voice type. Valid values:
+	//
+	//     	- Basic
+	//
+	//     	- Standard
+	//
+	// example:
+	//
+	// Standard
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The voice description.
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	// The voice ID.
+	//
 	// example:
 	//
 	// xiaozhuan
-	VoiceId   *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	// The voice name.
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 
@@ -26594,6 +29642,8 @@ func (s *ListCustomizedVoicesResponse) SetBody(v *ListCustomizedVoicesResponseBo
 }
 
 type ListDNADBRequest struct {
+	// The IDs of the media fingerprint libraries. We recommend that you query at most 10 libraries at a time. Separate multiple library IDs with commas (,).
+	//
 	// example:
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****,78dc866518b843259669df58ed30****
@@ -26638,7 +29688,10 @@ func (s *ListDNADBRequest) SetResourceOwnerId(v int64) *ListDNADBRequest {
 }
 
 type ListDNADBResponseBody struct {
+	// The queried media fingerprint libraries.
 	DBList []*ListDNADBResponseBodyDBList `json:"DBList,omitempty" xml:"DBList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D7393642CA58
@@ -26664,19 +29717,42 @@ func (s *ListDNADBResponseBody) SetRequestId(v string) *ListDNADBResponseBody {
 }
 
 type ListDNADBResponseBodyDBList struct {
+	// The ID of the media fingerprint library.
+	//
 	// example:
 	//
 	// 88c6ca184c0e47098a5b665e2a12****
-	DBId        *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	// The description of the media fingerprint library.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The model of the media fingerprint library. Valid values:
+	//
+	// 	- **Video**
+	//
+	// 	- **Audio**
+	//
+	// 	- **Image**
+	//
+	// 	- **Text*	- (supported only in the China (Shanghai) region)
+	//
 	// example:
 	//
 	// Video
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The name of the media fingerprint library.
+	//
 	// example:
 	//
 	// example-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The state of the media fingerprint library. Default value: **offline**. ****Valid values:
+	//
+	// 	- **offline**: The media fingerprint library is offline.
+	//
+	// 	- **active**: The media fingerprint library is online.
+	//
+	// 	- **deleted**: The media fingerprint library is deleted.
+	//
 	// example:
 	//
 	// active
@@ -26746,18 +29822,24 @@ func (s *ListDNADBResponse) SetBody(v *ListDNADBResponseBody) *ListDNADBResponse
 }
 
 type ListDNAFilesRequest struct {
+	// The ID of the media fingerprint library.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****
 	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// ae0fd49c0840e14daf0d66a75b83****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
@@ -26810,11 +29892,16 @@ func (s *ListDNAFilesRequest) SetResourceOwnerId(v int64) *ListDNAFilesRequest {
 }
 
 type ListDNAFilesResponseBody struct {
+	// The queried files.
 	FileList []*ListDNAFilesResponseBodyFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ae0fd49c0840e14daf0d66a75b83****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2AE89FA5-E620-56C7-9B80-75D09757385A
@@ -26845,7 +29932,10 @@ func (s *ListDNAFilesResponseBody) SetRequestId(v string) *ListDNAFilesResponseB
 }
 
 type ListDNAFilesResponseBodyFileList struct {
+	// The Object Storage Service (OSS) information about the input file.
 	InputFile *ListDNAFilesResponseBodyFileListInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+	// The primary key of the file.
+	//
 	// example:
 	//
 	// ae0fd49c0840e14daf0d66a75b83****
@@ -26871,14 +29961,20 @@ func (s *ListDNAFilesResponseBodyFileList) SetPrimaryKey(v string) *ListDNAFiles
 }
 
 type ListDNAFilesResponseBodyFileListInputFile struct {
+	// The name of the OSS bucket in which the input file is stored.
+	//
 	// example:
 	//
 	// example-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The OSS region in which the input file resides.
+	//
 	// example:
 	//
 	// oss-cn-beijing
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The name of the OSS object that is used as the input file.
+	//
 	// example:
 	//
 	// example-****.mp4
@@ -26938,30 +30034,56 @@ func (s *ListDNAFilesResponse) SetBody(v *ListDNAFilesResponseBody) *ListDNAFile
 }
 
 type ListDynamicImageJobsRequest struct {
+	// The end of the time range during which the jobs to be queried were created.
+	//
 	// example:
 	//
 	// 2022-07-14T00:00:00Z
 	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// cdb3e74639973036bc84
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The order that you use to sort the query results. Valid values:
+	//
+	// 1.  CreateTimeAsc: sorts the jobs by creation time in ascending order.
+	//
+	// 2.  CreateTimeDesc: sorts the jobs by creation time in descending order.
+	//
 	// example:
 	//
 	// CreateTimeDesc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range during which the jobs to be queried were created.
+	//
 	// example:
 	//
 	// 2022-07-12T00:00:00Z
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
+	// The state of the job.
+	//
+	// Valid values:
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
 	// example:
 	//
 	// Success
@@ -27012,11 +30134,16 @@ func (s *ListDynamicImageJobsRequest) SetStatus(v string) *ListDynamicImageJobsR
 }
 
 type ListDynamicImageJobsResponseBody struct {
+	// The list of jobs.
 	Jobs []*ListDynamicImageJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -27047,44 +30174,80 @@ func (s *ListDynamicImageJobsResponseBody) SetRequestId(v string) *ListDynamicIm
 }
 
 type ListDynamicImageJobsResponseBodyJobs struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-07-12T16:30:54Z
-	FinishTime *string                                    `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *ListDynamicImageJobsResponseBodyJobsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Input *ListDynamicImageJobsResponseBodyJobsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2022-07-12T16:30:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// SampleJob
-	Name   *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
 	Output *ListDynamicImageJobsResponseBodyJobsOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The state of the job.
+	//
+	// 	- **Success**: The job is successful.
+	//
+	// 	- **Fail**: The job failed.
+	//
+	// 	- **Init**: The job is submitted.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The request trigger source.
+	//
+	// Valid values:
+	//
+	// 	- Console
+	//
+	// 	- Workflow
+	//
+	// 	- API
+	//
 	// example:
 	//
 	// API
@@ -27160,10 +30323,26 @@ func (s *ListDynamicImageJobsResponseBodyJobs) SetTriggerSource(v string) *ListD
 }
 
 type ListDynamicImageJobsResponseBodyJobsInput struct {
+	// The input file. The file can be an OSS object or a media asset. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  OSS://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[regionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: an Object Storage Service (OSS) object.
+	//
+	// 2.  Media: a media asset.
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// OSS
@@ -27189,10 +30368,26 @@ func (s *ListDynamicImageJobsResponseBodyJobsInput) SetType(v string) *ListDynam
 }
 
 type ListDynamicImageJobsResponseBodyJobsOutput struct {
+	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  OSS://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 1.  OSS: an OSS object.
+	//
+	// 2.  Media: a media asset.
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// Media
@@ -30627,30 +33822,54 @@ func (s *ListMediaBasicInfosResponse) SetBody(v *ListMediaBasicInfosResponseBody
 }
 
 type ListMediaInfoJobsRequest struct {
+	// The end of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-07-15T00:00:00Z
 	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 7b38a5d86f1e47838927b6e7ccb11cbe
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The order that you use to sort the query results. Valid values:
+	//
+	// 	- CreateTimeDesc: sorts the query results by creation time in descending order.
+	//
+	// 	- CreateTimeAsc: sorts the query results by creation time in ascending order.
+	//
 	// example:
 	//
 	// CreateTimeDesc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-07-01T00:00:00Z
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
+	// The state of the job. Valid values:
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
 	// example:
 	//
 	// Success
@@ -30701,11 +33920,16 @@ func (s *ListMediaInfoJobsRequest) SetStatus(v string) *ListMediaInfoJobsRequest
 }
 
 type ListMediaInfoJobsResponseBody struct {
+	// The list of media information analysis jobs.
 	Jobs []*ListMediaInfoJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
+	//
 	// example:
 	//
 	// 019daf5780f74831b0e1a767c9f1c178
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -30736,42 +33960,76 @@ func (s *ListMediaInfoJobsResponseBody) SetRequestId(v string) *ListMediaInfoJob
 }
 
 type ListMediaInfoJobsResponseBodyJobs struct {
+	// Indicates whether asynchronous processing was performed.
+	//
 	// example:
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *ListMediaInfoJobsResponseBodyJobsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Input *ListMediaInfoJobsResponseBodyJobsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
-	JobId             *string                                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The details of the media information.
 	MediaInfoProperty *ListMediaInfoJobsResponseBodyJobsMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4879B9DE-E4B6-19DC-91F5-9D5F4DCE4168
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling information.
 	ScheduleConfig *ListMediaInfoJobsResponseBodyJobsScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the job. Valid values:
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
 	// example:
 	//
 	// Init
-	Status           *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job submission information.
 	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The source of the job. Valid values:
+	//
+	// 	- API
+	//
+	// 	- WorkFlow
+	//
+	// 	- Console
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -30852,10 +34110,22 @@ func (s *ListMediaInfoJobsResponseBodyJobs) SetUserData(v string) *ListMediaInfo
 }
 
 type ListMediaInfoJobsResponseBodyJobsInput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -30881,8 +34151,11 @@ func (s *ListMediaInfoJobsResponseBodyJobsInput) SetType(v string) *ListMediaInf
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoProperty struct {
+	// The information about the audio stream.
 	AudioStreamInfoList []*ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo       *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The basic file information.
+	FileBasicInfo *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The information about the video stream.
 	VideoStreamInfoList []*ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -30910,62 +34183,92 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoProperty) SetVideoStreamInfoL
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 0.f
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The sound channel layout.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The encoder tag.
+	//
 	// example:
 	//
 	// 0x000f
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The name of the encoder tag.
+	//
 	// example:
 	//
 	// [15][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sampling format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sampling rate. Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
@@ -31056,50 +34359,74 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyAudioStreamInfoList) 
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo struct {
+	// The video bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration of the video. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// file.m3u8
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 31737
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The state of the file.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type. Valid values: source_file and transcode_file.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The URL of the file.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The name of the video format.
+	//
 	// example:
 	//
 	// hls,applehttp
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 4765337007f571edbfdf81848c016303
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 848
@@ -31175,94 +34502,150 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo) SetWid
 }
 
 type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	AvgFps *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	// The tag of the encoding format.
+	//
 	// example:
 	//
 	// 0x001b
 	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
+	// The tag string of the encoding format.
+	//
 	// example:
 	//
 	// [27][0][0][0]
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/50
 	CodecTimeBase *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// The display aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+	//
+	// 	- 0: The stream contains no B-frames.
+	//
+	// 	- 1: The stream contains one B-frame.
+	//
+	// 	- 2: The stream contains multiple consecutive B-frames.
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 31
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 10040
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The encoder profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle of the video image.
+	//
+	// 	- Valid values: 0, 90, 180, and 270.
+	//
+	// 	- Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The aspect ratio of the area from which the sampling points are collected.
+	//
 	// example:
 	//
 	// 478:477
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
 	TimeBase *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 848
@@ -31393,10 +34776,14 @@ func (s *ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList) 
 }
 
 type ListMediaInfoJobsResponseBodyJobsScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -31553,39 +34940,88 @@ func (s *ListMediaMarksResponse) SetBody(v *ListMediaMarksResponseBody) *ListMed
 }
 
 type ListMediaProducingJobsRequest struct {
+	// The end of the time range to query. The maximum time range between EndTime and StartTime cannot exceed 30 days. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-02-02T23:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The job type.
+	//
+	// Valid values:
+	//
+	// 	- LiveEditingJob: live editing job.
+	//
+	// 	- EditingJob: regular template-based editing job
+	//
+	// 	- VETemplateJob: advanced template-based editing job.
+	//
 	// example:
 	//
 	// EditingJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The search keyword. For example, you can use a job ID as the keyword to search for jobs.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The ID of the quick video production job. If this parameter is specified, the subjobs of the quick video production job are queried.
+	//
 	// example:
 	//
 	// ******8750b54e3c976a47da6f******
 	MasterJobId *string `json:"MasterJobId,omitempty" xml:"MasterJobId,omitempty"`
+	// The maximum number of entries to return.
+	//
+	// Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// 8EqYpQbZ6Eh7+Zz8DxVYoQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the online editing project.
+	//
+	// example:
+	//
+	// ******927cfb53d05b96c1bfe1******
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sorting parameter. By default, the query results are sorted by creation time in descending order.
+	//
+	// Valid values:
+	//
+	// 	- CreationTime:Asc: sorted by creation time in ascending order.
+	//
+	// 	- CreationTime:Desc: sorted by creation time in descending order.
+	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job state.
+	//
+	// Valid values:
+	//
+	// 	- Init: The job is initialized.
+	//
+	// 	- Failed: The job failed.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Processing: The job is in progress.
+	//
 	// example:
 	//
 	// Success
@@ -31651,16 +35087,23 @@ func (s *ListMediaProducingJobsRequest) SetStatus(v string) *ListMediaProducingJ
 }
 
 type ListMediaProducingJobsResponseBody struct {
+	// The maximum number of entries returned.
+	//
+	// Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 100
-	MaxResults            *string                                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The queried media editing and production jobs.
 	MediaProducingJobList []*ListMediaProducingJobsResponseBodyMediaProducingJobList `json:"MediaProducingJobList,omitempty" xml:"MediaProducingJobList,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// 8EqYpQbZ6Eh7+Zz8DxVYoQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -31697,53 +35140,90 @@ func (s *ListMediaProducingJobsResponseBody) SetRequestId(v string) *ListMediaPr
 }
 
 type ListMediaProducingJobsResponseBodyMediaProducingJobList struct {
+	// The template material parameters.
+	//
+	// example:
+	//
+	// {"Text1":"text","Text0":"text","Media1":"mediaId","Media0":"mediaId"}
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The response code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-03-21T16:40:30Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-03-21T16:40:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The duration of the output file. Unit: seconds.
+	//
 	// example:
 	//
 	// 15.5
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the online editing job.
+	//
 	// example:
 	//
 	// ******8750b54e3c976a47da6f******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The media asset ID of the output file.
+	//
 	// example:
 	//
 	// 0ce4ea70f52471edab61f7e7d6786302
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The URL of the output file.
+	//
 	// example:
 	//
 	// http://your-bucket.oss-cn-shanghai.aliyuncs.com/your-video.mp4
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. Note: Pay attention to this parameter if the job failed.
+	//
+	// example:
+	//
+	// The resource operated InputFile is bad
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2022-03-21T16:41:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// ******faa3b542f5a6135217e3******
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The job state.
+	//
 	// example:
 	//
 	// Sucess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the online editing template.
+	//
 	// example:
 	//
 	// cb786a39c5d44cecb23d8c864facffc1
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserData   *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data in the JSON format.
+	//
+	// example:
+	//
+	// {"key":"value"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ListMediaProducingJobsResponseBodyMediaProducingJobList) String() string {
@@ -31854,30 +35334,54 @@ func (s *ListMediaProducingJobsResponse) SetBody(v *ListMediaProducingJobsRespon
 }
 
 type ListPackageJobsRequest struct {
+	// The end of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-07-15T00:00:00Z
 	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 7b38a5d86f1e47838927b6e7ccb11cbe
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The order that you use to sort the query results. Valid values:
+	//
+	// 	- CreateTimeDesc: sorts the jobs by creation time in descending order.
+	//
+	// 	- CreateTimeAsc: sorts the jobs by creation time in ascending order.
+	//
 	// example:
 	//
 	// CreateTimeDesc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The number of entries per page. Valid values: 0 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-07-01T00:00:00Z
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
+	// The state of the job.
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
 	// example:
 	//
 	// Success
@@ -31928,7 +35432,10 @@ func (s *ListPackageJobsRequest) SetStatus(v string) *ListPackageJobsRequest {
 }
 
 type ListPackageJobsResponseBody struct {
+	// The list of packaging jobs.
 	PackageJobList *ListPackageJobsResponseBodyPackageJobList `json:"PackageJobList,omitempty" xml:"PackageJobList,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -31954,11 +35461,14 @@ func (s *ListPackageJobsResponseBody) SetRequestId(v string) *ListPackageJobsRes
 }
 
 type ListPackageJobsResponseBodyPackageJobList struct {
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
+	//
 	// example:
 	//
 	// 019daf5780f74831b0e1a767c9f1c178
-	NextPageToken *string                                                 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PackageJobs   []*ListPackageJobsResponseBodyPackageJobListPackageJobs `json:"PackageJobs,omitempty" xml:"PackageJobs,omitempty" type:"Repeated"`
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The list of packaging jobs.
+	PackageJobs []*ListPackageJobsResponseBodyPackageJobListPackageJobs `json:"PackageJobs,omitempty" xml:"PackageJobs,omitempty" type:"Repeated"`
 }
 
 func (s ListPackageJobsResponseBodyPackageJobList) String() string {
@@ -31980,56 +35490,90 @@ func (s *ListPackageJobsResponseBodyPackageJobList) SetPackageJobs(v []*ListPack
 }
 
 type ListPackageJobsResponseBodyPackageJobListPackageJobs struct {
+	// The error code returned if the job fails.
+	//
 	// example:
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-07-07T14:00:32Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-07-07T15:00:32Z
-	FinishTime *string                                                       `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Inputs     []*ListPackageJobsResponseBodyPackageJobListPackageJobsInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Inputs []*ListPackageJobsResponseBodyPackageJobListPackageJobsInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 7b38a5d86f1e47838927b6e7ccb11cbe
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message that is returned.
+	//
 	// example:
 	//
 	// Resource content bad.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The time when the job was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-07-07T15:00:32Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// job-name
-	Name   *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
 	Output *ListPackageJobsResponseBodyPackageJobListPackageJobsOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+	//
 	// example:
 	//
 	// 5b40833e4c3e4d4e95a866abb9a42510
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority. Default value: 6.
+	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The state of the job.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-07-07T14:00:32Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The source of the job. Valid values:
+	//
+	// 	- API
+	//
+	// 	- WorkFlow
+	//
+	// 	- Console
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"param": "value"}
@@ -32120,6 +35664,7 @@ func (s *ListPackageJobsResponseBodyPackageJobListPackageJobs) SetUserData(v str
 }
 
 type ListPackageJobsResponseBodyPackageJobListPackageJobsInputs struct {
+	// The information about the input stream file.
 	Input *ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 }
 
@@ -32137,10 +35682,22 @@ func (s *ListPackageJobsResponseBodyPackageJobListPackageJobsInputs) SetInput(v 
 }
 
 type ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -32166,10 +35723,22 @@ func (s *ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput) SetTyp
 }
 
 type ListPackageJobsResponseBodyPackageJobListPackageJobsOutput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -32224,6 +35793,16 @@ func (s *ListPackageJobsResponse) SetBody(v *ListPackageJobsResponseBody) *ListP
 }
 
 type ListPipelinesRequest struct {
+	// The type of the MPS queue.
+	//
+	// Valid values:
+	//
+	// 	- Boost: MPS queue with transcoding speed boosted.
+	//
+	// 	- Standard: standard MPS queue.
+	//
+	// 	- NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+	//
 	// example:
 	//
 	// Standard
@@ -32244,7 +35823,10 @@ func (s *ListPipelinesRequest) SetSpeed(v string) *ListPipelinesRequest {
 }
 
 type ListPipelinesResponseBody struct {
+	// The queried MPS queues.
 	PipelineList []*ListPipelinesResponseBodyPipelineList `json:"PipelineList,omitempty" xml:"PipelineList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -32270,30 +35852,50 @@ func (s *ListPipelinesResponseBody) SetRequestId(v string) *ListPipelinesRespons
 }
 
 type ListPipelinesResponseBodyPipelineList struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the template was last modified.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the MPS queue.
+	//
 	// example:
 	//
 	// test-pipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the MPS queue.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the MPS queue.
+	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of the MPS queue.
+	//
 	// example:
 	//
 	// Standard
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The state of the MPS queue.
+	//
+	// Valid values:
+	//
+	// 	- Active
+	//
+	// 	- Paused
+	//
 	// example:
 	//
 	// Active
@@ -33111,30 +36713,72 @@ func (s *ListSearchLibResponse) SetBody(v *ListSearchLibResponseBody) *ListSearc
 }
 
 type ListSmartJobsRequest struct {
+	// The job state.
+	//
+	// Valid values:
+	//
+	// 	- Finished: The job is complete.
+	//
+	// 	- Failed: The job failed.
+	//
+	// 	- Executing: The job is in progress.
+	//
+	// 	- Created: The job is created.
+	//
 	// example:
 	//
 	// Finished
 	JobState *string `json:"JobState,omitempty" xml:"JobState,omitempty"`
+	// The job type.
+	//
+	// Valid values:
+	//
+	// 	- ASR: automatic speech recognition(job) job.
+	//
+	// 	- DynamicChart: dynamic chart job.
+	//
+	// 	- VideoTranslation: video translation job.
+	//
+	// 	- TextToSpeech: intelligent audio production job.
+	//
 	// example:
 	//
 	// ASR
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The maximum number of entries to return.
+	//
+	// Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ****73f33c91-d59383e8280b****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting parameter. By default, the query results are sorted by creation time in descending order.
+	//
+	// Valid values:
+	//
+	// 	- CreationTime:Asc: sorted by creation time in ascending order.
+	//
+	// 	- CreationTime:Desc: sorted by creation time in descending order.
+	//
 	// example:
 	//
 	// CreationTime:Desc
@@ -33185,19 +36829,28 @@ func (s *ListSmartJobsRequest) SetSortBy(v string) *ListSmartJobsRequest {
 }
 
 type ListSmartJobsResponseBody struct {
+	// The maximum number of entries returned on a single page. The value is set to the maximum number of entries returned on each page except for the last page. Valid example: 10,10,5. Invalid example: 10,5,10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// CBB6BC61D08
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****9262E3DA-07FA-4862-FCBB6BC61D08*****
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried intelligent jobs.
 	SmartJobList []*ListSmartJobsResponseBodySmartJobList `json:"SmartJobList,omitempty" xml:"SmartJobList,omitempty" type:"Repeated"`
+	// Optional. The total number of entries returned. By default, this parameter is not returned.
+	//
 	// example:
 	//
 	// 110
@@ -33238,44 +36891,84 @@ func (s *ListSmartJobsResponseBody) SetTotalCount(v string) *ListSmartJobsRespon
 }
 
 type ListSmartJobsResponseBodySmartJobList struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The job description.
+	//
 	// example:
 	//
 	// 测试描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The editing configurations.
+	//
 	// example:
 	//
 	// {"AudioConfig":{},"InputConfig":""}
-	EditingConfig *string                                           `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	InputConfig   *ListSmartJobsResponseBodySmartJobListInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	// The input configurations.
+	InputConfig *ListSmartJobsResponseBodySmartJobListInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job state.
+	//
+	// Valid values:
+	//
+	// 	- Finished: The job is complete.
+	//
+	// 	- Failed: The job failed.
+	//
+	// 	- Executing: The job is in progress.
+	//
+	// 	- Created: The job is created.
+	//
 	// example:
 	//
 	// Finished
 	JobState *string `json:"JobState,omitempty" xml:"JobState,omitempty"`
+	// The job type.
+	//
+	// Valid values:
+	//
+	// 	- ASR: ASR job.
+	//
+	// 	- DynamicChart: dynamic chart job.
+	//
+	// 	- TextToSpeech: intelligent audio production job.
+	//
 	// example:
 	//
 	// ASR
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
-	ModifiedTime *string                                            `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The output configurations.
 	OutputConfig *ListSmartJobsResponseBodySmartJobListOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
+	// The job title.
+	//
 	// example:
 	//
 	// 测试标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"user":"data"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1084506228******
@@ -33351,10 +37044,14 @@ func (s *ListSmartJobsResponseBodySmartJobList) SetUserId(v int64) *ListSmartJob
 }
 
 type ListSmartJobsResponseBodySmartJobListInputConfig struct {
+	// The information about the input file.
+	//
 	// example:
 	//
 	// oss://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	// The keyword information.
+	//
 	// example:
 	//
 	// 测试关键词
@@ -33380,13 +37077,13 @@ func (s *ListSmartJobsResponseBodySmartJobListInputConfig) SetKeyword(v string) 
 }
 
 type ListSmartJobsResponseBodySmartJobListOutputConfig struct {
-	// OSS Bucket
+	// The Object Storage Service (OSS) bucket.
 	//
 	// example:
 	//
 	// test-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS Object
+	// The OSS object.
 	//
 	// example:
 	//
@@ -33442,10 +37139,14 @@ func (s *ListSmartJobsResponse) SetBody(v *ListSmartJobsResponseBody) *ListSmart
 }
 
 type ListSmartSysAvatarModelsRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
@@ -33477,11 +37178,16 @@ func (s *ListSmartSysAvatarModelsRequest) SetSdkVersion(v string) *ListSmartSysA
 }
 
 type ListSmartSysAvatarModelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
-	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried digital humans.
 	SmartSysAvatarModelList []*ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList `json:"SmartSysAvatarModelList,omitempty" xml:"SmartSysAvatarModelList,omitempty" type:"Repeated"`
+	// The total number of system digital human images returned.
+	//
 	// example:
 	//
 	// 4
@@ -33512,23 +37218,50 @@ func (s *ListSmartSysAvatarModelsResponseBody) SetTotalCount(v int32) *ListSmart
 }
 
 type ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList struct {
+	// The ID of the digital human. The ID is required to submit a separate digital human rendering job or use the digital human image in an intelligent timeline.
+	//
 	// example:
 	//
 	// yunqiao
-	AvatarId   *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The name of the digital human.
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
-	Bitrate    *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The video bitrate.
+	//
+	// example:
+	//
+	// 4000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The sample thumbnail URL of the digital human.
+	//
 	// example:
 	//
 	// http://ice-pub-media.myalicdn.com/smart/avatarModel/coverDemo/yunqiao.mp4
-	CoverUrl   *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	Height     *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	OutputMask *bool   `json:"OutputMask,omitempty" xml:"OutputMask,omitempty"`
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The video height.
+	//
+	// example:
+	//
+	// 1920
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Indicates whether portrait mask rendering is supported.
+	//
+	// example:
+	//
+	// false
+	OutputMask *bool `json:"OutputMask,omitempty" xml:"OutputMask,omitempty"`
+	// The sample video URL of the digital human.
+	//
 	// example:
 	//
 	// http://ice-pub-media.myalicdn.com/smart/avatarModel/videoDemo/yunqiao.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The video width.
+	//
+	// example:
+	//
+	// 1080
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) String() string {
@@ -33609,8 +37342,13 @@ func (s *ListSmartSysAvatarModelsResponse) SetBody(v *ListSmartSysAvatarModelsRe
 }
 
 type ListSmartVoiceGroupsResponseBody struct {
-	// Id of the request
-	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 627B30EB-1D0A-5C6D-8467-431626E0FA10
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried speaker groups.
 	VoiceGroups []*ListSmartVoiceGroupsResponseBodyVoiceGroups `json:"VoiceGroups,omitempty" xml:"VoiceGroups,omitempty" type:"Repeated"`
 }
 
@@ -33633,7 +37371,9 @@ func (s *ListSmartVoiceGroupsResponseBody) SetVoiceGroups(v []*ListSmartVoiceGro
 }
 
 type ListSmartVoiceGroupsResponseBodyVoiceGroups struct {
-	Type      *string                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the speaker group.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The speakers.
 	VoiceList []*ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList `json:"VoiceList,omitempty" xml:"VoiceList,omitempty" type:"Repeated"`
 }
 
@@ -33656,19 +37396,39 @@ func (s *ListSmartVoiceGroupsResponseBodyVoiceGroups) SetVoiceList(v []*ListSmar
 }
 
 type ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList struct {
-	Desc              *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The speaker description.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The speaker name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The remarks of the speaker.
 	Remark            *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	SupportSampleRate *string `json:"SupportSampleRate,omitempty" xml:"SupportSampleRate,omitempty"`
-	Tag               *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag of the speaker type.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The speaker ID.
+	//
 	// example:
 	//
 	// zhitian
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// The speaker type.
+	//
+	// Valid values:
+	//
+	// 	- Male
+	//
+	// 	- Female
+	//
+	// 	- Boy
+	//
+	// 	- Girl
+	//
 	// example:
 	//
 	// Female
 	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
+	// The URL of the sample audio file.
+	//
 	// example:
 	//
 	// https://***.com/zhiqing.mp3
@@ -33753,30 +37513,62 @@ func (s *ListSmartVoiceGroupsResponse) SetBody(v *ListSmartVoiceGroupsResponseBo
 }
 
 type ListSnapshotJobsRequest struct {
+	// The end of the time range during which the jobs to be queried were created.
+	//
 	// example:
 	//
 	// 2022-07-14T00:00:00Z
 	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The order that you use to sort the query results.
+	//
+	// 1.  CreateTimeDesc
+	//
+	// 2.  CreateTimeAsc
+	//
+	// Valid values:
+	//
+	// 	- CreateTimeDesc: sorts the jobs by creation time in descending order
+	//
+	// 	- CreateTimeAsc: sorts the jobs by creation time in ascending order.
+	//
 	// example:
 	//
 	// CreateTimeDesc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range during which the jobs to be queried were created.
+	//
 	// example:
 	//
 	// 2022-07-12T00:00:00Z
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
+	// The state of the job.
+	//
+	// Valid values:
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
 	// example:
 	//
 	// Success
@@ -33827,11 +37619,16 @@ func (s *ListSnapshotJobsRequest) SetStatus(v string) *ListSnapshotJobsRequest {
 }
 
 type ListSnapshotJobsResponseBody struct {
+	// The list of jobs.
 	Jobs []*ListSnapshotJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -33862,56 +37659,106 @@ func (s *ListSnapshotJobsResponseBody) SetRequestId(v string) *ListSnapshotJobsR
 }
 
 type ListSnapshotJobsResponseBodyJobs struct {
+	// Indicates whether the snapshots were captured in asynchronous mode.
+	//
 	// example:
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// The number of snapshots.
+	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-07-12T16:30:54Z
-	FinishTime *string                                `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *ListSnapshotJobsResponseBodyJobsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Input *ListSnapshotJobsResponseBodyJobsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2022-07-12T16:30:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// SampleJob
-	Name   *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
 	Output *ListSnapshotJobsResponseBodyJobsOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The state of the job.
+	//
+	// 	- **Success**: The job is successful.
+	//
+	// 	- **Fail**: The job failed.
+	//
+	// 	- **Init**: The job is submitted.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The request trigger source.
+	//
+	// Valid values:
+	//
+	// 	- Console
+	//
+	// 	- Workflow
+	//
+	// 	- API
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The type of the job.
+	//
+	// Valid values:
+	//
+	// 	- WebVtt
+	//
+	// 	- Sprite
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Sprite
@@ -34002,10 +37849,18 @@ func (s *ListSnapshotJobsResponseBodyJobs) SetType(v string) *ListSnapshotJobsRe
 }
 
 type ListSnapshotJobsResponseBodyJobsInput struct {
+	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats: 1. OSS://bucket/object 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
 	// example:
 	//
 	// oss://bucket/object.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: an Object Storage Service (OSS) object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -34031,10 +37886,24 @@ func (s *ListSnapshotJobsResponseBodyJobsInput) SetType(v string) *ListSnapshotJ
 }
 
 type ListSnapshotJobsResponseBodyJobsOutput struct {
+	// The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  OSS://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	//
+	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
+	//
 	// example:
 	//
 	// http://test-bucket.oss-cn-shanghai.aliyuncs.com/output-{Count}.jpg
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 1.  OSS: an OSS object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -34089,30 +37958,44 @@ func (s *ListSnapshotJobsResponse) SetBody(v *ListSnapshotJobsResponseBody) *Lis
 }
 
 type ListSystemTemplatesRequest struct {
+	// The template name.
+	//
 	// example:
 	//
 	// SampleTemplate
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20 Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The template state. Valid values: Normal, Invisible, and All.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subtype ID of the template.
+	//
 	// example:
 	//
 	// 1
 	Subtype *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type. Separate multiple types with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34165,11 +38048,16 @@ func (s *ListSystemTemplatesRequest) SetType(v string) *ListSystemTemplatesReque
 }
 
 type ListSystemTemplatesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried templates.
 	SystemTemplateList []*ListSystemTemplatesResponseBodySystemTemplateList `json:"SystemTemplateList,omitempty" xml:"SystemTemplateList,omitempty" type:"Repeated"`
+	// The total number of templates.
+	//
 	// example:
 	//
 	// 20
@@ -34200,34 +38088,50 @@ func (s *ListSystemTemplatesResponseBody) SetTotal(v int32) *ListSystemTemplates
 }
 
 type ListSystemTemplatesResponseBodySystemTemplateList struct {
+	// The template state.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subtype ID of the template.
+	//
 	// example:
 	//
 	// 1
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	// The subtype name of the template.
+	//
 	// example:
 	//
 	// Remux
 	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
+	// The template parameters.
+	//
 	// example:
 	//
 	// {"Container":{"Format":"flv"},"Video":{},"Audio":{}}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// S00000001-000000
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// FLV-COPY
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type ID of the template.
+	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type name of the template.
+	//
 	// example:
 	//
 	// TranscodeTemplate
@@ -34312,30 +38216,78 @@ func (s *ListSystemTemplatesResponse) SetBody(v *ListSystemTemplatesResponseBody
 }
 
 type ListTemplatesRequest struct {
+	// The source from which the template was created.
+	//
+	// Valid values:
+	//
+	// 	- AliyunConsole
+	//
+	// 	- WebSDK
+	//
+	// 	- OpenAPI
+	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The search keyword. You can use the template ID or title as the keyword to search for templates.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting parameter. By default, the query results are sorted by creation time in descending order.
+	//
+	// Valid values:
+	//
+	// 	- CreationTime:Asc: sorted by creation time in ascending order.
+	//
+	// 	- CreationTime:Desc: sorted by creation time in descending order.
+	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// The template state.
+	//
+	// Valid values:
+	//
+	// 	- UploadFailed: Failed to upload the video.
+	//
+	// 	- ProcessFailed: Failed to process the advanced template.
+	//
+	// 	- Available: The template is available.
+	//
+	// 	- Uploading: The video is being uploaded.
+	//
+	// 	- Created: The template is created but not ready for use.
+	//
+	// 	- Processing: The advanced template is being processed.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template type.
+	//
+	// Valid values:
+	//
+	// 	- Timeline
+	//
+	// 	- VETemplate
+	//
 	// example:
 	//
 	// Timeline
@@ -34386,11 +38338,16 @@ func (s *ListTemplatesRequest) SetType(v string) *ListTemplatesRequest {
 }
 
 type ListTemplatesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried templates.
 	Templates []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -34421,56 +38378,126 @@ func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesRespons
 }
 
 type ListTemplatesResponseBodyTemplates struct {
-	// ClipsParam
+	// The clip parameters.
 	//
 	// example:
 	//
 	// {"Media1":"mediaId","Text1":"text"}
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The template configurations.
+	//
 	// example:
 	//
 	// 参考Timeline模板配置详解
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The thumbnail URL.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/cover.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The source from which the template was created.
+	//
+	// Valid values:
+	//
+	// 	- AliyunConsole
+	//
+	// 	- WebSDK
+	//
+	// 	- OpenAPI
+	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The source from which the template was modified.
+	//
+	// Valid values:
+	//
+	// 	- AliyunConsole
+	//
+	// 	- WebSDK
+	//
+	// 	- OpenAPI
+	//
 	// example:
 	//
 	// OpenAPI
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// The time when the template was last modified.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// 视频添加水印模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The preview media asset.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// The state of the preview media asset.
+	//
+	// Valid values:
+	//
+	// 	- PrepareFail
+	//
+	// 	- Init
+	//
+	// 	- Normal
+	//
+	// 	- Preparing
+	//
 	// example:
 	//
 	// Normal
 	PreviewMediaStatus *string `json:"PreviewMediaStatus,omitempty" xml:"PreviewMediaStatus,omitempty"`
+	// The template state.
+	//
+	// Valid values:
+	//
+	// 	- UploadFailed: Failed to upload the video.
+	//
+	// 	- ProcessFailed: Failed to process the advanced template.
+	//
+	// 	- Available: The template is available.
+	//
+	// 	- Uploading: The video is being uploaded.
+	//
+	// 	- Created: The template is created but not ready for use.
+	//
+	// 	- Processing: The advanced template is being processed.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type.
+	//
+	// Valid values:
+	//
+	// 	- Timeline: regular template.
+	//
+	// 	- VETemplate: advanced template.
+	//
 	// example:
 	//
 	// Timeline
@@ -34580,30 +38607,54 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 }
 
 type ListTranscodeJobsRequest struct {
+	// The end of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-07-15T00:00:00Z
 	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The order that you use to sort the query results. Valid values:
+	//
+	// 	- CreateTimeDesc: sorts the query results by creation time in descending order.
+	//
+	// 	- CreateTimeAsc: sorts the query results by creation time in ascending order.
+	//
 	// example:
 	//
 	// CreateTimeDesc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The number of entries per page. Valid values: 0 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
-	// 7b38a5d86f1e47838927b6e7ccb11cbe
+	// 7b38a5d86f1e47838927b6e7ccb1****
 	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	// The beginning of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-07-01T00:00:00Z
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
+	// The state of the job.
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
 	// example:
 	//
 	// Success
@@ -34654,11 +38705,16 @@ func (s *ListTranscodeJobsRequest) SetStatus(v string) *ListTranscodeJobsRequest
 }
 
 type ListTranscodeJobsResponseBody struct {
+	// The list of jobs.
 	Jobs []*ListTranscodeJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
+	//
 	// example:
 	//
 	// 019daf5780f74831b0e1a767c9f1c178
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -34689,49 +38745,84 @@ func (s *ListTranscodeJobsResponseBody) SetRequestId(v string) *ListTranscodeJob
 }
 
 type ListTranscodeJobsResponseBodyJobs struct {
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                        `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
 	InputGroup []*ListTranscodeJobsResponseBodyJobsInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	// The number of subjobs.
+	//
 	// example:
 	//
 	// 1
 	JobCount *int32 `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// transcode-job
-	Name        *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output group of the job.
 	OutputGroup []*ListTranscodeJobsResponseBodyJobsOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
+	// The main job ID.
+	//
 	// example:
 	//
 	// 8b2198504dd340b7b3c9842a74fc9baa
 	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	// The completion percentage of the job.
+	//
 	// example:
 	//
 	// 0
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The ID of the request that submitted the job.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling configuration of the job.
 	ScheduleConfig *ListTranscodeJobsResponseBodyJobsScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the job.
+	//
+	// 	- Success: At least one of the subjobs is successful.
+	//
+	// 	- Fail: All subjobs failed.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The source of the job. Valid values:
+	//
+	// 	- API
+	//
+	// 	- WorkFlow
+	//
+	// 	- Console
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -34817,11 +38908,28 @@ func (s *ListTranscodeJobsResponseBodyJobs) SetUserData(v string) *ListTranscode
 }
 
 type ListTranscodeJobsResponseBodyJobsInputGroup struct {
+	// The URL of the media asset. This parameter is specified only when the media asset is transcoded.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/video.mp4
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -34852,7 +38960,9 @@ func (s *ListTranscodeJobsResponseBodyJobsInputGroup) SetType(v string) *ListTra
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroup struct {
-	Output        *ListTranscodeJobsResponseBodyJobsOutputGroupOutput        `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The output file configuration.
+	Output *ListTranscodeJobsResponseBodyJobsOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The job processing configuration.
 	ProcessConfig *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
 }
 
@@ -34875,11 +38985,24 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroup) SetProcessConfig(v *ListT
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupOutput struct {
+	// The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
-	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The URL of the transcoded output stream. This parameter is required only when the output is a media asset.
+	//
+	// example:
+	//
+	// oss://bucket/path/to/{MediaId}/{JobId}.mp4
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -34910,13 +39033,20 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupOutput) SetType(v string) *
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig struct {
-	CombineConfigs  []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
-	Encryption      *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The multi-input stream merge configuration.
+	CombineConfigs []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
+	// The encryption settings.
+	Encryption *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The watermark configuration for an image.
 	ImageWatermarks []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	IsInheritTags   *bool                                                                       `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
-	Subtitles       []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	TextWatermarks  []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	Transcode       *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	// Indicates whether the tags of the input stream are inherited in the output stream. This parameter does not take effect when the input is not a media asset. Default value: false.
+	IsInheritTags *bool `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
+	// The subtitle configuration.
+	Subtitles []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The configurations of the text watermarks.
+	TextWatermarks []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	// The transcoding configuration.
+	Transcode *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig) String() string {
@@ -34963,20 +39093,28 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig) SetTranscode
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs struct {
+	// The audio stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 或 exclude
 	AudioIndex *string `json:"AudioIndex,omitempty" xml:"AudioIndex,omitempty"`
+	// The duration of the input stream. The default value is the duration of the video.
+	//
 	// example:
 	//
 	// 20.0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the input stream. Default value: 0.
+	//
 	// example:
 	//
 	// 0.0
 	Start *float64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The video stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -35014,14 +39152,20 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption struct {
+	// The ciphertext of HTTP Live Streaming (HLS) encryption.
+	//
 	// example:
 	//
 	// MTYi00NDU0LTg5O****
 	CipherText *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	// The endpoint of the decryption service for HLS encryption.
+	//
 	// example:
 	//
 	// https://sample.com/path?CipherText=MTYi00NDU0LTg5O****
 	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	// The encryption type.
+	//
 	// example:
 	//
 	// PrivateEncryption
@@ -35052,7 +39196,10 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption) Se
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -35078,24 +39225,36 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
+	// The position of the watermark on the x-axis.
+	//
 	// example:
 	//
 	// 10
 	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	// The position of the watermark on the y-axis.
+	//
 	// example:
 	//
 	// 10
-	Dy   *string                                                                                      `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	// The watermark image file.
 	File *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 32
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The reference position of the watermark. Valid values: TopLeft, TopRight, BottomLeft, and BottomRight. Default value: TopLeft.
+	//
 	// example:
 	//
 	// TopLeft
-	ReferPos *string                                                                                          `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	// The timeline settings.
 	Timeline *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 32
@@ -35146,10 +39305,18 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
+	// The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -35175,10 +39342,14 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
+	// The duration of the stream. Valid values: the number of seconds or "ToEND".
+	//
 	// example:
 	//
 	// ToEND
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The beginning of the time range for which data was queried.
+	//
 	// example:
 	//
 	// 00:00:05
@@ -35204,7 +39375,10 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -35230,11 +39404,16 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles) Set
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParams struct {
+	// The file encoding format.
+	//
 	// example:
 	//
 	// UTF-8
-	CharEnc *string                                                                                `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	File    *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	// The subtitle file.
+	File *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The format of the subtitle file.
+	//
 	// example:
 	//
 	// vtt
@@ -35265,10 +39444,22 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, the ID of a media asset is returned.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -35294,7 +39485,10 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -35320,42 +39514,62 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
+	// Indicates whether the text size was adjusted based on the output video dimensions. true / false, default: false
+	//
 	// example:
 	//
 	// false
 	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
+	// The border color.
+	//
 	// example:
 	//
 	// #006400
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// The border width.
+	//
 	// example:
 	//
 	// 0
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// 测试水印
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The transparency of the watermark.
+	//
 	// example:
 	//
 	// 1.0
 	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	// The color of the text.
+	//
 	// example:
 	//
 	// #006400
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font of the text.
+	//
 	// example:
 	//
 	// SimSun
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	// The size of the text.
+	//
 	// example:
 	//
 	// 16
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The distance of the watermark from the left edge.
+	//
 	// example:
 	//
 	// 10
 	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	// The distance of the watermark from the top edge.
+	//
 	// example:
 	//
 	// 10
@@ -35421,7 +39635,10 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -35447,11 +39664,15 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode) Set
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	Audio     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	// The audio settings.
+	Audio *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	// The encapsulation format settings.
 	Container *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	// The encapsulation settings.
 	MuxConfig *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
 	Tags      map[string]*string                                                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Video     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	// The video settings.
+	Video *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -35488,31 +39709,56 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
+	// The audio bitrate of the output file.
+	//
+	// 	- Valid values: [8,1000].
+	//
+	// 	- Unit: Kbit/s.
+	//
+	// 	- Default value: 128.
+	//
 	// example:
 	//
 	// 128
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels. Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Indicates whether the audio stream is deleted.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The sampling rate.
+	//
+	// 	- Default value: 44100.
+	//
+	// 	- Valid values: 22050, 32000, 44100, 48000, and 96000.
+	//
+	// 	- Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
-	Samplerate *string                                                                                       `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Volume     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	// The volume configurations.
+	Volume *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -35559,18 +39805,26 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
+	// The output volume.
+	//
 	// example:
 	//
 	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
+	// The volume range.
+	//
 	// example:
 	//
 	// 8
 	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	// The volume adjustment method. Valid values:
+	//
 	// example:
 	//
 	// auto
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The peak volume.
+	//
 	// example:
 	//
 	// -1
@@ -35606,6 +39860,8 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsContainer struct {
+	// The container format.
+	//
 	// example:
 	//
 	// mp4
@@ -35626,6 +39882,7 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig struct {
+	// The segment settings.
 	Segment *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -35643,10 +39900,14 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
+	// The segment length.
+	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The forced segmentation point in time.
+	//
 	// example:
 	//
 	// 2,3
@@ -35672,74 +39933,164 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
+	// The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 6000
 	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	// The average bitrate of the video.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 3000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The buffer size.
+	//
+	// 	- Valid values: [1000,128000].
+	//
+	// 	- Default value: 6000.
+	//
+	// 	- Unit: KB.
+	//
 	// example:
 	//
 	// 6000
 	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The constant rate factor.
+	//
+	// 	- Valid values: [0,51].
+	//
+	// 	- Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+	//
+	// If this parameter is set, the value of Bitrate becomes invalid.
+	//
 	// example:
 	//
 	// 23
 	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	// The method of video cropping. Valid values:
+	//
+	// 	- border: automatically detects and removes black bars.
+	//
+	// 	- A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The frame rate.
+	//
+	// 	- Valid values: (0,60].
+	//
+	// 	- The value is 60 if the frame rate of the input video exceeds 60.
+	//
+	// 	- Default value: the frame rate of the input video.
+	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The maximum number of frames between two keyframes.
+	//
+	// 	- Valid values: [1,1080000].
+	//
+	// 	- Default value: 250.
+	//
 	// example:
 	//
 	// 250
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Default value: the height of the input video.
+	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Indicates whether the auto-rotate screen feature is enabled.
+	//
 	// example:
 	//
 	// false
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	// The maximum bitrate of the output video. Valid values: [10,50000]. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 9000
 	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	// The black bars added to the video.
+	//
+	// 	- Format: width:height:left:top.
+	//
+	// 	- Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+	//
 	// example:
 	//
 	// medium
 	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	// The encoding profile. Valid values: baseline, main, and high.
+	//
+	// 	- baseline: applicable to mobile devices.
+	//
+	// 	- main: applicable to standard-definition devices.
+	//
+	// 	- high: applicable to high-definition devices.
+	//
+	// Default value: high.
+	//
 	// example:
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Indicates whether the video was removed.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The scan mode. Valid values: interlaced and progressive.
+	//
 	// example:
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The width of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Default value: the width of the input video.
+	//
 	// example:
 	//
 	// 1920
@@ -35845,10 +40196,14 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -35903,6 +40258,8 @@ func (s *ListTranscodeJobsResponse) SetBody(v *ListTranscodeJobsResponseBody) *L
 }
 
 type QueryDNAJobListRequest struct {
+	// The IDs of the media fingerprint analysis jobs that you want to query. We recommend that you query at most 10 jobs at a time. Separate multiple job IDs with commas (,).
+	//
 	// example:
 	//
 	// 88c6ca184c0e47098a5b665e2a12****
@@ -35947,7 +40304,10 @@ func (s *QueryDNAJobListRequest) SetResourceOwnerId(v int64) *QueryDNAJobListReq
 }
 
 type QueryDNAJobListResponseBody struct {
+	// The queried media fingerprint analysis jobs.
 	JobList []*QueryDNAJobListResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D7393642CA58
@@ -35973,47 +40333,78 @@ func (s *QueryDNAJobListResponseBody) SetRequestId(v string) *QueryDNAJobListRes
 }
 
 type QueryDNAJobListResponseBodyJobList struct {
+	// The response code.
+	//
 	// example:
 	//
 	// "InvalidParameter.ResourceNotFound"
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The configurations of the media fingerprint analysis job.
+	//
 	// example:
 	//
 	// {"SaveType": "save","MediaType"":"video"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-12-28T03:21:37Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the media fingerprint library.
+	//
 	// example:
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****
 	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	// The URL of the media fingerprint analysis result.
+	//
 	// example:
 	//
 	// http://test_bucket.oss-cn-shanghai.aliyuncs.com/fingerprint/video/search_result/5/5.txt
 	DNAResult *string `json:"DNAResult,omitempty" xml:"DNAResult,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-12-28T03:21:44Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 88c6ca184c0e47098a5b665e2a12****
-	Id    *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The details of the input file.
 	Input *QueryDNAJobListResponseBodyJobListInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// "The resource operated \\"a887d0b***d805ef6f7f6786302\\" cannot be found"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The primary key of the video. You must make sure that each primary key is unique.
+	//
 	// example:
 	//
 	// 3ca84a39a9024f19853b21be9cf9****
 	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	// The job state. Valid values:
+	//
+	// 	- **Queuing**: The job is waiting in the queue.
+	//
+	// 	- **Analysing**: The job is in progress.
+	//
+	// 	- **Success**: The job is successful.
+	//
+	// 	- **Fail**: The job failed.
+	//
 	// example:
 	//
 	// Queuing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// testdna
@@ -36089,10 +40480,24 @@ func (s *QueryDNAJobListResponseBodyJobList) SetUserData(v string) *QueryDNAJobL
 }
 
 type QueryDNAJobListResponseBodyJobListInput struct {
+	// The input file. The file can be an OSS object or a media asset. The path of an OSS object can be in one of the following formats:
+	//
+	// 1\\. oss://bucket/object
+	//
+	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	//
+	// In the preceding paths, bucket indicates an OSS bucket that resides in the same region as the current project, and object indicates the path of the object in the bucket.
+	//
 	// example:
 	//
 	// 1b1b9cd148034739af413150fded****
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: Object Storage Service (OSS) object.
+	//
+	// 2.  Media: media asset.
+	//
 	// example:
 	//
 	// Media
@@ -36147,7 +40552,10 @@ func (s *QueryDNAJobListResponse) SetBody(v *QueryDNAJobListResponseBody) *Query
 }
 
 type QueryIProductionJobRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the intelligent production job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36175,45 +40583,86 @@ func (s *QueryIProductionJobRequest) SetJobId(v string) *QueryIProductionJobRequ
 }
 
 type QueryIProductionJobResponseBody struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-07T07:16:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2021-11-26T14:50:25Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The name of the algorithm that you want to use for the job. Valid values:
+	//
+	// 	- **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+	//
+	// 	- **VideoClip**: This algorithm intelligently generates a summary for a video.
+	//
+	// 	- **VideoDelogo**: This algorithm removes logos from a video.
+	//
+	// 	- **VideoDetext**: This algorithm removes captions from a video.
+	//
 	// example:
 	//
 	// Cover
-	FunctionName *string                               `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	Input        *QueryIProductionJobResponseBodyInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// The input file.
+	Input *QueryIProductionJobResponseBodyInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The ID of the intelligent production job.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm.
+	//
 	// example:
 	//
 	// {"Model":"gif"}
-	JobParams   *string                                `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	Name        *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Output      *QueryIProductionJobResponseBodyOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	OutputFiles []*string                              `json:"OutputFiles,omitempty" xml:"OutputFiles,omitempty" type:"Repeated"`
-	OutputUrls  []*string                              `json:"OutputUrls,omitempty" xml:"OutputUrls,omitempty" type:"Repeated"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	// The name of the intelligent production job.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output file.
+	Output *QueryIProductionJobResponseBodyOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The output files.
+	OutputFiles []*string `json:"OutputFiles,omitempty" xml:"OutputFiles,omitempty" type:"Repeated"`
+	// The URLs of the output files.
+	OutputUrls []*string `json:"OutputUrls,omitempty" xml:"OutputUrls,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The output of the algorithm. The output is in JSON format and varies based on the algorithm. For more information, see the "Parameters of Result" section of this topic.
+	//
 	// example:
 	//
 	// {}
-	Result         *string                                        `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The scheduling configuration.
 	ScheduleConfig *QueryIProductionJobResponseBodyScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The status of the job. Valid values:
+	//
+	// 	- Queuing: The job is waiting in the queue.
+	//
+	// 	- Analysing: The job is in progress.
+	//
+	// 	- Fail: The job failed.
+	//
+	// 	- Success: The job was successful.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The user-defined data that is returned in the response.
+	//
 	// example:
 	//
 	// {"test":1}
@@ -36309,10 +40758,22 @@ func (s *QueryIProductionJobResponseBody) SetUserData(v string) *QueryIProductio
 }
 
 type QueryIProductionJobResponseBodyInput struct {
+	// The input file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The media type. Valid values:
+	//
+	// 1.  OSS: Object Storage Service (OSS) object
+	//
+	// 2.  Media: media asset
+	//
 	// example:
 	//
 	// OSS
@@ -36338,10 +40799,22 @@ func (s *QueryIProductionJobResponseBodyInput) SetType(v string) *QueryIProducti
 }
 
 type QueryIProductionJobResponseBodyOutput struct {
+	// The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The media type. Valid values:
+	//
+	// 	- OSS: OSS object
+	//
+	// 	- Media: media asset
+	//
 	// example:
 	//
 	// OSS
@@ -36367,10 +40840,18 @@ func (s *QueryIProductionJobResponseBodyOutput) SetType(v string) *QueryIProduct
 }
 
 type QueryIProductionJobResponseBodyScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue.
+	//
 	// example:
 	//
 	// a54fdc9c9aab413caef0d1150f565e86
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job in the MPS queue to which the job is added.
+	//
+	// 	- A value of 10 indicates the highest priority.
+	//
+	// 	- Default value: **6**.
+	//
 	// example:
 	//
 	// 6
@@ -36425,16 +40906,26 @@ func (s *QueryIProductionJobResponse) SetBody(v *QueryIProductionJobResponseBody
 }
 
 type QueryMediaCensorJobDetailRequest struct {
+	// The ID of the content moderation job. You can obtain the job ID from the response parameters of the [SubmitMediaCensorJob](https://help.aliyun.com/document_detail/444848.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The number of entries per page.
+	//
+	// 	- Default value: **30**.
+	//
+	// 	- Valid values: **1 to 300**.
+	//
 	// example:
 	//
 	// 30
 	MaximumPageSize *int64 `json:"MaximumPageSize,omitempty" xml:"MaximumPageSize,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// ae0fd49c0840e14daf0d66a75b83****
@@ -36489,7 +40980,10 @@ func (s *QueryMediaCensorJobDetailRequest) SetResourceOwnerId(v int64) *QueryMed
 }
 
 type QueryMediaCensorJobDetailResponseBody struct {
+	// The results of the content moderation job.
 	MediaCensorJobDetail *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail `json:"MediaCensorJobDetail,omitempty" xml:"MediaCensorJobDetail,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B42299E6-F71F-465F-8FE9-4FC2E3D3C2CA
@@ -36515,49 +41009,82 @@ func (s *QueryMediaCensorJobDetailResponseBody) SetRequestId(v string) *QueryMed
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail struct {
+	// The moderation results of live comments.
 	BarrageCensorResult *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailBarrageCensorResult `json:"BarrageCensorResult,omitempty" xml:"BarrageCensorResult,omitempty" type:"Struct"`
+	// The error code returned if the job failed. This parameter is not returned if the job is successful.
+	//
 	// example:
 	//
 	// InvalidParameter.ResourceNotFound
-	Code                    *string                                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The moderation results of thumbnails.
 	CoverImageCensorResults *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResults `json:"CoverImageCensorResults,omitempty" xml:"CoverImageCensorResults,omitempty" type:"Struct"`
+	// The time when the content moderation job was created.
+	//
 	// example:
 	//
 	// 2018-09-13T16:32:24Z
-	CreationTime     *string                                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The moderation results of descriptions.
 	DescCensorResult *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailDescCensorResult `json:"DescCensorResult,omitempty" xml:"DescCensorResult,omitempty" type:"Struct"`
+	// The time when the content moderation job was complete.
+	//
 	// example:
 	//
 	// 2018-09-13T16:38:24Z
-	FinishTime *string                                                         `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The information about the job input.
+	Input *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The ID of the content moderation job.
+	//
 	// example:
 	//
 	// f8f166eea7a44e9bb0a4aecf9543****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message returned if the job failed. This parameter is not returned if the job is successful.
+	//
 	// example:
 	//
 	// The resource operated cannot be found
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the job was submitted.
+	//
 	// example:
 	//
 	// c5b30b7c0d0e4a0abde1d5f9e751****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The job state.
+	//
 	// example:
 	//
 	// Success
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The overall result of the content moderation job. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
+	// >  If the moderation result of any type of content is review, the overall result is review. If the moderation result of any type of content is block, the overall result is block.
+	//
 	// example:
 	//
 	// block
-	Suggestion        *string                                                                     `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The moderation results of titles.
 	TitleCensorResult *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorResult `json:"TitleCensorResult,omitempty" xml:"TitleCensorResult,omitempty" type:"Struct"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// example userdata ****
-	UserData           *string                                                                      `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The moderation results of videos.
 	VensorCensorResult *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResult `json:"VensorCensorResult,omitempty" xml:"VensorCensorResult,omitempty" type:"Struct"`
-	VideoCensorConfig  *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig  `json:"VideoCensorConfig,omitempty" xml:"VideoCensorConfig,omitempty" type:"Struct"`
+	// The video moderation configurations.
+	VideoCensorConfig *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig `json:"VideoCensorConfig,omitempty" xml:"VideoCensorConfig,omitempty" type:"Struct"`
 }
 
 func (s QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail) String() string {
@@ -36649,18 +41176,46 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail) SetVideoCens
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailBarrageCensorResult struct {
+	// The label of the moderation result. Valid values:
+	//
+	// 	- **normal**: normal content.
+	//
+	// 	- **spam**: spam.
+	//
+	// 	- **ad**: ads.
+	//
+	// 	- **abuse**: abuse content.
+	//
+	// 	- **flood**: excessive junk content.
+	//
+	// 	- **contraband**: prohibited content.
+	//
+	// 	- **meaningless**: meaningless content.
+	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 99.91
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. The value is **antispam**.
+	//
 	// example:
 	//
 	// antispam
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// pass
@@ -36713,18 +41268,25 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResult struct {
+	// The OSS bucket in which the thumbnail is stored.
+	//
 	// example:
 	//
 	// bucket-out-test-****
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The OSS region in which the thumbnail resides.
+	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The Object Storage Service (OSS) object that is used as the thumbnail.
+	//
 	// example:
 	//
 	// test/ai/censor/v2/vme-****.jpg
-	Object  *string                                                                                                        `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The moderation results.
 	Results *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 }
 
@@ -36774,18 +41336,124 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResultsResult struct {
+	// The label of the moderation result.
+	//
+	// 	- Valid values in the pornographic content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **sexy**: sexy content.
+	//
+	//     	- **porn**: pornographic content.
+	//
+	// 	- Valid values in the terrorist content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **bloody**: bloody content.
+	//
+	//     	- **explosion**: explosion and smoke.
+	//
+	//     	- **outfit**: special costume.
+	//
+	//     	- **logo**: special logo.
+	//
+	//     	- **weapon**: weapon.
+	//
+	//     	- **politics**: political content.
+	//
+	//     	- **violence**: violence.
+	//
+	//     	- **crowd**: crowd.
+	//
+	//     	- **parade**: parade.
+	//
+	//     	- **carcrash**: car accident.
+	//
+	//     	- **flag**: flag.
+	//
+	//     	- **location**: landmark.
+	//
+	//     	- **others**: other content.
+	//
+	// 	- Valid values in the ad moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **ad**: other ads.
+	//
+	//     	- **politics**: political content in text.
+	//
+	//     	- **porn**: pornographic content in text.
+	//
+	//     	- **abuse**: abuse in text.
+	//
+	//     	- **terrorism**: terrorist content in text.
+	//
+	//     	- **contraband**: prohibited content in text.
+	//
+	//     	- **spam**: spam in text.
+	//
+	//     	- **npx**: illegal ad.
+	//
+	//     	- **qrcode**: QR code.
+	//
+	//     	- **programCode**: mini program code.
+	//
+	// 	- Valid values in the undesirable scene moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	//     	- **PIP**: picture-in-picture.
+	//
+	//     	- **smoking**: smoking.
+	//
+	//     	- **drivelive**: live broadcasting in a running vehicle.
+	//
+	// 	- Valid values in the logo moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **TV**: controlled logo.
+	//
+	//     	- **trademark**: trademark.
+	//
 	// example:
 	//
 	// Normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 100
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. Valid values:
+	//
+	// 	- **porn**: pornographic content moderation.
+	//
+	// 	- **terrorism**: terrorist content moderation.
+	//
+	// 	- **ad**: ad moderation.
+	//
+	// 	- **live**: undesirable scene moderation.
+	//
+	// 	- **logo**: logo moderation.
+	//
 	// example:
 	//
 	// Antispam
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// pass
@@ -36821,18 +41489,46 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailDescCensorResult struct {
+	// The label of the moderation result. Valid values:
+	//
+	// 	- **normal**: normal content.
+	//
+	// 	- **spam**: spam.
+	//
+	// 	- **ad**: ads.
+	//
+	// 	- **abuse**: abuse content.
+	//
+	// 	- **flood**: excessive junk content.
+	//
+	// 	- **contraband**: prohibited content.
+	//
+	// 	- **meaningless**: meaningless content.
+	//
 	// example:
 	//
 	// terrorism
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 100
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. The value is **antispam**.
+	//
 	// example:
 	//
 	// antispam
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// review
@@ -36868,14 +41564,20 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailDescCensorResu
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailInput struct {
+	// The name of the OSS bucket in which the input file is stored.
+	//
 	// example:
 	//
 	// bucket-test-in-****
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The OSS region in which the input file resides.
+	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The name of the OSS object that is used as the input file.
+	//
 	// example:
 	//
 	// test/ai/censor/test-****.mp4
@@ -36906,18 +41608,46 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailInput) SetObje
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorResult struct {
+	// The label of the moderation result. Valid values:
+	//
+	// 	- **normal**: normal content.
+	//
+	// 	- **spam**: spam.
+	//
+	// 	- **ad**: ads.
+	//
+	// 	- **abuse**: abuse content.
+	//
+	// 	- **flood**: excessive junk content.
+	//
+	// 	- **contraband**: prohibited content.
+	//
+	// 	- **meaningless**: meaningless content.
+	//
 	// example:
 	//
 	// meaningless
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 99.91
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. The value is **antispam**.
+	//
 	// example:
 	//
 	// antispam
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// block
@@ -36953,11 +41683,15 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorRes
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResult struct {
+	// A collection of moderation results. The information includes the summary about various scenarios such as pornographic content moderation and terrorist content moderation.
 	CensorResults *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultCensorResults `json:"CensorResults,omitempty" xml:"CensorResults,omitempty" type:"Struct"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ea04afcca7cd4e80b9ece8fbb251****
-	NextPageToken  *string                                                                                    `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The moderation results that are sorted in ascending order by time.
 	VideoTimelines *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelines `json:"VideoTimelines,omitempty" xml:"VideoTimelines,omitempty" type:"Struct"`
 }
 
@@ -37002,18 +41736,124 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultCensorResultsCensorResult struct {
+	// The label of the moderation result.
+	//
+	// 	- Valid values in the pornographic content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **sexy**: sexy content.
+	//
+	//     	- **porn**: pornographic content.
+	//
+	// 	- Valid values in the terrorist content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **bloody**: bloody content.
+	//
+	//     	- **explosion**: explosion and smoke.
+	//
+	//     	- **outfit**: special costume.
+	//
+	//     	- **logo**: special logo.
+	//
+	//     	- **weapon**: weapon.
+	//
+	//     	- **politics**: political content.
+	//
+	//     	- **violence**: violence.
+	//
+	//     	- **crowd**: crowd.
+	//
+	//     	- **parade**: parade.
+	//
+	//     	- **carcrash**: car accident.
+	//
+	//     	- **flag**: flag.
+	//
+	//     	- **location**: landmark.
+	//
+	//     	- **others**: other content.
+	//
+	// 	- Valid values in the ad moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **ad**: other ads.
+	//
+	//     	- **politics**: political content in text.
+	//
+	//     	- **porn**: pornographic content in text.
+	//
+	//     	- **abuse**: abuse in text.
+	//
+	//     	- **terrorism**: terrorist content in text.
+	//
+	//     	- **contraband**: prohibited content in text.
+	//
+	//     	- **spam**: spam in text.
+	//
+	//     	- **npx**: illegal ad.
+	//
+	//     	- **qrcode**: QR code.
+	//
+	//     	- **programCode**: mini program code.
+	//
+	// 	- Valid values in the undesirable scene moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	//     	- **PIP**: picture-in-picture.
+	//
+	//     	- **smoking**: smoking.
+	//
+	//     	- **drivelive**: live broadcasting in a running vehicle.
+	//
+	// 	- Valid values in the logo moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **TV**: controlled logo.
+	//
+	//     	- **trademark**: trademark.
+	//
 	// example:
 	//
 	// meaningless
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 100
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. Valid values:
+	//
+	// 	- **porn**: pornographic content moderation.
+	//
+	// 	- **terrorism**: terrorist content moderation.
+	//
+	// 	- **ad**: ad moderation.
+	//
+	// 	- **live**: undesirable scene moderation.
+	//
+	// 	- **logo**: logo moderation.
+	//
 	// example:
 	//
 	// terrorism
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// review
@@ -37066,11 +41906,18 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimeline struct {
+	// The moderation results that include information such as labels and scores.
 	CensorResults *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimelineCensorResults `json:"CensorResults,omitempty" xml:"CensorResults,omitempty" type:"Struct"`
+	// The OSS object that is generated as the output snapshot.
+	//
+	// >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
+	//
 	// example:
 	//
 	// output{Count}.jpg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The position in the video. Format: `hh:mm:ss[.SSS]`.
+	//
 	// example:
 	//
 	// 00:02:59.999
@@ -37118,18 +41965,124 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult struct {
+	// The label of the moderation result.
+	//
+	// 	- Valid values in the pornographic content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **sexy**: sexy content.
+	//
+	//     	- **porn**: pornographic content.
+	//
+	// 	- Valid values in the terrorist content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **bloody**: bloody content.
+	//
+	//     	- **explosion**: explosion and smoke.
+	//
+	//     	- **outfit**: special costume.
+	//
+	//     	- **logo**: special logo.
+	//
+	//     	- **weapon**: weapon.
+	//
+	//     	- **politics**: political content.
+	//
+	//     	- **violence**: violence.
+	//
+	//     	- **crowd**: crowd.
+	//
+	//     	- **parade**: parade.
+	//
+	//     	- **carcrash**: car accident.
+	//
+	//     	- **flag**: flag.
+	//
+	//     	- **location**: landmark.
+	//
+	//     	- **others**: other content.
+	//
+	// 	- Valid values in the ad moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **ad**: other ads.
+	//
+	//     	- **politics**: political content in text.
+	//
+	//     	- **porn**: pornographic content in text.
+	//
+	//     	- **abuse**: abuse in text.
+	//
+	//     	- **terrorism**: terrorist content in text.
+	//
+	//     	- **contraband**: prohibited content in text.
+	//
+	//     	- **spam**: spam in text.
+	//
+	//     	- **npx**: illegal ad.
+	//
+	//     	- **qrcode**: QR code.
+	//
+	//     	- **programCode**: mini program code.
+	//
+	// 	- Valid values in the undesirable scene moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	//     	- **PIP**: picture-in-picture.
+	//
+	//     	- **smoking**: smoking.
+	//
+	//     	- **drivelive**: live broadcasting in a running vehicle.
+	//
+	// 	- Valid values in the logo moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **TV**: controlled logo.
+	//
+	//     	- **trademark**: trademark.
+	//
 	// example:
 	//
 	// flood
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 99.99
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. Valid values:
+	//
+	// 	- **porn**: pornographic content moderation.
+	//
+	// 	- **terrorism**: terrorist content moderation.
+	//
+	// 	- **ad**: ad moderation.
+	//
+	// 	- **live**: undesirable scene moderation.
+	//
+	// 	- **logo**: logo moderation.
+	//
 	// example:
 	//
 	// porn
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// block
@@ -37165,11 +42118,20 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorRe
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig struct {
+	// The custom business type. Default value: common.
+	//
 	// example:
 	//
 	// common
-	BizType    *string                                                                               `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The information about output snapshots.
 	OutputFile *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfigOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	// Indicates whether the video content needs to be moderated. Default value: **true**. Valid values:
+	//
+	// 	- **true**: The video content needs to be moderated.
+	//
+	// 	- **false**: The video content does not need to be moderated.
+	//
 	// example:
 	//
 	// true
@@ -37200,14 +42162,22 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorCon
 }
 
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfigOutputFile struct {
+	// The OSS bucket in which the output snapshot is stored.
+	//
 	// example:
 	//
 	// test-bucket-****
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The OSS region in which the output snapshot resides.
+	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The OSS object that is generated as the output snapshot.
+	//
+	// >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
+	//
 	// example:
 	//
 	// output{Count}.jpg
@@ -37267,34 +42237,70 @@ func (s *QueryMediaCensorJobDetailResponse) SetBody(v *QueryMediaCensorJobDetail
 }
 
 type QueryMediaCensorJobListRequest struct {
+	// The end of the time range to query.
+	//
+	// 	- Specify the time in the ISO 8601 standard. The time must be in UTC.
+	//
+	// 	- Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2022-02-14T02:16:07Z
 	EndOfJobCreatedTimeRange *string `json:"EndOfJobCreatedTimeRange,omitempty" xml:"EndOfJobCreatedTimeRange,omitempty"`
+	// The IDs of the content moderation jobs. You can obtain the ID of a content moderation job from the response parameters of the SubmitMediaCensorJob operation. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// fa9c34be3bcf42919ac4d1775239****,78dc866518b843259669df58ed30****
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
+	// The number of entries per page.
+	//
+	// 	- Default value: **30**.
+	//
+	// 	- Valid values: **1 to 300**.
+	//
 	// example:
 	//
 	// 20
 	MaximumPageSize *int64 `json:"MaximumPageSize,omitempty" xml:"MaximumPageSize,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// 79aff3eee82242e092899db5f669
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the jobs were submitted.
+	//
 	// example:
 	//
 	// c5b30b7c0d0e4a0abde1d5f9e751****
 	PipelineId           *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// 	- Specify the time in the ISO 8601 standard. The time must be in UTC.
+	//
+	// 	- Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2021-12-22T03:48:05Z
 	StartOfJobCreatedTimeRange *string `json:"StartOfJobCreatedTimeRange,omitempty" xml:"StartOfJobCreatedTimeRange,omitempty"`
+	// The state of the jobs that you want to query. Valid values:
+	//
+	// 	- **All**: all jobs.
+	//
+	// 	- **Queuing**: the jobs that are waiting in the queue.
+	//
+	// 	- **Analysing**: the jobs that are in progress.
+	//
+	// 	- **Fail**: failed jobs.
+	//
+	// 	- **Success**: successful jobs.
+	//
 	// example:
 	//
 	// All
@@ -37365,12 +42371,18 @@ func (s *QueryMediaCensorJobListRequest) SetState(v string) *QueryMediaCensorJob
 }
 
 type QueryMediaCensorJobListResponseBody struct {
+	// The queried content moderation jobs.
 	MediaCensorJobList *QueryMediaCensorJobListResponseBodyMediaCensorJobList `json:"MediaCensorJobList,omitempty" xml:"MediaCensorJobList,omitempty" type:"Struct"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. The value is 32-character UUID. If the returned query results cannot be displayed within one page, this parameter is returned. The value of this parameter is updated for each query.
+	//
 	// example:
 	//
 	// 9b1a42bc6e8d46e6a1383b7e7f01****
-	NextPageToken *string                                         `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	NonExistIds   *QueryMediaCensorJobListResponseBodyNonExistIds `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The IDs of the jobs that do not exist. This parameter is not returned if all the specified jobs are found.
+	NonExistIds *QueryMediaCensorJobListResponseBodyNonExistIds `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D1D5C080-8E2F-5030-8AB4-13092F17631B
@@ -37423,49 +42435,80 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobList) SetMediaCensorJo
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob struct {
+	// The moderation results of live comments.
 	BarrageCensorResult *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult `json:"BarrageCensorResult,omitempty" xml:"BarrageCensorResult,omitempty" type:"Struct"`
+	// The error code returned if the job failed. This parameter is not returned if the job is successful.
+	//
 	// example:
 	//
 	// InvalidParameter.ResourceNotFound
-	Code                    *string                                                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The moderation results of thumbnails.
 	CoverImageCensorResults *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResults `json:"CoverImageCensorResults,omitempty" xml:"CoverImageCensorResults,omitempty" type:"Struct"`
+	// The time when the content moderation job was created.
+	//
 	// example:
 	//
 	// 2021-11-04T07:25:48Z
-	CreationTime     *string                                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The moderation results of descriptions.
 	DescCensorResult *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult `json:"DescCensorResult,omitempty" xml:"DescCensorResult,omitempty" type:"Struct"`
+	// The time when the content moderation job was complete.
+	//
 	// example:
 	//
 	// 2021-11-04T07:25:50Z
-	FinishTime *string                                                                   `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The information about the job input.
+	Input *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The ID of the content moderation job.
+	//
 	// example:
 	//
 	// f8f166eea7a44e9bb0a4aecf9543
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message returned if the job failed. This parameter is not returned if the job is successful.
+	//
 	// example:
 	//
 	// The resource operated cannot be found
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// c5b30b7c0d0e4a0abde1d5f9e751****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The job state.
+	//
 	// example:
 	//
 	// Success
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// pass
-	Suggestion        *string                                                                               `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The moderation results of titles.
 	TitleCensorResult *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult `json:"TitleCensorResult,omitempty" xml:"TitleCensorResult,omitempty" type:"Struct"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// example userdata ****
-	UserData           *string                                                                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The moderation results of videos.
 	VensorCensorResult *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult `json:"VensorCensorResult,omitempty" xml:"VensorCensorResult,omitempty" type:"Struct"`
-	VideoCensorConfig  *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig  `json:"VideoCensorConfig,omitempty" xml:"VideoCensorConfig,omitempty" type:"Struct"`
+	// The video moderation configurations.
+	VideoCensorConfig *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig `json:"VideoCensorConfig,omitempty" xml:"VideoCensorConfig,omitempty" type:"Struct"`
 }
 
 func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) String() string {
@@ -37557,18 +42600,46 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) Se
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult struct {
+	// The label of the moderation result. Separate multiple labels with commas (,). Valid values:
+	//
+	// 	- **normal**: normal content.
+	//
+	// 	- **spam**: spam.
+	//
+	// 	- **ad**: ads.
+	//
+	// 	- **abuse**: abuse content.
+	//
+	// 	- **flood**: excessive junk content.
+	//
+	// 	- **contraband**: prohibited content.
+	//
+	// 	- **meaningless**: meaningless content.
+	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 99.91
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. The value is **antispam**.
+	//
 	// example:
 	//
 	// antispam
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// pass
@@ -37621,18 +42692,25 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCove
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult struct {
+	// The OSS bucket in which the thumbnail is stored.
+	//
 	// example:
 	//
 	// example-Bucket-****
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The OSS region in which the thumbnail resides.
+	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The Object Storage Service (OSS) object that is used as the thumbnail.
+	//
 	// example:
 	//
 	// test/ai/censor/v2/vme-****.jpg
-	Object  *string                                                                                                                  `json:"Object,omitempty" xml:"Object,omitempty"`
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The moderation results.
 	Results *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 }
 
@@ -37682,18 +42760,126 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCove
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult struct {
+	// The label of the moderation result. Separate multiple labels with commas (,).
+	//
+	// 	- Valid values in the pornographic content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **sexy**: sexy content.
+	//
+	//     	- **porn**: pornographic content.
+	//
+	// 	- Valid values in the terrorist content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **bloody**: bloody content.
+	//
+	//     	- **explosion**: explosion and smoke.
+	//
+	//     	- **outfit**: special costume.
+	//
+	//     	- **logo**: special logo.
+	//
+	//     	- **weapon**: weapon.
+	//
+	//     	- **politics**: political content.
+	//
+	//     	- **violence**: violence.
+	//
+	//     	- **crowd**: crowd.
+	//
+	//     	- **parade**: parade.
+	//
+	//     	- **carcrash**: car accident.
+	//
+	//     	- **flag**: flag.
+	//
+	//     	- **location**: landmark.
+	//
+	//     	- **others**: other content.
+	//
+	// 	- Valid values in the ad moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **ad**: other ads.
+	//
+	//     	- **politics**: political content in text.
+	//
+	//     	- **porn**: pornographic content in text.
+	//
+	//     	- **abuse**: abuse in text.
+	//
+	//     	- **terrorism**: terrorist content in text.
+	//
+	//     	- **contraband**: prohibited content in text.
+	//
+	//     	- **spam**: spam in text.
+	//
+	//     	- **npx**: illegal ad.
+	//
+	//     	- **qrcode**: QR code.
+	//
+	//     	- **programCode**: mini program code.
+	//
+	// 	- Valid values in the undesirable scene moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	//     	- **PIP**: picture-in-picture.
+	//
+	//     	- **smoking**: smoking.
+	//
+	//     	- **drivelive**: live streaming in a running vehicle.
+	//
+	// 	- Valid values in the logo moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **TV**: controlled logo.
+	//
+	//     	- **trademark**: trademark.
+	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 100
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. Valid values:
+	//
+	// 	- **porn**: pornographic content moderation.
+	//
+	// 	- **terrorism**: terrorist content moderation.
+	//
+	// 	- **ad**: ad moderation.
+	//
+	// 	- **live**: undesirable scene moderation.
+	//
+	// 	- **logo**: logo moderation.
+	//
 	// example:
 	//
 	// live
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The overall result of the moderation job. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
+	// >  If the moderation result of any type of content is review, the overall result is review. If the moderation result of any type of content is block, the overall result is block.
+	//
 	// example:
 	//
 	// pass
@@ -37729,18 +42915,46 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCove
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult struct {
+	// The label of the moderation result. Separate multiple labels with commas (,). Valid values:
+	//
+	// 	- **normal**: normal content.
+	//
+	// 	- **spam**: spam.
+	//
+	// 	- **ad**: ads.
+	//
+	// 	- **abuse**: abuse content.
+	//
+	// 	- **flood**: excessive junk content.
+	//
+	// 	- **contraband**: prohibited content.
+	//
+	// 	- **meaningless**: meaningless content.
+	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 100
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. The value is **antispam**.
+	//
 	// example:
 	//
 	// antispam
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// pass
@@ -37776,14 +42990,20 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDesc
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput struct {
+	// The name of the OSS bucket in which the input file is stored.
+	//
 	// example:
 	//
 	// bucket-test-in-****
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The OSS region in which the input file resides.
+	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The name of the OSS object that is used as the input file.
+	//
 	// example:
 	//
 	// test/ai/censor/test-****.mp4
@@ -37814,18 +43034,46 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInpu
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult struct {
+	// The label of the moderation result. Separate multiple labels with commas (,). Valid values:
+	//
+	// 	- **normal**: normal content.
+	//
+	// 	- **spam**: spam.
+	//
+	// 	- **ad**: ads.
+	//
+	// 	- **abuse**: abuse content.
+	//
+	// 	- **flood**: excessive junk content.
+	//
+	// 	- **contraband**: prohibited content.
+	//
+	// 	- **meaningless**: meaningless content.
+	//
 	// example:
 	//
 	// meaningless
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 100
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. The value is **antispam**.
+	//
 	// example:
 	//
 	// antispam
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// block
@@ -37861,11 +43109,15 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitl
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult struct {
+	// A collection of moderation results. The information includes the summary about various scenarios such as pornographic content moderation and terrorist content moderation.
 	CensorResults *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResults `json:"CensorResults,omitempty" xml:"CensorResults,omitempty" type:"Struct"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ea04afcca7cd4e80b9ece8fbb251
-	NextPageToken  *string                                                                                              `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The moderation results that are sorted in ascending order by time.
 	VideoTimelines *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines `json:"VideoTimelines,omitempty" xml:"VideoTimelines,omitempty" type:"Struct"`
 }
 
@@ -37910,18 +43162,124 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVens
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult struct {
+	// The label of the moderation result. Separate multiple labels with commas (,).
+	//
+	// 	- Valid values in the pornographic content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **sexy**: sexy content.
+	//
+	//     	- **porn**: pornographic content.
+	//
+	// 	- Valid values in the terrorist content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **bloody**: bloody content.
+	//
+	//     	- **explosion**: explosion and smoke.
+	//
+	//     	- **outfit**: special costume.
+	//
+	//     	- **logo**: special logo.
+	//
+	//     	- **weapon**: weapon.
+	//
+	//     	- **politics**: political content.
+	//
+	//     	- **violence**: violence.
+	//
+	//     	- **crowd**: crowd.
+	//
+	//     	- **parade**: parade.
+	//
+	//     	- **carcrash**: car accident.
+	//
+	//     	- **flag**: flag.
+	//
+	//     	- **location**: landmark.
+	//
+	//     	- **others**: other content.
+	//
+	// 	- Valid values in the ad moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **ad**: other ads.
+	//
+	//     	- **politics**: political content in text.
+	//
+	//     	- **porn**: pornographic content in text.
+	//
+	//     	- **abuse**: abuse in text.
+	//
+	//     	- **terrorism**: terrorist content in text.
+	//
+	//     	- **contraband**: prohibited content in text.
+	//
+	//     	- **spam**: spam in text.
+	//
+	//     	- **npx**: illegal ad.
+	//
+	//     	- **qrcode**: QR code.
+	//
+	//     	- **programCode**: mini program code.
+	//
+	// 	- Valid values in the undesirable scene moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	//     	- **PIP**: picture-in-picture.
+	//
+	//     	- **smoking**: smoking.
+	//
+	//     	- **drivelive**: live streaming in a running vehicle.
+	//
+	// 	- Valid values in the logo moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **TV**: controlled logo.
+	//
+	//     	- **trademark**: trademark.
+	//
 	// example:
 	//
 	// meaningless
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 100
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. Valid values:
+	//
+	// 	- **porn**: pornographic content moderation.
+	//
+	// 	- **terrorism**: terrorist content moderation.
+	//
+	// 	- **ad**: ad moderation.
+	//
+	// 	- **live**: undesirable scene moderation.
+	//
+	// 	- **logo**: logo moderation.
+	//
 	// example:
 	//
 	// ad
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// pass
@@ -37974,11 +43332,18 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVens
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline struct {
+	// The moderation results that include information such as labels and scores.
 	CensorResults *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResults `json:"CensorResults,omitempty" xml:"CensorResults,omitempty" type:"Struct"`
+	// The OSS object that is generated as the output snapshot.
+	//
+	// >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
+	//
 	// example:
 	//
 	// output{Count}.jpg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The position in the video. Format: `hh:mm:ss[.SSS]`.
+	//
 	// example:
 	//
 	// 00:02:59.999
@@ -38026,18 +43391,124 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVens
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult struct {
+	// The label of the moderation result. Separate multiple labels with commas (,).
+	//
+	// 	- Valid values in the pornographic content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **sexy**: sexy content.
+	//
+	//     	- **porn**: pornographic content.
+	//
+	// 	- Valid values in the terrorist content moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **bloody**: bloody content.
+	//
+	//     	- **explosion**: explosion and smoke.
+	//
+	//     	- **outfit**: special costume.
+	//
+	//     	- **logo**: special logo.
+	//
+	//     	- **weapon**: weapon.
+	//
+	//     	- **politics**: political content.
+	//
+	//     	- **violence**: violence.
+	//
+	//     	- **crowd**: crowd.
+	//
+	//     	- **parade**: parade.
+	//
+	//     	- **carcrash**: car accident.
+	//
+	//     	- **flag**: flag.
+	//
+	//     	- **location**: landmark.
+	//
+	//     	- **others**: other content.
+	//
+	// 	- Valid values in the ad moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **ad**: other ads.
+	//
+	//     	- **politics**: political content in text.
+	//
+	//     	- **porn**: pornographic content in text.
+	//
+	//     	- **abuse**: abuse in text.
+	//
+	//     	- **terrorism**: terrorist content in text.
+	//
+	//     	- **contraband**: prohibited content in text.
+	//
+	//     	- **spam**: spam in text.
+	//
+	//     	- **npx**: illegal ad.
+	//
+	//     	- **qrcode**: QR code.
+	//
+	//     	- **programCode**: mini program code.
+	//
+	// 	- Valid values in the undesirable scene moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **meaningless**: meaningless content, such as a black or white screen.
+	//
+	//     	- **PIP**: picture-in-picture.
+	//
+	//     	- **smoking**: smoking.
+	//
+	//     	- **drivelive**: live streaming in a running vehicle.
+	//
+	// 	- Valid values in the logo moderation scenario:
+	//
+	//     	- **normal**: normal content.
+	//
+	//     	- **TV**: controlled logo.
+	//
+	//     	- **trademark**: trademark.
+	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The score. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 100
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The moderation scenario. Valid values:
+	//
+	// 	- **porn**: pornographic content moderation.
+	//
+	// 	- **terrorism**: terrorist content moderation.
+	//
+	// 	- **ad**: ad moderation.
+	//
+	// 	- **live**: undesirable scene moderation.
+	//
+	// 	- **logo**: logo moderation.
+	//
 	// example:
 	//
 	// porn
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The recommended subsequent operation. Valid values:
+	//
+	// 	- **pass**: The content passes the moderation.
+	//
+	// 	- **review**: The content needs to be manually reviewed.
+	//
+	// 	- **block**: The content needs to be blocked.
+	//
 	// example:
 	//
 	// block
@@ -38073,11 +43544,22 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVens
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig struct {
+	// The moderation template. Default value: common. The default value indicates that the default template is used.
+	//
+	// >  If the moderation template is not specified, the default value common is returned. If a custom moderation template that is created by submitting a ticket is specified, the UID of the template is returned.
+	//
 	// example:
 	//
 	// common
-	BizType    *string                                                                                         `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The information about output snapshots.
 	OutputFile *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	// Indicates whether the video content needs to be moderated. Default value: **true**. Valid values:
+	//
+	// 	- **true**: The video content needs to be moderated.
+	//
+	// 	- **false**: The video content does not need to be moderated.
+	//
 	// example:
 	//
 	// true
@@ -38108,14 +43590,22 @@ func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVide
 }
 
 type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile struct {
+	// The OSS bucket in which the output snapshot is stored.
+	//
 	// example:
 	//
 	// test-bucket-****
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The ID of the region in which the output snapshot resides.
+	//
 	// example:
 	//
 	// oss-cn-shanghai
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The OSS object that is generated as the output snapshot.
+	//
+	// >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg, output00002-****.jpg`, and so on.
+	//
 	// example:
 	//
 	// output{Count}.jpg
@@ -38685,12 +44175,20 @@ func (s *QuerySearchLibResponse) SetBody(v *QuerySearchLibResponseBody) *QuerySe
 }
 
 type QuerySmarttagJobRequest struct {
+	// The ID of the smart tagging job that you want to query. You can obtain the job ID from the response parameters of the SubmitSmarttagJob operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 88c6ca184c0e47098a5b665e2****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The extra parameters that you want to query in the request. The value is a JSON string. Example: {"labelResultType":"auto"}. The value of labelResultType is of the STRING type. Valid values:
+	//
+	// 	- auto: machine tagging
+	//
+	// 	- hmi: tagging by human and machine
+	//
 	// example:
 	//
 	// {"labelResultType":"auto"}
@@ -38716,15 +44214,30 @@ func (s *QuerySmarttagJobRequest) SetParams(v string) *QuerySmarttagJobRequest {
 }
 
 type QuerySmarttagJobResponseBody struct {
+	// The status of the job. Valid values:
+	//
+	// 	- **Success**: The job was successful.
+	//
+	// 	- **Fail**: The job failed.
+	//
+	// 	- **Processing**: The job is in progress.
+	//
+	// 	- **Submitted**: The job is submitted and waiting to be processed.
+	//
 	// example:
 	//
 	// Success
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   *QuerySmarttagJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The analysis results of the smart tagging job. The value is an array.
+	Results *QuerySmarttagJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// The content of callback messages that are sent to Simple Message Queue (SMQ) when the information of the smart tagging job changes. For more information about the parameters contained in the callback message, see the "Callback parameters" section of this topic.
+	//
 	// example:
 	//
 	// {"userId":"123432412831"}
@@ -38777,10 +44290,38 @@ func (s *QuerySmarttagJobResponseBodyResults) SetResult(v []*QuerySmarttagJobRes
 }
 
 type QuerySmarttagJobResponseBodyResultsResult struct {
+	// The details of the analysis result. The value is a JSON string. For more information about the parameters of different result types, see the "Parameters of different result types" section of this topic.
+	//
 	// example:
 	//
 	// {"title":"example-title-****"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The type of the analysis result.
+	//
+	// 	- The type of the analysis result based on Smart tagging V1.0. Valid values:
+	//
+	// 1.  TextLabel: the text tag.
+	//
+	// 2.  VideoLabel: the video tag.
+	//
+	// 3.  ASR: the original result of automatic speech recognition (ASR). By default, this type of result is not returned.
+	//
+	// 4.  OCR: the original result of optical character recognition (OCR). By default, this type of result is not returned.
+	//
+	// 5.  NLP: the natural language processing (NLP)-based result. By default, this type of result is not returned.
+	//
+	// 	- The type of the analysis result based on Smart tagging V2.0. Valid values:
+	//
+	// 1.  CPVLabel
+	//
+	// 2.  Meta: the information about the video file, such as the title of the video. By default, this type of information is not returned.
+	//
+	// 	- The type of the analysis result based on Smart tagging V2.0-custom. Valid values:
+	//
+	// 1.  CPVLabel
+	//
+	// 2.  Meta: the information about the video file, such as the title of the video. By default, this type of information is not returned.
+	//
 	// example:
 	//
 	// Meta
@@ -43502,6 +49043,8 @@ func (s *SetContentAnalyzeConfigResponse) SetBody(v *SetContentAnalyzeConfigResp
 }
 
 type SetDefaultCustomTemplateRequest struct {
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43524,10 +49067,14 @@ func (s *SetDefaultCustomTemplateRequest) SetTemplateId(v string) *SetDefaultCus
 }
 
 type SetDefaultCustomTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -44140,6 +49687,7 @@ type StartRtcRobotInstanceRequestConfig struct {
 	// zhixiaoxia
 	VoiceId      *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
 	VoiceprintId *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	Volume       *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s StartRtcRobotInstanceRequestConfig) String() string {
@@ -44187,6 +49735,11 @@ func (s *StartRtcRobotInstanceRequestConfig) SetVoiceId(v string) *StartRtcRobot
 
 func (s *StartRtcRobotInstanceRequestConfig) SetVoiceprintId(v string) *StartRtcRobotInstanceRequestConfig {
 	s.VoiceprintId = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequestConfig) SetVolume(v int64) *StartRtcRobotInstanceRequestConfig {
+	s.Volume = &v
 	return s
 }
 
@@ -44321,6 +49874,8 @@ func (s *StartRtcRobotInstanceResponse) SetBody(v *StartRtcRobotInstanceResponse
 }
 
 type StartWorkflowRequest struct {
+	// The workflow input. Only media assets are supported.
+	//
 	// example:
 	//
 	// {
@@ -44331,7 +49886,10 @@ type StartWorkflowRequest struct {
 	//
 	// }
 	TaskInput *string `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
-	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data in the JSON format, which cannot be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.htm).
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the workflow template. To view the template ID, log on to the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) and choose Configurations > Workflow Template.
+	//
 	// example:
 	//
 	// ******f0e54971ecbffd472190******
@@ -44362,10 +49920,14 @@ func (s *StartWorkflowRequest) SetWorkflowId(v string) *StartWorkflowRequest {
 }
 
 type StartWorkflowResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******42-E8E1-4FBB-8E52-F4225C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the workflow task.
+	//
 	// example:
 	//
 	// ******22dad741d086a50325f9******
@@ -44564,29 +50126,47 @@ func (s *StopRtcRobotInstanceResponse) SetBody(v *StopRtcRobotInstanceResponseBo
 }
 
 type SubmitASRJobRequest struct {
+	// The job description, which can up to 128 bytes in length.
+	//
 	// example:
 	//
 	// 测试描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The speech duration.
+	//
 	// example:
 	//
 	// 00:00:10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The input file. You can specify an Object Storage Service (OSS) URL or the ID of a media asset in the media asset library.
+	//
 	// example:
 	//
 	// oss://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4 或 ****20b48fb04483915d4f2cd8ac****
 	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	// The start time of the speech to recognize.
+	//
 	// example:
 	//
 	// 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job title, which can be up to 128 bytes in length.
+	//
 	// example:
 	//
 	// 测试标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user-defined data in the JSON format. You can specify your business information, such as the business environment and job information.
+	//
 	// example:
 	//
-	// {"user":"data"}
+	// {
+	//
+	//       "user": "data",
+	//
+	//       "env": "prod"
+	//
+	// }
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -44629,14 +50209,28 @@ func (s *SubmitASRJobRequest) SetUserData(v string) *SubmitASRJobRequest {
 }
 
 type SubmitASRJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The job state. Valid values:
+	//
+	// 	- Created
+	//
+	// 	- Executing
+	//
+	// 	- Finished
+	//
+	// 	- Failed
+	//
 	// example:
 	//
 	// Finished
@@ -44696,36 +50290,72 @@ func (s *SubmitASRJobResponse) SetBody(v *SubmitASRJobResponseBody) *SubmitASRJo
 }
 
 type SubmitAudioProduceJobRequest struct {
+	// The job description.
+	//
+	// 	- The job description can be up to 1,024 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// 任务描述  长度不超过1024字节  UTF8编码
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The audio editing configurations.
+	//
+	// 	- voice: the [voice type](https://help.aliyun.com/document_detail/402424.html).
+	//
+	// 	- customizedVoice: the ID of the personalized human voice.
+	//
+	// 	- format: the format of the output file. Valid values: PCM, WAV, and MP3.
+	//
+	// 	- volume: the volume. Default value: 50. Valid values: 0 to 100.
+	//
+	// 	- speech_rate: the speech tempo. Default value: 0. Value range: -500 to 500.
+	//
+	// 	- pitch_rate: the intonation. Default value: 0. Value range: -500 to 500.
+	//
+	// >  If you specify both voice and customizedVoice, customizedVoice takes precedence over voice.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"voice":"Siqi","format":"MP3","volume":50}
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	// The text content. A maximum of 2,000 characters are supported. The [Speech Synthesis Markup Language (SSML)](https://help.aliyun.com/document_detail/2672807.html) is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试文本
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The output audio configurations.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"bucket":"bucket","object":"objeck"}
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// Specifies whether to overwrite the existing Object Storage Service (OSS) object.
+	//
 	// example:
 	//
 	// true
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// The job title. If you do not specify this parameter, the system generates a title based on the current date.
+	//
+	// 	- The job title can be up to 128 bytes in length.
+	//
+	// 	- The value must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// 任务标题。若不提供，根据日期自动生成默认title  长度不超过128字节  UTF8编码
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
+	//
 	// example:
 	//
 	// {"user":"data"}
@@ -44776,18 +50406,34 @@ func (s *SubmitAudioProduceJobRequest) SetUserData(v string) *SubmitAudioProduce
 }
 
 type SubmitAudioProduceJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ****2bcbfcfa30fccb36f72dca22****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The job state. Valid values:
+	//
+	// 	- Created
+	//
+	// 	- Executing
+	//
+	// 	- Finished
+	//
+	// 	- Failed
+	//
 	// example:
 	//
 	// Created
@@ -44852,6 +50498,8 @@ func (s *SubmitAudioProduceJobResponse) SetBody(v *SubmitAudioProduceJobResponse
 }
 
 type SubmitAvatarTrainingJobRequest struct {
+	// The ID of the digital human training job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44874,11 +50522,16 @@ func (s *SubmitAvatarTrainingJobRequest) SetJobId(v string) *SubmitAvatarTrainin
 }
 
 type SubmitAvatarTrainingJobResponseBody struct {
+	// The data returned.
 	Data *SubmitAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// *****ACB-44F2-5F2D-88D7-1283E70*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -44909,6 +50562,8 @@ func (s *SubmitAvatarTrainingJobResponseBody) SetSuccess(v bool) *SubmitAvatarTr
 }
 
 type SubmitAvatarTrainingJobResponseBodyData struct {
+	// The ID of the digital human training job.
+	//
 	// example:
 	//
 	// ****29faef8144638ba42eb8e037****
@@ -45089,10 +50744,14 @@ func (s *SubmitAvatarVideoJobResponse) SetBody(v *SubmitAvatarVideoJobResponseBo
 }
 
 type SubmitBatchMediaProducingJobRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The editing configurations. For more information, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
+	//
 	// example:
 	//
 	// {
@@ -45117,7 +50776,10 @@ type SubmitBatchMediaProducingJobRequest struct {
 	//
 	// }
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
+	//
 	// example:
 	//
 	// {
@@ -45136,7 +50798,8 @@ type SubmitBatchMediaProducingJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.439285.0.i1#section-urj-v3f-0s1).
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitBatchMediaProducingJobRequest) String() string {
@@ -45173,10 +50836,14 @@ func (s *SubmitBatchMediaProducingJobRequest) SetUserData(v string) *SubmitBatch
 }
 
 type SubmitBatchMediaProducingJobResponseBody struct {
+	// The ID of the quick video production job.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
@@ -45231,10 +50898,22 @@ func (s *SubmitBatchMediaProducingJobResponse) SetBody(v *SubmitBatchMediaProduc
 }
 
 type SubmitCustomizedVoiceJobRequest struct {
+	// The URL of the sample audio file.
+	//
+	// 	- If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
+	//
+	// 	- If this parameter is not specified, no sample audio file is generated.
+	//
+	//     **
+	//
+	//     **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-shanghai.aliyuncs.com/demo.MP3
 	DemoAudioMediaURL *string `json:"DemoAudioMediaURL,omitempty" xml:"DemoAudioMediaURL,omitempty"`
+	// The voice ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45262,11 +50941,20 @@ func (s *SubmitCustomizedVoiceJobRequest) SetVoiceId(v string) *SubmitCustomized
 }
 
 type SubmitCustomizedVoiceJobResponseBody struct {
+	// The data returned.
 	Data *SubmitCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -45297,10 +50985,14 @@ func (s *SubmitCustomizedVoiceJobResponseBody) SetSuccess(v bool) *SubmitCustomi
 }
 
 type SubmitCustomizedVoiceJobResponseBodyData struct {
+	// The ID of the human voice cloning job.
+	//
 	// example:
 	//
 	// ****d718e2ff4f018ccf419a7b71****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The voice ID.
+	//
 	// example:
 	//
 	// xiaozhuan
@@ -45355,24 +51047,34 @@ func (s *SubmitCustomizedVoiceJobResponse) SetBody(v *SubmitCustomizedVoiceJobRe
 }
 
 type SubmitDNAJobRequest struct {
+	// The configurations of the media fingerprint analysis job. The value is a JSON object. If you specify this parameter, the template parameters are overwritten.
+	//
 	// example:
 	//
 	// {"SaveType": "save","MediaType"":"video"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the media fingerprint library. If you do not specify this parameter, the default media fingerprint library is used. For more information about how to create a media fingerprint library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****
 	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	// The input file for media fingerprint analysis.
+	//
 	// This parameter is required.
 	Input        *SubmitDNAJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	OwnerAccount *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the media fingerprint analysis job is submitted.
+	//
 	// example:
 	//
 	// 5246b8d12a62433ab77845074039****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The primary key of the video. You must make sure that each primary key is unique.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45381,10 +51083,14 @@ type SubmitDNAJobRequest struct {
 	PrimaryKey           *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// S00000101-100060
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The user-defined data. The data can be up to 128 bytes in length.
+	//
 	// example:
 	//
 	// userData
@@ -45455,12 +51161,26 @@ func (s *SubmitDNAJobRequest) SetUserData(v string) *SubmitDNAJobRequest {
 }
 
 type SubmitDNAJobRequestInput struct {
+	// The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+	//
+	// 1\\. oss://bucket/object
+	//
+	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	//
+	// In the preceding paths, bucket indicates an OSS bucket that resides in the same region as the current project, and object indicates the path of the object in the bucket.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1b1b9cd148034739af413150fded****
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: Object Storage Service (OSS) object.
+	//
+	// 2.  Media: media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45488,24 +51208,34 @@ func (s *SubmitDNAJobRequestInput) SetType(v string) *SubmitDNAJobRequestInput {
 }
 
 type SubmitDNAJobShrinkRequest struct {
+	// The configurations of the media fingerprint analysis job. The value is a JSON object. If you specify this parameter, the template parameters are overwritten.
+	//
 	// example:
 	//
 	// {"SaveType": "save","MediaType"":"video"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the media fingerprint library. If you do not specify this parameter, the default media fingerprint library is used. For more information about how to create a media fingerprint library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****
 	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	// The input file for media fingerprint analysis.
+	//
 	// This parameter is required.
 	InputShrink  *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the media fingerprint analysis job is submitted.
+	//
 	// example:
 	//
 	// 5246b8d12a62433ab77845074039****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The primary key of the video. You must make sure that each primary key is unique.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45514,10 +51244,14 @@ type SubmitDNAJobShrinkRequest struct {
 	PrimaryKey           *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// S00000101-100060
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The user-defined data. The data can be up to 128 bytes in length.
+	//
 	// example:
 	//
 	// userData
@@ -45588,10 +51322,14 @@ func (s *SubmitDNAJobShrinkRequest) SetUserData(v string) *SubmitDNAJobShrinkReq
 }
 
 type SubmitDNAJobResponseBody struct {
+	// The ID of the media fingerprint analysis job. We recommend that you save this ID for subsequent calls of other operations.
+	//
 	// example:
 	//
 	// 88c6ca184c0e47098a5b665e2****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D7393642CA58
@@ -45820,17 +51558,28 @@ func (s *SubmitDynamicChartJobResponse) SetBody(v *SubmitDynamicChartJobResponse
 }
 
 type SubmitDynamicImageJobRequest struct {
+	// The input of the job.
+	//
 	// This parameter is required.
 	Input *SubmitDynamicImageJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// SampleJob
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
+	//
 	// This parameter is required.
-	Output         *SubmitDynamicImageJobRequestOutput         `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Output *SubmitDynamicImageJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The scheduling settings.
 	ScheduleConfig *SubmitDynamicImageJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The snapshot template configuration.
+	//
 	// This parameter is required.
 	TemplateConfig *SubmitDynamicImageJobRequestTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"SampleKey": "SampleValue"}
@@ -45876,12 +51625,32 @@ func (s *SubmitDynamicImageJobRequest) SetUserData(v string) *SubmitDynamicImage
 }
 
 type SubmitDynamicImageJobRequestInput struct {
+	// The input file. If Type is set to OSS, set this parameter to the URL of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	//
+	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/object.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: an Object Storage Service (OSS) object.
+	//
+	// 2.  Media: a media asset.
+	//
+	// *
+	//
+	// *
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45909,12 +51678,32 @@ func (s *SubmitDynamicImageJobRequestInput) SetType(v string) *SubmitDynamicImag
 }
 
 type SubmitDynamicImageJobRequestOutput struct {
+	// The output file. The file can be an OSS object or a media asset. The URL of an OSS object can be in one of the following formats:
+	//
+	// 	- oss://bucket/object
+	//
+	// 	- http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	//
+	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 1.  OSS: an OSS object.
+	//
+	// 2.  Media: a media asset.
+	//
+	// *
+	//
+	// *
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45942,10 +51731,14 @@ func (s *SubmitDynamicImageJobRequestOutput) SetType(v string) *SubmitDynamicIma
 }
 
 type SubmitDynamicImageJobRequestScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority. Valid values: 1 to 10. Default value: 6. A greater value specifies a higher priority.
+	//
 	// example:
 	//
 	// 6
@@ -45971,7 +51764,10 @@ func (s *SubmitDynamicImageJobRequestScheduleConfig) SetPriority(v int32) *Submi
 }
 
 type SubmitDynamicImageJobRequestTemplateConfig struct {
+	// The parameters that are used to overwrite the corresponding parameters.
 	OverwriteParams *SubmitDynamicImageJobRequestTemplateConfigOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45999,27 +51795,56 @@ func (s *SubmitDynamicImageJobRequestTemplateConfig) SetTemplateId(v string) *Su
 }
 
 type SubmitDynamicImageJobRequestTemplateConfigOverwriteParams struct {
+	// The format of the animated image. Valid values:
+	//
+	// 	- **gif**
+	//
+	// 	- **webp**
+	//
 	// example:
 	//
 	// gif
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The frame rate. Valid values: [1,60].
+	//
 	// example:
 	//
 	// 15
 	Fps *int32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The height of the animated image. Valid values: [128,4096].
+	//
 	// example:
 	//
 	// 720
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Specifies whether to enable the auto-rotate screen feature. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// Default value: **true**.
+	//
+	// >  If this feature is enabled, the width of the output video corresponds to the long side of the input video, which is the height of the input video in portrait mode. The height of the output video corresponds to the short side of the input video, which is the width of the input video in portrait mode.
+	//
 	// example:
 	//
 	// false
 	LongShortMode *bool `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	// The scan mode. Valid values:
+	//
+	// 	- **interlaced**
+	//
+	// 	- **progressive*	- This is the default value.
+	//
 	// example:
 	//
 	// progressive
-	ScanMode *string                                                            `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The timeline parameters.
 	TimeSpan *SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
+	// The width of the animated image. Valid values: [128,4096].
+	//
 	// example:
 	//
 	// 1024
@@ -46070,9 +51895,24 @@ func (s *SubmitDynamicImageJobRequestTemplateConfigOverwriteParams) SetWidth(v i
 }
 
 type SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan struct {
+	// The length of the clip.
+	//
+	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+	//
+	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	End      *string `json:"End,omitempty" xml:"End,omitempty"`
-	Seek     *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
+	// The length of the ending part of the original clip to be cropped out. If you specify this parameter, the Duration parameter becomes invalid.
+	//
+	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+	//
+	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// The start point of the clip.
+	//
+	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+	//
+	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+	Seek *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
 }
 
 func (s SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan) String() string {
@@ -46099,17 +51939,28 @@ func (s *SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan) SetS
 }
 
 type SubmitDynamicImageJobShrinkRequest struct {
+	// The input of the job.
+	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// SampleJob
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
+	//
 	// This parameter is required.
-	OutputShrink         *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The scheduling settings.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The snapshot template configuration.
+	//
 	// This parameter is required.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"SampleKey": "SampleValue"}
@@ -46155,10 +52006,14 @@ func (s *SubmitDynamicImageJobShrinkRequest) SetUserData(v string) *SubmitDynami
 }
 
 type SubmitDynamicImageJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -46213,27 +52068,67 @@ func (s *SubmitDynamicImageJobResponse) SetBody(v *SubmitDynamicImageJobResponse
 }
 
 type SubmitIProductionJobRequest struct {
+	// The name of the algorithm that you want to use for the job. Valid values:
+	//
+	// 	- **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+	//
+	// 	- **VideoClip**: This algorithm intelligently generates a summary for a video.
+	//
+	// 	- **VideoDelogo**: This algorithm removes logos from a video.
+	//
+	// 	- **VideoDetext**: This algorithm removes captions from a video.
+	//
+	// 	- **CaptionExtraction**: This algorithm extracts captions from a video and generates the caption file.
+	//
+	// 	- **VideoGreenScreenMatting**: This algorithm performs green-screen image matting on a video and generates a new video.
+	//
+	// 	- **FaceBeauty**: This algorithm performs video retouching.
+	//
+	// 	- **VideoH2V**: This algorithm transforms a video from the landscape mode to the portrait mode.
+	//
+	// 	- **MusicSegmentDetect**: This algorithm detects the chorus of a song.
+	//
+	// 	- **AudioBeatDetection**: This algorithm detects rhythms.
+	//
+	// 	- **AudioQualityAssessment**: This algorithm assesses the audio quality.
+	//
+	// 	- **SpeechDenoise**: This algorithm performs noise reduction.
+	//
+	// 	- **AudioMixing**: This algorithm mixes audio streams.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cover
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// The input file. The file can be an Object Storage Service (OSS) object or a media asset.
+	//
 	// This parameter is required.
 	Input *SubmitIProductionJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm. For more information, see the "Parameters of JobParams" section of this topic.
+	//
 	// example:
 	//
 	// {"Model":"gif"}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
 	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the intelligent production job. The name can be up to 100 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output file. The file can be an OSS object or a media asset.
+	//
 	// This parameter is required.
-	Output         *SubmitIProductionJobRequestOutput         `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Output *SubmitIProductionJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The scheduling configuration.
 	ScheduleConfig *SubmitIProductionJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The user-defined data that is returned in the response. The value can be up to 1,024 bytes in length.
+	//
 	// example:
 	//
 	// {"test":1}
@@ -46294,12 +52189,24 @@ func (s *SubmitIProductionJobRequest) SetUserData(v string) *SubmitIProductionJo
 }
 
 type SubmitIProductionJobRequestInput struct {
+	// The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[regionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The media type. Valid values:
+	//
+	// 	- OSS: OSS object
+	//
+	// 	- Media: media asset
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -46327,12 +52234,24 @@ func (s *SubmitIProductionJobRequestInput) SetType(v string) *SubmitIProductionJ
 }
 
 type SubmitIProductionJobRequestOutput struct {
+	// The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The media type. Valid values:
+	//
+	// 	- OSS: OSS object
+	//
+	// 	- Media: media asset
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -46360,10 +52279,14 @@ func (s *SubmitIProductionJobRequestOutput) SetType(v string) *SubmitIProduction
 }
 
 type SubmitIProductionJobRequestScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue.
+	//
 	// example:
 	//
 	// 5246b8d12a62433ab77845074039c3dc
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. A smaller value indicates a higher priority.
+	//
 	// example:
 	//
 	// 6
@@ -46389,27 +52312,67 @@ func (s *SubmitIProductionJobRequestScheduleConfig) SetPriority(v int32) *Submit
 }
 
 type SubmitIProductionJobShrinkRequest struct {
+	// The name of the algorithm that you want to use for the job. Valid values:
+	//
+	// 	- **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+	//
+	// 	- **VideoClip**: This algorithm intelligently generates a summary for a video.
+	//
+	// 	- **VideoDelogo**: This algorithm removes logos from a video.
+	//
+	// 	- **VideoDetext**: This algorithm removes captions from a video.
+	//
+	// 	- **CaptionExtraction**: This algorithm extracts captions from a video and generates the caption file.
+	//
+	// 	- **VideoGreenScreenMatting**: This algorithm performs green-screen image matting on a video and generates a new video.
+	//
+	// 	- **FaceBeauty**: This algorithm performs video retouching.
+	//
+	// 	- **VideoH2V**: This algorithm transforms a video from the landscape mode to the portrait mode.
+	//
+	// 	- **MusicSegmentDetect**: This algorithm detects the chorus of a song.
+	//
+	// 	- **AudioBeatDetection**: This algorithm detects rhythms.
+	//
+	// 	- **AudioQualityAssessment**: This algorithm assesses the audio quality.
+	//
+	// 	- **SpeechDenoise**: This algorithm performs noise reduction.
+	//
+	// 	- **AudioMixing**: This algorithm mixes audio streams.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cover
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// The input file. The file can be an Object Storage Service (OSS) object or a media asset.
+	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm. For more information, see the "Parameters of JobParams" section of this topic.
+	//
 	// example:
 	//
 	// {"Model":"gif"}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
 	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the intelligent production job. The name can be up to 100 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output file. The file can be an OSS object or a media asset.
+	//
 	// This parameter is required.
-	OutputShrink         *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The scheduling configuration.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The user-defined data that is returned in the response. The value can be up to 1,024 bytes in length.
+	//
 	// example:
 	//
 	// {"test":1}
@@ -46470,10 +52433,14 @@ func (s *SubmitIProductionJobShrinkRequest) SetUserData(v string) *SubmitIProduc
 }
 
 type SubmitIProductionJobResponseBody struct {
+	// The ID of the intelligent production job.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C1849434-FC47-5DC1-92B6-F7EAAFE3851E
@@ -46528,26 +52495,66 @@ func (s *SubmitIProductionJobResponse) SetBody(v *SubmitIProductionJobResponseBo
 }
 
 type SubmitLiveEditingJobRequest struct {
+	// The clips in the JSON array format. The output video is created by merging these clips sequentially.
+	//
+	// Each clip has a start time and an end time. If no live stream parameters are specified, the outer live stream configurations apply. The start and end timestamps are in UTC. For more information about the parameters, see the "Clip" section of this topic.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{\\"StartTime\\": \\" 2021-06-21T08:01:00Z\\",  \\"EndTime\\": \\" 2021-06-21T08:03:00Z\\" ,  "AppName": "app", "DomainName": "domain.com", "StreamName": "stream"},  {\\"StartTime\\": \\" 2021-06-21T08:05:00Z\\",  \\"EndTime\\": \\" 2021-06-21T08:09:00Z\\" }]
 	Clips *string `json:"Clips,omitempty" xml:"Clips,omitempty"`
+	// The live stream configurations, in the JSON format. The configurations must include the following parameters:
+	//
+	// 	- AppName: the name of the application to which the live stream belongs.
+	//
+	// 	- DomainName: the domain name of the application.
+	//
+	// 	- StreamName: the name of the live stream.
+	//
 	// example:
 	//
 	// { "AppName": "app", "DomainName": "domain.com", "StreamName": "stream"  }
 	LiveStreamConfig *string `json:"LiveStreamConfig,omitempty" xml:"LiveStreamConfig,omitempty"`
+	// The production configurations, in the JSON format. Mode specifies the editing mode. Valid values:
+	//
+	// 	- **AccurateFast*	- (default): fast editing. It is faster than the Accurate mode. The resolution of the output file is the same as that of the source stream. You cannot specify the width and height of the output file.
+	//
+	// 	- **Accurate**: accurate editing. In this mode, you can specify the width and height of the output file.
+	//
+	// 	- **Rough**: rough editing. The minimum precision is one TS segment. The output file comprises all segments within the specified time range. You can specify the width and height of the output file.
+	//
+	// 	- **RoughFast**: fast rough editing. It is faster than the Accurate mode. The minimum precision is one TS segment. The output file comprises all segments within the specified time range. The resolution of the output file is the same as that of the source stream. You cannot specify the width and height of the output file.
+	//
 	// example:
 	//
 	// { "Mode": "AccurateFast"}
 	MediaProduceConfig *string `json:"MediaProduceConfig,omitempty" xml:"MediaProduceConfig,omitempty"`
-	OutputMediaConfig  *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
-	OutputMediaTarget  *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
+	// The configurations of the output file, in the JSON format. You can specify an OSS URL or a storage location in a storage bucket of ApsaraVideo VOD.
+	//
+	// 	- To store the output file in OSS, you must specify MediaURL.
+	//
+	// 	- To store the output file in ApsaraVideo VOD, you must specify StorageLocation and FileName.
+	OutputMediaConfig *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 	- oss-object: OSS object in an OSS bucket.
+	//
+	// 	- vod-media: media asset in Alibaba Cloud VOD.
+	//
+	// example:
+	//
+	// oss-object
+	OutputMediaTarget *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
+	// The ID of the live editing project. If this parameter is specified, the system reads the storage configurations of the project. If this parameter is not specified, the specified storage configurations take precedence.
+	//
 	// example:
 	//
 	// ****fddd7748b58bf1d47e95****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The user-defined data in the JSON format, which can be up to 512 bytes in length.
+	//
 	// example:
 	//
 	// {"key": "value"}
@@ -46598,26 +52605,38 @@ func (s *SubmitLiveEditingJobRequest) SetUserData(v string) *SubmitLiveEditingJo
 }
 
 type SubmitLiveEditingJobResponseBody struct {
+	// The ID of the live editing job.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The media asset ID of the output file.
+	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The URL of the output file.
+	//
 	// example:
 	//
 	// http://test-bucket.cn-shanghai.aliyuncs.com/test.mp4
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	// The ID of the live editing project.
+	//
 	// example:
 	//
 	// ****fddd7748b58bf1d47e95****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
+	//
 	// example:
 	//
 	// ****d7578s4h75ci945c14b****
@@ -47558,36 +53577,66 @@ func (s *SubmitMediaAiAnalysisJobResponse) SetBody(v *SubmitMediaAiAnalysisJobRe
 }
 
 type SubmitMediaCensorJobRequest struct {
+	// The live comments of the video.
+	//
+	// >  If this parameter is specified, the system checks the live comments specified by this parameter instead of the live comments of the input file specified by Media.
+	//
 	// example:
 	//
 	// hello world
 	Barrages *string `json:"Barrages,omitempty" xml:"Barrages,omitempty"`
+	// The Object Storage Service (OSS) objects that are used as the thumbnails. Specify the thumbnails in a JSON array. A maximum of five thumbnails are supported.
+	//
+	// >  If this parameter is specified, the system checks the thumbnails specified by this parameter instead of the thumbnails of the input file specified by **Media**.
+	//
 	// example:
 	//
 	// [{"Bucket":"example-bucket-****","Location":"oss-cn-shanghai","Object":"example-****.jpeg","RoleArn":"acs:ram::1997018457688683:role/AliyunICEDefaultRole"}]
 	CoverImages *string `json:"CoverImages,omitempty" xml:"CoverImages,omitempty"`
+	// The video description, which can be up to 128 bytes in length.
+	//
+	// >  If this parameter is specified, the system checks the description specified by this parameter instead of the description of the input file specified by Media.
+	//
 	// example:
 	//
 	// example description
-	Description *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Input       *SubmitMediaCensorJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the file to be moderated.
+	Input *SubmitMediaCensorJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The callback URL. Simple Message Queue (SMQ, formerly MNS) and HTTP callbacks are supported.
+	//
 	// example:
 	//
 	// mns://125340688170****.oss-cn-shanghai.aliyuncs.com/queues/example-pipeline
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The output snapshots. The moderation job generates output snapshots and the result JSON file in the path corresponding to the input file.
+	//
+	// 	- File name format of output snapshots: oss://bucket/snapshot-{Count}.jpg. In the path, bucket indicates an OSS bucket that resides in the same region as the current project, and {Count} is the sequence number of the snapshot.
+	//
+	// 	- The detailed moderation results are stored in the {jobId}.output file in the same OSS folder as the output snapshots. For more information about the parameters in the output file, see [Output parameters of media moderation jobs](https://help.aliyun.com/document_detail/609211.html).
+	//
 	// example:
 	//
 	// oss://sashimi-cn-shanghai/censor/snapshot-{Count}.jpg
-	Output         *string                                    `json:"Output,omitempty" xml:"Output,omitempty"`
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The scheduling configurations.
 	ScheduleConfig *SubmitMediaCensorJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The template ID. If this parameter is not specified, the default template is used for moderation.
+	//
 	// example:
 	//
 	// S00000001-100060
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The video title, which can be up to 64 bytes in length.
+	//
+	// >  If this parameter is specified, the system checks the title specified by this parameter instead of the title of the input file specified by Media.
+	//
 	// example:
 	//
 	// Hello World
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user-defined data, which can be up to 128 bytes in length.
+	//
 	// example:
 	//
 	// UserDatatestid-001-****
@@ -47653,10 +53702,24 @@ func (s *SubmitMediaCensorJobRequest) SetUserData(v string) *SubmitMediaCensorJo
 }
 
 type SubmitMediaCensorJobRequestInput struct {
+	// The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+	//
+	// 1\\. oss://bucket/object
+	//
+	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	//
+	// In the preceding paths, bucket indicates an OSS bucket that resides in the same region as the current project, and object indicates the path of the object in the bucket.
+	//
 	// example:
 	//
 	// 1b1b9cd148034739af413150fded****
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the input file. Valid values:
+	//
+	// OSS: OSS object.
+	//
+	// Media: media asset.
+	//
 	// example:
 	//
 	// Media
@@ -47682,10 +53745,14 @@ func (s *SubmitMediaCensorJobRequestInput) SetType(v string) *SubmitMediaCensorJ
 }
 
 type SubmitMediaCensorJobRequestScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the job is submitted.
+	//
 	// example:
 	//
 	// 5246b8d12a62433ab77845074039****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The job priority. A larger value indicates a higher priority. Valid values: 1 to 10.
+	//
 	// example:
 	//
 	// 6
@@ -47711,36 +53778,66 @@ func (s *SubmitMediaCensorJobRequestScheduleConfig) SetPriority(v int32) *Submit
 }
 
 type SubmitMediaCensorJobShrinkRequest struct {
+	// The live comments of the video.
+	//
+	// >  If this parameter is specified, the system checks the live comments specified by this parameter instead of the live comments of the input file specified by Media.
+	//
 	// example:
 	//
 	// hello world
 	Barrages *string `json:"Barrages,omitempty" xml:"Barrages,omitempty"`
+	// The Object Storage Service (OSS) objects that are used as the thumbnails. Specify the thumbnails in a JSON array. A maximum of five thumbnails are supported.
+	//
+	// >  If this parameter is specified, the system checks the thumbnails specified by this parameter instead of the thumbnails of the input file specified by **Media**.
+	//
 	// example:
 	//
 	// [{"Bucket":"example-bucket-****","Location":"oss-cn-shanghai","Object":"example-****.jpeg","RoleArn":"acs:ram::1997018457688683:role/AliyunICEDefaultRole"}]
 	CoverImages *string `json:"CoverImages,omitempty" xml:"CoverImages,omitempty"`
+	// The video description, which can be up to 128 bytes in length.
+	//
+	// >  If this parameter is specified, the system checks the description specified by this parameter instead of the description of the input file specified by Media.
+	//
 	// example:
 	//
 	// example description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the file to be moderated.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The callback URL. Simple Message Queue (SMQ, formerly MNS) and HTTP callbacks are supported.
+	//
 	// example:
 	//
 	// mns://125340688170****.oss-cn-shanghai.aliyuncs.com/queues/example-pipeline
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The output snapshots. The moderation job generates output snapshots and the result JSON file in the path corresponding to the input file.
+	//
+	// 	- File name format of output snapshots: oss://bucket/snapshot-{Count}.jpg. In the path, bucket indicates an OSS bucket that resides in the same region as the current project, and {Count} is the sequence number of the snapshot.
+	//
+	// 	- The detailed moderation results are stored in the {jobId}.output file in the same OSS folder as the output snapshots. For more information about the parameters in the output file, see [Output parameters of media moderation jobs](https://help.aliyun.com/document_detail/609211.html).
+	//
 	// example:
 	//
 	// oss://sashimi-cn-shanghai/censor/snapshot-{Count}.jpg
-	Output               *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The scheduling configurations.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The template ID. If this parameter is not specified, the default template is used for moderation.
+	//
 	// example:
 	//
 	// S00000001-100060
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The video title, which can be up to 64 bytes in length.
+	//
+	// >  If this parameter is specified, the system checks the title specified by this parameter instead of the title of the input file specified by Media.
+	//
 	// example:
 	//
 	// Hello World
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user-defined data, which can be up to 128 bytes in length.
+	//
 	// example:
 	//
 	// UserDatatestid-001-****
@@ -47806,10 +53903,14 @@ func (s *SubmitMediaCensorJobShrinkRequest) SetUserData(v string) *SubmitMediaCe
 }
 
 type SubmitMediaCensorJobResponseBody struct {
+	// The ID of the content moderation job. We recommend that you save this ID for subsequent calls of other operations.
+	//
 	// example:
 	//
 	// 88c6ca184c0e47098a5b665e2****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D7393642CA58
@@ -47864,13 +53965,20 @@ func (s *SubmitMediaCensorJobResponse) SetBody(v *SubmitMediaCensorJobResponseBo
 }
 
 type SubmitMediaInfoJobRequest struct {
+	// The input of the job.
+	//
 	// This parameter is required.
 	Input *SubmitMediaInfoJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
-	Name           *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scheduling parameters.
 	ScheduleConfig *SubmitMediaInfoJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -47906,12 +54014,22 @@ func (s *SubmitMediaInfoJobRequest) SetUserData(v string) *SubmitMediaInfoJobReq
 }
 
 type SubmitMediaInfoJobRequestInput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values: OSS and Media. A value of OSS indicates an Object Storage Service (OSS) object. A value of Media indicates a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47939,10 +54057,14 @@ func (s *SubmitMediaInfoJobRequestInput) SetType(v string) *SubmitMediaInfoJobRe
 }
 
 type SubmitMediaInfoJobRequestScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -47968,13 +54090,20 @@ func (s *SubmitMediaInfoJobRequestScheduleConfig) SetPriority(v int32) *SubmitMe
 }
 
 type SubmitMediaInfoJobShrinkRequest struct {
+	// The input of the job.
+	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scheduling parameters.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -48012,6 +54141,8 @@ func (s *SubmitMediaInfoJobShrinkRequest) SetUserData(v string) *SubmitMediaInfo
 type SubmitMediaInfoJobResponseBody struct {
 	// MediaInfoJobDTO
 	MediaInfoJob *SubmitMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -48037,45 +54168,68 @@ func (s *SubmitMediaInfoJobResponseBody) SetRequestId(v string) *SubmitMediaInfo
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJob struct {
+	// Indicates whether asynchronous processing was performed.
+	//
 	// example:
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *SubmitMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Input *SubmitMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
-	JobId             *string                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The details of the media information.
 	MediaInfoProperty *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4879B9DE-E4B6-19DC-91F5-9D5F4DCE4168
-	RequestId      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling information.
 	ScheduleConfig *SubmitMediaInfoJobResponseBodyMediaInfoJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the job. Valid values: Init (the job is submitted), Success (the job is successful), and Fail (the job failed).
+	//
 	// example:
 	//
 	// Init
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job submission information.
+	//
 	// example:
 	//
 	// {}
 	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The source of the job. Valid values: API, WorkFlow, and Console.
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -48156,10 +54310,14 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJob) SetUserData(v string) *Subm
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobInput struct {
+	// The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values: OSS and Media. A value of OSS indicates an OSS object. A value of Media indicates a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -48185,8 +54343,11 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobInput) SetType(v string) *Sub
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty struct {
+	// The information about the audio stream.
 	AudioStreamInfoList []*SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo       *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The basic file information.
+	FileBasicInfo *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The information about the video stream.
 	VideoStreamInfoList []*SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -48214,62 +54375,92 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty) SetVideoSt
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 0.f
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The sound channel layout.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The encoder tag.
+	//
 	// example:
 	//
 	// 0x000f
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The name of the encoder tag.
+	//
 	// example:
 	//
 	// [15][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// us
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sample format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sampling rate. Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
@@ -48360,50 +54551,74 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamI
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo struct {
+	// The video bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration of the video.
+	//
 	// example:
 	//
 	// 403.039999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// file.m3u8
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size.
+	//
 	// example:
 	//
 	// 31737
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The state of the file.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The URL of the file.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The name of the video format.
+	//
 	// example:
 	//
 	// hls,applehttp
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 2b36bd19c13f4145b094c0cad80dbce5
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -48479,94 +54694,146 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInf
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	AvgFps *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	// The tag of the encoding format.
+	//
 	// example:
 	//
 	// 0x001b
 	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
+	// The tag string of the encoding format.
+	//
 	// example:
 	//
 	// [27][0][0][0]
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/50
 	CodecTimeBase *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// The display aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration of the file.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+	//
+	// 	- 0: The stream contains no B-frames.
+	//
+	// 	- 1: The stream contains one B-frame.
+	//
+	// 	- 2: The stream contains multiple consecutive B-frames.
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 31
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 10040
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The encoder profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle of the video image.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The aspect ratio of the area from which the sampling points are collected.
+	//
 	// example:
 	//
 	// 478:477
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
 	TimeBase *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -48697,10 +54964,14 @@ func (s *SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamI
 }
 
 type SubmitMediaInfoJobResponseBodyMediaInfoJobScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -48755,12 +55026,38 @@ func (s *SubmitMediaInfoJobResponse) SetBody(v *SubmitMediaInfoJobResponseBody) 
 }
 
 type SubmitMediaProducingJobRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ****12e8864746a0a398****
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClipsParam           *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The material parameters of the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// The parameters for editing and production. For more information, see [EditingProduceConfig](https://help.aliyun.com/document_detail/357745.html#title-10z-t9u-n69).
+	//
+	// >  If no thumbnail is specified in EditingProduceConfig, the first frame of the video is used as the thumbnail.
+	//
+	// 	- AutoRegisterInputVodMedia: specifies whether to automatically register the ApsaraVideo VOD media assets in your timeline with IMS. Default value: true.
+	//
+	// 	- OutputWebmTransparentChannel: specifies whether the output video contains alpha channels. Default value: false.
+	//
+	// 	- CoverConfig: the custom thumbnail parameters.
+	//
+	// *
+	//
+	// example:
+	//
+	// {
+	//
+	//       "AutoRegisterInputVodMedia": "true",
+	//
+	//       "OutputWebmTransparentChannel": "true"
+	//
+	// }
 	EditingProduceConfig *string `json:"EditingProduceConfig,omitempty" xml:"EditingProduceConfig,omitempty"`
+	// The metadata of the produced video, in the JSON format. For more information about the parameters, see [MediaMetadata](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.445712.0.0.49a716dbA8hgdz#97ff26d0e3c28).
+	//
 	// example:
 	//
 	// {
@@ -48771,31 +55068,67 @@ type SubmitMediaProducingJobRequest struct {
 	//
 	// }
 	MediaMetadata *string `json:"MediaMetadata,omitempty" xml:"MediaMetadata,omitempty"`
+	// The configurations of the output file, in the JSON format. You can specify an OSS URL or a storage location in a storage bucket of ApsaraVideo VOD.
+	//
+	// To store the output file in OSS, you must specify MediaURL. To store the output file in ApsaraVideo VOD, you must specify StorageLocation and FileName.
+	//
+	// For more information, see [OutputMediaConfig](https://help.aliyun.com/document_detail/357745.html#title-4j6-ve7-g31).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"MediaURL":"https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4"}
 	OutputMediaConfig *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 	- oss-object: OSS object in an OSS bucket.
+	//
+	// 	- vod-media: media asset in ApsaraVideo VOD.
+	//
+	// 	- S3: output file based on the Amazon Simple Storage Service (S3) protocol.
+	//
 	// example:
 	//
 	// oss-object
 	OutputMediaTarget *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
+	// The ID of the editing project.
+	//
+	// > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty.
+	//
 	// example:
 	//
 	// xxxxxfb2101cb318xxxxx
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The metadata of the editing project, in the JSON format. For more information about the parameters, see [ProjectMetadata](https://help.aliyun.com/document_detail/357745.html#title-yvp-81k-wff).
 	ProjectMetadata *string `json:"ProjectMetadata,omitempty" xml:"ProjectMetadata,omitempty"`
+	// The source of the editing and production request. Valid values:
+	//
+	// 	- OpenAPI
+	//
+	// 	- AliyunConsole
+	//
+	// 	- WebSDK
+	//
 	// example:
 	//
 	// OPENAPI
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The template ID. The template is used to build a timeline with ease.
+	//
+	// > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty. If TemplateId is specified, ClipsParam must also be specified.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Timeline   *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	UserData   *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
+	//
+	// example:
+	//
+	// {"NotifyAddress":"https://xx.com/xx","RegisterMediaNotifyAddress":"https://xxx.com/xx"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitMediaProducingJobRequest) String() string {
@@ -48867,22 +55200,32 @@ func (s *SubmitMediaProducingJobRequest) SetUserData(v string) *SubmitMediaProdu
 }
 
 type SubmitMediaProducingJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The media asset ID of the output file.
+	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The ID of the editing project.
+	//
 	// example:
 	//
 	// ****b4549d46c88681030f6e****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
+	//
 	// example:
 	//
 	// ****d8s4h75ci975745c14b****
@@ -48952,15 +55295,24 @@ func (s *SubmitMediaProducingJobResponse) SetBody(v *SubmitMediaProducingJobResp
 }
 
 type SubmitPackageJobRequest struct {
+	// The input of the job.
+	//
 	// This parameter is required.
 	Inputs []*SubmitPackageJobRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
+	//
 	// This parameter is required.
-	Output         *SubmitPackageJobRequestOutput         `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Output *SubmitPackageJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The scheduling settings.
 	ScheduleConfig *SubmitPackageJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"param": "value"}
@@ -49001,6 +55353,8 @@ func (s *SubmitPackageJobRequest) SetUserData(v string) *SubmitPackageJobRequest
 }
 
 type SubmitPackageJobRequestInputs struct {
+	// The information about the input stream file.
+	//
 	// This parameter is required.
 	Input *SubmitPackageJobRequestInputsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 }
@@ -49019,12 +55373,24 @@ func (s *SubmitPackageJobRequestInputs) SetInput(v *SubmitPackageJobRequestInput
 }
 
 type SubmitPackageJobRequestInputsInput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49052,12 +55418,20 @@ func (s *SubmitPackageJobRequestInputsInput) SetType(v string) *SubmitPackageJob
 }
 
 type SubmitPackageJobRequestOutput struct {
+	// The media object. If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49085,10 +55459,14 @@ func (s *SubmitPackageJobRequestOutput) SetType(v string) *SubmitPackageJobReque
 }
 
 type SubmitPackageJobRequestScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -49114,15 +55492,24 @@ func (s *SubmitPackageJobRequestScheduleConfig) SetPriority(v int32) *SubmitPack
 }
 
 type SubmitPackageJobShrinkRequest struct {
+	// The input of the job.
+	//
 	// This parameter is required.
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the job.
+	//
 	// This parameter is required.
-	OutputShrink         *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The scheduling settings.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"param": "value"}
@@ -49163,10 +55550,14 @@ func (s *SubmitPackageJobShrinkRequest) SetUserData(v string) *SubmitPackageJobS
 }
 
 type SubmitPackageJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// 2d705f385b704ee5b*******a36d93e0
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -49221,38 +55612,62 @@ func (s *SubmitPackageJobResponse) SetBody(v *SubmitPackageJobResponseBody) *Sub
 }
 
 type SubmitSmarttagJobRequest struct {
+	// The video description. The description can contain letters, digits, and hyphens (-) and cannot start with a special character. The description can be up to 1 KB in length.
+	//
 	// example:
 	//
 	// example content ****
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is discontinued.
+	//
 	// example:
 	//
 	// http://123.com/testVideo.mp4
 	ContentAddr *string `json:"ContentAddr,omitempty" xml:"ContentAddr,omitempty"`
+	// This parameter is discontinued.
+	//
 	// example:
 	//
 	// application/zip
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// input
+	// The job input.
 	Input *SubmitSmarttagJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The URL for receiving callbacks. Set the value to an HTTP URL or an HTTPS URL.
+	//
 	// example:
 	//
 	// https://example.com/endpoint/aliyun/ai?id=76401125000***
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The additional request parameters. The value is a JSON string. Example: {"needAsrData":true, "needOcrData":false}. The following parameters are supported:
+	//
+	// 	- needAsrData: specifies whether to query the automatic speech recognition (ASR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+	//
+	// 	- needOcrData: specifies whether to query the optical character recognition (OCR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+	//
+	// 	- needMetaData: specifies whether to query the metadata. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+	//
+	// 	- nlpParams: the input parameters of the natural language processing (NLP) operator. The value is a JSON object. This parameter is empty by default, which indicates that the NLP operator is not used. For more information, see the "nlpParams" section of this topic.
+	//
 	// example:
 	//
 	// {"needAsrData":true, "needOcrData":false}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// scheduleConfig
+	// The scheduling configurations.
 	ScheduleConfig *SubmitSmarttagJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
+	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The video title. The title can contain letters, digits, and hyphens (-) and cannot start with a special character. The title can be up to 256 bytes in length.
+	//
 	// example:
 	//
 	// example-title-****
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The data to be passed through Simple Message Queue (SMQ, formerly MNS) during callbacks. The data can be up to 1 KB in length. For more information about how to specify an SMQ queue for receiving callbacks, see UpdatePipeline.
+	//
 	// example:
 	//
 	// {“a”:"test"}
@@ -49318,10 +55733,24 @@ func (s *SubmitSmarttagJobRequest) SetUserData(v string) *SubmitSmarttagJobReque
 }
 
 type SubmitSmarttagJobRequestInput struct {
+	// If Type is set to OSS, specify an OSS path. Example: OSS://test-bucket/video/202208/test.mp4.
+	//
+	// If Type is set to Media, specify a media asset ID. Example: c5c62d8f0361337cab312dce8e77dc6d.
+	//
+	// If Type is set to URL, specify an HTTP URL. Example: https://zc-test.oss-cn-shanghai.aliyuncs.com/test/unknowFace.mp4.
+	//
 	// example:
 	//
 	// c5c62d8f0361337cab312dce8e77dc6d
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The media type. Valid values:
+	//
+	// 	- OSS
+	//
+	// 	- Media
+	//
+	// 	- URL
+	//
 	// example:
 	//
 	// Media
@@ -49347,10 +55776,14 @@ func (s *SubmitSmarttagJobRequestInput) SetType(v string) *SubmitSmarttagJobRequ
 }
 
 type SubmitSmarttagJobRequestScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue to which you want to submit the smart tagging job. The MPS queue is bound to an SMQ queue. This parameter specifies the default MPS queue. By default, an MPS queue can process a maximum of two concurrent smart tagging jobs. To increase the limit, submit a ticket.
+	//
 	// example:
 	//
 	// acdbfe4323bcfdae
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The job priority. This parameter is not implemented. You can leave this parameter empty or enter a random value.
+	//
 	// example:
 	//
 	// 4
@@ -49376,38 +55809,62 @@ func (s *SubmitSmarttagJobRequestScheduleConfig) SetPriority(v string) *SubmitSm
 }
 
 type SubmitSmarttagJobShrinkRequest struct {
+	// The video description. The description can contain letters, digits, and hyphens (-) and cannot start with a special character. The description can be up to 1 KB in length.
+	//
 	// example:
 	//
 	// example content ****
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is discontinued.
+	//
 	// example:
 	//
 	// http://123.com/testVideo.mp4
 	ContentAddr *string `json:"ContentAddr,omitempty" xml:"ContentAddr,omitempty"`
+	// This parameter is discontinued.
+	//
 	// example:
 	//
 	// application/zip
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// input
+	// The job input.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The URL for receiving callbacks. Set the value to an HTTP URL or an HTTPS URL.
+	//
 	// example:
 	//
 	// https://example.com/endpoint/aliyun/ai?id=76401125000***
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The additional request parameters. The value is a JSON string. Example: {"needAsrData":true, "needOcrData":false}. The following parameters are supported:
+	//
+	// 	- needAsrData: specifies whether to query the automatic speech recognition (ASR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+	//
+	// 	- needOcrData: specifies whether to query the optical character recognition (OCR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+	//
+	// 	- needMetaData: specifies whether to query the metadata. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
+	//
+	// 	- nlpParams: the input parameters of the natural language processing (NLP) operator. The value is a JSON object. This parameter is empty by default, which indicates that the NLP operator is not used. For more information, see the "nlpParams" section of this topic.
+	//
 	// example:
 	//
 	// {"needAsrData":true, "needOcrData":false}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// scheduleConfig
+	// The scheduling configurations.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
+	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The video title. The title can contain letters, digits, and hyphens (-) and cannot start with a special character. The title can be up to 256 bytes in length.
+	//
 	// example:
 	//
 	// example-title-****
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The data to be passed through Simple Message Queue (SMQ, formerly MNS) during callbacks. The data can be up to 1 KB in length. For more information about how to specify an SMQ queue for receiving callbacks, see UpdatePipeline.
+	//
 	// example:
 	//
 	// {“a”:"test"}
@@ -49473,10 +55930,14 @@ func (s *SubmitSmarttagJobShrinkRequest) SetUserData(v string) *SubmitSmarttagJo
 }
 
 type SubmitSmarttagJobResponseBody struct {
+	// The ID of the smart tagging job. We recommend that you save this ID for subsequent calls of other operations.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -49531,17 +55992,28 @@ func (s *SubmitSmarttagJobResponse) SetBody(v *SubmitSmarttagJobResponseBody) *S
 }
 
 type SubmitSnapshotJobRequest struct {
+	// The snapshot input.
+	//
 	// This parameter is required.
 	Input *SubmitSnapshotJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// SampleJob
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The snapshot output.
+	//
 	// This parameter is required.
-	Output         *SubmitSnapshotJobRequestOutput         `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Output *SubmitSnapshotJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The scheduling settings.
 	ScheduleConfig *SubmitSnapshotJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The snapshot template configuration.
+	//
 	// This parameter is required.
 	TemplateConfig *SubmitSnapshotJobRequestTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"test parameter": "test value"}
@@ -49587,12 +56059,26 @@ func (s *SubmitSnapshotJobRequest) SetUserData(v string) *SubmitSnapshotJobReque
 }
 
 type SubmitSnapshotJobRequestInput struct {
+	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	//
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/object.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the input file. Valid values:
+	//
+	// 1.  OSS: an Object Storage Service (OSS) object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49620,12 +56106,28 @@ func (s *SubmitSnapshotJobRequestInput) SetType(v string) *SubmitSnapshotJobRequ
 }
 
 type SubmitSnapshotJobRequestOutput struct {
+	// The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	//
+	// 1.  oss://bucket/object
+	//
+	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	//
+	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
+	//
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test-bucket/output-{Count}.jpg
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the output file. Valid values:
+	//
+	// 1.  OSS: an OSS object.
+	//
+	// 2.  Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49653,6 +56155,8 @@ func (s *SubmitSnapshotJobRequestOutput) SetType(v string) *SubmitSnapshotJobReq
 }
 
 type SubmitSnapshotJobRequestScheduleConfig struct {
+	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
@@ -49673,7 +56177,10 @@ func (s *SubmitSnapshotJobRequestScheduleConfig) SetPipelineId(v string) *Submit
 }
 
 type SubmitSnapshotJobRequestTemplateConfig struct {
+	// The parameters that are used to overwrite the corresponding parameters.
 	OverwriteParams *SubmitSnapshotJobRequestTemplateConfigOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -49701,43 +56208,64 @@ func (s *SubmitSnapshotJobRequestTemplateConfig) SetTemplateId(v string) *Submit
 }
 
 type SubmitSnapshotJobRequestTemplateConfigOverwriteParams struct {
+	// The threshold that is used to filter out black frames for the first snapshot to be captured. This feature is available if you request the system to capture multiple snapshots.
+	//
 	// example:
 	//
 	// 30
 	BlackLevel *int32 `json:"BlackLevel,omitempty" xml:"BlackLevel,omitempty"`
+	// The number of snapshots.
+	//
 	// example:
 	//
 	// 5
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The type of the frame.
+	//
 	// example:
 	//
 	// intra
 	FrameType *string `json:"FrameType,omitempty" xml:"FrameType,omitempty"`
+	// The height of a captured snapshot.
+	//
 	// example:
 	//
 	// 480
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The interval at which snapshots are captured.
+	//
 	// example:
 	//
 	// 10
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The WebVTT snapshot configuration that specifies whether to merge the output snapshots.
+	//
 	// example:
 	//
 	// true
 	IsSptFrag *bool `json:"IsSptFrag,omitempty" xml:"IsSptFrag,omitempty"`
+	// The color value threshold that determines whether a pixel is black.
+	//
 	// example:
 	//
 	// 70
-	PixelBlackThreshold  *int32                                                                     `json:"PixelBlackThreshold,omitempty" xml:"PixelBlackThreshold,omitempty"`
+	PixelBlackThreshold *int32 `json:"PixelBlackThreshold,omitempty" xml:"PixelBlackThreshold,omitempty"`
+	// The configuration of the sprite snapshot.
 	SpriteSnapshotConfig *SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig `json:"SpriteSnapshotConfig,omitempty" xml:"SpriteSnapshotConfig,omitempty" type:"Struct"`
+	// The point in time at which the system starts to capture snapshots in the input video.
+	//
 	// example:
 	//
 	// 1000
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The snapshot type. Valid values:
+	//
 	// example:
 	//
 	// Sprite
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The width of a captured snapshot.
+	//
 	// example:
 	//
 	// 720
@@ -49808,30 +56336,44 @@ func (s *SubmitSnapshotJobRequestTemplateConfigOverwriteParams) SetWidth(v int32
 }
 
 type SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig struct {
+	// The height of a single snapshot before tiling. The default value is the height of the output snapshot.
+	//
 	// example:
 	//
 	// 480
 	CellHeight *int32 `json:"CellHeight,omitempty" xml:"CellHeight,omitempty"`
+	// The width of a single snapshot before tiling. The default value is the width of the output snapshot.
+	//
 	// example:
 	//
 	// 720
 	CellWidth *int32 `json:"CellWidth,omitempty" xml:"CellWidth,omitempty"`
+	// The background color.
+	//
 	// example:
 	//
 	// #000000
 	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	// The number of columns that the image sprite contains.
+	//
 	// example:
 	//
 	// 20
 	Columns *int32 `json:"Columns,omitempty" xml:"Columns,omitempty"`
+	// The number of rows that the image sprite contains.
+	//
 	// example:
 	//
 	// 20
 	Lines *int32 `json:"Lines,omitempty" xml:"Lines,omitempty"`
+	// The width of the frame. Default value: 0. Unit: pixels.
+	//
 	// example:
 	//
 	// 20
 	Margin *int32 `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	// The spacing between two adjacent snapshots. Default value: 0. Unit: pixels.
+	//
 	// example:
 	//
 	// 20
@@ -49882,17 +56424,28 @@ func (s *SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConf
 }
 
 type SubmitSnapshotJobShrinkRequest struct {
+	// The snapshot input.
+	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// SampleJob
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The snapshot output.
+	//
 	// This parameter is required.
-	OutputShrink         *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The scheduling settings.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The snapshot template configuration.
+	//
 	// This parameter is required.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The user-defined data.
+	//
 	// example:
 	//
 	// {"test parameter": "test value"}
@@ -49938,10 +56491,14 @@ func (s *SubmitSnapshotJobShrinkRequest) SetUserData(v string) *SubmitSnapshotJo
 }
 
 type SubmitSnapshotJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -49996,11 +56553,16 @@ func (s *SubmitSnapshotJobResponse) SetBody(v *SubmitSnapshotJobResponseBody) *S
 }
 
 type SubmitSportsHighlightsJobRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The input configurations.
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The output configurations.
+	//
 	// example:
 	//
 	// {
@@ -50015,7 +56577,8 @@ type SubmitSportsHighlightsJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data.
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitSportsHighlightsJobRequest) String() string {
@@ -50047,10 +56610,14 @@ func (s *SubmitSportsHighlightsJobRequest) SetUserData(v string) *SubmitSportsHi
 }
 
 type SubmitSportsHighlightsJobResponseBody struct {
+	// The ID of the sports highlights job.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
@@ -50105,22 +56672,55 @@ func (s *SubmitSportsHighlightsJobResponse) SetBody(v *SubmitSportsHighlightsJob
 }
 
 type SubmitStandardCustomizedVoiceJobRequest struct {
+	// 	- The material assets IDs of the materials for training.
+	//
+	// 	- Separate multiple media IDs with commas (,).
+	//
+	// > : The total duration of all materials must be within 15 to 30 minutes. The duration of each material must be greater than 1 minute.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****,****571c704445f9a0ee011406c2****,****571c704445f9a0ee011406c2****
 	Audios *string `json:"Audios,omitempty" xml:"Audios,omitempty"`
+	// 	- The media asset ID of the authentication audio.
+	//
+	// 	- Upload an audio file for identity authentication. If the voiceprint extracted from the uploaded file differs from that of the training file, the job fails.
+	//
+	//     **
+	//
+	//     **Note**: Clearly read and record the following text: I confirm to customize human voice cloning and provide audio files that contain my voice for training. I promise that I am responsible for the customized content and that the content complies with laws and regulations.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
 	Authentication *string `json:"Authentication,omitempty" xml:"Authentication,omitempty"`
+	// The URL of the sample audio file.
+	//
+	// 	- If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
+	//
+	// 	- If this parameter is not specified, no sample audio file is generated.
+	//
+	//     **
+	//
+	//     **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-shanghai.aliyuncs.com/demo.mp3
 	DemoAudioMediaURL *string `json:"DemoAudioMediaURL,omitempty" xml:"DemoAudioMediaURL,omitempty"`
+	// The gender. Valid values:
+	//
+	// 	- female
+	//
+	// 	- male
+	//
 	// example:
 	//
 	// female
-	Gender    *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// The voice name.
+	//
+	// 	- The name can be up to 32 characters in length.
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 
@@ -50158,11 +56758,20 @@ func (s *SubmitStandardCustomizedVoiceJobRequest) SetVoiceName(v string) *Submit
 }
 
 type SubmitStandardCustomizedVoiceJobResponseBody struct {
+	// The data returned.
 	Data *SubmitStandardCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -50193,6 +56802,8 @@ func (s *SubmitStandardCustomizedVoiceJobResponseBody) SetSuccess(v bool) *Submi
 }
 
 type SubmitStandardCustomizedVoiceJobResponseBodyData struct {
+	// The ID of the human voice cloning job.
+	//
 	// example:
 	//
 	// ****d718e2ff4f018ccf419a7b71****
@@ -50242,13 +56853,20 @@ func (s *SubmitStandardCustomizedVoiceJobResponse) SetBody(v *SubmitStandardCust
 }
 
 type SubmitSyncMediaInfoJobRequest struct {
+	// The input of the job.
+	//
 	// This parameter is required.
 	Input *SubmitSyncMediaInfoJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
-	Name           *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scheduling parameters. This parameter is optional.
 	ScheduleConfig *SubmitSyncMediaInfoJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -50284,12 +56902,26 @@ func (s *SubmitSyncMediaInfoJobRequest) SetUserData(v string) *SubmitSyncMediaIn
 }
 
 type SubmitSyncMediaInfoJobRequestInput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object.
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50317,10 +56949,14 @@ func (s *SubmitSyncMediaInfoJobRequestInput) SetType(v string) *SubmitSyncMediaI
 }
 
 type SubmitSyncMediaInfoJobRequestScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -50346,13 +56982,20 @@ func (s *SubmitSyncMediaInfoJobRequestScheduleConfig) SetPriority(v int32) *Subm
 }
 
 type SubmitSyncMediaInfoJobShrinkRequest struct {
+	// The input of the job.
+	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scheduling parameters. This parameter is optional.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -50390,6 +57033,8 @@ func (s *SubmitSyncMediaInfoJobShrinkRequest) SetUserData(v string) *SubmitSyncM
 type SubmitSyncMediaInfoJobResponseBody struct {
 	// MediaInfoJobDTO
 	MediaInfoJob *SubmitSyncMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -50415,45 +57060,68 @@ func (s *SubmitSyncMediaInfoJobResponseBody) SetRequestId(v string) *SubmitSyncM
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJob struct {
+	// Indicates whether asynchronous processing was performed.
+	//
 	// example:
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                              `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Input      *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input of the job.
+	Input *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ab4802364a2e49208c99efab82dfa8e8
-	JobId             *string                                                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The details of the media information.
 	MediaInfoProperty *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4879B9DE-E4B6-19DC-91F5-9D5F4DCE4168
-	RequestId      *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling information.
 	ScheduleConfig *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the job. Valid values: Init (the job is submitted), Success (the job is successful), and Fail (the job failed).
+	//
 	// example:
 	//
 	// Init
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job submission information.
+	//
 	// example:
 	//
 	// {}
 	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The source of the job. Valid values: API, WorkFlow, and Console.
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -50534,10 +57202,18 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJob) SetUserData(v string) *
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput struct {
+	// The media object. If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -50563,8 +57239,11 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobInput) SetType(v string) 
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty struct {
+	// The information about the audio stream.
 	AudioStreamInfoList []*SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo       *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The basic file information.
+	FileBasicInfo *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The information about the video stream.
 	VideoStreamInfoList []*SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -50592,62 +57271,92 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty) SetVid
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 0.f
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The sound channel layout.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The encoder tag.
+	//
 	// example:
 	//
 	// 0x000f
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The name of the encoder tag.
+	//
 	// example:
 	//
 	// [15][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration of the file.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// us
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sample format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sampling rate. Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
@@ -50738,50 +57447,76 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStr
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo struct {
+	// The video bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration of the video. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// file.m3u8
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 31737
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The state of the file. Valid values:
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The URL of the file.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The name of the video format.
+	//
 	// example:
 	//
 	// hls,applehttp
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 999e68259c924f52a6be603cbb3f91cc
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -50857,94 +57592,146 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasi
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	AvgFps *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	// The tag of the encoding format.
+	//
 	// example:
 	//
 	// 0x001b
 	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
+	// The tag string of the encoding format.
+	//
 	// example:
 	//
 	// [27][0][0][0]
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/50
 	CodecTimeBase *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// The display aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration of the file.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+	//
+	// 	- 0: The stream contains no B-frames.
+	//
+	// 	- 1: The stream contains one B-frame.
+	//
+	// 	- 2: The stream contains multiple consecutive B-frames.
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 31
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 10040
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The encoder profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle of the video image.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The aspect ratio of the area from which the sampling points are collected.
+	//
 	// example:
 	//
 	// 478:477
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
 	TimeBase *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -51075,10 +57862,14 @@ func (s *SubmitSyncMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStr
 }
 
 type SubmitSyncMediaInfoJobResponseBodyMediaInfoJobScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -51133,13 +57924,29 @@ func (s *SubmitSyncMediaInfoJobResponse) SetBody(v *SubmitSyncMediaInfoJobRespon
 }
 
 type SubmitTextGenerateJobRequest struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The job description, which can be up to 1,024 bytes in length and must be encoded in UTF-8.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The text generation configurations, including keywords and the requirements for the word count and number of output copies.
 	GenerateConfig *string `json:"GenerateConfig,omitempty" xml:"GenerateConfig,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The job title.
+	//
+	// The job title can be up to 128 bytes in length.
+	//
+	// The value must be encoded in UTF-8.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The job type.
+	//
+	// Valid values:
+	//
+	// 	- MarketingCopy: the marketing copy.
+	//
+	// 	- Title: the short video title.
+	//
 	// example:
 	//
 	// MarketingCopy
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -51177,11 +57984,13 @@ func (s *SubmitTextGenerateJobRequest) SetUserData(v string) *SubmitTextGenerate
 }
 
 type SubmitTextGenerateJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	// The request ID
 	//
 	// example:
 	//
@@ -51237,19 +58046,42 @@ func (s *SubmitTextGenerateJobResponse) SetBody(v *SubmitTextGenerateJobResponse
 }
 
 type SubmitTranscodeJobRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// job-name
 	InputGroup []*SubmitTranscodeJobRequestInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output group of the job.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// user-data
 	OutputGroup []*SubmitTranscodeJobRequestOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
+	// The scheduling information about the job.
+	//
 	// example:
 	//
 	// job-name
 	ScheduleConfig *SubmitTranscodeJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The custom settings. The value must be in the JSON format and can be up to 512 bytes in length. You can specify a [custom callback URL](https://help.aliyun.com/document_detail/451631.html).
+	//
 	// example:
 	//
 	// user-data
@@ -51295,16 +58127,36 @@ func (s *SubmitTranscodeJobRequest) SetUserData(v string) *SubmitTranscodeJobReq
 }
 
 type SubmitTranscodeJobRequestInputGroup struct {
+	// The URL of the input stream.
+	//
+	// 	- This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an input.
+	//
+	// 	- The system checks whether the input URL exists within the media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an Object Storage Service (OSS) object.
+	//
+	// 	- Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51337,8 +58189,12 @@ func (s *SubmitTranscodeJobRequestInputGroup) SetType(v string) *SubmitTranscode
 }
 
 type SubmitTranscodeJobRequestOutputGroup struct {
+	// The output file configuration.
+	//
 	// This parameter is required.
 	Output *SubmitTranscodeJobRequestOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The job processing configuration.
+	//
 	// This parameter is required.
 	ProcessConfig *SubmitTranscodeJobRequestOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
 }
@@ -51362,16 +58218,52 @@ func (s *SubmitTranscodeJobRequestOutputGroup) SetProcessConfig(v *SubmitTransco
 }
 
 type SubmitTranscodeJobRequestOutputGroupOutput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The URL of the output stream.\\
+	//
+	// This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an output.\\
+	//
+	// Supported placeholders:
+	//
+	// 	- {MediaId}: the ID of the media asset.
+	//
+	// 	- {JobId}: the ID of the transcoding subjob.
+	//
+	// 	- {MediaBucket}: the bucket to which the media asset belongs.
+	//
+	// 	- {ExtName}: the file suffix, which uses the output format of the transcoding template.
+	//
+	// 	- {DestMd5}: the MD5 value of the transcoded output file.\\
+	//
+	//     Notes:
+	//
+	// 1.  This parameter must contain the {MediaId} and {JobId} placeholders.
+	//
+	// 2.  The output bucket is the same as the bucket to which the media asset belongs.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/{MediaId}/{JobId}.mp4
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51404,11 +58296,18 @@ func (s *SubmitTranscodeJobRequestOutputGroupOutput) SetType(v string) *SubmitTr
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfig struct {
-	CombineConfigs  []*SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
-	Encryption      *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The multi-input stream merge configuration.
+	CombineConfigs []*SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
+	// The encryption settings.
+	Encryption *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The watermark configuration of an image.
 	ImageWatermarks []*SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	Subtitles       []*SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	TextWatermarks  []*SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	// The subtitle configuration.
+	Subtitles []*SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The configurations of the text watermark.
+	TextWatermarks []*SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	// The transcoding configuration.
+	//
 	// This parameter is required.
 	Transcode *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
@@ -51452,20 +58351,28 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetTranscode(v *Subm
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs struct {
+	// The audio stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 或 exclude
 	AudioIndex *string `json:"AudioIndex,omitempty" xml:"AudioIndex,omitempty"`
+	// The duration of the input stream. The default value is the duration of the video.
+	//
 	// example:
 	//
 	// 20.0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the input stream. Default value: 0.
+	//
 	// example:
 	//
 	// 0.0
 	Start *float64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The video stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51503,18 +58410,34 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs) SetVid
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption struct {
+	// The ciphertext of HTTP Live Streaming (HLS) encryption.
+	//
 	// example:
 	//
 	// MTYi00NDU0LTg5O****
 	CipherText *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	// The address of the decryption service for HLS encryption.
+	//
 	// example:
 	//
 	// https://sample.com/path?CipherText=MTYi00NDU0LTg5O****
 	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	// Specifies the encryption type. Valid values:
+	//
+	// 	- PrivateEncryption: Alibaba Cloud proprietary cryptography
+	//
+	// 	- HLSEncryption: HTTP Live Streaming (HLS) encryption
+	//
 	// example:
 	//
 	// PrivateEncryption
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The key service type for HLS encryption. Valid values:
+	//
+	// 	- KMS
+	//
+	// 	- Base64
+	//
 	// example:
 	//
 	// KMS
@@ -51550,7 +58473,10 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption) SetKeyServ
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51578,24 +58504,92 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks) SetTe
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
+	// The horizontal offset of the watermark relative to the output video. Default value: 0.
+	//
+	// The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the horizontal offset.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the horizontal offset to the width of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 10
 	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	// The vertical offset of the watermark relative to the output video. Default value: 0.
+	//
+	// The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the horizontal offset.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the vertical offset to the height of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 10
-	Dy   *string                                                                              `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	// The watermark image file.
 	File *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The height of the watermark image in the output video. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the watermark height.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the watermark height to the height of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 32
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The position of the watermark.
+	//
+	// 	- Valid values: TopRight, TopLeft, BottomRight, and BottomLeft.
+	//
+	// 	- Default value: TopRight.
+	//
 	// example:
 	//
 	// TopLeft
-	ReferPos *string                                                                                  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	// The time settings of the dynamic watermark.
 	Timeline *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	// The width of the watermark in the output video. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the watermark width.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the watermark width to the width of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 32
@@ -51646,10 +58640,22 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -51675,10 +58681,24 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
+	// The time range in which the watermark is displayed.
+	//
+	// 	- Valid values: integers and ToEND.
+	//
+	// 	- Default value: ToEND.
+	//
 	// example:
 	//
 	// ToEND
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The beginning of the time range in which the watermark is displayed.
+	//
+	// 	- Unit: seconds.
+	//
+	// 	- Value values: integers.
+	//
+	// 	- Default value: 0.
+	//
 	// example:
 	//
 	// 00:00:05
@@ -51704,7 +58724,10 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51732,11 +58755,16 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles) SetTemplate
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams struct {
+	// The file encoding format.
+	//
 	// example:
 	//
 	// UTF-8
-	CharEnc *string                                                                        `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	File    *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	// The subtitle file.
+	File *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The format of the subtitle file.
+	//
 	// example:
 	//
 	// vtt
@@ -51767,10 +58795,22 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -51796,7 +58836,10 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51824,42 +58867,82 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks) SetTem
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
+	// Specifies whether to the font size based on the output video dimensions. true / false, default: false
+	//
 	// example:
 	//
 	// false
 	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
+	// The outline color of the text watermark. Default value: black. For more information, see BorderColor.
+	//
 	// example:
 	//
 	// #006400
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// The outline width of the text watermark.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: (0,4096].
+	//
 	// example:
 	//
 	// 0
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// 测试水印
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The transparency of the text.
+	//
+	// 	- Valid values: (0,1].
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1.0
 	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	// The color of the text.
+	//
 	// example:
 	//
 	// #006400
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font of the text. Default value: SimSun.
+	//
 	// example:
 	//
 	// SimSun
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	// The size of the text.
+	//
+	// 	- Default value: 16.
+	//
+	// 	- Valid values: (4,120).
+	//
 	// example:
 	//
 	// 16
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The left margin of the text watermark.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: [0,4096].
+	//
 	// example:
 	//
 	// 10
 	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	// The top margin of the text.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: [0,4096].
+	//
 	// example:
 	//
 	// 10
@@ -51925,7 +59008,10 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwrit
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51953,11 +59039,16 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode) SetTemplate
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	Audio       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container   *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig   *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	// The audio settings.
+	Audio *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	// The encapsulation format settings.
+	Container *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	// The encapsulation settings.
+	MuxConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	// The conditional transcoding configurations.
 	TransConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	Video       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	// The video settings.
+	Video *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -51994,31 +59085,44 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
+	// The audio bitrate of the output file. Valid values: [8,1000]. Unit: Kbit/s. Default value: 128.
+	//
 	// example:
 	//
 	// 128
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels. Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Specifies whether to delete the audio stream.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The sampling rate. Valid values: 22050, 32000, 44100, 48000, and 96000. Default value: 44100. Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
-	Samplerate *string                                                                               `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Volume     *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	// The volume configurations.
+	Volume *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -52065,18 +59169,26 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
+	// The output volume.
+	//
 	// example:
 	//
 	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
+	// The volume range.
+	//
 	// example:
 	//
 	// 8
 	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	// The volume adjustment method. Valid values:
+	//
 	// example:
 	//
 	// auto
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The peak volume.
+	//
 	// example:
 	//
 	// -1
@@ -52112,6 +59224,8 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer struct {
+	// The container format.
+	//
 	// example:
 	//
 	// mp4
@@ -52132,6 +59246,7 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig struct {
+	// The segment settings.
 	Segment *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -52149,10 +59264,14 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
+	// The segment length.
+	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The forced segmentation point in time.
+	//
 	// example:
 	//
 	// 2,3
@@ -52178,14 +59297,106 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig struct {
-	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+	//
+	// Valid values: rescale, crop, pad, and none.
+	//
+	// Default value: none.
+	//
+	// example:
+	//
+	// none
+	AdjDarMethod *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	// Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value:
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
+	//
+	// example:
+	//
+	// true
+	IsCheckAudioBitrate *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckReso *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	// Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the width or height of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckResoFail *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	// Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckVideoBitrate *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	// The video transcoding mode. Valid values:
+	//
+	// 	- onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+	//
+	// 	- twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+	//
+	// 	- CBR: the constant bitrate mode.
+	//
+	// Default value: onepass.
+	//
+	// example:
+	//
+	// onepass
+	TransMode *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
@@ -52237,74 +59448,126 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
+	// The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 6000
 	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	// The average video bitrate. Valid values: [10,50000]. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 3000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The buffer size. Valid values: [1000,128000]. Default value: 6000. Unit: KB.
+	//
 	// example:
 	//
 	// 6000
 	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The constant rate factor (CRF). Valid values: [0,51]. Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+	//
+	// >  If this parameter is specified, the setting of the bitrate becomes invalid.
+	//
 	// example:
 	//
 	// 23
 	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	// The method of video cropping. Valid values:
+	//
+	// 	- border: automatically detects and removes black bars.
+	//
+	// 	- A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The frame rate. Valid values:(0,60]. Default value: the frame rate of the input file.
+	//
+	// >  The value is 60 if the frame rate of the input file exceeds 60.
+	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The maximum number of frames between keyframes. Valid values: [1,1080000]. Default value: 250.
+	//
 	// example:
 	//
 	// 250
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the video. Valid values: [128,4096]. Unit: pixels. Default value: the original height of the video.
+	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Specifies whether to enable the auto-rotate screen feature.
+	//
 	// example:
 	//
 	// false
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	// The maximum bitrate of the video. Valid values: [10,50000]. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 9000
 	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	// The black bars added to the video. Format: width:height:left:top. Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+	//
 	// example:
 	//
 	// medium
 	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	// The encoding profile. Valid values: baseline, main, and high.
+	//
+	// 	- baseline: applicable to mobile devices.
+	//
+	// 	- main: applicable to standard-definition devices.
+	//
+	// 	- high: applicable to high-definition devices.
+	//
+	// Default value: high.
+	//
 	// example:
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Specifies whether to remove the video.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The scan mode. Valid values: interlaced and progressive.
+	//
 	// example:
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The width of the video. Valid values: [128,4096]. Unit: pixels. Default value: the original width of the video.
+	//
 	// example:
 	//
 	// 1920
@@ -52410,10 +59673,14 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -52439,19 +59706,42 @@ func (s *SubmitTranscodeJobRequestScheduleConfig) SetPriority(v int32) *SubmitTr
 }
 
 type SubmitTranscodeJobShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// job-name
 	InputGroupShrink *string `json:"InputGroup,omitempty" xml:"InputGroup,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output group of the job.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// user-data
 	OutputGroupShrink *string `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty"`
+	// The scheduling information about the job.
+	//
 	// example:
 	//
 	// job-name
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
+	// The custom settings. The value must be in the JSON format and can be up to 512 bytes in length. You can specify a [custom callback URL](https://help.aliyun.com/document_detail/451631.html).
+	//
 	// example:
 	//
 	// user-data
@@ -52497,6 +59787,8 @@ func (s *SubmitTranscodeJobShrinkRequest) SetUserData(v string) *SubmitTranscode
 }
 
 type SubmitTranscodeJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
@@ -52524,50 +59816,76 @@ func (s *SubmitTranscodeJobResponseBody) SetTranscodeParentJob(v *SubmitTranscod
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJob struct {
+	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                                       `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
 	InputGroup []*SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	// The number of subjobs.
+	//
 	// example:
 	//
 	// 1
 	JobCount *int32 `json:"JobCount,omitempty" xml:"JobCount,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// transcode-job
-	Name        *string                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output group of the job.
 	OutputGroup []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
+	// The main job ID.
+	//
 	// example:
 	//
 	// 8b2198504dd340b7b3c9842a74fc9baa
 	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	// The completion percentage of the job.
+	//
 	// example:
 	//
 	// 0
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The ID of the request that submitted the job.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
-	RequestId      *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling configuration of the job.
 	ScheduleConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the job. Success: At least one of the subjobs is successful. Fail: All subjobs failed.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	SubmitTime       *string                                                             `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The list of subjobs.
 	TranscodeJobList []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList `json:"TranscodeJobList,omitempty" xml:"TranscodeJobList,omitempty" type:"Repeated"`
+	// The source of the job. Valid values: API, WorkFlow, and Console.
+	//
 	// example:
 	//
 	// API
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -52658,10 +59976,22 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJob) SetUserData(v string)
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -52687,7 +60017,9 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobInputGroup) SetType(v s
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroup struct {
-	Output        *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput        `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The output file configuration.
+	Output *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The job processing configuration.
 	ProcessConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
 }
 
@@ -52710,10 +60042,22 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroup) SetProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -52739,12 +60083,18 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) SetT
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig struct {
-	CombineConfigs  []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
-	Encryption      *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The multi-input stream merge configuration.
+	CombineConfigs []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCombineConfigs `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
+	// The encryption settings.
+	Encryption *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The watermark configuration of an image.
 	ImageWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	Subtitles       []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	TextWatermarks  []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	Transcode       *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	// The subtitle configuration.
+	Subtitles []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The configurations of the text watermark.
+	TextWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	// The transcoding configuration.
+	Transcode *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfig) String() string {
@@ -52786,20 +60136,28 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCombineConfigs struct {
+	// The audio stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 或 exclude
 	AudioIndex *string `json:"AudioIndex,omitempty" xml:"AudioIndex,omitempty"`
+	// The duration of the input stream. The default value is the duration of the video.
+	//
 	// example:
 	//
 	// 20.0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the input stream. Default value: 0.
+	//
 	// example:
 	//
 	// 0.0
 	Start *float64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The video stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52837,18 +60195,26 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigEncryption struct {
+	// The ciphertext of HLS encryption.
+	//
 	// example:
 	//
 	// MTYi00NDU0LTg5O****
 	CipherText *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	// The address of the decryption service for HLS encryption.
+	//
 	// example:
 	//
 	// https://sample.com/path?CipherText=MTYi00NDU0LTg5O****
 	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	// Specifies the encryption type.
+	//
 	// example:
 	//
 	// PrivateEncryption
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The type of the key service. Valid values: KMS and Base64.
+	//
 	// example:
 	//
 	// KMS
@@ -52884,7 +60250,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -52910,24 +60279,92 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
+	// The horizontal offset of the watermark relative to the output video. Default value: 0.
+	//
+	// The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the horizontal offset.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the horizontal offset to the width of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 10
 	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	// The vertical offset of the watermark relative to the output video. Default value: 0.
+	//
+	// The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the horizontal offset.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the vertical offset to the height of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 10
-	Dy   *string                                                                                                     `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	// The watermark image file.
 	File *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The height of the watermark image in the output video. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the watermark height.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the watermark height to the height of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 32
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The position of the watermark.
+	//
+	// 	- Valid values: TopRight, TopLeft, BottomRight, and BottomLeft.
+	//
+	// 	- Default value: TopRight.
+	//
 	// example:
 	//
 	// TopLeft
-	ReferPos *string                                                                                                         `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	// The time settings of the dynamic watermark.
 	Timeline *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	// The width of the watermark in the output video. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the watermark width.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the watermark width to the width of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 32
@@ -52978,10 +60415,22 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -53007,10 +60456,24 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
+	// The time range in which the watermark is displayed.
+	//
+	// 	- Valid values: integers and ToEND.
+	//
+	// 	- Default value: ToEND.
+	//
 	// example:
 	//
 	// ToEND
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The beginning of the time range in which the watermark is displayed.
+	//
+	// 	- Unit: seconds.
+	//
+	// 	- Value values: integers.
+	//
+	// 	- Default value: 0.
+	//
 	// example:
 	//
 	// 00:00:05
@@ -53036,7 +60499,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitles struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -53062,11 +60528,16 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParams struct {
+	// The file encoding format.
+	//
 	// example:
 	//
 	// UTF-8
-	CharEnc *string                                                                                               `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	File    *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	// The subtitle file.
+	File *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The format of the subtitle file.
+	//
 	// example:
 	//
 	// vtt
@@ -53097,10 +60568,18 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
+	// The media object. If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -53126,7 +60605,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -53152,42 +60634,86 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
+	// Specifies whether to the font size based on the output video dimensions.
+	//
+	// 	- true: false
+	//
+	// 	- default: false
+	//
 	// example:
 	//
 	// false
 	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
+	// The outline color of the text watermark. Default value: black. For more information, see BorderColor.
+	//
 	// example:
 	//
 	// #006400
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// The outline width of the text watermark.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: (0,4096].
+	//
 	// example:
 	//
 	// 0
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// 测试水印
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The transparency of the text.
+	//
+	// 	- Valid values: (0,1].
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1.0
 	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	// The color of the text.
+	//
 	// example:
 	//
 	// #006400
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font of the text. Default value: SimSun.
+	//
 	// example:
 	//
 	// SimSun
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	// The size of the text.
+	//
+	// 	- Default value: 16.
+	//
+	// 	- Valid values: (4,120).
+	//
 	// example:
 	//
 	// 16
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The left margin of the text watermark.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: [0,4096].
+	//
 	// example:
 	//
 	// 10
 	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	// The top margin of the text.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: [0,4096].
+	//
 	// example:
 	//
 	// 10
@@ -53253,7 +60779,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscode struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -53279,11 +60808,16 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	Audio       *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container   *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig   *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	// The audio settings.
+	Audio *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	// The encapsulation format settings.
+	Container *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	// The encapsulation settings.
+	MuxConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	// The conditional transcoding configurations.
 	TransConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	Video       *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	// The video settings.
+	Video *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -53320,31 +60854,54 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
+	// The audio bitrate of the output file.
+	//
+	// 	- Valid values: [8,1000].
+	//
+	// 	- Unit: Kbit/s.
+	//
+	// 	- Default value: 128.
+	//
 	// example:
 	//
 	// 128
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels. Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Specifies whether to delete the audio stream.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The sampling rate.
+	//
+	// 	- Valid values: 22050, 32000, 44100, 48000, and 96000. Default value: 44100.
+	//
+	// 	- Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
-	Samplerate *string                                                                                                      `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Volume     *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	// The volume configurations.
+	Volume *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -53391,18 +60948,26 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
+	// The output volume.
+	//
 	// example:
 	//
 	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
+	// The volume range.
+	//
 	// example:
 	//
 	// 8
 	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	// The volume adjustment method. Valid values:
+	//
 	// example:
 	//
 	// auto
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The peak volume.
+	//
 	// example:
 	//
 	// -1
@@ -53438,6 +61003,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer struct {
+	// The container format.
+	//
 	// example:
 	//
 	// mp4
@@ -53458,6 +61025,7 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig struct {
+	// The segment settings.
 	Segment *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -53475,10 +61043,14 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
+	// The segment length.
+	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The forced segmentation point in time.
+	//
 	// example:
 	//
 	// 2,3
@@ -53504,14 +61076,106 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig struct {
-	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+	//
+	// Valid values: rescale, crop, pad, and none.
+	//
+	// Default value: none.
+	//
+	// example:
+	//
+	// none
+	AdjDarMethod *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	// Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value:
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
+	//
+	// example:
+	//
+	// true
+	IsCheckAudioBitrate *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckReso *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	// Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the width or height of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckResoFail *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	// Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	IsCheckVideoBitrate *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	// The video transcoding mode. Valid values:
+	//
+	// 	- onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+	//
+	// 	- twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+	//
+	// 	- CBR: the constant bitrate mode.
+	//
+	// Default value: onepass.
+	//
+	// example:
+	//
+	// onepass
+	TransMode *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
@@ -53563,74 +61227,172 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
+	// The maximum ABR. This parameter takes effect only for Narrowband HD 1.0.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 6000
 	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	// The average bitrate of the video.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 3000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The buffer size.
+	//
+	// 	- Valid values: [1000,128000].
+	//
+	// 	- Default value: 6000.
+	//
+	// 	- Unit: KB.
+	//
 	// example:
 	//
 	// 6000
 	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The constant rate factor.
+	//
+	// 	- Valid values: [0,51].
+	//
+	// 	- Default value: 23 if the encoding format is H.264, or Default value when the Codec parameter is set to H.265: 26.
+	//
+	// If this parameter is specified, the value of Bitrate becomes invalid.
+	//
 	// example:
 	//
 	// 23
 	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	// The method of video cropping. Valid values:
+	//
+	// 	- border: automatically detects and removes black bars.
+	//
+	// 	- A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The frame rate.
+	//
+	// 	- Valid values: (0,60].
+	//
+	// 	- The value is 60 if the frame rate of the input video exceeds 60.
+	//
+	// 	- Default value: the frame rate of the input video.
+	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The maximum number of frames between two keyframes.
+	//
+	// 	- Valid values: [1,1080000].
+	//
+	// 	- Default value: 250.
+	//
 	// example:
 	//
 	// 250
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Default value: the height of the input video.
+	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Specifies whether to enable the auto-rotate screen feature.
+	//
 	// example:
 	//
 	// false
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	// The maximum bitrate of the output video.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 9000
 	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	// The black bars added to the video.
+	//
+	// 	- Format: width:height:left:top.
+	//
+	// 	- Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+	//
 	// example:
 	//
 	// medium
 	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	// The encoding profile. Valid values: baseline, main, and high.
+	//
+	// 	- baseline: applicable to mobile devices.
+	//
+	// 	- main: applicable to standard-definition devices.
+	//
+	// 	- high: applicable to high-definition devices.
+	//
+	// Default value: high.
+	//
 	// example:
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Specifies whether to remove the video.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The scan mode. Valid values: interlaced and progressive.
+	//
 	// example:
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The width of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Default value: the width of the input video.
+	//
 	// example:
 	//
 	// 1920
@@ -53736,10 +61498,14 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -53765,51 +61531,88 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobScheduleConfig) SetPrio
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job was complete.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
-	FinishTime *string                                                                       `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
 	InputGroup []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
+	// The subjob ID.
+	//
 	// example:
 	//
 	// 7d6a7e0d4db2457a8d45ff5d43e1bf0a
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The index number of the subjob in the entire job.
+	//
 	// example:
 	//
 	// 0
 	JobIndex *int32 `json:"JobIndex,omitempty" xml:"JobIndex,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// transcode-job
-	Name        *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The media information about the video generated by the job.
 	OutFileMeta *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty" type:"Struct"`
-	Output      *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput      `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The output file configuration.
+	Output *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// The main job ID.
+	//
 	// example:
 	//
 	// 8b2198504dd340b7b3c9842a74fc9baa
-	ParentJobId   *string                                                                        `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
+	// The transcoding configuration.
 	ProcessConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
+	// The ID of the request that submitted the job.
+	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
-	RequestId      *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling information about the job.
 	ScheduleConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
+	// The state of the transcoding job. Valid values:
+	//
+	// 	- Init: The job is submitted.
+	//
+	// 	- Processing: The job is in progress.
+	//
+	// 	- Success: The job is successful.
+	//
+	// 	- Fail: The job failed.
+	//
+	// 	- Deleted: The job is deleted.
+	//
 	// example:
 	//
 	// Init
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job submission result.
+	//
 	// example:
 	//
 	// {}
 	SubmitResultJson map[string]interface{} `json:"SubmitResultJson,omitempty" xml:"SubmitResultJson,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// user-data
@@ -53905,14 +61708,32 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList) SetUs
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup struct {
+	// The URL of the input stream:
+	//
+	// 	- This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an input.
+	//
+	// 	- The system checks whether the input URL exists within the media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -53943,8 +61764,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGr
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMeta struct {
+	// The information about the audio stream.
 	AudioStreamInfoList []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The basic file information.
+	FileBasicInfo *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// The information about the video stream.
 	VideoStreamInfoList []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -53972,62 +61796,92 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 0.f
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The sound channel layout.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The encoder tag.
+	//
 	// example:
 	//
 	// 0x000f
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The name of the encoder tag.
+	//
 	// example:
 	//
 	// [15][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sample format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sampling rate. Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
@@ -54118,50 +61972,74 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaFileBasicInfo struct {
+	// The video bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The duration of the video. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039999
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// file.m3u8
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
 	// 31737
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The state of the file.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type. Valid values: source_file and transcode_file.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The URL of the file.
+	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The name of the video format.
+	//
 	// example:
 	//
 	// hls,applehttp
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 73e07de0f77171eca3fc7035d0b26402
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The region in which the file resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -54237,94 +62115,146 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMetaVideoStreamInfoList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	AvgFps *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 888.563
 	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	// The name of the encoding format.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	// The tag of the encoding format.
+	//
 	// example:
 	//
 	// 0x001b
 	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
+	// The tag string of the encoding format.
+	//
 	// example:
 	//
 	// [27][0][0][0]
 	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/50
 	CodecTimeBase *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// The display aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration of the stream. Unit: seconds.
+	//
 	// example:
 	//
 	// 403.039989
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The frame rate.
+	//
 	// example:
 	//
 	// 25.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+	//
+	// 	- 0: The stream contains no B-frames.
+	//
+	// 	- 1: The stream contains one B-frame.
+	//
+	// 	- 2: The stream contains multiple consecutive B-frames.
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 478
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The sequence number of the stream.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language of the stream.
+	//
 	// example:
 	//
 	// cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 31
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 10040
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The encoder profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle of the video image. Valid values: 0, 90, 180, and 270. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The aspect ratio of the area from which the sampling points are collected.
+	//
 	// example:
 	//
 	// 478:477
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time of the stream.
+	//
 	// example:
 	//
 	// 1.473556
 	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/90000
 	TimeBase *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 848
@@ -54455,14 +62385,48 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The URL of the output stream.\\
+	//
+	// This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an output.\\
+	//
+	// Supported placeholders:
+	//
+	// 	- {MediaId}: the ID of the media asset.
+	//
+	// 	- {JobId}: the ID of the transcoding subjob.
+	//
+	// 	- {MediaBucket}: the bucket to which the media asset belongs.
+	//
+	// 	- {ExtName}: the file suffix, which uses the output format of the transcoding template.
+	//
+	// 	- {DestMd5}: the MD5 value of the transcoded output file.\\
+	//
+	//     Notes:
+	//
+	// 1.  This parameter must contain the {MediaId} and {JobId} placeholders.
+	//
+	// 2.  The output bucket is the same as the bucket to which the media asset belongs.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/{MediaId}/{JobId}.mp4
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -54493,12 +62457,18 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput)
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig struct {
-	CombineConfigs  []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
-	Encryption      *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The multi-input stream merge configuration.
+	CombineConfigs []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
+	// The encryption settings.
+	Encryption *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The watermark configuration of an image.
 	ImageWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	Subtitles       []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	TextWatermarks  []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
-	Transcode       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
+	// The subtitle configuration.
+	Subtitles []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The configurations of the text watermark.
+	TextWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
+	// The transcoding configuration.
+	Transcode *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) String() string {
@@ -54540,20 +62510,28 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs struct {
+	// The audio stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 或 exclude
 	AudioIndex *string `json:"AudioIndex,omitempty" xml:"AudioIndex,omitempty"`
+	// The duration of the input stream. The default value is the duration of the video.
+	//
 	// example:
 	//
 	// 20.0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the input stream. Default value: 0.
+	//
 	// example:
 	//
 	// 0.0
 	Start *float64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The video stream index.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54591,18 +62569,26 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption struct {
+	// The ciphertext of HLS encryption.
+	//
 	// example:
 	//
 	// MTYi00NDU0LTg5O****
 	CipherText *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
+	// The address of the decryption service for HLS encryption.
+	//
 	// example:
 	//
 	// https://sample.com/path?CipherText=MTYi00NDU0LTg5O****
 	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
+	// Specifies the encryption type.
+	//
 	// example:
 	//
 	// PrivateEncryption
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The type of the key service. Valid values: KMS and Base64.
+	//
 	// example:
 	//
 	// KMS
@@ -54638,7 +62624,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -54664,24 +62653,92 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParams struct {
+	// The horizontal offset of the watermark relative to the output video. Default value: 0.
+	//
+	// The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the horizontal offset.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the horizontal offset to the width of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 10
 	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	// The vertical offset of the watermark relative to the output video. Default value: 0.
+	//
+	// The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the horizontal offset.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the vertical offset to the height of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 10
-	Dy   *string                                                                                                          `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	// The watermark image file.
 	File *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The height of the watermark image in the output video. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the watermark height.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the watermark height to the height of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 32
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The position of the watermark.
+	//
+	// 	- Valid values: TopRight, TopLeft, BottomRight, and BottomLeft.
+	//
+	// 	- Default value: TopRight.
+	//
 	// example:
 	//
 	// TopLeft
-	ReferPos *string                                                                                                              `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	// The time settings of the dynamic watermark.
 	Timeline *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
+	// The width of the watermark in the output video. The following value types are supported:
+	//
+	// 	- Integer: the pixel value of the watermark width.
+	//
+	//     	- Valid values: [8,4096].
+	//
+	//     	- Unit: pixels.
+	//
+	// 	- Decimal: the ratio of the watermark width to the width of the output video.
+	//
+	//     	- Valid values: (0,1).
+	//
+	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//
 	// example:
 	//
 	// 32
@@ -54732,10 +62789,22 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -54761,10 +62830,24 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarksOverwriteParamsTimeline struct {
+	// The time range in which the watermark is displayed.
+	//
+	// 	- Valid values: integers and ToEND.
+	//
+	// 	- Default value: ToEND.
+	//
 	// example:
 	//
 	// ToEND
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The beginning of the time range in which the watermark is displayed.
+	//
+	// 	- Unit: seconds.
+	//
+	// 	- Value values: integers.
+	//
+	// 	- Default value: 0.
+	//
 	// example:
 	//
 	// 00:00:05
@@ -54790,7 +62873,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -54816,11 +62902,16 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParams struct {
+	// The file encoding format.
+	//
 	// example:
 	//
 	// UTF-8
-	CharEnc *string                                                                                                    `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
-	File    *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
+	// The subtitle file.
+	File *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	// The format of the subtitle file.
+	//
 	// example:
 	//
 	// vtt
@@ -54851,10 +62942,22 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitlesOverwriteParamsFile struct {
+	// The media object.
+	//
+	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	//
+	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The type of the media object. Valid values:
+	//
+	// 	- OSS: an OSS object.
+	//
+	// 	- Media: a media asset.
+	//
 	// example:
 	//
 	// OSS
@@ -54880,7 +62983,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -54906,42 +63012,82 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarksOverwriteParams struct {
+	// Specifies whether to the font size based on the output video dimensions. true / false, default: false
+	//
 	// example:
 	//
 	// false
 	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
+	// The outline color of the text watermark. Default value: black. For more information, see BorderColor.
+	//
 	// example:
 	//
 	// #006400
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// The outline width of the text watermark.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: (0,4096].
+	//
 	// example:
 	//
 	// 0
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+	//
 	// example:
 	//
 	// 测试水印
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The transparency of the text.
+	//
+	// 	- Valid values: (0,1].
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1.0
 	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
+	// The color of the text.
+	//
 	// example:
 	//
 	// #006400
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font of the text. Default value: SimSun.
+	//
 	// example:
 	//
 	// SimSun
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	// The size of the text.
+	//
+	// 	- Default value: 16.
+	//
+	// 	- Valid values: (4,120).
+	//
 	// example:
 	//
 	// 16
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The left margin of the text watermark.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: [0,4096].
+	//
 	// example:
 	//
 	// 10
 	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
+	// The top margin of the text.
+	//
+	// 	- Default value: 0.
+	//
+	// 	- Valid values: [0,4096].
+	//
 	// example:
 	//
 	// 10
@@ -55007,7 +63153,10 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode struct {
+	// The parameters that are used to overwrite the corresponding parameters of the template.
 	OverwriteParams *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9547c6ad97cb4f2aaa29683ebd18d410
@@ -55033,11 +63182,16 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams struct {
-	Audio       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container   *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig   *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	// The audio settings.
+	Audio *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	// The encapsulation format settings.
+	Container *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	// The encapsulation settings.
+	MuxConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	// The conditional transcoding configurations.
 	TransConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
-	Video       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	// The video settings.
+	Video *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) String() string {
@@ -55074,31 +63228,56 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio struct {
+	// The audio bitrate of the output file.
+	//
+	// 	- Valid values: [8,1000].
+	//
+	// 	- Unit: Kbit/s.
+	//
+	// 	- Default value: 128.
+	//
 	// example:
 	//
 	// 128
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels. Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Specifies whether to delete the audio stream.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The sampling rate.
+	//
+	// 	- Default value: 44100.
+	//
+	// 	- Valid values: 22050, 32000, 44100, 48000, and 96000.
+	//
+	// 	- Unit: Hz.
+	//
 	// example:
 	//
 	// 44100
-	Samplerate *string                                                                                                           `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	Volume     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
+	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
+	// The volume configurations.
+	Volume *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio) String() string {
@@ -55145,18 +63324,26 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudioVolume struct {
+	// The output volume.
+	//
 	// example:
 	//
 	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
+	// The volume range.
+	//
 	// example:
 	//
 	// 8
 	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
+	// The volume adjustment method. Valid values:
+	//
 	// example:
 	//
 	// auto
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The peak volume.
+	//
 	// example:
 	//
 	// -1
@@ -55192,6 +63379,8 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer struct {
+	// The container format.
+	//
 	// example:
 	//
 	// mp4
@@ -55212,6 +63401,7 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig struct {
+	// The segment settings.
 	Segment *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 }
 
@@ -55229,10 +63419,14 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
+	// The segment length.
+	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The forced segmentation point in time.
+	//
 	// example:
 	//
 	// 2,3
@@ -55258,14 +63452,94 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig struct {
-	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+	//
+	// Valid values: rescale, crop, pad, and none.
+	//
+	// Default value: none.
+	//
+	// example:
+	//
+	// none
+	AdjDarMethod *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	// Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+	//
+	// 	- false: does not check the video resolution.
+	//
+	// Default values:
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+	//
+	// 	- If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
+	//
+	// example:
+	//
+	// true
+	IsCheckAudioBitrate *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	// Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution. This is the default value.
+	//
+	// example:
+	//
+	// true
 	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+	//
+	// 	- false: does not check the video resolution. This is the default value.
+	//
+	// example:
+	//
+	// true
+	IsCheckReso *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	// Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the width or height of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution. This is the default value.
+	//
+	// example:
+	//
+	// true
+	IsCheckResoFail *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	// Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+	//
+	// 	- false: does not check the video resolution. This is the default value.
+	//
+	// example:
+	//
+	// true
+	IsCheckVideoBitrate *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	// Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	//
+	// 	- true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+	//
+	// 	- false: does not check the video resolution. This is the default value.
+	//
+	// example:
+	//
+	// true
 	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
-	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+	// The video transcoding mode. Valid values:
+	//
+	// 	- onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. This is the default value. The encoding speed of this mode is faster than that of the twopass mode.
+	//
+	// 	- twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+	//
+	// 	- CBR: the constant bitrate mode.
+	//
+	// example:
+	//
+	// onepass
+	TransMode *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
@@ -55317,74 +63591,164 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo struct {
+	// The maximum ABR. This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 6000
 	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
+	// The average bitrate of the video.
+	//
+	// 	- Valid values: [10,50000].
+	//
+	// 	- Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 3000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The buffer size.
+	//
+	// 	- Valid values: [1000,128000].
+	//
+	// 	- Default value: 6000.
+	//
+	// 	- Unit: KB.
+	//
 	// example:
 	//
 	// 6000
 	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The constant rate factor.
+	//
+	// 	- Valid values: [0,51].
+	//
+	// 	- Default value: 23 if the encoding format is H.264, or Default value when the Codec parameter is set to H.265: 26.
+	//
+	// If this parameter is specified, the value of Bitrate becomes invalid.
+	//
 	// example:
 	//
 	// 23
 	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
+	// The method of video cropping. Valid values:
+	//
+	// 	- border: automatically detects and removes black bars.
+	//
+	// 	- A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The frame rate.
+	//
+	// 	- Valid values: (0,60].
+	//
+	// 	- The value is 60 if the frame rate of the input video exceeds 60.
+	//
+	// 	- Default value: the frame rate of the input video.
+	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The maximum number of frames between two keyframes.
+	//
+	// 	- Valid values: [1,1080000].
+	//
+	// 	- Default value: 250.
+	//
 	// example:
 	//
 	// 250
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Default value: the height of the input video.
+	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Specifies whether to enable the auto-rotate screen feature.
+	//
 	// example:
 	//
 	// false
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
+	// The maximum bitrate of the output video. Valid values: [10,50000]. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 9000
 	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
+	// The black bars added to the video.
+	//
+	// 	- Format: width:height:left:top.
+	//
+	// 	- Example: 1280:800:0:140.
+	//
 	// example:
 	//
 	// 1280:800:0:140
 	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+	//
 	// example:
 	//
 	// medium
 	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	// The encoding profile. Valid values: baseline, main, and high.
+	//
+	// 	- baseline: applicable to mobile devices.
+	//
+	// 	- main: applicable to standard-definition devices.
+	//
+	// 	- high: applicable to high-definition devices.
+	//
+	// Default value: high.
+	//
 	// example:
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Specifies whether to remove the video.
+	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	// The scan mode. Valid values: interlaced and progressive.
+	//
 	// example:
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The width of the output video.
+	//
+	// 	- Valid values: [128,4096].
+	//
+	// 	- Unit: pixels.
+	//
+	// 	- Default value: the width of the input video.
+	//
 	// example:
 	//
 	// 1920
@@ -55490,10 +63854,14 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListScheduleConfig struct {
+	// The ID of the MPS queue to which the job was submitted.
+	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	//
 	// example:
 	//
 	// 5
@@ -55580,7 +63948,13 @@ type SubmitVideoTranslationJobRequest struct {
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
 	// 	- The job title.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 	- The user data.
+	// 	- The user-defined data.
+	//
+	// 	- The data must be in the JSON format, and can be up to 512 characters in length.
+	//
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -55842,26 +64216,66 @@ func (s *UpdateAIAgentInstanceResponse) SetBody(v *UpdateAIAgentInstanceResponse
 }
 
 type UpdateAvatarTrainingJobRequest struct {
+	// 	- The description of the digital human.
+	//
+	// 	- The description can be up to 1,000 characters in length.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
-	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	// 	- The name of the digital human.
+	//
+	// 	- The name can be up to seven characters in length.
+	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	// The ID of the digital human training job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 	- The media asset ID of the portrait image.
+	//
+	// 	- The value must be 32 characters in length.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
 	Portrait *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	// 	- The thumbnail URL.
+	//
+	// 	- After the digital human is trained, the thumbnail is uploaded to this URL.
+	//
+	// 	- The URL must be a valid public Object Storage Service (OSS) URL.
+	//
+	// 	- The URL can be up to 512 characters in length.
+	//
+	// 	- The URL cannot be updated after the digital human is trained.
+	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-hangzhou.aliyuncs.com/thumbnail.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// 	- Indicates whether the input video supports alpha channels.
+	//
+	// 	- You can modify this parameter only if the job is in the Init or Fail state.
+	//
+	//     **
+	//
+	//     **Note**: Make sure that the current settings are consistent with those of the submitted training video. Otherwise, the digital human may malfunction.
+	//
 	// example:
 	//
 	// True
 	Transparent *bool `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	// 	- The ID of the video used for training.
+	//
+	// 	- The value must be 32 characters in length.
+	//
+	// 	- Supported formats: MP4, MOV, and WebM.
+	//
+	// 	- The duration of the video must be 5 to 15 minutes.
+	//
+	// 	- The resolution of the video must be 1920×1080 or 1080×1920.
+	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
@@ -55912,11 +64326,20 @@ func (s *UpdateAvatarTrainingJobRequest) SetVideo(v string) *UpdateAvatarTrainin
 }
 
 type UpdateAvatarTrainingJobResponseBody struct {
+	// The data returned.
 	Data *UpdateAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -55947,6 +64370,8 @@ func (s *UpdateAvatarTrainingJobResponseBody) SetSuccess(v bool) *UpdateAvatarTr
 }
 
 type UpdateAvatarTrainingJobResponseBodyData struct {
+	// The ID of the digital human training job.
+	//
 	// example:
 	//
 	// ****d718e2ff4f018ccf419a7b71****
@@ -56086,14 +64511,20 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 }
 
 type UpdateCustomTemplateRequest struct {
+	// The template name.
+	//
 	// example:
 	//
 	// test-template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The [template parameters](https://help.aliyun.com/document_detail/448291.html).
+	//
 	// example:
 	//
 	// {"param": "sample"}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -56126,10 +64557,14 @@ func (s *UpdateCustomTemplateRequest) SetTemplateId(v string) *UpdateCustomTempl
 }
 
 type UpdateCustomTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -56184,10 +64619,14 @@ func (s *UpdateCustomTemplateResponse) SetBody(v *UpdateCustomTemplateResponseBo
 }
 
 type UpdateCustomizedVoiceRequest struct {
+	// The media asset ID of the sample audio file.
+	//
 	// example:
 	//
 	// ****4d5e829d498aaf966b119348****
 	DemoAudioMediaId *string `json:"DemoAudioMediaId,omitempty" xml:"DemoAudioMediaId,omitempty"`
+	// The voice ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -56215,10 +64654,18 @@ func (s *UpdateCustomizedVoiceRequest) SetVoiceId(v string) *UpdateCustomizedVoi
 }
 
 type UpdateCustomizedVoiceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E84BE44-58A7-****-****-FBEBEA16EF94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -56283,7 +64730,7 @@ type UpdateEditingProjectRequest struct {
 	//
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+	// The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified.
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// The thumbnail URL of the online editing project.
 	//
@@ -57739,20 +66186,34 @@ func (s *UpdateMediaToSearchLibResponse) SetBody(v *UpdateMediaToSearchLibRespon
 }
 
 type UpdatePipelineRequest struct {
+	// The name of the MPS queue.
+	//
 	// example:
 	//
 	// test-pipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the MPS queue.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The priority of the MPS queue. Valid values: 1 to 10.
+	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The state of the MPS queue.
+	//
+	// Valid values:
+	//
+	// 	- Active
+	//
+	// 	- Paused
+	//
 	// example:
 	//
 	// Paused
@@ -57788,10 +66249,14 @@ func (s *UpdatePipelineRequest) SetStatus(v string) *UpdatePipelineRequest {
 }
 
 type UpdatePipelineResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -57992,30 +66457,64 @@ type UpdateTemplateRequest struct {
 	//
 	// 参见模板Config文档
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The URL of the template thumbnail.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/cover.jpg
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The name of the online editing template.
+	//
 	// example:
 	//
 	// 视频添加水印模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the preview video.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// The IDs of the materials associated with the template for use by the regular template editor.
+	//
 	// example:
 	//
 	// {"video":["******c04f1d4a06996144cc1a******","******cb7db64841b159b4f2ea******"],"audio":["******c04f1d4a06996144cc1a******"],"image":["******c04f1d4a06996144cc1a******"]}
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
+	// The source from which the template is modified. Default value: OpenAPI. Valid values:
+	//
+	// 	- AliyunConsole
+	//
+	// 	- OpenAPI
+	//
+	// 	- WebSDK
+	//
 	// example:
 	//
 	// OpenAPI
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The template state. Valid values:
+	//
+	// 	- Available: The template is available.
+	//
+	// 	- Created: The template is created but not ready for use.
+	//
+	// 	- Uploading: The video is being uploaded.
+	//
+	// 	- Processing: The advanced template is being processed.
+	//
+	// 	- UploadFailed: Failed to upload the video.
+	//
+	// 	- ProcessFailed: Failed to process the advanced template.
+	//
+	// >  After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the online editing template. You can obtain the template ID in the [Intelligent Media Services (IMS) console](https://ice.console.aliyun.com/production/template/list/common) or the response parameters of the [AddTemplate](https://help.aliyun.com/document_detail/441161.html) operation.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
@@ -58071,6 +66570,8 @@ func (s *UpdateTemplateRequest) SetTemplateId(v string) *UpdateTemplateRequest {
 }
 
 type UpdateTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -58913,7 +67414,15 @@ func (client *Client) AddMediaMarks(request *AddMediaMarksRequest) (_result *Add
 
 // Summary:
 //
-// AddTemplate
+// Creates a template.
+//
+// Description:
+//
+//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+//
+// 	- After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
 //
 // @param request - AddTemplateRequest
 //
@@ -58985,7 +67494,15 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 
 // Summary:
 //
-// AddTemplate
+// Creates a template.
+//
+// Description:
+//
+//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+//
+// 	- After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
 //
 // @param request - AddTemplateRequest
 //
@@ -59139,7 +67656,13 @@ func (client *Client) BatchGetMediaInfos(request *BatchGetMediaInfosRequest) (_r
 
 // Summary:
 //
-// 取消DNA作业
+// Cancels a media fingerprint analysis job.
+//
+// Description:
+//
+//   You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
+//
+// 	- We recommend that you call the **UpdatePipeline*	- operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
 //
 // @param request - CancelDNAJobRequest
 //
@@ -59197,7 +67720,13 @@ func (client *Client) CancelDNAJobWithOptions(request *CancelDNAJobRequest, runt
 
 // Summary:
 //
-// 取消DNA作业
+// Cancels a media fingerprint analysis job.
+//
+// Description:
+//
+//   You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
+//
+// 	- We recommend that you call the **UpdatePipeline*	- operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
 //
 // @param request - CancelDNAJobRequest
 //
@@ -59275,7 +67804,7 @@ func (client *Client) CancelFavoritePublicMedia(request *CancelFavoritePublicMed
 
 // Summary:
 //
-// 提交人工审核
+// Submits manual review results for media assets.
 //
 // @param request - CreateAuditRequest
 //
@@ -59317,7 +67846,7 @@ func (client *Client) CreateAuditWithOptions(request *CreateAuditRequest, runtim
 
 // Summary:
 //
-// 提交人工审核
+// Submits manual review results for media assets.
 //
 // @param request - CreateAuditRequest
 //
@@ -59335,7 +67864,7 @@ func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateA
 
 // Summary:
 //
-// 创建数字人训练任务
+// Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
 //
 // @param request - CreateAvatarTrainingJobRequest
 //
@@ -59401,7 +67930,7 @@ func (client *Client) CreateAvatarTrainingJobWithOptions(request *CreateAvatarTr
 
 // Summary:
 //
-// 创建数字人训练任务
+// Creates a digital human training job. You can configure the basic information of the digital human and the materials required for the training. Note: This operation is used to initialize the training job. It does not submit the training job. To submit the training job, call the SubmitAvatarTrainingJob operation.
 //
 // @param request - CreateAvatarTrainingJobRequest
 //
@@ -59419,7 +67948,7 @@ func (client *Client) CreateAvatarTrainingJob(request *CreateAvatarTrainingJobRe
 
 // Summary:
 //
-// 创建媒体处理自定义模板
+// Creates a custom template.
 //
 // @param request - CreateCustomTemplateRequest
 //
@@ -59473,7 +68002,7 @@ func (client *Client) CreateCustomTemplateWithOptions(request *CreateCustomTempl
 
 // Summary:
 //
-// 创建媒体处理自定义模板
+// Creates a custom template.
 //
 // @param request - CreateCustomTemplateRequest
 //
@@ -59491,7 +68020,7 @@ func (client *Client) CreateCustomTemplate(request *CreateCustomTemplateRequest)
 
 // Summary:
 //
-// 创建人声克隆任务
+// Creates a human voice cloning job. You can configure the basic information of the human voice cloning job.
 //
 // @param request - CreateCustomizedVoiceJobRequest
 //
@@ -59549,7 +68078,7 @@ func (client *Client) CreateCustomizedVoiceJobWithOptions(request *CreateCustomi
 
 // Summary:
 //
-// 创建人声克隆任务
+// Creates a human voice cloning job. You can configure the basic information of the human voice cloning job.
 //
 // @param request - CreateCustomizedVoiceJobRequest
 //
@@ -59567,7 +68096,11 @@ func (client *Client) CreateCustomizedVoiceJob(request *CreateCustomizedVoiceJob
 
 // Summary:
 //
-// 创建指纹库
+// Creates media fingerprint libraries.
+//
+// Description:
+//
+//   You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
 //
 // @param request - CreateDNADBRequest
 //
@@ -59633,7 +68166,11 @@ func (client *Client) CreateDNADBWithOptions(request *CreateDNADBRequest, runtim
 
 // Summary:
 //
-// 创建指纹库
+// Creates media fingerprint libraries.
+//
+// Description:
+//
+//   You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
 //
 // @param request - CreateDNADBRequest
 //
@@ -59965,7 +68502,7 @@ func (client *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTe
 
 // Summary:
 //
-// 添加用户管道配置
+// Creates an ApsaraVideo Media Processing (MPS) queue.
 //
 // @param request - CreatePipelineRequest
 //
@@ -60015,7 +68552,7 @@ func (client *Client) CreatePipelineWithOptions(request *CreatePipelineRequest, 
 
 // Summary:
 //
-// 添加用户管道配置
+// Creates an ApsaraVideo Media Processing (MPS) queue.
 //
 // @param request - CreatePipelineRequest
 //
@@ -60381,7 +68918,7 @@ func (client *Client) CreateUploadStream(request *CreateUploadStreamRequest) (_r
 
 // Summary:
 //
-// 解密KMS密钥DataKey
+// Decrypts the ciphertext specified by CiphertextBlob in the Key Management Service (KMS) data key.
 //
 // @param request - DecryptKMSDataKeyRequest
 //
@@ -60423,7 +68960,7 @@ func (client *Client) DecryptKMSDataKeyWithOptions(request *DecryptKMSDataKeyReq
 
 // Summary:
 //
-// 解密KMS密钥DataKey
+// Decrypts the ciphertext specified by CiphertextBlob in the Key Management Service (KMS) data key.
 //
 // @param request - DecryptKMSDataKeyRequest
 //
@@ -60441,7 +68978,7 @@ func (client *Client) DecryptKMSDataKey(request *DecryptKMSDataKeyRequest) (_res
 
 // Summary:
 //
-// 更新数字人训练任务信息
+// Deletes a digital human training job that is in the Init or Fail state.
 //
 // @param request - DeleteAvatarTrainingJobRequest
 //
@@ -60483,7 +69020,7 @@ func (client *Client) DeleteAvatarTrainingJobWithOptions(request *DeleteAvatarTr
 
 // Summary:
 //
-// 更新数字人训练任务信息
+// Deletes a digital human training job that is in the Init or Fail state.
 //
 // @param request - DeleteAvatarTrainingJobRequest
 //
@@ -60569,7 +69106,7 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 
 // Summary:
 //
-// 删除媒体处理自定义模板
+// Deletes a custom template.
 //
 // @param request - DeleteCustomTemplateRequest
 //
@@ -60611,7 +69148,7 @@ func (client *Client) DeleteCustomTemplateWithOptions(request *DeleteCustomTempl
 
 // Summary:
 //
-// 删除媒体处理自定义模板
+// Deletes a custom template.
 //
 // @param request - DeleteCustomTemplateRequest
 //
@@ -60629,7 +69166,7 @@ func (client *Client) DeleteCustomTemplate(request *DeleteCustomTemplateRequest)
 
 // Summary:
 //
-// 删除用户的专属人声任务
+// Deletes a human voice cloning job that is not in the Training or Success state.
 //
 // @param request - DeleteCustomizedVoiceJobRequest
 //
@@ -60671,7 +69208,7 @@ func (client *Client) DeleteCustomizedVoiceJobWithOptions(request *DeleteCustomi
 
 // Summary:
 //
-// 删除用户的专属人声任务
+// Deletes a human voice cloning job that is not in the Training or Success state.
 //
 // @param request - DeleteCustomizedVoiceJobRequest
 //
@@ -60689,7 +69226,7 @@ func (client *Client) DeleteCustomizedVoiceJob(request *DeleteCustomizedVoiceJob
 
 // Summary:
 //
-// 删除DNA库
+// Deletes a media fingerprint library.
 //
 // @param request - DeleteDNADBRequest
 //
@@ -60747,7 +69284,7 @@ func (client *Client) DeleteDNADBWithOptions(request *DeleteDNADBRequest, runtim
 
 // Summary:
 //
-// 删除DNA库
+// Deletes a media fingerprint library.
 //
 // @param request - DeleteDNADBRequest
 //
@@ -60765,7 +69302,7 @@ func (client *Client) DeleteDNADB(request *DeleteDNADBRequest) (_result *DeleteD
 
 // Summary:
 //
-// 删除DNA文件
+// Deletes files from a media fingerprint library.
 //
 // @param request - DeleteDNAFilesRequest
 //
@@ -60827,7 +69364,7 @@ func (client *Client) DeleteDNAFilesWithOptions(request *DeleteDNAFilesRequest, 
 
 // Summary:
 //
-// 删除DNA文件
+// Deletes files from a media fingerprint library.
 //
 // @param request - DeleteDNAFilesRequest
 //
@@ -61551,7 +70088,7 @@ func (client *Client) DeleteMediaMarks(request *DeleteMediaMarksRequest) (_resul
 
 // Summary:
 //
-// 删除管道配置
+// Deletes an ApsaraVideo Media Processing (MPS) queue.
 //
 // @param request - DeletePipelineRequest
 //
@@ -61593,7 +70130,7 @@ func (client *Client) DeletePipelineWithOptions(request *DeletePipelineRequest, 
 
 // Summary:
 //
-// 删除管道配置
+// Deletes an ApsaraVideo Media Processing (MPS) queue.
 //
 // @param request - DeletePipelineRequest
 //
@@ -61687,7 +70224,7 @@ func (client *Client) DeletePlayInfo(request *DeletePlayInfoRequest) (_result *D
 
 // Summary:
 //
-// DeleteSmartJob
+// Deletes intelligent jobs based on job IDs.
 //
 // @param request - DeleteSmartJobRequest
 //
@@ -61729,7 +70266,7 @@ func (client *Client) DeleteSmartJobWithOptions(request *DeleteSmartJobRequest, 
 
 // Summary:
 //
-// DeleteSmartJob
+// Deletes intelligent jobs based on job IDs.
 //
 // @param request - DeleteSmartJobRequest
 //
@@ -61747,7 +70284,15 @@ func (client *Client) DeleteSmartJob(request *DeleteSmartJobRequest) (_result *D
 
 // Summary:
 //
-// DeleteTemplate
+// Deletes templates.
+//
+// Description:
+//
+// A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+//
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
 //
 // @param request - DeleteTemplateRequest
 //
@@ -61785,7 +70330,15 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 
 // Summary:
 //
-// DeleteTemplate
+// Deletes templates.
+//
+// Description:
+//
+// A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+//
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
 //
 // @param request - DeleteTemplateRequest
 //
@@ -61861,6 +70414,10 @@ func (client *Client) DescribeAIAgentInstance(request *DescribeAIAgentInstanceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) editing. The maximum query range is 31 days. You can query data within the last 90 days.
+//
 // @param request - DescribeMeterImsEditUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -61911,6 +70468,10 @@ func (client *Client) DescribeMeterImsEditUsageWithOptions(request *DescribeMete
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) editing. The maximum query range is 31 days. You can query data within the last 90 days.
+//
 // @param request - DescribeMeterImsEditUsageRequest
 //
 // @return DescribeMeterImsEditUsageResponse
@@ -61925,6 +70486,10 @@ func (client *Client) DescribeMeterImsEditUsage(request *DescribeMeterImsEditUsa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage statistics of Intelligent Media Services (IMS) on ultra high definition (UHD) transcoding of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+//
 // @param request - DescribeMeterImsMediaConvertUHDUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -61975,6 +70540,10 @@ func (client *Client) DescribeMeterImsMediaConvertUHDUsageWithOptions(request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage statistics of Intelligent Media Services (IMS) on ultra high definition (UHD) transcoding of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+//
 // @param request - DescribeMeterImsMediaConvertUHDUsageRequest
 //
 // @return DescribeMeterImsMediaConvertUHDUsageResponse
@@ -61991,7 +70560,7 @@ func (client *Client) DescribeMeterImsMediaConvertUHDUsage(request *DescribeMete
 
 // Summary:
 //
-// 智能媒体服务点播转码用量
+// Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) transcoding. The maximum query range is 31 days. You can query data within the last 90 days.
 //
 // @param request - DescribeMeterImsMediaConvertUsageRequest
 //
@@ -62045,7 +70614,7 @@ func (client *Client) DescribeMeterImsMediaConvertUsageWithOptions(request *Desc
 
 // Summary:
 //
-// 智能媒体服务点播转码用量
+// Queries the usage statistics of Intelligent Media Services (IMS) on video-on-demand (VOD) transcoding. The maximum query range is 31 days. You can query data within the last 90 days.
 //
 // @param request - DescribeMeterImsMediaConvertUsageRequest
 //
@@ -62061,6 +70630,10 @@ func (client *Client) DescribeMeterImsMediaConvertUsage(request *DescribeMeterIm
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage statistics of Intelligent Media Services (IMS) on AI processing of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+//
 // @param request - DescribeMeterImsMpsAiUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -62111,6 +70684,10 @@ func (client *Client) DescribeMeterImsMpsAiUsageWithOptions(request *DescribeMet
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage statistics of Intelligent Media Services (IMS) on AI processing of ApsaraVideo Media Processing (MPS). The maximum query range is 31 days. You can query data within the last 90 days.
+//
 // @param request - DescribeMeterImsMpsAiUsageRequest
 //
 // @return DescribeMeterImsMpsAiUsageResponse
@@ -62125,6 +70702,10 @@ func (client *Client) DescribeMeterImsMpsAiUsage(request *DescribeMeterImsMpsAiU
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage statistics of Intelligent Media Services (IMS). The maximum query range is 31 days. You can query data within the last 90 days.
+//
 // @param request - DescribeMeterImsSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -62171,6 +70752,10 @@ func (client *Client) DescribeMeterImsSummaryWithOptions(request *DescribeMeterI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage statistics of Intelligent Media Services (IMS). The maximum query range is 31 days. You can query data within the last 90 days.
+//
 // @param request - DescribeMeterImsSummaryRequest
 //
 // @return DescribeMeterImsSummaryResponse
@@ -62391,7 +70976,7 @@ func (client *Client) DescribeRtcRobotInstance(request *DescribeRtcRobotInstance
 
 // Summary:
 //
-// 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+// Checks whether the reading of users has issues, such as noticeable pronunciation errors or background noise. After the audio is checked on the cloud, the qualified audio is temporarily stored on the cloud for subsequent training. Do not skip this step.
 //
 // @param request - DetectAudioForCustomizedVoiceJobRequest
 //
@@ -62441,7 +71026,7 @@ func (client *Client) DetectAudioForCustomizedVoiceJobWithOptions(request *Detec
 
 // Summary:
 //
-// 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+// Checks whether the reading of users has issues, such as noticeable pronunciation errors or background noise. After the audio is checked on the cloud, the qualified audio is temporarily stored on the cloud for subsequent training. Do not skip this step.
 //
 // @param request - DetectAudioForCustomizedVoiceJobRequest
 //
@@ -62614,6 +71199,10 @@ func (client *Client) GenerateAIAgentCallWithOptions(tmpReq *GenerateAIAgentCall
 		query["TemplateConfig"] = request.TemplateConfigShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
 	}
@@ -62661,7 +71250,7 @@ func (client *Client) GenerateAIAgentCall(request *GenerateAIAgentCallRequest) (
 
 // Summary:
 //
-// 生成KMS密钥DataKey
+// Generates a random Key Management Service (KMS) data key used for HTTP Live Streaming (HLS) encryption and transcoding of videos.
 //
 // @param request - GenerateKMSDataKeyRequest
 //
@@ -62692,7 +71281,7 @@ func (client *Client) GenerateKMSDataKeyWithOptions(runtime *util.RuntimeOptions
 
 // Summary:
 //
-// 生成KMS密钥DataKey
+// Generates a random Key Management Service (KMS) data key used for HTTP Live Streaming (HLS) encryption and transcoding of videos.
 //
 // @return GenerateKMSDataKeyResponse
 func (client *Client) GenerateKMSDataKey() (_result *GenerateKMSDataKeyResponse, _err error) {
@@ -62708,7 +71297,7 @@ func (client *Client) GenerateKMSDataKey() (_result *GenerateKMSDataKeyResponse,
 
 // Summary:
 //
-// 查询单个数字人
+// Queries the information about a trained digital human.
 //
 // @param request - GetAvatarRequest
 //
@@ -62750,7 +71339,7 @@ func (client *Client) GetAvatarWithOptions(request *GetAvatarRequest, runtime *u
 
 // Summary:
 //
-// 查询单个数字人
+// Queries the information about a trained digital human.
 //
 // @param request - GetAvatarRequest
 //
@@ -62768,7 +71357,7 @@ func (client *Client) GetAvatar(request *GetAvatarRequest) (_result *GetAvatarRe
 
 // Summary:
 //
-// 查询单个数字人训练任务
+// Queries the information about a digital human training job.
 //
 // @param request - GetAvatarTrainingJobRequest
 //
@@ -62810,7 +71399,7 @@ func (client *Client) GetAvatarTrainingJobWithOptions(request *GetAvatarTraining
 
 // Summary:
 //
-// 查询单个数字人训练任务
+// Queries the information about a digital human training job.
 //
 // @param request - GetAvatarTrainingJobRequest
 //
@@ -62828,7 +71417,7 @@ func (client *Client) GetAvatarTrainingJob(request *GetAvatarTrainingJobRequest)
 
 // Summary:
 //
-// 一键成片-批量获取剪辑任务
+// Queries the information about a quick video production job, including the input parameters, job state, and the IDs and URLs of the output media assets. You can call this operation to query only quick video production jobs created within the past year.
 //
 // @param request - GetBatchMediaProducingJobRequest
 //
@@ -62870,7 +71459,7 @@ func (client *Client) GetBatchMediaProducingJobWithOptions(request *GetBatchMedi
 
 // Summary:
 //
-// 一键成片-批量获取剪辑任务
+// Queries the information about a quick video production job, including the input parameters, job state, and the IDs and URLs of the output media assets. You can call this operation to query only quick video production jobs created within the past year.
 //
 // @param request - GetBatchMediaProducingJobRequest
 //
@@ -63019,7 +71608,65 @@ func (client *Client) GetContentAnalyzeConfig() (_result *GetContentAnalyzeConfi
 
 // Summary:
 //
-// 获取单个媒体处理自定义模板
+// Queries the information about a custom template.
+//
+// Description:
+//
+// You can call this operation to query the information about a template with the ID specified by the TemplateId parameter. You can also query the information about the default template. If TemplateId is specified, other parameters are ignored and the template whose ID is specified is queried. If TemplateId is not specified, the default template is queried based on other parameters. In this case, Type is required.
+//
+// Template types:
+//
+// 1.  1: transcoding template.
+//
+// 2.  2: snapshot template.
+//
+// 3.  3: animated image template.
+//
+// 4.  4\\. image watermark template.
+//
+// 5.  5: text watermark template.
+//
+// 6.  6: subtitle template.
+//
+// 7.  7: AI-assisted content moderation template.
+//
+// 8.  8: AI-assisted intelligent thumbnail template.
+//
+// 9.  9: AI-assisted intelligent erasure template.
+//
+// Subtypes of transcoding templates:
+//
+// 1.  1 (Normal): regular template.
+//
+// 2.  2 (AudioTranscode): audio transcoding template.
+//
+// 3.  3 (Remux): container format conversion template.
+//
+// 4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+//
+// 5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+//
+// Subtypes of snapshot templates:
+//
+// 1.  1 (Normal): regular template.
+//
+// 2.  2 (Sprite): sprite template.
+//
+// 3.  3 (WebVtt): WebVTT template.
+//
+// Subtypes of AI-assisted content moderation templates:
+//
+// 1.  1 (Video): video moderation template.
+//
+// 2.  2 (Audio): audio moderation template.
+//
+// 3.  3 (Image): image moderation template.
+//
+// Subtypes of AI-assisted intelligent erasure templates:
+//
+// 1.  1 (VideoDelogo): logo erasure template.
+//
+// 2.  2 (VideoDetext): subtitle erasure template.
 //
 // @param request - GetCustomTemplateRequest
 //
@@ -63069,7 +71716,65 @@ func (client *Client) GetCustomTemplateWithOptions(request *GetCustomTemplateReq
 
 // Summary:
 //
-// 获取单个媒体处理自定义模板
+// Queries the information about a custom template.
+//
+// Description:
+//
+// You can call this operation to query the information about a template with the ID specified by the TemplateId parameter. You can also query the information about the default template. If TemplateId is specified, other parameters are ignored and the template whose ID is specified is queried. If TemplateId is not specified, the default template is queried based on other parameters. In this case, Type is required.
+//
+// Template types:
+//
+// 1.  1: transcoding template.
+//
+// 2.  2: snapshot template.
+//
+// 3.  3: animated image template.
+//
+// 4.  4\\. image watermark template.
+//
+// 5.  5: text watermark template.
+//
+// 6.  6: subtitle template.
+//
+// 7.  7: AI-assisted content moderation template.
+//
+// 8.  8: AI-assisted intelligent thumbnail template.
+//
+// 9.  9: AI-assisted intelligent erasure template.
+//
+// Subtypes of transcoding templates:
+//
+// 1.  1 (Normal): regular template.
+//
+// 2.  2 (AudioTranscode): audio transcoding template.
+//
+// 3.  3 (Remux): container format conversion template.
+//
+// 4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+//
+// 5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+//
+// Subtypes of snapshot templates:
+//
+// 1.  1 (Normal): regular template.
+//
+// 2.  2 (Sprite): sprite template.
+//
+// 3.  3 (WebVtt): WebVTT template.
+//
+// Subtypes of AI-assisted content moderation templates:
+//
+// 1.  1 (Video): video moderation template.
+//
+// 2.  2 (Audio): audio moderation template.
+//
+// 3.  3 (Image): image moderation template.
+//
+// Subtypes of AI-assisted intelligent erasure templates:
+//
+// 1.  1 (VideoDelogo): logo erasure template.
+//
+// 2.  2 (VideoDetext): subtitle erasure template.
 //
 // @param request - GetCustomTemplateRequest
 //
@@ -63087,7 +71792,7 @@ func (client *Client) GetCustomTemplate(request *GetCustomTemplateRequest) (_res
 
 // Summary:
 //
-// 获取用户的专属人声
+// Queries the information about a personalized human voice.
 //
 // @param request - GetCustomizedVoiceRequest
 //
@@ -63129,7 +71834,7 @@ func (client *Client) GetCustomizedVoiceWithOptions(request *GetCustomizedVoiceR
 
 // Summary:
 //
-// 获取用户的专属人声
+// Queries the information about a personalized human voice.
 //
 // @param request - GetCustomizedVoiceRequest
 //
@@ -63147,7 +71852,7 @@ func (client *Client) GetCustomizedVoice(request *GetCustomizedVoiceRequest) (_r
 
 // Summary:
 //
-// 查询单个人声克隆训练任务
+// Queries the information about a human voice cloning job.
 //
 // @param request - GetCustomizedVoiceJobRequest
 //
@@ -63189,7 +71894,7 @@ func (client *Client) GetCustomizedVoiceJobWithOptions(request *GetCustomizedVoi
 
 // Summary:
 //
-// 查询单个人声克隆训练任务
+// Queries the information about a human voice cloning job.
 //
 // @param request - GetCustomizedVoiceJobRequest
 //
@@ -63254,7 +71959,7 @@ func (client *Client) GetDefaultStorageLocation() (_result *GetDefaultStorageLoc
 
 // Summary:
 //
-// 通过本接口来获取需要给用户朗读的文本及示例音频
+// Queries the text to be read and sample audio for training a personalized human voice.
 //
 // @param request - GetDemonstrationForCustomizedVoiceJobRequest
 //
@@ -63296,7 +72001,7 @@ func (client *Client) GetDemonstrationForCustomizedVoiceJobWithOptions(request *
 
 // Summary:
 //
-// 通过本接口来获取需要给用户朗读的文本及示例音频
+// Queries the text to be read and sample audio for training a personalized human voice.
 //
 // @param request - GetDemonstrationForCustomizedVoiceJobRequest
 //
@@ -63314,7 +72019,7 @@ func (client *Client) GetDemonstrationForCustomizedVoiceJob(request *GetDemonstr
 
 // Summary:
 //
-// 查询动图任务详情接口
+// Queries the information about an image animation job.
 //
 // @param request - GetDynamicImageJobRequest
 //
@@ -63356,7 +72061,7 @@ func (client *Client) GetDynamicImageJobWithOptions(request *GetDynamicImageJobR
 
 // Summary:
 //
-// 查询动图任务详情接口
+// Queries the information about an image animation job.
 //
 // @param request - GetDynamicImageJobRequest
 //
@@ -63617,7 +72322,7 @@ func (client *Client) GetLiveEditingIndexFile(request *GetLiveEditingIndexFileRe
 
 // Summary:
 //
-// 获取直播剪辑任务
+// Queries the information about a live editing job. The requested information includes the state, timeline, and template of the job, the ID and URL of the output file, and the configurations of the job. You can call this operation to query only live editing jobs created within the past year.
 //
 // @param request - GetLiveEditingJobRequest
 //
@@ -63659,7 +72364,7 @@ func (client *Client) GetLiveEditingJobWithOptions(request *GetLiveEditingJobReq
 
 // Summary:
 //
-// 获取直播剪辑任务
+// Queries the information about a live editing job. The requested information includes the state, timeline, and template of the job, the ID and URL of the output file, and the configurations of the job. You can call this operation to query only live editing jobs created within the past year.
 //
 // @param request - GetLiveEditingJobRequest
 //
@@ -64099,6 +72804,10 @@ func (client *Client) GetMediaInfo(request *GetMediaInfoRequest) (_result *GetMe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a media information analysis job.
+//
 // @param request - GetMediaInfoJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -64137,6 +72846,10 @@ func (client *Client) GetMediaInfoJobWithOptions(request *GetMediaInfoJobRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a media information analysis job.
+//
 // @param request - GetMediaInfoJobRequest
 //
 // @return GetMediaInfoJobResponse
@@ -64217,7 +72930,7 @@ func (client *Client) GetMediaMarks(request *GetMediaMarksRequest) (_result *Get
 
 // Summary:
 //
-// GetMediaProducingJob
+// Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
 //
 // @param request - GetMediaProducingJobRequest
 //
@@ -64255,7 +72968,7 @@ func (client *Client) GetMediaProducingJobWithOptions(request *GetMediaProducing
 
 // Summary:
 //
-// GetMediaProducingJob
+// Queries the information about a media editing and production job. The requested information includes the state, timeline, template, and data of the job. You can call this operation to query only media editing and production jobs created within the past year.
 //
 // @param request - GetMediaProducingJobRequest
 //
@@ -64273,7 +72986,7 @@ func (client *Client) GetMediaProducingJob(request *GetMediaProducingJobRequest)
 
 // Summary:
 //
-// 获取单个打包任务信息
+// Queries the information about a packaging job.
 //
 // @param request - GetPackageJobRequest
 //
@@ -64315,7 +73028,7 @@ func (client *Client) GetPackageJobWithOptions(request *GetPackageJobRequest, ru
 
 // Summary:
 //
-// 获取单个打包任务信息
+// Queries the information about a packaging job.
 //
 // @param request - GetPackageJobRequest
 //
@@ -64333,7 +73046,7 @@ func (client *Client) GetPackageJob(request *GetPackageJobRequest) (_result *Get
 
 // Summary:
 //
-// 获取单个管道配置
+// Queries the information about an ApsaraVideo Media Processing (MPS) queue.
 //
 // @param request - GetPipelineRequest
 //
@@ -64375,7 +73088,7 @@ func (client *Client) GetPipelineWithOptions(request *GetPipelineRequest, runtim
 
 // Summary:
 //
-// 获取单个管道配置
+// Queries the information about an ApsaraVideo Media Processing (MPS) queue.
 //
 // @param request - GetPipelineRequest
 //
@@ -64525,7 +73238,7 @@ func (client *Client) GetPublicMediaInfo(request *GetPublicMediaInfoRequest) (_r
 
 // Summary:
 //
-// GetSmartHandleJob
+// Queries the information about an intelligent job and the execution results of the job based the job ID. You can call this operation to query only intelligent jobs created within the past year.
 //
 // @param request - GetSmartHandleJobRequest
 //
@@ -64567,7 +73280,7 @@ func (client *Client) GetSmartHandleJobWithOptions(request *GetSmartHandleJobReq
 
 // Summary:
 //
-// GetSmartHandleJob
+// Queries the information about an intelligent job and the execution results of the job based the job ID. You can call this operation to query only intelligent jobs created within the past year.
 //
 // @param request - GetSmartHandleJobRequest
 //
@@ -64585,7 +73298,7 @@ func (client *Client) GetSmartHandleJob(request *GetSmartHandleJobRequest) (_res
 
 // Summary:
 //
-// 查询单个截图任务
+// Queries the information about a snapshot job.
 //
 // @param request - GetSnapshotJobRequest
 //
@@ -64627,7 +73340,7 @@ func (client *Client) GetSnapshotJobWithOptions(request *GetSnapshotJobRequest, 
 
 // Summary:
 //
-// 查询单个截图任务
+// Queries the information about a snapshot job.
 //
 // @param request - GetSnapshotJobRequest
 //
@@ -64645,7 +73358,7 @@ func (client *Client) GetSnapshotJob(request *GetSnapshotJobRequest) (_result *G
 
 // Summary:
 //
-// 获取截图文件URL
+// Queries the accessible URLs of the output images of a snapshot job.
 //
 // @param request - GetSnapshotUrlsRequest
 //
@@ -64703,7 +73416,7 @@ func (client *Client) GetSnapshotUrlsWithOptions(request *GetSnapshotUrlsRequest
 
 // Summary:
 //
-// 获取截图文件URL
+// Queries the accessible URLs of the output images of a snapshot job.
 //
 // @param request - GetSnapshotUrlsRequest
 //
@@ -64789,7 +73502,7 @@ func (client *Client) GetStorageList(request *GetStorageListRequest) (_result *G
 
 // Summary:
 //
-// 获取单个媒体处理系统模板
+// Queries the information about a system template.
 //
 // @param request - GetSystemTemplateRequest
 //
@@ -64831,7 +73544,7 @@ func (client *Client) GetSystemTemplateWithOptions(request *GetSystemTemplateReq
 
 // Summary:
 //
-// 获取单个媒体处理系统模板
+// Queries the information about a system template.
 //
 // @param request - GetSystemTemplateRequest
 //
@@ -64849,7 +73562,15 @@ func (client *Client) GetSystemTemplate(request *GetSystemTemplateRequest) (_res
 
 // Summary:
 //
-// GetTemplate
+// Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
+//
+// Description:
+//
+// A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+//
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
 //
 // @param request - GetTemplateRequest
 //
@@ -64895,7 +73616,15 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 
 // Summary:
 //
-// GetTemplate
+// Queries the information about a template based on the template ID. You can call this operation to query the information about an advanced template if the template is in the Available state.
+//
+// Description:
+//
+// A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+//
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
 //
 // @param request - GetTemplateRequest
 //
@@ -64913,7 +73642,7 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 
 // Summary:
 //
-// 获取模板关联素材信息
+// Queries the URLs of materials associated with an advanced template for use by the advanced template editor. The URLs expire in 30 minutes. FileList is an array of materials that you want to query. If you do not specify this parameter, the URLs of all materials are returned. A maximum of 400 URLs can be returned.
 //
 // @param request - GetTemplateMaterialsRequest
 //
@@ -64959,7 +73688,7 @@ func (client *Client) GetTemplateMaterialsWithOptions(request *GetTemplateMateri
 
 // Summary:
 //
-// 获取模板关联素材信息
+// Queries the URLs of materials associated with an advanced template for use by the advanced template editor. The URLs expire in 30 minutes. FileList is an array of materials that you want to query. If you do not specify this parameter, the URLs of all materials are returned. A maximum of 400 URLs can be returned.
 //
 // @param request - GetTemplateMaterialsRequest
 //
@@ -64977,7 +73706,7 @@ func (client *Client) GetTemplateMaterials(request *GetTemplateMaterialsRequest)
 
 // Summary:
 //
-// 获取模板参数信息
+// Queries the parameters for replaceable materials in a template, including the parameter names, default values, and material thumbnails. Only advanced templates are supported.
 //
 // @param request - GetTemplateParamsRequest
 //
@@ -65015,7 +73744,7 @@ func (client *Client) GetTemplateParamsWithOptions(request *GetTemplateParamsReq
 
 // Summary:
 //
-// 获取模板参数信息
+// Queries the parameters for replaceable materials in a template, including the parameter names, default values, and material thumbnails. Only advanced templates are supported.
 //
 // @param request - GetTemplateParamsRequest
 //
@@ -65031,6 +73760,10 @@ func (client *Client) GetTemplateParams(request *GetTemplateParamsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a transcoding job.
+//
 // @param request - GetTranscodeJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -65069,6 +73802,10 @@ func (client *Client) GetTranscodeJobWithOptions(request *GetTranscodeJobRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a transcoding job.
+//
 // @param request - GetTranscodeJobRequest
 //
 // @return GetTranscodeJobResponse
@@ -65253,7 +73990,7 @@ func (client *Client) GetVideoList(request *GetVideoListRequest) (_result *GetVi
 
 // Summary:
 //
-// 获取工作流任务
+// Queries the information about a workflow task by task ID, including the workflow ID and the status and result of the task. You can query only the workflow task data of the last year.
 //
 // @param request - GetWorkflowTaskRequest
 //
@@ -65295,7 +74032,7 @@ func (client *Client) GetWorkflowTaskWithOptions(request *GetWorkflowTaskRequest
 
 // Summary:
 //
-// 获取工作流任务
+// Queries the information about a workflow task by task ID, including the workflow ID and the status and result of the task. You can query only the workflow task data of the last year.
 //
 // @param request - GetWorkflowTaskRequest
 //
@@ -65529,7 +74266,7 @@ func (client *Client) ListAllPublicMediaTags(request *ListAllPublicMediaTagsRequ
 
 // Summary:
 //
-// 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+// Queries a list of digital human training jobs.
 //
 // @param request - ListAvatarTrainingJobsRequest
 //
@@ -65579,7 +74316,7 @@ func (client *Client) ListAvatarTrainingJobsWithOptions(request *ListAvatarTrain
 
 // Summary:
 //
-// 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+// Queries a list of digital human training jobs.
 //
 // @param request - ListAvatarTrainingJobsRequest
 //
@@ -65597,7 +74334,7 @@ func (client *Client) ListAvatarTrainingJobs(request *ListAvatarTrainingJobsRequ
 
 // Summary:
 //
-// 查询数字人列表，列出当前用户的所有数字人
+// Queries a list of trained digital humans.
 //
 // @param request - ListAvatarsRequest
 //
@@ -65647,7 +74384,7 @@ func (client *Client) ListAvatarsWithOptions(request *ListAvatarsRequest, runtim
 
 // Summary:
 //
-// 查询数字人列表，列出当前用户的所有数字人
+// Queries a list of trained digital humans.
 //
 // @param request - ListAvatarsRequest
 //
@@ -65665,7 +74402,7 @@ func (client *Client) ListAvatars(request *ListAvatarsRequest) (_result *ListAva
 
 // Summary:
 //
-// 获取一键成片任务列表
+// Queries a list of quick video production jobs based on conditions such as the job type and state.
 //
 // @param request - ListBatchMediaProducingJobsRequest
 //
@@ -65735,7 +74472,7 @@ func (client *Client) ListBatchMediaProducingJobsWithOptions(request *ListBatchM
 
 // Summary:
 //
-// 获取一键成片任务列表
+// Queries a list of quick video production jobs based on conditions such as the job type and state.
 //
 // @param request - ListBatchMediaProducingJobsRequest
 //
@@ -65753,7 +74490,7 @@ func (client *Client) ListBatchMediaProducingJobs(request *ListBatchMediaProduci
 
 // Summary:
 //
-// 获取媒体处理自定义模板列表
+// Queries a list of custom templates.
 //
 // @param request - ListCustomTemplatesRequest
 //
@@ -65819,7 +74556,7 @@ func (client *Client) ListCustomTemplatesWithOptions(request *ListCustomTemplate
 
 // Summary:
 //
-// 获取媒体处理自定义模板列表
+// Queries a list of custom templates.
 //
 // @param request - ListCustomTemplatesRequest
 //
@@ -65837,7 +74574,7 @@ func (client *Client) ListCustomTemplates(request *ListCustomTemplatesRequest) (
 
 // Summary:
 //
-// 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+// Queries a list of human voice cloning jobs.
 //
 // @param request - ListCustomizedVoiceJobsRequest
 //
@@ -65887,7 +74624,7 @@ func (client *Client) ListCustomizedVoiceJobsWithOptions(request *ListCustomized
 
 // Summary:
 //
-// 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+// Queries a list of human voice cloning jobs.
 //
 // @param request - ListCustomizedVoiceJobsRequest
 //
@@ -65905,7 +74642,7 @@ func (client *Client) ListCustomizedVoiceJobs(request *ListCustomizedVoiceJobsRe
 
 // Summary:
 //
-// 获取用户的专属人声列表
+// Queries a list of personalized human voices.
 //
 // @param request - ListCustomizedVoicesRequest
 //
@@ -65955,7 +74692,7 @@ func (client *Client) ListCustomizedVoicesWithOptions(request *ListCustomizedVoi
 
 // Summary:
 //
-// 获取用户的专属人声列表
+// Queries a list of personalized human voices.
 //
 // @param request - ListCustomizedVoicesRequest
 //
@@ -65973,7 +74710,7 @@ func (client *Client) ListCustomizedVoices(request *ListCustomizedVoicesRequest)
 
 // Summary:
 //
-// 查询DNA库
+// Queries a list of media fingerprint libraries.
 //
 // @param request - ListDNADBRequest
 //
@@ -66031,7 +74768,7 @@ func (client *Client) ListDNADBWithOptions(request *ListDNADBRequest, runtime *u
 
 // Summary:
 //
-// 查询DNA库
+// Queries a list of media fingerprint libraries.
 //
 // @param request - ListDNADBRequest
 //
@@ -66049,7 +74786,11 @@ func (client *Client) ListDNADB(request *ListDNADBRequest) (_result *ListDNADBRe
 
 // Summary:
 //
-// 查询DNA文件
+// Queries a list of files in a media fingerprint library.
+//
+// Description:
+//
+// You can call this operation to query files in a media fingerprint library based on the library ID. The queried results can be paginated.
 //
 // @param request - ListDNAFilesRequest
 //
@@ -66115,7 +74856,11 @@ func (client *Client) ListDNAFilesWithOptions(request *ListDNAFilesRequest, runt
 
 // Summary:
 //
-// 查询DNA文件
+// Queries a list of files in a media fingerprint library.
+//
+// Description:
+//
+// You can call this operation to query files in a media fingerprint library based on the library ID. The queried results can be paginated.
 //
 // @param request - ListDNAFilesRequest
 //
@@ -66133,7 +74878,7 @@ func (client *Client) ListDNAFiles(request *ListDNAFilesRequest) (_result *ListD
 
 // Summary:
 //
-// 查询截图任务列表接口
+// Queries a list of image animation jobs.
 //
 // @param request - ListDynamicImageJobsRequest
 //
@@ -66199,7 +74944,7 @@ func (client *Client) ListDynamicImageJobsWithOptions(request *ListDynamicImageJ
 
 // Summary:
 //
-// 查询截图任务列表接口
+// Queries a list of image animation jobs.
 //
 // @param request - ListDynamicImageJobsRequest
 //
@@ -66923,6 +75668,10 @@ func (client *Client) ListMediaBasicInfos(request *ListMediaBasicInfosRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of media information analysis jobs.
+//
 // @param request - ListMediaInfoJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -66985,6 +75734,10 @@ func (client *Client) ListMediaInfoJobsWithOptions(request *ListMediaInfoJobsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of media information analysis jobs.
+//
 // @param request - ListMediaInfoJobsRequest
 //
 // @return ListMediaInfoJobsResponse
@@ -67065,7 +75818,7 @@ func (client *Client) ListMediaMarks(request *ListMediaMarksRequest) (_result *L
 
 // Summary:
 //
-// 列出合成任务列表
+// Queries a list of media editing and production jobs that meet the specified conditions. You can query the jobs based on the job state and type.
 //
 // @param request - ListMediaProducingJobsRequest
 //
@@ -67143,7 +75896,7 @@ func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProduc
 
 // Summary:
 //
-// 列出合成任务列表
+// Queries a list of media editing and production jobs that meet the specified conditions. You can query the jobs based on the job state and type.
 //
 // @param request - ListMediaProducingJobsRequest
 //
@@ -67161,7 +75914,7 @@ func (client *Client) ListMediaProducingJobs(request *ListMediaProducingJobsRequ
 
 // Summary:
 //
-// 获取打包任务列表
+// Queries a list of packaging jobs.
 //
 // @param request - ListPackageJobsRequest
 //
@@ -67227,7 +75980,7 @@ func (client *Client) ListPackageJobsWithOptions(request *ListPackageJobsRequest
 
 // Summary:
 //
-// 获取打包任务列表
+// Queries a list of packaging jobs.
 //
 // @param request - ListPackageJobsRequest
 //
@@ -67245,7 +75998,7 @@ func (client *Client) ListPackageJobs(request *ListPackageJobsRequest) (_result 
 
 // Summary:
 //
-// 获取管道配置列表
+// Queries a list of ApsaraVideo Media Processing (MPS) queues.
 //
 // @param request - ListPipelinesRequest
 //
@@ -67287,7 +76040,7 @@ func (client *Client) ListPipelinesWithOptions(request *ListPipelinesRequest, ru
 
 // Summary:
 //
-// 获取管道配置列表
+// Queries a list of ApsaraVideo Media Processing (MPS) queues.
 //
 // @param request - ListPipelinesRequest
 //
@@ -67453,7 +76206,7 @@ func (client *Client) ListSearchLib(request *ListSearchLibRequest) (_result *Lis
 
 // Summary:
 //
-// ListSmartJobs
+// Queries a list of intelligent jobs based on specified parameters.
 //
 // @param request - ListSmartJobsRequest
 //
@@ -67491,7 +76244,7 @@ func (client *Client) ListSmartJobsWithOptions(request *ListSmartJobsRequest, ru
 
 // Summary:
 //
-// ListSmartJobs
+// Queries a list of intelligent jobs based on specified parameters.
 //
 // @param request - ListSmartJobsRequest
 //
@@ -67509,7 +76262,7 @@ func (client *Client) ListSmartJobs(request *ListSmartJobsRequest) (_result *Lis
 
 // Summary:
 //
-// 列出虚拟人官方模特配置
+// Queries a list of system digital humans. This operation supports paged queries.
 //
 // @param request - ListSmartSysAvatarModelsRequest
 //
@@ -67559,7 +76312,7 @@ func (client *Client) ListSmartSysAvatarModelsWithOptions(request *ListSmartSysA
 
 // Summary:
 //
-// 列出虚拟人官方模特配置
+// Queries a list of system digital humans. This operation supports paged queries.
 //
 // @param request - ListSmartSysAvatarModelsRequest
 //
@@ -67577,7 +76330,7 @@ func (client *Client) ListSmartSysAvatarModels(request *ListSmartSysAvatarModels
 
 // Summary:
 //
-// 列出智能语音发音人信息
+// Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
 //
 // @param request - ListSmartVoiceGroupsRequest
 //
@@ -67608,7 +76361,7 @@ func (client *Client) ListSmartVoiceGroupsWithOptions(runtime *util.RuntimeOptio
 
 // Summary:
 //
-// 列出智能语音发音人信息
+// Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
 //
 // @return ListSmartVoiceGroupsResponse
 func (client *Client) ListSmartVoiceGroups() (_result *ListSmartVoiceGroupsResponse, _err error) {
@@ -67624,7 +76377,7 @@ func (client *Client) ListSmartVoiceGroups() (_result *ListSmartVoiceGroupsRespo
 
 // Summary:
 //
-// 查询截图任务列表接口
+// Queries a list of snapshot jobs.
 //
 // @param request - ListSnapshotJobsRequest
 //
@@ -67690,7 +76443,7 @@ func (client *Client) ListSnapshotJobsWithOptions(request *ListSnapshotJobsReque
 
 // Summary:
 //
-// 查询截图任务列表接口
+// Queries a list of snapshot jobs.
 //
 // @param request - ListSnapshotJobsRequest
 //
@@ -67708,7 +76461,63 @@ func (client *Client) ListSnapshotJobs(request *ListSnapshotJobsRequest) (_resul
 
 // Summary:
 //
-// 获取媒体处理系统模板列表
+// Queries a list of system templates.
+//
+// Description:
+//
+// Template types:
+//
+// 1.  1: transcoding template.
+//
+// 2.  2: snapshot template.
+//
+// 3.  3: animated image template.
+//
+// 4.  4\\. image watermark template.
+//
+// 5.  5: text watermark template.
+//
+// 6.  6: subtitle template.
+//
+// 7.  7: AI-assisted content moderation template.
+//
+// 8.  8: AI-assisted intelligent thumbnail template.
+//
+// 9.  9: AI-assisted intelligent erasure template.
+//
+// Subtypes of transcoding templates:
+//
+// 1.  1 (Normal): regular template.
+//
+// 2.  2 (AudioTranscode): audio transcoding template.
+//
+// 3.  3 (Remux): container format conversion template.
+//
+// 4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+//
+// 5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+//
+// Subtypes of snapshot templates:
+//
+// 1.  1 (Normal): regular template.
+//
+// 2.  2 (Sprite): sprite template.
+//
+// 3.  3 (WebVtt): WebVTT template.
+//
+// Subtypes of AI-assisted content moderation templates:
+//
+// 1.  1 (Video): video moderation template.
+//
+// 2.  2 (Audio): audio moderation template.
+//
+// 3.  3 (Image): image moderation template.
+//
+// Subtypes of AI-assisted intelligent erasure templates:
+//
+// 1.  1 (VideoDelogo): logo erasure template.
+//
+// 2.  2 (VideoDetext): subtitle erasure template.
 //
 // @param request - ListSystemTemplatesRequest
 //
@@ -67774,7 +76583,63 @@ func (client *Client) ListSystemTemplatesWithOptions(request *ListSystemTemplate
 
 // Summary:
 //
-// 获取媒体处理系统模板列表
+// Queries a list of system templates.
+//
+// Description:
+//
+// Template types:
+//
+// 1.  1: transcoding template.
+//
+// 2.  2: snapshot template.
+//
+// 3.  3: animated image template.
+//
+// 4.  4\\. image watermark template.
+//
+// 5.  5: text watermark template.
+//
+// 6.  6: subtitle template.
+//
+// 7.  7: AI-assisted content moderation template.
+//
+// 8.  8: AI-assisted intelligent thumbnail template.
+//
+// 9.  9: AI-assisted intelligent erasure template.
+//
+// Subtypes of transcoding templates:
+//
+// 1.  1 (Normal): regular template.
+//
+// 2.  2 (AudioTranscode): audio transcoding template.
+//
+// 3.  3 (Remux): container format conversion template.
+//
+// 4.  4 (NarrowBandV1): Narrowband HD 1.0 template.
+//
+// 5.  5 (NarrowBandV2): Narrowband HD 2.0 template.
+//
+// Subtypes of snapshot templates:
+//
+// 1.  1 (Normal): regular template.
+//
+// 2.  2 (Sprite): sprite template.
+//
+// 3.  3 (WebVtt): WebVTT template.
+//
+// Subtypes of AI-assisted content moderation templates:
+//
+// 1.  1 (Video): video moderation template.
+//
+// 2.  2 (Audio): audio moderation template.
+//
+// 3.  3 (Image): image moderation template.
+//
+// Subtypes of AI-assisted intelligent erasure templates:
+//
+// 1.  1 (VideoDelogo): logo erasure template.
+//
+// 2.  2 (VideoDetext): subtitle erasure template.
 //
 // @param request - ListSystemTemplatesRequest
 //
@@ -67792,7 +76657,15 @@ func (client *Client) ListSystemTemplates(request *ListSystemTemplatesRequest) (
 
 // Summary:
 //
-// ListTemplates
+// Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
+//
+// Description:
+//
+// A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+//
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
 //
 // @param request - ListTemplatesRequest
 //
@@ -67858,7 +76731,15 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 
 // Summary:
 //
-// ListTemplates
+// Queries a list of templates that meet the specified conditions. You can query templates based on information such as the template status and creation source.
+//
+// Description:
+//
+// A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
+//
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
 //
 // @param request - ListTemplatesRequest
 //
@@ -67874,6 +76755,10 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of transcoding jobs.
+//
 // @param request - ListTranscodeJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -67936,6 +76821,10 @@ func (client *Client) ListTranscodeJobsWithOptions(request *ListTranscodeJobsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of transcoding jobs.
+//
 // @param request - ListTranscodeJobsRequest
 //
 // @return ListTranscodeJobsResponse
@@ -67952,7 +76841,7 @@ func (client *Client) ListTranscodeJobs(request *ListTranscodeJobsRequest) (_res
 
 // Summary:
 //
-// 查询DNA作业
+// Queries a list of media fingerprint analysis jobs.
 //
 // @param request - QueryDNAJobListRequest
 //
@@ -68010,7 +76899,7 @@ func (client *Client) QueryDNAJobListWithOptions(request *QueryDNAJobListRequest
 
 // Summary:
 //
-// 查询DNA作业
+// Queries a list of media fingerprint analysis jobs.
 //
 // @param request - QueryDNAJobListRequest
 //
@@ -68028,7 +76917,7 @@ func (client *Client) QueryDNAJobList(request *QueryDNAJobListRequest) (_result 
 
 // Summary:
 //
-// 查询智能生产作业
+// Queries the status and result of an intelligent production job.
 //
 // @param request - QueryIProductionJobRequest
 //
@@ -68074,7 +76963,7 @@ func (client *Client) QueryIProductionJobWithOptions(request *QueryIProductionJo
 
 // Summary:
 //
-// 查询智能生产作业
+// Queries the status and result of an intelligent production job.
 //
 // @param request - QueryIProductionJobRequest
 //
@@ -68090,6 +76979,14 @@ func (client *Client) QueryIProductionJob(request *QueryIProductionJobRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a content moderation job.
+//
+// Description:
+//
+// In the content moderation results, the moderation results of the video are sorted in ascending order by time into a timeline. If the video is long, the content moderation results are paginated, and the first page is returned. You can call this operation again to query the remaining moderation results of the video.
+//
 // @param request - QueryMediaCensorJobDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -68152,6 +77049,14 @@ func (client *Client) QueryMediaCensorJobDetailWithOptions(request *QueryMediaCe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a content moderation job.
+//
+// Description:
+//
+// In the content moderation results, the moderation results of the video are sorted in ascending order by time into a timeline. If the video is long, the content moderation results are paginated, and the first page is returned. You can call this operation again to query the remaining moderation results of the video.
+//
 // @param request - QueryMediaCensorJobDetailRequest
 //
 // @return QueryMediaCensorJobDetailResponse
@@ -68166,6 +77071,14 @@ func (client *Client) QueryMediaCensorJobDetail(request *QueryMediaCensorJobDeta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of content moderation jobs.
+//
+// Description:
+//
+// You can call this operation to query only the content moderation jobs within the most recent three months.
+//
 // @param request - QueryMediaCensorJobListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -68244,6 +77157,14 @@ func (client *Client) QueryMediaCensorJobListWithOptions(request *QueryMediaCens
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of content moderation jobs.
+//
+// Description:
+//
+// You can call this operation to query only the content moderation jobs within the most recent three months.
+//
 // @param request - QueryMediaCensorJobListRequest
 //
 // @return QueryMediaCensorJobListResponse
@@ -68446,6 +77367,10 @@ func (client *Client) QuerySearchLib(request *QuerySearchLibRequest) (_result *Q
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a smart tagging job.
+//
 // @param request - QuerySmarttagJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -68488,6 +77413,10 @@ func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a smart tagging job.
+//
 // @param request - QuerySmarttagJobRequest
 //
 // @return QuerySmarttagJobResponse
@@ -69824,7 +78753,7 @@ func (client *Client) SetContentAnalyzeConfig(request *SetContentAnalyzeConfigRe
 
 // Summary:
 //
-// 设置默认媒体处理模板
+// Sets a custom template as the default template.
 //
 // @param request - SetDefaultCustomTemplateRequest
 //
@@ -69866,7 +78795,7 @@ func (client *Client) SetDefaultCustomTemplateWithOptions(request *SetDefaultCus
 
 // Summary:
 //
-// 设置默认媒体处理模板
+// Sets a custom template as the default template.
 //
 // @param request - SetDefaultCustomTemplateRequest
 //
@@ -70276,7 +79205,13 @@ func (client *Client) StartRtcRobotInstance(request *StartRtcRobotInstanceReques
 
 // Summary:
 //
-// 启动工作流
+// Submits a workflow task. You can submit a workflow task to implement automated media processing based on a workflow template.
+//
+// Description:
+//
+//   Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
+//
+// 	- When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
 //
 // @param request - StartWorkflowRequest
 //
@@ -70326,7 +79261,13 @@ func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, ru
 
 // Summary:
 //
-// 启动工作流
+// Submits a workflow task. You can submit a workflow task to implement automated media processing based on a workflow template.
+//
+// Description:
+//
+//   Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
+//
+// 	- When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
 //
 // @param request - StartWorkflowRequest
 //
@@ -70464,7 +79405,7 @@ func (client *Client) StopRtcRobotInstance(request *StopRtcRobotInstanceRequest)
 
 // Summary:
 //
-// SubmitASRJob
+// Submits an automatic speech recognition (ASR) job to extract the start and end time and the corresponding text information of a speech in a video.
 //
 // @param request - SubmitASRJobRequest
 //
@@ -70526,7 +79467,7 @@ func (client *Client) SubmitASRJobWithOptions(request *SubmitASRJobRequest, runt
 
 // Summary:
 //
-// SubmitASRJob
+// Submits an automatic speech recognition (ASR) job to extract the start and end time and the corresponding text information of a speech in a video.
 //
 // @param request - SubmitASRJobRequest
 //
@@ -70544,7 +79485,7 @@ func (client *Client) SubmitASRJob(request *SubmitASRJobRequest) (_result *Submi
 
 // Summary:
 //
-// SubmitAudioProduceJob
+// Submits an audio production job that converts text into an audio file.
 //
 // @param request - SubmitAudioProduceJobRequest
 //
@@ -70610,7 +79551,7 @@ func (client *Client) SubmitAudioProduceJobWithOptions(request *SubmitAudioProdu
 
 // Summary:
 //
-// SubmitAudioProduceJob
+// Submits an audio production job that converts text into an audio file.
 //
 // @param request - SubmitAudioProduceJobRequest
 //
@@ -70628,7 +79569,7 @@ func (client *Client) SubmitAudioProduceJob(request *SubmitAudioProduceJobReques
 
 // Summary:
 //
-// 提交数字人训练任务
+// Submits a digital human training job. You can call this operation to submit a job the first time or submit a job again with updated parameters if the training failed.
 //
 // @param request - SubmitAvatarTrainingJobRequest
 //
@@ -70670,7 +79611,7 @@ func (client *Client) SubmitAvatarTrainingJobWithOptions(request *SubmitAvatarTr
 
 // Summary:
 //
-// 提交数字人训练任务
+// Submits a digital human training job. You can call this operation to submit a job the first time or submit a job again with updated parameters if the training failed.
 //
 // @param request - SubmitAvatarTrainingJobRequest
 //
@@ -70768,7 +79709,7 @@ func (client *Client) SubmitAvatarVideoJob(request *SubmitAvatarVideoJobRequest)
 
 // Summary:
 //
-// SubmitBatchMediaProducingJob
+// Submits a quick video production job that intelligently edits multiple video, audio, and image assets to generate multiple videos at a time.
 //
 // @param request - SubmitBatchMediaProducingJobRequest
 //
@@ -70828,7 +79769,7 @@ func (client *Client) SubmitBatchMediaProducingJobWithOptions(request *SubmitBat
 
 // Summary:
 //
-// SubmitBatchMediaProducingJob
+// Submits a quick video production job that intelligently edits multiple video, audio, and image assets to generate multiple videos at a time.
 //
 // @param request - SubmitBatchMediaProducingJobRequest
 //
@@ -70846,7 +79787,7 @@ func (client *Client) SubmitBatchMediaProducingJob(request *SubmitBatchMediaProd
 
 // Summary:
 //
-// 提交人声克隆训练任务
+// Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
 //
@@ -70892,7 +79833,7 @@ func (client *Client) SubmitCustomizedVoiceJobWithOptions(request *SubmitCustomi
 
 // Summary:
 //
-// 提交人声克隆训练任务
+// Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
 //
@@ -70910,7 +79851,15 @@ func (client *Client) SubmitCustomizedVoiceJob(request *SubmitCustomizedVoiceJob
 
 // Summary:
 //
-// 提交DNA作业
+// Submits a media fingerprint analysis job.
+//
+// Description:
+//
+//   SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
+//
+// 	- You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
+//
+// 	- You can submit a text fingerprint analysis job only in the China (Shanghai) region.
 //
 // @param tmpReq - SubmitDNAJobRequest
 //
@@ -70998,7 +79947,15 @@ func (client *Client) SubmitDNAJobWithOptions(tmpReq *SubmitDNAJobRequest, runti
 
 // Summary:
 //
-// 提交DNA作业
+// Submits a media fingerprint analysis job.
+//
+// Description:
+//
+//   SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
+//
+// 	- You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
+//
+// 	- You can submit a text fingerprint analysis job only in the China (Shanghai) region.
 //
 // @param request - SubmitDNAJobRequest
 //
@@ -71124,7 +80081,7 @@ func (client *Client) SubmitDynamicChartJob(request *SubmitDynamicChartJobReques
 
 // Summary:
 //
-// 提交异步动图任务接口
+// Submits an image animation job.
 //
 // @param tmpReq - SubmitDynamicImageJobRequest
 //
@@ -71204,7 +80161,7 @@ func (client *Client) SubmitDynamicImageJobWithOptions(tmpReq *SubmitDynamicImag
 
 // Summary:
 //
-// 提交异步动图任务接口
+// Submits an image animation job.
 //
 // @param request - SubmitDynamicImageJobRequest
 //
@@ -71222,7 +80179,7 @@ func (client *Client) SubmitDynamicImageJob(request *SubmitDynamicImageJobReques
 
 // Summary:
 //
-// 提交智能生产作业
+// Submits an intelligent production job.
 //
 // @param tmpReq - SubmitIProductionJobRequest
 //
@@ -71310,7 +80267,7 @@ func (client *Client) SubmitIProductionJobWithOptions(tmpReq *SubmitIProductionJ
 
 // Summary:
 //
-// 提交智能生产作业
+// Submits an intelligent production job.
 //
 // @param request - SubmitIProductionJobRequest
 //
@@ -71328,7 +80285,11 @@ func (client *Client) SubmitIProductionJob(request *SubmitIProductionJobRequest)
 
 // Summary:
 //
-// 提交直播剪辑任务
+// Submits a live editing job to merge one or more live stream clips into one video. After a live editing job is submitted, the job is queued in the background for asynchronous processing. You can call the GeLiveEditingJob operation to query the state of the job based on the job ID. You can also call the GetMediaInfo operation to query the information about the generated media asset based on the media asset ID.
+//
+// Description:
+//
+// Live editing is supported for live streams that are recorded and stored in Object Storage Service (OSS) and ApsaraVideo VOD. If multiple live streams are involved in a single job, only those recorded within the same application are supported for mixed editing. The streams must all be recorded either in OSS or ApsaraVideo VOD.
 //
 // @param request - SubmitLiveEditingJobRequest
 //
@@ -71394,7 +80355,11 @@ func (client *Client) SubmitLiveEditingJobWithOptions(request *SubmitLiveEditing
 
 // Summary:
 //
-// 提交直播剪辑任务
+// Submits a live editing job to merge one or more live stream clips into one video. After a live editing job is submitted, the job is queued in the background for asynchronous processing. You can call the GeLiveEditingJob operation to query the state of the job based on the job ID. You can also call the GetMediaInfo operation to query the information about the generated media asset based on the media asset ID.
+//
+// Description:
+//
+// Live editing is supported for live streams that are recorded and stored in Object Storage Service (OSS) and ApsaraVideo VOD. If multiple live streams are involved in a single job, only those recorded within the same application are supported for mixed editing. The streams must all be recorded either in OSS or ApsaraVideo VOD.
 //
 // @param request - SubmitLiveEditingJobRequest
 //
@@ -71740,6 +80705,14 @@ func (client *Client) SubmitMediaAiAnalysisJob(request *SubmitMediaAiAnalysisJob
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a content moderation job.
+//
+// Description:
+//
+// The job that you submit by calling this operation is run in asynchronous mode. The job is added to an ApsaraVideo Media Processing (MPS) queue to be scheduled and run. You can call the [QueryMediaCensorJobDetail](https://help.aliyun.com/document_detail/444847.html) operation or configure an asynchronous notification to obtain the job results.
+//
 // @param tmpReq - SubmitMediaCensorJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -71824,6 +80797,14 @@ func (client *Client) SubmitMediaCensorJobWithOptions(tmpReq *SubmitMediaCensorJ
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a content moderation job.
+//
+// Description:
+//
+// The job that you submit by calling this operation is run in asynchronous mode. The job is added to an ApsaraVideo Media Processing (MPS) queue to be scheduled and run. You can call the [QueryMediaCensorJobDetail](https://help.aliyun.com/document_detail/444847.html) operation or configure an asynchronous notification to obtain the job results.
+//
 // @param request - SubmitMediaCensorJobRequest
 //
 // @return SubmitMediaCensorJobResponse
@@ -71838,6 +80819,14 @@ func (client *Client) SubmitMediaCensorJob(request *SubmitMediaCensorJobRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a media information analysis job in asynchronous mode.
+//
+// Description:
+//
+// You can call this operation to analyze an input media file by using a callback mechanism or initiating subsequent queries. This operation is suitable for scenarios in which real-time performance is less critical and high concurrency is expected.
+//
 // @param tmpReq - SubmitMediaInfoJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -71898,6 +80887,14 @@ func (client *Client) SubmitMediaInfoJobWithOptions(tmpReq *SubmitMediaInfoJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a media information analysis job in asynchronous mode.
+//
+// Description:
+//
+// You can call this operation to analyze an input media file by using a callback mechanism or initiating subsequent queries. This operation is suitable for scenarios in which real-time performance is less critical and high concurrency is expected.
+//
 // @param request - SubmitMediaInfoJobRequest
 //
 // @return SubmitMediaInfoJobResponse
@@ -71914,7 +80911,37 @@ func (client *Client) SubmitMediaInfoJob(request *SubmitMediaInfoJobRequest) (_r
 
 // Summary:
 //
-// SubmitMediaProducingJob
+// Submits a media editing and production job. If you need to perform any form of post-production such as editing and production on video or audio materials, you can call this operation to automate the process.
+//
+// Description:
+//
+//   This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
+//
+// 	- The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
+//
+// 	- After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
+//
+// ## [](#)Limits
+//
+// 	- The throttling threshold of this operation is 30 queries per second (QPS).
+//
+//     **
+//
+//     **Note*	- If the threshold is exceeded, a "Throttling.User" error is returned when you submit an editing job. For more information about how to resolve this issue, see the [FAQ](https://help.aliyun.com/document_detail/453484.html).
+//
+// 	- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+//
+// 	- The total size of material files cannot exceed 1 TB.
+//
+// 	- The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
+//
+// 	- An output video must meet the following requirements:
+//
+//     	- Both the width and height must be at least 128 pixels.
+//
+//     	- Both the width and height cannot exceed 4,096 pixels.
+//
+//     	- The shorter side of the video cannot exceed 2,160 pixels.
 //
 // @param request - SubmitMediaProducingJobRequest
 //
@@ -72002,7 +81029,37 @@ func (client *Client) SubmitMediaProducingJobWithOptions(request *SubmitMediaPro
 
 // Summary:
 //
-// SubmitMediaProducingJob
+// Submits a media editing and production job. If you need to perform any form of post-production such as editing and production on video or audio materials, you can call this operation to automate the process.
+//
+// Description:
+//
+//   This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
+//
+// 	- The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
+//
+// 	- After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
+//
+// ## [](#)Limits
+//
+// 	- The throttling threshold of this operation is 30 queries per second (QPS).
+//
+//     **
+//
+//     **Note*	- If the threshold is exceeded, a "Throttling.User" error is returned when you submit an editing job. For more information about how to resolve this issue, see the [FAQ](https://help.aliyun.com/document_detail/453484.html).
+//
+// 	- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+//
+// 	- The total size of material files cannot exceed 1 TB.
+//
+// 	- The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
+//
+// 	- An output video must meet the following requirements:
+//
+//     	- Both the width and height must be at least 128 pixels.
+//
+//     	- Both the width and height cannot exceed 4,096 pixels.
+//
+//     	- The shorter side of the video cannot exceed 2,160 pixels.
 //
 // @param request - SubmitMediaProducingJobRequest
 //
@@ -72020,7 +81077,7 @@ func (client *Client) SubmitMediaProducingJob(request *SubmitMediaProducingJobRe
 
 // Summary:
 //
-// 提交打包任务
+// Submits a packaging job.
 //
 // @param tmpReq - SubmitPackageJobRequest
 //
@@ -72092,7 +81149,7 @@ func (client *Client) SubmitPackageJobWithOptions(tmpReq *SubmitPackageJobReques
 
 // Summary:
 //
-// 提交打包任务
+// Submits a packaging job.
 //
 // @param request - SubmitPackageJobRequest
 //
@@ -72108,6 +81165,14 @@ func (client *Client) SubmitPackageJob(request *SubmitPackageJobRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a smart tagging job.
+//
+// Description:
+//
+// Before you call this operation to submit a smart tagging job, you must add a smart tagging template and specify the analysis types that you want to use in the template. For more information, see CreateCustomTemplate. You can use the smart tagging feature only in the China (Beijing), China (Shanghai), and China (Hangzhou) regions. By default, an ApsaraVideo Media Processing (MPS) queue can process a maximum of two concurrent smart tagging jobs. If you need to process more concurrent smart tagging jobs, submit a ticket to contact Alibaba Cloud Technical Support for evaluation and configuration.
+//
 // @param tmpReq - SubmitSmarttagJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -72192,6 +81257,14 @@ func (client *Client) SubmitSmarttagJobWithOptions(tmpReq *SubmitSmarttagJobRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a smart tagging job.
+//
+// Description:
+//
+// Before you call this operation to submit a smart tagging job, you must add a smart tagging template and specify the analysis types that you want to use in the template. For more information, see CreateCustomTemplate. You can use the smart tagging feature only in the China (Beijing), China (Shanghai), and China (Hangzhou) regions. By default, an ApsaraVideo Media Processing (MPS) queue can process a maximum of two concurrent smart tagging jobs. If you need to process more concurrent smart tagging jobs, submit a ticket to contact Alibaba Cloud Technical Support for evaluation and configuration.
+//
 // @param request - SubmitSmarttagJobRequest
 //
 // @return SubmitSmarttagJobResponse
@@ -72208,7 +81281,7 @@ func (client *Client) SubmitSmarttagJob(request *SubmitSmarttagJobRequest) (_res
 
 // Summary:
 //
-// 提交异步截图任务
+// Submits a snapshot job.
 //
 // @param tmpReq - SubmitSnapshotJobRequest
 //
@@ -72288,7 +81361,7 @@ func (client *Client) SubmitSnapshotJobWithOptions(tmpReq *SubmitSnapshotJobRequ
 
 // Summary:
 //
-// 提交异步截图任务
+// Submits a snapshot job.
 //
 // @param request - SubmitSnapshotJobRequest
 //
@@ -72306,7 +81379,7 @@ func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_res
 
 // Summary:
 //
-// 发起体育集锦任务
+// Submits a sports highlights job to generate a highlights video of an event based on event materials that contain commentary.
 //
 // @param request - SubmitSportsHighlightsJobRequest
 //
@@ -72362,7 +81435,7 @@ func (client *Client) SubmitSportsHighlightsJobWithOptions(request *SubmitSports
 
 // Summary:
 //
-// 发起体育集锦任务
+// Submits a sports highlights job to generate a highlights video of an event based on event materials that contain commentary.
 //
 // @param request - SubmitSportsHighlightsJobRequest
 //
@@ -72380,7 +81453,7 @@ func (client *Client) SubmitSportsHighlightsJob(request *SubmitSportsHighlightsJ
 
 // Summary:
 //
-// 提交标准版人声克隆训练任务
+// Submits a standard human voice cloning job. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
 //
 // @param request - SubmitStandardCustomizedVoiceJobRequest
 //
@@ -72438,7 +81511,7 @@ func (client *Client) SubmitStandardCustomizedVoiceJobWithOptions(request *Submi
 
 // Summary:
 //
-// 提交标准版人声克隆训练任务
+// Submits a standard human voice cloning job. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
 //
 // @param request - SubmitStandardCustomizedVoiceJobRequest
 //
@@ -72454,6 +81527,14 @@ func (client *Client) SubmitStandardCustomizedVoiceJob(request *SubmitStandardCu
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a media file in synchronous mode for media information analysis.
+//
+// Description:
+//
+// You can call this operation to analyze an input media file in synchronous mode. This operation is suitable for scenarios that require high real-time performance and low concurrency. If it takes an extended period of time to obtain the media information about the input media file, the request may time out or the obtained information may be inaccurate. We recommend that you call the [SubmitMediaInfoJob](https://help.aliyun.com/document_detail/441222.html) operation to obtain media information.
+//
 // @param tmpReq - SubmitSyncMediaInfoJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -72514,6 +81595,14 @@ func (client *Client) SubmitSyncMediaInfoJobWithOptions(tmpReq *SubmitSyncMediaI
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a media file in synchronous mode for media information analysis.
+//
+// Description:
+//
+// You can call this operation to analyze an input media file in synchronous mode. This operation is suitable for scenarios that require high real-time performance and low concurrency. If it takes an extended period of time to obtain the media information about the input media file, the request may time out or the obtained information may be inaccurate. We recommend that you call the [SubmitMediaInfoJob](https://help.aliyun.com/document_detail/441222.html) operation to obtain media information.
+//
 // @param request - SubmitSyncMediaInfoJobRequest
 //
 // @return SubmitSyncMediaInfoJobResponse
@@ -72530,7 +81619,7 @@ func (client *Client) SubmitSyncMediaInfoJob(request *SubmitSyncMediaInfoJobRequ
 
 // Summary:
 //
-// 提交文本生成任务
+// Submits a text generation job to generate marketing copies based on keywords and the requirements for the word count and number of output copies. The word count of the output copies may differ from the specified word count. After the job is submitted, you can call the GetSmartHandleJob operation to obtain the job state and result based on the job ID.
 //
 // @param request - SubmitTextGenerateJobRequest
 //
@@ -72588,7 +81677,7 @@ func (client *Client) SubmitTextGenerateJobWithOptions(request *SubmitTextGenera
 
 // Summary:
 //
-// 提交文本生成任务
+// Submits a text generation job to generate marketing copies based on keywords and the requirements for the word count and number of output copies. The word count of the output copies may differ from the specified word count. After the job is submitted, you can call the GetSmartHandleJob operation to obtain the job state and result based on the job ID.
 //
 // @param request - SubmitTextGenerateJobRequest
 //
@@ -72604,6 +81693,10 @@ func (client *Client) SubmitTextGenerateJob(request *SubmitTextGenerateJobReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a transcoding job.
+//
 // @param tmpReq - SubmitTranscodeJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -72676,6 +81769,10 @@ func (client *Client) SubmitTranscodeJobWithOptions(tmpReq *SubmitTranscodeJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a transcoding job.
+//
 // @param request - SubmitTranscodeJobRequest
 //
 // @return SubmitTranscodeJobResponse
@@ -72692,7 +81789,7 @@ func (client *Client) SubmitTranscodeJob(request *SubmitTranscodeJobRequest) (_r
 
 // Summary:
 //
-// Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+// Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
 //
 // Description:
 //
@@ -72762,7 +81859,7 @@ func (client *Client) SubmitVideoTranslationJobWithOptions(request *SubmitVideoT
 
 // Summary:
 //
-// Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+// Submits a video translation job. You can call this operation to translate subtitles in a video and audio to a specific language. Lip-sync adaptation will be supported in the future.
 //
 // Description:
 //
@@ -72858,7 +81955,7 @@ func (client *Client) UpdateAIAgentInstance(request *UpdateAIAgentInstanceReques
 
 // Summary:
 //
-// 更新数字人训练任务信息
+// Modifies a digital human training job. You can modify the basic information or update parameters such as Video and Transparent for retraining if the training failed.
 //
 // @param request - UpdateAvatarTrainingJobRequest
 //
@@ -72924,7 +82021,7 @@ func (client *Client) UpdateAvatarTrainingJobWithOptions(request *UpdateAvatarTr
 
 // Summary:
 //
-// 更新数字人训练任务信息
+// Modifies a digital human training job. You can modify the basic information or update parameters such as Video and Transparent for retraining if the training failed.
 //
 // @param request - UpdateAvatarTrainingJobRequest
 //
@@ -73014,7 +82111,7 @@ func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *U
 
 // Summary:
 //
-// 更新媒体处理自定义模板
+// Updates a custom template.
 //
 // @param request - UpdateCustomTemplateRequest
 //
@@ -73064,7 +82161,7 @@ func (client *Client) UpdateCustomTemplateWithOptions(request *UpdateCustomTempl
 
 // Summary:
 //
-// 更新媒体处理自定义模板
+// Updates a custom template.
 //
 // @param request - UpdateCustomTemplateRequest
 //
@@ -73082,7 +82179,7 @@ func (client *Client) UpdateCustomTemplate(request *UpdateCustomTemplateRequest)
 
 // Summary:
 //
-// 更新用户的专属人声
+// Updates a personalized human voice. Only the media asset ID of the sample audio file can be modified.
 //
 // @param request - UpdateCustomizedVoiceRequest
 //
@@ -73128,7 +82225,7 @@ func (client *Client) UpdateCustomizedVoiceWithOptions(request *UpdateCustomized
 
 // Summary:
 //
-// 更新用户的专属人声
+// Updates a personalized human voice. Only the media asset ID of the sample audio file can be modified.
 //
 // @param request - UpdateCustomizedVoiceRequest
 //
@@ -73794,7 +82891,7 @@ func (client *Client) UpdateMediaToSearchLib(request *UpdateMediaToSearchLibRequ
 
 // Summary:
 //
-// 更新管道配置
+// Updates the information about an ApsaraVideo Media Processing (MPS) queue.
 //
 // @param request - UpdatePipelineRequest
 //
@@ -73848,7 +82945,7 @@ func (client *Client) UpdatePipelineWithOptions(request *UpdatePipelineRequest, 
 
 // Summary:
 //
-// 更新管道配置
+// Updates the information about an ApsaraVideo Media Processing (MPS) queue.
 //
 // @param request - UpdatePipelineRequest
 //
@@ -73936,7 +83033,13 @@ func (client *Client) UpdateRtcRobotInstance(request *UpdateRtcRobotInstanceRequ
 
 // Summary:
 //
-// UpdateTemplate
+// Modifies an online editing template. You can modify the template title and template configurations.
+//
+// Description:
+//
+//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
 //
 // @param request - UpdateTemplateRequest
 //
@@ -74008,7 +83111,13 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 
 // Summary:
 //
-// UpdateTemplate
+// Modifies an online editing template. You can modify the template title and template configurations.
+//
+// Description:
+//
+//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
 //
 // @param request - UpdateTemplateRequest
 //
