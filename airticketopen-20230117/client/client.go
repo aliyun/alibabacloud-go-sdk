@@ -7029,7 +7029,7 @@ func (s *CollectFlightLowestPriceHeaders) SetXAcsAirticketLanguage(v string) *Co
 
 type CollectFlightLowestPriceRequest struct {
 	// This parameter is required.
-	LowestPriceFlightList []*CollectFlightLowestPriceRequestLowestPriceFlightList `json:"lowestPriceFlightList,omitempty" xml:"lowestPriceFlightList,omitempty" type:"Repeated"`
+	LowestPriceFlightInfoList []*CollectFlightLowestPriceRequestLowestPriceFlightInfoList `json:"lowest_price_flight_info_list,omitempty" xml:"lowest_price_flight_info_list,omitempty" type:"Repeated"`
 }
 
 func (s CollectFlightLowestPriceRequest) String() string {
@@ -7040,12 +7040,12 @@ func (s CollectFlightLowestPriceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CollectFlightLowestPriceRequest) SetLowestPriceFlightList(v []*CollectFlightLowestPriceRequestLowestPriceFlightList) *CollectFlightLowestPriceRequest {
-	s.LowestPriceFlightList = v
+func (s *CollectFlightLowestPriceRequest) SetLowestPriceFlightInfoList(v []*CollectFlightLowestPriceRequestLowestPriceFlightInfoList) *CollectFlightLowestPriceRequest {
+	s.LowestPriceFlightInfoList = v
 	return s
 }
 
-type CollectFlightLowestPriceRequestLowestPriceFlightList struct {
+type CollectFlightLowestPriceRequestLowestPriceFlightInfoList struct {
 	// This parameter is required.
 	//
 	// example:
@@ -7065,7 +7065,11 @@ type CollectFlightLowestPriceRequestLowestPriceFlightList struct {
 	// 2024-11-11
 	DepartureDate *string `json:"departure_date,omitempty" xml:"departure_date,omitempty"`
 	// This parameter is required.
-	FlightNumberInfo *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo `json:"flight_number_info,omitempty" xml:"flight_number_info,omitempty" type:"Struct"`
+	//
+	// example:
+	//
+	// CA123,CA456
+	DepartureFlightNumber *string `json:"departure_flight_number,omitempty" xml:"departure_flight_number,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -7080,6 +7084,16 @@ type CollectFlightLowestPriceRequestLowestPriceFlightList struct {
 	//
 	// 2024-11-11
 	ReturnDate *string `json:"return_date,omitempty" xml:"return_date,omitempty"`
+	// example:
+	//
+	// CA123,CA456
+	ReturnFlightNumber *string `json:"return_flight_number,omitempty" xml:"return_flight_number,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eJwz8DeySEo0NjQ01TU3TU7TNTFINNO1SE5O0jVKM0hKNjEwTElLNYwz0A32cNT1dfPVNTIwMjYwNjRQ8/A3NLI01Q0Ic0cRBwBVFxJJ
+	SolutionId *string `json:"solution_id,omitempty" xml:"solution_id,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -7094,93 +7108,72 @@ type CollectFlightLowestPriceRequestLowestPriceFlightList struct {
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 
-func (s CollectFlightLowestPriceRequestLowestPriceFlightList) String() string {
+func (s CollectFlightLowestPriceRequestLowestPriceFlightInfoList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CollectFlightLowestPriceRequestLowestPriceFlightList) GoString() string {
+func (s CollectFlightLowestPriceRequestLowestPriceFlightInfoList) GoString() string {
 	return s.String()
 }
 
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetArrivalCity(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetArrivalCity(v string) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
 	s.ArrivalCity = &v
 	return s
 }
 
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetDepartureCity(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetDepartureCity(v string) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
 	s.DepartureCity = &v
 	return s
 }
 
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetDepartureDate(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetDepartureDate(v string) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
 	s.DepartureDate = &v
 	return s
 }
 
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetFlightNumberInfo(v *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) *CollectFlightLowestPriceRequestLowestPriceFlightList {
-	s.FlightNumberInfo = v
-	return s
-}
-
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetMarketTotalPrice(v float64) *CollectFlightLowestPriceRequestLowestPriceFlightList {
-	s.MarketTotalPrice = &v
-	return s
-}
-
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetRequestId(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetReturnDate(v string) *CollectFlightLowestPriceRequestLowestPriceFlightList {
-	s.ReturnDate = &v
-	return s
-}
-
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetSuezTotalPrice(v float64) *CollectFlightLowestPriceRequestLowestPriceFlightList {
-	s.SuezTotalPrice = &v
-	return s
-}
-
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightList) SetTripType(v int32) *CollectFlightLowestPriceRequestLowestPriceFlightList {
-	s.TripType = &v
-	return s
-}
-
-type CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// CA123,CA456
-	DepartureFlightNumber *string `json:"departure_flight_number,omitempty" xml:"departure_flight_number,omitempty"`
-	// example:
-	//
-	// CA123,CA456
-	ReturnFlightNumber *string `json:"return_flight_number,omitempty" xml:"return_flight_number,omitempty"`
-}
-
-func (s CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) GoString() string {
-	return s.String()
-}
-
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) SetDepartureFlightNumber(v string) *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo {
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetDepartureFlightNumber(v string) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
 	s.DepartureFlightNumber = &v
 	return s
 }
 
-func (s *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo) SetReturnFlightNumber(v string) *CollectFlightLowestPriceRequestLowestPriceFlightListFlightNumberInfo {
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetMarketTotalPrice(v float64) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
+	s.MarketTotalPrice = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetRequestId(v string) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetReturnDate(v string) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
+	s.ReturnDate = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetReturnFlightNumber(v string) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
 	s.ReturnFlightNumber = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetSolutionId(v string) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
+	s.SolutionId = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetSuezTotalPrice(v float64) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
+	s.SuezTotalPrice = &v
+	return s
+}
+
+func (s *CollectFlightLowestPriceRequestLowestPriceFlightInfoList) SetTripType(v int32) *CollectFlightLowestPriceRequestLowestPriceFlightInfoList {
+	s.TripType = &v
 	return s
 }
 
 type CollectFlightLowestPriceShrinkRequest struct {
 	// This parameter is required.
-	LowestPriceFlightListShrink *string `json:"lowestPriceFlightList,omitempty" xml:"lowestPriceFlightList,omitempty"`
+	LowestPriceFlightInfoListShrink *string `json:"lowest_price_flight_info_list,omitempty" xml:"lowest_price_flight_info_list,omitempty"`
 }
 
 func (s CollectFlightLowestPriceShrinkRequest) String() string {
@@ -7191,8 +7184,8 @@ func (s CollectFlightLowestPriceShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CollectFlightLowestPriceShrinkRequest) SetLowestPriceFlightListShrink(v string) *CollectFlightLowestPriceShrinkRequest {
-	s.LowestPriceFlightListShrink = &v
+func (s *CollectFlightLowestPriceShrinkRequest) SetLowestPriceFlightInfoListShrink(v string) *CollectFlightLowestPriceShrinkRequest {
+	s.LowestPriceFlightInfoListShrink = &v
 	return s
 }
 
@@ -7200,8 +7193,11 @@ type CollectFlightLowestPriceResponseBody struct {
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// null
+	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
 	// example:
 	//
 	// null
@@ -17102,13 +17098,13 @@ func (client *Client) CollectFlightLowestPriceWithOptions(tmpReq *CollectFlightL
 	}
 	request := &CollectFlightLowestPriceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.LowestPriceFlightList)) {
-		request.LowestPriceFlightListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LowestPriceFlightList, tea.String("lowestPriceFlightList"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.LowestPriceFlightInfoList)) {
+		request.LowestPriceFlightInfoListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LowestPriceFlightInfoList, tea.String("lowest_price_flight_info_list"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.LowestPriceFlightListShrink)) {
-		body["lowestPriceFlightList"] = request.LowestPriceFlightListShrink
+	if !tea.BoolValue(util.IsUnset(request.LowestPriceFlightInfoListShrink)) {
+		body["lowest_price_flight_info_list"] = request.LowestPriceFlightInfoListShrink
 	}
 
 	realHeaders := make(map[string]*string)
