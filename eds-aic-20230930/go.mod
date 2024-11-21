@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/eds-aic-20230930/v2
+module github.com/alibabacloud-go/eds-aic-20230930/v3
 
 go 1.14
 

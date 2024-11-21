@@ -253,9 +253,9 @@ type BackupFileRequest struct {
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
 	// This parameter is required.
-	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// This parameter is required.
+	BackupFilePath     *string   `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
+	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	SourceAppList      []*string `json:"SourceAppList,omitempty" xml:"SourceAppList,omitempty" type:"Repeated"`
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -287,6 +287,11 @@ func (s *BackupFileRequest) SetBackupFilePath(v string) *BackupFileRequest {
 
 func (s *BackupFileRequest) SetDescription(v string) *BackupFileRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *BackupFileRequest) SetSourceAppList(v []*string) *BackupFileRequest {
+	s.SourceAppList = v
 	return s
 }
 
@@ -800,7 +805,6 @@ func (s *CreateAndroidInstanceGroupResponse) SetBody(v *CreateAndroidInstanceGro
 }
 
 type CreateAppRequest struct {
-	// This parameter is required.
 	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -1240,7 +1244,13 @@ func (s *CreatePolicyGroupRequest) SetResolutionWidth(v int32) *CreatePolicyGrou
 }
 
 type CreatePolicyGroupRequestNetRedirectPolicy struct {
-	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	CustomProxy   *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
+	HostAddr      *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
+	NetRedirect   *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
+	ProxyType     *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 }
 
 func (s CreatePolicyGroupRequestNetRedirectPolicy) String() string {
@@ -1251,8 +1261,38 @@ func (s CreatePolicyGroupRequestNetRedirectPolicy) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetCustomProxy(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.CustomProxy = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetHostAddr(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.HostAddr = &v
+	return s
+}
+
 func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetNetRedirect(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
 	s.NetRedirect = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetPort(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.Port = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetProxyPassword(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.ProxyPassword = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetProxyType(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.ProxyType = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestNetRedirectPolicy) SetProxyUserName(v string) *CreatePolicyGroupRequestNetRedirectPolicy {
+	s.ProxyUserName = &v
 	return s
 }
 
@@ -2904,7 +2944,8 @@ type DescribeBackupFilesRequest struct {
 	// example:
 	//
 	// 2024-05-23 10:00:00
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime  *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBackupFilesRequest) String() string {
@@ -2967,6 +3008,11 @@ func (s *DescribeBackupFilesRequest) SetNextToken(v string) *DescribeBackupFiles
 
 func (s *DescribeBackupFilesRequest) SetStartTime(v string) *DescribeBackupFilesRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeBackupFilesRequest) SetStatusList(v []*string) *DescribeBackupFilesRequest {
+	s.StatusList = v
 	return s
 }
 
@@ -3062,11 +3108,14 @@ type DescribeBackupFilesResponseBodyData struct {
 	//
 	// ag-58ftsoo90p0qi****
 	InstanceGroupId    *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceAppInfoList  []*string `json:"SourceAppInfoList,omitempty" xml:"SourceAppInfoList,omitempty" type:"Repeated"`
 	SourceFilePathList []*string `json:"SourceFilePathList,omitempty" xml:"SourceFilePathList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
@@ -3140,6 +3189,16 @@ func (s *DescribeBackupFilesResponseBodyData) SetInstanceGroupId(v string) *Desc
 	return s
 }
 
+func (s *DescribeBackupFilesResponseBodyData) SetRegionId(v string) *DescribeBackupFilesResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyData) SetSourceAppInfoList(v []*string) *DescribeBackupFilesResponseBodyData {
+	s.SourceAppInfoList = v
+	return s
+}
+
 func (s *DescribeBackupFilesResponseBodyData) SetSourceFilePathList(v []*string) *DescribeBackupFilesResponseBodyData {
 	s.SourceFilePathList = v
 	return s
@@ -3147,6 +3206,11 @@ func (s *DescribeBackupFilesResponseBodyData) SetSourceFilePathList(v []*string)
 
 func (s *DescribeBackupFilesResponseBodyData) SetStatus(v string) *DescribeBackupFilesResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyData) SetTaskId(v string) *DescribeBackupFilesResponseBodyData {
+	s.TaskId = &v
 	return s
 }
 
@@ -3767,6 +3831,23 @@ func (s *DescribeKeyPairsResponse) SetBody(v *DescribeKeyPairsResponseBody) *Des
 	return s
 }
 
+type DescribeRegionsRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s DescribeRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
 type DescribeRegionsResponseBody struct {
 	RegionModels []*DescribeRegionsResponseBodyRegionModels `json:"RegionModels,omitempty" xml:"RegionModels,omitempty" type:"Repeated"`
 	// example:
@@ -3797,7 +3878,8 @@ type DescribeRegionsResponseBodyRegionModels struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionModels) String() string {
@@ -3810,6 +3892,11 @@ func (s DescribeRegionsResponseBodyRegionModels) GoString() string {
 
 func (s *DescribeRegionsResponseBodyRegionModels) SetRegionId(v string) *DescribeRegionsResponseBodyRegionModels {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModels) SetRegionName(v string) *DescribeRegionsResponseBodyRegionModels {
+	s.RegionName = &v
 	return s
 }
 
@@ -4152,6 +4239,8 @@ func (s *DescribeTasksResponseBody) SetTotalCount(v int32) *DescribeTasksRespons
 }
 
 type DescribeTasksResponseBodyData struct {
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
@@ -4193,6 +4282,16 @@ func (s DescribeTasksResponseBodyData) String() string {
 
 func (s DescribeTasksResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTasksResponseBodyData) SetErrorCode(v string) *DescribeTasksResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetErrorMsg(v string) *DescribeTasksResponseBodyData {
+	s.ErrorMsg = &v
+	return s
 }
 
 func (s *DescribeTasksResponseBodyData) SetFinishTime(v string) *DescribeTasksResponseBodyData {
@@ -4708,124 +4807,6 @@ func (s *FetchFileResponse) SetBody(v *FetchFileResponseBody) *FetchFileResponse
 	return s
 }
 
-type GetAdbSecureRequest struct {
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-}
-
-func (s GetAdbSecureRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAdbSecureRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAdbSecureRequest) SetInstanceIds(v []*string) *GetAdbSecureRequest {
-	s.InstanceIds = v
-	return s
-}
-
-type GetAdbSecureResponseBody struct {
-	Data *GetAdbSecureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1A923337-44D9-5CAD-9A53-95084BD4****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetAdbSecureResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAdbSecureResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAdbSecureResponseBody) SetData(v *GetAdbSecureResponseBodyData) *GetAdbSecureResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetAdbSecureResponseBody) SetRequestId(v string) *GetAdbSecureResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetAdbSecureResponseBodyData struct {
-	AdbSecureList []*GetAdbSecureResponseBodyDataAdbSecureList `json:"AdbSecureList,omitempty" xml:"AdbSecureList,omitempty" type:"Repeated"`
-}
-
-func (s GetAdbSecureResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAdbSecureResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetAdbSecureResponseBodyData) SetAdbSecureList(v []*GetAdbSecureResponseBodyDataAdbSecureList) *GetAdbSecureResponseBodyData {
-	s.AdbSecureList = v
-	return s
-}
-
-type GetAdbSecureResponseBodyDataAdbSecureList struct {
-	// example:
-	//
-	// acp-5hh431emkt6u*****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetAdbSecureResponseBodyDataAdbSecureList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAdbSecureResponseBodyDataAdbSecureList) GoString() string {
-	return s.String()
-}
-
-func (s *GetAdbSecureResponseBodyDataAdbSecureList) SetInstanceId(v string) *GetAdbSecureResponseBodyDataAdbSecureList {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetAdbSecureResponseBodyDataAdbSecureList) SetStatus(v int32) *GetAdbSecureResponseBodyDataAdbSecureList {
-	s.Status = &v
-	return s
-}
-
-type GetAdbSecureResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetAdbSecureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetAdbSecureResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAdbSecureResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAdbSecureResponse) SetHeaders(v map[string]*string) *GetAdbSecureResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAdbSecureResponse) SetStatusCode(v int32) *GetAdbSecureResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetAdbSecureResponse) SetBody(v *GetAdbSecureResponseBody) *GetAdbSecureResponse {
-	s.Body = v
-	return s
-}
-
 type ImportKeyPairRequest struct {
 	// This parameter is required.
 	//
@@ -5217,7 +5198,13 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionWidth
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
-	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	CustomProxy   *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
+	HostAddr      *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
+	NetRedirect   *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
+	ProxyType     *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) String() string {
@@ -5228,8 +5215,38 @@ func (s ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) GoString(
 	return s.String()
 }
 
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetCustomProxy(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.CustomProxy = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetHostAddr(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.HostAddr = &v
+	return s
+}
+
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetNetRedirect(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
 	s.NetRedirect = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetPort(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.Port = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetProxyPassword(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.ProxyPassword = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetProxyType(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.ProxyType = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) SetProxyUserName(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy {
+	s.ProxyUserName = &v
 	return s
 }
 
@@ -5692,7 +5709,13 @@ func (s *ModifyPolicyGroupRequest) SetResolutionWidth(v int32) *ModifyPolicyGrou
 }
 
 type ModifyPolicyGroupRequestNetRedirectPolicy struct {
-	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	CustomProxy   *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
+	HostAddr      *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
+	NetRedirect   *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
+	ProxyType     *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
 }
 
 func (s ModifyPolicyGroupRequestNetRedirectPolicy) String() string {
@@ -5703,8 +5726,38 @@ func (s ModifyPolicyGroupRequestNetRedirectPolicy) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetCustomProxy(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
+	s.CustomProxy = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetHostAddr(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
+	s.HostAddr = &v
+	return s
+}
+
 func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetNetRedirect(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
 	s.NetRedirect = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetPort(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
+	s.Port = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetProxyPassword(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
+	s.ProxyPassword = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetProxyType(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
+	s.ProxyType = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestNetRedirectPolicy) SetProxyUserName(v string) *ModifyPolicyGroupRequestNetRedirectPolicy {
+	s.ProxyUserName = &v
 	return s
 }
 
@@ -6465,124 +6518,6 @@ func (s *SendFileResponse) SetBody(v *SendFileResponseBody) *SendFileResponse {
 	return s
 }
 
-type SetAdbSecureRequest struct {
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s SetAdbSecureRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAdbSecureRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetAdbSecureRequest) SetInstanceIds(v []*string) *SetAdbSecureRequest {
-	s.InstanceIds = v
-	return s
-}
-
-func (s *SetAdbSecureRequest) SetStatus(v int32) *SetAdbSecureRequest {
-	s.Status = &v
-	return s
-}
-
-type SetAdbSecureResponseBody struct {
-	Data *SetAdbSecureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetAdbSecureResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAdbSecureResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetAdbSecureResponseBody) SetData(v *SetAdbSecureResponseBodyData) *SetAdbSecureResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SetAdbSecureResponseBody) SetRequestId(v string) *SetAdbSecureResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetAdbSecureResponseBodyData struct {
-	// example:
-	//
-	// 0
-	FailCount   *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 100
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s SetAdbSecureResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAdbSecureResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SetAdbSecureResponseBodyData) SetFailCount(v int32) *SetAdbSecureResponseBodyData {
-	s.FailCount = &v
-	return s
-}
-
-func (s *SetAdbSecureResponseBodyData) SetInstanceIds(v []*string) *SetAdbSecureResponseBodyData {
-	s.InstanceIds = v
-	return s
-}
-
-func (s *SetAdbSecureResponseBodyData) SetTotalCount(v int32) *SetAdbSecureResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type SetAdbSecureResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SetAdbSecureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SetAdbSecureResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAdbSecureResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetAdbSecureResponse) SetHeaders(v map[string]*string) *SetAdbSecureResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetAdbSecureResponse) SetStatusCode(v int32) *SetAdbSecureResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetAdbSecureResponse) SetBody(v *SetAdbSecureResponseBody) *SetAdbSecureResponse {
-	s.Body = v
-	return s
-}
-
 type StartAndroidInstanceRequest struct {
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
 }
@@ -7256,6 +7191,10 @@ func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceAppList)) {
+		query["SourceAppList"] = request.SourceAppList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceFilePathList)) {
@@ -8454,6 +8393,10 @@ func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFile
 		query["StartTime"] = request.StartTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8708,8 +8651,19 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
 		Version:     tea.String("2023-09-30"),
@@ -8734,11 +8688,13 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 //
 // 查询地域
 //
+// @param request - DescribeRegionsRequest
+//
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(runtime)
+	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9175,58 +9131,6 @@ func (client *Client) FetchFile(request *FetchFileRequest) (_result *FetchFileRe
 	runtime := &util.RuntimeOptions{}
 	_result = &FetchFileResponse{}
 	_body, _err := client.FetchFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - GetAdbSecureRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetAdbSecureResponse
-func (client *Client) GetAdbSecureWithOptions(request *GetAdbSecureRequest, runtime *util.RuntimeOptions) (_result *GetAdbSecureResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
-		query["InstanceIds"] = request.InstanceIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetAdbSecure"),
-		Version:     tea.String("2023-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetAdbSecureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetAdbSecureRequest
-//
-// @return GetAdbSecureResponse
-func (client *Client) GetAdbSecure(request *GetAdbSecureRequest) (_result *GetAdbSecureResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAdbSecureResponse{}
-	_body, _err := client.GetAdbSecureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10213,62 +10117,6 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &SendFileResponse{}
 	_body, _err := client.SendFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - SetAdbSecureRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return SetAdbSecureResponse
-func (client *Client) SetAdbSecureWithOptions(request *SetAdbSecureRequest, runtime *util.RuntimeOptions) (_result *SetAdbSecureResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
-		query["InstanceIds"] = request.InstanceIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetAdbSecure"),
-		Version:     tea.String("2023-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetAdbSecureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SetAdbSecureRequest
-//
-// @return SetAdbSecureResponse
-func (client *Client) SetAdbSecure(request *SetAdbSecureRequest) (_result *SetAdbSecureResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetAdbSecureResponse{}
-	_body, _err := client.SetAdbSecureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
