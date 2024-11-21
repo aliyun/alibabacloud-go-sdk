@@ -324,6 +324,62 @@ func (s *LineageRelationRegisterBulkVO) SetSrcEntities(v []*LineageEntityVO) *Li
 	return s
 }
 
+type LineageRelationRegisterTaskVO struct {
+	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// 1684327487964
+	CreateTimestamp *int64             `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	InputEntities   []*LineageEntityVO `json:"InputEntities,omitempty" xml:"InputEntities,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pai-task name
+	Name           *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputEntities []*LineageEntityVO `json:"OutputEntities,omitempty" xml:"OutputEntities,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pai_dlcjob-task.12304
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+}
+
+func (s LineageRelationRegisterTaskVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageRelationRegisterTaskVO) GoString() string {
+	return s.String()
+}
+
+func (s *LineageRelationRegisterTaskVO) SetAttributes(v map[string]*string) *LineageRelationRegisterTaskVO {
+	s.Attributes = v
+	return s
+}
+
+func (s *LineageRelationRegisterTaskVO) SetCreateTimestamp(v int64) *LineageRelationRegisterTaskVO {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *LineageRelationRegisterTaskVO) SetInputEntities(v []*LineageEntityVO) *LineageRelationRegisterTaskVO {
+	s.InputEntities = v
+	return s
+}
+
+func (s *LineageRelationRegisterTaskVO) SetName(v string) *LineageRelationRegisterTaskVO {
+	s.Name = &v
+	return s
+}
+
+func (s *LineageRelationRegisterTaskVO) SetOutputEntities(v []*LineageEntityVO) *LineageRelationRegisterTaskVO {
+	s.OutputEntities = v
+	return s
+}
+
+func (s *LineageRelationRegisterTaskVO) SetQualifiedName(v string) *LineageRelationRegisterTaskVO {
+	s.QualifiedName = &v
+	return s
+}
+
 type LineageRelationRegisterVO struct {
 	// example:
 	//
@@ -49885,6 +49941,264 @@ func (s *ListCalcEnginesResponse) SetBody(v *ListCalcEnginesResponseBody) *ListC
 	return s
 }
 
+type ListCheckProcessesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// commit-file
+	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	// example:
+	//
+	// 123333232
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 123465
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// True
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCheckProcessesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckProcessesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckProcessesRequest) SetEventCode(v string) *ListCheckProcessesRequest {
+	s.EventCode = &v
+	return s
+}
+
+func (s *ListCheckProcessesRequest) SetOperator(v string) *ListCheckProcessesRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListCheckProcessesRequest) SetPageNumber(v int32) *ListCheckProcessesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCheckProcessesRequest) SetPageSize(v int32) *ListCheckProcessesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckProcessesRequest) SetProjectId(v int64) *ListCheckProcessesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListCheckProcessesRequest) SetStatus(v string) *ListCheckProcessesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListCheckProcessesResponseBody struct {
+	PagingInfo *ListCheckProcessesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0000-ABCD-EF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCheckProcessesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckProcessesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckProcessesResponseBody) SetPagingInfo(v *ListCheckProcessesResponseBodyPagingInfo) *ListCheckProcessesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBody) SetRequestId(v string) *ListCheckProcessesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCheckProcessesResponseBodyPagingInfo struct {
+	CheckProcesses []*ListCheckProcessesResponseBodyPagingInfoCheckProcesses `json:"CheckProcesses,omitempty" xml:"CheckProcesses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 12
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCheckProcessesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckProcessesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfo) SetCheckProcesses(v []*ListCheckProcessesResponseBodyPagingInfoCheckProcesses) *ListCheckProcessesResponseBodyPagingInfo {
+	s.CheckProcesses = v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfo) SetPageNumber(v int32) *ListCheckProcessesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfo) SetPageSize(v int32) *ListCheckProcessesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfo) SetTotalCount(v int32) *ListCheckProcessesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCheckProcessesResponseBodyPagingInfoCheckProcesses struct {
+	// example:
+	//
+	// commit-file
+	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	// example:
+	//
+	// DnsEvent
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// example:
+	//
+	// Pre-event for Node Commit
+	EventNameEn *string `json:"EventNameEn,omitempty" xml:"EventNameEn,omitempty"`
+	// example:
+	//
+	// b824a5de-4223-4315-af3e-c4449d236db4
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 297635
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// rdk_generate_d395da25-b0d3-4114-b2a5-d0247444a661_none_3496903_365203
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// example:
+	//
+	// odps_sql_test
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// example:
+	//
+	// 32563
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// CHECKING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCheckProcessesResponseBodyPagingInfoCheckProcesses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckProcessesResponseBodyPagingInfoCheckProcesses) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetEventCode(v string) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.EventCode = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetEventName(v string) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.EventName = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetEventNameEn(v string) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.EventNameEn = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetMessageId(v string) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.MessageId = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetOperator(v string) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetProcessId(v string) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetProcessName(v string) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetProjectId(v int64) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponseBodyPagingInfoCheckProcesses) SetStatus(v string) *ListCheckProcessesResponseBodyPagingInfoCheckProcesses {
+	s.Status = &v
+	return s
+}
+
+type ListCheckProcessesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCheckProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCheckProcessesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckProcessesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckProcessesResponse) SetHeaders(v map[string]*string) *ListCheckProcessesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCheckProcessesResponse) SetStatusCode(v int32) *ListCheckProcessesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCheckProcessesResponse) SetBody(v *ListCheckProcessesResponseBody) *ListCheckProcessesResponse {
+	s.Body = v
+	return s
+}
+
 type ListClusterConfigsRequest struct {
 	// This parameter is required.
 	//
@@ -62312,9 +62626,9 @@ func (s *ListManualDagInstancesResponse) SetBody(v *ListManualDagInstancesRespon
 }
 
 type ListMeasureDataRequest struct {
-	// The measurement component.
+	// The measurement component. Valid values:
 	//
-	// 	- This parameter is set to Count if the DomainCode parameter is set to DideAlarmPhone or DideAlarmSms. In this case, statistics on the number of phone calls or text messages that are used to send alert notifications are collected.
+	// 	- Count: phone call-based alerts and text message-based alerts
 	//
 	// This parameter is required.
 	//
@@ -62322,7 +62636,7 @@ type ListMeasureDataRequest struct {
 	//
 	// Count
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	// The item to be measured. Valid values:
+	// The measurement item. Valid values:
 	//
 	// 	- DideAlarmPhone: phone call-based alerts
 	//
@@ -62334,7 +62648,7 @@ type ListMeasureDataRequest struct {
 	//
 	// DideAlarmPhone
 	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
-	// The end timestamp of the measurement period, in milliseconds. The measurement period is calculated in days. You can query only the data within the last 30 days.
+	// The end timestamp of the measurement period, in milliseconds. The measurement period is calculated in days. You can query only the data within the previous 30 days.
 	//
 	// This parameter is required.
 	//
@@ -62342,7 +62656,7 @@ type ListMeasureDataRequest struct {
 	//
 	// 1717430400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start timestamp of the measurement period, in milliseconds. The measurement period is calculated in days. You can query only the data within the last 30 days.
+	// The start timestamp of the measurement period, in milliseconds. The measurement period is calculated in days. You can query only the data within the previous 30 days.
 	//
 	// This parameter is required.
 	//
@@ -84664,8 +84978,6 @@ type UpdateQualityRuleRequest struct {
 	BlockType *int32 `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
 	// The checker ID. Valid values: 2: indicates that the current value is compared with the average value of the previous 7 days. 3: indicates that the current value is compared with the average value of the previous 30 days. 4: indicates that the current value is compared with the value 1 day earlier. 5: indicates that the current value is compared with the value 7 days earlier. 6: indicates that the current value is compared with the value 30 days earlier. 7: indicates the variance between the current value and the value 7 days earlier. 8: indicates the variance between the current value and the value 30 days earlier. 9: indicates that the current value is compared with a fixed value. 10: indicates that the current value is compared with the value 1, 7, or 30 days earlier. 11: indicates that the current value is compared with the value of the previous cycle. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 9
@@ -100371,6 +100683,86 @@ func (client *Client) ListCalcEngines(request *ListCalcEnginesRequest) (_result 
 
 // Summary:
 //
+// 查询扩展事件的检查列表
+//
+// @param request - ListCheckProcessesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCheckProcessesResponse
+func (client *Client) ListCheckProcessesWithOptions(request *ListCheckProcessesRequest, runtime *util.RuntimeOptions) (_result *ListCheckProcessesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventCode)) {
+		body["EventCode"] = request.EventCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		body["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCheckProcesses"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCheckProcessesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询扩展事件的检查列表
+//
+// @param request - ListCheckProcessesRequest
+//
+// @return ListCheckProcessesResponse
+func (client *Client) ListCheckProcesses(request *ListCheckProcessesRequest) (_result *ListCheckProcessesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCheckProcessesResponse{}
+	_body, _err := client.ListCheckProcessesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出集群的配置信息
 //
 // @param request - ListClusterConfigsRequest
@@ -102715,7 +103107,7 @@ func (client *Client) ListManualDagInstances(request *ListManualDagInstancesRequ
 
 // Summary:
 //
-// 查询DataWorks计量数据
+// Queries the statistics on the number of phone call-based alerts or text message-based alerts reported within the tenant to which your account belongs during the previous 30 days.
 //
 // @param request - ListMeasureDataRequest
 //
@@ -102769,7 +103161,7 @@ func (client *Client) ListMeasureDataWithOptions(request *ListMeasureDataRequest
 
 // Summary:
 //
-// 查询DataWorks计量数据
+// Queries the statistics on the number of phone call-based alerts or text message-based alerts reported within the tenant to which your account belongs during the previous 30 days.
 //
 // @param request - ListMeasureDataRequest
 //
