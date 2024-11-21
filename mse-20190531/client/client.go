@@ -31049,7 +31049,8 @@ type GetNacosConfigResponseBodyConfiguration struct {
 	// example:
 	//
 	// key
-	EncryptedDataKey *string `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
+	EncryptedDataKey *string                                                `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
+	GrayVersions     []*GetNacosConfigResponseBodyConfigurationGrayVersions `json:"GrayVersions,omitempty" xml:"GrayVersions,omitempty" type:"Repeated"`
 	// The name of the configuration group.
 	//
 	// example:
@@ -31114,6 +31115,11 @@ func (s *GetNacosConfigResponseBodyConfiguration) SetEncryptedDataKey(v string) 
 	return s
 }
 
+func (s *GetNacosConfigResponseBodyConfiguration) SetGrayVersions(v []*GetNacosConfigResponseBodyConfigurationGrayVersions) *GetNacosConfigResponseBodyConfiguration {
+	s.GrayVersions = v
+	return s
+}
+
 func (s *GetNacosConfigResponseBodyConfiguration) SetGroup(v string) *GetNacosConfigResponseBodyConfiguration {
 	s.Group = &v
 	return s
@@ -31130,6 +31136,41 @@ func (s *GetNacosConfigResponseBodyConfiguration) SetTags(v string) *GetNacosCon
 }
 
 func (s *GetNacosConfigResponseBodyConfiguration) SetType(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.Type = &v
+	return s
+}
+
+type GetNacosConfigResponseBodyConfigurationGrayVersions struct {
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Rule     *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetNacosConfigResponseBodyConfigurationGrayVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNacosConfigResponseBodyConfigurationGrayVersions) GoString() string {
+	return s.String()
+}
+
+func (s *GetNacosConfigResponseBodyConfigurationGrayVersions) SetName(v string) *GetNacosConfigResponseBodyConfigurationGrayVersions {
+	s.Name = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfigurationGrayVersions) SetPriority(v int32) *GetNacosConfigResponseBodyConfigurationGrayVersions {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfigurationGrayVersions) SetRule(v string) *GetNacosConfigResponseBodyConfigurationGrayVersions {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfigurationGrayVersions) SetType(v string) *GetNacosConfigResponseBodyConfigurationGrayVersions {
 	s.Type = &v
 	return s
 }
@@ -50976,7 +51017,8 @@ type ListListenersByConfigRequest struct {
 	// example:
 	//
 	// zeekr-clueboss.yml
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId       *string                                     `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ExtGrayRules []*ListListenersByConfigRequestExtGrayRules `json:"ExtGrayRules,omitempty" xml:"ExtGrayRules,omitempty" type:"Repeated"`
 	// The name of the group.
 	//
 	// This parameter is required.
@@ -51025,6 +51067,11 @@ func (s *ListListenersByConfigRequest) SetDataId(v string) *ListListenersByConfi
 	return s
 }
 
+func (s *ListListenersByConfigRequest) SetExtGrayRules(v []*ListListenersByConfigRequestExtGrayRules) *ListListenersByConfigRequest {
+	s.ExtGrayRules = v
+	return s
+}
+
 func (s *ListListenersByConfigRequest) SetGroup(v string) *ListListenersByConfigRequest {
 	s.Group = &v
 	return s
@@ -51041,6 +51088,134 @@ func (s *ListListenersByConfigRequest) SetNamespaceId(v string) *ListListenersBy
 }
 
 func (s *ListListenersByConfigRequest) SetRequestPars(v string) *ListListenersByConfigRequest {
+	s.RequestPars = &v
+	return s
+}
+
+type ListListenersByConfigRequestExtGrayRules struct {
+	GrayRule         *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
+	GrayRuleName     *string `json:"GrayRuleName,omitempty" xml:"GrayRuleName,omitempty"`
+	GrayRulePriority *int32  `json:"GrayRulePriority,omitempty" xml:"GrayRulePriority,omitempty"`
+	GrayRuleType     *string `json:"GrayRuleType,omitempty" xml:"GrayRuleType,omitempty"`
+}
+
+func (s ListListenersByConfigRequestExtGrayRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListListenersByConfigRequestExtGrayRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListListenersByConfigRequestExtGrayRules) SetGrayRule(v string) *ListListenersByConfigRequestExtGrayRules {
+	s.GrayRule = &v
+	return s
+}
+
+func (s *ListListenersByConfigRequestExtGrayRules) SetGrayRuleName(v string) *ListListenersByConfigRequestExtGrayRules {
+	s.GrayRuleName = &v
+	return s
+}
+
+func (s *ListListenersByConfigRequestExtGrayRules) SetGrayRulePriority(v int32) *ListListenersByConfigRequestExtGrayRules {
+	s.GrayRulePriority = &v
+	return s
+}
+
+func (s *ListListenersByConfigRequestExtGrayRules) SetGrayRuleType(v string) *ListListenersByConfigRequestExtGrayRules {
+	s.GrayRuleType = &v
+	return s
+}
+
+type ListListenersByConfigShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the data.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zeekr-clueboss.yml
+	DataId             *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ExtGrayRulesShrink *string `json:"ExtGrayRules,omitempty" xml:"ExtGrayRules,omitempty"`
+	// The name of the group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// prod
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mse-cn-m7r1yurp00e
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the namespace.
+	//
+	// example:
+	//
+	// aaeb4d28-c9eb-4fa2-85f5-d03ce7ee8df1
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The extended request parameters in the JSON format.
+	//
+	// example:
+	//
+	// {\\\\"appGroup\\\\":\\\\"emas-zfive_prehost\\\\",\\\\"appName\\\\":\\\\"emas-zfive\\\\",\\\\"appStage\\\\":\\\\"PRE_PUBLISH\\\\",\\\\"appUnit\\\\":\\\\"\\\\",\\\\"bucId\\\\":\\\\"225902\\\\",\\\\"bucName\\\\":\\\\"Wireless\\\\",\\\\"provider\\\\":\\\\"aliyun\\\\"}
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+}
+
+func (s ListListenersByConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListListenersByConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListListenersByConfigShrinkRequest) SetAcceptLanguage(v string) *ListListenersByConfigShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListListenersByConfigShrinkRequest) SetDataId(v string) *ListListenersByConfigShrinkRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *ListListenersByConfigShrinkRequest) SetExtGrayRulesShrink(v string) *ListListenersByConfigShrinkRequest {
+	s.ExtGrayRulesShrink = &v
+	return s
+}
+
+func (s *ListListenersByConfigShrinkRequest) SetGroup(v string) *ListListenersByConfigShrinkRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *ListListenersByConfigShrinkRequest) SetInstanceId(v string) *ListListenersByConfigShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListListenersByConfigShrinkRequest) SetNamespaceId(v string) *ListListenersByConfigShrinkRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListListenersByConfigShrinkRequest) SetRequestPars(v string) *ListListenersByConfigShrinkRequest {
 	s.RequestPars = &v
 	return s
 }
@@ -51163,7 +51338,9 @@ type ListListenersByConfigResponseBodyListeners struct {
 	// 1.1.1.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The label of the listener.
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels        map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	MatchRuleName *string            `json:"MatchRuleName,omitempty" xml:"MatchRuleName,omitempty"`
+	MatchRuleType *string            `json:"MatchRuleType,omitempty" xml:"MatchRuleType,omitempty"`
 	// The verification string.
 	//
 	// example:
@@ -51199,6 +51376,16 @@ func (s *ListListenersByConfigResponseBodyListeners) SetIp(v string) *ListListen
 
 func (s *ListListenersByConfigResponseBodyListeners) SetLabels(v map[string]*string) *ListListenersByConfigResponseBodyListeners {
 	s.Labels = v
+	return s
+}
+
+func (s *ListListenersByConfigResponseBodyListeners) SetMatchRuleName(v string) *ListListenersByConfigResponseBodyListeners {
+	s.MatchRuleName = &v
+	return s
+}
+
+func (s *ListListenersByConfigResponseBodyListeners) SetMatchRuleType(v string) *ListListenersByConfigResponseBodyListeners {
+	s.MatchRuleType = &v
 	return s
 }
 
@@ -73069,6 +73256,298 @@ func (s *UpdateGatewayRouteWafStatusResponse) SetBody(v *UpdateGatewayRouteWafSt
 	return s
 }
 
+type UpdateGatewayServiceRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 501
+	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// gw-c9bc5afd61014165bd58f621b491*****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// example:
+	//
+	// 322
+	Id     *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 80
+	ServicePort *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// example:
+	//
+	// HTTP
+	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//       "mode": "MUTUAL",
+	//
+	//       "certId": "1*****-cn-hangzhou",
+	//
+	//       "caCertContent": "123",
+	//
+	//       "sni": "ceshi"
+	//
+	// }
+	TlsSetting *string `json:"TlsSetting,omitempty" xml:"TlsSetting,omitempty"`
+}
+
+func (s UpdateGatewayServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceRequest) SetAcceptLanguage(v string) *UpdateGatewayServiceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceRequest) SetGatewayId(v int64) *UpdateGatewayServiceRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceRequest) SetGatewayUniqueId(v string) *UpdateGatewayServiceRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceRequest) SetId(v string) *UpdateGatewayServiceRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceRequest) SetIpList(v []*string) *UpdateGatewayServiceRequest {
+	s.IpList = v
+	return s
+}
+
+func (s *UpdateGatewayServiceRequest) SetName(v string) *UpdateGatewayServiceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceRequest) SetServicePort(v string) *UpdateGatewayServiceRequest {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceRequest) SetServiceProtocol(v string) *UpdateGatewayServiceRequest {
+	s.ServiceProtocol = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceRequest) SetTlsSetting(v string) *UpdateGatewayServiceRequest {
+	s.TlsSetting = &v
+	return s
+}
+
+type UpdateGatewayServiceShrinkRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 501
+	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// gw-c9bc5afd61014165bd58f621b491*****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// example:
+	//
+	// 322
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IpListShrink *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 80
+	ServicePort *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// example:
+	//
+	// HTTP
+	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//       "mode": "MUTUAL",
+	//
+	//       "certId": "1*****-cn-hangzhou",
+	//
+	//       "caCertContent": "123",
+	//
+	//       "sni": "ceshi"
+	//
+	// }
+	TlsSetting *string `json:"TlsSetting,omitempty" xml:"TlsSetting,omitempty"`
+}
+
+func (s UpdateGatewayServiceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayServiceShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetGatewayId(v int64) *UpdateGatewayServiceShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayServiceShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetId(v string) *UpdateGatewayServiceShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetIpListShrink(v string) *UpdateGatewayServiceShrinkRequest {
+	s.IpListShrink = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetName(v string) *UpdateGatewayServiceShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetServicePort(v string) *UpdateGatewayServiceShrinkRequest {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetServiceProtocol(v string) *UpdateGatewayServiceShrinkRequest {
+	s.ServiceProtocol = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetTlsSetting(v string) *UpdateGatewayServiceShrinkRequest {
+	s.TlsSetting = &v
+	return s
+}
+
+type UpdateGatewayServiceResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 322
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AF21683A-29C7-4853-AC0F-B5ADEE4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceResponseBody) SetCode(v int32) *UpdateGatewayServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceResponseBody) SetData(v int64) *UpdateGatewayServiceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayServiceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceResponseBody) SetMessage(v string) *UpdateGatewayServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceResponseBody) SetRequestId(v string) *UpdateGatewayServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceResponseBody) SetSuccess(v bool) *UpdateGatewayServiceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayServiceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGatewayServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGatewayServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceResponse) SetHeaders(v map[string]*string) *UpdateGatewayServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayServiceResponse) SetStatusCode(v int32) *UpdateGatewayServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceResponse) SetBody(v *UpdateGatewayServiceResponseBody) *UpdateGatewayServiceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGatewayServiceCheckRequest struct {
 	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
 	//
@@ -75662,7 +76141,9 @@ type UpdateNacosGrayConfigRequest struct {
 	// example:
 	//
 	// key=value1,value2
-	GrayRule *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
+	GrayRule         *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
+	GrayRuleName     *string `json:"GrayRuleName,omitempty" xml:"GrayRuleName,omitempty"`
+	GrayRulePriority *int32  `json:"GrayRulePriority,omitempty" xml:"GrayRulePriority,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -75683,6 +76164,7 @@ type UpdateNacosGrayConfigRequest struct {
 	//
 	// 6cf708a5-****-89f2-3ba62c5ee9ba
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	OpType      *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -75730,6 +76212,16 @@ func (s *UpdateNacosGrayConfigRequest) SetGrayRule(v string) *UpdateNacosGrayCon
 	return s
 }
 
+func (s *UpdateNacosGrayConfigRequest) SetGrayRuleName(v string) *UpdateNacosGrayConfigRequest {
+	s.GrayRuleName = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetGrayRulePriority(v int32) *UpdateNacosGrayConfigRequest {
+	s.GrayRulePriority = &v
+	return s
+}
+
 func (s *UpdateNacosGrayConfigRequest) SetGrayType(v string) *UpdateNacosGrayConfigRequest {
 	s.GrayType = &v
 	return s
@@ -75747,6 +76239,11 @@ func (s *UpdateNacosGrayConfigRequest) SetInstanceId(v string) *UpdateNacosGrayC
 
 func (s *UpdateNacosGrayConfigRequest) SetNamespaceId(v string) *UpdateNacosGrayConfigRequest {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateNacosGrayConfigRequest) SetOpType(v string) *UpdateNacosGrayConfigRequest {
+	s.OpType = &v
 	return s
 }
 
@@ -89478,16 +89975,22 @@ func (client *Client) ListIsolationRules(request *ListIsolationRulesRequest) (_r
 //
 // > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
-// @param request - ListListenersByConfigRequest
+// @param tmpReq - ListListenersByConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListListenersByConfigResponse
-func (client *Client) ListListenersByConfigWithOptions(request *ListListenersByConfigRequest, runtime *util.RuntimeOptions) (_result *ListListenersByConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListListenersByConfigWithOptions(tmpReq *ListListenersByConfigRequest, runtime *util.RuntimeOptions) (_result *ListListenersByConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListListenersByConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExtGrayRules)) {
+		request.ExtGrayRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtGrayRules, tea.String("ExtGrayRules"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -89495,6 +89998,10 @@ func (client *Client) ListListenersByConfigWithOptions(request *ListListenersByC
 
 	if !tea.BoolValue(util.IsUnset(request.DataId)) {
 		query["DataId"] = request.DataId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtGrayRulesShrink)) {
+		query["ExtGrayRules"] = request.ExtGrayRulesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Group)) {
@@ -95266,6 +95773,104 @@ func (client *Client) UpdateGatewayRouteWafStatus(request *UpdateGatewayRouteWaf
 
 // Summary:
 //
+// 更新服务
+//
+// @param tmpReq - UpdateGatewayServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayServiceResponse
+func (client *Client) UpdateGatewayServiceWithOptions(tmpReq *UpdateGatewayServiceRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayServiceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayServiceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IpList)) {
+		request.IpListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IpList, tea.String("IpList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpListShrink)) {
+		query["IpList"] = request.IpListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicePort)) {
+		query["ServicePort"] = request.ServicePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceProtocol)) {
+		query["ServiceProtocol"] = request.ServiceProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TlsSetting)) {
+		query["TlsSetting"] = request.TlsSetting
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayService"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新服务
+//
+// @param request - UpdateGatewayServiceRequest
+//
+// @return UpdateGatewayServiceResponse
+func (client *Client) UpdateGatewayService(request *UpdateGatewayServiceRequest) (_result *UpdateGatewayServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayServiceResponse{}
+	_body, _err := client.UpdateGatewayServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the health check policy of a specified service in a cloud-native gateway.
 //
 // @param tmpReq - UpdateGatewayServiceCheckRequest
@@ -96203,6 +96808,14 @@ func (client *Client) UpdateNacosGrayConfigWithOptions(request *UpdateNacosGrayC
 		query["GrayRule"] = request.GrayRule
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GrayRuleName)) {
+		query["GrayRuleName"] = request.GrayRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrayRulePriority)) {
+		query["GrayRulePriority"] = request.GrayRulePriority
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GrayType)) {
 		query["GrayType"] = request.GrayType
 	}
@@ -96217,6 +96830,10 @@ func (client *Client) UpdateNacosGrayConfigWithOptions(request *UpdateNacosGrayC
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpType)) {
+		query["OpType"] = request.OpType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {

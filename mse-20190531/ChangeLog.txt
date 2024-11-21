@@ -1,3 +1,16 @@
+2024-11-21 Version: v5.15.0
+- Support API UpdateGatewayService.
+- Update API GetNacosConfig: update response param.
+- Update API ListListenersByConfig: add param ExtGrayRules.
+- Update API ListListenersByConfig: update response param.
+- Update API ListNacosConfigs: update param RequestPars.
+- Update API UpdateCluster: update param ClusterAliasName.
+- Update API UpdateNacosGrayConfig: add param GrayRuleName.
+- Update API UpdateNacosGrayConfig: add param GrayRulePriority.
+- Update API UpdateNacosGrayConfig: add param OpType.
+- Update API UpdateNacosGrayConfig: update param RequestPars.
+
+
 2024-10-28 Version: v5.14.1
 - Update API CreateNacosConfig: update param Content.
 - Update API UpdateNacosConfig: update param Content.
