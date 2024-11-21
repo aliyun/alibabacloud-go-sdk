@@ -777,7 +777,7 @@ type DataQualityResultRule struct {
 	Target   *DataQualityResultRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// example:
 	//
-	// system::user_defined
+	// SYSTEM:user_defined_sql
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// example:
 	//
@@ -1158,7 +1158,7 @@ type DataQualityRule struct {
 	Target   *DataQualityRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// example:
 	//
-	// system::user_defined
+	// SYSTEM:user_defined_sql
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// example:
 	//
@@ -1821,6 +1821,572 @@ func (s *CloneDataSourceResponse) SetStatusCode(v int32) *CloneDataSourceRespons
 }
 
 func (s *CloneDataSourceResponse) SetBody(v *CloneDataSourceResponseBody) *CloneDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAlertRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xm_create_test
+	Name         *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Notification *CreateAlertRuleRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 279114181716147735
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	TriggerCondition *CreateAlertRuleRequestTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
+}
+
+func (s CreateAlertRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequest) SetEnabled(v bool) *CreateAlertRuleRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequest) SetName(v string) *CreateAlertRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequest) SetNotification(v *CreateAlertRuleRequestNotification) *CreateAlertRuleRequest {
+	s.Notification = v
+	return s
+}
+
+func (s *CreateAlertRuleRequest) SetOwner(v string) *CreateAlertRuleRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequest) SetTriggerCondition(v *CreateAlertRuleRequestTriggerCondition) *CreateAlertRuleRequest {
+	s.TriggerCondition = v
+	return s
+}
+
+type CreateAlertRuleRequestNotification struct {
+	// This parameter is required.
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30
+	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
+	// example:
+	//
+	// 3
+	Maximum *int32 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// This parameter is required.
+	Receivers []*CreateAlertRuleRequestNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 00:00:00
+	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	// example:
+	//
+	// 00:00:00
+	SilenceStartTime *string `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
+}
+
+func (s CreateAlertRuleRequestNotification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestNotification) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestNotification) SetChannels(v []*string) *CreateAlertRuleRequestNotification {
+	s.Channels = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestNotification) SetIntervalInMinutes(v int32) *CreateAlertRuleRequestNotification {
+	s.IntervalInMinutes = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequestNotification) SetMaximum(v int32) *CreateAlertRuleRequestNotification {
+	s.Maximum = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequestNotification) SetReceivers(v []*CreateAlertRuleRequestNotificationReceivers) *CreateAlertRuleRequestNotification {
+	s.Receivers = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestNotification) SetSilenceEndTime(v string) *CreateAlertRuleRequestNotification {
+	s.SilenceEndTime = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequestNotification) SetSilenceStartTime(v string) *CreateAlertRuleRequestNotification {
+	s.SilenceStartTime = &v
+	return s
+}
+
+type CreateAlertRuleRequestNotificationReceivers struct {
+	// example:
+	//
+	// {"atAll":true}
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// TaskOwner
+	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s CreateAlertRuleRequestNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestNotificationReceivers) SetExtension(v string) *CreateAlertRuleRequestNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequestNotificationReceivers) SetReceiverType(v string) *CreateAlertRuleRequestNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequestNotificationReceivers) SetReceiverValues(v []*string) *CreateAlertRuleRequestNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerCondition struct {
+	Extension *CreateAlertRuleRequestTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
+	Target    *CreateAlertRuleRequestTriggerConditionTarget    `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// Error
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateAlertRuleRequestTriggerCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerCondition) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerCondition) SetExtension(v *CreateAlertRuleRequestTriggerConditionExtension) *CreateAlertRuleRequestTriggerCondition {
+	s.Extension = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerCondition) SetTarget(v *CreateAlertRuleRequestTriggerConditionTarget) *CreateAlertRuleRequestTriggerCondition {
+	s.Target = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerCondition) SetType(v string) *CreateAlertRuleRequestTriggerCondition {
+	s.Type = &v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtension struct {
+	CycleUnfinished           *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished           `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
+	Error                     *CreateAlertRuleRequestTriggerConditionExtensionError                     `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	InstanceErrorCount        *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount        `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
+	InstanceErrorPercentage   *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage   `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	InstanceTransferFluctuate *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
+	Timeout                   *CreateAlertRuleRequestTriggerConditionExtensionTimeout                   `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+	UnFinished                *CreateAlertRuleRequestTriggerConditionExtensionUnFinished                `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtension) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtension) SetCycleUnfinished(v *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) *CreateAlertRuleRequestTriggerConditionExtension {
+	s.CycleUnfinished = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtension) SetError(v *CreateAlertRuleRequestTriggerConditionExtensionError) *CreateAlertRuleRequestTriggerConditionExtension {
+	s.Error = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtension) SetInstanceErrorCount(v *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) *CreateAlertRuleRequestTriggerConditionExtension {
+	s.InstanceErrorCount = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtension) SetInstanceErrorPercentage(v *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage) *CreateAlertRuleRequestTriggerConditionExtension {
+	s.InstanceErrorPercentage = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtension) SetInstanceTransferFluctuate(v *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) *CreateAlertRuleRequestTriggerConditionExtension {
+	s.InstanceTransferFluctuate = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtension) SetTimeout(v *CreateAlertRuleRequestTriggerConditionExtensionTimeout) *CreateAlertRuleRequestTriggerConditionExtension {
+	s.Timeout = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtension) SetUnFinished(v *CreateAlertRuleRequestTriggerConditionExtensionUnFinished) *CreateAlertRuleRequestTriggerConditionExtension {
+	s.UnFinished = v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished struct {
+	CycleAndTime []*CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) SetCycleAndTime(v []*CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished {
+	s.CycleAndTime = v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
+	// example:
+	//
+	// 1
+	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
+	// example:
+	//
+	// 12:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) SetCycleId(v int32) *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime {
+	s.CycleId = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) SetTime(v string) *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime {
+	s.Time = &v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtensionError struct {
+	// example:
+	//
+	// false
+	AutoRerunAlert *bool    `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	StreamTaskIds  []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionError) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionError) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionError) SetAutoRerunAlert(v bool) *CreateAlertRuleRequestTriggerConditionExtensionError {
+	s.AutoRerunAlert = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionError) SetStreamTaskIds(v []*int64) *CreateAlertRuleRequestTriggerConditionExtensionError {
+	s.StreamTaskIds = v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount struct {
+	// example:
+	//
+	// 5
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) SetCount(v int32) *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount {
+	s.Count = &v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage struct {
+	// example:
+	//
+	// 5
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage) SetPercentage(v int32) *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage {
+	s.Percentage = &v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate struct {
+	// example:
+	//
+	// 10
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// example:
+	//
+	// abs
+	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) SetPercentage(v int32) *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate {
+	s.Percentage = &v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) SetTrend(v string) *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate {
+	s.Trend = &v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtensionTimeout struct {
+	// example:
+	//
+	// 10
+	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionTimeout) SetTimeoutInMinutes(v int32) *CreateAlertRuleRequestTriggerConditionExtensionTimeout {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionExtensionUnFinished struct {
+	// example:
+	//
+	// 30:00
+	UnFinishedTime *string `json:"UnFinishedTime,omitempty" xml:"UnFinishedTime,omitempty"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionUnFinished) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionExtensionUnFinished) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionExtensionUnFinished) SetUnFinishedTime(v string) *CreateAlertRuleRequestTriggerConditionExtensionUnFinished {
+	s.UnFinishedTime = &v
+	return s
+}
+
+type CreateAlertRuleRequestTriggerConditionTarget struct {
+	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
+	Ids        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Task
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateAlertRuleRequestTriggerConditionTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleRequestTriggerConditionTarget) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionTarget) SetAllowTasks(v []*int64) *CreateAlertRuleRequestTriggerConditionTarget {
+	s.AllowTasks = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionTarget) SetIds(v []*int64) *CreateAlertRuleRequestTriggerConditionTarget {
+	s.Ids = v
+	return s
+}
+
+func (s *CreateAlertRuleRequestTriggerConditionTarget) SetType(v string) *CreateAlertRuleRequestTriggerConditionTarget {
+	s.Type = &v
+	return s
+}
+
+type CreateAlertRuleShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xm_create_test
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 279114181716147735
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	TriggerConditionShrink *string `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty"`
+}
+
+func (s CreateAlertRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleShrinkRequest) SetEnabled(v bool) *CreateAlertRuleShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateAlertRuleShrinkRequest) SetName(v string) *CreateAlertRuleShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAlertRuleShrinkRequest) SetNotificationShrink(v string) *CreateAlertRuleShrinkRequest {
+	s.NotificationShrink = &v
+	return s
+}
+
+func (s *CreateAlertRuleShrinkRequest) SetOwner(v string) *CreateAlertRuleShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateAlertRuleShrinkRequest) SetTriggerConditionShrink(v string) *CreateAlertRuleShrinkRequest {
+	s.TriggerConditionShrink = &v
+	return s
+}
+
+type CreateAlertRuleResponseBody struct {
+	// example:
+	//
+	// 123123
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// A6C6B486-E3A2-5D52-9E76-D9380485D946
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAlertRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleResponseBody) SetId(v int64) *CreateAlertRuleResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateAlertRuleResponseBody) SetRequestId(v string) *CreateAlertRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAlertRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAlertRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAlertRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRuleResponse) SetHeaders(v map[string]*string) *CreateAlertRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAlertRuleResponse) SetStatusCode(v int32) *CreateAlertRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAlertRuleResponse) SetBody(v *CreateAlertRuleResponseBody) *CreateAlertRuleResponse {
 	s.Body = v
 	return s
 }
@@ -4652,6 +5218,84 @@ func (s *CreateWorkflowDefinitionResponse) SetBody(v *CreateWorkflowDefinitionRe
 	return s
 }
 
+type DeleteAlertRuleRequest struct {
+	// example:
+	//
+	// 105412
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteAlertRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertRuleRequest) SetId(v int64) *DeleteAlertRuleRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteAlertRuleResponseBody struct {
+	// example:
+	//
+	// 8754EE08-4AA2-5F77-ADD7-754DBBDA9F75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAlertRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertRuleResponseBody) SetRequestId(v string) *DeleteAlertRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAlertRuleResponseBody) SetSuccess(v bool) *DeleteAlertRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAlertRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAlertRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAlertRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertRuleResponse) SetHeaders(v map[string]*string) *DeleteAlertRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAlertRuleResponse) SetStatusCode(v int32) *DeleteAlertRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAlertRuleResponse) SetBody(v *DeleteAlertRuleResponseBody) *DeleteAlertRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDIAlarmRuleRequest struct {
 	// The ID of the alert rule.
 	//
@@ -5355,12 +5999,16 @@ func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeletePro
 }
 
 type DeleteProjectMemberRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 534752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5388,6 +6036,8 @@ func (s *DeleteProjectMemberRequest) SetUserId(v string) *DeleteProjectMemberReq
 }
 
 type DeleteProjectMemberResponseBody struct {
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 1FF0465F-209C-5964-8F30-FAF21B677CC6
@@ -6114,6 +6764,532 @@ func (s *ExecDeploymentStageResponse) SetStatusCode(v int32) *ExecDeploymentStag
 }
 
 func (s *ExecDeploymentStageResponse) SetBody(v *ExecDeploymentStageResponseBody) *ExecDeploymentStageResponse {
+	s.Body = v
+	return s
+}
+
+type GetAlertRuleRequest struct {
+	// example:
+	//
+	// 28547072
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetAlertRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleRequest) SetId(v string) *GetAlertRuleRequest {
+	s.Id = &v
+	return s
+}
+
+type GetAlertRuleResponseBody struct {
+	AlertRule *GetAlertRuleResponseBodyAlertRule `json:"AlertRule,omitempty" xml:"AlertRule,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAlertRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBody) SetAlertRule(v *GetAlertRuleResponseBodyAlertRule) *GetAlertRuleResponseBody {
+	s.AlertRule = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBody) SetRequestId(v string) *GetAlertRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRule struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 16035
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// error_rule
+	Name         *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Notification *GetAlertRuleResponseBodyAlertRuleNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// example:
+	//
+	// 279961421580845157
+	Owner            *string                                            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	TriggerCondition *GetAlertRuleResponseBodyAlertRuleTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRule) SetEnabled(v bool) *GetAlertRuleResponseBodyAlertRule {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRule) SetId(v int64) *GetAlertRuleResponseBodyAlertRule {
+	s.Id = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRule) SetName(v string) *GetAlertRuleResponseBodyAlertRule {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRule) SetNotification(v *GetAlertRuleResponseBodyAlertRuleNotification) *GetAlertRuleResponseBodyAlertRule {
+	s.Notification = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRule) SetOwner(v string) *GetAlertRuleResponseBodyAlertRule {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRule) SetTriggerCondition(v *GetAlertRuleResponseBodyAlertRuleTriggerCondition) *GetAlertRuleResponseBodyAlertRule {
+	s.TriggerCondition = v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleNotification struct {
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30
+	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
+	// example:
+	//
+	// 3
+	Maximum   *int32                                                    `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	Receivers []*GetAlertRuleResponseBodyAlertRuleNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 00:00:00
+	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	// example:
+	//
+	// 00:00:00
+	SilenceStartTime *string `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleNotification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleNotification) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotification) SetChannels(v []*string) *GetAlertRuleResponseBodyAlertRuleNotification {
+	s.Channels = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotification) SetIntervalInMinutes(v int32) *GetAlertRuleResponseBodyAlertRuleNotification {
+	s.IntervalInMinutes = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotification) SetMaximum(v int32) *GetAlertRuleResponseBodyAlertRuleNotification {
+	s.Maximum = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotification) SetReceivers(v []*GetAlertRuleResponseBodyAlertRuleNotificationReceivers) *GetAlertRuleResponseBodyAlertRuleNotification {
+	s.Receivers = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotification) SetSilenceEndTime(v string) *GetAlertRuleResponseBodyAlertRuleNotification {
+	s.SilenceEndTime = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotification) SetSilenceStartTime(v string) *GetAlertRuleResponseBodyAlertRuleNotification {
+	s.SilenceStartTime = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleNotificationReceivers struct {
+	// example:
+	//
+	// {"atAll":true}
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// WebhookUrl
+	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotificationReceivers) SetExtension(v string) *GetAlertRuleResponseBodyAlertRuleNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotificationReceivers) SetReceiverType(v string) *GetAlertRuleResponseBodyAlertRuleNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleNotificationReceivers) SetReceiverValues(v []*string) *GetAlertRuleResponseBodyAlertRuleNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerCondition struct {
+	Extension *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
+	Target    *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget    `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// Error
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerCondition) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerCondition) SetExtension(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) *GetAlertRuleResponseBodyAlertRuleTriggerCondition {
+	s.Extension = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerCondition) SetTarget(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget) *GetAlertRuleResponseBodyAlertRuleTriggerCondition {
+	s.Target = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerCondition) SetType(v string) *GetAlertRuleResponseBodyAlertRuleTriggerCondition {
+	s.Type = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension struct {
+	CycleUnfinished           *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished           `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
+	Error                     *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError                     `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	InstanceErrorCount        *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount        `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
+	InstanceErrorPercentage   *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage   `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	InstanceTransferFluctuate *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
+	Timeout                   *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout                   `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+	UnFinished                *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished                `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetCycleUnfinished(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension {
+	s.CycleUnfinished = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetError(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension {
+	s.Error = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetInstanceErrorCount(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension {
+	s.InstanceErrorCount = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetInstanceErrorPercentage(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension {
+	s.InstanceErrorPercentage = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetInstanceTransferFluctuate(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension {
+	s.InstanceTransferFluctuate = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetTimeout(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension {
+	s.Timeout = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetUnFinished(v *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension {
+	s.UnFinished = v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished struct {
+	CycleAndTime []*GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished) SetCycleAndTime(v []*GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished {
+	s.CycleAndTime = v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
+	// example:
+	//
+	// 1
+	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
+	// example:
+	//
+	// 12:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime) SetCycleId(v int32) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime {
+	s.CycleId = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime) SetTime(v string) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime {
+	s.Time = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError struct {
+	// example:
+	//
+	// false
+	AutoRerunAlert *bool    `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	StreamTaskIds  []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) SetAutoRerunAlert(v bool) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError {
+	s.AutoRerunAlert = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) SetStreamTaskIds(v []*int64) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError {
+	s.StreamTaskIds = v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount struct {
+	// example:
+	//
+	// 10
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount) SetCount(v int32) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount {
+	s.Count = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage struct {
+	// example:
+	//
+	// 10
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage) SetPercentage(v int32) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage {
+	s.Percentage = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate struct {
+	// example:
+	//
+	// 10
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// example:
+	//
+	// 10
+	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate) SetPercentage(v int32) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate {
+	s.Percentage = &v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate) SetTrend(v string) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate {
+	s.Trend = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout struct {
+	// example:
+	//
+	// 10
+	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout) SetTimeoutInMinutes(v int32) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished struct {
+	// example:
+	//
+	// 12:00
+	UnFinishedTime *string `json:"UnFinishedTime,omitempty" xml:"UnFinishedTime,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished) SetUnFinishedTime(v string) *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished {
+	s.UnFinishedTime = &v
+	return s
+}
+
+type GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget struct {
+	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
+	Ids        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Task
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget) SetAllowTasks(v []*int64) *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget {
+	s.AllowTasks = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget) SetIds(v []*int64) *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget {
+	s.Ids = v
+	return s
+}
+
+func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget) SetType(v string) *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget {
+	s.Type = &v
+	return s
+}
+
+type GetAlertRuleResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAlertRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAlertRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertRuleResponse) SetHeaders(v map[string]*string) *GetAlertRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAlertRuleResponse) SetStatusCode(v int32) *GetAlertRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAlertRuleResponse) SetBody(v *GetAlertRuleResponseBody) *GetAlertRuleResponse {
 	s.Body = v
 	return s
 }
@@ -8446,12 +9622,18 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 }
 
 type GetProjectMemberRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 88757
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.39e9281f3mhq4J), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8479,7 +9661,10 @@ func (s *GetProjectMemberRequest) SetUserId(v string) *GetProjectMemberRequest {
 }
 
 type GetProjectMemberResponseBody struct {
+	// The details about the member in the workspace.
 	ProjectMember *GetProjectMemberResponseBodyProjectMember `json:"ProjectMember,omitempty" xml:"ProjectMember,omitempty" type:"Struct"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 8abcb91f-d266-4073-b907-2ed670378ed1
@@ -8505,15 +9690,26 @@ func (s *GetProjectMemberResponseBody) SetRequestId(v string) *GetProjectMemberR
 }
 
 type GetProjectMemberResponseBodyProjectMember struct {
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 88757
-	ProjectId *int64                                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Roles     []*GetProjectMemberResponseBodyProjectMemberRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The roles that are assigned to the member in the workspace.
+	Roles []*GetProjectMemberResponseBodyProjectMemberRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The status of the member.
+	//
+	// 	- Normal
+	//
+	// 	- Forbidden
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the account used by the member in the workspace.
+	//
 	// example:
 	//
 	// 123422344899
@@ -8549,11 +9745,40 @@ func (s *GetProjectMemberResponseBodyProjectMember) SetUserId(v string) *GetProj
 }
 
 type GetProjectMemberResponseBodyProjectMemberRoles struct {
+	// The code of the role. Valid values:
+	//
+	// 	- role_project_admin: Workspace Administrator
+	//
+	// 	- role_project_dev: Develop
+	//
+	// 	- role_project_dg_admin: Data Governance Administrator
+	//
+	// 	- role_project_guest: Visitor
+	//
+	// 	- role_project_security: Security Administrator
+	//
+	// 	- role_project_deploy: Deploy
+	//
+	// 	- role_project_owner: Workspace Owner
+	//
+	// 	- role_project_data_analyst: Data Analyst
+	//
+	// 	- role_project_pe: O\\&M
+	//
+	// 	- role_project_erd: Model Designer
+	//
 	// example:
 	//
 	// role_project_guest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the role.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the role. Valid values:
+	//
+	// 	- UserCustom: custom role
+	//
+	// 	- System: built-in role
+	//
 	// example:
 	//
 	// System
@@ -9380,8 +10605,9 @@ type GetTaskResponseBodyTask struct {
 	// example:
 	//
 	// 1234
-	Id     *int64                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	Inputs *GetTaskResponseBodyTaskInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	Id           *int64                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	Inputs       *GetTaskResponseBodyTaskInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	InstanceMode *string                        `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// example:
 	//
 	// 1710239005403
@@ -9488,6 +10714,11 @@ func (s *GetTaskResponseBodyTask) SetId(v int64) *GetTaskResponseBodyTask {
 
 func (s *GetTaskResponseBodyTask) SetInputs(v *GetTaskResponseBodyTaskInputs) *GetTaskResponseBodyTask {
 	s.Inputs = v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetInstanceMode(v string) *GetTaskResponseBodyTask {
+	s.InstanceMode = &v
 	return s
 }
 
@@ -9615,11 +10846,9 @@ type GetTaskResponseBodyTaskDependencies struct {
 	// example:
 	//
 	// Normal
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// pre.odps_sql_demo_0
-	Upstream *string `json:"Upstream,omitempty" xml:"Upstream,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
+	UpstreamTaskId *string `json:"UpstreamTaskId,omitempty" xml:"UpstreamTaskId,omitempty"`
 }
 
 func (s GetTaskResponseBodyTaskDependencies) String() string {
@@ -9635,8 +10864,13 @@ func (s *GetTaskResponseBodyTaskDependencies) SetType(v string) *GetTaskResponse
 	return s
 }
 
-func (s *GetTaskResponseBodyTaskDependencies) SetUpstream(v string) *GetTaskResponseBodyTaskDependencies {
-	s.Upstream = &v
+func (s *GetTaskResponseBodyTaskDependencies) SetUpstreamOutput(v string) *GetTaskResponseBodyTaskDependencies {
+	s.UpstreamOutput = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTaskDependencies) SetUpstreamTaskId(v string) *GetTaskResponseBodyTaskDependencies {
+	s.UpstreamTaskId = &v
 	return s
 }
 
@@ -9664,10 +10898,6 @@ type GetTaskResponseBodyTaskInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
-	// TaskContext
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// example:
-	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// example:
@@ -9686,11 +10916,6 @@ func (s GetTaskResponseBodyTaskInputsVariables) GoString() string {
 
 func (s *GetTaskResponseBodyTaskInputsVariables) SetName(v string) *GetTaskResponseBodyTaskInputsVariables {
 	s.Name = &v
-	return s
-}
-
-func (s *GetTaskResponseBodyTaskInputsVariables) SetScope(v string) *GetTaskResponseBodyTaskInputsVariables {
-	s.Scope = &v
 	return s
 }
 
@@ -9754,10 +10979,6 @@ type GetTaskResponseBodyTaskOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
-	// TaskContext
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// example:
-	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// example:
@@ -9776,11 +10997,6 @@ func (s GetTaskResponseBodyTaskOutputsVariables) GoString() string {
 
 func (s *GetTaskResponseBodyTaskOutputsVariables) SetName(v string) *GetTaskResponseBodyTaskOutputsVariables {
 	s.Name = &v
-	return s
-}
-
-func (s *GetTaskResponseBodyTaskOutputsVariables) SetScope(v string) *GetTaskResponseBodyTaskOutputsVariables {
-	s.Scope = &v
 	return s
 }
 
@@ -10310,6 +11526,8 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 }
 
 type GetTaskInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10332,10 +11550,13 @@ func (s *GetTaskInstanceRequest) SetId(v int64) *GetTaskInstanceRequest {
 }
 
 type GetTaskInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the instance.
 	TaskInstance *GetTaskInstanceResponseBodyTaskInstance `json:"TaskInstance,omitempty" xml:"TaskInstance,omitempty" type:"Struct"`
 }
 
@@ -10358,123 +11579,235 @@ func (s *GetTaskInstanceResponseBody) SetTaskInstance(v *GetTaskInstanceResponse
 }
 
 type GetTaskInstanceResponseBodyTaskInstance struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The data timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser *string                                            `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
 	DataSource *GetTaskInstanceResponseBodyTaskInstanceDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the instance finished running.
+	//
 	// example:
 	//
 	// 1710239005403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 1234
-	Id     *int64                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The input information.
 	Inputs *GetTaskInstanceResponseBodyTaskInstanceInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
 	// example:
 	//
 	// 1000
-	ModifyUser *string                                         `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	Outputs    *GetTaskInstanceResponseBodyTaskInstanceOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The output information.
+	Outputs *GetTaskInstanceResponseBodyTaskInstanceOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PeriodNumber *int32  `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	// The task priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace. Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun mode. Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times the instance is run. By default, the value starts from 1.
+	//
 	// example:
 	//
 	// 1
-	RunNumber       *int32                                                  `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
-	Runtime         *GetTaskInstanceResponseBodyTaskInstanceRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RunNumber *int32 `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	// The runtime information about the instance.
+	Runtime *GetTaskInstanceResponseBodyTaskInstanceRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	// The information about the resource group with which the instance is associated.
 	RuntimeResource *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	Script          *GetTaskInstanceResponseBodyTaskInstanceScript          `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	// The script information.
+	Script *GetTaskInstanceResponseBodyTaskInstanceScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	// The time when the instance started to run.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// 	- NotRun: The instance is not run.
+	//
+	// 	- Running: The instance is running.
+	//
+	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	//
+	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	//
+	// 	- WaitResource: The instance is waiting for resources.
+	//
+	// 	- Failure: The instance fails to be run.
+	//
+	// 	- Success: The instance is successfully run.
+	//
+	// 	- Checking: Data quality is being checked for the instance.
+	//
 	// example:
 	//
 	// Success
-	Status *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetTaskInstanceResponseBodyTaskInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the task.
+	Tags []*GetTaskInstanceResponseBodyTaskInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// 1234
-	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task for which the instance is generated.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 1
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// The scheduling time.
+	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	// The method to trigger instance scheduling. The value of the Trigger.Type parameter in the response of the GetTask operation is used. Valid values:
+	//
+	// 	- Scheduler
+	//
+	// 	- Manual
+	//
 	// example:
 	//
 	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the workflow to which the instance belongs.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow instance ID.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The type of the workflow instance. Valid values:
+	//
+	// 	- SmokeTest
+	//
+	// 	- SupplementData
+	//
+	// 	- Manual
+	//
+	// 	- ManualWorkflow
+	//
+	// 	- Normal
+	//
+	// 	- ManualFlow
+	//
 	// example:
 	//
 	// Normal
 	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
-	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// The name of the workflow to which the instance belongs.
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s GetTaskInstanceResponseBodyTaskInstance) String() string {
@@ -10547,6 +11880,11 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) SetOutputs(v *GetTaskInstanceR
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) SetOwner(v string) *GetTaskInstanceResponseBodyTaskInstance {
 	s.Owner = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetPeriodNumber(v int32) *GetTaskInstanceResponseBodyTaskInstance {
+	s.PeriodNumber = &v
 	return s
 }
 
@@ -10666,6 +12004,8 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) SetWorkflowName(v string) *Get
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -10686,6 +12026,7 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceDataSource) SetName(v string) *G
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceInputs struct {
+	// The variables.
 	Variables []*GetTaskInstanceResponseBodyTaskInstanceInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -10703,18 +12044,28 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceInputs) SetVariables(v []*GetTas
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceInputsVariables struct {
+	// The name of the variable.
+	//
 	// example:
 	//
 	// Key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
+	// The type. Valid values:
 	//
-	// TaskContext
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// 	- Constant: constant
+	//
+	// 	- PassThrough: node output
+	//
+	// 	- System: variable
+	//
+	// 	- NodeOutput: script output
+	//
 	// example:
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the variable.
+	//
 	// example:
 	//
 	// Value1
@@ -10734,11 +12085,6 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) SetName(v strin
 	return s
 }
 
-func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) SetScope(v string) *GetTaskInstanceResponseBodyTaskInstanceInputsVariables {
-	s.Scope = &v
-	return s
-}
-
 func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) SetType(v string) *GetTaskInstanceResponseBodyTaskInstanceInputsVariables {
 	s.Type = &v
 	return s
@@ -10750,8 +12096,10 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) SetValue(v stri
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceOutputs struct {
+	// The task outputs.
 	TaskOutputs []*GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
-	Variables   []*GetTaskInstanceResponseBodyTaskInstanceOutputsVariables   `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+	// The variables.
+	Variables []*GetTaskInstanceResponseBodyTaskInstanceOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
 func (s GetTaskInstanceResponseBodyTaskInstanceOutputs) String() string {
@@ -10773,6 +12121,8 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceOutputs) SetVariables(v []*GetTa
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs struct {
+	// The output identifier.
+	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
@@ -10793,18 +12143,28 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs) SetOutput(v 
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceOutputsVariables struct {
+	// The name of the variable.
+	//
 	// example:
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
+	// The type. Valid values:
 	//
-	// TaskContext
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// 	- Constant: constant
+	//
+	// 	- PassThrough: node output
+	//
+	// 	- System: variable
+	//
+	// 	- NodeOutput: script output
+	//
 	// example:
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the variable.
+	//
 	// example:
 	//
 	// value1
@@ -10824,11 +12184,6 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) SetName(v stri
 	return s
 }
 
-func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) SetScope(v string) *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables {
-	s.Scope = &v
-	return s
-}
-
 func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) SetType(v string) *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables {
 	s.Type = &v
 	return s
@@ -10840,10 +12195,14 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) SetValue(v str
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceRuntime struct {
+	// The host for running.
+	//
 	// example:
 	//
 	// cn-shanghai.1.2
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The instance run ID.
+	//
 	// example:
 	//
 	// T3_123
@@ -10869,14 +12228,20 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceRuntime) SetProcessId(v string) 
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceRuntimeResource struct {
+	// The default number of CUs configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -10907,10 +12272,14 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource) SetResourceGrou
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceScript struct {
+	// The script content.
+	//
 	// example:
 	//
 	// echo "helloWorld"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The script parameters.
+	//
 	// example:
 	//
 	// para1=$bizdate
@@ -10936,10 +12305,14 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceScript) SetParameters(v string) 
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -11258,14 +12631,22 @@ func (s *GetWorkflowDefinitionResponse) SetBody(v *GetWorkflowDefinitionResponse
 }
 
 type GrantMemberProjectRolesRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 105149
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	//
+	// You must configure this parameter to specify the roles that you want to assign to members in the workspace.
+	//
 	// This parameter is required.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11298,14 +12679,22 @@ func (s *GrantMemberProjectRolesRequest) SetUserId(v string) *GrantMemberProject
 }
 
 type GrantMemberProjectRolesShrinkRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 105149
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	//
+	// You must configure this parameter to specify the roles that you want to assign to members in the workspace.
+	//
 	// This parameter is required.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
+	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11338,6 +12727,8 @@ func (s *GrantMemberProjectRolesShrinkRequest) SetUserId(v string) *GrantMemberP
 }
 
 type GrantMemberProjectRolesResponseBody struct {
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 2d9ced66-38ef-4923-baf6-391dd3a7e656
@@ -11549,6 +12940,600 @@ func (s *ImportWorkflowDefinitionResponse) SetStatusCode(v int32) *ImportWorkflo
 }
 
 func (s *ImportWorkflowDefinitionResponse) SetBody(v *ImportWorkflowDefinitionResponseBody) *ImportWorkflowDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type ListAlertRulesRequest struct {
+	// example:
+	//
+	// error_rule
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1933790683****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1933790683****
+	Receiver *string   `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
+	TaskIds  []*int64  `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	Types    []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+}
+
+func (s ListAlertRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesRequest) SetName(v string) *ListAlertRulesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAlertRulesRequest) SetOwner(v string) *ListAlertRulesRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListAlertRulesRequest) SetPageNumber(v int32) *ListAlertRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAlertRulesRequest) SetPageSize(v int64) *ListAlertRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAlertRulesRequest) SetReceiver(v string) *ListAlertRulesRequest {
+	s.Receiver = &v
+	return s
+}
+
+func (s *ListAlertRulesRequest) SetTaskIds(v []*int64) *ListAlertRulesRequest {
+	s.TaskIds = v
+	return s
+}
+
+func (s *ListAlertRulesRequest) SetTypes(v []*string) *ListAlertRulesRequest {
+	s.Types = v
+	return s
+}
+
+type ListAlertRulesShrinkRequest struct {
+	// example:
+	//
+	// error_rule
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1933790683****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1933790683****
+	Receiver      *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
+	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+	TypesShrink   *string `json:"Types,omitempty" xml:"Types,omitempty"`
+}
+
+func (s ListAlertRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesShrinkRequest) SetName(v string) *ListAlertRulesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAlertRulesShrinkRequest) SetOwner(v string) *ListAlertRulesShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListAlertRulesShrinkRequest) SetPageNumber(v int32) *ListAlertRulesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAlertRulesShrinkRequest) SetPageSize(v int64) *ListAlertRulesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAlertRulesShrinkRequest) SetReceiver(v string) *ListAlertRulesShrinkRequest {
+	s.Receiver = &v
+	return s
+}
+
+func (s *ListAlertRulesShrinkRequest) SetTaskIdsShrink(v string) *ListAlertRulesShrinkRequest {
+	s.TaskIdsShrink = &v
+	return s
+}
+
+func (s *ListAlertRulesShrinkRequest) SetTypesShrink(v string) *ListAlertRulesShrinkRequest {
+	s.TypesShrink = &v
+	return s
+}
+
+type ListAlertRulesResponseBody struct {
+	PagingInfo *ListAlertRulesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// A6C6B486-E3A2-5D52-9E76-D9380485D946
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAlertRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBody) SetPagingInfo(v *ListAlertRulesResponseBodyPagingInfo) *ListAlertRulesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBody) SetRequestId(v string) *ListAlertRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfo struct {
+	AlertRules []*ListAlertRulesResponseBodyPagingInfoAlertRules `json:"AlertRules,omitempty" xml:"AlertRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfo) SetAlertRules(v []*ListAlertRulesResponseBodyPagingInfoAlertRules) *ListAlertRulesResponseBodyPagingInfo {
+	s.AlertRules = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfo) SetPageNumber(v int32) *ListAlertRulesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfo) SetPageSize(v int32) *ListAlertRulesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfo) SetTotalCount(v int32) *ListAlertRulesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRules struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 22125
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// error_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1933790683****
+	Owner            *string                                                         `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	TriggerCondition *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRules) SetEnabled(v bool) *ListAlertRulesResponseBodyPagingInfoAlertRules {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRules) SetId(v int64) *ListAlertRulesResponseBodyPagingInfoAlertRules {
+	s.Id = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRules) SetName(v string) *ListAlertRulesResponseBodyPagingInfoAlertRules {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRules) SetOwner(v string) *ListAlertRulesResponseBodyPagingInfoAlertRules {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRules) SetTriggerCondition(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) *ListAlertRulesResponseBodyPagingInfoAlertRules {
+	s.TriggerCondition = v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition struct {
+	Extension *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
+	Target    *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget    `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// Error
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) SetExtension(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition {
+	s.Extension = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) SetTarget(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition {
+	s.Target = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) SetType(v string) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition {
+	s.Type = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension struct {
+	CycleUnfinished           *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished           `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
+	Error                     *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError                     `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	InstanceErrorCount        *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount        `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
+	InstanceErrorPercentage   *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage   `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	InstanceTransferFluctuate *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
+	Timeout                   *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout                   `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+	UnFinished                *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished                `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) SetCycleUnfinished(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension {
+	s.CycleUnfinished = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) SetError(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension {
+	s.Error = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) SetInstanceErrorCount(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension {
+	s.InstanceErrorCount = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) SetInstanceErrorPercentage(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension {
+	s.InstanceErrorPercentage = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) SetInstanceTransferFluctuate(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension {
+	s.InstanceTransferFluctuate = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) SetTimeout(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension {
+	s.Timeout = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) SetUnFinished(v *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension {
+	s.UnFinished = v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished struct {
+	CycleAndTime []*ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished) SetCycleAndTime(v []*ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished {
+	s.CycleAndTime = v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
+	// example:
+	//
+	// 1
+	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
+	// example:
+	//
+	// 01:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime) SetCycleId(v int32) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime {
+	s.CycleId = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime) SetTime(v string) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime {
+	s.Time = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError struct {
+	// example:
+	//
+	// false
+	AutoRerunAlert *bool    `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	StreamTaskIds  []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError) SetAutoRerunAlert(v bool) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError {
+	s.AutoRerunAlert = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError) SetStreamTaskIds(v []*int64) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError {
+	s.StreamTaskIds = v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount struct {
+	// example:
+	//
+	// 10
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount) SetCount(v int32) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount {
+	s.Count = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage struct {
+	// example:
+	//
+	// 10
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage) SetPercentage(v int32) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage {
+	s.Percentage = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate struct {
+	// example:
+	//
+	// 10
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// example:
+	//
+	// abs
+	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate) SetPercentage(v int32) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate {
+	s.Percentage = &v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate) SetTrend(v string) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate {
+	s.Trend = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout struct {
+	// example:
+	//
+	// 10
+	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout) SetTimeoutInMinutes(v int32) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished struct {
+	// example:
+	//
+	// 12:00
+	UnFinishedTime *string `json:"UnFinishedTime,omitempty" xml:"UnFinishedTime,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished) SetUnFinishedTime(v string) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished {
+	s.UnFinishedTime = &v
+	return s
+}
+
+type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget struct {
+	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
+	Ids        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Task
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget) SetAllowTasks(v []*int64) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget {
+	s.AllowTasks = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget) SetIds(v []*int64) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget {
+	s.Ids = v
+	return s
+}
+
+func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget) SetType(v string) *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget {
+	s.Type = &v
+	return s
+}
+
+type ListAlertRulesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAlertRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAlertRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertRulesResponse) SetHeaders(v map[string]*string) *ListAlertRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAlertRulesResponse) SetStatusCode(v int32) *ListAlertRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAlertRulesResponse) SetBody(v *ListAlertRulesResponseBody) *ListAlertRulesResponse {
 	s.Body = v
 	return s
 }
@@ -13098,46 +15083,68 @@ func (s *ListDIJobsResponse) SetBody(v *ListDIJobsResponseBody) *ListDIJobsRespo
 }
 
 type ListDataQualityEvaluationTaskInstancesRequest struct {
+	// The start time of the data quality monitoring task.
+	//
 	// example:
 	//
 	// 2024-04-01
 	BizdateFrom *string `json:"BizdateFrom,omitempty" xml:"BizdateFrom,omitempty"`
+	// The end time of the data quality monitoring task.
+	//
 	// example:
 	//
 	// 2024-05-01
 	BizdateTo *string `json:"BizdateTo,omitempty" xml:"BizdateTo,omitempty"`
+	// The earliest start time at which the instances are generated.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeFrom *int64 `json:"CreateTimeFrom,omitempty" xml:"CreateTimeFrom,omitempty"`
+	// The latest start time at which the instances are generated.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeTo *int64 `json:"CreateTimeTo,omitempty" xml:"CreateTimeTo,omitempty"`
+	// The ID of the data quality monitoring task.
+	//
 	// example:
 	//
 	// 10000
 	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the table in Data Map.
+	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the trigger module of the instance.
+	//
 	// example:
 	//
 	// CWF2
 	TriggerClient *string `json:"TriggerClient,omitempty" xml:"TriggerClient,omitempty"`
+	// The ID of the instance that is generated by the task.
+	//
 	// example:
 	//
 	// 1001
@@ -13208,12 +15215,10 @@ func (s *ListDataQualityEvaluationTaskInstancesRequest) SetTriggerClientId(v str
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBody struct {
-	// example:
-	//
-	// 200
-	Code       *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pagination information.
 	PagingInfo *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 691CA452-D37A-4ED0-9441
@@ -13228,16 +15233,6 @@ func (s ListDataQualityEvaluationTaskInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetCode(v string) *ListDataQualityEvaluationTaskInstancesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetMessage(v string) *ListDataQualityEvaluationTaskInstancesResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetPagingInfo(v *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) *ListDataQualityEvaluationTaskInstancesResponseBody {
 	s.PagingInfo = v
 	return s
@@ -13249,15 +15244,22 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBody) SetRequestId(v stri
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo struct {
+	// The instances generated by the task.
 	DataQualityEvaluationTaskInstances []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances `json:"DataQualityEvaluationTaskInstances,omitempty" xml:"DataQualityEvaluationTaskInstances,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 294
@@ -13293,18 +15295,26 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo) SetTotalC
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances struct {
+	// The time at which the instance was generated.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time at which the instance finished running.
+	//
 	// example:
 	//
 	// 1710239005403
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The parameters configured for the instance.
+	//
 	// example:
 	//
 	// {
@@ -13315,15 +15325,32 @@ type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEval
 	//
 	// }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// 	- Running
+	//
+	// 	- Error
+	//
+	// 	- Passed
+	//
+	// 	- Warned
+	//
+	// 	- Critical
+	//
 	// example:
 	//
 	// Critical
-	Status *string                                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Task   *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The snapshot of the configurations for the task when the task starts.
+	Task *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	// The information about the trigger module of the instance.
+	//
 	// example:
 	//
 	// {
@@ -13385,53 +15412,53 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask struct {
-	// 质量监控任务描述
+	// The description of the task.
 	//
 	// example:
 	//
 	// This is a daily run data quality evaluation plan.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	// The callback configurations of the task during the instance lifecycle. Blocking an auto triggered node is a type of callback event. Only this type is supported.
 	Hooks []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
-	// 代表资源一级ID的资源属性字段
+	// The task ID.
 	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 质量监控任务名称
+	// The name of the task.
 	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 数据质量校验任务通知订阅配置
+	// The configurations for alert notifications.
 	Notifications *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
-	// 项目空间Id
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 代表region的资源属性字段
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	// The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field is SPARK-SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks, and the value SPARK-SQL indicates the SQL engine that is used to collect EMR data.
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK-SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	// The monitored object of the task.
 	Target *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// 租户Id
+	// The tenant ID.
 	//
 	// example:
 	//
 	// 10
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// 数据质量校验任务的触发配置
+	// The trigger configuration of the task.
 	Trigger *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -13499,13 +15526,15 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks struct {
-	// Hook触发条件
+	// The trigger configuration of the callback event.
 	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// Hook类型
+	// The type of the callback event.
+	//
+	// 	- Valid values: BlockTaskInstance. The value indicates that an auto triggered node is blocked.
 	//
 	// example:
 	//
@@ -13532,13 +15561,13 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications struct {
-	// 通知触发条件
+	// The trigger condition of the alert notification.
 	//
 	// example:
 	//
 	// ${severity} == "High"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// 具体的消息通知设置
+	// The configurations for the alert notification.
 	Notifications []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -13561,9 +15590,9 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications struct {
-	// 告警接收人设置
+	// The alert recipients.
 	NofiticationReceivers []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers `json:"NofiticationReceivers,omitempty" xml:"NofiticationReceivers,omitempty" type:"Repeated"`
-	// 通知方式
+	// The alert notification methods.
 	NotificationChannels []*ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
 }
 
@@ -13586,19 +15615,29 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers struct {
-	// 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+	// The extended information in the JSON format. For example, the DingTalk chatbot can remind all members in a DingTalk group by using the at sign (@).
 	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 告警接收人类型
+	// The type of the alert recipient. Valid values:
+	//
+	// 	- AliUid: Alibaba Cloud account ID
+	//
+	// 	- WebhookUrl: URL of a custom webhook
+	//
+	// 	- DingdingUrl: DingTalk chatbot URL
+	//
+	// 	- FeishuUrl: Lark chatbot URL
+	//
+	// 	- WeixinUrl: WeCom chatbot URL
 	//
 	// example:
 	//
 	// AliUid
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// 告警接收人
+	// The alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -13626,7 +15665,7 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels struct {
-	// 通知方式
+	// The alert notification methods.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -13644,25 +15683,41 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget struct {
-	// 表所属的数据库类型
+	// The type of the database to which the table belongs. Valid values:
+	//
+	// 	- maxcompute
+	//
+	// 	- emr
+	//
+	// 	- cdh
+	//
+	// 	- hologres
+	//
+	// 	- analyticdb_for_postgresql
+	//
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
 	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// 分区表的分区设置
+	// The configuration of the partitioned table.
 	//
 	// example:
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// 表在数据地图中的唯一ID
+	// The ID of the table in Data Map.
 	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// 监控对象类型
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Table
 	//
 	// example:
 	//
@@ -13699,9 +15754,11 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 }
 
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger struct {
-	// 具体指明哪些调度节点的实例执行成功后可以触发
+	// The IDs of the auto triggered nodes of which the instances are successfully run.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// 何种事件可以触发质量校验任务执行
+	// The trigger condition of the task.
+	//
+	// 	- Valid values: ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
 	//
 	// example:
 	//
@@ -13757,19 +15814,28 @@ func (s *ListDataQualityEvaluationTaskInstancesResponse) SetBody(v *ListDataQual
 }
 
 type ListDataQualityEvaluationTasksRequest struct {
+	// The name of the data quality monitoring task. Fuzzy match is supported.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the table in Data Map.
+	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
@@ -13810,12 +15876,10 @@ func (s *ListDataQualityEvaluationTasksRequest) SetTableGuid(v string) *ListData
 }
 
 type ListDataQualityEvaluationTasksResponseBody struct {
-	// example:
-	//
-	// 200
-	Code       *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pagination information.
 	PagingInfo *ListDataQualityEvaluationTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 691CA452-D37A-4ED0-9441
@@ -13830,16 +15894,6 @@ func (s ListDataQualityEvaluationTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityEvaluationTasksResponseBody) SetCode(v string) *ListDataQualityEvaluationTasksResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListDataQualityEvaluationTasksResponseBody) SetMessage(v string) *ListDataQualityEvaluationTasksResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ListDataQualityEvaluationTasksResponseBody) SetPagingInfo(v *ListDataQualityEvaluationTasksResponseBodyPagingInfo) *ListDataQualityEvaluationTasksResponseBody {
 	s.PagingInfo = v
 	return s
@@ -13851,15 +15905,22 @@ func (s *ListDataQualityEvaluationTasksResponseBody) SetRequestId(v string) *Lis
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfo struct {
+	// The data quality monitoring tasks.
 	DataQualityEvaluationTasks []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks `json:"DataQualityEvaluationTasks,omitempty" xml:"DataQualityEvaluationTasks,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 131
@@ -13895,31 +15956,46 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfo) SetTotalCount(v s
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks struct {
+	// The description of the data quality monitoring task. The description can be up to 65,535 characters in length.
+	//
 	// example:
 	//
 	// This is a daily run data quality evaluation plan
-	Description *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Hooks       []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The callback configurations of the task during the instance lifecycle. Blocking an auto triggered node is a type of callback event. Only this type is supported.
+	Hooks []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// The ID of the data quality monitoring task.
+	//
 	// example:
 	//
 	// 10001
-	Id            *int64                                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name          *string                                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the data quality monitoring task. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configurations for alert notifications.
 	Notifications *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field is SPARK-SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks, and the value SPARK-SQL indicates the SQL engine that is used to collect EMR data.
+	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK-SQL" }
-	RuntimeConf *string                                                                               `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	Target      *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	// The monitored object of the task.
+	Target *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The DataWorks tenant ID.
+	//
 	// example:
 	//
 	// 10
-	TenantId *int64                                                                                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Trigger  *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The trigger configuration of the task.
+	Trigger *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
 func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) String() string {
@@ -13981,10 +16057,16 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks struct {
+	// The trigger configuration of the callback event.
+	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The type of the callback event.
+	//
+	// 	- Valid values: BlockTaskInstance. The value indicates that an auto triggered node is blocked.
+	//
 	// example:
 	//
 	// BlockTaskInstance
@@ -14010,10 +16092,13 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications struct {
+	// The trigger condition of the alert notification.
+	//
 	// example:
 	//
 	// ${severity} == "High"
-	Condition     *string                                                                                                     `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The configurations for the alert notification.
 	Notifications []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -14036,7 +16121,9 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications struct {
-	NotificationChannels  []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// The alert notification methods.
+	NotificationChannels []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// The alert recipients.
 	NotificationReceivers []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -14059,6 +16146,7 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels struct {
+	// The alert notification methods.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -14076,14 +16164,29 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers struct {
+	// The extended information in the JSON format. For example, the DingTalk chatbot can remind all members in a DingTalk group by using the at sign (@).
+	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The type of the alert recipient. Valid values:
+	//
+	// 	- AliUid: Alibaba Cloud account ID
+	//
+	// 	- WebhookUrl: URL of a custom webhook
+	//
+	// 	- DingdingUrl: DingTalk chatbot URL
+	//
+	// 	- FeishuUrl: Lark chatbot URL
+	//
+	// 	- WeixinUrl: WeCom chatbot URL
+	//
 	// example:
 	//
 	// AliUid
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -14111,18 +16214,42 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget struct {
+	// The type of the database to which the table belongs. Valid values:
+	//
+	// 	- maxcompute
+	//
+	// 	- emr
+	//
+	// 	- cdh
+	//
+	// 	- hologres
+	//
+	// 	- analyticdb_for_postgresql
+	//
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
+	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// The configuration of the partitioned table.
+	//
 	// example:
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// The ID of the table in Data Map.
+	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Table
+	//
 	// example:
 	//
 	// Table
@@ -14158,7 +16285,12 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger struct {
+	// The IDs of the auto triggered nodes of which the instances are successfully run. This parameter takes effect only if the Type parameter is set to ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The trigger condition of the task.
+	//
+	// 	- Valid values: ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
+	//
 	// example:
 	//
 	// ByScheduledTaskInstance
@@ -14213,10 +16345,14 @@ func (s *ListDataQualityEvaluationTasksResponse) SetBody(v *ListDataQualityEvalu
 }
 
 type ListDataQualityResultsRequest struct {
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2024-05-01
 	BizdateFrom *string `json:"BizdateFrom,omitempty" xml:"BizdateFrom,omitempty"`
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2024-05-04
@@ -14314,12 +16450,10 @@ func (s *ListDataQualityResultsRequest) SetProjectId(v int64) *ListDataQualityRe
 }
 
 type ListDataQualityResultsResponseBody struct {
-	// example:
-	//
-	// 200
-	Code       *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pagination information.
 	PagingInfo *ListDataQualityResultsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 691CA452-D37A-4ED0-9441
@@ -14334,16 +16468,6 @@ func (s ListDataQualityResultsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityResultsResponseBody) SetCode(v string) *ListDataQualityResultsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListDataQualityResultsResponseBody) SetMessage(v string) *ListDataQualityResultsResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ListDataQualityResultsResponseBody) SetPagingInfo(v *ListDataQualityResultsResponseBodyPagingInfo) *ListDataQualityResultsResponseBody {
 	s.PagingInfo = v
 	return s
@@ -14355,6 +16479,7 @@ func (s *ListDataQualityResultsResponseBody) SetRequestId(v string) *ListDataQua
 }
 
 type ListDataQualityResultsResponseBodyPagingInfo struct {
+	// The data quality check results.
 	DataQualityResults []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResults `json:"DataQualityResults,omitempty" xml:"DataQualityResults,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -14402,12 +16527,14 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResults struct {
 	// example:
 	//
 	// 1708284916414
-	CreateTime *int64                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Details    []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The check details.
+	Details []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 16033
-	Id   *int64                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The snapshot of the rule configuration when the check starts.
 	Rule *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
 	// example:
 	//
@@ -14429,15 +16556,17 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResults struct {
 	//
 	// ]
 	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 	- RUNNING
+	// The status of the check result. Valid values:
 	//
-	// 	- ERROR
+	// 	- Running
 	//
-	// 	- PASSED
+	// 	- Error
 	//
-	// 	- WARNED
+	// 	- Passed
 	//
-	// 	- CRITICAL
+	// 	- Warned
+	//
+	// 	- Critical
 	//
 	// example:
 	//
@@ -14501,13 +16630,15 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails struc
 	//
 	// 0.0
 	ReferencedValue *string `json:"ReferencedValue,omitempty" xml:"ReferencedValue,omitempty"`
-	// 	- ERROR
+	// The comparison result between the value of CheckedValue and the threshold. Valid values:
 	//
-	// 	- PASSED
+	// 	- Error
 	//
-	// 	- WARNED
+	// 	- Passed
 	//
-	// 	- CRITICAL
+	// 	- Warned
+	//
+	// 	- Critical
 	//
 	// example:
 	//
@@ -14539,6 +16670,7 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails) 
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule struct {
+	// The check settings for sample data.
 	CheckingConfig *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -14547,7 +16679,8 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule struct {
 	// example:
 	//
 	// true
-	Enabled       *bool                                                                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The operations that you can perform after the rule-based check fails.
 	ErrorHandlers []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -14557,17 +16690,21 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule struct {
 	// example:
 	//
 	// 100
-	ProjectId      *int64                                                                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
 	SamplingConfig *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// 	- HIGH
+	// The strength of the rule. Valid values:
 	//
-	// 	- NORMAL
+	// 	- High
+	//
+	// 	- Normal
 	//
 	// example:
 	//
 	// NORMAL
-	Severity *string                                                                   `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Target   *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The monitored object of the rule.
+	Target *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// example:
 	//
 	// system::user_defined
@@ -14652,17 +16789,19 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingC
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string                                                                                     `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
 	Thresholds              *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
-	// 	- FIXED
+	// The threshold calculation method. Valid values:
 	//
-	// 	- FLUCTATION
+	// 	- Fixed
 	//
-	// 	- AUTO
+	// 	- Fluctation
 	//
-	// 	- AVERAGE
+	// 	- FluctationDiscreate
 	//
-	// 	- VARIANCE
+	// 	- Auto
 	//
-	// 	- FLUCTATION_DISCREATE
+	// 	- Average
+	//
+	// 	- Variance
 	//
 	// example:
 	//
@@ -14850,7 +16989,9 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHand
 	//
 	// SELECT 	- FROM tb_api_log WHERE id IS NULL
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
-	// 	- SAVE_ERROR_DATA
+	// The type of the operation. Valid values:
+	//
+	// 	- SaveErrorData
 	//
 	// example:
 	//
@@ -14877,33 +17018,37 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleError
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig struct {
-	// *
+	// The metrics used for sampling. Valid values:
 	//
-	// *
+	// 	- Count: the number of rows in the table.
 	//
-	// *
+	// 	- Min: the minimum value of the field.
 	//
-	// *
+	// 	- Max: the maximum value of the field.
 	//
-	// *
+	// 	- Avg: the average value of the field.
 	//
-	// *
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
 	//
-	// *
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
 	//
-	// *
+	// 	- DuplicatedCount: the number of duplicated values of the field.
 	//
-	// *
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
 	//
-	// *
+	// 	- TableSize: the table size.
 	//
-	// *
+	// 	- NullValueCount: the number of rows in which the field value is null.
 	//
-	// *
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
 	//
-	// *
+	// 	- GroupCount: the field value and the number of rows for each field value.
 	//
-	// *
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
 	//
 	// example:
 	//
@@ -14952,19 +17097,21 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSampl
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget struct {
-	// 	- MAX_COMPUTE
+	// The type of the database to which the table belongs. Valid values:
 	//
-	// 	- EMR
+	// 	- maxcompute
 	//
-	// 	- CDH
+	// 	- emr
 	//
-	// 	- HOLOGRES
+	// 	- cdh
 	//
-	// 	- ANALYTICDB_FOR_POSTGRESQL
+	// 	- hologres
 	//
-	// 	- ANALYTICDB_FOR_MYSQL
+	// 	- analyticdb_for_postgresql
 	//
-	// 	- STAR_ROCKS
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
 	//
 	// example:
 	//
@@ -14978,7 +17125,9 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget st
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// 	- TABLE
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Table
 	//
 	// example:
 	//
@@ -15044,26 +17193,38 @@ func (s *ListDataQualityResultsResponse) SetBody(v *ListDataQualityResultsRespon
 }
 
 type ListDataQualityRulesRequest struct {
+	// The ID of the data quality monitoring task that is associated with the rule.
+	//
 	// example:
 	//
 	// 10000
 	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// The name of the rule. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// unit_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 200.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 10002
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the table that is limited by the rule in Data Map.
+	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
@@ -15109,12 +17270,10 @@ func (s *ListDataQualityRulesRequest) SetTableGuid(v string) *ListDataQualityRul
 }
 
 type ListDataQualityRulesResponseBody struct {
-	// example:
-	//
-	// 200
-	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pagination information.
 	PagingInfo *ListDataQualityRulesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 691CA452-D37A-4ED0-9441
@@ -15129,16 +17288,6 @@ func (s ListDataQualityRulesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataQualityRulesResponseBody) SetCode(v string) *ListDataQualityRulesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListDataQualityRulesResponseBody) SetMessage(v string) *ListDataQualityRulesResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ListDataQualityRulesResponseBody) SetPagingInfo(v *ListDataQualityRulesResponseBodyPagingInfo) *ListDataQualityRulesResponseBody {
 	s.PagingInfo = v
 	return s
@@ -15150,15 +17299,22 @@ func (s *ListDataQualityRulesResponseBody) SetRequestId(v string) *ListDataQuali
 }
 
 type ListDataQualityRulesResponseBodyPagingInfo struct {
+	// The rules.
 	DataQualityRules []*ListDataQualityRulesResponseBodyPagingInfoDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 294
@@ -15194,35 +17350,58 @@ func (s *ListDataQualityRulesResponseBodyPagingInfo) SetTotalCount(v int32) *Lis
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRules struct {
+	// The check settings for sample data.
 	CheckingConfig *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// The description of the rule. The description can be up to 500 characters in length.
+	//
 	// example:
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// true
-	Enabled       *bool                                                                      `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The operations that you can perform after the rule-based check fails.
 	ErrorHandlers []*ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 22130
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The rule name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100001
-	ProjectId      *int64                                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The settings for sampling.
 	SamplingConfig *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// The strength of the rule. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- High
+	//
 	// example:
 	//
 	// High
-	Severity *string                                                           `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Target   *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The monitored object of the rule.
+	Target *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The ID of the template used by the rule.
+	//
 	// example:
 	//
 	// system::user_defined
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The ID of the DataWorks tenant.
+	//
 	// example:
 	//
 	// 100001
@@ -15298,11 +17477,28 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRules) SetTenantId
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig struct {
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to indicate the query method of referenced samples.
+	//
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
-	ReferencedSamplesFilter *string                                                                             `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	Thresholds              *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold settings.
+	Thresholds *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// The threshold calculation method. Valid values:
+	//
+	// 	- Fixed
+	//
+	// 	- Fluctation
+	//
+	// 	- FluctationDiscreate
+	//
+	// 	- Auto
+	//
+	// 	- Average
+	//
+	// 	- Variance
+	//
 	// example:
 	//
 	// Fixed
@@ -15333,9 +17529,12 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds struct {
+	// The threshold settings for critical alerts.
 	Critical *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	// The expected threshold setting.
 	Expected *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
-	Warned   *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+	// The threshold settings for normal alerts.
+	Warned *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
 }
 
 func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds) String() string {
@@ -15362,10 +17561,26 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical struct {
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 100.0
@@ -15391,10 +17606,26 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected struct {
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 100.0
@@ -15420,10 +17651,26 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned struct {
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 100.0
@@ -15449,10 +17696,16 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers struct {
+	// The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
+	//
 	// example:
 	//
 	// SELECT 	- FROM tb_api_log WHERE id IS NULL
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// The type of the operation. Valid values:
+	//
+	// 	- SaveErrorData
+	//
 	// example:
 	//
 	// SaveErrorData
@@ -15478,18 +17731,56 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig struct {
+	// The metrics used for sampling. Valid values:
+	//
+	// 	- Count: the number of rows in the table.
+	//
+	// 	- Min: the minimum value of the field.
+	//
+	// 	- Max: the maximum value of the field.
+	//
+	// 	- Avg: the average value of the field.
+	//
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	//
+	// 	- DistinctPercent: the percentage of the number of unique values of the field after deduplication to the number of rows in the table.
+	//
+	// 	- DuplicatedCount: the number of duplicated values in the field.
+	//
+	// 	- DuplicatedPercent: the percentage of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- NullValueCount: the number of rows in which the field is set to null.
+	//
+	// 	- NullValuePercent: the percentage of the number of rows in which the field is set to null to the number of rows in the table.
+	//
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: indicates that the data is sampled by executing custom SQL statements.
+	//
 	// example:
 	//
 	// Max
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sampling.
+	//
 	// example:
 	//
 	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+	//
 	// example:
 	//
 	// id IS NULL
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	//
 	// example:
 	//
 	// SET odps.sql.udf.timeout=600s;
@@ -15527,18 +17818,42 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget struct {
+	// The type of the database to which the table belongs. Valid values:
+	//
+	// 	- maxcompute
+	//
+	// 	- emr
+	//
+	// 	- cdh
+	//
+	// 	- hologres
+	//
+	// 	- analyticdb_for_postgresql
+	//
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
+	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// The configuration of the partitioned table.
+	//
 	// example:
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// The ID of the table that is limited by the rule in Data Map.
+	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Table
+	//
 	// example:
 	//
 	// Table
@@ -16764,7 +19079,8 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// example:
 	//
 	// 100
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PeriodNumber *int32  `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
 	// example:
 	//
 	// 1
@@ -16899,6 +19215,11 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetModi
 
 func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetOwner(v string) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.Owner = &v
+	return s
+}
+
+func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetPeriodNumber(v int32) *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.PeriodNumber = &v
 	return s
 }
 
@@ -17263,7 +19584,8 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	// example:
 	//
 	// 1234
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// example:
 	//
 	// 1710239005403
@@ -17302,6 +19624,7 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	// 3
 	RerunTimes      *int32                                                         `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	RuntimeResource *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	StepType        *string                                                        `json:"StepType,omitempty" xml:"StepType,omitempty"`
 	// example:
 	//
 	// 1
@@ -17359,6 +19682,11 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetId(v int64) *ListDow
 	return s
 }
 
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetInstanceMode(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.InstanceMode = &v
+	return s
+}
+
 func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetModifyTime(v int64) *ListDownstreamTasksResponseBodyPagingInfoTasks {
 	s.ModifyTime = &v
 	return s
@@ -17411,6 +19739,11 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetRerunTimes(v int32) 
 
 func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) *ListDownstreamTasksResponseBodyPagingInfoTasks {
 	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetStepType(v string) *ListDownstreamTasksResponseBodyPagingInfoTasks {
+	s.StepType = &v
 	return s
 }
 
@@ -20460,22 +22793,32 @@ func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse
 }
 
 type ListProjectMembersRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 62136
-	ProjectId *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
-	UserIds   []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=a2c4g.11186623.0.0.7f96340a3HFgqS), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectMembersRequest) String() string {
@@ -20512,22 +22855,32 @@ func (s *ListProjectMembersRequest) SetUserIds(v []*string) *ListProjectMembersR
 }
 
 type ListProjectMembersShrinkRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 62136
-	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
-	UserIdsShrink   *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=a2c4g.11186623.0.0.7f96340a3HFgqS), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	UserIdsShrink *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
 func (s ListProjectMembersShrinkRequest) String() string {
@@ -20564,7 +22917,10 @@ func (s *ListProjectMembersShrinkRequest) SetUserIdsShrink(v string) *ListProjec
 }
 
 type ListProjectMembersResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListProjectMembersResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9FBBBB1F-DD5E-5D8E-8F50-37F77460F056
@@ -20590,15 +22946,22 @@ func (s *ListProjectMembersResponseBody) SetRequestId(v string) *ListProjectMemb
 }
 
 type ListProjectMembersResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize       *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The members in the workspace.
 	ProjectMembers []*ListProjectMembersResponseBodyPagingInfoProjectMembers `json:"ProjectMembers,omitempty" xml:"ProjectMembers,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 12
@@ -20634,15 +22997,26 @@ func (s *ListProjectMembersResponseBodyPagingInfo) SetTotalCount(v int32) *ListP
 }
 
 type ListProjectMembersResponseBodyPagingInfoProjectMembers struct {
+	// The ID of the DataWorks workspace.
+	//
 	// example:
 	//
 	// 62136
-	ProjectId *int64                                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Roles     []*ListProjectMembersResponseBodyPagingInfoProjectMembersRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The roles that are assigned to the member.
+	Roles []*ListProjectMembersResponseBodyPagingInfoProjectMembersRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The status of the member. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- Forbidden
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the account used by the member.
+	//
 	// example:
 	//
 	// 123422344899
@@ -20678,11 +23052,20 @@ func (s *ListProjectMembersResponseBodyPagingInfoProjectMembers) SetUserId(v str
 }
 
 type ListProjectMembersResponseBodyPagingInfoProjectMembersRoles struct {
+	// The code of the role.
+	//
 	// example:
 	//
 	// role_project_guest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the role.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the role. Valid values:
+	//
+	// 	- UserCustom: custom role
+	//
+	// 	- System: built-in role
+	//
 	// example:
 	//
 	// System
@@ -22614,7 +24997,9 @@ type ListTaskInstancesRequest struct {
 	// example:
 	//
 	// ODPS_SQL
-	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	TriggerType       *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 	// example:
 	//
 	// 1234
@@ -22702,8 +25087,18 @@ func (s *ListTaskInstancesRequest) SetTaskName(v string) *ListTaskInstancesReque
 	return s
 }
 
-func (s *ListTaskInstancesRequest) SetTaskType(v int32) *ListTaskInstancesRequest {
+func (s *ListTaskInstancesRequest) SetTaskType(v string) *ListTaskInstancesRequest {
 	s.TaskType = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetTriggerRecurrence(v string) *ListTaskInstancesRequest {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListTaskInstancesRequest) SetTriggerType(v string) *ListTaskInstancesRequest {
+	s.TriggerType = &v
 	return s
 }
 
@@ -22773,7 +25168,9 @@ type ListTaskInstancesShrinkRequest struct {
 	// example:
 	//
 	// ODPS_SQL
-	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	TriggerType       *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 	// example:
 	//
 	// 1234
@@ -22861,8 +25258,18 @@ func (s *ListTaskInstancesShrinkRequest) SetTaskName(v string) *ListTaskInstance
 	return s
 }
 
-func (s *ListTaskInstancesShrinkRequest) SetTaskType(v int32) *ListTaskInstancesShrinkRequest {
+func (s *ListTaskInstancesShrinkRequest) SetTaskType(v string) *ListTaskInstancesShrinkRequest {
 	s.TaskType = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetTriggerRecurrence(v string) *ListTaskInstancesShrinkRequest {
+	s.TriggerRecurrence = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetTriggerType(v string) *ListTaskInstancesShrinkRequest {
+	s.TriggerType = &v
 	return s
 }
 
@@ -22992,7 +25399,8 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// example:
 	//
 	// 1000
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PeriodNumber *int32  `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
 	// example:
 	//
 	// 1
@@ -23127,6 +25535,11 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetModifyUser(v s
 
 func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetOwner(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.Owner = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetPeriodNumber(v int32) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.PeriodNumber = &v
 	return s
 }
 
@@ -23770,7 +26183,8 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	// example:
 	//
 	// 1234
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// example:
 	//
 	// 1710239005403
@@ -23863,6 +26277,11 @@ func (s *ListTasksResponseBodyPagingInfoTasks) SetDescription(v string) *ListTas
 
 func (s *ListTasksResponseBodyPagingInfoTasks) SetId(v int64) *ListTasksResponseBodyPagingInfoTasks {
 	s.Id = &v
+	return s
+}
+
+func (s *ListTasksResponseBodyPagingInfoTasks) SetInstanceMode(v string) *ListTasksResponseBodyPagingInfoTasks {
+	s.InstanceMode = &v
 	return s
 }
 
@@ -24240,7 +26659,8 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// example:
 	//
 	// 1000
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PeriodNumber *int32  `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
 	// example:
 	//
 	// 1
@@ -24375,6 +26795,11 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetModify
 
 func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetOwner(v string) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.Owner = &v
+	return s
+}
+
+func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetPeriodNumber(v int32) *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.PeriodNumber = &v
 	return s
 }
 
@@ -24739,7 +27164,8 @@ type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	// example:
 	//
 	// 1234
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// example:
 	//
 	// 1710239005403
@@ -24778,6 +27204,7 @@ type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	// 3
 	RerunTimes      *int32                                                       `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	RuntimeResource *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	StepType        *string                                                      `json:"StepType,omitempty" xml:"StepType,omitempty"`
 	// example:
 	//
 	// 1
@@ -24835,6 +27262,11 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetId(v int64) *ListUpstr
 	return s
 }
 
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetInstanceMode(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.InstanceMode = &v
+	return s
+}
+
 func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetModifyTime(v int64) *ListUpstreamTasksResponseBodyPagingInfoTasks {
 	s.ModifyTime = &v
 	return s
@@ -24887,6 +27319,11 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetRerunTimes(v int32) *L
 
 func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetRuntimeResource(v *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource) *ListUpstreamTasksResponseBodyPagingInfoTasks {
 	s.RuntimeResource = v
+	return s
+}
+
+func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetStepType(v string) *ListUpstreamTasksResponseBodyPagingInfoTasks {
+	s.StepType = &v
 	return s
 }
 
@@ -26691,14 +29128,22 @@ func (s *ResumeTaskInstancesResponse) SetBody(v *ResumeTaskInstancesResponseBody
 }
 
 type RevokeMemberProjectRolesRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 105149
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	//
+	// You must configure this parameter to specify the roles that you want to revoke from the member in the workspace.
+	//
 	// This parameter is required.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26731,14 +29176,22 @@ func (s *RevokeMemberProjectRolesRequest) SetUserId(v string) *RevokeMemberProje
 }
 
 type RevokeMemberProjectRolesShrinkRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 105149
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	//
+	// You must configure this parameter to specify the roles that you want to revoke from the member in the workspace.
+	//
 	// This parameter is required.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26771,6 +29224,8 @@ func (s *RevokeMemberProjectRolesShrinkRequest) SetUserId(v string) *RevokeMembe
 }
 
 type RevokeMemberProjectRolesResponseBody struct {
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 676271D6-53B4-57BE-89FA-72F7AE1418DF
@@ -27513,6 +29968,574 @@ func (s *TriggerSchedulerTaskInstanceResponse) SetStatusCode(v int32) *TriggerSc
 }
 
 func (s *TriggerSchedulerTaskInstanceResponse) SetBody(v *TriggerSchedulerTaskInstanceResponseBody) *TriggerSchedulerTaskInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAlertRuleRequest struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 105412
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// collection_name
+	Name         *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Notification *UpdateAlertRuleRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// example:
+	//
+	// 193379****
+	Owner            *string                                 `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	TriggerCondition *UpdateAlertRuleRequestTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
+}
+
+func (s UpdateAlertRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequest) SetEnabled(v bool) *UpdateAlertRuleRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequest) SetId(v int64) *UpdateAlertRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequest) SetName(v string) *UpdateAlertRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequest) SetNotification(v *UpdateAlertRuleRequestNotification) *UpdateAlertRuleRequest {
+	s.Notification = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequest) SetOwner(v string) *UpdateAlertRuleRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequest) SetTriggerCondition(v *UpdateAlertRuleRequestTriggerCondition) *UpdateAlertRuleRequest {
+	s.TriggerCondition = v
+	return s
+}
+
+type UpdateAlertRuleRequestNotification struct {
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30
+	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
+	// example:
+	//
+	// 3
+	Maximum   *int32                                         `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	Receivers []*UpdateAlertRuleRequestNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 00:00:00
+	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	// example:
+	//
+	// 00:00:00
+	SilenceStartTime *string `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestNotification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestNotification) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestNotification) SetChannels(v []*string) *UpdateAlertRuleRequestNotification {
+	s.Channels = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestNotification) SetIntervalInMinutes(v int32) *UpdateAlertRuleRequestNotification {
+	s.IntervalInMinutes = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestNotification) SetMaximum(v int32) *UpdateAlertRuleRequestNotification {
+	s.Maximum = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestNotification) SetReceivers(v []*UpdateAlertRuleRequestNotificationReceivers) *UpdateAlertRuleRequestNotification {
+	s.Receivers = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestNotification) SetSilenceEndTime(v string) *UpdateAlertRuleRequestNotification {
+	s.SilenceEndTime = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestNotification) SetSilenceStartTime(v string) *UpdateAlertRuleRequestNotification {
+	s.SilenceStartTime = &v
+	return s
+}
+
+type UpdateAlertRuleRequestNotificationReceivers struct {
+	// example:
+	//
+	// {"atAll":true}
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// TaskOwner
+	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAlertRuleRequestNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestNotificationReceivers) SetExtension(v string) *UpdateAlertRuleRequestNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestNotificationReceivers) SetReceiverType(v string) *UpdateAlertRuleRequestNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestNotificationReceivers) SetReceiverValues(v []*string) *UpdateAlertRuleRequestNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerCondition struct {
+	Extension *UpdateAlertRuleRequestTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
+	Target    *UpdateAlertRuleRequestTriggerConditionTarget    `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// ERROR
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestTriggerCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerCondition) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerCondition) SetExtension(v *UpdateAlertRuleRequestTriggerConditionExtension) *UpdateAlertRuleRequestTriggerCondition {
+	s.Extension = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerCondition) SetTarget(v *UpdateAlertRuleRequestTriggerConditionTarget) *UpdateAlertRuleRequestTriggerCondition {
+	s.Target = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerCondition) SetType(v string) *UpdateAlertRuleRequestTriggerCondition {
+	s.Type = &v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtension struct {
+	CycleUnfinished           *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished           `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
+	Error                     *UpdateAlertRuleRequestTriggerConditionExtensionError                     `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	InstanceErrorCount        *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount        `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
+	InstanceErrorPercentage   *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage   `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	InstanceTransferFluctuate *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
+	Timeout                   *UpdateAlertRuleRequestTriggerConditionExtensionTimeout                   `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+	UnFinished                *UpdateAlertRuleRequestTriggerConditionExtensionUnFinished                `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtension) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetCycleUnfinished(v *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) *UpdateAlertRuleRequestTriggerConditionExtension {
+	s.CycleUnfinished = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetError(v *UpdateAlertRuleRequestTriggerConditionExtensionError) *UpdateAlertRuleRequestTriggerConditionExtension {
+	s.Error = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetInstanceErrorCount(v *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) *UpdateAlertRuleRequestTriggerConditionExtension {
+	s.InstanceErrorCount = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetInstanceErrorPercentage(v *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage) *UpdateAlertRuleRequestTriggerConditionExtension {
+	s.InstanceErrorPercentage = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetInstanceTransferFluctuate(v *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) *UpdateAlertRuleRequestTriggerConditionExtension {
+	s.InstanceTransferFluctuate = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetTimeout(v *UpdateAlertRuleRequestTriggerConditionExtensionTimeout) *UpdateAlertRuleRequestTriggerConditionExtension {
+	s.Timeout = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetUnFinished(v *UpdateAlertRuleRequestTriggerConditionExtensionUnFinished) *UpdateAlertRuleRequestTriggerConditionExtension {
+	s.UnFinished = v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished struct {
+	CycleAndTime []*UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) SetCycleAndTime(v []*UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished {
+	s.CycleAndTime = v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
+	// example:
+	//
+	// 1
+	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
+	// example:
+	//
+	// 01:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) SetCycleId(v int32) *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime {
+	s.CycleId = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime) SetTime(v string) *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime {
+	s.Time = &v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtensionError struct {
+	// example:
+	//
+	// true
+	AutoRerunAlert *bool    `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	StreamTaskIds  []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionError) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionError) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionError) SetAutoRerunAlert(v bool) *UpdateAlertRuleRequestTriggerConditionExtensionError {
+	s.AutoRerunAlert = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionError) SetStreamTaskIds(v []*int64) *UpdateAlertRuleRequestTriggerConditionExtensionError {
+	s.StreamTaskIds = v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount struct {
+	// example:
+	//
+	// 10
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) SetCount(v int32) *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount {
+	s.Count = &v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage struct {
+	// example:
+	//
+	// 10
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage) SetPercentage(v int32) *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage {
+	s.Percentage = &v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate struct {
+	// example:
+	//
+	// 10
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// example:
+	//
+	// abs
+	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) SetPercentage(v int32) *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate {
+	s.Percentage = &v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate) SetTrend(v string) *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate {
+	s.Trend = &v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtensionTimeout struct {
+	// example:
+	//
+	// 10
+	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionTimeout) SetTimeoutInMinutes(v int32) *UpdateAlertRuleRequestTriggerConditionExtensionTimeout {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionExtensionUnFinished struct {
+	// example:
+	//
+	// 12:00
+	UnFinishedTime *string `json:"UnFinishedTime,omitempty" xml:"UnFinishedTime,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionUnFinished) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionExtensionUnFinished) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionExtensionUnFinished) SetUnFinishedTime(v string) *UpdateAlertRuleRequestTriggerConditionExtensionUnFinished {
+	s.UnFinishedTime = &v
+	return s
+}
+
+type UpdateAlertRuleRequestTriggerConditionTarget struct {
+	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
+	Ids        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Task
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleRequestTriggerConditionTarget) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionTarget) SetAllowTasks(v []*int64) *UpdateAlertRuleRequestTriggerConditionTarget {
+	s.AllowTasks = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionTarget) SetIds(v []*int64) *UpdateAlertRuleRequestTriggerConditionTarget {
+	s.Ids = v
+	return s
+}
+
+func (s *UpdateAlertRuleRequestTriggerConditionTarget) SetType(v string) *UpdateAlertRuleRequestTriggerConditionTarget {
+	s.Type = &v
+	return s
+}
+
+type UpdateAlertRuleShrinkRequest struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 105412
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// collection_name
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// 193379****
+	Owner                  *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	TriggerConditionShrink *string `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty"`
+}
+
+func (s UpdateAlertRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleShrinkRequest) SetEnabled(v bool) *UpdateAlertRuleShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateAlertRuleShrinkRequest) SetId(v int64) *UpdateAlertRuleShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateAlertRuleShrinkRequest) SetName(v string) *UpdateAlertRuleShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAlertRuleShrinkRequest) SetNotificationShrink(v string) *UpdateAlertRuleShrinkRequest {
+	s.NotificationShrink = &v
+	return s
+}
+
+func (s *UpdateAlertRuleShrinkRequest) SetOwner(v string) *UpdateAlertRuleShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateAlertRuleShrinkRequest) SetTriggerConditionShrink(v string) *UpdateAlertRuleShrinkRequest {
+	s.TriggerConditionShrink = &v
+	return s
+}
+
+type UpdateAlertRuleResponseBody struct {
+	// example:
+	//
+	// D85FEE2B-6174-5817-AF9E-FDD02FEDA5BC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAlertRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleResponseBody) SetRequestId(v string) *UpdateAlertRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAlertRuleResponseBody) SetSuccess(v bool) *UpdateAlertRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAlertRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAlertRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAlertRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRuleResponse) SetHeaders(v map[string]*string) *UpdateAlertRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAlertRuleResponse) SetStatusCode(v int32) *UpdateAlertRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAlertRuleResponse) SetBody(v *UpdateAlertRuleResponseBody) *UpdateAlertRuleResponse {
 	s.Body = v
 	return s
 }
@@ -29793,6 +32816,92 @@ func (client *Client) CloneDataSource(request *CloneDataSourceRequest) (_result 
 
 // Summary:
 //
+// 创建自定义监控报警规则
+//
+// @param tmpReq - CreateAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAlertRuleResponse
+func (client *Client) CreateAlertRuleWithOptions(tmpReq *CreateAlertRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAlertRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAlertRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TriggerCondition)) {
+		request.TriggerConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TriggerCondition, tea.String("TriggerCondition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerConditionShrink)) {
+		query["TriggerCondition"] = request.TriggerConditionShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAlertRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAlertRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义监控报警规则
+//
+// @param request - CreateAlertRuleRequest
+//
+// @return CreateAlertRuleResponse
+func (client *Client) CreateAlertRule(request *CreateAlertRuleRequest) (_result *CreateAlertRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAlertRuleResponse{}
+	_body, _err := client.CreateAlertRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建数据集成报警规则
 //
 // @param tmpReq - CreateDIAlarmRuleRequest
@@ -30875,6 +33984,66 @@ func (client *Client) CreateWorkflowDefinition(request *CreateWorkflowDefinition
 
 // Summary:
 //
+// 删除自定义监控报警规则
+//
+// @param request - DeleteAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertRuleResponse
+func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAlertRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlertRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAlertRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义监控报警规则
+//
+// @param request - DeleteAlertRuleRequest
+//
+// @return DeleteAlertRuleResponse
+func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result *DeleteAlertRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAlertRuleResponse{}
+	_body, _err := client.DeleteAlertRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an alert rule configured for a synchronization task.
 //
 // @param request - DeleteDIAlarmRuleRequest
@@ -31367,7 +34536,7 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 
 // Summary:
 //
-// 移除工作空间成员
+// Removes a member from a workspace.
 //
 // @param request - DeleteProjectMemberRequest
 //
@@ -31413,7 +34582,7 @@ func (client *Client) DeleteProjectMemberWithOptions(request *DeleteProjectMembe
 
 // Summary:
 //
-// 移除工作空间成员
+// Removes a member from a workspace.
 //
 // @param request - DeleteProjectMemberRequest
 //
@@ -31888,6 +35057,62 @@ func (client *Client) ExecDeploymentStage(request *ExecDeploymentStageRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecDeploymentStageResponse{}
 	_body, _err := client.ExecDeploymentStageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义监控报警规则
+//
+// @param request - GetAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAlertRuleResponse
+func (client *Client) GetAlertRuleWithOptions(request *GetAlertRuleRequest, runtime *util.RuntimeOptions) (_result *GetAlertRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAlertRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAlertRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义监控报警规则
+//
+// @param request - GetAlertRuleRequest
+//
+// @return GetAlertRuleResponse
+func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAlertRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAlertRuleResponse{}
+	_body, _err := client.GetAlertRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32413,7 +35638,7 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 
 // Summary:
 //
-// 查询工作空间成员详情
+// Queries the details about a member in a workspace.
 //
 // @param request - GetProjectMemberRequest
 //
@@ -32459,7 +35684,7 @@ func (client *Client) GetProjectMemberWithOptions(request *GetProjectMemberReque
 
 // Summary:
 //
-// 查询工作空间成员详情
+// Queries the details about a member in a workspace.
 //
 // @param request - GetProjectMemberRequest
 //
@@ -32755,6 +35980,10 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an instance.
+//
 // @param request - GetTaskInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32789,6 +36018,10 @@ func (client *Client) GetTaskInstanceWithOptions(request *GetTaskInstanceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an instance.
+//
 // @param request - GetTaskInstanceRequest
 //
 // @return GetTaskInstanceResponse
@@ -32909,7 +36142,7 @@ func (client *Client) GetWorkflowDefinition(request *GetWorkflowDefinitionReques
 
 // Summary:
 //
-// 授予工作空间成员角色
+// Assigns roles to members in a workspace.
 //
 // @param tmpReq - GrantMemberProjectRolesRequest
 //
@@ -32965,7 +36198,7 @@ func (client *Client) GrantMemberProjectRolesWithOptions(tmpReq *GrantMemberProj
 
 // Summary:
 //
-// 授予工作空间成员角色
+// Assigns roles to members in a workspace.
 //
 // @param request - GrantMemberProjectRolesRequest
 //
@@ -33038,6 +36271,100 @@ func (client *Client) ImportWorkflowDefinition(request *ImportWorkflowDefinition
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportWorkflowDefinitionResponse{}
 	_body, _err := client.ImportWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页获取自定义监控报警规则
+//
+// @param tmpReq - ListAlertRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertRulesResponse
+func (client *Client) ListAlertRulesWithOptions(tmpReq *ListAlertRulesRequest, runtime *util.RuntimeOptions) (_result *ListAlertRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListAlertRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskIds)) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, tea.String("TaskIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Types)) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, tea.String("Types"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Receiver)) {
+		query["Receiver"] = request.Receiver
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdsShrink)) {
+		query["TaskIds"] = request.TaskIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypesShrink)) {
+		query["Types"] = request.TypesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAlertRules"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAlertRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页获取自定义监控报警规则
+//
+// @param request - ListAlertRulesRequest
+//
+// @return ListAlertRulesResponse
+func (client *Client) ListAlertRules(request *ListAlertRulesRequest) (_result *ListAlertRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAlertRulesResponse{}
+	_body, _err := client.ListAlertRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33333,7 +36660,7 @@ func (client *Client) ListDIJobs(request *ListDIJobsRequest) (_result *ListDIJob
 
 // Summary:
 //
-// ListDataQualityEvaluationTaskInstances
+// Queries a list of instances generated by a data quality monitoring task by page.
 //
 // @param request - ListDataQualityEvaluationTaskInstancesRequest
 //
@@ -33371,7 +36698,7 @@ func (client *Client) ListDataQualityEvaluationTaskInstancesWithOptions(request 
 
 // Summary:
 //
-// ListDataQualityEvaluationTaskInstances
+// Queries a list of instances generated by a data quality monitoring task by page.
 //
 // @param request - ListDataQualityEvaluationTaskInstancesRequest
 //
@@ -33387,6 +36714,10 @@ func (client *Client) ListDataQualityEvaluationTaskInstances(request *ListDataQu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of data quality monitoring tasks by page.
+//
 // @param request - ListDataQualityEvaluationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33421,6 +36752,10 @@ func (client *Client) ListDataQualityEvaluationTasksWithOptions(request *ListDat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of data quality monitoring tasks by page.
+//
 // @param request - ListDataQualityEvaluationTasksRequest
 //
 // @return ListDataQualityEvaluationTasksResponse
@@ -33485,7 +36820,7 @@ func (client *Client) ListDataQualityResults(request *ListDataQualityResultsRequ
 
 // Summary:
 //
-// 质量监控规则分页查询
+// Queries a list of data quality monitoring rules by page.
 //
 // @param request - ListDataQualityRulesRequest
 //
@@ -33523,7 +36858,7 @@ func (client *Client) ListDataQualityRulesWithOptions(request *ListDataQualityRu
 
 // Summary:
 //
-// 质量监控规则分页查询
+// Queries a list of data quality monitoring rules by page.
 //
 // @param request - ListDataQualityRulesRequest
 //
@@ -34035,7 +37370,7 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 
 // Summary:
 //
-// 分页查询工作空间成员详情
+// Queries details about members in a workspace.
 //
 // @param tmpReq - ListProjectMembersRequest
 //
@@ -34103,7 +37438,7 @@ func (client *Client) ListProjectMembersWithOptions(tmpReq *ListProjectMembersRe
 
 // Summary:
 //
-// 分页查询工作空间成员详情
+// Queries details about members in a workspace.
 //
 // @param request - ListProjectMembersRequest
 //
@@ -34620,6 +37955,14 @@ func (client *Client) ListTaskInstancesWithOptions(tmpReq *ListTaskInstancesRequ
 
 	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
 		body["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerRecurrence)) {
+		body["TriggerRecurrence"] = request.TriggerRecurrence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerType)) {
+		body["TriggerType"] = request.TriggerType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
@@ -35705,7 +39048,7 @@ func (client *Client) ResumeTaskInstances(request *ResumeTaskInstancesRequest) (
 
 // Summary:
 //
-// 撤销工作空间成员的角色
+// Revokes roles that are assigned to a member in a workspace.
 //
 // @param tmpReq - RevokeMemberProjectRolesRequest
 //
@@ -35761,7 +39104,7 @@ func (client *Client) RevokeMemberProjectRolesWithOptions(tmpReq *RevokeMemberPr
 
 // Summary:
 //
-// 撤销工作空间成员的角色
+// Revokes roles that are assigned to a member in a workspace.
 //
 // @param request - RevokeMemberProjectRolesRequest
 //
@@ -36130,6 +39473,96 @@ func (client *Client) TriggerSchedulerTaskInstance(request *TriggerSchedulerTask
 	runtime := &util.RuntimeOptions{}
 	_result = &TriggerSchedulerTaskInstanceResponse{}
 	_body, _err := client.TriggerSchedulerTaskInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义监控报警规则
+//
+// @param tmpReq - UpdateAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertRuleResponse
+func (client *Client) UpdateAlertRuleWithOptions(tmpReq *UpdateAlertRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateAlertRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAlertRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TriggerCondition)) {
+		request.TriggerConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TriggerCondition, tea.String("TriggerCondition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerConditionShrink)) {
+		query["TriggerCondition"] = request.TriggerConditionShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlertRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAlertRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义监控报警规则
+//
+// @param request - UpdateAlertRuleRequest
+//
+// @return UpdateAlertRuleResponse
+func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result *UpdateAlertRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAlertRuleResponse{}
+	_body, _err := client.UpdateAlertRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
