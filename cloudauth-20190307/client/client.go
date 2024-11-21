@@ -4450,6 +4450,136 @@ func (s *DetectFaceAttributesResponse) SetBody(v *DetectFaceAttributesResponseBo
 	return s
 }
 
+type Id2MetaStandardVerifyRequest struct {
+	// example:
+	//
+	// 4****************1
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// example:
+	//
+	// normal
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s Id2MetaStandardVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaStandardVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaStandardVerifyRequest) SetIdentifyNum(v string) *Id2MetaStandardVerifyRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *Id2MetaStandardVerifyRequest) SetParamType(v string) *Id2MetaStandardVerifyRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *Id2MetaStandardVerifyRequest) SetUserName(v string) *Id2MetaStandardVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+type Id2MetaStandardVerifyResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *Id2MetaStandardVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s Id2MetaStandardVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaStandardVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaStandardVerifyResponseBody) SetCode(v string) *Id2MetaStandardVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Id2MetaStandardVerifyResponseBody) SetMessage(v string) *Id2MetaStandardVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Id2MetaStandardVerifyResponseBody) SetRequestId(v string) *Id2MetaStandardVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Id2MetaStandardVerifyResponseBody) SetResultObject(v *Id2MetaStandardVerifyResponseBodyResultObject) *Id2MetaStandardVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type Id2MetaStandardVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+}
+
+func (s Id2MetaStandardVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaStandardVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaStandardVerifyResponseBodyResultObject) SetBizCode(v string) *Id2MetaStandardVerifyResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+type Id2MetaStandardVerifyResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Id2MetaStandardVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s Id2MetaStandardVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaStandardVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaStandardVerifyResponse) SetHeaders(v map[string]*string) *Id2MetaStandardVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Id2MetaStandardVerifyResponse) SetStatusCode(v int32) *Id2MetaStandardVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Id2MetaStandardVerifyResponse) SetBody(v *Id2MetaStandardVerifyResponseBody) *Id2MetaStandardVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type Id2MetaVerifyRequest struct {
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
 	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
@@ -9385,6 +9515,74 @@ func (client *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectFaceAttributesResponse{}
 	_body, _err := client.DetectFaceAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 身份二要素标准版
+//
+// @param request - Id2MetaStandardVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Id2MetaStandardVerifyResponse
+func (client *Client) Id2MetaStandardVerifyWithOptions(request *Id2MetaStandardVerifyRequest, runtime *util.RuntimeOptions) (_result *Id2MetaStandardVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		body["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		body["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Id2MetaStandardVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Id2MetaStandardVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 身份二要素标准版
+//
+// @param request - Id2MetaStandardVerifyRequest
+//
+// @return Id2MetaStandardVerifyResponse
+func (client *Client) Id2MetaStandardVerify(request *Id2MetaStandardVerifyRequest) (_result *Id2MetaStandardVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Id2MetaStandardVerifyResponse{}
+	_body, _err := client.Id2MetaStandardVerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
