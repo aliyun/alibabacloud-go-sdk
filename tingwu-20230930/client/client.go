@@ -62,6 +62,7 @@ func (s *CreateTaskRequest) SetType(v string) *CreateTaskRequest {
 }
 
 type CreateTaskRequestInput struct {
+	AudioChannelMode *string `json:"AudioChannelMode,omitempty" xml:"AudioChannelMode,omitempty"`
 	// example:
 	//
 	// http://xxx.com/zzz/1.wav
@@ -97,6 +98,11 @@ func (s CreateTaskRequestInput) String() string {
 
 func (s CreateTaskRequestInput) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskRequestInput) SetAudioChannelMode(v string) *CreateTaskRequestInput {
+	s.AudioChannelMode = &v
+	return s
 }
 
 func (s *CreateTaskRequestInput) SetFileUrl(v string) *CreateTaskRequestInput {
